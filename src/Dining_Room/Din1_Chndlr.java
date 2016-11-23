@@ -1,0 +1,17 @@
+package Dining_Room;
+
+import Super.Furniture;
+
+public class Din1_Chndlr extends Furniture {
+/* CONSTRUCTOR ---------------------------------------------------------------*/     
+    public Din1_Chndlr(String NAME) {
+        super(NAME);
+        this.searchable = false;
+        this.description = "The chandelier shimmers in the moonlight. Its candles\n" +
+                           "are unlit, which at this point seems odd to you. Still,\n"
+                         + "the room is well lit from the light shining in.";
+        this.searchDialog = "You are pretty sure you can't jump that high.";
+        this.addNameKeys("chandelier", "chandeleir");
+    }
+/*----------------------------------------------------------------------------*/
+}

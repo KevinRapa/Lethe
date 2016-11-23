@@ -1,0 +1,12 @@
+package Servants_Hall;
+
+import Super.Door;
+
+public class Sha2_Dr extends Door {
+/* CONSTRUCTOR ---------------------------------------------------------------*/        
+    public Sha2_Dr (String NAME) {
+        super(NAME);
+        this.description = "It's a small wooden door; a bit taller than you.";
+    }
+}
+
