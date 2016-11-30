@@ -3,7 +3,7 @@ package Super;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.Serializable;
-import Core.Room_Refs;
+import Core.Room_References;
 /**
  * @author Kevin Rapa
  */
@@ -22,8 +22,8 @@ public class Room implements Serializable {
         this.isLocked = false;
         this.adjacent = new ArrayList();
         this.furnishings = new ArrayList();
-        this.COORDS = Room_Refs.getCoord(this.ID); 
-        this.adjacent = Room_Refs.getAdj(this.ID);
+        this.COORDS = Room_References.getCoord(this.ID); 
+        this.adjacent = Room_References.getAdj(this.ID);
 }
 //******************************************************************************
 // <editor-fold desc="GETTERS">

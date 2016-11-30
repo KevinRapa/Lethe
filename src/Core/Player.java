@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.Serializable;
 /**
+ * The player class is the center of the game.
+ * Most importantly, the player has access to the room it's in, and by 
+ * extension, the furniture and items in the room. 
+ * 
  * @author Kevin Rapa
  */
 public class Player implements Serializable {
@@ -15,12 +19,16 @@ public class Player implements Serializable {
     private final Inventory INV, KEYS; // Your inventory and keyring.
     private final ArrayList<String> VISITED; // List of rooms you have visited.
     private String lastVisited; // The last room you visited.
-    // CONSTRUCTOR ============================================================ 
+    //========================================================================== 
+    /**
+     * Constructs the player object.
+     * Gives player a new inventory, key ring, and a new VISITED array.
+     */
     public Player() {
         this.INV = new Inventory();
         this.KEYS = new Inventory();
         this.VISITED = new ArrayList();
-        this.VISITED.add("COU4");
+        this.VISITED.add("COU4"); // Default starting location.
     }    
 //******************************************************************************
 // <editor-fold desc="GETTERS AND SETTERS">  
@@ -289,7 +297,7 @@ public class Player implements Serializable {
         Item item;
             
         do {
-            GUI.menOut("-'store' n- Store...\n-'take' n- Take...\\n- - Back\");");
+            GUI.menOut("-'store' item- Store...\n-'take' item- Take...\n- - Back\"");
             
             cmdItm = GUI.promptOut();
             
@@ -482,7 +490,7 @@ public class Player implements Serializable {
         String ans;            
         
         do {
-            GUI.menOut("-n- Inspect...\n- - Back");
+            GUI.menOut("-item- Inspect...\n- - Back");
             ans = GUI.promptOut();
             
             try {
@@ -503,7 +511,7 @@ public class Player implements Serializable {
         String choice;
         
         do { 
-            GUI.menOut("-n- Use...\n- - Back");
+            GUI.menOut("-item- Use...\n- - Back");
             choice = GUI.promptOut();
             
             try {
@@ -563,7 +571,7 @@ public class Player implements Serializable {
     private void combineSub() {
         String combineThese;
         Scanner collectToken;
-        GUI.menOut("-n,n,(n)- Combine...\n- - Back");
+        GUI.menOut("-item,item,(item)- Combine...\n- - Back");
         
         do {
             combineThese = GUI.promptOut();
@@ -626,10 +634,11 @@ public class Player implements Serializable {
      * @return If the items combine into the same object.
      */
     private boolean areAllCombinable(Item[] tokens) {
-        String j = tokens[0].getForms();
+        String combinesTo = tokens[0].getForms();
 
         for (Item i : tokens) {
-            if (i.getForms().matches("nothing") || ! i.getForms().matches(j))
+            if (i.getForms().matches("nothing") || 
+                ! i.getForms().matches(combinesTo))
                 return false;
         } 
         return true;

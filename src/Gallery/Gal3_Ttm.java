@@ -18,7 +18,7 @@ public class Gal3_Ttm extends Furniture{
     public Gal3_Ttm(String NAME, Furniture stat, Inventory inv, Item ... items) {
         super(NAME);
         this.searchDialog = "The only place to search is the totem's open\n"
-                          + "third mouth.";
+                          + "third mouth. ";
         this.interactDialog = "You back away from the totem";
         this.searchable = false;
         this.REF = (Gal_2E_Stat) stat;
@@ -78,7 +78,7 @@ public class Gal3_Ttm extends Furniture{
         String rep = this.searchDialog;
         
         if (! this.searchable)
-            rep += "\b, but the head is facing towards the wall.";
+            rep += "The head is facing towards the wall.";
         
         return rep; 
     }
@@ -164,10 +164,10 @@ public class Gal3_Ttm extends Furniture{
         boolean solved = false;
         
         do {
-            String four = this.headFour ?   "-[-_-]-  4" : "-[   ]-  4";
-            String three = this.headThree ? "-[-_-]-  3" : "-[   ]-  3";
-            String two = this.headTwo ?     "-[-_-]-  2" : "-[   ]-  2";
-            String one = this.headOne ?     "-[-_-]-  1" : "-[   ]-  1";
+            String four = this.headFour ?        "-[-_-]-  4" :      "-[   ]-  4";
+            String three = this.headThree ? "\t   -[-o-]-  3" : "\t   -[   ]-  3";
+            String two = this.headTwo ?     "\t   -[-_-]-  2" : "\t   -[   ]-  2";
+            String one = this.headOne ?     "\t   -[-_-]-  1" : "\t   -[   ]-  1";
         
             GUI.out("           " + four + "       \t" + three + "\t\t" + 
                        two + "\t\t" + one);

@@ -7,13 +7,19 @@ package Core;
  * wandered through the woods to it without any apparent reason. As the game
  * progresses, puzzles get steadily more complex and a story develops.
  * <p>
+ * To play, just run this project. No support for different screen sizes has
+ * been implemented yet, so you may find the screen too large if you are using
+ * a laptop. You may start from any room in the game, however the default start
+ * is in <code>cou4</code>. Find the method <code>setOccupies</code> at the
+ * bottom of this class to change this, and refer to the castle array for the
+ * room object references.
+ * <p>
  * Salamaa is a word based in Finnish meaning something along the lines of
- * "secret world," though that concept is not normally expressed this way.
+ * "secret world," though that concept is not normally said this way.
  * 
  * @author Kevin Rapa
+ * @see <a href="https://github.com/KevinRapa/Salamaa.git">GitHub Repository</a>
  */
-
-// ============================================================================
 import Super.Room;
 import Super.Trch;         import Library.Lib_Shoes;    import Super.Door; 
 import Super.Floor;        import Super.Wall_Ex;        import Super.Item;
@@ -32,20 +38,19 @@ import Observatory.*;      import Dungeon_Stairs.*;     import Parlor.*;
 import Chapel_Stairs.*;
 
 import javax.swing.*;      import java.io.*;
-// ============================================================================
 
 public class Salamaa {
     private static Player me;
     private static Room[][][] map;
     
     //**************************************************************************
-    // <editor-fold desc="MAIN METHOD">
+    // <editor-fold desc="MAIN: LOAD A GAME OR START A NEW ONE">
     //**************************************************************************
     
     public static void main(String[] args) {
            
         //**********************************************************************
-        // <editor-fold desc="MAKE FRAME">
+        // <editor-fold desc="MAKE THE FRAME">
         //**********************************************************************
         
         GUI panel = new GUI();
@@ -81,7 +86,7 @@ public class Salamaa {
         } 
         catch (java.lang.ClassNotFoundException | java.io.IOException e) { 
             System.out.println("Data missing. Creating new game.");
-            Room_Refs.constructRoomReferences();
+            Room_References.constructRoomReferences();
             map = createMap();
             me.startDialog(map); // START GAME
         }
@@ -127,7 +132,7 @@ public class Salamaa {
     // *************************************************************************    
     
     /**
-     * This creates a new castle map for a new game. 
+     * This creates a new castle map for a new game and instantiates the player. 
      * The map is a structured reference to every room in the game, and all the
      * objects in each of the room.
      * @return The castle map.
@@ -139,7 +144,7 @@ public class Salamaa {
         //**********************************************************************
         // <editor-fold desc="INITIALIZE ROOMS, FURNITURE, ITEMS">
         //
-        // Every room and room object is instantiated here.
+        // Every room, furniture, and item is instantiated here.
         //**********************************************************************
 
         //**********************************************************************
@@ -1254,11 +1259,20 @@ public class Salamaa {
         //**********************************************************************
         // <editor-fold desc="CREATE CASTLE ARRAY">
         //
-        // MAIN CASTLE MAP. SEVEN ARRAYS OF 8 X 10 TWO DIMENSIONAL ARRAYS. 
-        // EACH PRIMARY ARRAY CORRESPONDS TO ONE FLOOR. 
-        //**********************************************************************
+        /** The castle map is a 3D array composed of seven 8 x 10 2D arrays. 
+         * <p>
+         * The map behaves as a graph in that each room has an ID. That ID is
+         * mapped to an array of other ID's which represent adjacent rooms.
+         * <p>
+         * Though this implementation uses up more space than it needs to due 
+         * to the numerous 'NULL' elements, it provides a good visualization.
+         * In addition, the game has advanced too much to change it at this point.
+         *
+         * @see "Room_References.java"
+         * 
+        //*********************************************************************/
 
-        Room ____ = new Room("NULL", "NULL");
+        Room ____ = new Room("NULL", "NULL"); // For an easy visualization
 
         Room[][][] newMap =                         
 
@@ -1347,8 +1361,10 @@ public class Salamaa {
 
         //**********************************************************************
         // <editor-fold desc="POPULATE ROOMS">
-        // Fills every room with furniture.
-        //**********************************************************************  
+        /** Fills every room with furniture.
+         *  The <code>addFurniture</code> method populates an array of each
+         *  furniture object called <code>furnishings</code>.
+        //*********************************************************************/  
         
         //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 1">
@@ -1441,8 +1457,8 @@ public class Salamaa {
         // </editor-fold>  
         //**********************************************************************
         
-        me.setOccupies(chs1);
-        //me.getINV().add();
+        me.setOccupies(gal3); //Change the argument to start the game in any room.
+        //me.getINV().add(); // For testing purposes.
         return newMap;
     }
     

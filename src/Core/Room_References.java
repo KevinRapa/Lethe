@@ -3,18 +3,22 @@ package Core;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Arrays;
-// ****************************************************************************
-// This class is used by each room when it is intantiated, and allows the room
-// to fetch its own coordinates and adjacent rooms by passing its ID. The
-// hashmaps in this class populate themselves with .constructRoomReferences().
-/** @author Kevin Rapa                                                        */
-// ****************************************************************************
-public class Room_Refs {
+/****************************************************************************
+ * This class is used by each room when it is instantiated, and allows the
+ * room to fetch its own coordinates and adjacent rooms by passing its ID.
+ * The hash maps in this class populate themselves with 
+ * <code>constructRoomReferences</code>.
+ * @author Kevin Rapa                                                        
+ * @see Room_References#constructRoomReferences()
+// ***************************************************************************/
+public class Room_References {
     private static final HashMap<String, String[]> ADJACENTS = new HashMap<>();
     private static final HashMap<String, int[]> COORDINATES = new HashMap<>();
 
 //******************************************************************************
 // <editor-fold desc="ROOM IDS">  
+// Each element maps to an element in ADJS for ADJACENTS.
+// Each element maps to an element in COORDS for COORDINATES.
 //******************************************************************************
     private static final String[] IDS = 
             
@@ -176,9 +180,12 @@ public class Room_Refs {
 //******************************************************************************
 // <editor-fold desc="HASHMAP ASSEMBLER AND GETTERS">  
 //******************************************************************************     
+    /**
+     * Constructs the two hash maps.
+     */
     public static void constructRoomReferences() {
         int index = 0;
-        // Link rooms with their adjacent rooms and coordinates.
+
         for (String key : IDS) {
             ADJACENTS.put(key, ADJS[index]);   
             COORDINATES.put(key, COORDS[index]);

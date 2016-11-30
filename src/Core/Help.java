@@ -27,13 +27,15 @@ public class Help {
 /*----------------------------------------------------------------------------*/     
     private static final String[] HELP_VALUES = 
     
-        {"-3- Enter '3' to do this.\n" +
-         "-item- Enter an item to do this.\n." +
-         "-'xyz'- Enter exactly what's quoted to do this.\n" +
-         "- - Enter nothing to back out.\n\n.", 
+        {"-3- Enter '3'.\t\t\t" +
+         "-item- Enter an item name.\t" +
+         "-(item)- An optional item.\t" +
+         "-'x'- Enter exactly what's quoted.\t\t\t\t" +
+         "-#- Enter a digit.\t\t" +
+         "- - Enter nothing to back out.\n\n", 
          
          "In this game, you may move four directions; north, south, east, and west.\n"
-       + "The keys for this are 'w', 's', 'a', and 'd'. Really, who wants to type\n"
+       + "The keys for these are 'w', 's', 'a', and 'd'. Really, who wants to type\n"
        + "in 'north' every time they want to move?", 
          
          "When you enter a room, especially for the first time, you may want to read\n"
@@ -42,16 +44,16 @@ public class Help {
        + "upon entering the room.\n"
        + "In each room's description, you will find necessary information about the\n"
        + "objects in the room and what you may interact with. You many interact with any noun in the description (search, interact,\n"
-       + "and check). As an exception, the room itself mentioned in the room description may not be \n"
+       + "and check). As an exception, the room itself and abstract nouns mentioned in the room description may not be\n"
        + "interacted with.\n", 
          
         "Checking is a main action, and is performed from the main prompt. The key for\n" +
-        "checking is 'c' for check. You may check any one- or two-word noun in the room \n" +
+        "checking is 'c' for check. You may check any noun in the room\n" +
         "description, and the action will describe that object for you. Unlike describing,\n" +
         "you mostly cannot interact with nouns in the 'check' description, unless it is\n" +
         "intuitively obvious (e.g. a button, lever, wheel is revealed). Otherwise, I would\n" +
-        "have to recursively make objects down to the atomic level. As just mentioned, \n" +
-        "checking is important, as it can reveal clues about hidden objects and other\n" +
+        "have to recursively make more furniture down to the atomic level.\n" +
+        "Checking is important, as it can reveal clues about hidden objects and other\n" +
         "things, as well as add color to what's in your head.\n", 
          
         "Searching is a main action, and is performed from the main prompt. The key for\n" +
@@ -59,14 +61,14 @@ public class Help {
         "noun in the room description, and your character will search the object. If the\n" +
         "object is searchable, you will be taken to the search sub-prompt. In addition,\n" +
         "any items the object contains will be listed. Remember, an object may contain\n" +
-        "useful stuff, but you will not always be able to take it right away!\n" +
+        "useful stuff, but you will not always be able to take the stuff right away!\n" +
         "\n" +
         "The search sub-prompt will ask if you want to take or store items. To do this,\n" +
         "type 'take' or 'store' followed by a space, and then the item's slot.\n" +
         "You may always press just enter to back up to the main prompt.\n", 
          
         "Interacting is a main action, and is performed from the main prompt. The key for\n" +
-        "interacting is 'x' for execute. You may interact with any noun in the room\n"
+        "interacting is 'x' (for execute). You may interact with any noun in the room\n"
       + "description, and your character will interact with the object.\n" +
         "Interacting means your character is doing something to/with the object, like\n" +
         "'pull', 'sit', etc.\n" +
@@ -77,7 +79,7 @@ public class Help {
         "Using is an inventory action, and is performed from the inventory ('i'). To\n" +
         "use an item, press '2' from the inventory menu, and you will be asked to\n" +
         "type an item to use. Type the item's slot as it appears in your inventory and press\n"
-      + "'enter'. An item could be used on objects, itself, or \n" +
+      + "'enter'. An item could be used on objects, itself, or\n" +
         "not be useful at all! If it is to be used on an object in the room, you will \n" +
         "be asked to type in the object before pressing 'enter'.\n", 
          
@@ -85,41 +87,41 @@ public class Help {
         "combine items, press '3' from the inventory menu, and you will be asked to type\n" +
         "items to combine. Type in the item slot numbers, separated by a comma and space, and press\n" +
         "enter. You\n" +
-        "must type AT LEAST 2 items to combine, and NO MORE than 3. A set of combinable\n" +
+        "must type exactly 2 or 3 items to combine. A set of combinable\n" +
         "items are combined at once. For example, if a hilt, pommel, and blade are combined\n" +
-        "to make a sword, do not try to combine 2 of them and then the 3rd later; combine \n" +
+        "to make a sword, do not try to combine 2 of them and then the 3rd later; combine\n" +
         "all 3 at the same time.\n", 
          
         "Inspecting is an inventory action, and is performed from the inventory ('i'). To\n" +
         "inspect an item, press '1' from the inventory menu, and you will be asked to type\n" +
-        "an item to inspect. Type in the items slot number and press enter.\n" +
+        "an item to inspect. Type in the item's slot number and press enter.\n" +
         "Inspecting is the simplest inventory action. Upon inspecting, you will be given\n" +
         "a description of the item. This can be important, as it may reveal information\n" +
-        "about what the item does.\n", 
+        "about what the item does.", 
          
         "Access your inventory by pressing 'i' from the main prompt and pressing 'enter'.\n" +
         "Your inventory's contents will be listed. From here, you may perform the\n" +
-        "inventory actions 'inspect', 'use', and 'combine'. Press just enter to back\n" +
-        "out to the main prompt.\n", 
+        "inventory actions 'inspect', 'use', and 'combine'. Press enter to back\n" +
+        "out to the main prompt.", 
          
         "Access your key ring by pressing 'k' from the main prompt and pressing 'enter'.\n" +
-        "The keys you are carrying will be listed. You cannot drop keys, you just have\n" +
+        "The keys you are carrying will be listed. You cannot drop keys; you just have\n" +
         "them forever! If you take a key from a search, it will automatically be added\n" +
-        "to your key ring.\n", 
+        "to your key ring.", 
          
         "Phylacteries are stored in your inventory. These are important! You cannot\n" +
-        "store or drop them. That is all.\n",    
+        "store or drop them. That is all.",    
          
-        "Every room has at least one door, and thus, you may act on them from the \n" +
+        "Every room has at least one door, and thus, you may act on them from the\n" +
         "main prompt using the name 'door'. However, you do not need to act on doors\n" +
         "in general movement. Your character moves through them automatically, if\n" +
-        "they are unlocked, unblocked, etc.\n", 
+        "they are unlocked, unblocked, etc.", 
          
-        "The castle is made of rooms separated by doors and walls. A room may be one area big, two, or\n" +
+        "The castle is made of rooms separated by doors and walls. A room may be one area, two, or\n" +
         "even more! Inside and outside the room are 'objects', which are any nouns in the\n" +
-        "room's description.", 
+        "room's description. In everyday life, we call these objects 'furniture' or 'stuff'.", 
          
-        "'Furniture' or more appropriately 'room objects' are any nouns in the room \n" +
+        "'Furniture' or more appropriately 'room objects' are any nouns in the room\n" +
         "description. This means you can interact with them from the main prompt by\n" +
         "a 'search', 'check', or 'interact'.", 
          
@@ -129,7 +131,7 @@ public class Help {
          
          "Keys get added to your key ring, and you may not get rid of them. They permit you to\n"
        + "enter rooms, as one would expect. Remember, you may need to do something other than\n"
-       + "obtain a key to enter a room!\n", 
+       + "obtain a key to enter a room!", 
          
          "Hmmm... Who know what these are for...\n"};
    
