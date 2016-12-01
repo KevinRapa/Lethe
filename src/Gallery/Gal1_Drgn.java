@@ -1,7 +1,6 @@
 package Gallery;
 
 import Super.Item;
-import Core.GUI;
 import Super.Furniture;
 import Core.Inventory;
 
@@ -21,7 +20,7 @@ public class Gal1_Drgn extends Furniture {
         this.REF2 = inv;
         this.leftEye = false;
         this.rightEye = false;
-        this.isOn = false;
+        this.isOn = true;
         this.beam = 'y';
         this.mode = "A yellow beam";
         this.addNameKeys("snake-like dragon", "dragon");

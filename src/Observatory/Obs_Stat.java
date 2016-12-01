@@ -8,6 +8,7 @@ public class Obs_Stat extends Furniture {
         super(NAME);
         this.searchable = false;
         this.description = desc;
+        this.addNameKeys(NAME);
     }
 /*----------------------------------------------------------------------------*/
 }

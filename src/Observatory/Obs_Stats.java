@@ -11,7 +11,7 @@ public class Obs_Stats extends Furniture {
     private final Player REF;
     private final Obs3_Chndlr REF2;
     private boolean solved = false;
-    private boolean locked = true;
+    private boolean locked = false;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Obs_Stats(String NAME, Player plyr, Furniture chandlr, Furniture ... stats) {
         super(NAME);
@@ -35,7 +35,7 @@ public class Obs_Stats extends Furniture {
         
         do {
             GUI.out(this.getArray());
-            GUI.menOut("-#- Look\n- - Back");       
+            GUI.menOut("<#> Look...\n< > Back");       
             choice = GUI.promptOut();
             
             if (this.REF.getOcc().hasFurniture(choice))
@@ -58,7 +58,7 @@ public class Obs_Stats extends Furniture {
         if (! this.locked && ! this.solved) {
             do {          
                 GUI.out(this.getArray());
-                GUI.menOut("-r#- Rotate statue\n-m#- Move statue");
+                GUI.menOut("<'r'#> Rotate statue\n<'m'#> Move statue");
 
                 choice = GUI.promptOut();
                 collectToken = new Scanner(choice).useDelimiter("\\s*");
@@ -86,8 +86,8 @@ public class Obs_Stats extends Furniture {
                 } 
 
                 if (this.checkSolved()) {
-                    GUI.out("As the statue settles in place, a bright\n"
-                             + "array of light forms on the floor.");
+                    rep ="As the statue settles in place, a bright\n"
+                       + "array of light forms on the floor.";
                     this.solved = true;
                     this.REF2.lower();
                     choice = "";
@@ -117,11 +117,13 @@ public class Obs_Stats extends Furniture {
         String h = this.STATS[7].toString();
         String i = this.STATS[8].toString();
         
-        return "\t\t\t\t{" + a + "}¯¯\\" +
-               "\t\t              {" + h + "}           {" + b + "}\n" +
-               "\t\t             /\t\t               {" + g + "}      {" + i + "}      {" + c + "}\n" +
-               "\t\t\t          /\t                 {" + f + "}            {" + d + "}\n" +
-               "                              \\_{" + e + "}";
+        return "\t\t\t\t\t     {"+a+"}¯¯\\" +
+               "\t\t        {"+h+"}       {"+b+"}\n" +
+               "\t\t        /\t\t            "
+             + "{"+g+"}    {"+i+"}    {"+c+"}\n" +
+               "\t\t\t    /\t              "
+             + "{"+f+"}       {"+d+"}\n" +
+               "                  \\ _{"+e+"}";
     }
 /*----------------------------------------------------------------------------*/
     private void moveStat(String stat) {

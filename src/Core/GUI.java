@@ -20,52 +20,45 @@ public class GUI extends JPanel {
     private static final LinkedList<String> HOLDER = new LinkedList();
     private static JScrollPane SCROLL;
 /* CONSTRUCTOR ---------------------------------------------------------------*/ 
-    public GUI() {
+    public GUI(boolean normalSize) {
         // COMPONENT INSTANTIATION --------------------------------------------
+        Font myFont = new Font("Monospaced", Font.BOLD, 17);
+        
         WEST = new JPanel(new BorderLayout());
-        WEST.setPreferredSize(new Dimension(300, 600));
         DIALOG = new JTextArea();
         DIALOG.setBackground(Color.BLACK);
         DIALOG.setForeground(new Color(150, 84, 13));
         DIALOG.setLineWrap(true);
         DIALOG.setWrapStyleWord(true);
-        DIALOG.setFont(new Font("Monospaced", Font.BOLD, 17));
+        DIALOG.setFont(myFont);
         DIALOG.setEditable(false);
         SCROLL = new JScrollPane(DIALOG, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        SCROLL.setPreferredSize(new Dimension(290, 555));
         SCROLL.setBackground(Color.DARK_GRAY);
         SCROLL.setBorder(BorderFactory.createSoftBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.DARK_GRAY));
         SALAMAA = new JLabel();
-        SALAMAA.setPreferredSize(new Dimension(390, 45));
         SALAMAA.setOpaque(true);
         SALAMAA.setBackground(Color.DARK_GRAY);
         SALAMAA.setBorder(BorderFactory.createRaisedBevelBorder());
-        SALAMAA.setFont(new Font("Monospaced", Font.BOLD, 17));
-        SALAMAA.setForeground(Color.BLACK);
         SALAMAA.setHorizontalAlignment(JLabel.CENTER);
         WEST.add(SALAMAA, BorderLayout.NORTH);
         WEST.add(SCROLL, BorderLayout.SOUTH);
         
         CENTER = new JPanel();
         CENTER.setLayout(new BorderLayout());
-        CENTER.setPreferredSize(new Dimension(400, 600));
         CNORTH = new JPanel(new BorderLayout());
         CNORTH.setBackground(Color.DARK_GRAY);
         DESC = new JTextArea();
         DESC.setEditable(false);
-        DESC.setPreferredSize(new Dimension(390, 350));
         DESC.setLineWrap(true);
         DESC.setWrapStyleWord(true);
-        DESC.setFont(new Font("Monospaced", Font.BOLD, 17));
         DESC.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
         DESC.setBackground(Color.BLACK);
         DESC.setForeground(new Color(150, 84, 13));
-        ROOM = new JLabel();
-        ROOM.setPreferredSize(new Dimension(390, 45));
+        ROOM = new JLabel();       
         ROOM.setOpaque(true);
         ROOM.setBackground(Color.DARK_GRAY);
         ROOM.setBorder(BorderFactory.createRaisedBevelBorder());
-        ROOM.setFont(new Font("Monospaced", Font.BOLD, 17));
+        ROOM.setFont(myFont);
         ROOM.setForeground(Color.BLACK);
         ROOM.setHorizontalAlignment(JLabel.CENTER);
         CNORTH.add(DESC, BorderLayout.NORTH);
@@ -74,16 +67,15 @@ public class GUI extends JPanel {
         CCENTER.setBackground(Color.BLACK);
         MENU = new JTextArea();
         MENU.setEditable(false);
-        MENU.setFont(new Font("Monospaced", Font.BOLD, 17));
+        MENU.setFont(myFont);
         MENU.setBackground(Color.BLACK);
         MENU.setForeground(new Color(150, 84, 13));
         CCENTER.add(MENU);
         CSOUTH = new JPanel();
         CSOUTH.setBackground(Color.DARK_GRAY);
         INPUT = new JTextField(23);
-        INPUT.setPreferredSize(new Dimension(400, 40));
         INPUT.addActionListener(new Text_Field_Listener());
-        INPUT.setFont(new Font("Monospaced", Font.BOLD, 17));
+        INPUT.setFont(myFont);
         INPUT.setBorder(BorderFactory.createLoweredBevelBorder());
         INPUT.setBackground(Color.DARK_GRAY);
         INPUT.setForeground(Color.BLACK);
@@ -92,34 +84,67 @@ public class GUI extends JPanel {
         CENTER.add(CCENTER, BorderLayout.CENTER);
         CENTER.add(CSOUTH, BorderLayout.SOUTH);
         
-        EAST = new JPanel(new BorderLayout());
-        EAST.setPreferredSize(new Dimension(300, 600));
+        EAST = new JPanel(new BorderLayout());      
         INV = new JTextArea();
         INV.setEditable(false);
-        INV.setPreferredSize(new Dimension(290, 555));
-        INV.setFont(new Font("Monospaced", Font.BOLD, 17));
+        INV.setFont(myFont);
         INV.setLineWrap(true);
         INV.setWrapStyleWord(true);
         INV.setBackground(Color.BLACK);
         INV.setForeground(new Color(150, 84, 13));
         INV.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
         INVLBL = new JLabel("Inventory");
-        INVLBL.setPreferredSize(new Dimension(390, 45));
         INVLBL.setOpaque(true);
         INVLBL.setBackground(Color.DARK_GRAY);
         INVLBL.setBorder(BorderFactory.createRaisedBevelBorder());
-        INVLBL.setFont(new Font("Monospaced", Font.BOLD, 17));
+        INVLBL.setFont(myFont);
         INVLBL.setForeground(Color.BLACK);
         INVLBL.setHorizontalAlignment(JLabel.CENTER);
         EAST.add(INVLBL, BorderLayout.NORTH);
         EAST.add(INV, BorderLayout.SOUTH);
         
-        this.addComponents();
+        if (normalSize) {
+        DESC.setFont(myFont);
+        WEST.setPreferredSize(new Dimension(300, 600));
+        SCROLL.setPreferredSize(new Dimension(290, 555));
+        SALAMAA.setPreferredSize(new Dimension(390, 45));
+        
+        CENTER.setPreferredSize(new Dimension(400, 600));
+        DESC.setPreferredSize(new Dimension(390, 350));
+        ROOM.setPreferredSize(new Dimension(390, 45));
+        INPUT.setPreferredSize(new Dimension(400, 40));
+        
+        EAST.setPreferredSize(new Dimension(300, 600));
+        INV.setPreferredSize(new Dimension(290, 555));
+        INVLBL.setPreferredSize(new Dimension(390, 45));
+        }
+        else {
+        // IF THE WINDOW IS TOO TALL
+        DESC.setFont(new Font("Monospaced", Font.BOLD, 15));
+        WEST.setPreferredSize(new Dimension(300, 500));
+        SCROLL.setPreferredSize(new Dimension(290, 455));
+        SALAMAA.setPreferredSize(new Dimension(390, 45));
+        
+        CENTER.setPreferredSize(new Dimension(400, 500));
+        DESC.setPreferredSize(new Dimension(390, 250));
+        ROOM.setPreferredSize(new Dimension(390, 45));
+        INPUT.setPreferredSize(new Dimension(400, 40));
+        
+        EAST.setPreferredSize(new Dimension(300, 500));
+        INV.setPreferredSize(new Dimension(290, 455));
+        INVLBL.setPreferredSize(new Dimension(390, 45));
+        }
+        
+        this.addComponents(normalSize);
         
     }
 /*----------------------------------------------------------------------------*/     
-    private void addComponents() {
-        this.setPreferredSize(new Dimension (1000, 600));
+    private void addComponents(boolean normalSize) {
+        if (normalSize)
+            this.setPreferredSize(new Dimension (1000, 600));
+        else
+            this.setPreferredSize(new Dimension (1000, 500));
+        
         this.setBackground(Color.BLACK);
         this.setLayout(new BorderLayout());
         this.add(WEST, BorderLayout.WEST);
@@ -191,9 +216,9 @@ public class GUI extends JPanel {
     }
 /*----------------------------------------------------------------------------*/
     public static void clearMenu() {
-        MENU.setText("        -wsad- Move\n-e- Search     "
-                   + "-c- Inspect\n-x- Activate   -i- Inventory\n-k- Keyring    "
-                   + "-h- Help\n        -quit- Quit");
+        MENU.setText("         <w/s/a/d> Move\n<'e'> Search     "
+                   + "<'c'> Inspect\n<'x'> Activate   <'i'> Inventory\n<'k'> Keyring    "
+                   + "<'h'> Get help\n    <'quit'> Save and quit");
     }
 /*----------------------------------------------------------------------------*/
     public static void clearDesc() {

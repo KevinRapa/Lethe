@@ -10,7 +10,8 @@ public class Obs_Slt extends Furniture {
             this.searchable = false;
             this.CORRECT = correct;
             this.description = desc;
-            this.searchDialog = "This indentation in the floor is empty.";      
+            this.searchDialog = "This indentation in the floor is empty."; 
+            this.addNameKeys(NAME, NAME.toLowerCase());
     }
 /*----------------------------------------------------------------------------*/
     public String getCorrect() {

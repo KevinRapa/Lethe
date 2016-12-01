@@ -36,6 +36,20 @@ public class Inventory implements Iterable<Item>, Serializable {
     }
     // ========================================================================
     /**
+     * Removes all items from this inventory of the given type.
+     * @param type The type of item to remove.
+     */
+    public void remove(String type) { 
+        ArrayList<Item> remove = new ArrayList();
+        
+        for (Item i : this.CONT)
+            if (i.getType().matches(type))
+                remove.add(i);
+        
+        this.CONT.removeAll(remove);
+    }
+    // ========================================================================
+    /**
      * Removes an item from this inventory and gives to another.
      * @param item The item to give.
      * @param giveToThis The inventory to add the item to.

@@ -34,7 +34,7 @@ public class Book extends Note {
 
             if (page != (this.numPages - 1)) {
                 do {
-                    GUI.menOut("Turn page?");
+                    GUI.menOut("Turn page?\n<'yes'> Turn the page\n<'no'> Close the book");
                     choice = GUI.promptOut();
                 } while (! (choice.matches("yes") || choice.matches("no")));
                 
@@ -42,7 +42,7 @@ public class Book extends Note {
                     page ++;
             }
             else {
-                GUI.menOut("Press enter to close the book.");
+                GUI.menOut("<enter> Close the book");
                 GUI.promptOut(); 
                 choice = "no"; 
             }

@@ -11,7 +11,7 @@ public class Foy3 extends Room {
                          + "front staircase. The stairs continue a flight up\n"
                          + "in the opposite direction. The landing is bare and\n"
                          + "only a door to your west is of interest. THIS ROOM\n"
-                         + "IS INCOMPLETE.";
+                         + "IS INCOMPLETE. DON'T GO UP THE STAIRS OR THE GAME WILL CRASH";
     }
 /*----------------------------------------------------------------------------*/
 }

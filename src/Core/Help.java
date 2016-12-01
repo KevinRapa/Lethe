@@ -27,12 +27,11 @@ public class Help {
 /*----------------------------------------------------------------------------*/     
     private static final String[] HELP_VALUES = 
     
-        {"-3- Enter '3'.\t\t\t" +
-         "-item- Enter an item name.\t" +
-         "-(item)- An optional item.\t" +
-         "-'x'- Enter exactly what's quoted.\t\t\t\t" +
-         "-#- Enter a digit.\t\t" +
-         "- - Enter nothing to back out.\n\n", 
+        {"<item> Enter an item name.\n" +
+         "<(item)> An optional item.\t" +
+         "<'x'> Enter exactly what's quoted.\t\t\t\t" +
+         "<#> Enter a digit.\t\t" +
+         "< > Enter nothing to back out.\n\n", 
          
          "In this game, you may move four directions; north, south, east, and west.\n"
        + "The keys for these are 'w', 's', 'a', and 'd'. Really, who wants to type\n"
@@ -169,16 +168,16 @@ public class Help {
         
         do {
             GUI.menOut("What would you like help on?\n" +
-                       "-1- Controls\n-2- Your player\n" +
-                       "-3- The castle\n");
+                       "<'1'> Controls\n<'2'> Your player\n" +
+                       "<'3'> The castle\n");
             choice = GUI.promptOut();
             GUI.out("");
         /*--------------------------------------------------------------------*/            
             if (choice.matches("1")) {
                 do {
-                    GUI.menOut("-1- The prompt -2- Moving\n-3- Describing " +
-                               "-4- Checking\n-5- Searching  -6- Interacting\n" +
-                               "-7- Using      -8- Combining\n-9- Inspecting");
+                    GUI.menOut("<'1'> The prompt <'2'> Moving\n<'3'> Describing " +
+                               "<'4'> Checking\n<'5'> Searching  <'6'> Interacting\n" +
+                               "<'7'> Using      <'8'> Combining\n<'9'> Inspecting");
 
                     choice = GUI.promptOut() + "c";
 
@@ -190,8 +189,8 @@ public class Help {
         /*--------------------------------------------------------------------*/          
             if (choice.matches("2")) {                
                 do {
-                    GUI.menOut("-1- Your inventory\n-2- Your key ring\n" +
-                               "-3- Your phylacteries");
+                    GUI.menOut("<'1'> Your inventory\n<'2'> Your key ring\n" +
+                               "<'3'> Your phylacteries");
 
                     choice = GUI.promptOut() + "p";
                     
@@ -203,8 +202,8 @@ public class Help {
         /*--------------------------------------------------------------------*/      
             if (choice.matches("3")) {                
                 do {
-                    GUI.menOut("-1- Doors -2- Rooms -3- Furniture\n" +
-                                  "-4- Items -5- Keys  -6- Phylacteries\n");
+                    GUI.menOut("<'1'> Doors <'2'> Rooms <'3'> Furniture\n" +
+                                  "<'4'> Items <'5'> Keys  <'6'> Phylacteries\n");
 
                     choice = GUI.promptOut() + "a";
                     

@@ -26,41 +26,41 @@ public class Obs_Slts extends Furniture {
     @Override public String getDescription() {
         String rep = "", choice;
         
-        GUI.out(this.description + "\n");
-        
         do {
-            GUI.out(this.getArray() + "\n");
-            GUI.out("Look at which slot? <A-Z> Look <> Back");       
+            GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
+                    "\t\tLook at which slot? "); 
+            GUI.menOut("<'A-I'> Look...\n< > Back");
             choice = GUI.promptOut();
            
             if (this.REF.getOcc().hasFurniture(choice))
-                GUI.out(this.REF.getFurnitureObject(choice).getDescription());
-            else {
-                GUI.out("That's not a valid choice.");
-            }
-            
+                GUI.descOut(this.REF.getFurnitureObject(choice).getDescription());
+
         } while (! choice.matches(""));
+        
+        GUI.descOut(this.REF.getOcc().getDescription());
         
         return rep;
     }
 /*----------------------------------------------------------------------------*/
     private String getArray() {
         
-        String a = this.SLOTS[0].toString();
-        String b = this.SLOTS[1].toString();
-        String c = this.SLOTS[2].toString();
-        String d = this.SLOTS[3].toString();
-        String e = this.SLOTS[4].toString();
-        String f = this.SLOTS[5].toString();
-        String g = this.SLOTS[6].toString();
-        String h = this.SLOTS[7].toString();
-        String i = this.SLOTS[8].toString();
+        String a = this.SLOTS[1].toString();
+        String b = this.SLOTS[2].toString();
+        String c = this.SLOTS[3].toString();
+        String d = this.SLOTS[4].toString();
+        String e = this.SLOTS[5].toString();
+        String f = this.SLOTS[6].toString();
+        String g = this.SLOTS[7].toString();
+        String h = this.SLOTS[8].toString();
+        String i = this.SLOTS[0].toString();
         
-        return "\t\t\t\t{" + a + "}   " +
-               "\t\t              {" + h + "}           {" + b + "}\n" +
-               "\t\t              \t\t               {" + g + "}      {" + i + "}      {" + c + "}\n" +
-               "\t\t\t           \t                 {" + f + "}            {" + d + "}\n" +
-               "                                 {" + e + "}";
+        return "\t\t\t\t\t     {"+a+"}   " +
+               "\t\t        {"+h+"}       {"+b+"}\n" +
+               "\t\t         \t\t            "
+             + "{"+g+"}    {"+i+"}    {"+c+"}\n" +
+               "\t\t\t     \t              "
+             + "{"+f+"}       {"+d+"}\n" +
+               "                     {"+e+"}";
     }
 /*----------------------------------------------------------------------------*/
     public int getIndex(String stat) {

@@ -172,7 +172,7 @@ public class Gal3_Ttm extends Furniture{
             GUI.out("           " + four + "       \t" + three + "\t\t" + 
                        two + "\t\t" + one);
         
-            GUI.menOut("-1, 2, 3, 4- Turn head\n- - Back");           
+            GUI.menOut("<#> Turn head\n< > Back");           
 
             action = GUI.promptOut();
         

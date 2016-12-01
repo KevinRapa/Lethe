@@ -37,10 +37,10 @@ public class Safe extends Furniture {
         boolean successful;
         String action;
         
-        GUI.menOut("-1, 2, 3- Turn dial\n" +
-                          "- - Back\n");
+        GUI.menOut("<'1'> Turn dial one\n<'2'> Turn dial two\n<'3'> Turn dial three\n" +
+                          "< > Back\n");
         do {
-            GUI.out("\n-" + DIALS[0] + "--" + DIALS[1] + "--" + DIALS[2] + "-\n");      
+            GUI.out("\t  [" + DIALS[0] + "][" + DIALS[1] + "][" + DIALS[2] + "]");      
 
             action = GUI.promptOut();
             
@@ -51,13 +51,10 @@ public class Safe extends Furniture {
                     this.searchable = true;
                     GUI.menOut("You here a click."); 
                 }
-                else if (! successful)
-                    GUI.menOut("-1, 2, 3- Turn dial\n" +
-                          "- - Back\n");
-                else if (this.searchable) {
+                else {
                     this.searchable = false;
-                    GUI.menOut("-1, 2, 3- Turn dial\n" +
-                          "- - Back\n");
+                    GUI.menOut("<'1'> Turn dial one\n<'2'> Turn dial two\n<'3'> Turn dial three\n" +
+                               "< > Back\n");
                 }
             } 
         } while (! action.matches(""));

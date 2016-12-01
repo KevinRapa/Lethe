@@ -104,18 +104,17 @@ public class Player implements Serializable {
      * @param map The map is used by the player as a reference.
      */
     public void startDialog(Room[][][] map) {
+        GUI.menOut("\n\n<enter> Continue...");
         GUI.out("It's 10:00pm, the night is clear and warm.\n" +
                 "You have just arrived on foot to your destination, and\n" +
                 "its even more colossal than what you had\n" +
-                "expected. It also appears curiously more vacant...\n"
-              + "Press enter...");
+                "expected. It also appears curiously more vacant...");
         
         GUI.promptOut();
                 
         GUI.out("You slowly approach until between the front gateway.\n" +
                 "A thought briefly flashes in your mind before being\n" +
-                "forgotten - what was your business here, again?...\n"
-              + "Press enter...");
+                "forgotten - what was your business here, again?...");
         
         GUI.promptOut();
         GUI.clearDialog();
@@ -128,6 +127,7 @@ public class Player implements Serializable {
      * @param map The map is used by the player as a reference.
      */
     public void mainPrompt(Room[][][] map) {
+        GUI.invOut("You are carrying:\n" + this.INV);
         HashMap<Character, Runnable> cmd = new HashMap();
         String ans;
 
@@ -257,7 +257,7 @@ public class Player implements Serializable {
 //******************************************************************************    
     private void searchSub() {
         // Initiates dialog asking player for a Furniture to search.
-        GUI.menOut("-object- Search\n     - - Back\n");
+        GUI.menOut("<object> Search\n     < > Back\n");
         String searchThis = GUI.promptOut();
         
         if (! searchThis.matches("") && this.occupies.hasFurniture(searchThis))
@@ -297,7 +297,7 @@ public class Player implements Serializable {
         Item item;
             
         do {
-            GUI.menOut("-'store' item- Store...\n-'take' item- Take...\n- - Back\"");
+            GUI.menOut("<'store' #> Store...\n<'take' #> Take...\n< > Back\"");
             
             cmdItm = GUI.promptOut();
             
@@ -396,7 +396,7 @@ public class Player implements Serializable {
         Furniture target;
         String action, object;
                
-        GUI.menOut("-action object- Interact...\n- - Back\n");
+        GUI.menOut("<action object> Interact...\n< > Back\n");
         
         String actObj = GUI.promptOut(); 
         
@@ -436,7 +436,7 @@ public class Player implements Serializable {
     }
     // ========================================================================  
     private void checkOutSub() {
-        GUI.menOut("-object- Look at...\n- - Back\n");
+        GUI.menOut("<object> Look at...\n< > Back\n");
         
         String checkThis = GUI.promptOut();
         
@@ -474,8 +474,8 @@ public class Player implements Serializable {
         cmd.put('3', () -> this.combineSub());
         
         do {
-            GUI.menOut("-1- Inspect item\n-2- Use item\n" + 
-                          "-3- Combine items\n- -Back");
+            GUI.menOut("<'1'> Inspect item\n<'2'> Use item\n" + 
+                          "<'3'> Combine items\n< >Back");
             
             ans = GUI.promptOut();
             
@@ -490,7 +490,7 @@ public class Player implements Serializable {
         String ans;            
         
         do {
-            GUI.menOut("-item- Inspect...\n- - Back");
+            GUI.menOut("<#> Inspect...\n< > Back");
             ans = GUI.promptOut();
             
             try {
@@ -511,7 +511,7 @@ public class Player implements Serializable {
         String choice;
         
         do { 
-            GUI.menOut("-item- Use...\n- - Back");
+            GUI.menOut("<#> Use...\n< > Back");
             choice = GUI.promptOut();
             
             try {
@@ -540,7 +540,7 @@ public class Player implements Serializable {
         case 1:
             GUI.out(item.useEvent()); break;           
         case 2:
-            GUI.menOut("-object- Use on...\n- - Back");
+            GUI.menOut("<object> Use on...\n< > Back");
 
             String ans = GUI.promptOut();
 
@@ -571,7 +571,7 @@ public class Player implements Serializable {
     private void combineSub() {
         String combineThese;
         Scanner collectToken;
-        GUI.menOut("-item,item,(item)- Combine...\n- - Back");
+        GUI.menOut("<#,#,(#)> Combine...\n< > Back");
         
         do {
             combineThese = GUI.promptOut();

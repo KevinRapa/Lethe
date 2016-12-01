@@ -2,6 +2,9 @@ package Core;
 /**
  * This is a text-based adventure game called Salamaa being written as a
  * personal project.
+ * In browsing the classes in the Core package, it helps to collapse all folds.
+ * All super classes are in package Super.
+ * Packages are organized by room.
  * <p>
  * You control an unnamed character who is exploring a castle after having 
  * wandered through the woods to it without any apparent reason. As the game
@@ -14,9 +17,14 @@ package Core;
  * bottom of this class to change this, and refer to the castle array for the
  * room object references.
  * <p>
- * Salamaa is a word based in Finnish meaning something along the lines of
- * "secret world," though that concept is not normally said this way.
- * 
+ * To start in the area with the black jack ghost, either walk north, east, 
+ * and then north again into courtyard 6, or navigate to the bottom of this 
+ * class and modify the setOccupies method as instructed.
+ * <p>
+ * To interact with the black jack ghost, enter 'x' to interact, then enter
+ * 'talk ghost', 'play ghost', 'converse ghost', 'chat ghost', or 'speak ghost'. 
+ * <p>
+ * Made in NetBeans on Windows 10
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Salamaa.git">GitHub Repository</a>
  */
@@ -53,7 +61,7 @@ public class Salamaa {
         // <editor-fold desc="MAKE THE FRAME">
         //**********************************************************************
         
-        GUI panel = new GUI();
+        GUI panel = new GUI(true); // Make false if window is too large.
         JFrame frame = new JFrame("Salamaa");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -64,12 +72,15 @@ public class Salamaa {
         frame.setVisible(true);
 
         //**********************************************************************
-        // </editor-fold>  
+        // </editor-fold>  // IF WINDOW TOO LARGE, PASS FALSE TO GUI CONSTRUCTOR.
         //**********************************************************************
         
         
         //**********************************************************************
         // <editor-fold desc="READ IN SAVE FILE OR START NEW GAME">
+        //
+        // Rudimentary save system using serialization. Saves files in the same
+        // location as Salamaa.jar
         //**********************************************************************
         
         Help.constructHelp();
@@ -80,6 +91,7 @@ public class Salamaa {
                                     new FileInputStream("Map.data")); 
             ) 
         {
+            System.out.println("Data found. Loading game.");
             me = (Player) plyr.readObject();
             map = (Room[][][]) mp.readObject();
             me.mainPrompt(map); // START GAME
@@ -293,6 +305,7 @@ public class Salamaa {
         Furniture cou5Fntn = new Cou5_Fntn("fountain", rck, soldMed, rck);
         Furniture cou5Sprc = new Cou5_Sprc("spruce", me.getINV(), sprcExtrct);
         Furniture cou6Stat = new Cou6_Stat("statue");
+        Furniture cou6Ghst = new Cou6_BlackJackGhost("ghost", me);
         Furniture cou3Gt = new Cou3_Gt("gate");
         Furniture cou4Gt = new Cou4_Gt("gate");
         Furniture cou3Ivy = new Cou3_Ivy("ivy");
@@ -919,9 +932,9 @@ public class Salamaa {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE OBSERVATORY"> 
         //-----------------------------THE ROOM---------------------------------
-        Room obs1 = new Room("in the observatory", "OBS1");
-        Room obs2 = new Room("on the observatory second floor", "OBS2");
-        Room obs3 = new Room("on the observatory third floor", "OBS3");
+        Room obs1 = new Obs1("in the observatory", "OBS1");
+        Room obs2 = new Obs2("on the observatory second floor", "OBS2");
+        Room obs3 = new Obs3("on the observatory third floor", "OBS3");
         //-------------------------------ITEMS----------------------------------  
         Item hlsPlt = new Obs_Plt("brass plate, \"Sol\"", "The small plate bears an engraving: \"Sol\"");
         Item hrmsPlt = new Obs_Plt("brass plate, \"Mercury\"", "The small plate bears an engraving: \"Mercury\"");
@@ -1376,7 +1389,7 @@ public class Salamaa {
         cou1.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou12F, couCstl);
         cou2.addFurniture(couW, cou12F, cou2Bshs, cou2Fntn, couCstl);
         cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc);
-        cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou56F, cou6Stat, couCstl);
+        cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou56F, cou6Stat, couCstl, cou6Ghst);
         cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, cou3Fntns, couCstl);
         cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl);
         entr.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps);
@@ -1457,8 +1470,20 @@ public class Salamaa {
         // </editor-fold>  
         //**********************************************************************
         
-        me.setOccupies(gal3); //Change the argument to start the game in any room.
-        //me.getINV().add(); // For testing purposes.
+        me.setOccupies(cou4); /* Change the argument to start the game in any room.
+                                 To start in the room with the blackjack ghost,
+                                 change the argument to cou6 to start in
+                                 courtyard 6. Areas 4, 5, 6, and 7 are incomplete. 
+                              */
+        
+        //Uncomment if trying out the gallery puzzle
+        /*
+        me.getINV().add(blFcs);
+        me.getINV().add(redFcs);
+        me.getINV().add(drkFcs);
+        me.getINV().add(fnnyOrb);
+        gal1.unlock();
+        */
         return newMap;
     }
     
