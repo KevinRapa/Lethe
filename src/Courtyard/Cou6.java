@@ -13,7 +13,7 @@ public class Cou6 extends Room {
                      "make out a ruined stone bench hiding beneath the thorny\n" +
                      "growth. This area is just a nook beside the great set of\n" +
                      "steps and appears to lead nowhere. You look to your right\n" +
-                     "and spot a ghostly figure leaning against the castle wall!";
+                     "and spot an ghostly apparition leaning against the castle wall.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(char dir) {
