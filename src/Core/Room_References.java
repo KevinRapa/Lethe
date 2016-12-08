@@ -21,7 +21,6 @@ public class Room_References {
 // Each element maps to an element in COORDS for COORDINATES.
 //******************************************************************************
     private static final String[] IDS = 
-            
         {"NULL",
         // FLOOR 1 ROOM ID'S --------------------------------------------------
         "COU1","COU2","COU3","COU4","COU5","COU6","ENTR","VEST","FOY1","FOY2",
@@ -63,7 +62,6 @@ public class Room_References {
 // <editor-fold desc="ADJACENTS">  
 //******************************************************************************
     private static final String[][] ADJS = 
-            
         {{"NULL"},        
         // FLOOR 1 ROOM ADJS --------------------------------------------------   
         {"COU2"}, {"COU1","COU3"}, {"ENTR","COU4","COU2","COU5"}, {"COU3"},
@@ -135,7 +133,6 @@ public class Room_References {
 // <editor-fold desc="COORDINATES">  
 //****************************************************************************** 
     private static final int[][] COORDS =   
-            
        {{-1,-1,-1}, 
         // 1ST FLOOR COORDINATES ----------------------------------------------
         {3,4,4}, {3,5,4}, {3,5,5}, {3,6,5}, {3,5,6}, {3,4,6}, {3,4,5}, {3,3,6}, 
@@ -199,11 +196,9 @@ public class Room_References {
      * @return A list of rooms adjacent to the room.
      */
     public static ArrayList getAdj(String ID) {
-        ArrayList<String> adj = new ArrayList();
-        
-        adj.addAll(Arrays.asList(ADJACENTS.get(ID)));
-        
-        return adj; 
+        return new ArrayList() {{
+            addAll(Arrays.asList(ADJACENTS.get(ID)));
+        }}; 
     }
     // ========================================================================  
     /**

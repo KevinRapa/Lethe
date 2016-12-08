@@ -20,8 +20,8 @@ public class Room implements Serializable {
         this.NAME = name;
         this.ID = ID;
         this.isLocked = false;
-        this.adjacent = new ArrayList();
-        this.furnishings = new ArrayList();
+        this.adjacent = new ArrayList<>();
+        this.furnishings = new ArrayList<>();
         this.COORDS = Room_References.getCoord(this.ID); 
         this.adjacent = Room_References.getAdj(this.ID);
 }

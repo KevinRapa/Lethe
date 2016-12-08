@@ -5,33 +5,35 @@ import java.util.HashMap;
  * This class comprises the help section of the game.
  * The Help is comprised of nested menus directing the player to different
  * help topics.
- * @author Mantis Toboggan
+ * @author Kevin Rapa
  */
 public class Help {
-    
     private static final HashMap<String, String> HELP = new HashMap<>(); // Maps keys to topics
     private static final HashMap<String, String> TOPIC = new HashMap<>(); // Maps topics to explanations.
 /*----------------------------------------------------------------------------*/     
     private static final String[] HELP_KEYS = 
-        
         {"prompt", "moving", "describing", "checking", "searching", "activating",
          "using", "combining", "inspecting", "inventory", "key ring", "phylacteries",
          "doors", "rooms", "furniture", "items", "keys", "phylacteries"};
-        
 /*----------------------------------------------------------------------------*/    
     private static final String[] TOPIC_KEYS = 
-    
         {"1c","2c","3c","4c","5c","6c","7c","8c","9c",
          "1p","2p","3p","1a","2a","3a","4a","5a","6a"};
-    
 /*----------------------------------------------------------------------------*/     
     private static final String[] HELP_VALUES = 
-    
-        {"<item> Enter an item name.\n" +
-         "<(item)> An optional item.\t" +
-         "<'x'> Enter exactly what's quoted.\t\t\t\t" +
-         "<#> Enter a digit.\t\t" +
-         "< > Enter nothing to back out.\n\n", 
+        {"When prompted for input, the desired type of input will appear in "
+       + "angle brackets.\t\t\t\t\t"
+       + "Simple types of input ------ \t"
+       + "<item> - Enter an item name.\n"
+       + "<object> - Enter a room object name.\t\t\t" +
+         "<'x'> - Enter exactly what's quoted.\t\t\t\t" +
+         "<#> - Enter a digit.\t\t" +
+         "< > - Enter nothing.\t\t\t\t\t"
+       + "Compound input -------------\t" +
+         "<(item)> - An optional item.\t" +   
+         "<?,?,?> - Enter a list of ?, separated by commas.\t\t" +
+         "<?/?/?> - Enter any one of ?. "
+       + "<action object> - Enter the name of an action followed by the name of an object.", 
          
          "In this game, you may move four directions; north, south, east, and west.\n"
        + "The keys for these are 'w', 's', 'a', and 'd'. Really, who wants to type\n"
@@ -56,34 +58,33 @@ public class Help {
         "things, as well as add color to what's in your head.\n", 
          
         "Searching is a main action, and is performed from the main prompt. The key for\n" +
-        "searching is 'e'. It's just easy to reach. You may search any\n" +
+        "searching is 'e'. You may search any\n" +
         "noun in the room description, and your character will search the object. If the\n" +
         "object is searchable, you will be taken to the search sub-prompt. In addition,\n" +
         "any items the object contains will be listed. Remember, an object may contain\n" +
         "useful stuff, but you will not always be able to take the stuff right away!\n" +
         "\n" +
         "The search sub-prompt will ask if you want to take or store items. To do this,\n" +
-        "type 'take' or 'store' followed by a space, and then the item's slot.\n" +
-        "You may always press just enter to back up to the main prompt.\n", 
+        "type 'take' or 'store' followed by a space, and then the item's slot.\n", 
          
         "Interacting is a main action, and is performed from the main prompt. The key for\n" +
         "interacting is 'x' (for execute). You may interact with any noun in the room\n"
       + "description, and your character will interact with the object.\n" +
         "Interacting means your character is doing something to/with the object, like\n" +
         "'pull', 'sit', etc.\n" +
-        "From here, you will be taken to the interact sub-prompt." +
+        "From here, you will be taken to the interact sub-prompt. " +
         "You may type 'search <object>' to search the object if you wish,\n" +
         "and 'view/look/watch/inspect <object>' to check the object.\n",
          
         "Using is an inventory action, and is performed from the inventory ('i'). To\n" +
         "use an item, press '2' from the inventory menu, and you will be asked to\n" +
-        "type an item to use. Type the item's slot as it appears in your inventory and press\n"
-      + "'enter'. An item could be used on objects, itself, or\n" +
-        "not be useful at all! If it is to be used on an object in the room, you will \n" +
-        "be asked to type in the object before pressing 'enter'.\n", 
+        "type an item to use. Enter the item's slot as it appears in your inventory. "
+       + "An item could be used on objects, itself, or\n" +
+        "not be useful at all! If it is to be used on an object in the room, you will\n" +
+        "be asked to enter in the object.\n", 
          
         "Combining is an inventory action, and is performed from the inventory ('i'). To\n" +
-        "combine items, press '3' from the inventory menu, and you will be asked to type\n" +
+        "combine items, press '3' from the inventory menu, and you will be asked to enter\n" +
         "items to combine. Type in the item slot numbers, separated by a comma and space, and press\n" +
         "enter. You\n" +
         "must type exactly 2 or 3 items to combine. A set of combinable\n" +
@@ -93,12 +94,12 @@ public class Help {
          
         "Inspecting is an inventory action, and is performed from the inventory ('i'). To\n" +
         "inspect an item, press '1' from the inventory menu, and you will be asked to type\n" +
-        "an item to inspect. Type in the item's slot number and press enter.\n" +
+        "an item to inspect. Enter in the item's slot number.\n" +
         "Inspecting is the simplest inventory action. Upon inspecting, you will be given\n" +
         "a description of the item. This can be important, as it may reveal information\n" +
         "about what the item does.", 
          
-        "Access your inventory by pressing 'i' from the main prompt and pressing 'enter'.\n" +
+        "Access your inventory by entering 'i' from the main prompt.\n" +
         "Your inventory's contents will be listed. From here, you may perform the\n" +
         "inventory actions 'inspect', 'use', and 'combine'. Press enter to back\n" +
         "out to the main prompt.", 
@@ -133,8 +134,6 @@ public class Help {
        + "obtain a key to enter a room!", 
          
          "Hmmm... Who know what these are for...\n"};
-   
-        
 /* CONSTRUCTOR ---------------------------------------------------------------*/       
     /**
      * Puts together the two dictionaries.
@@ -189,8 +188,9 @@ public class Help {
         /*--------------------------------------------------------------------*/          
             if (choice.matches("2")) {                
                 do {
-                    GUI.menOut("<'1'> Your inventory\n<'2'> Your key ring\n" +
-                               "<'3'> Your phylacteries");
+                    GUI.menOut("\n<'1'> Your inventory\n"
+                               + "<'2'> Your key ring\n" +
+                                 "<'3'> Your phylacteries");
 
                     choice = GUI.promptOut() + "p";
                     
@@ -202,8 +202,9 @@ public class Help {
         /*--------------------------------------------------------------------*/      
             if (choice.matches("3")) {                
                 do {
-                    GUI.menOut("<'1'> Doors <'2'> Rooms <'3'> Furniture\n" +
-                                  "<'4'> Items <'5'> Keys  <'6'> Phylacteries\n");
+                    GUI.menOut("\n<'1'> Doors\t<'2'> Rooms\n"
+                               + "<'3'> Furniture\t<'4'> Items\n"
+                               + "<'5'> Keys\t<'6'> Phylacteries");
 
                     choice = GUI.promptOut() + "a";
                     

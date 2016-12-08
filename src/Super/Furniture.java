@@ -31,9 +31,9 @@ public class Furniture implements Serializable {
         this.NAME = NAME;
         this.inv = new Inventory(items);
         this.searchable = true;
-        this.NAMEKEYS = new ArrayList(); // Valid names of this furniture.
-        this.USEKEYS = new ArrayList(); // Valid items that may be used on this furniture.
-        this.ACTKEYS = new ArrayList(); // Valid actions that may be performed on this furniture.
+        this.NAMEKEYS = new ArrayList<>(); // Valid names of this furniture.
+        this.USEKEYS = new ArrayList<>(); // Valid items that may be used on this furniture.
+        this.ACTKEYS = new ArrayList<>(); // Valid actions that may be performed on this furniture.
         
         this.searchDialog = "There's nothing here.";
         this.useDialog = "Default";

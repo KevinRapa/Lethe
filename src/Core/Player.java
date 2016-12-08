@@ -27,19 +27,12 @@ public class Player implements Serializable {
     public Player() {
         this.INV = new Inventory();
         this.KEYS = new Inventory();
-        this.VISITED = new ArrayList();
+        this.VISITED = new ArrayList<>();
         this.VISITED.add("COU4"); // Default starting location.
     }    
 //******************************************************************************
 // <editor-fold desc="GETTERS AND SETTERS">  
 //******************************************************************************
-    /**
-     * @return The text that prints upon entering a room.
-     */
-    @Override public String toString() {
-        return "You are in the " + this.occupies.toString() + "."; 
-    }
-    /*------------------------------------------------------------------------*/
     /**
      * @param room The room in which to place the player.
      */
@@ -102,9 +95,10 @@ public class Player implements Serializable {
     /**
      * This dialog prints at the start of a new game.
      * @param map The map is used by the player as a reference.
+     * @return Integer representing player choice to save, erase data, or just quit.
      */
-    public void startDialog(Room[][][] map) {
-        GUI.menOut("\n\n<enter> Continue...");
+    public int startDialog(Room[][][] map) {
+        GUI.menOut("\n\nPress enter...");
         GUI.out("It's 10:00pm, the night is clear and warm.\n" +
                 "You have just arrived on foot to your destination, and\n" +
                 "its even more colossal than what you had\n" +
@@ -119,17 +113,17 @@ public class Player implements Serializable {
         GUI.promptOut();
         GUI.clearDialog();
         
-        this.mainPrompt(map);
+        return this.mainPrompt(map);
     }
     // ========================================================================   
     /**
      * The main prompt for controlling the player's moves.
      * @param map The map is used by the player as a reference.
+     * @return Integer representing player choice to save, erase data, or just quit.
      */
-    public void mainPrompt(Room[][][] map) {
+    public int mainPrompt(Room[][][] map) {
         GUI.invOut("You are carrying:\n" + this.INV);
         HashMap<Character, Runnable> cmd = new HashMap();
-        String ans;
 
         cmd.put('h', () -> Help.helpSub());
         cmd.put('e', () -> this.searchSub());
@@ -137,7 +131,9 @@ public class Player implements Serializable {
         cmd.put('x', () -> this.activateSub(map));
         cmd.put('k', () -> this.viewKeyRing());
         cmd.put('i', () -> this.viewInventory());
-
+        
+        String ans;
+        
         GUI.roomOut(this.occupies.triggeredEvent(map));
         this.describeRoom();
         GUI.clearMenu();
@@ -153,8 +149,17 @@ public class Player implements Serializable {
 
         } while (! ans.matches("quit"));
         
-        GUI.menOut("Your game will be saved.\nPress enter to quit.");
-        GUI.promptOut();
+        GUI.menOut("Would you like to save?\n<'y'> Save and quit\n"
+                 + "<'n'> Quit\n<'r'> Erase game and quit.");
+        ans = GUI.promptOut();
+        
+        while (! ans.matches("[ynr]")) {
+            GUI.menOut("Please enter 'y', 'n', or 'r'.\n<'y'> Save and quit\n"
+                     + "<'n'> Quit\n<'r'> Erase game and quit.");
+            ans = GUI.promptOut();
+        }
+        return ans.matches("y") ? 1 : 
+               ans.matches("n") ? 2 : 3;
     }  
 //******************************************************************************        
 // </editor-fold> 
@@ -257,7 +262,7 @@ public class Player implements Serializable {
 //******************************************************************************    
     private void searchSub() {
         // Initiates dialog asking player for a Furniture to search.
-        GUI.menOut("<object> Search\n     < > Back\n");
+        GUI.menOut("\n\n<object> Search\n    < > Back\n");
         String searchThis = GUI.promptOut();
         
         if (! searchThis.matches("") && this.occupies.hasFurniture(searchThis))
@@ -297,7 +302,7 @@ public class Player implements Serializable {
         Item item;
             
         do {
-            GUI.menOut("<'store' #> Store...\n<'take' #> Take...\n< > Back\"");
+            GUI.menOut("\n<'store' #> Store...\n<'take' #> Take...\n< > Back\"");
             
             cmdItm = GUI.promptOut();
             
@@ -396,7 +401,7 @@ public class Player implements Serializable {
         Furniture target;
         String action, object;
                
-        GUI.menOut("<action object> Interact...\n< > Back\n");
+        GUI.menOut("\n\n<action object> Interact...\n\t < > Back\n");
         
         String actObj = GUI.promptOut(); 
         
@@ -436,7 +441,7 @@ public class Player implements Serializable {
     }
     // ========================================================================  
     private void checkOutSub() {
-        GUI.menOut("<object> Look at...\n< > Back\n");
+        GUI.menOut("\n\n<object> Look at...\n< > Back\n");
         
         String checkThis = GUI.promptOut();
         
@@ -474,7 +479,7 @@ public class Player implements Serializable {
         cmd.put('3', () -> this.combineSub());
         
         do {
-            GUI.menOut("<'1'> Inspect item\n<'2'> Use item\n" + 
+            GUI.menOut("\n<'1'> Inspect item\n<'2'> Use item\n" + 
                           "<'3'> Combine items\n< >Back");
             
             ans = GUI.promptOut();

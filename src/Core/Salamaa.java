@@ -3,26 +3,17 @@ package Core;
  * This is a text-based adventure game called Salamaa being written as a
  * personal project.
  * In browsing the classes in the Core package, it helps to collapse all folds.
- * All super classes are in package Super.
- * Packages are organized by room.
+ * All super classes are in package Super. Packages are organized by room.
  * <p>
  * You control an unnamed character who is exploring a castle after having 
  * wandered through the woods to it without any apparent reason. As the game
  * progresses, puzzles get steadily more complex and a story develops.
  * <p>
- * To play, just run this project. No support for different screen sizes has
- * been implemented yet, so you may find the screen too large if you are using
- * a laptop. You may start from any room in the game, however the default start
+ * To play, just run this project.
+ * You may start from any room in the game, however the default start
  * is in <code>cou4</code>. Find the method <code>setOccupies</code> at the
  * bottom of this class to change this, and refer to the castle array for the
  * room object references.
- * <p>
- * To start in the area with the black jack ghost, either walk north, east, 
- * and then north again into courtyard 6, or navigate to the bottom of this 
- * class and modify the setOccupies method as instructed.
- * <p>
- * To interact with the black jack ghost, enter 'x' to interact, then enter
- * 'talk ghost', 'play ghost', 'converse ghost', 'chat ghost', or 'speak ghost'. 
  * <p>
  * Made in NetBeans on Windows 10
  * @author Kevin Rapa
@@ -84,23 +75,23 @@ public class Salamaa {
         //**********************************************************************
         
         Help.constructHelp();
+        int exitChoice;
         
         try (ObjectInputStream plyr = new ObjectInputStream(
                                       new FileInputStream("Player.data"));
              ObjectInputStream mp = new ObjectInputStream(
                                     new FileInputStream("Map.data")); 
-            ) 
-        {
+            ) {
             System.out.println("Data found. Loading game.");
             me = (Player) plyr.readObject();
             map = (Room[][][]) mp.readObject();
-            me.mainPrompt(map); // START GAME
+            exitChoice = me.mainPrompt(map); // START GAME
         } 
         catch (java.lang.ClassNotFoundException | java.io.IOException e) { 
             System.out.println("Data missing. Creating new game.");
             Room_References.constructRoomReferences();
             map = createMap();
-            me.startDialog(map); // START GAME
+            exitChoice = me.startDialog(map); // START GAME
         }
         
         //**********************************************************************
@@ -109,25 +100,40 @@ public class Salamaa {
         
         
         //**********************************************************************
-        // <editor-fold desc="WRITE GAME DATA TO FILE">
+        // <editor-fold desc="LEAVE / ERASE / SAVE GAME">
         //**********************************************************************
         
         frame.dispose();
         
-        try (ObjectOutputStream plyr = new ObjectOutputStream(
-                                       new FileOutputStream(
-                                       new File("Player.data")));
-             ObjectOutputStream mp = new ObjectOutputStream(
-                                     new FileOutputStream(
-                                     new File("Map.data")));
-            ) 
-        {
-            plyr.writeObject(me);
-            mp.writeObject(map);
-        } catch (java.io.IOException e) {
-            System.out.println(e.getMessage());
+        switch(exitChoice) {
+            case 1:
+                // Saves the game.
+                try (ObjectOutputStream plyr = new ObjectOutputStream(
+                                               new FileOutputStream(
+                                               new File("Player.data")));
+                     ObjectOutputStream mp = new ObjectOutputStream(
+                                             new FileOutputStream(
+                                             new File("Map.data")));
+                ) {
+                    plyr.writeObject(me);
+                    mp.writeObject(map);
+                } catch (java.io.IOException e) {
+                    System.out.println("An error occured in saving the game.");
+                    System.out.println(e.getMessage());
+                }
+                break;
+            case 3:
+                // Reset the game.
+                if ( (new File("Player.data")).delete() &&
+                     (new File("Map.data")).delete() )
+                    System.out.println("Files deleted.");
+                else
+                    System.out.println("Files to delete not found.");
+            case 2:
+                // Quits and does nothing.
+                break;    
         }
-          
+        
         //**********************************************************************
         // </editor-fold>  
         //**********************************************************************
@@ -1470,20 +1476,8 @@ public class Salamaa {
         // </editor-fold>  
         //**********************************************************************
         
-        me.setOccupies(cou4); /* Change the argument to start the game in any room.
-                                 To start in the room with the blackjack ghost,
-                                 change the argument to cou6 to start in
-                                 courtyard 6. Areas 4, 5, 6, and 7 are incomplete. 
-                              */
-        
-        //Uncomment if trying out the gallery puzzle
-        /*
-        me.getINV().add(blFcs);
-        me.getINV().add(redFcs);
-        me.getINV().add(drkFcs);
-        me.getINV().add(fnnyOrb);
-        gal1.unlock();
-        */
+        me.setOccupies(cou4); // Change the argument to start the game in any room.
+
         return newMap;
     }
     

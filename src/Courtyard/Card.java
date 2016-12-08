@@ -5,9 +5,17 @@ package Courtyard;
  * @author Kevin Rapa
  */
 import Super.Item;
+import java.util.HashMap;
 
 public class Card extends Item {
     private final int VALUE; // The card's face value;
+    private final static HashMap<String, Integer> MAP = new HashMap() {{
+        // Static mapping for card values.
+        put("Ac", 1);   put("Tw", 2);   put("Th", 3);  put("Fo", 4);  
+        put("Fi", 5);   put("Si", 6);   put("Se", 7);  put("Ei", 8);  
+        put("Ni", 9);   put("Te", 10);  put("Ja", 10); put("Qu", 10);
+        put("Ki", 10); 
+    }};
     //=========================================================================
     /**
      * Constructs a card.
@@ -23,26 +31,15 @@ public class Card extends Item {
     }
     //=========================================================================
     /**
-     * Determines the value of each card.
+     * Determines the value of each card using the hash map.
      * For aces, the value is one, however if the value 11 is advantageous
-     * during a game, that value is used instead.
-     * Face cards are worth 10, all numbered ranks use their own value.
+     * during a game, that value is used instead. Face cards are worth 10,
+     * all numbered ranks use their own value.
      * @param name The first two letters of a card's name.
      * @return The card's value.
      */
     private int determineValue(String name) {
-        int value = 0;
-        int[] vals = {1,2,3,4,5,6,7,8,9,10};
-        String[] ranks = {"ac","tw","th","fo","fi","si","se","ei","ni","te"};
-        
-        if (name.matches("ja|qu|ki")) // It's a face card.
-            value = 10;
-        else
-            for (int i = 0; i < 10; i++) {
-                if (ranks[i].matches(name))
-                    value = vals[i];       
-            }
-        return value;
+        return MAP.get(name);
     }
     //=========================================================================
     /**
@@ -50,13 +47,6 @@ public class Card extends Item {
      */
     public int getVal() {
         return this.VALUE;
-    }
-    //=========================================================================
-    /**
-     * @return The name of this card.
-     */
-    public String getName() {
-        return this.NAME;
     }
     //=========================================================================
 }

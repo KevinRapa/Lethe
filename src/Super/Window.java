@@ -39,24 +39,18 @@ public class Window extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(Room[][][] map, String key) {
 
-            if (this.isOpen) {
-               this.close();
-               interactDialog = "You close the window."; }
-            else {
+            if (this.isOpen && key.matches("close")) {
+                this.close();
+                interactDialog = "You close the window."; 
+            }
+            else if (! this.isOpen && key.matches("open")) {
                 this.open();
-                interactDialog = "You open the window."; }
+                interactDialog = "You open the window."; 
+            }
+            else 
+                this.interactDialog = "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
     
         return interactDialog;
     } 
-/*----------------------------------------------------------------------------*/
-    @Override public boolean keyMatches(String key) {
-        boolean matches = false;
-        
-        if ((key.matches("open") && ! this.isOpen) || 
-            (key.matches("close") && this.isOpen))
-            matches = true;
-        
-        return matches;
-    }
 /*----------------------------------------------------------------------------*/
 }

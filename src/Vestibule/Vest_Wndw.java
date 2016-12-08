@@ -27,20 +27,26 @@ public class Vest_Wndw extends Window {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(Room[][][] map, String key) {
 
-        if (this.isOpen) {
+        if (this.isOpen && key.matches("close")) {
             this.interactDialog = "You close the window.";
-            this.close(); }
-        else {
+            this.close(); 
+            this.REF2.switchWindow();
+        }
+        else if (! this.isOpen && key.matches("open")) {
+            this.open();
+            
             if (REF.isLit()) {
-                this.open();
                 this.REF.extinguish();
                 this.interactDialog = "You open the window. A strong gust comes through\n" +
-                         "and extinguishes the fireplace."; }
-            else {
-                this.open();
-                this.interactDialog = "You open the window."; }
+                                      "and extinguishes the fireplace."; 
+            }
+            else
+                this.interactDialog = "You open the window."; 
+            
+            this.REF2.switchWindow();
         }
-        this.REF2.switchWindow();
+        else
+            this.interactDialog = "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
         
         return interactDialog;
     }

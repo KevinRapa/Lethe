@@ -14,8 +14,8 @@ public class Deck {
      * Constructs a deck of cards.
      */
     public Deck() {
-        String[] ranks = {"ace", "two", "three", "four", "five", "six", "seven", 
-                          "eight", "nine", "ten", "jack", "queen", "king"};
+        String[] ranks = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", 
+                          "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
         String[] suits = {"hearts", "spades", "clubs", "diamonds"};
         
         for (String suit : suits) // Creates all the cards.
@@ -26,15 +26,15 @@ public class Deck {
     // ========================================================================  
     /**
      * Shuffles the deck of cards.
-     * Pops all the cards off the stack randomly into the array, then iterates
-     * through the array linearly, pushing each card back in.
+     * Removes all the cards off the stack randomly into the array, then 
+     * iterates through the array linearly, pushing each card back in.
      */
     public void shuffle() {
-        int i = 52; // Upper bound of random int (representing index to remove card from DECK)
-        int j = 0;  // Index to add the card in temp;
-        Card[] temp = new Card[52];
+        int i = DECK.size(); // Index to remove card from DECK.
+        int j = 0;  // Index to add the card in temp.
+        Card[] temp = new Card[DECK.size()];
         Random generator = new Random();
-        
+
         while (! this.DECK.isEmpty()) {
             int position = generator.nextInt(i);
             temp[j] = this.DECK.remove(position);
@@ -46,7 +46,7 @@ public class Deck {
     }
     // ========================================================================  
     /**
-     * Removes a card from this deck.
+     * Removes a card from the top of this deck.
      * @return A card object.
      */
     public Card draw() {

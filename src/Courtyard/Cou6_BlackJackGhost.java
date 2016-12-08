@@ -32,7 +32,7 @@ public class Cou6_BlackJackGhost extends Furniture {
                          + "ghostly figure shuffling what seem to be cards. The apparition\n"
                          + "is garbed in distinctive clothing- a vest and a full-brimmed hat.";
         this.addActKeys("speak", "talk", "converse", "play", "chat");
-        this.addNameKeys("ghost", "apparition", "spirit");
+        this.addNameKeys("ghost", "apparition", "spirit", "ghostly apparition");
     }
 /*----------------------------------------------------------------------------*/
     /**
@@ -131,43 +131,38 @@ public class Cou6_BlackJackGhost extends Furniture {
      * Whatever the ghost draws is printed in the console (For testing).
      */
     private void playCards() {
+        // Maps outcomes to dialogs.
         HashMap<Integer, String> results = new HashMap();
-        
-        results.put(121, "You busted already? % too many! Loser! ... Want to play again?");
-        results.put(111, "I busted already? % too many! My luck has gone with the wind tonight... Want to play again?");
-        results.put(131, "Huh... we both busted. House always wins though! ... Want to play again?");
+        results.put(122, "How lucky. You got a blackjack already! ... Want to play again?");
         results.put(112, "Hah! I have blackjack already. I win... Want to play again?");
         results.put(132, "We both got blackjack... So a tie, how boring... Want to play again?");
-        results.put(212, "Blackjack! I win... Want to play again?");
         results.put(211, "Agh... % too far over. I lose... Want to play again?");
         results.put(233, "Hm... a tie. How boring... Want to play again?");
         results.put(223, "You won. Good luck, mate, you need it tonight... Want to play again?");
         results.put(213, "Looks like I won, mate, fair and square... Want to play again?");
         results.put(221, "Looks like you busted! % too many! ... Want to play again?");
-        Card plyrCard1, plyrCard2; // References so they can be removed later.
+        
         int ghostVal = 0, yourVal = 0; // The scores.
         Deck deck = new Deck();
         deck.shuffle();
+
+        // Deals the initial two cards to the dealer.
+        Card card1 = deck.draw();
+        GUI.out("The ghost reveals:\t\t" + card1);
+        ghostVal += this.evalHit(card1, ghostVal); 
+        ghostVal += this.evalHit(deck.draw(), ghostVal);
         
-        // Deals the initial two cards to the ghost.
-        ghostVal += this.evalHit(deck.draw(), ghostVal) + this.evalHit(deck.draw(), ghostVal);
-        
-        // Deals the initial two cards to the player and calculates the score.
-        plyrCard1 = deck.draw();
-        plyrCard2 = deck.draw();
+        // Deals the initial two cards to the player.
+        Card plyrCard1 = deck.draw();
+        Card plyrCard2 = deck.draw();
         this.PLYR.getINV().add(plyrCard1);
         this.PLYR.getINV().add(plyrCard2);
-        // The two commands below must be on separate lines, or starting with
-        // two aces will bust the player. See evalHit() method. 
         yourVal += this.evalHit(plyrCard1, yourVal); 
         yourVal += this.evalHit(plyrCard2, yourVal);
         GUI.invOut("You are carrying:\n" + this.PLYR.getINV());   
         
         //<editor-fold desc="Test Cases"> ===================================
         // Uncomment any of these and choose 'stand' during the game.
-        
-        //ghostVal = 21;
-        //yourVal = 0;
         
         //ghostVal = 17;
         //yourVal = 20;
@@ -179,47 +174,38 @@ public class Cou6_BlackJackGhost extends Furniture {
         //yourVal = 18;
         
         //ghostVal = 21;
+        //yourVal = 15;
+        
+        //ghostVal = 15;
         //yourVal = 21;
         
-        //ghostVal = 0;
-        //yourVal = 500;
+        //ghostVal = 21;
+        //yourVal = 21;
+        
         System.out.println("\nGhost's starting score: " + ghostVal);
         //</editor-fold> =====================================================
         
-        if (this.bust(yourVal) || this.bust(ghostVal)) {
-            // Checks if either player busts immediately.
-            if (this.bust(yourVal) && this.bust(ghostVal))
-                GUI.out(results.get(131));
-            else if (this.bust(yourVal))
-                GUI.out(results.get(121).replaceFirst("%", String.valueOf(yourVal - 21)));
-            else
-                GUI.out(results.get(111).replaceFirst("%", String.valueOf(ghostVal - 21)));
-            return;
-        }
-        if (this.blackJack(ghostVal)) {
-            // Checks if the dealer gets a blackJack immediately.
-            int val = this.blackJack(yourVal) ? 132 : 112; // Checks you too.
-            GUI.out(results.get(val));
+        // Checks for immediate blackjacks.
+        if (this.blackJack(ghostVal) || this.blackJack(yourVal)) {
+            int v = this.blackJack(yourVal) && this.blackJack(ghostVal) ? 132 :
+                    this.blackJack(yourVal) ? 122 : 112;
             
+            GUI.out(results.get(v));
             return;
         }
-        
+
         yourVal = this.playerTurn(yourVal, deck); // You take your turn.
         
-        // Evaluates if you have busted immediately or got a blackjack.
+        // Evaluates if you have busted.
         if (this.bust(yourVal)) {
             GUI.out(results.get(221).replaceFirst("%", String.valueOf(yourVal - 21)));
             return;
         }
         
-        ghostVal = this.ghostTurn(yourVal, ghostVal, deck); // Ghost takes turn.
+        ghostVal = this.ghostTurn(ghostVal, deck); // Ghost takes turn.
         
-        // Evaluates if the dealer busted immediately or got a blackjack.
-        if (this.blackJack(ghostVal)) {
-            GUI.out(results.get(212));
-            return;
-        }
-        else if (this.bust(ghostVal)) {
+        // Evaluates if the dealer has busted.
+        if (this.bust(ghostVal)) {
             GUI.out(results.get(211).replaceFirst("%", String.valueOf(ghostVal - 21)));
             return;
         }
@@ -232,7 +218,8 @@ public class Cou6_BlackJackGhost extends Furniture {
     }
 /*----------------------------------------------------------------------------*/ 
     /**
-     * This method lets you hit as many times as he/she likes, or stands.
+     * This method lets you hit as many times as you want, or stand.
+     * If you bust, your turn is over and the loop ends.
      * @param num The player's current score.
      * @param deck A reference to the Deck object.
      * @return The player's new current score.
@@ -254,13 +241,11 @@ public class Cou6_BlackJackGhost extends Furniture {
                 GUI.invOut("You are carrying:\n" + this.PLYR.getINV());
                 score += this.evalHit(current, score);
                 
-                if (this.bust(score)) // Forces a stay if player busts.
+                if (this.bust(score))
                     ans = "stand";
             }
-            else if (! ans.matches("[sS](?:tand:tay)")) // Accepts 'stand' or 'stay'.
-                GUI.out("You gotta say 'hit', 'stand', or 'stay', mate.");
             
-        } while (! ans.matches("stand|stay"));
+        } while (! ans.matches("[Ss](tand|tay)"));
         
         return score;
     }
@@ -272,16 +257,15 @@ public class Cou6_BlackJackGhost extends Furniture {
      * @param deck A reference to the Deck object.
      * @return The ghost's new score.
      */
-    private int ghostTurn(int plyrScore, int ghostNum, Deck deck) {
+    private int ghostTurn(int ghostNum, Deck deck) {
         int ghostScore = ghostNum;
         
-        if (ghostScore < plyrScore)
-            while (ghostScore < plyrScore && ghostScore < 17) {
-                Card card = deck.draw();
-                ghostScore += this.evalHit(card, ghostScore);
-                System.out.println("Ghost draws a " + card + "\nGhost new score: " + ghostScore + 
-                                   " Player current score: " + plyrScore); //FOR TESTING
-            }
+        while (ghostScore < 17) {
+            Card card = deck.draw();
+            ghostScore += this.evalHit(card, ghostScore);
+            System.out.println("Ghost draws a " + card + "\nGhost new score: " + ghostScore); //FOR TESTING
+        }
+        
         return ghostScore;
     }
 /*----------------------------------------------------------------------------*/     
@@ -292,10 +276,12 @@ public class Cou6_BlackJackGhost extends Furniture {
      * @return The new score for the player who hit.
      */
     private int evalHit(Card card, int score) {
-        if (card.getVal() == 1)
+        int val = card.getVal();
+        
+        if (val == 1)
             return (score + 11 <= 21) ? 11 : 1;
         else
-            return card.getVal();
+            return val;
     }
 /*----------------------------------------------------------------------------*/ 
     /**

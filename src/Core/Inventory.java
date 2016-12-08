@@ -40,13 +40,7 @@ public class Inventory implements Iterable<Item>, Serializable {
      * @param type The type of item to remove.
      */
     public void remove(String type) { 
-        ArrayList<Item> remove = new ArrayList();
-        
-        for (Item i : this.CONT)
-            if (i.getType().matches(type))
-                remove.add(i);
-        
-        this.CONT.removeAll(remove);
+        this.CONT.removeIf(item -> item.getType().matches(type));
     }
     // ========================================================================
     /**
@@ -118,7 +112,7 @@ public class Inventory implements Iterable<Item>, Serializable {
      * Returns an iterator to iterate over this.CONTS
      * @return an iterator to iterate over this.CONTS
      */
-    @Override public Iterator iterator() {
+    @Override public Iterator<Item> iterator() {
         return this.CONT.iterator();
     }
     // ========================================================================
