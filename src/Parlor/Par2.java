@@ -1,8 +1,9 @@
 package Parlor;
 
-import Core.GUI;
+import Main.AudioPlayer;
+import Main.GUI;
 import Super.Room;
-import Core.Player;
+import Main.Player;
 
 public class Par2 extends Room{
     private final Player REF;
@@ -16,8 +17,8 @@ public class Par2 extends Room{
                    + "A thin flight of steps leads down to the first level.\n"
                    + "The room is cast in a warm glow from a hanging bowl of fire\n"
                    + "helped by a burning fireplace below. This room resembles\n"
-                   + "the west wing, with sandstone walls\n"
-                   + "and floors, implying an older part of the castle. The\n"
+                   + "the old west wing, with sandstone walls\n"
+                   + "and floors. The\n"
                    + "loft is mostly bare save a piano sitting on an extension\n"
                    + "of the balcony. A couple barred windows to the north on\n"
                    + "opposite sides of a bookshelf give view outside. To the\n"
@@ -37,6 +38,7 @@ public class Par2 extends Room{
         String dialog = "You are " + this + ".";
         
         if (! REF.hasVisited("PAR1")) {
+            AudioPlayer.playEffect(8);
             GUI.out("After stepping into the room, the door slams shut behind you.\n"
                   + "Startled, you spin around and miss a breath. You are alone.");
             REF2.lock();

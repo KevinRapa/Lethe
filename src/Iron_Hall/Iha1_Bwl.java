@@ -8,8 +8,8 @@ public class Iha1_Bwl extends Furniture {
     private final Furniture REF;
     private final Key REF2;
     private boolean jabbed;
-    public Iha1_Bwl(String NAME, Furniture iha1F, Key wow2Key) {
-            super(NAME);
+    public Iha1_Bwl(Furniture iha1F, Key wow2Key) {
+            super();
             this.searchable = false;
             this.jabbed = false;
             this.addUseKeys("polearm");

@@ -4,7 +4,7 @@ import Super.Static_Wndw;
 
 public class Chs_Wndws extends Static_Wndw {
     public Chs_Wndws(String NAME) {
-        super(NAME);
+        super();
         this.interactDialog = "These stained glass windows aren't designed that\n"
                             + "way.";
         this.description = "The stained glass windows line the outer wall of the\n"

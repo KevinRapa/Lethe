@@ -2,14 +2,14 @@ package Kitchen;
 
 import Super.Trch;
 import Super.Item;
-import Core.Inventory;
+import Main.Inventory;
 import Super.Room;
 
 public class Kitc_Trch extends Trch {
     private final Kitc REF3;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Kitc_Trch(String NAME, Item trch, Inventory inv, Room kitc) {
-        super(NAME, trch, inv);
+    public Kitc_Trch(Item trch, Inventory inv, Room kitc) {
+        super(trch, inv);
         this.useDialog = "You slide the torch into the steel holder, lighting\n"
                        + "the room.";
         this.hasTorch = false;

@@ -1,5 +1,6 @@
 package Courtyard;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Cou4 extends Room {
@@ -15,13 +16,14 @@ public class Cou4 extends Room {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(char dir) {
-    String rep = "There is a wall in the way.";
-    if (dir == 's')
-        rep = "This residence is not what you expected, and you could\n"
-            + "turn back now. But still, you are compelled to continue\n"
-            + "forward.";
-        
-    return rep;
+        if (dir == 's')
+            return "This residence is not what you expected, and you could\n"
+                + "turn back now. But still, you are compelled to continue\n"
+                + "forward.";
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way.";
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

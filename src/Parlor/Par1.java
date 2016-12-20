@@ -1,5 +1,6 @@
 package Parlor;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Par1 extends Room{
@@ -21,13 +22,13 @@ public class Par1 extends Room{
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
         if (dir == 'w' && ! this.isAdjacent("BHA3"))
-            rep = "The door here feels ice cold and the doorknob won't turn\n"
+            return "The door here feels ice cold and the doorknob won't turn\n"
                 + "despite your strength.";
-                    
-        return rep;
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way.";
+        }
     }
 /*----------------------------------------------------------------------------*/ 
 }

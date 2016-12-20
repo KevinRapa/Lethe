@@ -2,13 +2,13 @@ package Parlor;
 
 import Super.Fireplace;
 import Super.Item;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Par1_FrPlc extends Fireplace {
     private final Item REF3;
 /* CONSTRUCTOR ---------------------------------------------------------------*/           
-    public Par1_FrPlc(String NAME, Item bckt, Item scrdFr, Inventory inv) {       
-        super(NAME, true, bckt, inv);
+    public Par1_FrPlc(Item bckt, Item scrdFr, Inventory inv) {       
+        super(true, bckt, inv);
         this.REF3 = scrdFr;
         this.descLit = "It's a large sandstone fireplace, about your height.\n"
                      + "It's mantle is supported on both sides by short columns\n"

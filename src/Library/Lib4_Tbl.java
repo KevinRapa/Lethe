@@ -7,7 +7,7 @@ public class Lib4_Tbl extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib4_Tbl(String NAME, Item ... items) {
-        super(NAME, items);
+        super(items);
         this.description = "The low table sits between the couch and the\n"
                          + "fireplace. On its surface is something glinting.";
         this.searchDialog = "Looking on the surface of the table, ";

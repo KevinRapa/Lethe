@@ -6,8 +6,8 @@ import Super.Item;
 public class Squa_Bd extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Squa_Bd (String NAME, Item ... items) {
-        super(NAME, items);
+    public Squa_Bd (Item... items) {
+        super(items);
         this.description = "A plain single bed with a metal frame. The sheets\n"
                          + "are gone.";
         this.searchDialog = "You crouch down and look under the bed.";

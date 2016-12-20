@@ -1,7 +1,7 @@
 package Courtyard;
 
-import Core.GUI;
-import Core.Player;
+import Main.GUI;
+import Main.Player;
 import java.util.HashMap;
 import Super.Furniture;
 import Super.Room;
@@ -20,8 +20,8 @@ public class Cou6_BlackJackGhost extends Furniture {
     private final Player PLYR; // Reference to player for giving cards.
     private boolean firstTime; // If you've spoken to the ghost before.
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Cou6_BlackJackGhost(String NAME, Player plyr) {
-        super(NAME);
+    public Cou6_BlackJackGhost(Player plyr) {
+        super();
         this.searchable = false;
         this.PLYR = plyr;
       

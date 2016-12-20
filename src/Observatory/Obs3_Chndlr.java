@@ -6,7 +6,7 @@ import Super.Item;
 public class Obs3_Chndlr extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Obs3_Chndlr(String NAME, Item ... items) {
-        super(NAME, items);
+        super(items);
         this.searchable = false;
         this.description = "The curved brass chandelier hangs high up from a\n"
                          + "chain extending through a hole in the ceiling.\n"

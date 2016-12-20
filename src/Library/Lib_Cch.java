@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Lib_Cch extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib_Cch(String NAME) {
-        super(NAME);
+    public Lib_Cch() {
+        super();
         this.searchable = false;
         this.description = "A red gothic-era couch. It looks way more fancy\n"
                          + "than comfortable. Its frame is a glorious rosewood.";

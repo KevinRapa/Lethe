@@ -3,7 +3,7 @@ package Servants_Hall;
 import Super.Furniture;
 import Super.Item;
 import Super.Room;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Sha1_Dr extends Furniture {
     private final Room REF2;
@@ -11,8 +11,8 @@ public class Sha1_Dr extends Furniture {
     private final Item REF4;
     private final Inventory REF5;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Sha1_Dr (String NAME, Room sha1, Item ram, Item brRam, Inventory inv) {
-        super(NAME);
+    public Sha1_Dr (Room sha1, Item ram, Item brRam, Inventory inv) {
+        super();
         this.REF2 = sha1;
         this.REF3 = ram;
         this.REF4 = brRam;
@@ -30,7 +30,7 @@ public class Sha1_Dr extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        REF2.addAdjacent("RQUA"); // Make RQUA accessible.
+        REF2.addAdjacent("SHAR"); // Make SHAR accessible.
         REF2.removeFurniture(this); // Remove this door from the room.
         REF5.remove(REF3); // Take ram from player.
         REF5.add(REF4); // Add broken ram to player.

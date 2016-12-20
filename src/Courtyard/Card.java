@@ -4,8 +4,8 @@ package Courtyard;
  * 
  * @author Kevin Rapa
  */
-import Super.Item;
 import java.util.HashMap;
+import Super.Item;
 
 public class Card extends Item {
     private final int VALUE; // The card's face value;
@@ -25,8 +25,7 @@ public class Card extends Item {
      */
     public Card(String name) {
         super(name);
-        this.description = "It's a ghostly playing card that feels cold and eerily solid.";
-        this.type = "card";
+        this.description = "A ghostly and eerily solid playing card. It feels cool to the touch.";
         this.VALUE = this.determineValue(name.substring(0,2));
     }
     //=========================================================================

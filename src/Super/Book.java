@@ -1,6 +1,7 @@
 package Super;
 
-import Core.GUI;
+import Main.AudioPlayer;
+import Main.GUI;
 
 public class Book extends Note {
     protected final int numPages;
@@ -30,6 +31,7 @@ public class Book extends Note {
         String choice = "";
         
         do {
+            AudioPlayer.playEffect(2);
             GUI.out(this.pageList[page] + "\n");
 
             if (page != (this.numPages - 1)) {

@@ -1,10 +1,10 @@
 package West_Outer_Wall;
 
 import Super.Room;
-import Core.Player;
+import Main.Player;
 import Super.Furniture;
 import Super.Item;
-import Core.GUI;
+import Main.GUI;
 
 public class Wow3 extends Room{
     private final Player REF;

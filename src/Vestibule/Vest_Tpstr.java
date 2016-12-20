@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Vest_Tpstr extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Vest_Tpstr(String NAME) {
-        super(NAME);
+    public Vest_Tpstr() {
+        super();
         this.searchable = false;
         this.description = "A large, medieval-era tapestry. It appears to\n" +
                            "depict an impoverished man offering a glowing\n" +

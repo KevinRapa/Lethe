@@ -2,15 +2,15 @@ package Gallery;
 
 import Super.Furniture;
 import Super.Item;
-import Core.Inventory;
+import Main.Inventory;
 import Super.Room;
 
 public class Gal3_InstFurn extends Furniture { 
     private final Inventory REF;
     private final Item REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_InstFurn(String NAME, Inventory inv, Item inst) {
-        super(NAME);
+    public Gal3_InstFurn(Inventory inv, Item inst) {
+        super();
         this.REF = inv;
         this.REF2 = inst;
         this.searchable = false;

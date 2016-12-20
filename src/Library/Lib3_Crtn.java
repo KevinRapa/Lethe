@@ -6,8 +6,8 @@ import Super.Item;
 public class Lib3_Crtn extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib3_Crtn(String NAME, Item ... items) {
-        super(NAME, items);
+    public Lib3_Crtn(Item... items) {
+        super(items);
         this.description = "The tall bookshelf bears a plaque on the top reading\n"
                          + "\"Creation\".";
         this.interactDialog = "You push against the shelf, but it doesn't budge.";

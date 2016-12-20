@@ -1,8 +1,8 @@
 package Dining_Room;
 
-import Core.GUI;
+import Main.GUI;
 import Super.Room;
-import Core.Player;
+import Main.Player;
 
 public class Din1 extends Room{
     private final Player REF;

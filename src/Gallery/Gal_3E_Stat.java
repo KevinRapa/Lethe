@@ -9,8 +9,8 @@ public class Gal_3E_Stat extends Furniture{
     private final Room REF2;
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal_3E_Stat(String NAME, Room gal5, Room gal7) {
-        super(NAME);
+    public Gal_3E_Stat(Room gal5, Room gal7) {
+        super();
         this.searchable = false;
         this.REF = gal5;
         this.REF2 = gal7;
@@ -29,7 +29,7 @@ public class Gal_3E_Stat extends Furniture{
     public String activate(char color, Gal6_Cnn cnn) {
         String rep = "The beam of light shines into the central chamber.";
         
-        if (REF2.hasFurniture(this.NAME) && cnn.isOn() && this.level == 0) {
+        if (REF2.hasFurniture("statue") && cnn.isOn() && this.level == 0) {
             
             if (color == 'D' && this.level == 0) {
                 rep = this.raise(); 
@@ -38,7 +38,7 @@ public class Gal_3E_Stat extends Furniture{
                 rep = "The beam of light shines into the orb with no effect.";
             }
         }
-        else if (REF2.hasFurniture(this.NAME) && this.level == 1 && cnn.isOn())
+        else if (REF2.hasFurniture("statue") && this.level == 1 && cnn.isOn())
             rep = "The beam of light shines at the orb, but the orb continues\n"
                 + "to glow hellishly.";
         

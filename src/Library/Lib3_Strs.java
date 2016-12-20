@@ -1,20 +1,17 @@
 package Library;
 
-import Core.Player;
+import Main.Player;
 import Super.Furniture;
 import Super.Room;
-import Super.Item;
-import Core.GUI;
+import Main.GUI;
 
 public class Lib3_Strs extends Furniture {
     private final Player REF;
-    private final Lib_Shoes REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Lib3_Strs(String NAME, Player plyr, Item shs) {
-        super(NAME);
+    public Lib3_Strs(Player plyr) {
+        super();
         this.searchable = false;
         this.REF = plyr;
-        this.REF2 = (Lib_Shoes)shs;
         this.searchDialog = "You begin the search, but as soon as you touch the\n"
                           + "stairs, they flatten down to the floor before popping\n"
                           + "back up again.";
@@ -28,7 +25,7 @@ public class Lib3_Strs extends Furniture {
     @Override public String interact(Room[][][] map, String key) {     
         String rep;
         
-        if (REF.doYouHaveIt("leather shoes") && REF2.isWorn()) {
+        if (REF.shoes().matches("leather shoes")) {
             REF.setOccupies(map[2][1][8]);
                 
             rep = "You successfully climb the stairs to the second floor.";

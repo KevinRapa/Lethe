@@ -1,5 +1,6 @@
 package Lookout;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Look extends Room{
@@ -15,11 +16,12 @@ public class Look extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
         if (dir == 'a')
-            rep = "There's a couple hundred foot drop right there.";
-        
-        return rep;
+            return "There's a couple hundred foot drop right there.";
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way.";
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

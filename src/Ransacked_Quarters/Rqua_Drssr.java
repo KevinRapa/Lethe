@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Rqua_Drssr extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Rqua_Drssr (String NAME) {
-        super(NAME);
+    public Rqua_Drssr () {
+        super();
         this.searchable = false;
         this.description = "It's a low dresser with a couple opened drawers in it.";
         this.interactDialog = "The dresser's drawers are already open.";

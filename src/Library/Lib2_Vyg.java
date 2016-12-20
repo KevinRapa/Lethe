@@ -8,8 +8,8 @@ public class Lib2_Vyg extends Furniture {
     private final Furniture REF, REF2, REF3, REF4;
     private boolean moved;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib2_Vyg(String NAME, Furniture wrfr, Furniture crtn, Furniture prdtn, Furniture bnshmnt, Item ... items) {
-        super(NAME, items);
+    public Lib2_Vyg(Furniture wrfr, Furniture crtn, Furniture prdtn, Furniture bnshmnt, Item... items) {
+        super(items);
         this.REF = wrfr;
         this.REF2 = crtn;
         this.REF3 = prdtn;

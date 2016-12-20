@@ -4,8 +4,8 @@ import Super.Window;
 
 public class MhaN_Wndw extends Window {
 /* CONSTRUCTOR ---------------------------------------------------------------*/         
-    public MhaN_Wndw(String NAME) {
-        super(NAME);
+    public MhaN_Wndw() {
+        super();
         this.descClosed = "The window is tall and arched at the top. Through its\n"
                         + "many glass panes, you can see the north end of the\n"
                         + "courtyard. A small headless statue stands in the center.";

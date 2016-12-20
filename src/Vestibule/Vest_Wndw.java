@@ -9,8 +9,8 @@ public class Vest_Wndw extends Window {
     private final Vest REF2;
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Vest_Wndw(String NAME, Furniture ref, Room vest) {
-        super(NAME);
+    public Vest_Wndw(Furniture ref, Room vest) {
+        super();
         this.isOpen = false;
         this.REF = (Vest_Frplc)ref;
         this.REF2 = (Vest)vest;

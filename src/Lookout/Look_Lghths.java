@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Look_Lghths extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Look_Lghths(String NAME) {
-        super(NAME);
+    public Look_Lghths() {
+        super();
         this.searchable = false;
         this.description = "A classic red and white striped lighthouse. Its\n"
                          + "beacon illuminates northwards. You wish it would\n"

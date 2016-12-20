@@ -7,8 +7,8 @@ public class Gal1_Scr extends Furniture {
     private boolean lifted;
     private final Gal1_Bttn REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal1_Scr (String NAME, Furniture bttn) {
-        super(NAME);
+    public Gal1_Scr (Furniture bttn) {
+        super();
         this.searchable = false;
         this.lifted = false;
         this.REF = (Gal1_Bttn)bttn;

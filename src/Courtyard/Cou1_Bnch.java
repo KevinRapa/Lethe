@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Cou1_Bnch extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Cou1_Bnch(String NAME) {
-        super(NAME);
+    public Cou1_Bnch() {
+        super();
         this.searchable = false;
         this.description = "The bench is blanketed in multiflora. Its backrest\n"
                          + "lies on the ground behind it.";

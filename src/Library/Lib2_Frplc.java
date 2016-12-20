@@ -2,13 +2,13 @@ package Library;
 
 import Super.Fireplace;
 import Super.Item;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Lib2_Frplc extends Fireplace {
      
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Lib2_Frplc(String NAME, boolean isLit, Item bckt, Inventory inv) {       
-        super(NAME, isLit, bckt, inv);
+    public Lib2_Frplc(boolean isLit, Item bckt, Inventory inv) {       
+        super(isLit, bckt, inv);
         this.isLit = isLit;
         this.descLit = "The roaring fire from the large granite fireplace casts\n"
                      + "flickering shadows over the whole room. Like in the\n"

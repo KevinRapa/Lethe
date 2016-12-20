@@ -1,6 +1,6 @@
 package Super;
 
-import Core.Inventory;
+import Main.Inventory;
 
 public class Fireplace extends Furniture {
     protected boolean isLit;
@@ -9,8 +9,8 @@ public class Fireplace extends Furniture {
     protected final Item REF;
     protected final Inventory REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Fireplace(String NAME, boolean isLit, Item bckt, Inventory inv) {       
-        super(NAME);
+    public Fireplace(boolean isLit, Item bckt, Inventory inv) {       
+        super();
         this.searchable = false;
         this.isLit = isLit;
         this.REF = bckt;

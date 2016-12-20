@@ -2,7 +2,7 @@ package Parlor;
 
 import Super.Door;
 import Super.Item;
-import Core.Player;
+import Main.Player;
 import Super.Room;
 
 public class Par1_Dr extends Door {
@@ -11,8 +11,8 @@ public class Par1_Dr extends Door {
     private final Item REF3;
     private boolean cured = false;
 /*----------------------------------------------------------------------------*/    
-    public Par1_Dr(String NAME, Room par1, Item enchbttl, Player plyr) {
-        super(NAME);
+    public Par1_Dr(Room par1, Item enchbttl, Player plyr) {
+        super();
         this.useDialog = "You throw the fire on the door. Shortly, the fire"
                        + "\nfades away.";
         this.description = "It looks like a heavy wooden door.";

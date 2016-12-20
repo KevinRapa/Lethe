@@ -6,7 +6,7 @@ public class Obs_Slt extends Furniture {
     private final String CORRECT;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Obs_Slt(String NAME, String correct, String desc) {
-            super(NAME);
+            super();
             this.searchable = false;
             this.CORRECT = correct;
             this.description = desc;

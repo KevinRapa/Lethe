@@ -6,8 +6,8 @@ import Super.Room;
 public class Rqua_Bd extends Furniture {
     private boolean moved;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Rqua_Bd (String NAME) {
-        super(NAME);
+    public Rqua_Bd () {
+        super();
         this.searchable = false;
         this.moved = false;
         this.description = "It's a flimsy metal bedframe. ";

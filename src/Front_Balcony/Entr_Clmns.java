@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Entr_Clmns extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Entr_Clmns(String NAME) {
-        super(NAME);
+    public Entr_Clmns() {
+        super();
         this.searchable = false;
         this.description = "The four-foot wide columns extend a couple stories\n"
                          + "up. They look like more than enough to hold up that\n"

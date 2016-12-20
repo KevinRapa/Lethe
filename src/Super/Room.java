@@ -1,9 +1,10 @@
 package Super;
 
+import Main.AudioPlayer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.Serializable;
-import Core.Room_References;
+import Main.Room_References;
 /**
  * @author Kevin Rapa
  */
@@ -65,6 +66,7 @@ public class Room implements Serializable {
      */
     public String getBarrier(char dir) {
         // Used in movement when you hit a barrier. Overridden in many cases.
+        AudioPlayer.playEffect(6);
         return "There is a wall in the way.";
     }
     // ========================================================================

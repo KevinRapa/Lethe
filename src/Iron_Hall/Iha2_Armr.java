@@ -5,8 +5,8 @@ import Super.Item;
 
 public class Iha2_Armr extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Iha2_Armr(String NAME, Item ... items) {
-        super(NAME, items);
+    public Iha2_Armr(Item... items) {
+        super(items);
         this.searchable = false;
         this.description = "It's a suit of armor holding a polearm. Its gauntlet\n"
                          + "is wrapped around it, but awkwardly as if the gauntlet\n"

@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Gal3_Msk2 extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_Msk2(String NAME) {
-        super(NAME);
+    public Gal3_Msk2() {
+        super();
         this.searchable = false;
         this.description = "This mask has an interesting comb structure on top.\n"
                          + "It has no mouth, but a long slender nose. Below, you\n"

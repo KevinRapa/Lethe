@@ -1,5 +1,6 @@
 package Courtyard;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Cou6 extends Room {
@@ -17,14 +18,14 @@ public class Cou6 extends Room {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
         if (dir == 'a')
-            rep = "You'll need to climb the steps to get up there.";
+            return "You'll need to climb the steps to get up there.";
         if (dir == 'w' || dir == 'd')
-            rep = "There's too much thorny growth to go anywhere else.";
-        
-        return rep;
+            return "There's too much thorny growth to go anywhere else.";
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way.";
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

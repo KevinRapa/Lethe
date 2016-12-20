@@ -2,13 +2,13 @@ package Marble_Hall;
 
 import Super.Furniture;
 import Super.Item;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Mha_RStat extends Furniture {
     private final Inventory REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Mha_RStat(String NAME, Inventory inv, Item ... items) {
-        super(NAME, items);
+    public Mha_RStat(Inventory inv, Item... items) {
+        super(items);
         this.searchable = false;
         this.REF = inv;
         this.description = "The angel poses majestically with an indifferent\n"

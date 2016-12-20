@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Wow2_Hole extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wow2_Hole(String NAME) {
-        super(NAME);
+    public Wow2_Hole() {
+        super();
         this.searchable = false;
         this.description = "You peek through the hole. The room is next door is\n"
                          + "ash-filled and burned up completely! What happened\n"

@@ -6,8 +6,8 @@ import Super.Item;
 public class Drar_Br extends Furniture {
     private final Drar_Ghst REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Drar_Br(String NAME, Furniture ghst, Item ... items) {
-        super(NAME);
+    public Drar_Br(Furniture ghst, Item... items) {
+        super();
         this.REF = (Drar_Ghst)ghst;
         this.description = "Behind its solid oak table and chairs, you see a\n"
                          + "shelf populated with many kinds of alcohol.";

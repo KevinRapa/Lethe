@@ -2,8 +2,8 @@ package Super;
 
 public class Door extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Door (String NAME) {
-        super(NAME);
+    public Door () {
+        super();
         this.searchable = false;
         this.searchDialog = "You aren't sure what you'd search for on a door.";
         this.description = "It looks like a heavy wooden door.";

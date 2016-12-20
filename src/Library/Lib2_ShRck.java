@@ -6,8 +6,8 @@ import Super.Item;
 public class Lib2_ShRck extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib2_ShRck(String NAME, Item ... items) {
-        super(NAME, items);
+    public Lib2_ShRck(Item... items) {
+        super(items);
         this.description = "The shoe rack sits next to the fireplace. A few\n"
                          + "pairs of shoes are stored on it.";
         this.searchDialog = "You browse the shoe collection.";

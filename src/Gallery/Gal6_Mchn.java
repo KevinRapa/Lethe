@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Gal6_Mchn extends Furniture{
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal6_Mchn(String NAME) {
-        super(NAME);
+    public Gal6_Mchn() {
+        super();
         this.searchable = false;
         this.searchDialog = "Everything on the machine looks concretely attached\n"
                           + "to the machine and not removable.";

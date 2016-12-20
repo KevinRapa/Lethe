@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Gal1_Armr extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal1_Armr(String NAME) {
-        super(NAME);
+    public Gal1_Armr() {
+        super();
         this.searchable = false;
         this.description = "You know a set of samurai armor when you see one.\n"
                          + "This set is mostly black and brown with gold plating\n"

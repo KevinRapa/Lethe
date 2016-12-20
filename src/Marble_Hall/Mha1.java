@@ -1,8 +1,8 @@
 package Marble_Hall;
 
-import Core.GUI;
+import Main.GUI;
 import Super.Room;
-import Core.Player;
+import Main.Player;
 
 public class Mha1 extends Room{
     private final Player REF;

@@ -2,7 +2,7 @@ package Gallery;
 
 import Super.Item;
 import Super.Furniture;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Gal1_Drgn extends Furniture {
     private boolean isOn;
@@ -13,8 +13,8 @@ public class Gal1_Drgn extends Furniture {
     private boolean leftEye, rightEye;
             
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal1_Drgn(String NAME, Furniture stat, Inventory inv, Item ... items) {
-        super(NAME);
+    public Gal1_Drgn(Furniture stat, Inventory inv, Item... items) {
+        super();
         this.searchDialog = "The only place to search is the dragon's mouth.";
         this.REF = (Gal_1E_Stat) stat;
         this.REF2 = inv;

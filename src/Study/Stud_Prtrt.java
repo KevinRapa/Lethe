@@ -7,8 +7,8 @@ public class Stud_Prtrt extends Furniture {
     private boolean lifted;
     private final Furniture REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Stud_Prtrt (String NAME, Furniture safe) {
-        super(NAME);
+    public Stud_Prtrt (Furniture safe) {
+        super();
         this.searchable = false;
         this.lifted = false;
         this.REF = safe;

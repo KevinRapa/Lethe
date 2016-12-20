@@ -1,13 +1,14 @@
 package Super;
 
-import Core.GUI;
+import Main.AudioPlayer;
+import Main.GUI;
 
 public class Safe extends Furniture {
     protected final String COMBO;
     protected final int[] DIALS; 
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
-    public Safe (String name, String combo, Item ... items) {
-        super(name, items);
+    public Safe (String combo, Item... items) {
+        super(items);
         this.COMBO = combo;
         this.DIALS = new int[3];
         this.DIALS[0] = (int)(Math.random() * 10.0);
@@ -61,6 +62,7 @@ public class Safe extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private boolean turnDial(int i) {
+        AudioPlayer.playEffect(10);
         if (this.DIALS[i] == 9)
             DIALS[i] = 0;
         else

@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Cou2_Bshs extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Cou2_Bshs(String NAME) {
-        super(NAME);
+    public Cou2_Bshs() {
+        super();
         this.searchable = false;
         this.description = "They're unkept rose bushes, and probably the only\n"
                          + "pretty things in this yard.";

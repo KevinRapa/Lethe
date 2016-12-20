@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Eow2_Fntn extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Eow2_Fntn(String NAME) {
-        super(NAME);
+    public Eow2_Fntn() {
+        super();
         this.searchable = false;
         this.description = "The fountain is running smoothly with clear water.\n"
                          + "In its center is a tall statue of a helmed woman\n"

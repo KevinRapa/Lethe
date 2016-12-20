@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Wow1_Tls extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wow1_Tls(String NAME) {
-        super(NAME);
+    public Wow1_Tls() {
+        super();
         this.searchable = false;
         this.description = "A collection of jars filled with unknown liquids,\n"
                          + "brushes, and other small hand tools.";

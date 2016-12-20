@@ -2,15 +2,15 @@ package East_Outer_Wall;
 
 import Super.Furniture;
 import Super.Item;
-import Core.Inventory;
+import Main.Inventory;
 import Super.Room;
 
 public class Water extends Furniture {
     private final Inventory REF;
     private final Item REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Water(String NAME, Inventory inv, Item bckt) {
-        super(NAME);
+    public Water(Inventory inv, Item bckt) {
+        super();
         this.REF = inv;
         this.REF2 = bckt;
         this.searchable = false;

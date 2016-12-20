@@ -5,8 +5,8 @@ import Super.Item;
 
 public class Foy1_Tbl extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Foy1_Tbl(String NAME, Item ... items) {
-        super(NAME, items);
+    public Foy1_Tbl(Item... items) {
+        super(items);
         this.description = "It's a long mahogany table. A respectable wood among\n"
                          + "lumberjacks, it's a durable and workable species. You\n"
                          + "nod your head in appreciation.";

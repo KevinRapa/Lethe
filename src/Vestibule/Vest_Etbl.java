@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Vest_Etbl extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Vest_Etbl(String NAME) {
-        super(NAME);
+    public Vest_Etbl() {
+        super();
         this.searchable = false;
         this.description = "An round, ornate, wooden end table. A ceramic\n" +
                            "case rests on top.";

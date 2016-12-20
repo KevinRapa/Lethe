@@ -1,29 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Parlor;
 
 import Super.Furniture;
 import Super.Item;
-import Core.Inventory;
+import Main.Player;
 import Super.Room;
 
 public class Par1_EnchtTbl extends Furniture {
-    private final Inventory REFPLYR;
-    private final Item REF, REFSALTS, REFMANDRAKE, REFSPRUCE, REFBTTL;
-    private boolean hasSpruce, hasMandrake, hasFireSalts, hasBottle;
+    private final Player REFPLYR;
+    private final Item REF_ENCH_BTTL, REF_SALTS, REF_MANDRAKE, REF_SPRUCE, REF_BTTL,
+                       REF_FTHR, REF_HLY, REF_SHS, REF_STLTHSHS;
+    private boolean hasSpruce, hasMandrake, hasFireSalts, hasBottle, hasFthr, hasHly, hasShs;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Par1_EnchtTbl(String NAME, Inventory plyrInv, Item enchtBttl, Item salts, 
-                         Item spruce, Item mandrake, Item bttl, Item ... items) {
-        super(NAME, items);
-        this.REFPLYR = plyrInv;
-        this.REF = enchtBttl;
-        this.REFMANDRAKE = mandrake; this.REFSALTS = salts;
-        this.REFBTTL = bttl; this.REFSPRUCE = spruce;
+    public Par1_EnchtTbl(Player plyrInv, Item enchtBttl, Item salts, Item spruce, Item mandrake, Item bttl, Item fthr, Item hlyWater, Item shs, Item stlthShs, Item... items) {
+        super(items);
         
-        this.hasFireSalts = false; this.hasMandrake = false; this.hasSpruce = false;
+        this.REFPLYR = plyrInv;
+        
+        this.REF_ENCH_BTTL = enchtBttl; // For giving player the enchanted bottle.
+        this.REF_STLTHSHS = stlthShs; // For giving player the stealth shoes.
+        
+        this.REF_MANDRAKE = mandrake; this.REF_SALTS = salts; this.REF_FTHR = fthr;
+        this.REF_BTTL = bttl; this.REF_SPRUCE = spruce; this.REF_HLY = hlyWater; 
+        this.REF_SHS = shs;
+        
+        hasFireSalts = hasMandrake = hasSpruce = hasFthr = hasHly = hasShs = 
+        hasFthr = hasHly = hasShs = false; // Table starts with nothing but the glass bottle.
+        
+        hasBottle = true; // The bottle is already on the table.
         
         this.interactDialog = "You pound your hands on the table.";
         this.searchDialog = "You look on the table.";
@@ -31,58 +34,71 @@ public class Par1_EnchtTbl extends Furniture {
                          + "runes and writing that seem to glow from the fire. Two"
                          + "circular runes decorate either side of the table.";
         
-        this.addUseKeys("mandrake root", "fire salts", "spruce extract");
+        this.addUseKeys(".+"); // Accepts any item to be put on it.
         this.addNameKeys("enchanting table", "table");
         this.addActKeys("pound, hit, activate, enchant");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        this.REFPLYR.getInv().remove(item);
-        this.inv.add(item);
-        this.check();
+        if (item.toString().matches(REFPLYR.shoes()))
+            REFPLYR.switchShoes("");
+            
+        REFPLYR.getINV().give(item, this.inv);
         
         return "You place the " + item + " on the table.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getSearchDialog() {
-        
-        this.check();
-        
-        return this.searchDialog;
-    }
-/*----------------------------------------------------------------------------*/
     @Override public String interact(Room[][][] map, String key) {          
         String rep = this.interactDialog;
+        this.check();
         
-        if (this.enchant())
-            rep += " As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away,\n"
-                 + "and as you turn back, you see that the three ingredients have vanished. The bottle, bearing a\n"
-                 + "certain magical aura, sits alone at the table's center.";
-        else
-            rep += " To your disappointment, the table only jostles a small amount\n"
-                    + "from the force. Perhaps you aren't the wizard you thought you were.";
-        
+        switch (this.enchant()) {
+            case 1:
+                rep += " As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away,\n"
+                     + "and as you turn back, you see that the four ingredients have vanished. The bottle, bearing a\n"
+                     + "certain magical aura, sits alone at the table's center.";
+                break;
+            case 2:
+                rep += " As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away,\n"
+                     + "and as you turn back, you see that the three ingredients have vanished. A delicate pair of\n"
+                     + "slippers shrouded in a fine dark mist take their place.";
+                break;
+            default:
+                rep += " To your disappointment, the table only jostles a small amount\n"
+                     + "from the force. Perhaps you aren't the wizard you thought you were.";
+        }
         return rep;
     }
 /*----------------------------------------------------------------------------*/
     private void check() {
-        this.hasFireSalts = this.inv.getInv().contains(this.REFSALTS);
-        this.hasSpruce = this.inv.getInv().contains(this.REFSPRUCE);
-        this.hasMandrake = this.inv.getInv().contains(this.REFMANDRAKE);
-        this.hasBottle = this.inv.getInv().contains(this.REFBTTL);
+        this.hasFireSalts = this.inv.getInv().contains(this.REF_SALTS);
+        this.hasSpruce = this.inv.getInv().contains(this.REF_SPRUCE);
+        this.hasMandrake = this.inv.getInv().contains(this.REF_MANDRAKE);
+        this.hasBottle = this.inv.getInv().contains(this.REF_BTTL);
+        
+        this.hasFthr = this.inv.getInv().contains(this.REF_FTHR);
+        this.hasHly = this.inv.getInv().contains(this.REF_HLY);
+        this.hasShs = this.inv.getInv().contains(this.REF_SHS);
     }
 /*----------------------------------------------------------------------------*/
-    private boolean enchant() {
+    private int enchant() {
         
-        if (this.hasBottle && this.hasFireSalts && this.hasMandrake && this.hasSpruce) {
-            this.inv.remove(REFSALTS);
-            this.inv.remove(REFSPRUCE);
-            this.inv.remove(REFBTTL);
-            this.inv.remove(REFMANDRAKE);
-            this.inv.add(REF);
-            return true;
+        if (hasBottle && hasFireSalts && hasMandrake && hasSpruce && inv.getInv().size() == 4) {
+            this.inv.remove(REF_SALTS);
+            this.inv.remove(REF_SPRUCE);
+            this.inv.remove(REF_BTTL);
+            this.inv.remove(REF_MANDRAKE);
+            this.inv.add(REF_ENCH_BTTL);
+            return 1;
         }
-        return false;
+        else if(hasShs && hasFthr && hasHly && inv.getInv().size() == 3) {
+            this.inv.remove(REF_FTHR);
+            this.inv.remove(REF_HLY);
+            this.inv.remove(REF_SHS);
+            this.inv.add(REF_STLTHSHS);
+            return 2;
+        }
+        return 0;
     }
 /*----------------------------------------------------------------------------*/
 }

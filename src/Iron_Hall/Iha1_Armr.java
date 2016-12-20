@@ -5,8 +5,8 @@ import Super.Room;
 
 public class Iha1_Armr extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Iha1_Armr(String NAME) {
-        super(NAME);
+    public Iha1_Armr() {
+        super();
         this.searchable = false;
         this.description = "It's plate armor holding a polearm. It stands\n"
                          + "gazing out the window.";

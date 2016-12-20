@@ -5,7 +5,7 @@ import Super.Furniture;
 public class Obs_Stat extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Obs_Stat(String NAME, String desc, int position) {
-        super(NAME);
+        super();
         this.searchable = false;
         this.description = desc;
         this.addNameKeys(NAME);

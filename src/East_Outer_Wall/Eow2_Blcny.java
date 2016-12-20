@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Eow2_Blcny extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Eow2_Blcny(String NAME) {
-        super(NAME);
+    public Eow2_Blcny() {
+        super();
         this.searchable = false;
         this.description = "The second-floor balcony follows the north wall to\n"
                          + "the west and ends at a door.";

@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Din1_Crpt extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Din1_Crpt(String NAME) {
-        super(NAME);
+    public Din1_Crpt() {
+        super();
         this.searchable = false;
         this.description = "The clean lavender carpet lies under the table and\n"
                          + "chairs, and covers most of the cold stone floor.";

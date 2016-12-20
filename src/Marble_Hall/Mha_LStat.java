@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Mha_LStat extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Mha_LStat(String NAME) {
-        super(NAME);
+    public Mha_LStat() {
+        super();
         this.searchable = true;
         this.description = "The angel poses majestically with an indifferent\n"
                          + "gaze upwards. It holds a silver spear in its hand\n"

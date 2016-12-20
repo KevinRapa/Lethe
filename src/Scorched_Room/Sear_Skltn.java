@@ -6,8 +6,8 @@ import Super.Item;
 public class Sear_Skltn extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Sear_Skltn(String NAME, Item ... items) {
-        super(NAME, items);
+    public Sear_Skltn(Item... items) {
+        super(items);
         this.description = "The scorched body lies against the boarded up door.";
         this.searchDialog = "You crouch down.";
         this.addNameKeys("skeleton");

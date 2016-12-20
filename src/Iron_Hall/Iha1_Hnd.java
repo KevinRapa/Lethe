@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Iha1_Hnd extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Iha1_Hnd(String NAME) {
-        super(NAME);
+    public Iha1_Hnd() {
+        super();
         this.searchable = false;
         this.description = "The gauntlet is gripping a polearm tightly.";
         this.searchDialog = this.description;

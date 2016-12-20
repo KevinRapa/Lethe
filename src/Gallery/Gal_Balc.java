@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Gal_Balc extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal_Balc(String NAME) {
-        super(NAME);
+    public Gal_Balc() {
+        super();
         this.searchable = false;
         this.description = "The balcony wraps around the perimeter of the central\n"
                          + "chamber.";

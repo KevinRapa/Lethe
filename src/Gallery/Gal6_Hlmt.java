@@ -3,13 +3,13 @@ package Gallery;
 import Super.Furniture;
 import Super.Room;
 import java.util.Random;
-import Core.GUI;
+import Main.GUI;
 
 public class Gal6_Hlmt extends Furniture{
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal6_Hlmt(String NAME) {
-        super(NAME);
+    public Gal6_Hlmt() {
+        super();
         this.searchable = false;
         this.searchDialog = "Everything on the helmet looks concretely attached\n"
                           + "to the helmet and not removable.";

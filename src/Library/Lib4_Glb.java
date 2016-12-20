@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Lib4_Glb extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib4_Glb(String NAME) {
-        super(NAME);
+    public Lib4_Glb() {
+        super();
         this.searchable = false;
         this.description = "The globe looks antique, but on a closer look, it\n"
                          + "seems fairly modern. Early 1920s you guess.";

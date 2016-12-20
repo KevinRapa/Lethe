@@ -2,16 +2,15 @@ package Workshop;
 
 import Super.Furniture;
 import Super.Item;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Wrk_CstngTbl extends Furniture {
     private final Inventory REFBRL, REFSCK, REFPLYR, REFCBNT;
     private final Item REFSHT, REFRL, REFBL, REFYL, REFSND, REFRD, REFBD, REFYD, REFPTSH;
     private boolean hasTemplate;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Wrk_CstngTbl(String NAME, Inventory brlInv, Inventory sckInv, Inventory plyrInv, Item glssSht, Item rdLns, 
-                        Item blLns, Item yllwLns, Item snd, Item rdDy, Item blDy, Item yllwDy, Item ptsh, Inventory cbntInv) {
-        super(NAME);
+    public Wrk_CstngTbl(Inventory brlInv, Inventory sckInv, Inventory plyrInv, Item glssSht, Item rdLns, Item blLns, Item yllwLns, Item snd, Item rdDy, Item blDy, Item yllwDy, Item ptsh, Inventory cbntInv) {
+        super();
         this.REFPLYR = plyrInv;
         this.REFBRL = brlInv; this.REFSCK = sckInv; this.REFCBNT = cbntInv; // Furniture refs to restock
         this.REFSHT = glssSht;

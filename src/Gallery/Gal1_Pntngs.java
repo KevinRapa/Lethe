@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Gal1_Pntngs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal1_Pntngs(String NAME) {
-        super(NAME);
+    public Gal1_Pntngs() {
+        super();
         this.searchable = false;
         this.description = "You quickly browse around the paintings in the room.\n"
                          + "You find:\n"

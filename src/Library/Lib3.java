@@ -1,5 +1,6 @@
 package Library;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Lib3 extends Room{
@@ -22,6 +23,8 @@ public class Lib3 extends Room{
         
         if (dir == 's')
             rep = "There's a bookshelf in the way.";
+        
+        AudioPlayer.playEffect(6);
         
         return rep;
     }

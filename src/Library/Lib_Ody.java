@@ -8,7 +8,7 @@ public class Lib_Ody extends Book {
     public Lib_Ody(String name) {
         super(name, 3);
         
-        pg1 = "The Oddysey is an epic poem originally written in Homerian\n" +
+        pg1 = "The Odyssey is an epic poem originally written in Homerian\n" +
               "Greek by the eponymous Homer. It tells the story of Odysseus,\n" +
               "after the Trojan War, and his voyage home to Ithaca.\n" +
               "\n" +

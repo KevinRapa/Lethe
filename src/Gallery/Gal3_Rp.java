@@ -3,15 +3,15 @@ package Gallery;
 import Super.Furniture;
 import Super.Item;
 import Super.Room;
-import Core.Player;
+import Main.Player;
 
 public class Gal3_Rp extends Furniture {
     private boolean cut;
     private final Player REF;
     private final Gal3_Lddr REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Gal3_Rp(String NAME, Player plyr, Furniture lddr) {
-            super(NAME);
+    public Gal3_Rp(Player plyr, Furniture lddr) {
+            super();
             this.searchable = false;
             this.cut = false;
             this.REF = plyr;

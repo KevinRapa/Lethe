@@ -1,14 +1,14 @@
 package Foyer;
 
-import Core.Player;
+import Main.Player;
 import Super.Staircase;
-import Core.GUI;
+import Main.GUI;
 import Super.Room;
 
 public class Foy3_Strcs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Foy3_Strcs(String NAME, Player player, char direction, int height) {
-        super(NAME, player, direction, height);
+    public Foy3_Strcs(Player player, char direction, int height) {
+        super(player, direction, height);
         this.description = "From the second floor switchback, the stairs lead\n"
                          + "to a top floor landing.";
         this.searchDialog = "In searching the stairs, you find it as clean and\n"
@@ -24,14 +24,14 @@ public class Foy3_Strcs extends Staircase {
         
         do {
             ans = GUI.promptOut();
-        }
-        while (! ans.matches("up|down"));
+        } while (! ans.matches("[uU]p|[dD]own"));
         
-        int m = ans.matches("up") ? -this.HT : this.HT; // Z coordinate modifier.
+        int m = ans.matches("[uU]p") ? -this.HT : this.HT; // Z coordinate modifier.
                 
         this.REF.setOccupies(map[Z + m][Y][X]); // moves the player's Z coordinate.
+        playEffect();
         
-        String rep = "You climb the " + this + " " + ans + ".";       
+        String rep = "You climb the stairs " + ans.toLowerCase() + ".";       
 
         GUI.roomOut(REF.getOcc().triggeredEvent(map));
         REF.describeRoom();

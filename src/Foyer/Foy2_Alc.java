@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Foy2_Alc extends Furniture{
     Foy2_Stat ref;
     
-    public Foy2_Alc(String NAME, Furniture foy2Stat) {
-        super(NAME);
+    public Foy2_Alc(Furniture foy2Stat) {
+        super();
         this.ref = (Foy2_Stat)foy2Stat;
         this.searchable = false;
         this.description = "A shallow domed alcove carved into the wall.\n"

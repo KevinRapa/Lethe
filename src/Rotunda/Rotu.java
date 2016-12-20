@@ -35,13 +35,13 @@ public class Rotu extends Room{
         if (this.state.matches("EW")) {
             this.addAdjacent("STUD");
             this.addAdjacent("IHA1"); 
-            this.removeAdjacent("WANT");
+            this.removeAdjacent("FOYW");
             this.removeAdjacent("LOOK");
             this.REF.removeAdjacent("ROTU");
             this.state = "NS";
         }
         else if (this.state.matches("NS")) {
-            this.addAdjacent("WANT");
+            this.addAdjacent("FOYW");
             this.addAdjacent("LOOK"); 
             this.removeAdjacent("STUD");
             this.removeAdjacent("IHA1");

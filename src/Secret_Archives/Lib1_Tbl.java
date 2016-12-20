@@ -6,8 +6,8 @@ import Super.Item;
 public class Lib1_Tbl extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib1_Tbl(String NAME, Item ... items) {
-        super(NAME, items);
+    public Lib1_Tbl(Item... items) {
+        super(items);
         this.description = "The table is ornate, with curved legs, and bears\n"
                          + "a bizarre stone head emitting light from an unknown\n"
                          + "source.";

@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Cou3_Gt extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Cou3_Gt(String NAME) {
-        super(NAME);
+    public Cou3_Gt() {
+        super();
         this.searchable = false;
         this.description = "The monstrous two-story solid oak gate traps you\n"
                          + "inside.";

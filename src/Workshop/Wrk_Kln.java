@@ -2,15 +2,15 @@ package Workshop;
 
 import Super.Furniture;
 import Super.Item;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Wrk_Kln extends Furniture {
     private final Inventory REFPLYR;
     private final Item REFGLSSR, REFGLSSB, REFGLSSY;
     private boolean hasSand, hasDye, hasRedDye, hasBlueDye, hasYllwDye, hasPotash;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Wrk_Kln(String NAME, Inventory plyrInv, Item glssR, Item glssY, Item glssB) {
-        super(NAME);
+    public Wrk_Kln(Inventory plyrInv, Item glssR, Item glssY, Item glssB) {
+        super();
         this.REFPLYR = plyrInv;
         this.REFGLSSR = glssR; this.REFGLSSB = glssB; this.REFGLSSY = glssY;
         

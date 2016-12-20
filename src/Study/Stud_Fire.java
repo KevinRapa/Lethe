@@ -2,17 +2,21 @@ package Study;
 
 import Super.Fireplace;
 import Super.Item;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Stud_Fire extends Fireplace {
      
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Stud_Fire(String NAME, boolean isLit, Item bckt, Inventory inv) {       
-        super(NAME, isLit, bckt, inv);
+    public Stud_Fire(boolean isLit, Item bckt, Inventory inv) {       
+        super(isLit, bckt, inv);
+        this.useDialog = "That's probably not a good idea. It's the only thing lighting this room.";
         this.descLit = "It's a small, fancy marble fireplace. The edges are an\n"
                      + "ornate wood. 'Magnificent!' you think to yourself. Its\n"
                      + "glow tones the room in a warm sepia.";
-        this.descUnlit = "A cold, unlit fireplace.";
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String useEvent(Item item) {
+        return this.useDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Din1_Chrs extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Din1_Chrs(String NAME) {
-        super(NAME);
+    public Din1_Chrs() {
+        super();
         this.searchable = false;
         this.description = "The chairs are boxy with lavender upholstery. The\n"
                          + "hickory wood is meticulously carved. 'They can\n"

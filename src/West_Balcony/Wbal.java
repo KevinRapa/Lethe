@@ -1,5 +1,6 @@
 package West_Balcony;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Wbal extends Room{
@@ -16,12 +17,12 @@ public class Wbal extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
         if (dir == 'a' || dir == 's')
-            rep = "That's a couple hundred foot drop right there.";
-        
-        return rep;
+            return "That's a couple hundred foot drop right there.";
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way.";
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

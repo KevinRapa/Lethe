@@ -1,13 +1,14 @@
 package West_Outer_Wall;
 
-import Core.Player;
+import Main.AudioPlayer;
+import Main.Player;
 import Super.Staircase;
 import Super.Room;
 
 public class Wow2_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wow2_Strs(String NAME, Player player, char direction, int height) {
-        super(NAME, player, direction, height);
+    public Wow2_Strs(Player player, char direction, int height) {
+        super(player, direction, height);
         this.searchDialog = "The ladder hides nothing.";
         this.description = "The ladder rests against the upper balcony, but it's\n"
                          + "unstable from the debris.";
@@ -23,11 +24,16 @@ public class Wow2_Strs extends Staircase {
                 
         this.REF.setOccupies(map[Z + m][Y][X]); // moves the player's Z coordinate.
         
-        String rep = "You climb the " + this + ". " + REF.getOcc().triggeredEvent(map);       
+        playEffect();
+        String rep = "You climb the ladder. " + REF.getOcc().triggeredEvent(map);       
 
         REF.describeRoom();
         
         return rep;
     }
 /*----------------------------------------------------------------------------*/
+    @Override protected void playEffect() {
+        // For overriding. Some stairs aren't wooden.
+        AudioPlayer.playEffect(16);
+    }
 }

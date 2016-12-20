@@ -6,8 +6,8 @@ import Super.Item;
 public class Squa_Wrdrb extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Squa_Wrdrb(String NAME, Item ... items) {
-        super(NAME, items);
+    public Squa_Wrdrb(Item... items) {
+        super(items);
         this.description = "A plain wooden wardrobe.";
         this.searchDialog = "You open the wardrobe.";
         this.interactDialog = "The wardrobe is unlocked. Maybe you should search it?";

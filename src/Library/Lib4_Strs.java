@@ -1,20 +1,17 @@
 package Library;
 
-import Core.Player;
+import Main.Player;
 import Super.Furniture;
 import Super.Room;
-import Super.Item;
-import Core.GUI;
+import Main.GUI;
 
 public class Lib4_Strs extends Furniture {
     private final Player REF;
-    private final Lib_Shoes REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Lib4_Strs(String NAME, Player plyr, Item shs) {
-        super(NAME);
+    public Lib4_Strs(Player plyr) {
+        super();
         this.searchable = false;
         this.REF = plyr;
-        this.REF2 = (Lib_Shoes)shs;
         this.searchDialog = "You begin the search, but as soon as you touch the\n"
                           + "stairs, they flatten down to the floor before popping\n"
                           + "back up again.";
@@ -28,18 +25,17 @@ public class Lib4_Strs extends Furniture {
     @Override public String interact(Room[][][] map, String key) {     
         String rep;
         
-        REF.setOccupies(map[3][2][8]);
-    
-        if (REF.doYouHaveIt("leather shoes") && REF2.isWorn()) {
-            rep = "You climb down the stairs to the first floor.";              
+        if (REF.shoes().matches("leather shoes")) {
+            REF.setOccupies(map[3][2][8]);
+            
+            rep = "You climb down the stairs to the first floor.";  
+            GUI.roomOut(REF.getOcc().triggeredEvent(map));
         }
         else {
             rep = "As your foot touches the top step, the stairs flatten down\n"
                 + "causing you to fall to the first floor. 'Should have worn\n"
                 + "those shoes, dammit.'";
         }
-        GUI.roomOut(REF.getOcc().triggeredEvent(map));
-        
         return rep;
     }
 /*----------------------------------------------------------------------------*/

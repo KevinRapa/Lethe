@@ -6,8 +6,8 @@ import Super.Item;
 public class Eow2_Cbnt extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Eow2_Cbnt(String NAME, Item ... items) {
-        super(NAME, items);
+    public Eow2_Cbnt(Item... items) {
+        super(items);
         this.description = "It's a tall pine utility cabinet.";
         this.searchDialog = "You open the cabinet.";
         this.interactDialog = "The cabinet is unlocked. Maybe you should search it?";

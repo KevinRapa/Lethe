@@ -1,6 +1,6 @@
 package Observatory;
 
-import Core.Inventory;
+import Main.Inventory;
 import Super.Item;
 
 public class Slt_Inv extends Inventory{

@@ -6,8 +6,8 @@ import Super.Item;
 public class Gal5_Cbwbs extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal5_Cbwbs(String NAME, Item ... items) {
-        super(NAME, items);
+    public Gal5_Cbwbs(Item... items) {
+        super(items);
         this.searchable = false;
         this.searchDialog = "You aren't putting your hand near that.";
         this.description = "It's a sticky array of silk harboring many unknown\n"

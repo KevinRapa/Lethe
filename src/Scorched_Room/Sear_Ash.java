@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Sear_Ash extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Sear_Ash(String NAME) {
-        super(NAME);
+    public Sear_Ash() {
+        super();
         this.searchable = false;
         this.description = "The ash is scattered all over the floor.";
         this.searchDialog = "Nothing here but more ash.";

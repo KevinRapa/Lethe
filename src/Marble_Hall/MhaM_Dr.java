@@ -2,7 +2,7 @@ package Marble_Hall;
 
 import Super.Furniture;
 import Super.Room;
-import Core.Inventory;
+import Main.Inventory;
 import Super.Item;
 
 public class MhaM_Dr extends Furniture {
@@ -11,8 +11,8 @@ public class MhaM_Dr extends Furniture {
     private final Room REF;
     private final Inventory REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public MhaM_Dr (String NAME, Room din, Inventory inv) {
-        super(NAME);
+    public MhaM_Dr (Room din, Inventory inv) {
+        super();
         this.REF = din;
         this.REF2 = inv;
         this.searchable = false;

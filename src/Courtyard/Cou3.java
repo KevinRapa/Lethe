@@ -1,6 +1,7 @@
 package Courtyard;
 
-import Core.GUI;
+import Main.AudioPlayer;
+import Main.GUI;
 import Super.Room;
 
 public class Cou3 extends Room{
@@ -23,6 +24,7 @@ public class Cou3 extends Room{
         
         if (! cou4.isThisLocked()) {
             cou4.lock();
+            AudioPlayer.playEffect(7);
             GUI.out("As you walk into the front courtyard, the huge gates\n"
                 + "slowly swing shut behind you.");
         }               

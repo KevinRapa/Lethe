@@ -1,7 +1,7 @@
 package Ransacked_Quarters;
 
 import Super.Room;
-import Core.Inventory;
+import Main.Inventory;
 import Super.Item;
 import Super.Key;
 import Super.Furniture;
@@ -13,8 +13,8 @@ public class Rqua_Pnl extends Furniture {
     private final Inventory REF3;
     private final Rqua_Bd REF4;
     
-    public Rqua_Pnl(String NAME, Key studKey, Room rqua, Inventory inv, Furniture bed) {
-            super(NAME);
+    public Rqua_Pnl(Key studKey, Room rqua, Inventory inv, Furniture bed) {
+            super();
             this.lifted = false;
             this.searchable = false;
             this.REF = rqua;

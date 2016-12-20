@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Bba_Shrln extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Bba_Shrln(String NAME) {
-        super(NAME);
+    public Bba_Shrln() {
+        super();
         this.searchable = false;
         this.description = "It's a long, distant shoreline running in front of\n" +
                            "the small village.";

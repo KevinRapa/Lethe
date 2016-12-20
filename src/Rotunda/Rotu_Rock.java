@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Rotu_Rock extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Rotu_Rock(String NAME) {
-        super(NAME);
+    public Rotu_Rock() {
+        super();
         this.searchable = false;
         this.description = "It looks like marble. But where could one possibly\n"
                          + "accumulate all this marble from?.";

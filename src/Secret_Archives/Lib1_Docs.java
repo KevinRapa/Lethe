@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Lib1_Docs extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib1_Docs(String NAME) {
-        super(NAME);
+    public Lib1_Docs() {
+        super();
         this.searchable = false;
         this.description = "Various papers and scrolls litter the surfaces and\n"
                          + "shelves of the room.";

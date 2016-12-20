@@ -5,8 +5,8 @@ public class Window extends Furniture {
     protected String descOpen, descClosed;
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Window (String NAME) {
-        super(NAME);
+    public Window () {
+        super();
         this.searchable = false;
         this.isOpen = false;
         this.descOpen = "It's an open stone arched window. In the distance,\n" +

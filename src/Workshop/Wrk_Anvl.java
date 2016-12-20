@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Wrk_Anvl extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wrk_Anvl(String NAME) {
-        super(NAME);
+    public Wrk_Anvl() {
+        super();
         this.searchable = false;
         this.description = "It's a quintessential anvil if you've ever seen one.\n"
                          + "It looks heavily used.";

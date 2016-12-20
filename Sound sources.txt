@@ -1,0 +1,185 @@
+nightAmbience
+	https://www.freesound.org/people/spoonbender/sounds/244942/
+	 Wind Through Trees 3b -- spoonbender
+
+dissonantChoir
+	https://www.freesound.org/people/jobro/sounds/46712/
+	Dramatic choir 1.wav -- jobro
+
+dissonantChoir2
+	https://www.freesound.org/people/veedgo/sounds/101880/
+	harmonic_choir.wav -- veedgo
+
+darkChoir
+	https://www.freesound.org/people/BrainClaim/sounds/273804/
+	Dark Choir Singing -- BrainClaim
+
+holyChoir
+	https://www.freesound.org/people/InSintesi/sounds/348352/
+	Supernova Choir 1.wav -- InSintesi
+
+fireplaceStudy
+	https://www.freesound.org/people/dobroide/sounds/120644/
+	20110503_fireplace.00.wav -- dobroide
+
+fireWestBalcony
+	https://www.freesound.org/people/juskiddink/sounds/215658/
+	Fireplace.wav -- juskiddink
+
+HeavyWind
+	https://www.freesound.org/people/RogerBoyX69/sounds/338721/
+	Inside a Tornado.wav -- RogerBoyX69
+
+spookyWindInterior
+	https://www.freesound.org/people/klankbeeld/sounds/212443/
+	howling wind inside 01 131230_01.wav -- klankbeeld
+
+wavesCrashing
+	https://www.freesound.org/people/juskiddink/sounds/78419/
+	Waves crashing on stone jetty..wav -- juskiddink
+
+Keys
+	https://www.freesound.org/people/rwm28/sounds/48189/
+	keys.wav -- rwm28
+
+Page Turn
+	https://www.freesound.org/people/SmartWentCody/sounds/179007/
+	Book Page Turning.wav -- SmartWentCody
+
+Footsteps and Inventory
+	https://www.freesound.org/people/LittleRobotSoundFactory/
+	LittleRobotSoundFactory
+
+AfricanDrumming
+	https://www.freesound.org/people/JarredGibb/sounds/263889/
+	Rattle Drum -- JarredGibb
+
+Koto
+	https://www.freesound.org/people/ERH/sounds/48929/
+	abs o6 87 koto.wav -- ERH
+
+Static
+	https://www.freesound.org/people/dotY21/sounds/335206/
+	Static Crush -- dotY21
+
+Cave Drips
+	https://www.freesound.org/people/everythingsounds/sounds/199515/
+	Cave Drips -- everythingsounds
+
+Metal swinging
+	https://www.freesound.org/people/eguaus/sounds/322588/
+	Columpio -- equaus
+
+Iron hall wind nois
+	https://www.freesound.org/people/omnisounddesign/sounds/335703/
+	Interior Wind Noise_Zoom H6.wav -- omnisounddesign
+
+West wing fire
+	https://www.freesound.org/people/silencyo/sounds/81801/
+	silencyo -- Silencyo_CC_Fire in Fireplace_Close Up_Reverberant2.aif
+
+Deep whirring
+	https://www.freesound.org/people/AniCator/sounds/100482/
+	sci-fi - ambient 03.wav -- AniCator
+
+West wing ambience
+	https://www.freesound.org/people/Karma-Ron/sounds/182047/
+	karma-ron - fx background drone spaceship (requested).wav -- Karma-Ron	
+
+Vestibule door locking
+	https://www.freesound.org/people/mhtaylor67/sounds/126041/
+	Gate latch -- mhtaylor67
+
+Locked door
+	https://www.freesound.org/people/Benagain/sounds/321087/
+	Door Locked -- Benagain
+
+Wall Thump
+	https://www.freesound.org/people/Reitanna/sounds/332670/
+	low thump.wav -- Reitanna
+
+Gate slam
+	https://www.freesound.org/people/Hybrid_V/sounds/320737/
+	Creepy Dungeon Door Slam -- Hybrid_V
+
+creepy organ
+	https://www.freesound.org/people/Setuniman/sounds/155710/
+	Setuniman -- creeping background 0M_14Tm2
+
+Harp piece
+	https://www.freesound.org/people/cormi/sounds/169035/
+	HArp4_D.wav -- cormi
+
+Minimual piano
+	https://www.freesound.org/people/ERH/sounds/40109/
+	22 o1 117 piano 5.wav -- ERH
+
+Haunting piano chord
+	https://www.freesound.org/people/EKVelika/sounds/168863/
+	Piano C Minor Major haunting chord -- EKVelika
+
+Aeolian Wind harp
+	https://www.freesound.org/people/felix.blume/sounds/147370/
+	Aeolian wind harp sounding in Elqui Valley of Chile. (Contact Microphone recording) -- felix.blume
+
+door closing
+	https://www.freesound.org/people/Checkseven/sounds/245823/
+	Door Close -- Checkseven
+	
+
+basic Click
+	https://www.freesound.org/people/KorgMS2000B/sounds/54405/
+	KorgMS2000B -- Button Click.wav
+
+button press
+	https://www.freesound.org/people/GreekIrish/sounds/254713/
+	Projector Button Push.wav -- GreekIrish
+
+lever pull
+	https://www.freesound.org/people/BMacZero/sounds/94120/
+	Mechanical1.wav -- BMacZero
+
+unlocking door
+	https://www.freesound.org/people/qubodup/sounds/160215/
+	Unlocking Door Lock -- qubodup
+
+furnace
+	https://www.freesound.org/people/iankath/sounds/173991/
+	Furnace.WAV -- iankath
+
+black smith
+	https://www.freesound.org/people/thefilmbakery/sounds/137836/
+ 	Blacksmith Workshop.WAV -- thefilmbakery
+
+wooden stairs
+	https://www.freesound.org/people/thearxx08/sounds/265306/
+	climbing the ladder.mp3 -- thearxx08
+
+stone steps
+	https://www.freesound.org/people/Erdie/sounds/41579/
+	steps-on-stone01.ogg -- Erdie
+
+ladder
+	https://www.freesound.org/people/MalMan35/sounds/344196/
+	ladder.wav -- MalMan35
+
+piano melody
+	https://www.freesound.org/people/waveplay/sounds/219288/
+	Temperament -- waveplay
+
+TYPE CREEPY IN AUDACITY
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+

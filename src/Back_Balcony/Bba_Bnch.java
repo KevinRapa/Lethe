@@ -5,8 +5,8 @@ import Super.Item;
 
 public class Bba_Bnch extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Bba_Bnch(String NAME, Item ... items) {
-        super(NAME, items);
+    public Bba_Bnch(Item... items) {
+        super(items);
         this.description = "It's a stone bench with carvings of birds\n"
                          + "around the edge.";
         this.searchDialog = "You look on the bench.";

@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Foy1_Strs extends Furniture{
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-        public Foy1_Strs(String NAME) {
-        super(NAME);
+        public Foy1_Strs() {
+        super();
         this.searchable = false;
         this.description = "A stone winding staircase hugs the curved wall\n"
                          + "on the far north side of the room.";

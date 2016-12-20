@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Cou_Stps extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Cou_Stps(String NAME) {
-        super(NAME);
+    public Cou_Stps() {
+        super();
         this.searchable = false;
         this.description = "The long set of crumbling steps climb to a front\n"
                          + "balcony before the castle's great front doors.";

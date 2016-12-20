@@ -6,8 +6,8 @@ import Super.Room;
 public class Rotu_Plnts extends Furniture{
     private final Rotu_Fntn REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Rotu_Plnts(String NAME, Furniture fntn) {
-        super(NAME);
+    public Rotu_Plnts(Furniture fntn) {
+        super();
         this.REF = (Rotu_Fntn)fntn;
         this.searchable = false;
         this.description = "The plants don't seem to be in good shape. They\n"

@@ -4,8 +4,8 @@ import Super.Furniture;
         
 public class Wrk_Frg extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wrk_Frg(String NAME) {
-        super(NAME);
+    public Wrk_Frg() {
+        super();
         this.searchable = false;
         this.description = "The brick forge's heat envelops the room. Though\n"
                          + "there's no fire in it, the smouldering ashes have only begun\n"

@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Par_Lft extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Par_Lft(String NAME) {
-        super(NAME);
+    public Par_Lft() {
+        super();
         this.searchable = false;
         this.description = "The loft partially extends over the north wall of\n"
                          + "the first-floor parlor. In the middle, the loft bends a little\n"

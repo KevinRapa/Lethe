@@ -12,8 +12,8 @@ public class Look_Vlv extends Furniture{
     private final Rotu_Whl REF3;
     private String state;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Look_Vlv(String NAME, Furniture fntn, Room rotu, Furniture whl) {
-        super(NAME);
+    public Look_Vlv(Furniture fntn, Room rotu, Furniture whl) {
+        super();
         this.searchable = false;
         this.searchDialog = "There's nothing here. Honestly, you never expected\n"
                           + "to find anything.";

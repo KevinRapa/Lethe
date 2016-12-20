@@ -4,8 +4,8 @@ import Super.Window;
 
 public class MhaS_Wndw extends Window {
 /* CONSTRUCTOR ---------------------------------------------------------------*/         
-    public MhaS_Wndw(String NAME) {
-        super(NAME);
+    public MhaS_Wndw() {
+        super();
         this.isOpen = true;
         this.descClosed = "The window is tall and arched at the top. Through its\n"
                         + "many glass panes, you can see the south end of the\n"

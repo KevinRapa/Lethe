@@ -6,8 +6,8 @@ import Super.Room;
 
 public class Look_Rlng extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Look_Rlng(String NAME, Item ... items) {
-        super(NAME, items);
+    public Look_Rlng(Item... items) {
+        super(items);
         this.description = "A wide, sturdy granite railing.";
         this.searchDialog = "You search around the railing.";
         this.interactDialog = "You grab the railing, but there's no fear of falling over,\n"

@@ -1,5 +1,6 @@
 package West_Antechamber;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Want extends Room{
@@ -17,8 +18,11 @@ public class Want extends Room{
 /*----------------------------------------------------------------------------*/        
     @Override public String getBarrier(char dir) {
         String rep = "There is a wall in the way.";
+        
         if (dir == 'a')
             rep = "Oh no! The rotunda is still shifted!";
+        
+        AudioPlayer.playEffect(6);
         
         return rep;
     }

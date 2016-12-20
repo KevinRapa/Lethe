@@ -7,8 +7,8 @@ import Super.Room;
 public class Drar_Chss extends Furniture {
     private final Drar_Ghst REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Drar_Chss(String NAME, Furniture ghst, Item ... items) {
-        super(NAME);
+    public Drar_Chss(Furniture ghst, Item... items) {
+        super();
         this.REF = (Drar_Ghst)ghst;
         this.description = "The fancy chess table bears a polished ceramic\n"
                          + "surface and many detailed pieces. You wish you\n"

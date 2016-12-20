@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Bba_Rlng extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Bba_Rlng(String NAME) {
-        super(NAME);
+    public Bba_Rlng() {
+        super();
         this.searchable = false;
         this.description = "A thick granite railing.";
         this.searchDialog = "This railing hides nothing.";

@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Din1_Chndlr extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Din1_Chndlr(String NAME) {
-        super(NAME);
+    public Din1_Chndlr() {
+        super();
         this.searchable = false;
         this.description = "The chandelier shimmers in the moonlight. Its candles\n" +
                            "are unlit, which at this point seems odd to you. Still,\n"

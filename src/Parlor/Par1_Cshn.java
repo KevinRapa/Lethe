@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Par1_Cshn extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Par1_Cshn(String NAME) {
-        super(NAME);
+    public Par1_Cshn() {
+        super();
         this.searchable = false;
         this.description = "It's a lavender tassled cushion for sitting on.";
         this.searchDialog = "You lift the cushion, but find just rug.";

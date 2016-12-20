@@ -7,8 +7,8 @@ public class Lib1_Dsk extends Furniture {
     private final Lib1_Art REF;
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib1_Dsk(String NAME, Furniture art, Item ... items) {
-        super(NAME, items);
+    public Lib1_Dsk(Furniture art, Item... items) {
+        super(items);
         this.REF = (Lib1_Art)art;
         this.searchDialog = "You fan through the boring papers on the surface.\n"
                           + "Here's what you find interesting: ";

@@ -2,7 +2,7 @@ package West_Outer_Wall;
 
 import Super.Item;
 import Super.Room;
-import Core.Inventory;
+import Main.Inventory;
 import Super.Furniture;
 
 public class Wow2_Blcny extends Furniture {
@@ -11,8 +11,8 @@ public class Wow2_Blcny extends Furniture {
     private final Inventory REF3;
     private final Item REF4;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wow2_Blcny(String NAME, Furniture wow2Strs, Room wow2, Inventory inv, Item lddr) {
-        super(NAME);
+    public Wow2_Blcny(Furniture wow2Strs, Room wow2, Inventory inv, Item lddr) {
+        super();
         this.searchable = false;
         this.REF = wow2Strs;
         this.REF2 = (Wow2)wow2;

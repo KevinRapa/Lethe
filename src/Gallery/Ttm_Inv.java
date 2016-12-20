@@ -1,8 +1,8 @@
 package Gallery;
 
-import Core.Inventory;
+import Main.Inventory;
 import Super.Item;
-import Core.GUI;
+import Main.GUI;
 
 public class Ttm_Inv extends Inventory{
     private final Gal3_Ttm REF;    

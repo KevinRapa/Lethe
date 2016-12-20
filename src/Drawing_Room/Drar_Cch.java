@@ -6,8 +6,8 @@ import Super.Room;
 public class Drar_Cch extends Furniture {
     private final Drar_Ghst REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Drar_Cch(String NAME, Furniture ghst) {
-        super(NAME);
+    public Drar_Cch(Furniture ghst) {
+        super();
         this.REF = (Drar_Ghst)ghst;
         this.searchable = false;
         this.description = "The victorian-era couch is a bold green color. This\n"

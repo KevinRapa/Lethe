@@ -1,8 +1,8 @@
 package Gallery;
 
-import Core.Inventory;
+import Main.Inventory;
 import Super.Item;
-import Core.GUI;
+import Main.GUI;
 
 public class Drgn_Inv extends Inventory{
     private final Gal1_Drgn REF;    

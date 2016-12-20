@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Mha_Chr extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Mha_Chr(String NAME) {
-        super(NAME);
+    public Mha_Chr() {
+        super();
         this.searchable = false;
         this.description = "The chair's frame is glorious rosewood. What you\n"
                          + "wouldn't give to chop down a towering Dalbergia.\n"

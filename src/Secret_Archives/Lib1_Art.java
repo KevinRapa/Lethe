@@ -2,8 +2,8 @@ package Secret_Archives;
 
 import Super.Furniture;
 import Super.Item;
-import Core.GUI;
-import Core.Inventory;
+import Main.GUI;
+import Main.Inventory;
 
 public class Lib1_Art extends Furniture {
     private final Inventory REF;
@@ -11,8 +11,8 @@ public class Lib1_Art extends Furniture {
     private String mode;
             
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib1_Art(String NAME, Inventory inv, Item ... items) {
-        super(NAME);
+    public Lib1_Art(Inventory inv, Item... items) {
+        super();
         this.searchDialog = "You squint and peek inside the head.";
         this.REF = inv;
         this.beam = 'b';

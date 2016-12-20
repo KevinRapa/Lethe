@@ -1,5 +1,6 @@
 package West_Outer_Wall;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Wow2 extends Room{
@@ -15,13 +16,13 @@ public class Wow2 extends Room{
                            "out the front of the castle.";
     }  
 /*----------------------------------------------------------------------------*/        
-    @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
+    @Override public String getBarrier(char dir) { 
         if (dir == 'd')
-            rep = "The door here is battered and boarded up.";
-        
-        return rep;
+            return "The door here is battered and boarded up.";
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way.";
+        }
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

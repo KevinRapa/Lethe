@@ -1,17 +1,18 @@
 package Courtyard;
 
 import Super.Furniture;
-import Core.Inventory;
+import Main.Inventory;
 import Super.Item;
 /**
  * @author Mantis Toboggan
  */
 public class Cou5_Sprc extends Furniture {
     private final Inventory REF;
-    private final Item REF2;
+    private final Item REF2, REF3;
+    private boolean drilled;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
-    public Cou5_Sprc(String NAME, Inventory inv, Item extrct) {
-        super(NAME);
+    public Cou5_Sprc(Inventory inv, Item vial, Item extrct) {
+        super();
         this.searchable = false;
         this.searchDialog = "There's nothing hiding in the branches, thankfully.";
         this.useDialog = "Drilling a small hole into the trunk allows a small\n"
@@ -21,16 +22,45 @@ public class Cou5_Sprc extends Furniture {
                          + "in the courtyard.";
         this.REF = inv;
         this.REF2 = extrct;
+        this.REF3 = vial;
+        this.drilled = false;
         
         this.addNameKeys("tree", "spruce", "spruce tree");
-        this.addUseKeys("hand drill");
+        this.addUseKeys("hand drill", "empty vial");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
+        String rep;
         
-        REF.add(REF2);
+        if (item.toString().matches("hand drill")) {
+            if (drilled) {
+                rep = "You have already drilled a small hole.";
+            }
+            else {
+                drilled = true;
+                rep = this.useDialog;
+                
+                if (REF.getInv().contains(REF3)) {
+                    rep += " You collect some of the sap in the small vial you are carrying.";
+                    REF.remove(REF3);
+                    REF.add(REF2);
+                }
+                else
+                    rep += " You have nothing to collect the sap in, though.";
+            }
+        }
         
-        return this.useDialog;
+        else {
+            if (drilled) {
+                rep = " You collect some of the sap in the small vial you are carrying.";
+                REF.remove(REF3);
+                REF.add(REF2);
+            }
+            else
+                rep = "You have nothing to collect in the vial";
+        }
+        
+        return rep;
     }
 /*----------------------------------------------------------------------------*/
 }

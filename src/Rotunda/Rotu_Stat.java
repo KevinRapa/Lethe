@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Rotu_Stat extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Rotu_Stat(String NAME) {
-        super(NAME);
+    public Rotu_Stat() {
+        super();
         this.searchable = false;
         this.description = "The cloaked statue glooms over you with an angry\n"
                          + "stare. 'What a magnificent beard...' you think to\n"

@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Cou3_Ivy extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Cou3_Ivy(String NAME) {
-        super(NAME);
+    public Cou3_Ivy() {
+        super();
         this.searchable = false;
         this.description = "European ivy grows rampantly over everything.";
         this.searchDialog = "It's just plain old Hedera helix.";

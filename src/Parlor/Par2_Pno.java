@@ -7,8 +7,8 @@ import Super.Room;
 public class Par2_Pno extends Furniture {
     private final Par1_Orb REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
-    public Par2_Pno(String NAME, Furniture orb, Item ... items) {
-            super(NAME, items);
+    public Par2_Pno(Furniture orb, Item... items) {
+            super(items);
             this.addNameKeys("piano", "grand piano");
             this.description = "The black grand piano sits solemnly on the loft\n"
                              + "extension. You're surprised anybody here has time\n"

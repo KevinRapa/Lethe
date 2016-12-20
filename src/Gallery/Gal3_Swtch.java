@@ -4,8 +4,8 @@ import Super.Furniture;
         
 public class Gal3_Swtch extends Furniture{           
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_Swtch(String NAME) {
-        super(NAME);
+    public Gal3_Swtch() {
+        super();
         this.searchable = false;
         this.description = "It's a small metal switch.";
         this.searchDialog = "Nope, this switch isn't hiding anything.";

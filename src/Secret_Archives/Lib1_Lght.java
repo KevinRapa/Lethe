@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Lib1_Lght extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib1_Lght(String NAME) {
-        super(NAME);
+    public Lib1_Lght() {
+        super();
         this.searchable = false;
         this.description = "The beam of light is emitting out the top of the\n"
                          + "artifact.";

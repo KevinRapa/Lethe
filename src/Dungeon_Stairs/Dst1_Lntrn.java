@@ -4,8 +4,8 @@ import Super.Furniture;
         
 public class Dst1_Lntrn extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Dst1_Lntrn(String NAME) {
-        super(NAME);
+    public Dst1_Lntrn() {
+        super();
         this.searchable = false;
         this.description = "The old oil lantern is still lit and gives off a dim\n"
                          + "luminescence.";

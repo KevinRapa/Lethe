@@ -1,15 +1,16 @@
 package Gallery;
 
-import Core.Player;
+import Main.AudioPlayer;
+import Main.Player;
 import Super.Staircase;
-import Core.GUI;
+import Main.GUI;
 import Super.Room;
 
 public class Gal3_Lddr extends Staircase {
     private boolean lowered;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_Lddr(String NAME, Player player, char direction, int height) {
-        super(NAME, player, direction, height);
+    public Gal3_Lddr(Player player, char direction, int height) {
+        super(player, direction, height);
         this.searchDialog = "The ladder hides nothing.";
         this.description = "The ladder is suspended above the ground in the\n"
                          + "hatch, too high to grab hold of.";
@@ -41,9 +42,10 @@ public class Gal3_Lddr extends Staircase {
             int Z = c[0]; int Y = c[1]; int X = c[2]; //Individual ZYX coordinates.
             int m = this.DIR == 'u' ? -this.HT : this.HT; // Z coordinate modifier.
                 
+            playEffect();
             this.REF.setOccupies(map[Z + m][Y][X]); // moves the player's Z coordinate.
         
-            rep = "You climb the " + this + ".";       
+            rep = "You climb the ladder.";       
            
             GUI.roomOut(REF.getOcc().triggeredEvent(map));
         }
@@ -53,4 +55,8 @@ public class Gal3_Lddr extends Staircase {
         return rep;
     }
 /*----------------------------------------------------------------------------*/
+    @Override protected void playEffect() {
+        // For overriding. Some stairs aren't wooden.
+        AudioPlayer.playEffect(16);
+    }
 }

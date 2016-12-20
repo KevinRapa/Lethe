@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Mha_Stats extends Furniture {
     private final Furniture REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Mha_Stats(String NAME, Furniture Rstat) {
-        super(NAME);
+    public Mha_Stats(Furniture Rstat) {
+        super();
         this.REF = Rstat;
         this.searchable = false;
         this.searchDialog = "You aren't sure which one to search. Specify\n"

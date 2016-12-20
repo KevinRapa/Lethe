@@ -1,14 +1,14 @@
 package Super;
 
-import Core.Inventory;
+import Main.Inventory;
 
 public class Trch extends Furniture {
     protected boolean hasTorch;
     protected final Item REF;
     protected final Inventory REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Trch(String NAME, Item trch, Inventory inv) {
-        super(NAME);
+    public Trch(Item trch, Inventory inv) {
+        super();
         this.REF = trch;
         this.REF2 = inv;
         this.searchable = false;

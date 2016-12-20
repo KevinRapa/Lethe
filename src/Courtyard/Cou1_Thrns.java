@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Cou1_Thrns extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Cou1_Thrns(String NAME) {
-        super(NAME);
+    public Cou1_Thrns() {
+        super();
         this.searchable = false;
         this.description = "It's matted up multiflora rose, an invasive. This\n"
                          + "stuff is the bane of your career as a lumberjack.";

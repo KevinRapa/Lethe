@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Mha_Plnt extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Mha_Plnt(String NAME) {
-        super(NAME);
+    public Mha_Plnt() {
+        super();
         this.searchable = false;
         this.interactDialog = "There's no water in this room.";
         this.description = "The potted plant is in good shape. It sits in a\n"

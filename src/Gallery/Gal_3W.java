@@ -1,5 +1,6 @@
 package Gallery;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Gal_3W extends Room{
@@ -18,12 +19,12 @@ public class Gal_3W extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
         if (dir == 'd')
-            rep = "There's just open space that way. Wouldn't want to fall.";
-        
-        return rep;
+            return "There's just open space that way. Wouldn't want to fall.";
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way.";
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

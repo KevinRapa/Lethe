@@ -1,8 +1,8 @@
 package Observatory;
 
 import Super.Furniture;
-import Core.Player;
-import Core.GUI;
+import Main.Player;
+import Main.GUI;
 import Super.Room;
 import java.util.Scanner;
 
@@ -11,10 +11,10 @@ public class Obs_Stats extends Furniture {
     private final Player REF;
     private final Obs3_Chndlr REF2;
     private boolean solved = false;
-    private boolean locked = false;
+    private boolean locked = true;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Obs_Stats(String NAME, Player plyr, Furniture chandlr, Furniture ... stats) {
-        super(NAME);
+    public Obs_Stats(Player plyr, Furniture chandlr, Furniture... stats) {
+        super();
         this.searchable = false;
         this.description = "An array of 9 statues arranged in a circle. In the\n"
                          + "center stands an additional larger statue looking\n"
@@ -107,15 +107,15 @@ public class Obs_Stats extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private String getArray() {
-        String a = this.STATS[0].toString();
-        String b = this.STATS[1].toString();
-        String c = this.STATS[2].toString();
-        String d = this.STATS[3].toString();
-        String e = this.STATS[4].toString();
-        String f = this.STATS[5].toString();
-        String g = this.STATS[6].toString();
-        String h = this.STATS[7].toString();
-        String i = this.STATS[8].toString();
+        String a = this.STATS[0].getValidNames().get(0);
+        String b = this.STATS[1].getValidNames().get(0);
+        String c = this.STATS[2].getValidNames().get(0);
+        String d = this.STATS[3].getValidNames().get(0);
+        String e = this.STATS[4].getValidNames().get(0);
+        String f = this.STATS[5].getValidNames().get(0);
+        String g = this.STATS[6].getValidNames().get(0);
+        String h = this.STATS[7].getValidNames().get(0);
+        String i = this.STATS[8].getValidNames().get(0);
         
         return "\t\t\t\t\t     {"+a+"}¯¯\\" +
                "\t\t        {"+h+"}       {"+b+"}\n" +
@@ -194,7 +194,7 @@ public class Obs_Stats extends Furniture {
         String[] correctSequence = {"5", "0", "1", "4", "7", "3", "6", "2"};
         
         for (int index = 0; index < 8; index++) {
-            if (! i[index].toString().matches(correctSequence[index]))
+            if (! i[index].getValidNames().get(0).matches(correctSequence[index]))
                 isSolved = false;
         }
         

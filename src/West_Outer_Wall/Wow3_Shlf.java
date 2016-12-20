@@ -6,8 +6,8 @@ import Super.Item;
 public class Wow3_Shlf extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wow3_Shlf(String NAME, Item ... items) {
-        super(NAME, items);
+    public Wow3_Shlf(Item... items) {
+        super(items);
         this.description = "A big hefty wooden shelving unit. Now that's what\n"
                          + "you call a shelf!";
         this.searchDialog = "You look among the shelves.";

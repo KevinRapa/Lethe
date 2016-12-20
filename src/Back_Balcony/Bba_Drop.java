@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Bba_Drop extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Bba_Drop(String NAME) {
-        super(NAME);
+    public Bba_Drop() {
+        super();
         this.searchable = false;
         this.description = "It must be at least a couple hundred feet to\n"
                          + "the bottom.";

@@ -1,6 +1,6 @@
 package Super;
 
-import Core.Inventory;
+import Main.Inventory;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.Serializable;
@@ -10,7 +10,6 @@ import java.io.Serializable;
  * Furniture is ANY object that can be interacted with from the main prompt.
  */
 public class Furniture implements Serializable {
-    protected final String NAME; // The item's type. GENERIC (e.g. table, chair)
     protected Inventory inv; // The contents of the furniture.
     protected String description, // String printed when inspected.
                      searchDialog, // String printed when searched.
@@ -24,11 +23,9 @@ public class Furniture implements Serializable {
     /**
      * Constructor for furniture.
      * Many attributes are overwritten in furniture sub-classes.
-     * @param NAME The name of this piece.
      * @param items A list of items that this furniture contains.
      */
-    public Furniture (String NAME, Item ... items) {
-        this.NAME = NAME;
+    public Furniture (Item... items) {
         this.inv = new Inventory(items);
         this.searchable = true;
         this.NAMEKEYS = new ArrayList<>(); // Valid names of this furniture.
@@ -56,14 +53,7 @@ public class Furniture implements Serializable {
     }
 //******************************************************************************
 // <editor-fold desc="GETTERS">
-//****************************************************************************** 
-    /**
-     * @return The name of this piece.
-     */
-    @Override public String toString() {
-        return this.NAME; 
-    }
-    // ========================================================================     
+//******************************************************************************   
     /**
      * This method is called when furniture is inspected.
      * @return The description of this piece.

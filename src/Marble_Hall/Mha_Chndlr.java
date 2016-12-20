@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Mha_Chndlr extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Mha_Chndlr(String NAME) {
-        super(NAME);
+    public Mha_Chndlr() {
+        super();
         this.searchable = false;
         this.description = "The silver chandelier hangs many feet above you. Its\n" +
                            "intricacy gives it a classical feel, unlike the black\n" +

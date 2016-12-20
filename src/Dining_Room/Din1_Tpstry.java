@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Din1_Tpstry extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Din1_Tpstry(String NAME) {
-        super(NAME);
+    public Din1_Tpstry() {
+        super();
         this.searchable = false;
         this.description = "A large, renaissance-era tapestry. A well-dressed male\n" +
                            "and female sit together on a log in a grove. Between\n" +

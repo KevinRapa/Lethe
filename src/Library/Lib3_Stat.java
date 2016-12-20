@@ -6,8 +6,8 @@ import Super.Item;
 public class Lib3_Stat extends Furniture {
     private boolean leftEye, rightEye;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Lib3_Stat(String NAME, Item ... items) {
-        super(NAME, items);
+    public Lib3_Stat(Item... items) {
+        super(items);
         this.searchable = false;
         this.leftEye = false;
         this.rightEye = false;

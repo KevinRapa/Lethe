@@ -3,7 +3,7 @@ package Gallery;
 import Super.Furniture;
 import Super.Item;
 import Super.Room;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Gal_1E_Stat extends Furniture {
     private int level;
@@ -12,8 +12,8 @@ public class Gal_1E_Stat extends Furniture {
     private final Gal_2E_Stat REF3;
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal_1E_Stat(String NAME, Room gal4, Inventory inv, Furniture stat) {
-        super(NAME);
+    public Gal_1E_Stat(Room gal4, Inventory inv, Furniture stat) {
+        super();
         this.REF = gal4;
         this.REF2 = inv;
         this.REF3 = (Gal_2E_Stat)stat;

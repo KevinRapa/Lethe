@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Vest_Chr extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Vest_Chr(String NAME) {
-        super(NAME);
+    public Vest_Chr() {
+        super();
         this.searchable = false;
         this.description = "An ornate red velvet chair. Being a woodworker by\n" +
                            "trade, you have never been keen on upholstery.";

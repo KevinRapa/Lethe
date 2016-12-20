@@ -1,22 +1,22 @@
 package Gallery;
 
 import Super.Button;
-import Core.Player;
+import Main.Player;
 import Super.Room;
 import java.util.Random;
-import Core.GUI;
+import Main.GUI;
 
 public class Gal6_Bttn extends Button {
     private final Player REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal6_Bttn(String NAME, Player plyr) {
-        super(NAME);
+    public Gal6_Bttn(Player plyr) {
+        super();
         this.description = "It's a bright red button! Very tempting...";
         this.interactDialog = "That was a smart decision.";
         this.REF = plyr;
     }
 /*----------------------------------------------------------------------------*/    
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String event(Room[][][] map, String key) {
         String rep = this.interactDialog;
         String choice;
         int X, Y, Z;

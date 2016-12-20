@@ -1,9 +1,9 @@
 package Gallery;
 
 import Super.Item;
-import Core.GUI;
+import Main.GUI;
 import Super.Furniture;
-import Core.Inventory;
+import Main.Inventory;
 import Super.Room;
 
 public class Gal3_Ttm extends Furniture{
@@ -15,8 +15,8 @@ public class Gal3_Ttm extends Furniture{
     private boolean headOne, headTwo, headThree, headFour;
             
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_Ttm(String NAME, Furniture stat, Inventory inv, Item ... items) {
-        super(NAME);
+    public Gal3_Ttm(Furniture stat, Inventory inv, Item... items) {
+        super();
         this.searchDialog = "The only place to search is the totem's open\n"
                           + "third mouth. ";
         this.interactDialog = "You back away from the totem";

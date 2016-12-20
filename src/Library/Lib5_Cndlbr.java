@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Lib5_Cndlbr extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib5_Cndlbr(String NAME) {
-        super(NAME);
+    public Lib5_Cndlbr() {
+        super();
         this.searchable = false;
         this.description = "The intricate iron candelabra sits in the corner\n"
                          + "holding 5 candles.";

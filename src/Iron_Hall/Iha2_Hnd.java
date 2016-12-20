@@ -8,8 +8,8 @@ public class Iha2_Hnd extends Furniture{
     private final Iha2_Armr REF;
     private char state;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Iha2_Hnd(String NAME, Furniture wow2Armr, Item ... items) {
-        super(NAME, items);
+    public Iha2_Hnd(Furniture wow2Armr, Item... items) {
+        super(items);
         this.searchable = false;
         this.REF = (Iha2_Armr) wow2Armr;
         this.state = 'c';

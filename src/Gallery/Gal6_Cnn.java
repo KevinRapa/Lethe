@@ -1,9 +1,8 @@
 package Gallery;
 
 import Super.Item;
-import Core.GUI;
 import Super.Furniture;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Gal6_Cnn extends Furniture {
     private boolean isOn;
@@ -13,8 +12,8 @@ public class Gal6_Cnn extends Furniture {
     private String mode;
             
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal6_Cnn(String NAME, Furniture stat, Inventory inv, Item ... items) {
-        super(NAME);
+    public Gal6_Cnn(Furniture stat, Inventory inv, Item... items) {
+        super();
         this.searchDialog = "You search around the futuristic cannon.";
         this.interactDialog = "You have no idea how this thing works.";
         this.description = "This thing looks complicated. It's black, and... it\n"

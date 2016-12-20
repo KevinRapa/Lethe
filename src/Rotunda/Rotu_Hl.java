@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Rotu_Hl extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Rotu_Hl(String NAME) {
-        super(NAME);
+    public Rotu_Hl() {
+        super();
         this.searchable = false;
         this.description = "It's a hole carved in the ceiling, about a meter\n"
                          + "wide. It looks to lead outside to the roof, although\n"

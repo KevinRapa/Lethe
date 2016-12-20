@@ -6,8 +6,8 @@ import Super.Room;
 public class Rotu_Whl extends Furniture{
     private final Rotu REF;
     /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Rotu_Whl(String NAME, Room rotu) {
-        super(NAME);
+    public Rotu_Whl(Room rotu) {
+        super();
         this.searchable = false;
         this.searchDialog = "Nope, nothing. But there are interesting seams\n"
                           + "above and below the wheel.";

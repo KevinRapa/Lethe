@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Want_Pllrs extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Want_Pllrs(String NAME) {
-        super(NAME);
+    public Want_Pllrs() {
+        super();
         this.searchable = false;
         this.description = "They're grooved, sandstone pillars. They seem\n"
                          + "to exist mostly for decoration.";

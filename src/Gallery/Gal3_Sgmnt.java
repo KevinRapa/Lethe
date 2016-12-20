@@ -7,8 +7,8 @@ public class Gal3_Sgmnt extends Furniture{
     private final Furniture REF;
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_Sgmnt(String NAME, Furniture gal3Ttm) {
-        super(NAME);
+    public Gal3_Sgmnt(Furniture gal3Ttm) {
+        super();
         this.REF = gal3Ttm;
         this.searchable = false;
         this.searchDialog = "The segments aren't hiding any items. But you\n"

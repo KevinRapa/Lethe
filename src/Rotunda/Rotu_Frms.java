@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Rotu_Frms extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Rotu_Frms(String NAME) {
-        super(NAME);
+    public Rotu_Frms() {
+        super();
         this.searchable = false;
         this.description = "They are arched, door-shaped, and seem as if they\n"
                          + "form some kind of magical passage.";

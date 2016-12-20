@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Lib_Blcny extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib_Blcny(String NAME) {
-        super(NAME);
+    public Lib_Blcny() {
+        super();
         this.searchable = false;
         this.description = "The second-floor balcony follows the east wall and\n"
                          + "around to the south wall. On the balcony against the\n"

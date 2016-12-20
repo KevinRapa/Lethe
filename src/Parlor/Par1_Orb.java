@@ -1,14 +1,14 @@
 package Parlor;
 
 import Super.Furniture;
-import Core.GUI;
+import Main.GUI;
 import Super.Room;
 
 public class Par1_Orb extends Furniture {
     private boolean firstTime, woken;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Par1_Orb(String NAME) {
-        super(NAME);
+    public Par1_Orb() {
+        super();
         this.searchable = false;
         this.firstTime = true;
         this.woken = false;

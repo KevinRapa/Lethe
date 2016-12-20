@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Iha2_Bwl extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
-    public Iha2_Bwl(String NAME) {
-            super(NAME);
+    public Iha2_Bwl() {
+            super();
             this.searchable = false;
             this.addUseKeys("polearm");
             this.addNameKeys("bowl", "steel bowl", "hanging bowl", "burning bowl");

@@ -2,13 +2,13 @@ package Vestibule;
 
 import Super.Fireplace;
 import Super.Item;
-import Core.Inventory;
+import Main.Inventory;
 
 public class Vest_Frplc extends Fireplace {
      
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Vest_Frplc(String NAME, boolean isLit, Item bckt, Inventory inv) {       
-        super(NAME, isLit, bckt, inv);
+    public Vest_Frplc(boolean isLit, Item bckt, Inventory inv) {       
+        super(isLit, bckt, inv);
         this.isLit = isLit;
         this.descLit = "A roaring fireplace. It engulfs the room with a\n" +
                        "warm, flickering glow. Looking more closely, you\n" +

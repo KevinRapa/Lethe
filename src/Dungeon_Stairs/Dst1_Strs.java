@@ -1,13 +1,13 @@
 package Dungeon_Stairs;
 
 import Super.Staircase;
-import Core.Player;
+import Main.Player;
 import Super.Room;
 
 public class Dst1_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Dst1_Strs(String NAME, Player player, char direction, int height) {
-        super(NAME, player, direction, height);
+    public Dst1_Strs(Player player, char direction, int height) {
+        super(player, direction, height);
         this.description = "The mossy stone spiral staircase winds down into\n"
                          + "the unknown.";
         this.interactDialog = "The sense of dread is overwhelming.\n"

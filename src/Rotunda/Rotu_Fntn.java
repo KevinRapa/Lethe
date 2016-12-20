@@ -5,8 +5,8 @@ import Super.Furniture;
 public class Rotu_Fntn extends Furniture{
     private boolean drained;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Rotu_Fntn(String NAME) {       
-        super(NAME);
+    public Rotu_Fntn() {       
+        super();
         this.searchable = false;
         this.drained = false;
         this.description = "It's rounded and carefully carved from a smooth rock.\n"

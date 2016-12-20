@@ -1,5 +1,6 @@
 package Kitchen;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Kitc extends Room{
@@ -20,13 +21,13 @@ public class Kitc extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
         if ((dir == 'n' || dir == 'e' || dir == 's') && ! this.isLit)
-            rep = "It's too dark to see anything, and you don't want\n"
-                + "to trip and fall.";
-        
-        return rep;
+            return "It's too dark to see anything, and you don't want\n"
+                 + "to trip and fall.";
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way.";
+        }
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

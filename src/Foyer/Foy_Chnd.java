@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Foy_Chnd extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Foy_Chnd(String NAME) {
-        super(NAME);
+    public Foy_Chnd() {
+        super();
         this.searchable = false;
         this.description = "It's a huge iron chandelier. Its forged iron frame\n"
                          + "curves intricately. It holds numerous candles; at\n"

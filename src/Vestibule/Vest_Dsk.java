@@ -6,8 +6,8 @@ import Super.Item;
 public class Vest_Dsk extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Vest_Dsk(String NAME, Item ... items) {
-        super(NAME, items);
+    public Vest_Dsk(Item... items) {
+        super(items);
         this.description = "A tenuous wooden desk, resting flush against a\n" +
                            "a dark corner. It collects dust from a lack of use.\n" +
                            "A single drawer is visible under its surface.";

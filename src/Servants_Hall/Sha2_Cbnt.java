@@ -3,13 +3,13 @@ package Servants_Hall;
 import Super.Furniture;
 import Super.Item;
 import Super.Room;
-import Core.Player;
+import Main.Player;
 
 public class Sha2_Cbnt extends Furniture{
     private final Player REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Sha2_Cbnt(String NAME, Player player, Item ... items) {
-        super(NAME, items);
+    public Sha2_Cbnt(Player player, Item... items) {
+        super(items);
         this.searchable = false;
         this.REF = player;
         this.description = "It's a large wooden double-doored cabinet. It looks\n"

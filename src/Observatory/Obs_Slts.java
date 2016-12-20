@@ -2,8 +2,8 @@ package Observatory;
 
 import Super.Furniture;
 import java.util.Scanner;
-import Core.GUI;
-import Core.Player;
+import Main.GUI;
+import Main.Player;
 import Super.Item;
 
 public class Obs_Slts extends Furniture {
@@ -11,8 +11,8 @@ public class Obs_Slts extends Furniture {
     private final Obs_Stats REF2;
     private final Player REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Obs_Slts(String NAME, Player plyr, Item hlsPlt, Furniture stats, Furniture ... slots) {
-        super(NAME);
+    public Obs_Slts(Player plyr, Item hlsPlt, Furniture stats, Furniture... slots) {
+        super();
         this.description = "An array of 9 slots.";
         this.searchDialog = "You inspect the array of slots.";
         this.SLOTS = slots;
@@ -44,15 +44,15 @@ public class Obs_Slts extends Furniture {
 /*----------------------------------------------------------------------------*/
     private String getArray() {
         
-        String a = this.SLOTS[1].toString();
-        String b = this.SLOTS[2].toString();
-        String c = this.SLOTS[3].toString();
-        String d = this.SLOTS[4].toString();
-        String e = this.SLOTS[5].toString();
-        String f = this.SLOTS[6].toString();
-        String g = this.SLOTS[7].toString();
-        String h = this.SLOTS[8].toString();
-        String i = this.SLOTS[0].toString();
+        String a = this.SLOTS[1].getValidNames().get(0);
+        String b = this.SLOTS[2].getValidNames().get(0);
+        String c = this.SLOTS[3].getValidNames().get(0);
+        String d = this.SLOTS[4].getValidNames().get(0);
+        String e = this.SLOTS[5].getValidNames().get(0);
+        String f = this.SLOTS[6].getValidNames().get(0);
+        String g = this.SLOTS[7].getValidNames().get(0);
+        String h = this.SLOTS[8].getValidNames().get(0);
+        String i = this.SLOTS[0].getValidNames().get(0);
         
         return "\t\t\t\t\t     {"+a+"}   " +
                "\t\t        {"+h+"}       {"+b+"}\n" +

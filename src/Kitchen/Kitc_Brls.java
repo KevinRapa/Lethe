@@ -6,8 +6,8 @@ import Super.Item;
 public class Kitc_Brls extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Kitc_Brls(String NAME, Item ... items) {
-        super(NAME, items);
+    public Kitc_Brls(Item... items) {
+        super(items);
         this.description = "The two barrels are open and filled with stale\n"
                          + "barley and rye.";
         this.searchDialog = "You look into the barrels.";

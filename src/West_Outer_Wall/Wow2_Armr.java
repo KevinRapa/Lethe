@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Wow2_Armr extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wow2_Armr(String NAME) {
-        super(NAME);
+    public Wow2_Armr() {
+        super();
         this.searchable = false;
         this.description = "It's a suit of armor with its gauntlets pryed open.";
         this.searchDialog = "It's not holding anything anymore.";

@@ -1,5 +1,6 @@
 package Library;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Lib5 extends Room{
@@ -15,10 +16,15 @@ public class Lib5 extends Room{
     @Override public String getBarrier(char dir) {
         String rep = "There is a wall in the way.";
         
-        if (dir == 's')
+        if (dir == 's') {
+            AudioPlayer.playEffect(6);
             rep = "There's a bookshelf in the way.";
+        }
         if (dir == 'd')
             rep = "The balcony railing is that way.";
+        
+        else
+            AudioPlayer.playEffect(6);
         
         return rep;
     }

@@ -5,7 +5,7 @@ import Super.Furniture;
 public class Gqua_Stl extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Stl(String NAME) {
-        super(NAME);
+        super();
         this.searchable = false;
         this.description = "It's a puny three-legged stool.";
         this.searchDialog = "There's nothing here.";

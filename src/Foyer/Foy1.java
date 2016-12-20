@@ -11,14 +11,14 @@ public class Foy1 extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        description = "The huge dim foyer is sparsely furnished and strangely\n"
-                    + "clean. Despite the openness, you feel claustrophobic. A\n"
-                    + "red carpet is neatly layed out in the center. The room's\n"
-                    + "white marble wall and orange tile floor are polished. To\n"
+        description = "The huge dim foyer is sparsely furnished and\n"
+                    + "clean. The wind whistles through the chamber past a back gate.\n"
+                    + "Despite the openness, you feel claustrophobic. A\n"
+                    + "red carpet is neatly layed out in the center. To\n"
                     + "your west, " + this.descMode() + "\n"
                     + "To your east, a heavy wooden door leads somewhere else.\n"
                     + "A long wood table sits in the room's center under a huge\n"
-                    + "chandelier. You can see that this room extends further\n"
+                    + "chandelier. This room extends further\n"
                     + "north to a curved staircase at the other end.";
         
         return description;

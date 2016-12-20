@@ -6,8 +6,8 @@ import Super.Room;
 public class Par1_Hrp extends Furniture {
     private final Par1_Orb REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
-    public Par1_Hrp(String NAME, Furniture orb) {
-            super(NAME);
+    public Par1_Hrp(Furniture orb) {
+            super();
             this.searchable = false;
             this.addNameKeys("harp");
             this.description = "It's a renaissance-era harp. It looks gold plated,\n"

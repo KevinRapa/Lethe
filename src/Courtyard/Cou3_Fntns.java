@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Cou3_Fntns extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Cou3_Fntns(String NAME) {
-        super(NAME);
+    public Cou3_Fntns() {
+        super();
         this.searchable = false;
         this.description = "Crumbling stone fountains to the left and right used\n"
                          + "to decorate the courtyard.";

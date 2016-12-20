@@ -1,5 +1,6 @@
 package East_Outer_Wall;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Eow4 extends Room {
@@ -12,12 +13,12 @@ public class Eow4 extends Room {
     }  
 /*----------------------------------------------------------------------------*/   
     @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
         if (dir == 's')
-            rep = "The balcony railing is that way.";
-        
-        return rep;
+            return "The balcony railing is that way.";
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way."; 
+        }
     }
 /*----------------------------------------------------------------------------*/ 
 }

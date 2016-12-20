@@ -6,8 +6,8 @@ import Super.Item;
 public class Squa_Dsk extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Squa_Dsk(String NAME, Item ... items) {
-        super(NAME, items);
+    public Squa_Dsk(Item... items) {
+        super(items);
         this.description = "A plain wooden desk, resting flush against the\n" +
                            "wall. On top is a small lit candle.";
         this.searchDialog = "You slide open the drawer and peer inside.";

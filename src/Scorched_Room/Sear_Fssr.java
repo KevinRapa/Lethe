@@ -2,7 +2,7 @@ package Scorched_Room;
 
 import Super.Item;
 import Super.Room;
-import Core.Inventory;
+import Main.Inventory;
 import Super.Furniture;
 
 public class Sear_Fssr extends Furniture {
@@ -10,8 +10,8 @@ public class Sear_Fssr extends Furniture {
     private final Inventory REF2;
     private final Item REF3;
     
-    public Sear_Fssr(String NAME, Room sear, Inventory inv, Item gift) {
-        super(NAME);
+    public Sear_Fssr(Room sear, Inventory inv, Item gift) {
+        super();
         this.searchable = false;
         this.REF = sear;
         this.REF2 = inv;

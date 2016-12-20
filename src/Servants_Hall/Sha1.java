@@ -1,5 +1,6 @@
 package Servants_Hall;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Sha1 extends Room{
@@ -13,13 +14,13 @@ public class Sha1 extends Room{
                            "on the left side further down the hallway.";
     }
 /*----------------------------------------------------------------------------*/        
-    @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
+    @Override public String getBarrier(char dir) {   
         if (dir == 'a')
-            rep = "This door's knob is missing.";
-        
-        return rep;
+            return "This door's knob is missing.";
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way.";
+        }
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String getDescription() {

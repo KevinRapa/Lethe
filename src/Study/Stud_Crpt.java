@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Stud_Crpt extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Stud_Crpt(String NAME) {
-        super(NAME);
+    public Stud_Crpt() {
+        super();
         this.searchable = false;
         this.description = "A thick red carpet. On top sits the writing desk\n"
                          + "and chair.";

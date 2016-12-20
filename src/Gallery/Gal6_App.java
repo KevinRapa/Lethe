@@ -6,8 +6,8 @@ import Super.Item;
 public class Gal6_App extends Furniture{
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal6_App(String NAME, Item ... items) {
-        super(NAME, items);
+    public Gal6_App(Item... items) {
+        super(items);
         this.searchable = true;
         this.searchDialog = "The only thing to take is the funny box in the center.";
         this.description = "The weird apparatus looks like a metal platform\n"

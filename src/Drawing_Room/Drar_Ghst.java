@@ -3,9 +3,9 @@ package Drawing_Room;
 import Super.Furniture;
 import Super.Item;
 import Super.Key;
-import Core.GUI;
+import Main.GUI;
 import Super.Room;
-import Core.Player;
+import Main.Player;
 
 public class Drar_Ghst extends Furniture {
     private final Player REF;
@@ -13,8 +13,8 @@ public class Drar_Ghst extends Furniture {
     private final Key REF3;
     private boolean firstTime;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Drar_Ghst(String NAME, Player plyr, Item drkFcs, Key kitcKey, Item glwEm) {
-        super(NAME);
+    public Drar_Ghst(Player plyr, Item drkFcs, Key kitcKey, Item glwEm) {
+        super();
         this.searchable = false;
         this.REF = plyr;
         this.REF2 = drkFcs;
@@ -53,6 +53,7 @@ public class Drar_Ghst extends Furniture {
         
         GUI.out("As you open your mouth to speak, the apparition interrupts\n" +
                 "and begins to talk to you....");
+        GUI.menOut("\n\nPress enter...");
         GUI.promptOut();
         
         GUI.out("\"You are the first living soul I have seen in over 200\n" +
@@ -66,6 +67,7 @@ public class Drar_Ghst extends Furniture {
                    "know Erik, than you know to evade him. Though\n" +
                    "I believe he is sleeping now. Still, tread\n" +
                    "quietly....\"");
+        GUI.menOut("\n\nPress enter...");
         GUI.promptOut();
         
         GUI.out("\"My name is Agatha. I was once a maid here.\n" +
@@ -115,10 +117,11 @@ public class Drar_Ghst extends Furniture {
         GUI.promptOut();
         
         this.REF.getINV().add(this.REF2);
-        GUI.invOut("You are carrying:" + this.REF.getINV());
+        GUI.invOut("You are carrying:\n" + this.REF.getINV());
         GUI.out("The apparition hands you a dark tinted lens...");
         GUI.promptOut();
         
+        GUI.clearMenu();
         GUI.out("\"Please come back when you have the gem.\"\n");
 
     }
@@ -130,6 +133,7 @@ public class Drar_Ghst extends Furniture {
 /*----------------------------------------------------------------------------*/    
     private void converse3() {       
         
+        GUI.menOut("\n\nPress enter...");
         GUI.out("\"Oh, you have found it! You have no idea what\n" +
                    "this means to me! Oh, well I suppose you do.\n" +
                    "As promised, I will help you find a way out\n" +
@@ -159,6 +163,7 @@ public class Drar_Ghst extends Furniture {
         this.REF.getINV().add(REF3);
         GUI.promptOut();
         
+        GUI.clearMenu();
         GUI.out("\"Goodbye, my friend.\"\n");
     }
 /*----------------------------------------------------------------------------*/    

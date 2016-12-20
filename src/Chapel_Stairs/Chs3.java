@@ -1,5 +1,6 @@
 package Chapel_Stairs;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Chs3 extends Room {
@@ -15,8 +16,10 @@ public class Chs3 extends Room {
         
         if (dir == 'a')
             return "The landing's railing protects you from tumbling three stories.";
-        
-        return "There is a wall in the way.";
+        else {
+            AudioPlayer.playEffect(6);
+            return "There is a wall in the way.";
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

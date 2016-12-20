@@ -4,8 +4,8 @@ import Super.Furniture;
 
 public class Lib1_Rg extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib1_Rg(String NAME) {
-        super(NAME);
+    public Lib1_Rg() {
+        super();
         this.searchable = false;
         this.description = "A dusty Persian rug. Clearly an antique, but it looks\n"
                          + "surprisingly new.";
