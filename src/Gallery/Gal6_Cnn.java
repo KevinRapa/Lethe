@@ -3,16 +3,16 @@ package Gallery;
 import Super.Item;
 import Super.Furniture;
 import Main.Inventory;
+import Main.Player;
 
 public class Gal6_Cnn extends Furniture {
     private boolean isOn;
     private final Gal_3E_Stat REF;
-    private final Inventory REF2;
     private char beam;
     private String mode;
             
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal6_Cnn(Furniture stat, Inventory inv, Item... items) {
+    public Gal6_Cnn(Furniture stat, Item... items) {
         super();
         this.searchDialog = "You search around the futuristic cannon.";
         this.interactDialog = "You have no idea how this thing works.";
@@ -26,7 +26,6 @@ public class Gal6_Cnn extends Furniture {
                          + "other side.";
         this.searchable = true;
         this.REF = (Gal_3E_Stat) stat;
-        this.REF2 = inv;
         this.isOn = false;
         this.beam = 'c';
         this.mode = "A clear scattered light";
@@ -155,7 +154,7 @@ public class Gal6_Cnn extends Furniture {
         else
             this.useDialog = "The box fits nicely in the slot on top. It's a battery!";
         
-        REF2.give(item, this.inv);
+        Player.getINV().give(item, this.inv);
         
         return this.useDialog;
     }

@@ -1,7 +1,6 @@
 package Drawing_Room;
 
 import Super.Furniture;
-import Super.Room;
 
 public class Drar_Cch extends Furniture {
     private final Drar_Ghst REF;
@@ -28,7 +27,7 @@ public class Drar_Cch extends Furniture {
         return rep;
     }
 /*----------------------------------------------------------------------------*/
-        @Override public String interact(Room[][][] map, String key) {
+        @Override public String interact(String key) {
         String rep = this.interactDialog;
         
         if (REF.firstTime())

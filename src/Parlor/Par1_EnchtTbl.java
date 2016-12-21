@@ -6,21 +6,20 @@ import Main.Player;
 import Super.Room;
 
 public class Par1_EnchtTbl extends Furniture {
-    private final Player REFPLYR;
     private final Item REF_ENCH_BTTL, REF_SALTS, REF_MANDRAKE, REF_SPRUCE, REF_BTTL,
-                       REF_FTHR, REF_HLY, REF_SHS, REF_STLTHSHS;
+                       REF_FTHR, REF_ATHR, REF_SHS, REF_STLTHSHS;
     private boolean hasSpruce, hasMandrake, hasFireSalts, hasBottle, hasFthr, hasHly, hasShs;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Par1_EnchtTbl(Player plyrInv, Item enchtBttl, Item salts, Item spruce, Item mandrake, Item bttl, Item fthr, Item hlyWater, Item shs, Item stlthShs, Item... items) {
+    public Par1_EnchtTbl(Item enchtBttl, Item salts, Item spruce, 
+                         Item mandrake, Item bttl, Item fthr, Item athr, 
+                         Item shs, Item stlthShs, Item... items) {
         super(items);
         
-        this.REFPLYR = plyrInv;
-        
         this.REF_ENCH_BTTL = enchtBttl; // For giving player the enchanted bottle.
-        this.REF_STLTHSHS = stlthShs; // For giving player the stealth shoes.
+        this.REF_STLTHSHS = stlthShs; // For giving player the stealth getShoes.
         
         this.REF_MANDRAKE = mandrake; this.REF_SALTS = salts; this.REF_FTHR = fthr;
-        this.REF_BTTL = bttl; this.REF_SPRUCE = spruce; this.REF_HLY = hlyWater; 
+        this.REF_BTTL = bttl; this.REF_SPRUCE = spruce; this.REF_ATHR = athr; 
         this.REF_SHS = shs;
         
         hasFireSalts = hasMandrake = hasSpruce = hasFthr = hasHly = hasShs = 
@@ -40,15 +39,15 @@ public class Par1_EnchtTbl extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        if (item.toString().matches(REFPLYR.shoes()))
-            REFPLYR.switchShoes("");
+        if (item.toString().matches(Player.getShoes()))
+            Player.switchShoes("");
             
-        REFPLYR.getINV().give(item, this.inv);
+        Player.getINV().give(item, this.inv);
         
         return "You place the " + item + " on the table.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {          
+    @Override public String interact(String key) {          
         String rep = this.interactDialog;
         this.check();
         
@@ -77,7 +76,7 @@ public class Par1_EnchtTbl extends Furniture {
         this.hasBottle = this.inv.getInv().contains(this.REF_BTTL);
         
         this.hasFthr = this.inv.getInv().contains(this.REF_FTHR);
-        this.hasHly = this.inv.getInv().contains(this.REF_HLY);
+        this.hasHly = this.inv.getInv().contains(this.REF_ATHR);
         this.hasShs = this.inv.getInv().contains(this.REF_SHS);
     }
 /*----------------------------------------------------------------------------*/
@@ -93,7 +92,7 @@ public class Par1_EnchtTbl extends Furniture {
         }
         else if(hasShs && hasFthr && hasHly && inv.getInv().size() == 3) {
             this.inv.remove(REF_FTHR);
-            this.inv.remove(REF_HLY);
+            this.inv.remove(REF_ATHR);
             this.inv.remove(REF_SHS);
             this.inv.add(REF_STLTHSHS);
             return 2;

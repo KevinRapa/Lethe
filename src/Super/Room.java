@@ -89,10 +89,9 @@ public class Room implements Serializable {
     /**
      * The events that occur whenever the player enters this room.
      * This method is overwritten several specific rooms.
-     * @param map A reference to other rooms used (e.g. vestibule).
      * @return A string default that says which room you are in.
      */
-    public String triggeredEvent(Room[][][] map) {
+    public String triggeredEvent() {
         // Dialog of player entering. Sometimes other events occur.
         return "You are " + this + ".";
     }

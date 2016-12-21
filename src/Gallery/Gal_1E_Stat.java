@@ -1,21 +1,19 @@
 package Gallery;
 
+import Main.Player;
 import Super.Furniture;
 import Super.Item;
 import Super.Room;
-import Main.Inventory;
 
 public class Gal_1E_Stat extends Furniture {
     private int level;
     private final Room REF;
-    private final Inventory REF2;
     private final Gal_2E_Stat REF3;
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal_1E_Stat(Room gal4, Inventory inv, Furniture stat) {
+    public Gal_1E_Stat(Room gal4, Furniture stat) {
         super();
         this.REF = gal4;
-        this.REF2 = inv;
         this.REF3 = (Gal_2E_Stat)stat;
         this.level = 0;
         this.description = "The grandiose statue stands in the exact center of\n"
@@ -120,7 +118,7 @@ public class Gal_1E_Stat extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         this.useDialog = "You set the orb into the statue's palm.";
-        REF2.give(item, this.inv);
+        Player.getINV().give(item, this.inv);
         
         return this.useDialog;
     }

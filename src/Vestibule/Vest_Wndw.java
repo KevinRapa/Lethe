@@ -2,18 +2,16 @@ package Vestibule;
 
 import Super.Window;
 import Super.Furniture;
-import Super.Room;
+import Main.Player;
 
 public class Vest_Wndw extends Window {
     private final Vest_Frplc REF;
-    private final Vest REF2;
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Vest_Wndw(Furniture ref, Room vest) {
+    public Vest_Wndw(Furniture ref) {
         super();
         this.isOpen = false;
         this.REF = (Vest_Frplc)ref;
-        this.REF2 = (Vest)vest;
         this.searchDialog = "The only place to look is on the sill,\n" + 
                             "but there's nothing there.";
         this.descOpen = "It's an open arched window of stone. A strong\n" +
@@ -25,12 +23,13 @@ public class Vest_Wndw extends Window {
                           "air forces it's way through.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {
-
+    @Override public String interact(String key) {
+        Vest vest = (Vest)Player.getMapRef()[3][3][6];
+        
         if (this.isOpen && key.matches("close")) {
             this.interactDialog = "You close the window.";
             this.close(); 
-            this.REF2.switchWindow();
+            vest.switchWindow();
         }
         else if (! this.isOpen && key.matches("open")) {
             this.open();
@@ -43,7 +42,7 @@ public class Vest_Wndw extends Window {
             else
                 this.interactDialog = "You open the window."; 
             
-            this.REF2.switchWindow();
+            vest.switchWindow();
         }
         else
             this.interactDialog = "The window is already " + (key.matches("open") ? "open" : "closed") + "!";

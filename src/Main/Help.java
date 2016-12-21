@@ -173,6 +173,7 @@ public class Help {
             GUI.out("");
         /*--------------------------------------------------------------------*/            
             if (choice.matches("1")) {
+                AudioPlayer.playEffect(17);
                 do {
                     GUI.menOut("<'1'> The prompt <'2'> Moving\n<'3'> Describing " +
                                "<'4'> Checking\n<'5'> Searching  <'6'> Interacting\n" +
@@ -180,13 +181,14 @@ public class Help {
 
                     choice = GUI.promptOut() + "c";
 
-                    if (choice.matches("^[1-9]c$"))
-                        // Must match a single digit 1-9 + c
+                    if (choice.matches("^[1-9]c$")) 
                         GUI.out(get_help(TOPIC.get(choice)));  
+                    
                 } while (! choice.matches("c"));          
             }
         /*--------------------------------------------------------------------*/          
-            if (choice.matches("2")) {                
+            if (choice.matches("2")) {    
+                AudioPlayer.playEffect(17);
                 do {
                     GUI.menOut("\n<'1'> Your inventory\n"
                                + "<'2'> Your key ring\n" +
@@ -194,13 +196,14 @@ public class Help {
 
                     choice = GUI.promptOut() + "p";
                     
-                    if (choice.matches("^[1-3]p$"))
-                        // Must match a single digit 1-3 + p
+                    if (choice.matches("^[1-3]p$")) 
                         GUI.out(get_help(TOPIC.get(choice)));
+                    
                 } while (! choice.matches("p"));    
             }
         /*--------------------------------------------------------------------*/      
-            if (choice.matches("3")) {                
+            if (choice.matches("3")) {    
+                AudioPlayer.playEffect(17);
                 do {
                     GUI.menOut("\n<'1'> Doors\t<'2'> Rooms\n"
                                + "<'3'> Furniture\t<'4'> Items\n"
@@ -208,9 +211,9 @@ public class Help {
 
                     choice = GUI.promptOut() + "a";
                     
-                    if (choice.matches("^[1-6]a$"))
-                        //Must match a single digit 1-6 + a
+                    if (choice.matches("^[1-6]a$")) 
                         GUI.out(get_help(TOPIC.get(choice)));
+                    
                 } while (! choice.matches("a"));
             }
         /*--------------------------------------------------------------------*/      

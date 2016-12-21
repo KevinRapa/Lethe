@@ -1,7 +1,6 @@
 package Gallery;
 
 import Super.Furniture;
-import Super.Room;
 import java.util.Random;
 import Main.GUI;
 
@@ -27,7 +26,7 @@ public class Gal6_Hlmt extends Furniture{
         this.addNameKeys("helmet", "bizarre helmet");
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
         String rep = this.interactDialog;
         String choice; String r;
         

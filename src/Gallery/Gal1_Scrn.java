@@ -1,5 +1,6 @@
 package Gallery;
 
+import Main.Player;
 import Super.Furniture;
 import Super.Room;
         
@@ -23,8 +24,8 @@ public class Gal1_Scrn extends Furniture {
         this.addNameKeys("screen", "japanese screen");
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {     
-        Room gal1 = map[3][2][6];
+    @Override public String interact(String key) {     
+        Room gal1 = Player.getMapRef()[3][2][6];
         String rep = "You have already moved the screen.";
             
         if (! this.lifted) {

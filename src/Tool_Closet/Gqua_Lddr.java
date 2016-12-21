@@ -1,13 +1,12 @@
 package Tool_Closet;
 
 import Main.AudioPlayer;
-import Main.Player;
 import Super.Staircase;
 
 public class Gqua_Lddr extends Staircase {
     
-    public Gqua_Lddr(Player player, char direction, int height) {
-        super(player, direction, height);
+    public Gqua_Lddr(char direction, int height) {
+        super(direction, height);
         String mode = direction == 'd' ? "floor" : "ceiling";
         String dir = direction == 'd' ? "down" : "up";
         

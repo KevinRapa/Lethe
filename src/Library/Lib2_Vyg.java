@@ -1,8 +1,8 @@
 package Library;
 
+import Main.Player;
 import Super.Furniture;
 import Super.Item;
-import Super.Room;
         
 public class Lib2_Vyg extends Furniture {
     private final Furniture REF, REF2, REF3, REF4;
@@ -24,13 +24,13 @@ public class Lib2_Vyg extends Furniture {
         this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {              
+    @Override public String interact(String key) {              
         String rep = this.interactDialog;
         
         if (this.doesThisHaveIt("epic tome") && REF.doesThisHaveIt("greek tome") &&
             REF2.doesThisHaveIt("biblical tome") && REF3.doesThisHaveIt("infernal tome") &&
             REF4.doesThisHaveIt("divine tome") && ! this.moved) {
-            Lib2 lib2 = (Lib2)map[3][1][8];
+            Lib2 lib2 = (Lib2)Player.getMapRef()[3][1][8];
             lib2.addAdjacent("LIB1");
             lib2.moveShelf();
             this.moved = true;           

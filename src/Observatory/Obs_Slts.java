@@ -9,14 +9,12 @@ import Super.Item;
 public class Obs_Slts extends Furniture {
     private final Furniture[] SLOTS;
     private final Obs_Stats REF2;
-    private final Player REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Obs_Slts(Player plyr, Item hlsPlt, Furniture stats, Furniture... slots) {
+    public Obs_Slts(Item hlsPlt, Furniture stats, Furniture... slots) {
         super();
         this.description = "An array of 9 slots.";
         this.searchDialog = "You inspect the array of slots.";
         this.SLOTS = slots;
-        this.REF = plyr;
         this.REF2 = (Obs_Stats)stats;
         this.inv = new Slt_Inv(this);
         this.inv.add(hlsPlt);
@@ -32,12 +30,12 @@ public class Obs_Slts extends Furniture {
             GUI.menOut("<'A-I'> Look...\n< > Back");
             choice = GUI.promptOut();
            
-            if (this.REF.getOcc().hasFurniture(choice))
-                GUI.descOut(this.REF.getFurnitureObject(choice).getDescription());
+            if (Player.getOcc().hasFurniture(choice))
+                GUI.descOut(Player.getFurnitureObject(choice).getDescription());
 
         } while (! choice.matches(""));
         
-        GUI.descOut(this.REF.getOcc().getDescription());
+        GUI.descOut(Player.getOcc().getDescription());
         
         return rep;
     }

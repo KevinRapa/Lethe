@@ -105,11 +105,10 @@ public class Furniture implements Serializable {
     /**
      * Invoked when the player interacts with this piece using a correct action.
      * The map reference may be used in overwritten version of this method.
-     * @param map A reference to the game map.
      * @param key The name of an action.
      * @return A string that prints when this piece is interacted with.
      */
-    public String interact(Room[][][] map, String key) {              
+    public String interact(String key) {              
         return this.interactDialog;
     }
     // ========================================================================     

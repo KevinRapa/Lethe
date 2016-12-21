@@ -1,20 +1,18 @@
 package Super;
 
-import Main.Inventory;
+import Main.Player;
 
 public class Fireplace extends Furniture {
     protected boolean isLit;
     protected String searchDialogLit, searchDialogUnlit; 
     protected String descLit, descUnlit;
     protected final Item REF;
-    protected final Inventory REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Fireplace(boolean isLit, Item bckt, Inventory inv) {       
+    public Fireplace(boolean isLit, Item bckt) {       
         super();
         this.searchable = false;
         this.isLit = isLit;
         this.REF = bckt;
-        this.REF2 = inv;
         this.searchDialogLit = "Ouch! That's hot!";
         this.useDialog = "You douse the flames with the water.";
         this.addActKeys("warm", "use", "relax");
@@ -54,7 +52,7 @@ public class Fireplace extends Furniture {
         this.isLit = false;
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {  
+    @Override public String interact(String key) {  
         if (this.isLit) 
             this.interactDialog = "You warm your hands for a second, but you are still cold."; 
         else
@@ -72,8 +70,8 @@ public class Fireplace extends Furniture {
         else 
             this.extinguish(); 
         
-        REF2.remove(item);
-        REF2.add(REF);
+        Player.getINV().remove(item);
+        Player.getINV().add(REF);
         
         return rep;
     }

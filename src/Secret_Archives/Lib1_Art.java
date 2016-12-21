@@ -3,18 +3,16 @@ package Secret_Archives;
 import Super.Furniture;
 import Super.Item;
 import Main.GUI;
-import Main.Inventory;
+import Main.Player;
 
 public class Lib1_Art extends Furniture {
-    private final Inventory REF;
     private char beam;
     private String mode;
             
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib1_Art(Inventory inv, Item... items) {
+    public Lib1_Art(Item... items) {
         super();
         this.searchDialog = "You squint and peek inside the head.";
-        this.REF = inv;
         this.beam = 'b';
         this.mode = "A blue beam";
         this.inv = new Art_Inv(this, items);   
@@ -108,7 +106,7 @@ public class Lib1_Art extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         this.useDialog = "You place the " + item + " in the hole.";
-        REF.give(item, this.inv);
+        Player.getINV().give(item, this.inv);
         
         return this.useDialog;
     }

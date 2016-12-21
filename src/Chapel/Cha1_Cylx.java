@@ -4,7 +4,7 @@ import Super.Furniture;
 
 public class Cha1_Cylx extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Cha1_Cylx(String NAME) {
+    public Cha1_Cylx() {
         super();
         this.searchable = false;
         this.description = "The cylix looks like a wide brass bowl.";

@@ -1,7 +1,6 @@
 package Ransacked_Quarters;
 
 import Super.Furniture;
-import Super.Room;
         
 public class Rqua_Bd extends Furniture {
     private boolean moved;
@@ -19,7 +18,7 @@ public class Rqua_Bd extends Furniture {
         this.addActKeys("move", "pull", "push", "slide");
     }
 /*----------------------------------------------------------------------------*/
-        @Override public String interact(Room[][][] map, String key) {     
+        @Override public String interact(String key) {     
             String rep = "You have already moved the bed.";
             
             if (! this.moved) {

@@ -17,10 +17,10 @@ abstract public class Lever extends Furniture {
         this.addActKeys("pull", "push", "flick", "hit", "move");
     }
     // ========================================================================
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
         this.swtch();
         AudioPlayer.playEffect(12);
-        return this.event(map, key);
+        return this.event(key);
     } 
     // ========================================================================
     /**
@@ -30,7 +30,7 @@ abstract public class Lever extends Furniture {
         this.isOn = ! this.isOn;
     }
     // ========================================================================
-    abstract protected String event(Room[][][] map, String key);
+    abstract protected String event(String key);
     // ========================================================================
 }
 

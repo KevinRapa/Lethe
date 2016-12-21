@@ -2,15 +2,13 @@ package Marble_Hall;
 
 import Super.Furniture;
 import Super.Item;
-import Main.Inventory;
+import Main.Player;
 
 public class Mha_RStat extends Furniture {
-    private final Inventory REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Mha_RStat(Inventory inv, Item... items) {
+    public Mha_RStat(Item... items) {
         super(items);
         this.searchable = false;
-        this.REF = inv;
         this.description = "The angel poses majestically with an indifferent\n"
                          + "gaze upwards. It's a mirror-image of the left\n"
                          + "statue, though its hand is empty.";
@@ -27,7 +25,7 @@ public class Mha_RStat extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         this.searchable = true;
-        REF.remove(item);
+        Player.getINV().remove(item);
             
         return this.useDialog;
     }

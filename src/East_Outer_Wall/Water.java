@@ -2,16 +2,13 @@ package East_Outer_Wall;
 
 import Super.Furniture;
 import Super.Item;
-import Main.Inventory;
-import Super.Room;
+import Main.Player;
 
 public class Water extends Furniture {
-    private final Inventory REF;
     private final Item REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Water(Inventory inv, Item bckt) {
+    public Water(Item bckt) {
         super();
-        this.REF = inv;
         this.REF2 = bckt;
         this.searchable = false;
         this.description = "Clean, sparkling water.";
@@ -23,13 +20,13 @@ public class Water extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        REF.remove(item);
-        REF.add(REF2);
+        Player.getINV().remove(item);
+        Player.getINV().add(REF2);
         
         return this.useDialog;
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) { 
+    @Override public String interact(String key) { 
         String rep = "You take a sip of water and feel refreshed. Carrying\n"
                    + "all that stuff around has tired you.";
         

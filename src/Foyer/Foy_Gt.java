@@ -1,7 +1,6 @@
 package Foyer;
 
 import Super.Door;
-import Super.Room;
 
 public class Foy_Gt extends Door{
     private final String DESCOPEN, SRCHOPEN, DIALOPEN;
@@ -41,7 +40,7 @@ public class Foy_Gt extends Door{
         this.isOpen = (! this.isOpen);
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
         String rep = this.isOpen ? this.DIALOPEN : this.interactDialog;
         
         return rep;

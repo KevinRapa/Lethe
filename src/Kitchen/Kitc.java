@@ -45,7 +45,7 @@ public class Kitc extends Room{
         this.isLit = ! this.isLit;
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String triggeredEvent(Room[][][] map) {
+    @Override public String triggeredEvent() {
         String dialog = "You are " + this + ".";
         
         if (! this.isLit)

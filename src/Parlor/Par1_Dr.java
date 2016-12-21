@@ -3,22 +3,17 @@ package Parlor;
 import Super.Door;
 import Super.Item;
 import Main.Player;
-import Super.Room;
 
 public class Par1_Dr extends Door {
-    private final Room REF;
-    private final Player REF2;
     private final Item REF3;
     private boolean cured = false;
 /*----------------------------------------------------------------------------*/    
-    public Par1_Dr(Room par1, Item enchbttl, Player plyr) {
+    public Par1_Dr(Item enchbttl) {
         super();
         this.useDialog = "You throw the fire on the door. Shortly, the fire"
                        + "\nfades away.";
         this.description = "It looks like a heavy wooden door.";
         
-        this.REF = par1;
-        this.REF2 = plyr;
         this.REF3 = enchbttl;
         this.addUseKeys("sacred fire");
     }
@@ -38,14 +33,14 @@ public class Par1_Dr extends Door {
         String rep = this.useDialog;
         
         if (! this.cured) {
-            this.REF.addAdjacent("BHA3");
+            Player.getMapRef()[3][2][4].addAdjacent("BHA3");
             rep = "You cast the fire onto the door, to which it clings\n"
                 + "rapidly. The fire begins to fade away along with the\n"
                 + "barrier.";
             this.cured = true;
         }
-        this.REF2.getINV().remove(item);
-        this.REF2.getINV().add(REF3);
+        Player.getINV().remove(item);
+        Player.getINV().add(REF3);
         
         return rep;
     }

@@ -37,7 +37,7 @@ public class Window extends Furniture {
         this.isOpen = false;
     }    
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
 
             if (this.isOpen && key.matches("close")) {
                 this.close();

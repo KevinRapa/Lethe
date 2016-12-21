@@ -5,11 +5,9 @@ import Super.Room;
 import Main.Player;
 
 public class Mha1 extends Room{
-    private final Player REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Mha1(String name, String ID, Player plyr) {
+    public Mha1(String name, String ID) {
         super(name, ID);
-        this.REF = plyr;
         description= "The two-story hallway is clean with a white granite wall\n" +
                      "and a green marble tiled floor. You stand at the north end\n" +
                      "facing south with a door at your left and a window at your\n" +
@@ -18,10 +16,10 @@ public class Mha1 extends Room{
                    + "bears a large, detailed carving of a cross.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String triggeredEvent(Room[][][] map) {
+    @Override public String triggeredEvent() {
         String dialog = "You are " + this + ".";
         
-        if (! REF.hasVisited(this.ID)) {
+        if (! Player.hasVisited(this.ID)) {
             GUI.out("\nAs soon as you enter, you catch a glimpse of a white\n"
                     + "figure passing through a door in the middle of the\n"
                     + "hallway.");

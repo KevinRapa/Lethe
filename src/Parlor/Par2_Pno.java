@@ -2,7 +2,6 @@ package Parlor;
 
 import Super.Furniture;
 import Super.Item;
-import Super.Room;
 
 public class Par2_Pno extends Furniture {
     private final Par1_Orb REF;
@@ -18,7 +17,7 @@ public class Par2_Pno extends Furniture {
             this.addActKeys("play");
     }
 /*----------------------------------------------------------------------------*/ 
-    @Override public String interact(Room[][][] map, String key) {              
+    @Override public String interact(String key) {              
         String rep;
         
         if (! REF.woken()) {

@@ -2,21 +2,16 @@ package Servants_Hall;
 
 import Super.Furniture;
 import Super.Item;
-import Super.Room;
-import Main.Inventory;
+import Main.Player;
 
 public class Sha1_Dr extends Furniture {
-    private final Room REF2;
     private final Item REF3;
     private final Item REF4;
-    private final Inventory REF5;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Sha1_Dr (Room sha1, Item ram, Item brRam, Inventory inv) {
+    public Sha1_Dr (Item ram, Item brRam) {
         super();
-        this.REF2 = sha1;
         this.REF3 = ram;
         this.REF4 = brRam;
-        this.REF5 = inv;
         this.description = "It's a small wooden door; a bit taller than you.\n"
                          + "The doorknob on it is missing.";
         this.interactDialog = "The doorknob is gone!!";
@@ -30,10 +25,10 @@ public class Sha1_Dr extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        REF2.addAdjacent("SHAR"); // Make SHAR accessible.
-        REF2.removeFurniture(this); // Remove this door from the room.
-        REF5.remove(REF3); // Take ram from player.
-        REF5.add(REF4); // Add broken ram to player.
+        Player.getMapRef()[3][5][2].addAdjacent("SHAR"); // Make SHAR accessible.
+        Player.getMapRef()[3][5][2].removeFurniture(this); // Remove this door from the room.
+        Player.getINV().remove(REF3); // Take ram from player.
+        Player.getINV().add(REF4); // Add broken ram to player.
         
         return this.useDialog;
 /*----------------------------------------------------------------------------*/        

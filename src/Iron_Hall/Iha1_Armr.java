@@ -1,7 +1,6 @@
 package Iron_Hall;
 
 import Super.Furniture;
-import Super.Room;
 
 public class Iha1_Armr extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -16,7 +15,7 @@ public class Iha1_Armr extends Furniture{
         this.addNameKeys("armor", "suit of armor", "armor suit", "plate armor");
     }    
 //*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {     
+    @Override public String interact(String key) {     
         interactDialog = "You will probably get hurt trying to do that.";
         return interactDialog;
     }

@@ -2,7 +2,6 @@ package Lookout;
 
 import Super.Furniture;
 import Super.Item;
-import Super.Room;
 
 public class Look_Rlng extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -26,7 +25,7 @@ public class Look_Rlng extends Furniture{
         return rep;
     }
 /*----------------------------------------------------------------------------*/    
-    @Override public String interact(Room[][][] map, String key) {     
+    @Override public String interact(String key) {     
         String rep = this.interactDialog;
         
         if (this.doesThisHaveIt("looped rope")) {

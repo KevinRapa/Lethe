@@ -1,20 +1,18 @@
 package Scorched_Room;
 
+import Main.Player;
 import Super.Item;
 import Super.Room;
-import Main.Inventory;
 import Super.Furniture;
 
 public class Sear_Fssr extends Furniture {
     private final Room REF;
-    private final Inventory REF2;
     private final Item REF3;
     
-    public Sear_Fssr(Room sear, Inventory inv, Item gift) {
+    public Sear_Fssr(Room sear, Item gift) {
         super();
         this.searchable = false;
         this.REF = sear;
-        this.REF2 = inv;
         this.REF3 = gift;
         this.searchDialog = "It's just an empty hole.";
         this.description = "The fissure leads outside into the front\n"
@@ -34,8 +32,8 @@ public class Sear_Fssr extends Furniture {
         
         if (item.toString().matches("warhammer")) {            
             REF.addAdjacent("COU2");
-            REF2.remove(item);
-            REF2.add(REF3);
+            Player.getINV().remove(item);
+            Player.getINV().add(REF3);
         }
         else if (item.toString().matches("hammer")) {
             rep = "You give it a swing, but this hammer is too\n"

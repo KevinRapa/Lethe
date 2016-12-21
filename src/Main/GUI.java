@@ -177,7 +177,9 @@ public class GUI extends JPanel {
             try {
                 HOLDER.wait();
             }
-            catch (InterruptedException e) {}
+            catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
         }
         return HOLDER.pop();
     }
@@ -245,7 +247,7 @@ public class GUI extends JPanel {
          */
         @Override public void actionPerformed(ActionEvent event) {
             synchronized (HOLDER) {
-                HOLDER.add(INPUT.getText());
+                HOLDER.add(INPUT.getText().toLowerCase());
                 INPUT.setText("");
                 HOLDER.notify();
             }

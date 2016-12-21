@@ -2,16 +2,13 @@ package Chapel;
 
 import Super.Furniture;
 import Super.Item;
-import Main.Inventory;
-import Super.Room;
+import Main.Player;
 
 public class Cha1_Water extends Furniture {
-    private final Inventory REF;
     private final Item REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Cha1_Water(String NAME, Inventory inv, Item hlyWtr) {
+    public Cha1_Water(Item hlyWtr) {
         super();
-        this.REF = inv;
         this.REF2 = hlyWtr;
         this.searchable = false;
         this.description = "It's seems to be just water, but it's most likely the holy kind.";
@@ -26,8 +23,8 @@ public class Cha1_Water extends Furniture {
         String rep = this.useDialog;
         
         if (item.toString().matches("empty vial")) {
-            REF.remove(item);
-            REF.add(REF2);
+            Player.getINV().remove(item);
+            Player.getINV().add(REF2);
         }
         else if (item.toString().matches("metal bucket"))
             rep = "The bucket is too large to dip into the cylix.";
@@ -38,7 +35,7 @@ public class Cha1_Water extends Furniture {
         return rep;
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) { 
+    @Override public String interact(String key) { 
         String rep = "This water isn't for drinking.";
         
         if (key.matches("swim"))

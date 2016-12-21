@@ -1,6 +1,5 @@
 package Gallery;
 
-import Super.Room;
 import Super.Furniture;
 import Super.Lever;
         
@@ -15,7 +14,7 @@ public class Gal6_Swtch extends Lever {
         this.addNameKeys("switch", "switch thing");
     }
 /*----------------------------------------------------------------------------*/    
-    @Override public String event(Room[][][] map, String key) {
+    @Override public String event(String key) {
         if (! REF.isOn() && REF.doesThisHaveIt("box thingy")) {
             return "You flick the switch.\n" + REF.turnOn();
         }

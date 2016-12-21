@@ -2,6 +2,7 @@ package Vestibule;
 
 import Main.AudioPlayer;
 import Main.GUI;
+import Main.Player;
 import Super.Room;
 
 public class Vest extends Room {
@@ -29,11 +30,10 @@ public class Vest extends Room {
         return rep; 
     }
 /*----------------------------------------------------------------------------*/    
-    @Override public String triggeredEvent(Room[][][] map) {        
-        Room foy1 = map[3][3][5];
+    @Override public String triggeredEvent() {        
         // Locks the door to the foyer.
         AudioPlayer.playEffect(5);
-        foy1.lock();
+        Player.getMapRef()[3][3][5].lock();
         GUI.out("You hear a click behind you.");
         
         return "You are " + this;

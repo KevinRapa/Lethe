@@ -22,7 +22,7 @@ public class Door extends Furniture{
         this.addNameKeys("door");
     }
 /*----------------------------------------------------------------------------*/    
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
        String rep = this.interactDialog;
        
        if (key.matches("(conquer|hit|punch)")) {

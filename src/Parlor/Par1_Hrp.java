@@ -1,7 +1,6 @@
 package Parlor;
 
 import Super.Furniture;
-import Super.Room;
 
 public class Par1_Hrp extends Furniture {
     private final Par1_Orb REF;
@@ -18,7 +17,7 @@ public class Par1_Hrp extends Furniture {
             this.addActKeys("play", "strum");
     }
 /*----------------------------------------------------------------------------*/ 
-    @Override public String interact(Room[][][] map, String key) {              
+    @Override public String interact(String key) {              
         String rep;
         
         if (! REF.woken()) {

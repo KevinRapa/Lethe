@@ -1,19 +1,17 @@
 package Foyer;
 
+import Main.Player;
 import Super.Furniture;
-import Super.Room;
 
 public class Foy2_Stat extends Furniture{
     private boolean moved;
     private final Furniture REF; 
-    private final Room REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Foy2_Stat(Furniture foy2Lvr, Room foy2) {
+    public Foy2_Stat(Furniture foy2Lvr) {
         super();
         this.searchable = false;
         this.moved = false;
         this.REF = foy2Lvr;
-        this.REF2 = foy2;
         this.description = "A white marble statue. It depicts a woman holding\n"
                          + "a vessel of water on her shoulder. At its base,\n"
                          + "there appears to be some skid markings on the floor.";
@@ -24,9 +22,9 @@ public class Foy2_Stat extends Furniture{
         this.addNameKeys("statue");
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
         if (! this.moved) {
-            REF2.addFurniture(REF);
+            Player.getMapRef()[3][2][5].addFurniture(REF);
             this.moved = true;
             interactDialog = "You push the statue and manage to displace it a bit.\n"
                    + "In the alcove, behind the statue, you discover a lever."; 

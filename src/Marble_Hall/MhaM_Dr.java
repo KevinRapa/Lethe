@@ -2,19 +2,17 @@ package Marble_Hall;
 
 import Super.Furniture;
 import Super.Room;
-import Main.Inventory;
+import Main.Player;
 import Super.Item;
 
 public class MhaM_Dr extends Furniture {
     private int numMedallions;
     private boolean angel, soldier, horse;
     private final Room REF;
-    private final Inventory REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public MhaM_Dr (Room din, Inventory inv) {
+    public MhaM_Dr (Room din) {
         super();
         this.REF = din;
-        this.REF2 = inv;
         this.searchable = false;
         this.angel = false; this.soldier = false; this.horse = false; // Slots
         this.numMedallions = 1;
@@ -34,7 +32,7 @@ public class MhaM_Dr extends Furniture {
         else if (item.toString().matches("horse medallion"))
             this.horse = true;
         
-        REF2.remove(item);
+        Player.getINV().remove(item);
         this.numMedallions ++;
         
         if (this.numMedallions == 4) {

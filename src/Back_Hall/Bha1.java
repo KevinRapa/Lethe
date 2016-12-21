@@ -6,14 +6,13 @@ public class Bha1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bha1(String name, String ID) {
         super(name, ID);
-        description= "A balcony behind the castle extends to your east. A stone\n" +
-                     "railing lining the edge sprouts columns which hold a roof\n" +
-                     "over your head. The balcony is bare except for a sconce\n" +
-                     "lighting it dimly and a stone bench to your left. Far below,\n" +
-                     "there is an immense drop to the the sea where waves crash\n" +
-                     "against the cliff. The sea extends northwards and to the\n" +
-                     "west indefinitely, but to the east, you can see the village\n" +
-                     "you left from behind a shoreline.";
+        description= "You stand at the east end of perhaps the most bizarre\n"
+                   + "hallway you have ever been in. Looking to the west, the\n"
+                   + "hallway enigmatically bends downward into the earth, and\n"
+                   + "the curved floor leaves a nearby 'horizon', passed which you\n"
+                   + "cannot see. A deep red hue eminates from below the horizon.\n"
+                   + "You almost lose your sense of position and balance. Against\n"
+                   + "the nearby wall sits a quite normal drawered end table and potted plant.";
     }
 /*----------------------------------------------------------------------------*/
 }

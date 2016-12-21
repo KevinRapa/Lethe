@@ -6,13 +6,9 @@ import Super.Room;
 import Main.Player;
 
 public class Par2 extends Room{
-    private final Player REF;
-    private final Room REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Par2(String name, String ID, Player plyr, Room foy3) {
+    public Par2(String name, String ID) {
         super(name, ID);
-        this.REF = plyr;
-        this.REF2 = foy3;
         description= "You stand on a second-floor loft bowing over a parlor.\n"
                    + "A thin flight of steps leads down to the first level.\n"
                    + "The room is cast in a warm glow from a hanging bowl of fire\n"
@@ -34,14 +30,14 @@ public class Par2 extends Room{
         return rep;
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String triggeredEvent(Room[][][] map) {
+    @Override public String triggeredEvent() {
         String dialog = "You are " + this + ".";
         
-        if (! REF.hasVisited("PAR1")) {
+        if (! Player.hasVisited("PAR1")) {
             AudioPlayer.playEffect(8);
             GUI.out("After stepping into the room, the door slams shut behind you.\n"
                   + "Startled, you spin around and miss a breath. You are alone.");
-            REF2.lock();
+            Player.getMapRef()[2][2][5].lock();
         }    
         return dialog;
     }

@@ -1,7 +1,6 @@
 package Library;
 
 import Super.Button;
-import Super.Room;
 import Super.Furniture;
 
 public class Lib2_Bttn extends Button {
@@ -16,7 +15,7 @@ public class Lib2_Bttn extends Button {
         this.REF2 = (Lib3_Stat) stat;
     }
 /*----------------------------------------------------------------------------*/    
-    @Override public String event(Room[][][] map, String key) {
+    @Override public String event(String key) {
         if (REF.isLit())
             interactDialog = "Ouch! There is fire in the way!";               
         else

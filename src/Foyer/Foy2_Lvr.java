@@ -1,5 +1,6 @@
 package Foyer;
 
+import Main.Player;
 import Super.Room;
 import Super.Lever;
 import Super.Furniture;
@@ -17,9 +18,9 @@ public class Foy2_Lvr extends Lever{
         this.addNameKeys("small lever", "lever");
     }
 /*----------------------------------------------------------------------------*/    
-    @Override public String event(Room[][][] map, String key) {
-        Room bba1 = map[3][1][5];
-        Room want = map[3][3][4];
+    @Override public String event(String key) {
+        Room bba1 = Player.getMapRef()[3][1][5];
+        Room want = Player.getMapRef()[3][3][4];
 
         if (this.isOn) {
             want.unlock();

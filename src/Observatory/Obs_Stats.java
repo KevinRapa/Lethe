@@ -8,12 +8,11 @@ import java.util.Scanner;
 
 public class Obs_Stats extends Furniture {
     private final Furniture[] STATS;
-    private final Player REF;
     private final Obs3_Chndlr REF2;
     private boolean solved = false;
     private boolean locked = true;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Obs_Stats(Player plyr, Furniture chandlr, Furniture... stats) {
+    public Obs_Stats(Furniture chandlr, Furniture... stats) {
         super();
         this.searchable = false;
         this.description = "An array of 9 statues arranged in a circle. In the\n"
@@ -22,7 +21,6 @@ public class Obs_Stats extends Furniture {
         this.searchDialog = "You find nothing of interest except curious seams\n"
                           + "on the floor around them.";
         this.STATS = stats;
-        this.REF = plyr;
         this.REF2 = (Obs3_Chndlr) chandlr;
         this.addNameKeys("statues", "statue");
         this.addActKeys("move", "turn", "push", "pull", "rotate", "spin");
@@ -38,8 +36,8 @@ public class Obs_Stats extends Furniture {
             GUI.menOut("<#> Look...\n< > Back");       
             choice = GUI.promptOut();
             
-            if (this.REF.getOcc().hasFurniture(choice))
-                GUI.out(this.REF.getFurnitureObject(choice).getDescription());
+            if (Player.getOcc().hasFurniture(choice))
+                GUI.out(Player.getFurnitureObject(choice).getDescription());
             else if (! choice.matches("")) {
                 rep = "That's not a valid choice.";
                 choice = "";
@@ -50,7 +48,7 @@ public class Obs_Stats extends Furniture {
         return rep;
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
         String choice, action, slot, rep = "";
         int statNum;
         Scanner collectToken;

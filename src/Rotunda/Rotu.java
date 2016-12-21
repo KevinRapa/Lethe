@@ -1,5 +1,6 @@
 package Rotunda;
 
+import Main.AudioPlayer;
 import Super.Room;
 
 public class Rotu extends Room{
@@ -32,6 +33,8 @@ public class Rotu extends Room{
     }    
 /*----------------------------------------------------------------------------*/
     public void rotate() {
+        AudioPlayer.playEffect(18);
+        
         if (this.state.matches("EW")) {
             this.addAdjacent("STUD");
             this.addAdjacent("IHA1"); 

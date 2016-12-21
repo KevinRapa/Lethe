@@ -13,7 +13,7 @@ public class Gal5_Dsply extends Furniture {
                           + "case.";
         this.interactDialog = "The cabinet is unlocked. Maybe you should search it?";
         this.addActKeys("open");
-        this.addNameKeys("glass display", "display", "cabinet");
+        this.addNameKeys("glass display", "display");
     }
 /*----------------------------------------------------------------------------*/
 }

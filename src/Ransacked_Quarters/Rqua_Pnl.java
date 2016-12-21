@@ -1,25 +1,20 @@
 package Ransacked_Quarters;
 
-import Super.Room;
-import Main.Inventory;
+import Main.Player;
 import Super.Item;
 import Super.Key;
 import Super.Furniture;
 
 public class Rqua_Pnl extends Furniture {
     private boolean lifted;
-    private final Room REF;
     private final Key REF2;
-    private final Inventory REF3;
     private final Rqua_Bd REF4;
     
-    public Rqua_Pnl(Key studKey, Room rqua, Inventory inv, Furniture bed) {
+    public Rqua_Pnl(Key studKey, Furniture bed) {
             super();
             this.lifted = false;
             this.searchable = false;
-            this.REF = rqua;
             this.REF2 = studKey;
-            this.REF3 = inv;
             this.REF4 = (Rqua_Bd)bed;
             this.description = "The tile underneath the bed looks loose.";
             this.searchDialog = "You'll have to lift this up first.";
@@ -40,8 +35,8 @@ public class Rqua_Pnl extends Furniture {
         if (this.lifted == false && REF4.isMoved()) {
             rep = this.useDialog;
             this.lifted = true;
-            REF3.add(REF2);
-            REF.removeFurniture(this);
+            Player.getINV().add(REF2);
+            Player.getMapRef()[3][5][1].removeFurniture(this);
         }
         else if (! REF4.isMoved())
             rep = "You fully intend to do that, but there is a bed in the way.";
@@ -49,7 +44,7 @@ public class Rqua_Pnl extends Furniture {
         return rep;
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {     
+    @Override public String interact(String key) {     
         String rep = "You will try that, but there is a bed in the way.";
         
         if (REF4.isMoved())

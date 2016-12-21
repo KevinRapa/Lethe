@@ -2,16 +2,14 @@ package Gallery;
 
 import Super.Furniture;
 import Super.Item;
-import Main.Inventory;
+import Main.Player;
 import Super.Room;
 
 public class Gal1_KtnFurn extends Furniture { 
-    private final Inventory REF;
     private final Item REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal1_KtnFurn(Inventory inv, Item ktn) {
+    public Gal1_KtnFurn(Item ktn) {
         super();
-        this.REF = inv;
         this.REF2 = ktn;
         this.searchable = false;
         this.description = "The black katana looks exceptionally sharp.";
@@ -20,10 +18,10 @@ public class Gal1_KtnFurn extends Furniture {
         this.addNameKeys("katana", "sword");
     }
 /*----------------------------------------------------------------------------*/ 
-    @Override public String interact(Room[][][] map, String key) { 
-        Room gal1 = map[3][2][6];
+    @Override public String interact(String key) { 
+        Room gal1 = Player.getMapRef()[3][2][6];
         gal1.removeFurniture(this);
-        REF.add(REF2);
+        Player.getINV().add(REF2);
            
         return this.interactDialog;
     }

@@ -7,18 +7,16 @@ import Super.Item;
 import Main.GUI;
 
 public class Wow3 extends Room{
-    private final Player REF;
     private final Item REF3;
     private final Furniture REF2, REF4, REF5;
     private boolean triggerHppnd;
     
-    public Wow3(String name, String ID, Player player, Furniture wow2lddr, 
-                Furniture F, Furniture wow3Lddr, Item Ilddr) {
+    public Wow3(String name, String ID, Furniture wow2lddr, 
+                Furniture Floor, Furniture wow3Lddr, Item Ilddr) {
         super(name, ID);
-        this.REF = player;
         this.REF2 = wow2lddr;
         this.REF3 = Ilddr;
-        this.REF4 = F;
+        this.REF4 = Floor;
         this.REF5 = wow3Lddr;
         this.triggerHppnd = false;
         this.description = "You stand atop the small balcony overlooking the\n" +
@@ -39,12 +37,12 @@ public class Wow3 extends Room{
         return rep;
     }
 /*----------------------------------------------------------------------------*/  
-    @Override public String triggeredEvent(Room[][][] map) {
+    @Override public String triggeredEvent() {
         GUI.roomOut("You are " + this);
         String rep = "";
-        Room wow2 = map[3][6][3];
+        Room wow2 = Player.getMapRef()[3][6][3];
                 
-        if (! REF.getLastVisited().matches("GQUA")) {
+        if (! Player.getLastVisited().matches("GQUA")) {
             if (this.triggerHppnd) {
                 rep = "The ladder creaks with instability. You were more\n"
                     + "careful in scaling the ladder this time.";

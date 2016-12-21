@@ -1,12 +1,11 @@
 package East_Outer_Wall;
 
-import Main.Player;
 import Super.Staircase;
 
 public class Eow2_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Eow2_Strs (Player player, char direction, int height) {
-        super(player, direction, height);
+    public Eow2_Strs (char direction, int height) {
+        super(direction, height);
         this.description = "The curved sandstone stairs lead to a small balcony\n"
                          + "above. It's a wonder why these didn't crumble like\n"
                          + "those in the west outer wall.";

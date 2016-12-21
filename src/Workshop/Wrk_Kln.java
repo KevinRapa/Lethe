@@ -2,16 +2,14 @@ package Workshop;
 
 import Super.Furniture;
 import Super.Item;
-import Main.Inventory;
+import Main.Player;
 
 public class Wrk_Kln extends Furniture {
-    private final Inventory REFPLYR;
     private final Item REFGLSSR, REFGLSSB, REFGLSSY;
     private boolean hasSand, hasDye, hasRedDye, hasBlueDye, hasYllwDye, hasPotash;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Wrk_Kln(Inventory plyrInv, Item glssR, Item glssY, Item glssB) {
+    public Wrk_Kln(Item glssR, Item glssY, Item glssB) {
         super();
-        this.REFPLYR = plyrInv;
         this.REFGLSSR = glssR; this.REFGLSSB = glssB; this.REFGLSSY = glssY;
         
         this.searchable = false;
@@ -29,7 +27,7 @@ public class Wrk_Kln extends Furniture {
     @Override public String useEvent(Item item) {
         String rep = null;
         
-        this.REFPLYR.remove(item);
+        Player.getINV().remove(item);
         
         if (item.toString().matches("potash") && ! this.hasPotash) {
             this.hasPotash = true;
@@ -71,17 +69,17 @@ public class Wrk_Kln extends Furniture {
         String color = null;
         
         if (this.hasRedDye) {
-            this.REFPLYR.add(REFGLSSR);
+            Player.getINV().add(REFGLSSR);
             this.hasRedDye = false;
             color = "red";
         }
         else if (this.hasBlueDye) {
-            this.REFPLYR.add(REFGLSSB);
+            Player.getINV().add(REFGLSSB);
             this.hasBlueDye = false;
             color = "blue";
         }
         else if (this.hasYllwDye) {
-            this.REFPLYR.add(REFGLSSY);
+            Player.getINV().add(REFGLSSY);
             this.hasYllwDye = false;
             color = "yellow";
         }

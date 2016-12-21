@@ -1,5 +1,6 @@
 package Gallery;
 
+import Main.Player;
 import Super.Furniture;
 import Super.Room;
         
@@ -25,8 +26,8 @@ public class Gal1_Scr extends Furniture {
         this.addNameKeys("scroll", "chinese scroll");
     }
 /*----------------------------------------------------------------------------*/
-        @Override public String interact(Room[][][] map, String key) {     
-            Room gal1 = map[3][2][6];
+        @Override public String interact(String key) {     
+            Room gal1 =Player.getMapRef()[3][2][6];
             String rep = "You have already discovered the button.";
             
             if (! this.lifted) {

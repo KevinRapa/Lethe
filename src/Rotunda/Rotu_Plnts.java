@@ -1,7 +1,6 @@
 package Rotunda;
 
 import Super.Furniture;
-import Super.Room;
 
 public class Rotu_Plnts extends Furniture{
     private final Rotu_Fntn REF;
@@ -19,7 +18,7 @@ public class Rotu_Plnts extends Furniture{
         this.addActKeys("water");
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {     
+    @Override public String interact(String key) {     
         String rep = this.interactDialog;
         if (REF.isDrained())
             rep = "There's no more water in this room.";

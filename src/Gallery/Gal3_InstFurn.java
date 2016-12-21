@@ -2,17 +2,15 @@ package Gallery;
 
 import Super.Furniture;
 import Super.Item;
-import Main.Inventory;
+import Main.Player;
 import Super.Room;
 
 public class Gal3_InstFurn extends Furniture { 
-    private final Inventory REF;
-    private final Item REF2;
+    private final Item REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_InstFurn(Inventory inv, Item inst) {
+    public Gal3_InstFurn(Item inst) {
         super();
-        this.REF = inv;
-        this.REF2 = inst;
+        this.REF = inst;
         this.searchable = false;
         this.description = "You've never seen anything like this before. You'd\n"
                          + "call it a guitar, but then again, it looks like a\n"
@@ -22,16 +20,16 @@ public class Gal3_InstFurn extends Furniture {
         this.addActKeys("take", "grab", "hold", "play", "strum");
     }
 /*----------------------------------------------------------------------------*/ 
-    @Override public String interact(Room[][][] map, String key) { 
+    @Override public String interact(String key) { 
         String rep = this.interactDialog;
         
         if (key.matches("strum") || key.matches("play")) {
             rep = "You would try, but it's up on the wall right now.";
         }            
         else {
-            Room gal1 = map[3][2][6];
+            Room gal1 = Player.getMapRef()[3][2][6];
             gal1.removeFurniture(this);
-            REF.add(REF2);
+            Player.getINV().add(REF);
         }
         return rep;
     }

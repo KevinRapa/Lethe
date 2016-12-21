@@ -80,7 +80,7 @@ public class Safe extends Furniture {
         return currentCombo.matches(this.COMBO);
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {              
+    @Override public String interact(String key) {              
         String rep = this.interactDialog;
         
         if (key.matches("smash"))

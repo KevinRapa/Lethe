@@ -5,11 +5,9 @@ import Super.Room;
 import Main.Player;
 
 public class Din1 extends Room{
-    private final Player REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Din1(String name, String ID, Player plyr) {
+    public Din1(String name, String ID) {
         super(name, ID);
-        this.REF = plyr;
         description= "You're in the castle dining hall. The room is illuminated\n"
                    + "solely from the bright moonlight. You stand on its west side\n" +
                      "staring through a row of columns under its second floor\n" +
@@ -22,8 +20,8 @@ public class Din1 extends Room{
                    + "balcony.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String triggeredEvent(Room[][][] map) {
-        if (! REF.hasVisited(this.ID)) {
+    @Override public String triggeredEvent() {
+        if (! Player.hasVisited(this.ID)) {
             GUI.out("As you enter, you hear a door above you\n"
                   + "swing shut.");
         }    

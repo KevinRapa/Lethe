@@ -1,7 +1,7 @@
 package Study;
 
+import Main.Player;
 import Super.Furniture;
-import Super.Room;
         
 public class Stud_Prtrt extends Furniture {
     private boolean lifted;
@@ -27,14 +27,13 @@ public class Stud_Prtrt extends Furniture {
         this.addNameKeys("portrait", "picture", "painting");
     }
 /*----------------------------------------------------------------------------*/
-        @Override public String interact(Room[][][] map, String key) {     
-            Room stud = map[3][2][3];
+        @Override public String interact(String key) {     
             String rep = "You have already discovered the safe.";
             
             if (! this.lifted) {
                 rep = this.interactDialog;
                 this.lifted = true;
-                stud.addFurniture(REF);
+                Player.getMapRef()[3][2][3].addFurniture(REF);
             }            
             return rep;
     }

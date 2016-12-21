@@ -1,16 +1,15 @@
 package Super;
 
-import Main.Inventory;
+import Main.GUI;
+import Main.Player;
 
 public class Trch extends Furniture {
     protected boolean hasTorch;
     protected final Item REF;
-    protected final Inventory REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Trch(Item trch, Inventory inv) {
+    public Trch(Item trch) {
         super();
         this.REF = trch;
-        this.REF2 = inv;
         this.searchable = false;
         this.description = "Sitting in a steel holder is a burning wall torch\n"
                          + "giving off an orange glow.";
@@ -24,12 +23,13 @@ public class Trch extends Furniture {
         this.addUseKeys("hand torch");
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
         String rep = this.interactDialog;
         
         if (this.hasTorch) {
             this.hasTorch = false;
-            REF2.add(REF);
+            Player.getINV().add(REF);
+            GUI.invOut("You are carrying:\n" + Player.getINV());
         }
         else
             rep = "The holder is empty you bumbling oaf.";
@@ -39,12 +39,12 @@ public class Trch extends Furniture {
 /*----------------------------------------------------------------------------*/  
     @Override public String useEvent(Item item) {
         String rep = this.useDialog;
-        
+
         if (this.hasTorch)
             rep = "The holder already bears a torch you bumbling oaf.";
         
         else {
-            this.REF2.give(item, inv);
+            Player.getINV().give(item, this.inv);
             this.hasTorch = true;
         }
        

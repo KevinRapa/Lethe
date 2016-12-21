@@ -1,7 +1,6 @@
 package Gallery;
 
 import Super.Furniture;
-import Super.Room;
 
 public class Gal3_Peg extends Furniture{
     private final Furniture REF;
@@ -16,8 +15,8 @@ public class Gal3_Peg extends Furniture{
         this.addNameKeys("peg", "pegs");
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {
-        String rep = REF.interact(map, key);
+    @Override public String interact(String key) {
+        String rep = REF.interact(key);
         
         return rep;
     }

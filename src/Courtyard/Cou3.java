@@ -2,6 +2,7 @@ package Courtyard;
 
 import Main.AudioPlayer;
 import Main.GUI;
+import Main.Player;
 import Super.Room;
 
 public class Cou3 extends Room{
@@ -18,8 +19,8 @@ public class Cou3 extends Room{
                      "as what used to be a couple fountains.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String triggeredEvent(Room[][][] map) {
-        Room cou4 = map[3][6][5];
+    @Override public String triggeredEvent() {
+        Room cou4 = Player.getMapRef()[3][6][5];
         String rep = "You are " + this + ".";
         
         if (! cou4.isThisLocked()) {

@@ -1,6 +1,5 @@
 package Gallery;
 
-import Super.Room;
 import Super.Button;
 import Super.Furniture;
         
@@ -13,7 +12,7 @@ public class Gal1_Bttn extends Button{
         this.REF = (Gal1_Drgn)stat; 
     }
 /*----------------------------------------------------------------------------*/    
-    @Override public String event(Room[][][] map, String key) {
+    @Override public String event(String key) {
         String rep = this.interactDialog;
         
         String rep2 = REF.switchLeft();

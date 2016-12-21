@@ -2,16 +2,13 @@ package Library;
 
 import Main.Player;
 import Super.Furniture;
-import Super.Room;
 import Main.GUI;
 
 public class Lib4_Strs extends Furniture {
-    private final Player REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Lib4_Strs(Player plyr) {
+    public Lib4_Strs() {
         super();
         this.searchable = false;
-        this.REF = plyr;
         this.searchDialog = "You begin the search, but as soon as you touch the\n"
                           + "stairs, they flatten down to the floor before popping\n"
                           + "back up again.";
@@ -22,14 +19,14 @@ public class Lib4_Strs extends Furniture {
         this.addActKeys("use", "climb", "walk");
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {     
+    @Override public String interact(String key) {     
         String rep;
         
-        if (REF.shoes().matches("leather shoes")) {
-            REF.setOccupies(map[3][2][8]);
+        if (Player.getShoes().matches("leather shoes")) {
+            Player.setOccupies(3, 2, 8);
             
             rep = "You climb down the stairs to the first floor.";  
-            GUI.roomOut(REF.getOcc().triggeredEvent(map));
+            GUI.roomOut(Player.getOcc().triggeredEvent());
         }
         else {
             rep = "As your foot touches the top step, the stairs flatten down\n"

@@ -3,26 +3,23 @@ package Gallery;
 import Super.Item;
 import Main.GUI;
 import Super.Furniture;
-import Main.Inventory;
-import Super.Room;
+import Main.Player;
 
 public class Gal3_Ttm extends Furniture{
     private boolean isOn;
     private final Gal_2E_Stat REF;
-    private final Inventory REF2;
     private char beam;
     private String mode;
     private boolean headOne, headTwo, headThree, headFour;
             
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_Ttm(Furniture stat, Inventory inv, Item... items) {
+    public Gal3_Ttm(Furniture stat, Item... items) {
         super();
         this.searchDialog = "The only place to search is the totem's open\n"
                           + "third mouth. ";
         this.interactDialog = "You back away from the totem";
         this.searchable = false;
         this.REF = (Gal_2E_Stat) stat;
-        this.REF2 = inv;
         this.headOne = false;
         this.headTwo = false;
         this.headThree = false;
@@ -159,7 +156,7 @@ public class Gal3_Ttm extends Furniture{
         return "";
     }
 /*----------------------------------------------------------------------------*/    
-    @Override  public String interact(Room[][][] map, String key) {  
+    @Override  public String interact(String key) {  
         String action;
         boolean solved = false;
         
@@ -241,7 +238,7 @@ public class Gal3_Ttm extends Furniture{
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         this.useDialog = "You place the " + item + " in the totem's mouth.";
-        REF2.give(item, this.inv);
+        Player.getINV().give(item, this.inv);
         
         return this.useDialog;
     }

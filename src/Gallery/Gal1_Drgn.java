@@ -1,23 +1,21 @@
 package Gallery;
 
+import Main.Player;
 import Super.Item;
 import Super.Furniture;
-import Main.Inventory;
 
 public class Gal1_Drgn extends Furniture {
     private boolean isOn;
     private final Gal_1E_Stat REF;
-    private final Inventory REF2;
     private char beam;
     private String mode;
     private boolean leftEye, rightEye;
             
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal1_Drgn(Furniture stat, Inventory inv, Item... items) {
+    public Gal1_Drgn(Furniture stat, Item... items) {
         super();
         this.searchDialog = "The only place to search is the dragon's mouth.";
         this.REF = (Gal_1E_Stat) stat;
-        this.REF2 = inv;
         this.leftEye = false;
         this.rightEye = false;
         this.isOn = true;
@@ -181,7 +179,7 @@ public class Gal1_Drgn extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         this.useDialog = "You place the " + item + " into the dragon's mouth.";
-        REF2.give(item, this.inv);
+        Player.getINV().give(item, this.inv);
         
         return this.useDialog;
     }

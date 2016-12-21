@@ -2,13 +2,12 @@ package Study;
 
 import Super.Fireplace;
 import Super.Item;
-import Main.Inventory;
 
 public class Stud_Fire extends Fireplace {
      
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Stud_Fire(boolean isLit, Item bckt, Inventory inv) {       
-        super(isLit, bckt, inv);
+    public Stud_Fire(boolean isLit, Item bckt) {       
+        super(isLit, bckt);
         this.useDialog = "That's probably not a good idea. It's the only thing lighting this room.";
         this.descLit = "It's a small, fancy marble fireplace. The edges are an\n"
                      + "ornate wood. 'Magnificent!' you think to yourself. Its\n"

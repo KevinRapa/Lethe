@@ -18,11 +18,11 @@ abstract public class Button extends Furniture {
         this.addNameKeys("button"); 
     }
 /*----------------------------------------------------------------------------*/   
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
         AudioPlayer.playEffect(11);
-        return this.event(map, key);
+        return this.event(key);
     }
 /*----------------------------------------------------------------------------*/   
-    abstract protected String event(Room[][][] map, String key);
+    abstract protected String event(String key);
 /*----------------------------------------------------------------------------*/   
 }

@@ -167,6 +167,29 @@ piano melody
 	https://www.freesound.org/people/waveplay/sounds/219288/
 	Temperament -- waveplay
 
+sonar
+	https://www.freesound.org/people/tiagusilva37/sounds/324107/
+	Sonar.wav -- tiagusilva37
+
+back hall drone
+	https://www.freesound.org/people/plagasul/sounds/4096/
+	rarexport-05.wav -- plagasul
+
+Clank
+	https://www.freesound.org/people/ignotus/sounds/20327/
+	clunk.flac -- ignotus
+
+Valve
+	https://www.freesound.org/people/FreqMan/sounds/31379/
+	FreqMan -- valve 2.wav
+
+Rushing water
+	https://www.freesound.org/people/jc144940/sounds/178734/
+	Rushing River Water.aif -- jc144940
+
+
+
+
 TYPE CREEPY IN AUDACITY
 	
 

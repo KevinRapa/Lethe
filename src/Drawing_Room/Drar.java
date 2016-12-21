@@ -5,11 +5,9 @@ import Super.Room;
 import Main.Player;
 
 public class Drar extends Room{
-    private final Player REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Drar(String name, String ID, Player plyr) {
+    public Drar(String name, String ID) {
         super(name, ID);
-        this.REF = plyr;
         description= "The moment you enter the room, the first thing you notice\n" +
                      "is a ghostly white apparition sitting on the opposite end.\n" +
                      "It turns toward you, but there is no face you can recognize\n" +
@@ -20,8 +18,8 @@ public class Drar extends Room{
                      "the bright moonlight shining in.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String triggeredEvent(Room[][][] map) {   
-        if (! REF.hasVisited(this.ID)) 
+    @Override public String triggeredEvent() {   
+        if (! Player.hasVisited(this.ID)) 
             GUI.out("From across the room, an apparition stares at you with\n"
                    + "open eyes.");
           

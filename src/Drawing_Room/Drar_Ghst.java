@@ -4,19 +4,16 @@ import Super.Furniture;
 import Super.Item;
 import Super.Key;
 import Main.GUI;
-import Super.Room;
 import Main.Player;
 
 public class Drar_Ghst extends Furniture {
-    private final Player REF;
     private final Item REF2, REF4;
     private final Key REF3;
     private boolean firstTime;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Drar_Ghst(Player plyr, Item drkFcs, Key kitcKey, Item glwEm) {
+    public Drar_Ghst(Item drkFcs, Key kitcKey, Item glwEm) {
         super();
         this.searchable = false;
-        this.REF = plyr;
         this.REF2 = drkFcs;
         this.REF3 = kitcKey;
         this.REF4 = glwEm;
@@ -31,19 +28,19 @@ public class Drar_Ghst extends Furniture {
         this.addNameKeys("ghost", "apparition", "white apparition");
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
         String rep = this.interactDialog;
         
         if (this.firstTime) {
             this.converse1();
             this.firstTime = false;
         }
-        else if (! REF.doYouHaveIt("glowing emerald"))
+        else if (! Player.doYouHaveIt("glowing emerald"))
             this.converse2();
           
-        else if (REF.doYouHaveIt("glowing emerald")) {
+        else if (Player.doYouHaveIt("glowing emerald")) {
             this.converse3();
-            map[2][5][8].removeFurniture(this);           
+            Player.getMapRef()[2][5][8].removeFurniture(this);           
             rep = "The apparition fades away into nothing."; 
         }
         return rep;
@@ -116,8 +113,8 @@ public class Drar_Ghst extends Furniture {
                    "the unlocking mechanism. Please have it....\"");
         GUI.promptOut();
         
-        this.REF.getINV().add(this.REF2);
-        GUI.invOut("You are carrying:\n" + this.REF.getINV());
+        Player.getINV().add(this.REF2);
+        GUI.invOut("You are carrying:\n" + Player.getINV());
         GUI.out("The apparition hands you a dark tinted lens...");
         GUI.promptOut();
         
@@ -138,7 +135,7 @@ public class Drar_Ghst extends Furniture {
                    "this means to me! Oh, well I suppose you do.\n" +
                    "As promised, I will help you find a way out\n" +
                    "of here....\"");
-        this.REF.getINV().remove(this.REF4);
+        Player.getINV().remove(this.REF4);
         GUI.promptOut();
         
         GUI.out("\"I used to spend most of my time in the west\n" +
@@ -160,7 +157,7 @@ public class Drar_Ghst extends Furniture {
         GUI.promptOut();
         
         GUI.out("The apparition drops a key into your palm...");
-        this.REF.getINV().add(REF3);
+        Player.getINV().add(REF3);
         GUI.promptOut();
         
         GUI.clearMenu();

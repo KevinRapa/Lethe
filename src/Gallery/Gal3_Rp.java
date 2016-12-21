@@ -2,19 +2,16 @@ package Gallery;
 
 import Super.Furniture;
 import Super.Item;
-import Super.Room;
 import Main.Player;
 
 public class Gal3_Rp extends Furniture {
     private boolean cut;
-    private final Player REF;
     private final Gal3_Lddr REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Gal3_Rp(Player plyr, Furniture lddr) {
+    public Gal3_Rp(Furniture lddr) {
             super();
             this.searchable = false;
             this.cut = false;
-            this.REF = plyr;
             this.REF2 = (Gal3_Lddr)lddr;
             this.addActKeys("cut", "pull", "untie");
             this.addUseKeys("katana", "silver sword", "rusty sword", "broken sword", "war axe", "battle axe");
@@ -37,12 +34,12 @@ public class Gal3_Rp extends Furniture {
         return rep;
     }
 /*----------------------------------------------------------------------------*/ 
-    @Override public String interact(Room[][][] map, String key) { 
+    @Override public String interact(String key) { 
         String rep = this.interactDialog;
         
         if(! this.cut) {
             if (key.matches("cut")) {
-                if (detectItem(REF)) {
+                if (detectItem()) {
                     REF2.lower();
                     this.cut = true;
                 }           
@@ -71,10 +68,10 @@ public class Gal3_Rp extends Furniture {
              + "giving access to the loft.";
     }
 /*----------------------------------------------------------------------------*/
-    private boolean detectItem(Player ref) {
+    private boolean detectItem() {
         // Detects if you have a blade to cut the rope with.
         for (String i : this.USEKEYS) {
-            if (ref.doYouHaveIt(i))
+            if (Player.doYouHaveIt(i))
                 return true;
         }
         return false;

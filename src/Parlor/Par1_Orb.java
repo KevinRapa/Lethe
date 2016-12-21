@@ -2,7 +2,6 @@ package Parlor;
 
 import Super.Furniture;
 import Main.GUI;
-import Super.Room;
 
 public class Par1_Orb extends Furniture {
     private boolean firstTime, woken;
@@ -20,7 +19,7 @@ public class Par1_Orb extends Furniture {
         this.addNameKeys("orb", "glass orb");
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(Room[][][] map, String key) {
+    @Override public String interact(String key) {
         String rep = this.interactDialog;
         
         if (key.matches("[stc]\\w+")) {
