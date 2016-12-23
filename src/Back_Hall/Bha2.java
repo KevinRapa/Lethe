@@ -1,8 +1,8 @@
 package Back_Hall;
 
-import Super.Room;
-import Main.Player;
-import Main.GUI;
+import A_Super.Room;
+import A_Main.Player;
+import A_Main.GUI;
 
 public class Bha2 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

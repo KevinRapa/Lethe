@@ -1,6 +1,6 @@
 package West_Outer_Wall;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Wow2_Hole extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

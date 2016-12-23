@@ -1,6 +1,6 @@
 package Gallery;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Gal1_Armr extends Furniture {
 
@@ -14,7 +14,7 @@ public class Gal1_Armr extends Furniture {
                          + "before, but this must be the functional kind.";
         this.searchDialog = "You find many little intricate parts to this piece,\n"
                           + "but nothing removable.";
-        this.interactDialog = "You will probably get hurt trying to do that.";
+        this.actDialog = "You will probably get hurt trying to do that.";
         this.addActKeys("wear", "equip");
         this.addNameKeys("samurai armor", "armor suit", "armor", "suit of armor"); 
 /*----------------------------------------------------------------------------*/

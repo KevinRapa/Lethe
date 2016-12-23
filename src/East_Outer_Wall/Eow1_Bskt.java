@@ -1,7 +1,7 @@
 package East_Outer_Wall;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
         
 public class Eow1_Bskt extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

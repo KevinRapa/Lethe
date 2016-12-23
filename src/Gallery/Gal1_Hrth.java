@@ -1,7 +1,7 @@
 package Gallery;
 
-import Super.Fireplace;
-import Super.Item;
+import A_Super.Fireplace;
+import A_Super.Item;
 
 public class Gal1_Hrth extends Fireplace {
      

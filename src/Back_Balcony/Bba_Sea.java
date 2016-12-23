@@ -1,6 +1,6 @@
 package Back_Balcony;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Bba_Sea extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

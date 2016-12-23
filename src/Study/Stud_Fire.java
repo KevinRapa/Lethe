@@ -1,7 +1,7 @@
 package Study;
 
-import Super.Fireplace;
-import Super.Item;
+import A_Super.Fireplace;
+import A_Super.Item;
 
 public class Stud_Fire extends Fireplace {
      

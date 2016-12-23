@@ -1,7 +1,7 @@
 package Dungeon_Stairs;
 
-import Super.Staircase;
-import Main.Player;
+import A_Super.Staircase;
+import A_Main.Player;
 
 public class Dst1_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -9,7 +9,7 @@ public class Dst1_Strs extends Staircase {
         super(direction, height);
         this.description = "The mossy stone spiral staircase winds down into\n"
                          + "the unknown.";
-        this.interactDialog = "The sense of dread is overwhelming.\n"
+        this.actDialog = "The sense of dread is overwhelming.\n"
                     + "You can't bring yourself to climb down them.";
     }
 /*----------------------------------------------------------------------------*/
@@ -29,7 +29,7 @@ public class Dst1_Strs extends Staircase {
                 + "landing.";       
         }
         else
-            rep = this.interactDialog;
+            rep = this.actDialog;
         
         return rep;
     }

@@ -1,6 +1,6 @@
 package Parlor;
 
-import Super.Staircase;
+import A_Super.Staircase;
 
 public class Par_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

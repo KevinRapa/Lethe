@@ -1,7 +1,7 @@
 package Gallery;
 
-import Main.AudioPlayer;
-import Super.Staircase;
+import A_Main.AudioPlayer;
+import A_Super.Staircase;
 
 public class Gal6_Lddr extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

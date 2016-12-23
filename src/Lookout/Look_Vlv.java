@@ -1,14 +1,14 @@
 package Lookout;
 
-import Main.AudioPlayer;
-import Main.Player;
+import A_Main.AudioPlayer;
+import A_Main.Player;
 import Rotunda.Rotu_Fntn;
 import Rotunda.Rotu_Whl;
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Look_Vlv extends Furniture{
-    private final Rotu_Fntn REF;
-    private final Rotu_Whl REF3;
+    private final Rotu_Fntn FNTN_REF;
+    private final Rotu_Whl WHL_REF;
     private boolean loosened;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Look_Vlv(Furniture fntn, Furniture whl) {
@@ -19,21 +19,21 @@ public class Look_Vlv extends Furniture{
         this.description = "A big rusty valve. There's a small pipe sticking out\n"
                          + "of the wall next to it.";
         this.loosened = false;
-        this.interactDialog = "As you turn the valve, you hear rushing water. Immediately,\n"
+        this.actDialog = "As you turn the valve, you hear rushing water. Immediately,\n"
                     + "a gush of water flows from the nearby pipe and off of the\n"
                     + "balcony.";
-        this.REF = (Rotu_Fntn) fntn;
-        this.REF3 = (Rotu_Whl) whl;
+        this.FNTN_REF = (Rotu_Fntn) fntn;
+        this.WHL_REF = (Rotu_Whl) whl;
         this.addNameKeys("valve");
         this.addActKeys("turn", "rotate", "spin", "twist");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {
-        String rep = this.interactDialog;
-        if (! REF.isDrained()) {
-            REF.drain();
+        String rep = this.actDialog;
+        if (! FNTN_REF.isDrained()) {
+            FNTN_REF.drain();
             AudioPlayer.playEffect(20);
-            Player.getMapRef()[3][3][3].addFurniture(REF3);
+            Player.getMapRef()[3][3][3].addFurniture(WHL_REF);
             loosened = true; 
         }
         else {

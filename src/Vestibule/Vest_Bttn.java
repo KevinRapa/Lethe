@@ -1,9 +1,9 @@
 package Vestibule;
 
-import Main.Player;
-import Super.Button;
-import Super.Room;
-import Super.Furniture;
+import A_Main.Player;
+import A_Super.Button;
+import A_Super.Room;
+import A_Super.Furniture;
 
 public class Vest_Bttn extends Button {
     private final Vest_Frplc REF;
@@ -20,12 +20,12 @@ public class Vest_Bttn extends Button {
         Room foy1 = Player.getMapRef()[3][3][5];
         
         if (REF.isLit())
-            interactDialog = "Ouch! There is fire in the way!";                    
+            actDialog = "Ouch! There is fire in the way!";                    
         else {
             foy1.unlock();
-            interactDialog = "You push the button and hear a click behind you.";
+            actDialog = "You push the button and hear a click behind you.";
         }             
-        return interactDialog;
+        return actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

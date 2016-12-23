@@ -1,6 +1,6 @@
 package Gallery;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Gal6_Htch extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -8,7 +8,7 @@ public class Gal6_Htch extends Furniture {
         super();
         this.searchable = false;
         this.description = "The hatch leads down into the room below.";
-        this.interactDialog = "The hatch is open already.";
+        this.actDialog = "The hatch is open already.";
         this.addActKeys("open");
         this.addNameKeys("hatch");
 /*----------------------------------------------------------------------------*/

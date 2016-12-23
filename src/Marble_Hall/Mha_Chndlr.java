@@ -1,6 +1,6 @@
 package Marble_Hall;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Mha_Chndlr extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

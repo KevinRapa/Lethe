@@ -1,6 +1,6 @@
 package Foyer;
 
-import Super.Staircase;
+import A_Super.Staircase;
 
 public class Foy2_Strcs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

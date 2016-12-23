@@ -1,6 +1,6 @@
 package Library;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Lib4_Glb extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -9,7 +9,7 @@ public class Lib4_Glb extends Furniture{
         this.searchable = false;
         this.description = "The globe looks antique, but on a closer look, it\n"
                          + "seems fairly modern. Early 1920s you guess.";
-        this.interactDialog = "You think to yourself, 'when I get out of here, I'd like\n"
+        this.actDialog = "You think to yourself, 'when I get out of here, I'd like\n"
                     + "to stay this adventurous but be three times as safe.' You\n"
                     + "spin the globe and blindly stop it on a country, intending\n"
                     + "to take take a well-earned vacation after this ordeal is\n"

@@ -1,6 +1,6 @@
 package Chapel_Stairs;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Chs1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

@@ -1,6 +1,6 @@
 package Parlor;
 
-import Super.Note;
+import A_Super.Note;
 
 public class ParNt extends Note {
 

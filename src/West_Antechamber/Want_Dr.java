@@ -1,6 +1,6 @@
 package West_Antechamber;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Want_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

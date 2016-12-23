@@ -1,8 +1,8 @@
 package Library;
 
-import Main.Player;
-import Super.Furniture;
-import Super.Item;
+import A_Main.Player;
+import A_Super.Furniture;
+import A_Super.Item;
         
 public class Lib2_Vyg extends Furniture {
     private final Furniture REF, REF2, REF3, REF4;
@@ -15,7 +15,7 @@ public class Lib2_Vyg extends Furniture {
         this.REF3 = prdtn;
         this.REF4 = bnshmnt;
         this.moved = false;
-        this.interactDialog = "You push against the shelf, but it doesn't budge.";
+        this.actDialog = "You push against the shelf, but it doesn't budge.";
         this.description = "The tall bookshelf bears a plaque on the top reading\n"
                          + "\"Voyage\". At its base on the right, you notice\n"
                          + "consistent arched scratches on the floor.";
@@ -25,7 +25,7 @@ public class Lib2_Vyg extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {              
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         
         if (this.doesThisHaveIt("epic tome") && REF.doesThisHaveIt("greek tome") &&
             REF2.doesThisHaveIt("biblical tome") && REF3.doesThisHaveIt("infernal tome") &&

@@ -1,6 +1,6 @@
 package Library;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Lib_BkShlf extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -10,7 +10,7 @@ public class Lib_BkShlf extends Furniture{
         this.description = "There are a lot of bookshelves in here. Specify\n"
                          + "with just the label at the top.";
         this.searchDialog = this.description;
-        this.interactDialog = this.description;
+        this.actDialog = this.description;
         this.addNameKeys("bookshelf", "bookshelves", "shelf", "shelves");
         this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");
     }

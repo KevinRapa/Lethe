@@ -1,6 +1,6 @@
 package Study;
 
-import Super.Book;
+import A_Super.Book;
 
 public class Stud_BookPhy extends Book {
     private final String pg1, pg2, pg3;

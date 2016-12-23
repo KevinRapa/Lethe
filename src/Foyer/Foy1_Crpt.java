@@ -1,6 +1,6 @@
 package Foyer;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Foy1_Crpt extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

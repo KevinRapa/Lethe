@@ -1,6 +1,6 @@
 package Foyer;
 
-import Super.Note;
+import A_Super.Note;
 
 public class Foy1_Note extends Note {
 

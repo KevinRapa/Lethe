@@ -1,6 +1,6 @@
 package Iron_Hall;
 
-import Super.Static_Wndw;
+import A_Super.Static_Wndw;
 
 public class Iha_Wndw extends Static_Wndw {
     public Iha_Wndw() {

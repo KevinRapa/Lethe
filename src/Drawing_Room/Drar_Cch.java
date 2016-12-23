@@ -1,6 +1,6 @@
 package Drawing_Room;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Drar_Cch extends Furniture {
     private final Drar_Ghst REF;
@@ -12,7 +12,7 @@ public class Drar_Cch extends Furniture {
         this.description = "The victorian-era couch is a bold green color. This\n"
                          + "one looks quite comfortable actually.";
         this.searchDialog = "There's nothing hidden on this couch.";
-        this.interactDialog = "This is the most comfortable couch you've sat in yet.\n"
+        this.actDialog = "This is the most comfortable couch you've sat in yet.\n"
                             + "Why haven't you grabbed a drink?";
         this.addActKeys("sit", "relax", "lay");
         this.addNameKeys("couch");
@@ -28,7 +28,7 @@ public class Drar_Cch extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
         @Override public String interact(String key) {
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         
         if (REF.firstTime())
             rep = "You do realize that there's a ghost in here, right?";

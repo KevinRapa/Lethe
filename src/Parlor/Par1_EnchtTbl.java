@@ -1,9 +1,9 @@
 package Parlor;
 
-import Super.Furniture;
-import Super.Item;
-import Main.Player;
-import Super.Room;
+import A_Super.Furniture;
+import A_Super.Item;
+import A_Main.Player;
+import A_Super.Room;
 
 public class Par1_EnchtTbl extends Furniture {
     private final Item REF_ENCH_BTTL, REF_SALTS, REF_MANDRAKE, REF_SPRUCE, REF_BTTL,
@@ -27,7 +27,7 @@ public class Par1_EnchtTbl extends Furniture {
         
         hasBottle = true; // The bottle is already on the table.
         
-        this.interactDialog = "You pound your hands on the table.";
+        this.actDialog = "You pound your hands on the table.";
         this.searchDialog = "You look on the table.";
         this.description = "The black pentagonal table bears many carvings of strange\n"
                          + "runes and writing that seem to glow from the fire. Two"
@@ -40,15 +40,15 @@ public class Par1_EnchtTbl extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         if (item.toString().matches(Player.getShoes()))
-            Player.switchShoes("");
+            Player.setShoes("");
             
-        Player.getINV().give(item, this.inv);
+        Player.getInv().give(item, this.inv);
         
         return "You place the " + item + " on the table.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {          
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         this.check();
         
         switch (this.enchant()) {
@@ -70,19 +70,19 @@ public class Par1_EnchtTbl extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private void check() {
-        this.hasFireSalts = this.inv.getInv().contains(this.REF_SALTS);
-        this.hasSpruce = this.inv.getInv().contains(this.REF_SPRUCE);
-        this.hasMandrake = this.inv.getInv().contains(this.REF_MANDRAKE);
-        this.hasBottle = this.inv.getInv().contains(this.REF_BTTL);
+        this.hasFireSalts = this.inv.contains(this.REF_SALTS);
+        this.hasSpruce = this.inv.contains(this.REF_SPRUCE);
+        this.hasMandrake = this.inv.contains(this.REF_MANDRAKE);
+        this.hasBottle = this.inv.contains(this.REF_BTTL);
         
-        this.hasFthr = this.inv.getInv().contains(this.REF_FTHR);
-        this.hasHly = this.inv.getInv().contains(this.REF_ATHR);
-        this.hasShs = this.inv.getInv().contains(this.REF_SHS);
+        this.hasFthr = this.inv.contains(this.REF_FTHR);
+        this.hasHly = this.inv.contains(this.REF_ATHR);
+        this.hasShs = this.inv.contains(this.REF_SHS);
     }
 /*----------------------------------------------------------------------------*/
     private int enchant() {
         
-        if (hasBottle && hasFireSalts && hasMandrake && hasSpruce && inv.getInv().size() == 4) {
+        if (hasBottle && hasFireSalts && hasMandrake && hasSpruce && inv.size() == 4) {
             this.inv.remove(REF_SALTS);
             this.inv.remove(REF_SPRUCE);
             this.inv.remove(REF_BTTL);
@@ -90,7 +90,7 @@ public class Par1_EnchtTbl extends Furniture {
             this.inv.add(REF_ENCH_BTTL);
             return 1;
         }
-        else if(hasShs && hasFthr && hasHly && inv.getInv().size() == 3) {
+        else if(hasShs && hasFthr && hasHly && inv.size() == 3) {
             this.inv.remove(REF_FTHR);
             this.inv.remove(REF_ATHR);
             this.inv.remove(REF_SHS);

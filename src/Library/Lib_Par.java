@@ -1,6 +1,6 @@
 package Library;
 
-import Super.Book;
+import A_Super.Book;
 
 public class Lib_Par extends Book {
     private final String pg1, pg2, pg3, pg4;

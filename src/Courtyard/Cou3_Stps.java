@@ -1,8 +1,8 @@
 package Courtyard;
 
-import Super.Staircase;
-import Main.GUI;
-import Main.Player;
+import A_Super.Staircase;
+import A_Main.GUI;
+import A_Main.Player;
 
 public class Cou3_Stps extends Staircase {
     

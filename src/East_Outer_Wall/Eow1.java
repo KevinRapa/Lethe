@@ -1,6 +1,6 @@
 package East_Outer_Wall;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Eow1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      

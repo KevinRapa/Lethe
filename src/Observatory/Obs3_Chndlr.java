@@ -1,7 +1,7 @@
 package Observatory;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
 
 public class Obs3_Chndlr extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

@@ -1,14 +1,12 @@
 package Foyer;
 
-import Super.Room;
+import A_Main.Player;
+import A_Super.Room;
 
 public class Foy2 extends Room{
-    private final Room REF;
-    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Foy2(String name, String ID, Room bba1) {
+    public Foy2(String name, String ID) {
         super(name, ID);
-        this.REF = bba1;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
@@ -24,7 +22,7 @@ public class Foy2 extends Room{
 /*----------------------------------------------------------------------------*/
     private String descMode() {
         String mode;
-        if (! this.REF.isThisLocked())
+        if (! Player.getMapRef()[3][1][5].isThisLocked())
             mode = "an open gate leads\noutside to a balcony.";
         else
             mode = "a closed gate blocks\nyour way outside to a balcony.";

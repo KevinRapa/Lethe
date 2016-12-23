@@ -1,10 +1,10 @@
 package Courtyard;
 
-import Main.GUI;
-import Main.Player;
+import A_Main.GUI;
+import A_Main.Player;
 import java.util.HashMap;
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
 /**
  * This is an in-game non-player character that plays blackjack with the player.
  * The player may play as many times as her/she wants each encounter, and the
@@ -24,7 +24,7 @@ public class Cou6_BlackJackGhost extends Furniture {
       
         this.firstTime = true;
         this.searchDialog = "The ghost won't appreciate that.";
-        this.interactDialog = "\"Come back if you want to play again!";
+        this.actDialog = "\"Come back if you want to play again!";
         this.description = "Leaning nonchalantely against the castle wall is a\n"
                          + "ghostly figure shuffling what seem to be cards. The apparition\n"
                          + "is garbed in distinctive clothing- a vest and a full-brimmed hat.";
@@ -39,7 +39,7 @@ public class Cou6_BlackJackGhost extends Furniture {
      * @return End dialog with the ghost.
      */
     @Override public String interact(String key) {
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         
         if (this.firstTime) {
             if(this.converse1())
@@ -99,11 +99,11 @@ public class Cou6_BlackJackGhost extends Furniture {
             
             if (ans.matches("yes")) {
                 played = true;
-                Player.getINV().remove("card"); // Removes all cards from player inventory.
+                Player.getInv().remove("card"); // Removes all cards from player inventory.
                 GUI.clearDialog();
                 this.playCards(); // Starts the game. 
             }
-            GUI.invOut("You are carrying:\n" + Player.getINV());
+            GUI.invOut("You are carrying:\n" + Player.getInv());
             
         } while (! ans.matches("no"));
         
@@ -151,11 +151,11 @@ public class Cou6_BlackJackGhost extends Furniture {
         // Deals the initial two cards to the player.
         Card plyrCard1 = deck.draw();
         Card plyrCard2 = deck.draw();
-        Player.getINV().add(plyrCard1);
-        Player.getINV().add(plyrCard2);
+        Player.getInv().add(plyrCard1);
+        Player.getInv().add(plyrCard2);
         yourVal += this.evalHit(plyrCard1, yourVal); 
         yourVal += this.evalHit(plyrCard2, yourVal);
-        GUI.invOut("You are carrying:\n" + Player.getINV());   
+        GUI.invOut("You are carrying:\n" + Player.getInv());   
         
         //<editor-fold desc="Test Cases"> ===================================
         // Uncomment any of these and choose 'stand' during the game.
@@ -233,8 +233,8 @@ public class Cou6_BlackJackGhost extends Furniture {
             
             if (ans.matches("hit")) {
                 current = deck.draw();
-                Player.getINV().add((Item) current);
-                GUI.invOut("You are carrying:\n" + Player.getINV());
+                Player.getInv().add((Item) current);
+                GUI.invOut("You are carrying:\n" + Player.getInv());
                 score += this.evalHit(current, score);
                 
                 if (this.bust(score))

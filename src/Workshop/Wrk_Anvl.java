@@ -1,6 +1,6 @@
 package Workshop;
 
-import Super.Furniture;
+import A_Super.Furniture;
         
 public class Wrk_Anvl extends Furniture {
 
@@ -11,7 +11,7 @@ public class Wrk_Anvl extends Furniture {
         this.description = "It's a quintessential anvil if you've ever seen one.\n"
                          + "It looks heavily used.";
         this.searchDialog = "There's nothing to search for on an anvil.";
-        this.interactDialog = "There's a plethora of weapons downstairs. No need for that.";
+        this.actDialog = "There's a plethora of weapons downstairs. No need for that.";
         this.addActKeys("hammer", "use");
         this.addNameKeys("anvil");
     }

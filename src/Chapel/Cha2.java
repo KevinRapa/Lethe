@@ -1,6 +1,6 @@
 package Chapel;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Cha2 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

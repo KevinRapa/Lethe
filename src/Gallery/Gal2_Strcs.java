@@ -1,6 +1,6 @@
 package Gallery;
 
-import Super.Staircase;
+import A_Super.Staircase;
 
 public class Gal2_Strcs extends Staircase {
     

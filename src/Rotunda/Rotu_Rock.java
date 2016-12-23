@@ -1,6 +1,6 @@
 package Rotunda;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Rotu_Rock extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

@@ -1,6 +1,6 @@
 package Scorched_Room;
 
-import Super.Furniture;
+import A_Super.Furniture;
         
 public class Sear_Ash extends Furniture {
 

@@ -1,6 +1,6 @@
 package Servants_Hall;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Sha2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

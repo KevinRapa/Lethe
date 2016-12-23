@@ -1,6 +1,6 @@
 package Chapel_Stairs;
 
-import Super.Staircase;
+import A_Super.Staircase;
 
 public class Chs1_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

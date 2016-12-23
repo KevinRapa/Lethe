@@ -1,8 +1,8 @@
 package West_Outer_Wall;
 
-import Main.AudioPlayer;
-import Main.Player;
-import Super.Staircase;
+import A_Main.AudioPlayer;
+import A_Main.Player;
+import A_Super.Staircase;
 
 public class Wow2_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -24,11 +24,9 @@ public class Wow2_Strs extends Staircase {
         Player.setOccupies(Z + m, Y, X); // moves the player's Z coordinate.
         
         playEffect();
-        String rep = "You climb the ladder. " + Player.getOcc().triggeredEvent();       
-
         Player.describeRoom();
         
-        return rep;
+        return Player.getOcc().triggeredEvent();       
     }
 /*----------------------------------------------------------------------------*/
     @Override protected void playEffect() {

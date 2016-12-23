@@ -5,7 +5,7 @@ package Courtyard;
  * @author Kevin Rapa
  */
 import java.util.HashMap;
-import Super.Item;
+import A_Super.Item;
 
 public class Card extends Item {
     private final int VALUE; // The card's face value;

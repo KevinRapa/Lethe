@@ -1,6 +1,6 @@
 package West_Outer_Wall;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Wow3_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

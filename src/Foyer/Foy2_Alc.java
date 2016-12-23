@@ -1,6 +1,6 @@
 package Foyer;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Foy2_Alc extends Furniture{
     Foy2_Stat ref;

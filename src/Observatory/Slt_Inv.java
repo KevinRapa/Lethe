@@ -1,7 +1,7 @@
 package Observatory;
 
-import Main.Inventory;
-import Super.Item;
+import A_Main.Inventory;
+import A_Super.Item;
 
 public class Slt_Inv extends Inventory{
     private final Obs_Slts REF;

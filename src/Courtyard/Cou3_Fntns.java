@@ -1,6 +1,6 @@
 package Courtyard;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Cou3_Fntns extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -10,7 +10,7 @@ public class Cou3_Fntns extends Furniture{
         this.description = "Crumbling stone fountains to the left and right used\n"
                          + "to decorate the courtyard.";
         this.searchDialog = "They're too far away.";
-        this.interactDialog = this.searchDialog;
+        this.actDialog = this.searchDialog;
         this.addNameKeys("fountain", "fountains");
     }
 /*----------------------------------------------------------------------------*/

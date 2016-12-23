@@ -1,8 +1,8 @@
 package Drawing_Room;
 
-import Main.GUI;
-import Super.Room;
-import Main.Player;
+import A_Main.GUI;
+import A_Super.Room;
+import A_Main.Player;
 
 public class Drar extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

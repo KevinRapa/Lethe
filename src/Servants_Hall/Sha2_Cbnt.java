@@ -1,10 +1,11 @@
 package Servants_Hall;
 
-import Super.Furniture;
-import Super.Item;
-import Main.Player;
+import A_Super.Furniture;
+import A_Super.Item;
+import A_Super.Container;
+import A_Main.Player;
 
-public class Sha2_Cbnt extends Furniture{
+public class Sha2_Cbnt extends Furniture implements Container {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Sha2_Cbnt(Item... items) {
         super(items);
@@ -12,24 +13,24 @@ public class Sha2_Cbnt extends Furniture{
         this.description = "It's a large wooden double-doored cabinet. It looks\n"
                          + "plain and cheap. It must just house tools for the\n"
                          + "servants.";
-        this.interactDialog = "The tiny metal key fits perfectly. You turn it and the\n"
+        this.actDialog = "The tiny metal key fits perfectly. You turn it and the\n"
                             + "cabinet makes a satisfying *click*";
         this.searchDialog = "The cabinet is locked. Maybe one of the servants\n"
                           + "had a key...";
-        this.addActKeys("unlock", "open");
+        this.addActKeys("unlock");
         this.addNameKeys("cabinet", "wood cabinet", "wooden cabinet");
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {            
         if (Player.hasKey("CBNT") && ! this.searchable) {
             this.searchable = true; 
-            return this.interactDialog;
+            return this.actDialog;
         }
         else if (! this.searchable)
             return "The door won't open. It's locked.";
         
         else
-            return "You have unlocked it. Perhaps you should search it.";
+            return "You have unlocked it already.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {

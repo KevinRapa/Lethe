@@ -1,6 +1,6 @@
 package Servants_Quarters;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Squa extends Room{
     

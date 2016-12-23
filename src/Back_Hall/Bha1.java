@@ -1,6 +1,6 @@
 package Back_Hall;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Bha1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

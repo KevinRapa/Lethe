@@ -1,6 +1,6 @@
 package Library;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Lib_Pllr extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -9,7 +9,7 @@ public class Lib_Pllr extends Furniture{
         this.searchable = false;
         this.description = "The fat Corinthian pillar stands in the corner of\n"
                          + "where the stairs meet the second floor.";
-        this.interactDialog = "This pillar doesn't need help holding up the ceiling.";
+        this.actDialog = "This pillar doesn't need help holding up the ceiling.";
         this.addNameKeys("pillar", "corinthian pillar", "column");
         this.addActKeys("hold", "grab");
     }

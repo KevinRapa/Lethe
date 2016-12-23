@@ -1,6 +1,6 @@
 package Foyer;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Foy_Gt extends Door{
     private final String DESCOPEN, SRCHOPEN, DIALOPEN;
@@ -16,7 +16,7 @@ public class Foy_Gt extends Door{
         this.SRCHOPEN = "It's just an empty doorway.";
         
         this.DIALOPEN = "It's just empty space. Maybe you should go through it?";
-        this.interactDialog = "You try to lift the bars, but they are much too heavy.";
+        this.actDialog = "You try to lift the bars, but they are much too heavy.";
         
         this.isOpen = open;
         
@@ -41,7 +41,7 @@ public class Foy_Gt extends Door{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.isOpen ? this.DIALOPEN : this.interactDialog;
+        String rep = this.isOpen ? this.DIALOPEN : this.actDialog;
         
         return rep;
     }

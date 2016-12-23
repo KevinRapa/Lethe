@@ -1,12 +1,12 @@
 package Dining_Room;
 
-import Super.Static_Wndw;
+import A_Super.Static_Wndw;
 
 public class Din1_Wndw extends Static_Wndw{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Din1_Wndw() {
         super();
-        this.interactDialog = "This window doesn't have any moving parts.";
+        this.actDialog = "This window doesn't have any moving parts.";
         this.description = "From the great window, you can see all of the east. The\n" +
                            "sea extending from the castle's cliff terminates at the\n" +
                            "shore before your village. Past the village, a thin\n" +

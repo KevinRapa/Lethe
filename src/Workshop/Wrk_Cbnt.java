@@ -1,17 +1,16 @@
 package Workshop;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Container;
+import A_Super.Furniture;
+import A_Super.Item;
         
-public class Wrk_Cbnt extends Furniture {
+public class Wrk_Cbnt extends Furniture implements Container{
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Cbnt(Item... items) {
         super(items);
         this.description = "The row of cabinets hang over the workbench.";
         this.searchDialog = "You open the cabinets.";
-        this.interactDialog = "The cabinets are unlocked. Maybe you should search them?";
-        this.addActKeys("open");
         this.addNameKeys("cabinet", "cabinets");
     }
 /*----------------------------------------------------------------------------*/

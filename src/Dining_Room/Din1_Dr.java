@@ -1,6 +1,6 @@
 package Dining_Room;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Din1_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

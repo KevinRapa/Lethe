@@ -1,27 +1,27 @@
 package Library;
 
-import Super.Button;
-import Super.Furniture;
+import A_Super.Button;
+import A_Super.Furniture;
 
 public class Lib4_Bttn extends Button {
-    private final Lib2_Frplc REF;
-    private final Lib3_Stat REF2;
+    private final Lib2_Frplc FRPLC_REF;
+    private final Lib3_Stat STAT_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib4_Bttn(Furniture frplc, Furniture stat) {
         super();
         this.description = "You look closely at the small stone button scorched\n" +
                            "from the heat of the fire. It's definitely a button.";
-        this.REF = (Lib2_Frplc) frplc;
-        this.REF2 = (Lib3_Stat) stat;
+        this.FRPLC_REF = (Lib2_Frplc) frplc;
+        this.STAT_REF = (Lib3_Stat) stat;
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        if (REF.isLit()) 
-            interactDialog = "Ouch! There is fire in the way!";                 
+        if (FRPLC_REF.isLit()) 
+            actDialog = "Ouch! There is fire in the way!";                 
         else
-            interactDialog = REF2.lightRight();
+            actDialog = STAT_REF.lightRight();
                      
-        return interactDialog;
+        return actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

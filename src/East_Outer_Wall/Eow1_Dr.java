@@ -1,6 +1,6 @@
 package East_Outer_Wall;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Eow1_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

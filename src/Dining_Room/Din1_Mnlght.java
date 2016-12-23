@@ -1,6 +1,6 @@
 package Dining_Room;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Din1_Mnlght extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

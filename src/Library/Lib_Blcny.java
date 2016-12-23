@@ -1,6 +1,6 @@
 package Library;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Lib_Blcny extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

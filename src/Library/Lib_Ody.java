@@ -1,6 +1,6 @@
 package Library;
 
-import Super.Book;
+import A_Super.Book;
 
 public class Lib_Ody extends Book {
     private final String pg1, pg2, pg3;

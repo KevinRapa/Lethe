@@ -1,7 +1,7 @@
 package West_Balcony;
 
-import Main.AudioPlayer;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Super.Room;
 
 public class Wbal extends Room{
 

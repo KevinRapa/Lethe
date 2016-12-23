@@ -1,6 +1,6 @@
 package Library;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Lib_Cch extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -10,7 +10,7 @@ public class Lib_Cch extends Furniture{
         this.description = "A red gothic-era couch. It looks way more fancy\n"
                          + "than comfortable. Its frame is a glorious rosewood.";
         this.searchDialog = "You look underneath, but find nothing.";
-        this.interactDialog = "You relax on the couch for a moment. You feel like your\n"
+        this.actDialog = "You relax on the couch for a moment. You feel like your\n"
                     + "IQ has just risen a couple points.";
         this.addNameKeys("couch", "sofa");
         this.addActKeys("sit", "use", "relax", "lay");

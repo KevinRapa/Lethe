@@ -1,8 +1,8 @@
 package Library;
 
-import Main.Player;
-import Super.Furniture;
-import Main.GUI;
+import A_Main.Player;
+import A_Super.Furniture;
+import A_Main.GUI;
 
 public class Lib3_Strs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

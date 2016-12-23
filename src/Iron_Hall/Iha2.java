@@ -1,6 +1,6 @@
 package Iron_Hall;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Iha2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

@@ -1,6 +1,6 @@
 package Courtyard;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Cou1_Thrns extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -10,7 +10,7 @@ public class Cou1_Thrns extends Furniture{
         this.description = "It's matted up multiflora rose, an invasive. This\n"
                          + "stuff is the bane of your career as a lumberjack.";
         this.searchDialog = "You aren't getting pricked by those thorns.";
-        this.interactDialog = "You aren't getting pricked by those thorns.";
+        this.actDialog = "You aren't getting pricked by those thorns.";
         this.addActKeys("grab", "hold", "touch");
         this.addNameKeys("thorns");
     }

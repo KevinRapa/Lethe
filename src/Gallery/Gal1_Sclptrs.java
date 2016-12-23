@@ -1,6 +1,6 @@
 package Gallery;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Gal1_Sclptrs extends Furniture {
 

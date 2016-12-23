@@ -1,6 +1,6 @@
 package Gallery;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Gal4_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

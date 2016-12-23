@@ -1,6 +1,6 @@
 package Gallery;
 
-import Super.Item;
+import A_Super.Item;
 
 public class Focus extends Item {
 /* CONSTRUCTOR ---------------------------------------------------------------*/           

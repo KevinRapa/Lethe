@@ -1,9 +1,9 @@
 package Courtyard;
 
-import Main.AudioPlayer;
-import Main.GUI;
-import Main.Player;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Main.GUI;
+import A_Main.Player;
+import A_Super.Room;
 
 public class Cou3 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

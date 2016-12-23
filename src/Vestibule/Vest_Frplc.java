@@ -1,7 +1,7 @@
 package Vestibule;
 
-import Super.Fireplace;
-import Super.Item;
+import A_Super.Fireplace;
+import A_Super.Item;
 
 public class Vest_Frplc extends Fireplace {
      

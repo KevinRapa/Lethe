@@ -1,9 +1,9 @@
 package Gallery;
 
-import Main.AudioPlayer;
-import Main.Player;
-import Super.Staircase;
-import Main.GUI;
+import A_Main.AudioPlayer;
+import A_Main.Player;
+import A_Super.Staircase;
+import A_Main.GUI;
 
 public class Gal3_Lddr extends Staircase {
     private boolean lowered;

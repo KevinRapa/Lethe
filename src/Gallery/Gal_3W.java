@@ -1,7 +1,7 @@
 package Gallery;
 
-import Main.AudioPlayer;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Super.Room;
 
 public class Gal_3W extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

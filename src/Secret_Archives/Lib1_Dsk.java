@@ -1,9 +1,10 @@
 package Secret_Archives;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Container;
+import A_Super.Furniture;
+import A_Super.Item;
         
-public class Lib1_Dsk extends Furniture {
+public class Lib1_Dsk extends Furniture implements Container {
     private final Lib1_Art REF;
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

@@ -1,6 +1,6 @@
 package Dungeon_Stairs;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Dst1 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

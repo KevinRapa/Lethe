@@ -1,6 +1,6 @@
 package Study;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Stud extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

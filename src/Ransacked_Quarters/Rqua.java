@@ -1,6 +1,6 @@
 package Ransacked_Quarters;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Rqua extends Room{
     

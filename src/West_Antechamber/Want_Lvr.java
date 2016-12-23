@@ -1,8 +1,8 @@
 package West_Antechamber;
 
-import Main.AudioPlayer;
-import Super.Lever;
-import Main.Player;
+import A_Main.AudioPlayer;
+import A_Super.Lever;
+import A_Main.Player;
 import Rotunda.Rotu;
 
 public class Want_Lvr extends Lever {
@@ -12,14 +12,14 @@ public class Want_Lvr extends Lever {
         this.description = "It's a black iron lever resting on the plinth of the\n"
                          + "statue.";
         this.searchDialog = "There's a pile of gold! No, not really, just a lever.";
-        this.interactDialog = "You pull the lever. The room you are in vibrates and you\n"
+        this.actDialog = "You pull the lever. The room you are in vibrates and you\n"
                     + "here a prolonged rumble past the wall to your west.";
         this.addNameKeys("lever", "iron lever", "black iron lever");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
         Rotu ref = (Rotu) Player.getMapRef()[3][3][3];
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         
         if (ref.getState().matches("EW"))
             rep = "You pull the lever, but nothing happens except a faint\n"

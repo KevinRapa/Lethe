@@ -1,7 +1,7 @@
 package Drawing_Room;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
 
 public class Drar_Chss extends Furniture {
     private final Drar_Ghst REF;
@@ -13,7 +13,7 @@ public class Drar_Chss extends Furniture {
                          + "surface and many detailed pieces. You wish you\n"
                          + "knew how to play.";
         this.searchDialog = "You look on the table's surface.";
-        this.interactDialog = "'I aren't smart enough to play this' you speak softly\n"
+        this.actDialog = "'I aren't smart enough to play this' you speak softly\n"
                             + "in soliloquy.";
         this.addActKeys("play");
         this.addNameKeys("chess table");
@@ -30,7 +30,7 @@ public class Drar_Chss extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
         @Override public String interact(String key) {
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         
         if (REF.firstTime())
             rep = "Now is not the time for that. There's a ghost in here!";

@@ -1,6 +1,6 @@
 package Study;
 
-import Super.Note;
+import A_Super.Note;
 
 public class Stud_Note extends Note {
 

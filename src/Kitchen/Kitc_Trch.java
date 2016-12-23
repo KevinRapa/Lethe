@@ -1,28 +1,24 @@
 package Kitchen;
 
-import Super.Trch;
-import Super.Item;
-import Main.Player;
-import Super.Room;
+import A_Super.Trch;
+import A_Super.Item;
+import A_Main.Player;
 
 public class Kitc_Trch extends Trch {
-    private final Kitc REF3;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Kitc_Trch(Item trch, Room kitc) {
+    public Kitc_Trch(Item trch) {
         super(trch);
         this.useDialog = "You slide the torch into the steel holder, lighting\n"
                        + "the room.";
-        this.hasTorch = false;
-        this.REF3 = (Kitc)kitc;
+        this.inv = new KitcHldr_Inv();
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         
-        if (this.hasTorch) {
-            this.hasTorch = false;
-            Player.getINV().add(REF);
-            this.REF3.swtch();
+        if (this.doesThisHaveIt("hand torch")) {
+            this.inv.give(TORCH_REF, Player.getInv());
+            ((Kitc)Player.getMapRef()[3][5][8]).swtch();
         }
         else
             rep = "The holder is empty you bumbling oaf.";
@@ -33,12 +29,12 @@ public class Kitc_Trch extends Trch {
     @Override public String useEvent(Item item) {
         String rep = this.useDialog;
         
-        if (this.hasTorch)
+        if (this.doesThisHaveIt("hand torch"))
             rep = "The holder already bears a torch you bumbling oaf.";
         
         else {
-            this.hasTorch = true;
-            this.REF3.swtch();
+            Player.getInv().give(item, this.inv);
+            ((Kitc)Player.getMapRef()[3][5][8]).swtch();
         }
         
         return rep;

@@ -1,6 +1,6 @@
 package West_Outer_Wall;
 
-import Super.Static_Wndw;
+import A_Super.Static_Wndw;
 
 public class Wow_Wndw extends Static_Wndw {
 /*----------------------------------------------------------------------------*/    

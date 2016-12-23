@@ -1,9 +1,9 @@
 package Gallery;
 
-import Super.Item;
-import Main.GUI;
-import Super.Furniture;
-import Main.Player;
+import A_Super.Item;
+import A_Main.GUI;
+import A_Super.Furniture;
+import A_Main.Player;
 
 public class Gal3_Ttm extends Furniture{
     private boolean isOn;
@@ -17,7 +17,7 @@ public class Gal3_Ttm extends Furniture{
         super();
         this.searchDialog = "The only place to search is the totem's open\n"
                           + "third mouth. ";
-        this.interactDialog = "You back away from the totem";
+        this.actDialog = "You back away from the totem";
         this.searchable = false;
         this.REF = (Gal_2E_Stat) stat;
         this.headOne = false;
@@ -84,7 +84,7 @@ public class Gal3_Ttm extends Furniture{
         boolean red = false; boolean blue = false; 
         boolean yellow = false; boolean dark = false;      
         
-        for (Item i : this.inv.getInv()) {
+        for (Item i : this.inv) {
             if (i.toString().matches("red focus"))
                 red = true;
             if (i.toString().matches("blue focus"))
@@ -186,7 +186,7 @@ public class Gal3_Ttm extends Furniture{
                        
         } while (! action.matches(""));
         
-        return this.interactDialog;
+        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
     private boolean allForward() {
@@ -238,7 +238,7 @@ public class Gal3_Ttm extends Furniture{
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         this.useDialog = "You place the " + item + " in the totem's mouth.";
-        Player.getINV().give(item, this.inv);
+        Player.getInv().give(item, this.inv);
         
         return this.useDialog;
     }

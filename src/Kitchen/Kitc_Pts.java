@@ -1,6 +1,6 @@
 package Kitchen;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Kitc_Pts extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

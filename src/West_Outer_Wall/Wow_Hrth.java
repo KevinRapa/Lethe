@@ -1,7 +1,7 @@
 package West_Outer_Wall;
 
-import Super.Fireplace;
-import Super.Item;
+import A_Super.Fireplace;
+import A_Super.Item;
 
 public class Wow_Hrth extends Fireplace {
      

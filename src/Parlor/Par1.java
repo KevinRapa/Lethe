@@ -1,7 +1,7 @@
 package Parlor;
 
-import Main.AudioPlayer;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Super.Room;
 
 public class Par1 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

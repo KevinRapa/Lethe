@@ -1,19 +1,16 @@
 package Scorched_Room;
 
-import Main.Player;
-import Super.Item;
-import Super.Room;
-import Super.Furniture;
+import A_Main.Player;
+import A_Super.Item;
+import A_Super.Furniture;
 
 public class Sear_Fssr extends Furniture {
-    private final Room REF;
-    private final Item REF3;
+    private final Item BRKNWRHMMR_REF;
     
-    public Sear_Fssr(Room sear, Item gift) {
+    public Sear_Fssr(Item gift) {
         super();
         this.searchable = false;
-        this.REF = sear;
-        this.REF3 = gift;
+        this.BRKNWRHMMR_REF = gift;
         this.searchDialog = "It's just an empty hole.";
         this.description = "The fissure leads outside into the front\n"
                          + "courtyard. It looks like this was part of\n"
@@ -31,9 +28,9 @@ public class Sear_Fssr extends Furniture {
         String rep = this.useDialog;
         
         if (item.toString().matches("warhammer")) {            
-            REF.addAdjacent("COU2");
-            Player.getINV().remove(item);
-            Player.getINV().add(REF3);
+            Player.getMapRef()[3][6][4].addAdjacent("COU2");
+            Player.getInv().remove(item);
+            Player.getInv().add(BRKNWRHMMR_REF);
         }
         else if (item.toString().matches("hammer")) {
             rep = "You give it a swing, but this hammer is too\n"
@@ -51,8 +48,8 @@ public class Sear_Fssr extends Furniture {
     @Override public String getDescription() {
         String rep = this.description;
         
-        if (REF.isThisLocked()) {
-            rep = "The hole leads outside.";
+        if (Player.getMapRef()[3][6][4].isThisLocked()) {
+            rep = "The hole leads outside. It's big enough to fit through.";
         }              
         return rep; 
     }

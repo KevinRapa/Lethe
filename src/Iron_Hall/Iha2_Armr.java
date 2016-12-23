@@ -1,9 +1,9 @@
 package Iron_Hall;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
 
-public class Iha2_Armr extends Furniture{
+public class Iha2_Armr extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Iha2_Armr(Item... items) {
         super(items);
@@ -13,31 +13,35 @@ public class Iha2_Armr extends Furniture{
                          + "had been pryed opened and then closed repeatedly.";
         this.searchDialog = "The suit of armor is holding a polearm, but its\n"
                           + "gauntlet is wrapped around it awkwardly.";
-        this.interactDialog = "You will probably get hurt trying to do that.";
-        this.addActKeys("equip", "wear");
-        this.addNameKeys("armor", "suit of armor", "armor suit", "plate armor");
+        this.actDialog = "You will probably get hurt trying to do that.";
+        this.addActKeys("equip", "wear", "pry", "open");
+        this.addNameKeys("(suit of |plate )?armor", "armor suit", "gauntlet");
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (! this.doesThisHaveIt("polearm"))
-            rep = "It's a suit of armor. It's gauntlets are empty.";
-        
-        return rep; 
+            return "It's a suit of armor. It's gauntlets are empty.";
+        else
+            return this.description;  
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = this.searchDialog;
-        
         if (this.searchable)
-            rep = "You look in the suit of armor's gauntlet.";
-
-        return rep; 
+            return "You look in the armor's gauntlet.";
+        else 
+            return this.searchDialog; 
     }
 /*----------------------------------------------------------------------------*/
-    public void makeSearchable() {
-        this.searchable = true;
+    @Override public String interact(String key) {
+        if (key.matches("wear|equip"))
+            return this.actDialog;
+        
+        else if (! searchable) {
+            this.searchable = true;
+            return "You manage to pry the gauntlet open.";
+        }
+        else
+            return "The gauntlet is already open.";
     }
 /*----------------------------------------------------------------------------*/
 }

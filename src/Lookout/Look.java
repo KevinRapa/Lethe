@@ -1,7 +1,7 @@
 package Lookout;
 
-import Main.AudioPlayer;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Super.Room;
 
 public class Look extends Room{
 

@@ -1,7 +1,7 @@
 package Parlor;
 
-import Super.Furniture;
-import Main.GUI;
+import A_Super.Furniture;
+import A_Main.GUI;
 
 public class Par1_Orb extends Furniture {
     private boolean firstTime, woken;
@@ -12,7 +12,7 @@ public class Par1_Orb extends Furniture {
         this.firstTime = true;
         this.woken = false;
         this.searchDialog = "There's nothing hidden here.";
-        this.interactDialog = "";
+        this.actDialog = "";
         this.description = "The small glass orb is filled with a smokey gas.\n"
                          + "The smoke churns slowly inside the orb.";
         this.addActKeys("speak", "talk", "converse", "rub", "feel", "touch");
@@ -20,7 +20,7 @@ public class Par1_Orb extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         
         if (key.matches("[stc]\\w+")) {
             if (this.firstTime && this.woken) {

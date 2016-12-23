@@ -1,7 +1,7 @@
 package West_Outer_Wall;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
         
 public class Wow3_Shlf extends Furniture {
 
@@ -11,7 +11,7 @@ public class Wow3_Shlf extends Furniture {
         this.description = "A big hefty wooden shelving unit. Now that's what\n"
                          + "you call a shelf!";
         this.searchDialog = "You look among the shelves.";
-        this.interactDialog = "This is way too heavy to move. There's not much space\n"
+        this.actDialog = "This is way too heavy to move. There's not much space\n"
                             + "to move this to anyway.";
         this.addNameKeys("shelf", "wood shelf", "large shelf");
         this.addActKeys("move", "push", "pull");

@@ -1,7 +1,7 @@
 package Scorched_Room;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
         
 public class Sear_Skltn extends Furniture {
 

@@ -1,6 +1,6 @@
 package Courtyard;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Cou5 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

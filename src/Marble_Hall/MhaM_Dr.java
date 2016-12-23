@@ -1,23 +1,21 @@
 package Marble_Hall;
 
-import Super.Furniture;
-import Super.Room;
-import Main.Player;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Room;
+import A_Main.Player;
+import A_Super.Item;
 
 public class MhaM_Dr extends Furniture {
     private int numMedallions;
     private boolean angel, soldier, horse;
-    private final Room REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public MhaM_Dr (Room din) {
         super();
-        this.REF = din;
         this.searchable = false;
         this.angel = false; this.soldier = false; this.horse = false; // Slots
         this.numMedallions = 1;
-        this.interactDialog = "It seems as thought one does not simply open this door.";
-        this.addNameKeys("door", "doors", "double doors");
+        this.actDialog = "It seems as thought one does not simply open this door.";
+        this.addNameKeys("door", "(?:double )?doors");
         this.addActKeys("open", "use");
         this.addUseKeys("stone disk", "angel medallion", "horse medallion");
     }
@@ -32,11 +30,11 @@ public class MhaM_Dr extends Furniture {
         else if (item.toString().matches("horse medallion"))
             this.horse = true;
         
-        Player.getINV().remove(item);
+        Player.getInv().remove(item);
         this.numMedallions ++;
         
         if (this.numMedallions == 4) {
-            REF.unlock();
+            Player.getMapRef()[3][4][8].unlock();
             rep += "\nWith the last medallion in place, the door *clicks* loudly.";
         }      
         return rep;

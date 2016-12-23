@@ -1,6 +1,6 @@
 package Secret_Archives;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Lib1 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

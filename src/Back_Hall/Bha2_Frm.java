@@ -1,7 +1,7 @@
 package Back_Hall;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
         
 public class Bha2_Frm extends Furniture {
 

@@ -1,8 +1,8 @@
 package Foyer;
 
-import Main.Player;
-import Super.Staircase;
-import Main.GUI;
+import A_Main.Player;
+import A_Super.Staircase;
+import A_Main.GUI;
 
 public class Foy3_Strcs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

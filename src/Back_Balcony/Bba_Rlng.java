@@ -1,6 +1,6 @@
 package Back_Balcony;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Bba_Rlng extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -9,7 +9,7 @@ public class Bba_Rlng extends Furniture{
         this.searchable = false;
         this.description = "A thick granite railing.";
         this.searchDialog = "This railing hides nothing.";
-        this.interactDialog = "You grab the railing, but there's no fear of falling over,\n"
+        this.actDialog = "You grab the railing, but there's no fear of falling over,\n"
                             + "right?";
         this.addActKeys("grab", "hold");
         this.addNameKeys("stone railing", "railing", "granite railing");

@@ -1,6 +1,6 @@
 package Observatory;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Obs_Slt extends Furniture {
     private final String CORRECT;

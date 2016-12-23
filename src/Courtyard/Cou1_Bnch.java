@@ -1,6 +1,6 @@
 package Courtyard;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Cou1_Bnch extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -10,7 +10,7 @@ public class Cou1_Bnch extends Furniture{
         this.description = "The bench is blanketed in multiflora. Its backrest\n"
                          + "lies on the ground behind it.";
         this.searchDialog = "You aren't risking getting pricked by those thorns.";
-        this.interactDialog = "You aren't risking getting pricked by those thorns.";
+        this.actDialog = "You aren't risking getting pricked by those thorns.";
         this.addActKeys("sit", "relax", "lay");
         this.addNameKeys("bench", "stone bench");
     }

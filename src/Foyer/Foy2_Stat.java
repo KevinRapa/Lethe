@@ -1,15 +1,15 @@
 package Foyer;
 
-import Main.Player;
-import Super.Furniture;
+import A_Main.Player;
+import A_Super.Furniture;
+import A_Super.Statue;
 
-public class Foy2_Stat extends Furniture{
+public class Foy2_Stat extends Statue {
     private boolean moved;
     private final Furniture REF; 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy2_Stat(Furniture foy2Lvr) {
         super();
-        this.searchable = false;
         this.moved = false;
         this.REF = foy2Lvr;
         this.description = "A white marble statue. It depicts a woman holding\n"
@@ -19,20 +19,20 @@ public class Foy2_Stat extends Furniture{
                           + "on the floor at its base suggest it's been moved to\n"
                           + "and from here frequently.";
         this.addActKeys("push", "pull", "move", "slide");
-        this.addNameKeys("statue");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (! this.moved) {
-            Player.getMapRef()[3][2][5].addFurniture(REF);
-            this.moved = true;
-            interactDialog = "You push the statue and manage to displace it a bit.\n"
-                   + "In the alcove, behind the statue, you discover a lever."; 
+        if (key.matches("(?:push|pull|move|slide)")) {
+            if (! this.moved) {
+                Player.getMapRef()[3][2][5].addFurniture(REF);
+                this.moved = true;
+                return "You push the statue and manage to displace it a bit.\n"
+                     + "In the alcove, behind the statue, you discover a lever."; 
+            }
+            else
+                return "You have moved the statue as far as you can.";
         }
-        else
-            interactDialog = "You have moved the statue as far as you can.";
-        
-        return interactDialog;
+        return actDialog;
     }
 /*----------------------------------------------------------------------------*/
     public boolean getState() {

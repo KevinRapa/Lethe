@@ -1,7 +1,7 @@
 package Study;
 
-import Super.Item;
-import Super.Safe;
+import A_Super.Item;
+import A_Super.Safe;
 
 public class Stud_Safe extends Safe {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

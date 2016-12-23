@@ -1,8 +1,8 @@
 package Gallery;
 
-import Main.Player;
-import Super.Furniture;
-import Super.Room;
+import A_Main.Player;
+import A_Super.Furniture;
+import A_Super.Room;
         
 public class Gal1_Scrn extends Furniture {
     private boolean lifted;
@@ -18,7 +18,7 @@ public class Gal1_Scrn extends Furniture {
                          + "delicate black lines depict a mountain front landscape.";
         this.searchDialog = "The light shining through this screen forms an odd\n"
                           + "silhouette on its surface.";
-        this.interactDialog = "You slide the screen out of the way some, revealing a\n"
+        this.actDialog = "You slide the screen out of the way some, revealing a\n"
                     + "large black lever mounted to the floor.";       
         this.addActKeys("move", "take", "lift", "slide", "remove");
         this.addNameKeys("screen", "japanese screen");
@@ -29,7 +29,7 @@ public class Gal1_Scrn extends Furniture {
         String rep = "You have already moved the screen.";
             
         if (! this.lifted) {
-            rep = this.interactDialog;
+            rep = this.actDialog;
             this.lifted = true;
             gal1.addFurniture(REF);
         }            

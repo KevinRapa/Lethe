@@ -1,22 +1,22 @@
 package Gallery;
 
-import Super.Furniture;
-import Super.Item;
-import Main.Player;
+import A_Super.Furniture;
+import A_Super.Item;
+import A_Main.Player;
 
 public class Gal3_Rp extends Furniture {
     private boolean cut;
-    private final Gal3_Lddr REF2;
+    private final Gal3_Lddr REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Gal3_Rp(Furniture lddr) {
             super();
             this.searchable = false;
             this.cut = false;
-            this.REF2 = (Gal3_Lddr)lddr;
+            this.REF = (Gal3_Lddr)lddr;
             this.addActKeys("cut", "pull", "untie");
             this.addUseKeys("katana", "silver sword", "rusty sword", "broken sword", "war axe", "battle axe");
             this.addNameKeys("rope");
-            this.interactDialog = "You cut the rope with the katana. The ladder\n"
+            this.actDialog = "You cut the rope with the katana. The ladder\n"
                                 + "drops down into the room, giving access to\n"
                                 + "the loft.";
             this.description = "The rope is tied to the ladder and hoists it up\n"
@@ -35,24 +35,23 @@ public class Gal3_Rp extends Furniture {
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) { 
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         
         if(! this.cut) {
             if (key.matches("cut")) {
                 if (detectItem()) {
-                    REF2.lower();
+                    REF.lower();
                     this.cut = true;
                 }           
                 else
                     rep = "You have nothing to cut the rope with.";
             }       
-            else if (key.matches("pull")) {
+            else if (key.matches("pull")) 
                 rep = "Pulling the rope is doing the opposite of what you want.";    
-                    }      
-            else if (key.matches("untie")) {
+                
+            else if (key.matches("untie")) 
                 rep = "The knot in the rope is too high up to untie.";    
-                    }
-            }
+        }
         else
             rep = "The rope is cut already";
                
@@ -60,7 +59,7 @@ public class Gal3_Rp extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        REF2.lower();
+        REF.lower();
         this.cut = true;
         
         return "You cut the rope with the " + item + ".\n"

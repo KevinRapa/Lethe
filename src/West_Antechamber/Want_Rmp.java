@@ -1,6 +1,6 @@
 package West_Antechamber;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Want_Rmp extends Furniture{
     

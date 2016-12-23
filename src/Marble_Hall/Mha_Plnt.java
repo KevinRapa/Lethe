@@ -1,13 +1,13 @@
 package Marble_Hall;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Mha_Plnt extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Mha_Plnt() {
         super();
         this.searchable = false;
-        this.interactDialog = "There's no water in this room.";
+        this.actDialog = "There's no water in this room.";
         this.description = "The potted plant is in good shape. It sits in a\n"
                          + "fancy white vase.";
         this.searchDialog = "You don't feel like getting dirt on your hands.";

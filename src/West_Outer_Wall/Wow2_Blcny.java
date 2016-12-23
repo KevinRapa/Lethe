@@ -1,18 +1,18 @@
 package West_Outer_Wall;
 
-import Super.Item;
-import Main.Player;
-import Super.Furniture;
+import A_Super.Item;
+import A_Main.Player;
+import A_Super.Furniture;
 
 public class Wow2_Blcny extends Furniture {
-    private final Furniture REF;
-    private final Item REF4;
+    private final Furniture STRS_REF;
+    private final Item LDDR_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wow2_Blcny(Furniture wow2Strs, Item lddr) {
         super();
         this.searchable = false;
-        this.REF = wow2Strs;
-        this.REF4 = lddr;
+        this.STRS_REF = wow2Strs;
+        this.LDDR_REF = lddr;
         this.description = "You can't see much from down here. The balcony\n"
                          + "is small and crowded. You can see a door up there\n"
                          + "against the east wall. You also spot what appears\n"
@@ -25,8 +25,8 @@ public class Wow2_Blcny extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        Player.getMapRef()[3][6][3].addFurniture(REF); // Add the ladder to WOW2.
-        Player.getINV().remove(REF4); // Remove the ladder from player inventory.
+        Player.getMapRef()[3][6][3].addFurniture(STRS_REF); // Add the ladder to WOW2.
+        Player.getInv().remove(LDDR_REF); // Remove the ladder from player inventory.
         
         return this.useDialog;
     }

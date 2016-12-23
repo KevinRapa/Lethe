@@ -1,10 +1,9 @@
 package Gallery;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Gal3_Sgmnt extends Furniture{
     private final Furniture REF;
-    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Sgmnt(Furniture gal3Ttm) {
         super();

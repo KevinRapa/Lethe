@@ -1,7 +1,7 @@
 package Library;
 
-import Super.Fireplace;
-import Super.Item;
+import A_Super.Fireplace;
+import A_Super.Item;
 
 public class Lib2_Frplc extends Fireplace {
      

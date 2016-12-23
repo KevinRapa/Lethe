@@ -1,15 +1,15 @@
 package Parlor;
 
-import Super.Fireplace;
-import Super.Item;
-import Main.Player;
+import A_Super.Fireplace;
+import A_Super.Item;
+import A_Main.Player;
 
 public class Par1_FrPlc extends Fireplace {
-    private final Item REF3;
+    private final Item SCRDFR_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/           
     public Par1_FrPlc(Item bckt, Item scrdFr) {       
         super(true, bckt);
-        this.REF3 = scrdFr;
+        this.SCRDFR_REF = scrdFr;
         this.descLit = "It's a large sandstone fireplace, about your height.\n"
                      + "It's mantle is supported on both sides by short columns\n"
                      + "carved into angelic figures. The fire burns aggressively,\n"
@@ -22,15 +22,15 @@ public class Par1_FrPlc extends Fireplace {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         String rep = this.useDialog;
-        Player.getINV().remove(item);
+        Player.getInv().remove(item);
         
         if (item.toString().matches("bucket of water")) {
             rep = "The water steams aggressively upon contact, but fails to\n"
                 + "douse the flames.";
-            Player.getINV().add(REF);
+            Player.getInv().add(BCKT_REF);
         }
         else if(item.toString().matches("enchanted bottle"))
-            Player.getINV().add(REF3);
+            Player.getInv().add(SCRDFR_REF);
         else
             rep = "You manage to do nothing but burn your hand. What were you thinking?";
             

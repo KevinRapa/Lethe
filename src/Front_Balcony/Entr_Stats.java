@@ -1,6 +1,6 @@
 package Front_Balcony;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Entr_Stats extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -11,7 +11,7 @@ public class Entr_Stats extends Furniture{
                          + "These are in much better condition than the ones in\n"
                          + "the courtyard.";
         this.searchDialog = "You don't feel comfortable approaching any of these.";
-        this.interactDialog = this.searchDialog;
+        this.actDialog = this.searchDialog;
         this.addActKeys("grab", "touch", "hold");
         this.addNameKeys("statues", "statue");
     }

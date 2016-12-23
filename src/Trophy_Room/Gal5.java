@@ -1,6 +1,6 @@
 package Trophy_Room;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Gal5 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

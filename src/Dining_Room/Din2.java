@@ -1,6 +1,6 @@
 package Dining_Room;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Din2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

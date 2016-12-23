@@ -1,6 +1,6 @@
 package East_Outer_Wall;
 
-import Super.Staircase;
+import A_Super.Staircase;
 
 public class Eow2_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

@@ -1,6 +1,6 @@
 package Servants_Hall;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Sha2_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

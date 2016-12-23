@@ -1,6 +1,6 @@
 package Library;
 
-import Super.Window;
+import A_Super.Window;
 
 public class Lib2_Wndw extends Window {
 /* CONSTRUCTOR ---------------------------------------------------------------*/         

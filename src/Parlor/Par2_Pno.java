@@ -1,9 +1,10 @@
 package Parlor;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Container;
+import A_Super.Furniture;
+import A_Super.Item;
 
-public class Par2_Pno extends Furniture {
+public class Par2_Pno extends Furniture implements Container {
     private final Par1_Orb REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Par2_Pno(Furniture orb, Item... items) {

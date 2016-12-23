@@ -1,27 +1,27 @@
 package Gallery;
 
-import Super.Furniture;
-import Super.Room;
+import A_Super.Furniture;
+import A_Super.Room;
+import A_Super.Statue;
 
-public class Gal_2E_Stat extends Furniture{
+public class Gal_2E_Stat extends Statue {
     private int level;
-    private final Room REF;
-    private final Room REF2;
-    private final Gal_3E_Stat REF3;
+    private final Room GAL7_REF;
+    private final Room GAL4_REF;
+    private final Gal_3E_Stat STAT_REF;
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal_2E_Stat(Room gal7, Room gal4, Furniture stat) {
         super();
-        this.searchable = false;
-        this.REF = gal7;
-        this.REF2 = gal4;
-        this.REF3 = (Gal_3E_Stat)stat;
+        this.GAL7_REF = gal7;
+        this.GAL4_REF = gal4;
+        this.STAT_REF = (Gal_3E_Stat)stat;
         this.level = 0;
+        this.actDialog = "The statue is out of reach";
         this.description = "The statue now stands surrounded by the second floor\n"
                          + "balcony. Its orb has stopped glowing, though one of\n"
                          + "its eyes has started to.";        
         this.searchDialog = "The statue's hand is out of reach";
-        this.addNameKeys("statue");
     }
 /*----------------------------------------------------------------------------*/
     public int getState() {
@@ -31,7 +31,7 @@ public class Gal_2E_Stat extends Furniture{
     public String activate(char color, Gal3_Ttm ttm) {
         String rep = "The beam of light shines into the central chamber.";
         
-        if (REF2.hasFurniture("statue") && ttm.isOn() && this.level != 3) {
+        if (GAL4_REF.hasFurniture("statue") && ttm.isOn() && this.level != 3) {
             
             if (color == 'b' && this.level == 0) {
                 rep = this.raise(); 
@@ -50,7 +50,7 @@ public class Gal_2E_Stat extends Furniture{
                 this.level = 0;
             }
         }
-        else if (REF2.hasFurniture("statue") && this.level == 3 && ttm.isOn())
+        else if (GAL4_REF.hasFurniture("statue") && this.level == 3 && ttm.isOn())
             rep = "The beam of light shines at the statue's base.";
         
         return rep;
@@ -69,7 +69,7 @@ public class Gal_2E_Stat extends Furniture{
             rep = "The orb's glow turns green and it begins to hum.";
             break;
         default: 
-            REF.addFurniture(REF3);
+            GAL7_REF.addFurniture(STAT_REF);
             rep = "The crystal orb's glow brightens to a blinding white\n"
                 + "light. It hums loudly and rises once again to the\n"
                 + "third floor level.";

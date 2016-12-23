@@ -1,0 +1,47 @@
+package Garden;
+
+import A_Main.Player;
+import A_Super.Furniture;
+import A_Super.Item;
+/**
+ * @author Kevin Rapa
+ */
+public class Gar4_Plntr extends Furniture {
+    private final Gar4_Plq PLQ_REF;
+    private final Item PLT_REF;
+    // ========================================================================
+    public Gar4_Plntr (Furniture plaque, Item plate, Item... items) {
+        super(items);
+        this.PLQ_REF = (Gar4_Plq)plaque;
+        this.PLT_REF = plate;
+        this.description = "This planter contains no plants, just a bed of soil.";
+        this.actDialog = "You dig around the plaque, but find nothing in the soil.";
+        this.searchDialog = "You look around the planter.";
+        this.useDialog = this.actDialog;
+
+        this.addNameKeys();
+        this.addUseKeys("shovel", "trowel");
+        this.addActKeys("dig", "plant", "garden");
+    }
+    // ========================================================================   
+    @Override public String interact(String key) {              
+        if (Player.doYouHaveIt("shovel") || Player.doYouHaveIt("trowel")) {
+            if (PLQ_REF.isMoved()) {
+                if (this.inv.contains(PLT_REF)) {
+                    this.inv.give(PLT_REF, Player.getInv());
+                    return "You dig under where the plaque was to find a shiny plate!";
+                }
+                else return "You have already dug under the plaque";
+            }
+            else return this.actDialog;
+        }
+        else return "You have nothing to dig with, and your stocky hands are terrible for digging.";   
+    }
+    // ========================================================================     
+    @Override public String useEvent(Item item) {
+        return this.interact("");
+    }
+    // ========================================================================     
+}
+
+

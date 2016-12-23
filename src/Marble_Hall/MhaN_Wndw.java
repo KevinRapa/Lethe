@@ -1,6 +1,6 @@
 package Marble_Hall;
 
-import Super.Window;
+import A_Super.Window;
 
 public class MhaN_Wndw extends Window {
 /* CONSTRUCTOR ---------------------------------------------------------------*/         

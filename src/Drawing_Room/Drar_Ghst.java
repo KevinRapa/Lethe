@@ -1,25 +1,25 @@
 package Drawing_Room;
 
-import Super.Furniture;
-import Super.Item;
-import Super.Key;
-import Main.GUI;
-import Main.Player;
+import A_Super.Furniture;
+import A_Super.Item;
+import A_Super.Key;
+import A_Main.GUI;
+import A_Main.Player;
 
 public class Drar_Ghst extends Furniture {
-    private final Item REF2, REF4;
-    private final Key REF3;
+    private final Item DRKFCS_REF, EMRLD_REF;
+    private final Key KITCKEY_REF;
     private boolean firstTime;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Drar_Ghst(Item drkFcs, Key kitcKey, Item glwEm) {
         super();
         this.searchable = false;
-        this.REF2 = drkFcs;
-        this.REF3 = kitcKey;
-        this.REF4 = glwEm;
+        this.DRKFCS_REF = drkFcs;
+        this.KITCKEY_REF = kitcKey;
+        this.EMRLD_REF = glwEm;
         this.firstTime = true;
         this.searchDialog = "The ghost won't appreciate that.";
-        this.interactDialog = "The apparition returns to sipping from the ghostly cup.";
+        this.actDialog = "The apparition returns to sipping from the ghostly cup.";
         this.description = "The white apparition resembles a female\n" +
                            "dressed in the clothing of a servant. She\n" +
                            "sits at the bar with a ghostly cup in her\n" +
@@ -29,7 +29,7 @@ public class Drar_Ghst extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         
         if (this.firstTime) {
             this.converse1();
@@ -113,8 +113,8 @@ public class Drar_Ghst extends Furniture {
                    "the unlocking mechanism. Please have it....\"");
         GUI.promptOut();
         
-        Player.getINV().add(this.REF2);
-        GUI.invOut("You are carrying:\n" + Player.getINV());
+        Player.getInv().add(this.DRKFCS_REF);
+        GUI.invOut("You are carrying:\n" + Player.getInv());
         GUI.out("The apparition hands you a dark tinted lens...");
         GUI.promptOut();
         
@@ -135,7 +135,7 @@ public class Drar_Ghst extends Furniture {
                    "this means to me! Oh, well I suppose you do.\n" +
                    "As promised, I will help you find a way out\n" +
                    "of here....\"");
-        Player.getINV().remove(this.REF4);
+        Player.getInv().remove(this.EMRLD_REF);
         GUI.promptOut();
         
         GUI.out("\"I used to spend most of my time in the west\n" +
@@ -157,7 +157,7 @@ public class Drar_Ghst extends Furniture {
         GUI.promptOut();
         
         GUI.out("The apparition drops a key into your palm...");
-        Player.getINV().add(REF3);
+        Player.getInv().add(KITCKEY_REF);
         GUI.promptOut();
         
         GUI.clearMenu();

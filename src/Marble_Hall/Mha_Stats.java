@@ -1,6 +1,6 @@
 package Marble_Hall;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Mha_Stats extends Furniture {
     private final Furniture REF;
@@ -20,7 +20,7 @@ public class Mha_Stats extends Furniture {
                          + "and the left statue's base is hollow with an open\n"
                          + "compartment inside. Check out a specific statue by\n"
                          + "specifying 'left statue' or 'right statue'.";
-        this.interactDialog = "Such impressive works of artistry deserve not to be\n"
+        this.actDialog = "Such impressive works of artistry deserve not to be\n"
                     + "tainted by your touch.";
         this.addNameKeys("statue", "statues");
         this.addActKeys("touch", "grab", "hold");

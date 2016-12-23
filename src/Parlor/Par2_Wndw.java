@@ -1,6 +1,6 @@
 package Parlor;
 
-import Super.Static_Wndw;
+import A_Super.Static_Wndw;
 
 public class Par2_Wndw extends Static_Wndw {
 /*----------------------------------------------------------------------------*/    

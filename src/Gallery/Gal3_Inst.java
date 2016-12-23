@@ -1,6 +1,6 @@
 package Gallery;
 
-import Super.Item;
+import A_Super.Item;
 
 public class Gal3_Inst extends Item {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

@@ -1,21 +1,21 @@
 package Observatory;
 
-import Super.Furniture;
+import A_Super.Furniture;
 import java.util.Scanner;
-import Main.GUI;
-import Main.Player;
-import Super.Item;
+import A_Main.GUI;
+import A_Main.Player;
+import A_Super.Item;
 
 public class Obs_Slts extends Furniture {
     private final Furniture[] SLOTS;
-    private final Obs_Stats REF2;
+    private final Obs_Stats STATS_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Obs_Slts(Item hlsPlt, Furniture stats, Furniture... slots) {
         super();
         this.description = "An array of 9 slots.";
         this.searchDialog = "You inspect the array of slots.";
         this.SLOTS = slots;
-        this.REF2 = (Obs_Stats)stats;
+        this.STATS_REF = (Obs_Stats)stats;
         this.inv = new Slt_Inv(this);
         this.inv.add(hlsPlt);
         this.addNameKeys("slot", "slots");
@@ -31,7 +31,7 @@ public class Obs_Slts extends Furniture {
             choice = GUI.promptOut();
            
             if (Player.getOcc().hasFurniture(choice))
-                GUI.descOut(Player.getFurnitureObject(choice).getDescription());
+                GUI.descOut(Player.getFurnRef(choice).getDescription());
 
         } while (! choice.matches(""));
         
@@ -80,8 +80,8 @@ public class Obs_Slts extends Furniture {
         Scanner getName;
         int index = 0;
         
-        if (this.inv.getInv().size() == 9) 
-            for (Item i : this.inv.getInv()) {
+        if (this.inv.size() == 9) 
+            for (Item i : this.inv) {
                 getName = new Scanner(i.toString());
                 plateName = getName.findInLine("(?<=\")\\w[a-z]+\\w(?=\")"); // Matches a word inside quotes. Omits the quotes.
 
@@ -101,7 +101,7 @@ public class Obs_Slts extends Furniture {
             GUI.out("As you press the last plate in the slot, a luminescence\n"
                      + "from an unknown source begins seeping through the seams\n"
                      + "in the floor. Something has been activated.");
-            this.REF2.unlock(); 
+            this.STATS_REF.unlock(); 
         }
 
     }

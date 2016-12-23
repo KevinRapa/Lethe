@@ -1,6 +1,6 @@
 package West_Outer_Wall;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Wow2_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
@@ -10,7 +10,7 @@ public class Wow2_Dr extends Door {
                          + "condition. It's boarded shut, and numerous gashes and\n"
                          + "splinters cover it. A hole in the door is big enough\n"
                          + "to see through.";
-        this.interactDialog = "Not even someone as burly as yourself could pull these\n"
+        this.actDialog = "Not even someone as burly as yourself could pull these\n"
                             + "boards off.";
     }
 }

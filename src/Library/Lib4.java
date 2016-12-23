@@ -1,8 +1,8 @@
 package Library;
 
-import Main.AudioPlayer;
-import Super.Room;
-import Super.Furniture;
+import A_Main.AudioPlayer;
+import A_Super.Room;
+import A_Super.Furniture;
 
 public class Lib4 extends Room{
     private final Lib4_Tbl REF;

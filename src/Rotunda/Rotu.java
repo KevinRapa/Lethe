@@ -1,14 +1,14 @@
 package Rotunda;
 
-import Main.AudioPlayer;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Main.Player;
+import A_Super.Room;
 
 public class Rotu extends Room{
-    private final Room REF;
     private String state;
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Rotu(String name, String ID, Room want) {
+    public Rotu(String name, String ID) {
         super(name, ID);
         description = "You are in a symmetrical dome-shaped chamber. Everything\n" +
                       "is ornate and carved from polished rock. A fountain in the \n" +
@@ -16,21 +16,11 @@ public class Rotu extends Room{
                       "sconce is a glaring statue projecting from the wall. Various\n" +
                       "potted plants decorate the room. Looking straight up, there's\n" +
                       "a hole in the ceiling giving view to the sky. Only a single\n" +
-                      "other door to the west is apparent. At the north and south\n" +
+                      "other door on the opposite side is apparent. At the perpendicular\n" +
                       "ends are peculiar arched frames carved into the wall. Your\n" +
                       "only complaint is that this room smells quite awful.";
-        this.REF = want;
         this.state = "EW";
     }
-/*----------------------------------------------------------------------------*/
-    @Override public String getDescription() {
-        String rep = this.description;
-        if (this.state.matches("NS")) {
-            rep = "The room appears unchanged. The fountain, along with\n"
-                + "everything else remain still.";
-        }           
-        return rep; 
-    }    
 /*----------------------------------------------------------------------------*/
     public void rotate() {
         AudioPlayer.playEffect(18);
@@ -40,7 +30,7 @@ public class Rotu extends Room{
             this.addAdjacent("IHA1"); 
             this.removeAdjacent("FOYW");
             this.removeAdjacent("LOOK");
-            this.REF.removeAdjacent("ROTU");
+            Player.getMapRef()[3][3][4].removeAdjacent("ROTU");
             this.state = "NS";
         }
         else if (this.state.matches("NS")) {
@@ -48,7 +38,7 @@ public class Rotu extends Room{
             this.addAdjacent("LOOK"); 
             this.removeAdjacent("STUD");
             this.removeAdjacent("IHA1");
-            this.REF.addAdjacent("ROTU");
+            Player.getMapRef()[3][3][4].addAdjacent("ROTU");
             this.state = "EW"; 
         }    
     }

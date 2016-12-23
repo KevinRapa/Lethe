@@ -1,6 +1,6 @@
 package Workshop;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Eow3 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/      

@@ -1,6 +1,6 @@
 package Servants_Quarters;
 
-import Super.Item;
+import A_Super.Item;
 
 public class Squa_Lddr extends Item {
 

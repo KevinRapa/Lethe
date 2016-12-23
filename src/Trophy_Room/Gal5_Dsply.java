@@ -1,9 +1,10 @@
 package Trophy_Room;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
+import A_Super.Container;
 
-public class Gal5_Dsply extends Furniture {
+public class Gal5_Dsply extends Furniture implements Container {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5_Dsply(Item... items) {
@@ -11,8 +12,6 @@ public class Gal5_Dsply extends Furniture {
         this.description = "The hinged glass case is dusty and cloudy.";
         this.searchDialog = "Dramatic music queues, you slowly open the display\n"
                           + "case.";
-        this.interactDialog = "The cabinet is unlocked. Maybe you should search it?";
-        this.addActKeys("open");
         this.addNameKeys("glass display", "display");
     }
 /*----------------------------------------------------------------------------*/

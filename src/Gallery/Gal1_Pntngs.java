@@ -1,6 +1,6 @@
 package Gallery;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Gal1_Pntngs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -14,7 +14,7 @@ public class Gal1_Pntngs extends Furniture {
                          + "-- A Korean painting\n"
                          + "-- A Chinese scroll";
         this.searchDialog = "You aren't sure which one to search first.";
-        this.interactDialog = "You aren't sure which one to move.";
+        this.actDialog = "You aren't sure which one to move.";
         this.addActKeys("move", "take", "lift", "slide", "remove");
         this.addNameKeys("painting", "paintings");
 /*----------------------------------------------------------------------------*/

@@ -1,15 +1,15 @@
 package East_Outer_Wall;
 
-import Super.Furniture;
-import Super.Item;
-import Main.Player;
+import A_Super.Furniture;
+import A_Super.Item;
+import A_Main.Player;
 
 public class Water extends Furniture {
-    private final Item REF2;
+    private final Item REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Water(Item bckt) {
         super();
-        this.REF2 = bckt;
+        this.REF = bckt;
         this.searchable = false;
         this.description = "Clean, sparkling water.";
         this.searchDialog = "Just clean H2O here.";
@@ -20,8 +20,8 @@ public class Water extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        Player.getINV().remove(item);
-        Player.getINV().add(REF2);
+        Player.getInv().remove(item);
+        Player.getInv().add(REF);
         
         return this.useDialog;
     }

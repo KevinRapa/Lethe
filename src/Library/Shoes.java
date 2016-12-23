@@ -1,7 +1,7 @@
 package Library;
 
-import Super.Item;
-import Main.Player;
+import A_Super.Item;
+import A_Main.Player;
 
 public class Shoes extends Item {
 /* CONSTRUCTOR ---------------------------------------------------------------*/  
@@ -14,11 +14,11 @@ public class Shoes extends Item {
         String rep = this.useDialog;
         
         if (! Player.getShoes().matches(this.NAME)) {
-            Player.switchShoes(this.NAME);
+            Player.setShoes(this.NAME);
         }
         else {
             rep = "You remove them and put your old shoes back on.";
-            Player.switchShoes("");
+            Player.setShoes("");
         }
 
         return rep;

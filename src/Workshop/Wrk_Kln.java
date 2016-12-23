@@ -1,8 +1,8 @@
 package Workshop;
 
-import Super.Furniture;
-import Super.Item;
-import Main.Player;
+import A_Super.Furniture;
+import A_Super.Item;
+import A_Main.Player;
 
 public class Wrk_Kln extends Furniture {
     private final Item REFGLSSR, REFGLSSB, REFGLSSY;
@@ -27,7 +27,7 @@ public class Wrk_Kln extends Furniture {
     @Override public String useEvent(Item item) {
         String rep = null;
         
-        Player.getINV().remove(item);
+        Player.getInv().remove(item);
         
         if (item.toString().matches("potash") && ! this.hasPotash) {
             this.hasPotash = true;
@@ -69,17 +69,17 @@ public class Wrk_Kln extends Furniture {
         String color = null;
         
         if (this.hasRedDye) {
-            Player.getINV().add(REFGLSSR);
+            Player.getInv().add(REFGLSSR);
             this.hasRedDye = false;
             color = "red";
         }
         else if (this.hasBlueDye) {
-            Player.getINV().add(REFGLSSB);
+            Player.getInv().add(REFGLSSB);
             this.hasBlueDye = false;
             color = "blue";
         }
         else if (this.hasYllwDye) {
-            Player.getINV().add(REFGLSSY);
+            Player.getInv().add(REFGLSSY);
             this.hasYllwDye = false;
             color = "yellow";
         }

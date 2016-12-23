@@ -1,8 +1,8 @@
 package Gallery;
 
-import Super.Furniture;
+import A_Super.Furniture;
 import java.util.Random;
-import Main.GUI;
+import A_Main.GUI;
 
 public class Gal6_Hlmt extends Furniture{
     
@@ -15,7 +15,7 @@ public class Gal6_Hlmt extends Furniture{
         this.description = "The metal helmet is covered in wires and metal rods.\n"
                          + "On the inside are three metal contact plates. It would\n"
                          + "not be a good idea to wear this.";
-        this.interactDialog = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n"
+        this.actDialog = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n"
                     + "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\n"
                     + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n"
                     + "With all your strength, you rip the helmet off your head.\n"
@@ -27,7 +27,7 @@ public class Gal6_Hlmt extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         String choice; String r;
         
         GUI.out("Are you really sure you want to wear the helmet?");

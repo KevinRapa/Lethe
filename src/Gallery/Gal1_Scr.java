@@ -1,8 +1,8 @@
 package Gallery;
 
-import Main.Player;
-import Super.Furniture;
-import Super.Room;
+import A_Main.Player;
+import A_Super.Furniture;
+import A_Super.Room;
         
 public class Gal1_Scr extends Furniture {
     private boolean lifted;
@@ -20,7 +20,7 @@ public class Gal1_Scr extends Furniture {
                          + "light is hitting this piece strangely.";
         this.searchDialog = "There is something odd about the light hitting this\n"
                           + "scroll.";
-        this.interactDialog = "Upon lifting the scroll from the wall, you discover a\n"
+        this.actDialog = "Upon lifting the scroll from the wall, you discover a\n"
                     + "hollow containing a dome-shaped button.";
         this.addActKeys("move", "take", "lift", "slide", "remove");
         this.addNameKeys("scroll", "chinese scroll");
@@ -31,7 +31,7 @@ public class Gal1_Scr extends Furniture {
             String rep = "You have already discovered the button.";
             
             if (! this.lifted) {
-                rep = this.interactDialog;
+                rep = this.actDialog;
                 this.lifted = true;
                 gal1.addFurniture(REF);
             }            

@@ -1,7 +1,7 @@
 package Kitchen;
 
-import Super.Fireplace;
-import Super.Item;
+import A_Super.Fireplace;
+import A_Super.Item;
 
 // DEVELOP THIS LATER, FUTURE PUZZLE.
 

@@ -1,7 +1,7 @@
 package Library;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
         
 public class Lib2_ShRck extends Furniture {
 
@@ -17,10 +17,10 @@ public class Lib2_ShRck extends Furniture {
     @Override public String getDescription() {
         String rep = this.description;
         
-        if (this.inv.getInv().isEmpty())
+        if (this.inv.size() == 0)
             rep = "The shoe rack sits next to the fireplace. It's empty.";
         
-        else if (this.inv.getInv().size() == 1) {
+        else if (this.inv.size() == 1) {
             rep = "The shoe rack sits next to the fireplace. A pair of shoes\n"
                 + "are stored on it.";
         }       

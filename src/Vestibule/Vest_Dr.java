@@ -1,6 +1,6 @@
 package Vestibule;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Vest_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

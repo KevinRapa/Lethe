@@ -1,6 +1,6 @@
 package Gallery;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Gal_2E extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

@@ -1,7 +1,7 @@
 package Secret_Archives;
 
-import Super.Item;
-import Super.Safe;
+import A_Super.Item;
+import A_Super.Safe;
 
 public class Lib1_Sf extends Safe {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

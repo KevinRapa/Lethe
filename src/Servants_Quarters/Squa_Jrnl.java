@@ -1,6 +1,6 @@
 package Servants_Quarters;
 
-import Super.Book;
+import A_Super.Book;
 
 public class Squa_Jrnl extends Book{
     private final String pg1, pg2, pg3, pg4;

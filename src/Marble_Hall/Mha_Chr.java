@@ -1,6 +1,6 @@
 package Marble_Hall;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Mha_Chr extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -12,7 +12,7 @@ public class Mha_Chr extends Furniture{
                          + "Its cushioning is a dark green diamond pattern\n"
                          + "which you don't care for.";
         this.searchDialog = "You look underneath but find nothing.";
-        this.interactDialog = "You sit down in the chair, noting its marvelous polish.";
+        this.actDialog = "You sit down in the chair, noting its marvelous polish.";
         this.addNameKeys("chair", "chairs");
         this.addActKeys("sit", "relax", "use");
     }

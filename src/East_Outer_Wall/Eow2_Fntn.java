@@ -1,6 +1,6 @@
 package East_Outer_Wall;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Eow2_Fntn extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
@@ -13,7 +13,7 @@ public class Eow2_Fntn extends Furniture {
                          + "soldier statue in the ruined courtyard fountain.\n"
                          + "Now that you think about it, it's the same fountain.";
         this.searchDialog = "You find a bunch of water, but you can't pocket that.";
-        this.interactDialog = "Now is NOT the time for a swim, though it's tempting. You\n"
+        this.actDialog = "Now is NOT the time for a swim, though it's tempting. You\n"
                             + "don't even have a change of clothes, and you aren't wearing\n"
                             + "servant's garb.";
         this.addActKeys("jump", "swim");

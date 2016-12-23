@@ -1,6 +1,6 @@
 package Dining_Room;
 
-import Super.Staircase;
+import A_Super.Staircase;
 
 public class Din1_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

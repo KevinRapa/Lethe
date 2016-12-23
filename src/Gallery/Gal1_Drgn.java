@@ -1,8 +1,8 @@
 package Gallery;
 
-import Main.Player;
-import Super.Item;
-import Super.Furniture;
+import A_Main.Player;
+import A_Super.Item;
+import A_Super.Furniture;
 
 public class Gal1_Drgn extends Furniture {
     private boolean isOn;
@@ -58,7 +58,7 @@ public class Gal1_Drgn extends Furniture {
         boolean red = false; boolean blue = false; 
         boolean yellow = false; boolean dark = false;      
         
-        for (Item i : this.inv.getInv()) {
+        for (Item i : this.inv) {
             if (i.toString().matches("red focus"))
                 red = true;
             if (i.toString().matches("blue focus"))
@@ -122,7 +122,7 @@ public class Gal1_Drgn extends Furniture {
             }
             else if (! red && ! blue && ! yellow) {
                 this.beam = 'W'; this.mode = "Barely any light"; 
-            }       
+            }    
         }       
         if (this.isOn) {
             return mode + " emits from the statues mouth.\n" + REF.activate(this.beam, this); 
@@ -179,7 +179,7 @@ public class Gal1_Drgn extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         this.useDialog = "You place the " + item + " into the dragon's mouth.";
-        Player.getINV().give(item, this.inv);
+        Player.getInv().give(item, this.inv);
         
         return this.useDialog;
     }

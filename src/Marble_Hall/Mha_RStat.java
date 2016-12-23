@@ -1,8 +1,8 @@
 package Marble_Hall;
 
-import Super.Furniture;
-import Super.Item;
-import Main.Player;
+import A_Super.Furniture;
+import A_Super.Item;
+import A_Main.Player;
 
 public class Mha_RStat extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
@@ -16,7 +16,7 @@ public class Mha_RStat extends Furniture {
         this.useDialog = "You slide the spear back into the angel's grasp. The\n"
                        + "divines will be pleased with you. A compartment\n"
                        + "reveals itself at the statue's base.";
-        this.interactDialog = "Such an impressive work of artistry deserves not to be\n"
+        this.actDialog = "Such an impressive work of artistry deserves not to be\n"
                             + "tainted by your touch.";
         this.addNameKeys("right statue");
         this.addActKeys("touch", "grab", "hold");
@@ -25,7 +25,7 @@ public class Mha_RStat extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         this.searchable = true;
-        Player.getINV().remove(item);
+        Player.getInv().remove(item);
             
         return this.useDialog;
     }

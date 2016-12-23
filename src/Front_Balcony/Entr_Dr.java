@@ -1,6 +1,6 @@
 package Front_Balcony;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Entr_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

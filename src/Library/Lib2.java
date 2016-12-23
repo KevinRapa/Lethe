@@ -1,7 +1,7 @@
 package Library;
 
-import Main.AudioPlayer;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Super.Room;
 
 public class Lib2 extends Room {
     private boolean shelfMoved;

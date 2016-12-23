@@ -1,6 +1,6 @@
 package West_Balcony;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Wbal_Bcn extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

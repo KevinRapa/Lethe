@@ -1,28 +1,30 @@
 package Gallery;
 
-import Main.Player;
-import Super.Furniture;
-import Super.Item;
-import Super.Room;
+import A_Main.Player;
+import A_Super.Furniture;
+import A_Super.Statue;
+import A_Super.Item;
+import A_Super.Room;
 
-public class Gal_1E_Stat extends Furniture {
+public class Gal_1E_Stat extends Statue {
     private int level;
-    private final Room REF;
-    private final Gal_2E_Stat REF3;
+    private final Room GAL4_REF;
+    private final Gal_2E_Stat STAT_REF;
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal_1E_Stat(Room gal4, Furniture stat) {
         super();
-        this.REF = gal4;
-        this.REF3 = (Gal_2E_Stat)stat;
+        this.searchable = true;
+        this.GAL4_REF = gal4;
+        this.STAT_REF = (Gal_2E_Stat)stat;
         this.level = 0;
         this.description = "The grandiose statue stands in the exact center of\n"
                          + "the circular room. It portrays a male figure. He\n"
                          + "poises elegantly, with his right arm extended over\n"
                          + "his head and left hand held low as if bearing an\n"
                          + "object, though it's empty.";        
-        this.searchDialog = "The statue's hand is empty";
-        this.addNameKeys("statue");
+        this.searchDialog = "The statue's hand is empty.";
+        this.addNameKeys("grandiose statue");
         this.addUseKeys("crystal orb");
         this.inv = new Stat_Inv(this);
     }
@@ -76,7 +78,7 @@ public class Gal_1E_Stat extends Furniture {
             break;         
        default:
             this.searchable = false;
-            REF.addFurniture(REF3);
+            GAL4_REF.addFurniture(STAT_REF);
             rep = "The orb's glow turns a dark purple before fading into\n"
                 + "ultraviolet. The statue raises on its platform to the\n"
                 + "second floor.";
@@ -118,7 +120,7 @@ public class Gal_1E_Stat extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         this.useDialog = "You set the orb into the statue's palm.";
-        Player.getINV().give(item, this.inv);
+        Player.getInv().give(item, this.inv);
         
         return this.useDialog;
     }

@@ -1,6 +1,6 @@
 package Gallery;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Gal3_Msks extends Furniture {
 
@@ -14,7 +14,7 @@ public class Gal3_Msks extends Furniture {
                          + "<> A Burkinabe mask\n"
                          + "<> A Gabonese mask";
         this.searchDialog = "You aren't sure which one to search first.";
-        this.interactDialog = "You aren't sure which one to move.";
+        this.actDialog = "You aren't sure which one to move.";
         this.addActKeys("move", "take", "lift", "slide", "remove");
         this.addNameKeys("masks", "mask");
 /*----------------------------------------------------------------------------*/

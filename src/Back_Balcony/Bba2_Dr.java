@@ -1,6 +1,6 @@
 package Back_Balcony;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Bba2_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

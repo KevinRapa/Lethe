@@ -1,6 +1,6 @@
 package Foyer;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Foy3 extends Room {
     

@@ -1,8 +1,8 @@
 package Workshop;
 
-import Super.Furniture;
-import Super.Item;
-import Main.Player;
+import A_Super.Furniture;
+import A_Super.Item;
+import A_Main.Player;
 
 public class Wrk_CstngTbl extends Furniture {
     private final Furniture REFBRL, REFSCK, REFCBNT;
@@ -30,27 +30,27 @@ public class Wrk_CstngTbl extends Furniture {
         
         if (item.toString().matches("lens template")) {
             this.hasTemplate = true;
-            Player.getINV().remove(item);
+            Player.getInv().remove(item);
             rep = "You fit the template onto the table's surface.";
         }
         else {
-            Player.getINV().remove(item);
+            Player.getInv().remove(item);
             
             if (this.hasTemplate) {   
                 String color;
                 if (item.toString().matches("molten red glass")) {
-                    Player.getINV().add(this.REFRL); // Give player red lens.
+                    Player.getInv().add(this.REFRL); // Give player red lens.
                     color = "red";
                 }
                 else if (item.toString().matches("molten blue glass")) {
-                    Player.getINV().add(this.REFBL); // Give player blue lens.
+                    Player.getInv().add(this.REFBL); // Give player blue lens.
                     this.REFSCK.getInv().add(this.REFSND); // Restock sand.
                     this.REFBRL.getInv().add(this.REFBD); // Restock dye.
                     this.REFCBNT.getInv().add(this.REFPTSH); // Restock potash.
                     color = "blue";
                 }
                 else {  
-                    Player.getINV().add(this.REFYL); // Give player yellow lens.
+                    Player.getInv().add(this.REFYL); // Give player yellow lens.
                     this.REFSCK.getInv().add(this.REFSND); // Restock sand.
                     this.REFBRL.getInv().add(this.REFYD); // Restock dye.
                     this.REFCBNT.getInv().add(this.REFPTSH); // Restock potash.
@@ -61,7 +61,7 @@ public class Wrk_CstngTbl extends Furniture {
                     + "You take the lens. This is what you needed, right?";    
             }
             else {
-                Player.getINV().add(this.REFSHT);
+                Player.getInv().add(this.REFSHT);
                 this.REFSCK.getInv().add(this.REFSND);
                 this.REFCBNT.getInv().add(this.REFPTSH);
                 

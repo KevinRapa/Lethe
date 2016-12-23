@@ -1,7 +1,7 @@
 package Study;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
         
 public class Stud_BkCs extends Furniture {
 
@@ -11,7 +11,7 @@ public class Stud_BkCs extends Furniture {
         this.description = "It's a small square bookcase with a stone head\n"
                          + "sculpture on top.";
         this.searchDialog = "You peruse its shelves.";
-        this.addNameKeys("bookcase", "bookshelf", "books");
+        this.addNameKeys("bookcase", "bookshelf", "books", "shelf");
     }
 /*----------------------------------------------------------------------------*/
 }

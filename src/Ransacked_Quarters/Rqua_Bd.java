@@ -1,6 +1,6 @@
 package Ransacked_Quarters;
 
-import Super.Furniture;
+import A_Super.Furniture;
         
 public class Rqua_Bd extends Furniture {
     private boolean moved;
@@ -13,7 +13,7 @@ public class Rqua_Bd extends Furniture {
         this.searchDialog = "Nothing here. It's a bad place to hide something,\n"
                           + "as someone has already searched it. A tile beneath\n"
                           + "the bed looks suspicious, though.";
-        this.interactDialog = "You move the bed out of the way, exposing a loose tile.";
+        this.actDialog = "You move the bed out of the way, exposing a loose tile.";
         this.addNameKeys("bed");
         this.addActKeys("move", "pull", "push", "slide");
     }
@@ -22,7 +22,7 @@ public class Rqua_Bd extends Furniture {
             String rep = "You have already moved the bed.";
             
             if (! this.moved) {
-                rep = this.interactDialog;
+                rep = this.actDialog;
                 this.moved = true;
             }
         return rep;

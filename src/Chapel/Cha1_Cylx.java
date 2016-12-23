@@ -1,6 +1,6 @@
 package Chapel;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Cha1_Cylx extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

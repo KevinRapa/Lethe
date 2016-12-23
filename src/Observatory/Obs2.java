@@ -1,6 +1,6 @@
 package Observatory;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Obs2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

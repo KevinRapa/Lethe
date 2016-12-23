@@ -1,14 +1,13 @@
 package Observatory;
 
-import Super.Furniture;
-import Main.Player;
-import Main.GUI;
-import Super.Room;
+import A_Super.Furniture;
+import A_Main.Player;
+import A_Main.GUI;
 import java.util.Scanner;
 
 public class Obs_Stats extends Furniture {
     private final Furniture[] STATS;
-    private final Obs3_Chndlr REF2;
+    private final Obs3_Chndlr CHNDLR_REF;
     private boolean solved = false;
     private boolean locked = true;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -21,7 +20,7 @@ public class Obs_Stats extends Furniture {
         this.searchDialog = "You find nothing of interest except curious seams\n"
                           + "on the floor around them.";
         this.STATS = stats;
-        this.REF2 = (Obs3_Chndlr) chandlr;
+        this.CHNDLR_REF = (Obs3_Chndlr) chandlr;
         this.addNameKeys("statues", "statue");
         this.addActKeys("move", "turn", "push", "pull", "rotate", "spin");
     }
@@ -37,7 +36,7 @@ public class Obs_Stats extends Furniture {
             choice = GUI.promptOut();
             
             if (Player.getOcc().hasFurniture(choice))
-                GUI.out(Player.getFurnitureObject(choice).getDescription());
+                GUI.out(Player.getFurnRef(choice).getDescription());
             else if (! choice.matches("")) {
                 rep = "That's not a valid choice.";
                 choice = "";
@@ -87,7 +86,7 @@ public class Obs_Stats extends Furniture {
                     rep ="As the statue settles in place, a bright\n"
                        + "array of light forms on the floor.";
                     this.solved = true;
-                    this.REF2.lower();
+                    this.CHNDLR_REF.lower();
                     choice = "";
                 }
                 

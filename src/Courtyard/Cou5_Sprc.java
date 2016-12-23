@@ -1,14 +1,13 @@
 package Courtyard;
 
-import Super.Furniture;
-import Main.Inventory;
-import Main.Player;
-import Super.Item;
+import A_Super.Furniture;
+import A_Main.Player;
+import A_Super.Item;
 /**
  * @author Mantis Toboggan
  */
 public class Cou5_Sprc extends Furniture {
-    private final Item REF2, REF3;
+    private final Item EXTRCT_REF, VIAL_REF;
     private boolean drilled;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Cou5_Sprc(Item vial, Item extrct) {
@@ -20,8 +19,8 @@ public class Cou5_Sprc extends Furniture {
         this.description = "The ancient tree looms over you and creaks slowly in\n"
                          + "the breeze. It stands out as the most life-like thing\n"
                          + "in the courtyard.";
-        this.REF2 = extrct;
-        this.REF3 = vial;
+        this.EXTRCT_REF = extrct;
+        this.VIAL_REF = vial;
         this.drilled = false;
         
         this.addNameKeys("tree", "spruce", "spruce tree");
@@ -39,10 +38,10 @@ public class Cou5_Sprc extends Furniture {
                 drilled = true;
                 rep = this.useDialog;
                 
-                if (Player.getINV().getInv().contains(REF3)) {
+                if (Player.getInv().contains(VIAL_REF)) {
                     rep += " You collect some of the sap in the small vial you are carrying.";
-                    Player.getINV().remove(REF3);
-                    Player.getINV().add(REF2);
+                    Player.getInv().remove(VIAL_REF);
+                    Player.getInv().add(EXTRCT_REF);
                 }
                 else
                     rep += " You have nothing to collect the sap in, though.";
@@ -52,8 +51,8 @@ public class Cou5_Sprc extends Furniture {
         else {
             if (drilled) {
                 rep = " You collect some of the sap in the small vial you are carrying.";
-                Player.getINV().remove(REF3);
-                Player.getINV().add(REF2);
+                Player.getInv().remove(VIAL_REF);
+                Player.getInv().add(EXTRCT_REF);
             }
             else
                 rep = "You have nothing to collect in the vial";

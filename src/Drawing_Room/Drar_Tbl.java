@@ -1,7 +1,7 @@
 package Drawing_Room;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
 
 public class Drar_Tbl extends Furniture {
     private final Drar_Ghst REF;

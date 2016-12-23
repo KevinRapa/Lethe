@@ -1,7 +1,7 @@
 package Library;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
         
 public class Lib5_Bnshmnt extends Furniture {
 
@@ -10,7 +10,7 @@ public class Lib5_Bnshmnt extends Furniture {
         super(items);
         this.description = "The tall bookshelf bears a plaque on the top reading\n"
                          + "\"Banishment\".";
-        this.interactDialog = "You push against the shelf, but it doesn't budge.";
+        this.actDialog = "You push against the shelf, but it doesn't budge.";
         this.searchDialog = "You peruse its shelves.";
         this.addNameKeys("banishment", "banishment shelf");
         this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");

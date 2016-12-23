@@ -1,6 +1,6 @@
 package Workshop;
 
-import Super.Note;
+import A_Super.Note;
 
 public class Wrk_Nt extends Note {
 
@@ -14,7 +14,7 @@ public class Wrk_Nt extends Note {
                            "Solomon's groundskeeping closet. I may look for a\n" +
                            "screw in there too if I cannot find the old one. 1mm\n" +
                            "I believe. I wish Oswald was still around. He was\n"
-                         + "a master at this. Eternity has its lamentable moments.";
+                         + "a master at this. Don't forget- frame in back hall.";
 /*----------------------------------------------------------------------------*/
     }
 }

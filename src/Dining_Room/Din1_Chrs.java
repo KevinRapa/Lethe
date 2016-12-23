@@ -1,6 +1,6 @@
 package Dining_Room;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Din1_Chrs extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -12,7 +12,7 @@ public class Din1_Chrs extends Furniture{
                          + "carve a chair worth twice my life, but not one I\n"
                          + "could sit in for more than five minutes!'";
         this.searchDialog = "You look underneath, but find nothing.";
-        this.interactDialog = "You pick out a chair to sit in and stare out the window\n"
+        this.actDialog = "You pick out a chair to sit in and stare out the window\n"
                             + "on the east end. For a moment, you feel free of worry.";
         this.addActKeys("sit", "use", "relax");
         this.addNameKeys("chairs", "chair");

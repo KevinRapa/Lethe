@@ -1,6 +1,6 @@
 package Secret_Archives;
 
-import Super.Furniture;
+import A_Super.Furniture;
         
 public class Lib1_Lght extends Furniture {
 

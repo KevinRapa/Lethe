@@ -1,7 +1,7 @@
 package Chapel_Stairs;
 
-import Main.AudioPlayer;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Super.Room;
 
 public class Chs3 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

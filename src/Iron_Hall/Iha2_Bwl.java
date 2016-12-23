@@ -1,6 +1,6 @@
 package Iron_Hall;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Iha2_Bwl extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      

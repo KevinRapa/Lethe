@@ -1,7 +1,7 @@
 package Library;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
         
 public class Lib4_Tbl extends Furniture {
 

@@ -1,11 +1,11 @@
 package Parlor;
 
-import Super.Door;
-import Super.Item;
-import Main.Player;
+import A_Super.Door;
+import A_Super.Item;
+import A_Main.Player;
 
 public class Par1_Dr extends Door {
-    private final Item REF3;
+    private final Item ENCHNTBTTL_REF;
     private boolean cured = false;
 /*----------------------------------------------------------------------------*/    
     public Par1_Dr(Item enchbttl) {
@@ -14,7 +14,7 @@ public class Par1_Dr extends Door {
                        + "\nfades away.";
         this.description = "It looks like a heavy wooden door.";
         
-        this.REF3 = enchbttl;
+        this.ENCHNTBTTL_REF = enchbttl;
         this.addUseKeys("sacred fire");
     }
 /*----------------------------------------------------------------------------*/
@@ -39,8 +39,8 @@ public class Par1_Dr extends Door {
                 + "barrier.";
             this.cured = true;
         }
-        Player.getINV().remove(item);
-        Player.getINV().add(REF3);
+        Player.getInv().remove(item);
+        Player.getInv().add(ENCHNTBTTL_REF);
         
         return rep;
     }

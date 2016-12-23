@@ -1,7 +1,7 @@
 package Scorched_Room;
 
-import Main.AudioPlayer;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Super.Room;
 
 public class Sear extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

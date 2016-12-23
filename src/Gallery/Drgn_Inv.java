@@ -1,10 +1,10 @@
 package Gallery;
 
-import Main.Inventory;
-import Super.Item;
-import Main.GUI;
+import A_Main.Inventory;
+import A_Super.Item;
+import A_Main.GUI;
 
-public class Drgn_Inv extends Inventory{
+public class Drgn_Inv extends Inventory {
     private final Gal1_Drgn REF;    
 // CONSTRUCTOR -----------------------------------------------------------------      
     public Drgn_Inv(Gal1_Drgn drgn, Item ... items) {
@@ -18,22 +18,13 @@ public class Drgn_Inv extends Inventory{
             this.triggerAdd(item);
             return true;
         }
+        GUI.out("The " + item + " doesn't fit in.");
         return false;
     }
 /*----------------------------------------------------------------------------*/
     @Override public void remove(Item removeThis) {
         this.CONT.remove(removeThis);
         GUI.out(REF.triggerEvent());
-    }
-/*----------------------------------------------------------------------------*/
-    @Override public void give(Item item, Inventory giveToThis) {
-        // Exchanges an item between two inventories.
-        if (giveToThis.add(item)) {
-            this.remove(item);
-        }
-        else
-            GUI.out("The " + item + " doesn't fit in.");
-        
     }
 /*----------------------------------------------------------------------------*/
     private void triggerAdd(Item item) {

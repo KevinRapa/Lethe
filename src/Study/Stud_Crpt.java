@@ -1,6 +1,6 @@
 package Study;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Stud_Crpt extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

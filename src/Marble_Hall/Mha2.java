@@ -1,6 +1,6 @@
 package Marble_Hall;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Mha2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

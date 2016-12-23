@@ -1,7 +1,7 @@
 package Gallery;
 
-import Super.Furniture;
-import Super.Lever;
+import A_Super.Furniture;
+import A_Super.Lever;
         
 public class Gal6_Swtch extends Lever {
     private final Gal6_Cnn REF;  

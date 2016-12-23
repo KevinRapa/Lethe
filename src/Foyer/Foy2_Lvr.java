@@ -1,9 +1,9 @@
 package Foyer;
 
-import Main.Player;
-import Super.Room;
-import Super.Lever;
-import Super.Furniture;
+import A_Main.Player;
+import A_Super.Room;
+import A_Super.Lever;
+import A_Super.Furniture;
         
 public class Foy2_Lvr extends Lever{
     private final Foy_Gt REF, REF2;
@@ -11,7 +11,7 @@ public class Foy2_Lvr extends Lever{
     public Foy2_Lvr(Furniture foy_Gt, Furniture foy2_Gt) {
         super();
         this.searchDialog = "Nope, this hidden lever isn't hiding anything.";
-        this.interactDialog = "You pull the lever. The two gates in the foyer switch\n"
+        this.actDialog = "You pull the lever. The two gates in the foyer switch\n"
                             + "positions.";
         this.REF = (Foy_Gt)foy_Gt; 
         this.REF2 = (Foy_Gt)foy2_Gt;
@@ -33,7 +33,7 @@ public class Foy2_Lvr extends Lever{
         REF.swtch(); // Opens or closes gate.
         REF2.swtch(); // Opens or closes gate.
 
-        return this.interactDialog;
+        return this.actDialog;
     } 
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {

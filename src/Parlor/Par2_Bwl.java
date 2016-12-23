@@ -1,6 +1,6 @@
 package Parlor;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Par2_Bwl extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      

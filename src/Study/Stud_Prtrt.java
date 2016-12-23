@@ -1,16 +1,14 @@
 package Study;
 
-import Main.Player;
-import Super.Furniture;
+import A_Main.Player;
+import A_Super.Furniture;
+import A_Super.Wall_Art;
         
-public class Stud_Prtrt extends Furniture {
-    private boolean lifted;
+public class Stud_Prtrt extends Wall_Art {
     private final Furniture REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Stud_Prtrt (Furniture safe) {
         super();
-        this.searchable = false;
-        this.lifted = false;
         this.REF = safe;
         this.description = "The portrait depicts a bald male with round glasses,\n"
                          + "maybe fifty years old. He looks a bit like an angry\n"
@@ -21,25 +19,23 @@ public class Stud_Prtrt extends Furniture {
                          + "flush on the wall.";
         this.searchDialog = "There's nothing on this picture. Interestingly, the\n"
                           + "portrait does not rest flush on the wall.";
-        this.interactDialog = "You lift up the portrait resembling Bob Gunton,\n"
+        this.actDialog = "You lift up the portrait resembling Bob Gunton,\n"
                     + "appropriately revealing a safe.";
-        this.addActKeys("move", "lift", "take", "slide", "remove");
         this.addNameKeys("portrait", "picture", "painting");
     }
 /*----------------------------------------------------------------------------*/
-        @Override public String interact(String key) {     
-            String rep = "You have already discovered the safe.";
-            
-            if (! this.lifted) {
-                rep = this.interactDialog;
-                this.lifted = true;
+    @Override public String interact(String key) {  
+        if (key.matches("admire"))
+            return "Yes, what a beautiful piece of artwork. You take a moment\n"
+                 + "to soak in the creative essence. Yes...";
+        else {
+            if (! Player.getMapRef()[3][2][3].hasFurniture("safe")) {
                 Player.getMapRef()[3][2][3].addFurniture(REF);
+                return this.actDialog;
             }            
-            return rep;
+            return "You have already discovered the safe.";
+        }
     }
 /*----------------------------------------------------------------------------*/
-        public boolean isMoved() {
-            return this.lifted;
-        }
 }
 

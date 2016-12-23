@@ -1,6 +1,6 @@
 package Kitchen;
 
-import Super.Door;
+import A_Super.Door;
 
 public class Kitc_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

@@ -1,6 +1,6 @@
 package Ransacked_Quarters;
 
-import Super.Furniture;
+import A_Super.Furniture;
         
 public class Rqua_Drssr extends Furniture {
 
@@ -9,7 +9,7 @@ public class Rqua_Drssr extends Furniture {
         super();
         this.searchable = false;
         this.description = "It's a low dresser with a couple opened drawers in it.";
-        this.interactDialog = "The dresser's drawers are already open.";
+        this.actDialog = "The dresser's drawers are already open.";
         this.searchDialog = "Seems like a bad place to hide something, as someone\n"
                           + "has already searched it.";
         this.addNameKeys("dresser");  

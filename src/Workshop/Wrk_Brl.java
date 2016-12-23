@@ -1,9 +1,10 @@
 package Workshop;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Container;
+import A_Super.Furniture;
+import A_Super.Item;
         
-public class Wrk_Brl extends Furniture {
+public class Wrk_Brl extends Furniture implements Container {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Brl(Item... items) {
@@ -11,8 +12,6 @@ public class Wrk_Brl extends Furniture {
         this.description = "It's not full sized... maybe only three feet high.\n"
                          + "It has a wooden lid on top.";
         this.searchDialog = "You open the lid and peer inside.";
-        this.interactDialog = "That sounds like a terrible idea. Better search the barrel instead.";
-        this.addActKeys("open");
         this.addNameKeys("barrel");
     }
 /*----------------------------------------------------------------------------*/

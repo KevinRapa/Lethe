@@ -1,6 +1,6 @@
 package Parlor;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Par1_Hrp extends Furniture {
     private final Par1_Orb REF;

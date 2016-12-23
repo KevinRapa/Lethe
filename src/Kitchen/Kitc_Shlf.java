@@ -1,7 +1,7 @@
 package Kitchen;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
         
 public class Kitc_Shlf extends Furniture {
 
@@ -10,7 +10,7 @@ public class Kitc_Shlf extends Furniture {
         super(items);
         this.description = "The tall shelf is filled with old wines.";
         this.searchDialog = "You peruse the wine selection.";
-        this.addNameKeys("shelf of", "wine shelf", "wine rack", "shelf", "wine");
+        this.addNameKeys("shelf of wine", "wine shelf", "wine rack", "shelf", "wine");
     }
 /*----------------------------------------------------------------------------*/
 }

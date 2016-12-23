@@ -1,7 +1,7 @@
 package Foyer;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
 
 public class Foy1_Tbl extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -10,7 +10,7 @@ public class Foy1_Tbl extends Furniture {
         this.description = "It's a long mahogany table. A respectable wood among\n"
                          + "lumberjacks, it's a durable and workable species. You\n"
                          + "nod your head in appreciation.";
-        this.interactDialog = "You nudge the table. It stands firmly in place, without even\n"
+        this.actDialog = "You nudge the table. It stands firmly in place, without even\n"
                     + "letting a creak. 'What a magnificent table!' you think to\n"
                     + "yourself. You give it another knock, and to your delight,\n"
                     + "another solid woody *knock* caresses your ear.";

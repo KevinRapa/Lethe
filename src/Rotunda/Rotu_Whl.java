@@ -1,7 +1,7 @@
 package Rotunda;
 
-import Main.Player;
-import Super.Furniture;
+import A_Main.Player;
+import A_Super.Furniture;
 
 public class Rotu_Whl extends Furniture{
     /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -19,9 +19,9 @@ public class Rotu_Whl extends Furniture{
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {
         ((Rotu)Player.getMapRef()[3][3][3]).rotate();
-        interactDialog = "As you turn the wheel, your balance shifts and you hear a loud\n"
+        actDialog = "As you turn the wheel, your balance shifts and you hear a loud\n"
                + "rumble. The room appears to have shifted.";
-        return interactDialog;
+        return actDialog;
     }
 /*----------------------------------------------------------------------------*/
     

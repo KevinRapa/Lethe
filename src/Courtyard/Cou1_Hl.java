@@ -1,7 +1,7 @@
 package Courtyard;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
 
 public class Cou1_Hl extends Furniture {
 
@@ -10,8 +10,8 @@ public class Cou1_Hl extends Furniture {
         super(items);
         this.description = "It's a foot-deep hole you dug in the ground.";
         this.searchDialog = "You crouch down and reach into the hole.";
-        this.interactDialog = "There's no need to dig the hole any deeper.";
-        this.useDialog = this.interactDialog;
+        this.actDialog = "There's no need to dig the hole any deeper.";
+        this.useDialog = this.actDialog;
         this.addNameKeys("hole");
         this.addUseKeys("shovel");
         this.addActKeys("dig");

@@ -1,6 +1,6 @@
 package Kitchen;
 
-import Super.Item;
+import A_Super.Item;
 
 public class Kitc_FrtPhy extends Item {
     

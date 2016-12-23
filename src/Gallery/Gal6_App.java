@@ -1,7 +1,7 @@
 package Gallery;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
 
 public class Gal6_App extends Furniture{
     

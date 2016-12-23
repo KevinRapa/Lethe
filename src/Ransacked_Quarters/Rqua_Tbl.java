@@ -1,6 +1,6 @@
 package Ransacked_Quarters;
 
-import Super.Furniture;
+import A_Super.Furniture;
         
 public class Rqua_Tbl extends Furniture {
 

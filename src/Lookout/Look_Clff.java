@@ -1,6 +1,6 @@
 package Lookout;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Look_Clff extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

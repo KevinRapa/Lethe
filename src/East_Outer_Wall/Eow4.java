@@ -1,7 +1,7 @@
 package East_Outer_Wall;
 
-import Main.AudioPlayer;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Super.Room;
 
 public class Eow4 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      

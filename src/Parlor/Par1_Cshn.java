@@ -1,7 +1,7 @@
 package Parlor;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
 
 public class Par1_Cshn extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -9,7 +9,7 @@ public class Par1_Cshn extends Furniture{
         super(items);
         this.description = "It's a lavender tassled cushion for sitting on.";
         this.searchDialog = "You lift the cushion.";
-        this.interactDialog = "Now is not the time for that!";
+        this.actDialog = "Now is not the time for that!";
         this.addNameKeys("cushion", "lavender cushion");
         this.addActKeys("sit", "relax");
     }

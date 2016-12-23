@@ -1,7 +1,7 @@
 package Library;
 
-import Main.AudioPlayer;
-import Super.Room;
+import A_Main.AudioPlayer;
+import A_Super.Room;
 
 public class Lib3 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

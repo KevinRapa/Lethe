@@ -1,15 +1,15 @@
 package Chapel;
 
-import Super.Furniture;
-import Super.Item;
-import Main.Player;
+import A_Super.Furniture;
+import A_Super.Item;
+import A_Main.Player;
 
 public class Cha1_Water extends Furniture {
-    private final Item REF2;
+    private final Item REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Cha1_Water(Item hlyWtr) {
         super();
-        this.REF2 = hlyWtr;
+        this.REF = hlyWtr;
         this.searchable = false;
         this.description = "It's seems to be just water, but it's most likely the holy kind.";
         this.searchDialog = "You can't pick this up with your bare hands.";
@@ -23,8 +23,8 @@ public class Cha1_Water extends Furniture {
         String rep = this.useDialog;
         
         if (item.toString().matches("empty vial")) {
-            Player.getINV().remove(item);
-            Player.getINV().add(REF2);
+            Player.getInv().remove(item);
+            Player.getInv().add(REF);
         }
         else if (item.toString().matches("metal bucket"))
             rep = "The bucket is too large to dip into the cylix.";

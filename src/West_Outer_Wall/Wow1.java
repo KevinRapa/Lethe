@@ -1,6 +1,6 @@
 package West_Outer_Wall;
 
-import Super.Room;
+import A_Super.Room;
 
 public class Wow1 extends Room{
     

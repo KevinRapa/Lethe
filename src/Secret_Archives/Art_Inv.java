@@ -1,7 +1,7 @@
 package Secret_Archives;
 
-import Main.Inventory;
-import Super.Item;
+import A_Main.Inventory;
+import A_Super.Item;
 
 public class Art_Inv extends Inventory{
     private final Lib1_Art REF;    

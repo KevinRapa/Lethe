@@ -1,6 +1,6 @@
 package Secret_Archives;
 
-import Super.Note;
+import A_Super.Note;
 
 public class Lib1_ImpNt extends Note {
 

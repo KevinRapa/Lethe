@@ -1,8 +1,8 @@
 package Vestibule;
 
-import Super.Window;
-import Super.Furniture;
-import Main.Player;
+import A_Super.Window;
+import A_Super.Furniture;
+import A_Main.Player;
 
 public class Vest_Wndw extends Window {
     private final Vest_Frplc REF;
@@ -27,7 +27,7 @@ public class Vest_Wndw extends Window {
         Vest vest = (Vest)Player.getMapRef()[3][3][6];
         
         if (this.isOpen && key.matches("close")) {
-            this.interactDialog = "You close the window.";
+            this.actDialog = "You close the window.";
             this.close(); 
             vest.switchWindow();
         }
@@ -36,18 +36,18 @@ public class Vest_Wndw extends Window {
             
             if (REF.isLit()) {
                 this.REF.extinguish();
-                this.interactDialog = "You open the window. A strong gust comes through\n" +
+                this.actDialog = "You open the window. A strong gust comes through\n" +
                                       "and extinguishes the fireplace."; 
             }
             else
-                this.interactDialog = "You open the window."; 
+                this.actDialog = "You open the window."; 
             
             vest.switchWindow();
         }
         else
-            this.interactDialog = "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
+            this.actDialog = "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
         
-        return interactDialog;
+        return actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

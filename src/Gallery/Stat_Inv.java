@@ -1,8 +1,8 @@
 package Gallery;
 
-import Main.Inventory;
-import Super.Item;
-import Main.GUI;
+import A_Main.Inventory;
+import A_Super.Item;
+import A_Main.GUI;
 
 public class Stat_Inv extends Inventory{
     private final Gal_1E_Stat REF;  

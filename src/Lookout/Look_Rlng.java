@@ -1,7 +1,7 @@
 package Lookout;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Furniture;
+import A_Super.Item;
 
 public class Look_Rlng extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -9,7 +9,7 @@ public class Look_Rlng extends Furniture{
         super(items);
         this.description = "A wide, sturdy granite railing.";
         this.searchDialog = "You search around the railing.";
-        this.interactDialog = "You grab the railing, but there's no fear of falling over,\n"
+        this.actDialog = "You grab the railing, but there's no fear of falling over,\n"
                     + "right?";
         this.addNameKeys("railing", "balcony railing");
         this.addActKeys("use", "grab", "hold");
@@ -26,7 +26,7 @@ public class Look_Rlng extends Furniture{
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {     
-        String rep = this.interactDialog;
+        String rep = this.actDialog;
         
         if (this.doesThisHaveIt("looped rope")) {
             rep = "You take hold of the railing and peer outwards.\n"

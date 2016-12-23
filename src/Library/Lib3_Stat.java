@@ -1,24 +1,22 @@
 package Library;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Item;
+import A_Super.Statue;
 
-public class Lib3_Stat extends Furniture {
+public class Lib3_Stat extends Statue {
     private boolean leftEye, rightEye;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Lib3_Stat(Item... items) {
         super(items);
-        this.searchable = false;
         this.leftEye = false;
         this.rightEye = false;
         this.description = "The towering statue reaches a bit over a story tall.\n"
                          + "On its blocky rectangular base stands a prancing horse.";
         this.searchDialog = "A small square seam on the statue's base piques\n"
                           + "your interest.";
-        this.interactDialog = "Such an impressive work of artistry deserves not to be\n"
-                    + "tainted by your touch.";
-        this.addNameKeys("statue", "impressive statue");
-        this.addActKeys("touch", "grab", "hold");
+        this.actDialog = "Such an impressive work of artistry deserves not to be\n"
+                       + "tainted by your touch.";
+        this.addNameKeys("impressive statue");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

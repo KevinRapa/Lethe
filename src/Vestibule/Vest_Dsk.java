@@ -1,9 +1,10 @@
 package Vestibule;
 
-import Super.Furniture;
-import Super.Item;
+import A_Super.Container;
+import A_Super.Furniture;
+import A_Super.Item;
         
-public class Vest_Dsk extends Furniture {
+public class Vest_Dsk extends Furniture implements Container{
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Vest_Dsk(Item... items) {
@@ -12,7 +13,7 @@ public class Vest_Dsk extends Furniture {
                            "a dark corner. It collects dust from a lack of use.\n" +
                            "A single drawer is visible under its surface.";
         this.searchDialog = "You slide open the drawer and peer inside.";
-        this.interactDialog = "You give the desk a small kick. Though creaky and\n" +
+        this.actDialog = "You give the desk a small kick. Though creaky and\n" +
                       "old, it's a good desk. Perhaps if you weren't trapped\n" +
                       "here, you'd take it home with you.";
         this.addNameKeys("desk");

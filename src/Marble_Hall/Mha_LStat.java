@@ -1,6 +1,6 @@
 package Marble_Hall;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Mha_LStat extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
@@ -15,7 +15,7 @@ public class Mha_LStat extends Furniture {
         this.useDialog = "You start jamming the spear into the angel's hand\n"
                        + "before realizing that the angel is already holding\n"
                        + "a spear.";
-        this.interactDialog = "Such an impressive work of artistry deserves not to be\n"
+        this.actDialog = "Such an impressive work of artistry deserves not to be\n"
                     + "tainted by your touch.";
         this.addNameKeys("left statue");
         this.addActKeys("touch", "grab", "hold");

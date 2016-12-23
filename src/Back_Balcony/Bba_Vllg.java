@@ -1,6 +1,6 @@
 package Back_Balcony;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Bba_Vllg extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -11,7 +11,7 @@ public class Bba_Vllg extends Furniture {
                            "lights. You calmly reminisce about your life in that\n" +
                            "village, wondering if you will ever return.";
         this.searchDialog = "Don't be silly.";
-        this.interactDialog = "Do you really think you can do that?";
+        this.actDialog = "Do you really think you can do that?";
         this.addActKeys("visit", "return", "go");
         this.addNameKeys("village", "town");
     }

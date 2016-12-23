@@ -1,6 +1,6 @@
 package Marble_Hall;
 
-import Super.Door;
+import A_Super.Door;
 
 public class MhaN_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

@@ -1,6 +1,6 @@
 package Courtyard;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Cou4_Frst extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

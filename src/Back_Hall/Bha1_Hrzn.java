@@ -1,6 +1,6 @@
 package Back_Hall;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Bha1_Hrzn extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

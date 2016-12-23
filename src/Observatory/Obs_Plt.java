@@ -1,6 +1,6 @@
 package Observatory;
 
-import Super.Item;
+import A_Super.Item;
 
 public class Obs_Plt extends Item {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

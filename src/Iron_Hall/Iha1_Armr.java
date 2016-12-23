@@ -1,6 +1,6 @@
 package Iron_Hall;
 
-import Super.Furniture;
+import A_Super.Furniture;
 
 public class Iha1_Armr extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -12,12 +12,12 @@ public class Iha1_Armr extends Furniture{
         this.searchDialog = "You find a long polearm, but the gauntlet is\n"
                           + "gripping it too tightly to be pryed open.";
         this.addActKeys("equip", "wear");
-        this.addNameKeys("armor", "suit of armor", "armor suit", "plate armor");
+        this.addNameKeys("(suit of |plate )?armor", "armor suit", "gauntlet");
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {     
-        interactDialog = "You will probably get hurt trying to do that.";
-        return interactDialog;
+        actDialog = "You will probably get hurt trying to do that.";
+        return actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }
