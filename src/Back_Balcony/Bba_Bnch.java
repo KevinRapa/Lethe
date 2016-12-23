@@ -3,7 +3,7 @@ package Back_Balcony;
 import A_Super.Furniture;
 import A_Super.Item;
 
-public class Bba_Bnch extends Furniture{
+public class Bba_Bnch extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bba_Bnch(Item... items) {
         super(items);

@@ -698,7 +698,7 @@ public class Player {
     // ======================================================================== 
     /**
      * Receives a valid list of 2 or 3 itemList for a combine attempt and
- verifies that it is a correct combine set.
+     * verifies that it is a correct combine set.
      * @param list a list of 2 or 3 itemList.
      */
     private static void evalCombine(Item[] list) {
@@ -726,7 +726,7 @@ public class Player {
     // ========================================================================  
     /**
      * Returns a list of itemList that the player is trying to combine and catches
- errors in the player's syntax.
+     * errors in the player's syntax.
      * @param tokenizer A scanner holding the list of player entries
      * @return A list of itemList the player wants to combine.
      */
