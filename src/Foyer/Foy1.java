@@ -24,7 +24,7 @@ public class Foy1 extends Room{
     }   
 /*----------------------------------------------------------------------------*/
     private String descMode() {       
-        String mode = Player.getMapRef()[3][3][4].isThisLocked() ? 
+        String mode = Player.getRoomRef("FOYW").isThisLocked() ? 
                 "a closed gate blocks your way into another room." : 
                 "an opened gate leads into another room.";                                            
         return mode;

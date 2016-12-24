@@ -208,9 +208,9 @@ public class GUI extends JPanel {
      * Prints the main menu of controls.
      */
     public static void clearMenu() {
-        MEN.setText("     <'w'/'s'/'a'/'d'> Move\n<'e'> Search     "
-                   + "<'c'> Inspect\n<'x'> Activate   <'i'> Inventory\n<'k'> Keyring    "
-                   + "<'h'> Get help\n         <'quit'> Quit");
+        MEN.setText("     <'w'/'s'/'a'/'d'> Move\n    <action object> Interact\n<'e'> Search       "
+                  + "<'c'> Inspect\n<'i'> Inventory    <'k'> Keyring\n"
+                  + "<'h'> Get help     <'quit'> Quit");
     }
 /*----------------------------------------------------------------------------*/
     public static void clearDesc() {
@@ -267,7 +267,7 @@ public class GUI extends JPanel {
          */
         @Override public void actionPerformed(ActionEvent event) {
             synchronized (HOLDER) {
-                HOLDER.add(INPUT.getText().toLowerCase());
+                HOLDER.add(INPUT.getText().toLowerCase().trim());
                 INPUT.setText("");
                 HOLDER.notify();
             }

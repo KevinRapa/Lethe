@@ -34,7 +34,7 @@ public class MhaM_Dr extends Furniture {
         this.numMedallions ++;
         
         if (this.numMedallions == 4) {
-            Player.getMapRef()[3][4][8].unlock();
+            Player.getRoomRef("DIN1").unlock();
             rep += "\nWith the last medallion in place, the door *clicks* loudly.";
         }      
         return rep;

@@ -13,27 +13,23 @@ public class Obs3_Chndlr extends Furniture {
                          + "Secured in its center is a red jewel encompassed\n"
                          + "by the chandelier's many candles.";
         this.searchDialog = "The chandelier is too high up.";
-        this.addNameKeys("chandelier", "chandeleir");
+        this.addNameKeys("chandelier");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (this.searchable) 
-            rep = "The brass chandelier's chain, having extended from\n" +
-                  "the ceiling, puts the chandelier now level with the\n" +
-                  "observatory's top floor. It's just within reach.";
+            return "The brass chandelier's chain, having extended from\n" +
+                   "the ceiling, puts the chandelier now level with the\n" +
+                   "observatory's top floor. It's just within reach.";
         
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = this.searchDialog;
-        
         if (this.searchable)
-            rep = "The chandelier is just within reach.";
+            return "The chandelier is just within reach.";
         
-        return rep;
+        return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
     public void lower() {

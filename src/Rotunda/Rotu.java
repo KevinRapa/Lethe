@@ -30,7 +30,7 @@ public class Rotu extends Room{
             this.addAdjacent("IHA1"); 
             this.removeAdjacent("FOYW");
             this.removeAdjacent("LOOK");
-            Player.getMapRef()[3][3][4].removeAdjacent("ROTU");
+            Player.getRoomRef("FOYW").removeAdjacent("ROTU");
             this.state = "NS";
         }
         else if (this.state.matches("NS")) {
@@ -38,7 +38,7 @@ public class Rotu extends Room{
             this.addAdjacent("LOOK"); 
             this.removeAdjacent("STUD");
             this.removeAdjacent("IHA1");
-            Player.getMapRef()[3][3][4].addAdjacent("ROTU");
+            Player.getRoomRef("FOYW").addAdjacent("ROTU");
             this.state = "EW"; 
         }    
     }

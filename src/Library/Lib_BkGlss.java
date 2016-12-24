@@ -43,8 +43,8 @@ public class Lib_BkGlss extends Book {
                "is still art, despite you being idiot at\n" +
                "blowing glass. It's ok!";
         
-        this.pageList[0] = this.pg1;
-        this.pageList[1] = this.pg2;
+        this.PAGE_LIST[0] = this.pg1;
+        this.PAGE_LIST[1] = this.pg2;
     }
 /*----------------------------------------------------------------------------*/
 }

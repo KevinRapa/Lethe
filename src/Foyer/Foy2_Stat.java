@@ -24,7 +24,7 @@ public class Foy2_Stat extends Statue {
     @Override public String interact(String key) {
         if (key.matches("(?:push|pull|move|slide)")) {
             if (! this.moved) {
-                Player.getMapRef()[3][2][5].addFurniture(REF);
+                Player.getRoomRef("FOY2").addFurniture(REF);
                 this.moved = true;
                 return "You push the statue and manage to displace it a bit.\n"
                      + "In the alcove, behind the statue, you discover a lever."; 

@@ -10,7 +10,7 @@ public class Wall_Art extends Furniture {
         super();
         this.searchable = false;
         
-        this.actDialog = "You lift the " + NAMEKEYS.get(0) + " and reveal a blank wall.";
+        this.actDialog = "You lift it only to reveal a blank wall.";
         this.searchDialog = this.actDialog;
         
         this.addActKeys("move", "lift", "take", "slide", "remove", "admire");

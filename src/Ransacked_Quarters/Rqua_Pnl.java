@@ -36,7 +36,7 @@ public class Rqua_Pnl extends Furniture {
             rep = this.useDialog;
             this.lifted = true;
             Player.getKeys().add(STUDKEY_REF);
-            Player.getMapRef()[3][5][1].removeFurniture(this);
+            Player.getRoomRef("SHAR").removeFurniture(this);
         }
         else if (! BED_REF.isMoved())
             rep = "You fully intend to do that, but there is a bed in the way.";

@@ -25,8 +25,8 @@ public class Sha1_Dr extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        Player.getMapRef()[3][5][2].addAdjacent("SHAR"); // Make SHAR accessible.
-        Player.getMapRef()[3][5][2].removeFurniture(this); // Remove this door from the room.
+        Player.getRoomRef("SHA1").addAdjacent("SHAR"); // Make SHAR accessible.
+        Player.getRoomRef("SHA1").removeFurniture(this); // Remove this door from the room.
         Player.getInv().remove(RAM_REF); // Take ram from player.
         Player.getInv().add(BRKNRAM_REF); // Add broken ram to player.
         

@@ -41,7 +41,7 @@ public class Salamaa {
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = "GAL1";
+        String start = "OBS1";
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -75,6 +75,7 @@ public class Salamaa {
             ) 
         {
             System.out.println("Data found. Loading game.");
+            Room_References.constructCoorinateReferences();
             ((PlayerAttributes)gameData.readObject()).loadAttributes();
             exitChoice = Player.mainPrompt(); // START GAME
         } 
@@ -704,17 +705,12 @@ public class Salamaa {
         //-------------------------------ITEMS----------------------------------
         Item redLns = new Item("red lens", "It's a proper lens tinted red.\n"
                              + "Maybe you should pick up the glass trade!", redFcs, "red focus", 3);
-        Item blLns = new Item("blue lens", "You made a blue lens. Good job, but was this the right color?",
-                                               "Wait... was this the color you were supposed to make?");
-        Item yllwLns = new Item("yellow lens", "You made a yellow lens. Good job, but was this the right color?", 
-                                                   "Wait... was this the color you were supposed to make?");
         Item rdDy = new Item("red dye", "You have a handful of soft red powdered dye.");
         Item blDy = new Item("blue dye", "You have a handful of soft blue powdered dye.");
         Item yllwDy = new Item("yellow dye", "You have a handful of soft yellow powdered dye.");
         Item mltnGlssR = new Item("molten red glass", "It's a crucible of molten red glass. Be careful!");
         Item mltnGlssB = new Item("molten blue glass", "It's a crucible of molten blue glass. Be careful!");
         Item mltnGlssY = new Item("molten yellow glass", "It's a crucible of molten yellow glass. Be careful!");
-        Item glssSht = new Item("glass sheet", "Wait... this isn't right. Weren't you supposed to make a lens?");
         Item stncl = new Item("lens template", "It's a sheet of metal with a small hole cut in it.\n");
         Item wrkNt = new Wrk_Nt("momento- glass");
         Item ptsh = new Item("potash", "Good old potassium-rich potash salts!");
@@ -722,8 +718,8 @@ public class Salamaa {
         Furniture wrkF = new Floor("A sandstone tiled floor.");
         Furniture wrkBrl = new Wrk_Brl(rdDy, rdDy, blDy, blDy, yllwDy, yllwDy);
         Furniture wrkCbnt = new Wrk_Cbnt(hmmr, gl, ptsh, ptsh);
-        Furniture wrkCstTbl = new Wrk_CstngTbl(wrkBrl, closScks, glssSht, redLns,
-                                               blLns, yllwLns, snd, rdDy, blDy, yllwDy, ptsh, wrkCbnt);
+        Furniture wrkCstTbl = new Wrk_CstngTbl(wrkBrl, closScks, redLns, snd, rdDy, 
+                                               blDy, yllwDy, ptsh, wrkCbnt);
         Furniture wrkKln = new Wrk_Kln(mltnGlssR, mltnGlssY, mltnGlssB);
         Furniture wrkBnch = new Gqua_Wrkbnch(stncl, wrkNt);        
         Furniture wrkAnvl = new Wrk_Anvl();
@@ -913,14 +909,14 @@ public class Salamaa {
         Room foy3 = new Foy3("on the second floor landing", "FOY3");
         //-------------------------------ITEMS----------------------------------        
         //-----------------------------FURNITURE--------------------------------  
-        Furniture foy3Strs = new Foy3_Strcs('u', 1);
+        Furniture foy3Strs = new Foy3_Strcs();
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE OBSERVATORY"> 
         //-----------------------------THE ROOM---------------------------------
         Room obs1 = new Obs1("in the observatory", "OBS1");
-        Room obs2 = new Obs2("on the observatory second floor", "OBS2");
-        Room obs3 = new Obs3("on the observatory third floor", "OBS3");
+        Room obs2 = new Obs2("on the observatory balcony", "OBS2");
+        Room obs3 = new Obs3("on the observatory aerie", "OBS3");
         //-------------------------------ITEMS----------------------------------  
         Item hlsPlt = new Obs_Plt("brass plate, \"Sol\"", "The small plate bears an engraving: \"Sol\"");
         Item hrmsPlt = new Obs_Plt("brass plate, \"Mercury\"", "The small plate bears an engraving: \"Mercury\"");
@@ -931,31 +927,36 @@ public class Salamaa {
         
         Item rby2 = new Item("ruby", "The ruby is well cut and clean, having been protected in the case for so long.");
         Item cndl = new Item("candle", "It's a white candle. It looks new!");
+        Item gr = new Item("small gear", "The small delicate gear fell right out of the telescope.");
+        Item glssLns = new Item("glass lens", "The small lens once belonged to the telescope in the observatory.");
+        Item mchnPc = new Item("machine piece", "You aren't sure what is does... It's an oddly shaped piece of aluminum.");
+        Item obs1Nt = new Obs1_Nt("illegible note");
+        Item obsBk = new Obs2_Bk("tome, \"Planets and Myth\"");
         //-----------------------------FURNITURE--------------------------------
         Furniture obs3Chndlr = new Obs3_Chndlr("chandelier", cndl, cndl, cndl, rby2, cndl, cndl);
-
-        Furniture obsHls = new Obs_Stat("8", "The statue depicts a monumental male figure\ncrowned with a radiating halo. He rides in\na chariot pulled by four steeds.", 0);
-        Furniture obsHrms = new Obs_Stat("5", "On its base stands a male figure of average\nbuild. He wears sandals, a heavy cloak, and\na winged helmet.", 6);
-        Furniture obsGaea = new Obs_Stat("1", "The statue depicts a short-haired female\nfigure holding a newborn. She also appears \npregnant.", 2);
-        Furniture obsAphrdt = new Obs_Stat("0", "A beautiful woman stands on this base. She\nstands with long hair and no clothing on \na large sea-shell.", 3);
-        Furniture obsAres = new Obs_Stat("4", "It shows a tall male figure dressed in \nsoldier's garb. He wears a tall galea\nhelmet and holds a spear and shield.", 5);
-        Furniture obsKrns = new Obs_Stat("3", "This statue shows a glorious bearded male\nsitting. He is well-built and dressed in a\nheavy robe. He holds a scythe.", 4);
-        Furniture obsZs = new Obs_Stat("7", "This statue depicts a glorious bearded male\nstriding forward holding a thunderbolt. You\ncannot contain your tears.", 8);
-        Furniture obsUrns = new Obs_Stat("6", "A male wearing light armor stands on this\nbase. He's clean-cut and holds a staff in\nhis left hand.", 7);
-        Furniture obsPsdn = new Obs_Stat("2", "This statue shows a towering older male\nfigure. He wears a glorious beard and poses\ntriumphantly holding a trident.", 1);
-        Furniture obsStats = new Obs_Stats(obs3Chndlr, obsAphrdt, obsGaea, obsPsdn,  obsKrns, obsAres, obsHrms, obsUrns, obsZs, obsHls);
-
-        Furniture hlsSlt = new Obs_Slt("I", "Sol", "Inside the slot: \"Helios\"");
-        Furniture hrmsSlt = new Obs_Slt("A", "Mercury", "Inside the slot: \"Hermes\"");
-        Furniture gaeaSlt = new Obs_Slt("C", "Terra", "Inside the slot: \"Gaea\"");
-        Furniture aphrdtSlt = new Obs_Slt("B", "Venus", "Inside the slot: \"Aphrodite\"");
-        Furniture aresSlt = new Obs_Slt("D", "Mars", "Inside the slot: \"Ares\"");
-        Furniture krnsSlt = new Obs_Slt("F", "Saturn", "Inside the slot: \"Kronos\"");
-        Furniture zsSlt = new Obs_Slt("E", "Jupiter", "Inside the slot: \"Zeus\"");
-        Furniture urnsSlt = new Obs_Slt("G", "Caelus", "Inside the slot: \"Uranus\"");
-        Furniture psdnSlt = new Obs_Slt("H", "Neptune", "Inside the slot: \"Posiedon\"");
-        Furniture obsSlts = new Obs_Slts(hlsPlt, obsStats, hlsSlt, hrmsSlt, aphrdtSlt, gaeaSlt, aresSlt, zsSlt, krnsSlt, urnsSlt, psdnSlt, hlsSlt);
-
+        Furniture obsStats = new Obs_Stats(obs3Chndlr);
+        Furniture obsSlts = new Obs_Slts(hlsPlt, obsStats);
+        Furniture obsF = new Floor("The floor in here is gray and dark blue checkered tile.");
+        Furniture obsW = new Wall("The walls are mahogany wood paneled, with each panel bearing a large round cavity displaying a painted constellation.");
+        Furniture obsWndw = new Obs_Wndw();
+        Furniture obs1Strs = new Obs13_Strs('u', 1);
+        Furniture obs1Tlscp = new Obs1_Tlscp(gr, mchnPc, glssLns);
+        Furniture obs1Lmp = new Obs1_Lmp();
+        Furniture obs1St = new Obs1_St(obs1Nt);
+        
+        Furniture obsBlcny = new Obs_Blcny();
+        Furniture obs2Strs = new Obs2_Strs();
+        Furniture obs2BkShlf = new Obs2_BkShlf(obsBk);
+        Furniture obs2Pntng = new Obs2_Pntng();
+        Furniture obs2Rlng = new Obs2_Rlng();
+        Furniture obs2Chr = new Obs2_Chr();
+        Furniture obs2Tbl = new Bha1_Tbl();
+        Furniture obs2Lmp = new Obs2_Lmp();
+        
+        Furniture obs3Strs = new Obs13_Strs('d', 1);
+        Furniture obs3Chst = new Obs3_Chst(psdnPlt);
+        Furniture obs3Tlscps = new Obs3_Tlscps();
+        
         // </editor-fold>
         // <editor-fold desc="INITIALIZE JADE HALL">
         //-------------------------------ITEMS----------------------------------   
@@ -987,7 +988,7 @@ public class Salamaa {
         Item hoe = new Item("hoe", "A rusty iron hoe for gardening.");
         Item trowel = new Item("trowel", "It's a small handheld shovel.");
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture gar13Plntr = new Gar13_Plntr(sl);
+        Furniture gar13Plntr = new Gar13_Plntr(sl, mndrkBlb, sl);
         Furniture gar1Stat = new Gar1_Stat();
         Furniture gar2BrknHose = new Gar2_BrknHs();
         Furniture gar2Hs = new Gar2_Hs(gar2BrknHose, brknHose);
@@ -998,7 +999,7 @@ public class Salamaa {
         Furniture gar3Chst = new Gar3_Chst(hoe, trowel, hose, sd);
         Furniture gal3Fntn = new Gal3_Fntn();
         Furniture gar4Plq = new Gar4_Plq();
-        Furniture gar4Plntr = new Gar4_Plntr(gar4Plq, urnsPlt, urnsPlt);
+        Furniture gar4Plntr = new Gar4_Plntr(gar4Plq, urnsPlt, urnsPlt, sl, sl);
         Furniture gar24Scnc = new Gar24_Scnc();
         
         // </editor-fold>
@@ -1402,7 +1403,7 @@ public class Salamaa {
         // <editor-fold desc="LOCK ROOMS">
         //**********************************************************************
 
-        //cous.lock(); rotu.lock(); stud.lock(); gal5.lock(); //gal1.lock();
+        //cous.lock(); rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
         //par2.lock(); clos.lock(); din1.lock(); kitc.lock();
         //chs1.lock(); work.lock(); bls1.lock(); soul.lock(); sew6.lock();
         //cas1.lock(); arch.lock(); vau4.lock(); wow2.lock(); foyw.lock();
@@ -1421,8 +1422,8 @@ public class Salamaa {
         /** Fills every room with furniture.
         //*********************************************************************/  
         
-        //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 1">
+        
         foy1.addFurniture(foy1Gt, foyF, foyW, foy1Chnd, door, foy1Tbl, foy1Crpt, foy1Strs);
         foy2.addFurniture(foy2Gt, foy2Stat, foy2Alc, foyF, foyW, foy2Strcs);
         vest.addFurniture(vesFire, vesBtn, vesWin, vesDsk, vesEtbl, vesCase, vesTpstr, vesChr, vesF, vesDr, wallEx);
@@ -1436,9 +1437,10 @@ public class Salamaa {
         cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl);
         cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps);
         foyw.addFurniture(wantStat, wantTrchs, wantPllrs, wWW, wantF, wantRmp, wantDr);
+        
         // </editor-fold>  // Vestibule
-        //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 2">    
+        
         rotu.addFurniture(rotuFntn, rotuW, rotuF, rotuPlnts, rotuHl, rotuStat, rotuScnc, rotuDr, rotuFrms, rotuSky, rotuRock);
         look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, door);
         iha1.addFurniture(door, wWW, ihaF, iha1Armr, iha1Hnd, iha1Bwl, ihaWndw);
@@ -1454,9 +1456,10 @@ public class Salamaa {
         cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searW, searAsh, closW);
         shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, lookLghths, lookClff, bbaSea, rquaPnl);
         stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, door);
+        
         // </editor-fold>  // West wing
-        //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 3">     
+        
         gal1.addFurniture(door, gal1F, gal1W, gal1Drgn, gal1KtnFurn, gal1Pntng, gal1Pntng2, gal1Pntng3, gal1Armr, gal1Scr, gal1Scrn, gal1Pntngs, gal1Lghts, gal1Sclptrs, gal1Hrth);
         gal2.addFurniture(gal2Stat, gal2Strcs, gal2F, gal2W, galBalc, gal1Lghts, rotuSky, galDm, gal2Clmns, mhaNDr);
         gal3.addFurniture(gal3Ttm, gal3Peg, gal3Hl, gal3Sgmnt, gal3Htch, gal3Lddr, gal3Rp, gal3Swtch, gal3InstFurn, gal3Msk, gal3Msk2, gal3Msk3, gal3Msks, gal3Hrth, gal3F, gal3W, gal3Art, gal3Art2, gal3Art3, gal3Arts);
@@ -1483,8 +1486,8 @@ public class Salamaa {
         kitc.addFurniture(kitcTrch, kitcF, kitcW, kitcWndw, kitcDr, kitcRck, kitcPts, kitcHrth, kitcBrls, kitcPntry, kitcShlf, kitcCntr);
 
         // </editor-fold>  // East wing
-        //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 4">
+        
         foy3.addFurniture(foy3Strs);
         par2.addFurniture(wWW, par2F, par2Wndw, door, par2Strs, parLft, par2Bwl, par2Frplc, par2Pno, par2Shlf);
         par1.addFurniture(par1F, par1Dr, par1FrPlc, wWW, par1EnchntTbl, par1Strs, parLft,
@@ -1500,25 +1503,24 @@ public class Salamaa {
         gar2.addFurniture(wallEx, gar2Hl, door, garF, gar2Dm, gar2Clmn, gar24Scnc);
         gar3.addFurniture(lookClff, bbaSea, wallEx, bbaRlng, garF, gar13Plntr, gar3Chst, gal3Fntn, wtr, gar2Dm, gar2Clmn);
         gar4.addFurniture(wallEx, door, gar4Plq, gar4Plntr, garF, gar24Scnc);
-        obs1.addFurniture(obsSlts, hlsSlt, hrmsSlt, gaeaSlt, aphrdtSlt, aresSlt, krnsSlt, zsSlt, urnsSlt, psdnSlt, 
-                          obsStats, obsHls, obsHrms, obsGaea, obsAphrdt, obsAres, obsKrns, obsZs, obsUrns, obsPsdn);
-        obs3.addFurniture(obs3Chndlr);
+        obs1.addFurniture(obsSlts, obsStats, obsF, obsW, obsWndw, obs1Strs, obs1Tlscp, obs1Lmp, lib4Glb, obs1St, obsBlcny);
+        obs2.addFurniture(obsW, obsWndw, obs2Strs, obsBlcny, obs2BkShlf, obs2Pntng, obs2Rlng, obs2Chr, obs2Tbl, obs2Lmp);
+        obs3.addFurniture(obs3Chndlr, obsW, obsWndw, obs3Strs, obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps);
+        
         // </editor-fold>  // Castle rear
-        //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 5">
 
         // </editor-fold>  // Sub-levels
-        //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 6">
+        
         chs1.addFurniture(chs1Strs, chsWndws, chs1F, chsW, din1Mnlght, chs1Stat, mhaNDr);
         chs3.addFurniture(chs3Strs, chsWndws, chsW, din1Mnlght, chs3F, door);
+        
         // </editor-fold>  // Chapel and vault
-        //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 7">
 
         // </editor-fold>  // Top floors
-        //---------------------------------------------------------------------- 
-        
+         
         //**********************************************************************
         // </editor-fold>  
         //**********************************************************************

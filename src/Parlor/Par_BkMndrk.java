@@ -34,10 +34,10 @@ public class Par_BkMndrk extends Book {
         pg4 = "This page is blank except for a single line- \"-Experiment more\n"
             + "with holy water. Faster than regular watering.";
         
-        this.pageList[0] = this.pg1;
-        this.pageList[1] = this.pg2;
-        this.pageList[2] = this.pg3;
-        this.pageList[3] = this.pg4;
+        this.PAGE_LIST[0] = this.pg1;
+        this.PAGE_LIST[1] = this.pg2;
+        this.PAGE_LIST[2] = this.pg3;
+        this.PAGE_LIST[3] = this.pg4;
     }
 // ============================================================================
 }

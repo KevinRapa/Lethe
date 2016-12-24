@@ -21,8 +21,8 @@ public class Din1_Tpstry extends Wall_Art {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        if (! Player.getMapRef()[3][4][8].hasFurniture("crevice")) {
-            Player.getMapRef()[3][4][8].addFurniture(CRVC_REF);
+        if (! Player.getRoomRef("DIN1").hasFurniture("crevice")) {
+            Player.getRoomRef("DIN1").addFurniture(CRVC_REF);
             return this.searchDialog;
         }
         else return "Yes, the hole in the wall is still there";  

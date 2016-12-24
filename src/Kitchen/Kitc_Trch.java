@@ -18,7 +18,7 @@ public class Kitc_Trch extends Trch {
         
         if (this.doesThisHaveIt("hand torch")) {
             this.inv.give(TORCH_REF, Player.getInv());
-            ((Kitc)Player.getMapRef()[3][5][8]).swtch();
+            ((Kitc)Player.getRoomRef("KITC")).swtch();
         }
         else
             rep = "The holder is empty you bumbling oaf.";
@@ -34,7 +34,7 @@ public class Kitc_Trch extends Trch {
         
         else {
             Player.getInv().give(item, this.inv);
-            ((Kitc)Player.getMapRef()[3][5][8]).swtch();
+            ((Kitc)Player.getRoomRef("KITC")).swtch();
         }
         
         return rep;

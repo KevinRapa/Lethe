@@ -17,7 +17,7 @@ public class Vest_Bttn extends Button {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        Room foy1 = Player.getMapRef()[3][3][5];
+        Room foy1 = Player.getRoomRef("FOY1");
         
         if (REF.isLit())
             actDialog = "Ouch! There is fire in the way!";                    

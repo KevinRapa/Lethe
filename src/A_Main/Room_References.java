@@ -185,6 +185,15 @@ public class Room_References {
 
         for (String key : IDS) {
             ADJACENTS.put(key, ADJS[index]);   
+            index++; 
+        }
+        constructCoorinateReferences();
+    }
+    // ========================================================================
+    public static void constructCoorinateReferences() {
+        int index = 0;
+
+        for (String key : IDS) {
             COORDINATES.put(key, COORDS[index]);
             index++; 
         }

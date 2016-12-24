@@ -24,7 +24,7 @@ public class Vest_Wndw extends Window {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        Vest vest = (Vest)Player.getMapRef()[3][3][6];
+        Vest vest = (Vest)Player.getRoomRef("VEST");
         
         if (this.isOpen && key.matches("close")) {
             this.actDialog = "You close the window.";

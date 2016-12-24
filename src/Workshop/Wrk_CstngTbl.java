@@ -9,15 +9,23 @@ public class Wrk_CstngTbl extends Furniture {
     private final Item REFSHT, REFRL, REFBL, REFYL, REFSND, REFRD, REFBD, REFYD, REFPTSH;
     private boolean hasTemplate;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Wrk_CstngTbl(Furniture brl, Furniture sck, Item glssSht, Item rdLns, 
-                        Item blLns, Item yllwLns, Item snd, Item rdDy, Item blDy, 
+    public Wrk_CstngTbl(Furniture brl, Furniture sck, Item rdLns, 
+                        Item snd, Item rdDy, Item blDy, 
                         Item yllwDy, Item ptsh, Furniture cbnt) {
         super();
         this.REFBRL = brl; this.REFSCK = sck; this.REFCBNT = cbnt; // Furniture refs to restock
-        this.REFSHT = glssSht;
-        this.REFRL = rdLns; this.REFBL = blLns; this.REFYL = yllwLns; // Lenses to give player
+        
+        this.REFSHT = new Item("glass sheet", "Wait... this isn't right. Weren't you supposed to make a lens?");
+        this.REFBL = new Item("blue lens", "You made a blue lens. Good job, but was this the right color?",
+                                               "Wait... was this the color you were supposed to make?");
+        this.REFYL = new Item("yellow lens", "You made a yellow lens. Good job, but was this the right color?", 
+                                                   "Wait... was this the color you were supposed to make?");
+        
+        this.REFRL = rdLns; // Lenses to give player
+        
         this.REFRD = rdDy; this.REFBD = blDy; this.REFYD = yllwDy; // Dyes to restock
         this.REFPTSH = ptsh; this.REFSND = snd; // Sand and potash to restock
+        
         this.hasTemplate = false;
         this.searchable = false;
         this.description = "It's a tall metal casting table for casting metal.";

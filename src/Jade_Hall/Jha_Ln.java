@@ -50,7 +50,7 @@ public class Jha_Ln extends Furniture {
             else {
                 this.hasRuby = true;
                 Player.getInv().remove(item);
-                return this.useDialog + ((Jha2)Player.getMapRef()[2][3][3]).lionCheck();
+                return this.useDialog + ((Jha2)Player.getRoomRef("JHA2")).lionCheck();
             }
         }
         else

@@ -40,7 +40,7 @@ public class Drar_Ghst extends Furniture {
           
         else if (Player.doYouHaveIt("glowing emerald")) {
             this.converse3();
-            Player.getMapRef()[2][5][8].removeFurniture(this);           
+            Player.getRoomRef("DRAR").removeFurniture(this);           
             rep = "The apparition fades away into nothing."; 
         }
         return rep;

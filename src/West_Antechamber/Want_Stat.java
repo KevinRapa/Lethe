@@ -24,12 +24,12 @@ public class Want_Stat extends Statue {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        Player.getMapRef()[3][3][4].addFurniture(REF);
+        Player.getRoomRef("FOYW").addFurniture(REF);
         return this.description;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        Player.getMapRef()[3][3][4].addFurniture(REF);
+        Player.getRoomRef("FOYW").addFurniture(REF);
         return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/

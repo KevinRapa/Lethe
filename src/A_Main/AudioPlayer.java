@@ -48,6 +48,7 @@ public class AudioPlayer {
     private static File gardenCustom = new File(WD, "ambience" + S + "gardenCustom.wav");
     private static File deepSpace = new File(WD, "ambience" + S + "deepSpace.wav");
     private static File atticCustom = new File(WD, "ambience" + S + "atticCustom.wav");
+    private static File obsCustom = new File(WD, "ambience" + S + "obsCustom.wav");
     
     private static final HashMap<String, File> TRACKS = new HashMap() {{
         put("COU1", nightAmbience);        put("COU2", nightAmbience);
@@ -79,13 +80,15 @@ public class AudioPlayer {
         put("LIB1", libraryCustom);        put("WBAL", westBalconyCustom);
         put("LIB2", libraryCustom);        put("LIB3", libraryCustom);
         put("LIB5", libraryCustom);        put("LIB4", libraryCustom);
-        put("BBA1", backHallCustom);       put("BBA2", backHallCustom);
-        put("BBA3", backHallCustom);       put("GAR1", gardenCustom);
+        put("BHA1", backHallCustom);       put("BHA2", backHallCustom);
+        put("BHA3", backHallCustom);       put("GAR1", gardenCustom);
         put("GAR2", gardenCustom);         put("GAR3", gardenCustom);
         put("GAR4", gardenCustom);         put("GQUA", westWingCustom);
         put("COUS", deepSpace);            put("SST1", atticCustom);
         put("SST2", atticCustom);          put("ATT1", atticCustom);
-        put("ATT2", atticCustom);
+        put("ATT2", atticCustom);          put("OBS1", obsCustom);
+        put("OBS2", obsCustom);            put("OBS3", obsCustom);
+        
     }};
 //******************************************************************************    
 // </editor-fold>

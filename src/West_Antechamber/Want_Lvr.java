@@ -18,7 +18,7 @@ public class Want_Lvr extends Lever {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        Rotu ref = (Rotu) Player.getMapRef()[3][3][3];
+        Rotu ref = (Rotu)Player.getRoomRef("ROTU");
         String rep = this.actDialog;
         
         if (ref.getState().matches("EW"))

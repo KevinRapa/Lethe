@@ -1,27 +1,45 @@
 package Observatory;
 
 import A_Super.Furniture;
-import A_Main.Player;
 import A_Main.GUI;
 import java.util.Scanner;
-
+/** SOLUTION
+ *     5
+ *  2     0
+ * 6       1
+ *  3     4
+ *     7
+ * 
+ * @author Kevin Rapa
+ */
 public class Obs_Stats extends Furniture {
-    private final Furniture[] STATS;
+    private final Furniture[] STATS = {
+        new Obs_Stat("0", "A beautiful woman stands on this base. She\nstands with long hair and no clothing on \na large sea-shell.", 3),
+        new Obs_Stat("1", "The statue depicts a short-haired female\nfigure holding a newborn. She also appears \npregnant.", 2),
+        new Obs_Stat("2", "This statue shows a towering older male\nfigure. He wears a glorious beard and poses\ntriumphantly holding a trident.", 1),
+        new Obs_Stat("3", "This statue shows a glorious bearded male\nsitting. He is well-built and dressed in a\nheavy robe. He holds a scythe.", 4),
+        new Obs_Stat("4", "It shows a tall male figure dressed in \nsoldier's garb. He wears a tall galea\nhelmet and holds a spear and shield.", 5),
+        new Obs_Stat("5", "On its base stands a male figure of average\nbuild. He wears sandals, a heavy cloak, and\na winged helmet.", 6),
+        new Obs_Stat("6", "A male wearing light armor stands on this\nbase. He holds a staff in\nhis left hand.", 7),
+        new Obs_Stat("7", "This statue depicts a glorious bearded male\nstriding forward holding a lightning bolt. You\ncannot contain your tears.", 8),
+        new Obs_Stat("8", "The statue depicts a monumental male figure\ncrowned with a radiating halo. He rides in\na chariot pulled by four steeds.", 0),
+    };
     private final Obs3_Chndlr CHNDLR_REF;
     private boolean solved = false;
     private boolean locked = true;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Obs_Stats(Furniture chandlr, Furniture... stats) {
+    public Obs_Stats(Furniture chandlr) {
         super();
         this.searchable = false;
         this.description = "An array of 9 statues arranged in a circle. In the\n"
                          + "center stands an additional larger statue looking\n"
                          + "upwards.";
-        this.searchDialog = "You find nothing of interest except curious seams\n"
-                          + "on the floor around them.";
-        this.STATS = stats;
+        this.searchDialog = "They don't seem to be hiding anything unusual.\n"
+                          + "An inspection of the floor around them reveals\n"
+                          + "fine seams in the floor connecting them in various\n"
+                          + "ways.";
         this.CHNDLR_REF = (Obs3_Chndlr) chandlr;
-        this.addNameKeys("statues", "statue");
+        this.addNameKeys("statue", "statues", "ring(?: of statues)?", "gods", "god", "goddess", "goddesses");
         this.addActKeys("move", "turn", "push", "pull", "rotate", "spin");
     }
 /*----------------------------------------------------------------------------*/
@@ -31,12 +49,12 @@ public class Obs_Stats extends Furniture {
         GUI.out(this.description + "\n");
         
         do {
-            GUI.out(this.getArray());
+            GUI.out(this.getArray() + "\t\t\t\t\t\t" + rep);
             GUI.menOut("<#> Look...\n< > Back");       
             choice = GUI.promptOut();
             
-            if (Player.getOcc().hasFurniture(choice))
-                GUI.out(Player.getFurnRef(choice).getDescription());
+            if (choice.matches("[0-8]"))
+                rep = getStatRef(choice).getDescription();
             else if (! choice.matches("")) {
                 rep = "That's not a valid choice.";
                 choice = "";
@@ -44,14 +62,14 @@ public class Obs_Stats extends Furniture {
             
         } while (! choice.matches(""));
         
-        return rep;
+        return "";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
         String choice, action, slot, rep = "";
         int statNum;
         Scanner collectToken;
-        
+
         if (! this.locked && ! this.solved) {
             do {          
                 GUI.out(this.getArray());
@@ -84,7 +102,8 @@ public class Obs_Stats extends Furniture {
 
                 if (this.checkSolved()) {
                     rep ="As the statue settles in place, a bright\n"
-                       + "array of light forms on the floor.";
+                       + "array of light forms on the floor. The chandelier\n"
+                       + "high up at the third level descends.";
                     this.solved = true;
                     this.CHNDLR_REF.lower();
                     choice = "";
@@ -98,21 +117,21 @@ public class Obs_Stats extends Furniture {
             rep = "The statues aren't budging. Something might be locking\n"
                 + "them in place";    
         else        
-            rep = "Whatever you just did, you best not undo it at this point.";
+            rep = "The statues have locked in place once again.";
         
         return rep;
     }
 /*----------------------------------------------------------------------------*/
     private String getArray() {
-        String a = this.STATS[0].getValidNames().get(0);
-        String b = this.STATS[1].getValidNames().get(0);
-        String c = this.STATS[2].getValidNames().get(0);
-        String d = this.STATS[3].getValidNames().get(0);
-        String e = this.STATS[4].getValidNames().get(0);
-        String f = this.STATS[5].getValidNames().get(0);
-        String g = this.STATS[6].getValidNames().get(0);
-        String h = this.STATS[7].getValidNames().get(0);
-        String i = this.STATS[8].getValidNames().get(0);
+        String a = STATS[0].getValidNames().get(0);
+        String b = STATS[1].getValidNames().get(0);
+        String c = STATS[2].getValidNames().get(0);
+        String d = STATS[3].getValidNames().get(0);
+        String e = STATS[4].getValidNames().get(0);
+        String f = STATS[5].getValidNames().get(0);
+        String g = STATS[6].getValidNames().get(0);
+        String h = STATS[7].getValidNames().get(0);
+        String i = STATS[8].getValidNames().get(0);
         
         return "\t\t\t\t\t     {"+a+"}¯¯\\" +
                "\t\t        {"+h+"}       {"+b+"}\n" +
@@ -136,15 +155,14 @@ public class Obs_Stats extends Furniture {
         int i = this.getIndex(stat);
 
         switch (i) {
-            
-        case 0: case 1:
-            this.switchThese(0, 1); break;
-        case 2: case 3:
-            this.switchThese(2, 3); break;
-        case 4: case 5:
-            this.switchThese(4, 5); break;
-        case 6: case 7:
-            this.switchThese(6, 7); break;
+            case 0: case 1:
+                this.switchThese(0, 1); break;
+            case 2: case 3:
+                this.switchThese(2, 3); break;
+            case 4: case 5:
+                this.switchThese(4, 5); break;
+            case 6: case 7:
+                this.switchThese(6, 7);
         }
     }
 /*----------------------------------------------------------------------------*/
@@ -152,7 +170,7 @@ public class Obs_Stats extends Furniture {
         int current = 0, index = 0;
         
         for (Furniture i : this.STATS)
-            if (! i.toString().matches(stat))
+            if (! i.getValidNames().get(0).matches(stat))
                 current++;
             else 
                 index = current;
@@ -200,6 +218,14 @@ public class Obs_Stats extends Furniture {
 /*----------------------------------------------------------------------------*/
     public void unlock() {
         this.locked = false;
+    }
+/*----------------------------------------------------------------------------*/
+    private Furniture getStatRef(String name) {
+        for (Furniture s : this.STATS)
+            if (s.getValidNames().get(0).matches(name))
+                return s;
+        
+        return null;
     }
 /*----------------------------------------------------------------------------*/
 }

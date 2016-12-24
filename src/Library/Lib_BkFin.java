@@ -76,9 +76,9 @@ public class Lib_BkFin extends Book {
               "In fact, Finnish does not natively use 'f', nor\n" +
               "'b', 'c', 'q', 'w', 'x', or 'z'.";
         
-        this.pageList[0] = this.pg1;
-        this.pageList[1] = this.pg2;
-        this.pageList[2] = this.pg3;
+        this.PAGE_LIST[0] = this.pg1;
+        this.PAGE_LIST[1] = this.pg2;
+        this.PAGE_LIST[2] = this.pg3;
     }
 /*----------------------------------------------------------------------------*/
 }

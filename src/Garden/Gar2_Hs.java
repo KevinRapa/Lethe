@@ -31,8 +31,8 @@ public class Gar2_Hs extends Furniture {
     // ========================================================================   
     @Override public String interact(String key) {              
         Player.setOccupies(3, 3, 3);
-        Player.getMapRef()[2][4][3].removeFurniture(this);
-        Player.getMapRef()[2][4][3].addFurniture(BRKNHOSE_REF2);
+        Player.getRoomRef("GAR2").removeFurniture(this);
+        Player.getRoomRef("GAR2").addFurniture(BRKNHOSE_REF2);
         Player.getInv().add(BRKNHOSE_REF);
         
         return this.actDialog;

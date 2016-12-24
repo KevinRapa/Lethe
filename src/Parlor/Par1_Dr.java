@@ -33,7 +33,7 @@ public class Par1_Dr extends Door {
         String rep = this.useDialog;
         
         if (! this.cured) {
-            Player.getMapRef()[3][2][4].addAdjacent("BHA3");
+            Player.getRoomRef("PAR1").addAdjacent("BHA3");
             rep = "You cast the fire onto the door, to which it clings\n"
                 + "rapidly. The fire begins to fade away along with the\n"
                 + "barrier.";

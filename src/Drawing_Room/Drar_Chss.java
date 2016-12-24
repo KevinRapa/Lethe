@@ -7,7 +7,7 @@ public class Drar_Chss extends Furniture {
     private final Drar_Ghst REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Drar_Chss(Furniture ghst, Item... items) {
-        super();
+        super(items);
         this.REF = (Drar_Ghst)ghst;
         this.description = "The fancy chess table bears a polished ceramic\n"
                          + "surface and many detailed pieces. You wish you\n"

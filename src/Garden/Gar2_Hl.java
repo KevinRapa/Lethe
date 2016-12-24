@@ -31,10 +31,10 @@ public class Gar2_Hl extends Furniture {
     @Override public String getDescription() {
         String rep = this.description;
         
-        if (Player.getMapRef()[2][4][3].hasFurniture("leather hose"))
+        if (Player.getRoomRef("GAR2").hasFurniture("leather hose"))
             rep += " The leather hose, tied around the railing, extends\n"
                  + "downward and almost touches the floor.";
-        else if (Player.getMapRef()[2][4][3].hasFurniture("broken hose"))
+        else if (Player.getRoomRef("GAR2").hasFurniture("broken hose"))
             rep += " The broken leather hose is still tied around the railing.";
         
         return rep;
@@ -45,7 +45,7 @@ public class Gar2_Hl extends Furniture {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        Player.getMapRef()[2][4][3].addFurniture(HOSE_REF);
+        Player.getRoomRef("GAR2").addFurniture(HOSE_REF);
         Player.getInv().remove(item);
         
         return this.useDialog;

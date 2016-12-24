@@ -22,7 +22,7 @@ public class Foy2 extends Room{
 /*----------------------------------------------------------------------------*/
     private String descMode() {
         String mode;
-        if (! Player.getMapRef()[3][1][5].isThisLocked())
+        if (! Player.getRoomRef("FOYB").isThisLocked())
             mode = "an open gate leads\noutside to a balcony.";
         else
             mode = "a closed gate blocks\nyour way outside to a balcony.";

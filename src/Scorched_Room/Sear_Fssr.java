@@ -28,7 +28,7 @@ public class Sear_Fssr extends Furniture {
         String rep = this.useDialog;
         
         if (item.toString().matches("warhammer")) {            
-            Player.getMapRef()[3][6][4].addAdjacent("COU2");
+            Player.getRoomRef("COUS").addAdjacent("COU2");
             Player.getInv().remove(item);
             Player.getInv().add(BRKNWRHMMR_REF);
         }
@@ -48,7 +48,7 @@ public class Sear_Fssr extends Furniture {
     @Override public String getDescription() {
         String rep = this.description;
         
-        if (Player.getMapRef()[3][6][4].isThisLocked()) {
+        if (Player.getRoomRef("COUS").isThisLocked()) {
             rep = "The hole leads outside. It's big enough to fit through.";
         }              
         return rep; 

@@ -37,7 +37,7 @@ public class Par2 extends Room{
             AudioPlayer.playEffect(8);
             GUI.out("After stepping into the room, the door slams shut behind you.\n"
                   + "Startled, you spin around and miss a breath. You are alone.");
-            Player.getMapRef()[2][2][5].lock();
+            Player.getRoomRef("FOY2").lock();
         }    
         return dialog;
     }

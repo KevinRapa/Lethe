@@ -39,10 +39,6 @@ public class Inventory implements Iterable<Item>, Serializable {
         return true;
     }
     // ========================================================================
-    /**
-     * Removes an item from this inventory's contents.
-     * @param removeThis An item to remove from this inventory's contents.
-     */
     public void remove(Item removeThis) {      
         this.CONT.remove(removeThis);
     }
@@ -107,10 +103,6 @@ public class Inventory implements Iterable<Item>, Serializable {
         this.add(gift);
         
         return "You created: " + gift + ".";
-    }
-    // ========================================================================
-    public boolean isFull() {
-        return this.CONT.size() > 19;
     }
     // ========================================================================
     @Override public Iterator<Item> iterator() {

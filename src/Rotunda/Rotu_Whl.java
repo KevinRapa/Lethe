@@ -18,7 +18,7 @@ public class Rotu_Whl extends Furniture{
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {
-        ((Rotu)Player.getMapRef()[3][3][3]).rotate();
+        ((Rotu)Player.getRoomRef("ROTU")).rotate();
         actDialog = "As you turn the wheel, your balance shifts and you hear a loud\n"
                + "rumble. The room appears to have shifted.";
         return actDialog;

@@ -2,7 +2,6 @@ package Gallery;
 
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Room;
         
 public class Gal1_Scr extends Furniture {
     private boolean lifted;
@@ -27,13 +26,12 @@ public class Gal1_Scr extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
         @Override public String interact(String key) {     
-            Room gal1 =Player.getMapRef()[3][2][6];
             String rep = "You have already discovered the button.";
             
             if (! this.lifted) {
                 rep = this.actDialog;
                 this.lifted = true;
-                gal1.addFurniture(REF);
+                Player.getRoomRef("GAL1").addFurniture(REF);
             }            
             return rep;
     }

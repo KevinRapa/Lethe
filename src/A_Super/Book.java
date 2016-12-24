@@ -4,14 +4,14 @@ import A_Main.AudioPlayer;
 import A_Main.GUI;
 
 public class Book extends Note {
-    protected final int numPages;
-    protected String[] pageList;
+    protected final int PAGES;
+    protected final String[] PAGE_LIST;
     
     public Book(String name, int num) {
         super(name);
-        this.useDialog = "You close the book";
-        this.numPages = num;
-        this.pageList = new String[num];
+        this.useDialog = "You close the book.";
+        this.PAGES = num;
+        this.PAGE_LIST = new String[num];
     }   
 /*----------------------------------------------------------------------------*/
     @Override public String getDesc() {
@@ -21,9 +21,7 @@ public class Book extends Note {
     }          
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent() {
-        this.Read();
-        GUI.clearDialog();
-        return this.useDialog;
+        return this.getDesc();
     }
 /*----------------------------------------------------------------------------*/
     protected void Read() {
@@ -32,13 +30,13 @@ public class Book extends Note {
         
         do {
             AudioPlayer.playEffect(2);
-            GUI.out(this.pageList[page] + "\n");
+            GUI.out(this.PAGE_LIST[page] + "\n");
 
-            if (page != (this.numPages - 1)) {
+            if (page != (this.PAGES - 1)) {
                 do {
-                    GUI.menOut("Turn page?\n<'yes'> Turn the page\n<'no'> Close the book");
+                    GUI.menOut("Turn page?\n<'y'> Turn the page\n<'n'> Close the book");
                     choice = GUI.promptOut();
-                } while (! (choice.matches("yes") || choice.matches("no")));
+                } while (! (choice.matches("y|yes") || choice.matches("n|no")));
                 
                 if (choice.matches("yes")) 
                     page ++;
@@ -48,9 +46,7 @@ public class Book extends Note {
                 GUI.promptOut(); 
                 choice = "no"; 
             }
-            
         } while (! choice.matches("no"));      
-        
     }
 /*----------------------------------------------------------------------------*/   
 }

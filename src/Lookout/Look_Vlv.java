@@ -33,7 +33,7 @@ public class Look_Vlv extends Furniture{
         if (! FNTN_REF.isDrained()) {
             FNTN_REF.drain();
             AudioPlayer.playEffect(20);
-            Player.getMapRef()[3][3][3].addFurniture(WHL_REF);
+            Player.getRoomRef("ROTU").addFurniture(WHL_REF);
             loosened = true; 
         }
         else {

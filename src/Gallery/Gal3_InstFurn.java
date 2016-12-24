@@ -3,7 +3,6 @@ package Gallery;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-import A_Super.Room;
 
 public class Gal3_InstFurn extends Furniture { 
     private final Item REF;
@@ -27,8 +26,7 @@ public class Gal3_InstFurn extends Furniture {
             rep = "You would try, but it's up on the wall right now.";
         }            
         else {
-            Room gal1 = Player.getMapRef()[3][2][6];
-            gal1.removeFurniture(this);
+            Player.getRoomRef("GAL3").removeFurniture(this);
             Player.getInv().add(REF);
         }
         return rep;

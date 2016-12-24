@@ -37,7 +37,7 @@ public class Wow3 extends Room{
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String triggeredEvent() {
-        Room wow2 = Player.getMapRef()[3][6][3];
+        Room wow2 = Player.getRoomRef("WOW2");
                 
         if (! Player.getLastVisited().matches("GQUA")) {
             if (this.triggerHppnd) {

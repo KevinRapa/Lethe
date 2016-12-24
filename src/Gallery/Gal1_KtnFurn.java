@@ -3,7 +3,6 @@ package Gallery;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-import A_Super.Room;
 
 public class Gal1_KtnFurn extends Furniture { 
     private final Item REF;
@@ -19,8 +18,7 @@ public class Gal1_KtnFurn extends Furniture {
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) { 
-        Room gal1 = Player.getMapRef()[3][2][6];
-        gal1.removeFurniture(this);
+        Player.getRoomRef("GAL1").removeFurniture(this);
         Player.getInv().add(REF);
            
         return this.actDialog;

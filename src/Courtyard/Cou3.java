@@ -20,7 +20,7 @@ public class Cou3 extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
-        Room cou4 = Player.getMapRef()[3][6][5];
+        Room cou4 = Player.getRoomRef("COU4");
         String rep = "You are " + this + ".";
         
         if (! cou4.isThisLocked()) {

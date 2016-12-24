@@ -51,10 +51,10 @@ public class Par_BkEncht extends Book {
             + "uneccessary for a proper bind. This is the only plague of the science\n"
             + "to date, for true enchanters do not yearn for superfluous effects.";
         
-        this.pageList[0] = this.pg1;
-        this.pageList[1] = this.pg2;
-        this.pageList[2] = this.pg3;
-        this.pageList[3] = this.pg4;
+        this.PAGE_LIST[0] = this.pg1;
+        this.PAGE_LIST[1] = this.pg2;
+        this.PAGE_LIST[2] = this.pg3;
+        this.PAGE_LIST[3] = this.pg4;
     }
 // ============================================================================
 }

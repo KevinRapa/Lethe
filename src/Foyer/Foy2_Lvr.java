@@ -19,8 +19,8 @@ public class Foy2_Lvr extends Lever{
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        Room bba1 = Player.getMapRef()[3][1][5];
-        Room want = Player.getMapRef()[3][3][4];
+        Room bba1 = Player.getRoomRef("FOYB");
+        Room want = Player.getRoomRef("FOYW");
 
         if (this.isOn) {
             want.unlock();

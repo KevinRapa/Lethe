@@ -87,9 +87,9 @@ public class Stud_PiBk extends Book {
               "098199430992448895757128289059232332609729971208443\n" +
               "357326548938239119325974636673058360414281388303203";
         
-        this.pageList[0] = this.pg1;
-        this.pageList[1] = this.pg2;
-        this.pageList[2] = this.pg3;
+        this.PAGE_LIST[0] = this.pg1;
+        this.PAGE_LIST[1] = this.pg2;
+        this.PAGE_LIST[2] = this.pg3;
     }
 /*----------------------------------------------------------------------------*/
 }

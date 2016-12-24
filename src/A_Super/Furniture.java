@@ -9,13 +9,13 @@ import java.io.Serializable;
  * objects such as floors, walls, doors, buttons, etc. are treated as furniture.
  * Furniture is ANY object that can be interacted with from the main prompt.
  */
-public class Furniture implements Serializable {
-    protected Inventory inv; // The contents of the furniture.
-    protected String description, // String printed when inspected.
-                     searchDialog, // String printed when searched.
-                     actDialog, // String printed when interacted with.  
-                     useDialog; // String printed when an item is used on this.
-    protected boolean searchable; // Items can be added or taken from searchable furniture.  
+abstract public class Furniture implements Serializable {
+    protected Inventory inv;
+    protected String description,   // Printed when inspected.
+                     searchDialog,  // Printed when searched.
+                     actDialog,     // Printed when interacted with.  
+                     useDialog;     // Printed when an item is used on this.
+    protected boolean searchable;   // Items can be traded with searchable furniture.  
     protected final ArrayList<String> USEKEYS, ACTKEYS, NAMEKEYS; 
     // ========================================================================
     /**
@@ -26,9 +26,9 @@ public class Furniture implements Serializable {
     public Furniture (Item... items) {
         this.inv = new Inventory(items);
         this.searchable = true;
-        this.NAMEKEYS = new ArrayList<>(); // Valid names of this furniture. Regular expressions work.
-        this.USEKEYS = new ArrayList<>(); // Valid items that may be used on this furniture.
-        this.ACTKEYS = new ArrayList<>(); // Valid actions that may be performed on this furniture.
+        this.NAMEKEYS = new ArrayList<>(); // Valid names of this. Regex works.
+        this.USEKEYS = new ArrayList<>();  // Valid items that may be used on this.
+        this.ACTKEYS = new ArrayList<>();  // Valid actions that may be performed on this.
         
         this.searchDialog = "There's nothing hiding here.";
         this.useDialog = "Default";
@@ -36,10 +36,8 @@ public class Furniture implements Serializable {
     // ========================================================================     
     /**
      * Used to check if this piece contains a certain item.
-     * Invoked in a variety of instances, often when the items this piece
-     * contains affects the description of this piece.
      * @param name The name of an item.
-     * @return If this piece contains the item.
+     * @return If this piece contains an item with the name.
      */
     public boolean doesThisHaveIt(String name) {
         for (Item i : this.inv) {            
@@ -52,35 +50,22 @@ public class Furniture implements Serializable {
 //******************************************************************************
 // <editor-fold desc="GETTERS">
 //******************************************************************************   
-    /**
-     * This method is called when furniture is inspected.
-     * @return The description of this piece.
-     */
     public String getDescription() {
         return this.description; 
     }
-    // ========================================================================     
-    /**
-     * This method is used whenever furniture is searched.
-     * The player may attempt a search on any furniture, but items cannot be
-     * stored or taken from non-searchable furniture.
-     * @return If this piece can be searched.
-     */
-    public boolean isSearchable() {
-        return this.searchable;
-    }
-    // ========================================================================     
-    /**
-     * This method is used whenever furniture is searched.
-     * @return A string that prints the event when this piece is searched.
-     */
+    // ========================================================================  
     public String getSearchDialog() {
         return this.searchDialog; 
     }
     // ========================================================================  
     /**
-     * @return This piece's inventory.
+     * This method is used whenever furniture is searched.
+     * @return If items can be traded with this.
      */
+    public boolean isSearchable() {
+        return this.searchable;
+    }
+    // ========================================================================     
     public Inventory getInv() {
         return this.inv;
     }
@@ -120,11 +105,11 @@ public class Furniture implements Serializable {
     }
     // ========================================================================     
     /**
-     * Determines if an action the player types will activate the <code>interact()</code> method.
+     * Determines if an action the player types will activate <code>interact()</code>.
      * @param key The name of an action.
      * @return If the action will trigger an event with this piece.
      */
-    public boolean keyMatches(String key) {
+    public boolean actKeyMatches(String key) {
         for (String i : this.ACTKEYS) {
             if (key.matches(i))
                 return true;
@@ -132,7 +117,7 @@ public class Furniture implements Serializable {
         return false;
     }    
     // ========================================================================     
-    public boolean isUsedBy(String name) {
+    public boolean useKeyMatches(String name) {
         for(String i : this.USEKEYS) {
             if (name.matches(i))
                 return true;
@@ -142,7 +127,6 @@ public class Furniture implements Serializable {
     // ========================================================================     
     /**
      * Adds a list of use keys to this furniture.
-     * Invoked in the constructors of subclasses.
      * @param keys A list of use keys.
      */
     public final void addUseKeys(String ... keys) {
@@ -151,7 +135,6 @@ public class Furniture implements Serializable {
     // ========================================================================     
     /**
      * Adds a list of name keys to this furniture.
-     * Invoked in the constructors of subclasses.
      * @param keys A list of name keys.
      */
     public final void addNameKeys(String ... keys) {
@@ -160,7 +143,6 @@ public class Furniture implements Serializable {
     // ========================================================================     
     /**
      * Adds a list of action keys to this furniture.
-     * Invoked in the constructors of subclasses.
      * @param keys A list of action keys.
      */
     public final void addActKeys(String ... keys) {

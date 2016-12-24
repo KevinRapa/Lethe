@@ -49,7 +49,7 @@ public class Help {
        + "interacted with.\n", 
          
         "Checking is a main action, and is performed from the main prompt. The key for\n" +
-        "checking is 'c' for check. You may check any noun in the room\n" +
+        "checking is 'c' for check. You may check discrete objects mentioned in the room\n" +
         "description, and the action will describe that object for you. Unlike describing,\n" +
         "you mostly cannot interact with nouns in the 'check' description, unless it is\n" +
         "intuitively obvious (e.g. a button, lever, wheel is revealed). Otherwise, I would\n" +
@@ -58,8 +58,8 @@ public class Help {
         "things, as well as add color to what's in your head.\n", 
          
         "Searching is a main action, and is performed from the main prompt. The key for\n" +
-        "searching is 'e'. You may search any\n" +
-        "noun in the room description, and your character will search the object. If the\n" +
+        "searching is 'e'. You may search any discrete objects mentioned\n" +
+        "in the room description, and your character will search the object. If the\n" +
         "object is searchable, you will be taken to the search sub-prompt. In addition,\n" +
         "any items the object contains will be listed. Remember, an object may contain\n" +
         "useful stuff, but you will not always be able to take the stuff right away!\n" +
@@ -67,12 +67,11 @@ public class Help {
         "The search sub-prompt will ask if you want to take or store items. To do this,\n" +
         "type 'take' or 'store' followed by a space, and then the item's slot.\n", 
          
-        "Interacting is a main action, and is performed from the main prompt. The key for\n" +
-        "interacting is 'x' (for execute). You may interact with any noun in the room\n"
+        "Interacting is performed from the main prompt by typing an action and\n"
+      + "the name of an object. You may interact with discrete objects mentioned in the room\n"
       + "description, and your character will interact with the object.\n" +
         "Interacting means your character is doing something to/with the object, like\n" +
         "'pull', 'sit', etc.\n" +
-        "From here, you will be taken to the interact sub-prompt. " +
         "You may type 'search <object>' to search the object if you wish,\n" +
         "and 'view/look/watch/inspect <object>' to check the object.\n",
          

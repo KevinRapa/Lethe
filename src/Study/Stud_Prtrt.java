@@ -29,8 +29,8 @@ public class Stud_Prtrt extends Wall_Art {
             return "Yes, what a beautiful piece of artwork. You take a moment\n"
                  + "to soak in the creative essence. Yes...";
         else {
-            if (! Player.getMapRef()[3][2][3].hasFurniture("safe")) {
-                Player.getMapRef()[3][2][3].addFurniture(REF);
+            if (! Player.getRoomRef("STUD").hasFurniture("safe")) {
+                Player.getRoomRef("STUD").addFurniture(REF);
                 return this.actDialog;
             }            
             return "You have already discovered the safe.";
