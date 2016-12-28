@@ -28,8 +28,7 @@ public class Iha1_Bwl extends Furniture {
         String rep = this.useDialog;
 
         if (! this.jabbed) {
-            FLOOR_REF.getInv().add(WOWKEY_REF);
-            this.inv.remove(WOWKEY_REF); 
+            this.inv.give(WOWKEY_REF, FLOOR_REF.getInv()); 
             this.jabbed = true;
         }
         else 
@@ -37,5 +36,5 @@ public class Iha1_Bwl extends Furniture {
         
         return rep;
     }
-
+/*----------------------------------------------------------------------------*/
 }

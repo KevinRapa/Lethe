@@ -15,7 +15,6 @@ public class Room implements Serializable {
     protected String description;       // Description of the room.
     protected ArrayList<String> adjacent; // List of rooms one can move to from this one.
     protected ArrayList<Furniture> furnishings; // Holds furniture.
-
     // CONSTRUCTOR ============================================================
     public Room(String name, String ID) {  
         this.NAME = name;
@@ -121,11 +120,11 @@ public class Room implements Serializable {
 //******************************************************************************
 // <editor-fold desc="SETTERS">      
 //******************************************************************************    
-    public void lock() {
+    public final void lock() {
         this.isLocked = true;
     }
     // ========================================================================
-    public void unlock() {
+    public final void unlock() {
         this.isLocked = false; 
     }
     // ========================================================================
@@ -133,7 +132,7 @@ public class Room implements Serializable {
      * Adds a room adjacent to this one.
      * @param roomID A room to be added to adjacent.
      */
-    public void addAdjacent(String roomID) {
+    public final void addAdjacent(String roomID) {
         this.adjacent.add(roomID);
     }
     // ========================================================================
@@ -141,15 +140,15 @@ public class Room implements Serializable {
      * Removes a room from this.adjacent.
      * @param roomID A room to remove from adjacent.
      */
-    public void removeAdjacent(String roomID) {
+    public final void removeAdjacent(String roomID) {
         this.adjacent.remove(roomID);
     }
     // ========================================================================
-    public void removeFurniture(Furniture removeThis) {
+    public final void removeFurniture(Furniture removeThis) {
         this.furnishings.remove(removeThis);
     }
     // ========================================================================
-    public void addFurniture(Furniture ... furnishings) {
+    public final void addFurniture(Furniture ... furnishings) {
         this.furnishings.addAll(Arrays.asList(furnishings));
     }
 //******************************************************************************    

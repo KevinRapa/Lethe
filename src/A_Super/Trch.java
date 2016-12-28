@@ -4,13 +4,13 @@ import A_Main.GUI;
 import A_Main.Player;
 
 public class Trch extends Furniture {
-    protected final Item TORCH_REF;
+    protected final Item TORCH;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Trch(Item trch) {
+    public Trch() {
         super();
-
-        this.inv = new Hldr_Inv(trch);
-        this.TORCH_REF = trch;
+        
+        this.TORCH = new Item("hand torch", "It's a burning piece of wood. Stay it from your beard!");
+        this.inv = new Hldr_Inv(TORCH);
         
         this.description = "Sitting in a steel holder is a burning wall torch\n"
                          + "giving off an orange glow.";
@@ -27,7 +27,7 @@ public class Trch extends Furniture {
         String rep = this.actDialog;
         
         if (this.doesThisHaveIt("hand torch")) {
-            this.inv.give(TORCH_REF, Player.getInv());
+            this.inv.give(TORCH, Player.getInv());
             GUI.invOut("You are carrying:\n" + Player.getInv());
         }
         else

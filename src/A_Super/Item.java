@@ -26,7 +26,6 @@ public class Item implements Serializable {
         this.FORMS = "nothing"; // Combinable items have a different string.
         this.PRODUCT = null;
         this.THRESHOLD = 0;
-        this.useDialog = null; 
     }   
     // ========================================================================       
     /**
@@ -49,7 +48,6 @@ public class Item implements Serializable {
      * @param use A short string that prints when this item is used.
      */
     public Item(String name, String desc, String use) {
-        // For items that are generally useless / have short descriptions.
         this.NAME = name;
         this.FORMS = "nothing";
         this.PRODUCT = null;
@@ -118,9 +116,6 @@ public class Item implements Serializable {
         return this.type; 
     }    
 /*----------------------------------------------------------------------------*/
-    /**
-     * @return The description of this item.
-     */
     public String getDesc() {
         return this.description; 
     }    
@@ -139,15 +134,12 @@ public class Item implements Serializable {
         return this.PRODUCT; 
     }
 /*----------------------------------------------------------------------------*/
-    /**
-     * @return This item's use ID.
-     */
     public int getUseID() {
         return this.useID; 
     }      
 /*----------------------------------------------------------------------------*/
     /**
-     * @return The number of items in this one's set.
+     * @return The number of items in this one's combine set.
      */
     public int getThreshold() {
         return this.THRESHOLD; 

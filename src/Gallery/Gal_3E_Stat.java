@@ -1,18 +1,13 @@
 package Gallery;
 
+import A_Main.Player;
 import A_Super.Statue;
-import A_Super.Room;
 
 public class Gal_3E_Stat extends Statue {
     private int level;
-    private final Room GAL5_REF;
-    private final Room GAL7_REF;
-    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal_3E_Stat(Room gal5, Room gal7) {
+    public Gal_3E_Stat() {
         super();
-        this.GAL5_REF = gal5;
-        this.GAL7_REF = gal7;
         this.level = 0;
         this.actDialog = "The statue is out of reach";
         this.description = "The statue now stands high in the central chamber\n"
@@ -25,10 +20,10 @@ public class Gal_3E_Stat extends Statue {
         return this.level;
     }
 /*----------------------------------------------------------------------------*/
-    public String activate(char color, Gal6_Cnn cnn) {
+    public String activate(char color, boolean isOn) {
         String rep = "The beam of light shines into the central chamber.";
         
-        if (GAL7_REF.hasFurniture("statue") && cnn.isOn() && this.level == 0) {
+        if (Player.getRoomRef("GAL7").hasFurniture("statue") && isOn && this.level == 0) {
             
             if (color == 'D' && this.level == 0) {
                 rep = this.raise(); 
@@ -37,7 +32,7 @@ public class Gal_3E_Stat extends Statue {
                 rep = "The beam of light shines into the orb with no effect.";
             }
         }
-        else if (GAL7_REF.hasFurniture("statue") && this.level == 1 && cnn.isOn())
+        else if (Player.getRoomRef("GAL7").hasFurniture("statue") && this.level == 1 && isOn)
             rep = "The beam of light shines at the orb, but the orb continues\n"
                 + "to glow hellishly.";
         
@@ -46,7 +41,7 @@ public class Gal_3E_Stat extends Statue {
 /*----------------------------------------------------------------------------*/
     private String raise() {
         this.level++; 
-        GAL5_REF.unlock();
+        Player.getRoomRef("GAL5").unlock();
      
         return "The crystal orb in the statue's palm glows with a dark\n"
             + "hellish glow. Cogwork can be heard behind the walls and\n"

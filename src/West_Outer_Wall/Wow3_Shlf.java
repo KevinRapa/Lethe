@@ -13,7 +13,7 @@ public class Wow3_Shlf extends Furniture {
         this.searchDialog = "You look among the shelves.";
         this.actDialog = "This is way too heavy to move. There's not much space\n"
                             + "to move this to anyway.";
-        this.addNameKeys("shelf", "wood shelf", "large shelf");
+        this.addNameKeys("(?:large )?(?:wood )?shelf");
         this.addActKeys("move", "push", "pull");
     }
 /*----------------------------------------------------------------------------*/

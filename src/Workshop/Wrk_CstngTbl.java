@@ -9,17 +9,16 @@ public class Wrk_CstngTbl extends Furniture {
     private final Item REFSHT, REFRL, REFBL, REFYL, REFSND, REFRD, REFBD, REFYD, REFPTSH;
     private boolean hasTemplate;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Wrk_CstngTbl(Furniture brl, Furniture sck, Item rdLns, 
-                        Item snd, Item rdDy, Item blDy, 
-                        Item yllwDy, Item ptsh, Furniture cbnt) {
+    public Wrk_CstngTbl(Furniture brl, Furniture sck, Item rdLns, Item snd, 
+                        Item rdDy, Item blDy, Item yllwDy, Item ptsh, Furniture cbnt) {
         super();
         this.REFBRL = brl; this.REFSCK = sck; this.REFCBNT = cbnt; // Furniture refs to restock
         
         this.REFSHT = new Item("glass sheet", "Wait... this isn't right. Weren't you supposed to make a lens?");
         this.REFBL = new Item("blue lens", "You made a blue lens. Good job, but was this the right color?",
-                                               "Wait... was this the color you were supposed to make?");
+                                           "Wait... was this the color you were supposed to make?");
         this.REFYL = new Item("yellow lens", "You made a yellow lens. Good job, but was this the right color?", 
-                                                   "Wait... was this the color you were supposed to make?");
+                                             "Wait... was this the color you were supposed to make?");
         
         this.REFRL = rdLns; // Lenses to give player
         

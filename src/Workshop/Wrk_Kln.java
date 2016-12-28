@@ -6,22 +6,24 @@ import A_Main.Player;
 
 public class Wrk_Kln extends Furniture {
     private final Item REFGLSSR, REFGLSSB, REFGLSSY;
-    private boolean hasSand, hasDye, hasRedDye, hasBlueDye, hasYllwDye, hasPotash;
+    private boolean hasSand, hasRedDye, hasBlueDye, hasYllwDye, hasPotash;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Wrk_Kln(Item glssR, Item glssY, Item glssB) {
+    public Wrk_Kln() {
         super();
-        this.REFGLSSR = glssR; this.REFGLSSB = glssB; this.REFGLSSY = glssY;
+        
+        this.REFGLSSR = new Item("molten red glass", "It's a crucible of molten red glass. Be careful!");
+        this.REFGLSSB = new Item("molten blue glass", "It's a crucible of molten blue glass. Be careful!");
+        this.REFGLSSY = new Item("molten yellow glass", "It's a crucible of molten yellow glass. Be careful!");
         
         this.searchable = false;
         
-        this.hasSand = false; this.hasPotash = false; this.hasDye = false;
-        this.hasRedDye = false; this.hasBlueDye = false; this.hasYllwDye = false;
-        
+        hasSand = hasPotash = hasRedDye = hasBlueDye = hasYllwDye = false;
+       
         this.description = "The kiln resembles a ceramic oven. Its intense heat\n" +
                            "keeps this room roasting hot.";
         
-        this.addUseKeys("red dye", "yellow dye", "blue dye", "sand", "potash");
-        this.addNameKeys("kiln", "oven", "ceramic oven");
+        this.addUseKeys("(red dye", "yellow dye", "blue dye", "sand", "potash");
+        this.addNameKeys("kiln", "(?:ceramic )?oven");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
@@ -32,14 +34,12 @@ public class Wrk_Kln extends Furniture {
         if (item.toString().matches("potash") && ! this.hasPotash) {
             this.hasPotash = true;
             rep = "You pour the potash into the crucible.";  
-        }        
+        }    
         else if (item.toString().matches("sand") && ! this.hasSand) {
             this.hasSand = true;
             rep = "You pour the sand into the crucible.";
         }
-        else if ((item.toString().matches("(?:red|blue|yellow) dye")) && ! this.hasDye) {
-            this.hasDye = true;
-            
+        else if ((item.toString().matches("(?:red|blue|yellow) dye")) && ! hasDye()) {
             if (item.toString().matches("red dye")) {
                 this.hasRedDye = true;
             }
@@ -55,18 +55,18 @@ public class Wrk_Kln extends Furniture {
                  (item.toString().matches("potash") && this.hasPotash) ) 
             rep = "The kiln already has " + item + " in it!";
         
-        else if ((item.toString().matches("(?:red|blue|yellow) dye")) && this.hasDye)
+        else if ((item.toString().matches("(?:red|blue|yellow) dye")) && hasDye())
             rep = "The kiln already has dye in it!";
         
         
-        if (this.hasDye && this.hasSand && this.hasPotash)
-                rep += this.makeGlass();
+        if (hasDye() && this.hasSand && this.hasPotash)
+            rep += this.makeGlass();
         
         return rep;
     }
 /*----------------------------------------------------------------------------*/
     private String makeGlass() {
-        String color = null;
+        String color;
         
         if (this.hasRedDye) {
             Player.getInv().add(REFGLSSR);
@@ -78,18 +78,21 @@ public class Wrk_Kln extends Furniture {
             this.hasBlueDye = false;
             color = "blue";
         }
-        else if (this.hasYllwDye) {
+        else {
             Player.getInv().add(REFGLSSY);
             this.hasYllwDye = false;
             color = "yellow";
         }
         this.hasSand = false;
-        this.hasDye = false;
         this.hasPotash = false;
         
         return "You let the sand and the " + color + " dye bake for a bit. In no\n"
              + "time, the mixture has blended into hot molten " + color + " glass.\n"
              + "Delicious! You take the hot crucible of " + color + " glass.";
+    }
+/*----------------------------------------------------------------------------*/
+    private boolean hasDye() {
+        return this.hasBlueDye || hasRedDye || hasYllwDye;
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -4,7 +4,7 @@ import A_Super.Furniture;
 
 public class Gqua_Stl extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gqua_Stl(String NAME) {
+    public Gqua_Stl() {
         super();
         this.searchable = false;
         this.description = "It's a puny three-legged stool.";
@@ -14,4 +14,5 @@ public class Gqua_Stl extends Furniture{
         this.addNameKeys("stool");
         this.addActKeys("sit");
     }
+/*----------------------------------------------------------------------------*/
 }

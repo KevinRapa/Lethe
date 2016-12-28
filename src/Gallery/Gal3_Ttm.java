@@ -3,39 +3,38 @@ package Gallery;
 import A_Super.Item;
 import A_Main.GUI;
 import A_Super.Furniture;
+import A_Main.Inventory;
 import A_Main.Player;
 
-public class Gal3_Ttm extends Furniture{
-    private boolean isOn;
-    private final Gal_2E_Stat REF;
-    private char beam;
-    private String mode;
-    private boolean headOne, headTwo, headThree, headFour;
-            
+public class Gal3_Ttm extends LghtMchn {
+    private final Gal_2E_Stat GAL4STAT;
+    private boolean headOne, headTwo, headThree, headFour;    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Ttm(Furniture stat, Item... items) {
         super();
         this.searchDialog = "The only place to search is the totem's open\n"
                           + "third mouth. ";
         this.actDialog = "You back away from the totem";
+        this.turnOffDialog = "The lights in the totem's eyes and mouth fade.";
         this.searchable = false;
-        this.REF = (Gal_2E_Stat) stat;
-        this.headOne = false;
-        this.headTwo = false;
-        this.headThree = false;
-        this.headFour = false;
-        this.isOn = false;
+        this.GAL4STAT = (Gal_2E_Stat) stat;
+        this.headOne = headTwo = headThree = headFour = false;
         this.beam = 'c';
         this.mode = "A clear scattered light";
         this.addActKeys("turn", "spin", "twist");
         this.addNameKeys("wood totem", "totem", "wooden totem");
-        this.addUseKeys("red focus", "blue focus", "yellow focus", "dark focus");
-        this.inv = new Ttm_Inv(this, items);       
+        this.inv = new Ttm_Inv(items);       
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
+        return "The tall wooden totem stands back against the west\n"
+             + "wall facing the central chamber. Its four stacked\n"
+             + "segments are carved to resemble obscure faces.\n" + numBackwards() +
+               "\nOn each side of the segments is a peg sticking out.";
+    }
+/*----------------------------------------------------------------------------*/ 
+    private String numBackwards() {
         int numBackwards = 0;
-        String rep = null;
         
         if (! this.headOne)
             numBackwards++;
@@ -48,27 +47,16 @@ public class Gal3_Ttm extends Furniture{
         
         switch(numBackwards) {
             case 0:
-                rep = "All of them face forward. From the third shines a light.";
-                break;
+                return "All of them face forward. From the third shines a light.";
             case 1:
-                rep = "One of them faces back towards the wall.";
-                break;
+                return "One of them faces back towards the wall.";
             case 2:
-                rep = "Two of them face back towards the wall.";
-                break;
+                return "Two of them face back towards the wall.";
             case 3:
-                rep = "Three of them face back towards the wall.";
-                break;
-            case 4:
-                rep = "All of them face back towards the wall.";
+                return "Three of them face back towards the wall.";
+            default:
+                return "All of them face back towards the wall.";
         }
-       
-        this.description = "The tall wooden totem stands back against the west\n"
-                         + "wall facing the central chamber. Its four stacked\n"
-                         + "segments are carved to resemble obscure faces.\n" + rep +
-                           "\nOn each side of the segments is a peg sticking out.";
-        
-        return this.description; 
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getSearchDialog() {
@@ -79,85 +67,9 @@ public class Gal3_Ttm extends Furniture{
         
         return rep; 
     }
-/*----------------------------------------------------------------------------*/
-    public String triggerEvent() {
-        boolean red = false; boolean blue = false; 
-        boolean yellow = false; boolean dark = false;      
-        
-        for (Item i : this.inv) {
-            if (i.toString().matches("red focus"))
-                red = true;
-            if (i.toString().matches("blue focus"))
-                blue = true;
-            if (i.toString().matches("yellow focus"))
-                yellow = true;
-            if (i.toString().matches("dark focus"))
-                dark = true;
-        }        
-        return this.determineColor(red, blue, yellow, dark);
-    }
-/*----------------------------------------------------------------------------*/
-    private String determineColor(boolean red, boolean blue, boolean yellow, boolean dark) {
-        if (dark == false) {        
-            if (red && ! blue && ! yellow) {
-                this.beam = 'r'; this.mode = "A red beam"; 
-            }
-            else if (! red && blue && ! yellow) {
-                this.beam = 'b'; this.mode = "A blue beam"; 
-            }
-            else if (! red && ! blue && yellow) {
-                this.beam = 'y'; this.mode = "A yellow beam"; 
-            }
-            else if (red && blue && ! yellow) {
-                this.beam = 'p'; this.mode = "A purple beam"; 
-            }
-            else if (! red && blue && yellow) {
-                this.beam = 'g'; this.mode = "A green beam"; 
-            }
-            else if (red && ! blue && yellow) {
-                this.beam = 'o'; this.mode = "An orange beam"; 
-            }
-            else if (red && blue && yellow) {                  
-                this.beam = 'w'; this.mode = "A white beam"; 
-            }
-            else if (! red && ! blue && ! yellow) {
-                this.beam = 'c'; this.mode = "A clear scattered light"; 
-            }
-        }
-        else {
-            if (red && ! blue && ! yellow) {
-                this.beam = 'R'; this.mode = "A dark red beam"; 
-            }
-            else if (! red && blue && ! yellow) {
-                this.beam = 'B'; this.mode = "A dark blue beam"; 
-            }
-            else if (! red && ! blue && yellow) {
-                this.beam = 'Y'; this.mode = "A dark yellow beam"; 
-            }
-            else if (red && blue && ! yellow) {
-                this.beam = 'P'; this.mode = "A dark purple beam"; 
-            }
-            else if (! red && blue && yellow) {
-                this.beam = 'G'; this.mode = "A dark green beam"; 
-            }
-            else if (red && ! blue && yellow) {
-                this.beam = 'O'; this.mode = "A dark orange beam"; 
-            }
-            else if (red && blue && yellow) {                  
-                this.beam = 'D'; this.mode = "A dark beam"; 
-            }
-            else if (! red && ! blue && ! yellow) {
-                this.beam = 'W'; this.mode = "Barely any light"; 
-            }       
-        }            
-        if (this.isOn) {
-            return mode + " emits from the statues mouth.\n" + REF.activate(this.beam, this); 
-        }
-        return "";
-    }
 /*----------------------------------------------------------------------------*/    
-    @Override  public String interact(String key) {  
-        String action;
+    @Override public String interact(String key) {  
+        String action, result = "";
         boolean solved = false;
         
         do {
@@ -167,7 +79,7 @@ public class Gal3_Ttm extends Furniture{
             String one = this.headOne ?     "\t   -[-_-]-  1" : "\t   -[   ]-  1";
         
             GUI.out("           " + four + "       \t" + three + "\t\t" + 
-                       two + "\t\t" + one);
+                       two + "\t\t" + one + "\t\t\t\t\t\t" + result);
         
             GUI.menOut("<#> Turn head\n< > Back");           
 
@@ -180,9 +92,11 @@ public class Gal3_Ttm extends Furniture{
             }
             
             if (solved)
-                GUI.out(this.turnOn());
-            else if (! solved && this.isOn)
-                GUI.out(this.turnOff());
+                result = this.turnOn();
+            else if (isOn)
+                result = this.turnOff();
+            else
+                result = "";
                        
         } while (! action.matches(""));
         
@@ -190,12 +104,7 @@ public class Gal3_Ttm extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     private boolean allForward() {
-        boolean solved = false;
-        
-        if (this.headOne && this.headTwo && this.headThree && this.headFour)
-            solved = true;
-        
-        return solved;
+        return headOne && headTwo && headThree && headFour;
     }
 /*----------------------------------------------------------------------------*/
     private void turnHead(int head) {
@@ -214,26 +123,20 @@ public class Gal3_Ttm extends Furniture{
                 this.headThree = ! this.headThree;
                 this.headFour = ! this.headFour;
                 break;
-            case 4:
+            default:
                 this.headThree = ! this.headThree;
                 this.headFour = ! this.headFour;
-                break;
         }
         this.searchable = this.headThree;
     }
 /*----------------------------------------------------------------------------*/     
     private String turnOn() {
+        this.determineColor();
         this.isOn = true;       
         
-        String rep2 = REF.activate(this.beam, this);
+        String rep2 = GAL4STAT.activate(this.beam, true);
         return "The totem's eyes begin to glow.\n"
                 + this.mode + " emits from the totem's third mouth.\n" + rep2;
-    }
-/*----------------------------------------------------------------------------*/    
-    private String turnOff() {
-        this.isOn = false;       
-        
-        return "The lights in the totem's eyes and mouth fade.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
@@ -243,12 +146,41 @@ public class Gal3_Ttm extends Furniture{
         return this.useDialog;
     }
 /*----------------------------------------------------------------------------*/
-    public boolean isOn() {
-        return this.isOn;
+/******************************************************************************/    
+/*----------------------------------------------------------------------------*/     
+    private class Ttm_Inv extends Inventory {   
+        public Ttm_Inv(Item ... items) {
+            super(items);
+        }
+        /*--------------------------------------------------------------------*/
+        @Override public boolean add(Item item) { 
+            if (item.getType().matches("focus")) {
+                this.CONT.add(item);
+                this.trigger();
+                return true;
+            }
+            GUI.out("The " + item + " doesn't fit in.");
+            return false;
+        }
+        /*--------------------------------------------------------------------*/
+        @Override public void remove(Item removeThis) {
+            this.CONT.remove(removeThis);
+            this.trigger();
+        }
+        /*--------------------------------------------------------------------*/
+        @Override public void give(Item item, Inventory giveToThis) {
+            if (giveToThis.add(item))
+                this.remove(item);   
+        }
+        /*--------------------------------------------------------------------*/
+        private void trigger() {   
+            determineColor();
+            
+            if (isOn)
+                GUI.out(mode + " emits from the statue's mouth.\n" + GAL4STAT.activate(beam, true)); 
+        }
     }
 /*----------------------------------------------------------------------------*/
-    public char getBeam() {
-        return this.beam;
-    }
-/*----------------------------------------------------------------------------*/
+/******************************************************************************/    
+/*----------------------------------------------------------------------------*/ 
 }

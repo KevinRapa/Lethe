@@ -49,16 +49,10 @@ public class Player {
         return Player.lastVisited;
     }
     /*------------------------------------------------------------------------*/ 
-    /**
-     * @return The player's inventory.
-     */
     public static Inventory getInv() {
         return Player.inv;
     }
     /*------------------------------------------------------------------------*/
-    /**
-     * @return The player's key ring.
-     */
     public static Inventory getKeys() {
         return Player.keys;
     }
@@ -390,7 +384,7 @@ public class Player {
             GUI.menOut("\n<'s' #> Store...\n<'t' #> Take...\n< > Back\"");
             
             cmdItm = GUI.promptOut();
-            
+
             try (Scanner collectToken = new Scanner(cmdItm).useDelimiter("\\s+")) {
                 action = collectToken.next();            
                 slot = Integer.parseInt(collectToken.next());

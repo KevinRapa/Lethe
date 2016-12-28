@@ -6,7 +6,7 @@ import A_Super.Furniture;
 public class Gqua_Brrl extends Furniture implements Container {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gqua_Brrl(String NAME) {
+    public Gqua_Brrl() {
         super();
         this.description = "It's a cask. You sure hope there's beer in there.";
         this.searchDialog = "You can't get it open. You take a whiff from a\n"

@@ -3,17 +3,16 @@ package Library;
 import A_Super.Book;
 
 public class Lib_BkGlss extends Book {
-    private final String pg1, pg2;
+    private final String pg1, pg2, pg3;
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Lib_BkGlss(String name) {
-        super(name, 2);
+        super(name, 3);
         
-        pg1 = "            The Master Glasser\n" +
-              "\n" +
-              "             by: Lasi Lasinen\n" +
-              "\n" +
-              "Hah! You have pick this book up. That means \n" +
+        pg1 = "The Master Glasser\n" +
+              "-- Lasi Lasinen\n";
+        
+        pg2 = "Hah! You have pick this book up. That means \n" +
               "you have come into defeat by glass blowing. \n" +
               "Do not be embarrased. For you not need to \n" +
               "blow into glass to be master glassman. As \n" +
@@ -26,7 +25,7 @@ public class Lib_BkGlss extends Book {
               "celcius will do. Now, we need potash to lower \n" +
               "melting point of sand to sufficient level. ";
         
-        pg2 = "Throw potash into kiln. No need to be too \n" +
+        pg3 = "Throw potash into kiln. No need to be too \n" +
                "careful. We allow mixture to sit and melt\n" +
                "into glass for a short while. Now its time\n" +
                "to prepare casting table. Most important\n" +
@@ -45,6 +44,7 @@ public class Lib_BkGlss extends Book {
         
         this.PAGE_LIST[0] = this.pg1;
         this.PAGE_LIST[1] = this.pg2;
+        this.PAGE_LIST[2] = this.pg3;
     }
 /*----------------------------------------------------------------------------*/
 }

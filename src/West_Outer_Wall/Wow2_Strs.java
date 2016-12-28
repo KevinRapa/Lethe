@@ -33,4 +33,5 @@ public class Wow2_Strs extends Staircase {
         // For overriding. Some stairs aren't wooden.
         AudioPlayer.playEffect(16);
     }
+/*----------------------------------------------------------------------------*/
 }

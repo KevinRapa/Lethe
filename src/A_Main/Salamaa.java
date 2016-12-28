@@ -41,7 +41,7 @@ public class Salamaa {
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = "OBS1";
+        String start = "GAL1";
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -154,7 +154,6 @@ public class Salamaa {
         //Key archKey = new Key("arch key", "ARCH");
         //Key bls1Key = new Key("bls1 key", "BLS1"); 
                 
-
         //**********************************************************************
         // </editor-fold>
         //**********************************************************************
@@ -163,7 +162,7 @@ public class Salamaa {
         Furniture wallEx = new Wall_Ex(); // Generic exterior castle wall.
         
         //----------------------------------------------------------------------              
-        // <editor-fold desc="AREA 1: VESTIBULE">
+        // <editor-fold desc="AREA 1: CASTLE FRONT">
         
         Item bckt = new Item("metal bucket", "It's an empty metal bucket."); // Used with all fireplaces
         Item vial = new Item("empty vial", "A small glass vial for holding samples");
@@ -321,8 +320,7 @@ public class Salamaa {
         
         Item brRam = new Item("broken battering ram", "It's a battering ram, but without the other rope to\nhold it with, it's useless.", "It's useless now.");
         Item ram = new Item("battering ram", "You've restored the old battering ram back to its former glory");
-        Item redFcs = new Focus("red focus", "It's a cool brass ring holding a red lens.");   
-        Item hndTrch = new Item("hand torch", "It's a burning piece of wood. Stay it from your beard!");
+        Item rdFcs = new Focus("red focus", "It's a cool brass ring holding a red lens.");   
         
         // <editor-fold desc="INITIALIZE ROTUNDA">
         //-----------------------------THE ROOM---------------------------------
@@ -436,20 +434,20 @@ public class Salamaa {
         Item gl = new Item("glue bottle", "It's a bottle of sticky glue.");
         Item closGlv = new Item("gloves", "Some old gardening gloves", "They don't fit on your enormous hands.");
         Item closStrw = new Item("straw", "It's just straw");
-        Item scrw1 = new Scrw("1mm screw", redFcs);
+        Item scrw1 = new Scrw("1mm screw", rdFcs);
         Item scrw2 = new Item("2mm screw", "A small screw.");
         Item scrw5 = new Item("5mm screw", "A small screw.");
         //-----------------------------FURNITURE--------------------------------
         Furniture closLddr = new Gqua_Lddr('d', 1);
-        Furniture closClng = new Gqua_Clng("ceiling");
+        Furniture closClng = new Gqua_Clng();
         Furniture closF = new Floor("It's a cold, hard, cobblestone floor", closStrw);
-        Furniture closScks = new Gqua_Scks("sacks", sd, sd, sd, frt, frt, frt, snd, snd, snd, snd, snd);
-        Furniture closShlf = new Gqua_Shlf("shelf", bckt, closGlv, vial, shvl, pot, pot);
+        Furniture closScks = new Gqua_Scks(sd, sd, sd, frt, frt, frt, snd, snd, snd, snd, snd);
+        Furniture closShlf = new Gqua_Shlf(bckt, closGlv, vial, shvl, pot, pot);
         Furniture closWrkbnch = new Gqua_Wrkbnch(gl, hmmr, scrw2, scrw1, scrw2, scrw5, scrw5, scrw1);
-        Furniture closStl = new Gqua_Stl("stool");
-        Furniture closBrrl = new Gqua_Brrl("barrel");
+        Furniture closStl = new Gqua_Stl();
+        Furniture closBrrl = new Gqua_Brrl();
         Furniture closW = new Wall("It's a plain cobblestone wall.");
-        Furniture closSkltn = new Gqua_Skltn("skeleton", closCrwbr);
+        Furniture closSkltn = new Gqua_Skltn(closCrwbr);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE WEST OUTER WALL BALCONY">
         //-----------------------------THE ROOM---------------------------------
@@ -489,8 +487,8 @@ public class Salamaa {
         Furniture sha2Cbnt = new Sha2_Cbnt(wdChnk, shaSpng, shvl, shaMp, bckt);
         Furniture shaF = new Floor("A sandstone tiled floor.");
         Furniture sha2Dr = new Sha2_Dr();
-        Furniture sha1Trch = new Trch(hndTrch);
-        Furniture sha2Trch = new Trch(hndTrch);
+        Furniture sha1Trch = new Trch();
+        Furniture sha2Trch = new Trch();
         Furniture sha1Dr = new Sha1_Dr(ram, brRam);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE SCORCHED ROOM">
@@ -575,11 +573,12 @@ public class Salamaa {
                                         + "you do know your way around sharp tools.");
         Item gal3Inst = new Gal3_Inst("kora");
         //-----------------------------FURNITURE--------------------------------         
-        Furniture gal7Stat = new Gal_3E_Stat(gal5, gal7);
-        Furniture gal4Stat = new Gal_2E_Stat(gal7, gal4, gal7Stat);
-        Furniture gal2Stat = new Gal_1E_Stat(gal4, gal4Stat);
+        Furniture gal7Stat = new Gal_3E_Stat();
+        Furniture gal4Stat = new Gal_2E_Stat(gal7Stat);
+        Furniture gal2Stat = new Gal_1E_Stat(gal4Stat);
 
         Furniture gal1Drgn = new Gal1_Drgn(gal2Stat, yllwFcs);
+        ((Gal_1E_Stat)gal2Stat).addDragonRef(gal1Drgn);
         Furniture gal1KtnFurn = new Gal1_KtnFurn(gal1Ktn);
         Furniture gal1Swtch = new Gal1_Swtch(gal1Drgn);
         Furniture gal1Bttn = new Gal1_Bttn(gal1Drgn);
@@ -587,7 +586,7 @@ public class Salamaa {
         Furniture gal1Scr = new Gal1_Scr(gal1Bttn);
         Furniture gal1Scrn = new Gal1_Scrn(gal1Swtch);
         Furniture gal1Armr = new Gal1_Armr();
-        Furniture gal1F = new Floor("The floor is a dark hardwood.");
+        Furniture gal1F = new Floor("The floor is a dark hardwood.", blFcs, yllwFcs, drkFcs, rdFcs, fnnyOrb);
         Furniture gal1W = new Wall("The wall is tiled a dark green and purple.\nInteresting choice...");
         Furniture gal1Sclptrs = new Gal1_Sclptrs();
         Furniture gal1Pntngs = new Gal1_Pntngs();
@@ -704,13 +703,10 @@ public class Salamaa {
         Room work = new Eow3("in the workshop", "WORK");
         //-------------------------------ITEMS----------------------------------
         Item redLns = new Item("red lens", "It's a proper lens tinted red.\n"
-                             + "Maybe you should pick up the glass trade!", redFcs, "red focus", 3);
+                             + "Maybe you should pick up the glass trade!", rdFcs, "red focus", 3);
         Item rdDy = new Item("red dye", "You have a handful of soft red powdered dye.");
         Item blDy = new Item("blue dye", "You have a handful of soft blue powdered dye.");
         Item yllwDy = new Item("yellow dye", "You have a handful of soft yellow powdered dye.");
-        Item mltnGlssR = new Item("molten red glass", "It's a crucible of molten red glass. Be careful!");
-        Item mltnGlssB = new Item("molten blue glass", "It's a crucible of molten blue glass. Be careful!");
-        Item mltnGlssY = new Item("molten yellow glass", "It's a crucible of molten yellow glass. Be careful!");
         Item stncl = new Item("lens template", "It's a sheet of metal with a small hole cut in it.\n");
         Item wrkNt = new Wrk_Nt("momento- glass");
         Item ptsh = new Item("potash", "Good old potassium-rich potash salts!");
@@ -720,7 +716,7 @@ public class Salamaa {
         Furniture wrkCbnt = new Wrk_Cbnt(hmmr, gl, ptsh, ptsh);
         Furniture wrkCstTbl = new Wrk_CstngTbl(wrkBrl, closScks, redLns, snd, rdDy, 
                                                blDy, yllwDy, ptsh, wrkCbnt);
-        Furniture wrkKln = new Wrk_Kln(mltnGlssR, mltnGlssY, mltnGlssB);
+        Furniture wrkKln = new Wrk_Kln();
         Furniture wrkBnch = new Gqua_Wrkbnch(stncl, wrkNt);        
         Furniture wrkAnvl = new Wrk_Anvl();
         Furniture wrkFrg = new Wrk_Frg();
@@ -746,7 +742,7 @@ public class Salamaa {
         Furniture eow1Dr = new Eow1_Dr();
         Furniture eow1Rck = new Eow1_Rck(eowSwrd1, eowBtlAx, eowSwrd2, eowSwrd3, eowSwrd2, eowAx);
         Furniture eow1Bskt = new Eow1_Bskt(eowPlArm, woodSpr, woodSpr, eowPlArm);
-        Furniture eow1Trch = new Trch(hndTrch);
+        Furniture eow1Trch = new Trch();
 
         Furniture eow2Fntn = new Eow2_Fntn();
         Furniture wtr = new Water(wtrBckt);
@@ -754,7 +750,7 @@ public class Salamaa {
         Furniture eow2Strs = new Eow2_Strs('u', 1);
         Furniture eow2Blcny = new Eow2_Blcny();
         Furniture eow2Cbnt = new Eow2_Cbnt(bckt, shaMp, shvl);
-        Furniture eow2Trch = new Trch(hndTrch);
+        Furniture eow2Trch = new Trch();
 
         Furniture eow4F = new Floor("It's a sandstone tile floor.");
         Furniture eow4Strs = new Eow2_Strs('d', 1);
@@ -830,7 +826,7 @@ public class Salamaa {
         Item lib1ImpNt = new Lib1_ImpNt("momento- lens");
         Item lib1Pln = new Lib1_Pln("vessel schematic");
         Item brkLns = new Item("cracked lens", "The red-tinted lens is cracked all the way through.", "You think this has lost its purpose by now.");
-        Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring. Looks like a screw is missing.", redFcs, "red focus", 3);
+        Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring. Looks like a screw is missing.", rdFcs, "red focus", 3);
         //-----------------------------FURNITURE--------------------------------
         Furniture lib1Docs = new Lib1_Docs();
         Furniture lib1F = new Floor("It's a dusty wood parquet floor.", lib1Nt2);
@@ -874,10 +870,9 @@ public class Salamaa {
         //-------------------------------ITEMS----------------------------------
         Item kitcFrtPhy = new Kitc_FrtPhy("pristine fruit");
         Item rtnFrt = new Item("rotten fruit", "Was this an apple? Or ... plum once?", "Whatever you expect him to do with that,\nhe isn't going to.");
-        Item rtnFrt2 = new Item("rotten fruit", "Was this an apple? Or ... plum once?", "Whatever you expect him to do with that,\nhe isn't going to.");
         Item petFrt = new Item("petrified vegetable", "Looks like a rock ... in the shape of a carrot.", "Whatever you expect him to do with that,\nhe isn't going to.");
         //-----------------------------FURNITURE--------------------------------
-        Furniture kitcTrch = new Kitc_Trch(hndTrch);
+        Furniture kitcTrch = new Kitc_Trch();
         Furniture kitcF = new Floor("The floor is dirty brown stone,\ncomposed of differently sized bricks.");
         Furniture kitcW = new Wall("The wall is made of large, differently sized bricks.");
         Furniture kitcWndw = new Kitc_Wndw();
@@ -886,7 +881,7 @@ public class Salamaa {
         Furniture kitcPts = new Kitc_Pts();
         Furniture kitcHrth = new Kitc_Hrth(bckt); //UNFINISHED
         Furniture kitcBrls = new Kitc_Brls(); // EMPTY
-        Furniture kitcPntry = new Kitc_Pntry(rtnFrt, rtnFrt, petFrt, kitcFrtPhy, petFrt, rtnFrt2);
+        Furniture kitcPntry = new Kitc_Pntry(rtnFrt, rtnFrt, petFrt, kitcFrtPhy, petFrt);
         Furniture kitcShlf = new Kitc_Shlf(); // EMPTY
         Furniture kitcCntr = new Kitc_Shlf(); // EMPTY     
         // </editor-fold> // HAS EMPTY STUFF
@@ -925,7 +920,7 @@ public class Salamaa {
         Item urnsPlt = new Obs_Plt("brass plate, \"Caelus\"", "The small plate bears an engraving: \"Caelus\"");
         Item psdnPlt = new Obs_Plt("brass plate, \"Neptune\"", "The small plate bears an engraving: \"Neptune\"");
         
-        Item rby2 = new Item("ruby", "The ruby is well cut and clean, having been protected in the case for so long.");
+        Item rby2 = new Item("ruby", "The ruby is well cut and clean.");
         Item cndl = new Item("candle", "It's a white candle. It looks new!");
         Item gr = new Item("small gear", "The small delicate gear fell right out of the telescope.");
         Item glssLns = new Item("glass lens", "The small lens once belonged to the telescope in the observatory.");

@@ -11,7 +11,7 @@ public class Cou1_Flr extends Furniture {
             super(items);
             this.REF = hole;
             this.description = "The ground is a mixture of grass, weeds, and clover.\n"
-                             + "The ground is roughened, as if someone had dug it up recently.";
+                             + "It is roughened, as if someone had dug it up recently.";
             this.searchDialog = "You crouch down and scan the ground.";
             this.actDialog = "You have nothing to dig the ground with.";
             this.useDialog = "You dig about a foot-deep hole in the ground. In the hole,\n"

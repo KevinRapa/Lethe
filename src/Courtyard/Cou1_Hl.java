@@ -13,7 +13,7 @@ public class Cou1_Hl extends Furniture {
         this.actDialog = "There's no need to dig the hole any deeper.";
         this.useDialog = this.actDialog;
         this.addNameKeys("hole");
-        this.addUseKeys("shovel");
+        this.addUseKeys("shovel", "trowel");
         this.addActKeys("dig");
     }
 /*----------------------------------------------------------------------------*/    

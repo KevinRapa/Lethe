@@ -3,18 +3,18 @@ package Library;
 import A_Super.Book;
 
 public class Lib_BkFin extends Book {
-    private final String pg1, pg2, pg3;
+    private final String pg1, pg2, pg3, pg4;
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Lib_BkFin(String name) {
-        super(name, 3);
+        super(name, 4);
         
-        pg1 = "              A Brief Guide to Finnish\n" +
-              "                         by\n" +
-              "                        Tomi \n" +
-              "Yhdeksänkymmentäseitsemänherkullistajäätelötötteröä\n" +
-              "\n" +
-              "Tervetuloa, and welcome to the secret world of the \n" +
+        
+        pg1 = "A Brief Guide to Finnish -- " +
+              "Tomi\n" +
+              "Yhdeksänkymmentäseitsemänherkullistajäätelötötteröä\n";
+        
+        pg2 = "Tervetuloa, and welcome to the secret world of the \n" +
               "Finnish language! Let this volume be the ladder to \n" +
               "dip your feet in the waters of Finnish. Spoken by\n" +
               "only roughly 5.5 million people, Finnish is quite\n" +
@@ -32,7 +32,7 @@ public class Lib_BkFin extends Book {
               "a couple thousand variations of this word. We begin\n" +
               "by discussing the basics of what forms a nominal.";
         
-        pg2 = "A nominal (noun or adjective primarily) may be\n" +
+        pg3 = "A nominal (noun or adjective primarily) may be\n" +
               "inflected from its base. For example, the Finnish\n" +
               "word 'koira' meaning dog may take the form 'koiralla'\n" +
               "meaning 'on the dog'. This is a word case, and there \n" +
@@ -54,7 +54,7 @@ public class Lib_BkFin extends Book {
               "For example 'käyttäisinköhän?' meaning 'I wonder \n" +
               "if I should use?'";
         
-        pg3 = "Together, using these rules, sentences can be build.\n" +
+        pg4 = "Together, using these rules, sentences can be build.\n" +
               "\n" +
               "'Tyttäreni juoksi me talomme ympärillä' which means\n" +
               "'Our daughter ran around our house'. Quite literally,\n" +
@@ -76,9 +76,11 @@ public class Lib_BkFin extends Book {
               "In fact, Finnish does not natively use 'f', nor\n" +
               "'b', 'c', 'q', 'w', 'x', or 'z'.";
         
+        
         this.PAGE_LIST[0] = this.pg1;
         this.PAGE_LIST[1] = this.pg2;
         this.PAGE_LIST[2] = this.pg3;
+        this.PAGE_LIST[3] = this.pg4;
     }
 /*----------------------------------------------------------------------------*/
 }

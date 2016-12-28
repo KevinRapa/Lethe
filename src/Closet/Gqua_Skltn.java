@@ -6,7 +6,7 @@ import A_Super.Item;
 public class Gqua_Skltn extends Furniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gqua_Skltn(String NAME, Item ... items) {
+    public Gqua_Skltn(Item... items) {
         super(items);
         this.description = "The body lies face down on the floor.";
         this.searchDialog = "You crouch down.";
@@ -22,4 +22,5 @@ public class Gqua_Skltn extends Furniture {
         
         return rep;
     }
+/*----------------------------------------------------------------------------*/
 }

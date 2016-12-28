@@ -20,16 +20,14 @@ public class Gal3_InstFurn extends Furniture {
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) { 
-        String rep = this.actDialog;
-        
-        if (key.matches("strum") || key.matches("play")) {
-            rep = "You would try, but it's up on the wall right now.";
+        if (key.matches("strum|play")) {
+            return "You would try, but it's up on the wall right now.";
         }            
         else {
             Player.getRoomRef("GAL3").removeFurniture(this);
             Player.getInv().add(REF);
         }
-        return rep;
+        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/    
     
