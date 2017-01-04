@@ -1,21 +1,22 @@
 package A_Main;
-/**
+/**<p>
  * This is a text-based adventure game called Salamaa being written as a
  * personal project.
  * In browsing the classes in the Main package, it helps to collapse all folds.
  * All super classes are in package Super. Packages are organized by room.
- * <p>
+ * </p> <p>
  * You control an unnamed character who is exploring a castle after having 
  * wandered through the woods to it without any apparent reason. As the game
  * progresses, puzzles get steadily more complex and a story develops.
- * <p>
+ * </p> <p>
  * To play, just run this project.
  * You may start from any room in the game, however the default start
  * is in <code>cou4</code>. Find the method <code>setOccupies</code> at the
  * bottom of this class to change this, and refer to the castle array for the
  * room object references.
- * <p>
- * Made in NetBeans on Windows 10
+ * </p> <p>
+ * Made in NetBeans on Windows 10.
+ * </p>
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Salamaa.git">GitHub Repository</a>
  */
