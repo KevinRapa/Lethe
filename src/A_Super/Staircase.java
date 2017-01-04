@@ -20,18 +20,16 @@ public class Staircase extends Furniture {
     @Override public String interact(String key) {     
         // Sets the room that the player is in.
         int[] c = Player.getOcc().getCoords(); // coordinates of player location.
-        int Z = c[0]; int Y = c[1]; int X = c[2]; //Individual ZYX coordinates.
-        int m = this.DIR == 'u' ? -this.HT : this.HT; // Z coordinate modifier.
+        int Z = c[0], Y = c[1], X = c[2], //Individual ZYX coordinates.
+            m = this.DIR == 'u' ? -this.HT : this.HT; // Z coordinate modifier.
 
         playEffect();
         Player.setOccupies(Z + m, Y, X); // moves the player's Z coordinate.
-        
-        String rep = "You climb " + (DIR == 'd' ? "down" : "up") + " the stairs.";       
 
         GUI.roomOut(Player.getOcc().triggeredEvent());
         Player.describeRoom();
         
-        return rep;
+        return "You climb " + (DIR == 'd' ? "down" : "up") + " the stairs.";
     }
 /*----------------------------------------------------------------------------*/
     protected void playEffect() {

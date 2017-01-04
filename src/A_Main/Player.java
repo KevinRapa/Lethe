@@ -295,8 +295,8 @@ public class Player {
     }
     // ========================================================================  
     public static void describeRoom() {
-        AudioPlayer.playTrack(Player.getOcc().getID());
-        GUI.descOut(Player.getOcc().getDescription());
+        AudioPlayer.playTrack(getOcc().getID());
+        GUI.descOut(getOcc().getDescription());
     }
 //******************************************************************************
 // </editor-fold>
@@ -527,7 +527,7 @@ public class Player {
             else if (action.matches("search") || 
                     (action.matches("open") && target instanceof Container))                    
                 search(target); 
-            
+
             else
                 GUI.out("That seems unnecessary.");
         }                
@@ -551,7 +551,7 @@ public class Player {
         
         do {
             GUI.menOut("\n<'1'> Inspect item\n<'2'> Use item\n" + 
-                          "<'3'> Combine items\n< > Back");
+                       "<'3'> Combine items\n< > Back");
             
             ans = GUI.promptOut();
             
@@ -625,8 +625,6 @@ public class Player {
      * @param item The item being used
      */
     private static void evalUse(int useID, Item item) {
-        Furniture target; 
-        
         switch (useID) {
             case 1:
                 GUI.out(item.useEvent()); break;           
@@ -636,7 +634,7 @@ public class Player {
                 String ans = GUI.promptOut();
 
                 if (getOcc().hasFurniture(ans)) {                 
-                    target = getFurnRef(ans);
+                    Furniture target = getFurnRef(ans);
 
                     if (target.useKeyMatches(item.toString())) {
                         GUI.out(target.useEvent(item));

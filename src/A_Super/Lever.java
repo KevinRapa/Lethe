@@ -23,9 +23,6 @@ abstract public class Lever extends Furniture {
         return this.event(key);
     } 
     // ========================================================================
-    /**
-     * Switches the state, plays a noise, then initiates the child-specific event.
-     */
     protected void swtch() {
         this.isOn = ! this.isOn;
     }

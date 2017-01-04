@@ -3,7 +3,6 @@ package Closet;
 import A_Super.Room;
 
 public class Gqua extends Room {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua(String name, String ID) {
         super(name, ID);

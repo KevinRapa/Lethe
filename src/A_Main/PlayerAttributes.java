@@ -10,13 +10,12 @@ import java.util.ArrayList;
  * 
  * @author Kevin Rapa
  */
-public class PlayerAttributes implements Serializable {
+public final class PlayerAttributes implements Serializable {
     private final Room[][][] MAP;
     private final int[] OCC;
     private final Inventory INV, KEYS; 
     private final ArrayList<String> VISITED; 
-    private final String LSTVISITED; 
-    private final String SHOES;
+    private final String LSTVISITED, SHOES; 
     // ========================================================================
     public PlayerAttributes() {
         this.MAP = Player.getMapRef();

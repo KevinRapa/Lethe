@@ -41,7 +41,7 @@ public class Salamaa {
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = "GAL1";
+        String start = "COU4";
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -116,6 +116,7 @@ public class Salamaa {
                     System.out.println("Files deleted.");
                 else
                     System.out.println("Files to delete not found.");
+                break;
             default:
         }
         //**********************************************************************
@@ -1398,10 +1399,10 @@ public class Salamaa {
         // <editor-fold desc="LOCK ROOMS">
         //**********************************************************************
 
-        //cous.lock(); rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
-        //par2.lock(); clos.lock(); din1.lock(); kitc.lock();
-        //chs1.lock(); work.lock(); bls1.lock(); soul.lock(); sew6.lock();
-        //cas1.lock(); arch.lock(); vau4.lock(); wow2.lock(); foyw.lock();
+        cous.lock(); rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
+        par2.lock(); clos.lock(); din1.lock(); kitc.lock();
+        chs1.lock(); work.lock(); bls1.lock(); soul.lock(); sew6.lock();
+        cas1.lock(); arch.lock(); vau4.lock(); wow2.lock(); foyw.lock();
    
         //**********************************************************************        
         // </editor-fold>        

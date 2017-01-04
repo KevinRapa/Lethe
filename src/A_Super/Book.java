@@ -26,7 +26,7 @@ public class Book extends Note {
 /*----------------------------------------------------------------------------*/
     protected void Read() {
         int page = 0;
-        String choice = "";
+        String choice;
         
         do {
             AudioPlayer.playEffect(2);
@@ -36,13 +36,15 @@ public class Book extends Note {
                 do {
                     GUI.menOut("Turn page?\n<'y'> Turn the page\n<'n'> Close the book");
                     choice = GUI.promptOut();
-                } while (! (choice.matches("y|yes") || choice.matches("n|no")));
+                } while (! choice.matches("[yn]|yes|no|"));
                 
-                if (choice.matches("yes")) 
+                if (choice.matches("yes|y")) 
                     page ++;
+                else
+                    choice = "no";
             }
             else {
-                GUI.menOut("<enter> Close the book");
+                GUI.menOut("< > Close the book");
                 GUI.promptOut(); 
                 choice = "no"; 
             }
