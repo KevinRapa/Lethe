@@ -22,21 +22,19 @@ public class Mha_Stats extends Furniture {
                          + "specifying 'left statue' or 'right statue'.";
         this.actDialog = "Such impressive works of artistry deserve not to be\n"
                     + "tainted by your touch.";
-        this.addNameKeys("statue", "statues");
+        this.addNameKeys("statues?");
         this.addActKeys("touch", "grab", "hold");
         this.addUseKeys("silver spear");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (REF.isSearchable()) {
-            rep = "The pair af statues are mirror images of each other.\n"
-                + "each leans toward the other while gazing nonchalantly\n"
-                + "towards the ceiling. They each hold a silver spear\n"
-                + "over the other.";
+            return "The pair af statues are mirror images of each other.\n"
+                 + "each leans toward the other while gazing nonchalantly\n"
+                 + "towards the ceiling. They each hold a silver spear\n"
+                 + "over the other.";
         }      
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
 }

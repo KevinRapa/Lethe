@@ -16,7 +16,7 @@ public class Obs1_St extends Furniture {
                        + "the distant lighthouse, wondering if anyone sees you.";
         this.searchDialog = "You look under the seat.";
 
-        this.addNameKeys("(?:victorian-era )?(?:red )?(?:leather )?seat");
+        this.addNameKeys("(?:victorian-era )?(?:stiff )?(?:red )?(?:leather )?seat");
         this.addActKeys("sit", "lay", "relax", "rest", "sleep");
     }
     // ========================================================================   

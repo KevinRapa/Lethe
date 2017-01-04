@@ -11,9 +11,9 @@ public class Obs2_BkShlf extends Furniture {
         super(items);
         
         this.description = "The tall dark brown bookshelf rests on small curved feet.";
-        this.searchDialog = "You look on the shelves";
+        this.searchDialog = "You look on the shelves.";
 
-        this.addNameKeys("shelf", "bookshelf", "books");
+        this.addNameKeys("(?:tall )?(?:brown )?(?:shelf|bookshelf)", "books");
     }
     // ========================================================================     
 }

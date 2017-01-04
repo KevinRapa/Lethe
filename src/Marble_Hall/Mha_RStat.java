@@ -31,23 +31,19 @@ public class Mha_RStat extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (this.searchable) {
-            rep = "The angel poses majestically with an indifferent\n"
-                + "gaze upwards. It's a mirror-image of the left\n"
-                + "statue. In its right hand is a silver spear."; 
+            return "The angel poses majestically with an indifferent\n"
+                 + "gaze upwards. It's a mirror-image of the left\n"
+                 + "statue. In its right hand is a silver spear."; 
         }      
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
      @Override public String getSearchDialog() {
-        String rep = this.searchDialog;
-        
         if (this.searchable)
-            rep = "You look into the compartment inside the statue's base.";
+            return "You look into the compartment inside the statue's base.";
         
-        return rep;
+        return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -14,7 +14,7 @@ public class Obs2_Rlng extends Furniture {
                          + "though it can take much weight. Cetainly not your\n"
                          + "weight, that is.";
         this.actDialog = "That is really not a very safe thing to do.";
-        this.addNameKeys("balcony railing", "railing");
+        this.addNameKeys("(?:balcony )?railing");
         this.addActKeys("lean");
     }
     // ========================================================================    

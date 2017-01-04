@@ -25,8 +25,7 @@ public class Obs_Stats extends Furniture {
         new Obs_Stat("8", "The statue depicts a monumental male figure\ncrowned with a radiating halo. He rides in\na chariot pulled by four steeds.", 0),
     };
     private final Obs3_Chndlr CHNDLR_REF;
-    private boolean solved = false;
-    private boolean locked = true;
+    private boolean solved = false, locked = true;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Obs_Stats(Furniture chandlr) {
         super();
@@ -39,7 +38,7 @@ public class Obs_Stats extends Furniture {
                           + "fine seams in the floor connecting them in various\n"
                           + "ways.";
         this.CHNDLR_REF = (Obs3_Chndlr) chandlr;
-        this.addNameKeys("statue", "statues", "ring(?: of statues)?", "gods", "god", "goddess", "goddesses");
+        this.addNameKeys("statue", "statues", "ring(?: of statues)?", "gods?", "goddess(?:es)?");
         this.addActKeys("move", "turn", "push", "pull", "rotate", "spin");
     }
 /*----------------------------------------------------------------------------*/
@@ -108,7 +107,6 @@ public class Obs_Stats extends Furniture {
                     this.CHNDLR_REF.lower();
                     choice = "";
                 }
-                
             } while (! choice.matches(""));
 
             collectToken.close();
@@ -167,15 +165,15 @@ public class Obs_Stats extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     public int getIndex(String stat) {
-        int current = 0, index = 0;
-        
+        int current = 0;
+
         for (Furniture i : this.STATS)
             if (! i.toString().matches(stat))
                 current++;
             else 
-                index = current;
+                return current;
              
-        return index;
+        return -1;
     }
 
 /*----------------------------------------------------------------------------*/

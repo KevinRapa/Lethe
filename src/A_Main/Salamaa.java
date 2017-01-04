@@ -41,7 +41,7 @@ public class Salamaa {
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = "PAR1";
+        String start = "COU4";
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">

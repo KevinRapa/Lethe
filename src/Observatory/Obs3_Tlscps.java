@@ -18,7 +18,7 @@ public class Obs3_Tlscps extends Furniture {
                        + "forces your eye away.";
         this.searchDialog = "They look like just plain telescopes. Expensive though.";
 
-        this.addNameKeys("telescope", "telescopes");
+        this.addNameKeys("telescopes?");
         this.addActKeys("use", "look", "gaze", "view");
     }
     // ========================================================================   

@@ -4,7 +4,7 @@ import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
 
-public class Obs2 extends Room{
+public class Obs2 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Obs2(String name, String ID) {
         super(name, ID);

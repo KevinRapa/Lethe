@@ -46,7 +46,7 @@ public class Obs_Slts extends Furniture {
         do {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
                     "\t\t\t\t\t\t\t\tLook at which slot? "); 
-            GUI.menOut("<'A-I'> Look...\n< > Back");
+            GUI.menOut("<'a-i'> Look...\n< > Back");
             choice = GUI.promptOut();
            
             if (choice.matches("[abcdefghi]"))
@@ -65,7 +65,7 @@ public class Obs_Slts extends Furniture {
         do {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
                     "\t\t\t\t\t\t\t\tSearch which slot? "); 
-            GUI.menOut("<'A-I'> Search...\n< > Back");
+            GUI.menOut("<'a-i'> Search...\n< > Back");
             choice = GUI.promptOut();
            
             if (choice.matches("[abcdefghi]")) {
@@ -137,8 +137,9 @@ public class Obs_Slts extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private void lockSlots() {
-        for (Obs_Slt s : SLOTS)
+        SLOTS.stream().forEach((s) -> {
             s.lock();
+        });
     }
 /*----------------------------------------------------------------------------*/
     private boolean areSlotsLocked() {

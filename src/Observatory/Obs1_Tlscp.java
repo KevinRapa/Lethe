@@ -18,7 +18,7 @@ public class Obs1_Tlscp extends Furniture {
         this.searchDialog = "You carefully look through its various intricacies";
         this.actDialog = "You look into the eyepiece and see nothing but black.";
 
-        this.addNameKeys("(?:large )?(?:old )?telescope");
+        this.addNameKeys("(?:large )?(?:old )?(?:heavy )?(?:antique )?telescope");
         this.addActKeys("use", "look", "gaze", "view");
     }
     // ========================================================================     
