@@ -1,5 +1,6 @@
 package Dining_Room;
 
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Din2 extends Room{
@@ -11,9 +12,9 @@ public class Din2 extends Room{
                    + "south stands the closed door that you heard swing shut.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
+    @Override public String getBarrier(Direction dir) {
         String rep = "There's a wall in the way.";
-        if (dir == 'd')
+        if (dir == Direction.EAST)
             rep = "There's a railing that way.";
         
         return rep;

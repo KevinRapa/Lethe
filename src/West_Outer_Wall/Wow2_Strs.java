@@ -3,10 +3,11 @@ package West_Outer_Wall;
 import A_Main.AudioPlayer;
 import A_Main.Player;
 import A_Super.Staircase;
+import A_Super.Direction;
 
 public class Wow2_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wow2_Strs(char direction, int height) {
+    public Wow2_Strs(Direction direction, int height) {
         super(direction, height);
         this.searchDialog = "The ladder hides nothing.";
         this.description = "The ladder rests against the upper balcony, but it's\n"
@@ -19,9 +20,8 @@ public class Wow2_Strs extends Staircase {
         // Sets the room that the player is in.
         int[] c = Player.getOcc().getCoords(); // coordinates of player location.
         int Z = c[0]; int Y = c[1]; int X = c[2]; //Individual ZYX coordinates.
-        int m = this.DIR == 'u' ? -this.HT : this.HT; // Z coordinate modifier.
                 
-        Player.setOccupies(Z + m, Y, X); // moves the player's Z coordinate.
+        Player.setOccupies(Z + DIR.Z, Y, X); // moves the player's Z coordinate.
         
         playEffect();
         Player.describeRoom();

@@ -3,13 +3,14 @@ package Parlor;
 import A_Super.Door;
 import A_Super.Item;
 import A_Main.Player;
+import A_Super.Direction;
 
 public class Par1_Dr extends Door {
     private final Item ENCHNTBTTL_REF;
     private boolean cured = false;
 /*----------------------------------------------------------------------------*/    
-    public Par1_Dr(Item enchbttl) {
-        super();
+    public Par1_Dr(Item enchbttl, Direction dir) {
+        super(dir);
         this.useDialog = "You throw the fire on the door. Shortly, the fire"
                        + "\nfades away.";
         this.description = "It looks like a heavy wooden door.";

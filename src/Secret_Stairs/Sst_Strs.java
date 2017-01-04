@@ -1,11 +1,12 @@
 package Secret_Stairs;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Staircase;
 
 public class Sst_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Sst_Strs (char direction, int height) {
+    public Sst_Strs (Direction direction, int height) {
         super(direction, height);
         this.description = "The rickety U-shaped wooden staircase wraps around\n"
                          + "the room to a small second-floor landing. It looks\n"
@@ -14,12 +15,10 @@ public class Sst_Strs extends Staircase {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
-        if (this.DIR == 'd') {
-            rep = "The rickety wooden stairs lead back down to the second floor.";
+        if (this.DIR == Direction.DOWN) {
+            return "The rickety wooden stairs lead back down to the second floor.";
         }
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
     @Override protected void playEffect() {

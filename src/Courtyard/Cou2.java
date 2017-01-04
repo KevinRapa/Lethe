@@ -1,6 +1,7 @@
 package Courtyard;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Cou2 extends Room{
@@ -14,10 +15,10 @@ public class Cou2 extends Room{
                      "the castle walls to the south and west.";
     }
 /*----------------------------------------------------------------------------*/    
-    @Override public String getBarrier(char dir) {
+    @Override public String getBarrier(Direction dir) {
         AudioPlayer.playEffect(6);
         
-        if (dir == 's')
+        if (dir == Direction.SOUTH)
             return "There is a wall in the way. Though about 15 feet up, you can\n"
                  + "see a fissure in the wall of the castle.";
         else

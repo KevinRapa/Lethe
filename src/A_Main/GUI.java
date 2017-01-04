@@ -149,7 +149,8 @@ public class GUI extends JPanel {
      * @param txt dialog text.
      */
     public static void out(String txt) {
-        DIAL.setText(txt.replaceAll("\n", " "));
+        if (! txt.matches("none"))
+            DIAL.setText(txt.replaceAll("\n", " "));
     }
 /*----------------------------------------------------------------------------*/    
     /**

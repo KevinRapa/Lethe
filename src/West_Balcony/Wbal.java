@@ -1,6 +1,7 @@
 package West_Balcony;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Wbal extends Room{
@@ -16,8 +17,8 @@ public class Wbal extends Room{
                       "dark forest you walked through to get here.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
-        if (dir == 'a' || dir == 's')
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.WEST || dir == Direction.SOUTH)
             return "That's a couple hundred foot drop right there.";
         else {
             AudioPlayer.playEffect(6);

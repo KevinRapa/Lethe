@@ -1,6 +1,7 @@
 package Back_Balcony;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Bba2 extends Room{
@@ -17,8 +18,8 @@ public class Bba2 extends Room{
                      "village you left behind a shoreline.\n";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
-        if (dir == 'w')
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.NORTH)
             return "There's a couple hundred foot drop right there.";
         else {
             AudioPlayer.playEffect(6);

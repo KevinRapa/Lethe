@@ -63,7 +63,7 @@ public class Room implements Serializable {
      * @param dir A direction.
      * @return Why the move failed.
      */
-    public String getBarrier(char dir) {
+    public String getBarrier(Direction dir) {
         // Used in movement when you hit a barrier. Overridden in many cases.
         AudioPlayer.playEffect(6);
         return "There is a wall in the way.";

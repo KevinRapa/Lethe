@@ -1,6 +1,7 @@
 package Lookout;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Look extends Room{
@@ -15,8 +16,8 @@ public class Look extends Room{
                       "of the castle. In the far distance, you spot a lighthouse.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
-        if (dir == 'a')
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.WEST)
             return "There's a couple hundred foot drop right there.";
         else {
             AudioPlayer.playEffect(6);

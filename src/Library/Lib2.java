@@ -1,6 +1,7 @@
 package Library;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Lib2 extends Room {
@@ -37,15 +38,13 @@ public class Lib2 extends Room {
         return rep;
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
-        if (dir == 'a' || dir == 'd')
-            rep = "There's a bookshelf in the way.";
-        
+    @Override public String getBarrier(Direction dir) {
         AudioPlayer.playEffect(6);
         
-        return rep;
+        if (dir == Direction.WEST || dir == Direction.EAST)
+            return "There's a bookshelf in the way.";
+
+        return "There is a wall in the way.";
     }
 /*----------------------------------------------------------------------------*/
 }

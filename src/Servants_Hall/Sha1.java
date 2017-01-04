@@ -1,6 +1,7 @@
 package Servants_Hall;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Sha1 extends Room{
@@ -14,8 +15,8 @@ public class Sha1 extends Room{
                            "on the left side further down the hallway.";
     }
 /*----------------------------------------------------------------------------*/        
-    @Override public String getBarrier(char dir) {   
-        if (dir == 'a')
+    @Override public String getBarrier(Direction dir) {   
+        if (dir == Direction.WEST)
             return "This door's knob is missing.";
         else {
             AudioPlayer.playEffect(6);
@@ -24,15 +25,14 @@ public class Sha1 extends Room{
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String getDescription() {
-        String rep = this.description;
         if (! this.hasFurniture("door"))
-            rep = "You're on the south end of a short dark hallway.\n" +
-                  "To your west is a doorway to the next room over. A\n" +
-                  "torch on the wall dimly lights the hallway. Looking\n" +
-                  "to the north, there's another door on the left side\n" +
-                  "further down the hallway.";
+            return "You're on the south end of a short dark hallway.\n" +
+                   "To your west is a doorway to the next room over. A\n" +
+                   "torch on the wall dimly lights the hallway. Looking\n" +
+                   "to the north, there's another door on the left side\n" +
+                   "further down the hallway.";
         
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/ 
 }

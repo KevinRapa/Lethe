@@ -4,11 +4,12 @@ import A_Main.AudioPlayer;
 import A_Main.Player;
 import A_Super.Staircase;
 import A_Main.GUI;
+import A_Super.Direction;
 
 public class Gal3_Lddr extends Staircase {
     private boolean lowered;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_Lddr(char direction, int height) {
+    public Gal3_Lddr(Direction direction, int height) {
         super(direction, height);
         this.searchDialog = "The ladder hides nothing.";
         this.description = "The ladder is suspended above the ground in the\n"
@@ -39,10 +40,9 @@ public class Gal3_Lddr extends Staircase {
             // Sets the room that the player is in.
             int[] c = Player.getOcc().getCoords(); // coordinates of player location.
             int Z = c[0]; int Y = c[1]; int X = c[2]; //Individual ZYX coordinates.
-            int m = this.DIR == 'u' ? -this.HT : this.HT; // Z coordinate modifier.
                 
             playEffect();
-            Player.setOccupies(Z + m, Y, X); // moves the player's Z coordinate.
+            Player.setOccupies(Z + DIR.Z, Y, X); // moves the player's Z coordinate.
         
             rep = "You climb the ladder.";       
            

@@ -1,6 +1,7 @@
 package Gallery;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Gal_3W extends Room{
@@ -18,8 +19,8 @@ public class Gal_3W extends Room{
                    + "kind of unknown apparatus.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
-        if (dir == 'd')
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.EAST)
             return "There's just open space that way. Wouldn't want to fall.";
         else {
             AudioPlayer.playEffect(6);

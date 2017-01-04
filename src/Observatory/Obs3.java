@@ -1,6 +1,7 @@
 package Observatory;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Obs3 extends Room {
@@ -16,8 +17,8 @@ public class Obs3 extends Room {
                      "the balcony.";
     }
 /*----------------------------------------------------------------------------*/   
-    @Override public String getBarrier(char dir) {
-        if (dir == 'd')
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.EAST)
             return "The balcony railing is that way.";
         
         AudioPlayer.playEffect(6);

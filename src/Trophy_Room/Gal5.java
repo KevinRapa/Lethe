@@ -1,5 +1,6 @@
 package Trophy_Room;
 
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Gal5 extends Room{
@@ -15,12 +16,11 @@ public class Gal5 extends Room{
                         + "west stands a curio cabinet.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
-        String rep = "There's a wall in the way.";
-        if (dir == 'd' || dir == 'a' || dir == 'w')
-            rep = "It's pitch black, and you shouldn't wander in too far.";
+    @Override public String getBarrier(Direction dir) {
+        if (dir != Direction.SOUTH)
+            return "It's pitch black, and you shouldn't wander in too far.";
         
-        return rep;
+        return "There's a wall in the way.";
     }
 /*----------------------------------------------------------------------------*/
 }

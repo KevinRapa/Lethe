@@ -1,6 +1,7 @@
 package East_Outer_Wall;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Eow4 extends Room {
@@ -12,8 +13,8 @@ public class Eow4 extends Room {
                            "into a room above the west side of this chamber.";
     }  
 /*----------------------------------------------------------------------------*/   
-    @Override public String getBarrier(char dir) {
-        if (dir == 's')
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.SOUTH)
             return "The balcony railing is that way.";
         else {
             AudioPlayer.playEffect(6);

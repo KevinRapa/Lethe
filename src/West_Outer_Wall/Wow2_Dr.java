@@ -1,11 +1,12 @@
 package West_Outer_Wall;
 
+import A_Super.Direction;
 import A_Super.Door;
 
 public class Wow2_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Wow2_Dr () {
-        super();
+    public Wow2_Dr (Direction dir) {
+        super(dir);
         this.description = "To your east, you inspect the door. It's in horrible\n"
                          + "condition. It's boarded shut, and numerous gashes and\n"
                          + "splinters cover it. A hole in the door is big enough\n"

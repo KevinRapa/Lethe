@@ -1,13 +1,14 @@
 package Foyer;
 
 import A_Super.Door;
+import A_Super.Direction;
 
-public class Foy_Gt extends Door{
+public class Foy_Gt extends Door {
     private final String DESCOPEN, SRCHOPEN, DIALOPEN;
     private boolean isOpen;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
-    public Foy_Gt (boolean open) {
-        super();
+    public Foy_Gt (boolean open, Direction dir) {
+        super(dir);
         
         this.description = "An arched black iron gate barely taller than you.";
         this.DESCOPEN = "With the gate retracted, there is only an open doorway.";

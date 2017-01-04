@@ -7,10 +7,10 @@ import A_Super.Furniture;
 
 public class Jha2 extends Room {
     private final Jha_Ln LION_REF, LION_REF2;
-    private final Furniture MYSTDR_REF, DR_REF;
+    private final Furniture MYSTDR_REF;
     private final String desc2;
 // ============================================================================    
-    public Jha2(String name, String ID, Furniture ln, Furniture ln2, Furniture mystDr, Furniture dr) {
+    public Jha2(String name, String ID, Furniture ln, Furniture ln2, Furniture mystDr) {
         super(name, ID);
         this.description= "You stand at the south end of the hall near a\n" +
                           "southern door leading outside. At this end,\n" +
@@ -24,12 +24,10 @@ public class Jha2 extends Room {
         this.LION_REF = (Jha_Ln)ln;
         this.LION_REF2 = (Jha_Ln)ln;
         this.MYSTDR_REF = mystDr;
-        this.DR_REF = dr;
     }
 // ============================================================================
     public String lionCheck() {
         if (LION_REF.hasRuby() && LION_REF2.hasRuby()) {
-            this.removeFurniture(DR_REF);
             this.addFurniture(MYSTDR_REF);
             this.addAdjacent("SST1");
             return "At this moment, you hear a strange noise coming from close\n"

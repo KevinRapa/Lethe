@@ -21,10 +21,10 @@ public class Want_Lvr extends Lever {
         Rotu ref = (Rotu)Player.getRoomRef("ROTU");
         String rep = this.actDialog;
         
-        if (ref.getState().matches("EW"))
+        if (ref.getState() == 'e')
             rep = "You pull the lever, but nothing happens except a faint\n"
                 + "-click- sounding past the wall to your west.";
-        else if (ref.getState().matches("NS")) {
+        else if (ref.getState() == 'n') {
             AudioPlayer.playEffect(19);
             ref.rotate();
         }

@@ -1,6 +1,7 @@
 package Observatory;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Obs2 extends Room{
@@ -15,8 +16,8 @@ public class Obs2 extends Room{
                    + "the area is lit by a small lamp resting on an end table.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
-        if (dir == 'a')
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.WEST)
             return "The balcony railing is that way.";
         
         AudioPlayer.playEffect(6);

@@ -1,6 +1,7 @@
 package Kitchen;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Kitc extends Room{
@@ -20,8 +21,8 @@ public class Kitc extends Room{
                            "apparition.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
-        if ((dir == 'n' || dir == 'e' || dir == 's') && ! this.isLit)
+    @Override public String getBarrier(Direction dir) {
+        if ((dir != Direction.WEST) && ! this.isLit)
             return "It's too dark to see anything, and you don't want\n"
                  + "to trip and fall.";
         else {

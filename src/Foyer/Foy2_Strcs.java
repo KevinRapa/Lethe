@@ -1,10 +1,11 @@
 package Foyer;
 
+import A_Super.Direction;
 import A_Super.Staircase;
 
 public class Foy2_Strcs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Foy2_Strcs(char direction, int height) {
+    public Foy2_Strcs(Direction direction, int height) {
         super(direction, height);
         this.description = "A winding staircase run with red carpet all the way\n"
                          + "up. Looking straight above, it winds around you\n"

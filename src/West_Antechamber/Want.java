@@ -1,6 +1,7 @@
 package West_Antechamber;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Want extends Room{
@@ -16,15 +17,13 @@ public class Want extends Room{
                            "each of the pillars.";
     }
 /*----------------------------------------------------------------------------*/        
-    @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
-        if (dir == 'a')
-            rep = "Oh no! The rotunda is still shifted!";
-        
+    @Override public String getBarrier(Direction dir) {
         AudioPlayer.playEffect(6);
         
-        return rep;
+        if (dir == Direction.WEST)
+            return "Oh no! The rotunda is still shifted!";
+
+        return "There is a wall in the way.";
     }
 /*----------------------------------------------------------------------------*/
 }

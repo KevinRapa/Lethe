@@ -1,11 +1,12 @@
 package Marble_Hall;
 
+import A_Super.Direction;
 import A_Super.Door;
 
-public class MhaN_Dr extends Door {
+public class Mha_Dr extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public MhaN_Dr () {
-        super();
+    public Mha_Dr (Direction dir) {
+        super(dir);
         this.description = "A white regal door accented with gold lining.";
     }
 /*----------------------------------------------------------------------------*/

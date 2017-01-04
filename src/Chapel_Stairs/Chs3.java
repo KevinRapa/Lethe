@@ -1,6 +1,7 @@
 package Chapel_Stairs;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Chs3 extends Room {
@@ -12,9 +13,9 @@ public class Chs3 extends Room {
                    + "unfurnished and carries the notion of purity.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
+    @Override public String getBarrier(Direction dir) {
         
-        if (dir == 'a')
+        if (dir == Direction.WEST)
             return "The landing's railing protects you from tumbling three stories.";
         else {
             AudioPlayer.playEffect(6);

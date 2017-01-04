@@ -1,6 +1,7 @@
 package Courtyard;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Cou1 extends Room{
@@ -15,10 +16,10 @@ public class Cou1 extends Room{
                      "to lead nowhere.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
-        if (dir == 'd')
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.EAST)
             return "You'll need to climb the steps to get up there.";
-        if (dir == 'w' || dir == 'a')
+        if (dir == Direction.NORTH || dir == Direction.WEST)
             return "There's too much thorny growth to go anywhere else.";
         else {
             AudioPlayer.playEffect(6);

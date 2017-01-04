@@ -5,10 +5,10 @@ import A_Main.GUI;
 import A_Main.Player;
         
 public class Staircase extends Furniture {
-    protected final char DIR;
+    protected final Direction DIR;
     protected final int HT;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Staircase(char direction, int height) {
+    public Staircase(Direction direction, int height) {
         super();
         this.searchable = false;
         this.DIR = direction;
@@ -20,16 +20,15 @@ public class Staircase extends Furniture {
     @Override public String interact(String key) {     
         // Sets the room that the player is in.
         int[] c = Player.getOcc().getCoords(); // coordinates of player location.
-        int Z = c[0], Y = c[1], X = c[2], //Individual ZYX coordinates.
-            m = this.DIR == 'u' ? -this.HT : this.HT; // Z coordinate modifier.
+        int Z = c[0], Y = c[1], X = c[2]; //Individual ZYX coordinates.
 
         playEffect();
-        Player.setOccupies(Z + m, Y, X); // moves the player's Z coordinate.
+        Player.setOccupies(Z + DIR.Z, Y, X); // moves the player's Z coordinate.
 
         GUI.roomOut(Player.getOcc().triggeredEvent());
         Player.describeRoom();
         
-        return "You climb " + (DIR == 'd' ? "down" : "up") + " the stairs.";
+        return "You climb " + DIR + " the stairs.";
     }
 /*----------------------------------------------------------------------------*/
     protected void playEffect() {

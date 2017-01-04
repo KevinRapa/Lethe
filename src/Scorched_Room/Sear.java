@@ -1,6 +1,7 @@
 package Scorched_Room;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Sear extends Room{
@@ -14,19 +15,17 @@ public class Sear extends Room{
                    + "is an interesting fissure in the wall to the north.";
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
-        if (dir == 'a') {
-            AudioPlayer.playEffect(6);
-            rep = "The door here is boarded up.";
+    @Override public String getBarrier(Direction dir) {
+        switch (dir) {
+            case WEST:
+                AudioPlayer.playEffect(6);
+                return "The door here is boarded up.";
+            case NORTH:
+                return "You're too stocky to fit through the fissure.";
+            default:
+                AudioPlayer.playEffect(6);
+                return "There is a wall in the way.";
         }
-        if (dir == 'w')
-            rep = "You're too stocky to fit through the fissure.";
-        else
-            AudioPlayer.playEffect(6);
-        
-        return rep;
     }
 /*----------------------------------------------------------------------------*/
 }

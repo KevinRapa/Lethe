@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Super.Room;
 import A_Main.Player;
+import A_Super.Direction;
 
 public class Par2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -42,14 +43,12 @@ public class Par2 extends Room{
         return dialog;
     }
 /*----------------------------------------------------------------------------*/ 
-    @Override public String getBarrier(char dir) {
-        String rep = "There is a wall in the way.";
-        
-        if (dir == 's')
-            rep = "There's nothing but a railing and open space over the lower\n"
-                + "level parlor.";
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.SOUTH)
+            return "There's nothing but a railing and open space over the lower\n"
+                 + "level parlor.";
                 
-        return rep;
+        return "There is a wall in the way.";
     }
 /*----------------------------------------------------------------------------*/ 
 }

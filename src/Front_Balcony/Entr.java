@@ -1,5 +1,6 @@
 package Front_Balcony;
 
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Entr extends Room {
@@ -13,10 +14,10 @@ public class Entr extends Room {
                            "of each side railing.";
     }  
 /*----------------------------------------------------------------------------*/        
-    @Override public String getBarrier(char dir) {
+    @Override public String getBarrier(Direction dir) {
         String rep = "There's a wall in the way.";
         
-        if (dir == 'd' || dir == 'a')
+        if (dir == Direction.EAST || dir == Direction.WEST)
             rep = "There's just a railing that way.";
         
         return rep;

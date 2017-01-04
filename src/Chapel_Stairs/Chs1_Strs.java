@@ -1,10 +1,11 @@
 package Chapel_Stairs;
 
+import A_Super.Direction;
 import A_Super.Staircase;
 
 public class Chs1_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Chs1_Strs (char direction, int height) {
+    public Chs1_Strs (Direction direction, int height) {
         super(direction, height);
         this.description = "The wide spiral stairs wind many times around the\n"
                          + "tower's wall. A dark red carpet follows them up.";
@@ -15,7 +16,7 @@ public class Chs1_Strs extends Staircase {
     @Override public String getDescription() {
         String rep = this.description;
         
-        if (this.DIR == 'd') {
+        if (this.DIR == Direction.DOWN) {
             rep = "The spiral stairs run a few stories downward to the first\n"
                 + "floor landing.";
         }

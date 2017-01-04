@@ -11,7 +11,7 @@ import A_Main.Player;
 public class DoubleStaircase extends Staircase {
     // ========================================================================
     public DoubleStaircase () {
-        super('b', 1); //'b' means both. DoubleStaircase does not use DIR.
+        super(Direction.DOWN, 1); //Direction is UNUSED in Double stairs
     }
     // ========================================================================   
     @Override public String interact(String key) {     
@@ -25,12 +25,12 @@ public class DoubleStaircase extends Staircase {
             ans = GUI.promptOut();
         } while (! ans.matches("[ud]|up|down"));
         
-        int m = ans.matches("up|u") ? -this.HT : this.HT; // Z coordinate modifier.
+        Direction dir = ans.matches("up|u") ? Direction.UP : Direction.DOWN; // Z coordinate modifier.
                 
-        Player.setOccupies(Z + m, Y, X); // moves the player's Z coordinate.
+        Player.setOccupies(Z + dir.Z, Y, X); // moves the player's Z coordinate.
         playEffect();
         
-        String rep = "You climb the stairs " + (ans.matches("up|u") ? "up" : "down") + ".";       
+        String rep = "You climb the stairs " + dir + ".";       
 
         GUI.roomOut(Player.getOcc().triggeredEvent());
         Player.describeRoom();

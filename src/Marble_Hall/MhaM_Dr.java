@@ -1,22 +1,20 @@
 package Marble_Hall;
 
-import A_Super.Furniture;
+import A_Super.Door;
 import A_Super.Room;
+import A_Super.Direction;
 import A_Main.Player;
 import A_Super.Item;
 
-public class MhaM_Dr extends Furniture {
+public class MhaM_Dr extends Door {
     private int numMedallions;
     private boolean angel, soldier, horse;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public MhaM_Dr (Room din) {
-        super();
-        this.searchable = false;
+    public MhaM_Dr (Room din, Direction dir) {
+        super(dir);
         this.angel = false; this.soldier = false; this.horse = false; // Slots
         this.numMedallions = 1;
-        this.actDialog = "It seems as thought one does not simply open this door.";
         this.addNameKeys("door", "(?:double )?doors");
-        this.addActKeys("open", "use");
         this.addUseKeys("stone disk", "angel medallion", "horse medallion");
     }
 /*----------------------------------------------------------------------------*/

@@ -1,6 +1,7 @@
 package West_Outer_Wall;
 
 import A_Main.AudioPlayer;
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Wow2 extends Room{
@@ -16,10 +17,10 @@ public class Wow2 extends Room{
                            "out the front of the castle.";
     }  
 /*----------------------------------------------------------------------------*/        
-    @Override public String getBarrier(char dir) { 
+    @Override public String getBarrier(Direction dir) { 
         AudioPlayer.playEffect(6);
         
-        if (dir == 'd')
+        if (dir == Direction.EAST)
             return "The door here is battered and boarded up.";
         else 
             return "There is a wall in the way.";

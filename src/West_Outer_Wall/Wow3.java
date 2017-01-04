@@ -1,7 +1,9 @@
 package West_Outer_Wall;
 
+import A_Main.AudioPlayer;
 import A_Super.Room;
 import A_Main.Player;
+import A_Super.Direction;
 import A_Super.Furniture;
 import A_Super.Item;
 
@@ -25,15 +27,16 @@ public class Wow3 extends Room{
                          + "and splinters.";
     }
 /*----------------------------------------------------------------------------*/        
-    @Override public String getBarrier(char dir) {
-        String rep = "There's a wall in the way.";
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.NORTH) {
+            AudioPlayer.playEffect(6);
+            return "There's a large shelf in the way.";
+        }
+        else if (dir == Direction.WEST)
+            return "There's a railing there, and that drop looks intimidating.";
         
-        if (dir == 'w')
-            rep = "There's a large shelf in the way.";
-        if (dir == 'a')
-            rep = "There's a railing there, and that drop looks intimidating.";
-        
-        return rep;
+        AudioPlayer.playEffect(6);
+        return "There's a wall in the way.";
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String triggeredEvent() {
