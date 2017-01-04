@@ -12,7 +12,7 @@ public class Lib4_Prdtn extends Furniture {
                          + "\"Perdition\".";
         this.actDialog = "You push against the shelf, but it doesn't budge.";
         this.searchDialog = "You peruse its shelves.";
-        this.addNameKeys("perdition", "perdition shelf");
+        this.addNameKeys("perdition", "perdition (?:book)?shelf");
         this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");
     }
 /*----------------------------------------------------------------------------*/

@@ -16,7 +16,7 @@ public class Mha_LStat extends Furniture {
                        + "before realizing that the angel is already holding\n"
                        + "a spear.";
         this.actDialog = "Such an impressive work of artistry deserves not to be\n"
-                    + "tainted by your touch.";
+                       + "tainted by your touch.";
         this.addNameKeys("left statue");
         this.addActKeys("touch", "grab", "hold");
         this.addUseKeys("silver spear");

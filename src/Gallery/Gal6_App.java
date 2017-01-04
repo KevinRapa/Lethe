@@ -21,25 +21,21 @@ public class Gal6_App extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
-        if (! this.doesThisHaveIt("metal box thingy with wires")) {
-            rep = "The weird apparatus looks like a metal platform\n"
-                + "with three curved arms projecting out and overtop\n"
-                + "of itself. Its lights are off and the *bleeping*\n"
-                + "has stopped. Next to the apparatus is a label that\n"
-                + "says: \"Plasma induction charger\".";
+        if (! this.doesThisHaveIt("box thingy")) {
+            return "The weird apparatus looks like a metal platform\n"
+                 + "with three curved arms projecting out and overtop\n"
+                 + "of itself. Its lights are off and the *bleeping*\n"
+                 + "has stopped. Next to the apparatus is a label that\n"
+                 + "says: \"Plasma induction charger\".";
         }
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() { 
-    String rep = this.searchDialog;
-    
-    if (! this.doesThisHaveIt("metal box thingy with wires")) {
-            rep = "The platform in the center is empty.";
-        }
-        return rep;
+        if (! this.doesThisHaveIt("metal box thingy with wires")) 
+            return "The platform in the center is empty.";
+        
+        return this.searchDialog;
     }  
 /*----------------------------------------------------------------------------*/  
 }

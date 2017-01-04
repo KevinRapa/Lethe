@@ -36,11 +36,16 @@ public class Lib1_Art extends Furniture {
         boolean yellow = false; boolean dark = false;      
         
         for (Item i : this.inv) {
-                String j = i.toString();
-                red = j.matches("red focus");
-                blue = j.matches("blue focus");
-                yellow = j.matches("yellow focus");
-                dark = j.matches("dark focus");
+            String j = i.toString();
+            
+            if(j.matches("red focus"))
+                red = true;
+            else if(j.matches("blue focus"))
+                blue = true;
+            else if(j.matches("yellow focus"))    
+                yellow = true;
+            else if(j.matches("dark focus"))    
+                dark = true;
         }        
         this.determineColor(red, blue, yellow, dark);
     }
@@ -122,20 +127,16 @@ public class Lib1_Art extends Furniture {
         @Override public boolean add(Item item) {
             if (item.getType().matches("focus")) {
                 this.CONTENTS.add(item);
-                this.triggerAdd(item);
+                triggerEvent();
                 return true;
             }
+            GUI.out("The " + item + " doesn't fit in.");
             return false;
         }
     /*------------------------------------------------------------------------*/
         @Override public void remove(Item removeThis) {  
             this.CONTENTS.remove(removeThis);
             triggerEvent();
-        }
-    /*------------------------------------------------------------------------*/
-        private void triggerAdd(Item item) {
-            if (item.toString().matches("(?:red|yellow|blue|dark) focus"))       
-                triggerEvent();
         }
     }
 /*----------------------------------------------------------------------------*/

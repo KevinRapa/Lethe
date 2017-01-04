@@ -16,7 +16,7 @@ public class Gal1_Armr extends Furniture {
                           + "but nothing removable.";
         this.actDialog = "You will probably get hurt trying to do that.";
         this.addActKeys("wear", "equip");
-        this.addNameKeys("samurai armor", "armor suit", "armor", "suit of armor"); 
+        this.addNameKeys("samurai armor", "armor suit", "(?:suit of )?armor"); 
 /*----------------------------------------------------------------------------*/
     }
 }

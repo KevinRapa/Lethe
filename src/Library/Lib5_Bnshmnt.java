@@ -12,7 +12,7 @@ public class Lib5_Bnshmnt extends Furniture {
                          + "\"Banishment\".";
         this.actDialog = "You push against the shelf, but it doesn't budge.";
         this.searchDialog = "You peruse its shelves.";
-        this.addNameKeys("banishment", "banishment shelf");
+        this.addNameKeys("banishment", "banishment (?:book)?shelf");
         this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");
     }
 /*----------------------------------------------------------------------------*/

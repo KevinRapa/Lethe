@@ -14,7 +14,7 @@ public class Gal1_KtnFurn extends Furniture {
         this.description = "The black katana looks exceptionally sharp.";
         this.actDialog = "You take the katana off its display.";
         this.addActKeys("take", "grab", "hold", "get");
-        this.addNameKeys("katana", "sword");
+        this.addNameKeys("(?:black )?(?:katana|sword)");
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) { 

@@ -17,12 +17,7 @@ public class Window extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (this.isOpen)
-            this.description = this.descOpen;
-        else
-            this.description = this.descClosed;
-        
-        return this.description; 
+        return this.isOpen ? this.descOpen : this.descClosed;
     }
 /*----------------------------------------------------------------------------*/
     public boolean isOpen() {
@@ -38,19 +33,16 @@ public class Window extends Furniture {
     }    
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-
             if (this.isOpen && key.matches("close")) {
                 this.close();
-                actDialog = "You close the window."; 
+                return "You close the window."; 
             }
             else if (! this.isOpen && key.matches("open")) {
                 this.open();
-                actDialog = "You open the window."; 
+                return "You open the window."; 
             }
             else 
-                this.actDialog = "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
-    
-        return actDialog;
+                return "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
     } 
 /*----------------------------------------------------------------------------*/
 }

@@ -22,7 +22,7 @@ public class Jha2 extends Room {
                    + "stares at the newly formed door on the west wall. A lantern\n"
                    + "hangs in the center of this half of the hall.";
         this.LION_REF = (Jha_Ln)ln;
-        this.LION_REF2 = (Jha_Ln)ln;
+        this.LION_REF2 = (Jha_Ln)ln2;
         this.MYSTDR_REF = mystDr;
     }
 // ============================================================================
@@ -38,10 +38,8 @@ public class Jha2 extends Room {
     }
 // ============================================================================
     @Override public String getDescription() {
-        if (this.hasFurniture("mysterious door"))
-            return this.desc2;
-        else
-            return this.description;
+        return this.hasFurniture("mysterious door") ? 
+                this.desc2 : this.description;
     }
 // ============================================================================
 }

@@ -24,18 +24,16 @@ public class Gal1_Scrn extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {     
-        String rep = "You have already moved the screen.";
-            
         if (! this.lifted) {
-            rep = this.actDialog;
             this.lifted = true;
             Player.getRoomRef("GAL1").addFurniture(REF);
+            return this.actDialog;
         }            
-        return rep;
+        return "You have already moved the screen.";
     }
 /*----------------------------------------------------------------------------*/
-        public boolean isMoved() {
-            return this.lifted;
-        }
+    public boolean isMoved() {
+        return this.lifted;
+    }
 /*----------------------------------------------------------------------------*/
 }

@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="3">
+        <file>
+            <url>src/Marble_Hall/Mha_LStat.java</url>
+            <bookmark id="3">
+                <name/>
+                <line>18</line>
+                <key/>
+            </bookmark>
+        </file>
         <file>
             <url>src/Iron_Hall/Iha1_Bwl.java</url>
             <bookmark id="1">
                 <name/>
-                <line>40</line>
+                <line>38</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Gallery/Gal4_Lft.java</file>
             <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/Salamaa.java</file>
             <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Super/Item.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/Inventory.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Super/Room.java</file>
         </group>
     </open-files>
 </project-private>

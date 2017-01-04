@@ -2,7 +2,7 @@ package Library;
 
 import A_Super.Furniture;
 
-public class Lib_Blcny extends Furniture{
+public class Lib_Blcny extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib_Blcny() {
         super();
@@ -11,7 +11,7 @@ public class Lib_Blcny extends Furniture{
                          + "around to the south wall. On the balcony against the\n"
                          + "south wall is another bookshelf.";
         this.searchDialog = "You're too far away to do that.";
-        this.addNameKeys("balcony");
+        this.addNameKeys("(?:second-floor )?balcony");
     }
 /*----------------------------------------------------------------------------*/
 }

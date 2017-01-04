@@ -17,8 +17,8 @@ public class Gal3_Rp extends Furniture {
             this.addUseKeys("katana", "silver sword", "rusty sword", "broken sword", "war axe", "battle axe");
             this.addNameKeys("rope");
             this.actDialog = "You cut the rope with the katana. The ladder\n"
-                                + "drops down into the room, giving access to\n"
-                                + "the loft.";
+                           + "drops down into the room, giving access to\n"
+                           + "the loft.";
             this.description = "The rope is tied to the ladder and hoists it up\n"
                              + "with a pulley. It feeds into a hole in the wall\n"
                              + "next to you. Above the hole, you see a switch.";
@@ -26,36 +26,28 @@ public class Gal3_Rp extends Furniture {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
-        String rep = this.description;
-        
-        if (this.cut) {
-            rep = "The rope is now cut.";
-        }
-        return rep;
+        return this.cut ? "The rope is now cut." : this.description;
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) { 
-        String rep = this.actDialog;
-        
-        if(! this.cut) {
+        if (! this.cut) {
             if (key.matches("cut")) {
                 if (detectItem()) {
                     REF.lower();
                     this.cut = true;
+                    return this.actDialog;
                 }           
                 else
-                    rep = "You have nothing to cut the rope with.";
+                    return "You have nothing to cut the rope with.";
             }       
             else if (key.matches("pull")) 
-                rep = "Pulling the rope is doing the opposite of what you want.";    
-                
-            else if (key.matches("untie")) 
-                rep = "The knot in the rope is too high up to untie.";    
+                return "Pulling the rope is doing the opposite of what you want.";  
+            
+            else 
+                return "The knot in the rope is too high up to untie.";    
         }
         else
-            rep = "The rope is cut already";
-               
-        return rep;
+            return "The rope is cut already";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

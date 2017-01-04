@@ -8,7 +8,6 @@ public class Trch extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Trch() {
         super();
-        
         this.TORCH = new Item("hand torch", "It's a burning piece of wood. Stay it from your beard!");
         this.inv = new Hldr_Inv(TORCH);
         
@@ -19,7 +18,7 @@ public class Trch extends Furniture {
         this.useDialog = "You slide the torch into the steel holder.";
         
         this.addActKeys("take", "grab", "get");
-        this.addNameKeys("(?:wall )?torch(?:es)?", "(?:steel )?holder(?:es)?");
+        this.addNameKeys("(?:wall )?torch(?:es)?", "(?:steel )?holders?");
         this.addUseKeys("hand torch");
     }
 /*----------------------------------------------------------------------------*/
@@ -53,10 +52,7 @@ public class Trch extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        if (! this.doesThisHaveIt("hand torch"))
-            return "The mounted steel holder is empty.";
-            
-        return this.searchDialog;
+        return this.getDescription();
     }
 /*----------------------------------------------------------------------------*/
 }

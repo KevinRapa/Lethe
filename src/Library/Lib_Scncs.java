@@ -10,7 +10,7 @@ public class Lib_Scncs extends Furniture{
         this.description = "Copper metal sconces holding glass bulbs. They dimly\n" +
                            "light the wall with a flickering orange glow.";
         this.actDialog = "Ouch! That's hot!";
-        this.addNameKeys("(?:electric )?sconces?");
+        this.addNameKeys("(?:electric )?(?:copper )?(?:metal )?(?:sconces?|lights?)");
         this.addActKeys("grab", "hold", "touch");
     }
 /*----------------------------------------------------------------------------*/

@@ -3,12 +3,11 @@ package Lookout;
 import A_Main.AudioPlayer;
 import A_Main.Player;
 import Rotunda.Rotu_Fntn;
-import Rotunda.Rotu_Whl;
 import A_Super.Furniture;
 
 public class Look_Vlv extends Furniture{
     private final Rotu_Fntn FNTN_REF;
-    private final Rotu_Whl WHL_REF;
+    private final Furniture WHL_REF;
     private boolean loosened;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Look_Vlv(Furniture fntn, Furniture whl) {
@@ -23,13 +22,12 @@ public class Look_Vlv extends Furniture{
                     + "a gush of water flows from the nearby pipe and off of the\n"
                     + "balcony.";
         this.FNTN_REF = (Rotu_Fntn) fntn;
-        this.WHL_REF = (Rotu_Whl) whl;
-        this.addNameKeys("valve");
+        this.WHL_REF = whl;
+        this.addNameKeys("valve", "(?:big )?(?:rusty )?valve");
         this.addActKeys("turn", "rotate", "spin", "twist");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {
-        String rep = this.actDialog;
         if (! FNTN_REF.isDrained()) {
             FNTN_REF.drain();
             AudioPlayer.playEffect(20);
@@ -37,14 +35,14 @@ public class Look_Vlv extends Furniture{
             loosened = true; 
         }
         else {
-            if (loosened) 
-                rep = "You tighten back up the valve";
-            else 
-                rep = "You loosen the valve, but nothing happens.";
+            loosened = ! loosened; 
             
-            loosened = ! loosened;           
+            if (loosened) 
+                return "You tighten back up the valve";
+            else 
+                return "You loosen the valve, but nothing happens.";         
         }       
-        return rep;
+        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
     

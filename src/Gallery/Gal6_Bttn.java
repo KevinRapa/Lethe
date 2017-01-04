@@ -22,14 +22,14 @@ public class Gal6_Bttn extends Button {
     @Override public String event(String key) {
         String rep = this.actDialog;
         String choice;
-        int X, Y, Z;
-        Room room;
-        
+
         GUI.out("Are you really sure you want to press the button?");
         do {
             choice = GUI.promptOut();
             
             if (choice.matches("yes")) {
+                Room room;
+                int X, Y, Z;
                 AudioPlayer.playEffect(11);
                 Random generator = new Random();
                 
@@ -40,13 +40,12 @@ public class Gal6_Bttn extends Button {
                     room = Player.getMapRef()[Z][Y][X];                
                 } while (! Player.hasVisited(room.getID()) || room.getID().matches("STUD|LOOK"));    
                 
-            Player.setOccupies(Z, Y, X);  
-            GUI.roomOut(Player.getPos().toString());
-            rep = "'... Huh? What just happened? This isn't the gallery loft.'\n" +
-                  "You scratch your head and look around the room. After a few\n"
-                + "seconds, you're pretty sure you are back " + Player.getPos() + ".";
+                Player.setOccupies(Z, Y, X);  
+                GUI.roomOut(Player.getPos().toString());
+                rep = "'... Huh? What just happened? This isn't the gallery loft.'\n" +
+                      "You scratch your head and look around the room. After a few\n"
+                    + "seconds, you're pretty sure you are back " + Player.getPos() + ".";
             }
-            
         } while (! choice.matches("yes|no|"));
         
         return rep;

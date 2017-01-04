@@ -22,18 +22,16 @@ public class Gal1_Scr extends Furniture {
         this.actDialog = "Upon lifting the scroll from the wall, you discover a\n"
                     + "hollow containing a dome-shaped button.";
         this.addActKeys("move", "take", "lift", "slide", "remove");
-        this.addNameKeys("scroll", "chinese scroll");
+        this.addNameKeys("(?:hanging )?(?:chinese )?scroll");
     }
 /*----------------------------------------------------------------------------*/
         @Override public String interact(String key) {     
-            String rep = "You have already discovered the button.";
-            
             if (! this.lifted) {
-                rep = this.actDialog;
                 this.lifted = true;
                 Player.getRoomRef("GAL1").addFurniture(REF);
+                return this.actDialog;
             }            
-            return rep;
+            return "You have already discovered the button.";
     }
 /*----------------------------------------------------------------------------*/
         public boolean isMoved() {

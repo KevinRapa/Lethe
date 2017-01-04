@@ -3,7 +3,6 @@ package Library;
 import A_Super.Statue;
 
 public class Lib2_Stat extends Statue {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib2_Stat() {
         super();

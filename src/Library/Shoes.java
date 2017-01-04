@@ -11,17 +11,14 @@ public class Shoes extends Item {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent() {
-        String rep = this.useDialog;
-        
         if (! Player.getShoes().matches(this.NAME)) {
             Player.setShoes(this.NAME);
         }
         else {
-            rep = "You remove them and put your old shoes back on.";
             Player.setShoes("");
+            return "You remove them and put your old shoes back on.";
         }
-
-        return rep;
+        return this.useDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

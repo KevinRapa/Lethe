@@ -20,13 +20,8 @@ public class Gal3_Lddr extends Staircase {
     }
 /*----------------------------------------------------------------------------*/     
     @Override public String getDescription() {
-        String rep = this.description;
-        
-        if (this.lowered) {
-            rep = "With the rope cut, the ladder now gives way to the\n"
-                + "gallery loft.";
-        }
-        return rep;
+        return (!this.lowered) ? this.description :
+            "With the rope cut, the ladder now gives way to the gallery loft.";
     }
 /*----------------------------------------------------------------------------*/
     public void lower() {
@@ -34,8 +29,6 @@ public class Gal3_Lddr extends Staircase {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {     
-        String rep;
-        
         if (this.lowered) {
             // Sets the room that the player is in.
             int[] c = Player.getPos().getCoords(); // coordinates of player location.
@@ -43,19 +36,16 @@ public class Gal3_Lddr extends Staircase {
                 
             playEffect();
             Player.setOccupies(Z + DIR.Z, Y, X); // moves the player's Z coordinate.
-        
-            rep = "You climb the ladder.";       
-           
             GUI.roomOut(Player.getPos().triggeredEvent());
+            
+            return "You climb the ladder.";   
         }
         else
-            rep = "The ladder is too high up to climb.";
-        
-        return rep;
+            return "The ladder is too high up to climb.";
     }
 /*----------------------------------------------------------------------------*/
     @Override protected void playEffect() {
-        // For overriding. Some stairs aren't wooden.
         AudioPlayer.playEffect(16);
     }
+/*----------------------------------------------------------------------------*/
 }

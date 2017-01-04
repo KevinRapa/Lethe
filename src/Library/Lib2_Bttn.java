@@ -17,11 +17,9 @@ public class Lib2_Bttn extends Button {
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
         if (FRPLC_REF.isLit())
-            actDialog = "Ouch! There is fire in the way!";               
+            return "Ouch! There is fire in the way!";               
         else
-            actDialog = STAT_REF.lightLeft();
-                     
-        return actDialog;
+            return STAT_REF.lightLeft();
     }
 /*----------------------------------------------------------------------------*/
 }

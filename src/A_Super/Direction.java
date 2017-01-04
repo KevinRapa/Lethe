@@ -1,6 +1,6 @@
 package A_Super;
 /**
- * Represents a simple cardinal direction in the game.
+ * Represents a simple direction in the game.
  * Used with movement and doors.
  * @author Mantis Toboggan
  */
@@ -14,7 +14,7 @@ public enum Direction {
     DOWN ("down", 0, 0, 1);
     
     public final int X, Y, Z; // Positive or negative direction to move in the array.
-    private final String ID; // 
+    private final String ID; // String representation of the direction. 
 // ============================================================================   
     Direction(String id, int x, int y, int z) {
         ID = id;

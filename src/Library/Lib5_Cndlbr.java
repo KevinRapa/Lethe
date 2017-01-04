@@ -10,7 +10,7 @@ public class Lib5_Cndlbr extends Furniture{
         this.description = "The intricate iron candelabra sits in the corner\n"
                          + "holding 5 candles.";
         this.actDialog = "Ouch! That's hot! Why do you do this?";
-        this.addNameKeys("candelabra", "standing candelabra");
+        this.addNameKeys("(?:intricate )?(?:iron )?(?:standing )?candelabra");
         this.addActKeys("touch", "hold", "grab");
     }
 /*----------------------------------------------------------------------------*/

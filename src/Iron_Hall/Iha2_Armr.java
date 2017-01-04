@@ -19,17 +19,13 @@ public class Iha2_Armr extends Furniture {
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (! this.doesThisHaveIt("polearm"))
-            return "It's a suit of armor. It's gauntlets are empty.";
-        else
-            return this.description;  
+        return this.doesThisHaveIt("polearm") ? 
+                this.description : "It's a suit of armor. It's gauntlets are empty.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        if (this.searchable)
-            return "You look in the armor's gauntlet.";
-        else 
-            return this.searchDialog; 
+        return this.searchable ? 
+                "You look in the armor's gauntlet." : this.searchDialog; 
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {

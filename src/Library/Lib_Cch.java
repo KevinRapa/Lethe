@@ -2,7 +2,7 @@ package Library;
 
 import A_Super.Furniture;
 
-public class Lib_Cch extends Furniture{
+public class Lib_Cch extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib_Cch() {
         super();
@@ -12,7 +12,7 @@ public class Lib_Cch extends Furniture{
         this.searchDialog = "You look underneath, but find nothing.";
         this.actDialog = "You relax on the couch for a moment. You feel like your\n"
                     + "IQ has just risen a couple points.";
-        this.addNameKeys("couch", "sofa");
+        this.addNameKeys("(?:red )?(?:gothic-era )?(?:couch|sofa)");
         this.addActKeys("sit", "use", "relax", "lay");
     }
 /*----------------------------------------------------------------------------*/

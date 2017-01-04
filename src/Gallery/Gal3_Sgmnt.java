@@ -14,12 +14,11 @@ public class Gal3_Sgmnt extends Furniture{
         this.description = "The faces on each segment are surreal and spooky.\n "
                          + "Seams separate the four of them slightly.";
         this.addActKeys("turn", "pull", "rotate", "spin", "move");
-        this.addNameKeys("segment", "segments");
+        this.addNameKeys("segments?");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = REF.interact(key);
-        
-        return rep;
+        return REF.interact(key);
     }
+/*----------------------------------------------------------------------------*/
 }

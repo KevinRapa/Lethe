@@ -2,8 +2,7 @@ package Library;
 
 import A_Super.Statue;
 
-public class Lib4_Stat extends Statue{
-
+public class Lib4_Stat extends Statue {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib4_Stat() {
         super();

@@ -10,7 +10,7 @@ public class Lib_Pllr extends Furniture{
         this.description = "The fat Corinthian pillar stands in the corner of\n"
                          + "where the stairs meet the second floor.";
         this.actDialog = "This pillar doesn't need help holding up the ceiling.";
-        this.addNameKeys("pillar", "corinthian pillar", "column");
+        this.addNameKeys("(?:fat )?(?:corinthian )?(?:pillar|column)");
         this.addActKeys("hold", "grab");
     }
 /*----------------------------------------------------------------------------*/

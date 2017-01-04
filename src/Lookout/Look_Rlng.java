@@ -9,30 +9,25 @@ public class Look_Rlng extends Furniture{
         super(items);
         this.description = "A wide, sturdy granite railing.";
         this.searchDialog = "You search around the railing.";
-        this.actDialog = "You grab the railing, but there's no fear of falling over,\n"
-                    + "right?";
-        this.addNameKeys("railing", "balcony railing");
+        this.actDialog = "You grab the railing, but there's no fear of falling over, right?";
+        this.addNameKeys("(?:wide )?(?:sturdy )?(?:granite )?railing", "balcony railing");
         this.addActKeys("use", "grab", "hold");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (this.doesThisHaveIt("looped rope")) {
-            rep = "A wide, sturdy granite railing. There appears to be\n"
-                + "something tied to the bottom.";
+            return "A wide, sturdy granite railing. There appears to be\n"
+                 + "something tied to the bottom.";
         }
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {     
-        String rep = this.actDialog;
-        
         if (this.doesThisHaveIt("looped rope")) {
-            rep = "You take hold of the railing and peer outwards.\n"
-                + "Something tied to the railing catches your eye.";
+            return "You take hold of the railing and peer outwards.\n"
+                 + "Something tied to the railing catches your eye.";
         }
-        return rep;
+        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

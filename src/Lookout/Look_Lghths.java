@@ -11,7 +11,7 @@ public class Look_Lghths extends Furniture{
                          + "beacon illuminates northwards. You wish it would\n"
                          + "maybe spot you.";
         this.searchDialog = "The lighthouse is absolutely too far away to do that.";
-        this.addNameKeys("lighthouse");
+        this.addNameKeys("(?:classic )?(?:red and white )?(?:striped )?lighthouse");
     }
 /*----------------------------------------------------------------------------*/
 }

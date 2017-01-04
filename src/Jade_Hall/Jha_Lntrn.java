@@ -15,7 +15,7 @@ public class Jha_Lntrn extends Furniture {
         this.searchDialog = "You can't reach it. Probably for the best. You aren't\n"
                           + "too fond of fire.";
 
-        this.addNameKeys("hanging lantern", "lantern", "lanterns", "hanging lanterns");
+        this.addNameKeys("(?:hanging )?lanterns?");
     }
     // ========================================================================
 }
