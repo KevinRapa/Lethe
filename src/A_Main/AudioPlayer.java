@@ -88,7 +88,7 @@ public class AudioPlayer {
         put("SST2", atticCustom);          put("ATT1", atticCustom);
         put("ATT2", atticCustom);          put("OBS1", obsCustom);
         put("OBS2", obsCustom);            put("OBS3", obsCustom);
-        
+        put("GAL5", galChoir);
     }};
 //******************************************************************************    
 // </editor-fold>
@@ -183,7 +183,7 @@ public class AudioPlayer {
         if (currentMusic.isActive()) 
             stopTrack();
         else 
-            playTrack(Player.getOcc().getID());
+            playTrack(Player.getPos().getID());
     }
 //******************************************************************************    
 // </editor-fold>

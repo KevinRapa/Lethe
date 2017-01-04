@@ -9,5 +9,6 @@ public class Sha_Dr extends Door {
         super(dir);
         this.description = "It's a small wooden door; a bit taller than you.";
     }
+/*----------------------------------------------------------------------------*/
 }
 

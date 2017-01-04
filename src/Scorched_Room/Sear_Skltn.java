@@ -4,7 +4,6 @@ import A_Super.Furniture;
 import A_Super.Item;
         
 public class Sear_Skltn extends Furniture {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Sear_Skltn(Item... items) {
         super(items);

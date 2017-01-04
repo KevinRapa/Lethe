@@ -11,7 +11,7 @@ public class Wbal_Bcn extends Furniture{
                          + "a large bowl of flame. It's so bright, I'm sure one\n"
                          + "could see this from a long distance.";
         this.searchDialog = "The beacon is too tall. Plus, it's on fire.";
-        this.addNameKeys("beacon");
+        this.addNameKeys("(?:ten foot (?:high )?)?(?:stone )?(?:obelisk|beacon)");
     }
 /*----------------------------------------------------------------------------*/
 }

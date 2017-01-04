@@ -4,7 +4,7 @@ import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
 
-public class Sha1 extends Room{
+public class Sha1 extends Room {
     
     public Sha1(String name, String ID) {
         super(name, ID);
@@ -25,9 +25,9 @@ public class Sha1 extends Room{
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String getDescription() {
-        if (! this.hasFurniture("door"))
+        if (! this.hasFurniture("west door"))
             return "You're on the south end of a short dark hallway.\n" +
-                   "To your west is a doorway to the next room over. A\n" +
+                   "To your west is an open doorway to the next room over. A\n" +
                    "torch on the wall dimly lights the hallway. Looking\n" +
                    "to the north, there's another door on the left side\n" +
                    "further down the hallway.";

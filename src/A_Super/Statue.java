@@ -1,6 +1,7 @@
 package A_Super;
 
 /**
+ * Defines generic attributes of a statue.
  * @author Kevin Rapa
  */
 abstract public class Statue extends Furniture {

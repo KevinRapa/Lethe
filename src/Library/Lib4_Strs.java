@@ -26,7 +26,7 @@ public class Lib4_Strs extends Furniture {
             Player.setOccupies(3, 2, 8);
             
             rep = "You climb down the stairs to the first floor.";  
-            GUI.roomOut(Player.getOcc().triggeredEvent());
+            GUI.roomOut(Player.getPos().triggeredEvent());
         }
         else {
             rep = "As your foot touches the top step, the stairs flatten down\n"

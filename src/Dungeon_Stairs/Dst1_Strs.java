@@ -19,10 +19,9 @@ public class Dst1_Strs extends Staircase {
         
         if (Player.hasVisited("DST2")) {
             // Sets the room that the player is in.
-            int[] c = Player.getOcc().getCoords(); // coordinates of player location.
-            int Z = c[0]; int Y = c[1]; int X = c[2]; //Individual ZYX coordinates.
+            int[] c = Player.getPos().getCoords(); // coordinates of player location.
 
-            Player.setOccupies(Z + DIR.Z, Y, X); // moves the player's Z coordinate.
+            Player.setOccupies(c[0] + DIR.Z, c[1], c[2]); // moves the player's Z coordinate.
 
             rep = "You circle down the steps. You can't sense how many levels,\n"
                 + "but it is not just one. After a short while, you reach a dark\n"

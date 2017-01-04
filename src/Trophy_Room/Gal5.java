@@ -3,7 +3,7 @@ package Trophy_Room;
 import A_Super.Direction;
 import A_Super.Room;
 
-public class Gal5 extends Room{
+public class Gal5 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5(String name, String ID) {
         super(name, ID);

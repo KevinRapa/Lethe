@@ -3,7 +3,7 @@ package West_Antechamber;
 import A_Super.Furniture;
 
 public class Want_Rmp extends Furniture{
-    
+// ============================================================================    
     public Want_Rmp() {
         super();
         this.searchable = false;
@@ -12,4 +12,5 @@ public class Want_Rmp extends Furniture{
         this.searchDialog = "There's nothing there except dust.";
         this.addNameKeys("ramp");
     }
+// ============================================================================
 }

@@ -25,9 +25,7 @@ public class Vest extends Room {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.windowOpen ? descOpen : descClosed;        
-            
-        return rep; 
+        return this.windowOpen ? descOpen : descClosed; 
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String triggeredEvent() {        

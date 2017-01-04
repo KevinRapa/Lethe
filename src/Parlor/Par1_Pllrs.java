@@ -7,7 +7,7 @@ public class Par1_Pllrs extends Furniture {
     public Par1_Pllrs() {
             super();
             this.searchable = false;
-            this.addNameKeys("pillars", "pillar", "column", "columns");
+            this.addNameKeys("(?:tan )?(?:grooved )?(?:pillars?|columns?)");
             this.description = "The tan, grooved columns support the loft extension.";
     }
 /*----------------------------------------------------------------------------*/    

@@ -16,8 +16,7 @@ public class DoubleStaircase extends Staircase {
     // ========================================================================   
     @Override public String interact(String key) {     
         String ans;
-        int[] c = Player.getOcc().getCoords(); // coordinates of player location.
-        int Z = c[0]; int Y = c[1]; int X = c[2]; //Individual ZYX coordinates.
+        int[] c = Player.getPos().getCoords(); // coordinates of player location.
         
         GUI.menOut("There are two flights here.\n       <'u'> Go up\n       <'d'> Go down");
         
@@ -27,12 +26,12 @@ public class DoubleStaircase extends Staircase {
         
         Direction dir = ans.matches("up|u") ? Direction.UP : Direction.DOWN; // Z coordinate modifier.
                 
-        Player.setOccupies(Z + dir.Z, Y, X); // moves the player's Z coordinate.
+        Player.setOccupies(c[0] + dir.Z, c[1], c[2]); // moves the player's Z coordinate.
         playEffect();
         
         String rep = "You climb the stairs " + dir + ".";       
 
-        GUI.roomOut(Player.getOcc().triggeredEvent());
+        GUI.roomOut(Player.getPos().triggeredEvent());
         Player.describeRoom();
         
         return rep;

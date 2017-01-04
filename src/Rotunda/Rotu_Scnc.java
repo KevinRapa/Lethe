@@ -12,8 +12,8 @@ public class Rotu_Scnc extends Furniture{
         this.searchDialog = "You're no wizard, but it's glass filled with\n"
                           + "some sort of magical gas or aether.";
         this.actDialog = "Hmm... You really expected that to hurt, but it is quite cool\n"
-                    + "to the touch.";
-        this.addNameKeys("sconce", "sconces", "spherical sconces", "spherical sconce");
+                       + "to the touch.";
+        this.addNameKeys("(?:spherical )?(?:sconces?|lights?)");
         this.addActKeys("touch", "grab", "hold");
     }
 /*----------------------------------------------------------------------------*/

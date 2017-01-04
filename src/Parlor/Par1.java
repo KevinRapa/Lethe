@@ -19,7 +19,10 @@ public class Par1 extends Room{
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String getDescription() {
-        return this.description.replaceFirst("door,\\w+\\.", ".");
+        if (! this.isAdjacent("BHA3"))
+            return this.description;
+        else
+            return this.description.replaceFirst("door,\\w+\\.", ".");
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String getBarrier(Direction dir) {

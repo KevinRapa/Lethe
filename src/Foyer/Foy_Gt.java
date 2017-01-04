@@ -22,7 +22,7 @@ public class Foy_Gt extends Door {
         this.isOpen = open;
         
         this.addActKeys("open", "lift");
-        this.addNameKeys("gate");
+        this.addNameKeys("gate", dir + " gate");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {

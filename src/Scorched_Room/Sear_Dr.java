@@ -15,4 +15,5 @@ public class Sear_Dr extends Furniture {
         this.addNameKeys("west door", "door");
         this.addActKeys("open", "use");
     }
+/*----------------------------------------------------------------------------*/
 }

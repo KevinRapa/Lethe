@@ -25,9 +25,10 @@ public class Vest_Wndw extends Window {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
         Vest vest = (Vest)Player.getRoomRef("VEST");
+        String rep;
         
         if (this.isOpen && key.matches("close")) {
-            this.actDialog = "You close the window.";
+            rep = "You close the window.";
             this.close(); 
             vest.switchWindow();
         }
@@ -36,18 +37,18 @@ public class Vest_Wndw extends Window {
             
             if (REF.isLit()) {
                 this.REF.extinguish();
-                this.actDialog = "You open the window. A strong gust comes through\n" +
+                rep = "You open the window. A strong gust comes through\n" +
                                       "and extinguishes the fireplace."; 
             }
             else
-                this.actDialog = "You open the window."; 
+                rep = "You open the window."; 
             
             vest.switchWindow();
         }
         else
-            this.actDialog = "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
+            rep = "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
         
-        return actDialog;
+        return rep;
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -3,7 +3,6 @@ package Secret_Archives;
 import A_Super.Note;
 
 public class Lib1_Nt5 extends Note {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Lib1_Nt5(String name) {
         super(name);
@@ -15,6 +14,6 @@ public class Lib1_Nt5 extends Note {
                            "collecting the odd trinket periodically to display \n" +
                            "in my gallery, I could collect pieces more\n" +
                            "extraordinary thanks to this treasure of mine.";
-/*----------------------------------------------------------------------------*/
     }
+/*----------------------------------------------------------------------------*/    
 }

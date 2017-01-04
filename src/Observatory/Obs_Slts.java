@@ -54,7 +54,7 @@ public class Obs_Slts extends Furniture {
 
         } while (! choice.matches(""));
         
-        GUI.descOut(Player.getOcc().getDescription());
+        GUI.descOut(Player.getPos().getDescription());
         
         return rep;
     }
@@ -92,15 +92,15 @@ public class Obs_Slts extends Furniture {
 /*----------------------------------------------------------------------------*/
     private String getArray() {
         
-        String a = SLOTS.get(1).getValidNames().get(0);
-        String b = SLOTS.get(2).getValidNames().get(0);
-        String c = SLOTS.get(3).getValidNames().get(0);
-        String d = SLOTS.get(4).getValidNames().get(0);
-        String e = SLOTS.get(5).getValidNames().get(0);
-        String f = SLOTS.get(6).getValidNames().get(0);
-        String g = SLOTS.get(7).getValidNames().get(0);
-        String h = SLOTS.get(8).getValidNames().get(0);
-        String i = SLOTS.get(0).getValidNames().get(0);
+        String a = SLOTS.get(1).toString();
+        String b = SLOTS.get(2).toString();
+        String c = SLOTS.get(3).toString();
+        String d = SLOTS.get(4).toString();
+        String e = SLOTS.get(5).toString();
+        String f = SLOTS.get(6).toString();
+        String g = SLOTS.get(7).toString();
+        String h = SLOTS.get(8).toString();
+        String i = SLOTS.get(0).toString();
         
         return "\t\t\t\t\t     {"+a+"}   " +
                "\t\t        {"+h+"}       {"+b+"}\n" +

@@ -4,7 +4,6 @@ import A_Super.Furniture;
 import A_Super.Item;
         
 public class Gal5_Cbwbs extends Furniture {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5_Cbwbs(Item... items) {
         super(items);

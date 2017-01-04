@@ -12,7 +12,7 @@ public class Rotu_Frms extends Furniture {
         this.searchDialog = "These frames seem as though they hide something, but\n"
                           + "after inspecting every inch, you can only confirm\n"
                           + "they are plain carvings.";
-        this.addNameKeys("frame", "frames", "arched frames", "arched frame");
+        this.addNameKeys("(?:arched )?frames?");
     }
 /*----------------------------------------------------------------------------*/
 }

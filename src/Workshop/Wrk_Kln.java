@@ -28,34 +28,35 @@ public class Wrk_Kln extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         String rep = null;
+        String name = item.toString();
         
         Player.getInv().remove(item);
         
-        if (item.toString().matches("potash") && ! this.hasPotash) {
+        if (name.matches("potash") && ! this.hasPotash) {
             this.hasPotash = true;
             rep = "You pour the potash into the crucible.";  
         }    
-        else if (item.toString().matches("sand") && ! this.hasSand) {
+        else if (name.matches("sand") && ! this.hasSand) {
             this.hasSand = true;
             rep = "You pour the sand into the crucible.";
         }
-        else if ((item.toString().matches("(?:red|blue|yellow) dye")) && ! hasDye()) {
-            if (item.toString().matches("red dye")) {
+        else if ((name.matches("\\w+ dye")) && ! hasDye()) {
+            if (name.matches("red dye")) {
                 this.hasRedDye = true;
             }
-            else if (item.toString().matches("blue dye")) {
+            else if (name.matches("blue dye")) {
                 this.hasBlueDye = true;
             }
-            else if (item.toString().matches("yellow dye")) {
+            else if (name.matches("yellow dye")) {
                 this.hasYllwDye = true;
             }   
-            rep = "You pour the " + item + " into the crucible.";
+            rep = "You pour the " + name + " into the crucible.";
         }
-        else if ((item.toString().matches("sand") && this.hasSand) ||
-                 (item.toString().matches("potash") && this.hasPotash) ) 
-            rep = "The kiln already has " + item + " in it!";
+        else if ((name.matches("sand") && this.hasSand) ||
+                 (name.matches("potash") && this.hasPotash) ) 
+            rep = "The kiln already has " + name + " in it!";
         
-        else if ((item.toString().matches("(?:red|blue|yellow) dye")) && hasDye())
+        else if ((name.matches("(?:red|blue|yellow) dye")) && hasDye())
             rep = "The kiln already has dye in it!";
         
         

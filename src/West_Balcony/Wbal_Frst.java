@@ -13,7 +13,7 @@ public class Wbal_Frst extends Furniture{
                          + "village.";
         this.searchDialog = "It's pretty dark and spooky. You can't event get to\n"
                           + "it from here anyway.";
-        this.addNameKeys("forest", "woods", "dark forest");
+        this.addNameKeys("(?:dark )?forest", "(?:dark )?woods");
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -20,7 +20,7 @@ public class Stud_Prtrt extends Wall_Art {
         this.searchDialog = "There's nothing on this picture. Interestingly, the\n"
                           + "portrait does not rest flush on the wall.";
         this.actDialog = "You lift up the portrait resembling Bob Gunton,\n"
-                    + "appropriately revealing a safe.";
+                       + "appropriately revealing a safe.";
         this.addNameKeys("portrait", "picture", "painting");
     }
 /*----------------------------------------------------------------------------*/

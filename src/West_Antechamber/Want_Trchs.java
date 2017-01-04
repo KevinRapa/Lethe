@@ -12,7 +12,7 @@ public class Want_Trchs extends Furniture{
         this.searchDialog = "You can't seem to find anything.";
         this.actDialog = "This is not a hand torch.";
         this.addActKeys("grab", "hold");
-        this.addNameKeys("torches", "torch", "standing torch", "standing torches");
+        this.addNameKeys("(?:standing )?torch(?:es)?");
     }
 /*----------------------------------------------------------------------------*/
 }

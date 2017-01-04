@@ -38,7 +38,7 @@ public class Gal3_Lddr extends Staircase {
         
         if (this.lowered) {
             // Sets the room that the player is in.
-            int[] c = Player.getOcc().getCoords(); // coordinates of player location.
+            int[] c = Player.getPos().getCoords(); // coordinates of player location.
             int Z = c[0]; int Y = c[1]; int X = c[2]; //Individual ZYX coordinates.
                 
             playEffect();
@@ -46,7 +46,7 @@ public class Gal3_Lddr extends Staircase {
         
             rep = "You climb the ladder.";       
            
-            GUI.roomOut(Player.getOcc().triggeredEvent());
+            GUI.roomOut(Player.getPos().triggeredEvent());
         }
         else
             rep = "The ladder is too high up to climb.";

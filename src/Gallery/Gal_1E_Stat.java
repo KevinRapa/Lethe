@@ -128,7 +128,7 @@ public class Gal_1E_Stat extends Furniture {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {
-            this.CONT.add(item);
+            this.CONTENTS.add(item);
             
             if (item.toString().matches("crystal orb"))
                 GUI.out(activate(GAL1_DRGN.getBeam(), GAL1_DRGN.isOn()));

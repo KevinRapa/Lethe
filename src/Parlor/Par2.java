@@ -32,15 +32,13 @@ public class Par2 extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
-        String dialog = "You are " + this + ".";
-        
         if (! Player.hasVisited("PAR1")) {
             AudioPlayer.playEffect(8);
             GUI.out("After stepping into the room, the door slams shut behind you.\n"
                   + "Startled, you spin around and miss a breath. You are alone.");
             Player.getRoomRef("FOY2").lock();
         }    
-        return dialog;
+        return "You are " + this + ".";
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String getBarrier(Direction dir) {

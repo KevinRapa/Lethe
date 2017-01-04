@@ -11,7 +11,7 @@ public class Vest_Case extends Furniture implements Container {
         this.description = "A white and blue ceramic case of Asian origin. The gold " +
                            "latch on its front looks unlocked.";
         this.searchDialog = "You open the case and looks inside.";
-        this.addNameKeys("case", "ceramic case");
+        this.addNameKeys("(?:ceramic )?case");
     }
 // ============================================================================
 }

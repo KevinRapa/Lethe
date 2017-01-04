@@ -15,7 +15,7 @@ public class Squa_Dsk extends Furniture implements Container {
         this.actDialog = "You give the desk a small kick. 'It's a good desk...'\n"
                     + "you think to yourself. It's definitely not as\n"
                     + "impressive as that desk in the vestibule, though.";
-        this.addNameKeys("desk");
+        this.addNameKeys("(?:plain )?(?:wooden )?desk");
         this.addActKeys("kick");
     }
 /*----------------------------------------------------------------------------*/

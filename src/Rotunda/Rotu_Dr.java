@@ -11,4 +11,5 @@ public class Rotu_Dr extends Door {
                          + "a seam, as if separate from the rest of the room. Very\n"
                          + "peculiar.";
     }
+/*----------------------------------------------------------------------------*/
 }

@@ -35,10 +35,10 @@ public class Drar_Ghst extends Furniture {
             this.converse1();
             this.firstTime = false;
         }
-        else if (! Player.doYouHaveIt("glowing emerald"))
+        else if (! Player.hasItem("glowing emerald"))
             this.converse2();
           
-        else if (Player.doYouHaveIt("glowing emerald")) {
+        else if (Player.hasItem("glowing emerald")) {
             this.converse3();
             Player.getRoomRef("DRAR").removeFurniture(this);           
             rep = "The apparition fades away into nothing."; 

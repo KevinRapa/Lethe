@@ -16,7 +16,7 @@ public class KitcHldr_Inv extends Hldr_Inv {
 /*----------------------------------------------------------------------------*/
     @Override public boolean add(Item item) { 
         if (item.toString().matches("hand torch") && this.size() == 0) {
-            this.CONT.add(item);
+            this.CONTENTS.add(item);
             ((Kitc)Player.getRoomRef("KITC")).swtch();
             Player.describeRoom();
             return true;
@@ -26,7 +26,7 @@ public class KitcHldr_Inv extends Hldr_Inv {
     }
 /*----------------------------------------------------------------------------*/
     @Override public void remove(Item item) {
-        this.CONT.remove(item);
+        this.CONTENTS.remove(item);
         Player.describeRoom();
         ((Kitc)Player.getRoomRef("KITC")).swtch();
     }

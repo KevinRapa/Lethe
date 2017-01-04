@@ -3,19 +3,19 @@ package Secret_Archives;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.GUI;
+import A_Main.Inventory;
 import A_Main.Player;
 
 public class Lib1_Art extends Furniture {
     private char beam;
     private String mode;
-            
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Art(Item... items) {
         super();
         this.searchDialog = "You squint and peek inside the head.";
         this.beam = 'b';
         this.mode = "A blue beam";
-        this.inv = new Art_Inv(this, items);   
+        this.inv = new Art_Inv(items);   
         this.addNameKeys("artifact", "strange artifact");
         this.addUseKeys("red focus", "blue focus", "yellow focus", "dark focus");
     }
@@ -36,14 +36,11 @@ public class Lib1_Art extends Furniture {
         boolean yellow = false; boolean dark = false;      
         
         for (Item i : this.inv) {
-            if (i.toString().matches("red focus"))
-                red = true;
-            if (i.toString().matches("blue focus"))
-                blue = true;
-            if (i.toString().matches("yellow focus"))
-                yellow = true;
-            if (i.toString().matches("dark focus"))
-                dark = true;
+                String j = i.toString();
+                red = j.matches("red focus");
+                blue = j.matches("blue focus");
+                yellow = j.matches("yellow focus");
+                dark = j.matches("dark focus");
         }        
         this.determineColor(red, blue, yellow, dark);
     }
@@ -101,7 +98,7 @@ public class Lib1_Art extends Furniture {
                 this.beam = 'W'; this.mode = "Barely any light"; 
             }       
         }       
-    GUI.out(mode + " emits from the statues mouth.\n");        
+    GUI.out(mode + " emits from the artifact's mouth.\n");        
     } 
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
@@ -114,6 +111,35 @@ public class Lib1_Art extends Furniture {
     public char getBeam() {
         return this.beam;
     }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/
+/*----------------------------------------------------------------------------*/
+    private class Art_Inv extends Inventory {
+        public Art_Inv(Item ... items) {
+            super(items);
+        }
+    /*------------------------------------------------------------------------*/
+        @Override public boolean add(Item item) {
+            if (item.getType().matches("focus")) {
+                this.CONTENTS.add(item);
+                this.triggerAdd(item);
+                return true;
+            }
+            return false;
+        }
+    /*------------------------------------------------------------------------*/
+        @Override public void remove(Item removeThis) {  
+            this.CONTENTS.remove(removeThis);
+            triggerEvent();
+        }
+    /*------------------------------------------------------------------------*/
+        private void triggerAdd(Item item) {
+            if (item.toString().matches("(?:red|yellow|blue|dark) focus"))       
+                triggerEvent();
+        }
+    }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/
 /*----------------------------------------------------------------------------*/
 }
 

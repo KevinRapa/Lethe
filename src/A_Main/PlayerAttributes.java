@@ -19,7 +19,7 @@ public final class PlayerAttributes implements Serializable {
     // ========================================================================
     public PlayerAttributes() {
         this.MAP = Player.getMapRef();
-        this.OCC = Player.getOcc().getCoords();
+        this.OCC = Player.getPos().getCoords();
         this.INV = Player.getInv();
         this.KEYS = Player.getKeys();
         this.LSTVISITED = Player.getLastVisited();

@@ -2,7 +2,7 @@ package Workshop;
 
 import A_Super.Room;
 
-public class Eow3 extends Room{
+public class Eow3 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Eow3(String name, String ID) {
         super(name, ID);

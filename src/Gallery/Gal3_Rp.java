@@ -70,7 +70,7 @@ public class Gal3_Rp extends Furniture {
     private boolean detectItem() {
         // Detects if you have a blade to cut the rope with.
         for (String i : this.USEKEYS) {
-            if (Player.doYouHaveIt(i))
+            if (Player.hasItem(i))
                 return true;
         }
         return false;

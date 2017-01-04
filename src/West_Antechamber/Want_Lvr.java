@@ -14,22 +14,20 @@ public class Want_Lvr extends Lever {
         this.searchDialog = "There's a pile of gold! No, not really, just a lever.";
         this.actDialog = "You pull the lever. The room you are in vibrates and you\n"
                     + "here a prolonged rumble past the wall to your west.";
-        this.addNameKeys("lever", "iron lever", "black iron lever");
+        this.addNameKeys("lever", "(?:black )?(?:iron )?lever");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
         Rotu ref = (Rotu)Player.getRoomRef("ROTU");
-        String rep = this.actDialog;
         
         if (ref.getState() == 'e')
-            rep = "You pull the lever, but nothing happens except a faint\n"
-                + "-click- sounding past the wall to your west.";
-        else if (ref.getState() == 'n') {
+            return "You pull the lever, but nothing happens except a faint\n"
+                 + "-click- sounding past the wall to your west.";
+        else {
             AudioPlayer.playEffect(19);
             ref.rotate();
         }
-     
-        return rep;
+        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

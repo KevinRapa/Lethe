@@ -39,7 +39,7 @@ public class Cou1_Flr extends Furniture {
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) {              
-        if (Player.doYouHaveIt("shovel") || Player.doYouHaveIt("trowel"))
+        if (Player.hasItem("shovel") || Player.hasItem("trowel"))
             return this.useEvent(Player.getItem(""));
         else
             return "You have nothing suitable to dig the ground with.";

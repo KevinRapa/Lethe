@@ -5,7 +5,6 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Wow3_NDr extends Furniture {
-
     // ========================================================================
     public Wow3_NDr () {
         super();

@@ -25,7 +25,7 @@ public class Gar4_Plntr extends Furniture {
     }
     // ========================================================================   
     @Override public String interact(String key) {              
-        if (Player.doYouHaveIt("shovel") || Player.doYouHaveIt("trowel")) {
+        if (Player.hasItem("shovel") || Player.hasItem("trowel")) {
             if (PLQ_REF.isMoved()) {
                 if (this.inv.contains(PLT_REF)) {
                     this.inv.give(PLT_REF, Player.getInv());

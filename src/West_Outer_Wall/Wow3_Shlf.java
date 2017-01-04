@@ -4,7 +4,6 @@ import A_Super.Furniture;
 import A_Super.Item;
         
 public class Wow3_Shlf extends Furniture {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wow3_Shlf(Item... items) {
         super(items);

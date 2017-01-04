@@ -14,4 +14,5 @@ public class Wow2_Dr extends Door {
         this.actDialog = "Not even someone as burly as yourself could pull these\n"
                             + "boards off.";
     }
+/*----------------------------------------------------------------------------*/
 }

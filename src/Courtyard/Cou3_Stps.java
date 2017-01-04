@@ -14,6 +14,7 @@ public class Cou3_Stps extends Staircase {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
+        // Moves the player diagonally and up.
         switch(this.DIR) {
             case UP:
                 Player.setOccupies(3,4,5);
@@ -23,7 +24,7 @@ public class Cou3_Stps extends Staircase {
         }
         
         String rep = "You climb " + DIR + " the crumbling steps.";  
-        GUI.roomOut(Player.getOcc().triggeredEvent());
+        GUI.roomOut(Player.getPos().triggeredEvent());
         Player.describeRoom();
         return rep;
     }

@@ -13,13 +13,16 @@ public class Door extends Furniture {
         this.description = "It looks like a heavy wooden door.";
         this.actDialog = "none";
 
-        this.addActKeys("open", "use", "close");
+        this.addActKeys("open", "use", "close", "kick");
         this.addNameKeys(dir + " door", "door");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {
         if (key.matches("close"))
             return "The door is already closed.";
+        else if (key.matches("kick"))
+            return "You thrust your boot into the door, but the door is too\n" +
+                   "well-built to give.";
         else {
             Player.move(DIR);
             return this.actDialog;

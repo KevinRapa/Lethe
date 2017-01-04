@@ -9,7 +9,7 @@ public class Rqua_Pnl extends Furniture {
     private boolean lifted;
     private final Key STUDKEY_REF;
     private final Rqua_Bd BED_REF;
-    
+/*----------------------------------------------------------------------------*/    
     public Rqua_Pnl(Key studKey, Furniture bed) {
             super();
             this.lifted = false;
@@ -27,16 +27,14 @@ public class Rqua_Pnl extends Furniture {
             this.addActKeys("pry", "move", "lift", "remove");
             this.addUseKeys("crowbar");
     }
-    
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         String rep = "You have already removed the tile.";
         
-        if (this.lifted == false && BED_REF.isMoved()) {
+        if (! this.lifted && BED_REF.isMoved()) {
             rep = this.useDialog;
             this.lifted = true;
             Player.getKeys().add(STUDKEY_REF);
-            Player.getRoomRef("SHAR").removeFurniture(this);
         }
         else if (! BED_REF.isMoved())
             rep = "You fully intend to do that, but there is a bed in the way.";
@@ -45,12 +43,12 @@ public class Rqua_Pnl extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {     
-        String rep = "You will try that, but there is a bed in the way.";
+        if (BED_REF.isMoved() && ! this.lifted)
+            return this.actDialog;
+        else if (BED_REF.isMoved() && this.lifted)
+            return "You have already lifted the tile.";
         
-        if (BED_REF.isMoved())
-            rep = this.actDialog;
-        
-        return rep;
+        return "You will try that, but there is a bed in the way.";
     }
 /*----------------------------------------------------------------------------*/
 }

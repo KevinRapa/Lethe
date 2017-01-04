@@ -2,7 +2,7 @@ package Study;
 
 import A_Super.Furniture;
 
-public class Stud_Cch extends Furniture{
+public class Stud_Cch extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Stud_Cch() {
         super();
@@ -11,7 +11,7 @@ public class Stud_Cch extends Furniture{
                          + "than comfortable.";
         this.searchDialog = "You look underneath, but find nothing.";
         this.actDialog = "You relax on the couch for a moment, staring at the\n"
-                    + "portrait resembling Bob Gunton. It looks a bit crooked.";
+                       + "portrait resembling Bob Gunton. It looks a bit crooked.";
         this.addActKeys("sit", "relax", "lay");
         this.addNameKeys("couch", "sofa");
     }

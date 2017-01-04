@@ -77,6 +77,10 @@ abstract public class Furniture implements Serializable {
     public ArrayList<String> getValidNames() {
         return this.NAMEKEYS;
     }
+    // ========================================================================     
+    @Override public String toString() {
+        return this.NAMEKEYS.get(0);
+    }
 //******************************************************************************        
 // </editor-fold>
 //******************************************************************************

@@ -12,7 +12,7 @@ public class Stud_Crpt extends Furniture{
         this.searchDialog = "To your great curiosity, lifting up the carpet\n"
                           + "reveals a second identical carpet underneath.\n"
                           + "Erik is truly mad.";
-        this.addNameKeys("carpet", "rug");
+        this.addNameKeys("(?:thick )?(?:red )?(?:carpet|rug)");
     }
 /*----------------------------------------------------------------------------*/
 }

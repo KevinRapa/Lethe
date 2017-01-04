@@ -2,7 +2,7 @@ package Rotunda;
 
 import A_Super.Furniture;
 
-public class Rotu_Fntn extends Furniture{
+public class Rotu_Fntn extends Furniture {
     private boolean drained;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Rotu_Fntn() {       
@@ -15,31 +15,23 @@ public class Rotu_Fntn extends Furniture{
         this.searchDialog = "You can't see anything through the brown water.";
         this.addNameKeys("fountain", "marble fountain");
     }
-
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {        
-        // Dialog depends on if the foutain is drained.
-        String rep = this.searchDialog; 
-        
         if (this.drained) {
-            rep = "Looking inside the bowl, you find decaying plant matter\n"
-                + "resting on the bottom. A curious stone wheel wraps around\n"
-                + "the base of the fountain inside the bowl."; 
+            return "Looking inside the bowl, you find decaying plant matter\n"
+                 + "resting on the bottom. A curious stone wheel wraps around\n"
+                 + "the base of the fountain inside the bowl."; 
         }
-        return rep; 
+        return this.searchDialog; 
     }
-
 /*----------------------------------------------------------------------------*/     
     @Override public String getDescription() {
-        // Dialog depends on if the foutain is drained.
-        String rep = this.description; 
-        
         if (this.drained) {
-            rep = "With the fountain drained, you find decaying plant matter\n"
-                + "resting on the bottom. A curious stone wheel wraps around\n"
-                + "the base of the fountain inside the bowl."; 
+            return "With the fountain drained, you find decaying plant matter\n"
+                 + "resting on the bottom. A curious stone wheel wraps around\n"
+                 + "the base of the fountain inside the bowl."; 
         }
-        return rep; 
+        return this.description; 
     }
 /*----------------------------------------------------------------------------*/     
     public void drain() {

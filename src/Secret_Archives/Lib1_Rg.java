@@ -12,7 +12,7 @@ public class Lib1_Rg extends Furniture{
         this.searchDialog = "To your great curiosity, lifting up the rug\n"
                           + "reveals a second identical rug underneath.\n"
                           + "Confused, you leave the rug alone.";
-        this.addNameKeys("rug", "persian rug");
+        this.addNameKeys("(?:dusty )?(?:persian )?(?:rug|carpet)");
     }
 /*----------------------------------------------------------------------------*/
 }

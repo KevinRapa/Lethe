@@ -11,4 +11,5 @@ public class Wow3_Dr extends Door {
                          + "slats. The door looks beaten up just like the door\n"
                          + "below you.";
     }
+/*----------------------------------------------------------------------------*/
 }

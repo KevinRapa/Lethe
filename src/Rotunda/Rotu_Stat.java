@@ -11,7 +11,7 @@ public class Rotu_Stat extends Statue {
                          + "yourself.";
         this.actDialog = "You feel the statue, but you feel discomforted in thinking\n"
                        + "that somehow, the other statues may be watching you.";
-        this.addNameKeys("glaring statues");
+        this.addNameKeys("(?:cloaked )?(?:glaring )?statues?");
     }
 /*----------------------------------------------------------------------------*/
 }

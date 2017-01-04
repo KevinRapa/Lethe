@@ -3,7 +3,6 @@ package Workshop;
 import A_Super.Furniture;
         
 public class Wrk_Anvl extends Furniture {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Anvl() {
         super();

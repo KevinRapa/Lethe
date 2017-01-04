@@ -69,7 +69,7 @@ public class Gal6_Cnn extends LghtMchn {
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {   
             if (item.getType().matches("focus") || item.toString().matches("box thingy")) {
-                this.CONT.add(item);
+                this.CONTENTS.add(item);
                 this.trigger();
                 return true;
             }
@@ -78,7 +78,7 @@ public class Gal6_Cnn extends LghtMchn {
         }
         /*--------------------------------------------------------------------*/
         @Override public void remove(Item item) {
-            this.CONT.remove(item);
+            this.CONTENTS.remove(item);
  
             if (isOn) {
                 if (item.toString().matches("box thingy"))

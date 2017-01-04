@@ -3,10 +3,13 @@ package A_Super;
 import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Player;
-        
+/**
+ * Defines generic attributes and methods for a staircase.
+ * @author Kevin Rapa
+ */        
 public class Staircase extends Furniture {
-    protected final Direction DIR;
-    protected final int HT;
+    protected final Direction DIR; // If it is an up or down staircase.
+    protected final int HT; // How many levels this moves the player.
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Staircase(Direction direction, int height) {
         super();
@@ -18,14 +21,12 @@ public class Staircase extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {     
-        // Sets the room that the player is in.
-        int[] c = Player.getOcc().getCoords(); // coordinates of player location.
-        int Z = c[0], Y = c[1], X = c[2]; //Individual ZYX coordinates.
+        int[] c = Player.getPos().getCoords();
 
         playEffect();
-        Player.setOccupies(Z + DIR.Z, Y, X); // moves the player's Z coordinate.
+        Player.setOccupies(c[0] + DIR.Z, c[1], c[2]);
 
-        GUI.roomOut(Player.getOcc().triggeredEvent());
+        GUI.roomOut(Player.getPos().triggeredEvent());
         Player.describeRoom();
         
         return "You climb " + DIR + " the stairs.";

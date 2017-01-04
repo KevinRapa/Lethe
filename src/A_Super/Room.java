@@ -112,6 +112,10 @@ public class Room implements Serializable {
 
         return false;
     }
+    // ========================================================================
+    public boolean hasFurniture(Furniture furn) {
+        return this.furnishings.contains(furn);
+    }
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************    

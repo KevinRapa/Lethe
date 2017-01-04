@@ -18,7 +18,7 @@ public class Sha2_Cbnt extends Furniture implements Container {
         this.searchDialog = "The cabinet is locked. Maybe one of the servants\n"
                           + "had a key...";
         this.addActKeys("unlock");
-        this.addNameKeys("cabinet", "wood cabinet", "wooden cabinet");
+        this.addNameKeys("cabinet", "(?:large )?(?:wood(?:en)? )?(?:double-doored )?cabinet");
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {            
@@ -34,16 +34,14 @@ public class Sha2_Cbnt extends Furniture implements Container {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = this.searchDialog;
-        
         if (Player.hasKey("CBNT") && ! this.searchable) {
-            rep = "It's locked but you have a key that looks like it might\n"
-                   + "fit. Maybe you should try to unlock the cabinet?";}
-        
+            this.searchable = true;
+            return this.actDialog;
+        }
         else if (this.searchable)
-            rep = "You look inside the cabinet.";
+            return "You look inside the cabinet.";
 
-        return rep; 
+        return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

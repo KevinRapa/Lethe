@@ -27,7 +27,7 @@ public class Gar13_Plntr extends Furniture {
     // ========================================================================     
     @Override public String useEvent(Item item) {
         if (item.toString().matches("trowel|shovel")) {
-            if (Player.doYouHaveIt("soil"))
+            if (Player.hasItem("soil"))
                 return "You dig around a bit, but uncover nothing.";
             else {
                 Player.getInv().add(SOIL_REF);

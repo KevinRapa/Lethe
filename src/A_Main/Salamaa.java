@@ -41,7 +41,7 @@ public class Salamaa {
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = "COU4";
+        String start = "PAR1";
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -197,6 +197,7 @@ public class Salamaa {
         Furniture wantF = new Floor("A sandstone tiled floor.");
         Furniture wantRmp = new Want_Rmp();
         Furniture wantDr = new Want_Dr(Direction.WEST);
+        Furniture wantGt = new Want_Gt(Direction.EAST);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE BACK BALCONY">
         //-----------------------------THE ROOM---------------------------------
@@ -218,6 +219,7 @@ public class Salamaa {
         Furniture bbaSea = new Bba_Sea();
         Furniture bbaDrp = new Bba_Drop();
         Furniture bba2Dr = new Bba2_Dr(Direction.SOUTH);
+        Furniture bba1Gt = new Want_Gt(Direction.SOUTH);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE FOYER">
         //-----------------------------THE ROOM---------------------------------
@@ -499,7 +501,7 @@ public class Salamaa {
         Furniture sha1SDr = new Sha_Dr(Direction.SOUTH);
         Furniture sha1Trch = new Trch();
         Furniture sha2Trch = new Trch();
-        Furniture sha1Dr = new Sha1_Dr(ram, brRam);
+        Furniture sha1Dr = new Sha1_Dr(ram, brRam, genDoor);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE SCORCHED ROOM">
         //-----------------------------THE ROOM---------------------------------
@@ -1021,8 +1023,6 @@ public class Salamaa {
         Item bttl = new Item("glass bottle", "It's a regular clear glass bottle.");
         Item scrdFr = new Item("sacred fire", "The fire burns enigmatically inside "
                              + "the bottle. To your surprise, the fire gives off no heat.");
-        Item lghtShs = new Shoes("shrouded shoes", "The pair of slippers carry almost no weight to them.", 
-                                     "You slip on the shoes. They are perhaps the most comfortable pair you've ever worn.");
         Item enchntdBttl = new Item("enchanted bottle", "The bottle is now coated in a " );
         Item stlWr = new Item("steel wire", "It's some broken piano wire");
         Item hndDrll = new Item("hand drill", "It's a drill for boring holes in wood.\n"
@@ -1046,7 +1046,7 @@ public class Salamaa {
         Furniture par1FrPlc = new Par1_FrPlc(bckt, scrdFr);
         Furniture par1Dr = new Par1_Dr(enchntdBttl, Direction.NORTH);
         Furniture par1EnchntTbl = new Par1_EnchtTbl(enchntdBttl, frSlts, sprcExtrct, 
-                                                    mndrk, bttl, fthr, athr, shs3, lghtShs, bttl, chs1Key);
+                                                    mndrk, bttl, fthr, athr, shs3, bttl, chs1Key);
         Furniture par1Strs = new Par_Strs(Direction.UP, 1);
         Furniture par1Pllrs = new Par1_Pllrs();
         Furniture par1Hrp = new Par1_Hrp(par1Orb);
@@ -1438,7 +1438,7 @@ public class Salamaa {
         foy1.addFurniture(genDoor, foy1Gt, foyFrntDr, foyF, foyW, foy1Chnd, eastDoor, foy1Tbl, foy1Crpt, foy1Strs);
         foy2.addFurniture(foy2Gt, foy2Stat, foy2Alc, foyF, foyW, foy2Strcs);
         vest.addFurniture(vesFire, vesBtn, vesWin, vesDsk, vesEtbl, vesCase, vesTpstr, vesChr, vesF, vesDr, wallEx);
-        foyb.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, bbaRf, bbaBnch, bbaScnc, bbaWvs, bbaClff, bbaShrln, bbaSea, bbaDrp, southDoor);
+        foyb.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, bbaRf, bbaBnch, bbaScnc, bbaWvs, bbaClff, bbaShrln, bbaSea, bbaDrp, bba1Gt);
         foyc.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, bbaRf, bbaScnc, bbaWvs, bbaClff, bbaShrln, bbaSea, bbaDrp, bba2Dr);
         cou1.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou1F, couCstl);
         cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl);
@@ -1447,7 +1447,7 @@ public class Salamaa {
         cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, cou3Fntns, couCstl);
         cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl);
         cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps);
-        foyw.addFurniture(genDoor, wantStat, wantTrchs, wantPllrs, wWW, wantF, wantRmp, wantDr);
+        foyw.addFurniture(genDoor, wantStat, wantTrchs, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt);
         
         // </editor-fold>  // Vestibule
         // <editor-fold desc="AREA 2">    

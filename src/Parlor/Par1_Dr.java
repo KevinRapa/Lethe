@@ -20,14 +20,12 @@ public class Par1_Dr extends Door {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (! this.cured)
-            rep = "The door has an odd pale-blue tint to it. As you approach,\n"
-                + "you feel a coldness. Upon closer inspection, you can see the\n"
-                + "blue tint pulsing.";
+            return "The door has an odd pale-blue tint to it. As you approach,\n"
+                 + "you feel a coldness. Upon closer inspection, you can see the\n"
+                 + "blue tint pulsing.";
         
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String useEvent(Item item) {

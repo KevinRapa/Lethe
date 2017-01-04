@@ -4,7 +4,6 @@ import A_Super.Fireplace;
 import A_Super.Item;
 
 public class Stud_Fire extends Fireplace {
-     
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Stud_Fire(boolean isLit, Item bckt) {       
         super(isLit, bckt);

@@ -10,7 +10,7 @@ public class Lib1_Lght extends Furniture {
         this.searchable = false;
         this.description = "The beam of light is emitting out the top of the\n"
                          + "artifact.";
-        this.addNameKeys("light", "beam of");
+        this.addNameKeys("light", "beam of light");
     }
 /*----------------------------------------------------------------------------*/
 }

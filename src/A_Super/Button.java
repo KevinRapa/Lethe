@@ -1,14 +1,12 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
-
 /**
  * Defines the mechanisms of a generic button.
  * 
  * @author Kevin Rapa
  */
 abstract public class Button extends Furniture {
-    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Button() {
         super();

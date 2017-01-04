@@ -32,7 +32,7 @@ public class Bha2 extends Room {
                   + "break free from your state of vertigo. Before long,\n"
                   + "you feel as though you have reached the room's center.");
         
-        return "You are " + Player.getOcc() + ".";  
+        return "You are " + Player.getPos() + ".";  
     }
 /*----------------------------------------------------------------------------*/
 }

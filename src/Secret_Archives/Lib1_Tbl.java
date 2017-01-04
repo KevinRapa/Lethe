@@ -4,7 +4,6 @@ import A_Super.Furniture;
 import A_Super.Item;
         
 public class Lib1_Tbl extends Furniture {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Tbl(Item... items) {
         super(items);
@@ -13,7 +12,7 @@ public class Lib1_Tbl extends Furniture {
                          + "source.";
         this.searchDialog = "You fan through the boring papers scattered around\n"
                           + "the artifact. Here's what you find interesting: ";
-        this.addNameKeys("table");
+        this.addNameKeys("(?:ornate )?table");
     }
 /*----------------------------------------------------------------------------*/
 }

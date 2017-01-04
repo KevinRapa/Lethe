@@ -21,20 +21,19 @@ public class Par1_FrPlc extends Fireplace {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        String rep = this.useDialog;
-        Player.getInv().remove(item);
-        
         if (item.toString().matches("bucket of water")) {
-            rep = "The water steams aggressively upon contact, but fails to\n"
-                + "douse the flames.";
+            Player.getInv().remove(item);
             Player.getInv().add(BCKT_REF);
+            return "The water steams aggressively upon contact, but fails to\n"
+                 + "douse the flames.";
         }
-        else if(item.toString().matches("enchanted bottle"))
+        else if(item.toString().matches("enchanted bottle")) {
+            Player.getInv().remove(item);
             Player.getInv().add(SCRDFR_REF);
+            return this.useDialog;
+        }
         else
-            rep = "You manage to do nothing but burn your hand. What were you thinking?";
-            
-        return rep;
+            return "You manage to do nothing but burn your hand. What were you thinking?";
     }
 /*----------------------------------------------------------------------------*/
 }

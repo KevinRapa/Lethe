@@ -3,7 +3,6 @@ package Workshop;
 import A_Super.Note;
 
 public class Wrk_Nt extends Note {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Wrk_Nt(String name) {
         super(name);
@@ -15,6 +14,6 @@ public class Wrk_Nt extends Note {
                            "screw in there too if I cannot find the old one. 1mm\n" +
                            "I believe. I wish Oswald was still around. He was\n"
                          + "a master at this. Don't forget- frame in back hall.";
-/*----------------------------------------------------------------------------*/
     }
+/*----------------------------------------------------------------------------*/
 }

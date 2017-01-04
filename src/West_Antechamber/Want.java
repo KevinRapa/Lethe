@@ -5,7 +5,7 @@ import A_Super.Direction;
 import A_Super.Room;
 
 public class Want extends Room{
-    
+/*----------------------------------------------------------------------------*/    
     public Want(String name, String ID) {
         super(name, ID);
         this.description = "You are in a wide, two-story hall. The whole room\n" +

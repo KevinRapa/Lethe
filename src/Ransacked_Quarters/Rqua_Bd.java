@@ -14,22 +14,20 @@ public class Rqua_Bd extends Furniture {
                           + "as someone has already searched it. A tile beneath\n"
                           + "the bed looks suspicious, though.";
         this.actDialog = "You move the bed out of the way, exposing a loose tile.";
-        this.addNameKeys("bed");
+        this.addNameKeys("(?:flimsy )?(?:metal )?(?:bedframe|bed)");
         this.addActKeys("move", "pull", "push", "slide");
     }
 /*----------------------------------------------------------------------------*/
-        @Override public String interact(String key) {     
-            String rep = "You have already moved the bed.";
-            
-            if (! this.moved) {
-                rep = this.actDialog;
-                this.moved = true;
-            }
-        return rep;
+    @Override public String interact(String key) {     
+        if (! this.moved) {
+            this.moved = true;
+            return this.actDialog;
+        }
+        return "You have already moved the bed.";
     }
 /*----------------------------------------------------------------------------*/
-        public boolean isMoved() {
-            return this.moved;
-        }
+    public boolean isMoved() {
+        return this.moved;
+    }
 /*----------------------------------------------------------------------------*/
 }

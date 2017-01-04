@@ -14,7 +14,7 @@ public class Sst_Lndng extends Furniture {
                          + "only by several old wood planks and looks just big\n"
                          + "enough to stand on.";
 
-        this.addNameKeys("landing");
+        this.addNameKeys("landing", "small landing");
     }
     // ======================================================================== 
 }

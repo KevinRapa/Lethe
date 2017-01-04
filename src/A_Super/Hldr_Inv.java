@@ -7,7 +7,7 @@ package A_Super;
 import A_Main.Inventory;
 import A_Main.GUI;
 
-public class Hldr_Inv extends Inventory{  
+public class Hldr_Inv extends Inventory {  
 // CONSTRUCTOR -----------------------------------------------------------------      
     public Hldr_Inv(Item ... items) {
         super(items);
@@ -15,7 +15,7 @@ public class Hldr_Inv extends Inventory{
 /*----------------------------------------------------------------------------*/
     @Override public boolean add(Item item) { 
         if (item.toString().matches("hand torch") && this.size() == 0) {
-            this.CONT.add(item);
+            this.CONTENTS.add(item);
             return true;
         }
         GUI.out("The " + item + " doesn't fit in.");

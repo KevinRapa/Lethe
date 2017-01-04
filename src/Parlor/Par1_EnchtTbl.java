@@ -3,20 +3,18 @@ package Parlor;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-import A_Super.Room;
+import Library.Shoes;
 
 public class Par1_EnchtTbl extends Furniture {
     private final Item REF_ENCH_BTTL, REF_SALTS, REF_MANDRAKE, REF_SPRUCE, REF_BTTL,
-                       REF_FTHR, REF_ATHR, REF_SHS, REF_STLTHSHS;
+                       REF_FTHR, REF_ATHR, REF_SHS;
     private boolean hasSpruce, hasMandrake, hasFireSalts, hasBottle, hasFthr, hasHly, hasShs;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Par1_EnchtTbl(Item enchtBttl, Item salts, Item spruce, 
-                         Item mandrake, Item bttl, Item fthr, Item athr, 
-                         Item shs, Item stlthShs, Item... items) {
+    public Par1_EnchtTbl(Item enchtBttl, Item salts, Item spruce, Item mandrake, 
+                         Item bttl, Item fthr, Item athr, Item shs, Item... items) {
         super(items);
         
-        this.REF_ENCH_BTTL = enchtBttl; // For giving player the enchanted bottle.
-        this.REF_STLTHSHS = stlthShs; // For giving player the stealth getShoes.
+        this.REF_ENCH_BTTL = enchtBttl; // For giving player the enchanted bottle. This item is used by the door also.
         
         this.REF_MANDRAKE = mandrake; this.REF_SALTS = salts; this.REF_FTHR = fthr;
         this.REF_BTTL = bttl; this.REF_SPRUCE = spruce; this.REF_ATHR = athr; 
@@ -94,7 +92,8 @@ public class Par1_EnchtTbl extends Furniture {
             this.inv.remove(REF_FTHR);
             this.inv.remove(REF_ATHR);
             this.inv.remove(REF_SHS);
-            this.inv.add(REF_STLTHSHS);
+            this.inv.add(new Shoes("shrouded shoes", "The pair of slippers carry almost no weight to them.", 
+                                   "You slip on the shoes. They are perhaps the most comfortable pair you've ever worn."));
             return 2;
         }
         return 0;

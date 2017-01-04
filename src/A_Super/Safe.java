@@ -22,16 +22,14 @@ public class Safe extends Furniture implements Container {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = this.searchDialog;
-       
         if (! this.searchable) {
             GUI.out("The safe is locked.");
             this.openSub();
         }
         if (this.searchable)
-            rep = "The safe is unlocked!";
+            return "The safe is unlocked!";
             
-        return rep;
+        return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
     private void openSub() {
@@ -81,23 +79,21 @@ public class Safe extends Furniture implements Container {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {              
-        String rep = this.actDialog;
-        
         if (key.matches("smash"))
-            rep = "Now you WOULD like to do that, wouldn't you?";
+            return "Now you WOULD like to do that, wouldn't you?";
         
         else if (! this.searchable) {
             GUI.out("The safe has a combination lock.");
             this.openSub();
             
             if (this.searchable)
-                rep = "The safe is unlocked!";
+                return "The safe is unlocked!";
         }
         else
-            rep = "The safe is already open. Perhaps you\n"
-                + "should search it.";
+            return "The safe is already open. Perhaps you\n"
+                 + "should search it.";
         
-        return rep;
+        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

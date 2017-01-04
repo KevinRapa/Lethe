@@ -33,7 +33,7 @@ public class Wrk_CstngTbl extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        String rep;
+        String rep, name = item.toString();
         
         if (item.toString().matches("lens template")) {
             this.hasTemplate = true;
@@ -45,11 +45,11 @@ public class Wrk_CstngTbl extends Furniture {
             
             if (this.hasTemplate) {   
                 String color;
-                if (item.toString().matches("molten red glass")) {
+                if (name.matches("molten red glass")) {
                     Player.getInv().add(this.REFRL); // Give player red lens.
                     color = "red";
                 }
-                else if (item.toString().matches("molten blue glass")) {
+                else if (name.matches("molten blue glass")) {
                     Player.getInv().add(this.REFBL); // Give player blue lens.
                     this.REFSCK.getInv().add(this.REFSND); // Restock sand.
                     this.REFBRL.getInv().add(this.REFBD); // Restock dye.
@@ -72,13 +72,13 @@ public class Wrk_CstngTbl extends Furniture {
                 this.REFSCK.getInv().add(this.REFSND);
                 this.REFCBNT.getInv().add(this.REFPTSH);
                 
-                if (item.toString().matches("red glass"))                     
+                if (name.matches("red glass"))                     
                     this.REFBRL.getInv().add(this.REFRD);
                 
-                else if (item.toString().matches("blue glass")) 
+                else if (name.matches("blue glass")) 
                     this.REFBRL.getInv().add(this.REFBD);
                 
-                else if (item.toString().matches("yellow glass")) 
+                else if (name.matches("yellow glass")) 
                     this.REFBRL.getInv().add(this.REFYD);
                 
                 rep = "You pour the molten glass onto the casting table.\n" +
@@ -91,12 +91,10 @@ public class Wrk_CstngTbl extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (this.hasTemplate)
-            rep = "The tall metal casting table has a template fitted to it.";
+            return "The tall metal casting table has a template fitted to it.";
         
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
 }

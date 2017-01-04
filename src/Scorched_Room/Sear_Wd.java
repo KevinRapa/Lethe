@@ -10,7 +10,7 @@ public class Sear_Wd extends Furniture {
         this.searchable = false;
         this.description = "Bits of burnt wood are littered everywhere.";
         this.searchDialog = "It's all just burnt wood.";
-        this.addNameKeys("wood");
+        this.addNameKeys("(?:bits of )?(?:burnt )?wood");
     }
 /*----------------------------------------------------------------------------*/
 }

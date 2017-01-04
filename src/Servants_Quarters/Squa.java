@@ -3,7 +3,7 @@ package Servants_Quarters;
 import A_Super.Room;
 
 public class Squa extends Room{
-    
+/*----------------------------------------------------------------------------*/
     public Squa(String name, String ID) {
         super(name, ID);
         this.description = "You're in a tiny bedroom. With the door closed behind\n" +
@@ -13,4 +13,5 @@ public class Squa extends Room{
                            "is a desk with a lit candle on it. You begin\n" +
                            "to wonder what keeps all these candles lit.";
     }
+/*----------------------------------------------------------------------------*/
 }

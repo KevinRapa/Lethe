@@ -5,7 +5,6 @@ import A_Super.Furniture;
 import A_Super.Item;
         
 public class Wrk_Brl extends Furniture implements Container {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Brl(Item... items) {
         super(items);

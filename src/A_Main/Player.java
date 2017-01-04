@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class Player {
     private static Room[][][] mapRef;
-    private static int[] occ; // Room object you are in.
+    private static int[] pos; // Room object you are in.
     private static Inventory inv, keys; // Your inventory and keyring.
     private static ArrayList<String> visited; // List of rooms you have visited.
     private static String lastVisited; // The last room you visited.
@@ -23,19 +23,19 @@ public class Player {
 // <editor-fold desc="GETTERS AND SETTERS">  
 //******************************************************************************
     public static void setOccupies(int ... coordinates) {
-        Player.occ = coordinates;
+        Player.pos = coordinates;
         
-        if (! Player.hasVisited(getOcc().getID())) 
-            Player.visited.add(getOcc().getID()); 
+        if (! Player.hasVisited(getPos().getID())) 
+            Player.visited.add(getPos().getID()); 
     }
     /*------------------------------------------------------------------------*/
     /**
-     * Converts x string of x piece of furniture to its object equivalent.
-     * @param name The name of x piece of furniture in your location.
+     * Converts a string of a piece of furniture to its object equivalent.
+     * @param name The name of a piece of furniture in your location.
      * @return The furniture objects with the name.
      */
     public static Furniture getFurnRef(String name) {
-        for(Furniture i : getOcc().getFurnishings()) {
+        for(Furniture i : getPos().getFurnishings()) {
             if (i.getValidNames().stream().anyMatch(j -> name.matches(j)))
                 return i;           
         }
@@ -58,8 +58,8 @@ public class Player {
         return Player.keys;
     }
     /*------------------------------------------------------------------------*/
-    public static Room getOcc() {
-        return Player.mapRef[occ[0]][occ[1]][occ[2]];
+    public static Room getPos() {
+        return Player.mapRef[pos[0]][pos[1]][pos[2]];
     }
     /*------------------------------------------------------------------------*/
     public static Room[][][] getMapRef() {
@@ -83,47 +83,39 @@ public class Player {
         Player.shoes = shoes;
     }
     /*------------------------------------------------------------------------*/
-    /**
-     * Sets saved game attributes
-     * @param inv The player's inventory.
-     * @param keys The player's key ring.
-     * @param visited List of rooms the player visited.
-     * @param lastVisited Last room the player visited.
-     * @param shoesWearing Type of shoes the player is wearing.
-     * @param occ Coordinates of the player's location.
-     * @param map Reference to the game map.
-     */
     public static void loadAttributes(Inventory inv, Inventory keys, ArrayList<String> visited, 
-                                      String lastVisited, String shoesWearing, int[] occ, Room[][][] map) {
+                                      String lastVisited, String shoesWearing, int[] pos, Room[][][] map) {
+        // Sets saved game attributes. See PlayerAttributes.java.
         Player.mapRef = map;
         Player.inv = inv;
         Player.keys = keys;
-        Player.occ = occ;
+        Player.pos = pos;
         Player.visited = visited;
         Player.lastVisited = lastVisited;
         Player.shoes = shoesWearing;
     }
     /*------------------------------------------------------------------------*/
     /**
-     * Creates new attributes that the player starts x new game with.
+     * Creates new attributes that the player starts a new game with.
      * @param coords Coordinates the player begins the game at.
      */
     public static void setNewAttributes(int ... coords) {
         Player.mapRef = Salamaa.createMap();
         Player.inv = new Inventory();
         Player.keys = new Inventory();
-        Player.visited = new ArrayList() {{ add("COU4"); }};
-        Player.occ = coords;
+        Player.visited = new ArrayList();
+        Player.visited.add("COU4");
+        Player.pos = coords;
         Player.lastVisited = "";
         Player.shoes = "";
     }
     // ========================================================================  
     /**
-     * Checks that you have x specific item.
+     * Checks that you have a specific item.
      * @param item The item in question.
      * @return If you have the item.
      */
-    public static boolean doYouHaveIt(String item) {
+    public static boolean hasItem(String item) {
         return Player.inv.contents().stream().
                 anyMatch(i -> i.toString().matches(item));
     }
@@ -151,24 +143,21 @@ public class Player {
 // <editor-fold desc="START GAME"> 
 //******************************************************************************
     /**
-     * This dialog prints at the start of x new game.
+     * This dialog prints at the start of a new game.
      * @return Integer representing player choice to save, erase data, or just quit.
      */
     public static int startDialog() {
-        AudioPlayer.playTrack(Player.getOcc().getID());
+        AudioPlayer.playTrack(Player.getPos().getID());
         
         GUI.menOut("\n\nPress enter...");
         GUI.out("It's 10:00pm, the night is clear and warm.\n" +
                 "You have just arrived on foot to your destination, and\n" +
                 "its even more colossal than what you had\n" +
                 "expected. It also appears curiously more vacant...");
-        
-        GUI.promptOut();
-                
+        GUI.promptOut();    
         GUI.out("You slowly approach until between the front gateway.\n" +
                 "A thought briefly flashes in your mind before being\n" +
-                "forgotten - what was your business here, again?...");
-        
+                "forgotten - what was your business here, again?...");     
         GUI.promptOut();
         GUI.clearDialog();
         
@@ -190,11 +179,11 @@ public class Player {
         CMD.put('a', () -> move(Direction.WEST));
         CMD.put('d', () -> move(Direction.EAST));
         
-        AudioPlayer.playTrack(getOcc().getID());
+        AudioPlayer.playTrack(getPos().getID());
         GUI.invOut("You are carrying:\n" + Player.inv);
         String ans;
         
-        GUI.roomOut(getOcc().triggeredEvent());
+        GUI.roomOut(getPos().triggeredEvent());
         describeRoom();
         
         do {
@@ -236,8 +225,8 @@ public class Player {
 // <editor-fold desc="MOVEMENT AND ROOMS">    
 //******************************************************************************    
     /**
-     * For some events that trigger the first time the player enters x room, etc.
-     * @param roomID The ID of x particular room.
+     * For some events that trigger the first time the player enters a room, etc.
+     * @param roomID The ID of a particular room.
      * @return If you have visited the given room before.
      */
     public static boolean hasVisited(String roomID) {
@@ -246,18 +235,18 @@ public class Player {
     // ========================================================================  
     /**
      * The movement algorithm for moving the player north, south, east, and west.
-     * Two rooms are considered not to x have x door between them is the first
+     * Two rooms are considered not to have a door between them if the first
      * three characters of their ID are identical. An exception is made for 
      * caves and catacombs, which have no doors.
      * 
      * @param dir A cardinal direction.
      */
     public static void move(Direction dir) {  
-        int[] c = getOcc().getCoords();
+        int[] c = getPos().getCoords();
         Room destination = mapRef[c[0] + dir.Z][c[1] + dir.Y][c[2] + dir.X];
         
-        if (! getOcc().isAdjacent(destination.getID()))
-            GUI.out(getOcc().getBarrier(dir)); // There's x wall in the way.
+        if (! getPos().isAdjacent(destination.getID()))
+            GUI.out(getPos().getBarrier(dir)); // There's x wall in the way.
               
         else if (destination.isThisLocked() && ! hasKey(destination.getID())) {
             AudioPlayer.playEffect(4);
@@ -265,30 +254,30 @@ public class Player {
         }
         else {
             GUI.clearDialog();
-            lastVisited = getOcc().getID();
-            occ = destination.getCoords();
-            GUI.roomOut(getOcc().triggeredEvent());
+            lastVisited = getPos().getID();
+            Player.pos = destination.getCoords();
+            GUI.roomOut(getPos().triggeredEvent());
             
-            if (getOcc().isThisLocked() && ! visited.contains(getOcc().getID()))
+            if (getPos().isThisLocked() && ! visited.contains(getPos().getID()))
                 AudioPlayer.playEffect(13); // Plays unlock sound.
-            else if (! getOcc().getID().matches("C[AV]..") && 
-                     ! getOcc().getID().substring(0,3).matches(lastVisited.substring(0,3)))
-                     // Checks that you aren't in the catacombs or caves
-                     // Checks that rooms have x door between them.
+            
+            else if (! getPos().getID().matches("C[AV]..") && 
+                     ! getPos().getID().substring(0,3).matches(lastVisited.substring(0,3)))
                 AudioPlayer.playEffect(9); // Plays open door sound. 
+            
             else
                 AudioPlayer.playEffect(0); // Plays footsteps.
             
             describeRoom();
             
-            if (! hasVisited(getOcc().getID())) 
-                visited.add(getOcc().getID());  
+            if (! hasVisited(getPos().getID())) 
+                visited.add(getPos().getID());  
         } 
     }
     // ========================================================================  
     public static void describeRoom() {
-        AudioPlayer.playTrack(getOcc().getID());
-        GUI.descOut(getOcc().getDescription());
+        AudioPlayer.playTrack(getPos().getID());
+        GUI.descOut(getPos().getDescription());
     }
 //******************************************************************************
 // </editor-fold>
@@ -299,7 +288,7 @@ public class Player {
 // <editor-fold desc="KEYS">      
 //******************************************************************************    
     /**
-     * Adds x key to your key ring.
+     * Adds a key to your key ring.
      * @param key A key to add to your key ring.
      * @param furniture The furniture from which to take the key.
      */
@@ -313,8 +302,8 @@ public class Player {
     }
     // ========================================================================  
     /**
-     * Used to check if the player may enter x particular locked room.
-     * @param keyID The ID of x key, corresponding to x room ID.
+     * Used to check if the player may enter a particular locked room.
+     * @param keyID The ID of a key, corresponding to a room ID.
      * @return If you have the key.
      */
     public static boolean hasKey(String keyID) {
@@ -333,11 +322,11 @@ public class Player {
 // <editor-fold desc="SEARCHING">   
 //******************************************************************************    
     private static void searchSub() {
-        // Initiates dialog asking player for x Furniture to search.
+        // Initiates dialog asking player for a Furniture to search.
         GUI.menOut("\n\n<object> Search\n    < > Back\n");
         String searchThis = GUI.promptOut();
         
-        if (! searchThis.matches("") && getOcc().hasFurniture(searchThis))
+        if (! searchThis.matches("") && getPos().hasFurniture(searchThis))
             search(getFurnRef(searchThis));  
         
         else if (! searchThis.matches("")) {
@@ -349,7 +338,7 @@ public class Player {
     }    
     // ========================================================================  
     /**
-     * Subroutine entered after x searchable furniture is searched.
+     * Subroutine entered after a searchable furniture is searched.
      * Serves to block access from trading itemList with non searchable furniture.
      * @param furniture The furniture being searched.
      */
@@ -358,7 +347,7 @@ public class Player {
         
         if (furniture.isSearchable()) {
             GUI.invOut("You find:\n" + furniture.getInv() + 
-                          "\nYou are carrying:\n" + Player.inv);
+                       "\nYou are carrying:\n" + Player.inv);
             searchPrompt(furniture); 
         }
     } 
@@ -368,25 +357,23 @@ public class Player {
      * @param furniture The furniture being searched.
      */
     private static void searchPrompt(Furniture furniture) {
-        String cmdItm, action; 
-        int slot;
-        Item item;
-            
+        String cmdItm; 
+        
         do {
             GUI.menOut("\n<'s' #> Store...\n<'t' #> Take...\n< > Back\"");
             
             cmdItm = GUI.promptOut();
 
             try (Scanner collectToken = new Scanner(cmdItm).useDelimiter("\\s+")) {
-                action = collectToken.next();            
-                slot = Integer.parseInt(collectToken.next());
+                String action = collectToken.next();            
+                int slot = Integer.parseInt(collectToken.next());
                 
                 if (action.matches("s|store")) {
-                    item = Player.inv.get(slot - 1);
+                    Item item = Player.inv.get(slot - 1);
                     evalStore(furniture, item);                            
                 }            
                 else if (action.matches("t|take")) {
-                    item = furniture.getInv().get(slot - 1);
+                    Item item = furniture.getInv().get(slot - 1);
                     evalTake(furniture, item);
                 }
             }
@@ -427,7 +414,7 @@ public class Player {
         }
         
         GUI.invOut("You find:\n" + furniture.getInv() + 
-                      "\nYou are carrying:\n" + Player.inv);
+                   "\nYou are carrying:\n" + Player.inv);
     }
     // ========================================================================  
     /**
@@ -462,12 +449,10 @@ public class Player {
      * Subroutine entered when furniture is interacted with.
      * @param map A reference to the game's map.
      */
-    private static void activateSub(String ans) {
-        String action, object, actObj = ans;
-
+    private static void activateSub(String actObj) {
         try (Scanner collectToken = new Scanner(actObj).useDelimiter("\\s+")) {
-            action = collectToken.next();            
-            object = collectToken.next(); 
+            String action = collectToken.next();            
+            String object = collectToken.next(); 
 
             while (collectToken.hasNext()) // If item is 2+ words long.
                 object += (" " + collectToken.next());
@@ -486,7 +471,7 @@ public class Player {
         String checkThis = GUI.promptOut();
         
         if (! checkThis.matches("")) {
-            if (getOcc().hasFurniture(checkThis)) { // Checks that furniture is in the room.
+            if (getPos().hasFurniture(checkThis)) { // Checks that furniture is in the room.
                 Furniture inspecting = getFurnRef(checkThis);
                 GUI.out(inspecting.getDescription()); // Initiates inspection.
             }
@@ -498,16 +483,14 @@ public class Player {
     }
     // ======================================================================== 
     /**
-     * Processes x player's action on furniture.
+     * Processes a player's action on furniture.
      * @param object the name of the furniture being acted upon.
      * @param action the action the player is performing on the furniture.
-     * @param map x reference to the game map.
+     * @param map a reference to the game map.
      */
     private static void evaluateAction(String object, String action) {
-        Furniture target;
-        
-        if (getOcc().hasFurniture(object)) {                             
-            target = getFurnRef(object);
+        if (getPos().hasFurniture(object)) {                             
+            Furniture target = getFurnRef(object);
 
             if (target.actKeyMatches(action)) {
                 GUI.out(target.interact(action)); 
@@ -550,15 +533,13 @@ public class Player {
             if (ans.matches("[1-3]")) {
                 switch(Integer.parseInt(ans)) {
                     case 1:
-                        inspectPrompt(); 
-                        break;
+                        inspectPrompt(); break;
                     case 2:
-                        usePrompt(); 
-                        break;
+                        usePrompt(); break;
                     default:
                         combineSub();
                 }
-                GUI.invOut("You are carrying:\n" + Player.inv.toString());
+                GUI.invOut("You are carrying:\n" + Player.inv);
             } 
             else if (! ans.matches(""))
                 AudioPlayer.playEffect(17);
@@ -625,7 +606,7 @@ public class Player {
 
                 String ans = GUI.promptOut();
 
-                if (getOcc().hasFurniture(ans)) {                 
+                if (getPos().hasFurniture(ans)) {                 
                     Furniture target = getFurnRef(ans);
 
                     if (target.useKeyMatches(item.toString())) {
@@ -634,7 +615,7 @@ public class Player {
                     }
                     else
                         GUI.out("You jam the " + item + " into the " + ans +
-                                   "\nas hard as you can, but nothing happens.");
+                                "\nas hard as you can, but nothing happens.");
                 }                      
                 else if (! ans.matches("")) {
                     AudioPlayer.playEffect(17);
@@ -645,7 +626,7 @@ public class Player {
     }
     // ========================================================================  
     /**
-     * Prompts the player for x list of itemList, verifies it and moves to evalCombine().
+     * Prompts the player for a list of itemList, verifies it and moves to evalCombine().
      * A list is valid if it contains exactly 2 or 3 valid item in the
      * player's inventory.
      */
@@ -680,9 +661,9 @@ public class Player {
     }
     // ======================================================================== 
     /**
-     * Receives x valid list of 2 or 3 itemList for x combine attempt and
- verifies that it is x correct combine set.
-     * @param list x list of 2 or 3 itemList.
+     * Receives a valid list of 2 or 3 itemList for a combine attempt and
+     * verifies that it is a correct combine set.
+     * @param list a list of 2 or 3 itemList.
      */
     private static void evalCombine(Item[] list) {
         if (areAllCombinable(list)) {
@@ -695,21 +676,22 @@ public class Player {
                 // 2 objects are correct, but 1 is missing.
                 GUI.out("You need something else for this to work."); 
         }
-        else switch (list.length) {
-            case 2:
-                // Player entered 2 itemList that don't combine.
-                GUI.out("You push them together as hard as you can,\n" +
-                        "but it does nothing."); 
-                break;
-            case 3:
-                // Player entered 3 itemList, some of which may combine.
-                GUI.out("You are pretty sure all these don't go together."); 
-        } 
+        else 
+            switch (list.length) {
+                case 2:
+                    // Player entered 2 itemList that don't combine.
+                    GUI.out("You push them together as hard as you can,\n" +
+                            "but it does nothing."); 
+                    break;
+                case 3:
+                    // Player entered 3 itemList, some of which may combine.
+                    GUI.out("You are pretty sure all these don't go together."); 
+            } 
     }
     // ========================================================================  
     /**
-     * Returns x list of itemList that the player is trying to combine and catches
- errors in the player's syntax.
+     * Returns a list of itemList that the player is trying to combine and catches
+     * errors in the player's syntax.
      * @param tokenizer A scanner holding the list of player entries
      * @return A list of itemList the player wants to combine.
      */

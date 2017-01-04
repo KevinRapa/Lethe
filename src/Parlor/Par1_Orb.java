@@ -16,7 +16,7 @@ public class Par1_Orb extends Furniture {
         this.description = "The small glass orb is filled with a smokey gas.\n"
                          + "The smoke churns slowly inside the orb.";
         this.addActKeys("speak", "talk", "converse", "rub", "feel", "touch");
-        this.addNameKeys("orb", "glass orb");
+        this.addNameKeys("(?:small )?(?:glass )?orb");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {

@@ -12,7 +12,7 @@ public class Slt_Inv extends Inventory{
 /*----------------------------------------------------------------------------*/
     @Override public boolean add(Item item) {
         if (item.getType().matches("plate") && this.size() == 0) {
-            this.CONT.add(item);
+            this.CONTENTS.add(item);
             return true;
         }
         

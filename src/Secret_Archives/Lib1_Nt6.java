@@ -3,7 +3,6 @@ package Secret_Archives;
 import A_Super.Note;
 
 public class Lib1_Nt6 extends Note {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Lib1_Nt6(String name) {
         super(name);

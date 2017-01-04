@@ -9,23 +9,23 @@ import java.io.Serializable;
  * @author Kevin Rapa
  */
 public class Inventory implements Iterable<Item>, Serializable {
-    protected final ArrayList<Item> CONT; // This inventory's contents.
+    protected final ArrayList<Item> CONTENTS; // This inventory's contents.
     // CONSTRUCTOR ============================================================   
     public Inventory (Item ... items) {
-        this.CONT = new ArrayList();
-        this.CONT.addAll(Arrays.asList(items));
+        this.CONTENTS = new ArrayList();
+        this.CONTENTS.addAll(Arrays.asList(items));
     }
     // ========================================================================
     public Item get(int index) {
-        return CONT.get(index);
+        return CONTENTS.get(index);
     }
     // ========================================================================
     public boolean contains(Item item) {
-        return CONT.contains(item);
+        return CONTENTS.contains(item);
     }
     // ========================================================================
     public int size() {
-        return CONT.size();
+        return CONTENTS.size();
     }
     // ========================================================================
     /**
@@ -34,13 +34,13 @@ public class Inventory implements Iterable<Item>, Serializable {
      * @return If the add was successful. Some inventories have restrictions.
      */
     public boolean add(Item item) {
-        this.CONT.add(item);
+        this.CONTENTS.add(item);
         
         return true;
     }
     // ========================================================================
     public void remove(Item removeThis) {      
-        this.CONT.remove(removeThis);
+        this.CONTENTS.remove(removeThis);
     }
     // ========================================================================
     /**
@@ -48,7 +48,7 @@ public class Inventory implements Iterable<Item>, Serializable {
      * @param type The type of item to remove.
      */
     public void remove(String type) { 
-        this.CONT.removeIf(item -> item.getType().matches(type));
+        this.CONTENTS.removeIf(item -> item.getType().matches(type));
     }
     // ========================================================================
     /**
@@ -74,8 +74,8 @@ public class Inventory implements Iterable<Item>, Serializable {
         String rep = "";
         int position = 1;
         
-        if (! this.CONT.isEmpty()) {
-            for (Item i : this.CONT) {
+        if (! this.CONTENTS.isEmpty()) {
+            for (Item i : this.CONTENTS) {
                 String capital = Character.toUpperCase(i.toString().charAt(0)) 
                                + i.toString().substring(1);
                 rep += ("-" + position + "- " + capital + "\n");
@@ -87,7 +87,7 @@ public class Inventory implements Iterable<Item>, Serializable {
     }
     // ========================================================================
     public ArrayList<Item> contents() {
-        return this.CONT;
+        return this.CONTENTS;
     }
     // ========================================================================
     /**
@@ -106,7 +106,7 @@ public class Inventory implements Iterable<Item>, Serializable {
     }
     // ========================================================================
     @Override public Iterator<Item> iterator() {
-        return this.CONT.iterator();
+        return this.CONTENTS.iterator();
     }
     // ========================================================================
 }

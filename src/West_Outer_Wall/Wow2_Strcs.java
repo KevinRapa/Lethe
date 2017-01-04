@@ -2,7 +2,7 @@ package West_Outer_Wall;
 
 import A_Super.Furniture;
 
-public class Wow2_Strcs extends Furniture{
+public class Wow2_Strcs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wow2_Strcs() {
         super();

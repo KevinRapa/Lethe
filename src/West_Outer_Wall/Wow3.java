@@ -7,11 +7,11 @@ import A_Super.Direction;
 import A_Super.Furniture;
 import A_Super.Item;
 
-public class Wow3 extends Room{
+public class Wow3 extends Room {
     private final Item LDDRITEM_REF;
     private final Furniture WOW2LDDR_REF, FLR_REF, WOW3LDDR_REF;
     private boolean triggerHppnd;
-    
+/* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wow3(String name, String ID, Furniture wow2lddr, 
                 Furniture flr, Furniture wow3Lddr, Item Ilddr) {
         super(name, ID);

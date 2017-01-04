@@ -2,7 +2,7 @@ package West_Antechamber;
 
 import A_Super.Furniture;
 
-public class Want_Pllrs extends Furniture{
+public class Want_Pllrs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Want_Pllrs() {
         super();
@@ -12,7 +12,7 @@ public class Want_Pllrs extends Furniture{
         this.searchDialog = "Nothing on these pillars...";
         this.actDialog = "These pillars don't need extra help holding up the ceiling.";
         this.addActKeys("grab", "hold");
-        this.addNameKeys("pillars", "pillar", "columns", "column");
+        this.addNameKeys("pillar", "pillars", "columns", "column");
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -3,7 +3,6 @@ package Study;
 import A_Super.Note;
 
 public class Stud_Note extends Note {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Stud_Note(String name) {
         super(name);

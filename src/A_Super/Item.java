@@ -150,7 +150,7 @@ public class Item implements Serializable {
      * @return A string that prints when this item is used.
      */
     public String useEvent() {
-        return this.useDialog; // Only used by items with useID 1.
+        return this.useDialog;
     }
 //******************************************************************************        
 // </editor-fold>

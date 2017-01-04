@@ -5,7 +5,6 @@ import A_Super.Item;
 import A_Super.Container;
 
 public class Stud_Dsk extends Furniture implements Container {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Stud_Dsk(Item... items) {
         super(items);

@@ -14,4 +14,5 @@ public class Stud extends Room{
                      "on top of a carpet. Next to the east wall is a small bookcase\n" +
                      "and a couch.";
     }
+/*----------------------------------------------------------------------------*/
 }

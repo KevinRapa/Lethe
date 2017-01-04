@@ -10,7 +10,7 @@ public class Vest_Tpstr extends Wall_Art {
                            "depict an impoverished man offering a glowing\n" +
                            "object to a king in a throne. The king appears\n" +
                            "curiously frail and famished.";
-        this.addNameKeys("tapestry", "large tapestry");
-/*----------------------------------------------------------------------------*/
+        this.addNameKeys("(?:large )?tapestry");
     }
+/*----------------------------------------------------------------------------*/    
 }

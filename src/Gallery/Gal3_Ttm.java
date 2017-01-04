@@ -155,7 +155,7 @@ public class Gal3_Ttm extends LghtMchn {
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) { 
             if (item.getType().matches("focus")) {
-                this.CONT.add(item);
+                this.CONTENTS.add(item);
                 this.trigger();
                 return true;
             }
@@ -164,7 +164,7 @@ public class Gal3_Ttm extends LghtMchn {
         }
         /*--------------------------------------------------------------------*/
         @Override public void remove(Item removeThis) {
-            this.CONT.remove(removeThis);
+            this.CONTENTS.remove(removeThis);
             this.trigger();
         }
         /*--------------------------------------------------------------------*/

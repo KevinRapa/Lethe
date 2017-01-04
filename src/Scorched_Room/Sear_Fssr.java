@@ -6,10 +6,12 @@ import A_Super.Furniture;
 
 public class Sear_Fssr extends Furniture {
     private final Item BRKNWRHMMR_REF;
-    
+    private boolean broken;
+/*----------------------------------------------------------------------------*/    
     public Sear_Fssr(Item gift) {
         super();
         this.searchable = false;
+        this.broken = false;
         this.BRKNWRHMMR_REF = gift;
         this.searchDialog = "It's just an empty hole.";
         this.description = "The fissure leads outside into the front\n"
@@ -22,36 +24,35 @@ public class Sear_Fssr extends Furniture {
         this.addNameKeys("fissure");
         this.addUseKeys("warhammer", "crowbar", "hammer");
     }
-    
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        String rep = this.useDialog;
-        
         if (item.toString().matches("warhammer")) {            
             Player.getRoomRef("COUS").addAdjacent("COU2");
             Player.getInv().remove(item);
             Player.getInv().add(BRKNWRHMMR_REF);
+            this.broken = true;
+            return this.useDialog;
         }
-        else if (item.toString().matches("hammer")) {
-            rep = "You give it a swing, but this hammer is too\n"
-                + "small to break this wall. They must've been\n"
-                + "using something else.";
+        else if (! this.broken) {
+            if (item.toString().matches("hammer")) {
+                return "You give it a swing, but this hammer is too\n"
+                     + "small to break this wall. They must've been\n"
+                     + "using something else.";
+            }
+            else {
+                return "You give the crowbar a swing, but it just\n"
+                     + "rebounds with a loud *THWANG*. They must've\n"
+                     + "been hitting with something else";
+            }  
         }
-        else if (item.toString().matches("crowbar")) {
-            rep = "You give the crowbar a swing, but it just\n"
-                + "rebounds with a loud *THWANG*. They must've\n"
-                + "been hitting with something else";
-        }       
-        return rep;
+        return "The fissure has been destroyed already!";
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
-        String rep = this.description;
-        
-        if (Player.getRoomRef("COUS").isThisLocked()) {
-            rep = "The hole leads outside. It's big enough to fit through.";
-        }              
-        return rep; 
+        if (this.broken)
+            return "The hole leads outside. It's big enough to fit through.";
+                   
+        return this.description; 
     }
 /*----------------------------------------------------------------------------*/
 }

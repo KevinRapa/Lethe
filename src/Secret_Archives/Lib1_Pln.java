@@ -21,6 +21,6 @@ public class Lib1_Pln extends Note {
                            " Should function. Orbicular silicate\n" +
                            " containing a stabilized kryptonic\n" +
                            " aether.\n";
-/*----------------------------------------------------------------------------*/
     }
+/*----------------------------------------------------------------------------*/
 }

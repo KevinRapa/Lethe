@@ -7,7 +7,7 @@ public class Static_Wndw extends Furniture {
         this.searchable = false;
         this.actDialog = "This is a plain barred window. It has no moving parts.";
         this.addActKeys("open", "close");
-        this.addNameKeys("window");
+        this.addNameKeys("window", "barred window");
     }
 /*----------------------------------------------------------------------------*/
 }

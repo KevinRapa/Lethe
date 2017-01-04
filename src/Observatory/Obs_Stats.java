@@ -123,15 +123,15 @@ public class Obs_Stats extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private String getArray() {
-        String a = STATS[0].getValidNames().get(0);
-        String b = STATS[1].getValidNames().get(0);
-        String c = STATS[2].getValidNames().get(0);
-        String d = STATS[3].getValidNames().get(0);
-        String e = STATS[4].getValidNames().get(0);
-        String f = STATS[5].getValidNames().get(0);
-        String g = STATS[6].getValidNames().get(0);
-        String h = STATS[7].getValidNames().get(0);
-        String i = STATS[8].getValidNames().get(0);
+        String a = STATS[0].toString();
+        String b = STATS[1].toString();
+        String c = STATS[2].toString();
+        String d = STATS[3].toString();
+        String e = STATS[4].toString();
+        String f = STATS[5].toString();
+        String g = STATS[6].toString();
+        String h = STATS[7].toString();
+        String i = STATS[8].toString();
         
         return "\t\t\t\t\t     {"+a+"}¯¯\\" +
                "\t\t        {"+h+"}       {"+b+"}\n" +
@@ -170,7 +170,7 @@ public class Obs_Stats extends Furniture {
         int current = 0, index = 0;
         
         for (Furniture i : this.STATS)
-            if (! i.getValidNames().get(0).matches(stat))
+            if (! i.toString().matches(stat))
                 current++;
             else 
                 index = current;
@@ -209,7 +209,7 @@ public class Obs_Stats extends Furniture {
         String[] correctSequence = {"5", "0", "1", "4", "7", "3", "6", "2"};
         
         for (int index = 0; index < 8; index++) {
-            if (! i[index].getValidNames().get(0).matches(correctSequence[index]))
+            if (! i[index].toString().matches(correctSequence[index]))
                 isSolved = false;
         }
         
@@ -222,7 +222,7 @@ public class Obs_Stats extends Furniture {
 /*----------------------------------------------------------------------------*/
     private Furniture getStatRef(String name) {
         for (Furniture s : this.STATS)
-            if (s.getValidNames().get(0).matches(name))
+            if (s.toString().matches(name))
                 return s;
         
         return null;
