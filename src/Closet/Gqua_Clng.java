@@ -9,7 +9,7 @@ public class Gqua_Clng extends Furniture{
         this.searchable = false;
         this.description = "It's a low arched cobblestone ceiling.";
         this.searchDialog = "There's nothing here.";
-        this.addNameKeys("ceiling", "arched ceiling");
+        this.addNameKeys("(?:low )?(?:arched )?(?:cobblestone )?ceiling");
     }
 /*----------------------------------------------------------------------------*/
 }

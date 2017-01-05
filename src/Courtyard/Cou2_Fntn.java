@@ -11,7 +11,7 @@ public class Cou2_Fntn extends Furniture{
                          + "basin and its toppled over centerpiece. It looks like\n"
                          + "a statue of a male figure used to stand in the center";
         this.searchDialog = "You search through its basin.";
-        this.addNameKeys("fountain");
+        this.addNameKeys("(?:ancient )?(?:stone )?fountain");
     }
 /*----------------------------------------------------------------------------*/
 }

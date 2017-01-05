@@ -10,7 +10,7 @@ public class Bba_Rf extends Furniture{
         this.description = "Just a blank ceiling.";
         this.actDialog = "You extend your arm and poke the ceiling.";
         this.addActKeys("touch", "poke");
-        this.addNameKeys("ceiling", "cieling", "roof");
+        this.addNameKeys("ceiling", "roof");
     }
 /*----------------------------------------------------------------------------*/  
 }

@@ -13,14 +13,12 @@ public class Eow2_Strs extends Staircase {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (this.DIR == Direction.DOWN) {
-            rep = "The curved sandstone stairs lead down to the first floor.\n"
-                + "It's a wonder why these didn't crumble like those in\n"
-                + "the west outer wall.";
+            return "The curved sandstone stairs lead down to the first floor.\n"
+                 + "It's a wonder why these didn't crumble like those in\n"
+                 + "the west outer wall.";
         }
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
 }

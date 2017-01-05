@@ -11,17 +11,15 @@ public class Drar_Tbl extends Furniture {
         this.REF = (Drar_Ghst)ghst;
         this.description = "The low coffee table is glossy and clean.";
         this.searchDialog = "You look on the table's surface.";
-        this.addNameKeys("table", "low table", "coffee table");
+        this.addNameKeys("(?:low )?(?:coffee )?table");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = this.searchDialog;
-        
         if (REF.firstTime())
-            rep = "Ignoring the ghost completely, you comb the table's\n"
-                + "surface.";
+            return "Ignoring the ghost completely, you comb the table's\n"
+                 + "surface.";
         
-        return rep;
+        return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

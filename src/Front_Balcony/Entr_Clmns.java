@@ -12,7 +12,7 @@ public class Entr_Clmns extends Furniture{
                          + "roof.";
         this.actDialog = "These columns don't need extra help holding up the roof.";
         this.addActKeys("grab", "touch", "hold");
-        this.addNameKeys("columns");
+        this.addNameKeys("(?:four-foot )?(?:wide )?columns?");
     }
 /*----------------------------------------------------------------------------*/
 }

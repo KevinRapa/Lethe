@@ -4,7 +4,7 @@ import A_Main.GUI;
 import A_Super.Room;
 import A_Main.Player;
 
-public class Drar extends Room{
+public class Drar extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Drar(String name, String ID) {
         super(name, ID);

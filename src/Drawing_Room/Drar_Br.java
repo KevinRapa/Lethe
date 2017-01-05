@@ -12,17 +12,15 @@ public class Drar_Br extends Furniture {
         this.description = "Behind its solid oak table and chairs, you see a\n"
                          + "shelf populated with many kinds of alcohol.";
         this.searchDialog = "You peruse the bar's shelves.";
-        this.addNameKeys("bar");
+        this.addNameKeys("bar", "shelf");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = this.searchDialog;
-        
         if (REF.firstTime())
-            rep = "Like badass, you completely undermine the ghost in search\n"
-                + "of alcohol.";
+            return "As a common drunk, you completely undermine the ghost in search\n"
+                 + "of alcohol.";
         
-        return rep;
+        return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

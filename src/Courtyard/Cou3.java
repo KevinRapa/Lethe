@@ -21,15 +21,14 @@ public class Cou3 extends Room{
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
         Room cou4 = Player.getRoomRef("COU4");
-        String rep = "You are " + this + ".";
-        
+
         if (! cou4.isThisLocked()) {
             cou4.lock();
             AudioPlayer.playEffect(7);
             GUI.out("As you walk into the front courtyard, the huge gates\n"
                 + "slowly swing shut behind you.");
         }               
-        return rep;
+        return "You are " + this + ".";
     }
 /*----------------------------------------------------------------------------*/
 }

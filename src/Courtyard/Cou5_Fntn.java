@@ -12,7 +12,7 @@ public class Cou5_Fntn extends Furniture {
                          + "holding a staff and shield stands in the center.\n"
                          + "She resembles a soldier.";
         this.searchDialog = "You search through its basin.";
-        this.addNameKeys("fountain");
+        this.addNameKeys("(?:stone )?fountain");
     }
 /*----------------------------------------------------------------------------*/
 }

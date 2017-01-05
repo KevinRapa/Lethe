@@ -12,7 +12,7 @@ public class Bba_Rlng extends Furniture{
         this.actDialog = "You grab the railing, but there's no fear of falling over,\n"
                             + "right?";
         this.addActKeys("grab", "hold");
-        this.addNameKeys("stone railing", "railing", "granite railing");
+        this.addNameKeys("(?:thick )?(?:stone |granite )?railing");
     }
 /*----------------------------------------------------------------------------*/
 }

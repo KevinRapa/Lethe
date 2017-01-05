@@ -3,6 +3,7 @@ package Chapel_Stairs;
 import A_Super.Static_Wndw;
 
 public class Chs_Wndws extends Static_Wndw {
+/*----------------------------------------------------------------------------*/
     public Chs_Wndws(String NAME) {
         super();
         this.actDialog = "These stained glass windows aren't designed that\n"
@@ -13,4 +14,5 @@ public class Chs_Wndws extends Static_Wndw {
                          + "hues against the inner tower wall.";
         this.addNameKeys("stained glass window", "stained glass windows");
     }
+/*----------------------------------------------------------------------------*/
 }

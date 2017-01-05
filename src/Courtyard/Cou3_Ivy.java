@@ -11,7 +11,7 @@ public class Cou3_Ivy extends Furniture{
         this.searchDialog = "It's just plain old Hedera helix.";
         this.actDialog = "It's no use ripping this off; it will just grow back.";
         this.addActKeys("grab", "hold", "touch");
-        this.addNameKeys("ivy");
+        this.addNameKeys("(?:european )?ivy", "hedera helix");
     }
 /*----------------------------------------------------------------------------*/
 }

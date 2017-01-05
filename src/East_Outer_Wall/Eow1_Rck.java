@@ -10,7 +10,7 @@ public class Eow1_Rck extends Furniture {
         super(items);
         this.description = "It's a plain weapon rack.";
         this.searchDialog = "You take a look at its contents.";
-        this.addNameKeys("rack", "weapon rack");
+        this.addNameKeys("(?:plain )?(?:weapon )?rack");
     }
 /*----------------------------------------------------------------------------*/
 }

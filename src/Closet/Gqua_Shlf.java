@@ -12,7 +12,7 @@ public class Gqua_Shlf extends Furniture {
                          + "you call a shelf!";
         this.searchDialog = "You look among the shelves.";
         this.actDialog = "This is way too heavy to move.";
-        this.addNameKeys("(?:wooden )?shelf");
+        this.addNameKeys("(?:big )?(?:hefty )?(?:wooden )?(?:shelf|shelving unit)");
         this.addActKeys("move", "push", "pull");
     }
 /*----------------------------------------------------------------------------*/

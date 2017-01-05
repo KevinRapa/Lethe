@@ -14,10 +14,10 @@ public class Eow2_Fntn extends Furniture {
                          + "Now that you think about it, it's the same fountain.";
         this.searchDialog = "You find a bunch of water, but you can't pocket that.";
         this.actDialog = "Now is NOT the time for a swim, though it's tempting. You\n"
-                            + "don't even have a change of clothes, and you aren't wearing\n"
-                            + "servant's garb.";
+                       + "don't even have a change of clothes, and you aren't wearing\n"
+                       + "servant's garb.";
         this.addActKeys("jump", "swim");
-        this.addNameKeys("fountain", "great fountain");
+        this.addNameKeys("(?:great )?fountain");
     }
 /*----------------------------------------------------------------------------*/
 }

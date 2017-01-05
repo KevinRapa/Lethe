@@ -13,7 +13,7 @@ public class Cha1_Cylx extends Furniture {
         this.searchDialog = "If your logic is holding as well as this bowl is,\n"
                           + "you'd guess this vessel was filled with holy water.\n"
                           + "You can't pick up the water with your hands though.";
-        this.addNameKeys("cylix", "bowl");
+        this.addNameKeys("(?:wide )?(?:brass )?(?:cylix|bowl)");
         this.addUseKeys("empty vial", "metal bucket", "glass bottle");
     }
 /* -------------------------------------------------------------------------- */

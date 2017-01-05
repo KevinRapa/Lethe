@@ -13,7 +13,7 @@ public class Din1_Crvc extends Furniture {
         this.description = "It's a small indentation carved right into the wall!";
         this.searchDialog = "You look in the hole";
 
-        this.addNameKeys("hole", "hole in the wall", "crevice", "indentation");
+        this.addNameKeys("(?:small )?(?:indentation|crevice|hole(?: in the wall)?)");
     }
     // ========================================================================
 }

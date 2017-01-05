@@ -13,7 +13,7 @@ public class Bba_Bnch extends Furniture {
         this.actDialog = "You sit down for a moment and let the salty\n"
                             + "breeze hit your face.";
         this.addActKeys("sit", "use", "relax");
-        this.addNameKeys("bench", "stone bench");
+        this.addNameKeys("(?:stone )?bench");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

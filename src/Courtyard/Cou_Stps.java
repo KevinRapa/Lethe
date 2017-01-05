@@ -12,7 +12,7 @@ public class Cou_Stps extends Furniture {
         this.searchDialog = "You find nothing.";
         this.actDialog = "You can't while at the side of the stairs";
         this.addActKeys("climb", "use");
-        this.addNameKeys("steps", "stairs", "staircase");
+        this.addNameKeys("(?:crumbling )?(?:staircase|steps|stairs)");
     }
 /*----------------------------------------------------------------------------*/
 }

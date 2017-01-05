@@ -2,7 +2,7 @@ package Back_Balcony;
 
 import A_Super.Furniture;
 
-public class Bba_Scnc extends Furniture{
+public class Bba_Scnc extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bba_Scnc() {
         super();
@@ -11,7 +11,7 @@ public class Bba_Scnc extends Furniture{
                            "lights the wall with a flickering orange glow.";
         this.actDialog = "Ouch! That's hot!";
         this.addActKeys("touch", "grab", "hold");
-        this.addNameKeys("sconce", "light", "wall sconce");
+        this.addNameKeys("(?:copper )?(?:metal )?(?:sconce|light)");
     }
 /*----------------------------------------------------------------------------*/
 }

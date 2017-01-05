@@ -4,7 +4,6 @@ import A_Super.Container;
 import A_Super.Furniture;
         
 public class Gqua_Brrl extends Furniture implements Container {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Brrl() {
         super();
@@ -12,7 +11,7 @@ public class Gqua_Brrl extends Furniture implements Container {
         this.searchDialog = "You can't get it open. You take a whiff from a\n"
                           + "crack in its surface. Disgusting!!";
         this.actDialog = "This is way too heavy to move.";
-        this.addNameKeys("barrel");
+        this.addNameKeys("barrel", "cask");
         this.addActKeys("move", "push", "pull");
     }
 /*----------------------------------------------------------------------------*/

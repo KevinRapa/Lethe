@@ -3,8 +3,7 @@ package Courtyard;
 import java.util.Stack;
 import java.util.Random;
 /**
- * Represents a deck of cards. The deck is essentially a stack of Card objects.
- * 
+ * Represents a deck of cards.
  * @author Kevin Rapa
  */
 public class Deck {

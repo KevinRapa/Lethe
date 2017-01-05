@@ -15,7 +15,7 @@ public class Foy2_Lvr extends Lever{
                             + "positions.";
         this.REF = (Foy_Gt)foy_Gt; 
         this.REF2 = (Foy_Gt)foy2_Gt;
-        this.addNameKeys("small lever", "lever");
+        this.addNameKeys("(?:small )?(?:hidden )?lever");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {

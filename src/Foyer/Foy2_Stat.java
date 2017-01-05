@@ -35,7 +35,7 @@ public class Foy2_Stat extends Statue {
         return actDialog;
     }
 /*----------------------------------------------------------------------------*/
-    public boolean getState() {
+    public boolean moved() {
         return this.moved;
     }
 /*----------------------------------------------------------------------------*/

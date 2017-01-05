@@ -12,7 +12,7 @@ public class Din1_Crpt extends Furniture{
         this.searchDialog = "To your great curiosity, lifting up the carpet\n"
                           + "reveals a second identical carpet underneath.\n"
                           + "Confused, you leave the carpet alone.";
-        this.addNameKeys("carpet", "rug");
+        this.addNameKeys("(?:clean )?(?:lavender )?(?:carpet|rug)");
     }
 /*----------------------------------------------------------------------------*/
 }

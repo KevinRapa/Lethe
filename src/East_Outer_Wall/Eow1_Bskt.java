@@ -9,7 +9,7 @@ public class Eow1_Bskt extends Furniture {
         super(items);
         this.description = "It's a tall wicker basket.";
         this.searchDialog = "You take a look in the basket.";
-        this.addNameKeys("basket", "tall basket");
+        this.addNameKeys("(?:tall )?(?:wicker )?basket");
     }
 /*----------------------------------------------------------------------------*/
 }

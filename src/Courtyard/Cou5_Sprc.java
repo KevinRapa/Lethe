@@ -28,37 +28,32 @@ public class Cou5_Sprc extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        String rep;
-        
         if (item.toString().matches("hand drill")) {
             if (drilled) {
-                rep = "You have already drilled a small hole.";
+                return "You have already drilled a small hole.";
             }
             else {
                 drilled = true;
-                rep = this.useDialog;
+                String rep = this.useDialog;
                 
                 if (Player.getInv().contains(VIAL_REF)) {
-                    rep += " You collect some of the sap in the small vial you are carrying.";
                     Player.getInv().remove(VIAL_REF);
                     Player.getInv().add(EXTRCT_REF);
+                    return rep.concat(" You collect some of the sap in the small vial you are carrying.");
                 }
                 else
-                    rep += " You have nothing to collect the sap in, though.";
+                    return rep.concat(" You have nothing to collect the sap in, though.");
             }
         }
-        
         else {
             if (drilled) {
-                rep = " You collect some of the sap in the small vial you are carrying.";
                 Player.getInv().remove(VIAL_REF);
                 Player.getInv().add(EXTRCT_REF);
+                return " You collect some of the sap in the small vial you are carrying.";
             }
             else
-                rep = "You have nothing to collect in the vial";
+                return "You have nothing to collect in the vial";
         }
-        
-        return rep;
     }
 /*----------------------------------------------------------------------------*/
 }

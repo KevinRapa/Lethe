@@ -25,7 +25,8 @@ public class Din1_Tpstry extends Wall_Art {
             Player.getRoomRef("DIN1").addFurniture(CRVC_REF);
             return this.searchDialog;
         }
-        else return "Yes, the hole in the wall is still there";  
+        else 
+            return "Yes, the hole in the wall is still there";  
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {

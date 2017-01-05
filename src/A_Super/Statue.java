@@ -5,7 +5,6 @@ package A_Super;
  * @author Kevin Rapa
  */
 abstract public class Statue extends Furniture {
-
     // ========================================================================
     public Statue(Item ... items) {
         super(items);

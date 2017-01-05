@@ -12,7 +12,7 @@ public class Cou2_Bshs extends Furniture{
         this.searchDialog = "You aren't getting pricked by those thorns.";
         this.actDialog = "You aren't getting pricked by those thorns.";
         this.addActKeys("grab", "hold", "touch");
-        this.addNameKeys("bushes", "unkept bushes");
+        this.addNameKeys("(?:unkept )?bush(?:es)?");
     }
 /*----------------------------------------------------------------------------*/
 }

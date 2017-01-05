@@ -11,7 +11,7 @@ public class Cou3_Fntns extends Furniture{
                          + "to decorate the courtyard.";
         this.searchDialog = "They're too far away.";
         this.actDialog = this.searchDialog;
-        this.addNameKeys("fountain", "fountains");
+        this.addNameKeys("(?:crumbling )?(?:stone )?fountains?");
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -17,7 +17,7 @@ public class Gqua_Skltn extends Furniture {
         String rep = this.description;
         
         if (this.doesThisHaveIt("crowbar")) {
-            rep += " There's a\ncrowbar in its hand.";
+            return rep.concat(" There's a\ncrowbar in its hand.");
         }
         
         return rep;

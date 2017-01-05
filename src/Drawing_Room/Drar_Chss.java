@@ -14,28 +14,24 @@ public class Drar_Chss extends Furniture {
                          + "knew how to play.";
         this.searchDialog = "You look on the table's surface.";
         this.actDialog = "'I aren't smart enough to play this' you speak softly\n"
-                            + "in soliloquy.";
+                       + "in soliloquy.";
         this.addActKeys("play");
-        this.addNameKeys("chess table");
+        this.addNameKeys("(?:fancy )?chess table");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = this.searchDialog;
-        
         if (REF.firstTime())
-            rep = "Ignoring the ghost completely, you search the chess\n"
-                + "table's surface.";
+            return "Ignoring the ghost completely, you search the chess\n"
+                 + "table's surface.";
         
-        return rep;
+        return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
-        @Override public String interact(String key) {
-        String rep = this.actDialog;
-        
+    @Override public String interact(String key) {
         if (REF.firstTime())
-            rep = "Now is not the time for that. There's a ghost in here!";
+            return "Now is not the time for that. There's a ghost in here!";
         
-        return rep;
+        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

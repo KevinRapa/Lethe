@@ -10,7 +10,7 @@ public class Eow2_Blcny extends Furniture{
         this.description = "The second-floor balcony follows the north wall to\n"
                          + "the west and ends at a door.";
         this.searchDialog = "You're too far away to do that.";
-        this.addNameKeys("balcony", "small balcony");
+        this.addNameKeys("(?:small )?(?:second[- ]floor )?balcony");
     }
 /*----------------------------------------------------------------------------*/
 }

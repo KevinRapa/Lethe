@@ -15,12 +15,10 @@ public class Entr extends Room {
     }  
 /*----------------------------------------------------------------------------*/        
     @Override public String getBarrier(Direction dir) {
-        String rep = "There's a wall in the way.";
-        
         if (dir == Direction.EAST || dir == Direction.WEST)
-            rep = "There's just a railing that way.";
+            return "There's just a railing that way.";
         
-        return rep;
+        return "There's a wall in the way.";
     }
 /*----------------------------------------------------------------------------*/
 }

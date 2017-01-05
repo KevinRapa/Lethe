@@ -7,10 +7,10 @@ public class Din1_Blcny extends Furniture{
     public Din1_Blcny() {
         super();
         this.searchable = false;
-        this.description = "The second floor balcony bows out into the room. Up\n"
+        this.description = "The second-floor balcony bows out into the room. Up\n"
                          + "on the south wall, you see the source of the noise.";
         this.searchDialog = "You will have to go up there to do that.";
-        this.addNameKeys("balcony");
+        this.addNameKeys("(?second[- ]floor )?balcony");
     }
 /*----------------------------------------------------------------------------*/
 }

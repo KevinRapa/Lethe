@@ -29,8 +29,6 @@ public class Drar_Ghst extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.actDialog;
-        
         if (this.firstTime) {
             this.converse1();
             this.firstTime = false;
@@ -41,9 +39,9 @@ public class Drar_Ghst extends Furniture {
         else if (Player.hasItem("glowing emerald")) {
             this.converse3();
             Player.getRoomRef("DRAR").removeFurniture(this);           
-            rep = "The apparition fades away into nothing."; 
+            return "The apparition fades away into nothing."; 
         }
-        return rep;
+        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
     private void converse1() {

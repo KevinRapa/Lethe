@@ -12,7 +12,7 @@ public class Cou3_Gt extends Furniture{
         this.actDialog = "It's huge. Even if it were unlocked, you wouldn't be able\n"
                     + "to budge it alone.";
         this.addActKeys("open", "use");
-        this.addNameKeys("main gate", "gate", "front gate");
+        this.addNameKeys("(?:monstrous )?(?:two-story )?(?:solid )?(?:oak )?(?:main |front )?gate");
     }
 /*----------------------------------------------------------------------------*/
 }

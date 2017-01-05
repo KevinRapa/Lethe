@@ -14,13 +14,11 @@ public class Din1_Strs extends Staircase {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
+        if (this.DIR == Direction.DOWN)
+            return "The stone staircase leads straight down to the first floor.\n"
+                 + "A lavender carpet runs its surface."; 
         
-        if (this.DIR == Direction.DOWN) {
-            rep = "The stone staircase leads straight down to the first floor.\n"
-                + "A lavender carpet runs its surface."; 
-        }
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
 }

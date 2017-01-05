@@ -11,7 +11,7 @@ public class Bba_Clmns extends Furniture {
         this.searchDialog = "Nothing on these columns...";
         this.actDialog = "These columns don't need extra help holding up the roof.";
         this.addActKeys("grab", "hold");
-        this.addNameKeys("columns, column");
+        this.addNameKeys("columns?");
     }
 /*----------------------------------------------------------------------------*/
 }

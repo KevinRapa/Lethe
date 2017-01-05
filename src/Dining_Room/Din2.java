@@ -13,11 +13,10 @@ public class Din2 extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
-        String rep = "There's a wall in the way.";
         if (dir == Direction.EAST)
-            rep = "There's a railing that way.";
+            return "There's a railing that way.";
         
-        return rep;
+        return "There's a wall in the way.";
     }
 /*----------------------------------------------------------------------------*/
 }

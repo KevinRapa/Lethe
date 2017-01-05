@@ -12,7 +12,7 @@ public class Din1_Clmns extends Furniture{
                          + "marble.";
         this.actDialog = "These columns don't need extra help holding up the balcony.";
         this.addActKeys("grab", "hold");
-        this.addNameKeys("columns", "column");
+        this.addNameKeys("(?:doric )?columns?");
     }
 /*----------------------------------------------------------------------------*/
 }

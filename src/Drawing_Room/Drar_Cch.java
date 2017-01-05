@@ -15,25 +15,21 @@ public class Drar_Cch extends Furniture {
         this.actDialog = "This is the most comfortable couch you've sat in yet.\n"
                             + "Why haven't you grabbed a drink?";
         this.addActKeys("sit", "relax", "lay");
-        this.addNameKeys("couch");
+        this.addNameKeys("(?:(?:bold )?green )?(?:victorian-era )?couch");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = this.searchDialog;
-        
         if (REF.firstTime())
-            rep = "You do realize that there's a ghost in here, right?";
+            return "You do realize that there's a ghost in here, right?";
         
-        return rep;
+        return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
-        @Override public String interact(String key) {
-        String rep = this.actDialog;
-        
+    @Override public String interact(String key) {
         if (REF.firstTime())
-            rep = "You do realize that there's a ghost in here, right?";
+            return "You do realize that there's a ghost in here, right?";
         
-        return rep;
+        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

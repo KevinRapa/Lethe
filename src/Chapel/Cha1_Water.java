@@ -20,28 +20,24 @@ public class Cha1_Water extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        String rep = this.useDialog;
-        
         if (item.toString().matches("empty vial")) {
             Player.getInv().remove(item);
             Player.getInv().add(REF);
+            return this.useDialog;
         }
         else if (item.toString().matches("metal bucket"))
-            rep = "The bucket is too large to dip into the cylix.";
+            return "The bucket is too large to dip into the cylix.";
         else
-            rep = "The bottle is small enough to fit in, but the bottle is too\n"
-                + "wide to get the neck into the water.";
-        
-        return rep;
+            return "The bottle is small enough to fit in, but the bottle is too\n"
+                 + "wide to get the neck into the water.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) { 
-        String rep = "This water isn't for drinking.";
         
         if (key.matches("swim"))
-            rep = "How in the world are you going to fit in there??";
+            return "How in the world are you going to fit in there??";
         
-        return rep;
+        return "This water isn't for drinking.";
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -10,7 +10,7 @@ public class Cou4_Gt extends Furniture {
         this.description = "It's a monstrous two-story solid oak gate.";
         this.actDialog = "It's open already.";
         this.addActKeys("open", "use");
-        this.addNameKeys("main gate", "gate", "front gate");
+        this.addNameKeys("(?:monstrous )?(?:two-story )?(?:solid )?(?:oak )?(?:main |front )?gate");
     }
 /*----------------------------------------------------------------------------*/
 }

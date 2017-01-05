@@ -11,8 +11,6 @@ import A_Super.Item;
  * player keeps the cards in his/her inventory after no more games are to be played.
  * This NPC is a ghost. The ghost acts as the dealer.
  * 
- * This class was made a demonstration to Next Century Corp. as a pre-interview exercise.
- * 
  * @author Kevin Rapa
  */
 public class Cou6_BlackJackGhost extends Furniture {
@@ -21,7 +19,6 @@ public class Cou6_BlackJackGhost extends Furniture {
     public Cou6_BlackJackGhost() {
         super();
         this.searchable = false;
-      
         this.firstTime = true;
         this.searchDialog = "The ghost won't appreciate that.";
         this.actDialog = "\"Come back if you want to play again!";
@@ -43,11 +40,11 @@ public class Cou6_BlackJackGhost extends Furniture {
         
         if (this.firstTime) {
             if(this.converse1())
-                rep += " Hey why don't you keep those cards? I can make more! Hah!";
+                rep = rep.concat(" Hey why don't you keep those cards? I can make more! Hah!");
             this.firstTime = false;
         }
         else if (this.converse2())
-            rep += " Hey why don't you keep those cards? I can make more! Hah!";
+            rep = rep.concat(" Hey why don't you keep those cards? I can make more! Hah!");
 
         return rep;
     }
@@ -145,41 +142,19 @@ public class Cou6_BlackJackGhost extends Furniture {
         // Deals the initial two cards to the dealer.
         Card card1 = deck.draw();
         GUI.out("The ghost reveals:\t\t" + card1);
-        ghostVal += this.evalHit(card1, ghostVal); 
-        ghostVal += this.evalHit(deck.draw(), ghostVal);
+        ghostVal += this.evalHit(card1.getVal(), ghostVal); 
+        ghostVal += this.evalHit(deck.draw().getVal(), ghostVal);
         
         // Deals the initial two cards to the player.
         Card plyrCard1 = deck.draw();
         Card plyrCard2 = deck.draw();
         Player.getInv().add(plyrCard1);
         Player.getInv().add(plyrCard2);
-        yourVal += this.evalHit(plyrCard1, yourVal); 
-        yourVal += this.evalHit(plyrCard2, yourVal);
+        yourVal += this.evalHit(plyrCard1.getVal(), yourVal); 
+        yourVal += this.evalHit(plyrCard2.getVal(), yourVal);
         GUI.invOut("You are carrying:\n" + Player.getInv());   
         
-        //<editor-fold desc="Test Cases"> ===================================
-        // Uncomment any of these and choose 'stand' during the game.
-        
-        //ghostVal = 17;
-        //yourVal = 20;
-        
-        //ghostVal = 17;
-        //yourVal = 17;
-        
-        //ghostVal = 19;
-        //yourVal = 18;
-        
-        //ghostVal = 21;
-        //yourVal = 15;
-        
-        //ghostVal = 15;
-        //yourVal = 21;
-        
-        //ghostVal = 21;
-        //yourVal = 21;
-        
         System.out.println("\nGhost's starting score: " + ghostVal);
-        //</editor-fold> =====================================================
         
         // Checks for immediate blackjacks.
         if (this.blackJack(ghostVal) || this.blackJack(yourVal)) {
@@ -216,13 +191,11 @@ public class Cou6_BlackJackGhost extends Furniture {
     /**
      * This method lets you hit as many times as you want, or stand.
      * If you bust, your turn is over and the loop ends.
-     * @param num The player's current score.
+     * @param score The player's current score.
      * @param deck A reference to the Deck object.
      * @return The player's new current score.
      */
-    private int playerTurn(int num, Deck deck) {
-        int score = num;
-        Card current;
+    private int playerTurn(int score, Deck deck) {
         String ans;
         
         do {
@@ -232,10 +205,10 @@ public class Cou6_BlackJackGhost extends Furniture {
             ans = GUI.promptOut();
             
             if (ans.matches("hit")) {
-                current = deck.draw();
+                Card current = deck.draw();
                 Player.getInv().add((Item) current);
                 GUI.invOut("You are carrying:\n" + Player.getInv());
-                score += this.evalHit(current, score);
+                score += this.evalHit(current.getVal(), score);
                 
                 if (this.bust(score))
                     ans = "stand";
@@ -248,20 +221,16 @@ public class Cou6_BlackJackGhost extends Furniture {
 /*----------------------------------------------------------------------------*/ 
     /**
      * The ghost hits as many times as possible until busting or over 17.
-     * @param plyrNum Your current score.
-     * @param ghostNum The ghost's current score.
+     * @param ghostScore The ghost's current score.
      * @param deck A reference to the Deck object.
      * @return The ghost's new score.
      */
-    private int ghostTurn(int ghostNum, Deck deck) {
-        int ghostScore = ghostNum;
-        
+    private int ghostTurn(int ghostScore, Deck deck) {
         while (ghostScore < 17) {
             Card card = deck.draw();
-            ghostScore += this.evalHit(card, ghostScore);
+            ghostScore += this.evalHit(card.getVal(), ghostScore);
             System.out.println("Ghost draws a " + card + "\nGhost new score: " + ghostScore); //FOR TESTING
         }
-        
         return ghostScore;
     }
 /*----------------------------------------------------------------------------*/     
@@ -271,9 +240,7 @@ public class Cou6_BlackJackGhost extends Furniture {
      * @param score a current score.
      * @return The new score for the player who hit.
      */
-    private int evalHit(Card card, int score) {
-        int val = card.getVal();
-        
+    private int evalHit(int val, int score) {
         if (val == 1)
             return (score + 11 <= 21) ? 11 : 1;
         else

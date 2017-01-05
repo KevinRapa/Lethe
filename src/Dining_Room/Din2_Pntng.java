@@ -11,7 +11,7 @@ public class Din2_Pntng extends Wall_Art {
                            "He looks right at you with a serious, almost malevolent\n" +
                            "stare. 'Why would anyone hang this in their house?' You\n" +
                            "ask yourself.";
-        this.addNameKeys("painting", "long painting");
+        this.addNameKeys("(?:long |wide )?painting");
 /*----------------------------------------------------------------------------*/
     }
 }

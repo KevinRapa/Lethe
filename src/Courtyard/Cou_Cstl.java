@@ -12,7 +12,7 @@ public class Cou_Cstl extends Furniture {
                          + "about four or five stories tall. The castle looks to\n"
                          + "be composed of a central area and a wing on each side.";
         this.searchDialog = "Maybe you should go inside to do that.";
-        this.addNameKeys("castle");
+        this.addNameKeys("(?:monstrous )?castle");
     }
 /*----------------------------------------------------------------------------*/
 }

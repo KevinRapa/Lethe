@@ -15,7 +15,7 @@ public class Bha1_Plnt extends Furniture{
         this.actDialog = "You will need a bucket of water to do that.";
         this.useDialog = "You pour a bit of the water out and water the plant.\n"
                        + "You're sure the plant appreciated that.";
-        this.addNameKeys("plant", "potted plants", "potted plant", "plants");
+        this.addNameKeys("(?:potted )?plants?");
         this.addActKeys("water");
         this.addUseKeys("bucket of water");
     }

@@ -12,7 +12,7 @@ public class Gqua_Scks extends Furniture implements Container {
                          + "against the wall. They have names of various gardening\n"
                          + "material on them.";
         this.searchDialog = "You look into each of the sacks.";
-        this.addNameKeys("sack", "sacks");
+        this.addNameKeys("sacks?");
     }
 /*----------------------------------------------------------------------------*/
 }

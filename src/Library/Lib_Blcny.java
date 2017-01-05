@@ -11,7 +11,7 @@ public class Lib_Blcny extends Furniture {
                          + "around to the south wall. On the balcony against the\n"
                          + "south wall is another bookshelf.";
         this.searchDialog = "You're too far away to do that.";
-        this.addNameKeys("(?:second-floor )?balcony");
+        this.addNameKeys("(?:second[- ]floor )?balcony");
     }
 /*----------------------------------------------------------------------------*/
 }
