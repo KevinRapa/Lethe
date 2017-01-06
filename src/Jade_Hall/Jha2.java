@@ -2,15 +2,15 @@ package Jade_Hall;
 /**
  * @author Kevin Rapa
  */
+import A_Super.Direction;
 import A_Super.Room;
 import A_Super.Furniture;
 
 public class Jha2 extends Room {
     private final Jha_Ln LION_REF, LION_REF2;
-    private final Furniture MYSTDR_REF;
     private final String desc2;
 // ============================================================================    
-    public Jha2(String name, String ID, Furniture ln, Furniture ln2, Furniture mystDr) {
+    public Jha2(String name, String ID, Furniture ln, Furniture ln2) {
         super(name, ID);
         this.description= "You stand at the south end of the hall near a\n" +
                           "southern door leading outside. At this end,\n" +
@@ -23,12 +23,11 @@ public class Jha2 extends Room {
                    + "hangs in the center of this half of the hall.";
         this.LION_REF = (Jha_Ln)ln;
         this.LION_REF2 = (Jha_Ln)ln2;
-        this.MYSTDR_REF = mystDr;
     }
 // ============================================================================
     public String lionCheck() {
         if (LION_REF.hasRuby() && LION_REF2.hasRuby()) {
-            this.addFurniture(MYSTDR_REF);
+            this.addFurniture(new Jha_HddnDr(Direction.WEST));
             this.addAdjacent("SST1");
             return "At this moment, you hear a strange noise coming from close\n"
                  + "behind you. You turn and discover that mysterious door has\n"

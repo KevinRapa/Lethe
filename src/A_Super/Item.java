@@ -13,6 +13,9 @@ public class Item implements Serializable {
     protected int useID = 2; // 1 - used on itself | 2 - enters a sub-prompt
 //******************************************************************************
 // <editor-fold desc="CONSTRUCTORS">
+// 
+// In order to avoid creating an excessive number of classes, and due to the
+// simplicity of items, multiple constructers for items are defined.
 //******************************************************************************         
     // ========================================================================    
     /**

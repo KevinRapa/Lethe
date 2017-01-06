@@ -1,5 +1,6 @@
 package Vestibule;
 
+import A_Main.AudioPlayer;
 import A_Main.Player;
 import A_Super.Button;
 import A_Super.Furniture;
@@ -14,11 +15,16 @@ public class Vest_Bttn extends Button {
         this.FRPLC_REF = (Vest_Frplc)vesfrplc;
         this.addNameKeys("(?:small )?(?:rock )?protrusion");
     }
+/*----------------------------------------------------------------------------*/   
+    @Override public String interact(String key) {
+        return this.event(key);
+    }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
         if (FRPLC_REF.isLit())
             return "Ouch! There is fire in the way!";                    
         else {
+            AudioPlayer.playEffect(11);
             Player.getRoomRef("FOY1").unlock();
             return "You push the button and hear a click behind you.";
         }             

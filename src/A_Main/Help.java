@@ -25,8 +25,8 @@ public class Help {
        + "angle brackets.\t\t\t\t\t"
        + "Simple types of input ------ \t"
        + "<item> - Enter an item name.\n"
-       + "<object> - Enter a room object name.\t\t\t" +
-         "<'x'> - Enter exactly what's quoted.\t\t\t\t" +
+       + "<object> - Enter an object in the room.\t\t\t" +
+         "<'x'> - Enter what's quoted.\t" +
          "<#> - Enter a digit.\t\t" +
          "< > - Enter nothing.\t\t\t\t\t"
        + "Compound input -------------\t" +
@@ -40,8 +40,8 @@ public class Help {
        + "in 'north' every time they want to move?", 
          
          "When you enter a room, especially for the first time, you may want to read\n"
-       + "a description of it because this is a text-based game, so there are more or\n"
-       + "less no pictures. Dang! The room description is displayed automatically\n"
+       + "a description of it because this is a text-based game, so there are\n"
+       + "no pictures. The room description is displayed automatically\n"
        + "upon entering the room.\n"
        + "In each room's description, you will find necessary information about the\n"
        + "objects in the room and what you may interact with. You many interact with any noun in the description (search, interact,\n"
@@ -55,7 +55,7 @@ public class Help {
         "intuitively obvious (e.g. a button, lever, wheel is revealed). Otherwise, I would\n" +
         "have to recursively make more furniture down to the atomic level.\n" +
         "Checking is important, as it can reveal clues about hidden objects and other\n" +
-        "things, as well as add color to what's in your head.\n", 
+        "things, as well as add color to what's in your head. You may also type <'c'/'check' object> to check something immediately without being asked.", 
          
         "Searching is a main action, and is performed from the main prompt. The key for\n" +
         "searching is 'e'. You may search any discrete objects mentioned\n" +
@@ -63,17 +63,17 @@ public class Help {
         "object is searchable, you will be taken to the search sub-prompt. In addition,\n" +
         "any items the object contains will be listed. Remember, an object may contain\n" +
         "useful stuff, but you will not always be able to take the stuff right away!\n" +
-        "\n" +
+        "You may also type <'check'/'e' object> to search something immediately without being asked." +
         "The search sub-prompt will ask if you want to take or store items. To do this,\n" +
         "type 'take' or 'store' followed by a space, and then the item's slot.\n", 
          
-        "Interacting is performed from the main prompt by typing an action and\n"
-      + "the name of an object. You may interact with discrete objects mentioned in the room\n"
-      + "description, and your character will interact with the object.\n" +
+        "Interacting is performed from the main prompt by entering an action followed by\n"
+      + "the name of an object in the room. You may interact with discrete objects mentioned in the room\n"
+      + "description, and your character will interact with it.\n" +
         "Interacting means your character is doing something to/with the object, like\n" +
         "'pull', 'sit', etc.\n" +
-        "You may type 'search <object>' to search the object if you wish,\n" +
-        "and 'view/look/watch/inspect <object>' to check the object.\n",
+        "You may type <'search'/'e' object>' to search the object if you wish,\n" +
+        "and 'check/view/look/watch/inspect <object>' to check the object.\n",
          
         "Using is an inventory action, and is performed from the inventory ('i'). To\n" +
         "use an item, press '2' from the inventory menu, and you will be asked to\n" +
@@ -111,7 +111,7 @@ public class Help {
         "Phylacteries are stored in your inventory. These are important! You cannot\n" +
         "store or drop them. That is all.",    
          
-        "Every room has at least one door, and thus, you may act on them from the\n" +
+        "Most rooms have at least one door, and thus you may act on them from the\n" +
         "main prompt using the name 'door'. However, you do not need to act on doors\n" +
         "in general movement. Your character moves through them automatically, if\n" +
         "they are unlocked, unblocked, etc.", 
@@ -165,14 +165,13 @@ public class Help {
         String choice;
         
         do {
-            GUI.menOut("What would you like help on?\n" +
-                       "<'1'> Controls\n<'2'> Your player\n" +
-                       "<'3'> The castle\n");
+            GUI.menOut("What would you like help on?\n\n" +
+                       "     <'1'> Controls\n     <'2'> Your player\n" +
+                       "     <'3'> The castle\n");
             choice = GUI.promptOut();
             GUI.out("");
         /*--------------------------------------------------------------------*/            
             if (choice.matches("1")) {
-                AudioPlayer.playEffect(17);
                 do {
                     GUI.menOut("<'1'> The prompt <'2'> Moving\n<'3'> Describing " +
                                "<'4'> Checking\n<'5'> Searching  <'6'> Interacting\n" +
@@ -187,7 +186,6 @@ public class Help {
             }
         /*--------------------------------------------------------------------*/          
             if (choice.matches("2")) {    
-                AudioPlayer.playEffect(17);
                 do {
                     GUI.menOut("\n<'1'> Your inventory\n"
                                + "<'2'> Your key ring\n" +
@@ -202,7 +200,6 @@ public class Help {
             }
         /*--------------------------------------------------------------------*/      
             if (choice.matches("3")) {    
-                AudioPlayer.playEffect(17);
                 do {
                     GUI.menOut("\n<'1'> Doors\t<'2'> Rooms\n"
                                + "<'3'> Furniture\t<'4'> Items\n"

@@ -4,13 +4,13 @@ import A_Main.AudioPlayer;
 import A_Main.Player;
 import Rotunda.Rotu_Fntn;
 import A_Super.Furniture;
+import Rotunda.Rotu_Whl;
 
 public class Look_Vlv extends Furniture{
     private final Rotu_Fntn FNTN_REF;
-    private final Furniture WHL_REF;
     private boolean loosened;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Look_Vlv(Furniture fntn, Furniture whl) {
+    public Look_Vlv(Furniture fntn) {
         super();
         this.searchable = false;
         this.searchDialog = "There's nothing here. Honestly, you never expected\n"
@@ -22,7 +22,6 @@ public class Look_Vlv extends Furniture{
                     + "a gush of water flows from the nearby pipe and off of the\n"
                     + "balcony.";
         this.FNTN_REF = (Rotu_Fntn) fntn;
-        this.WHL_REF = whl;
         this.addNameKeys("valve", "(?:big )?(?:rusty )?valve");
         this.addActKeys("turn", "rotate", "spin", "twist");
     }
@@ -31,7 +30,7 @@ public class Look_Vlv extends Furniture{
         if (! FNTN_REF.isDrained()) {
             FNTN_REF.drain();
             AudioPlayer.playEffect(20);
-            Player.getRoomRef("ROTU").addFurniture(WHL_REF);
+            Player.getRoomRef("ROTU").addFurniture(new Rotu_Whl());
             loosened = true; 
         }
         else {

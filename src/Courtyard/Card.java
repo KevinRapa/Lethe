@@ -25,6 +25,7 @@ public class Card extends Item {
      */
     public Card(String name) {
         super(name);
+        this.type = "card";
         this.description = "A ghostly and eerily solid playing card. It feels cool to the touch.";
         this.VALUE = this.determineValue(name.substring(0,2));
     }

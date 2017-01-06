@@ -116,10 +116,13 @@ public class AudioPlayer {
         put(14, new File(WD, "effects" + S + "woodStairClimb.wav"));
         put(15, new File(WD, "effects" + S + "stoneSteps.wav"));
         put(16, new File(WD, "effects" + S + "ladder.wav"));
-        put(17, new File(WD, "effects" + S + "select.wav"));
+        //put(17, new File(WD, "effects" + S + "select.wav"));
         put(18, new File(WD, "effects" + S + "rotundaRotate.wav"));
         put(19, new File(WD, "effects" + S + "rotundaRotate2.wav"));
         put(20, new File(WD, "effects" + S + "valveTurn.wav"));
+        put(21, new File(WD, "effects" + S + "keyClick.wav"));
+        put(22, new File(WD, "effects" + S + "keyClick2.wav"));
+        put(23, new File(WD, "effects" + S + "keyClick3.wav"));
     }};
 //******************************************************************************    
 // </editor-fold>

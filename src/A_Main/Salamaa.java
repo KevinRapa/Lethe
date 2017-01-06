@@ -35,6 +35,7 @@ import Observatory.*;      import Dungeon_Stairs.*;     import Parlor.*;
 import Chapel_Stairs.*;    import Chapel.*;             import Back_Hall.*;
 import Jade_Hall.*;        import Secret_Stairs.*;      import Garden.*;
 
+import java.awt.Toolkit;   import java.awt.Dimension;
 import javax.swing.*;      import java.io.*;
 
 public class Salamaa {
@@ -50,6 +51,10 @@ public class Salamaa {
         GUI panel = new GUI(); // Make false if window is too large.
         gameFrame = new JFrame("Salamaa");
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int)screenSize.getWidth();
+        gameFrame.setLocation(width > 1000 ? (width - 1000)/2 : 0, 100);
         
         gameFrame.getContentPane().add(panel);
         gameFrame.setResizable(false);
@@ -130,6 +135,9 @@ public class Salamaa {
         // <editor-fold desc="INITIALIZE ROOMS, FURNITURE, ITEMS">
         //
         // Every room, furniture, and item is instantiated here.
+        // For each area, each room is instantiated, then each item is, then
+        // each furniture is and the items are added to the respective 
+        // furniture. 
         //**********************************************************************
 
         //**********************************************************************
@@ -336,7 +344,6 @@ public class Salamaa {
         Room rotu = new Rotu("in the rotunda", "ROTU");       
         //-----------------------------FURNITURE-------------------------------- 
         Furniture rotuFntn = new Rotu_Fntn();
-        Furniture rotuWhl = new Rotu_Whl();
         Furniture rotuW = new Wall("A clean white marble wall.");
         Furniture rotuF = new Floor("It's a dirty white-tiled floor, littered with plant\nmatter.");
         Furniture rotuPlnts = new Rotu_Plnts(rotuFntn);
@@ -355,7 +362,7 @@ public class Salamaa {
                                + "frayed in the center from being tied around that\n"
                                + "railing for so long.", ram, "battering ram", 3);
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture lookVlv = new Look_Vlv(rotuFntn, rotuWhl);
+        Furniture lookVlv = new Look_Vlv(rotuFntn);
         Furniture lookLghths = new Look_Lghths();
         Furniture lookClff = new Look_Clff();
         Furniture lookRlng = new Look_Rlng(lookRope);
@@ -704,9 +711,9 @@ public class Salamaa {
         Furniture mhaNWndw1 = new MhaN_Wndw();
         Furniture mhaNWndw2 = new MhaN_Wndw();
         Furniture mhaSWndw = new MhaS_Wndw();
+        Furniture mhaNChaDr = new MhaN_Dr(Direction.EAST);
         Furniture mhaNDr = new Mha_Dr(Direction.NORTH);
         Furniture mhaSDr = new Mha_Dr(Direction.SOUTH);
-        Furniture mhaEDr = new Mha_Dr(Direction.EAST);
         Furniture mhaWDr = new Mha_Dr(Direction.WEST);
         Furniture mha3KitcDr = new MhaS_Dr(Direction.EAST);
         Furniture mhaMDr = new MhaM_Dr(din1, Direction.EAST);
@@ -983,10 +990,9 @@ public class Salamaa {
         Furniture jhaJd = new Jha_Jd();
         Furniture jha1Ln = new Jha_Ln();
         Furniture jha2Ln = new Jha_Ln();
-        Furniture jhaHddnDr = new Jha_HddnDr(Direction.WEST);
         //-----------------------------THE ROOM---------------------------------
         Room jha1 = new Jha1("in a jade hallway", "JHA1");
-        Room jha2 = new Jha2("in a jade hallway", "JHA2", jha1Ln, jha2Ln, jhaHddnDr);
+        Room jha2 = new Jha2("in a jade hallway", "JHA2", jha1Ln, jha2Ln); // Adds hidden door to room
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE GARDENS"> 
@@ -1022,8 +1028,6 @@ public class Salamaa {
         Room par1 = new Par1("in the first floor parlor", "PAR1"); 
         //-------------------------------ITEMS----------------------------------   
         Item bttl = new Item("glass bottle", "It's a regular clear glass bottle.");
-        Item scrdFr = new Item("sacred fire", "The fire burns enigmatically inside "
-                             + "the bottle. To your surprise, the fire gives off no heat.");
         Item enchntdBttl = new Item("enchanted bottle", "The bottle is now coated in a " );
         Item stlWr = new Item("steel wire", "It's some broken piano wire");
         Item hndDrll = new Item("hand drill", "It's a drill for boring holes in wood.\n"
@@ -1044,7 +1048,7 @@ public class Salamaa {
         
         Furniture par1Orb = new Par1_Orb();
         Furniture par1F = new Floor("A sandstone tiled floor.");
-        Furniture par1FrPlc = new Par1_FrPlc(bckt, scrdFr);
+        Furniture par1FrPlc = new Par1_FrPlc(bckt);
         Furniture par1Dr = new Par1_Dr(enchntdBttl, Direction.NORTH);
         Furniture par1EnchntTbl = new Par1_EnchtTbl(enchntdBttl, frSlts, sprcExtrct, 
                                                     mndrk, bttl, fthr, athr, shs3, bttl, chs1Key);
@@ -1478,7 +1482,7 @@ public class Salamaa {
         gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Dr, gal2Clmns, gal4Lft);
         gal6.addFurniture(gal6Cnn, gal6Swtch, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl);
         gal7.addFurniture(wWW);
-        mha1.addFurniture(genDoor, mhaChndlr, mhaChr, mhaPlnt, mhaF, mhaW, mhaNWndw1, mhaNDr, mhaEDr);
+        mha1.addFurniture(genDoor, mhaChndlr, mhaChr, mhaPlnt, mhaF, mhaW, mhaNWndw1, mhaNDr, mhaNChaDr);
         mha2.addFurniture(mhaChndlr, mhaChr, mhaPlnt, mhaF, mhaW, mhaNWndw2, mhaMDr, mhaRStat, mhaLStat, mhaStats);
         mha3.addFurniture(genDoor, mhaChndlr, mhaChr, mhaPlnt, mhaF, mhaW, mhaSWndw, mha3KitcDr, mhaSDr);
         lib2.addFurniture(libLF, libW, libCch, lib2ShRck, lib2Stat, lib2Frplc, lib2Bttn, lib2WrFr, lib2Vyg, libBkShlf, libScncs, lib2Wndw);

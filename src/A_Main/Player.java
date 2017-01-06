@@ -161,6 +161,10 @@ public class Player {
         GUI.promptOut();
         GUI.clearDialog();
         
+        GUI.menOut("Press the up arrow key\nat any time to go to\n"
+                 + "your last action.\n\nPress enter...");
+        GUI.promptOut();
+        
         return mainPrompt();
     }
     // ========================================================================   
@@ -191,13 +195,10 @@ public class Player {
             ans = GUI.promptOut();
 
             if (ans.matches("[heckiwsad]")) 
-                CMD.get(ans.charAt(0)).run(); 
+                CMD.get(ans.charAt(0)).run();
             
             else if (ans.matches("[a-z]+\\s[a-z ]+")) // Interacting
                 activateSub(ans);
-            
-            else
-                AudioPlayer.playEffect(17);
             
         } while (! ans.matches("quit"));
         
@@ -205,11 +206,11 @@ public class Player {
     }  
     // ========================================================================   
     private static int endGame() {
-        GUI.menOut("<'s'> Save and quit\n<'q'> Quit\n<'r'> Reset game and quit.");
+        GUI.menOut("\n<'s'> Save and quit\n<'q'> Quit\n<'r'> Reset game and quit.");
         String ans = GUI.promptOut();
         
         while (! ans.matches("[sqr]")) {
-            GUI.menOut("Please enter 's', 'q', or 'r'.\n<'s'> Save and quit\n"
+            GUI.menOut("\nPlease enter 's', 'q', or 'r'.\n<'s'> Save and quit\n"
                      + "<'q'> Quit\n<'r'> Reset game and quit.");
             ans = GUI.promptOut();
         }
@@ -329,11 +330,9 @@ public class Player {
         if (! searchThis.matches("") && getPos().hasFurniture(searchThis))
             search(getFurnRef(searchThis));  
         
-        else if (! searchThis.matches("")) {
-            AudioPlayer.playEffect(17);
+        else if (! searchThis.matches("")) 
             GUI.out("There is no " + searchThis + " here."); 
-        }
-        
+
         GUI.invOut("You are carrying:\n" + Player.inv);
     }    
     // ========================================================================  
@@ -378,14 +377,12 @@ public class Player {
                 }
             }
             catch (java.lang.IndexOutOfBoundsException e) {
-                AudioPlayer.playEffect(17);
                 GUI.out("There's no item in that slot.");
             }
             catch (java.util.NoSuchElementException | java.lang.NumberFormatException e) {
-                if (! cmdItm.matches("")) {
-                    AudioPlayer.playEffect(17);
+                if (! cmdItm.matches(""))
                     GUI.out("Type an action and the slot number."); 
-                }
+                
             }
         } while (! cmdItm.matches(""));
     }
@@ -397,9 +394,9 @@ public class Player {
      */
     private static void evalTake(Furniture furniture, Item take) {
         if (! Player.inv.contains(take)) {
-            // Checks that you don't already have it.
             if (take.getType().matches("[A-Z]{3}[A-Z1-9]")) {
-                addToKeyRing(take, furniture); // It's x key.
+                // Matches a non-cave/catacomb room ID, which keys use as types.
+                addToKeyRing(take, furniture);
                 AudioPlayer.playEffect(3);
                 GUI.out("You put the " + take + " in your key ring.");
             }
@@ -408,10 +405,9 @@ public class Player {
                 furniture.getInv().give(take, Player.inv);                 
             }   
         }
-        else if (Player.inv.contains(take)) {
-            AudioPlayer.playEffect(17);
+        else if (Player.inv.contains(take))
             GUI.out("You already have one of those."); 
-        }
+        
         
         GUI.invOut("You find:\n" + furniture.getInv() + 
                    "\nYou are carrying:\n" + Player.inv);
@@ -460,7 +456,6 @@ public class Player {
             evaluateAction(object, action);
         }
         catch (java.util.NoSuchElementException e) {
-            AudioPlayer.playEffect(17);
             GUI.out("Type an action and an object.");
         } 
     }
@@ -470,16 +465,17 @@ public class Player {
         
         String checkThis = GUI.promptOut();
         
-        if (! checkThis.matches("")) {
-            if (getPos().hasFurniture(checkThis)) { // Checks that furniture is in the room.
-                Furniture inspecting = getFurnRef(checkThis);
-                GUI.out(inspecting.getDescription()); // Initiates inspection.
-            }
-            else {
-                AudioPlayer.playEffect(17);
-                GUI.out("There is no " + checkThis + " here.");
-            }
+        if (! checkThis.matches(""))
+            checkOut(checkThis);
+    }
+    // ========================================================================  
+    private static void checkOut(String inspecting) {
+        if (getPos().hasFurniture(inspecting)) {
+            GUI.out(Player.getFurnRef(inspecting).getDescription());
         }
+        else 
+            GUI.out("There is no " + inspecting + " here.");
+        
     }
     // ======================================================================== 
     /**
@@ -496,13 +492,13 @@ public class Player {
                 GUI.out(target.interact(action)); 
                 describeRoom();
             }
-            else if (action.matches("look|view|inspect|watch")) 
+            else if (action.matches("c|check|look|view|inspect|watch")) 
                 GUI.out(target.getDescription()); 
 
-            else if (action.matches("search") || 
+            else if (action.matches("search|e|s") || 
                     (action.matches("open") && target instanceof Container))                    
-                search(target); 
-
+                search(target);
+            
             else
                 GUI.out("That seems unnecessary.");
         }                
@@ -542,7 +538,7 @@ public class Player {
                 GUI.invOut("You are carrying:\n" + Player.inv);
             } 
             else if (! ans.matches(""))
-                AudioPlayer.playEffect(17);
+                GUI.out("Enter a valid choice.");
             
         } while (! ans.matches(""));
     }
@@ -560,10 +556,8 @@ public class Player {
                 GUI.out(item.getDesc());  
             }
             catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
-                if (! ans.matches("")) {
-                    AudioPlayer.playEffect(17);
+                if (! ans.matches("")) 
                     GUI.out("Type in a valid slot number.");
-                }
             }
         } while (! ans.matches(""));
         
@@ -584,10 +578,9 @@ public class Player {
                 evalUse(useID, item);
             }
             catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
-                if (! choice.matches("")) {
-                    AudioPlayer.playEffect(17);
+                if (! choice.matches(""))
                     GUI.out("Type in a valid slot number.");
-                }
+                
             }  
         } while (! choice.matches(""));
     }
@@ -617,10 +610,8 @@ public class Player {
                         GUI.out("You jam the " + item + " into the " + ans +
                                 "\nas hard as you can, but nothing happens.");
                 }                      
-                else if (! ans.matches("")) {
-                    AudioPlayer.playEffect(17);
+                else if (! ans.matches("")) 
                     GUI.out("There is no " + ans + " here.");    
-                }
         }
         GUI.invOut("You are carrying:\n" + Player.inv);
     }
@@ -653,7 +644,6 @@ public class Player {
                         default:
                             GUI.out("You entered too many items.");
                     }
-                    AudioPlayer.playEffect(17);
                 }    
             }
             tokens.close();  

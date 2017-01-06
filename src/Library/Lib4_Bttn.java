@@ -1,5 +1,6 @@
 package Library;
 
+import A_Main.AudioPlayer;
 import A_Super.Button;
 import A_Super.Furniture;
 
@@ -14,14 +15,18 @@ public class Lib4_Bttn extends Button {
         this.FRPLC_REF = (Lib2_Frplc) frplc;
         this.STAT_REF = (Lib3_Stat) stat;
     }
+/*----------------------------------------------------------------------------*/   
+    @Override public String interact(String key) {
+        return this.event(key);
+    }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        if (FRPLC_REF.isLit()) 
-            actDialog = "Ouch! There is fire in the way!";                 
-        else
-            actDialog = STAT_REF.lightRight();
-                     
-        return actDialog;
+        if (FRPLC_REF.isLit())
+            return "Ouch! There is fire in the way!"; 
+        else {
+            AudioPlayer.playEffect(11);
+            return STAT_REF.lightRight();
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

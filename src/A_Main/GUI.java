@@ -13,7 +13,25 @@ import javax.swing.border.BevelBorder;
  * @author Kevin Rapa
  ******************************************************************************/
 public class GUI extends JPanel {
+    
+    private enum Click {
+        // =======================================
+        NONE(0), SOFT(21), CLICK(22), VINTAGE(23);
+    
+        private final int soundID;
+        // =======================================
+        Click(int key) {
+            this.soundID = key;
+        }
+        // =======================================
+        public int soundID() {
+            return soundID;
+        }
+        // =======================================
+    }
+    
     private boolean big = true;
+    
     private final static JTextArea MEN = new JTextArea(), DESC = new JTextArea(), 
                                    INV = new JTextArea(), DIAL = new JTextArea();
 
@@ -30,12 +48,21 @@ public class GUI extends JPanel {
     private final static JLabel ROOM = new JLabel(), 
                                 INVLBL = new JLabel("Inventory");
     
-    private final static JButton SIZE = new JButton("Small Mode"),
-                                 MUTE = new JButton("Mute");
+    private final static JButton SIZE = new JButton("Small mode"),
+                                 MUTE = new JButton("Mute"),
+                                 KEYS = new JButton("Key click");
     
     private final static JTextField INPUT = new JTextField(23);
     
-    private final static LinkedList<String> HOLDER = new LinkedList<>();
+    private final static LinkedList<String> HOLDER = new LinkedList<>(), 
+                                              UNDO = new LinkedList<>();
+    
+    private final static LinkedList<Click> KEYSOUND = new LinkedList() {{
+        add(Click.SOFT); add(Click.CLICK); add(Click.VINTAGE); add(Click.NONE);
+    }};
+    
+    private static int key = Click.SOFT.soundID();
+    
 // *****************************************************************************
 // <editor-fold desc="CONSTRUCTOR">
 // *****************************************************************************     
@@ -46,8 +73,8 @@ public class GUI extends JPanel {
         
         SCROLLW.setBackground(Color.DARK_GRAY);
         SCROLLW.setBorder(BorderFactory.createSoftBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.DARK_GRAY));
-
-        JButton[] buttons = {SIZE, MUTE};
+        
+        JButton[] buttons = {SIZE, MUTE, KEYS};
         
         for (JButton b : buttons) {
             b.setBackground(Color.DARK_GRAY);
@@ -64,12 +91,12 @@ public class GUI extends JPanel {
         SALAMAA.setBorder(BorderFactory.createRaisedBevelBorder());
         SALAMAA.add(SIZE);
         SALAMAA.add(MUTE);
+        SALAMAA.add(KEYS);
         WEST.add(SALAMAA, BorderLayout.NORTH);
         WEST.add(SCROLLW, BorderLayout.SOUTH);
         
         CENTER.setLayout(new BorderLayout());
         CNORTH.setBackground(Color.DARK_GRAY);
-        DESC.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));  
         ROOM.setFont(labelFont);
         ROOM.setForeground(Color.BLACK);
         CNORTH.add(DESC, BorderLayout.NORTH);
@@ -82,10 +109,12 @@ public class GUI extends JPanel {
         CCENTER.add(MEN);
         CSOUTH.setBackground(Color.DARK_GRAY);
         INPUT.addActionListener(new Text_Field_Listener());
+        INPUT.addKeyListener(new Text_Field_Key_Listener());
         INPUT.setFont(myFont);
         INPUT.setBorder(BorderFactory.createLoweredBevelBorder());
         INPUT.setBackground(Color.DARK_GRAY);
         INPUT.setForeground(Color.BLACK);
+        INPUT.setCaretColor(Color.LIGHT_GRAY);
         CSOUTH.add(INPUT);
         CENTER.add(CNORTH, BorderLayout.NORTH);
         CENTER.add(CCENTER, BorderLayout.CENTER);
@@ -93,7 +122,6 @@ public class GUI extends JPanel {
             
         SCROLLE.setBackground(Color.DARK_GRAY);
         SCROLLE.setBorder(BorderFactory.createSoftBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.DARK_GRAY));
-        INV.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
         INVLBL.setFont(labelFont);
         INVLBL.setForeground(Color.BLACK);
         EAST.add(INVLBL, BorderLayout.NORTH);
@@ -110,6 +138,7 @@ public class GUI extends JPanel {
         
         JTextArea[] textAreas = {DIAL, DESC, INV};
         for (JTextArea C : textAreas) {
+            C.setMargin(new Insets(0,6,0,6));
             C.setEditable(false);       C.setLineWrap(true);
             C.setWrapStyleWord(true);   C.setBackground(Color.BLACK);
             C.setForeground(myColor);   C.setFont(myFont);
@@ -121,7 +150,7 @@ public class GUI extends JPanel {
         CENTER.setPreferredSize(new Dimension(400, 600));
         DESC.setPreferredSize(new Dimension(390, 350));
         EAST.setPreferredSize(new Dimension(300, 600));
-        INV.setPreferredSize(new Dimension(290, 555));
+        SCROLLE.setPreferredSize(new Dimension(290, 555));
 
         this.addComponents(true);
     }
@@ -210,7 +239,7 @@ public class GUI extends JPanel {
      */
     public static void clearMenu() {
         MEN.setText("     <'w'/'s'/'a'/'d'> Move\n    <action object> Interact\n<'e'> Search       "
-                  + "<'c'> Inspect\n<'i'> Inventory    <'k'> Keyring\n"
+                  + "<'c'> Check\n<'i'> Inventory    <'k'> Keyring\n"
                   + "<'h'> Get help     <'quit'> Quit");
     }
 /*----------------------------------------------------------------------------*/
@@ -239,7 +268,7 @@ public class GUI extends JPanel {
             CENTER.setPreferredSize(new Dimension(400, 600));
             DESC.setPreferredSize(new Dimension(390, 350));
             EAST.setPreferredSize(new Dimension(300, 600));
-            INV.setPreferredSize(new Dimension(290, 555));
+            SCROLLE.setPreferredSize(new Dimension(290, 555));
         }
         else {
             WEST.setPreferredSize(new Dimension(300, 510));
@@ -247,7 +276,7 @@ public class GUI extends JPanel {
             CENTER.setPreferredSize(new Dimension(400, 510));
             DESC.setPreferredSize(new Dimension(390, 260));
             EAST.setPreferredSize(new Dimension(300, 510));
-            INV.setPreferredSize(new Dimension(290, 465));
+            SCROLLE.setPreferredSize(new Dimension(290, 465));
         }
         
         DESC.setFont(new Font("Monospaced", Font.BOLD, big ? 16 : 14));
@@ -259,7 +288,34 @@ public class GUI extends JPanel {
     }
 // *****************************************************************************
 // <editor-fold desc="LISTENERS">  
-// *****************************************************************************  
+// *****************************************************************************
+    /**
+     * Allows player to go to last keyboard input with arrow keys.
+     */
+    private class Text_Field_Key_Listener implements KeyListener {
+        private int current = 0;
+        /*------------------------------------------------------*/
+        @Override public void keyReleased(KeyEvent e) {
+            switch(e.getKeyCode()) {
+                case KeyEvent.VK_UP:
+                    if (current < UNDO.size())
+                        INPUT.setText(UNDO.get(current++));
+                    break;
+                case KeyEvent.VK_DOWN:
+                    INPUT.setText(""); 
+                    current = 0;
+                    break;  
+            }
+        }
+        /*------------------------------------------------------*/
+        @Override public void keyPressed(KeyEvent e) {
+            if (key != 0)
+                AudioPlayer.playEffect(key);
+        }
+        /*------------------------------------------------------*/
+        @Override public void keyTyped(KeyEvent e) {}
+    }
+/*----------------------------------------------------------------------------*/
     private class Text_Field_Listener implements ActionListener {
         /**
          * Waits for text to entered by the player and stores it, then notifies
@@ -268,7 +324,14 @@ public class GUI extends JPanel {
          */
         @Override public void actionPerformed(ActionEvent event) {
             synchronized (HOLDER) {
-                HOLDER.add(INPUT.getText().toLowerCase().trim());
+                HOLDER.push(INPUT.getText().toLowerCase().trim());
+                
+                if (HOLDER.peek().matches("[a-z- ]{2,}|(?:[ts] \\d{1,2})")) {
+                    if (UNDO.size() == 10)
+                        UNDO.removeLast();
+                    UNDO.push(HOLDER.peek());
+                }
+                
                 INPUT.setText("");
                 HOLDER.notify();
             }
@@ -277,21 +340,28 @@ public class GUI extends JPanel {
 /*----------------------------------------------------------------------------*/
     private class Button_Listener implements ActionListener {
         /**
-         * Resizes the game panel. 
+         * Resizes the game panel, toggles the ambience, and changes key sound. 
          * On some monitors, the frame has been to large.
-         * @param push A push of the SIZE button.
+         * @param push A push of a button.
          */
-        @Override public void actionPerformed(ActionEvent push) {
-            AudioPlayer.playEffect(10);
-            
+        @Override public void actionPerformed(ActionEvent push) { // Resize
             if (push.getSource().equals(SIZE)) {
+                AudioPlayer.playEffect(10);
                 big = ! big;
                 smallMode(big);
                 SIZE.setText(big ? "Small mode" : "Big mode");
             }
-            else {
+            else if (push.getSource().equals(MUTE)) { // Toggles ambience
+                AudioPlayer.playEffect(10);
                 MUTE.setText(MUTE.getText().matches("Mute") ? "Unmute" : "Mute");
                 AudioPlayer.muteTrack();
+            }
+            else { // Changes key click
+                KEYSOUND.offer(KEYSOUND.poll());
+                key = KEYSOUND.peek().soundID();
+                
+                if (key != 0)
+                    AudioPlayer.playEffect(key);
             }
         }
     }

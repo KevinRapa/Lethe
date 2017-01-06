@@ -12,6 +12,7 @@ public class MhaN_Wndw extends Window {
         this.descOpen = "The window is open and its two shutters open outwards.\n"
                       + "You can see the north end of the courtyard. A small\n"
                       + "headless statue stands in the center.";
+        this.addNameKeys("tall window");
     }
 /*----------------------------------------------------------------------------*/    
 }

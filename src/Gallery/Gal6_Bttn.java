@@ -43,8 +43,7 @@ public class Gal6_Bttn extends Button {
                 Player.setOccupies(Z, Y, X);  
                 GUI.roomOut(Player.getPos().toString());
                 rep = "'... Huh? What just happened? This isn't the gallery loft.'\n" +
-                      "You scratch your head and look around the room. After a few\n"
-                    + "seconds, you're pretty sure you are back " + Player.getPos() + ".";
+                      "You scratch your head and look around the room.";
             }
         } while (! choice.matches("yes|no|"));
         

@@ -7,9 +7,10 @@ import A_Main.Player;
 public class Par1_FrPlc extends Fireplace {
     private final Item SCRDFR_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/           
-    public Par1_FrPlc(Item bckt, Item scrdFr) {       
+    public Par1_FrPlc(Item bckt) {       
         super(true, bckt);
-        this.SCRDFR_REF = scrdFr;
+        this.SCRDFR_REF = new Item("sacred fire", "The fire burns enigmatically inside "
+                                 + "the bottle. To your surprise, the fire gives off no heat.");
         this.descLit = "It's a large sandstone fireplace, about your height.\n"
                      + "It's mantle is supported on both sides by short columns\n"
                      + "carved into angelic figures. The fire burns aggressively,\n"
