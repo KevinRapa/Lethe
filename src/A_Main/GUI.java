@@ -258,7 +258,7 @@ public class GUI extends JPanel {
      * @param big If the frame is entering big mode.
      */
     private void smallMode(boolean big) {
-        Salamaa.gameFrame.setVisible(false);
+        Main.gameFrame.setVisible(false);
         
         this.removeAll();
         
@@ -283,8 +283,8 @@ public class GUI extends JPanel {
         
         this.addComponents(big);
         
-        Salamaa.gameFrame.pack();
-        Salamaa.gameFrame.setVisible(true);
+        Main.gameFrame.pack();
+        Main.gameFrame.setVisible(true);
     }
 // *****************************************************************************
 // <editor-fold desc="LISTENERS">  

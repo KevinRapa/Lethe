@@ -100,7 +100,7 @@ public class Player {
      * @param coords Coordinates the player begins the game at.
      */
     public static void setNewAttributes(int ... coords) {
-        Player.mapRef = Salamaa.createMap();
+        Player.mapRef = Main.createMap();
         Player.inv = new Inventory();
         Player.keys = new Inventory();
         Player.visited = new ArrayList();
@@ -262,7 +262,7 @@ public class Player {
             if (getPos().isThisLocked() && ! visited.contains(getPos().getID()))
                 AudioPlayer.playEffect(13); // Plays unlock sound.
             
-            else if (! getPos().getID().matches("C[AV]..") && 
+            else if (! getPos().getID().matches("C[TV]..") && 
                      ! getPos().getID().substring(0,3).matches(lastVisited.substring(0,3)))
                 AudioPlayer.playEffect(9); // Plays open door sound. 
             

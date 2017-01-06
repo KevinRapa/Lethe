@@ -88,7 +88,7 @@ public class AudioPlayer {
         put("SST2", atticCustom);          put("ATT1", atticCustom);
         put("ATT2", atticCustom);          put("OBS1", obsCustom);
         put("OBS2", obsCustom);            put("OBS3", obsCustom);
-        put("GAL5", galChoir);
+        put("GAL5", galChoir);             put("CT", atticCustom);
     }};
 //******************************************************************************    
 // </editor-fold>
@@ -140,6 +140,9 @@ public class AudioPlayer {
      * @param ID A room ID.
      */
     public static void playTrack(String ID) {
+        if (ID.matches("C[TV]\\d{2}")) // For caves and catacombs.
+            ID = ID.replaceAll("\\d", "");
+        
         if (! muted && (trackName == null || ! trackName.matches(TRACKS.get(ID).getName())) ) {
             
             if (currentMusic != null)

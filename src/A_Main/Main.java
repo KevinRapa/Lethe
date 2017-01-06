@@ -38,12 +38,12 @@ import Jade_Hall.*;        import Secret_Stairs.*;      import Garden.*;
 import java.awt.Toolkit;   import java.awt.Dimension;
 import javax.swing.*;      import java.io.*;
 
-public class Salamaa {
+public class Main {
     public static JFrame gameFrame;
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = "COU4";
+        String start = "CT11";
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -70,7 +70,7 @@ public class Salamaa {
         // <editor-fold desc="READ IN SAVE FILE OR START NEW GAME">
         //
         // Rudimentary save system using serialization. Saves files in the same
-        // location as Salamaa.jar
+        // location as Main.jar
         //**********************************************************************
         Help.constructHelp();
         int exitChoice;
@@ -1156,52 +1156,55 @@ public class Salamaa {
         
         Room cas2 = new Room("catacombs entrance", "CAS2");
         Room oub2 = new Room("bottom of the oubliette", "OUB2");
-        Room cat1 = new Room("catacombs", "CAT1");
-        Room cat2 = new Room("catacombs", "CAT2");
-        Room cat3 = new Room("catacombs", "CAT3");
-        Room cat4 = new Room("catacombs", "CAT4");
-        Room cat5 = new Room("catacombs", "CAT5");
-        Room cat6 = new Room("tomb 1", "CAT6");
-        Room cat7 = new Room("catacombs", "CAT7");
-        Room cat9 = new Room("catacombs", "CAT9");
-        Room ca10 = new Room("catacombs", "CA10");
-        Room ca11 = new Room("catacombs", "CA11");
-        Room ca12 = new Room("catacombs", "CA12");
-        Room ca13 = new Room("catacombs", "CA13");
-        Room ca14 = new Room("catacombs", "CA14");
-        Room ca15 = new Room("catacombs", "CA15");
-        Room ca16 = new Room("catacombs", "CA16");
-        Room ca17 = new Room("catacombs", "CA17");
-        Room ca18 = new Room("tomb 3", "CA18");
-        Room ca19 = new Room("catacombs", "CA19");
-        Room ca20 = new Room("catacombs", "CA20");
-        Room ca22 = new Room("catacombs", "CA22");
-        Room ca23 = new Room("catacombs", "CA23");
-        Room ca24 = new Room("catacombs", "CA24");
-        Room ca25 = new Room("catacombs", "CA25");
-        Room ca26 = new Room("catacombs", "CA26");
-        Room ca27 = new Room("catacombs", "CA27");
-        Room ca28 = new Room("catacombs", "CA28");
-        Room ca29 = new Room("catacombs", "CA29");
-        Room ca30 = new Room("catacombs", "CA30");
-        Room ca31 = new Room("catacombs", "CA31");
-        Room ca32 = new Room("catacombs", "CA32");
-        Room ca33 = new Room("catacombs", "CA33");
-        Room ca34 = new Room("catacombs", "CA34");
-        Room ca35 = new Room("catacombs", "CA35");
-        Room ca36 = new Room("catacombs", "CA36");
-        Room ca38 = new Room("catacombs", "CA38");
-        Room ca39 = new Room("catacombs", "CA39");
-        Room ca40 = new Room("catacombs", "CA40");
-        Room ca41 = new Room("catacombs", "CA41");
-        Room ca43 = new Room("catacombs", "CA43");
-        Room ca44 = new Room("catacombs", "CA44");
-        Room ca46 = new Room("tomb 2", "CA46");
-        Room ca47 = new Room("catacombs", "CA47");
-        Room ca48 = new Room("catacombs", "CA48");
         Room myst = new Room("mysterious chamber", "MYST");
+        
+        Room tmb1 = new Room("tomb 1", "TMB1");
+        Room tmb2 = new Room("tomb 2", "TMB2");
+        Room tmb3 = new Room("tomb 3", "TMB3");
+        
         Room ant1 = new Room("ancient tomb", "ANT1");
         Room ant2 = new Room("ancient tomb", "ANT2");
+        
+        Room ct11 = new Room("catacombs", "CT11");
+        Room ct12 = new Room("catacombs", "CT12");
+        Room ct13 = new Room("catacombs", "CT13");
+        Room ct14 = new Room("catacombs", "CT14");
+        Room ct15 = new Room("catacombs", "CT15");
+        Room ct17 = new Room("catacombs", "CT17");
+        Room ct21 = new Room("catacombs", "CT21");
+        Room ct22 = new Room("catacombs", "CT22");
+        Room ct23 = new Room("catacombs", "CT23");
+        Room ct24 = new Room("catacombs", "CT24");
+        Room ct25 = new Room("catacombs", "CT25");
+        Room ct26 = new Room("catacombs", "CT26");
+        Room ct27 = new Room("catacombs", "CT27");
+        Room ct28 = new Room("catacombs", "CT28");
+        Room ct31 = new Room("catacombs", "CT31");       
+        Room ct33 = new Room("catacombs", "CT33");
+        Room ct34 = new Room("catacombs", "CT34");
+        Room ct36 = new Room("catacombs", "CT36");
+        Room ct37 = new Room("catacombs", "CT37");
+        Room ct38 = new Room("catacombs", "CT38");
+        Room ct41 = new Room("catacombs", "CT41");
+        Room ct42 = new Room("catacombs", "CT42");
+        Room ct43 = new Room("catacombs", "CT43");
+        Room ct44 = new Room("catacombs", "CT44");
+        Room ct45 = new Room("catacombs", "CT45");
+        Room ct46 = new Room("catacombs", "CT46");
+        Room ct47 = new Room("catacombs", "CT47");
+        Room ct48 = new Room("catacombs", "CT48");
+        Room ct51 = new Room("catacombs", "CT51");
+        Room ct52 = new Room("catacombs", "CT52");
+        Room ct53 = new Room("catacombs", "CT53");
+        Room ct54 = new Room("catacombs", "CT54");
+        Room ct56 = new Room("catacombs", "CT56");
+        Room ct57 = new Room("catacombs", "CT57");
+        Room ct58 = new Room("catacombs", "CT58");
+        Room ct61 = new Room("catacombs", "CT61");
+        Room ct63 = new Room("catacombs", "CT63");
+        Room ct64 = new Room("catacombs", "CT64");
+        Room ct67 = new Room("catacombs", "CT67");
+        Room ct68 = new Room("catacombs", "CT68");
         
         // INITIALIZE CAVE ROOMS ------------------------------------------
         
@@ -1337,11 +1340,10 @@ public class Salamaa {
          * <p>
          * The map behaves as a graph in that each room has an ID. That ID is
          * mapped to an array of other ID's which represent adjacent rooms.
-         * <p>
+         * </p><p>
          * Though this implementation uses up more space than it needs to due 
          * to the numerous 'NULL' elements, it provides a good visualization.
-         * In addition, the game has advanced too much to change it at this point.
-         *
+         * </p>
          * @see "Room_References.java"
          * 
         //*********************************************************************/
@@ -1397,12 +1399,12 @@ public class Salamaa {
           {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
          {{____,____,____,____,____,____,____,____,____,____}, //0 CATACOMBS [5]
-          {____,cat1,cat2,cat3,cat4,cat5,cat6,cat7,myst,____}, //1
-          {____,cat9,ca10,ca11,ca12,ca13,ca14,ca15,ca16,____}, //2
-          {____,ca17,ca18,ca19,ca20,cas2,ca22,ca23,ca24,____}, //3
-          {____,ca25,ca26,ca27,ca28,ca29,ca30,ca31,ca32,____}, //4
-          {____,ca33,ca34,ca35,ca36,ant1,ca38,ca39,ca40,____}, //5
-          {____,ca41,oub2,ca43,ca44,ant2,ca46,ca47,ca48,____}, //6
+          {____,ct11,ct12,ct13,ct14,ct15,tmb1,ct17,myst,____}, //1
+          {____,ct21,ct22,ct23,ct24,ct25,ct26,ct27,ct28,____}, //2
+          {____,ct31,tmb3,ct33,ct34,cas2,ct36,ct37,ct38,____}, //3
+          {____,ct41,ct42,ct43,ct44,ct45,ct46,ct47,ct48,____}, //4
+          {____,ct51,ct52,ct53,ct54,ant1,ct56,ct57,ct58,____}, //5
+          {____,ct61,oub2,ct63,ct64,ant2,tmb2,ct67,ct68,____}, //6
           {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
          {{____,____,____,____,____,____,____,____,____,____}, //0 CAVES [6]
