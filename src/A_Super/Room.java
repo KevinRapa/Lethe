@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.io.Serializable;
 import A_Main.Room_References;
 /**
+ * Represents one element in the game map array. 
+ *
  * @author Kevin Rapa
  */
 public class Room implements Serializable { 
@@ -59,12 +61,12 @@ public class Room implements Serializable {
     }
     // ========================================================================
     /**
-     * If the player fails a move, this prints a string of the reason.
+     * If the player fails a move, this returns the reason.
+     * Overridden if the room contains other barrier types (e.g. railing)
      * @param dir A direction.
      * @return Why the move failed.
      */
     public String getBarrier(Direction dir) {
-        // Used in movement when you hit a barrier. Overridden in many cases.
         AudioPlayer.playEffect(6);
         return "There is a wall in the way.";
     }
@@ -74,47 +76,6 @@ public class Room implements Serializable {
      */
     public ArrayList<Furniture> getFurnishings() {
         return this.furnishings;
-    }
-    // ========================================================================
-    public boolean isThisLocked() {
-        return this.isLocked; 
-    }
-    // ========================================================================  
-    /**
-     * The event that occur whenever the player enters this room.
-     * @return A string default that says which room you are in.
-     */
-    public String triggeredEvent() {
-        return "You are " + this + ".";
-    }
-    // ========================================================================
-    /**
-     * Checks if a room is accessible from this one, used in movement.
-     * By 'accessible', is the destination separated by this room by either
-     * a door or empty space?
-     * @param destination A room ID.
-     * @return If room is adjacent to this one.
-     */
-    public boolean isAdjacent(String destination) {
-        return this.adjacent.contains(destination); 
-    } 
-    // ========================================================================
-    /**
-     * Checks this room for a piece of furniture with the name.
-     * @param name The name of a piece of furniture.
-     * @return If your location contains furniture with that name.
-     */
-    public boolean hasFurniture(String name) {   
-        for (Furniture i : this.furnishings) 
-            for (String j : i.getValidNames()) 
-                if (name.matches(j))
-                    return true;
-
-        return false;
-    }
-    // ========================================================================
-    public boolean hasFurniture(Furniture furn) {
-        return this.furnishings.contains(furn);
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -154,6 +115,54 @@ public class Room implements Serializable {
     // ========================================================================
     public final void addFurniture(Furniture ... furnishings) {
         this.furnishings.addAll(Arrays.asList(furnishings));
+    }
+//******************************************************************************    
+// </editor-fold>  
+//******************************************************************************
+    
+    
+//******************************************************************************
+// <editor-fold desc="OTHER">      
+//****************************************************************************** 
+    /**
+     * The event that occur whenever the player enters this room.
+     * @return A string default that says which room you are in.
+     */
+    public String triggeredEvent() {
+        return "You are " + this + ".";
+    }
+    // ========================================================================
+    public boolean isThisLocked() {
+        return this.isLocked; 
+    }
+    // ========================================================================
+    /**
+     * Checks if a room is accessible from this one, used in movement.
+     * By 'accessible', is the destination separated by this room by either
+     * a door or empty space?
+     * @param destination A room ID.
+     * @return If room is adjacent to this one.
+     */
+    public boolean isAdjacent(String destination) {
+        return this.adjacent.contains(destination); 
+    } 
+    // ========================================================================
+    /**
+     * Checks this room for a piece of furniture with the name.
+     * @param name The name of a piece of furniture.
+     * @return If your location contains furniture with that name.
+     */
+    public boolean hasFurniture(String name) {   
+        for (Furniture i : this.furnishings) 
+            for (String j : i.getValidNames()) 
+                if (name.matches(j))
+                    return true;
+
+        return false;
+    }
+    // ========================================================================
+    public boolean hasFurniture(Furniture furn) {
+        return this.furnishings.contains(furn);
     }
 //******************************************************************************    
 // </editor-fold>  

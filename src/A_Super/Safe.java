@@ -36,8 +36,7 @@ public class Safe extends Furniture implements Container {
         boolean successful;
         String action;
         
-        GUI.menOut("<'1'> Turn dial one\n<'2'> Turn dial two\n<'3'> Turn dial three\n" +
-                          "< > Back\n");
+        GUI.menOut("\n<'1'> Turn dial one\n<'2'> Turn dial two\n<'3'> Turn dial three\n< > Back\n");
         do {
             GUI.out("\t  [" + DIALS[0] + "][" + DIALS[1] + "][" + DIALS[2] + "]");      
 

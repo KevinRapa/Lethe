@@ -43,7 +43,7 @@ public class Main {
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = "CT11";
+        String start = "COU4";
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -62,7 +62,7 @@ public class Main {
         gameFrame.pack();
         gameFrame.setVisible(true);
         //**********************************************************************
-        // </editor-fold>  // IF WINDOW TOO LARGE, PASS FALSE TO GUI CONSTRUCTOR.
+        // </editor-fold>
         //**********************************************************************
         
         
@@ -97,7 +97,7 @@ public class Main {
         
         
         //**********************************************************************
-        // <editor-fold desc="LEAVE / ERASE / SAVE GAME">
+        // <editor-fold desc="EXIT GAME">
         //**********************************************************************
         AudioPlayer.stopTrack();
         gameFrame.dispose();
@@ -1256,7 +1256,6 @@ public class Main {
         Room mas2 = new Room("mass grave", "MAS2");
         Room cv67 = new Room("caves", "CV67");
         Room cv68 = new Room("caves", "CV68");
-
 
         // </editor-fold>
         //---------------------------------------------------------------------- 

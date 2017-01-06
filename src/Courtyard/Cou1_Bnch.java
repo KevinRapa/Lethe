@@ -12,7 +12,7 @@ public class Cou1_Bnch extends Furniture{
         this.searchDialog = "You aren't risking getting pricked by those thorns.";
         this.actDialog = "You aren't risking getting pricked by those thorns.";
         this.addActKeys("sit", "relax", "lay");
-        this.addNameKeys("bench", "stone bench");
+        this.addNameKeys("(?:ruined )?(?:stone )?bench");
     }
 /*----------------------------------------------------------------------------*/
 }

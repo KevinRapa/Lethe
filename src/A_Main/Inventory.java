@@ -78,7 +78,7 @@ public class Inventory implements Iterable<Item>, Serializable {
             for (Item i : this.CONTENTS) {
                 String capital = Character.toUpperCase(i.toString().charAt(0)) 
                                + i.toString().substring(1);
-                rep += ("-" + position + "- " + capital + "\n");
+                rep += ("<" + position + "> " + capital + "\n");
 
                 position++;
             }

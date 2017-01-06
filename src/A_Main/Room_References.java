@@ -207,9 +207,9 @@ public class Room_References {
      * @return A list of rooms adjacent to the room.
      */
     public static ArrayList getAdj(String ID) {
-        return new ArrayList() {{
-            addAll(Arrays.asList(ADJACENTS.get(ID)));
-        }}; 
+        ArrayList<String> result = new ArrayList<>();
+        result.addAll(Arrays.asList(ADJACENTS.get(ID)));
+        return result;
     }
     // ========================================================================  
     /**

@@ -1,9 +1,13 @@
 package A_Main;
 
 import java.util.LinkedList;
+import java.util.regex.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.swing.border.BevelBorder;
 /******************************************************************************
  * This class is responsible for the game interface.
@@ -62,7 +66,7 @@ public class GUI extends JPanel {
     }};
     
     private static int key = Click.SOFT.soundID();
-    
+    private static final ArrayList<String> FURN_PARSER = new ArrayList<>();
 // *****************************************************************************
 // <editor-fold desc="CONSTRUCTOR">
 // *****************************************************************************     
@@ -285,6 +289,27 @@ public class GUI extends JPanel {
         
         Main.gameFrame.pack();
         Main.gameFrame.setVisible(true);
+    }
+/*----------------------------------------------------------------------------*/
+    /**
+     * The player may reference the last referenced furniture using the words
+     * 'it' or 'them'. This retrieves the last referenced furniture.
+     * @return The last referenced object in the player's location.
+     */
+    public static String parsePreviousFurniture() {
+        FURN_PARSER.clear();
+        
+        UNDO.stream().filter(i -> i.matches("(?:[a-z -]{2,})+")).forEach(j -> {
+            if (j.matches("[a-z-]{3,}") && Player.getPos().hasFurniture(j))
+                FURN_PARSER.add(j);
+            else if (j.matches("[a-z -]+") && Player.getPos().hasFurniture(j.replaceFirst("\\w+ ", "")))
+                FURN_PARSER.add(j.replaceFirst("\\w+ ", ""));
+        });
+
+        if (FURN_PARSER.size() > 0)
+            return FURN_PARSER.get(0);
+        else
+            return "object with that name";
     }
 // *****************************************************************************
 // <editor-fold desc="LISTENERS">  

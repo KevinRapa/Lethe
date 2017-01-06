@@ -12,6 +12,7 @@ public class Vest_Wndw extends Window {
         super();
         this.isOpen = false;
         this.REF = (Vest_Frplc)ref;
+        this.escapeDialog = "That won't do any good. It leads right back out into the courtyard.";
         this.searchDialog = "The only place to look is on the sill,\n" + 
                             "but there's nothing there.";
         this.descOpen = "It's an open arched window of stone. A strong\n" +
@@ -25,30 +26,29 @@ public class Vest_Wndw extends Window {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
         Vest vest = (Vest)Player.getRoomRef("VEST");
-        String rep;
-        
-        if (this.isOpen && key.matches("close")) {
-            rep = "You close the window.";
-            this.close(); 
-            vest.switchWindow();
-        }
-        else if (! this.isOpen && key.matches("open")) {
-            this.open();
-            
-            if (REF.isLit()) {
-                this.REF.extinguish();
-                rep = "You open the window. A strong gust comes through\n" +
-                                      "and extinguishes the fireplace."; 
+        if (key.matches("open|close")) {
+            if (this.isOpen && key.matches("close")) {
+                this.close(); 
+                vest.switchWindow();
+                return "You close the window.";
+            }
+            else if (! this.isOpen && key.matches("open")) {
+                this.open();
+                vest.switchWindow();
+
+                if (REF.isLit()) {
+                    this.REF.extinguish();
+                    return "You open the window. A strong gust comes through\n" +
+                                          "and extinguishes the fireplace."; 
+                }
+                else
+                    return "You open the window."; 
             }
             else
-                rep = "You open the window."; 
-            
-            vest.switchWindow();
+                return "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
         }
         else
-            rep = "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
-        
-        return rep;
+            return this.escapeDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

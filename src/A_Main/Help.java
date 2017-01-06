@@ -73,7 +73,10 @@ public class Help {
         "Interacting means your character is doing something to/with the object, like\n" +
         "'pull', 'sit', etc.\n" +
         "You may type <'search'/'e' object>' to search the object if you wish,\n" +
-        "and 'check/view/look/watch/inspect <object>' to check the object.\n",
+        "and 'check/view/look/watch/inspect <object>' to check the object. Also, you\n"
+      + "may type <action 'it'/'them'> to reference the furniture you last performed\n"
+      + "an action on. For example, if you search check a window, you may subsequently\n"
+      + "type 'open it' to open the window.",
          
         "Using is an inventory action, and is performed from the inventory ('i'). To\n" +
         "use an item, press '2' from the inventory menu, and you will be asked to\n" +

@@ -2,17 +2,18 @@ package A_Super;
 
 public class Window extends Furniture {
     protected boolean isOpen;
-    protected String descOpen, descClosed;
+    protected String descOpen, descClosed, escapeDialog;
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Window () {
         super();
         this.searchable = false;
         this.isOpen = false;
+        this.escapeDialog = "And fall to your death?";
         this.descOpen = "It's an open stone arched window. In the distance,\n" +
                         "you see an expanse of sea.";                    
         this.descClosed = "It's a closed stone arched window.";
-        this.addActKeys("open", "close");
+        this.addActKeys("open", "close", "climb", "exit", "jump");
         this.addNameKeys("window");
     }
 /*----------------------------------------------------------------------------*/
@@ -33,6 +34,7 @@ public class Window extends Furniture {
     }    
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
+        if (key.matches("open|close")) {
             if (this.isOpen && key.matches("close")) {
                 this.close();
                 return "You close the window."; 
@@ -43,6 +45,9 @@ public class Window extends Furniture {
             }
             else 
                 return "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
+        }
+        else
+            return this.escapeDialog;
     } 
 /*----------------------------------------------------------------------------*/
 }

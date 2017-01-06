@@ -9,16 +9,26 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
+ * Represents the player, the focal point of the game.
+ * All player actions originate from the is class. The player has access
+ * to its own location, and thereby each furniture and item in the location
+ * too.
+ * 
+ * The player attributes (including the map) are wrapped in <code>PlayerAttributes</code>
+ * and serialized to a file upon a save game. The attributes are set during
+ * startup if save game data exists.
+ * 
+ * @see A_Main.PlayerAttributes
  * @author Kevin Rapa
  */
 public class Player {
-    private static Room[][][] mapRef;
+    private static Room[][][] mapRef; // Reference to game map.
     private static int[] pos; // Room object you are in.
     private static Inventory inv, keys; // Your inventory and keyring.
-    private static ArrayList<String> visited; // List of rooms you have visited.
+    private static ArrayList<String> visited; // List of rooms you've visited.
     private static String lastVisited; // The last room you visited.
-    private static String shoes; // Some puzzles are solved by wearing certain shoes.
-    private final static HashMap<Character, Runnable> CMD = new HashMap(); // Main game controls
+    private static String shoes; // Some puzzles are solved with shoes.
+    private final static HashMap<Character, Runnable> CMD = new HashMap<>(); // Main game controls
 //******************************************************************************
 // <editor-fold desc="GETTERS AND SETTERS">  
 //******************************************************************************
@@ -83,6 +93,31 @@ public class Player {
         Player.shoes = shoes;
     }
     /*------------------------------------------------------------------------*/
+    /**
+     * Checks that you have a specific item.
+     * @param item The item in question.
+     * @return If you have the item.
+     */
+    public static boolean hasItem(String item) {
+        return Player.inv.contents().stream().
+                anyMatch(i -> i.toString().matches(item));
+    }
+    /*------------------------------------------------------------------------*/
+    /**
+     * Returns an item object reference in your inventory with the name.
+     * @param itemName The item's name.
+     * @return the object reference.
+     */
+    public static Item getItem(String itemName) {
+        Item rep = null;
+        
+        for (Item i : Player.inv) {
+            if (i.toString().matches(itemName))
+                rep = i;
+        }
+        return rep;
+    }
+    /*------------------------------------------------------------------------*/
     public static void loadAttributes(Inventory inv, Inventory keys, ArrayList<String> visited, 
                                       String lastVisited, String shoesWearing, int[] pos, Room[][][] map) {
         // Sets saved game attributes. See PlayerAttributes.java.
@@ -108,31 +143,6 @@ public class Player {
         Player.pos = coords;
         Player.lastVisited = "";
         Player.shoes = "";
-    }
-    // ========================================================================  
-    /**
-     * Checks that you have a specific item.
-     * @param item The item in question.
-     * @return If you have the item.
-     */
-    public static boolean hasItem(String item) {
-        return Player.inv.contents().stream().
-                anyMatch(i -> i.toString().matches(item));
-    }
-    // ========================================================================   
-    /**
-     * Returns an item object reference in your inventory with the name.
-     * @param itemName The item's name.
-     * @return the object reference.
-     */
-    public static Item getItem(String itemName) {
-        Item rep = null;
-        
-        for (Item i : Player.inv) {
-            if (i.toString().matches(itemName))
-                rep = i;
-        }
-        return rep;
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -182,10 +192,10 @@ public class Player {
         CMD.put('s', () -> move(Direction.SOUTH));
         CMD.put('a', () -> move(Direction.WEST));
         CMD.put('d', () -> move(Direction.EAST));
+        String ans;
         
         AudioPlayer.playTrack(getPos().getID());
         GUI.invOut("You are carrying:\n" + Player.inv);
-        String ans;
         
         GUI.roomOut(getPos().triggeredEvent());
         describeRoom();
@@ -237,7 +247,7 @@ public class Player {
     /**
      * The movement algorithm for moving the player north, south, east, and west.
      * Two rooms are considered not to have a door between them if the first
-     * three characters of their ID are identical. An exception is made for 
+     * three characters of their IDs are identical. An exception is made for 
      * caves and catacombs, which have no doors.
      * 
      * @param dir A cardinal direction.
@@ -247,13 +257,16 @@ public class Player {
         Room destination = mapRef[c[0] + dir.Z][c[1] + dir.Y][c[2] + dir.X];
         
         if (! getPos().isAdjacent(destination.getID()))
-            GUI.out(getPos().getBarrier(dir)); // There's x wall in the way.
+            // There's a wall in the way.
+            GUI.out(getPos().getBarrier(dir));
               
         else if (destination.isThisLocked() && ! hasKey(destination.getID())) {
-            AudioPlayer.playEffect(4);
+            //Destination is locked and you don't have the key.
+            AudioPlayer.playEffect(4); // Plays doorknob jiggle sound.
             GUI.out("The door here is locked."); 
         }
-        else {
+        else { 
+            // You can move to the destination.
             GUI.clearDialog();
             lastVisited = getPos().getID();
             Player.pos = destination.getCoords();
@@ -328,8 +341,12 @@ public class Player {
         String searchThis = GUI.promptOut();
         
         if (! searchThis.matches("") && getPos().hasFurniture(searchThis))
-            search(getFurnRef(searchThis));  
+            search(getFurnRef(searchThis));
         
+        else if (searchThis.matches("it|them")) // Indefinite reference.
+            if (Player.getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture()))
+                search(getFurnRef(searchThis));
+            
         else if (! searchThis.matches("")) 
             GUI.out("There is no " + searchThis + " here."); 
 
@@ -382,7 +399,6 @@ public class Player {
             catch (java.util.NoSuchElementException | java.lang.NumberFormatException e) {
                 if (! cmdItm.matches(""))
                     GUI.out("Type an action and the slot number."); 
-                
             }
         } while (! cmdItm.matches(""));
     }
@@ -443,7 +459,7 @@ public class Player {
 //****************************************************************************** 
     /**
      * Subroutine entered when furniture is interacted with.
-     * @param map A reference to the game's map.
+     * @param actObj Two or more words; a verb followed by an object name
      */
     private static void activateSub(String actObj) {
         try (Scanner collectToken = new Scanner(actObj).useDelimiter("\\s+")) {
@@ -459,32 +475,18 @@ public class Player {
             GUI.out("Type an action and an object.");
         } 
     }
-    // ========================================================================  
-    private static void checkOutSub() {
-        GUI.menOut("\n\n<object> Look at...\n< > Back\n");
-        
-        String checkThis = GUI.promptOut();
-        
-        if (! checkThis.matches(""))
-            checkOut(checkThis);
-    }
-    // ========================================================================  
-    private static void checkOut(String inspecting) {
-        if (getPos().hasFurniture(inspecting)) {
-            GUI.out(Player.getFurnRef(inspecting).getDescription());
-        }
-        else 
-            GUI.out("There is no " + inspecting + " here.");
-        
-    }
     // ======================================================================== 
     /**
      * Processes a player's action on furniture.
+     * Player may use 'it' or 'them' to reference the last entered furniture.
      * @param object the name of the furniture being acted upon.
      * @param action the action the player is performing on the furniture.
      * @param map a reference to the game map.
      */
     private static void evaluateAction(String object, String action) {
+        if (object.matches("it|them")) // Indefinite reference.
+            object = GUI.parsePreviousFurniture();
+        
         if (getPos().hasFurniture(object)) {                             
             Furniture target = getFurnRef(object);
 
@@ -501,11 +503,37 @@ public class Player {
             
             else
                 GUI.out("That seems unnecessary.");
-        }                
+        }   
         else 
             GUI.out("There is no " + object + " here."); 
         
         GUI.invOut("You are carrying:\n" + Player.inv);
+    }
+    // ========================================================================  
+    private static void checkOutSub() {
+        GUI.menOut("\n\n<object> Look at...\n< > Back\n");
+        
+        String checkThis = GUI.promptOut();
+        
+        if (! checkThis.matches(""))
+            checkOut(checkThis);
+    }
+    // ========================================================================
+    /**
+     * Processes player input to inspect an object.
+     * Player may use 'it' or 'them' to reference the last entered furniture.
+     * @param inspecting object name the player wants to inspect.
+     */
+    private static void checkOut(String inspecting) {
+        if (inspecting.matches("it|them")) // Indefinite reference.
+            inspecting = GUI.parsePreviousFurniture();
+        
+        if (getPos().hasFurniture(inspecting)) {
+            GUI.out(Player.getFurnRef(inspecting).getDescription());
+        }
+        else 
+            GUI.out("There is no " + inspecting + " here.");
+        
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -526,7 +554,7 @@ public class Player {
             
             ans = GUI.promptOut();
             
-            if (ans.matches("[1-3]")) {
+            if (ans.matches("[123]")) {
                 switch(Integer.parseInt(ans)) {
                     case 1:
                         inspectPrompt(); break;
@@ -666,7 +694,7 @@ public class Player {
                 // 2 objects are correct, but 1 is missing.
                 GUI.out("You need something else for this to work."); 
         }
-        else 
+        else {
             switch (list.length) {
                 case 2:
                     // Player entered 2 itemList that don't combine.
@@ -677,6 +705,7 @@ public class Player {
                     // Player entered 3 itemList, some of which may combine.
                     GUI.out("You are pretty sure all these don't go together."); 
             } 
+        }
     }
     // ========================================================================  
     /**

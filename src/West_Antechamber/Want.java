@@ -4,17 +4,16 @@ import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
 
-public class Want extends Room{
+public class Want extends Room {
 /*----------------------------------------------------------------------------*/    
     public Want(String name, String ID) {
         super(name, ID);
         this.description = "You are in a wide, two-story hall. The whole room\n" +
                            "is coated in the orange glow of a several torches\n" +
-                           "standing around the room. Everything appears to be \n" +
-                           "made of sandstone. Looking westward, three pillars \n" +
-                           "on each side show the way to a short ramp down on \n" +
-                           "the opposite end. A statue fills the spaces between \n" +
-                           "each of the pillars.";
+                           "standing around the room. Everything appears to be\n" +
+                           "made of sandstone. Looking westward, three pillars\n" +
+                           "on each side show the way to an odd door down a short ramp down on\n" +
+                           "the opposite end. Between each pillar is a statue.";
     }
 /*----------------------------------------------------------------------------*/        
     @Override public String getBarrier(Direction dir) {
