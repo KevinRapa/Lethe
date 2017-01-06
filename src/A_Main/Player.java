@@ -528,12 +528,10 @@ public class Player {
         if (inspecting.matches("it|them")) // Indefinite reference.
             inspecting = GUI.parsePreviousFurniture();
         
-        if (getPos().hasFurniture(inspecting)) {
+        if (getPos().hasFurniture(inspecting))
             GUI.out(Player.getFurnRef(inspecting).getDescription());
-        }
         else 
             GUI.out("There is no " + inspecting + " here.");
-        
     }
 //******************************************************************************    
 // </editor-fold>  

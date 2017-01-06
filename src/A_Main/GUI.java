@@ -299,17 +299,20 @@ public class GUI extends JPanel {
     public static String parsePreviousFurniture() {
         FURN_PARSER.clear();
         
-        UNDO.stream().filter(i -> i.matches("(?:[a-z -]{2,})+")).forEach(j -> {
-            if (j.matches("[a-z-]{3,}") && Player.getPos().hasFurniture(j))
-                FURN_PARSER.add(j);
-            else if (j.matches("[a-z -]+") && Player.getPos().hasFurniture(j.replaceFirst("\\w+ ", "")))
-                FURN_PARSER.add(j.replaceFirst("\\w+ ", ""));
+        UNDO.stream().filter(i -> i.matches("(?:[a-z -]{3,})+")).forEach(j -> {
+            // Filters out strings resembling phrases.
+            if (j.matches("([a-z -]{3,})+")) {
+                if (Player.getPos().hasFurniture(j))
+                    // No verb. Uses whole string.
+                    FURN_PARSER.add(j);
+                else if (Player.getPos().hasFurniture(j = j.replaceFirst("\\w+ ", "")))
+                    // First word might be a verb. Try second-last words.
+                    FURN_PARSER.add(j);
+            }
         });
 
-        if (FURN_PARSER.size() > 0)
-            return FURN_PARSER.get(0);
-        else
-            return "object with that name";
+        return (FURN_PARSER.size() > 0) ? FURN_PARSER.get(0) : 
+                                          "object with that name";
     }
 // *****************************************************************************
 // <editor-fold desc="LISTENERS">  
