@@ -28,15 +28,19 @@ public class Inventory implements Iterable<Item>, Serializable {
         return CONTENTS.size();
     }
     // ========================================================================
+    public ArrayList<Item> contents() {
+        return this.CONTENTS;
+    }
+    // ========================================================================
     /**
      * Adds an item to the inventory.
      * @param item An item to add to this inventory's contents.
-     * @return If the add was successful. Some inventories have restrictions.
+     * @return If the add was successful. 
      */
     public boolean add(Item item) {
         this.CONTENTS.add(item);
         
-        return true;
+        return true; // Some inventories have restrictions.
     }
     // ========================================================================
     public void remove(Item removeThis) {      
@@ -70,7 +74,6 @@ public class Inventory implements Iterable<Item>, Serializable {
      * @return A string representation of this inventory's contents.
      */
     @Override public String toString() {
-        // Returns a list of items in the inventory.
         String rep = "";
         int position = 1;
         
@@ -84,10 +87,6 @@ public class Inventory implements Iterable<Item>, Serializable {
             }
         }
         return rep.matches("") ? "   nothing." : rep;
-    }
-    // ========================================================================
-    public ArrayList<Item> contents() {
-        return this.CONTENTS;
     }
     // ========================================================================
     /**

@@ -25,20 +25,43 @@ public class Cave extends Room {
 // ============================================================================    
     public Cave(String ID) {
         super("in a cave network", ID);
-        this.description = "This area is pitch black just like the level above.\n"
-                         + "It's uncomfortably cold, and you hear nothing but\n"
-                         + "drops of water and an unsettling echo deep within\n"
-                         + "the tunnels.";
-        
-        this.descLit = "The torch lights a short way ahead. This area is much\n"
-                     + "like above, though the walls and floor are plain rock.\n"
-                     + "You can hear an unsettling noise deep within the tunnels.";
-        
         int X = COORDS[2], Y = COORDS[1]; // X and Y coordinates of this room.
 
         this.DISTANCE = (int)round(sqrt(  // Calculates DISTANCE from MS65.
                 pow(abs(6 - X), 2) +      // Pythagorean theorem
                         pow(abs(6 - Y), 2)));
+        
+        switch (DISTANCE) {
+            case 7: case 6: case 5:
+                descLit = "You feel inexlicably dizzy.";
+                description = "You feel inexlicably dizzy.";
+                break;
+            case 4:
+                descLit = "You can feel the dizzyness intensifying.";
+                description = "You can feel the dizzyness intensifying.";
+                break;
+            case 3:
+                descLit = "Your head begins to hurt, and the dizzyness intensifies.";
+                description = "Your head begins to hurt, and the dizzyness intensifies.";
+                break;
+            case 2:
+                descLit = "You feel delirious, and your senses begin to numb.";
+                description = "You feel delirious, and your senses begin to numb.";
+                break;
+            case 1:
+                descLit = "You start slipping into an acute dementia, and you can barely orient yourself.";
+                description = "You start slipping into an acute dementia, and you can barely orient yourself.";
+                break;
+        }
+        
+        this.description = description.concat(" This area is pitch black just like the level above.\n"
+                         + "It's uncomfortably cold, and you hear nothing but\n"
+                         + "drops of water and an unsettling echo deep within\n"
+                         + "the tunnels. You feel inexplicably dizzy.");
+        
+        this.descLit = descLit.concat(" The torch lights a short way ahead. This area is much\n"
+                     + "like above, though the walls and floor are plain rock.\n"
+                     + "You can hear an unsettling noise deep within the tunnels. To the ");
         
         /* 
            Builds the lit description of the room. Here, the constructor figures
@@ -113,16 +136,16 @@ public class Cave extends Room {
             
             descLit = descLit.concat(", erected unevenly into the tunnel wall is an ancient door.");
         }
-        
+
         this.addFurniture(new Floor("The floor is cold hard rock and uninteresting."),
                           new Wall("The wall is damp, plain rock."));
     }
 // ============================================================================
     @Override public String getDescription() {
-        if (Player.hasItem("hand torch"))
+        //if (Player.hasItem("hand torch"))
             return distortDescription(DISTANCE, descLit);
-        else
-            return distortDescription(DISTANCE, description);
+       // else
+            //return distortDescription(DISTANCE, description);
     }
 // ============================================================================
     @Override public String triggeredEvent() {
@@ -138,7 +161,7 @@ public class Cave extends Room {
      * @param desc A string to distort.
      * @return a scrambled string.
      */
-    protected static String distortDescription(int degree, String desc) {
+    public static String distortDescription(int degree, String desc) {
         char[] charArray = desc.toCharArray();
         int length = charArray.length;
         

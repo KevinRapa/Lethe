@@ -34,17 +34,18 @@ import West_Antechamber.*; import Iron_Hall.*;          import Gallery.*;
 import Observatory.*;      import Dungeon_Stairs.*;     import Parlor.*;
 import Chapel_Stairs.*;    import Chapel.*;             import Back_Hall.*;
 import Jade_Hall.*;        import Secret_Stairs.*;      import Garden.*;
-import Catacombs.*;        import Caves.*;
-
+import Catacombs.*;        import Caves.*;              import Tomb.*;
+        
 import java.awt.Toolkit;   import java.awt.Dimension;
 import javax.swing.*;      import java.io.*;
+import java.util.Random;
 
 public class Main {
     public static JFrame gameFrame;
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = "COU4";
+        String start = "COU4"; // PLAYER'S STARTING LOCATION. DEFAULT "COU4".
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -1221,9 +1222,9 @@ public class Main {
         Room ou62 = new Room("bottom of the oubliette", "OU62");
         Room my18 = new Room("mysterious chamber", "MY18");
         
-        Room tm16 = new Room("tomb 1", "TM16");
-        Room tm66 = new Room("tomb 2", "TM66");
-        Room tm32 = new Room("tomb 3", "TM32");
+        Room tm16 = new Tmb1("tomb 1", "TM16");
+        Room tm66 = new Tmb2("tomb 2", "TM66");
+        Room tm32 = new Tmb3("tomb 3", "TM32");
         
         Room an55 = new Room("ancient tomb", "AN55");
         Room an65 = new Room("ancient tomb", "AN65");
@@ -1248,7 +1249,41 @@ public class Main {
         Room ct58 = new Catacomb("CT58"); Room ct61 = new Catacomb("CT61");
         Room ct63 = new Catacomb("CT63"); Room ct64 = new Catacomb("CT64");
         Room ct67 = new Catacomb("CT67"); Room ct68 = new Catacomb("CT68");
-        // FURNITURE ------------------------------------------------------
+        
+        Room[] list = {ct11, ct12, ct13, ct14, ct15, ct17, ct21, ct22, ct23,
+                       ct24, ct25, ct26, ct27, ct28, ct31, ct33, ct34, ct36,
+                       ct37, ct38, ct41, ct42, ct43, ct44, ct45, ct46, ct47, 
+                       ct48, ct51, ct52, ct53, ct54, ct56, ct57, ct58, ct61, 
+                       ct63, ct64, ct67, ct68};
+
+        //-------------------------------ITEMS----------------------------------
+        Item coin = new Item("stone coins", "A small collection of ancient coins. Many archaic markings decorate their surface, with holes bored in the centers.", "Where do you expect to spend these?");
+        Item ring = new Item("bronze ring", "It's a tarnished ring. Some of the tarnish rubs off and stains your hand green.", "Now is not the time for dress-up.");
+        Item nckLc = new Item("beaded neclace", "A lackluster necklace made with wooden beads.", "Now is not the time for dress-up.");
+        Item cmpss = new Ct_Cmpss("quartz device");
+        Item jwl = new Item("iridescent jewel", "The polished stone feels warm to the touch, and is constantly shifting color among red, black, and green.");
+            Random rand = new Random();
+            int index = rand.nextInt(list.length);
+            list[index].getFurnishings().get(0).getInv().add(jwl);  
+            int y = Math.abs(list[index].getCoords()[1] - 7);
+            String result = (list[index].getCoords()[2] + ", " + y + ", " + -2);
+        Item tmbNt = new Note("torn parchment", "In the center, written in large scribbly handwriting are the numbers: \"" + result + "\".");
+        //-----------------------------FURNITURE-------------------------------- 
+        Furniture catDrN = new Ct_Dr(Direction.NORTH);
+        Furniture catDrS = new Ct_Dr(Direction.SOUTH);
+        Furniture catDrE = new Ct_Dr(Direction.EAST);
+        Furniture catDrW = new Ct_Dr(Direction.WEST);
+        Furniture tm1Vs = new Tmb_Vs(coin, ring, coin, coin);
+        Furniture tm2Vs = new Tmb_Vs(nckLc, coin, coin, ring);
+        Furniture tm3Vs = new Tmb_Vs(coin, coin, coin, nckLc);
+        Furniture tm1F = new Floor("It's a damp dirt floor.");
+        Furniture tm2F = new Floor("It's a damp dirt floor.");
+        Furniture tm3F = new Floor("It's a damp dirt floor.");
+        Furniture catW = new Wall("The walls are wet and rocky.");
+        Furniture tmb1Cskt = new Tmb1_Cskt();
+        Furniture tmb2Cskt = new Tmb2_Cskt();
+        Furniture tmb3Cskt = new Tmb3_Cskt();
+        
         // </editor-fold>
         // <editor-fold desc="INITIALIZE CAVES"> 
         Room cv34 = new CV34("ancient well", "CV34");
@@ -1427,7 +1462,7 @@ public class Main {
           {____,ct41,ct42,ct43,ct44,ct45,ct46,ct47,ct48,____}, //4
           {____,ct51,ct52,ct53,ct54,an55,ct56,ct57,ct58,____}, //5
           {____,ct61,ou62,ct63,ct64,an65,tm66,ct67,ct68,____}, //6
-          {____,____,____,____,____,____,____,____,____,____}},//7
+          {____,____,____,____,____,____,____,____,____,____}},//7      
         //  0    1    2    3    4    5    6    7    8    9  
          {{____,____,____,____,____,____,____,____,____,____}, //0 CAVES [6]
           {____,cv11,cv12,cv13,cv14,cv15,cv16,cv17,cv18,____}, //1
@@ -1549,7 +1584,11 @@ public class Main {
         
         // </editor-fold>  // Castle rear
         // <editor-fold desc="AREA 5">
-
+        
+        tm16.addFurniture(tmb1Cskt, catW, tm1F, catDrS, tm1Vs);
+        tm66.addFurniture(tmb2Cskt, catW, tm2F, catDrE, tm2Vs);
+        tm32.addFurniture(tmb3Cskt, catW, tm3F, catDrW, tm3Vs);
+        
         // </editor-fold>  // Sub-levels
         // <editor-fold desc="AREA 6">
         

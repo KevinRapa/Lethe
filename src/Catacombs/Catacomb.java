@@ -19,6 +19,7 @@ import java.util.Random;
 public class Catacomb extends Room {
     protected String descLit;
     protected static final Random GENERATOR = new Random();
+    protected static int[] jewelCoords;
 // ============================================================================    
     public Catacomb(String ID) {
         super("in the catacombs", ID);
@@ -141,6 +142,22 @@ public class Catacomb extends Room {
             return "You are " + this + ".";
         else
             return "???";
+    }
+// ============================================================================
+    public static String addJewelRandomly(Room[][][] map) {
+        int x, y;
+        Room target;
+        
+        do {
+            x = GENERATOR.nextInt(8) + 1;
+            y = GENERATOR.nextInt(6) + 1;
+            target = Player.getMapRef()[5][y][x];
+        } while (! target.getID().matches("CT\\d{2}"));
+        
+        target.getFurnishings().get(0).getInv().add(new Item("iridescent jewel", "The polished stone feels warm to the touch,\n"
+                                                           + "and is constantly shifting color among red, black, and green."));
+        
+        return (x + ", " + y + ", " + 6);
     }
 // ============================================================================
 }

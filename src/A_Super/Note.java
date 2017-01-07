@@ -3,8 +3,14 @@ package A_Super;
 import A_Main.AudioPlayer;
 
 public class Note extends Item {
+/*----------------------------------------------------------------------------*/    
     public Note(String name) {
         super(name);
+        this.useID = 1;
+    }
+/*----------------------------------------------------------------------------*/    
+    public Note(String name, String desc) {
+        super(name, desc);
         this.useID = 1;
     }
 /*----------------------------------------------------------------------------*/

@@ -13,6 +13,8 @@ public class CV34 extends Cave {
         this.descLit = descLit.concat("This area is more open and circular than\n"
                                     + "the rest of the cave. A round well stands\n"
                                     + "in the center. Why would this be down here?");
+        
+                description = description.concat("Your head begins to hurt, and the dizzyness intensifies.");
     }
 // ============================================================================
 }
