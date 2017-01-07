@@ -34,7 +34,7 @@ import West_Antechamber.*; import Iron_Hall.*;          import Gallery.*;
 import Observatory.*;      import Dungeon_Stairs.*;     import Parlor.*;
 import Chapel_Stairs.*;    import Chapel.*;             import Back_Hall.*;
 import Jade_Hall.*;        import Secret_Stairs.*;      import Garden.*;
-import Catacombs.*;
+import Catacombs.*;        import Caves.*;
 
 import java.awt.Toolkit;   import java.awt.Dimension;
 import javax.swing.*;      import java.io.*;
@@ -1130,29 +1130,91 @@ public class Main {
         //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 5: SUB-LEVELS">
                 
-        // INITIALIZE BASEMENT ROOMS -------------------------------------------
-
-        Room cas1 = new Room("catacombs access", "CAS1");
-        Room cry2 = new Room("crypt", "CRY2");
-        Room sew7 = new Room("ancient cistern", "SEW7");
-        Room sew6 = new Room("ancient cistern", "SEW6");
+        // <editor-fold desc="INITIALIZE SEWERS">
+        //-----------------------------THE ROOMS--------------------------------
+        Room dst2 = new Room("dungeon stairs lower landing", "DST2");
         Room sew5 = new Room("sewers", "SEW5");
-        Room pris = new Room("prison", "PRIS");
-        Room torc = new Room("torture chamber", "TORC");
-        Room cry1 = new Room("crypt", "CRY1");
-        Room sew8 = new Room("ancient cistern", "SEW8");
-        Room aarc = new Room("ancient archives", "AARC");
         Room sew4 = new Room("sewers", "SEW4");
         Room sew3 = new Room("sewers", "SEW3");
         Room sew2 = new Room("sewers", "SEW2");
         Room sew1 = new Room("sewers", "SEW1");
-        Room sew9 = new Room("ancient cistern", "SEW9");
-        Room oub1 = new Room("oubliette", "OUB1");
-        Room intr = new Room("interrogation room", "INTR");
-        Room strp = new Room("strange pool", "STRP");
-        Room arch = new Room("archives", "ARCH");
-        Room dst2 = new Room("dungeon stairs lower landing", "DST2");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE--------------------------------  
         
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE ANCIENT CISTERN">
+        //-----------------------------THE ROOMS--------------------------------
+        Room sew9 = new Room("ancient cistern", "SEW9");
+        Room sew8 = new Room("ancient cistern", "SEW8");
+        Room sew7 = new Room("ancient cistern", "SEW7");
+        Room sew6 = new Room("ancient cistern", "SEW6");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE--------------------------------  
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE TORTURE CHAMBER">
+        //-----------------------------THE ROOMS--------------------------------
+        Room torc = new Room("torture chamber", "TORC");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE-------------------------------- 
+        
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE CRYPT">
+        //-----------------------------THE ROOMS--------------------------------
+        Room cry2 = new Room("crypt", "CRY2");
+        Room cry1 = new Room("crypt", "CRY1");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE-------------------------------- 
+        
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE CELL">
+        //-----------------------------THE ROOMS--------------------------------
+        Room intr = new Room("interrogation room", "INTR");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE-------------------------------- 
+        
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE CATACOMBS ACCESS">
+        //-----------------------------THE ROOMS--------------------------------
+        Room cas1 = new Room("catacombs access", "CAS1");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE-------------------------------- 
+        
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE OUBLIETTE">
+        //-----------------------------THE ROOMS--------------------------------
+        Room oub1 = new Room("oubliette", "OUB1");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE--------------------------------  
+        
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE PRISON">
+        //-----------------------------THE ROOMS--------------------------------
+        Room pris = new Room("prison", "PRIS");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE--------------------------------  
+        
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE ARCHIVES">
+        //-----------------------------THE ROOMS--------------------------------
+        Room arch = new Room("archives", "ARCH");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE-------------------------------- 
+        
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE STRANGE POOL">
+        //-----------------------------THE ROOMS--------------------------------
+        Room strp = new Room("strange pool", "STRP");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE--------------------------------  
+        
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE ANCIENT ARCHIVES">
+        //-----------------------------THE ROOMS--------------------------------
+        Room aarc = new Room("ancient archives", "AARC");
+        //-------------------------------ITEMS----------------------------------        
+        //-----------------------------FURNITURE--------------------------------  
+        
+        // </editor-fold>
         // <editor-fold desc="INITIALIZE CATACOMBS"> 
         // ROOMS --------------------------------------------------------------
         Room cs35 = new Room("catacombs entrance", "CS35");
@@ -1188,57 +1250,36 @@ public class Main {
         Room ct67 = new Catacomb("CT67"); Room ct68 = new Catacomb("CT68");
         // FURNITURE ------------------------------------------------------
         // </editor-fold>
-        // INITIALIZE CAVE ROOMS -----------------------------------------------
+        // <editor-fold desc="INITIALIZE CAVES"> 
+        Room cv34 = new CV34("ancient well", "CV34");
+        Room ms65 = new Room("aYkl x:ld]L fwA", "MS65");
+        Room ms66 = new Room("aYkl x:ld]L fwA", "MS66");
+        Room cv64 = new Room("before an ominous door","CV64");
         
-        Room cv11 = new Room("caves", "CV11");
-        Room cv12 = new Room("caves", "CV12");
-        Room cv13 = new Room("caves", "CV13");
-        Room cv14 = new Room("caves", "CV14");
-        Room cv15 = new Room("caves", "CV15");
-        Room cv16 = new Room("caves", "CV16");
-        Room cv17 = new Room("caves", "CV17");
-        Room mys2 = new Room("caves entrance", "MYS2");
-        Room cv21 = new Room("caves", "CV21");
-        Room cv22 = new Room("caves", "CV22");
-        Room cv23 = new Room("caves", "CV23");
-        Room cv24 = new Room("caves", "CV24");
-        Room cv25 = new Room("caves", "CV25");
-        Room cv26 = new Room("caves", "CV26");
-        Room cv27 = new Room("caves", "CV27");
-        Room cv28 = new Room("caves", "CV28");
-        Room cv31 = new Room("caves", "CV31");
-        Room cv32 = new Room("caves", "CV32");
-        Room cv33 = new Room("caves", "CV33");
-        Room foun = new Room("ancient well", "FOUN");
-        Room cv35 = new Room("caves", "CV35");
-        Room cv36 = new Room("caves", "CV36");
-        Room cv37 = new Room("caves", "CV37");
-        Room cv38 = new Room("caves", "CV38");
-        Room cv41 = new Room("caves", "CV41");
-        Room cv42 = new Room("caves", "CV42");
-        Room cv43 = new Room("caves", "CV43");
-        Room cv44 = new Room("caves", "CV44");
-        Room cv45 = new Room("caves", "CV45");
-        Room cv46 = new Room("caves", "CV46");
-        Room cv47 = new Room("caves", "CV47");
-        Room cv48 = new Room("caves", "CV48");
-        Room cv51 = new Room("caves", "CV51");
-        Room cv52 = new Room("caves", "CV52");
-        Room cv53 = new Room("caves", "CV53");
-        Room cv54 = new Room("caves", "CV54");
-        Room cv55 = new Room("caves", "CV55");
-        Room cv56 = new Room("caves", "CV56");
-        Room cv57 = new Room("caves", "CV57");
-        Room cv58 = new Room("caves", "CV58");
-        Room cv61 = new Room("caves", "CV61");
-        Room cv62 = new Room("caves", "CV62");
-        Room cv63 = new Room("caves", "CV63");
-        Room cv64 = new Room("caves", "CV64");
-        Room mas1 = new Room("mass grave", "MAS1");
-        Room mas2 = new Room("mass grave", "MAS2");
-        Room cv67 = new Room("caves", "CV67");
-        Room cv68 = new Room("caves", "CV68");
-
+        Room cv18 = new Cave("CV18"); Room cv11 = new Cave("CV11");
+        Room cv12 = new Cave("CV12"); Room cv13 = new Cave("CV13");
+        Room cv14 = new Cave("CV14"); Room cv15 = new Cave("CV15");
+        Room cv16 = new Cave("CV16"); Room cv17 = new Cave("CV17");
+        Room cv21 = new Cave("CV21"); Room cv22 = new Cave("CV22");
+        Room cv23 = new Cave("CV23"); Room cv24 = new Cave("CV24");
+        Room cv25 = new Cave("CV25"); Room cv26 = new Cave("CV26");
+        Room cv27 = new Cave("CV27"); Room cv28 = new Cave("CV28");
+        Room cv31 = new Cave("CV31"); Room cv32 = new Cave("CV32");
+        Room cv33 = new Cave("CV33"); Room cv35 = new Cave("CV35");
+        Room cv36 = new Cave("CV36"); Room cv37 = new Cave("CV37");
+        Room cv38 = new Cave("CV38"); Room cv41 = new Cave("CV41");
+        Room cv42 = new Cave("CV42"); Room cv43 = new Cave("CV43");
+        Room cv44 = new Cave("CV44"); Room cv45 = new Cave("CV45");
+        Room cv46 = new Cave("CV46"); Room cv47 = new Cave("CV47");
+        Room cv48 = new Cave("CV48"); Room cv51 = new Cave("CV51");
+        Room cv52 = new Cave("CV52"); Room cv53 = new Cave("CV53");
+        Room cv54 = new Cave("CV54"); Room cv55 = new Cave("CV55");
+        Room cv56 = new Cave("CV56"); Room cv57 = new Cave("CV57");
+        Room cv58 = new Cave("CV58"); Room cv61 = new Cave("CV61");
+        Room cv62 = new Cave("CV62"); Room cv63 = new Cave("CV63");
+        Room cv67 = new Cave("CV67"); Room cv68 = new Cave("CV68");
+        // </editor-fold>
+        
         // </editor-fold>
         //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 6 VAULT">
@@ -1389,12 +1430,12 @@ public class Main {
           {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
          {{____,____,____,____,____,____,____,____,____,____}, //0 CAVES [6]
-          {____,cv11,cv12,cv13,cv14,cv15,cv16,cv17,mys2,____}, //1
+          {____,cv11,cv12,cv13,cv14,cv15,cv16,cv17,cv18,____}, //1
           {____,cv21,cv22,cv23,cv24,cv25,cv26,cv27,cv28,____}, //2
-          {____,cv31,cv32,cv33,foun,cv35,cv36,cv37,cv38,____}, //3
+          {____,cv31,cv32,cv33,cv34,cv35,cv36,cv37,cv38,____}, //3
           {____,cv41,cv42,cv43,cv44,cv45,cv46,cv47,cv48,____}, //4
           {____,cv51,cv52,cv53,cv54,cv55,cv56,cv57,cv58,____}, //5
-          {____,cv61,cv62,cv63,cv64,mas1,mas2,cv67,cv68,____}, //6
+          {____,cv61,cv62,cv63,cv64,ms65,ms66,cv67,cv68,____}, //6
           {____,____,____,____,____,____,____,____,____,____}} //7                
         };
         

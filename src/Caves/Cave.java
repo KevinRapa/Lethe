@@ -1,4 +1,5 @@
-package Catacombs;
+package Caves;
+
 /**
  * The catacombs comprise a maze of similar tunnels.
  * Each catacomb generates its own description, and will present itself
@@ -7,44 +8,48 @@ package Catacombs;
  * @author Kevin Rapa
  */
 import A_Main.Player;
-import A_Super.Direction;
 import A_Super.Floor;
-import A_Super.Furniture;
-import A_Super.Item;
 import A_Super.Room;
 import A_Super.Wall;
 import java.util.ArrayList;
 import java.util.Random;
+import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
+import static java.lang.Math.round;
+import static java.lang.Math.abs;
 
-public class Catacomb extends Room {
+public class Cave extends Room {
     protected String descLit;
+    protected final int DISTANCE; // Distance this room is from MS65
     protected static final Random GENERATOR = new Random();
 // ============================================================================    
-    public Catacomb(String ID) {
-        super("in the catacombs", ID);
-        this.description = "This area is pitch black. Feeling around, you sense\n"
-                         + "that you are in a rocky tunnel barely larger than you.\n"
-                         + "A low breeze and sporadic droplets of water are all that\n"
-                         + "you hear. You suspect you are in a cave of sorts. If\n"
-                         + "only you had a light...";
+    public Cave(String ID) {
+        super("in a cave network", ID);
+        this.description = "This area is pitch black just like the level above.\n"
+                         + "It's uncomfortably cold, and you hear nothing but\n"
+                         + "drops of water and an unsettling echo deep within\n"
+                         + "the tunnels.";
         
-        this.descLit = "The torch offers a small radius of light to see. You\n"
-                     + "are in a thin rocky tunnel with scattered crevices dug\n"
-                     + "into the walls. These are definitely graves. You shudder,\n"
-                     + "perhaps from the cold... To your ";
-        
-        /* 
-           Builds the lit description of the room. Here, the constructor figures
-           out what is in each direction of the catacombs. The description will
-           reflect if there if empty space or a door in any direction.
-        */
+        this.descLit = "The torch lights a short way ahead. This area is much\n"
+                     + "like above, though the walls and floor are plain rock.\n"
+                     + "You can hear an unsettling noise deep within the tunnels.";
         
         int X = COORDS[2], Y = COORDS[1]; // X and Y coordinates of this room.
 
-        // List of X and Y coordinates of the adjacent catacomb rooms.
-        ArrayList<int[]> adjCatacombCoords = new ArrayList<>();
+        this.DISTANCE = (int)round(sqrt(  // Calculates DISTANCE from MS65.
+                pow(abs(6 - X), 2) +      // Pythagorean theorem
+                        pow(abs(6 - Y), 2)));
         
-        // The X and Y coordinates of a non-catacomb room adjacent to this.
+        /* 
+           Builds the lit description of the room. Here, the constructor figures
+           out what is in each direction of the caves. The description will
+           reflect if there if empty space or a door in any direction.
+        */
+        
+        // List of X and Y coordinates of the adjacent cave rooms.
+        ArrayList<int[]> adjCaveCoords = new ArrayList<>();
+        
+        // The X and Y coordinates of a non-cave room adjacent to this.
         int[] adjOtherCoords = null;
         
         // Holds directions to append to descLit.
@@ -54,14 +59,14 @@ public class Catacomb extends Room {
             int[] coords = {i.charAt(2) - '0', 
                             i.charAt(3) - '0'};
             
-            if (i.matches("CT\\d{2}")) // Is catacomb.
-                adjCatacombCoords.add(coords);
-            else                       // Isn't catacomb.
+            if (i.matches("CV\\d{2}")) // Is cave.
+                adjCaveCoords.add(coords);
+            else                       // Isn't cave.
                 adjOtherCoords = coords;
         }
         
         // Figures out the directions in which there are more catacombs.
-        for (int[] j : adjCatacombCoords) {
+        for (int[] j : adjCaveCoords) {
             if (j[0] == Y - 1)
                 dirs.add("north");
             else if (j[0] == Y + 1)
@@ -95,45 +100,29 @@ public class Catacomb extends Room {
         if (adjOtherCoords != null) {
             if (adjOtherCoords[0] == Y - 1) {
                 descLit = descLit.concat("To the north");
-                this.addFurniture(new Ct_Dr(Direction.NORTH));
             }
             else if (adjOtherCoords[0] == Y + 1){
                 descLit = descLit.concat("To the south");
-                this.addFurniture(new Ct_Dr(Direction.SOUTH));
             }
             else if (adjOtherCoords[1] == X - 1) {
                 descLit = descLit.concat("To the west");
-                this.addFurniture(new Ct_Dr(Direction.WEST));
             }
             else {
                 descLit = descLit.concat("To the east");
-                this.addFurniture(new Ct_Dr(Direction.EAST));
             }
             
             descLit = descLit.concat(", erected unevenly into the tunnel wall is an ancient door.");
         }
         
-        // Puts a crevice furniture objects in here and adds items to it randomly.
-        Furniture ctGrv = new Ct_Grv();
-        Item[] itemList = {
-            new Item("dirt", "It's a damp, cold pile of rocky dirt"),
-            new Item("bone", "It's a bone... not much else to say."),
-            new Item("rock", "It's a normal hunk of rock that was mixed with the dirt.") 
-        };
-        
-        int numTimes = GENERATOR.nextInt(5) + 3;
-        
-        for (int start = 1; start <= numTimes; start++) 
-            ctGrv.getInv().add(itemList[GENERATOR.nextInt(3)]);
-
-        this.addFurniture(ctGrv, new Floor("It's a damp dirt floor."), new Wall("The walls are wet and rocky."));
+        this.addFurniture(new Floor("The floor is cold hard rock and uninteresting."),
+                          new Wall("The wall is damp, plain rock."));
     }
 // ============================================================================
     @Override public String getDescription() {
         if (Player.hasItem("hand torch"))
-            return this.descLit;
+            return distortDescription(DISTANCE, descLit);
         else
-            return this.description;
+            return distortDescription(DISTANCE, description);
     }
 // ============================================================================
     @Override public String triggeredEvent() {
@@ -141,6 +130,37 @@ public class Catacomb extends Room {
             return "You are " + this + ".";
         else
             return "???";
+    }
+// ============================================================================
+    /**
+     * Scrambles the description to a degree based on DISTANCE.
+     * @param degree the degree to which distort the description.
+     * @param desc A string to distort.
+     * @return a scrambled string.
+     */
+    protected static String distortDescription(int degree, String desc) {
+        char[] charArray = desc.toCharArray();
+        int length = charArray.length;
+        
+        if (degree == 7) return desc; // Degree 7 will not distort at all.
+        
+        for (int d = 42; d > degree*7; d--) {
+            int i = GENERATOR.nextInt(length),
+                j = GENERATOR.nextInt(length);
+            swapChars(charArray, i, j);
+            charArray[GENERATOR.nextInt(length)] += 20;
+        }
+        
+        for (int d = 42; d > degree*7; d--) {
+            
+        }
+        return new String(charArray);
+    }
+// ============================================================================
+    protected static void swapChars(char[] array, int i, int j) {
+        char temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 // ============================================================================
 }
