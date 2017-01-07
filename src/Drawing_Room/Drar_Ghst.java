@@ -116,7 +116,7 @@ public class Drar_Ghst extends Furniture {
         GUI.out("The apparition hands you a dark tinted lens...");
         GUI.promptOut();
         
-        GUI.clearMenu();
+        GUI.toMainMenu();
         GUI.out("\"Please come back when you have the gem.\"\n");
 
     }
@@ -158,7 +158,7 @@ public class Drar_Ghst extends Furniture {
         Player.getInv().add(KITCKEY_REF);
         GUI.promptOut();
         
-        GUI.clearMenu();
+        GUI.toMainMenu();
         GUI.out("\"Goodbye, my friend.\"\n");
     }
 /*----------------------------------------------------------------------------*/    

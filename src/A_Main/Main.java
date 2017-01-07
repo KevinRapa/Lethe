@@ -34,6 +34,7 @@ import West_Antechamber.*; import Iron_Hall.*;          import Gallery.*;
 import Observatory.*;      import Dungeon_Stairs.*;     import Parlor.*;
 import Chapel_Stairs.*;    import Chapel.*;             import Back_Hall.*;
 import Jade_Hall.*;        import Secret_Stairs.*;      import Garden.*;
+import Catacombs.*;
 
 import java.awt.Toolkit;   import java.awt.Dimension;
 import javax.swing.*;      import java.io.*;
@@ -49,6 +50,7 @@ public class Main {
         // <editor-fold desc="MAKE THE FRAME">
         //**********************************************************************
         GUI panel = new GUI(); // Make false if window is too large.
+                
         gameFrame = new JFrame("Salamaa");
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -58,7 +60,6 @@ public class Main {
         
         gameFrame.getContentPane().add(panel);
         gameFrame.setResizable(false);
-        
         gameFrame.pack();
         gameFrame.setVisible(true);
         //**********************************************************************
@@ -1152,61 +1153,42 @@ public class Main {
         Room arch = new Room("archives", "ARCH");
         Room dst2 = new Room("dungeon stairs lower landing", "DST2");
         
-        // INITIALIZE SUB-LEVEL ROOMS ------------------------------------------
+        // <editor-fold desc="INITIALIZE CATACOMBS"> 
+        // ROOMS --------------------------------------------------------------
+        Room cs35 = new Room("catacombs entrance", "CS35");
+        Room ou62 = new Room("bottom of the oubliette", "OU62");
+        Room my18 = new Room("mysterious chamber", "MY18");
         
-        Room cas2 = new Room("catacombs entrance", "CAS2");
-        Room oub2 = new Room("bottom of the oubliette", "OUB2");
-        Room myst = new Room("mysterious chamber", "MYST");
+        Room tm16 = new Room("tomb 1", "TM16");
+        Room tm66 = new Room("tomb 2", "TM66");
+        Room tm32 = new Room("tomb 3", "TM32");
         
-        Room tmb1 = new Room("tomb 1", "TMB1");
-        Room tmb2 = new Room("tomb 2", "TMB2");
-        Room tmb3 = new Room("tomb 3", "TMB3");
+        Room an55 = new Room("ancient tomb", "AN55");
+        Room an65 = new Room("ancient tomb", "AN65");
         
-        Room ant1 = new Room("ancient tomb", "ANT1");
-        Room ant2 = new Room("ancient tomb", "ANT2");
-        
-        Room ct11 = new Room("catacombs", "CT11");
-        Room ct12 = new Room("catacombs", "CT12");
-        Room ct13 = new Room("catacombs", "CT13");
-        Room ct14 = new Room("catacombs", "CT14");
-        Room ct15 = new Room("catacombs", "CT15");
-        Room ct17 = new Room("catacombs", "CT17");
-        Room ct21 = new Room("catacombs", "CT21");
-        Room ct22 = new Room("catacombs", "CT22");
-        Room ct23 = new Room("catacombs", "CT23");
-        Room ct24 = new Room("catacombs", "CT24");
-        Room ct25 = new Room("catacombs", "CT25");
-        Room ct26 = new Room("catacombs", "CT26");
-        Room ct27 = new Room("catacombs", "CT27");
-        Room ct28 = new Room("catacombs", "CT28");
-        Room ct31 = new Room("catacombs", "CT31");       
-        Room ct33 = new Room("catacombs", "CT33");
-        Room ct34 = new Room("catacombs", "CT34");
-        Room ct36 = new Room("catacombs", "CT36");
-        Room ct37 = new Room("catacombs", "CT37");
-        Room ct38 = new Room("catacombs", "CT38");
-        Room ct41 = new Room("catacombs", "CT41");
-        Room ct42 = new Room("catacombs", "CT42");
-        Room ct43 = new Room("catacombs", "CT43");
-        Room ct44 = new Room("catacombs", "CT44");
-        Room ct45 = new Room("catacombs", "CT45");
-        Room ct46 = new Room("catacombs", "CT46");
-        Room ct47 = new Room("catacombs", "CT47");
-        Room ct48 = new Room("catacombs", "CT48");
-        Room ct51 = new Room("catacombs", "CT51");
-        Room ct52 = new Room("catacombs", "CT52");
-        Room ct53 = new Room("catacombs", "CT53");
-        Room ct54 = new Room("catacombs", "CT54");
-        Room ct56 = new Room("catacombs", "CT56");
-        Room ct57 = new Room("catacombs", "CT57");
-        Room ct58 = new Room("catacombs", "CT58");
-        Room ct61 = new Room("catacombs", "CT61");
-        Room ct63 = new Room("catacombs", "CT63");
-        Room ct64 = new Room("catacombs", "CT64");
-        Room ct67 = new Room("catacombs", "CT67");
-        Room ct68 = new Room("catacombs", "CT68");
-        
-        // INITIALIZE CAVE ROOMS ------------------------------------------
+        Room ct11 = new Catacomb("CT11"); Room ct12 = new Catacomb("CT12");
+        Room ct13 = new Catacomb("CT13"); Room ct14 = new Catacomb("CT14");
+        Room ct15 = new Catacomb("CT15"); Room ct17 = new Catacomb("CT17");
+        Room ct21 = new Catacomb("CT21"); Room ct22 = new Catacomb("CT22");
+        Room ct23 = new Catacomb("CT23"); Room ct24 = new Catacomb("CT24");
+        Room ct25 = new Catacomb("CT25"); Room ct26 = new Catacomb("CT26");
+        Room ct27 = new Catacomb("CT27"); Room ct28 = new Catacomb("CT28");
+        Room ct31 = new Catacomb("CT31"); Room ct33 = new Catacomb("CT33");
+        Room ct34 = new Catacomb("CT34"); Room ct36 = new Catacomb("CT36");
+        Room ct37 = new Catacomb("CT37"); Room ct38 = new Catacomb("CT38");
+        Room ct41 = new Catacomb("CT41"); Room ct42 = new Catacomb("CT42");
+        Room ct43 = new Catacomb("CT43"); Room ct44 = new Catacomb("CT44");
+        Room ct45 = new Catacomb("CT45"); Room ct46 = new Catacomb("CT46");
+        Room ct47 = new Catacomb("CT47"); Room ct48 = new Catacomb("CT48");
+        Room ct51 = new Catacomb("CT51"); Room ct52 = new Catacomb("CT52");
+        Room ct53 = new Catacomb("CT53"); Room ct54 = new Catacomb("CT54");
+        Room ct56 = new Catacomb("CT56"); Room ct57 = new Catacomb("CT57");
+        Room ct58 = new Catacomb("CT58"); Room ct61 = new Catacomb("CT61");
+        Room ct63 = new Catacomb("CT63"); Room ct64 = new Catacomb("CT64");
+        Room ct67 = new Catacomb("CT67"); Room ct68 = new Catacomb("CT68");
+        // FURNITURE ------------------------------------------------------
+        // </editor-fold>
+        // INITIALIZE CAVE ROOMS -----------------------------------------------
         
         Room cv11 = new Room("caves", "CV11");
         Room cv12 = new Room("caves", "CV12");
@@ -1398,12 +1380,12 @@ public class Main {
           {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
          {{____,____,____,____,____,____,____,____,____,____}, //0 CATACOMBS [5]
-          {____,ct11,ct12,ct13,ct14,ct15,tmb1,ct17,myst,____}, //1
+          {____,ct11,ct12,ct13,ct14,ct15,tm16,ct17,my18,____}, //1
           {____,ct21,ct22,ct23,ct24,ct25,ct26,ct27,ct28,____}, //2
-          {____,ct31,tmb3,ct33,ct34,cas2,ct36,ct37,ct38,____}, //3
+          {____,ct31,tm32,ct33,ct34,cs35,ct36,ct37,ct38,____}, //3
           {____,ct41,ct42,ct43,ct44,ct45,ct46,ct47,ct48,____}, //4
-          {____,ct51,ct52,ct53,ct54,ant1,ct56,ct57,ct58,____}, //5
-          {____,ct61,oub2,ct63,ct64,ant2,tmb2,ct67,ct68,____}, //6
+          {____,ct51,ct52,ct53,ct54,an55,ct56,ct57,ct58,____}, //5
+          {____,ct61,ou62,ct63,ct64,an65,tm66,ct67,ct68,____}, //6
           {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
          {{____,____,____,____,____,____,____,____,____,____}, //0 CAVES [6]

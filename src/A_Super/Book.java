@@ -34,7 +34,9 @@ public class Book extends Note {
 
             if (page != (this.PAGES - 1)) {
                 do {
-                    GUI.menOut("Turn page?\n<'y'> Turn the page\n<'n'> Close the book");
+                    GUI.menOut("\n     Turn page?\n"
+                             + "<'y'> Turn the page\n"
+                             + "<'n'> Close the book");
                     choice = GUI.promptOut();
                 } while (! choice.matches("[yn]|yes|no|"));
                 

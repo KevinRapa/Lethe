@@ -201,7 +201,7 @@ public class Player {
         describeRoom();
         
         do {
-            GUI.clearMenu();
+            GUI.toMainMenu();
             ans = GUI.promptOut();
 
             if (ans.matches("[heckiwsad]")) 
@@ -209,7 +209,7 @@ public class Player {
             
             else if (ans.matches("[a-z]+\\s[a-z ]+")) // Interacting
                 activateSub(ans);
-            
+
         } while (! ans.matches("quit"));
         
         return endGame();
@@ -537,7 +537,7 @@ public class Player {
 // </editor-fold>  
 //******************************************************************************
     
-    
+   
 //******************************************************************************    
 // <editor-fold desc="INVENTORY ACTIONS">      
 //******************************************************************************    
@@ -547,8 +547,10 @@ public class Player {
         String ans;
         
         do {
-            GUI.menOut("\n<'1'> Inspect item\n<'2'> Use item\n" + 
-                       "<'3'> Combine items\n< > Back");
+            GUI.menOut("\n<'1'> Inspect item"
+                     + "\n<'2'> Use item" + 
+                       "\n<'3'> Combine items"
+                     + "\n    < > Back");
             
             ans = GUI.promptOut();
             

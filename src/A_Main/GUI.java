@@ -1,13 +1,10 @@
 package A_Main;
 
 import java.util.LinkedList;
-import java.util.regex.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.swing.border.BevelBorder;
 /******************************************************************************
  * This class is responsible for the game interface.
@@ -34,7 +31,9 @@ public class GUI extends JPanel {
         // =======================================
     }
     
+    // <editor-fold desc="COMPONENTS AND ATTRIBUTES"> =========================
     private boolean big = true;
+    private static int key = Click.SOFT.soundID();
     
     private final static JTextArea MEN = new JTextArea(), DESC = new JTextArea(), 
                                    INV = new JTextArea(), DIAL = new JTextArea();
@@ -64,11 +63,12 @@ public class GUI extends JPanel {
     private final static LinkedList<Click> KEYSOUND = new LinkedList() {{
         add(Click.SOFT); add(Click.CLICK); add(Click.VINTAGE); add(Click.NONE);
     }};
-    
-    private static int key = Click.SOFT.soundID();
+
     private static final ArrayList<String> FURN_PARSER = new ArrayList<>();
+    // </editor-fold> ================================================
+    
 // *****************************************************************************
-// <editor-fold desc="CONSTRUCTOR">
+// <editor-fold desc="CONSTRUCTOR AND COMPONENT CONTROLLERS">
 // *****************************************************************************     
     public GUI() {
         Font myFont = new Font("Monospaced", Font.BOLD, 16);
@@ -114,11 +114,13 @@ public class GUI extends JPanel {
         CSOUTH.setBackground(Color.DARK_GRAY);
         INPUT.addActionListener(new Text_Field_Listener());
         INPUT.addKeyListener(new Text_Field_Key_Listener());
+        INPUT.addFocusListener(new GameFocusListener());
         INPUT.setFont(myFont);
         INPUT.setBorder(BorderFactory.createLoweredBevelBorder());
         INPUT.setBackground(Color.DARK_GRAY);
         INPUT.setForeground(Color.BLACK);
         INPUT.setCaretColor(Color.LIGHT_GRAY);
+        
         CSOUTH.add(INPUT);
         CENTER.add(CNORTH, BorderLayout.NORTH);
         CENTER.add(CCENTER, BorderLayout.CENTER);
@@ -165,6 +167,42 @@ public class GUI extends JPanel {
         this.add(WEST, BorderLayout.WEST);
         this.add(CENTER, BorderLayout.CENTER);
         this.add(EAST, BorderLayout.EAST);
+    }
+/*----------------------------------------------------------------------------*/
+    /**
+     * Resizes the frame and components when the resize button in the upper-right
+     * is pressed.
+     * 
+     * @param big If the frame is entering big mode.
+     */
+    private void smallMode(boolean big) {
+        Main.gameFrame.setVisible(false);
+        
+        this.removeAll();
+        
+        if (big) {
+            WEST.setPreferredSize(new Dimension(300, 600));
+            SCROLLW.setPreferredSize(new Dimension(290, 555));
+            CENTER.setPreferredSize(new Dimension(400, 600));
+            DESC.setPreferredSize(new Dimension(390, 350));
+            EAST.setPreferredSize(new Dimension(300, 600));
+            SCROLLE.setPreferredSize(new Dimension(290, 555));
+        }
+        else {
+            WEST.setPreferredSize(new Dimension(300, 510));
+            SCROLLW.setPreferredSize(new Dimension(290, 465));
+            CENTER.setPreferredSize(new Dimension(400, 510));
+            DESC.setPreferredSize(new Dimension(390, 260));
+            EAST.setPreferredSize(new Dimension(300, 510));
+            SCROLLE.setPreferredSize(new Dimension(290, 465));
+        }
+        
+        DESC.setFont(new Font("Monospaced", Font.BOLD, big ? 16 : 14));
+        
+        this.addComponents(big);
+        
+        Main.gameFrame.pack();
+        Main.gameFrame.setVisible(true);
     }
 // *****************************************************************************
 // </editor-fold> CONFIGURES AND ADDS ALL COMPONENTS
@@ -221,6 +259,11 @@ public class GUI extends JPanel {
 // *****************************************************************************
 // </editor-fold> COLLECT ALL GAME OUTPUT
 // *****************************************************************************       
+    
+    
+// *****************************************************************************       
+// <editor-fold desc="INPUT RELATED">
+// *****************************************************************************           
     /**
      * Used for any request of player input.
      * @return Commands input by the player.
@@ -236,59 +279,6 @@ public class GUI extends JPanel {
             }
         }
         return HOLDER.pop();
-    }
-/*----------------------------------------------------------------------------*/
-    /**
-     * Prints the main menu of controls.
-     */
-    public static void clearMenu() {
-        MEN.setText("     <'w'/'s'/'a'/'d'> Move\n    <action object> Interact\n<'e'> Search       "
-                  + "<'c'> Check\n<'i'> Inventory    <'k'> Keyring\n"
-                  + "<'h'> Get help     <'quit'> Quit");
-    }
-/*----------------------------------------------------------------------------*/
-    public static void clearDesc() {
-        DESC.setText("");
-    }
-/*----------------------------------------------------------------------------*/
-    public static void clearDialog() {
-        DIAL.setText("");
-    }
-/*----------------------------------------------------------------------------*/
-    /**
-     * Resizes the frame and components when the resize button in the upper-right
-     * is pressed.
-     * 
-     * @param big If the frame is entering big mode.
-     */
-    private void smallMode(boolean big) {
-        Main.gameFrame.setVisible(false);
-        
-        this.removeAll();
-        
-        if (big) {
-            WEST.setPreferredSize(new Dimension(300, 600));
-            SCROLLW.setPreferredSize(new Dimension(290, 555));
-            CENTER.setPreferredSize(new Dimension(400, 600));
-            DESC.setPreferredSize(new Dimension(390, 350));
-            EAST.setPreferredSize(new Dimension(300, 600));
-            SCROLLE.setPreferredSize(new Dimension(290, 555));
-        }
-        else {
-            WEST.setPreferredSize(new Dimension(300, 510));
-            SCROLLW.setPreferredSize(new Dimension(290, 465));
-            CENTER.setPreferredSize(new Dimension(400, 510));
-            DESC.setPreferredSize(new Dimension(390, 260));
-            EAST.setPreferredSize(new Dimension(300, 510));
-            SCROLLE.setPreferredSize(new Dimension(290, 465));
-        }
-        
-        DESC.setFont(new Font("Monospaced", Font.BOLD, big ? 16 : 14));
-        
-        this.addComponents(big);
-        
-        Main.gameFrame.pack();
-        Main.gameFrame.setVisible(true);
     }
 /*----------------------------------------------------------------------------*/
     /**
@@ -310,10 +300,33 @@ public class GUI extends JPanel {
                     FURN_PARSER.add(j);
             }
         });
-
         return (FURN_PARSER.size() > 0) ? FURN_PARSER.get(0) : 
                                           "object with that name";
     }
+/*----------------------------------------------------------------------------*/
+    /**
+     * Prints the main menu of controls.
+     */
+    public static void toMainMenu() {
+        MEN.setText("    <'w'/'s'/'a'/'d'> Move\n"
+                  + "    <action object> Action\n"
+                  + "<'e'> Search    <'c'>    Check\n"
+                  + "<'i'> Inventory <'k'>    Keys\n"
+                  + "<'h'> Get help  <'quit'> Quit");
+    }
+/*----------------------------------------------------------------------------*/
+    public static void clearDesc() {
+        DESC.setText("");
+    }
+/*----------------------------------------------------------------------------*/
+    public static void clearDialog() {
+        DIAL.setText("");
+    }
+// *****************************************************************************       
+// </editor-fold> CLEAR METHODS AND PARSERS   
+// *****************************************************************************           
+    
+    
 // *****************************************************************************
 // <editor-fold desc="LISTENERS">  
 // *****************************************************************************
@@ -330,7 +343,7 @@ public class GUI extends JPanel {
                         INPUT.setText(UNDO.get(current++));
                     break;
                 case KeyEvent.VK_DOWN:
-                    INPUT.setText(""); 
+                    INPUT.setText(" "); 
                     current = 0;
                     break;  
             }
@@ -359,8 +372,7 @@ public class GUI extends JPanel {
                         UNDO.removeLast();
                     UNDO.push(HOLDER.peek());
                 }
-                
-                INPUT.setText("");
+                INPUT.setText(" ");
                 HOLDER.notify();
             }
         } 
@@ -391,6 +403,17 @@ public class GUI extends JPanel {
                 if (key != 0)
                     AudioPlayer.playEffect(key);
             }
+        }
+    }
+/*----------------------------------------------------------------------------*/
+    /**
+     * Keeps focus on the text field so user doesn't have to set in manually.
+     */
+    private class GameFocusListener implements FocusListener {
+        @Override public void focusGained(FocusEvent e) {}
+
+        @Override public void focusLost(FocusEvent e) {
+            INPUT.requestFocus();
         }
     }
 // *****************************************************************************
