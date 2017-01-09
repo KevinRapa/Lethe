@@ -14,7 +14,7 @@ public class Iha1_Bwl extends Furniture {
             this.searchable = false;
             this.jabbed = false;
             this.addUseKeys("polearm");
-            this.addNameKeys("bowl", "steel bowl", "hanging bowl");
+            this.addNameKeys("(?:hanging )?(?:burning )?(?:steel )?bowl(?: of fire)?");
             this.FLOOR_REF = iha1F;
             this.WOWKEY_REF = wow2Key;
             this.description = "It's a steel bowl hanging from the ceiling by a\n"

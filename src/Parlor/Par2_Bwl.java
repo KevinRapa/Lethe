@@ -8,7 +8,7 @@ public class Par2_Bwl extends Furniture {
             super();
             this.searchable = false;
             this.addUseKeys("polearm");
-            this.addNameKeys("(?:hanging )?(?:steel )?bowl");
+            this.addNameKeys("(?:hanging )?(?:steel )?bowl(?: of fire)?", "burning bowl");
 
             this.description = "It's a steel bowl of fire hanging from the ceiling\n"
                              + "by a chain. A draft from the outside causes it to\n"

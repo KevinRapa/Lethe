@@ -176,7 +176,7 @@ public class GUI extends JPanel {
      * @param big If the frame is entering big mode.
      */
     private void smallMode(boolean big) {
-        Main.gameFrame.setVisible(false);
+        Main.GAME_FRAME.setVisible(false);
         
         this.removeAll();
         
@@ -201,8 +201,8 @@ public class GUI extends JPanel {
         
         this.addComponents(big);
         
-        Main.gameFrame.pack();
-        Main.gameFrame.setVisible(true);
+        Main.GAME_FRAME.pack();
+        Main.GAME_FRAME.setVisible(true);
     }
 // *****************************************************************************
 // </editor-fold> CONFIGURES AND ADDS ALL COMPONENTS

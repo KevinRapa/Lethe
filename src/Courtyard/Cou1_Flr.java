@@ -22,7 +22,7 @@ public class Cou1_Flr extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (Player.getRoomRef("COU1").hasFurniture("hole"))
+        if (Player.getPos().hasFurniture("hole"))
             return "The ground is a mixture of grass, weeds, and clover, interrupted\n"
                  + "by the small hole you dug.";
         else
@@ -30,10 +30,10 @@ public class Cou1_Flr extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        if (Player.getRoomRef("COU1").hasFurniture("hole"))
+        if (Player.getPos().hasFurniture("hole"))
             return "You have already dug up the ground here.";
         else {
-            Player.getRoomRef("COU1").addFurniture(REF);
+            Player.getPos().addFurniture(REF);
             return this.useDialog;
         }
     }

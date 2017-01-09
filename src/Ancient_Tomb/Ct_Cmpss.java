@@ -1,4 +1,4 @@
-package Catacombs;
+package Ancient_Tomb;
 
 import A_Main.Player;
 import A_Super.Item;
@@ -21,7 +21,7 @@ public class Ct_Cmpss extends Item {
                          + "as a window of sorts. On the top and bottom of the box\n"
                          + "are copper plates.";
         this.useDialog = "You grasp the box firmly with your fingers and palm\n"
-                       + "covering the plates. In a short while, 3 digits -    ";
+                       + "covering the plates. In a short while, 3 digits:\t\t[";
     }
     // =========================================================================
     /**
@@ -36,7 +36,7 @@ public class Ct_Cmpss extends Item {
         int y = Math.abs(c[1] - 7);
         
         return this.useDialog.concat(c[2] + ", " + y + ", " + z + 
-                                     " - materialize in the quartz window.");
+                                     "]\t\tmaterialize in the quartz window.");
     }
     // =========================================================================
 }

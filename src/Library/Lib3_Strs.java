@@ -25,8 +25,7 @@ public class Lib3_Strs extends Furniture {
         if (Player.getShoes().matches("leather shoes")) {
             Player.setOccupies(2, 1, 8);
                 
-            rep = "You successfully climb the stairs to the second floor.";
-            GUI.roomOut(Player.getPos().triggeredEvent());            
+            rep = "You successfully climb the stairs to the second floor.";        
         }
         else {
             rep = "As soon as your foot touches the bottom step, the staircase\n"

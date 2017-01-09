@@ -1,30 +1,26 @@
 package Drawing_Room;
 
-import A_Super.Furniture;
+import A_Super.NonPlayerCharacter;
 import A_Super.Item;
 import A_Super.Key;
 import A_Main.GUI;
 import A_Main.Player;
 
-public class Drar_Ghst extends Furniture {
+public class Drar_Ghst extends NonPlayerCharacter {
     private final Item DRKFCS_REF, EMRLD_REF;
     private final Key KITCKEY_REF;
-    private boolean firstTime;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Drar_Ghst(Item drkFcs, Key kitcKey, Item glwEm) {
         super();
-        this.searchable = false;
         this.DRKFCS_REF = drkFcs;
         this.KITCKEY_REF = kitcKey;
         this.EMRLD_REF = glwEm;
-        this.firstTime = true;
         this.searchDialog = "The ghost won't appreciate that.";
         this.actDialog = "The apparition returns to sipping from the ghostly cup.";
         this.description = "The white apparition resembles a female\n" +
                            "dressed in the clothing of a servant. She\n" +
                            "sits at the bar with a ghostly cup in her\n" +
                            "hand looking at you.";
-        this.addActKeys("speak", "talk", "converse");
         this.addNameKeys("ghost", "apparition", "white apparition");
     }
 /*----------------------------------------------------------------------------*/
@@ -44,7 +40,7 @@ public class Drar_Ghst extends Furniture {
         return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
-    private void converse1() {
+    @Override protected<Void> Void converse1() {
         
         GUI.out("As you open your mouth to speak, the apparition interrupts\n" +
                 "and begins to talk to you....");
@@ -119,11 +115,14 @@ public class Drar_Ghst extends Furniture {
         GUI.toMainMenu();
         GUI.out("\"Please come back when you have the gem.\"\n");
 
+        return null;
     }
 /*----------------------------------------------------------------------------*/
-    private void converse2() {
+    @Override protected<Void> Void converse2() {
         GUI.out("\"Do you have the emerald yet? Please, it's so\n" +
                 "important to me. I promise to repay you.\"");
+        
+        return null;
     }
 /*----------------------------------------------------------------------------*/    
     private void converse3() {       
@@ -161,9 +160,5 @@ public class Drar_Ghst extends Furniture {
         GUI.toMainMenu();
         GUI.out("\"Goodbye, my friend.\"\n");
     }
-/*----------------------------------------------------------------------------*/    
-    public boolean firstTime() {
-        return this.firstTime;
-    }
-/*----------------------------------------------------------------------------*/    
+/*----------------------------------------------------------------------------*/       
 }

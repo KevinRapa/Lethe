@@ -36,7 +36,6 @@ public class Gal3_Lddr extends Staircase {
                 
             playEffect();
             Player.setOccupies(Z + DIR.Z, Y, X); // moves the player's Z coordinate.
-            GUI.roomOut(Player.getPos().triggeredEvent());
             
             return "You climb the ladder.";   
         }

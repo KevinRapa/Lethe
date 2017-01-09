@@ -4,8 +4,8 @@ package Tomb;
  */
 public class Tmb3 extends Tomb{
 // ============================================================================    
-    public Tmb3(String name, String ID) {
-        super(name, ID);
+    public Tmb3(String ID) {
+        super(ID);
         this.description= "You have made it to a small, irregularly-shaped chamber.\n" +
                           "There is a bit of space to move around in, but not much.\n" +
                           "Numerous small crevices dug into the walls hold lit standing\n" +

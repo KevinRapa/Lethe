@@ -142,15 +142,15 @@ public class Cave extends Room {
     }
 // ============================================================================
     @Override public String getDescription() {
-        //if (Player.hasItem("hand torch"))
+        if (Player.hasItem("hand torch"))
             return distortDescription(DISTANCE, descLit);
-       // else
-            //return distortDescription(DISTANCE, description);
+        else
+            return distortDescription(DISTANCE, description);
     }
 // ============================================================================
     @Override public String triggeredEvent() {
         if (Player.hasItem("hand torch"))
-            return "You are " + this + ".";
+            return distortDescription(DISTANCE, "You are " + this + ".");
         else
             return "???";
     }

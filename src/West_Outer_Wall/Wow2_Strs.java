@@ -23,7 +23,6 @@ public class Wow2_Strs extends Staircase {
         Player.setOccupies(c[0] + DIR.Z, c[1], c[2]); // moves the player's Z coordinate.
         
         playEffect();
-        Player.describeRoom();
         
         return Player.getPos().triggeredEvent();       
     }

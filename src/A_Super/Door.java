@@ -14,7 +14,7 @@ public class Door extends Furniture {
         this.actDialog = "none";
 
         this.addActKeys("open", "use", "close", "kick");
-        this.addNameKeys(dir + " door", "door");
+        this.addNameKeys(dir + " door", "door", "(?:heavy )?(?:wooden )?door");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {

@@ -32,14 +32,12 @@ public class Kitc extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (! this.isLit) {
-            rep = "This room is pitch black and fetid. All that's visible is an\n" +
-                  "empty mounted holder on the wall next to you and a thin\n" +
-                  "slitted window on the east end of the room.";
+            return "This room is pitch black and fetid. All that's visible is an\n" +
+                   "empty mounted holder on the wall next to you and a thin\n" +
+                   "slitted window on the east end of the room.";
         }
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
     public void swtch() {
@@ -47,12 +45,10 @@ public class Kitc extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
-        String dialog = "You are " + this + ".";
-        
         if (! this.isLit)
-            dialog = "You are in a pitch black room.";
+            return "You are in a pitch black room.";
         
-        return dialog;
+        return "You are " + this + ".";
     }
 /*----------------------------------------------------------------------------*/
 }

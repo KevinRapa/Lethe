@@ -8,7 +8,7 @@ public class Iha2_Bwl extends Furniture {
             super();
             this.searchable = false;
             this.addUseKeys("polearm");
-            this.addNameKeys("bowl", "steel bowl", "hanging bowl", "burning bowl");
+            this.addNameKeys("(?:hanging )?(?:burning )?(?:steel )?bowl(?: of fire)?");
 
             this.description = "It's a steel bowl of fire hanging from the ceiling\n"
                              + "by a chain. It burns steadily, lighting your end of\n"

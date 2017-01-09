@@ -1,45 +1,42 @@
 package Parlor;
 
-import A_Super.Furniture;
 import A_Main.GUI;
+import A_Super.NonPlayerCharacter;
 
-public class Par1_Orb extends Furniture {
-    private boolean firstTime, woken;
+public class Par1_Orb extends NonPlayerCharacter {
+    private boolean woken;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Par1_Orb() {
         super();
-        this.searchable = false;
-        this.firstTime = true;
         this.woken = false;
         this.searchDialog = "There's nothing hidden here.";
-        this.actDialog = "";
+        this.actDialog = "You give the orb a rub with no effect. This is no magical\n"
+                       + "crystal ball as you thought.";
         this.description = "The small glass orb is filled with a smokey gas.\n"
                          + "The smoke churns slowly inside the orb.";
-        this.addActKeys("speak", "talk", "converse", "rub", "feel", "touch");
+        this.addActKeys("rub", "feel", "touch");
         this.addNameKeys("(?:small )?(?:glass )?orb");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.actDialog;
-        
         if (key.matches("[stc]\\w+")) {
             if (this.firstTime && this.woken) {
                 this.converse1();
                 this.firstTime = false;
+                return "";
             }
-            else if (! this.firstTime && this.woken)
+            else if (! this.firstTime && this.woken) {
                 this.converse2();
+                return "";
+            }
             else 
-                rep = "You mutter a soft 'Hullo?' But hear no response";
+                return "You mutter a soft 'Hullo?' But hear no response";
         }
         else
-            rep = "You give the orb a rub with no effect. This is no magical\n"
-                + "crystal ball as you thought.";
-            
-        return rep;
+            return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
-    private void converse1() {
+    @Override protected<Void> Void converse1() {
         
         GUI.out("\"You should ask permission before playing with things that\n"
               + "aren't yours!\" Shouts the voice...");
@@ -92,17 +89,17 @@ public class Par1_Orb extends Furniture {
         GUI.out("\"Now, if you don't mind, I would like to get back to writing\n"
                 + "this twelve-hundred part symphony.\"");
         GUI.promptOut();
+        
+        return null;
     }
 /*----------------------------------------------------------------------------*/
-    private void converse2() {
+    @Override protected<Void> Void converse2() {
         GUI.out("\"Egh... uhh... I'm not sure... on the shelf over there???\n"
               + "Ah! That's what this needs, more bassoons!\"");
+        
+        return null;
     }
 /*----------------------------------------------------------------------------*/    
-    public boolean firstTime() {
-        return this.firstTime;
-    }
-/*----------------------------------------------------------------------------*/ 
     public boolean woken() {
         return this.woken;
     }

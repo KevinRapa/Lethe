@@ -1,7 +1,6 @@
 package Courtyard;
 
 import A_Super.Staircase;
-import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Direction;
 
@@ -24,8 +23,7 @@ public class Cou3_Stps extends Staircase {
         }
         
         String rep = "You climb " + DIR + " the crumbling steps.";  
-        GUI.roomOut(Player.getPos().triggeredEvent());
-        Player.describeRoom();
+
         return rep;
     }
 /*----------------------------------------------------------------------------*/

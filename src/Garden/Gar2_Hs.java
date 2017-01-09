@@ -33,6 +33,7 @@ public class Gar2_Hs extends Furniture {
         Player.setOccupies(3, 3, 3);
         Player.getRoomRef("GAR2").removeFurniture(this);
         Player.getRoomRef("GAR2").addFurniture(BRKNHOSE_REF2);
+        Player.getRoomRef("FOY3").unlock();
         Player.getInv().add(BRKNHOSE_REF);
         
         return this.actDialog;

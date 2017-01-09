@@ -90,6 +90,9 @@ public class AudioPlayer {
         put("OBS2", obsCustom);            put("OBS3", obsCustom);
         put("GAL5", galChoir);             put("CT", obsCustom);
         put("CV", marbleHall);             put("CV34", marbleHall);
+        put("AN65", marbleHall);           put("AN55", marbleHall);
+        put("TM66", marbleHall);            put("MS65", marbleHall);
+        put("MS66", marbleHall);
     }};
 //******************************************************************************    
 // </editor-fold>

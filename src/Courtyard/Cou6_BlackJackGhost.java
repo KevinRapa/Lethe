@@ -3,8 +3,8 @@ package Courtyard;
 import A_Main.GUI;
 import A_Main.Player;
 import java.util.HashMap;
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.NonPlayerCharacter;
 /**
  * This is an in-game non-player character that plays blackjack with the player.
  * The player may play as many times as her/she wants each encounter, and the
@@ -13,19 +13,16 @@ import A_Super.Item;
  * 
  * @author Kevin Rapa
  */
-public class Cou6_BlackJackGhost extends Furniture {
-    private boolean firstTime; // If you've spoken to the ghost before.
+public class Cou6_BlackJackGhost extends NonPlayerCharacter {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou6_BlackJackGhost() {
         super();
-        this.searchable = false;
-        this.firstTime = true;
         this.searchDialog = "The ghost won't appreciate that.";
         this.actDialog = "\"Come back if you want to play again!";
         this.description = "Leaning nonchalantely against the castle wall is a\n"
                          + "ghostly figure shuffling what seem to be cards. The apparition\n"
                          + "is garbed in distinctive clothing- a vest and a full-brimmed hat.";
-        this.addActKeys("speak", "talk", "converse", "play", "chat");
+        this.addActKeys("play", "chat");
         this.addNameKeys("ghost", "apparition", "spirit", "ghostly apparition");
     }
 /*----------------------------------------------------------------------------*/
@@ -53,7 +50,7 @@ public class Cou6_BlackJackGhost extends Furniture {
      * Starts dialog with the ghost.
      * Returns true or false, if the player has played the ghost at least once.
      */
-    private boolean converse1() {
+    @Override protected Boolean converse1() {
         GUI.menOut("\n\n<enter> Continue...");
         GUI.out("You approach the apparition loitering in the courtyard. Before\n"
               + "you can accost it, its mouth opens to speak...");
@@ -76,7 +73,7 @@ public class Cou6_BlackJackGhost extends Furniture {
      * Starts dialog with the ghost after he has be talked to a second time.
      * Returns true or false, if the player has played the ghost at least once.
      */
-    private boolean converse2() {
+    @Override protected Boolean converse2() {
         GUI.out("Back to play?");
         return this.askToPlay();
     }
@@ -264,13 +261,5 @@ public class Cou6_BlackJackGhost extends Furniture {
     private boolean blackJack(int score) {
         return score == 21;
     }
-/*----------------------------------------------------------------------------*/
-    /**
-     * Checks if this is the first time the player has interacted with the ghost.
-     * @return If the player has never interacted with the ghost before.
-     */
-    public boolean firstTime() {
-        return this.firstTime;
-    }
-/*----------------------------------------------------------------------------*/    
+/*----------------------------------------------------------------------------*/  
 }

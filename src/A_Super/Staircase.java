@@ -25,9 +25,6 @@ public class Staircase extends Furniture {
 
         playEffect();
         Player.setOccupies(c[0] + DIR.Z, c[1], c[2]);
-
-        GUI.roomOut(Player.getPos().triggeredEvent());
-        Player.describeRoom();
         
         return "You climb " + DIR + " the stairs.";
     }

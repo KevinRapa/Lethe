@@ -41,7 +41,7 @@ public class Gal6_Bttn extends Button {
                 } while (! Player.hasVisited(room.getID()) || room.getID().matches("STUD|LOOK"));    
                 
                 Player.setOccupies(Z, Y, X);  
-                GUI.roomOut(Player.getPos().toString());
+
                 rep = "'... Huh? What just happened? This isn't the gallery loft.'\n" +
                       "You scratch your head and look around the room.";
             }
