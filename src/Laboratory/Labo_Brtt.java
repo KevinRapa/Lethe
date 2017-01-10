@@ -6,7 +6,6 @@ import A_Super.Furniture;
 import A_Super.Ingredient;
 import A_Super.Item;
 import java.util.Timer;
-import java.util.TimerTask;
 /**
  * @author Kevin Rapa
  */
@@ -45,7 +44,7 @@ public class Labo_Brtt extends Furniture {
                          + "test tube to catch the liquid with. The burette has ";
         this.actDialog = "You need a vial or test tube to dispense into!";
 
-        this.addNameKeys("(?:glass )?burette", "burette stopcock");
+        this.addNameKeys("(?:glass )?buret(?:te)?", "buret(?:te)? stopcock");
         this.addUseKeys("bottle of wine", "bottle of vinegar", "test tube", "empty vial");
         this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist", "empty");
     }
@@ -79,21 +78,24 @@ public class Labo_Brtt extends Furniture {
         if (Player.hasItem("lab coat")) {
             if (mode != Titrant.EMPTY) {
                 GUI.out("Would you like to titrate the " + mode + " or empty the burette?");
-                GUI.menOut("\n<1> Empty the burette\n<2> Titrate the " + mode + ".");
+                GUI.menOut("\n<1> Empty the burette\n<2> Titrate the " + mode + ".\n< > Back");
                 String ans = GUI.promptOut();
                 
-                while (! ans.matches("[12]")) {
-                    GUI.menOut("Pich a valid answer.\n<1> Empty the burette\n<2> Titrate the " + mode + ".");
+                while (! ans.matches("[12]|")) {
+                    GUI.menOut("Pick a valid answer.\n<1> Empty the burette\n<2> Titrate the " + mode + ".\n< > Back");
                     ans = GUI.promptOut();
                 }
-                
-                switch (Integer.parseInt(ans)) {
-                    case 1:
-                        this.mode = Titrant.EMPTY;
-                        return "You empty everything out of the burette.";
-                    default :
-                        return dispenseDialog();
+                if (! ans.matches("")) {
+                    switch (Integer.parseInt(ans)) {
+                        case 1:
+                            this.mode = Titrant.EMPTY;
+                            return "You empty everything out of the burette.";
+                        default :
+                            return dispenseDialog();
+                    }
                 }
+                else
+                    return "none";
             }
             else
                 return "The burette is empty.";
@@ -127,9 +129,9 @@ public class Labo_Brtt extends Furniture {
         
         switch(this.mode) {
             case WINE:
-                return new Ingredient("wine, " + volume + "mL", "The vial holds a small amount of wine.");
+                return new Ingredient("wine " + volume + "mL", "The vial holds a small amount of wine.");
             default: // Never EMPTY. Ensured in interact()
-                return new Ingredient("vinegar, " + volume + "mL", "The vial holds a small amount of vinegar.");
+                return new Ingredient("vinegar " + volume + "mL", "The vial holds a small amount of vinegar.");
         }
     }
     // ========================================================================  

@@ -8,7 +8,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Labo_Bkr extends Furniture {
-    // ======================================
+    
     private enum Potion {
         EMPTY("nothing."), 
         GEN_POTION("A mystery liquid."), 
@@ -23,17 +23,19 @@ public class Labo_Bkr extends Furniture {
         @Override public String toString() {
             return NAME;
         } 
+        // ==================================
     }
-    // ======================================
+
     private Potion mode;
-    private final Item BEAKER, PHASE_POTION, GENERIC_POTION;
+    private final Item BEAKER_REF, PHASE_POTION, GENERIC_POTION;
     // ========================================================================
     public Labo_Bkr (Item beakerItem) {
         super();
         this.searchable = false;
+        
         this.mode = Potion.EMPTY;
         
-        this.BEAKER = beakerItem;
+        this.BEAKER_REF = beakerItem;
         this.PHASE_POTION = new Item("phase door potion", "It's a smoky brown liquid. You pray that this potion does what the tome said...", ""
                                  + "You don't know the duration. Better get out to the front gate before drinking this!!");
         this.GENERIC_POTION = new Item("potion of science", "This doesn't look like what the manual said... It looks potion-ey, better throw it out though.");
@@ -62,7 +64,7 @@ public class Labo_Bkr extends Furniture {
             
             switch (mode) {
                 case EMPTY:
-                    Player.getInv().add(BEAKER);
+                    Player.getInv().add(BEAKER_REF);
                     break;
                 case GEN_POTION:
                     Player.getInv().add(GENERIC_POTION);

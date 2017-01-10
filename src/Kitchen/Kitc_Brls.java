@@ -5,7 +5,6 @@ import A_Super.Furniture;
 import A_Super.Item;
         
 public class Kitc_Brls extends Furniture implements Container {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Kitc_Brls(Item... items) {
         super(items);
@@ -14,7 +13,7 @@ public class Kitc_Brls extends Furniture implements Container {
         this.searchDialog = "You look into the barrels.";
         this.actDialog = "This is way too heavy to move.";
         this.addActKeys("move", "push", "pull");
-        this.addNameKeys("barrel", "barrels");
+        this.addNameKeys("barrels?");
     }
 /*----------------------------------------------------------------------------*/
 }

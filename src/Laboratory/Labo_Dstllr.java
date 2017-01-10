@@ -10,12 +10,15 @@ import A_Super.Item;
 public class Labo_Dstllr extends Furniture {
     private final Labo_GsPipe PIPE_REF;
     private final Labo_Cndsr CONDENSER_REF;
+    private final Item TUBE_REF, VIAL_REF;
     private Runnable distillMethod;
     // ========================================================================
-    public Labo_Dstllr (Furniture pipe, Furniture condenser) {
+    public Labo_Dstllr (Furniture pipe, Furniture condenser, Item tstTube, Item vial) {
         super();
         this.PIPE_REF = (Labo_GsPipe)pipe;
         this.CONDENSER_REF = (Labo_Cndsr)condenser;
+        this.TUBE_REF = tstTube;
+        this.VIAL_REF = vial;
         
         this.searchable = false;
         
@@ -25,12 +28,10 @@ public class Labo_Dstllr extends Furniture {
                          + "On the table is a metal flask rack and a bunsen burner\n"
                          + "under it. Above the setup is a curved glass tube connecting\n"
                          + "to the condenser on the other side of the table.";
-        this.useDialog = "You strike the top of the burner. For a minute, the burner burns\n"
-                       + "against the flasks bottom, boiling the insides aggressively. After\n"
-                       + "a minute, the flame dies out.";
+        this.useDialog = "none.";
 
         this.addNameKeys("distillery?", "(?:bunsen )?burner", "(?:flask )?rack");
-        this.addUseKeys("rubber hose", "florence flask", "striker", "torch");
+        this.addUseKeys("rubber hose", "florence flask", "striker", "torch", "beaker", "test tube", "empty vial");
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -48,22 +49,30 @@ public class Labo_Dstllr extends Furniture {
             }
             else if (item.toString().matches("florence flask")) {
                 Player.getInv().remove(item);
-                Labo_Flsk flask = new Labo_Flsk(this, CONDENSER_REF); // Don't want to pass this in constructor.
+                Labo_Flsk flask = new Labo_Flsk(CONDENSER_REF, TUBE_REF, VIAL_REF); // Don't want to pass this in constructor.
                 Player.getPos().addFurniture(flask);
                 this.distillMethod = () -> flask.distill();
                 return "You place the florence flask onto the rack.";
+            }
+            else if (item.toString().matches("beaker|test tube|empty vial")) {
+                return "That type of vessel was not designed for boiling liquid! Put it down before you set the room on fire.";
             }
             else {
                 if (PIPE_REF.isOn() && Player.getPos().hasFurniture("hose")) {
                     if (Player.getPos().hasFurniture("florence flask")) {
                         distillMethod.run(); // Cannot run before runDistill has been assigned a value.
+                                             // Dialog is processed at Labo_Cndsr.condense because .run() returns void.
                             
-                        return this.useDialog;
+                        return "none";
                     }
                     else {
                         return "You strike the top of the burner. For a minute, the burner burns\n"
                              + "with an intense flame under open space before dying out.";
                     }
+                }
+                else if (PIPE_REF.isOn() && ! Player.getPos().hasFurniture("hose")) {
+                    return "As you squeeze the striker, a big poof of fire ignites and singes your face.\n"
+                         + "The smell of gas fades momentarily and slowly comes back.";
                 }
                 else
                     return "You strike the burner with no effect.";

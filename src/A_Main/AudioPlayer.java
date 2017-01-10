@@ -49,48 +49,48 @@ public class AudioPlayer {
     private static File deepSpace = new File(WD, "ambience" + S + "deepSpace.wav");
     private static File atticCustom = new File(WD, "ambience" + S + "atticCustom.wav");
     private static File obsCustom = new File(WD, "ambience" + S + "obsCustom.wav");
+    private static File labCustom = new File(WD, "ambience" + S + "labCustom.wav");
+    private static File caves = new File(WD, "ambience" + S + "caveLoop.wav");
+    private static File deepCave = new File(WD, "ambience" + S + "caveDistortion.wav");
+    private static File tombs = new File(WD, "ambience" + S + "tombCustom.wav");
     
-    private static final HashMap<String, File> TRACKS = new HashMap() {{
-        put("COU1", nightAmbience);        put("COU2", nightAmbience);
-        put("COU3", nightAmbience);        put("COU4", nightAmbience);
-        put("COU5", nightAmbience);        put("COU6", nightAmbience);
-        put("FOY1", spookyWindInterior);   put("FOY2", spookyWindInterior);
-        put("FOY3", spookyWindInterior);   put("FOY4", spookyWindInterior);
-        put("COU7", nightAmbience);        put("VEST", spookyWindInterior);
-        put("FOYB", wavesCrashing);        put("FOYC", wavesCrashing);
-        put("LOOK", wavesCrashing);        put("STUD", fireplace);
-        put("FOYW", antechamberCustom);    put("WORK", workshopCustom);
-        put("GAL2", galChoir);             put("GAL4", galChoir);
-        put("GAL1", gal1wCustom);          put("GAL3", gal2wCustom);
-        put("GAL6", gal3wCustom);          put("ROTU", rotundaCustom);
-        put("IHA1", ironHallCustom);       put("IHA2", ironHallCustom);
-        put("WOW1", westWingCustom);       put("WOW2", westWingCustom);
-        put("WOW3", westWingCustom);       put("SHA1", westWingCustom);
-        put("SHA2", westWingCustom);       put("SQUA", westWingCustom);
-        put("EOW1", westWingCustom);       put("EOW2", westWingCustom);  
-        put("EOW4", westWingCustom);       put("KITC", kitchenCustom);
-        put("SHAR", westWingCustom);       put("DST1", dungeonStairs);
-        put("CHS1", creepyOrgan);          put("CHS3", creepyOrgan);
-        put("CHA1", creepyOrgan);          put("CHA2", creepyOrgan);
-        put("PAR1", parlorCustom);         put("PAR2", parlorCustom);
-        put("JHA1", parlorCustom);         put("JHA2", parlorCustom);
-        put("MHA1", marbleHall);           put("MHA2", marbleHall);
-        put("MHA3", marbleHall);           put("DIN1", loungeCustom);
-        put("DRAR", loungeCustom);         put("DIN2", loungeCustom);
-        put("LIB1", libraryCustom);        put("WBAL", westBalconyCustom);
-        put("LIB2", libraryCustom);        put("LIB3", libraryCustom);
-        put("LIB5", libraryCustom);        put("LIB4", libraryCustom);
-        put("BHA1", backHallCustom);       put("BHA2", backHallCustom);
-        put("BHA3", backHallCustom);       put("GAR1", gardenCustom);
-        put("GAR2", gardenCustom);         put("GAR3", gardenCustom);
-        put("GAR4", gardenCustom);         put("GQUA", westWingCustom);
-        put("COUS", deepSpace);            put("SST1", atticCustom);
-        put("SST2", atticCustom);          put("ATT1", atticCustom);
-        put("ATT2", atticCustom);          put("OBS1", obsCustom);
-        put("OBS2", obsCustom);            put("OBS3", obsCustom);
-        put("GAL5", galChoir);             put("LABO", obsCustom);
-
-    }};
+    private static final HashMap<String, File> TRACKS = new HashMap() {
+        // ====================================================================
+        {
+        putAllTracks(nightAmbience, "COU1", "COU2", "COU3", "COU4", "COU5", "COU6", "COU7");
+        putAllTracks(spookyWindInterior, "FOY1", "FOY2", "FOY3", "FOY4", "VEST");
+        putAllTracks(wavesCrashing, "FOYB", "LOOK", "FOYC");
+        putAllTracks(ironHallCustom, "IHA1", "IHA2");
+        putAllTracks(westWingCustom, "WOW1", "WOW2", "WOW3", "SHA1", "SHA2", "SQUA", 
+                                     "EOW1", "EOW2", "EOW4", "SHAR", "GQUA");
+        putAllTracks(galChoir, "GAL2", "GAL4", "GAL5");
+        putAllTracks(creepyOrgan, "CHS1", "CHS3", "CHA1", "CHA2");
+        putAllTracks(parlorCustom, "PAR1", "PAR2", "JHA1", "JHA2");
+        putAllTracks(marbleHall, "MHA1", "MHA2", "MHA3");
+        putAllTracks(loungeCustom, "DIN1", "DIN2", "DRAR");
+        putAllTracks(libraryCustom, "LIB1", "LIB2", "LIB3", "LIB4", "LIB5");
+        putAllTracks(backHallCustom, "BHA1", "BHA2", "BHA3");
+        putAllTracks(gardenCustom, "GAR1", "GAR2", "GAR3", "GAR4");
+        putAllTracks(atticCustom, "SST1", "SST2", "ATT1", "ATT2");
+        putAllTracks(obsCustom, "OBS1", "OBS2", "OBS3");
+        putAllTracks(caves, "CT", "CV", "MY18");
+        putAllTracks(deepCave, "MS65", "MS66");
+        putAllTracks(tombs, "TM16", "TM66", "TM32", "AN65", "AN55");
+        
+        put("GAL1", gal1wCustom);       put("GAL3", gal2wCustom); 
+        put("GAL6", gal3wCustom);       put("LABO", labCustom);
+        put("KITC", kitchenCustom);     put("DST1", dungeonStairs);
+        put("STUD", fireplace);         put("FOYW", antechamberCustom); 
+        put("WORK", workshopCustom);    put("ROTU", rotundaCustom);
+        put("WBAL", westBalconyCustom); put("COUS", deepSpace); 
+        }
+        // ====================================================================
+        private void putAllTracks(File track, String ... ids) {
+            for (String id : ids) 
+                put(id, track);
+        }
+        // ====================================================================
+    };
 //******************************************************************************    
 // </editor-fold>
 //******************************************************************************
@@ -132,7 +132,7 @@ public class AudioPlayer {
  
 //******************************************************************************
 // <editor-fold desc="METHODS"> 
-//******************************************************************************   
+//******************************************************************************
     /**
      * Stops the current track and starts a new one if the room
      * if the player entered is mapped to a different track OR if

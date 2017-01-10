@@ -433,6 +433,7 @@ public class Player {
             GUI.out("You store the " + store);
             Player.inv.give(store , furniture.getInv()); 
             
+            // If player stores the shoes he/she is wearing.
             if (store.toString().matches(shoes))
                 Player.shoes = "";
         }

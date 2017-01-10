@@ -11,7 +11,6 @@ public class Labo_Cntr extends Furniture implements Container {
     // ========================================================================
     public Labo_Cntr (Item... items) {
         super(items);
-        this.searchable = false;
         
         this.description = "The counter has a black top and two drawers on the bottom.\n"
                          + "On the surface of the counter, to the left, is a metal sink\n"

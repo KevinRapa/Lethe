@@ -3,7 +3,6 @@ package Caves;
 import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * The player must take this in the Deep Chamber to obtain the artifact.
  * 
@@ -11,8 +10,8 @@ import A_Super.Item;
  */
 public class Artifact_Dummy extends Furniture {
     // ========================================================================
-    public Artifact_Dummy (Item... items) {
-        super(items);
+    public Artifact_Dummy () {
+        super();
         this.searchable = false;
         
         this.description = "Just take the artifact and get out!";

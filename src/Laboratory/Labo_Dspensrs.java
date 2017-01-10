@@ -89,17 +89,17 @@ public class Labo_Dspensrs extends Furniture {
         
         switch(Integer.parseInt(ans)) {
             case 1:
-                return new Ingredient("carbonic acid, " + volume + "mL", "The vial holds a clear mundane liquid.");
+                return new Ingredient("H2CO3 " + volume + "mL", "The vial holds a clear mundane liquid.");
             case 2:
-                return new Ingredient("bromine, " + volume + "mL", "The vial holds a odd rusty liquid. It's evaporating aggressively.");
+                return new Ingredient("Br " + volume + "mL", "The vial holds a odd rusty liquid. It's evaporating aggressively.");
             case 3:
-                return new Ingredient("aether, " + volume + "mL", "The vial holds a pale blue, glowing liquid.");
+                return new Ingredient("ae " + volume + "mL", "The vial holds a pale blue, aromatic liquid.");
             case 4:
-                return new Ingredient("hydroflouric acid, " + volume + "mL", "It's bubbling. Better be careful with this.");
+                return new Ingredient("HF " + volume + "mL", "It's bubbling. Better be careful with this.");
             case 5:
-                return new Ingredient("sodium chloride, " + volume + "mL", "The vial holds a clear mundane liquid.");
+                return new Ingredient("NaCl " + volume + "mL", "The vial holds a clear mundane liquid.");
             default:
-                return new Ingredient("phenolphthalein, " + volume + "mL", "The vial holds a funny pink liquid.");
+                return new Ingredient("C20H14O4 " + volume + "mL", "The vial holds a funny pink liquid.");
         }
     }
     // ========================================================================  

@@ -7,21 +7,32 @@ package Caves;
  * 
  * @author Kevin Rapa
  */
+import static A_Main.AudioPlayer.S;
+import static A_Main.AudioPlayer.WD;
 import A_Main.Player;
 import A_Super.Floor;
 import A_Super.Room;
 import A_Super.Wall;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
 import static java.lang.Math.round;
 import static java.lang.Math.abs;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Cave extends Room {
     protected String descLit;
     protected final int DISTANCE; // Distance this room is from MS65
     protected static final Random GENERATOR = new Random();
+    protected static final File DISTORTION = new File(WD, "ambience" + S + "caveDistortion.wav");
+    protected Clip clip;
 // ============================================================================    
     public Cave(String ID) {
         super("in a cave network", ID);
@@ -149,6 +160,24 @@ public class Cave extends Room {
     }
 // ============================================================================
     @Override public String triggeredEvent() {
+        try {
+            if (Player.getLastVisited().matches("CV\\d{2}")) // Stop clip from previous room.
+                ((Cave)Player.getRoomRef(Player.getLastVisited())).stopClip();
+            
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(DISTORTION));
+            ((FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN)).setValue(-((float)Math.pow(DISTANCE, 2)));
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            clip.start();
+        } catch (LineUnavailableException | 
+                 UnsupportedAudioFileException | 
+                 IOException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
+
+        
+        
         if (Player.hasItem("hand torch"))
             return distortDescription(DISTANCE, "You are " + this + ".");
         else
@@ -184,6 +213,10 @@ public class Cave extends Room {
         char temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+    }
+// ============================================================================
+    public void stopClip() {
+        this.clip.stop();
     }
 // ============================================================================
 }

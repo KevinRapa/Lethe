@@ -31,4 +31,8 @@ public class Deep_Chamber extends Room {
         return Cave.distortDescription(1, this.description);
     }
 // ============================================================================
+    @Override public String triggeredEvent() {
+        return Cave.distortDescription(1, NAME);
+    }
+// ============================================================================
 }

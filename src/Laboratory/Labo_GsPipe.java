@@ -18,7 +18,7 @@ public class Labo_GsPipe extends Furniture {
         this.actDialog = "You turn the valve.";
         this.useDialog = "You fit the rubber tube over the nozzle tightly and connect the other end to the bunsen burner.";
 
-        this.addNameKeys("(?:metal )?(?:gas )?(?:pipe|valve)");
+        this.addNameKeys("(?:metal )?(?:gas )?(?:pipe|valve|nozzle)");
         this.addUseKeys("rubber hose");
         this.addActKeys("turn", "rotate");
     }

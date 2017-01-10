@@ -1,5 +1,6 @@
 package Laboratory;
 
+import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -26,8 +27,8 @@ public class Labo_Cndsr extends Furniture {
                           + "Though they're alien to you, you note nothing out of the ordinary.";
         this.useDialog = "You place the beaker on top of the drain, under the glass tube.";
 
-        this.addNameKeys("condenser", "glass tube", "stopper", "switch");
-        this.addUseKeys("beaker");
+        this.addNameKeys("condenser", "glass tube", "stopper", "switch", "drain");
+        this.addUseKeys("beaker", "test tube", "florence flask", "empty vial");
         this.addActKeys("flick", "switch", "turn", "toggle", "rotate");
     }
     // ======================================================================== 
@@ -39,7 +40,7 @@ public class Labo_Cndsr extends Furniture {
     @Override public String interact(String key) { 
         if (Player.hasItem("lab coat")) {
             this.flapOpen = ! this.flapOpen; 
-            return flapOpen ? "open." : "closed.";
+            return this.actDialog.concat(flapOpen ? "open." : "closed.");
         }
         else
             return "You know, it really wouldn't be safe to fool around with this dangerous "
@@ -48,8 +49,14 @@ public class Labo_Cndsr extends Furniture {
     // ========================================================================     
     @Override public String useEvent(Item item) {
         if (Player.hasItem("lab coat")) {
-            Player.getPos().addFurniture(BEAKER_REF);
-            return this.useDialog;
+            if (item.toString().matches("florence flask|test tube|empty vial")) {
+                return "That type of vessel was not designed for collecting liquid! Put it down before you poke your eye out.";
+            }
+            else {
+                Player.getInv().remove(item);
+                Player.getPos().addFurniture(BEAKER_REF);
+                return this.useDialog;
+            }
         }
         else
             return "You know, it really wouldn't be safe to fool around with this dangerous "
@@ -57,12 +64,34 @@ public class Labo_Cndsr extends Furniture {
     }
     // ========================================================================  
     public boolean condense(int chemical) {
-        if (this.flapOpen && Player.getPos().hasFurniture(BEAKER_REF)) {
-            this.BEAKER_REF.setMode(chemical);
-            
-            return true;
+        if (this.flapOpen) {
+            if (Player.getPos().hasFurniture(BEAKER_REF)) {
+                this.BEAKER_REF.setMode(chemical);
+                GUI.out("You strike the top of the burner. For a minute, the burner burns\n"
+                      + "against the flasks bottom, boiling the insides aggressively. The\n"
+                      + "chemical condenses into the beaker on the other side. After a\n"
+                      + "minute, the flame dies out.");
+            }
+            else {
+                GUI.out("You strike the top of the burner. For a minute, the burner burns\n"
+                      + "against the flasks bottom, boiling the insides aggressively. You\n"
+                      + "watch in horror as the chemical condenses into the glass tube and\n"
+                      + "flows down the drain under the condenser. After a\n"
+                      + "minute, the flame dies out.");
+            }
+        return true;
         }
-        return false;
+        else {
+            GUI.out("You strike the top of the burner. For a minute, the burner burns\n"
+                  + "against the flasks bottom, boiling the insides aggressively. The\n"
+                  + "liquid evaporates up into the glass tube, but starts dripping back\n"
+                  + "out into the florence flask. You scratch your head. After a\n"
+                  + "minute, the flame dies out.");
+
+            return false; 
+        }
+        
+        
     }
     // ========================================================================  
 }

@@ -9,12 +9,10 @@ public class CV34 extends Cave {
         super(ID);
         this.description = "You found your way to an open area... There's something\n"
                          + "in the center. It feels stone and round and is empty\n"
-                         + "in the center";
+                         + "in the center.";
         this.descLit = descLit.concat("This area is more open and circular than\n"
                                     + "the rest of the cave. A round well stands\n"
                                     + "in the center. Why would this be down here?");
-        
-                description = description.concat("Your head begins to hurt, and the dizzyness intensifies.");
     }
 // ============================================================================
 }

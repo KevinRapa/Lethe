@@ -6,24 +6,17 @@ import A_Main.Player;
 import Library.Shoes;
 
 public class Par1_EnchtTbl extends Furniture {
-    private final Item REF_ENCH_BTTL, REF_SALTS, REF_MANDRAKE, REF_SPRUCE, REF_BTTL,
-                       REF_FTHR, REF_ATHR, REF_SHS;
-    private boolean hasSpruce, hasMandrake, hasFireSalts, hasBottle, hasFthr, hasHly, hasShs;
+    private final Item REF_ENCH_BTTL, REF_SALTS, REF_MANDRAKE, REF_SPRUCE, 
+                       REF_BTTL, REF_FTHR, REF_ATHR, REF_SHS;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Par1_EnchtTbl(Item enchtBttl, Item salts, Item spruce, Item mandrake, 
                          Item bttl, Item fthr, Item athr, Item shs, Item... items) {
         super(items);
         
-        this.REF_ENCH_BTTL = enchtBttl; // For giving player the enchanted bottle. This item is used by the door also.
-        
-        this.REF_MANDRAKE = mandrake; this.REF_SALTS = salts; this.REF_FTHR = fthr;
-        this.REF_BTTL = bttl; this.REF_SPRUCE = spruce; this.REF_ATHR = athr; 
-        this.REF_SHS = shs;
-        
-        hasFireSalts = hasMandrake = hasSpruce = hasFthr = hasHly = hasShs = 
-        hasFthr = hasHly = hasShs = false; // Table starts with nothing but the glass bottle.
-        
-        hasBottle = true; // The bottle is already on the table.
+        this.REF_ENCH_BTTL = enchtBttl;     this.REF_SHS = shs;
+        this.REF_MANDRAKE = mandrake;       this.REF_SALTS = salts; 
+        this.REF_FTHR = fthr;               this.REF_BTTL = bttl; 
+        this.REF_SPRUCE = spruce;           this.REF_ATHR = athr; 
         
         this.actDialog = "You pound your hands on the table.";
         this.searchDialog = "You look on the table.";
@@ -46,57 +39,50 @@ public class Par1_EnchtTbl extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {          
-        String rep = this.actDialog;
-        this.check();
-        
         switch (this.enchant()) {
             case 1:
-                rep += " As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away,\n"
-                     + "and as you turn back, you see that the four ingredients have vanished. The bottle, bearing a\n"
-                     + "certain magical aura, sits alone at the table's center.";
-                break;
+                return actDialog.concat(" As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away,\n"
+                                      + "and as you turn back, you see that the four ingredients have vanished. The bottle, bearing a\n"
+                                      + "certain magical aura, sits alone at the table's center.");
             case 2:
-                rep += " As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away,\n"
-                     + "and as you turn back, you see that the three ingredients have vanished. A delicate pair of\n"
-                     + "slippers shrouded in a fine dark mist take their place.";
-                break;
+                return actDialog.concat(" As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away,\n"
+                                      + "and as you turn back, you see that the three ingredients have vanished. A delicate pair of\n"
+                                      + "slippers shrouded in a fine dark mist take their place.");
             default:
-                rep += " To your disappointment, the table only jostles a small amount\n"
-                     + "from the force. Perhaps you aren't the wizard you thought you were.";
+                return actDialog.concat(" To your disappointment, the table only jostles a small amount\n"
+                                      + "from the force. Perhaps you aren't the wizard you thought you were.");
         }
-        return rep;
-    }
-/*----------------------------------------------------------------------------*/
-    private void check() {
-        this.hasFireSalts = this.inv.contains(this.REF_SALTS);
-        this.hasSpruce = this.inv.contains(this.REF_SPRUCE);
-        this.hasMandrake = this.inv.contains(this.REF_MANDRAKE);
-        this.hasBottle = this.inv.contains(this.REF_BTTL);
-        
-        this.hasFthr = this.inv.contains(this.REF_FTHR);
-        this.hasHly = this.inv.contains(this.REF_ATHR);
-        this.hasShs = this.inv.contains(this.REF_SHS);
     }
 /*----------------------------------------------------------------------------*/
     private int enchant() {
         
-        if (hasBottle && hasFireSalts && hasMandrake && hasSpruce && inv.size() == 4) {
-            this.inv.remove(REF_SALTS);
-            this.inv.remove(REF_SPRUCE);
-            this.inv.remove(REF_BTTL);
-            this.inv.remove(REF_MANDRAKE);
-            this.inv.add(REF_ENCH_BTTL);
+        if (inv.contains(this.REF_BTTL) && 
+            inv.contains(this.REF_SALTS) && 
+            inv.contains(this.REF_MANDRAKE) && 
+            inv.contains(this.REF_SPRUCE) && 
+            inv.size() == 4) 
+        {
+            inv.remove(REF_SALTS);
+            inv.remove(REF_SPRUCE);
+            inv.remove(REF_BTTL);
+            inv.remove(REF_MANDRAKE);
+            inv.add(REF_ENCH_BTTL);
             return 1;
         }
-        else if(hasShs && hasFthr && hasHly && inv.size() == 3) {
-            this.inv.remove(REF_FTHR);
-            this.inv.remove(REF_ATHR);
-            this.inv.remove(REF_SHS);
-            this.inv.add(new Shoes("shrouded shoes", "The pair of slippers carry almost no weight to them.", 
-                                   "You slip on the shoes. They are perhaps the most comfortable pair you've ever worn."));
+        else if(inv.contains(this.REF_SHS) && 
+                inv.contains(this.REF_FTHR) && 
+                inv.contains(this.REF_ATHR) && 
+                inv.size() == 3) 
+        {
+            inv.remove(REF_FTHR);
+            inv.remove(REF_ATHR);
+            inv.remove(REF_SHS);
+            inv.add(new Shoes("shrouded shoes", "The pair of slippers carry almost no weight to them.", 
+                              "You slip on the shoes. They are perhaps the most comfortable pair you've ever worn."));
             return 2;
         }
-        return 0;
+        else
+            return 0;
     }
 /*----------------------------------------------------------------------------*/
 }

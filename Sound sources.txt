@@ -187,13 +187,29 @@ Rushing water
 	https://www.freesound.org/people/jc144940/sounds/178734/
 	Rushing River Water.aif -- jc144940
 
+Laboratory:
+	Bubbling
+		https://www.freesound.org/people/MattJ99/sounds/66786/
+		MattJ99 -- bubbling01.wav
+	pneumatic valves
+		https://www.freesound.org/people/holger.schwetter/sounds/73607/
+		magnetic_valves.wav -- holger.schwetter
+	humming
+		https://www.freesound.org/people/heatfuse/sounds/13302/
+		heatfuse -- 1.wav
 
+Caves
+	Cave Loop
+		https://www.freesound.org/people/mensageirocs/sounds/232609/
+		mensageirocs -- Cave loop
+	Distortion
+		https://www.freesound.org/people/E1ectr0n1cF4n/sounds/350965/
+		E1ectr0n1cF4n -- very intense hell.mp3
 
-
-TYPE CREEPY IN AUDACITY
-	
-
-
+Tomb	
+	Water drops
+	https://www.freesound.org/people/German1990/sounds/251446/
+	German1990 -- DROPS WATER:
 
 
 

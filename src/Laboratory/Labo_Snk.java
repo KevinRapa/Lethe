@@ -7,28 +7,30 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Labo_Snk extends Furniture {
-    private final Item TUBE_REF;
+    private final Item TUBE_REF, BEAKER_REF;
     // ========================================================================
-    public Labo_Snk (Item testTube) {
+    public Labo_Snk (Item testTube, Item beaker) {
         super();
         this.searchable = false;
+        
         this.TUBE_REF = testTube;
+        this.BEAKER_REF = beaker; 
+        
         this.description = "It's a plain square metal sink for chemical disposal and hand washing.";
         this.actDialog = "What a smart idea! You quickly wash your hands before going to science.";
         this.searchDialog = "It's just a plain metal sink.";
         this.useDialog = "You pour the chemical down the drain.";
 
         this.addNameKeys("(?:plain )?(?:square )?(?:metal )?sink");
-        this.addUseKeys("bromine, \\d{1,2}mL", 
-                        "chilled bromine, \\d{1,2}mL",
-                        "aether, \\d{1,2}mL", 
-                        "vinegar, \\d{1,2}mL",
-                        "wine, \\d{1,2}mL", 
-                        "carbonic acid, \\d{1,2}mL", 
-                        "hydroflouric acid, \\d{1,2}mL",
-                        "phenolphthalein, \\d{1,2}mL", 
-                        "chilled bromine, \\d{1,2}mL", 
-                        "sodium chloride, \\d{1,2}mL",
+        this.addUseKeys("Br \\d{1,2}mL", 
+                        "chilled Br \\d{1,2}mL",
+                        "ae \\d{1,2}mL", 
+                        "vinegar \\d{1,2}mL",
+                        "wine \\d{1,2}mL", 
+                        "H2CO3 \\d{1,2}mL", 
+                        "HF \\d{1,2}mL",
+                        "C20H14O4 \\d{1,2}mL", 
+                        "NaCl \\d{1,2}mL",
                         "potion of science",
                         "phase door potion",
                         "bottle of wine",
@@ -41,8 +43,13 @@ public class Labo_Snk extends Furniture {
             return "That would be such a waste!";
         else {
             Player.getInv().remove(item);
-            Player.getInv().add(TUBE_REF);
-            return this.actDialog;
+            
+            if (! item.toString().equals("potion of science"))
+                Player.getInv().add(BEAKER_REF);
+            else
+                Player.getInv().add(TUBE_REF);
+            
+            return this.useDialog;
         }
     }
     // ========================================================================     

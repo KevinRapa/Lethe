@@ -44,7 +44,7 @@ public class Att1 extends Room {
         GUI.out("\"I have been following you...\"");
         GUI.promptOut();
         
-        GUI.out("Several more seconds pass. Before you can realize, you are"
+        GUI.out("Several more seconds pass. Before you can realize, you are\n"
               + "unconcious...\n");
         GUI.promptOut();
         

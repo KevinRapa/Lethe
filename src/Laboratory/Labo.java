@@ -15,12 +15,15 @@ import A_Super.Room;
     4. Titrate and add exactly these 5 ingredients (Use dispensers and burette):
         chilled bromine, 10mL
         vinegar, 5mL
-        aether, 15mL
-        wine, 10mL
+        aether, 20mL
+        wine, 15mL
         carbonic acid, 35mL
     5. Use beaker on condenser
     6. Use striker on the bunsen burner
     7. Take the beaker.
+
+    BOOKS:
+        One that describes condenser and a distiller.
 */
 
 public class Labo extends Room {
