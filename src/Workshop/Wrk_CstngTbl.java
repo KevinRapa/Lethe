@@ -45,11 +45,11 @@ public class Wrk_CstngTbl extends Furniture {
             
             if (this.hasTemplate) {   
                 String color;
-                if (name.matches("molten red glass")) {
+                if (name.equals("molten red glass")) {
                     Player.getInv().add(this.REFRL); // Give player red lens.
                     color = "red";
                 }
-                else if (name.matches("molten blue glass")) {
+                else if (name.equals("molten blue glass")) {
                     Player.getInv().add(this.REFBL); // Give player blue lens.
                     this.REFSCK.getInv().add(this.REFSND); // Restock sand.
                     this.REFBRL.getInv().add(this.REFBD); // Restock dye.
@@ -72,13 +72,13 @@ public class Wrk_CstngTbl extends Furniture {
                 this.REFSCK.getInv().add(this.REFSND);
                 this.REFCBNT.getInv().add(this.REFPTSH);
                 
-                if (name.matches("red glass"))                     
+                if (name.equals("red glass"))                     
                     this.REFBRL.getInv().add(this.REFRD);
                 
-                else if (name.matches("blue glass")) 
+                else if (name.equals("blue glass")) 
                     this.REFBRL.getInv().add(this.REFBD);
                 
-                else if (name.matches("yellow glass")) 
+                else if (name.equals("yellow glass")) 
                     this.REFBRL.getInv().add(this.REFYD);
                 
                 rep = "You pour the molten glass onto the casting table.\n" +

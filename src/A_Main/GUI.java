@@ -352,6 +352,8 @@ public class GUI extends JPanel {
         @Override public void keyPressed(KeyEvent e) {
             if (key != 0)
                 AudioPlayer.playEffect(key);
+            if (e.getKeyCode() == KeyEvent.VK_ENTER)
+                current = 0;
         }
         /*------------------------------------------------------*/
         @Override public void keyTyped(KeyEvent e) {}

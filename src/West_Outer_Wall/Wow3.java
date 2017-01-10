@@ -1,6 +1,8 @@
 package West_Outer_Wall;
 
 import A_Main.AudioPlayer;
+import A_Main.GUI;
+import A_Main.Inventory;
 import A_Super.Room;
 import A_Main.Player;
 import A_Super.Direction;
@@ -9,17 +11,15 @@ import A_Super.Item;
 
 public class Wow3 extends Room {
     private final Item LDDRITEM_REF;
-    private final Furniture WOW2LDDR_REF, FLR_REF, WOW3LDDR_REF;
-    private boolean triggerHppnd;
+    private final Furniture WOW2LDDR_REF;
+    private final Inventory FLR_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wow3(String name, String ID, Furniture wow2lddr, 
-                Furniture flr, Furniture wow3Lddr, Item Ilddr) {
+                Inventory flrInv, Item Ilddr) {
         super(name, ID);
         this.WOW2LDDR_REF = wow2lddr;
         this.LDDRITEM_REF = Ilddr;
-        this.FLR_REF = flr;
-        this.WOW3LDDR_REF = wow3Lddr;
-        this.triggerHppnd = false;
+        this.FLR_REF = flrInv;
         this.description = "You stand atop the small balcony overlooking the\n" +
                            "west outer wall. You feel claustrophobic. A large\n" +
                            "wood shelf blocks a door to the north. Immediately\n" +
@@ -40,25 +40,22 @@ public class Wow3 extends Room {
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String triggeredEvent() {
-        Room wow2 = Player.getRoomRef("WOW2");
-                
-        if (! Player.getLastVisited().matches("GQUA")) {
-            if (this.triggerHppnd) {
+        if (Player.getLastVisited().matches("WOW2")) {
+            if (Player.hasVisited(this.ID)) {
                 if (! this.hasFurniture("ladder"))
-                    this.addFurniture(WOW3LDDR_REF);
-                return "The ladder creaks with instability. You were more\n"
-                     + "careful in scaling the ladder this time.";
+                    this.addFurniture(new Wow2_Strs(Direction.DOWN, 1));
+                GUI.out("The ladder creaks with instability. You were more\n"
+                      + "careful in scaling the ladder this time.");
             }
             else {
-                wow2.removeFurniture(WOW2LDDR_REF);
-                FLR_REF.getInv().add(LDDRITEM_REF);
-                this.triggerHppnd = true;
-                return "You successfully scale the ladder, but you accidentally\n"
-                    + "knock it down with your final step, you uncoordinated oaf.";
+                Player.getRoomRef("WOW2").removeFurniture(WOW2LDDR_REF);
+                FLR_REF.add(LDDRITEM_REF);
+                GUI.out("You successfully scale the ladder, but you accidentally\n"
+                      + "knock it down with your final step, you uncoordinated oaf.");
             }               
         }
-        else
-            return "You are " + this;
+        
+        return "You are " + this + ".";
     }
 /*----------------------------------------------------------------------------*/    
 }

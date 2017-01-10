@@ -105,21 +105,6 @@ public class Player {
                 anyMatch(i -> i.toString().matches(item));
     }
     /*------------------------------------------------------------------------*/
-    /**
-     * Returns an item object reference in your inventory with the name.
-     * @param itemName The item's name.
-     * @return the object reference.
-     */
-    public static Item getItem(String itemName) {
-        Item rep = null;
-        
-        for (Item i : Player.inv) {
-            if (i.toString().matches(itemName))
-                rep = i;
-        }
-        return rep;
-    }
-    /*------------------------------------------------------------------------*/
     public static void loadAttributes(Inventory inv, Inventory keys, ArrayList<String> visited, 
                                       String lastVisited, String shoesWearing, int[] pos, Room[][][] map) {
         // Sets saved game attributes. See PlayerAttributes.java.
@@ -211,7 +196,7 @@ public class Player {
             else if (ans.matches("[a-z]+\\s[a-z ]+")) // Interacting
                 activateSub(ans);
 
-        } while (! ans.matches("quit"));
+        } while (! ans.equals("quit"));
         
         return endGame();
     }  
@@ -441,7 +426,7 @@ public class Player {
      * @param store The item being stored.
      */
     private static void evalStore(Furniture furniture, Item store) {
-        if (store.getType().matches("phylactery"))
+        if (store.getType().equals("phylactery"))
             GUI.out("The " + store + " looks too important to get rid of.");
 
         else {
@@ -504,7 +489,7 @@ public class Player {
                 GUI.out(target.getDescription()); 
 
             else if (action.matches("search|e|s") || 
-                    (action.matches("open") && target instanceof Container))                    
+                    (action.equals("open") && target instanceof Container))                    
                 search(target);
             
             else
@@ -750,7 +735,7 @@ public class Player {
         String combinesTo = itemList[0].getForms();
 
         for (Item i : itemList) {
-            if (i.getForms().matches("nothing") || ! i.getForms().matches(combinesTo))
+            if (i.getForms().equals("nothing") || ! i.getForms().matches(combinesTo))
                 return false;
         } 
         return true;

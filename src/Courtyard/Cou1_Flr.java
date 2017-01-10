@@ -40,7 +40,7 @@ public class Cou1_Flr extends Furniture {
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) {              
         if (Player.hasItem("shovel") || Player.hasItem("trowel"))
-            return this.useEvent(Player.getItem(""));
+            return this.useEvent(null); // Safe. Item is unused in interact here.
         else
             return "You have nothing suitable to dig the ground with.";
     }

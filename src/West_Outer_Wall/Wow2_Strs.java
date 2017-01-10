@@ -17,18 +17,15 @@ public class Wow2_Strs extends Staircase {
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) {     
-        // Sets the room that the player is in.
         int[] c = Player.getPos().getCoords(); // coordinates of player location.
-                
+        
+        playEffect();        
         Player.setOccupies(c[0] + DIR.Z, c[1], c[2]); // moves the player's Z coordinate.
         
-        playEffect();
-        
-        return Player.getPos().triggeredEvent();       
+        return "none";       
     }
 /*----------------------------------------------------------------------------*/
     @Override protected void playEffect() {
-        // For overriding. Some stairs aren't wooden.
         AudioPlayer.playEffect(16);
     }
 /*----------------------------------------------------------------------------*/

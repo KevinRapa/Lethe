@@ -46,6 +46,7 @@ import java.io.*;          import java.util.Random;
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Salamaa");
     private static final String WD = System.getProperty("user.dir");
+    
 // ============================================================================
     public static void main(String[] args) {
         String start = "COU4"; // PLAYER'S STARTING LOCATION. DEFAULT "COU4".
@@ -133,7 +134,7 @@ public class Main {
         // </editor-fold>  
         //**********************************************************************
     } 
-         
+// ============================================================================        
     public static Room[][][] createMap() {
         //**********************************************************************
         // <editor-fold desc="INITIALIZE ROOMS, FURNITURE, ITEMS">
@@ -185,7 +186,6 @@ public class Main {
         
         Item bckt = new Item("metal bucket", "It's an empty metal bucket."); // Used with all fireplaces
         Item vial = new Item("empty vial", "A small glass vial for holding samples");
-        
         // These items are a set used to create mandragora. Must be instantiated
         // before courtyard because soil can be found in the courtyard.
         Item mndrk = new Item("mandragora", "The potato-shaped vegetable looks disturbingly life-like.");
@@ -400,6 +400,7 @@ public class Main {
         Room wow1 = new Wow1("in the west outer wall", "WOW1");
         Room wow2 = new Wow2("in the west outer wall", "WOW2");
         //-------------------------------ITEMS----------------------------------
+        Item vinegar = new Item("bottle of vinegar", "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"");
         Item wowLddr = new Item("fixed ladder", "The spoke sits in there a bit awkwardly, but it\n"
                               + "seems like a good ladder. It may even support your heft.");   
         Item wow1Spk = new Item("wheel spoke", "It's a wooden rod, about a foot long.", wowLddr, "ladder", 3);
@@ -415,8 +416,7 @@ public class Main {
         Furniture wowHrth= new Wow_Hrth(true, bckt);
         Furniture wow2Strcs = new Wow2_Strcs(); 
         Furniture wow1NDr = new Sha_Dr(Direction.NORTH);
-        Furniture wow1Shlvs = new Wow1_Shlvs(vial);
-        Furniture wow3Strs = new Wow2_Strs(Direction.DOWN, 1);
+        Furniture wow1Shlvs = new Wow1_Shlvs(vial, vinegar);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE WEST BALCONY">
         //-----------------------------THE ROOM---------------------------------
@@ -481,7 +481,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE WEST OUTER WALL BALCONY">
         //-----------------------------THE ROOM---------------------------------
-        Room wow3 = new Wow3("on the west outer wall balcony", "WOW3", wow2Strs, wow2F, wow3Strs, wowLddr);
+        Room wow3 = new Wow3("on the west outer wall balcony", "WOW3", wow2Strs, wow2F.getInv(), wowLddr);
         //-------------------------------ITEMS----------------------------------
         Item wowRope = new Item("rope", "It's a short coiled rope.", ram, "battering ram", 3);
         //-----------------------------FURNITURE--------------------------------
@@ -529,11 +529,10 @@ public class Main {
         //-------------------------------ITEMS----------------------------------
         Item wrhmmr = new Item("warhammer", "It's an old medieval warhammer. The head looks\n"
                                           + "extremely worn and dull.");
-        Item brWrHmr = new Item("broken warhammer", "It's snapped in half. Warhammers: not\nmeant for walls.", "Well, it's useless now.");
         Item ash = new Item("ash", "I'm sure there's people mixed in with this...");
         Item wd = new Item("charred wood", "It's a piece of burnt wood");
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture searFssr = new Sear_Fssr(brWrHmr);
+        Furniture searFssr = new Sear_Fssr();
         Furniture searDr = new Sear_Dr();
         Furniture searAsh = new Sear_Ash();
         Furniture searSkltn = new Sear_Skltn(closCrwbr);
@@ -905,7 +904,9 @@ public class Main {
         //-----------------------------THE ROOM---------------------------------
         Room kitc = new Kitc("in the kitchen", "KITC");
         //-------------------------------ITEMS----------------------------------
+        Item spng = new Item("sponge", "A plain old yellow kitchen sponge.");
         Item kitcFrtPhy = new Kitc_FrtPhy("pristine fruit");
+        Item wine = new Item("bottle of wine", "A very old bottle of red wine. The date says \"1822\"");
         Item rtnFrt = new Item("rotten fruit", "Was this an apple? Or ... plum once?", "Whatever you expect him to do with that,\nhe isn't going to.");
         Item petFrt = new Item("petrified vegetable", "Looks like a rock ... in the shape of a carrot.", "Whatever you expect him to do with that,\nhe isn't going to.");
         //-----------------------------FURNITURE--------------------------------
@@ -919,8 +920,8 @@ public class Main {
         Furniture kitcHrth = new Kitc_Hrth(bckt); //UNFINISHED
         Furniture kitcBrls = new Kitc_Brls(); // EMPTY
         Furniture kitcPntry = new Kitc_Pntry(rtnFrt, rtnFrt, petFrt, kitcFrtPhy, petFrt);
-        Furniture kitcShlf = new Kitc_Shlf(); // EMPTY
-        Furniture kitcCntr = new Kitc_Shlf(); // EMPTY     
+        Furniture kitcShlf = new Kitc_Shlf(wine, wine, wine, wine, wine, wine, wine);
+        Furniture kitcCntr = new Kitc_Cntr(spng, vinegar);   
         // </editor-fold> // HAS EMPTY STUFF
         // <editor-fold desc="INITIALIZE DUNGEON STAIRCASE">
         //-----------------------------THE ROOM---------------------------------
@@ -1036,7 +1037,6 @@ public class Main {
         Item stlWr = new Item("steel wire", "It's some broken piano wire");
         Item hndDrll = new Item("hand drill", "It's a drill for boring holes in wood.\n"
                               + "You can drill into almost anything you want now!");
-        Item vlAcd = new Item("vial of acetic acid", "It's a small vial of acid. Not the kind that burns... you think.");
         Item fthr = new Item("raven feather", "It's a long, elegant feather");
         Item athr = new Item("aether vial", "This looks expensive!");
         Item frSlts = new Item("fire salts", "Seems to be just red ashes...");
@@ -1059,7 +1059,7 @@ public class Main {
         Furniture par1Strs = new Par_Strs(Direction.UP, 1);
         Furniture par1Pllrs = new Par1_Pllrs();
         Furniture par1Hrp = new Par1_Hrp(par1Orb);
-        Furniture par1Shlf = new Wow3_Shlf(vlAcd, fthr, hndDrll, athr, parBkEncht, frSlts);
+        Furniture par1Shlf = new Wow3_Shlf(fthr, hndDrll, athr, parBkEncht, frSlts);
         Furniture par1Cshn = new Par1_Cshn(aresPlt);
         
         Furniture par2F = new Floor("A sandstone tiled floor.");
@@ -1087,9 +1087,29 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE LABORATORY"> 
         //-----------------------------THE ROOM---------------------------------
-        Room labo = new Labo("laboratory", "LABO");
+        Room labo = new Labo("in the laboratory", "LABO");
         //-------------------------------ITEMS---------------------------------- 
+        Item rbbrTube = new Item("rubber hose", "It's a yellow rubber hose, about 8 feet long.");
+        Item tstTb = new Item("test tube", "A glass tube for transferring liquids");
+        Item bkr = new Item("beaker", "It's just an empty glass beaker for quick measuring.");
+        Item strkr = new Item("striker", "It's a metal tool for creating sparks");
+        Item scale = new Item("scale", "A machine for the weighing of things.");
+        Item balance = new Item("balance", "You seem to remember these being called triple-beam balances in middle school.", "Oh boy! You could weigh just about anything with this!");
         //-----------------------------FURNITURE--------------------------------  
+        Furniture iceBrrl = new Labo_DryIce();
+        Furniture laboRck = new Labo_Shlf(vial, tstTb, vial, tstTb, bkr, tstTb);
+        Furniture laboGsPipe = new Labo_GsPipe();
+        Furniture cndsr = new Labo_Cndsr(bkr);
+        Furniture laboDstllr = new Labo_Dstllr(laboGsPipe, cndsr);
+        Furniture laboDspnsrs = new Labo_Dspensrs(vial, tstTb);
+        Furniture laboBrtt = new Labo_Brtt(vial, tstTb);
+        Furniture laboStpCck = new Labo_StpCck();
+        Furniture laboF = new Floor("It's black and white checkered tile. A predictable floor for a laboratory.", wine, vinegar);
+        Furniture laboSnk = new Labo_Snk(tstTb);
+        Furniture laboCntrptn = new Labo_Cntrptn();
+        Furniture laboTbl = new Labo_Tbl();
+        Furniture laboDvcs = new Labo_Dvcs();
+        Furniture laboCntr = new Labo_Cntr(strkr, scale, rbbrTube, balance);
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE ATTIC"> 
@@ -1631,6 +1651,7 @@ public class Main {
         obs3.addFurniture(obs3Chndlr, obsW, obsWndw, obs3Strs, obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps);
         att1.addFurniture(attF, attW, sst2Dr, attCss, attBxs, attCbwbs, attVnts);
         att2.addFurniture(attF, attW, att2Dr, attBxs, attCss, attCbwbs, attVnts);
+        labo.addFurniture(laboF, att2Dr, wallEx, laboStpCck, laboBrtt, laboGsPipe, laboCntr, iceBrrl, laboRck, laboDspnsrs, laboDstllr, laboSnk, laboCntrptn, laboTbl, laboDvcs);
         
         // </editor-fold>  // Castle rear
         // <editor-fold desc="AREA 5">

@@ -5,14 +5,12 @@ import A_Super.Item;
 import A_Super.Furniture;
 
 public class Sear_Fssr extends Furniture {
-    private final Item BRKNWRHMMR_REF;
     private boolean broken;
 /*----------------------------------------------------------------------------*/    
-    public Sear_Fssr(Item gift) {
+    public Sear_Fssr() {
         super();
         this.searchable = false;
         this.broken = false;
-        this.BRKNWRHMMR_REF = gift;
         this.searchDialog = "It's just an empty hole.";
         this.description = "The fissure leads outside into the front\n"
                          + "courtyard. It looks like this was part of\n"
@@ -27,9 +25,9 @@ public class Sear_Fssr extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         if (item.toString().matches("warhammer")) {            
-            Player.getRoomRef("COUS").addAdjacent("COU2");
+            Player.getPos().addAdjacent("COU2");
             Player.getInv().remove(item);
-            Player.getInv().add(BRKNWRHMMR_REF);
+            Player.getInv().add(new Item("broken warhammer", "It's snapped in half.", "Well, it's useless now."));
             this.broken = true;
             return this.useDialog;
         }

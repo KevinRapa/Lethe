@@ -6,7 +6,7 @@ package A_Super;
  * @author Kevin Rapa
  */
 abstract public class NonPlayerCharacter extends Furniture {
-    protected boolean firstTime;
+    protected boolean firstTime; // If the player hasn't talked to this before.
     // ========================================================================
     public NonPlayerCharacter () {
         super();

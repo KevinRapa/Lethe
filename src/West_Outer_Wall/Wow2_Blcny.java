@@ -25,7 +25,7 @@ public class Wow2_Blcny extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        Player.getRoomRef("WOW2").addFurniture(STRS_REF); // Add the ladder to WOW2.
+        Player.getPos().addFurniture(STRS_REF); // Add the ladder to WOW2.
         Player.getInv().remove(LDDR_REF); // Remove the ladder from player inventory.
         
         return this.useDialog;

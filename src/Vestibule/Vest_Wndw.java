@@ -25,7 +25,8 @@ public class Vest_Wndw extends Window {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        Vest vest = (Vest)Player.getRoomRef("VEST");
+        Vest vest = (Vest)Player.getPos(); // Player must be in vesibule.
+        
         if (key.matches("open|close")) {
             if (this.isOpen && key.matches("close")) {
                 this.close(); 

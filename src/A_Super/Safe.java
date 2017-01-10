@@ -72,7 +72,7 @@ public class Safe extends Furniture implements Container {
         String currentCombo = "";
         
         for (int dial : this.DIALS)
-            currentCombo += Integer.toString(dial);
+            currentCombo = currentCombo.concat(Integer.toString(dial));
                   
         return currentCombo.matches(this.COMBO);
     }

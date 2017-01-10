@@ -32,11 +32,11 @@ public class Wrk_Kln extends Furniture {
         
         Player.getInv().remove(item);
         
-        if (name.matches("potash") && ! this.hasPotash) {
+        if (name.equals("potash") && ! this.hasPotash) {
             this.hasPotash = true;
             rep = "You pour the potash into the crucible.";  
         }    
-        else if (name.matches("sand") && ! this.hasSand) {
+        else if (name.equals("sand") && ! this.hasSand) {
             this.hasSand = true;
             rep = "You pour the sand into the crucible.";
         }
@@ -44,16 +44,16 @@ public class Wrk_Kln extends Furniture {
             if (name.matches("red dye")) {
                 this.hasRedDye = true;
             }
-            else if (name.matches("blue dye")) {
+            else if (name.equals("blue dye")) {
                 this.hasBlueDye = true;
             }
-            else if (name.matches("yellow dye")) {
+            else if (name.equals("yellow dye")) {
                 this.hasYllwDye = true;
             }   
             rep = "You pour the " + name + " into the crucible.";
         }
-        else if ((name.matches("sand") && this.hasSand) ||
-                 (name.matches("potash") && this.hasPotash) ) 
+        else if ((name.equals("sand") && this.hasSand) ||
+                 (name.equals("potash") && this.hasPotash) ) 
             rep = "The kiln already has " + name + " in it!";
         
         else if ((name.matches("(?:red|blue|yellow) dye")) && hasDye())
