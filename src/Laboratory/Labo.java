@@ -11,12 +11,13 @@ import A_Super.Room;
     1. Use florence flask on distiller
     2. Connect hose to gas pipe and turn it on
     3. Open condensing tube
+    3.5. Put bromine into barrel, let it chill for 30 seconds.
     4. Titrate and add exactly these 5 ingredients (Use dispensers and burette):
         chilled bromine, 10mL
-        vinegar, 5mL" 
-        "aether, 15mL"
-        "wine, 10mL" 
-        "carbonic acid, 35mL
+        vinegar, 5mL
+        aether, 15mL
+        wine, 10mL
+        carbonic acid, 35mL
     5. Use beaker on condenser
     6. Use striker on the bunsen burner
     7. Take the beaker.

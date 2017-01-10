@@ -6,6 +6,7 @@ import A_Super.Furniture;
 import A_Super.Container;
 import A_Super.Item;
 /**
+ * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
 public class Labo_DryIce extends Furniture implements Container {

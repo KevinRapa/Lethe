@@ -3,6 +3,7 @@ package Laboratory;
 import A_Super.Furniture;
 import A_Super.Ingredient;
 /**
+ * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
 public class Labo_Flsk extends Lab_Glassware {

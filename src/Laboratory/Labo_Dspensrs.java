@@ -7,6 +7,7 @@ import A_Super.Item;
 import A_Super.Ingredient;
 import java.util.Timer;
 /**
+ * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
 public class Labo_Dspensrs extends Furniture {
@@ -98,7 +99,7 @@ public class Labo_Dspensrs extends Furniture {
             case 5:
                 return new Ingredient("sodium chloride, " + volume + "mL", "The vial holds a clear mundane liquid.");
             default:
-                return new Ingredient("phenolphthalein, " + volume + "mL", "The vial holds a pale blue, glowing liquid.");
+                return new Ingredient("phenolphthalein, " + volume + "mL", "The vial holds a funny pink liquid.");
         }
     }
     // ========================================================================  

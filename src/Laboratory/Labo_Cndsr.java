@@ -4,6 +4,7 @@ import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
+ * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
 public class Labo_Cndsr extends Furniture {
