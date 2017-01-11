@@ -106,7 +106,6 @@ public class Main {
         //**********************************************************************
         AudioPlayer.stopTrack();
         GAME_FRAME.dispose();
-        
         switch(exitChoice) {
             case 1:
                 // Saves the game.
@@ -1165,6 +1164,7 @@ public class Main {
         // <editor-fold desc="AREA 5: SUB-LEVELS">
            
         Furniture dngnW = new Wall("The walls are rough gray stone brick, and wet to the touch from the cold humid air.");
+        
         // Dungeon
         // <editor-fold desc="INITIALIZE SEWERS">
         //-----------------------------THE ROOMS--------------------------------
@@ -1531,7 +1531,7 @@ public class Main {
           {____,____,____,____,____,cas1,cry2,____,vau1,____}, //3
           {____,sew7,sew6,sew5,pris,torc,cry1,____,vauh,____}, //4
           {____,sew8,aarc,sew4,sew3,sew2,sew1,____,vaue,____}, //5
-          {____,sew9,oub1,intr,strp,arch,dst2,____,____,____}, //6
+          {____,sew9,oub1,intr,strp,arch,dst2,____,____,____}, //6    
           {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
          {{____,____,____,____,____,____,____,____,____,____}, //0 CATACOMBS [5]

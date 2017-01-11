@@ -5,21 +5,19 @@ import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Ingredient;
-import java.util.Timer;
 /**
+ * Dispenses various types of chemicals to be used in alchemy.
+ * 
  * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
 public class Labo_Dspensrs extends Furniture {
     private final Item VIAL_REF, TUBE_REF;
-    private final Timer timer;
     // ========================================================================
     public Labo_Dspensrs (Item emptyVial, Item testTube) {
         super();
         
         this.searchable = false;
-        
-        this.timer = new Timer();
         
         this.VIAL_REF = emptyVial;
         this.TUBE_REF = testTube;
@@ -85,7 +83,7 @@ public class Labo_Dspensrs extends Furniture {
         GUI.menOut("Press enter...");
         GUI.promptOut();
         
-        int volume = titrate();
+        int volume = TitrationTask.titrate();
         
         switch(Integer.parseInt(ans)) {
             case 1:
@@ -113,19 +111,6 @@ public class Labo_Dspensrs extends Furniture {
             ans = GUI.promptOut();
         }
         return ans.matches("y|yes");
-    }
-    // ========================================================================  
-    private int titrate() {
-        TitrationTask task = new TitrationTask();
-       
-        timer.schedule(task, 0, 2500);
-        
-        GUI.promptOut();
-        
-        task.cancel();
-        timer.purge();
-        
-        return task.getVolume();
     }
     // ========================================================================  
     // ************************************************************************

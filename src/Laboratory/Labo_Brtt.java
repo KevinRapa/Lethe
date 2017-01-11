@@ -5,8 +5,10 @@ import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Ingredient;
 import A_Super.Item;
-import java.util.Timer;
 /**
+ * Used to titrate wine and vinegar for the phase door potion.
+ * Uses titrator task.
+ * 
  * @author Kevin Rapa
  */
 public class Labo_Brtt extends Furniture {
@@ -28,7 +30,6 @@ public class Labo_Brtt extends Furniture {
     }
     // ======================================
     private final Item VIAL_REF, TUBE_REF;
-    private final Timer timer;
     private Titrant mode;
     // ========================================================================
     public Labo_Brtt (Item emptyVial, Item testTube) {
@@ -37,7 +38,6 @@ public class Labo_Brtt extends Furniture {
         this.mode = Titrant.EMPTY;
         this.VIAL_REF = emptyVial;
         this.TUBE_REF = testTube;
-        this.timer = new Timer();
         this.description = "It's a tall glass tube for dispensing particular quanities of liquids.\n"
                          + "On the top is an opening to pour a liquid. On the bottom is a nozzle\n"
                          + "and stopcock for dispensing the liquid. Make sure you have a vial or\n"
@@ -125,7 +125,7 @@ public class Labo_Brtt extends Furniture {
         GUI.menOut("Press enter...");
         GUI.promptOut();
         
-        int volume = titrate();
+        int volume = TitrationTask.titrate();
         
         switch(this.mode) {
             case WINE:
@@ -133,19 +133,6 @@ public class Labo_Brtt extends Furniture {
             default: // Never EMPTY. Ensured in interact()
                 return new Ingredient("vinegar " + volume + "mL", "The vial holds a small amount of vinegar.");
         }
-    }
-    // ========================================================================  
-    private int titrate() {
-        TitrationTask task = new TitrationTask();
-       
-        timer.schedule(task, 0, 2500);
-        
-        GUI.promptOut();
-        
-        task.cancel();
-        timer.purge();
-        
-        return task.getVolume();
     }
     // ========================================================================  
 

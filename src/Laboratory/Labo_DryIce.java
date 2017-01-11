@@ -2,16 +2,20 @@ package Laboratory;
 
 import A_Main.GUI;
 import A_Main.Inventory;
+import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Container;
 import A_Super.Ingredient;
 import A_Super.Item;
 /**
+ * Used to cool down vials of bromine
+ * 
  * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
 public class Labo_DryIce extends Furniture implements Container {
     private final Item DRY_ICE;
+    private transient Chill_Thread chillBromine;
     // ========================================================================
     public Labo_DryIce (Item flask) {
         super();
@@ -26,6 +30,18 @@ public class Labo_DryIce extends Furniture implements Container {
     }
     // ========================================================================
     @Override public String getSearchDialog() {
+        
+        if(chillBromine != null && chillBromine.isAlive()) {
+            chillBromine.interrupt();
+            
+            try { // Allows time for inventory to update before displaying.
+                Thread.sleep(5);
+            } catch (InterruptedException ex) {
+                System.out.println(ex.getMessage());
+            }
+            return "none";
+        }
+        
         if (this.searchable)
             return this.searchDialog;
         else
@@ -34,78 +50,81 @@ public class Labo_DryIce extends Furniture implements Container {
     // ========================================================================    
     // ************************************************************************
     // ========================================================================   
-    private class Chill extends Thread {
-        String volume;
-        
-        public Chill(String volume) {
-            super();
-            this.volume = volume;
-        }
-        // ==========================================
-        @Override public void run() {
-            Labo_DryIce.this.searchable = false;
-            
-            try {
-                synchronized (this) {
-                    GUI.out("Better give it some time to chill before taking it out.");
-                    this.wait(30000);
-                    GUI.out("The rusty liquid is probably cold enough now. Better go check it.");
-                    this.reOpen();
-                }
-            } catch (InterruptedException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
-        // ==========================================
-        public void reOpen() {
-            for (Item i : Labo_DryIce.this.getInv())
-                if (i.toString().matches("Br \\d{1,2}mL"))
-                    Labo_DryIce.this.getInv().remove(i);
-            
-            Labo_DryIce.this.getInv().add(new Ingredient("chilled " + volume, "the rusty liquid is cold and has stopped evaporating."));
-            Labo_DryIce.this.searchable = true;
-        }
-    }
-    // ========================================================================    
-    // ************************************************************************
-    // ========================================================================    
+    /**
+     * Chills any chemical if left alone for 25 seconds.
+     */
     private class Ice_Inventory extends Inventory {
-        boolean busy;
-        // ==========================================
         public Ice_Inventory(Item ... items) {
             super(items);
-            this.busy = false;
         }
-        // ==========================================
+    // ========================================================================
         @Override public boolean add(Item item) {
-            if (! busy && item.toString().matches("Br \\d{1,2}mL")) {
-                // Chills the bromine for a bit, seals off barrel.
-                Chill chillBromine = new Chill(item.toString());
-                busy = true;
+            this.CONTENTS.add(item);
+            
+            if (item.toString().matches("[\\w\\d]+ \\d{1,2}mL")) {
+                // Chills the chemical for a bit, seals off barrel.
+                chillBromine = new Chill_Thread(item, this);
                 chillBromine.start();
-                busy = false;
                 return true;
             }
-            else if (! busy) {
-                this.CONTENTS.add(item);
-                return true;
-            }
-            else {
-                GUI.invOut("You're chilling something right now. Better leave it alone.");
-                return false;
-            }
+            return true;
         }
-        // ==========================================
+    // ========================================================================
         @Override public void remove(Item item) { 
-            if (item.equals(DRY_ICE))
-                ; // Player can never remove all the dry ice;
-            else
+            if (! item.equals(DRY_ICE))
                 this.contents().remove(item);
         }
     }    
     // ========================================================================    
     // ************************************************************************
-    // ========================================================================        
+    // ======================================================================== 
+    /**
+     * Converts chemical into chilled chemicals in 25 seconds.
+     */
+    private class Chill_Thread extends Thread {
+        private final String ITEM_NAME;
+        private final Item BROMINE;
+        private final Inventory BARREL_INV;
+    // ========================================================================
+        public Chill_Thread(Item item, Inventory inv) {
+            super();
+            this.setDaemon(true);
+            this.BROMINE = item;
+            this.BARREL_INV = inv;
+            this.ITEM_NAME = item.toString();
+        }
+    // ========================================================================
+        @Override public void run() {     
+            try {
+                synchronized (this) {
+                    GUI.out("Better give it some time to chill before taking it out.");
+                    this.wait(25000);
+
+                    if (BARREL_INV.contains(BROMINE))
+                        GUI.out("The liquid is probably cold enough now. Better go check it.");
+
+                    this.reOpen(false);
+                }
+            } catch (InterruptedException ex) {
+                GUI.out("You opened the barrel up too soon! The chemical hasn't had time to cool.");
+                this.reOpen(true);
+            }
+        }
+    // ========================================================================
+        public void reOpen(boolean interrupted) {
+            if (! interrupted && BARREL_INV.contains(BROMINE)) {
+                BARREL_INV.remove(BROMINE);
+                BARREL_INV.add(new Ingredient("chilled " + 
+                    ITEM_NAME, "the chemical feels cold to the touch."));   
+            }
+            else if (BARREL_INV.contains(BROMINE)) {
+                BARREL_INV.give(BROMINE, Player.getInv());
+            }    
+        }
+    }
+    // ========================================================================    
+    // ************************************************************************
+    // ========================================================================
 }
 
 
