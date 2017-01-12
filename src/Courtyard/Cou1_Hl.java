@@ -2,9 +2,14 @@ package Courtyard;
 
 import A_Super.Furniture;
 import A_Super.Item;
-
+/**
+ * Contains one of the plates needed for the observatory puzzle.
+ * 
+ * @see Observatory.Obs_Slts
+ * @see Courtyard.Cou1_Hl
+ * @author Kevin Rapa
+ */
 public class Cou1_Hl extends Furniture {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou1_Hl(Item ... items) {
         super(items);

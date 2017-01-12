@@ -1,7 +1,13 @@
 package East_Outer_Wall;
 
 import A_Super.Furniture;
-
+/**
+ * Superficial, but justifies the presence of water in the room for filling the metal bucket.
+ * 
+ * @see Library.Lib2
+ * @see Library.Lib4
+ * @author Kevin Rapa
+ */
 public class Eow2_Fntn extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Eow2_Fntn() {

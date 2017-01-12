@@ -1,12 +1,5 @@
 package Caves;
 
-/**
- * The catacombs comprise a maze of similar tunnels.
- * Each catacomb generates its own description, and will present itself
- * differently depending on if the player is holding a torch.
- * 
- * @author Kevin Rapa
- */
 import static A_Main.AudioPlayer.S;
 import static A_Main.AudioPlayer.WD;
 import A_Main.Player;
@@ -26,7 +19,17 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
+import static java.lang.Math.round;
+import static java.lang.Math.abs;
+/**
+ * The caves comprise a maze of similar tunnels.
+ * The caves will generate their own descriptions and will distort their own
+ * descriptions to a degree determined by its distance from room MS66. The
+ * reason for this is story-based.
+ * 
+ * @see Caves.Deep_Chamber
+ * @author Kevin Rapa
+ */
 public class Cave extends Room {
     protected String descLit;
     protected final int DISTANCE; // Distance this room is from MS65
@@ -185,7 +188,7 @@ public class Cave extends Room {
     }
 // ============================================================================
     /**
-     * Scrambles the description to a degree based on DISTANCE.
+     * Scrambles the string to a degree based on DISTANCE.
      * @param degree the degree to which distort the description.
      * @param desc A string to distort.
      * @return a scrambled string.
@@ -199,8 +202,8 @@ public class Cave extends Room {
         for (int d = 42; d > degree*7; d--) {
             int i = GENERATOR.nextInt(length),
                 j = GENERATOR.nextInt(length);
-            swapChars(charArray, i, j);
-            charArray[GENERATOR.nextInt(length)] += 20;
+            swapChars(charArray, i, j); 
+            charArray[GENERATOR.nextInt(length)] += 20; // Shifts character up the unicode set.
         }
         
         for (int d = 42; d > degree*7; d--) {

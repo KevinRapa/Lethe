@@ -17,12 +17,12 @@ public class Want extends Room {
     }
 /*----------------------------------------------------------------------------*/        
     @Override public String getBarrier(Direction dir) {
-        AudioPlayer.playEffect(6);
-        
-        if (dir == Direction.WEST)
+        if (dir == Direction.WEST) {
+            AudioPlayer.playEffect(6);
             return "Oh no! The rotunda is still shifted!";
-
-        return "There is a wall in the way.";
+        }
+        else
+            return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/
 }

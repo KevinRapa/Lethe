@@ -3,7 +3,11 @@ package Chapel;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-
+/**
+ * Contains holy water that the player needs to grow the mandragora.
+ * 
+ * @author Kevin Rapa
+ */
 public class Cha1_Water extends Furniture {
     private final Item REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

@@ -1,5 +1,9 @@
 package A_Super;
-
+/**
+ * Represents a wall. 
+ * Superficial only. Would not make sense for game to say "there is no wall here"
+ * @author Mantis Toboggan
+ */
 public class Wall extends Furniture{
 /*----------------------------------------------------------------------------*/    
     public Wall(String dsc) {

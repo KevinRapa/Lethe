@@ -6,8 +6,30 @@ import java.util.Arrays;
 import java.io.Serializable;
 import A_Main.Room_References;
 /**
+ * <p>
  * Represents one element in the game map array. 
- *
+ * The player always has a defined attribute of integer coordinates which
+ * give access to furniture in the room at those coordinates in the array.
+ * </p> <p>
+ * Each room has a unique ID string, roughly corresponding to the room name.
+ * The IDs uniquely identify the room for the purposes of getting coordinates
+ * and adjacent rooms. The ID is used by Keys as well.
+ * </p> <p>
+ * Rooms are adjacent to other rooms, which means that movement between them
+ * is possible. Two adjacent rooms are separated by empty space if the first 3 letters
+ * of there IDs match, excluding the caves and catacombs. Otherwise, they are
+ * separated by a door, unless they are on two different floors, e.g. connected
+ * by stairs.
+ * </p> <p>
+ * Rooms may be locked, which means that movement into the is not allowed unless
+ * the player carries a key with the matching ID number.
+ * </p> <p>
+ * Rooms have a <code>triggeredEvent</code> method, called whenever the player 
+ * enters. Generally, the method notifies the player where he/she is in the
+ * castle.
+ * </p>
+ * 
+ * @see A_Main.Room_References
  * @author Kevin Rapa
  */
 public class Room implements Serializable { 
@@ -17,6 +39,7 @@ public class Room implements Serializable {
     protected String description;       // Description of the room.
     protected ArrayList<String> adjacent; // List of rooms one can move to from this one.
     protected ArrayList<Furniture> furnishings; // Holds furniture.
+    protected final String WALL_BARRIER = "There is a wall that way.";
     // CONSTRUCTOR ============================================================
     public Room(String name, String ID) {  
         this.NAME = name;
@@ -61,14 +84,18 @@ public class Room implements Serializable {
     }
     // ========================================================================
     /**
-     * If the player fails a move, this returns the reason.
+     * If the player fails a movement attempt, this returns the reason.
      * Overridden if the room contains other barrier types (e.g. railing)
      * @param dir A direction.
      * @return Why the move failed.
      */
     public String getBarrier(Direction dir) {
+        return bumpIntoWall(); 
+    }
+    // ========================================================================
+    protected String bumpIntoWall() {
         AudioPlayer.playEffect(6);
-        return "There is a wall in the way.";
+        return WALL_BARRIER;
     }
     // ========================================================================
     /**

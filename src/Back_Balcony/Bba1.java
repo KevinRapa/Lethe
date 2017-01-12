@@ -3,7 +3,14 @@ package Back_Balcony;
 import A_Main.AudioPlayer;
 import A_Super.Room;
 import A_Super.Direction;
-
+/**
+ * Contains a note which directs player to the first key.
+ * Mainly superficial, for flavor. Offers view of the village the player left
+ * from.
+ * 
+ * @see Back_Balcony.Bba_Note
+ * @author Kevin Rapa
+ */
 public class Bba1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bba1(String name, String ID) {
@@ -22,8 +29,7 @@ public class Bba1 extends Room {
         if (dir == Direction.NORTH)
             return "There's a couple hundred foot drop right there.";
         else {
-            AudioPlayer.playEffect(6);
-            return "There is a wall in the way.";
+            return bumpIntoWall();
         }
     }
 /*----------------------------------------------------------------------------*/

@@ -4,7 +4,6 @@ import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
-import A_Super.Ingredient;
 /**
  * Dispenses various types of chemicals to be used in alchemy.
  * 

@@ -5,7 +5,6 @@ import A_Main.Inventory;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Container;
-import A_Super.Ingredient;
 import A_Super.Item;
 /**
  * Used to cool down vials of bromine

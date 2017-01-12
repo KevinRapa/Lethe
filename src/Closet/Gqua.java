@@ -1,7 +1,13 @@
 package Closet;
 
 import A_Super.Room;
-
+/**
+ * The room contains a few items that the player needs to solve other puzzles.
+ * 
+ * Contains a crowbar, screws, and fertilizer which are required items.
+ * 
+ * @author Kevin Rapa
+ */
 public class Gqua extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua(String name, String ID) {

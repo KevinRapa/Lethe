@@ -1,5 +1,8 @@
 package A_Super;
-
+/**
+ * Represents a generic exterior wall.
+ * @author Mantis Toboggan
+ */
 public class Wall_Ex extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Wall_Ex() {

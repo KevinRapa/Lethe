@@ -1,7 +1,12 @@
 package Courtyard;
 
 import A_Super.Furniture;
-
+/**
+ * The fountains are not physically in COU3, but they are described there,
+ * so the player should be able to reference them in some way
+ * .
+ * @author Kevin Rapa
+ */
 public class Cou3_Fntns extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou3_Fntns() {

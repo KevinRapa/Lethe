@@ -2,7 +2,14 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
-
+/**
+ * Represents a book with one or more pages.
+ * 
+ * Interacting with a book will take the player to sub prompt where the player
+ * may turn pages to read further or close the book.
+ * 
+ * @author Mantis Toboggan
+ */
 public class Book extends Note {
     protected final int PAGES;
     protected final String[] PAGE_LIST;

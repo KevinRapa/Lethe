@@ -1,9 +1,15 @@
 package A_Super;
-
+/**
+ * Represents a window that can be opened and closed.'
+ * Mainly for decoration. A few windows in the game are significant, however.
+ * 
+ * @see Vestibule.Vest_Wndw
+ * @see Marble_Hall.MhaS_Wndw
+ * @author Kevin Rapa
+ */
 public class Window extends Furniture {
     protected boolean isOpen;
     protected String descOpen, descClosed, escapeDialog;
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Window () {
         super();

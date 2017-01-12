@@ -3,7 +3,13 @@ package Dining_Room;
 import A_Main.GUI;
 import A_Super.Room;
 import A_Main.Player;
-
+/**
+ * Superficial, except that one plate needed for the observatory puzzle is here.
+ * 
+ * @see Dining_Room.Din1_Crvc
+ * @see Observatory.Obs_Slts
+ * @author Kevin Rapa
+ */
 public class Din1 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Din1(String name, String ID) {

@@ -1,7 +1,6 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
-import A_Main.GUI;
 import A_Main.Player;
 /**
  * Defines generic attributes and methods for a staircase.
@@ -30,7 +29,7 @@ public class Staircase extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     protected void playEffect() {
-        // For overriding. Some stairs aren't wooden.
+        // For overriding. Some stairs aren't stone.
         AudioPlayer.playEffect(15);
     }
 /*----------------------------------------------------------------------------*/

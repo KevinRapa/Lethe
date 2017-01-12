@@ -3,6 +3,7 @@ package A_Super;
 import A_Main.AudioPlayer;
 /**
  * Defines the mechanisms of a generic button.
+ * Pushing a button causes an event, but does not have an on or off state.
  * 
  * @author Kevin Rapa
  */

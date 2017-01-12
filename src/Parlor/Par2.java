@@ -46,7 +46,7 @@ public class Par2 extends Room{
             return "There's nothing but a railing and open space over the lower\n"
                  + "level parlor.";
                 
-        return "There is a wall in the way.";
+        return WALL_BARRIER;
     }
 /*----------------------------------------------------------------------------*/ 
 }

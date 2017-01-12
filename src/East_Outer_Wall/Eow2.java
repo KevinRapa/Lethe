@@ -1,7 +1,18 @@
 package East_Outer_Wall;
 
 import A_Super.Room;
-
+/**
+ * Contains a weapon rack with the silver spear, a needed item for the marble hall.
+ * Contains also a cabinet with a metal bucket, a non-unique needed item.
+ * Contains a fountain for filling up a bucket of water, for library
+ * 
+ * @see Library.Lib2
+ * @see Library.Lib4
+ * @see Marble_Hall.Mha_RStat
+ * @see East_Outer_Wall.Water
+ * @see East_Outer_Wall.Eow1_Rck    
+ * @author Kevin Rapa
+ */
 public class Eow2 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Eow2(String name, String ID) {

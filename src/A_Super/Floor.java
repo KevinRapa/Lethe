@@ -1,7 +1,11 @@
 package A_Super;
-
-public class Floor extends Furniture{
-
+/**
+ * Represents the floor or ground in a room.
+ * Superficial, though items may be stored here if needed.
+ * 
+ * @author Kevin Rapa
+ */
+public class Floor extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Floor(String dsc, Item... items) {
             super(items);

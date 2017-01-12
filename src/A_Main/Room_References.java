@@ -38,9 +38,9 @@ public class Room_References {
         // FLOOR 4 ROOM ID'S --------------------------------------------------
         "SOUL","TBAL","BLS2","THR1","LQUA","THR2",
         // BASEMENT ROOM ID'S -------------------------------------------------
-        "CAS1","CRY2","VAU1","SEW7","SEW6","SEW5","PRIS","TORC","CRY1","VAUH",
-        "SEW8","AARC","SEW4","SEW3","SEW2","SEW1","VAUE","SEW9","OUB1","INTR",
-        "STRP","ARCH","DST2",
+        "CAS1","CRY2","VAU1","CIS2","CIS1","SEW5","PRIS","TORC","CRY1","VAUH",
+        "CIS4","AARC","SEW4","SEW3","SEW2","SEW1","VAUE","CIS3","OUB1","INTR",
+        "SEWP","ARCH","SEW0",
         // CATACOMBS ROOM ID'S ------------------------------------------------
         "CS35","OU62","CT11","CT12","CT13","CT14","CT15","TM16","CT17","MY18",
         "CT21","CT22","CT23","CT24","CT25","CT26","CT27","CT28","CT31","TM32",
@@ -75,7 +75,7 @@ public class Room_References {
         {"IHA2","ROTU"}, {"MHA1","MHA3","DIN1"}, {"DIN2","MHA2"}, {"SHA1"},
         {"SHA2","WOW1"}, {"IHA1","WOW2"}, {"KITC","EOW1","MHA2"},
         {"MHA3"}, {"WOW1"}, {"WBAL","WOW2","SHA1"}, {"IHA2","WOW1"},
-        {}, {"EOW1","DST2"}, {"EOW2","DST1","MHA3"}, {"EOW1"},
+        {}, {"EOW1","SEW0"}, {"EOW2","DST1","MHA3"}, {"EOW1"},
         // FLOOR 2 ROOM ADJS --------------------------------------------------
         {"GAL4"}, {"LIB5"}, {"OBS1","OBS3"}, {"JHA2","PAR2"},
         {"PAR1","FOY3","JHA1"}, {"PAR2","FOY2","FOY4"}, {"GAL4","GAL1"},
@@ -92,12 +92,12 @@ public class Room_References {
         {"TBAL"}, {"SOUL","THR1"}, {"THR1","BLS1"}, 
         {"THR2","TBAL","BLS2","LQUA"}, {"THR1"}, {"THR1"}, 
         // BASEMENT ROOM ADJS -------------------------------------------------
-        {"CS35","CRY2"}, {"CRY1"}, {"VAUH"}, {"SEW8","SEW6"}, {"SEW7","SEW5"}, 
-        {"SEW4","SEW6"}, {"TORC"}, {"SEW2","PRIS","CRY1"}, {"TORC","CRY2"},
-        {"VAU1","VAUE"}, {"SEW9","SEW7","AARC"}, {"SEW8"}, {"SEW5","SEW3"},
-        {"STRP","SEW4","SEW2"}, {"TORC","SEW3","SEW1"}, {"DST2","SEW2"},
-        {"VAUH"}, {"OUB1","SEW8"}, {"OU62","SEW9"}, {"STRP"},
-        {"INTR","ARCH","SEW3"}, {"STRP"}, {"SEW1","DST1"},
+        {"CS35","CRY2"}, {"CRY1"}, {"VAUH"}, {"CIS3","CIS1"}, {"CIS2","SEW5"}, 
+        {"SEW4","CIS1","PRIS"}, {"TORC", "SEW3", "SEW5"}, {"PRIS","CRY1"}, {"TORC","CRY2"},
+        {"VAU1","VAUE"}, {"CIS3","OUB1"}, {"CIS4"}, {"SEW5","SEW3"},
+        {"SEWP","SEW4","SEW2","PRIS"}, {"SEW3","SEW1"}, {"SEW0","SEW2"},
+        {"VAUH"}, {"AARC","CIS4","CIS2"}, {"OU62","CIS3"}, {"SEWP"},
+        {"INTR","ARCH","SEW3"}, {"SEWP"}, {"SEW1","DST1"},
         // SUB-LEVEL ROOM ADJS ------------------------------------------------
         {"CAS1","CT34"}, {"OUB1","CT52"}, {"CT21","CT12"}, {"CT11","CT13","CT22"},
         {"CT12","CT14"}, {"CT13","CT15","CT24"}, {"CT14"}, {"CT26"}, {"MY18","CT27"},
@@ -152,8 +152,8 @@ public class Room_References {
        {0,1,5}, {0,2,5}, {0,3,4}, {0,3,5}, {0,3,6}, {0,4,5},       
        // BASEMENT COORDINATES -----------------------------------------------    
        {4,3,5}, {4,3,6}, {4,3,8}, {4,4,1}, {4,4,2}, {4,4,3}, {4,4,4}, {4,4,5},
-       {4,4,6}, {4,4,8}, {4,5,1}, {4,5,2}, {4,5,3}, {4,5,4}, {4,5,5}, {4,5,6},
-       {4,5,8}, {4,6,1}, {4,6,2}, {4,6,3}, {4,6,4}, {4,6,5}, {4,6,6},
+       {4,4,6}, {4,4,8}, {4,6,1}, {4,5,2}, {4,5,3}, {4,5,4}, {4,5,5}, {4,5,6},
+       {4,5,8}, {4,5,1}, {4,6,2}, {4,6,3}, {4,6,4}, {4,6,5}, {4,6,6},
        // CATACOMBS COORDINATES ----------------------------------------------      
        {5,3,5}, {5,6,2}, {5,1,1}, {5,1,2}, {5,1,3}, {5,1,4}, {5,1,5}, {5,1,6},
        {5,1,7}, {5,1,8}, {5,2,1}, {5,2,2}, {5,2,3}, {5,2,4}, {5,2,5}, {5,2,6},

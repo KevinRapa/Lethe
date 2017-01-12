@@ -2,7 +2,11 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
-
+/**
+ * A combination safe that can be unlocked by entering the right combination.
+ * Player may interact with or search this for an open attempt.
+ * @author Kevin Rapa
+ */
 public class Safe extends Furniture implements Container {
     protected final String COMBO;
     protected final int[] DIALS; 

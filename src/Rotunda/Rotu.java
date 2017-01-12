@@ -48,7 +48,7 @@ public class Rotu extends Room {
             Player.getRoomRef("FOYW").removeAdjacent("ROTU");
             this.state = 'n';
         }
-        else if (this.state == 'n') {
+        else {
             this.addAdjacent("FOYW");
             this.addAdjacent("LOOK"); 
             this.removeAdjacent("STUD");

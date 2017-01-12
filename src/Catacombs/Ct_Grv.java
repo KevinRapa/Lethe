@@ -3,6 +3,9 @@ package Catacombs;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
+ * One of these holds the iridescent jewel.
+ * 
+ * @see Ancient_Tomb.Ct_Cmpss
  * @author Kevin Rapa
  */
 public class Ct_Grv extends Furniture {

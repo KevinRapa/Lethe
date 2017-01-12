@@ -1,6 +1,5 @@
 package Kitchen;
 
-import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
 
@@ -25,10 +24,8 @@ public class Kitc extends Room{
         if ((dir != Direction.WEST) && ! this.isLit)
             return "It's too dark to see anything, and you don't want\n"
                  + "to trip and fall.";
-        else {
-            AudioPlayer.playEffect(6);
-            return "There is a wall in the way.";
-        }
+        else 
+            return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

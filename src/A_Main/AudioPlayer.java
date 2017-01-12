@@ -21,7 +21,7 @@ public class AudioPlayer {
     private static Clip currentMusic, effectClip;
     
 //******************************************************************************
-// <editor-fold desc="AMBIENT TRACKS"> 
+// <editor-fold desc="AMBIENCE AND MUSIC"> 
 //******************************************************************************    
     private static File nightAmbience = new File(WD, "ambience" + S + "nightAmbience.wav");
     private static File wavesCrashing = new File(WD, "ambience" + S + "wavesCrashing.wav");
@@ -53,6 +53,8 @@ public class AudioPlayer {
     private static File caves = new File(WD, "ambience" + S + "caveLoop.wav");
     private static File deepCave = new File(WD, "ambience" + S + "caveDistortion.wav");
     private static File tombs = new File(WD, "ambience" + S + "tombCustom.wav");
+    private static File sewerTunnels = new File(WD, "ambience" + S + "sewerHallCustom.wav");
+    private static File cistern = new File(WD, "ambience" + S + "cisternCustom.wav");
     
     private static final HashMap<String, File> TRACKS = new HashMap() {
         // ====================================================================
@@ -76,6 +78,8 @@ public class AudioPlayer {
         putAllTracks(caves, "CT", "CV", "MY18");
         putAllTracks(deepCave, "MS65", "MS66");
         putAllTracks(tombs, "TM16", "TM66", "TM32", "AN65", "AN55");
+        putAllTracks(sewerTunnels, "SEW0", "SEW1", "SEW2", "SEW3", "SEW4", "SEW5");
+        putAllTracks(cistern, "CIS1", "CIS2", "CIS3", "CIS4");
         
         put("GAL1", gal1wCustom);       put("GAL3", gal2wCustom); 
         put("GAL6", gal3wCustom);       put("LABO", labCustom);
@@ -117,7 +121,7 @@ public class AudioPlayer {
         put(14, new File(WD, "effects" + S + "woodStairClimb.wav"));
         put(15, new File(WD, "effects" + S + "stoneSteps.wav"));
         put(16, new File(WD, "effects" + S + "ladder.wav"));
-        //put(17, new File(WD, "effects" + S + "select.wav"));
+        put(17, new File(WD, "effects" + S + "dungeonValve.wav"));
         put(18, new File(WD, "effects" + S + "rotundaRotate.wav"));
         put(19, new File(WD, "effects" + S + "rotundaRotate2.wav"));
         put(20, new File(WD, "effects" + S + "valveTurn.wav"));
@@ -158,7 +162,6 @@ public class AudioPlayer {
                     IOException e) {
                 System.out.println(e.getMessage());
             }
-
             trackName = TRACKS.get(ID).getName(); 
         }
     }

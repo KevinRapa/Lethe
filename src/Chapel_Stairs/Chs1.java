@@ -1,7 +1,12 @@
 package Chapel_Stairs;
 
 import A_Super.Room;
-
+/**
+ * Serves as the entrance to the chapel.
+ * Superficial.
+ * 
+ * @author Kevin Rspa
+ */
 public class Chs1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Chs1(String name, String ID) {

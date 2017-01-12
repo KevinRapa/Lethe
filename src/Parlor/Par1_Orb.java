@@ -55,8 +55,8 @@ public class Par1_Orb extends NonPlayerCharacter {
               + "clumsy as you play...\"");
         GUI.promptOut();
         
-        GUI.out("\"It wasn't you? Who else could it be? Erik is asleep now.\n"
-              + "Who are you anyway?...\"");
+        GUI.out("\"It wasn't you? Who else could it be? The three original inhabitants of\n"
+              + "this castle died long ago. Who are you anyway?...\"");
         GUI.promptOut();
         
         GUI.out("\"Okay, okay, I'm SORRY for asking. It is none of my business,\n"
@@ -74,14 +74,28 @@ public class Par1_Orb extends NonPlayerCharacter {
               + "too complex to be understood by playing. But I digress...\"");
         GUI.promptOut();
         
-        GUI.out("\"I don't know about any magical barrier. But recently this\n"
-              + "room has been modified into a enchantery of sorts. In fact,\n"
-              + "that fireplace is the first thing Erik enchanted after he\n"
-              + "discovered magic. He outgrew frivolous magic like that though,\n"
-              + "and focused on it's more functional aspects...\"");
+        GUI.out("\"I don't know about any magical barrier. But I'm not surprised\n"
+              + "\"this castle isn't brimming with power. The great ones could\n"
+              + "do anything they pleased.");
         GUI.promptOut();
         
-        GUI.out("\"Perhaps you could find a way to dispell it, for I am only\n"
+        GUI.out("\"WHO ARE THE GREAT ONES?? What sort of question is that?\n"
+              + "OF course you know. The three original inhabitants of this castle.\n"
+              + "They showered our poor village with technology and gifts we had\n"
+              + "never seen, and we promised our wealth and service to them.\"\n"
+              + "I'm surprised I'm still calling them that actually.. They're dead.\n"
+              + "They were never gods. I don't know who they were.");
+        GUI.promptOut();
+        
+        GUI.out("I requested to be bound here by one of the great ones, so that\n"
+              + "I could write live eternally like them... or so I thought.\n"
+              + "I promised to write music for them as long as they wished to\n"
+              + "keep me alive in this... whatever I'm in. It's actually quite\n"
+              + "nice in here.");
+        GUI.promptOut();
+        
+        GUI.out("\"Anyway, I'm sorry to say that their power is just as a mystery to me.\n"
+              + "Perhaps you could find a way to dispell it, for I am only\n"
               + "an artisan of sound. But don't touch that enchanting table over\n"
               + "there! I don't want this whole room charred...\"");
         GUI.promptOut();

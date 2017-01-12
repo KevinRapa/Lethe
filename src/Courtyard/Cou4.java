@@ -1,9 +1,13 @@
 package Courtyard;
 
-import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
-
+/**
+ * The starting and ending point of the game.
+ * If the player reaches this room for the second time, the game is completed.
+ * 
+ * @author Kevin Rapa
+ */
 public class Cou4 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou4(String name, String ID) {
@@ -21,10 +25,8 @@ public class Cou4 extends Room {
             return "This residence is not what you expected, and you could\n"
                 + "turn back now. But still, you are compelled to continue\n"
                 + "forward.";
-        else {
-            AudioPlayer.playEffect(6);
-            return "There is a wall in the way.";
-        }
+        else 
+            return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/
 }

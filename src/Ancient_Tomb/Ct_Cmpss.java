@@ -8,6 +8,7 @@ import A_Super.Item;
  * 
  * This item is used to locate the iridescent jewel in the catacombs.
  * 
+ * @see Ancient_Tomb.Ant_NPC
  * @author Kevin Rapa
  */
 public class Ct_Cmpss extends Item {

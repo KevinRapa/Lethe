@@ -1,6 +1,7 @@
 package Caves;
-
 /**
+ * Contains a well which is related to story.
+ * 
  * @author Kevin Rapa
  */
 public class CV34 extends Cave {

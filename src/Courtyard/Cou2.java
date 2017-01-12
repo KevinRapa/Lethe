@@ -1,9 +1,11 @@
 package Courtyard;
 
-import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
-
+/**
+ * Superficial.
+ * @author Kevin Rapa
+ */
 public class Cou2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou2(String name, String ID) {
@@ -16,13 +18,11 @@ public class Cou2 extends Room{
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getBarrier(Direction dir) {
-        AudioPlayer.playEffect(6);
-        
         if (dir == Direction.SOUTH)
-            return "There is a wall in the way. Though about 15 feet up, you can\n"
-                 + "see a fissure in the wall of the castle.";
+            return bumpIntoWall().concat(" About 15 feet up though, you can\n"
+                                    + "see a fissure in the wall of the castle.");
         else
-            return "There is a wall in the way.";
+            return bumpIntoWall();
         
     }
 /*----------------------------------------------------------------------------*/

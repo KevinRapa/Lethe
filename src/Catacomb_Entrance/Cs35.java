@@ -1,5 +1,7 @@
 package Catacomb_Entrance;
 /**
+ * Serves as the entrance to the catacombs and is superficial.
+ * 
  * @author Kevin Rapa
  */
 import A_Super.Room;

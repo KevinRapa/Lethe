@@ -5,6 +5,7 @@ import A_Main.Player;
 import A_Super.Furniture;
 /**
  * The player must take this in the Deep Chamber to obtain the artifact.
+ * This removes itself from this room once interacted with.
  * 
  * @author Kevin Rapa
  */

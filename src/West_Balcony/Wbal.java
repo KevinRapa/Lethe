@@ -1,6 +1,5 @@
 package West_Balcony;
 
-import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
 
@@ -20,10 +19,8 @@ public class Wbal extends Room{
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.WEST || dir == Direction.SOUTH)
             return "That's a couple hundred foot drop right there.";
-        else {
-            AudioPlayer.playEffect(6);
-            return "There is a wall in the way.";
-        }
+        else
+            return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/
 }

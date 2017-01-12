@@ -1,7 +1,13 @@
 package Courtyard;
 
 import A_Super.Room;
-
+/**
+ * The fountain here contains a needed item for the marble hall.
+ * 
+ * @see Marble_Hall.Mha_Dr
+ * @see Courtyard.Cou5_Fntn
+ * @author Kevin Rapa
+ */
 public class Cou5 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou5(String name, String ID) {

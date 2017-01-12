@@ -23,8 +23,7 @@ public class Sear extends Room{
             case NORTH:
                 return "You're too stocky to fit through the fissure.";
             default:
-                AudioPlayer.playEffect(6);
-                return "There is a wall in the way.";
+                return bumpIntoWall();
         }
     }
 /*----------------------------------------------------------------------------*/

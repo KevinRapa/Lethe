@@ -4,7 +4,10 @@ import A_Super.Furniture;
 import A_Main.Player;
 import A_Super.Item;
 /**
- * @author Mantis Toboggan
+ * This furniture provides spruce extract, a needed item.
+ * 
+ * @see Parlor.Par1_EnchtTbl
+ * @author Kevin Rapa
  */
 public class Cou5_Sprc extends Furniture {
     private final Item EXTRCT_REF, VIAL_REF;

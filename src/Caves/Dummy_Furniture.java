@@ -3,6 +3,10 @@ package Caves;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
+ * Responds to all strings the player types and is used to prevent undistorted
+ * descriptions from displaying in MS65 and MS66.
+ * 
+ * @see Caves.Deep_Chamber
  * @author Kevin Rapa
  */
 public class Dummy_Furniture extends Furniture {
@@ -16,7 +20,7 @@ public class Dummy_Furniture extends Furniture {
                          + "fe 0e08 fjkSEJKO f0ej HEWBK9 jfe90 kfjnks FLeosj selg\n"
                          + "wnmf 9f pg e9kf ;smn kfejp0fuesi3 ,n kk34p uofej9 yhfhbe.";
         
-        this.addNameKeys(".+");
+        this.addNameKeys(".+"); // Any non-empty string matches this.
         this.addUseKeys(".+");
         this.addActKeys(".+");
     }

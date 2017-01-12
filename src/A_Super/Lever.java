@@ -4,6 +4,9 @@ import A_Main.AudioPlayer;
 
 /**
  * Defines the mechanisms of a generic lever.
+ * Levers, unlike buttons, can be on or off.
+ * 
+ * <code>event</code> defines what the lever does.
  * 
  * @author Kevin Rapa
  */

@@ -28,15 +28,15 @@ public class Wow3 extends Room {
     }
 /*----------------------------------------------------------------------------*/        
     @Override public String getBarrier(Direction dir) {
-        if (dir == Direction.NORTH) {
-            AudioPlayer.playEffect(6);
-            return "There's a large shelf in the way.";
+        switch (dir) {
+            case NORTH:
+                AudioPlayer.playEffect(6);
+                return "There's a large shelf in the way.";
+            case WEST:
+                return "There's a railing there, and that drop looks intimidating.";
+            default:
+                return bumpIntoWall();
         }
-        else if (dir == Direction.WEST)
-            return "There's a railing there, and that drop looks intimidating.";
-        
-        AudioPlayer.playEffect(6);
-        return "There's a wall in the way.";
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String triggeredEvent() {

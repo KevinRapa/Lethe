@@ -5,6 +5,10 @@ import A_Super.Item;
 import A_Super.Container;
 import java.util.Random;
 /**
+ * Picks random furniture to display when searched.
+ * Superficial. Used to contain lab coat, but effort to obtain the flask
+ * by chance was too variable.
+ * 
  * @author Kevin Rapa
  */
 public class Att_Css extends Furniture implements Container {

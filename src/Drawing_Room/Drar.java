@@ -3,7 +3,13 @@ package Drawing_Room;
 import A_Main.GUI;
 import A_Super.Room;
 import A_Main.Player;
-
+/**
+ * Ghost NPC which the player interacts with is here.
+ * All other furniture is superficial.
+ * 
+ * @see Drawing_Room.Drar_Ghst
+ * @author Kevin Rapa
+ */
 public class Drar extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Drar(String name, String ID) {

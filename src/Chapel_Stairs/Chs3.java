@@ -1,9 +1,13 @@
 package Chapel_Stairs;
 
-import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
-
+/**
+ * Serves as the entrance to the chapel.
+ * Superficial.
+ * 
+ * @author Kevin Rspa
+ */
 public class Chs3 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Chs3(String name, String ID) {
@@ -17,10 +21,8 @@ public class Chs3 extends Room {
         
         if (dir == Direction.WEST)
             return "The landing's railing protects you from tumbling three stories.";
-        else {
-            AudioPlayer.playEffect(6);
-            return "There is a wall in the way.";
-        }
+        else
+            return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/
 }

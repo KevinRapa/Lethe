@@ -9,7 +9,8 @@ package A_Main;
  * wandered through the woods to it without any apparent reason. As the game
  * progresses, puzzles get steadily more complex and a story develops.
  * </p> <p>
- * To play, just run this project.
+ * To play, just run this project. Unless testing, make sure <code>start</code>
+ * under the main method is set to "COU4".
  * You may start from any room in the game, however the default start
  * is in <code>cou4</code>. Find the method <code>setOccupies</code> at the
  * bottom of this class to change this, and refer to the castle array for the
@@ -17,10 +18,13 @@ package A_Main;
  * </p> <p>
  * Made in NetBeans on Windows 10.
  * </p>
+ * 
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Salamaa.git">GitHub Repository</a>
  */
 
+import Sewers.Sew0_Strs;
+import Sewers.Sew0;
 import A_Super.*;
 
 import Vestibule.*;        import Foyer.*;              import Closet.*;
@@ -38,7 +42,7 @@ import Jade_Hall.*;        import Secret_Stairs.*;      import Garden.*;
 import Catacombs.*;        import Caves.*;              import Tomb.*;
 import Oubliette.*;        import Sewers.*;             import Ancient_Tomb.*;
 import Catacomb_Entrance.*;import Mystical_Chamber.*;   import Attic.*;
-import Laboratory.*;
+import Laboratory.*;       import Cistern.*;
         
 import java.awt.Toolkit;   import java.awt.Dimension; import javax.swing.*;  
 import java.io.*;          import java.util.Random;
@@ -49,7 +53,7 @@ public class Main {
     
 // ============================================================================
     public static void main(String[] args) {
-        String start = "COU4"; // PLAYER'S STARTING LOCATION. DEFAULT "COU4".
+        String start = "SEW0"; // PLAYER'S STARTING LOCATION. DEFAULT "COU4".
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -926,11 +930,12 @@ public class Main {
         // <editor-fold desc="INITIALIZE DUNGEON STAIRCASE">
         //-----------------------------THE ROOM---------------------------------
         Room dst1 = new Dst1("in an eerie chamber", "DST1");
+        
         //-----------------------------FURNITURE--------------------------------
         Furniture dst1Dr = new Eow1_Dr(Direction.EAST);
         Furniture dst1Strs = new Dst1_Strs(Direction.DOWN, 1);
         Furniture dstW = new Wall("The walls in here are a mossy\ncobblestone.");
-        Furniture dstF = new Floor("The stone floor is mossy and dank.");
+        Furniture dst1F = new Floor("The stone floor is mossy and dank.");
         Furniture dst1Lntrn = new Dst1_Lntrn();
         // </editor-fold>
 
@@ -1163,29 +1168,71 @@ public class Main {
         //---------------------------------------------------------------------- 
         // <editor-fold desc="AREA 5: SUB-LEVELS">
            
-        Furniture dngnW = new Wall("The walls are rough gray stone brick, and wet to the touch from the cold humid air.");
+        Furniture dngnW = new Wall("The walls are rough gray stone brick, covered in moss and wet to the touch from the humid air.");
         
         // Dungeon
-        // <editor-fold desc="INITIALIZE SEWERS">
+        // <editor-fold desc="INITIALIZE TUNNELS">
+        Furniture sew4Pp = new Sew4_Pp();
         //-----------------------------THE ROOMS--------------------------------
-        Room dst2 = new Room("dungeon stairs lower landing", "DST2");
-        Room sew5 = new Room("sewers", "SEW5");
-        Room sew4 = new Room("sewers", "SEW4");
-        Room sew3 = new Room("sewers", "SEW3");
-        Room sew2 = new Room("sewers", "SEW2");
-        Room sew1 = new Room("sewers", "SEW1");
-        //-------------------------------ITEMS----------------------------------        
-        //-----------------------------FURNITURE--------------------------------  
+        Room sew0 = new Sew0("at the tunnel's end", "SEW0");
+        Room sew1 = new Sew1("in an underground tunnel", "SEW1");
+        Room sew2 = new Sew2("in an underground tunnel", "SEW2");
+        Room sew3 = new Sew3("in an underground tunnel", "SEW3");
+        Room sew4 = new Sew4("in an underground tunnel", "SEW4", sew4Pp);
+        Room sew5 = new Sew5("at the tunnel's end", "SEW5");
+        //-------------------------------ITEMS----------------------------------
+        Item pipePc = new Item("piece of pipe", "It's a piece of metal piping, about 2 feet long.");
+        Item mtlLddr = new Metal_Ladder("metal ladder");
+        //-----------------------------FURNITURE-------------------------------- 
+        Furniture sewF = new Dungeon_F();
+        Furniture sewDrN = new Sew_Dr(Direction.NORTH);
+        Furniture sewDrS = new Sew_Dr(Direction.SOUTH);
+        Furniture sewDrE = new Sew_Dr(Direction.EAST);
+        Furniture sewDrW = new Sew_Dr(Direction.WEST);        
+        Furniture sewTnnl = new Sew_Tnnl();
+        Furniture sew1Rvr = new Sew1_Rvr(pipePc, wtrBckt);
+        Furniture sewRvr = new Sew2345_Rvr(sew1Rvr.getInv(), wtrBckt);
+        Furniture sewMss = new Sew_Mss();
         
+        Furniture sew0Trch = new Trch();
+        Furniture sew0Strs = new Sew0_Strs();
+        
+        Furniture sew15Gt = new Sew15_Gt();
+        Furniture sew1Trch = new Trch();
+        
+        Furniture sew2Trch = new Trch();
+        Furniture sew2BrdgW = new Sew_Brdg(Direction.WEST);
+        Furniture sew2Pp = new Sew235_Pp(2);
+        Furniture sew2Vlvs = new Sew2_Vlvs();
+        
+        Furniture sew3Trch = new Trch();
+        Furniture sew3BrdgN = new Sew_Brdg(Direction.NORTH);
+        Furniture sew3BrdgE = new Sew_Brdg(Direction.EAST);
+        Furniture sew3Pp = new Sew235_Pp(3);
+        
+        Furniture sew4Trch = new Trch();
+        
+        Furniture sew5Trch = new Trch();
+        Furniture sew5BrdgE = new Sew_Brdg(Direction.EAST);
+        Furniture sew5Pp = new Sew235_Pp(5);
+        Furniture sew5Vlv = new Sew5_Vlv(sew2Vlvs, sew4Pp);
+
         // </editor-fold>
         // <editor-fold desc="INITIALIZE ANCIENT CISTERN">
         //-----------------------------THE ROOMS--------------------------------
-        Room sew9 = new Room("ancient cistern", "SEW9");
-        Room sew8 = new Room("ancient cistern", "SEW8");
-        Room sew7 = new Room("ancient cistern", "SEW7");
-        Room sew6 = new Room("ancient cistern", "SEW6");
-        //-------------------------------ITEMS----------------------------------        
-        //-----------------------------FURNITURE--------------------------------  
+        Room cis1 = new Cis1("in a huge cistern", "CIS1");
+        Room cis2 = new Cis2("in a huge cistern", "CIS2");
+        Room cis3 = new Cis3("in a huge cistern", "CIS3");
+        Room cis4 = new Cis4("in a huge cistern", "CIS4"); 
+        //-----------------------------FURNITURE-------------------------------- 
+        Furniture cis1Trch = new Trch();
+        Furniture cis3Trch = new Trch();
+        Furniture cis4Trch = new Trch();
+        Furniture cisF = new Dungeon_F();
+        Furniture cisWtr = new Cis_Wtr(wtrBckt);
+        Furniture cisClmns = new Cis_Clmns();
+        Furniture cisDrknss = new Cis_Drknss();
+        
         // </editor-fold>
         // <editor-fold desc="INITIALIZE TORTURE CHAMBER">
         //-----------------------------THE ROOMS--------------------------------
@@ -1240,7 +1287,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE STRANGE POOL">
         //-----------------------------THE ROOMS--------------------------------
-        Room strp = new Room("strange pool", "STRP");
+        Room sewp = new Room("strange pool", "SEWP");
         //-------------------------------ITEMS----------------------------------        
         //-----------------------------FURNITURE--------------------------------  
         
@@ -1486,77 +1533,77 @@ public class Main {
 
         Room ____ = new Room("NULL", "NULL");
 
-        Room[][][] newMap =                         
+        Room[][][] newMap = {                        
 
         //  0    1    2    3    4    5    6    7    8    9
-        {{{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 4 [0]
-          {____,____,____,____,____,soul,____,____,____,____}, //1
-          {____,____,____,____,____,tbal,____,____,____,____}, //2
-          {____,____,____,____,bls2,thr1,lqua,____,____,____}, //3
-          {____,____,____,____,____,thr2,____,____,____,____}, //4
-          {____,____,____,____,____,____,____,____,____,____}, //5
-          {____,____,____,____,____,____,____,____,____,____}, //6
-          {____,____,____,____,____,____,____,____,____,____}},//7
+        {{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 4 [0]
+         {____,____,____,____,____,soul,____,____,____,____}, //1
+         {____,____,____,____,____,tbal,____,____,____,____}, //2
+         {____,____,____,____,bls2,thr1,lqua,____,____,____}, //3
+         {____,____,____,____,____,thr2,____,____,____,____}, //4
+         {____,____,____,____,____,____,____,____,____,____}, //5
+         {____,____,____,____,____,____,____,____,____,____}, //6
+         {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
-         {{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 3 [1]
-          {____,____,____,____,____,____,____,____,____,____}, //1
-          {____,____,obs3,att1,labo,foy4,gal6,gal7,____,____}, //2
-          {____,____,sst2,att2,bls1,bal1,bal2,____,chs3,____}, //3
-          {____,____,____,____,____,dusc,____,____,cha1,____}, //4
-          {____,____,____,____,____,ranr,____,____,cha2,____}, //5
-          {____,____,____,____,____,____,____,____,____,____}, //6
-          {____,____,____,____,____,____,____,____,____,____}},//7
+        {{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 3 [1]
+         {____,____,____,____,____,____,____,____,____,____}, //1
+         {____,____,obs3,att1,labo,foy4,gal6,gal7,____,____}, //2
+         {____,____,sst2,att2,bls1,bal1,bal2,____,chs3,____}, //3
+         {____,____,____,____,____,dusc,____,____,cha1,____}, //4
+         {____,____,____,____,____,ranr,____,____,cha2,____}, //5
+         {____,____,____,____,____,____,____,____,____,____}, //6
+         {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
-         {{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 2 [2]
-          {____,____,____,____,____,____,____,gal5,lib4,____}, //1
-          {____,____,obs2,jha1,par2,foy3,gal3,gal4,lib5,____}, //2
-          {____,____,sst1,jha2,____,____,____,____,____,____}, //3
-          {____,____,gar1,gar2,____,____,____,____,din2,____}, //4
-          {____,____,gar3,gar4,____,____,____,____,drar,____}, //5
-          {____,____,____,wow3,clos,____,____,work,eow4,____}, //6
-          {____,____,____,____,____,____,____,____,____,____}},//7
+        {{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 2 [2]
+         {____,____,____,____,____,____,____,gal5,lib4,____}, //1
+         {____,____,obs2,jha1,par2,foy3,gal3,gal4,lib5,____}, //2
+         {____,____,sst1,jha2,____,____,____,____,____,____}, //3
+         {____,____,gar1,gar2,____,____,____,____,din2,____}, //4
+         {____,____,gar3,gar4,____,____,____,____,drar,____}, //5
+         {____,____,____,wow3,clos,____,____,work,eow4,____}, //6
+         {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
-         {{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 1 [3]
-          {____,____,bha1,bha2,bha3,foyb,foyc,lib1,lib2,____}, //1
-          {____,____,obs1,stud,par1,foy2,gal1,gal2,lib3,____}, //2
-          {____,____,look,rotu,foyw,foy1,vest,mha1,chs1,____}, //3
-          {____,squa,sha2,iha1,cou1,cou7,cou6,mha2,din1,____}, //4
-          {____,shar,sha1,iha2,cou2,cou3,cou5,mha3,kitc,____}, //5
-          {____,wbal,wow1,wow2,cous,cou4,dst1,eow1,eow2,____}, //6
-          {____,____,____,____,____,____,____,____,____,____}},//7
+        {{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 1 [3]
+         {____,____,bha1,bha2,bha3,foyb,foyc,lib1,lib2,____}, //1
+         {____,____,obs1,stud,par1,foy2,gal1,gal2,lib3,____}, //2
+         {____,____,look,rotu,foyw,foy1,vest,mha1,chs1,____}, //3
+         {____,squa,sha2,iha1,cou1,cou7,cou6,mha2,din1,____}, //4
+         {____,shar,sha1,iha2,cou2,cou3,cou5,mha3,kitc,____}, //5
+         {____,wbal,wow1,wow2,cous,cou4,dst1,eow1,eow2,____}, //6
+         {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
-         {{____,____,____,____,____,____,____,____,____,____}, //0 BASEMENT [4]
-          {____,____,____,____,____,____,____,____,____,____}, //1
-          {____,____,____,____,____,____,____,____,____,____}, //2
-          {____,____,____,____,____,cas1,cry2,____,vau1,____}, //3
-          {____,sew7,sew6,sew5,pris,torc,cry1,____,vauh,____}, //4
-          {____,sew8,aarc,sew4,sew3,sew2,sew1,____,vaue,____}, //5
-          {____,sew9,oub1,intr,strp,arch,dst2,____,____,____}, //6    
-          {____,____,____,____,____,____,____,____,____,____}},//7
+        {{____,____,____,____,____,____,____,____,____,____}, //0 BASEMENT [4]
+         {____,____,____,____,____,____,____,____,____,____}, //1
+         {____,____,____,____,____,____,____,____,____,____}, //2
+         {____,____,____,____,____,cas1,cry2,____,vau1,____}, //3
+         {____,cis2,cis1,sew5,pris,torc,cry1,____,vauh,____}, //4
+         {____,cis3,aarc,sew4,sew3,sew2,sew1,____,vaue,____}, //5
+         {____,cis4,oub1,intr,sewp,arch,sew0,____,____,____}, //6    
+         {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
-         {{____,____,____,____,____,____,____,____,____,____}, //0 CATACOMBS [5]
-          {____,ct11,ct12,ct13,ct14,ct15,tm16,ct17,my18,____}, //1
-          {____,ct21,ct22,ct23,ct24,ct25,ct26,ct27,ct28,____}, //2
-          {____,ct31,tm32,ct33,ct34,cs35,ct36,ct37,ct38,____}, //3
-          {____,ct41,ct42,ct43,ct44,ct45,ct46,ct47,ct48,____}, //4
-          {____,ct51,ct52,ct53,ct54,an55,ct56,ct57,ct58,____}, //5
-          {____,ct61,ou62,ct63,ct64,an65,tm66,ct67,ct68,____}, //6
-          {____,____,____,____,____,____,____,____,____,____}},//7      
+        {{____,____,____,____,____,____,____,____,____,____}, //0 CATACOMBS [5]
+         {____,ct11,ct12,ct13,ct14,ct15,tm16,ct17,my18,____}, //1
+         {____,ct21,ct22,ct23,ct24,ct25,ct26,ct27,ct28,____}, //2
+         {____,ct31,tm32,ct33,ct34,cs35,ct36,ct37,ct38,____}, //3
+         {____,ct41,ct42,ct43,ct44,ct45,ct46,ct47,ct48,____}, //4
+         {____,ct51,ct52,ct53,ct54,an55,ct56,ct57,ct58,____}, //5
+         {____,ct61,ou62,ct63,ct64,an65,tm66,ct67,ct68,____}, //6
+         {____,____,____,____,____,____,____,____,____,____}},//7      
         //  0    1    2    3    4    5    6    7    8    9  
-         {{____,____,____,____,____,____,____,____,____,____}, //0 CAVES [6]
-          {____,cv11,cv12,cv13,cv14,cv15,cv16,cv17,cv18,____}, //1
-          {____,cv21,cv22,cv23,cv24,cv25,cv26,cv27,cv28,____}, //2
-          {____,cv31,cv32,cv33,cv34,cv35,cv36,cv37,cv38,____}, //3
-          {____,cv41,cv42,cv43,cv44,cv45,cv46,cv47,cv48,____}, //4
-          {____,cv51,cv52,cv53,cv54,cv55,cv56,cv57,cv58,____}, //5
-          {____,cv61,cv62,cv63,cv64,ms65,ms66,cv67,cv68,____}, //6
-          {____,____,____,____,____,____,____,____,____,____}} //7                
+        {{____,____,____,____,____,____,____,____,____,____}, //0 CAVES [6]
+         {____,cv11,cv12,cv13,cv14,cv15,cv16,cv17,cv18,____}, //1
+         {____,cv21,cv22,cv23,cv24,cv25,cv26,cv27,cv28,____}, //2
+         {____,cv31,cv32,cv33,cv34,cv35,cv36,cv37,cv38,____}, //3
+         {____,cv41,cv42,cv43,cv44,cv45,cv46,cv47,cv48,____}, //4
+         {____,cv51,cv52,cv53,cv54,cv55,cv56,cv57,cv58,____}, //5
+         {____,cv61,cv62,cv63,cv64,ms65,ms66,cv67,cv68,____}, //6
+         {____,____,____,____,____,____,____,____,____,____}} //7
+                
         };
-        
         // LOCK ROOMS ----------------------------------------------------------
         cous.lock(); rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
         par2.lock(); clos.lock(); din1.lock(); kitc.lock(); ou62.lock();
-        chs1.lock(); work.lock(); bls1.lock(); soul.lock(); sew6.lock();
+        chs1.lock(); work.lock(); bls1.lock(); soul.lock();
         arch.lock(); vauh.lock(); wow2.lock(); foyw.lock();
         
         //**********************************************************************
@@ -1625,7 +1672,7 @@ public class Main {
         eow1.addFurniture(genDoor, wWW, eowF, eow1Dr, eow1Rck, eow1Bskt, eow1Trch, wowWndw, mhaNDr);
         eow2.addFurniture(wWW, eowF, eow2Fntn, wtr, eow2Rck, wowWndw, eow2Strs, eow2Blcny, eow2Cbnt, eow2Trch);
         eow4.addFurniture(wWW, eow4F, eow4Strs, bbaRlng, westDoor);
-        dst1.addFurniture(dstF, dstW, dst1Strs, dst1Dr, dst1Lntrn);
+        dst1.addFurniture(dst1F, dstW, dst1Strs, dst1Dr, dst1Lntrn);
         lib1.addFurniture(lib1F, lib1W, vesChr, lib1Dsk, lib1Art, lib1Docs, lib1Rg, lib1Wndw, lib1Rck, lib1Tbl, lib1Lght, lib1Mrrr, lib1Sf);
         work.addFurniture(wWW, wrkF, eastDoor, wowWndw, wrkBrl, wrkCstTbl, wrkKln, wrkBnch, wrkCbnt, wrkFrg, wrkAnvl);
         din1.addFurniture(din1Clmns, din1Blcny, din1Tbl, din1Tpstry, din1F, din1W, din1Wndw, din1Chrs, din1Chndlr, din1Mnlght, din1Strs, din1Crpt, din1Dr);
@@ -1663,6 +1710,16 @@ public class Main {
         // <editor-fold desc="AREA 5">
         
         // Dungeon
+        sew0.addFurniture(sew0Strs, dngnW, sewF, sew0Trch, sewTnnl, sewMss);
+        sew1.addFurniture(sew1Rvr, sewF, dngnW, sewTnnl, sew15Gt, sew1Trch, sewMss);
+        sew2.addFurniture(sewRvr, sewF, dngnW, sewTnnl, sew2Trch, sewMss, sew2BrdgW, sew2Pp, sew2Vlvs);
+        sew3.addFurniture(sewRvr, sewF, sewDrN, dngnW, sewTnnl, sew3Trch, sewMss, sew3BrdgE, sew3BrdgN, sew3Pp);
+        sew4.addFurniture(sewRvr, sewF, dngnW, sewTnnl, sew4Trch, sewMss, sew4Pp);
+        sew5.addFurniture(sewRvr, sewF, sewDrW, sewDrE, dngnW, sewTnnl, sew15Gt, sew5Trch, sewMss, sew5BrdgE, sew5Pp, sew5Vlv);
+        cis1.addFurniture(cis1Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
+        cis2.addFurniture(dngnW, cisF, cisWtr, cisClmns, cisDrknss);
+        cis3.addFurniture(cis3Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
+        cis4.addFurniture(cis4Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
         
         // Catacombs and caves
         tm16.addFurniture(tmb1Cskt, catW, tm1F, catDrS, tm1Vs, tm1Bwl, tm1Effgy);

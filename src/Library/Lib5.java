@@ -22,8 +22,7 @@ public class Lib5 extends Room{
             case EAST:
                 return "The balcony railing is that way.";
             default:
-                AudioPlayer.playEffect(6);
-                return "There is a wall in the way.";
+                return bumpIntoWall();
         }
     }
 /*----------------------------------------------------------------------------*/

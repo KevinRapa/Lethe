@@ -2,9 +2,7 @@ package Caves;
 
 import A_Super.Furniture;
 import A_Super.Item;
-/**
- * @author Kevin Rapa
- */
+
 public class Cv_Well extends Furniture {
     // ========================================================================
     public Cv_Well (Item... items) {

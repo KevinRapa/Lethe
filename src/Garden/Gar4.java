@@ -20,13 +20,13 @@ public class Gar4 extends Room {
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {
-        AudioPlayer.playEffect(6);
-        
-        if (dir == Direction.SOUTH)
+        if (dir == Direction.SOUTH) {
+            AudioPlayer.playEffect(6);
             return "The door here budges only a little. Something is blocking it\n"
                  + "from the other side.";
-        
-        return "There is a wall in the way";
+        }
+        else
+            return bumpIntoWall();
     }
 // ============================================================================
 }

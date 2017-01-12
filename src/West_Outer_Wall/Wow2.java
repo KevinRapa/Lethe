@@ -23,7 +23,7 @@ public class Wow2 extends Room{
         if (dir == Direction.EAST)
             return "The door here is battered and boarded up.";
         else 
-            return "There is a wall in the way.";
+            return WALL_BARRIER;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

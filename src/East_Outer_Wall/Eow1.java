@@ -1,7 +1,14 @@
 package East_Outer_Wall;
 
 import A_Super.Room;
-
+/**
+ * Contains a weapon rack with weapons. 
+ * Weapons can be used in GAL3
+ * 
+ * @see East_Outer_Wall.Eow1_Rck
+ * @see Gallery.Gal3_Rp
+ * @author Mantis Toboggan
+ */
 public class Eow1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Eow1(String name, String ID) {

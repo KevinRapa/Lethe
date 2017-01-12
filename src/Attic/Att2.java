@@ -1,11 +1,17 @@
 package Attic;
-/**
- * @author Kevin Rapa
- */
+
 import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Room;
-
+/**
+ * The attic contains boxes and cases which display randomly chosen items when
+ * searched, however there is a hidden suitcase containing a needed lab coat.
+ * 
+ * The player is captured in ATT1 after creating the phase door potion.
+ * 
+ * @see Laboratory.Labo_CoatNt
+ * @author Kevin Rapa
+ */
 public class Att2 extends Room {
 // ============================================================================    
     public Att2(String name, String ID) {

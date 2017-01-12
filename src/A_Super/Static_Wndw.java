@@ -1,5 +1,9 @@
 package A_Super;
-
+/**
+ * Represents a static window that can't be opened or closed.
+ * 
+ * @author Kevin Rapa
+ */
 public class Static_Wndw extends Furniture {
     protected String escapeDialog;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

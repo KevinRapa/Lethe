@@ -19,7 +19,7 @@ public class Foy4 extends Room {
         if (dir == Direction.WEST)
             return "There's is a banister that way.";
         
-        return "There is a wall in the way.";
+        return WALL_BARRIER;
     }
 // ============================================================================
 }

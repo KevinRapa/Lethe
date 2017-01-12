@@ -1,6 +1,5 @@
 package Servants_Hall;
 
-import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
 
@@ -18,10 +17,8 @@ public class Sha1 extends Room {
     @Override public String getBarrier(Direction dir) {   
         if (dir == Direction.WEST)
             return "This door's knob is missing.";
-        else {
-            AudioPlayer.playEffect(6);
-            return "There is a wall in the way.";
-        }
+        else 
+            return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String getDescription() {

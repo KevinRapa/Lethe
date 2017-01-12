@@ -1,7 +1,12 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
-
+/**
+ * Represents a piece of paper with writing on it. 
+ * Plays a paper noise when inspected or used.
+ * 
+ * @author Kevin Rapa
+ */
 public class Note extends Item {
 /*----------------------------------------------------------------------------*/    
     public Note(String name) {
@@ -20,8 +25,7 @@ public class Note extends Item {
     }
 /*----------------------------------------------------------------------------*/   
     @Override public String getDesc() {
-        AudioPlayer.playEffect(2);
-        return this.description;
+        return this.useEvent();
     }
 /*----------------------------------------------------------------------------*/   
 }

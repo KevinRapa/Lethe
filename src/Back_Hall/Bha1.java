@@ -1,7 +1,14 @@
 package Back_Hall;
 
 import A_Super.Room;
-
+/**
+ * An 'infinitely long' hallway. Can only be traversed if the shrouded shoes
+ * have been obtained by enchanting.
+ * 
+ * @see Parlor.Par1_EnchtTbl
+ * @see Back_Hall.Bha2
+ * @author Kevin Rapa
+ */
 public class Bha1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bha1(String name, String ID) {

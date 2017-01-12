@@ -1,9 +1,16 @@
 package Ancient_Tomb;
+
+import A_Super.Room;
 /**
+ * The two important objects in this room are Ant_NPC and Ant_Cskt.
+ * The NPC gives the player a tool to find the iridescent jewel in the catacombs.
+ * The casket contains the location of the iridescent jewel. To open the casket,
+ * the player must find three keys hidden in parts of the catacombs.
+ * 
+ * @see Ancient_Tomb.Ant_NPC
+ * @see Ancient_Tomb.Ant_Cskt
  * @author Kevin Rapa
  */
-import A_Super.Room;
-
 public class An55 extends Room {
 // ============================================================================    
     public An55(String name, String ID) {

@@ -3,7 +3,6 @@ package Laboratory;
 import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Ingredient;
 import A_Super.Item;
 /**
  * Used to titrate wine and vinegar for the phase door potion.

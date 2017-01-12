@@ -3,6 +3,11 @@ package Dining_Room;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
+ * Holds an observatory plate.
+ * Discovered by looking behind tapestry.
+ * 
+ * @see Observatory.Obs_Plt
+ * @see Dining_Room.Din1_Tpstry
  * @author Kevin Rapa
  */
 public class Din1_Crvc extends Furniture {

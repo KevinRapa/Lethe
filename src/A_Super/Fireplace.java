@@ -1,12 +1,20 @@
 package A_Super;
 
 import A_Main.Player;
-
+/**
+ * Represents a fireplace with lit and unlit states.
+ * 
+ * The bucket of water may be used on a fireplace to extinguish it.
+ * 
+ * @see Library.Lib2_Frplc
+ * @see Vestibule.Vest_Frplc
+ * @author Kevin Rapa
+ */
 public class Fireplace extends Furniture {
     protected boolean isLit;
     protected String searchDialogLit, searchDialogUnlit; 
     protected String descLit, descUnlit;
-    protected final Item BCKT_REF;
+    protected final Item BCKT_REF; // Empty bucket item reference to give to player.
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Fireplace(boolean isLit, Item bckt) {       
         super();

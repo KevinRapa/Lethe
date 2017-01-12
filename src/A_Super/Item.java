@@ -1,7 +1,20 @@
 package A_Super;
         
 import java.io.Serializable;
-
+/**
+ * Represents an object that can be stored in an inventory.
+ * 
+ * Items are generally simple objects instantiated directly in the main class.
+ * Many items are significant in that they are tied with certain furniture that
+ * are used by the item defined in <code>USEKEYS</code>. 
+ * 
+ * Items may be combinable, in that they have a non-zero <code>THRESHOLD</code>,
+ * <code>FORMS</code> and <code>PRODUCT</code>. Items with these matching values
+ * are a <strong>set</strong> and thus may be combined to form a new item.
+ * 
+ * @see A_Super.Furniture#USEKEYS
+ * @author Kevin Rapa
+ */
 public class Item implements Serializable {
     protected final String NAME;// The item's name. Used to interact with item. 
     protected final String FORMS; // What certain items form when combined.

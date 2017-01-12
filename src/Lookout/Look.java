@@ -1,6 +1,5 @@
 package Lookout;
 
-import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
 
@@ -19,10 +18,8 @@ public class Look extends Room{
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.WEST)
             return "There's a couple hundred foot drop right there.";
-        else {
-            AudioPlayer.playEffect(6);
-            return "There is a wall in the way.";
-        }
+        else 
+            return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/
 }

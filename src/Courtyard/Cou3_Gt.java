@@ -1,7 +1,11 @@
 package Courtyard;
 
 import A_Super.Furniture;
-
+/**
+ * The castle's front gate.
+ * 
+ * @author Kevin Rapa
+ */
 public class Cou3_Gt extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou3_Gt() {

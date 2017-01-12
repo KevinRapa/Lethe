@@ -1,7 +1,7 @@
 package Catacombs;
 /**
  * The catacombs comprise a maze of similar tunnels.
- * Each catacomb generates its own description, and will present itself
+ * Each catacomb generates its own description, and will be described
  * differently depending on if the player is holding a torch.
  * 
  * @author Kevin Rapa

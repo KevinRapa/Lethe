@@ -21,14 +21,12 @@ public class Lib4 extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
-        String rep = "There is a wall in the way.";
-        
-        if (dir == Direction.WEST)
-            rep = "There's a bookshelf in the way.";
-        
-        AudioPlayer.playEffect(6);
-        
-        return rep;
+        if (dir == Direction.WEST) {
+            AudioPlayer.playEffect(6);
+            return "There's a bookshelf in the way.";
+        }
+        else
+            return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

@@ -11,12 +11,9 @@ import java.util.TimerTask;
 public class Creature_Singleton extends Furniture {
     private static final Creature_Singleton CREATURE = new Creature_Singleton();
     
-    private String position = "DST2";
+    private String position = "SEW0";
     private final LinkedList<String> ROOM_QUEUE = new LinkedList<>();
-    private final String[] ROOM_LIST = {"SEW1", "SEW2", "SEW3", "SEW4", "SEW5", 
-                                        "SEW6", "SEW7", "SEW8", "SEW9", "SEW8", 
-                                        "SEW7", "SEW6", "SEW5", "SEW4", "SEW3", 
-                                        "SEW2", "SEW1", "DST2"};
+    private final String[] ROOM_LIST = {};
     // ========================================================================
     private Creature_Singleton () {
         super();

@@ -39,7 +39,7 @@ public class Lib2 extends Room {
         AudioPlayer.playEffect(6);
         
         return (dir == Direction.WEST || dir == Direction.EAST) ?
-            "There's a bookshelf in the way." : "There is a wall in the way.";
+            "There's a bookshelf in the way." : WALL_BARRIER;
     }
 /*----------------------------------------------------------------------------*/
 }

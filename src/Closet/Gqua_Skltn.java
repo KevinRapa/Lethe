@@ -2,9 +2,13 @@ package Closet;
 
 import A_Super.Furniture;
 import A_Super.Item;
-        
+/**
+ * Contains a crowbar, a required item.
+ * 
+ * @see Ransacked_Quarters.Rqua_Pnl
+ * @author Kevin Rapa
+ */
 public class Gqua_Skltn extends Furniture {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Skltn(Item... items) {
         super(items);
@@ -14,13 +18,11 @@ public class Gqua_Skltn extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (this.doesThisHaveIt("crowbar")) {
-            return rep.concat(" There's a\ncrowbar in its hand.");
+            return this.description.concat(" There's a\ncrowbar in its hand.");
         }
         
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
 }

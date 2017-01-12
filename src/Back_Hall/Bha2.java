@@ -3,7 +3,13 @@ package Back_Hall;
 import A_Super.Room;
 import A_Main.Player;
 import A_Main.GUI;
-
+/**
+ * Sends player back to BHA1 if the player is not wearing the enchanted shoes.
+ * Supposed to generate the illusion that the hallway is infinitely long.
+ * 
+ * @see Parlor.Par1_EnchtTbl#enchant()
+ * @author Kevin Rapa
+ */
 public class Bha2 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bha2(String name, String ID) {

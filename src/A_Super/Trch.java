@@ -2,7 +2,16 @@ package A_Super;
 
 import A_Main.GUI;
 import A_Main.Player;
-
+/**
+ * Represents a wall-mounted torch that can be taken.
+ * Torches are useful for a few things.
+ * 
+ * @see Laboratory.Labo_Dstllr
+ * @see Catacombs.Catacomb
+ * @see Caves.Cave
+ * @see Kitchen.Kitc_Trch
+ * @author Kevin Rapa
+ */
 public class Trch extends Furniture {
     protected final Item TORCH;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

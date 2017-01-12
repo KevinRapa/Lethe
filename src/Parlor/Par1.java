@@ -1,6 +1,5 @@
 package Parlor;
 
-import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
 
@@ -29,10 +28,8 @@ public class Par1 extends Room{
         if (dir == Direction.NORTH && ! this.isAdjacent("BHA3"))
             return "The door here feels ice cold and the doorknob won't turn\n"
                  + "despite your strength.";
-        else {
-            AudioPlayer.playEffect(6);
-            return "There is a wall in the way.";
-        }
+        else 
+            return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/ 
 }

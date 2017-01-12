@@ -15,25 +15,26 @@ import javax.swing.border.BevelBorder;
  ******************************************************************************/
 public class GUI extends JPanel {
     
+    // Click noises when player types.
     private enum Click {
         // =======================================
         NONE(0), SOFT(21), CLICK(22), VINTAGE(23);
     
-        private final int soundID;
+        private final int soundEffectId;
         // =======================================
         Click(int key) {
-            this.soundID = key;
+            this.soundEffectId = key;
         }
         // =======================================
-        public int soundID() {
-            return soundID;
+        public int getEffectId() {
+            return soundEffectId;
         }
         // =======================================
     }
     
     // <editor-fold desc="COMPONENTS AND ATTRIBUTES"> =========================
     private boolean big = true;
-    private static int key = Click.SOFT.soundID();
+    private static int key = Click.SOFT.getEffectId();
     
     private final static JTextArea MEN = new JTextArea(), DESC = new JTextArea(), 
                                    INV = new JTextArea(), DIAL = new JTextArea();
@@ -57,8 +58,8 @@ public class GUI extends JPanel {
     
     private final static JTextField INPUT = new JTextField(23);
     
-    private final static LinkedList<String> HOLDER = new LinkedList<>(), 
-                                              UNDO = new LinkedList<>();
+    private final static LinkedList<String> UNDO = new LinkedList<>();
+    private final static Input_Holder HOLDER = new Input_Holder();
     
     private final static LinkedList<Click> KEYSOUND = new LinkedList() {{
         add(Click.SOFT); add(Click.CLICK); add(Click.VINTAGE); add(Click.NONE);
@@ -78,8 +79,11 @@ public class GUI extends JPanel {
         SCROLLW.setBackground(Color.DARK_GRAY);
         SCROLLW.setBorder(BorderFactory.createSoftBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.DARK_GRAY));
         
-        JButton[] buttons = {SIZE, MUTE, KEYS};
+        SALAMAA.setBackground(Color.darkGray);
+        SALAMAA.setPreferredSize(new Dimension(390, 45));
+        SALAMAA.setBorder(BorderFactory.createRaisedBevelBorder());
         
+        JButton[] buttons = {SIZE, MUTE, KEYS};
         for (JButton b : buttons) {
             b.setBackground(Color.DARK_GRAY);
             b.setFocusPainted(false);
@@ -88,14 +92,9 @@ public class GUI extends JPanel {
             b.setBorder(BorderFactory.createRaisedBevelBorder());
             b.setFont(new Font("MagicMedieval", Font.BOLD, 15));
             b.addActionListener(new Button_Listener());
+            SALAMAA.add(b);
         }
-        
-        SALAMAA.setBackground(Color.darkGray);
-        SALAMAA.setPreferredSize(new Dimension(390, 45));
-        SALAMAA.setBorder(BorderFactory.createRaisedBevelBorder());
-        SALAMAA.add(SIZE);
-        SALAMAA.add(MUTE);
-        SALAMAA.add(KEYS);
+
         WEST.add(SALAMAA, BorderLayout.NORTH);
         WEST.add(SCROLLW, BorderLayout.SOUTH);
         
@@ -134,20 +133,20 @@ public class GUI extends JPanel {
         EAST.add(SCROLLE, BorderLayout.SOUTH);
         
         JLabel[] labels = {ROOM, INVLBL};
-        for (JLabel C : labels) {
-            C.setOpaque(true);      
-            C.setBackground(Color.DARK_GRAY);
-            C.setHorizontalAlignment(JLabel.CENTER);
-            C.setPreferredSize(new Dimension(390, 45));
-            C.setBorder(BorderFactory.createRaisedBevelBorder());
+        for (JLabel l : labels) {
+            l.setOpaque(true);      
+            l.setBackground(Color.DARK_GRAY);
+            l.setHorizontalAlignment(JLabel.CENTER);
+            l.setPreferredSize(new Dimension(390, 45));
+            l.setBorder(BorderFactory.createRaisedBevelBorder());
         }
         
         JTextArea[] textAreas = {DIAL, DESC, INV};
-        for (JTextArea C : textAreas) {
-            C.setMargin(new Insets(0,6,0,6));
-            C.setEditable(false);       C.setLineWrap(true);
-            C.setWrapStyleWord(true);   C.setBackground(Color.BLACK);
-            C.setForeground(myColor);   C.setFont(myFont);
+        for (JTextArea t : textAreas) {
+            t.setMargin(new Insets(0,6,0,6));
+            t.setEditable(false);       t.setLineWrap(true);
+            t.setWrapStyleWord(true);   t.setBackground(Color.BLACK);
+            t.setForeground(myColor);   t.setFont(myFont);
         }
         
         INPUT.setPreferredSize(new Dimension(400, 40));
@@ -170,7 +169,7 @@ public class GUI extends JPanel {
     }
 /*----------------------------------------------------------------------------*/
     /**
-     * Resizes the frame and components when the resize button in the upper-right
+     * Resizes the frame and components when the upper-right resize button
      * is pressed.
      * 
      * @param big If the frame is entering big mode.
@@ -249,7 +248,7 @@ public class GUI extends JPanel {
     }
 /*----------------------------------------------------------------------------*/    
     /**
-     * Collects all <code>toString</code> method return text.
+     * Displays all <code>toString</code> calls on inventories.
      * @param txt inventory toString method return text.
      * @see Inventory#toString() 
      */
@@ -278,7 +277,23 @@ public class GUI extends JPanel {
                 System.out.println(e.getMessage());
             }
         }
-        return HOLDER.pop();
+        return HOLDER.request();
+    }
+/*----------------------------------------------------------------------------*/
+    /**
+     * Holds player input.
+     * @see Text_Field_Listener#actionPerformed 
+     */
+    private static class Input_Holder {
+        private String playerInput;
+        
+        public void recieve(String s) {
+            playerInput = s;
+        }
+        
+        public String request() {
+            return playerInput;
+        }
     }
 /*----------------------------------------------------------------------------*/
     /**
@@ -367,12 +382,12 @@ public class GUI extends JPanel {
          */
         @Override public void actionPerformed(ActionEvent event) {
             synchronized (HOLDER) {
-                HOLDER.push(INPUT.getText().toLowerCase().trim());
+                HOLDER.recieve(INPUT.getText().toLowerCase().trim());
                 
-                if (HOLDER.peek().matches("[a-z- ]{2,}|(?:[ts] \\d{1,2})")) {
+                if (HOLDER.request().matches("[a-z- ]{2,}|(?:[ts] \\d{1,2})")) {
                     if (UNDO.size() == 10)
                         UNDO.removeLast();
-                    UNDO.push(HOLDER.peek());
+                    UNDO.push(HOLDER.request());
                 }
                 INPUT.setText(" ");
                 HOLDER.notify();
@@ -400,7 +415,7 @@ public class GUI extends JPanel {
             }
             else { // Changes key click
                 KEYSOUND.offer(KEYSOUND.poll());
-                key = KEYSOUND.peek().soundID();
+                key = KEYSOUND.peek().getEffectId();
                 
                 if (key != 0)
                     AudioPlayer.playEffect(key);
@@ -420,5 +435,5 @@ public class GUI extends JPanel {
     }
 // *****************************************************************************
 // </editor-fold> BUTTON AND TEXT FIELD LISTENERS
-// *****************************************************************************     
+// *****************************************************************************   
 }

@@ -3,6 +3,10 @@ package Ancient_Tomb;
 import A_Main.Player;
 import A_Super.NonPlayerCharacter;
 /**
+ * An NPC that the player can talk to. Gives the player a tool to find the 
+ * iridescent jewel.
+ * 
+ * @see Ancient_Tomb.Ct_Cmpss
  * @author Kevin Rapa
  */
 public class Ant_NPC extends NonPlayerCharacter {
