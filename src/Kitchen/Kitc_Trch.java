@@ -1,7 +1,8 @@
 package Kitchen;
 
 import A_Main.GUI;
-import A_Super.Trch;
+import A_Main.Id;
+import A_Super.Torch;
 import A_Super.Item;
 import A_Main.Player;
 import A_Super.Hldr_Inv;
@@ -10,7 +11,7 @@ import A_Super.Hldr_Inv;
  * Begins empty.
  * @author Mantis Toboggan
  */
-public class Kitc_Trch extends Trch {
+public class Kitc_Trch extends Torch {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Kitc_Trch() {
         super();
@@ -24,7 +25,7 @@ public class Kitc_Trch extends Trch {
         
         if (this.doesThisHaveIt("hand torch")) {
             this.inv.give(TORCH, Player.getInv());
-            ((Kitc)Player.getRoomRef("KITC")).swtch();
+            ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
         }
         else
             rep = "The holder is empty you bumbling oaf.";
@@ -40,7 +41,7 @@ public class Kitc_Trch extends Trch {
         
         else {
             Player.getInv().give(item, this.inv);
-            ((Kitc)Player.getRoomRef("KITC")).swtch();
+            ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
         }
         
         return rep;
@@ -59,7 +60,7 @@ public class Kitc_Trch extends Trch {
         @Override public boolean add(Item item) { 
             if (item.toString().matches("hand torch") && this.size() == 0) {
                 this.CONTENTS.add(item);
-                ((Kitc)Player.getRoomRef("KITC")).swtch();
+                ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
                 Player.describeRoom();
                 return true;
             }
@@ -70,7 +71,7 @@ public class Kitc_Trch extends Trch {
         @Override public void remove(Item item) {
             this.CONTENTS.remove(item);
             Player.describeRoom();
-            ((Kitc)Player.getRoomRef("KITC")).swtch();
+            ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
         }
     /*------------------------------------------------------------------------*/
     }

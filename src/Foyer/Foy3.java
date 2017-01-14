@@ -1,9 +1,12 @@
 package Foyer;
 
 import A_Super.Room;
-
+/**
+ * Second floor landing of the foyer stairs.
+ * 
+ * @author Kevin Rapa
+ */
 public class Foy3 extends Room {
-    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy3(String name, String ID) {
         super(name, ID);

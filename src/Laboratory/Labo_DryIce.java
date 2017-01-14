@@ -4,15 +4,15 @@ import A_Main.GUI;
 import A_Main.Inventory;
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Container;
 import A_Super.Item;
+import A_Super.Openable;
 /**
  * Used to cool down vials of bromine
  * 
  * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
-public class Labo_DryIce extends Furniture implements Container {
+public class Labo_DryIce extends Furniture implements Openable {
     private final Item DRY_ICE;
     private transient Chill_Thread chillBromine;
     // ========================================================================

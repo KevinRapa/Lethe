@@ -3,11 +3,11 @@ package A_Main;
 import A_Super.Room;
 import A_Super.Item;
 import A_Super.Direction;
-import A_Super.Container;
 import A_Super.Furniture;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
+import A_Super.Openable;
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -32,15 +32,8 @@ public class Player {
 //******************************************************************************
 // <editor-fold desc="GETTERS AND SETTERS">  
 //******************************************************************************
-    public static void setOccupies(int ... coordinates) {
-        Player.pos = coordinates;
-        describeRoom();
-        GUI.roomOut(Player.getPos().triggeredEvent());
-        
-        if (! Player.hasVisited(getPos().getID())) 
-            Player.visited.add(getPos().getID()); 
-    }
-    /*------------------------------------------------------------------------*/
+    // <editor-fold desc="Getters">
+    
     /**
      * Converts a string of a piece of furniture to its object equivalent.
      * @param name The name of a piece of furniture in your location.
@@ -74,13 +67,24 @@ public class Player {
         return Player.mapRef[pos[0]][pos[1]][pos[2]];
     }
     /*------------------------------------------------------------------------*/
+    /**
+     * @return The ID of the room you are in.
+     */
+    public static String getPosId() {
+        return Player.getPos().getID();
+    }
+    /*------------------------------------------------------------------------*/
     public static Room[][][] getMapRef() {
         return mapRef;
     }
     /*------------------------------------------------------------------------*/
-    public static Room getRoomRef(String ID) {
+    public static Room getRoomObj(String ID) {
         int[] c = Room_References.getCoords(ID);
         return mapRef[c[0]][c[1]][c[2]];
+    }
+    /*------------------------------------------------------------------------*/
+    public static Room getRoomObj(int z, int y, int x) {
+        return mapRef[z][y][x];
     }
     /*------------------------------------------------------------------------*/
     public static ArrayList<String> getVisitedRooms() {
@@ -90,10 +94,39 @@ public class Player {
     public static String getShoes() {
         return Player.shoes;
     }
+    
+    // </editor-fold>
+    
+    // <editor-fold desc="Setters">
+    
+    public static void setOccupies(int z, int y, int x) {
+        Player.lastVisited = getPosId();
+        Player.pos[0] = z; Player.pos[1] = y; Player.pos[2] = x;
+        
+        describeRoom();
+        GUI.roomOut(Player.getPos().triggeredEvent());
+        
+        if (! Player.hasVisited(getPosId())) 
+            Player.visited.add(getPosId()); 
+    }
+    /*------------------------------------------------------------------------*/
+    public static void setOccupies(String dest) {
+        Player.lastVisited = getPosId();
+        Player.pos = Player.getRoomObj(dest).getCoords();
+        
+        describeRoom();
+        GUI.roomOut(Player.getPos().triggeredEvent());
+        
+        if (! Player.hasVisited(getPosId())) 
+            Player.visited.add(getPosId()); 
+    }
     /*------------------------------------------------------------------------*/
     public static void setShoes(String shoes) {
         Player.shoes = shoes;
     }
+    
+    // </editor-fold>
+    
     /*------------------------------------------------------------------------*/
     /**
      * Checks that you have a specific item.
@@ -105,6 +138,15 @@ public class Player {
                 anyMatch(i -> i.toString().matches(item));
     }
     /*------------------------------------------------------------------------*/
+    
+//******************************************************************************    
+// </editor-fold>  
+//******************************************************************************
+
+
+//******************************************************************************
+// <editor-fold desc="START GAME"> 
+//******************************************************************************
     public static void loadAttributes(Inventory inv, Inventory keys, ArrayList<String> visited, 
                                       String lastVisited, String shoesWearing, int[] pos, Room[][][] map) {
         // Sets saved game attributes. See PlayerAttributes.java.
@@ -116,7 +158,7 @@ public class Player {
         Player.lastVisited = lastVisited;
         Player.shoes = shoesWearing;
     }
-    /*------------------------------------------------------------------------*/
+    // ========================================================================  
     /**
      * Creates new attributes that the player starts a new game with.
      * @param coords Coordinates the player begins the game at.
@@ -130,22 +172,15 @@ public class Player {
         Player.lastVisited = "";
         Player.shoes = "";
     }
-//******************************************************************************    
-// </editor-fold>  
-//******************************************************************************
-
-
-//******************************************************************************
-// <editor-fold desc="START GAME"> 
-//******************************************************************************
+    // ========================================================================  
     /**
      * This dialog prints at the start of a new game.
      * @return Integer representing player choice to save, erase data, or just quit.
      */
     public static int startDialog() {
-        AudioPlayer.playTrack(Player.getPos().getID());
+        AudioPlayer.playTrack(Player.getPosId());
         
-        GUI.menOut("\n\nPress enter...");
+       /* GUI.menOut("\n\nPress enter...");
         GUI.out("It's 10:00pm, the night is clear and warm.\n" +
                 "You have just arrived on foot to your destination, and\n" +
                 "its even more colossal than what you had\n" +
@@ -160,7 +195,7 @@ public class Player {
         GUI.menOut("Press the up arrow key\nat any time to go to\n"
                  + "your last action.\n\nPress enter...");
         GUI.promptOut();
-        
+        */
         return mainPrompt();
     }
     // ========================================================================   
@@ -180,7 +215,7 @@ public class Player {
         CMD.put('d', () -> move(Direction.EAST));
         String ans;
         
-        AudioPlayer.playTrack(getPos().getID());
+        AudioPlayer.playTrack(getPosId());
         GUI.invOut("You are carrying:\n" + Player.inv);
         
         GUI.roomOut(getPos().triggeredEvent());
@@ -254,19 +289,23 @@ public class Player {
         else { 
             // You can move to the destination.
             GUI.clearDialog();
-            lastVisited = getPos().getID();
+            lastVisited = getPosId();
             Player.pos = destination.getCoords();
             GUI.roomOut(getPos().triggeredEvent());
 
-            if (getPos().isThisLocked() && ! visited.contains(getPos().getID()))
+            if (getPos().isThisLocked() && ! visited.contains(getPosId()))
                 AudioPlayer.playEffect(13); // Plays unlock sound.
             
             else if (getPos().getCoords()[0] < 5  && 
-                     ! getPos().getID().substring(0,3).matches(lastVisited.substring(0,3)))
-                AudioPlayer.playEffect(9); // Plays open door sound. 
+                     ! getPosId().substring(0,3).matches(lastVisited.substring(0,3))) {
+                if (getPos().getCoords()[0] == 4 || getPosId().matches("CS35|CT34"))
+                    AudioPlayer.playEffect(24); // Plays metal open door sound. 
+                else
+                    AudioPlayer.playEffect(9); // Plays wooden open door sound. 
+            }
             
             else if (getPos().getCoords()[0] > 4  && 
-                    ! getPos().getID().substring(0,2).matches(lastVisited.substring(0,2)))
+                    ! getPosId().substring(0,2).matches(lastVisited.substring(0,2)))
                 // Annoying. Catches the cases in catacombs and caves which are autogenerated.
                 AudioPlayer.playEffect(9);
             
@@ -275,13 +314,13 @@ public class Player {
             
             describeRoom();
             
-            if (! hasVisited(getPos().getID())) 
-                visited.add(getPos().getID());  
+            if (! hasVisited(getPosId())) 
+                visited.add(getPosId());  
         } 
     }
     // ========================================================================  
     public static void describeRoom() {
-        AudioPlayer.playTrack(getPos().getID());
+        AudioPlayer.playTrack(getPosId());
         GUI.descOut(getPos().getDescription());
     }
 //******************************************************************************
@@ -490,7 +529,7 @@ public class Player {
                 GUI.out(target.getDescription()); 
 
             else if (action.matches("search|e|s") || 
-                    (action.equals("open") && target instanceof Container))                    
+                    (action.equals("open") && target instanceof Openable))                    
                 search(target);
             
             else

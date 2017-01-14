@@ -2,6 +2,7 @@ package Courtyard;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Room;
 /**
@@ -24,7 +25,7 @@ public class Cou3 extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
-        Room cou4 = Player.getRoomRef("COU4");
+        Room cou4 = Player.getRoomObj(Id.COU4);
 
         if (! cou4.isThisLocked()) {
             cou4.lock();

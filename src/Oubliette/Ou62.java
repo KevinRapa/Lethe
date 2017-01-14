@@ -2,9 +2,9 @@ package Oubliette;
 /**
  * @author Kevin Rapa
  */
-import A_Super.Room;
+import Tunnels.Dungeon_Tunnel;
 
-public class Ou62 extends Room {
+public class Ou62 extends Dungeon_Tunnel {
 // ============================================================================    
     public Ou62(String name, String ID) {
         super(name, ID);

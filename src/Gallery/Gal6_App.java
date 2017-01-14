@@ -2,9 +2,13 @@ package Gallery;
 
 import A_Super.Furniture;
 import A_Super.Item;
-
+/**
+ * Holds the box thingy; the battery for the GAL6 cannon
+ * 
+ * @see Gallery.Gal6_Cnn
+ * @author KEvin Rapa
+ */
 public class Gal6_App extends Furniture{
-    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_App(Item... items) {
         super(items);

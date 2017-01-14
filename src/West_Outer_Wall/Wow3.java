@@ -2,6 +2,7 @@ package West_Outer_Wall;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import A_Main.Id;
 import A_Main.Inventory;
 import A_Super.Room;
 import A_Main.Player;
@@ -40,7 +41,7 @@ public class Wow3 extends Room {
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String triggeredEvent() {
-        if (Player.getLastVisited().matches("WOW2")) {
+        if (Player.getLastVisited().matches(Id.WOW2)) {
             if (Player.hasVisited(this.ID)) {
                 if (! this.hasFurniture("ladder"))
                     this.addFurniture(new Wow2_Strs(Direction.DOWN, 1));
@@ -48,7 +49,7 @@ public class Wow3 extends Room {
                       + "careful in scaling the ladder this time.");
             }
             else {
-                Player.getRoomRef("WOW2").removeFurniture(WOW2LDDR_REF);
+                Player.getRoomObj(Id.WOW2).removeFurniture(WOW2LDDR_REF);
                 FLR_REF.add(LDDRITEM_REF);
                 GUI.out("You successfully scale the ladder, but you accidentally\n"
                       + "knock it down with your final step, you uncoordinated oaf.");

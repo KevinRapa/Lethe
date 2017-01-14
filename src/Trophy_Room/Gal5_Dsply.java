@@ -2,9 +2,9 @@ package Trophy_Room;
 
 import A_Super.Furniture;
 import A_Super.Item;
-import A_Super.Container;
+import A_Super.Openable;
 
-public class Gal5_Dsply extends Furniture implements Container {
+public class Gal5_Dsply extends Furniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5_Dsply(Item... items) {
         super(items);

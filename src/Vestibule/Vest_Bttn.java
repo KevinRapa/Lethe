@@ -1,6 +1,7 @@
 package Vestibule;
 
 import A_Main.AudioPlayer;
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Button;
 import A_Super.Furniture;
@@ -25,7 +26,7 @@ public class Vest_Bttn extends Button {
             return "Ouch! There is fire in the way!";                    
         else {
             AudioPlayer.playEffect(11);
-            Player.getRoomRef("FOY1").unlock();
+            Player.getRoomObj(Id.FOY1).unlock();
             return "You push the button and hear a click behind you.";
         }             
     }

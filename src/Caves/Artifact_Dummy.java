@@ -20,7 +20,7 @@ public class Artifact_Dummy extends Furniture {
         this.searchDialog = this.description;
 
         this.addNameKeys("artifact");
-        this.addActKeys("get", "take");
+        this.addActKeys(GETKEYS);
     }
     // ======================================================================== 
     @Override public String getDescription() {

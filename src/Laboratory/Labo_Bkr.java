@@ -44,7 +44,8 @@ public class Labo_Bkr extends Furniture {
         this.actDialog = "You take the beaker off of the contraption.";
 
         this.addNameKeys("beaker");
-        this.addActKeys("take", "drink", "get", "remove");
+        this.addActKeys(GETKEYS);
+        this.addActKeys("drink");
     }
     // ======================================================================== 
     @Override public String getDescription() {

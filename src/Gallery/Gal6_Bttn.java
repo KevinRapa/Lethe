@@ -6,7 +6,13 @@ import A_Main.Player;
 import A_Super.Room;
 import java.util.Random;
 import A_Main.GUI;
-
+/**
+ * Teleports the player to a previously visited room when pressed.
+ * Superficial, not important to game progression.
+ * 
+ * @see Escape_Tunnel.Esc1
+ * @author Kevin Rapa
+ */
 public class Gal6_Bttn extends Button {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_Bttn() {
@@ -24,23 +30,25 @@ public class Gal6_Bttn extends Button {
         String choice;
 
         GUI.out("Are you really sure you want to press the button?");
+        GUI.menOut("\n<yes> Push\n<no> Don't push\n< > Back");
         do {
             choice = GUI.promptOut();
             
             if (choice.matches("yes")) {
                 Room room;
-                int X, Y, Z;
+                int x, y, z;
                 AudioPlayer.playEffect(11);
                 Random generator = new Random();
                 
                 do {    
-                    X = generator.nextInt(8) + 1;
-                    Y = generator.nextInt(6) + 1;
-                    Z = generator.nextInt(2) + 2;
-                    room = Player.getMapRef()[Z][Y][X];                
-                } while (! Player.hasVisited(room.getID()) || room.getID().matches("STUD|LOOK"));    
+                    x = generator.nextInt(8) + 1;
+                    y = generator.nextInt(6) + 1;
+                    z = generator.nextInt(2) + 2;
+                    room = Player.getRoomObj(z, y, x);                
+                } while (! Player.hasVisited(room.getID()) || 
+                        room.getID().matches("STUD|LOOK|ESC\\d"));  // Player may get trapped in STUD or LOOK  
                 
-                Player.setOccupies(Z, Y, X);  
+                Player.setOccupies(z, y, x);  
 
                 rep = "'... Huh? What just happened? This isn't the gallery loft.'\n" +
                       "You scratch your head and look around the room.";

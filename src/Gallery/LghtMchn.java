@@ -9,6 +9,10 @@ import java.util.HashMap;
  * 
  * Interacts with the statue in the central chamber.
  * 
+ * @see Gallery.Gal1_Drgn
+ * @see Gallery.Gal3_Ttm
+ * @see Gallery.Gal6_Cnn
+ * @see Gallery.Gal_2E_Stat
  * @author Kevin Rapa
  */
 abstract public class LghtMchn extends Furniture {

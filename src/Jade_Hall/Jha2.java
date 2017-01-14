@@ -2,6 +2,7 @@ package Jade_Hall;
 /**
  * @author Kevin Rapa
  */
+import A_Main.Id;
 import A_Super.Direction;
 import A_Super.Room;
 import A_Super.Furniture;
@@ -28,7 +29,7 @@ public class Jha2 extends Room {
     public String lionCheck() {
         if (LION_REF.hasRuby() && LION_REF2.hasRuby()) {
             this.addFurniture(new Jha_HddnDr(Direction.WEST));
-            this.addAdjacent("SST1");
+            this.addAdjacent(Id.SST1);
             return "At this moment, you hear a strange noise coming from close\n"
                  + "behind you. You turn and discover that mysterious door has\n"
                  + "materialized at the south end of the hallway.";

@@ -1,6 +1,7 @@
 package Rotunda;
 
 import A_Main.AudioPlayer;
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Room;
@@ -36,29 +37,29 @@ public class Rotu extends Room {
         AudioPlayer.playEffect(18);
         
         if (this.state == 'e') {
-            this.addAdjacent("STUD");
-            this.addAdjacent("IHA1"); 
-            this.removeAdjacent("FOYW");
-            this.removeAdjacent("LOOK");
+            this.addAdjacent(Id.STUD);
+            this.addAdjacent(Id.IHA1); 
+            this.removeAdjacent(Id.FOYW);
+            this.removeAdjacent(Id.LOOK);
             
             this.removeFurniture(EDOOR);
             this.removeFurniture(WDOOR);
             this.addFurniture(NDOOR);
             this.addFurniture(SDOOR);
-            Player.getRoomRef("FOYW").removeAdjacent("ROTU");
+            Player.getRoomObj(Id.FOYW).removeAdjacent(Id.ROTU);
             this.state = 'n';
         }
         else {
-            this.addAdjacent("FOYW");
-            this.addAdjacent("LOOK"); 
-            this.removeAdjacent("STUD");
-            this.removeAdjacent("IHA1");
+            this.addAdjacent(Id.FOYW);
+            this.addAdjacent(Id.LOOK); 
+            this.removeAdjacent(Id.STUD);
+            this.removeAdjacent(Id.IHA1);
             
             this.removeFurniture(NDOOR);
             this.removeFurniture(SDOOR);
             this.addFurniture(EDOOR);
             this.addFurniture(WDOOR);
-            Player.getRoomRef("FOYW").addAdjacent("ROTU");
+            Player.getRoomObj(Id.FOYW).addAdjacent(Id.ROTU);
             this.state = 'e'; 
         }    
     }

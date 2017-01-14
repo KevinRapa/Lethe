@@ -1,6 +1,7 @@
 package Attic;
 
 import A_Main.GUI;
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Room;
 /**
@@ -24,7 +25,7 @@ public class Att2 extends Room {
     }
 // ============================================================================
     @Override public String triggeredEvent() {
-        if (! Player.hasVisited("ATT2"))
+        if (! Player.hasVisited(Id.ATT2))
             GUI.out("You feel an unnerving presence here. You shutter and look\n"
                   + "around, but see nothing but dark.");
         

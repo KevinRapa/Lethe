@@ -1,5 +1,6 @@
 package Rotunda;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 
@@ -20,7 +21,7 @@ public class Rotu_Whl extends Furniture {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {
-        ((Rotu)Player.getRoomRef("ROTU")).rotate();
+        ((Rotu)Player.getRoomObj(Id.ROTU)).rotate();
         return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/

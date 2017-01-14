@@ -16,7 +16,7 @@ public class Gal6_Mchn extends Furniture{
                          + "head comes out the top of the machine. Oh, what's this?\n"
                          + "There's a single button on the front. Better not press\n"
                          + "that...";
-        this.addNameKeys("machine", "metal machine");
+        this.addNameKeys("(?:metal )?machine");
     }
 /*----------------------------------------------------------------------------*/
 }

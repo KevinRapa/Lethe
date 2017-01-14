@@ -1,11 +1,12 @@
 package Servants_Hall;
 
+import A_Main.Id;
 import A_Super.Furniture;
 import A_Super.Item;
-import A_Super.Container;
 import A_Main.Player;
+import A_Super.Openable;
 
-public class Sha2_Cbnt extends Furniture implements Container {
+public class Sha2_Cbnt extends Furniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Sha2_Cbnt(Item... items) {
         super(items);
@@ -22,7 +23,7 @@ public class Sha2_Cbnt extends Furniture implements Container {
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {            
-        if (Player.hasKey("CBNT") && ! this.searchable) {
+        if (Player.hasKey(Id.CBNT) && ! this.searchable) {
             this.searchable = true; 
             return this.actDialog;
         }
@@ -34,7 +35,7 @@ public class Sha2_Cbnt extends Furniture implements Container {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        if (Player.hasKey("CBNT") && ! this.searchable) {
+        if (Player.hasKey(Id.CBNT) && ! this.searchable) {
             this.searchable = true;
             return this.actDialog;
         }

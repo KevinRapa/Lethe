@@ -1,15 +1,15 @@
 package Attic;
 
-import A_Super.Container;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Openable;
 /**
  * Contains the needed lab coat.
  * 
  * @see Laboratory.Labo_CoatNt
  * @author Kevin Rapa
  */
-public class Att2_LabCtCs extends Furniture implements Container {
+public class Att2_LabCtCs extends Furniture implements Openable {
 
     // ========================================================================
     public Att2_LabCtCs () {

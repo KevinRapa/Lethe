@@ -1,6 +1,7 @@
 package West_Antechamber;
 
 import A_Main.AudioPlayer;
+import A_Main.Id;
 import A_Super.Lever;
 import A_Main.Player;
 import Rotunda.Rotu;
@@ -18,7 +19,7 @@ public class Want_Lvr extends Lever {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        Rotu ref = (Rotu)Player.getRoomRef("ROTU");
+        Rotu ref = (Rotu)Player.getRoomObj(Id.ROTU);
         
         if (ref.getState() == 'e')
             return "You pull the lever, but nothing happens except a faint\n"

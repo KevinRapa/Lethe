@@ -1,5 +1,6 @@
 package Foyer;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Room;
 
@@ -22,7 +23,7 @@ public class Foy2 extends Room{
 /*----------------------------------------------------------------------------*/
     private String descMode() {
         String mode;
-        if (! Player.getRoomRef("FOYB").isThisLocked())
+        if (! Player.getRoomObj(Id.FOYB).isThisLocked())
             mode = "an open gate leads\noutside to a balcony.";
         else
             mode = "a closed gate blocks\nyour way outside to a balcony.";

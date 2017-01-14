@@ -1,5 +1,6 @@
 package Scorched_Room;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Furniture;
@@ -25,7 +26,7 @@ public class Sear_Fssr extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         if (item.toString().matches("warhammer")) {            
-            Player.getPos().addAdjacent("COU2");
+            Player.getPos().addAdjacent(Id.COU2);
             Player.getInv().remove(item);
             Player.getInv().add(new Item("broken warhammer", "It's snapped in half.", "Well, it's useless now."));
             this.broken = true;

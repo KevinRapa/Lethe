@@ -12,13 +12,17 @@ import java.util.ArrayList;
 import java.util.Random;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
-import static java.lang.Math.round;
-import static java.lang.Math.abs;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import static java.lang.Math.round;
+import static java.lang.Math.abs;
+import static java.lang.Math.round;
+import static java.lang.Math.abs;
+import static java.lang.Math.round;
+import static java.lang.Math.abs;
 import static java.lang.Math.round;
 import static java.lang.Math.abs;
 /**
@@ -165,7 +169,7 @@ public class Cave extends Room {
     @Override public String triggeredEvent() {
         try {
             if (Player.getLastVisited().matches("CV\\d{2}")) // Stop clip from previous room.
-                ((Cave)Player.getRoomRef(Player.getLastVisited())).stopClip();
+                ((Cave)Player.getRoomObj(Player.getLastVisited())).stopClip();
             
             clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(DISTORTION));

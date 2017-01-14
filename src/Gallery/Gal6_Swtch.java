@@ -2,7 +2,12 @@ package Gallery;
 
 import A_Super.Furniture;
 import A_Super.Lever;
-        
+/**
+ * This switch turns on the GAL6 cannon if the box thingy is inserted.'
+ * 
+ * @see Gallery.Gal6_Cnn
+ * @author Kevin Rapa
+ */        
 public class Gal6_Swtch extends Lever {
     private final Gal6_Cnn REF;  
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

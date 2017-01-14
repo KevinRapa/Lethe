@@ -1,11 +1,12 @@
 package Trophy_Room;
 
+import A_Main.Id;
 import A_Super.Furniture;
 import A_Super.Item;
-import A_Super.Container;
 import A_Main.Player;
+import A_Super.Openable;
 
-public class Gal5_Cbnt extends Furniture implements Container {
+public class Gal5_Cbnt extends Furniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5_Cbnt(Item... items) {
         super(items);
@@ -20,7 +21,7 @@ public class Gal5_Cbnt extends Furniture implements Container {
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {            
-        if (Player.hasKey("GCBT") && ! this.searchable) {
+        if (Player.hasKey(Id.GCBT) && ! this.searchable) {
             this.searchable = true; 
             return this.actDialog;
         }
@@ -32,7 +33,7 @@ public class Gal5_Cbnt extends Furniture implements Container {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        if (Player.hasKey("GCBT") && ! this.searchable) 
+        if (Player.hasKey(Id.GCBT) && ! this.searchable) 
             return  "It's locked but you have a key that looks like it might unlock it.";
         
         else if (this.searchable)

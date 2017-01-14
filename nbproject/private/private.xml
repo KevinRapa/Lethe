@@ -21,14 +21,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/Main.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Sewers/Sew3.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Sewers/Sew_Brdg.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Sewers/Dungeon_Tunnel.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Super/Door.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Sewers/Sew5.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Sewers/Sew4.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Sewers/Sew2.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Sewers/Sew235_Pp.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Tunnels/Dungeon_Monst.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Prison/Pris.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Tunnels/Dungeon_Tunnel.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Strange_Pool/Sewp.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/Player.java</file>
         </group>
     </open-files>
 </project-private>

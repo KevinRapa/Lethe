@@ -28,6 +28,10 @@ public class Inventory implements Iterable<Item>, Serializable {
         return CONTENTS.size();
     }
     // ========================================================================
+    public void clear() {
+        this.CONTENTS.clear();
+    }
+    // ========================================================================
     public ArrayList<Item> contents() {
         return this.CONTENTS;
     }

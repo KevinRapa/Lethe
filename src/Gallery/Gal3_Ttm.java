@@ -5,9 +5,17 @@ import A_Main.GUI;
 import A_Super.Furniture;
 import A_Main.Inventory;
 import A_Main.Player;
-
+/**
+ * One of four components of the light machine puzzle in the gallery.
+ * 
+ * @see Gallery.LghtMchn
+ * @see Gallery.Gal1_Drgn
+ * @see Gallery.Gal6_Cnn
+ * @see Gallery.Gal4_Stat
+ * @author Kevin Rapa
+ */
 public class Gal3_Ttm extends LghtMchn {
-    private final Gal_2E_Stat GAL4STAT;
+    private final Gal4_Stat GAL4STAT;
     private boolean headOne, headTwo, headThree, headFour;    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Ttm(Furniture stat, Item... items) {
@@ -17,7 +25,7 @@ public class Gal3_Ttm extends LghtMchn {
         this.actDialog = "You back away from the totem";
         this.turnOffDialog = "The lights in the totem's eyes and mouth fade.";
         this.searchable = false;
-        this.GAL4STAT = (Gal_2E_Stat) stat;
+        this.GAL4STAT = (Gal4_Stat) stat;
         this.headOne = headTwo = headThree = headFour = false;
         this.beam = 'c';
         this.mode = "A clear scattered light";

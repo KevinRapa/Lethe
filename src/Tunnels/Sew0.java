@@ -1,0 +1,22 @@
+package Tunnels;
+
+/**
+ * Hallway in which the monster walks.
+ * Contains staircase up to DST1.
+ * 
+ * @see Tunnels.Creature_Singleton
+ * @see Dungeon_Stairs.Dst1
+ * @author Kevin Rapa
+ */
+public class Sew0 extends Dungeon_Tunnel {
+// ============================================================================    
+    public Sew0(String name, String ID) {
+        super(name, ID);
+        this.description= "The tunnel terminates here at a spiral staircase\n" +
+                          "leading upwards. Behind you to the north, the river of water\n" +
+                          "continues through the barred arched opening in the\n" +
+                          "wall. A couple torches on the walls light this end\n" +
+                          "of the tunnel.";
+    }
+// ============================================================================
+}

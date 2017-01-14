@@ -1,6 +1,7 @@
 package Dungeon_Stairs;
 
 import A_Main.AudioPlayer;
+import A_Main.Id;
 import A_Super.Staircase;
 import A_Main.Player;
 import A_Super.Direction;
@@ -16,7 +17,7 @@ public class Dst1_Strs extends Staircase {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {  
-        if (Player.hasVisited("SEW0")) {
+        if (Player.hasVisited(Id.SEW0)) {
             // Sets the room that the player is in.
             int[] c = Player.getPos().getCoords(); // coordinates of player location.
 

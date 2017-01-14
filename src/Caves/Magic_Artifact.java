@@ -8,6 +8,7 @@ import java.util.Random;
  * This item teleports the player to a room in the castle that the player has
  * visited.
  * 
+ * @see Escape_Tunnel.Esc1
  * @author Kevin Rapa
  */
 public class Magic_Artifact extends Item {
@@ -32,16 +33,16 @@ public class Magic_Artifact extends Item {
      */
     @Override public String useEvent() {
         Room room;
-        int X, Y, Z;
+        int x, y, z;
 
         do {    
-            X = generator.nextInt(8) + 1;
-            Y = generator.nextInt(6) + 1;
-            Z = generator.nextInt(7);
-            room = Player.getMapRef()[Z][Y][X];                
-        } while (! Player.hasVisited(room.getID()));    
+            x = generator.nextInt(8) + 1;
+            y = generator.nextInt(6) + 1;
+            z = generator.nextInt(7);
+            room = Player.getRoomObj(z,y,x);                
+        } while (! Player.hasVisited(room.getID()) && room.getID().matches("ESC\\d"));    
 
-        Player.setOccupies(Z, Y, X);  
+        Player.setOccupies(z, y, x);  
         
         return this.useDialog;
     }

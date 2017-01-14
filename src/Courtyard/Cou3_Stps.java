@@ -1,5 +1,6 @@
 package Courtyard;
 
+import A_Main.Id;
 import A_Super.Staircase;
 import A_Main.Player;
 import A_Super.Direction;
@@ -16,10 +17,10 @@ public class Cou3_Stps extends Staircase {
         // Moves the player diagonally and up.
         switch(this.DIR) {
             case UP:
-                Player.setOccupies(3,4,5);
+                Player.setOccupies(Id.COU7);
                 break;
             default:
-                Player.setOccupies(3,5,5);
+                Player.setOccupies(Id.COU3);
         }
         
         String rep = "You climb " + DIR + " the crumbling steps.";  

@@ -1,10 +1,10 @@
 package Workshop;
 
-import A_Super.Container;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Openable;
         
-public class Wrk_Cbnt extends Furniture implements Container{
+public class Wrk_Cbnt extends Furniture implements Openable{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Cbnt(Item... items) {
         super(items);

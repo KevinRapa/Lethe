@@ -1,5 +1,6 @@
 package West_Antechamber;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Statue;
@@ -24,15 +25,15 @@ public class Want_Stat extends Statue {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (! Player.getRoomRef("FOYW").hasFurniture(REF))
-            Player.getRoomRef("FOYW").addFurniture(REF);
+        if (! Player.getRoomObj(Id.FOYW).hasFurniture(REF))
+            Player.getRoomObj(Id.FOYW).addFurniture(REF);
         
         return this.description;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        if (! Player.getRoomRef("FOYW").hasFurniture(REF))
-            Player.getRoomRef("FOYW").addFurniture(REF);
+        if (! Player.getRoomObj(Id.FOYW).hasFurniture(REF))
+            Player.getRoomObj(Id.FOYW).addFurniture(REF);
         
         return this.searchDialog;
     }

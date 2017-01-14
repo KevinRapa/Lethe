@@ -1,15 +1,15 @@
 package Closet;
 
-import A_Super.Container;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Openable;
 /**
  * Contains fertilizer, a required item.
  * 
  * @see Parlor.Par1_EnchtTbl
  * @author Kevin Rapa
  */
-public class Gqua_Scks extends Furniture implements Container {
+public class Gqua_Scks extends Furniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Scks(Item ... items) {
         super(items);

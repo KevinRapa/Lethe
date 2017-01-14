@@ -211,12 +211,23 @@ Tomb
 	https://www.freesound.org/people/German1990/sounds/251446/
 	German1990 -- DROPS WATER:
 
+Sewers
+	Cogwork
+	https://www.freesound.org/people/Timbre/sounds/77738/
+	Cinematic Ticking Clock (heavy gears).wav -- Timbre
+
+Torture chamber & crypt
+	Number 2 -- Bluehand
+	https://www.freesound.org/people/Bluehand/sounds/188167/
 
 
-
-
-
-
+Monster
+	walking
+		https://www.freesound.org/people/NoiseCollector/sounds/55139/
+		zombiewalkgrass.wav -- NoiseCollector
+	chain
+		https://www.freesound.org/people/richardemoore/sounds/362859/
+		richardemoore -- ChainWrapping.wav
 
 
 

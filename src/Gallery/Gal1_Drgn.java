@@ -5,9 +5,16 @@ import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
 import A_Main.Player;
-
+/**
+ * One of four elements of the light machine puzzle in the gallery.
+ * Foci must be added to this in the correct order while the statue is holding
+ * the funny orb in order to raise the statue to the next level.
+ * 
+ * @see Gallery.Gal2_Stat
+ * @author Kevin Rapa
+ */
 public class Gal1_Drgn extends LghtMchn {
-    private final Gal_1E_Stat STAT_REF;
+    private final Gal2_Stat STAT_REF;
     private boolean leftOn, rightOn;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal1_Drgn(Furniture stat, Item... items) {
@@ -18,11 +25,11 @@ public class Gal1_Drgn extends LghtMchn {
                          + "dark green dragon statue. It looks original to east\n"
                          + "Asia. Its serpent-like body twists around and it stares\n"
                          + "menacingly ";
-        this.STAT_REF = (Gal_1E_Stat) stat;
+        this.STAT_REF = (Gal2_Stat) stat;
         leftOn = rightOn = false;
         beam = 'y';
         mode = "A yellow beam";
-        addNameKeys("dragon", "snake-like dragon", "statue", "dragon statue");
+        addNameKeys("snake-like dragon(?: statue)?", "(?:dragon|statue)");
         this.inv = new Drgn_Inv(items);    
     }
 /*----------------------------------------------------------------------------*/    

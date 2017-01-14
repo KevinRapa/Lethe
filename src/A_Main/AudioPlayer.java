@@ -55,38 +55,48 @@ public class AudioPlayer {
     private static File tombs = new File(WD, "ambience" + S + "tombCustom.wav");
     private static File sewerTunnels = new File(WD, "ambience" + S + "sewerHallCustom.wav");
     private static File cistern = new File(WD, "ambience" + S + "cisternCustom.wav");
+    private static File aeolianHarp = new File(WD, "ambience" + S + "aeolianWindHarp.wav");
+    private static File prisonCustom = new File(WD, "ambience" + S + "prisonCustom.wav");
+    private static File sewerCogwork = new File(WD, "ambience" + S + "sewerCogwork.wav");
+    private static File sewpCustom = new File(WD, "ambience" + S + "sewpCustom.wav");
+    private static File torcCustom = new File(WD, "ambience" + S + "torcCustom.wav");
     
     private static final HashMap<String, File> TRACKS = new HashMap() {
         // ====================================================================
         {
-        putAllTracks(nightAmbience, "COU1", "COU2", "COU3", "COU4", "COU5", "COU6", "COU7");
-        putAllTracks(spookyWindInterior, "FOY1", "FOY2", "FOY3", "FOY4", "VEST");
-        putAllTracks(wavesCrashing, "FOYB", "LOOK", "FOYC");
-        putAllTracks(ironHallCustom, "IHA1", "IHA2");
-        putAllTracks(westWingCustom, "WOW1", "WOW2", "WOW3", "SHA1", "SHA2", "SQUA", 
-                                     "EOW1", "EOW2", "EOW4", "SHAR", "GQUA");
-        putAllTracks(galChoir, "GAL2", "GAL4", "GAL5");
-        putAllTracks(creepyOrgan, "CHS1", "CHS3", "CHA1", "CHA2");
-        putAllTracks(parlorCustom, "PAR1", "PAR2", "JHA1", "JHA2");
-        putAllTracks(marbleHall, "MHA1", "MHA2", "MHA3");
-        putAllTracks(loungeCustom, "DIN1", "DIN2", "DRAR");
-        putAllTracks(libraryCustom, "LIB1", "LIB2", "LIB3", "LIB4", "LIB5");
-        putAllTracks(backHallCustom, "BHA1", "BHA2", "BHA3");
-        putAllTracks(gardenCustom, "GAR1", "GAR2", "GAR3", "GAR4");
-        putAllTracks(atticCustom, "SST1", "SST2", "ATT1", "ATT2");
-        putAllTracks(obsCustom, "OBS1", "OBS2", "OBS3");
-        putAllTracks(caves, "CT", "CV", "MY18");
-        putAllTracks(deepCave, "MS65", "MS66");
-        putAllTracks(tombs, "TM16", "TM66", "TM32", "AN65", "AN55");
-        putAllTracks(sewerTunnels, "SEW0", "SEW1", "SEW2", "SEW3", "SEW4", "SEW5");
-        putAllTracks(cistern, "CIS1", "CIS2", "CIS3", "CIS4");
+        putAllTracks(nightAmbience, Id.COU1, Id.COU2, Id.COU3, Id.COU4, Id.COU5, Id.COU6, Id.COU7);
+        putAllTracks(spookyWindInterior, Id.FOY1, Id.FOY2, Id.FOY3, Id.FOY4, Id.VEST);
+        putAllTracks(wavesCrashing, Id.FOYB, Id.LOOK, Id.FOYC);
+        putAllTracks(ironHallCustom, Id.IHA1, Id.IHA2);
+        putAllTracks(westWingCustom, Id.WOW1, Id.WOW2, Id.WOW3, Id.SHA1, Id.SHA2, Id.SQUA, 
+                                     Id.EOW1, Id.EOW2, Id.EOW4, Id.SHAR, Id.CLOS);
+        putAllTracks(galChoir, Id.GAL2, Id.GAL4, Id.GAL5);
+        putAllTracks(creepyOrgan, Id.CHS1, Id.CHS3, Id.CHA1, Id.CHA2);
+        putAllTracks(parlorCustom, Id.PAR1, Id.PAR2, Id.JHA1, Id.JHA2);
+        putAllTracks(marbleHall, Id.MHA1, Id.MHA2, Id.MHA3);
+        putAllTracks(loungeCustom, Id.DIN1, Id.DIN2, Id.DRAR);
+        putAllTracks(libraryCustom, Id.LIB1, Id.LIB2, Id.LIB3, Id.LIB4, Id.LIB5);
+        putAllTracks(backHallCustom, Id.BHA1, Id.BHA2, Id.BHA3);
+        putAllTracks(gardenCustom, Id.GAR1, Id.GAR2, Id.GAR3, Id.GAR4);
+        putAllTracks(atticCustom, Id.SST1, Id.SST2, Id.ATT1, Id.ATT2);
+        putAllTracks(obsCustom, Id.OBS1, Id.OBS2, Id.OBS3);
+        putAllTracks(caves, "CT", "CV", Id.MY18);
+        putAllTracks(deepCave, Id.MS65, Id.MS66);
+        putAllTracks(tombs, Id.TM16, Id.TM66, Id.TM32, Id.AN65, Id.AN55);
+        putAllTracks(sewerTunnels, Id.SEW0, Id.SEW1, Id.SEW2, Id.SEW3, Id.SEW4, Id.SEW5);
+        putAllTracks(cistern, Id.CIS1, Id.CIS2, Id.CIS3, Id.CIS4);
+        putAllTracks(aeolianHarp, Id.OUB1, Id.OU62, Id.AARC);
+        putAllTracks(prisonCustom, Id.PRIS, Id.TORC);
+        putAllTracks(sewerCogwork, Id.INTR, Id.ESC1, Id.ESC2, Id.ESC3, Id.ESC4, Id.ESC5, Id.ESC6, Id.ARCH);
+        putAllTracks(torcCustom, Id.TORC, Id.CRY1, Id.CRY2, Id.CAS1, Id.CS35);
         
-        put("GAL1", gal1wCustom);       put("GAL3", gal2wCustom); 
-        put("GAL6", gal3wCustom);       put("LABO", labCustom);
-        put("KITC", kitchenCustom);     put("DST1", dungeonStairs);
-        put("STUD", fireplace);         put("FOYW", antechamberCustom); 
-        put("WORK", workshopCustom);    put("ROTU", rotundaCustom);
-        put("WBAL", westBalconyCustom); put("COUS", deepSpace); 
+        put(Id.GAL1, gal1wCustom);       put(Id.GAL3, gal2wCustom); 
+        put(Id.GAL6, gal3wCustom);       put(Id.LABO, labCustom);
+        put(Id.KITC, kitchenCustom);     put(Id.DST1, dungeonStairs);
+        put(Id.STUD, fireplace);         put(Id.FOYW, antechamberCustom); 
+        put(Id.WORK, workshopCustom);    put(Id.ROTU, rotundaCustom);
+        put(Id.WBAL, westBalconyCustom); put(Id.COUS, deepSpace);
+        put(Id.SEWP, sewpCustom);
         }
         // ====================================================================
         private void putAllTracks(File track, String ... ids) {
@@ -128,6 +138,7 @@ public class AudioPlayer {
         put(21, new File(WD, "effects" + S + "keyClick.wav"));
         put(22, new File(WD, "effects" + S + "keyClick2.wav"));
         put(23, new File(WD, "effects" + S + "keyClick3.wav"));
+        put(24, new File(WD, "effects" + S + "dungeonDoor.wav"));
     }};
 //******************************************************************************    
 // </editor-fold>
@@ -193,7 +204,7 @@ public class AudioPlayer {
         if (currentMusic.isActive()) 
             stopTrack();
         else 
-            playTrack(Player.getPos().getID());
+            playTrack(Player.getPosId());
     }
 //******************************************************************************    
 // </editor-fold>

@@ -2,6 +2,7 @@ package Parlor;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import A_Main.Id;
 import A_Super.Room;
 import A_Main.Player;
 import A_Super.Direction;
@@ -25,18 +26,18 @@ public class Par2 extends Room{
     @Override public String getDescription() {
         String rep = this.description;
         
-        if (! this.isAdjacent("JHA1"))
+        if (! this.isAdjacent(Id.JHA1))
             rep += " Though, there is something odd about this door.";
         
         return rep;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
-        if (! Player.hasVisited("PAR1")) {
+        if (! Player.hasVisited(Id.PAR1)) {
             AudioPlayer.playEffect(8);
             GUI.out("After stepping into the room, the door slams shut behind you.\n"
                   + "Startled, you spin around and miss a breath. You are alone.");
-            Player.getRoomRef("FOY2").lock();
+            Player.getRoomObj(Id.FOY2).lock();
         }    
         return "You are " + this + ".";
     }

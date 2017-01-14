@@ -1,12 +1,12 @@
 package Garden;
 
-import A_Super.Container;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Openable;
 /**
  * @author Kevin Rapa
  */
-public class Gar3_Chst extends Furniture implements Container {
+public class Gar3_Chst extends Furniture implements Openable {
     // ========================================================================
     public Gar3_Chst (Item... items) {
         super(items);

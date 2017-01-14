@@ -1,10 +1,10 @@
 package Back_Hall;
 
-import A_Super.Container;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Openable;
 
-public class Bha1_Tbl extends Furniture implements Container {
+public class Bha1_Tbl extends Furniture implements Openable {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bha1_Tbl(Item ... items) {

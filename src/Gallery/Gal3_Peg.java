@@ -3,11 +3,11 @@ package Gallery;
 import A_Super.Furniture;
 
 public class Gal3_Peg extends Furniture{
-    private final Furniture REF;
+    private final Furniture GAL3_TTM;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Peg(Furniture gal3Ttm) {
         super();
-        this.REF = gal3Ttm;
+        this.GAL3_TTM = gal3Ttm;
         this.searchable = false;
         this.description = "The pegs stick out the sides of each segment.\n"
                          + "Interesting- there is a seam between the segments.";
@@ -16,7 +16,7 @@ public class Gal3_Peg extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        return REF.interact(key);
+        return GAL3_TTM.interact(key);
     }
 /*----------------------------------------------------------------------------*/
 }

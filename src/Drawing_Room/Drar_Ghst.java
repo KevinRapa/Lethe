@@ -4,6 +4,7 @@ import A_Super.NonPlayerCharacter;
 import A_Super.Item;
 import A_Super.Key;
 import A_Main.GUI;
+import A_Main.Id;
 import A_Main.Player;
 /**
  * NPC which assigns a task to the player in exchange for a couple items.
@@ -42,7 +43,7 @@ public class Drar_Ghst extends NonPlayerCharacter {
           
         else if (Player.hasItem("glowing emerald")) {
             this.converse3();
-            Player.getRoomRef("DRAR").removeFurniture(this);           
+            Player.getRoomObj(Id.DRAR).removeFurniture(this);           
             return "The apparition fades away into nothing."; 
         }
         return this.actDialog;

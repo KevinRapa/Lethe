@@ -1,5 +1,6 @@
 package Library;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -30,8 +31,8 @@ public class Lib2_Vyg extends Furniture {
         if (this.doesThisHaveIt("epic tome") && REF.doesThisHaveIt("greek tome") &&
             REF2.doesThisHaveIt("biblical tome") && REF3.doesThisHaveIt("infernal tome") &&
             REF4.doesThisHaveIt("divine tome") && ! this.moved) {
-            Lib2 lib2 = (Lib2)Player.getRoomRef("LIB2");
-            lib2.addAdjacent("LIB1");
+            Lib2 lib2 = (Lib2)Player.getRoomObj(Id.LIB2);
+            lib2.addAdjacent(Id.LIB1);
             lib2.moveShelf();
             this.moved = true;           
             rep = "You push against the shelf. To your wonder, the shelf slowly\n"

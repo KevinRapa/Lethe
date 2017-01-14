@@ -2,8 +2,8 @@ package Attic;
 
 import A_Super.Furniture;
 import A_Super.Item;
-import A_Super.Container;
 import java.util.Random;
+import A_Super.Openable;
 /**
  * Picks random furniture to display when searched.
  * Superficial. Used to contain florence flask, but effort to obtain the flask
@@ -11,7 +11,7 @@ import java.util.Random;
  * 
  * @author Kevin Rapa
  */
-public class Att_Bxs extends Furniture implements Container {
+public class Att_Bxs extends Furniture implements Openable {
     Random generator = new Random();
     private static final Item[] POSSIBILITIES = {
         new Item("violin", "An old dusty violin. It has a string missing and sounds out of tune.", "Surely you could never play..."),
@@ -35,7 +35,7 @@ public class Att_Bxs extends Furniture implements Container {
     }
     // ========================================================================    
     @Override public String getSearchDialog() {
-        this.inv.contents().clear();
+        this.inv.clear();
         
         int index = generator.nextInt(8);
         this.inv.add(POSSIBILITIES[index]);

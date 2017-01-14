@@ -3,16 +3,17 @@ package Cistern;
 import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Direction;
-import Sewers.Dungeon_Tunnel;
+import A_Super.Resetable;
+import Tunnels.Dungeon_Tunnel;
 /**
  * Initially contains toxic gas preventing the player from entering this room.
  * Player must solve a valve puzzle to disperse the gas.
  * 
- * @see Sewers.Sew2_Vlvs
- * @see Sewers.Sew5_Vlv
+ * @see Tunnels.Sew2_Vlvs
+ * @see Tunnels.Sew5_Vlv
  * @author Kevin Rapa
  */
-public class Cis1 extends Dungeon_Tunnel {
+public class Cis1 extends Dungeon_Tunnel implements Resetable {
     private boolean hasToxicGas;
 // ============================================================================    
     public Cis1(String name, String ID) {
@@ -31,7 +32,7 @@ public class Cis1 extends Dungeon_Tunnel {
 // ============================================================================
     @Override public String triggeredEvent() {
         if (this.hasToxicGas) {
-            //Player.move(Direction.EAST);
+            Player.move(Direction.EAST);
             GUI.out("You walk into the room passed the door and are greeted by a thick\n"
                   + "green smog. It burns your eyes and nose. You cannot bear and\n"
                   + "retreat back into the tunnel.");
@@ -54,7 +55,7 @@ public class Cis1 extends Dungeon_Tunnel {
         this.hasToxicGas = false;
     }
 // ============================================================================
-    public void turnOnGas() {
+    @Override public void reset() {
         this.hasToxicGas = true;
     }
 // ============================================================================

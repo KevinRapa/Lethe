@@ -1,6 +1,7 @@
 package Attic;
 
 import A_Main.GUI;
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Room;
 /**
@@ -24,7 +25,7 @@ public class Att1 extends Room {
     }
 // ============================================================================
     @Override public String triggeredEvent() {
-        if (! Player.hasVisited("ATT1"))
+        if (! Player.hasVisited(Id.ATT1))
             GUI.out("You feel an unnerving presence here. You shutter and look\n"
                   + "around, but see nothing but dark.");
         
@@ -60,10 +61,10 @@ public class Att1 extends Room {
             System.out.println(e.getMessage());
         }
         
-        Player.getInv().contents().clear();
+        Player.getInv().clear();
         
-        Player.setOccupies(4, 6, 3);
-        Player.getRoomRef("EOW1").lock();
+        Player.setOccupies(Id.INTR);
+        Player.getRoomObj(Id.EOW1).lock();
         GUI.invOut("You are carrying:\n" + Player.getInv());
     }
 // ============================================================================

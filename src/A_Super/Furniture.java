@@ -30,6 +30,7 @@ abstract public class Furniture implements Serializable {
                      useDialog;     // Printed when an item is used on this.
     protected boolean searchable;   // Items can be traded with searchable furniture.  
     protected final ArrayList<String> USEKEYS, ACTKEYS, NAMEKEYS; 
+    protected final String[] GETKEYS = {"get", "take", "acquire", "remove", "grab"};
     // ========================================================================
     /**
      * Constructor for furniture.

@@ -2,11 +2,11 @@ package Tomb;
 
 import A_Super.Furniture;
 import A_Super.Item;
-import A_Super.Container;
+import A_Super.Openable;
 /**
  * @author Kevin Rapa
  */
-abstract public class Tomb_Casket extends Furniture implements Container {
+abstract public class Tomb_Casket extends Furniture implements Openable {
     // ========================================================================
     public Tomb_Casket (Item... items) {
         super(items);

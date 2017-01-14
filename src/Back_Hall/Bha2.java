@@ -3,6 +3,7 @@ package Back_Hall;
 import A_Super.Room;
 import A_Main.Player;
 import A_Main.GUI;
+import A_Main.Id;
 /**
  * Sends player back to BHA1 if the player is not wearing the enchanted shoes.
  * Supposed to generate the illusion that the hallway is infinitely long.
@@ -23,10 +24,10 @@ public class Bha2 extends Room {
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
         if (! Player.getShoes().matches("shrouded shoes")) {
-            if (Player.getLastVisited().matches("BHA1"))
-                Player.setOccupies(3,1,2);
+            if (Player.getLastVisited().matches(Id.BHA1))
+                Player.setOccupies(Id.BHA1);
             else
-                Player.setOccupies(3,1,4);
+                Player.setOccupies(Id.BHA3);
             
             GUI.out("You start pacing down the hallway in a state of vertigo.\n"
                   + "The hallway paradoxically continues to extend onward and warp\n"

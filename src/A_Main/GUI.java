@@ -290,7 +290,6 @@ public class GUI extends JPanel {
         public void recieve(String s) {
             playerInput = s;
         }
-        
         public String request() {
             return playerInput;
         }

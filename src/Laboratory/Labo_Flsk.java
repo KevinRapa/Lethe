@@ -38,7 +38,7 @@ public class Labo_Flsk extends Furniture {
 
         this.addUseKeys(".+"); // Anything can be used on this, but it must be of type "ingredient".
         this.addNameKeys("(?:florence )?flask", "bulbous flask");
-        this.addActKeys("take", "remove");
+        this.addActKeys(GETKEYS);
     }
     // ======================================================================== 
     public void distill() {

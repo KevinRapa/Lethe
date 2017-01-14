@@ -3,9 +3,13 @@ package Gallery;
 import A_Super.Furniture;
 import java.util.Random;
 import A_Main.GUI;
-
+/**
+ * Prints a weird dialog when worn.
+ * Superficial, not important to game progression.
+ * 
+ * @author Kevin Rapa
+ */
 public class Gal6_Hlmt extends Furniture{
-    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_Hlmt() {
         super();

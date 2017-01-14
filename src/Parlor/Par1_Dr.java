@@ -1,5 +1,6 @@
 package Parlor;
 
+import A_Main.Id;
 import A_Super.Door;
 import A_Super.Item;
 import A_Main.Player;
@@ -32,7 +33,7 @@ public class Par1_Dr extends Door {
         String rep = this.useDialog;
         
         if (! this.cured) {
-            Player.getRoomRef("PAR1").addAdjacent("BHA3");
+            Player.getRoomObj(Id.PAR1).addAdjacent(Id.BHA3);
             rep = "You cast the fire onto the door, to which it clings\n"
                 + "rapidly. The fire begins to fade away along with the\n"
                 + "barrier.";

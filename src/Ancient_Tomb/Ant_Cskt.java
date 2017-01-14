@@ -3,9 +3,9 @@ package Ancient_Tomb;
 import A_Super.Furniture;
 import A_Main.Player;
 import A_Super.Item;
-import A_Super.Container;
+import A_Super.Openable;
 
-public class Ant_Cskt extends Furniture implements Container {
+public class Ant_Cskt extends Furniture implements Openable {
     private int numKeys;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Ant_Cskt (Item ... items) {

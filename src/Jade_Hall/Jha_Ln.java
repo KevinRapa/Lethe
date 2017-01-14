@@ -1,5 +1,6 @@
 package Jade_Hall;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -50,7 +51,7 @@ public class Jha_Ln extends Furniture {
             else {
                 this.hasRuby = true;
                 Player.getInv().remove(item);
-                return this.useDialog + ((Jha2)Player.getRoomRef("JHA2")).lionCheck();
+                return this.useDialog + ((Jha2)Player.getRoomObj(Id.JHA2)).lionCheck();
             }
         }
         else

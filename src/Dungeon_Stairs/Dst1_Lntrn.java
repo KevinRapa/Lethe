@@ -10,7 +10,7 @@ public class Dst1_Lntrn extends Furniture {
         this.description = "The old oil lantern is still lit and gives off a dim\n"
                          + "luminescence.";
         this.actDialog = "The lantern is just out of your reach.";
-        this.addActKeys("take", "grab", "remove");
+        this.addActKeys(GETKEYS);
         this.addNameKeys("(?:hanging )?(?:oil )?(?:lantern|light)");
     }
 /*----------------------------------------------------------------------------*/

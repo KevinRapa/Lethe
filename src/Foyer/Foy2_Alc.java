@@ -1,7 +1,14 @@
 package Foyer;
 
 import A_Super.Furniture;
-
+/**
+ * Contains a statue hiding a lever which switches gates in the foyer.
+ * 
+ * @see Foyer.Foy2_Lvr
+ * @see Foyer.Foy_Gt
+ * @see Foyer.Foy2_Stat
+ * @author Kevin Rapa
+ */
 public class Foy2_Alc extends Furniture{
     private final Foy2_Stat STAT_REF;
     public Foy2_Alc(Furniture foy2Stat) {

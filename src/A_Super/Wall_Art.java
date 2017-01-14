@@ -13,7 +13,8 @@ public class Wall_Art extends Furniture {
         this.actDialog = "You lift it only to reveal a blank wall.";
         this.searchDialog = this.actDialog;
         
-        this.addActKeys("move", "lift", "take", "slide", "remove", "admire");
+        this.addActKeys(GETKEYS);
+        this.addActKeys("move", "lift", "slide", "admire");
     }
     // ========================================================================   
     @Override public String interact(String key) {              

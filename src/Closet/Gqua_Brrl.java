@@ -1,9 +1,9 @@
 package Closet;
 
-import A_Super.Container;
 import A_Super.Furniture;
+import A_Super.Openable;
         
-public class Gqua_Brrl extends Furniture implements Container {
+public class Gqua_Brrl extends Furniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Brrl() {
         super();

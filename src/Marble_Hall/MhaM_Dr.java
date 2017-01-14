@@ -1,5 +1,6 @@
 package Marble_Hall;
 
+import A_Main.Id;
 import A_Super.Door;
 import A_Super.Room;
 import A_Super.Direction;
@@ -32,7 +33,7 @@ public class MhaM_Dr extends Door {
         this.numMedallions ++;
         
         if (this.numMedallions == 4) {
-            Player.getRoomRef("DIN1").unlock();
+            Player.getRoomObj(Id.DIN1).unlock();
             return rep.concat("\nWith the last medallion in place, the door *clicks* loudly.");
         }      
         return rep;

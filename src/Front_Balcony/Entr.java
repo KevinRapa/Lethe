@@ -2,7 +2,12 @@ package Front_Balcony;
 
 import A_Super.Direction;
 import A_Super.Room;
-
+/**
+ * Superficial.
+ * Front entrance of the castle.
+ * 
+ * @author Kevin Rapa
+ */
 public class Entr extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Entr(String name, String ID) {

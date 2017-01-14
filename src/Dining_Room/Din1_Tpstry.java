@@ -1,5 +1,6 @@
 package Dining_Room;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Wall_Art;
 import A_Super.Furniture;
@@ -21,8 +22,8 @@ public class Din1_Tpstry extends Wall_Art {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        if (! Player.getRoomRef("DIN1").hasFurniture("crevice")) {
-            Player.getRoomRef("DIN1").addFurniture(CRVC_REF);
+        if (! Player.getRoomObj(Id.DIN1).hasFurniture("crevice")) {
+            Player.getRoomObj(Id.DIN1).addFurniture(CRVC_REF);
             return this.searchDialog;
         }
         else 

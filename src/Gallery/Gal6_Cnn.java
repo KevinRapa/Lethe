@@ -5,9 +5,17 @@ import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
 import A_Main.Player;
-
+/**
+ * One of four components of the light machine puzzle in the gallery.
+ * 
+ * @see Gallery.LghtMchn
+ * @see Gallery.Gal1_Drgn
+ * @see Gallery.Gal3_Ttm
+ * @see Gallery.Gal7_Stat
+ * @author Kevin Rapa
+ */
 public class Gal6_Cnn extends LghtMchn {
-    private final Gal_3E_Stat STAT;   
+    private final Gal7_Stat STAT;   
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_Cnn(Furniture stat, Item... items) {
         super();
@@ -22,7 +30,7 @@ public class Gal6_Cnn extends LghtMchn {
                          + "an empty square compartment on top. What is that for?\n"
                          + "And there's a weird switch thing over here on the\n"
                          + "other side.";
-        this.STAT = (Gal_3E_Stat) stat;
+        this.STAT = (Gal7_Stat) stat;
         this.beam = 'c';
         this.mode = "A clear scattered light";
         this.addActKeys("fire", "shoot");

@@ -2,7 +2,7 @@ package Library;
 
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Main.GUI;
+import A_Main.Id;
 
 public class Lib4_Strs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
@@ -23,7 +23,7 @@ public class Lib4_Strs extends Furniture {
         String rep;
         
         if (Player.getShoes().matches("leather shoes")) {
-            Player.setOccupies(3, 2, 8);
+            Player.setOccupies(Id.LIB3);
             
             rep = "You climb down the stairs to the first floor.";  
         }

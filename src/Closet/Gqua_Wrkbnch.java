@@ -1,8 +1,8 @@
 package Closet;
 
-import A_Super.Container;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Openable;
 /**
  * Contains a screw, for constructing the red lens.
  * 
@@ -10,7 +10,7 @@ import A_Super.Item;
  * @see Gallery.LghtMchn
  * @author Kevin Rapa
  */        
-public class Gqua_Wrkbnch extends Furniture implements Container {
+public class Gqua_Wrkbnch extends Furniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Wrkbnch(Item... items) {
         super(items);

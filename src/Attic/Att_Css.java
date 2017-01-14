@@ -2,8 +2,8 @@ package Attic;
 
 import A_Super.Furniture;
 import A_Super.Item;
-import A_Super.Container;
 import java.util.Random;
+import A_Super.Openable;
 /**
  * Picks random furniture to display when searched.
  * Superficial. Used to contain lab coat, but effort to obtain the flask
@@ -11,7 +11,7 @@ import java.util.Random;
  * 
  * @author Kevin Rapa
  */
-public class Att_Css extends Furniture implements Container {
+public class Att_Css extends Furniture implements Openable {
     Random generator = new Random();
     private final Item[] POSSIBILITIES = {
         new Item("brown suit", "A brown wool suit jacket", "It's too hot out for this."),
@@ -34,7 +34,7 @@ public class Att_Css extends Furniture implements Container {
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        this.inv.contents().clear();
+        this.inv.clear();
         
         int index = generator.nextInt(7);
         this.inv.add(POSSIBILITIES[index]);

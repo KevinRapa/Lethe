@@ -151,7 +151,7 @@ public class Catacomb extends Room {
         do {
             x = GENERATOR.nextInt(8) + 1;
             y = GENERATOR.nextInt(6) + 1;
-            target = Player.getMapRef()[5][y][x];
+            target = Player.getRoomObj(5, y, x);
         } while (! target.getID().matches("CT\\d{2}"));
         
         target.getFurnishings().get(0).getInv().add(new Item("iridescent jewel", "The polished stone feels warm to the touch,\n"

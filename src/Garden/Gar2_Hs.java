@@ -1,5 +1,6 @@
 package Garden;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -30,10 +31,10 @@ public class Gar2_Hs extends Furniture {
     }
     // ========================================================================   
     @Override public String interact(String key) {              
-        Player.setOccupies(3, 3, 3);
-        Player.getRoomRef("GAR2").removeFurniture(this);
-        Player.getRoomRef("GAR2").addFurniture(BRKNHOSE_REF2);
-        Player.getRoomRef("FOY3").unlock();
+        Player.setOccupies(Id.ROTU);
+        Player.getRoomObj(Id.GAR2).removeFurniture(this);
+        Player.getRoomObj(Id.GAR2).addFurniture(BRKNHOSE_REF2);
+        Player.getRoomObj(Id.FOY3).unlock();
         Player.getInv().add(BRKNHOSE_REF);
         
         return this.actDialog;

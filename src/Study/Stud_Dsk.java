@@ -2,9 +2,9 @@ package Study;
 
 import A_Super.Furniture;
 import A_Super.Item;
-import A_Super.Container;
+import A_Super.Openable;
 
-public class Stud_Dsk extends Furniture implements Container {
+public class Stud_Dsk extends Furniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Stud_Dsk(Item... items) {
         super(items);

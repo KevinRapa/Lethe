@@ -1,10 +1,16 @@
 package Foyer;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Room;
 import A_Super.Lever;
 import A_Super.Furniture;
-        
+/**
+ * Switches the gates in the foyer
+ * 
+ * @see Foyer.Foy_Gt
+ * @author Kevin Rapa
+ */        
 public class Foy2_Lvr extends Lever{
     private final Foy_Gt REF, REF2;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -19,8 +25,8 @@ public class Foy2_Lvr extends Lever{
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        Room bba1 = Player.getRoomRef("FOYB");
-        Room want = Player.getRoomRef("FOYW");
+        Room bba1 = Player.getRoomObj(Id.FOYB);
+        Room want = Player.getRoomObj(Id.FOYW);
 
         if (this.isOn) {
             want.unlock();

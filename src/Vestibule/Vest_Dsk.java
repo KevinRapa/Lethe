@@ -1,10 +1,10 @@
 package Vestibule;
 
-import A_Super.Container;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Openable;
         
-public class Vest_Dsk extends Furniture implements Container{
+public class Vest_Dsk extends Furniture implements Openable{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Vest_Dsk(Item... items) {
         super(items);

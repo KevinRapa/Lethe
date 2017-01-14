@@ -10,7 +10,7 @@ package A_Main;
  * progresses, puzzles get steadily more complex and a story develops.
  * </p> <p>
  * To play, just run this project. Unless testing, make sure <code>start</code>
- * under the main method is set to "COU4".
+ * under the main method is set to Id.COU4.
  * You may start from any room in the game, however the default start
  * is in <code>cou4</code>. Find the method <code>setOccupies</code> at the
  * bottom of this class to change this, and refer to the castle array for the
@@ -23,10 +23,7 @@ package A_Main;
  * @see <a href="https://github.com/KevinRapa/Salamaa.git">GitHub Repository</a>
  */
 
-import Sewers.Sew0_Strs;
-import Sewers.Sew0;
 import A_Super.*;
-
 import Vestibule.*;        import Foyer.*;              import Closet.*;
 import Back_Balcony.*;     import Rotunda.*;            import Lookout.*; 
 import West_Outer_Wall.*;  import West_Balcony.*;       import Servants_Quarters.*;
@@ -40,9 +37,11 @@ import Observatory.*;      import Dungeon_Stairs.*;     import Parlor.*;
 import Chapel_Stairs.*;    import Chapel.*;             import Back_Hall.*;
 import Jade_Hall.*;        import Secret_Stairs.*;      import Garden.*;
 import Catacombs.*;        import Caves.*;              import Tomb.*;
-import Oubliette.*;        import Sewers.*;             import Ancient_Tomb.*;
+import Oubliette.*;        import Ancient_Tomb.*;       import Tunnels.*;
 import Catacomb_Entrance.*;import Mystical_Chamber.*;   import Attic.*;
-import Laboratory.*;       import Cistern.*;
+import Laboratory.*;       import Cistern.*;            import Cell.*;
+import Escape_Tunnel.*;    import Strange_Pool.*;       import Prison.*;
+import Torture_Chamber.*;  import Crypt.*;
         
 import java.awt.Toolkit;   import java.awt.Dimension; import javax.swing.*;  
 import java.io.*;          import java.util.Random;
@@ -50,10 +49,9 @@ import java.io.*;          import java.util.Random;
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Salamaa");
     private static final String WD = System.getProperty("user.dir");
-    
 // ============================================================================
     public static void main(String[] args) {
-        String start = "SEW0"; // PLAYER'S STARTING LOCATION. DEFAULT "COU4".
+        String start = Id.SEWP; // PLAYER'S STARTING LOCATION. DEFAULT Id.COU4.
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -142,39 +140,35 @@ public class Main {
         //**********************************************************************
         // <editor-fold desc="INITIALIZE ROOMS, FURNITURE, ITEMS">
         //
-        // Every room, furniture, and item is instantiated here.
-        // For each area, each room is instantiated, then each item is, then
-        // each furniture is and the items are added to the respective 
-        // furniture. 
+        // Every room, furniture, and item is instantiated here. For each area, 
+        // each room is instantiated, then each item is, then each furniture
+        // is and the items are added to the respective furniture. 
         //**********************************************************************
 
-        //**********************************************************************
-        // <editor-fold desc="INITIALIZE KEYS">
+        // =====================================================================  
+        // <editor-fold desc="INITIALIZE KEYS AND GENERIC FURNITURE">
         //**********************************************************************
 
-        Key studKey = new Key("crude molded key", "STUD");        
-        Key gal1Key = new Key("key with a bearded face on its bow", "GAL1");       
-        Key eow3Key = new Key("workshop key", "WORK");       
-        Key par2Key = new Key("key with a rose on its bow", "PAR2");      
-        Key kitcKey = new Key("kitchen key", "KITC");
-        Key closKey = new Key("closet key", "GQUA");
-        Key wow2Key = new Key("rusty key", "WOW2");
-        Key sha1CbtKey = new Key("tiny key", "CBNT");
-        Key gal5CbtKey = new Key("small golden key", "GCBT");
+        // Keys
+        Key studKey = new Key("crude molded key", Id.VEST);        
+        Key gal1Key = new Key("key with a bearded face on its bow", Id.GAL1);       
+        Key eow3Key = new Key("workshop key", Id.WORK);       
+        Key par2Key = new Key("key with a rose on its bow", Id.PAR2);      
+        Key kitcKey = new Key("kitchen key", Id.KITC);
+        Key closKey = new Key("closet key", Id.CLOS);
+        Key wow2Key = new Key("rusty key", Id.WOW2);
+        Key sha1CbtKey = new Key("tiny key", Id.CBNT);
+        Key gal5CbtKey = new Key("small golden key", Id.GCBT);
         Key servKey = new Key("servant's quarters key", "XXXX");
         Key dngnKey = new Key("key with a skull on its bow", "XXXX");
-        Key drwKey = new Key("drawing room key", "DRAR");
-        Key chs1Key = new Key("key with a cross on its bow", "CHS1");
-
-        //Key ou62Key = new Key("oubliette key", "OU62");
-        //Key soulKey = new Key("soul key", "SOUL");
-        //Key archKey = new Key("arch key", "ARCH");
-        //Key bls1Key = new Key("bls1 key", "BLS1"); 
+        Key drwKey = new Key("drawing room key", Id.DRAR);
+        Key chs1Key = new Key("key with a cross on its bow", Id.CHS1);
+        Key ou62Key = new Key("oubliette key", Id.OU62);
+        Key soulKey = new Key("soul key", Id.SOUL);
+        Key archKey = new Key("arch key", Id.ARCH);
+        Key bls1Key = new Key("bls1 key", Id.BLS1); 
                 
-        //**********************************************************************
-        // </editor-fold>
-        //**********************************************************************
-
+        // Generic furniture 
         Door northDoor = new Door(Direction.NORTH); // Generic directional doors.
         Door southDoor = new Door(Direction.SOUTH);
         Door eastDoor = new Door(Direction.EAST);
@@ -182,7 +176,9 @@ public class Main {
         Furniture genDoor = new GenDoor();// Generic door, for rooms with multiple doors.
         Furniture wallEx = new Wall_Ex(); // Generic exterior castle wall.
         
-        //----------------------------------------------------------------------              
+        //**********************************************************************
+        // </editor-fold>
+        // =====================================================================             
         // <editor-fold desc="AREA 1: CASTLE FRONT">
         
         Item bckt = new Item("metal bucket", "It's an empty metal bucket."); // Used with all fireplaces
@@ -202,7 +198,7 @@ public class Main {
         
         // <editor-fold desc="INITIALIZE WEST ANTECHAMBER">
         //-----------------------------THE ROOM---------------------------------
-        Room foyw = new Want("in an antechamber", "FOYW");     
+        Room foyw = new Want("in an antechamber", Id.FOYW);     
         //-----------------------------FURNITURE--------------------------------        
         Furniture wantLvr = new Want_Lvr();
         Furniture wantStat = new Want_Stat(wantLvr);
@@ -216,8 +212,8 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE BACK BALCONY">
         //-----------------------------THE ROOM---------------------------------
-        Room foyb = new Bba1("on the back balcony", "FOYB");
-        Room foyc = new Bba2("on the back balcony", "FOYC");      
+        Room foyb = new Bba1("on the back balcony", Id.FOYB);
+        Room foyc = new Bba2("on the back balcony", Id.FOYC);      
         //-------------------------------ITEMS----------------------------------        
         Item bbaNote = new Bba_Note("note from a visitor");
         //-----------------------------FURNITURE--------------------------------                       
@@ -238,10 +234,10 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE FOYER">
         //-----------------------------THE ROOM---------------------------------
-        Room foy1 = new Foy1("in the foyer", "FOY1");
-        Room foy2 = new Foy2("at the grand staircase", "FOY2"); 
-        Room foy3 = new Foy3("on the second floor landing", "FOY3");
-        Room foy4 = new Foy4("on the third floor landing", "FOY4"); 
+        Room foy1 = new Foy1("in the foyer", Id.FOY1);
+        Room foy2 = new Foy2("at the grand staircase", Id.FOY2); 
+        Room foy3 = new Foy3("on the second floor landing", Id.FOY3);
+        Room foy4 = new Foy4("on the third floor landing", Id.FOY4); 
         //-------------------------------ITEMS----------------------------------        
         Item foy1Note = new Foy1_Note("short letter");
         //-----------------------------FURNITURE--------------------------------    
@@ -270,9 +266,9 @@ public class Main {
         // </editor-fold>        
         // <editor-fold desc="INITIALIZE VESTIBULE">
         //-----------------------------THE ROOM---------------------------------
-        Room vest = new Vest("in a vestibule", "VEST"); 
+        Room vest = new Vest("in a vestibule", Id.VEST); 
         //-------------------------------ITEMS----------------------------------
-        Key rotuKey = new Key("key with a cobra head on its bow", "ROTU");    
+        Key rotuKey = new Key("key with a cobra head on its bow", Id.ROTU);    
         //-----------------------------FURNITURE--------------------------------
         Furniture vesFire = new Vest_Frplc(true, bckt);
         Furniture vesBtn = new Vest_Bttn(vesFire);
@@ -287,12 +283,12 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE COURTYARD">
         //-----------------------------THE ROOM---------------------------------
-        Room cou1 = new Cou1("in the northwest courtyard", "COU1");
-        Room cou2 = new Cou2("in the southwest courtyard", "COU2");
-        Room cou3 = new Cou3("in the castle courtyard", "COU3");
-        Room cou4 = new Cou4("at the front gate", "COU4");
-        Room cou5 = new Cou5("in the southeast courtyard", "COU5");
-        Room cou6 = new Cou6("in the northeast courtyard", "COU6");
+        Room cou1 = new Cou1("in the northwest courtyard", Id.COU1);
+        Room cou2 = new Cou2("in the southwest courtyard", Id.COU2);
+        Room cou3 = new Cou3("in the castle courtyard", Id.COU3);
+        Room cou4 = new Cou4("at the front gate", Id.COU4);
+        Room cou5 = new Cou5("in the southeast courtyard", Id.COU5);
+        Room cou6 = new Cou6("in the northeast courtyard", Id.COU6);
         //-------------------------------ITEMS----------------------------------
         Item krnsPlt = new Obs_Plt("brass plate, \"Saturn\"", "The small plate bears an engraving: \"Saturn\"");
         Item soldMed = new Item("stone disk", "The smooth disk is about four or five inches across.\n"
@@ -334,7 +330,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE ENTRANCE">
         //-----------------------------THE ROOM---------------------------------
-        Room cou7 = new Entr("on the front balcony", "COU7");  
+        Room cou7 = new Entr("on the front balcony", Id.COU7);  
         //-----------------------------FURNITURE--------------------------------
         Furniture entrF = new Floor("The balcony is layed with a brown shale tile.");
         Furniture entrClmns = new Entr_Clmns();
@@ -345,7 +341,7 @@ public class Main {
         // </editor-fold>
 
         // </editor-fold>
-        //---------------------------------------------------------------------- 
+        // =====================================================================     
         // <editor-fold desc="AREA 2: WEST WING">
         
         Item brRam = new Item("broken battering ram", "It's a battering ram, but without the other rope to\nhold it with, it's useless.", "It's useless now.");
@@ -354,7 +350,7 @@ public class Main {
         
         // <editor-fold desc="INITIALIZE ROTUNDA">
         //-----------------------------THE ROOM---------------------------------
-        Room rotu = new Rotu("in the rotunda", "ROTU");       
+        Room rotu = new Rotu("in the rotunda", Id.ROTU);       
         //-----------------------------FURNITURE-------------------------------- 
         Furniture rotuFntn = new Rotu_Fntn();
         Furniture rotuW = new Wall("A clean white marble wall.");
@@ -369,7 +365,7 @@ public class Main {
         // </editor-fold>        
         // <editor-fold desc="INITIALIZE LOOKOUT">
         //-----------------------------THE ROOM--------------------------------- 
-        Room look = new Look("on the lookout", "LOOK");       
+        Room look = new Look("on the lookout", Id.LOOK);       
         //-------------------------------ITEMS----------------------------------
         Item lookRope = new Item("looped rope", "It's a short rope tied into a noose. It's pretty\n"
                                + "frayed in the center from being tied around that\n"
@@ -383,8 +379,8 @@ public class Main {
         // </editor-fold> 
         // <editor-fold desc="INITIALIZE IRON HALL">
         //-----------------------------THE ROOM---------------------------------
-        Room iha1 = new Iha1("in the iron hall north", "IHA1");
-        Room iha2 = new Iha2("in the iron hall south", "IHA2");
+        Room iha1 = new Iha1("in the iron hall north", Id.IHA1);
+        Room iha2 = new Iha2("in the iron hall south", Id.IHA2);
         //-------------------------------ITEMS----------------------------------
         Item iha2plArm = new Item("polearm", "It looks like an old medieval polearm.");
         //-----------------------------FURNITURE--------------------------------
@@ -398,8 +394,8 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE WEST OUTER WALL">
         //-----------------------------THE ROOM---------------------------------
-        Room wow1 = new Wow1("in the west outer wall", "WOW1");
-        Room wow2 = new Wow2("in the west outer wall", "WOW2");
+        Room wow1 = new Wow1("in the west outer wall", Id.WOW1);
+        Room wow2 = new Wow2("in the west outer wall", Id.WOW2);
         //-------------------------------ITEMS----------------------------------
         Item vinegar = new Item("bottle of vinegar", "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"");
         Item wowLddr = new Item("fixed ladder", "The spoke sits in there a bit awkwardly, but it\n"
@@ -421,7 +417,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE WEST BALCONY">
         //-----------------------------THE ROOM---------------------------------
-        Room wbal = new Wbal("on the west balcony", "WBAL");   
+        Room wbal = new Wbal("on the west balcony", Id.WBAL);   
         //-------------------------------ITEMS----------------------------------
         Item wbalch = new Item("chunk of wood", "It's a rotted chunk of wood.");
         Item wbalsp = new Item("wood splinter", "It's a splinter of wood.");
@@ -436,7 +432,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE SERVANTS QUARTERS">
         //-----------------------------THE ROOM---------------------------------
-        Room squa = new Squa("in a servant's quarters", "SQUA");
+        Room squa = new Squa("in a servant's quarters", Id.SQUA);
         //-------------------------------ITEMS----------------------------------
         Item squaLddr = new Squa_Lddr("broken ladder", wowLddr);
         Item squaJrnl = new Squa_Jrnl("cook's journal");
@@ -455,7 +451,7 @@ public class Main {
         // <editor-fold desc="INITIALIZE CLOSET">
         //-----------------------------THE ROOM---------------------------------
         // Used to be called "Groundskeeper's quarters"
-        Room clos = new Gqua("in a groundskeeping closet", "GQUA");
+        Room clos = new Clos("in a groundskeeping closet", Id.CLOS);
         //-------------------------------ITEMS----------------------------------
         Item closCrwbr = new Item("crowbar", "A sweet iron crowbar.");
         Item shvl = new Item("shovel", "A sturdy shovel for the digging of holes.");
@@ -482,7 +478,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE WEST OUTER WALL BALCONY">
         //-----------------------------THE ROOM---------------------------------
-        Room wow3 = new Wow3("on the west outer wall balcony", "WOW3", wow2Strs, wow2F.getInv(), wowLddr);
+        Room wow3 = new Wow3("on the west outer wall balcony", Id.WOW3, wow2Strs, wow2F.getInv(), wowLddr);
         //-------------------------------ITEMS----------------------------------
         Item wowRope = new Item("rope", "It's a short coiled rope.", ram, "battering ram", 3);
         //-----------------------------FURNITURE--------------------------------
@@ -493,7 +489,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE RANSACKED QUARTERS">
         //-----------------------------THE ROOM---------------------------------
-        Room shar = new Rqua("in ransacked quarters", "SHAR");
+        Room shar = new Rqua("in ransacked quarters", Id.SHAR);
         //-------------------------------ITEMS----------------------------------
         Item cmb = new Item("comb", "A plain hair comb.", "You comb your beard for several seconds until it's nice and kept.");
         Item cndlStk = new Item("candlestick", "A small brass candlestick.");
@@ -508,8 +504,8 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE SERVANTS HALL">
         //-----------------------------THE ROOM---------------------------------
-        Room sha2 = new Sha2("in the north servant's hall", "SHA2");
-        Room sha1 = new Sha1("in the south servant's hall", "SHA1");
+        Room sha2 = new Sha2("in the north servant's hall", Id.SHA1);
+        Room sha1 = new Sha1("in the south servant's hall", Id.SHA2);
         //-------------------------------ITEMS----------------------------------
         Item wdChnk = new Wood_Chunk("wood log", ram);       
         Item shaMp = new Item("mop", "It's a classic mop.", 
@@ -520,13 +516,13 @@ public class Main {
         Furniture shaF = new Floor("A sandstone tiled floor.");
         Furniture sha2Dr = new Sha_Dr(Direction.WEST);
         Furniture sha1SDr = new Sha_Dr(Direction.SOUTH);
-        Furniture sha1Trch = new Trch();
-        Furniture sha2Trch = new Trch();
+        Furniture sha1Trch = new Torch();
+        Furniture sha2Trch = new Torch();
         Furniture sha1Dr = new Sha1_Dr(ram, brRam, genDoor);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE SCORCHED ROOM">
         //-----------------------------THE ROOM---------------------------------
-        Room cous = new Sear("in a scorched room", "COUS");
+        Room cous = new Sear("in a scorched room", Id.COUS);
         //-------------------------------ITEMS----------------------------------
         Item wrhmmr = new Item("warhammer", "It's an old medieval warhammer. The head looks\n"
                                           + "extremely worn and dull.");
@@ -543,7 +539,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE STUDY">
         //-----------------------------THE ROOM---------------------------------
-        Room stud = new Stud("in the study", "STUD");
+        Room stud = new Stud("in the study", Id.STUD);
         //-------------------------------ITEMS----------------------------------
         Item studBkPhy = new Stud_BookPhy("glowing book, \"A Young Mind's Guide to Lichery\"");
         Item studBkPi = new Stud_PiBk("book, \"An Essential Pi\"");
@@ -562,12 +558,12 @@ public class Main {
         // </editor-fold>
 
         // </editor-fold>
-        //---------------------------------------------------------------------- 
+        // =====================================================================     
         // <editor-fold desc="AREA 3: EAST WING">
 
         // <editor-fold desc="INITIALIZE TROPHY ROOM">
         //-----------------------------THE ROOM---------------------------------
-        Room gal5 = new Gal5("in Erik's trophy room", "GAL5");
+        Room gal5 = new Gal5("in Erik's trophy room", Id.GAL5);
         //-------------------------------ITEMS----------------------------------
         Item zsPlt = new Obs_Plt("brass plate, \"Jupiter\"", "The small plate bears an engraving: \"Jupiter\"");
         Item emrld = new Item("glowing emerald", "The emerald pulses with a blue glow.", "This belongs to somebody important.");
@@ -586,12 +582,12 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE GALLERY">
         //-----------------------------THE ROOM---------------------------------    
-        Room gal1 = new Gal_1W("in the first floor gallery", "GAL1");
-        Room gal2 = new Gal_1E("in the gallery central chamber", "GAL2");      
-        Room gal3 = new Gal_2W("in the second floor gallery", "GAL3");
-        Room gal4 = new Gal_2E("on the second floor gallery balcony", "GAL4");
-        Room gal6 = new Gal_3W("in the gallery loft", "GAL6");
-        Room gal7 = new Room("in the gallery loft", "GAL7");
+        Room gal1 = new Gal1("in the first floor gallery", Id.GAL1);
+        Room gal2 = new Gal2("in the gallery central chamber", Id.GAL2);      
+        Room gal3 = new Gal3("in the second floor gallery", Id.GAL3);
+        Room gal4 = new Gal4("on the second floor gallery balcony", Id.GAL4);
+        Room gal6 = new Gal6("in the gallery loft", Id.GAL6);
+        Room gal7 = new Room("in the gallery loft", Id.GAL7);
         //-------------------------------ITEMS----------------------------------
         Item blFcs = new Focus("blue focus", "It's a cool brass ring holding a blue lens.");
         Item yllwFcs = new Focus("yellow focus", "It's a cool brass ring holding a yellow lens.");
@@ -602,18 +598,15 @@ public class Main {
                                             + "to it. It's a bit to big to fix in your palm. A small\n"
                                             + "red light is on top and shiny metal strips are attached\n"
                                             + "to each side.");
-        Item gal1Ktn = new Item("katana", "This looks expensive and dangerous! Of course,\n"
-                                        + "you do know your way around sharp tools.");
-        Item gal3Inst = new Gal3_Inst("kora");
         //-----------------------------FURNITURE--------------------------------         
-        Furniture gal7Stat = new Gal_3E_Stat();
-        Furniture gal4Stat = new Gal_2E_Stat(gal7Stat);
-        Furniture gal2Stat = new Gal_1E_Stat(gal4Stat);
+        Furniture gal7Stat = new Gal7_Stat();
+        Furniture gal4Stat = new Gal4_Stat(gal7Stat);
+        Furniture gal2Stat = new Gal2_Stat(gal4Stat);
 
         Furniture gal1Dr = new Bba2_Dr(Direction.NORTH);
         Furniture gal1Drgn = new Gal1_Drgn(gal2Stat, yllwFcs);
-        ((Gal_1E_Stat)gal2Stat).addDragonRef(gal1Drgn);
-        Furniture gal1KtnFurn = new Gal1_KtnFurn(gal1Ktn);
+        ((Gal2_Stat)gal2Stat).addDragonRef(gal1Drgn);
+        Furniture gal1KtnFurn = new Gal1_KtnFurn();
         Furniture gal1Swtch = new Gal1_Swtch(gal1Drgn);
         Furniture gal1Bttn = new Gal1_Bttn(gal1Drgn);
         Furniture gal1Lghts = new Gal1_Lghts();
@@ -635,7 +628,7 @@ public class Main {
         Furniture gal3Lddr = new Gal3_Lddr(Direction.UP, 1);
         Furniture gal3Rp = new Gal3_Rp(gal3Lddr);
         Furniture gal3Swtch = new Gal3_Swtch();
-        Furniture gal3InstFurn = new Gal3_InstFurn(gal3Inst);
+        Furniture gal3InstFurn = new Gal3_InstFurn();
         Furniture gal3Msk = new Gal3_Msk();
         Furniture gal3Msk2 = new Gal3_Msk2();
         Furniture gal3Msk3 = new Gal3_Msk3();
@@ -676,8 +669,8 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE DINING ROOM">
         //-----------------------------THE ROOM---------------------------------
-        Room din1 = new Din1("in the dining room", "DIN1");  
-        Room din2 = new Din2("on the dining room balcony", "DIN2");
+        Room din1 = new Din1("in the dining room", Id.DIN1);  
+        Room din2 = new Din2("on the dining room balcony", Id.DIN2);
         //-------------------------------ITEMS----------------------------------
         Item aphrdtPlt = new Obs_Plt("brass plate, \"Venus\"", "The small plate bears an engraving: \"Venus\"");
         Item frk = new Item("fork", "It's a nice silver fork.", "You comb your beard with the fork until it's straight and tidy.");
@@ -708,9 +701,9 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE MARBLE HALL">
         //-----------------------------THE ROOM---------------------------------
-        Room mha1 = new Mha1("in the north marble hall", "MHA1");
-        Room mha2 = new Mha2("in the marble hall", "MHA2");
-        Room mha3 = new Mha3("in the south marble hall", "MHA3");
+        Room mha1 = new Mha1("in the north marble hall", Id.MHA1);
+        Room mha2 = new Mha2("in the marble hall", Id.MHA3);
+        Room mha3 = new Mha3("in the south marble hall", Id.MHA3);
         //-------------------------------ITEMS----------------------------------       
         Item angMed = new Item("angel medallion", "It's a beautiful gold disk about four or five inches\n"
                                                 + "across. On its surface is an embossment of an angel.");
@@ -737,7 +730,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE WORKSHOP">
         //-----------------------------THE ROOM---------------------------------
-        Room work = new Eow3("in the workshop", "WORK");
+        Room work = new Eow3("in the workshop", Id.WORK);
         //-------------------------------ITEMS----------------------------------
         Item redLns = new Item("red lens", "It's a proper lens tinted red.\n"
                              + "Maybe you should pick up the glass trade!", rdFcs, "red focus", 3);
@@ -760,9 +753,9 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE EAST OUTER WALL">
         //-----------------------------THE ROOM---------------------------------
-        Room eow1 = new Eow1("in the east outer wall", "EOW1");
-        Room eow2 = new Eow2("in the east outer wall", "EOW2");
-        Room eow4 = new Eow4("on the east outer wall balcony", "EOW4");
+        Room eow1 = new Eow1("in the east outer wall", Id.EOW1);
+        Room eow2 = new Eow2("in the east outer wall", Id.EOW2);
+        Room eow4 = new Eow4("on the east outer wall balcony", Id.EOW4);
         //-------------------------------ITEMS----------------------------------
         Item wtrBckt = new Item("bucket of water", "It's a metal bucket filled with water.");
         Item eowSwrd1 = new Item("silver sword", "The sword is finely polished and sharp.\nOrnamental probably.");
@@ -779,7 +772,7 @@ public class Main {
         Furniture eow1Dr = new Eow1_Dr(Direction.WEST);
         Furniture eow1Rck = new Eow1_Rck(eowSwrd1, eowBtlAx, eowSwrd2, eowSwrd3, eowSwrd2, eowAx);
         Furniture eow1Bskt = new Eow1_Bskt(eowPlArm, woodSpr, woodSpr, eowPlArm);
-        Furniture eow1Trch = new Trch();
+        Furniture eow1Trch = new Torch();
 
         Furniture eow2Fntn = new Eow2_Fntn();
         Furniture wtr = new Water(wtrBckt);
@@ -787,7 +780,7 @@ public class Main {
         Furniture eow2Strs = new Eow2_Strs(Direction.UP, 1);
         Furniture eow2Blcny = new Eow2_Blcny();
         Furniture eow2Cbnt = new Eow2_Cbnt(bckt, shaMp, shvl, vinegar);
-        Furniture eow2Trch = new Trch();
+        Furniture eow2Trch = new Torch();
 
         Furniture eow4F = new Floor("It's a sandstone tile floor.");
         Furniture eow4Strs = new Eow2_Strs(Direction.DOWN, 1);
@@ -795,10 +788,10 @@ public class Main {
         // <editor-fold desc="INITIALIZE LIBRARY">
         Furniture lib4Tbl = new Lib4_Tbl("table", fnnyOrb);
         //-----------------------------THE ROOM---------------------------------
-        Room lib2 = new Lib2("in the north library", "LIB2");
-        Room lib3 = new Lib3("in the south library", "LIB3");
-        Room lib4 = new Lib4("in the upper library north", "LIB4", lib4Tbl);
-        Room lib5 = new Lib5("in the upper library south", "LIB5");
+        Room lib2 = new Lib2("in the north library", Id.LIB2);
+        Room lib3 = new Lib3("in the south library", Id.LIB3);
+        Room lib4 = new Lib4("in the upper library north", Id.LIB4, lib4Tbl);
+        Room lib5 = new Lib5("in the upper library south", Id.LIB5);
         //-------------------------------ITEMS----------------------------------
         Item shs1 = new Shoes("leather shoes", "A fancy pair of shiny leather shoes.", 
                                   "You put on the shoes. They're a little big, but\ncomfortable!");
@@ -853,7 +846,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE SECRET ARCHIVES">
         //-----------------------------THE ROOM---------------------------------
-        Room lib1 = new Lib1("in Erik's secret archives", "LIB1");
+        Room lib1 = new Lib1("in Erik's secret archives", Id.LIB1);
         //-------------------------------ITEMS----------------------------------
         Item lib1Schmtc = new Lib1_Schmtc("schematic");
         Item lib1Nt2 = new Lib1_Nt2("Journal page 1");
@@ -881,7 +874,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE DRAWING ROOM">
         //-----------------------------THE ROOM---------------------------------
-        Room drar = new Drar("in the drawing room", "DRAR");
+        Room drar = new Drar("in the drawing room", Id.DRAR);
         //-------------------------------ITEMS----------------------------------
         Item rk = new Item("rook", "the small figure resembles a brick tower", "You have no idea how to play chess.");
         Item knght = new Item("knight", "the small figure resembles a horse", "You have no idea how to play chess.");
@@ -904,7 +897,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE KITCHEN"> 
         //-----------------------------THE ROOM---------------------------------
-        Room kitc = new Kitc("in the kitchen", "KITC");
+        Room kitc = new Kitc("in the kitchen", Id.KITC);
         //-------------------------------ITEMS----------------------------------
         Item spng = new Item("sponge", "A plain old yellow kitchen sponge.");
         Item kitcFrtPhy = new Kitc_FrtPhy("pristine fruit");
@@ -929,7 +922,7 @@ public class Main {
         // </editor-fold> // HAS EMPTY STUFF
         // <editor-fold desc="INITIALIZE DUNGEON STAIRCASE">
         //-----------------------------THE ROOM---------------------------------
-        Room dst1 = new Dst1("in an eerie chamber", "DST1");
+        Room dst1 = new Dst1("in an eerie chamber", Id.DST1);
         
         //-----------------------------FURNITURE--------------------------------
         Furniture dst1Dr = new Eow1_Dr(Direction.EAST);
@@ -940,14 +933,14 @@ public class Main {
         // </editor-fold>
 
         // </editor-fold>
-        //---------------------------------------------------------------------- 
+        // =====================================================================     
         // <editor-fold desc="AREA 4: CASTLE REAR">
         
         // <editor-fold desc="INITIALIZE OBSERVATORY"> 
         //-----------------------------THE ROOM---------------------------------
-        Room obs1 = new Obs1("in the observatory", "OBS1");
-        Room obs2 = new Obs2("on the observatory balcony", "OBS2");
-        Room obs3 = new Obs3("on the observatory aerie", "OBS3");
+        Room obs1 = new Obs1("in the observatory", Id.OBS1);
+        Room obs2 = new Obs2("on the observatory balcony", Id.OBS2);
+        Room obs3 = new Obs3("on the observatory aerie", Id.OBS3);
         //-------------------------------ITEMS----------------------------------  
         Item hlsPlt = new Obs_Plt("brass plate, \"Sol\"", "The small plate bears an engraving: \"Sol\"");
         Item hrmsPlt = new Obs_Plt("brass plate, \"Mercury\"", "The small plate bears an engraving: \"Mercury\"");
@@ -1001,16 +994,16 @@ public class Main {
         Furniture jha1Ln = new Jha_Ln();
         Furniture jha2Ln = new Jha_Ln();
         //-----------------------------THE ROOM---------------------------------
-        Room jha1 = new Jha1("in a jade hallway", "JHA1");
-        Room jha2 = new Jha2("in a jade hallway", "JHA2", jha1Ln, jha2Ln); // Adds hidden door to room
+        Room jha1 = new Jha1("in a jade hallway", Id.JHA1);
+        Room jha2 = new Jha2("in a jade hallway", Id.JHA2, jha1Ln, jha2Ln); // Adds hidden door to room
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE GARDENS"> 
         //-----------------------------THE ROOM---------------------------------
-        Room gar1 = new Gar1("on a rooftop garden", "GAR1");
-        Room gar2 = new Gar2("on a rooftop garden", "GAR2");
-        Room gar3 = new Gar3("on a rooftop garden", "GAR3");
-        Room gar4 = new Gar4("on a rooftop garden", "GAR4");   
+        Room gar1 = new Gar1("on a rooftop garden", Id.GAL1);
+        Room gar2 = new Gar2("on a rooftop garden", Id.GAL2);
+        Room gar3 = new Gar3("on a rooftop garden", Id.GAL3);
+        Room gar4 = new Gar4("on a rooftop garden", Id.GAL4);   
         //-------------------------------ITEMS----------------------------------
         Item hose = new Item("leather hose", "The roughly 30 foot old hose is cracked and rotted. It's certainly non-functional, but is still sturdy.");
         Item brknHose = new Item("broken hose", "The hose has broken in half, but it served a worthy final purpose.");
@@ -1034,8 +1027,8 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE PARLOR"> 
         //-----------------------------THE ROOM---------------------------------
-        Room par2 = new Par2("on the parlor loft", "PAR2");
-        Room par1 = new Par1("in the first floor parlor", "PAR1"); 
+        Room par2 = new Par2("on the parlor loft", Id.PAR2);
+        Room par1 = new Par1("in the first floor parlor", Id.PAR1); 
         //-------------------------------ITEMS----------------------------------   
         Item bttl = new Item("glass bottle", "It's a regular clear glass bottle.");
         Item enchntdBttl = new Item("enchanted bottle", "The bottle is now coated in a " );
@@ -1078,8 +1071,8 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE SECRET STAIRS"> 
         //-----------------------------THE ROOM---------------------------------
-        Room sst1 = new Sst1("in the secret stairwell", "SST1");
-        Room sst2 = new Sst2("on a small landing", "SST2");  
+        Room sst1 = new Sst1("in the secret stairwell", Id.SST1);
+        Room sst2 = new Sst2("on a small landing", Id.SST2);  
         //-----------------------------FURNITURE--------------------------------  
         Furniture sst1Strs = new Sst_Strs(Direction.UP, 1);
         Furniture sst2Strs = new Sst_Strs(Direction.DOWN, 1);
@@ -1092,7 +1085,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE LABORATORY"> 
         //-----------------------------THE ROOM---------------------------------
-        Room labo = new Labo("in the laboratory", "LABO");
+        Room labo = new Labo("in the laboratory", Id.LABO);
         //-------------------------------ITEMS---------------------------------- 
         Item rbbrTube = new Item("rubber hose", "It's a yellow rubber hose, about 8 feet long.");
         Item tstTb = new Item("test tube", "A glass tube for transferring liquids");
@@ -1125,8 +1118,8 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE ATTIC"> 
         //-----------------------------THE ROOM---------------------------------
-        Room att1 = new Att1("in the attic", "ATT1");       
-        Room att2 = new Att2("in the attic", "ATT2");    
+        Room att1 = new Att1("in the attic", Id.ATT1);       
+        Room att2 = new Att2("in the attic", Id.ATT2);    
         //-----------------------------FURNITURE--------------------------------  
         Furniture attW = new Wall("The gray wood plank walls in here angle up forming a roof.");
         Furniture attF = new Floor("The flooring in here is rudimentary. Just gray weathered planks of wood.");
@@ -1140,9 +1133,9 @@ public class Main {
         // </editor-fold>        
         // <editor-fold desc="INITIALIZE BACK HALL"> 
         //-----------------------------THE ROOM---------------------------------
-        Room bha1 = new Bha1("in a demonic hallway", "BHA1");
-        Room bha2 = new Bha2("somewhere in the hallway", "BHA2");
-        Room bha3 = new Bha3("in a demonic hellway", "BHA3");
+        Room bha1 = new Bha1("in a demonic hallway", Id.BHA1);
+        Room bha2 = new Bha2("somewhere in the hallway", Id.BHA2);
+        Room bha3 = new Bha3("in a demonic hellway", Id.BHA3);
         //-------------------------------ITEMS----------------------------------   
         Item tblLg = new Item("broken table leg", "A short wooden post about 3 feet long. It looks like it belonged to a table.");
         Item orgMttr = new Item("organic matter", "You can't tell what it is. It has a non-solid texture and feels organic.");
@@ -1165,54 +1158,54 @@ public class Main {
         // </editor-fold>
 
         // </editor-fold>
-        //---------------------------------------------------------------------- 
+        // =====================================================================     
         // <editor-fold desc="AREA 5: SUB-LEVELS">
-           
+        
+        Furniture sewDrN = new Sew_Dr(Direction.NORTH);
+        Furniture sewDrS = new Sew_Dr(Direction.SOUTH);
+        Furniture sewDrE = new Sew_Dr(Direction.EAST);
+        Furniture sewDrW = new Sew_Dr(Direction.WEST);   
         Furniture dngnW = new Wall("The walls are rough gray stone brick, covered in moss and wet to the touch from the humid air.");
         
         // Dungeon
         // <editor-fold desc="INITIALIZE TUNNELS">
-        Furniture sew4Pp = new Sew4_Pp();
-        //-----------------------------THE ROOMS--------------------------------
-        Room sew0 = new Sew0("at the tunnel's end", "SEW0");
-        Room sew1 = new Sew1("in an underground tunnel", "SEW1");
-        Room sew2 = new Sew2("in an underground tunnel", "SEW2");
-        Room sew3 = new Sew3("in an underground tunnel", "SEW3");
-        Room sew4 = new Sew4("in an underground tunnel", "SEW4", sew4Pp);
-        Room sew5 = new Sew5("at the tunnel's end", "SEW5");
-        //-------------------------------ITEMS----------------------------------
         Item pipePc = new Item("piece of pipe", "It's a piece of metal piping, about 2 feet long.");
-        Item mtlLddr = new Metal_Ladder("metal ladder");
+        Furniture sew1Rvr = new Sew1_Rvr(pipePc, wtrBckt);
+        Furniture sew4Pp = new Sew4_Pp(sew1Rvr, pipePc); // RESETABLE
+        //-----------------------------THE ROOMS--------------------------------
+        Room sew0 = new Sew0("at the tunnel's end", Id.SEW0);
+        Room sew1 = new Sew1("in an underground tunnel", Id.SEW1);
+        Room sew2 = new Sew2("in an underground tunnel", Id.SEW2);
+        Room sew3 = new Sew3("in an underground tunnel", Id.SEW3);
+        Room sew4 = new Sew4("in an underground tunnel", Id.SEW4, sew4Pp);
+        Room sew5 = new Sew5("at the tunnel's end", Id.SEW5);
+        //-------------------------------ITEMS----------------------------------
         //-----------------------------FURNITURE-------------------------------- 
         Furniture sewF = new Dungeon_F();
-        Furniture sewDrN = new Sew_Dr(Direction.NORTH);
-        Furniture sewDrS = new Sew_Dr(Direction.SOUTH);
-        Furniture sewDrE = new Sew_Dr(Direction.EAST);
-        Furniture sewDrW = new Sew_Dr(Direction.WEST);        
+               
         Furniture sewTnnl = new Sew_Tnnl();
-        Furniture sew1Rvr = new Sew1_Rvr(pipePc, wtrBckt);
         Furniture sewRvr = new Sew2345_Rvr(sew1Rvr.getInv(), wtrBckt);
         Furniture sewMss = new Sew_Mss();
         
-        Furniture sew0Trch = new Trch();
+        Furniture sew0Trch = new Torch();
         Furniture sew0Strs = new Sew0_Strs();
         
         Furniture sew15Gt = new Sew15_Gt();
-        Furniture sew1Trch = new Trch();
+        Furniture sew1Trch = new Torch();
         
-        Furniture sew2Trch = new Trch();
+        Furniture sew2Vlvs = new Sew2_Vlvs(); // RESETABLE
+        Furniture sew2Trch = new Torch();
         Furniture sew2BrdgW = new Sew_Brdg(Direction.WEST);
         Furniture sew2Pp = new Sew235_Pp(2);
-        Furniture sew2Vlvs = new Sew2_Vlvs();
         
-        Furniture sew3Trch = new Trch();
+        Furniture sew3Trch = new Torch();
         Furniture sew3BrdgN = new Sew_Brdg(Direction.NORTH);
         Furniture sew3BrdgE = new Sew_Brdg(Direction.EAST);
         Furniture sew3Pp = new Sew235_Pp(3);
         
-        Furniture sew4Trch = new Trch();
+        Furniture sew4Trch = new Torch();
         
-        Furniture sew5Trch = new Trch();
+        Furniture sew5Trch = new Torch();
         Furniture sew5BrdgE = new Sew_Brdg(Direction.EAST);
         Furniture sew5Pp = new Sew235_Pp(5);
         Furniture sew5Vlv = new Sew5_Vlv(sew2Vlvs, sew4Pp);
@@ -1220,14 +1213,14 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE ANCIENT CISTERN">
         //-----------------------------THE ROOMS--------------------------------
-        Room cis1 = new Cis1("in a huge cistern", "CIS1");
-        Room cis2 = new Cis2("in a huge cistern", "CIS2");
-        Room cis3 = new Cis3("in a huge cistern", "CIS3");
-        Room cis4 = new Cis4("in a huge cistern", "CIS4"); 
+        Room cis1 = new Cis1("in a huge cistern", Id.CIS1); // RESETABLE
+        Room cis2 = new Cis2("in a huge cistern", Id.CIS2);
+        Room cis3 = new Cis3("in a huge cistern", Id.CIS3);
+        Room cis4 = new Cis4("in a huge cistern", Id.CIS4); 
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture cis1Trch = new Trch();
-        Furniture cis3Trch = new Trch();
-        Furniture cis4Trch = new Trch();
+        Furniture cis1Trch = new Torch();
+        Furniture cis3Trch = new Torch();
+        Furniture cis4Trch = new Torch();
         Furniture cisF = new Dungeon_F();
         Furniture cisWtr = new Cis_Wtr(wtrBckt);
         Furniture cisClmns = new Cis_Clmns();
@@ -1236,29 +1229,67 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE TORTURE CHAMBER">
         //-----------------------------THE ROOMS--------------------------------
-        Room torc = new Room("torture chamber", "TORC");
-        //-------------------------------ITEMS----------------------------------        
+        Room torc = new Torc("in a torture chamber", Id.TORC);
+        //-------------------------------ITEMS---------------------------------- 
         //-----------------------------FURNITURE-------------------------------- 
+        Furniture torcF = new Dungeon_F();
+        Furniture torcTrchs = new Torch();
+        Furniture torcSwhrses = new Torc_Swhrses(torc); // RESETABLE
+        Furniture torcRck = new Torc_Rck();
+        Furniture torcCgs = new Torc_Cgs();
+        Furniture torcWhl = new Torc_Whl();
+        Furniture torcWd = new Torc_Wd();
+        Furniture torcTls = new Torc_Tls();
+        Furniture torcScythF = new Torc_Scyth_Furn(); // RESETABLE
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE CRYPT">
         //-----------------------------THE ROOMS--------------------------------
-        Room cry2 = new Room("crypt", "CRY2");
-        Room cry1 = new Room("crypt", "CRY1");
+        Room cry2 = new Cry2("in the crypt", Id.CRY2);
+        Room cry1 = new Cry1("in the crypt", Id.CRY1);
         //-------------------------------ITEMS----------------------------------        
         //-----------------------------FURNITURE-------------------------------- 
+        Furniture cryF = new Dungeon_F();
+        Furniture cryDummy = new Cry_Dmmy();
+        Furniture cryDrwrs = new Cry_Drwrs();
+        Furniture cry1Crvng = new Cry1_Crvng();
+        Furniture cryLghts = new Cry_Lghts();
+        Furniture cry2Engrvng = new Cry2_Engrvng();
+        Furniture cry2Altr = new Cry2_Altr();
+        Furniture cry1Stat = new Cry1_Stat(torcScythF, sewDrW); // RESETABLE
+        Furniture cry2Psswd = new Cry2_Psswd(cry1Stat); // RESETABLE
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE CELL">
         //-----------------------------THE ROOMS--------------------------------
-        Room intr = new Room("interrogation room", "INTR");
-        //-------------------------------ITEMS----------------------------------        
+        Room intr = new Intr("in a noisy chamber", Id.INTR);      
         //-----------------------------FURNITURE-------------------------------- 
+        Furniture intrF = new Intr_F(); // RESETABLE
+        Furniture intrGrt = new Intr_Grt(); // RESETABLE
+        Furniture intrTrch = new Intr_Trch(); // RESETABLE
+        Furniture intrWhl = new Intr_Whl();
+        Furniture intrGrs = new Intr_Grs();
+        Furniture intrDr = new Intr_Dr();
+        Furniture intrWtr = new Intr_Wtr();
+        
+        // </editor-fold>
+        // <editor-fold desc="INITIALIZE SUB-TUNNELS">
+        //-----------------------------THE ROOMS--------------------------------
+        Room esc1 = new Esc1("in a small tunnel", Id.ESC1);
+        Room esc2 = new Esc("in a small tunnel", Id.ESC2, "The tunnel turns sharply to the north here.");
+        Room esc3 = new Esc("in a small tunnel", Id.ESC3, "The small tunnel turns yet again back to the east here.");
+        Room esc4 = new Esc("in a small tunnel", Id.ESC4, "The crammed hallway continues to the east here.");
+        Room esc5 = new Esc("in a small tunnel", Id.ESC5, "The tunnel turns sharply to the south here.");
+        Room esc6 = new Esc("in a small tunnel", Id.ESC6, "You've reached the tunnel's end. In front of you is a metal ladder leading up.");       
+        //-----------------------------FURNITURE-------------------------------- 
+        Furniture esc1Lddr = new Esc1_Lddr(); // RESETABLE
+        Furniture esc6Grt = new Esc6_Grt(); // RESETABLE
+        Furniture esc6Lddr = new Esc6_Lddr(esc6Grt); // RESETABLE
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE CATACOMBS ACCESS">
         //-----------------------------THE ROOMS--------------------------------
-        Room cas1 = new Room("catacombs access", "CAS1");
+        Room cas1 = new Room("catacombs access", Id.CAS1);
         //-------------------------------ITEMS----------------------------------        
         //-----------------------------FURNITURE-------------------------------- 
         Furniture casW = new Wall("The walls are large granite blocks illuminated in a flickering bluish hue from the flame.");
@@ -1266,36 +1297,51 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE OUBLIETTE">
         //-----------------------------THE ROOMS--------------------------------
-        Room oub1 = new Room("oubliette", "OUB1");
-        //-------------------------------ITEMS----------------------------------        
+        Room oub1 = new Oub1("oubliette", Id.OUB1);       
         //-----------------------------FURNITURE--------------------------------  
+        Furniture oub1F = new Dungeon_F();
+        Furniture oub1Pt = new Oub1_Pt();
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE PRISON">
         //-----------------------------THE ROOMS--------------------------------
-        Room pris = new Room("prison", "PRIS");
+        Room pris = new Pris("in some kind of prison", Id.PRIS);
         //-------------------------------ITEMS----------------------------------        
         //-----------------------------FURNITURE--------------------------------  
+        Furniture prisClls = new Pris_Clls();
+        Furniture prisF = new Dungeon_F();
+        Furniture prisCndlbrs = new Pris_Cndlbr();
+        Furniture prisTbl = new Pris_Tbl(ou62Key);
+        Furniture prisGts = new Pris_Gts();
+        Furniture prisCbnt = new Pris_Cbnt();
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE ARCHIVES">
         //-----------------------------THE ROOMS--------------------------------
-        Room arch = new Room("archives", "ARCH");
+        Room arch = new Room("in the castle archives", Id.ARCH);
         //-------------------------------ITEMS----------------------------------        
         //-----------------------------FURNITURE-------------------------------- 
         
+        
         // </editor-fold>
         // <editor-fold desc="INITIALIZE STRANGE POOL">
+        Furniture[] resetables = {intrF, intrGrt, intrTrch, sew2Vlvs, torcSwhrses,
+                torcScythF, cry1Stat, cry2Psswd, esc6Grt, sew4Pp, esc6Lddr};
         //-----------------------------THE ROOMS--------------------------------
-        Room sewp = new Room("strange pool", "SEWP");
-        //-------------------------------ITEMS----------------------------------        
+        Room sewp = new Sewp("next to a pool of water", Id.SEWP, prisCbnt.getInv(), resetables);        
         //-----------------------------FURNITURE--------------------------------  
+        Furniture sewpCl = new Sewp_Cl();
+        Furniture sewpGrt = new Sewp_Grt();
+        Furniture sewpWtr = new Sewp_Wtr();
+        Furniture sewpTrch = new Torch();
+        Furniture sewpF = new Dungeon_F();
+        Furniture sewpTnnl = new Sewp_Tnnl();
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE ANCIENT ARCHIVES">
         //-----------------------------THE ROOMS--------------------------------
-        Room aarc = new Room("ancient archives", "AARC");
-        //-------------------------------ITEMS----------------------------------        
+        Room aarc = new Room("in ancient archives", Id.AARC);
+        //-------------------------------ITEMS----------------------------------
         //-----------------------------FURNITURE--------------------------------  
         
         // </editor-fold>
@@ -1303,37 +1349,37 @@ public class Main {
         // Catacombs and caves
         // <editor-fold desc="INITIALIZE CATACOMBS"> 
         // ROOMS --------------------------------------------------------------
-        Room cs35 = new Cs35("at the catacombs entrance", "CS35");
-        Room ou62 = new Ou62("in the bottom of the oubliette", "OU62");
-        Room my18 = new My18("in a round sandstone chamber", "MY18");
+        Room cs35 = new Cs35("at the catacombs entrance", Id.CS35);
+        Room ou62 = new Ou62("in the bottom of the oubliette", Id.OU62);
+        Room my18 = new My18("in a round sandstone chamber", Id.MY18);
         
-        Room tm16 = new Tmb1("TM16");
-        Room tm66 = new Tmb2("TM66");
-        Room tm32 = new Tmb3("TM32");
+        Room tm16 = new Tmb1(Id.TM16);
+        Room tm66 = new Tmb2(Id.TM66);
+        Room tm32 = new Tmb3(Id.TM32);
         
-        Room an55 = new An55("in an ancient tomb", "AN55");
-        Room an65 = new An65("in an ancient tomb", "AN65");
+        Room an55 = new An55("in an ancient tomb", Id.AN55);
+        Room an65 = new An65("in an ancient tomb", Id.AN65);
         
-        Room ct11 = new Catacomb("CT11"); Room ct12 = new Catacomb("CT12");
-        Room ct13 = new Catacomb("CT13"); Room ct14 = new Catacomb("CT14");
-        Room ct15 = new Catacomb("CT15"); Room ct17 = new Catacomb("CT17");
-        Room ct21 = new Catacomb("CT21"); Room ct22 = new Catacomb("CT22");
-        Room ct23 = new Catacomb("CT23"); Room ct24 = new Catacomb("CT24");
-        Room ct25 = new Catacomb("CT25"); Room ct26 = new Catacomb("CT26");
-        Room ct27 = new Catacomb("CT27"); Room ct28 = new Catacomb("CT28");
-        Room ct31 = new Catacomb("CT31"); Room ct33 = new Catacomb("CT33");
-        Room ct34 = new Catacomb("CT34"); Room ct36 = new Catacomb("CT36");
-        Room ct37 = new Catacomb("CT37"); Room ct38 = new Catacomb("CT38");
-        Room ct41 = new Catacomb("CT41"); Room ct42 = new Catacomb("CT42");
-        Room ct43 = new Catacomb("CT43"); Room ct44 = new Catacomb("CT44");
-        Room ct45 = new Catacomb("CT45"); Room ct46 = new Catacomb("CT46");
-        Room ct47 = new Catacomb("CT47"); Room ct48 = new Catacomb("CT48");
-        Room ct51 = new Catacomb("CT51"); Room ct52 = new Catacomb("CT52");
-        Room ct53 = new Catacomb("CT53"); Room ct54 = new Catacomb("CT54");
-        Room ct56 = new Catacomb("CT56"); Room ct57 = new Catacomb("CT57");
-        Room ct58 = new Catacomb("CT58"); Room ct61 = new Catacomb("CT61");
-        Room ct63 = new Catacomb("CT63"); Room ct64 = new Catacomb("CT64");
-        Room ct67 = new Catacomb("CT67"); Room ct68 = new Catacomb("CT68");
+        Room ct11 = new Catacomb(Id.CT11); Room ct12 = new Catacomb(Id.CT12);
+        Room ct13 = new Catacomb(Id.CT13); Room ct14 = new Catacomb(Id.CT14);
+        Room ct15 = new Catacomb(Id.CT15); Room ct17 = new Catacomb(Id.CT17);
+        Room ct21 = new Catacomb(Id.CT21); Room ct22 = new Catacomb(Id.CT22);
+        Room ct23 = new Catacomb(Id.CT23); Room ct24 = new Catacomb(Id.CT24);
+        Room ct25 = new Catacomb(Id.CT25); Room ct26 = new Catacomb(Id.CT26);
+        Room ct27 = new Catacomb(Id.CT27); Room ct28 = new Catacomb(Id.CT28);
+        Room ct31 = new Catacomb(Id.CT31); Room ct33 = new Catacomb(Id.CT33);
+        Room ct34 = new Catacomb(Id.CT34); Room ct36 = new Catacomb(Id.CT36);
+        Room ct37 = new Catacomb(Id.CT37); Room ct38 = new Catacomb(Id.CT38);
+        Room ct41 = new Catacomb(Id.CT41); Room ct42 = new Catacomb(Id.CT42);
+        Room ct43 = new Catacomb(Id.CT43); Room ct44 = new Catacomb(Id.CT44);
+        Room ct45 = new Catacomb(Id.CT45); Room ct46 = new Catacomb(Id.CT46);
+        Room ct47 = new Catacomb(Id.CT47); Room ct48 = new Catacomb(Id.CT48);
+        Room ct51 = new Catacomb(Id.CT51); Room ct52 = new Catacomb(Id.CT52);
+        Room ct53 = new Catacomb(Id.CT53); Room ct54 = new Catacomb(Id.CT54);
+        Room ct56 = new Catacomb(Id.CT56); Room ct57 = new Catacomb(Id.CT57);
+        Room ct58 = new Catacomb(Id.CT58); Room ct61 = new Catacomb(Id.CT61);
+        Room ct63 = new Catacomb(Id.CT63); Room ct64 = new Catacomb(Id.CT64);
+        Room ct67 = new Catacomb(Id.CT67); Room ct68 = new Catacomb(Id.CT68);
         
         Room[] list = {ct11, ct12, ct13, ct14, ct15, ct17, ct21, ct22, ct23,
                        ct24, ct25, ct26, ct27, ct28, ct31, ct33, ct34, ct36,
@@ -1390,8 +1436,8 @@ public class Main {
         Furniture antF = new Floor("The floor in here is dusty sandstone.");
         Furniture antW = new Wall("The walls in this room are carved sandstone.");
         Furniture antCskts = new Ant_Cskts();
-        Furniture ant1Trch = new Trch();
-        Furniture ant2Trch = new Trch();
+        Furniture ant1Trch = new Torch();
+        Furniture ant2Trch = new Torch();
         Furniture antClng = new Ant_Clng();
         
         // Round chamber
@@ -1410,33 +1456,33 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE CAVES"> 
         //-----------------------------THE ROOMS--------------------------------
-        Room cv34 = new CV34("at an ancient well", "CV34");
-        Room ms65 = new Deep_Chamber("aykl xvldml fwe", "MS65");
-        Room ms66 = new Deep_Chamber("d5 rl x:!e ifxJ", "MS66");
+        Room cv34 = new CV34("at an ancient well", Id.CV34);
+        Room ms65 = new Deep_Chamber("aykl xvldml fwe", Id.MS65);
+        Room ms66 = new Deep_Chamber("d5 rl x:!e ifxJ", Id.MS66);
         
-        Room cv18 = new Cave("CV18"); Room cv11 = new Cave("CV11");
-        Room cv12 = new Cave("CV12"); Room cv13 = new Cave("CV13");
-        Room cv14 = new Cave("CV14"); Room cv15 = new Cave("CV15");
-        Room cv16 = new Cave("CV16"); Room cv17 = new Cave("CV17");
-        Room cv21 = new Cave("CV21"); Room cv22 = new Cave("CV22");
-        Room cv23 = new Cave("CV23"); Room cv24 = new Cave("CV24");
-        Room cv25 = new Cave("CV25"); Room cv26 = new Cave("CV26");
-        Room cv27 = new Cave("CV27"); Room cv28 = new Cave("CV28");
-        Room cv31 = new Cave("CV31"); Room cv32 = new Cave("CV32");
-        Room cv33 = new Cave("CV33"); Room cv35 = new Cave("CV35");
-        Room cv36 = new Cave("CV36"); Room cv37 = new Cave("CV37");
-        Room cv38 = new Cave("CV38"); Room cv41 = new Cave("CV41");
-        Room cv42 = new Cave("CV42"); Room cv43 = new Cave("CV43");
-        Room cv44 = new Cave("CV44"); Room cv45 = new Cave("CV45");
-        Room cv46 = new Cave("CV46"); Room cv47 = new Cave("CV47");
-        Room cv48 = new Cave("CV48"); Room cv51 = new Cave("CV51");
-        Room cv52 = new Cave("CV52"); Room cv53 = new Cave("CV53");
-        Room cv54 = new Cave("CV54"); Room cv55 = new Cave("CV55");
-        Room cv56 = new Cave("CV56"); Room cv57 = new Cave("CV57");
-        Room cv58 = new Cave("CV58"); Room cv61 = new Cave("CV61");
-        Room cv62 = new Cave("CV62"); Room cv63 = new Cave("CV63");
-        Room cv67 = new Cave("CV67"); Room cv68 = new Cave("CV68");
-        Room cv64 = new Cave("CV64");
+        Room cv18 = new Cave(Id.CV18); Room cv11 = new Cave(Id.CV11);
+        Room cv12 = new Cave(Id.CV12); Room cv13 = new Cave(Id.CV13);
+        Room cv14 = new Cave(Id.CV14); Room cv15 = new Cave(Id.CV15);
+        Room cv16 = new Cave(Id.CV16); Room cv17 = new Cave(Id.CV17);
+        Room cv21 = new Cave(Id.CV21); Room cv22 = new Cave(Id.CV22);
+        Room cv23 = new Cave(Id.CV23); Room cv24 = new Cave(Id.CV24);
+        Room cv25 = new Cave(Id.CV25); Room cv26 = new Cave(Id.CV26);
+        Room cv27 = new Cave(Id.CV27); Room cv28 = new Cave(Id.CV28);
+        Room cv31 = new Cave(Id.CV31); Room cv32 = new Cave(Id.CV32);
+        Room cv33 = new Cave(Id.CV33); Room cv35 = new Cave(Id.CV35);
+        Room cv36 = new Cave(Id.CV36); Room cv37 = new Cave(Id.CV37);
+        Room cv38 = new Cave(Id.CV38); Room cv41 = new Cave(Id.CV41);
+        Room cv42 = new Cave(Id.CV42); Room cv43 = new Cave(Id.CV43);
+        Room cv44 = new Cave(Id.CV44); Room cv45 = new Cave(Id.CV45);
+        Room cv46 = new Cave(Id.CV46); Room cv47 = new Cave(Id.CV47);
+        Room cv48 = new Cave(Id.CV48); Room cv51 = new Cave(Id.CV51);
+        Room cv52 = new Cave(Id.CV52); Room cv53 = new Cave(Id.CV53);
+        Room cv54 = new Cave(Id.CV54); Room cv55 = new Cave(Id.CV55);
+        Room cv56 = new Cave(Id.CV56); Room cv57 = new Cave(Id.CV57);
+        Room cv58 = new Cave(Id.CV58); Room cv61 = new Cave(Id.CV61);
+        Room cv62 = new Cave(Id.CV62); Room cv63 = new Cave(Id.CV63);
+        Room cv67 = new Cave(Id.CV67); Room cv68 = new Cave(Id.CV68);
+        Room cv64 = new Cave(Id.CV64);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture cv18Strs = new My18_Strs(Direction.UP);
         Furniture omnDr = new OmnDr(Direction.EAST);
@@ -1445,14 +1491,19 @@ public class Main {
         Furniture cvWell = new Cv_Well();
         // </editor-fold>
         
+        /*
+            prisCbnt.getInv(), 
+                
+        */
+        
         // </editor-fold>
-        //---------------------------------------------------------------------- 
+        // =====================================================================     
         // <editor-fold desc="AREA 6 VAULT">
         
         // <editor-fold desc="INITIALIZE CHAPEL STAIRS"> 
         //-----------------------------THE ROOM---------------------------------
-        Room chs1 = new Chs1("in the chapel stairwell", "CHS1");  
-        Room chs3 = new Chs3("on the tower's top landing", "CHS3");
+        Room chs1 = new Chs1("in the chapel stairwell", Id.CHS1);  
+        Room chs3 = new Chs3("on the tower's top landing", Id.CHS3);
         //-------------------------------ITEMS----------------------------------        
         //-----------------------------FURNITURE-------------------------------- 
         Furniture chsWndws = new Chs_Wndws("windows");
@@ -1468,8 +1519,8 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE CHAPEL"> 
         //-----------------------------THE ROOM---------------------------------
-        Room cha1 = new Cha1("in the chapel", "CHA1");
-        Room cha2 = new Cha2("in the chancel", "CHA2");
+        Room cha1 = new Cha1("in the chapel", Id.CHA1);
+        Room cha2 = new Cha2("in the chancel", Id.CHA2);
         //-------------------------------ITEMS----------------------------------        
         //-----------------------------FURNITURE-------------------------------- 
         Furniture cha1Cylx = new Cha1_Cylx();
@@ -1477,39 +1528,34 @@ public class Main {
         
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE VAULT ACCESS"> 
-        //-----------------------------THE ROOM---------------------------------
-        Room vauh = new Room("vault access", "VAUH");
-        Room vaue = new Room("vault entrance", "VAUE");
-        //-------------------------------ITEMS----------------------------------        
-        //-----------------------------FURNITURE-------------------------------- 
-        // </editor-fold>
         // <editor-fold desc="INITIALIZE VAULT"> 
         //-----------------------------THE ROOM---------------------------------
-        Room vau1 = new Room("vault", "VAU1");
+        Room vau1 = new Room("vault", Id.VAU1);
+        Room vauh = new Room("vault access", Id.VAUH);
+        Room vaue = new Room("vault entrance", Id.VAUE);
         //-------------------------------ITEMS----------------------------------        
         //-----------------------------FURNITURE-------------------------------- 
         // </editor-fold>
         
         // </editor-fold>
-        //---------------------------------------------------------------------- 
+        // =====================================================================     
         // <editor-fold desc="AREA 7: UPPER CASTLE">
 
-        Room bls1 = new Room("black staircase", "BLS1");
-        Room bal1 = new Room("ballroom", "BAL1");
-        Room bal2 = new Room("ballroom", "BAL2");
-        Room dusc = new Room("dusty closet", "DUSC");
-        Room ranr = new Room("rancid room", "RANR");
+        Room bls1 = new Room("black staircase", Id.BLS1);
+        Room bal1 = new Room("ballroom", Id.BAL1);
+        Room bal2 = new Room("ballroom", Id.BAL2);
+        Room dusc = new Room("dusty closet", Id.DUSC);
+        Room ranr = new Room("rancid room", Id.RANR);
 
-        Room soul = new Room("soul chamber", "SOUL");
-        Room tbal = new Room("top balcony", "TBAL");
-        Room bls2 = new Room("black staircase upper landing", "BLS2");
-        Room thr1 = new Room("throneroom", "THR1");
-        Room lqua = new Room("lich's quarters", "LQUA");
-        Room thr2 = new Room("throneroom", "THR2");
+        Room soul = new Room("soul chamber", Id.SOUL);
+        Room tbal = new Room("top balcony", Id.TBAL);
+        Room bls2 = new Room("black staircase upper landing", Id.BLS2);
+        Room thr1 = new Room("throneroom", Id.THR1);
+        Room lqua = new Room("lich's quarters", Id.LQUA);
+        Room thr2 = new Room("throneroom", Id.THR2);
 
         // </editor-fold>
-        //---------------------------------------------------------------------- 
+        // =====================================================================     
 
         //**********************************************************************
         // </editor-fold>  
@@ -1531,7 +1577,7 @@ public class Main {
          * 
         //*********************************************************************/
 
-        Room ____ = new Room("NULL", "NULL");
+        Room ____ = new Room(Id.NULL, Id.NULL);
 
         Room[][][] newMap = {                        
 
@@ -1573,8 +1619,8 @@ public class Main {
          {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
         {{____,____,____,____,____,____,____,____,____,____}, //0 BASEMENT [4]
-         {____,____,____,____,____,____,____,____,____,____}, //1
-         {____,____,____,____,____,____,____,____,____,____}, //2
+         {____,esc3,esc4,esc5,____,____,____,____,____,____}, //1
+         {____,esc2,esc1,esc6,____,____,____,____,____,____}, //2
          {____,____,____,____,____,cas1,cry2,____,vau1,____}, //3
          {____,cis2,cis1,sew5,pris,torc,cry1,____,vauh,____}, //4
          {____,cis3,aarc,sew4,sew3,sew2,sew1,____,vaue,____}, //5
@@ -1603,7 +1649,7 @@ public class Main {
         // LOCK ROOMS ----------------------------------------------------------
         cous.lock(); rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
         par2.lock(); clos.lock(); din1.lock(); kitc.lock(); ou62.lock();
-        chs1.lock(); work.lock(); bls1.lock(); soul.lock();
+        chs1.lock(); work.lock(); bls1.lock(); soul.lock(); sewp.lock();
         arch.lock(); vauh.lock(); wow2.lock(); foyw.lock();
         
         //**********************************************************************
@@ -1612,8 +1658,7 @@ public class Main {
 
 
         //**********************************************************************
-        // <editor-fold desc="POPULATE ROOMS">
-        /** Fills every room with furniture.
+        // <editor-fold desc="PUT FURNITURE IN ROOMS">
         //*********************************************************************/  
         
         // <editor-fold desc="AREA 1">
@@ -1709,7 +1754,7 @@ public class Main {
         // </editor-fold>  // Castle rear
         // <editor-fold desc="AREA 5">
         
-        // Dungeon
+        // <editor-fold desc="Tunnels and dungeon">
         sew0.addFurniture(sew0Strs, dngnW, sewF, sew0Trch, sewTnnl, sewMss);
         sew1.addFurniture(sew1Rvr, sewF, dngnW, sewTnnl, sew15Gt, sew1Trch, sewMss);
         sew2.addFurniture(sewRvr, sewF, dngnW, sewTnnl, sew2Trch, sewMss, sew2BrdgW, sew2Pp, sew2Vlvs);
@@ -1720,8 +1765,18 @@ public class Main {
         cis2.addFurniture(dngnW, cisF, cisWtr, cisClmns, cisDrknss);
         cis3.addFurniture(cis3Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
         cis4.addFurniture(cis4Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
+        oub1.addFurniture(sewDrW, tm1Bwl, oub1F, dngnW, oub1Pt);
+        intr.addFurniture(intrDr, intrWhl, intrGrs, intrF, dngnW, intrGrt, intrWtr, intrTrch);
+        esc1.addFurniture(esc1Lddr);
+        esc6.addFurniture(esc6Grt, esc6Lddr);
+        sewp.addFurniture(sewpCl, sewpGrt, sewpWtr, sewpF, dngnW, sewDrE, sewDrW, sewpTrch, sewpTnnl);
+        pris.addFurniture(prisClls, dngnW, sewDrS, sewDrW, prisF, prisCndlbrs, prisTbl, prisCbnt, prisGts);
+        torc.addFurniture(sewDrE, sewDrW, dngnW, torcF, torcTrchs, torcSwhrses, torcScythF, torcRck, torcCgs, torcWhl, torcWd, torcTls);
+        cry1.addFurniture(sewDrW, dngnW, cryF, cry1Stat, cryDummy, cryDrwrs, cry1Crvng, cryLghts);
+        cry2.addFurniture(dngnW, cryF, cry2Psswd, cryDummy, cryDrwrs, cryLghts, cry2Engrvng, cry2Altr);
+        // </editor-fold>
         
-        // Catacombs and caves
+        // <editor-fold desc="Catacombs and caves">
         tm16.addFurniture(tmb1Cskt, catW, tm1F, catDrS, tm1Vs, tm1Bwl, tm1Effgy);
         tm66.addFurniture(tmb2Cskt, catW, tm2F, catDrE, tm2Vs, tm2Orb);
         tm32.addFurniture(tmb3Cskt, catW, tm3F, catDrW, tm3Vs, tm3Tpstry, tm3Cndl);
@@ -1736,6 +1791,7 @@ public class Main {
         cv64.addFurniture(omnDr);
         ms65.addFurniture(dmmyFurniture);
         ms66.addFurniture(artifact, dmmyFurniture);
+        //</editor-fold>
         
         // </editor-fold>  // Sub-levels
         // <editor-fold desc="AREA 6">

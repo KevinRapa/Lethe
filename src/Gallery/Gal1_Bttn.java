@@ -2,7 +2,13 @@ package Gallery;
 
 import A_Super.Button;
 import A_Super.Furniture;
-        
+/**
+ * One of two object which turn on the GAL1 Dragon
+ * 
+ * @see Gallery.Gal1_Drgn
+ * @see Gallery.Gal1_Swtch
+ * @author Kevin Rapa
+ */
 public class Gal1_Bttn extends Button {
     private final Gal1_Drgn REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

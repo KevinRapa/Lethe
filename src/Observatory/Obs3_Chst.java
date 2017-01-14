@@ -2,11 +2,11 @@ package Observatory;
 
 import A_Super.Furniture;
 import A_Super.Item;
-import A_Super.Container;
+import A_Super.Openable;
 /**
  * @author Kevin Rapa
  */
-public class Obs3_Chst extends Furniture implements Container {
+public class Obs3_Chst extends Furniture implements Openable {
     // ========================================================================
     public Obs3_Chst(Item... items) {
         super(items);

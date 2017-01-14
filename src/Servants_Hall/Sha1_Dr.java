@@ -1,5 +1,6 @@
 package Servants_Hall;
 
+import A_Main.Id;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
@@ -26,9 +27,9 @@ public class Sha1_Dr extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        Player.getRoomRef("SHA1").addAdjacent("SHAR"); // Make SHAR accessible.
-        Player.getRoomRef("SHA1").removeFurniture(this); // Remove this door from the room.
-        Player.getRoomRef("SHA1").removeFurniture(GEN_DR);
+        Player.getRoomObj(Id.SHA1).addAdjacent(Id.SHAR); // Make SHAR accessible.
+        Player.getRoomObj(Id.SHA1).removeFurniture(this); // Remove this door from the room.
+        Player.getRoomObj(Id.SHA1).removeFurniture(GEN_DR);
         Player.getInv().remove(RAM_REF); // Take ram from player.
         Player.getInv().add(BRKNRAM_REF); // Add broken ram to player.
         

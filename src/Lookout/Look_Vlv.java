@@ -1,6 +1,7 @@
 package Lookout;
 
 import A_Main.AudioPlayer;
+import A_Main.Id;
 import A_Main.Player;
 import Rotunda.Rotu_Fntn;
 import A_Super.Furniture;
@@ -30,7 +31,7 @@ public class Look_Vlv extends Furniture{
         if (! FNTN_REF.isDrained()) {
             FNTN_REF.drain();
             AudioPlayer.playEffect(20);
-            Player.getRoomRef("ROTU").addFurniture(new Rotu_Whl());
+            Player.getRoomObj(Id.ROTU).addFurniture(new Rotu_Whl());
             loosened = true; 
         }
         else {

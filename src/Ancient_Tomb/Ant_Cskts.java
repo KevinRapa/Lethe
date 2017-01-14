@@ -2,11 +2,11 @@ package Ancient_Tomb;
 
 import A_Super.Furniture;
 import A_Super.Item;
-import A_Super.Container;
+import A_Super.Openable;
 /**
  * @author Kevin Rapa
  */
-public class Ant_Cskts extends Furniture implements Container {
+public class Ant_Cskts extends Furniture implements Openable {
     // ========================================================================
     public Ant_Cskts (Item... items) {
         super(items);

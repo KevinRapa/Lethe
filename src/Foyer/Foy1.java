@@ -1,8 +1,15 @@
 package Foyer;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Room;
-
+/**
+ * Superficial. 
+ * Contains a note enticing player to enter the vestibule
+ * 
+ * @see Vestibule.Vest
+ * @author Kevin Rapa
+ */
 public class Foy1 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy1(String name, String ID) {
@@ -22,7 +29,7 @@ public class Foy1 extends Room{
     }   
 /*----------------------------------------------------------------------------*/
     private String descMode() {       
-        return Player.getRoomRef("FOYW").isThisLocked() ? 
+        return Player.getRoomObj(Id.FOYW).isThisLocked() ? 
                 "a closed gate blocks your way into another room." : 
                 "an opened gate leads into another room.";                                            
     }    

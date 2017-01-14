@@ -1,9 +1,15 @@
 package Foyer;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Statue;
-
+/**
+ * Player must move this to discover lever.
+ * 
+ * @see Foyer.Foy2_Lvr
+ * @author Kevin Rapa
+ */
 public class Foy2_Stat extends Statue {
     private boolean moved;
     private final Furniture REF; 
@@ -23,7 +29,7 @@ public class Foy2_Stat extends Statue {
     @Override public String interact(String key) {
         if (key.matches("(?:push|pull|move|slide)")) {
             if (! this.moved) {
-                Player.getRoomRef("FOY2").addFurniture(REF);
+                Player.getRoomObj(Id.FOY2).addFurniture(REF);
                 this.moved = true;
                 return "You push the statue and manage to displace it a bit.\n"
                      + "In the alcove, behind the statue, you discover a lever."; 

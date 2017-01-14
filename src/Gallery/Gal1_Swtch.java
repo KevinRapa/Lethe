@@ -2,7 +2,13 @@ package Gallery;
 
 import A_Super.Furniture;
 import A_Super.Lever;
-        
+/**
+ * One of two object which turn on Gal1 Dragon
+ * 
+ * @see Gallery.Gal1_Drgn
+ * @see Gallery.Gal1_Bttn
+ * @author Kevin Rapa
+ */        
 public class Gal1_Swtch extends Lever {
     private final Gal1_Drgn REF;    
     /* CONSTRUCTOR ---------------------------------------------------------------*/    
