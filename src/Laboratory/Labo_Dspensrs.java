@@ -41,14 +41,14 @@ public class Labo_Dspensrs extends Furniture {
                     Player.getInv().remove(TUBE_REF);
                     Player.getInv().add(dispense());
                 }
-                return "none";
+                return null;
             }
             else if (Player.hasItem("empty vial")) {
                 if (askToDispense()) {
                     Player.getInv().remove(VIAL_REF);
                     Player.getInv().add(dispense());
                 }
-                return "none";
+                return null;
             }
             else {
                 return this.actDialog;

@@ -219,7 +219,7 @@ public class GUI extends JPanel {
      * @param txt dialog text.
      */
     public static void out(String txt) {
-        if (! txt.matches("none"))
+        if (txt != null)
             DIAL.setText(txt.replaceAll("\n", " "));
     }
 /*----------------------------------------------------------------------------*/    

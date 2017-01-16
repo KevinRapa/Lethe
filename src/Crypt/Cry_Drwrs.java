@@ -3,7 +3,6 @@ package Crypt;
 import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Item;
 import A_Super.Openable;
 /**
  * The player can search any of the cabinets, but none of them have anything
@@ -42,7 +41,7 @@ public class Cry_Drwrs extends Furniture implements Openable {
         }
         GUI.out(this.searchDialog);
         Player.search(this.DRAWERS[Integer.parseInt(ans) - 1]);
-        return "none";
+        return null;
     }
     // ========================================================================     
     // ************************************************************************

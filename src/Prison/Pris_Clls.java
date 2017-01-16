@@ -19,9 +19,8 @@ public class Pris_Clls extends Furniture implements Openable{
         MAP.put("one", 1);   MAP.put("two", 2);   MAP.put("three", 3);
         MAP.put("four", 4);  MAP.put("five", 5);  MAP.put("six", 6);
         
-        this.description = "none";
-        this.searchDialog = this.description;
-
+        this.description = this.searchDialog = null;
+        
         this.addNameKeys("(?:gated )?(?:prison )?cells?");
     }
     // ======================================================================== 

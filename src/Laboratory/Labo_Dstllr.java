@@ -63,7 +63,7 @@ public class Labo_Dstllr extends Furniture {
                         distillMethod.run(); // Cannot run before runDistill has been assigned a value.
                                              // Dialog is processed at Labo_Cndsr.condense because .run() returns void.
                             
-                        return "none";
+                        return null;
                     }
                     else {
                         return "You strike the top of the burner. For a minute, the burner burns\n"

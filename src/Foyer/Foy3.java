@@ -1,5 +1,6 @@
 package Foyer;
 
+import A_Super.Direction;
 import A_Super.Room;
 /**
  * Second floor landing of the foyer stairs.
@@ -14,6 +15,13 @@ public class Foy3 extends Room {
                          + "front staircase. The stairs continue a flight up\n"
                          + "in the opposite direction. The landing is bare and\n"
                          + "only a door to your west is of interest.";
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.WEST)
+            return "You should be getting out of here..."; // For end game.
+        else
+            return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/
 }

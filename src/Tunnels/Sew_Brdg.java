@@ -17,7 +17,7 @@ public class Sew_Brdg extends Furniture {
         
         this.description = "The small, 11 foot stone bridge crosses over the\n" +
                            "river to another area.";
-        this.actDialog = "none";
+        this.actDialog = null;
         this.searchDialog = "There's nothing on or under the bridge.";
 
         this.addNameKeys("(?:under (?:the )?)?(?:small )?(?:stone )?bridge", 

@@ -2,6 +2,7 @@ package Foyer;
 
 import A_Main.Id;
 import A_Main.Player;
+import A_Super.Direction;
 import A_Super.Room;
 /**
  * Superficial. 
@@ -33,6 +34,13 @@ public class Foy1 extends Room{
                 "a closed gate blocks your way into another room." : 
                 "an opened gate leads into another room.";                                            
     }    
+/*----------------------------------------------------------------------------*/
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.WEST || dir == Direction.EAST)
+            return "You should be getting out of here..."; // For end game.
+        else
+            return bumpIntoWall();
+    }
 /*----------------------------------------------------------------------------*/
 }
 

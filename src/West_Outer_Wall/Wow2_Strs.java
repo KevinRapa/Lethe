@@ -22,7 +22,7 @@ public class Wow2_Strs extends Staircase {
         playEffect();        
         Player.setOccupies(c[0] + DIR.Z, c[1], c[2]); // moves the player's Z coordinate.
         
-        return "none";       
+        return null;       
     }
 /*----------------------------------------------------------------------------*/
     @Override protected void playEffect() {

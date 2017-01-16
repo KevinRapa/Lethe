@@ -71,7 +71,7 @@ public class Labo_Flsk extends Furniture {
     // ========================================================================     
     @Override public String useEvent(Item item) {
         Player.getInv().give(item, this.inv);
-        return "none";
+        return null;
     }
     // ========================================================================    
     // ************************************************************************

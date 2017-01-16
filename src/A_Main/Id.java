@@ -104,10 +104,10 @@ public final class Id {
         // </editor-fold>   
         // <editor-fold desc="AREA 7: Lich quarters">
 
-        BLS1 = "BLS1", BAL1 = "BAL1", BAL2 = "BAL2", DUSC = "DUSC",
-        RANR = "RANR", SOUL = "SOUL", TBAL = "TBAL", BLS2 = "BLS2",
-        THR1 = "THR1", THR2 = "THR2", LQUA = "LQUA";
-    
+        BLS1 = "BLS1", TOW1 = "TOW1", SOUL = "SOUL", TBAL = "TBAL",
+        BLS2 = "BLS2", TOW2 = "TOW2", LQU1 = "LQU1", LQU2 = "LQU2",
+        END_ = "END_";
+        
         // </editor-fold>
     // ========================================================================
     // ************************************************************************

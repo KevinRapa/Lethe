@@ -62,7 +62,7 @@ public class Sew2_Vlvs extends Furniture implements Resetable {
                          + "on the wall. Above each is a roman numeral and a small\n"
                          + "dial. The rusty metal pipe originates fomr and leads out of the console's top.";
         
-        this.actDialog = "none";
+        this.actDialog = null;
         this.searchDialog = "There's nothing here that you can take.";
 
         this.addNameKeys("(?:metal )?valves?", "console");

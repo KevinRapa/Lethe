@@ -94,7 +94,7 @@ public class Labo_Brtt extends Furniture {
                     }
                 }
                 else
-                    return "none";
+                    return null;
             }
             else
                 return "The burette is empty.";
@@ -108,12 +108,12 @@ public class Labo_Brtt extends Furniture {
         if (Player.hasItem("test tube")) {
             Player.getInv().remove(TUBE_REF);
             Player.getInv().add(dispense());
-            return "none";
+            return null;
         }
         else if (Player.hasItem("empty vial")) {
             Player.getInv().remove(VIAL_REF);
             Player.getInv().add(dispense());
-            return "none";
+            return null;
         }
         else 
             return this.actDialog;

@@ -2,7 +2,9 @@ package Attic;
 
 import A_Main.GUI;
 import A_Main.Id;
+import A_Main.Inventory;
 import A_Main.Player;
+import A_Super.Item;
 import A_Super.Room;
 /**
  * The attic contains boxes and cases which display randomly chosen items when
@@ -14,9 +16,13 @@ import A_Super.Room;
  * @author Kevin Rapa
  */
 public class Att1 extends Room {
+    private boolean captured;
+    private final Inventory LICH_CHEST_INV;
 // ============================================================================    
-    public Att1(String name, String ID) {
+    public Att1(String name, String ID, Inventory lichChstInv) {
         super(name, ID);
+        this.captured = false;
+        this.LICH_CHEST_INV = lichChstInv;
         this.description= "You stand on the north side of the Attic. Scattered\n" +
                           "around are piles of various boxes and suitcases collecting\n" +
                           "cobwebs and dust. The room extends back southwards. A bit \n" +
@@ -29,7 +35,8 @@ public class Att1 extends Room {
             GUI.out("You feel an unnerving presence here. You shutter and look\n"
                   + "around, but see nothing but dark.");
         
-        else if (Player.hasItem("phase door potion")) {
+        else if (Player.hasItem("phase door potion") && ! this.captured) {
+            this.captured = true;
             this.initiateDialog();
         }
         
@@ -56,11 +63,14 @@ public class Att1 extends Room {
         GUI.promptOut();
         
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1500);
         } catch(InterruptedException e) {
             System.out.println(e.getMessage());
         }
         
+        for (Item i :Player. getInv())
+            this.LICH_CHEST_INV.add(i);
+            
         Player.getInv().clear();
         
         Player.setOccupies(Id.INTR);

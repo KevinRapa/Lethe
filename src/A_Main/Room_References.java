@@ -20,7 +20,7 @@ public class Room_References {
 // Each element maps to an element in COORDS for COORDINATES.
 //******************************************************************************
     private static final String[] IDS = {
-        Id.NULL,
+        Id.NULL, Id.END_,
         // FLOOR 1 ROOM ID'S --------------------------------------------------
         Id.COU1, Id.COU2, Id.COU3, Id.COU4, Id.COU5, Id.COU6, Id.COU7, Id.VEST, 
         Id.FOY1, Id.FOY2, Id.FOYW, Id.FOYB, Id.FOYC, Id.GAL1, Id.GAL2, Id.LIB1, 
@@ -34,9 +34,9 @@ public class Room_References {
         Id.DRAR, Id.WOW3, Id.CLOS, Id.WORK, Id.EOW4,
         // FLOOR 3 ROOM ID'S --------------------------------------------------
         Id.OBS3, Id.ATT1, Id.LABO, Id.FOY4, Id.GAL6, Id.GAL7, Id.SST2, Id.ATT2, 
-        Id.BLS1, Id.BAL1, Id.BAL2, Id.CHS3, Id.DUSC, Id.CHA1, Id.RANR, Id.CHA2,
+        Id.BLS1, Id.TOW1, Id.CHS3, Id.CHA1, Id.CHA2,
         // FLOOR 4 ROOM ID'S --------------------------------------------------
-        Id.SOUL, Id.TBAL, Id.BLS2, Id.THR1, Id.LQUA, Id.THR2,
+        Id.SOUL, Id.TBAL, Id.BLS2, Id.TOW2, Id.LQU1, Id.LQU2,
         // BASEMENT ROOM ID'S -------------------------------------------------
         Id.CAS1, Id.CRY2, Id.VAU1, Id.CIS2, Id.CIS1, Id.SEW5, Id.PRIS, Id.TORC, 
         Id.CRY1, Id.VAU2, Id.CIS4, Id.AARC, Id.SEW4, Id.SEW3, Id.SEW2, Id.SEW1,
@@ -66,7 +66,7 @@ public class Room_References {
 // <editor-fold desc="ADJACENTS">  
 //******************************************************************************
     private static final String[][] ADJS = {
-        {},        
+        {}, {},       
         // FLOOR 1 ROOM ADJS --------------------------------------------------   
         {Id.COU2},                          {Id.COU1,Id.COU3}, 
         {Id.COU7,Id.COU4,Id.COU2,Id.COU5},  {Id.COU3},
@@ -105,17 +105,16 @@ public class Room_References {
         {Id.WORK,Id.EOW2},        
         // FLOOR 3 ROOM ADJS --------------------------------------------------
         {Id.OBS2},                          {Id.LABO,Id.ATT2}, 
-        {Id.ATT1},                          {Id.BAL1,Id.FOY3}, 
+        {Id.ATT1},                          {Id.TOW1,Id.FOY3}, 
         {Id.GAL3},                          {}, 
         {Id.ATT2,Id.SST1},                  {Id.ATT1,Id.SST2}, 
-        {Id.BLS2,Id.BAL1},                  {Id.FOY4,Id.BAL2,Id.DUSC,Id.BLS1}, 
-        {Id.BAL1},                          {Id.CHA1},
-        {Id.RANR,Id.BAL1},                  {Id.CHA2,Id.CHS3}, 
-        {Id.DUSC},                          {Id.CHA1},
+        {Id.BLS2,Id.TOW1},                  {Id.FOY4,Id.BLS1}, 
+        {Id.CHA1},                          {Id.CHA2,Id.CHS3},           
+        {Id.CHA1},                         
         // FLOOR 4 ROOM ADJS --------------------------------------------------
-        {Id.TBAL},                          {Id.SOUL,Id.THR1}, 
-        {Id.THR1,Id.BLS1},                  {Id.THR2,Id.TBAL,Id.BLS2,Id.LQUA}, 
-        {Id.THR1},                          {Id.THR1}, 
+        {Id.TBAL},                          {Id.SOUL,Id.TOW2}, 
+        {Id.TOW2,Id.BLS1},                  {Id.TBAL,Id.BLS2,Id.LQU1}, 
+        {Id.TOW2},                          {Id.LQU1},       
         // BASEMENT ROOM ADJS -------------------------------------------------
         {Id.CS35},                          {Id.CRY1}, 
         {Id.VAU2},                          {Id.CIS3,Id.CIS1}, 
@@ -125,7 +124,7 @@ public class Room_References {
         {Id.CIS3,Id.OUB1},                  {Id.CIS3}, 
         {Id.SEW5,Id.SEW3},                  {Id.SEWP,Id.SEW4,Id.SEW2,Id.PRIS}, 
         {Id.SEW3,Id.SEW1},                  {Id.SEW0,Id.SEW2},
-        {Id.VAU2},                                 {Id.AARC,Id.CIS4,Id.CIS2}, 
+        {Id.VAU2},                          {Id.AARC,Id.CIS4,Id.CIS2}, 
         {Id.CIS4},                          {Id.SEWP},
         {Id.INTR,Id.DKCH,Id.SEW3},          {Id.SEWP}, 
         {Id.SEW1,Id.DST1},                  {Id.ESC2}, 
@@ -192,7 +191,7 @@ public class Room_References {
 // <editor-fold desc="COORDINATES">  
 //****************************************************************************** 
     private static final int[][] COORDS = {  
-       {-1,-1,-1}, 
+       {-1,-1,-1}, {3, 7, 5},
        // 1ST FLOOR COORDINATES ----------------------------------------------
        {3,4,4}, {3,5,4}, {3,5,5}, {3,6,5}, {3,5,6}, {3,4,6}, {3,4,5}, {3,3,6}, 
        {3,3,5}, {3,2,5}, {3,3,4}, {3,1,5}, {3,1,6}, {3,2,6}, {3,2,7}, {3,1,7}, 
@@ -206,9 +205,9 @@ public class Room_References {
        {2,5,3}, {2,5,8}, {2,6,3}, {2,6,4}, {2,6,7}, {2,6,8},       
        //3RD FLOOR COORDINATES -----------------------------------------------        
        {1,2,2}, {1,2,3}, {1,2,4}, {1,2,5}, {1,2,6}, {1,2,7}, {1,3,2}, {1,3,3}, 
-       {1,3,4}, {1,3,5}, {1,3,6}, {1,3,8}, {1,4,5}, {1,4,8}, {1,5,5}, {1,5,8},  
+       {1,3,4}, {1,3,5}, {1,3,8}, {1,4,8}, {1,5,8},  
        // 4TH FLOOR COORDINATES ----------------------------------------------        
-       {0,1,5}, {0,2,5}, {0,3,4}, {0,3,5}, {0,3,6}, {0,4,5},       
+       {0,1,5}, {0,2,5}, {0,3,4}, {0,3,5}, {0,3,6}, {0,3,7},       
        // BASEMENT COORDINATES -----------------------------------------------    
        {4,3,5}, {4,3,6}, {4,3,8}, {4,4,1}, {4,4,2}, {4,4,3}, {4,4,4}, {4,4,5},
        {4,4,6}, {4,4,8}, {4,6,1}, {4,5,2}, {4,5,3}, {4,5,4}, {4,5,5}, {4,5,6},

@@ -1,25 +1,24 @@
 package Foyer;
+
+import A_Super.Room;
+import A_Super.Direction;
 /**
  * @author Kevin Rapa
  */
-import A_Super.Room;
-import A_Super.Direction;
-
 public class Foy4 extends Room {
 // ============================================================================    
     public Foy4(String name, String ID) {
         super(name, ID);
-        this.description= "You stand at the top of the foyer staircase. Looking\n"
-                        + "over the banister, you can see the first floor far\n"
-                        + "below. Right before you to the south is a heavy wooden\n"
-                        + "door.";
+        this.description= "You have reached the top landing of the foyer. A\n"
+                        + "door with a carving of a chalice stands before you\n"
+                        + "to the south.";
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.WEST)
-            return "There's is a banister that way.";
-        
-        return WALL_BARRIER;
+            return "The staircase banister is that way.";
+        else
+            return bumpIntoWall();
     }
 // ============================================================================
 }

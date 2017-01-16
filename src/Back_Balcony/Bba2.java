@@ -1,6 +1,5 @@
 package Back_Balcony;
 
-import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
 /**
@@ -26,10 +25,14 @@ public class Bba2 extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
-        if (dir == Direction.NORTH)
-            return "There's a couple hundred foot drop right there.";
-        else
-            return bumpIntoWall();
+        switch (dir) {
+            case NORTH:
+                return "There's a couple hundred foot drop right there.";
+            case SOUTH:
+                return "You should be getting out of here..."; // For end game.
+            default:
+                return bumpIntoWall();
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

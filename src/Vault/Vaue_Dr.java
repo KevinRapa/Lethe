@@ -4,7 +4,6 @@ import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
@@ -30,7 +29,7 @@ public class Vaue_Dr extends Furniture {
         this.description = "Standing before you is an interesting wall resembling\n"
                          + "a door of sorts. On it is a 4 by 4 grid of buttons. Each\n"
                          + "button bears a dark circular rune";
-        this.actDialog = "none";
+        this.actDialog = null;
         this.searchDialog = "The only curiosity is the grid of buttons on the front.";
         
         for (int i = 0; i < 4; i++)

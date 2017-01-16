@@ -1,6 +1,9 @@
 package Tunnels;
 
 import A_Main.AudioPlayer;
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 import static A_Main.AudioPlayer.S;
 import static A_Main.AudioPlayer.WD;
 import A_Main.GUI;
@@ -9,9 +12,6 @@ import A_Main.Player;
 import Strange_Pool.Sewp;
 import java.io.File;
 import java.io.IOException;
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
-import static java.lang.Math.abs;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Timer;
@@ -21,7 +21,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import static java.lang.Math.abs;
+
 
 /**
  * This class simulates a creature that roams the halls of the tunnels.

@@ -38,7 +38,7 @@ public class Labo_DryIce extends Furniture implements Openable {
             } catch (InterruptedException ex) {
                 System.out.println(ex.getMessage());
             }
-            return "none";
+            return null;
         }
         
         if (this.searchable)

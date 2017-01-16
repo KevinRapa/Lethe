@@ -1,0 +1,24 @@
+package Top_Balcony;
+
+import A_Super.Furniture;
+import A_Super.Item;
+/**
+ * @author Kevin Rapa
+ */
+public class Tbal_Pllr extends Furniture {
+    // ========================================================================
+    public Tbal_Pllr (Item... items) {
+        super(items);
+        this.searchable = false;
+        
+        this.description = "The wide column is about 20 feet wide and supports\n"
+                         + "the enormous weight of the chamber to the north.";
+
+        this.searchDialog = "You can't reach it from here.";
+
+        this.addNameKeys("(?:wide )?(?:pillar|column)");
+    }
+    // ========================================================================   
+}
+
+
