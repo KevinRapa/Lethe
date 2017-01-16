@@ -25,7 +25,7 @@ public class Gal6_App extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (! this.doesThisHaveIt("box thingy")) {
+        if (! this.containsItem("box thingy")) {
             return "The weird apparatus looks like a metal platform\n"
                  + "with three curved arms projecting out and overtop\n"
                  + "of itself. Its lights are off and the *bleeping*\n"
@@ -36,7 +36,7 @@ public class Gal6_App extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() { 
-        if (! this.doesThisHaveIt("metal box thingy with wires")) 
+        if (! this.containsItem("metal box thingy with wires")) 
             return "The platform in the center is empty.";
         
         return this.searchDialog;

@@ -8,7 +8,7 @@ public class Stud_Note extends Note {
         super(name);
         this.description = "It's hasn't been nearly a decade since we discovered\n"
                          + "the source. My brothers are growing weaker. It must\n"
-                         + "be the Artifact. But its not fair to pay so much life\n"
+                         + "be the Factum. But its not fair to pay so much life\n"
                          + "for so much possibility! I will not succumb like them.\n"
                          + "I never told myself that I would touch that kind of\n"
                          + "magic, but it seems I have no better choice. What problem\n"

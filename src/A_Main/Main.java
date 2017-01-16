@@ -41,7 +41,8 @@ import Oubliette.*;        import Ancient_Tomb.*;       import Tunnels.*;
 import Catacomb_Entrance.*;import Mystical_Chamber.*;   import Attic.*;
 import Laboratory.*;       import Cistern.*;            import Cell.*;
 import Escape_Tunnel.*;    import Strange_Pool.*;       import Prison.*;
-import Torture_Chamber.*;  import Crypt.*;
+import Torture_Chamber.*;  import Crypt.*;              import Ancient_Archives.*;
+import Keeper_Chamber.*;   import Vault.*;
         
 import java.awt.Toolkit;   import java.awt.Dimension; import javax.swing.*;  
 import java.io.*;          import java.util.Random;
@@ -51,7 +52,7 @@ public class Main {
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = Id.SEWP; // PLAYER'S STARTING LOCATION. DEFAULT Id.COU4.
+        String start = Id.VAUE; // PLAYER'S STARTING LOCATION. DEFAULT Id.COU4.
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -165,7 +166,7 @@ public class Main {
         Key chs1Key = new Key("key with a cross on its bow", Id.CHS1);
         Key ou62Key = new Key("oubliette key", Id.OU62);
         Key soulKey = new Key("soul key", Id.SOUL);
-        Key archKey = new Key("arch key", Id.ARCH);
+        Key archKey = new Key("dungeon-keeper key", Id.DKCH);
         Key bls1Key = new Key("bls1 key", Id.BLS1); 
                 
         // Generic furniture 
@@ -1166,6 +1167,7 @@ public class Main {
         Furniture sewDrE = new Sew_Dr(Direction.EAST);
         Furniture sewDrW = new Sew_Dr(Direction.WEST);   
         Furniture dngnW = new Wall("The walls are rough gray stone brick, covered in moss and wet to the touch from the humid air.");
+        Furniture dungMonst = new Dng_Monst_Furn();
         
         // Dungeon
         // <editor-fold desc="INITIALIZE TUNNELS">
@@ -1247,7 +1249,10 @@ public class Main {
         //-----------------------------THE ROOMS--------------------------------
         Room cry2 = new Cry2("in the crypt", Id.CRY2);
         Room cry1 = new Cry1("in the crypt", Id.CRY1);
-        //-------------------------------ITEMS----------------------------------        
+        //-------------------------------ITEMS----------------------------------      
+        Item drdFlwr = new Item("dried flower", "It's a brown, dried-up rose.");
+        Item ncklc = new Item("silver necklace", "A fine necklace made of silver. A blue jewel dangles off of it.");
+        Item brnzCn = new Item("bronze coin", "It's some sort of extinct or exotic currency.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture cryF = new Dungeon_F();
         Furniture cryDummy = new Cry_Dmmy();
@@ -1255,7 +1260,7 @@ public class Main {
         Furniture cry1Crvng = new Cry1_Crvng();
         Furniture cryLghts = new Cry_Lghts();
         Furniture cry2Engrvng = new Cry2_Engrvng();
-        Furniture cry2Altr = new Cry2_Altr();
+        Furniture cry2Altr = new Cry2_Altr(drdFlwr, ncklc, brnzCn, brnzCn);
         Furniture cry1Stat = new Cry1_Stat(torcScythF, sewDrW); // RESETABLE
         Furniture cry2Psswd = new Cry2_Psswd(cry1Stat); // RESETABLE
         
@@ -1289,10 +1294,12 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE CATACOMBS ACCESS">
         //-----------------------------THE ROOMS--------------------------------
-        Room cas1 = new Room("catacombs access", Id.CAS1);
+        Room cas1 = new Cas1("in catacombs access", Id.CAS1);
         //-------------------------------ITEMS----------------------------------        
         //-----------------------------FURNITURE-------------------------------- 
         Furniture casW = new Wall("The walls are large granite blocks illuminated in a flickering bluish hue from the flame.");
+        Furniture casStrs = new Cas_Strs(Direction.DOWN);
+        Furniture casF = new Floor("The floor is comprised of many large blocks, illuminated blue from the fire.");
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE OUBLIETTE">
@@ -1306,7 +1313,7 @@ public class Main {
         // <editor-fold desc="INITIALIZE PRISON">
         //-----------------------------THE ROOMS--------------------------------
         Room pris = new Pris("in some kind of prison", Id.PRIS);
-        //-------------------------------ITEMS----------------------------------        
+        //-------------------------------ITEMS----------------------------------     
         //-----------------------------FURNITURE--------------------------------  
         Furniture prisClls = new Pris_Clls();
         Furniture prisF = new Dungeon_F();
@@ -1316,12 +1323,19 @@ public class Main {
         Furniture prisCbnt = new Pris_Cbnt();
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE ARCHIVES">
+        // <editor-fold desc="INITIALIZE DUNGEON KEEPER CHAMBER">
         //-----------------------------THE ROOMS--------------------------------
-        Room arch = new Room("in the castle archives", Id.ARCH);
-        //-------------------------------ITEMS----------------------------------        
+        Room dkch = new Room("in the dungeon-keeper's chamber", Id.DKCH);
+        //-------------------------------ITEMS---------------------------------- 
+        Item dkchNt = new Dkch_Nt("short verse");
+        Item lngChn = new Item("chain", "It's chain, about 10 feet long.");
+        Item dkchNt2 = new Note("illegible note", "This note is gibberish. Unreadable.");
         //-----------------------------FURNITURE-------------------------------- 
-        
+        Furniture dkchF = new Dungeon_F();
+        Furniture dkchBd = new Dkch_Bd(lngChn);
+        Furniture dkchAxl = new Dkch_Axl();
+        Furniture dkchDsk = new Dkch_Dsk(dkchNt, dkchNt2);
+        Furniture dkchClng = new Dkch_Clng();
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE STRANGE POOL">
@@ -1340,9 +1354,22 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE ANCIENT ARCHIVES">
         //-----------------------------THE ROOMS--------------------------------
-        Room aarc = new Room("in ancient archives", Id.AARC);
+        Room aarc = new Aarc("in ruined archives", Id.AARC);
         //-------------------------------ITEMS----------------------------------
+        Item algBk = new Item("algae-covered book", "The book is wet and slimy. Its pages have nearly fused.", "This is completely unreadable.");
+        Item rndBk = new Item("ruined book", "This book is damp, moldy, and covered in dirt.", "Whatever knowledge this book held is now lost.");
+        Item stnBlck = new Item("stone block", "This is a piece of the now broken floor in the ancient archives");
+        Item slmyAlg = new Item("slimy algae", "Ugh... why are you holding this?");
+        Item aarcNt = new Aarc_Nt("note on the Factum");
         //-----------------------------FURNITURE--------------------------------  
+        Furniture aarcAlg = new Aarc_Alg();
+        Furniture aarcBks = new Aarc_Bks(rndBk, algBk, slmyAlg, rndBk);
+        Furniture aarcChndlr = new Aarc_Chndlr();
+        Furniture aarcDsk = new Aarc_Dsk(wbalch, archKey, aarcNt, rndBk);
+        Furniture aarcF = new Aarc_F(algBk, wbalch, stnBlck, algBk, slmyAlg, algBk, stnBlck);
+        Furniture aarcW = new Aarc_W();
+        Furniture aarcWd = new Aarc_Wd();
+        Furniture aarcShlvs = new Aarc_Shlvs(slmyAlg, wbalch, wbalch);
         
         // </editor-fold>
         
@@ -1487,14 +1514,9 @@ public class Main {
         Furniture cv18Strs = new My18_Strs(Direction.UP);
         Furniture omnDr = new OmnDr(Direction.EAST);
         Furniture dmmyFurniture = new Dummy_Furniture();
-        Furniture artifact = new Artifact_Dummy();
+        Furniture factum = new Factum_Dmmy();
         Furniture cvWell = new Cv_Well();
         // </editor-fold>
-        
-        /*
-            prisCbnt.getInv(), 
-                
-        */
         
         // </editor-fold>
         // =====================================================================     
@@ -1503,8 +1525,7 @@ public class Main {
         // <editor-fold desc="INITIALIZE CHAPEL STAIRS"> 
         //-----------------------------THE ROOM---------------------------------
         Room chs1 = new Chs1("in the chapel stairwell", Id.CHS1);  
-        Room chs3 = new Chs3("on the tower's top landing", Id.CHS3);
-        //-------------------------------ITEMS----------------------------------        
+        Room chs3 = new Chs3("on the tower's top landing", Id.CHS3);  
         //-----------------------------FURNITURE-------------------------------- 
         Furniture chsWndws = new Chs_Wndws("windows");
         Furniture chsW = new Wall("The white and pale orange paneled wall is decorated in gold lining.");
@@ -1519,22 +1540,52 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE CHAPEL"> 
         //-----------------------------THE ROOM---------------------------------
-        Room cha1 = new Cha1("in the chapel", Id.CHA1);
-        Room cha2 = new Cha2("in the chancel", Id.CHA2);
-        //-------------------------------ITEMS----------------------------------        
+        Room cha1 = new Cha1("in the chapel nave", Id.CHA1);
+        Room cha2 = new Cha2("at the chancel altar", Id.CHA2);
+        //-------------------------------ITEMS---------------------------------- 
+        Item chaNt = new Cha_Nt("malevolent note");
+        Item gldUrn = new Item("gold urn", "the stone urn is fitted with a gold plate depicting a shining chalice.");
         //-----------------------------FURNITURE-------------------------------- 
+        Furniture chaF = new Floor("The floor is made of dark, dusty floorboards.");
+        Furniture chaW = new Wall("The walls are mostly carved wood paneling. Several religious scenes are painted at fixed distances along the wall.");
+        Furniture chaPws = new Cha_Pws();
+        Furniture chaHz = new Cha_Hz();
+        Furniture chaCrpt = new Cha_Crpt();
+        Furniture chaWndws = new Cha_Wndws();
+        
         Furniture cha1Cylx = new Cha1_Cylx();
         Furniture cha1Wtr = new Cha1_Water(hlyWtr);
+        Furniture cha1Cndlbr = new Cha1_Cndlbr();
         
+        Furniture cha2Alt = new Cha2_Alt(gldUrn, chaNt);
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE VAULT"> 
+        Item vauChlPhy = new Vau_ChlcPhy("glowing chalice");
+        Furniture vau1Tbl = new Vau1_Tbl(vauChlPhy);
         //-----------------------------THE ROOM---------------------------------
-        Room vau1 = new Room("vault", Id.VAU1);
-        Room vauh = new Room("vault access", Id.VAUH);
-        Room vaue = new Room("vault entrance", Id.VAUE);
-        //-------------------------------ITEMS----------------------------------        
+        Room vau1 = new Vau1("in the vault", Id.VAU1, vau1Tbl);
+        Room vau2 = new Vau2("in the vault", Id.VAU2, vau1Tbl);
+        Room vaue = new Vaue("in front of a curious wall", Id.VAUE);
+        //-------------------------------ITEMS---------------------------------- 
+        Item grl = new Item("grail", "It's treasure! A gold-plated grail studded with rubies. Where is all this from?");
+        Item cns = new Item("coins", "It's treasure! A handful of golden coins... Not currency you've ever seen though.");
+        Item crwn = new Item("crown", "It's treasure! It's the crown of a king. But the crown of whom exactly?");
+        Item brclt = new Item("bracelet", "It's treasure! A jade bracelet.");
+        Item rng = new Item("ring", "It's treasure! It's a small bronze ring set with an aquamarine.");
+        Item dmnd = new Item("diamond", "It's treasure! A sparkling diamond.");
+        Item jdStat = new Item("jade statue", "It's treasure! This piece is a small statue made of jade.");
         //-----------------------------FURNITURE-------------------------------- 
+        Furniture vau1Chsts = new Vau_Chsts(grl, cns, crwn, brclt, rng, dmnd, jdStat);
+        Furniture vau2Chsts = new Vau_Chsts(grl, cns, crwn, brclt, rng, dmnd, jdStat);
+        Furniture vauF = new Floor("The floors are sandstone blocks and covered in treasure.", cns, rng, cns, cns, brclt, dmnd, grl, cns, cns, dmnd, crwn);
+        Furniture vauTrsr = new Vau_Trsr(cns, cns, crwn, jdStat, dmnd, rng, cns, rng, brclt);
+        Furniture vauBwls = new Vau_Bwls();
+        Furniture vauClng = new Vau_Clng();
+        Furniture vaueF = new Floor("The floors are made of sandstone blocks and appear ancient.");
+        Furniture vauW = new Wall("The walls are made of sandstone blocks.");
+        Furniture vaueBttns = new Vaue_Dr();
+        
         // </editor-fold>
         
         // </editor-fold>
@@ -1622,9 +1673,9 @@ public class Main {
          {____,esc3,esc4,esc5,____,____,____,____,____,____}, //1
          {____,esc2,esc1,esc6,____,____,____,____,____,____}, //2
          {____,____,____,____,____,cas1,cry2,____,vau1,____}, //3
-         {____,cis2,cis1,sew5,pris,torc,cry1,____,vauh,____}, //4
+         {____,cis2,cis1,sew5,pris,torc,cry1,____,vau2,____}, //4
          {____,cis3,aarc,sew4,sew3,sew2,sew1,____,vaue,____}, //5
-         {____,cis4,oub1,intr,sewp,arch,sew0,____,____,____}, //6    
+         {____,cis4,oub1,intr,sewp,dkch,sew0,____,____,____}, //6    
          {____,____,____,____,____,____,____,____,____,____}},//7
         //  0    1    2    3    4    5    6    7    8    9  
         {{____,____,____,____,____,____,____,____,____,____}, //0 CATACOMBS [5]
@@ -1650,7 +1701,7 @@ public class Main {
         cous.lock(); rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
         par2.lock(); clos.lock(); din1.lock(); kitc.lock(); ou62.lock();
         chs1.lock(); work.lock(); bls1.lock(); soul.lock(); sewp.lock();
-        arch.lock(); vauh.lock(); wow2.lock(); foyw.lock();
+        dkch.lock(); vau2.lock(); wow2.lock(); foyw.lock();
         
         //**********************************************************************
         // </editor-fold> 
@@ -1765,15 +1816,18 @@ public class Main {
         cis2.addFurniture(dngnW, cisF, cisWtr, cisClmns, cisDrknss);
         cis3.addFurniture(cis3Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
         cis4.addFurniture(cis4Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
-        oub1.addFurniture(sewDrW, tm1Bwl, oub1F, dngnW, oub1Pt);
-        intr.addFurniture(intrDr, intrWhl, intrGrs, intrF, dngnW, intrGrt, intrWtr, intrTrch);
+        oub1.addFurniture(sewDrW, tm1Bwl, oub1F, dngnW, oub1Pt, dungMonst);
+        intr.addFurniture(intrDr, intrWhl, intrGrs, intrF, dngnW, intrGrt, intrWtr, intrTrch, dungMonst);
         esc1.addFurniture(esc1Lddr);
         esc6.addFurniture(esc6Grt, esc6Lddr);
+        cas1.addFurniture(casW, casStrs, casF, cs35Trchs, cs35Stat, sewDrE);
         sewp.addFurniture(sewpCl, sewpGrt, sewpWtr, sewpF, dngnW, sewDrE, sewDrW, sewpTrch, sewpTnnl);
-        pris.addFurniture(prisClls, dngnW, sewDrS, sewDrW, prisF, prisCndlbrs, prisTbl, prisCbnt, prisGts);
-        torc.addFurniture(sewDrE, sewDrW, dngnW, torcF, torcTrchs, torcSwhrses, torcScythF, torcRck, torcCgs, torcWhl, torcWd, torcTls);
-        cry1.addFurniture(sewDrW, dngnW, cryF, cry1Stat, cryDummy, cryDrwrs, cry1Crvng, cryLghts);
-        cry2.addFurniture(dngnW, cryF, cry2Psswd, cryDummy, cryDrwrs, cryLghts, cry2Engrvng, cry2Altr);
+        pris.addFurniture(prisClls, dngnW, sewDrS, sewDrW, prisF, prisCndlbrs, prisTbl, prisCbnt, prisGts, dungMonst);
+        torc.addFurniture(sewDrE, sewDrW, dngnW, torcF, torcTrchs, torcSwhrses, torcScythF, torcRck, torcCgs, torcWhl, torcWd, torcTls, dungMonst);
+        cry1.addFurniture(sewDrW, dngnW, cryF, cry1Stat, cryDummy, cryDrwrs, cry1Crvng, cryLghts, dungMonst);
+        cry2.addFurniture(dngnW, cryF, cry2Psswd, cryDummy, cryDrwrs, cryLghts, cry2Engrvng, cry2Altr, dungMonst);
+        aarc.addFurniture(sewDrW, aarcF, aarcW, aarcWd, aarcBks, aarcChndlr, aarcDsk, aarcAlg, aarcShlvs, dungMonst);
+        dkch.addFurniture(sewDrW, dkchF, dngnW, dkchBd, dkchAxl, dkchDsk, squaCndl, dkchClng, dungMonst);
         // </editor-fold>
         
         // <editor-fold desc="Catacombs and caves">
@@ -1790,7 +1844,7 @@ public class Main {
         cs35.addFurniture(cs35Dr, cs35F, cs35Trchs, casW, cs35Stat);
         cv64.addFurniture(omnDr);
         ms65.addFurniture(dmmyFurniture);
-        ms66.addFurniture(artifact, dmmyFurniture);
+        ms66.addFurniture(factum, dmmyFurniture);
         //</editor-fold>
         
         // </editor-fold>  // Sub-levels
@@ -1798,7 +1852,11 @@ public class Main {
         
         chs1.addFurniture(chs1Strs, chsWndws, chs1F, chsW, din1Mnlght, chs1Stat, mhaWDr);
         chs3.addFurniture(chs3Strs, chsWndws, chsW, din1Mnlght, chs3F, southDoor);
-        cha1.addFurniture(cha1Cylx, cha1Wtr, northDoor);
+        cha1.addFurniture(cha1Cylx, cha1Wtr, northDoor, chaW, chaF, din1Mnlght, chaPws, cha1Cndlbr, chaHz, chaCrpt, chaWndws);
+        cha2.addFurniture(chaF, chaW, din1Mnlght, chaPws, chaHz, chaCrpt, chaWndws, cha2Alt);
+        vau1.addFurniture(vau1Chsts, vauF, vauBwls, vau1Tbl, vauTrsr, vauClng);
+        vau2.addFurniture(vau2Chsts, vauF, vauBwls, vauTrsr, vauClng);
+        vaue.addFurniture(vaueF, vauBwls, vaueBttns, vauW);
         
         // </editor-fold>  // Chapel and vault
         // <editor-fold desc="AREA 7">

@@ -53,7 +53,7 @@ abstract public class Furniture implements Serializable {
      * @param name The name of an item.
      * @return If this piece contains an item with the name.
      */
-    public boolean doesThisHaveIt(String name) {
+    public boolean containsItem(String name) {
         for (Item i : this.inv) {            
             String j = i.toString().replaceAll(", .*", "");
             if (j.matches(name)) {

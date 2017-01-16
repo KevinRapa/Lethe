@@ -1,12 +1,12 @@
 package Cistern;
 
-import A_Super.Room;
 import A_Super.Direction;
+import Tunnels.Dungeon_Tunnel;
 /**
  * Superficial.
  * @author Kevin Rapa
  */
-public class Cis3 extends Room {
+public class Cis3 extends Dungeon_Tunnel {
 // ============================================================================    
     public Cis3(String name, String ID) {
         super(name, ID);

@@ -7,6 +7,7 @@ import A_Super.Room;
 import A_Super.Direction;
 import A_Super.Furniture;
 import A_Super.Wall;
+import Tunnels.Dng_Monst_Furn;
 import Tunnels.Dungeon_F;
 /**
  * Represents the tunnels the player must walk through to escape INTR (cell).
@@ -29,7 +30,7 @@ public class Esc extends Room {
     public Esc(String name, String ID, String desc) {
         super(name, ID);
         this.description = desc;
-        this.addFurniture(MACHINERY, FLOOR, new Wall("The walls are masked by a wall of machinery."));
+        this.addFurniture(MACHINERY, FLOOR, new Wall("The walls are masked by a wall of machinery."), new Dng_Monst_Furn());
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {

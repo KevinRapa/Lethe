@@ -1,5 +1,6 @@
 package Caves;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Room;
@@ -11,10 +12,10 @@ import java.util.Random;
  * @see Escape_Tunnel.Esc1
  * @author Kevin Rapa
  */
-public class Magic_Artifact extends Item {
+public class Factum extends Item {
     Random generator;
     // =========================================================================
-    public Magic_Artifact(String name) {
+    public Factum(String name) {
         super(name);
         this.useID = 1;
         this.type = "phylactery";
@@ -32,18 +33,22 @@ public class Magic_Artifact extends Item {
      * @return coordinates of the player.
      */
     @Override public String useEvent() {
-        Room room;
-        int x, y, z;
-
-        do {    
-            x = generator.nextInt(8) + 1;
-            y = generator.nextInt(6) + 1;
-            z = generator.nextInt(7);
-            room = Player.getRoomObj(z,y,x);                
-        } while (! Player.hasVisited(room.getID()) && room.getID().matches("ESC\\d"));    
-
-        Player.setOccupies(z, y, x);  
-        
+        switch (Player.getPosId()) {
+            case Id.CHA2:
+                Player.setOccupies(Id.VAUE); break;     
+            case Id.VAUE:
+                Player.setOccupies(Id.CHA2); break;
+            default:
+                Room room;
+                int x, y, z;
+                do {
+                    x = generator.nextInt(8) + 1;
+                    y = generator.nextInt(6) + 1;
+                    z = generator.nextInt(7);
+                    room = Player.getRoomObj(z,y,x);
+                } while (! Player.hasVisited(room.getID()) || room.getID().matches("ESC\\d"));
+                Player.setOccupies(z, y, x); 
+        }
         return this.useDialog;
     }
     // =========================================================================

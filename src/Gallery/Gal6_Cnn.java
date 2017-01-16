@@ -40,7 +40,7 @@ public class Gal6_Cnn extends LghtMchn {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {   
-        if (doesThisHaveIt("box thingy")) {
+        if (containsItem("box thingy")) {
             if (! isOn)
                 return "The battery fits like a glove in that top compartment! But\n"
                      + "why aren't the light all lighting up and bleeping?";

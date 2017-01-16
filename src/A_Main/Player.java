@@ -21,14 +21,13 @@ import A_Super.Openable;
  * @see A_Main.PlayerAttributes
  * @author Kevin Rapa
  */
-public class Player {
-    private static Room[][][] mapRef; // Reference to game map.
-    private static int[] pos; // Room object you are in.
-    private static Inventory inv, keys; // Your inventory and keyring.
-    private static ArrayList<String> visited; // List of rooms you've visited.
-    private static String lastVisited; // The last room you visited.
-    private static String shoes; // Some puzzles are solved with shoes.
-    private final static HashMap<Character, Runnable> CMD = new HashMap<>(); // Main game controls
+public final class Player {
+    private static Room[][][] mapRef;
+    private static int[] pos;
+    private static Inventory inv, keys;
+    private static ArrayList<String> visited;
+    private static String lastVisited, shoes;
+    private final static HashMap<Character, Runnable> CMD = new HashMap<>(); 
 //******************************************************************************
 // <editor-fold desc="GETTERS AND SETTERS">  
 //******************************************************************************
@@ -39,12 +38,12 @@ public class Player {
      * @param name The name of a piece of furniture in your location.
      * @return The furniture objects with the name.
      */
-    public static Furniture getFurnRef(String name) {
+    private static Furniture getFurnRef(String name) {
         for(Furniture i : getPos().getFurnishings()) {
             if (i.getValidNames().stream().anyMatch(j -> name.matches(j)))
                 return i;           
         }
-        return null;
+        return null; // Should never return null. Furniture is already checked for existence.
     }
     /*------------------------------------------------------------------------*/   
     /**
@@ -180,7 +179,7 @@ public class Player {
     public static int startDialog() {
         AudioPlayer.playTrack(Player.getPosId());
         
-       /* GUI.menOut("\n\nPress enter...");
+        GUI.menOut("\n\nPress enter...");
         GUI.out("It's 10:00pm, the night is clear and warm.\n" +
                 "You have just arrived on foot to your destination, and\n" +
                 "its even more colossal than what you had\n" +
@@ -195,7 +194,7 @@ public class Player {
         GUI.menOut("Press the up arrow key\nat any time to go to\n"
                  + "your last action.\n\nPress enter...");
         GUI.promptOut();
-        */
+        
         return mainPrompt();
     }
     // ========================================================================   
@@ -376,6 +375,9 @@ public class Player {
         else if (searchThis.matches("it|them")) // Indefinite reference.
             if (Player.getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture()))
                 search(getFurnRef(searchThis));
+        
+        else if (searchThis.matches("furniture|furnishings"))
+            GUI.out("You have to enter something specific.");
             
         else if (! searchThis.matches("")) 
             GUI.out("There is no " + searchThis + " here."); 
@@ -431,6 +433,8 @@ public class Player {
                     GUI.out("Type an action and the slot number."); 
             }
         } while (! cmdItm.matches(""));
+        
+        describeRoom();
     }
     // ========================================================================  
     /**

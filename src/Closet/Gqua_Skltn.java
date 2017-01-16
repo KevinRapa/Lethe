@@ -18,7 +18,7 @@ public class Gqua_Skltn extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (this.doesThisHaveIt("crowbar")) {
+        if (this.containsItem("crowbar")) {
             return this.description.concat(" There's a\ncrowbar in its hand.");
         }
         

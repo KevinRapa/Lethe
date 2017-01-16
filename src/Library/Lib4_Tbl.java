@@ -14,7 +14,7 @@ public class Lib4_Tbl extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (! this.doesThisHaveIt("crystal orb")) {
+        if (! this.containsItem("crystal orb")) {
             return "The low table sits between the couch and the\n"
                  + "fireplace.";
         } 

@@ -48,11 +48,11 @@ public class Labo_Flsk extends Furniture {
     // ======================================================================== 
     private int determineProduct() {
         if (this.inv.size() == 5 && 
-                doesThisHaveIt("chilled Br 10mL") && 
-                doesThisHaveIt("vinegar 5mL") && 
-                doesThisHaveIt("ae 20mL") &&
-                doesThisHaveIt("wine 15mL") && 
-                doesThisHaveIt("H2CO3 35mL"))
+                containsItem("chilled Br 10mL") && 
+                containsItem("vinegar 5mL") && 
+                containsItem("ae 20mL") &&
+                containsItem("wine 15mL") && 
+                containsItem("H2CO3 35mL"))
             return 1;
         else
             return 0;

@@ -34,7 +34,7 @@ public class Torch extends Furniture {
     @Override public String interact(String key) {
         String rep = this.actDialog;
         
-        if (this.doesThisHaveIt("hand torch")) {
+        if (this.containsItem("hand torch")) {
             this.inv.give(TORCH, Player.getInv());
             GUI.invOut("You are carrying:\n" + Player.getInv());
         }
@@ -45,7 +45,7 @@ public class Torch extends Furniture {
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String useEvent(Item item) {
-        if (this.doesThisHaveIt("hand torch"))
+        if (this.containsItem("hand torch"))
             return "The holder already bears a torch you bumbling oaf.";
         else
             Player.getInv().give(item, this.inv);
@@ -54,7 +54,7 @@ public class Torch extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (! this.doesThisHaveIt("hand torch"))
+        if (! this.containsItem("hand torch"))
             return "The mounted steel holder is empty.";
             
         return this.description;

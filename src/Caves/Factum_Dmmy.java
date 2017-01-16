@@ -4,22 +4,22 @@ import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Furniture;
 /**
- * The player must take this in the Deep Chamber to obtain the artifact.
+ * The player must take this in the Deep Chamber to obtain the factum.
  * This removes itself from this room once interacted with.
  * 
  * @author Kevin Rapa
  */
-public class Artifact_Dummy extends Furniture {
+public class Factum_Dmmy extends Furniture {
     // ========================================================================
-    public Artifact_Dummy () {
+    public Factum_Dmmy () {
         super();
         this.searchable = false;
         
-        this.description = "Just take the artifact and get out!";
+        this.description = "Just take the factum and get out!";
         this.actDialog = "You fumble around and grab the artifact.";
         this.searchDialog = this.description;
 
-        this.addNameKeys("artifact");
+        this.addNameKeys("factum", "the factum");
         this.addActKeys(GETKEYS);
     }
     // ======================================================================== 
@@ -32,7 +32,7 @@ public class Artifact_Dummy extends Furniture {
     }
     // ========================================================================   
     @Override public String interact(String key) {
-        Player.getInv().add(new Magic_Artifact("the artifact"));
+        Player.getInv().add(new Factum("the Factum"));
         GUI.invOut("You are carrying:\n" + Player.getInv());
         Player.getPos().removeFurniture(this);
         return Cave.distortDescription(3, this.actDialog);

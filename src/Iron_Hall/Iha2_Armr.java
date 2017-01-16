@@ -19,7 +19,7 @@ public class Iha2_Armr extends Furniture {
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        return this.doesThisHaveIt("polearm") ? 
+        return this.containsItem("polearm") ? 
                 this.description : "It's a suit of armor. It's gauntlets are empty.";
     }
 /*----------------------------------------------------------------------------*/

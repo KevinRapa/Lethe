@@ -15,7 +15,7 @@ public class Look_Rlng extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (this.doesThisHaveIt("looped rope")) {
+        if (this.containsItem("looped rope")) {
             return "A wide, sturdy granite railing. There appears to be\n"
                  + "something tied to the bottom.";
         }
@@ -23,7 +23,7 @@ public class Look_Rlng extends Furniture{
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {     
-        if (this.doesThisHaveIt("looped rope")) {
+        if (this.containsItem("looped rope")) {
             return "You take hold of the railing and peer outwards.\n"
                  + "Something tied to the railing catches your eye.";
         }

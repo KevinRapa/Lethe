@@ -23,7 +23,7 @@ public class Kitc_Trch extends Torch {
     @Override public String interact(String key) {
         String rep = this.actDialog;
         
-        if (this.doesThisHaveIt("hand torch")) {
+        if (this.containsItem("hand torch")) {
             this.inv.give(TORCH, Player.getInv());
             ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
         }
@@ -36,7 +36,7 @@ public class Kitc_Trch extends Torch {
     @Override public String useEvent(Item item) {
         String rep = this.useDialog;
         
-        if (this.doesThisHaveIt("hand torch"))
+        if (this.containsItem("hand torch"))
             rep = "The holder already bears a torch you bumbling oaf.";
         
         else {

@@ -17,7 +17,7 @@ public class Bba_Bnch extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        return this.doesThisHaveIt("note from a visitor") ? 
+        return this.containsItem("note from a visitor") ? 
                 this.description + "A note is laying on its surface." : 
                 this.description;
     }

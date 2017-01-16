@@ -8,7 +8,7 @@ import A_Super.Torch;
 public class Intr_Trch extends Torch implements Resetable {
     // ======================================================================== 
     @Override public void reset() {
-        if (! this.doesThisHaveIt("hand torch"))
+        if (! this.containsItem("hand torch"))
             this.inv.add(TORCH);
     }   
     // ======================================================================== 

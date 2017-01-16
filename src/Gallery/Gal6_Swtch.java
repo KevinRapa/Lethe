@@ -20,7 +20,7 @@ public class Gal6_Swtch extends Lever {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        if (! REF.isOn() && REF.doesThisHaveIt("box thingy")) {
+        if (! REF.isOn() && REF.containsItem("box thingy")) {
             return "You flick the switch.\n" + REF.turnOn();
         }
         else if (REF.isOn()) {

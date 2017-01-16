@@ -34,7 +34,7 @@ public class Gal2_Stat extends Furniture {
     public String activate(char color, boolean isOn) {
         String rep = "The orb sits comfortably in the statue's palm.";
         
-        if (doesThisHaveIt("crystal orb") && isOn && level != 3) {
+        if (containsItem("crystal orb") && isOn && level != 3) {
             
             if ((color == 'r' && this.level == 0) || 
                 (color == 'p' && this.level == 1) || 
@@ -49,7 +49,7 @@ public class Gal2_Stat extends Furniture {
                 this.level = 0;
             }
         }
-        else if (! this.doesThisHaveIt("crystal orb") && isOn)
+        else if (! this.containsItem("crystal orb") && isOn)
             rep = " The beam of light shines at the statue in the central chamber.";
         
         else if (this.level == 3 && isOn)
@@ -79,7 +79,7 @@ public class Gal2_Stat extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (this.doesThisHaveIt("crystal orb")) {   
+        if (this.containsItem("crystal orb")) {   
             switch (this.level) {
                 case 0: 
                     return "The statue now stands holding the glinting crystal orb.";
@@ -99,7 +99,7 @@ public class Gal2_Stat extends Furniture {
     @Override public String getSearchDialog() {
         String rep = this.searchDialog;
         
-        if (this.searchable && this.doesThisHaveIt("crystal orb")) {
+        if (this.searchable && this.containsItem("crystal orb")) {
             rep = "The statue stands bearing the crystal orb.";
         }
         else if (! this.searchable) {

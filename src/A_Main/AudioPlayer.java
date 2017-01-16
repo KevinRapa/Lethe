@@ -82,12 +82,12 @@ public class AudioPlayer {
         putAllTracks(obsCustom, Id.OBS1, Id.OBS2, Id.OBS3);
         putAllTracks(caves, "CT", "CV", Id.MY18);
         putAllTracks(deepCave, Id.MS65, Id.MS66);
-        putAllTracks(tombs, Id.TM16, Id.TM66, Id.TM32, Id.AN65, Id.AN55);
+        putAllTracks(tombs, Id.TM16, Id.TM66, Id.TM32, Id.AN65, Id.AN55, Id.VAUE);
         putAllTracks(sewerTunnels, Id.SEW0, Id.SEW1, Id.SEW2, Id.SEW3, Id.SEW4, Id.SEW5);
         putAllTracks(cistern, Id.CIS1, Id.CIS2, Id.CIS3, Id.CIS4);
         putAllTracks(aeolianHarp, Id.OUB1, Id.OU62, Id.AARC);
         putAllTracks(prisonCustom, Id.PRIS, Id.TORC);
-        putAllTracks(sewerCogwork, Id.INTR, Id.ESC1, Id.ESC2, Id.ESC3, Id.ESC4, Id.ESC5, Id.ESC6, Id.ARCH);
+        putAllTracks(sewerCogwork, Id.INTR, Id.ESC1, Id.ESC2, Id.ESC3, Id.ESC4, Id.ESC5, Id.ESC6, Id.DKCH);
         putAllTracks(torcCustom, Id.TORC, Id.CRY1, Id.CRY2, Id.CAS1, Id.CS35);
         
         put(Id.GAL1, gal1wCustom);       put(Id.GAL3, gal2wCustom); 

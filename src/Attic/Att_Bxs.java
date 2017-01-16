@@ -5,10 +5,6 @@ import A_Super.Item;
 import java.util.Random;
 import A_Super.Openable;
 /**
- * Picks random furniture to display when searched.
- * Superficial. Used to contain florence flask, but effort to obtain the flask
- * by chance was too variable.
- * 
  * @author Kevin Rapa
  */
 public class Att_Bxs extends Furniture implements Openable {
@@ -32,19 +28,13 @@ public class Att_Bxs extends Furniture implements Openable {
         this.searchDialog = "You pick a few boxes randomly and look inside.";
 
         this.addNameKeys("(?:cardboard )?box(?:es)?", "pile");
-    }
-    // ========================================================================    
-    @Override public String getSearchDialog() {
-        this.inv.clear();
         
-        int index = generator.nextInt(8);
-        this.inv.add(POSSIBILITIES[index]);
-        index = generator.nextInt(8);
-        this.inv.add(POSSIBILITIES[index]);
-        
-        return this.searchDialog;
+        for (int i = 1; i <= 7; i++) {
+            int index = generator.nextInt(8);
+            this.inv.add(POSSIBILITIES[index]);
+        }
     }
-    // ========================================================================    
+    // ========================================================================      
 }
 
 

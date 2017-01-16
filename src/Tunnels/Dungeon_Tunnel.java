@@ -13,6 +13,7 @@ abstract public class Dungeon_Tunnel extends Room {
 // ============================================================================    
     public Dungeon_Tunnel(String name, String ID) {
         super(name, ID);
+        this.addFurniture(new Dng_Monst_Furn());
     }
 // ============================================================================
     @Override public String triggeredEvent() {

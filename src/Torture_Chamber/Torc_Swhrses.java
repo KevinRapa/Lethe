@@ -63,7 +63,7 @@ public class Torc_Swhrses extends Furniture implements Resetable {
     }
     // ========================================================================     
     private boolean hasLadder() {
-        return doesThisHaveIt("metal ladder");
+        return containsItem("metal ladder");
     }
     // ========================================================================     
     // ************************************************************************

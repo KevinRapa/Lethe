@@ -15,7 +15,7 @@ public class Sear_Skltn extends Furniture {
     @Override public String getDescription() {
         String rep = this.description;
         
-        if (this.doesThisHaveIt("crowbar")) {
+        if (this.containsItem("crowbar")) {
             rep += "\nThere's a crowbar in its hand.";
         }       
         return rep;

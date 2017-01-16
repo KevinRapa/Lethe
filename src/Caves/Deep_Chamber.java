@@ -4,10 +4,10 @@ import A_Super.Room;
 import A_Super.Direction;
 /**
  * This room distorts all descriptive output.
- * The player must take the magic artifact from this room, having prior knowledge
- * that the artifact is in here.
+ * The player must take the magic factum from this room, having prior knowledge
+ * that the factum is in here.
  * 
- * @see Caves.Magic_Artifact
+ * @see Caves.Factum_Dmmy
  * @author Kevin Rapa
  */
 public class Deep_Chamber extends Room {

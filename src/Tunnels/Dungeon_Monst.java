@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
+import static java.lang.Math.abs;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Timer;
@@ -21,6 +22,7 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import static java.lang.Math.abs;
+
 /**
  * This class simulates a creature that roams the halls of the tunnels.
  * 
@@ -106,7 +108,8 @@ public class Dungeon_Monst {
                plyrId = Player.getPosId().substring(0, 3);
 
         if ((monstId.matches("CIS") && ! plyrId.matches("OUB|AAR|CIS")) ||
-                (monstId.matches("SEW") && ! plyrId.matches("SEW|TOR|PRI|INT|ARC")))
+                (monstId.matches("SEW") && ! plyrId.matches("SEW|PRI|INT")) ||
+                    (plyrId.matches("TOR|CRY|DKC")))
             return Volume.NONE;
 
         else if (Player.getPos().isAdjacent(position)) { 
@@ -175,6 +178,10 @@ public class Dungeon_Monst {
               + "The creature seems too mindless to take your keys though.");
         
         AudioPlayer.playEffect(24);
+    }
+    // ========================================================================
+    public static String getPos() {
+        return position;
     }
     // ========================================================================
     // ************************************************************************

@@ -57,7 +57,7 @@ public final class Id {
         CRY1 = "CRY1",  CRY2 = "CRY2",  INTR = "INTR",  ESC1 = "ESC1",
         ESC2 = "ESC2",  ESC3 = "ESC3",  ESC4 = "ESC4",  ESC5 = "ESC5",
         ESC6 = "ESC6",  CAS1 = "CAS1",  OUB1 = "OUB1",  PRIS = "PRIS",
-        SEWP = "SEWP",  ARCH = "ARCH",    
+        SEWP = "SEWP",  DKCH = "DKCH",    
             
             // </editor-fold>
             // <editor-fold desc="Catacombs">
@@ -99,7 +99,7 @@ public final class Id {
         // <editor-fold desc="AREA 6: Chapel and vault">
 
         CHS1 = "CHS1", CHS3 = "CHS3", CHA1 = "CHA1", CHA2 = "CHA2",
-        VAU1 = "VAU1", VAUH = "VAUH", VAUE = "VAUE", 
+        VAU1 = "VAU1", VAU2 = "VAU2", VAUE = "VAUE", 
             
         // </editor-fold>   
         // <editor-fold desc="AREA 7: Lich quarters">

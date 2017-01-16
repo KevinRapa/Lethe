@@ -28,9 +28,9 @@ public class Lib2_Vyg extends Furniture {
     @Override public String interact(String key) {              
         String rep = this.actDialog;
         
-        if (this.doesThisHaveIt("epic tome") && REF.doesThisHaveIt("greek tome") &&
-            REF2.doesThisHaveIt("biblical tome") && REF3.doesThisHaveIt("infernal tome") &&
-            REF4.doesThisHaveIt("divine tome") && ! this.moved) {
+        if (this.containsItem("epic tome") && REF.containsItem("greek tome") &&
+            REF2.containsItem("biblical tome") && REF3.containsItem("infernal tome") &&
+            REF4.containsItem("divine tome") && ! this.moved) {
             Lib2 lib2 = (Lib2)Player.getRoomObj(Id.LIB2);
             lib2.addAdjacent(Id.LIB1);
             lib2.moveShelf();

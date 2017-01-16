@@ -6,7 +6,6 @@ public class Stud_BookPhy extends Book {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Stud_BookPhy(String name) {
         super(name, 4);
-        this.useID = 2;
         this.type = "phylactery";
         
         PAGE_LIST[0] = "- A Young Mind's Guide to Lichery -\n" +

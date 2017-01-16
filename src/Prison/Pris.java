@@ -2,14 +2,14 @@ package Prison;
 
 import A_Super.Furniture;
 import A_Super.Openable;
-import Tunnels.Dungeon_Tunnel;
+import A_Super.Room;
 /**
  * Holds a clue for solving the valve puzzle, contains the oubliette key.
  * Oubliette key is not a necessary item.
  * 
  * @author Kevin Rapa
  */
-public class Pris extends Dungeon_Tunnel {
+public class Pris extends Room {
     private final Furniture[] CELLS = {
         new Pris_Cll("1", "one", "You see a pair of wall shackles and a metal\n"
                    + "bucket on the floor."),
