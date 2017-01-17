@@ -13,10 +13,10 @@ public class Sew3 extends Dungeon_Tunnel {
                           "following a raging river of water against the north wall.\n" +
                           "A short bridge leads north across the river to a door on the\n" +
                           "other side. The river forks where you stand; one half curving\n" +
-                          "south down the side tunnel to the pool and the other half\n" +
-                          "leading further down the tunnel to the east. Another short\n" +
+                          "south back down the side tunnel to the pool and the other half\n" +
+                          "leading further down the tunnel eastwards. Another short\n" +
                           "bridge to the east gives access to the walkway opposite the\n" +
-                          "fork. Mounted on the ceiling is a metal pipe following the\n" +
+                          "fork. Mounted on the ceiling is a metal pipe running along the\n" +
                           "tunnel.";
     }
 // ============================================================================

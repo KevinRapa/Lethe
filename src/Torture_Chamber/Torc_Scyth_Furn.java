@@ -28,7 +28,10 @@ public class Torc_Scyth_Furn extends Furniture implements Resetable {
         Player.getInv().add(SCYTHE);
         return this.actDialog;
     }
-    // ========================================================================     
+    // ========================================================================  
+    /**
+     * Replaces scythe if player has it.
+     */
     @Override public void reset() {
         if (Player.hasItem("scythe")) {
             Player.getInv().remove(SCYTHE);

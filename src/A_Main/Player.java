@@ -78,7 +78,7 @@ public final class Player {
     }
     /*------------------------------------------------------------------------*/
     public static Room getRoomObj(String ID) {
-        int[] c = Room_References.getCoords(ID);
+        int[] c = RoomReferences.getCoords(ID);
         return mapRef[c[0]][c[1]][c[2]];
     }
     /*------------------------------------------------------------------------*/

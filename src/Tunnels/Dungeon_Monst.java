@@ -1,28 +1,19 @@
 package Tunnels;
 
-import A_Main.AudioPlayer;
-import static java.lang.Math.abs;
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
-import static A_Main.AudioPlayer.S;
-import static A_Main.AudioPlayer.WD;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Player;
+import A_Main.AudioPlayer;
+import A_Super.Direction;
 import Strange_Pool.Sewp;
-import java.io.File;
-import java.io.IOException;
+
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-
 /**
  * This class simulates a creature that roams the halls of the tunnels.
  * 
@@ -36,32 +27,24 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Dungeon_Monst {
     // ========================================================================
     private static enum Volume {
-        NONE("none", -50),
-        VERY_SOFT("verySoft", -40),
-        SOFT("soft", -30),
-        MEDIUM_SOFT("mediumSoft", -20),
-        MEDIUM("medium", -15),
-        MEDIUM_LOUD("mediumLoud", -10),
-        LOUD("loud", 0);
+        NONE(-50), // Not supposed to play.
+        VERY_SOFT(-40),
+        SOFT(-30),
+        MEDIUM_SOFT(-20),
+        MEDIUM(-15),
+        MEDIUM_LOUD(-10),
+        LOUD(0);
 
-        private final String TEST;
         private final int VOL;
-        // ==========================================
-        Volume(String test, int vol) {
-            this.TEST = test;
+        
+        Volume(int vol) {
             this.VOL = vol;
         }
-        @Override public String toString() {
-            return this.TEST;
-        }
-        // ==========================================
         public int getVol() {
             return this.VOL;
         }
     } 
-    protected static final File FOOTSTEPS = new File(WD, "effects" + S + "monster.wav");
-    protected static Clip clip;
-
+    // ==========================================
     private static String position = Id.SEW0;
     private static final LinkedList<String> COORD_QUEUE = new LinkedList() {{
         String[] ROOM_LIST = {Id.SEW0, Id.SEW1, Id.SEW2, Id.SEW3, Id.SEW4, Id.SEW5,
@@ -74,7 +57,7 @@ public class Dungeon_Monst {
     public final static void startMovement() {
         timer = new Timer(true);
         
-        timer.schedule(new Creature_Task(), 3500, 3500);
+        timer.schedule(new Creature_Task(), 4000, 4000);
     }
     // ========================================================================
     private static void move() {
@@ -82,25 +65,14 @@ public class Dungeon_Monst {
         position = COORD_QUEUE.peek();
         COORD_QUEUE.offer(COORD_QUEUE.poll());
         System.out.println("Monster: "+position);
+        
         if (! temp.matches(position.substring(0, 3)))
             AudioPlayer.playEffect(24);
 
-        playFootsteps();
-    }
-    // ========================================================================
-    private static void playFootsteps() {
-        try {
-            clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(FOOTSTEPS));
-
-            ((FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN))
-                    .setValue(determineVolume().getVol());
-
-            clip.start();
-        } catch (LineUnavailableException | UnsupportedAudioFileException | 
-                 IOException ex) {
-            System.out.println(ex.getMessage());
-        }
+        Volume vol = determineVolume();
+        
+        if (vol != Volume.NONE)
+            AudioPlayer.playEffect(25, vol.getVol());
     }
     // ========================================================================
     private static Volume determineVolume() {
@@ -154,8 +126,28 @@ public class Dungeon_Monst {
     }
     // ========================================================================
     public static synchronized void checkForPlayer() {
+        if (Player.getPosId().substring(0, 3).matches(position.substring(0, 3)) 
+                && (determineProximity() == 1.0))
+            warnPlayer();
+        
         if (position.equals(Player.getPosId()))
             capturePlayer();
+    }
+    // ========================================================================
+    private static void warnPlayer() {
+        String result = "That thing's very close!\t\t\t\t\tIt's directly ";
+        int[] plyrCrd = Player.getPos().getCoords();
+        int[] thisCrd = Player.getRoomObj(position).getCoords();
+        
+        if (plyrCrd[1] < thisCrd[1])
+            GUI.out(result.concat(Direction.SOUTH + "!"));
+        else if (plyrCrd[1] > thisCrd[1])            
+            GUI.out(result.concat(Direction.NORTH + "!"));
+        else if (plyrCrd[2] < thisCrd[2])
+            GUI.out(result.concat(Direction.EAST + "!"));
+        else
+            GUI.out(result.concat(Direction.WEST + "!"));
+        
     }
     // ========================================================================
     public static void capturePlayer() {

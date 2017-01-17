@@ -2,6 +2,7 @@ package Laboratory;
 
 import A_Main.GUI;
 import A_Main.Inventory;
+import A_Main.ItemTypeConstants;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -83,7 +84,7 @@ public class Labo_Flsk extends Furniture {
         }
         // ==========================================
         @Override public boolean add(Item item) {
-            if (item.getType().equals("ingredient")) {
+            if (item.getType().equals(ItemTypeConstants.INGREDIENT)) {
                 GUI.out("You pour it in.");
                 this.CONTENTS.add(item);
                 Player.getInv().add(TUBE_REF);

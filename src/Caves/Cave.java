@@ -1,30 +1,25 @@
 package Caves;
 
-import static A_Main.AudioPlayer.S;
-import static A_Main.AudioPlayer.WD;
 import A_Main.Player;
 import A_Super.Floor;
 import A_Super.Room;
 import A_Super.Wall;
+
+import static A_Main.AudioPlayer.S;
+import static A_Main.AudioPlayer.WD;
+import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
+import static java.lang.Math.round;
+import static java.lang.Math.abs;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import static java.lang.Math.sqrt;
-import static java.lang.Math.pow;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import static java.lang.Math.round;
-import static java.lang.Math.abs;
-import static java.lang.Math.round;
-import static java.lang.Math.abs;
-import static java.lang.Math.round;
-import static java.lang.Math.abs;
-import static java.lang.Math.round;
-import static java.lang.Math.abs;
 /**
  * The caves comprise a maze of similar tunnels.
  * The caves will generate their own descriptions and will distort their own
@@ -186,7 +181,7 @@ public class Cave extends Room {
         
         
         if (Player.hasItem("hand torch"))
-            return distortDescription(DISTANCE, "You are " + this + ".");
+            return distortDescription(DISTANCE, STD_RM_OUT);
         else
             return "???";
     }

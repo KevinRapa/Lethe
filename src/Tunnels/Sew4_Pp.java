@@ -49,25 +49,26 @@ public class Sew4_Pp extends Furniture implements Resetable {
         if (Player.getPos().hasFurniture("metal ladder")) {
             Player.getInv().remove(item);
             this.hasPipe = true;
-            return "With all your strength, you shove the piping into the break in the piping. It's a good fit.";
+            return "With all your strength, you shove the piping between the break in the piping. It's a good fit, but may not hold long...";
         }
-        else {
-            return this.useDialog;
-        }
+            
+        return this.useDialog;
     }
     // ========================================================================
     public boolean isMissingPipe() {
         return (! this.hasPipe);
     }
     // ========================================================================
+    /**
+     * Puts pipe back in Sew1 river and sets hasPipe to false.
+     */
     @Override public void reset() {
-        if (this.hasPipe) 
+        if (this.hasPipe) {
+            this.hasPipe = false;
             this.SEW1_RVR.getInv().contents().add(PIPE_REF);
-        
-        this.hasPipe = false;
+        }
     }
     // ========================================================================
-    
 }
 
 

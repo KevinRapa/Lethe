@@ -13,7 +13,7 @@ public class Tow_Wndws extends Window {
                 + "see far over and beyond the castle. The forest is much bigger\n"
                 + "than you imagined, and you now come to realize that the amount\n"
                 + "of effort to trek here would had been far more than the amount\n"
-                + "you would naturally commit.";
+                + "you would ever naturally commit.";
 
         this.addNameKeys("(?:wide )?(?:paned )?windows?");
     }

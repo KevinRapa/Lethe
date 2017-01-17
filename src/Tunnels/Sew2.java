@@ -10,13 +10,13 @@ public class Sew2 extends Dungeon_Tunnel {
 // ============================================================================    
     public Sew2(String name, String ID) {
         super(name, ID);
-        this.description= "The tunnel keeps on going to the west and to the east.\n" +
+        this.description= "The tunnel continues to the west and east here.\n" +
                           "The raging river of water flows eastwards against the\n" +
                           "north wall. Mounted on the south wall are a set\n" +
                           "of metal valves with roman numerals above each.\n" +
                           "Leading out the top of the valves is a large pipe\n" +
-                          "leading along the ceiling to the west. A bridge to the\n"
-                        + "west leads over the fork in the river.";
+                          "running along the ceiling westwards. A bridge to the\n"
+                        + "west crosses the fork in the river.";
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {

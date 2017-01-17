@@ -1,15 +1,14 @@
 package Tunnels;
 
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * Provides a description of the tunnel for the player.
  * @author Kevin Rapa
  */
 public class Sew_Tnnl extends Furniture {
     // ========================================================================
-    public Sew_Tnnl (Item... items) {
-        super(items);
+    public Sew_Tnnl () {
+        super();
         this.searchable = false;
         
         this.description = "This underground tunnel is warm and humid. The tunnel\n" +

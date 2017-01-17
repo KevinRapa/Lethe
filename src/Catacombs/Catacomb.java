@@ -139,7 +139,7 @@ public class Catacomb extends Room {
 // ============================================================================
     @Override public String triggeredEvent() {
         if (Player.hasItem("hand torch"))
-            return "You are " + this + ".";
+            return STD_RM_OUT;
         else
             return "???";
     }

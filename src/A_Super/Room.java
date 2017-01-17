@@ -4,7 +4,7 @@ import A_Main.AudioPlayer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.Serializable;
-import A_Main.Room_References;
+import A_Main.RoomReferences;
 /**
  * <p>
  * Represents one element in the game map array. 
@@ -29,26 +29,27 @@ import A_Main.Room_References;
  * castle.
  * </p>
  * 
- * @see A_Main.Room_References
+ * @see A_Main.RoomReferences
  * @author Kevin Rapa
  */
 public class Room implements Serializable { 
-    protected final String NAME, ID;    // The name and unique ID of the room.
-    protected final int[] COORDS;       // Index coordinates of this room.
-    protected boolean isLocked;         // You cannot move into a locked room.
-    protected String description;       // Description of the room.
-    protected ArrayList<String> adjacent; // List of rooms one can move to from this one.
+    protected final String NAME, ID, STD_RM_OUT;// The name and unique ID of the room.
+    protected final int[] COORDS;               // Index coordinates of this room.
+    protected boolean isLocked;                 // You cannot move into a locked room.
+    protected String description;               // Description of the room.
+    protected ArrayList<String> adjacent;       // List of rooms one can move to from this one.
     protected ArrayList<Furniture> furnishings; // Holds furniture.
     protected final String WALL_BARRIER = "There is a wall that way.";
     // CONSTRUCTOR ============================================================
     public Room(String name, String ID) {  
         this.NAME = name;
         this.ID = ID;
+        this.STD_RM_OUT = "You are " + name + ".";
         this.isLocked = false;
         this.adjacent = new ArrayList<>();
         this.furnishings = new ArrayList<>();
-        this.COORDS = Room_References.getCoords(this.ID); 
-        this.adjacent = Room_References.getAdj(this.ID);
+        this.COORDS = RoomReferences.getCoords(this.ID); 
+        this.adjacent = RoomReferences.getAdj(this.ID);
 }
 //******************************************************************************
 // <editor-fold desc="GETTERS">
@@ -156,7 +157,7 @@ public class Room implements Serializable {
      * @return A string default that says which room you are in.
      */
     public String triggeredEvent() {
-        return "You are " + this + ".";
+        return STD_RM_OUT;
     }
     // ========================================================================
     public boolean isThisLocked() {

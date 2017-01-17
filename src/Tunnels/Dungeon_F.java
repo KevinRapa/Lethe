@@ -9,7 +9,7 @@ import A_Super.Item;
 public class Dungeon_F extends Floor {
     // ========================================================================
     public Dungeon_F (Item... items) {
-        super("The ground damp and made of large gray stone bricks. Here and there, moss grows in the cracks.", items);
+        super("The ground is damp and made of large gray stone bricks. Here and there, moss grows in the cracks.", items);
     }
     // ========================================================================  
 }

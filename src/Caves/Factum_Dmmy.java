@@ -1,6 +1,7 @@
 package Caves;
 
 import A_Main.GUI;
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -39,6 +40,7 @@ public class Factum_Dmmy extends Furniture {
         Player.getInv().add(FACTUM);
         GUI.invOut("You are carrying:\n" + Player.getInv());
         Player.getPos().removeFurniture(this);
+        Player.getRoomObj(Id.EOW1).unlock();
         return Cave.distortDescription(3, this.actDialog);
     }
     // ========================================================================         

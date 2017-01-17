@@ -41,7 +41,7 @@ public class Wow3 extends Room {
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String triggeredEvent() {
-        if (Player.getLastVisited().matches(Id.WOW2)) {
+        if (Player.getLastVisited().equals(Id.WOW2)) {
             if (Player.hasVisited(this.ID)) {
                 if (! this.hasFurniture("ladder"))
                     this.addFurniture(new Wow2_Strs(Direction.DOWN, 1));
@@ -56,7 +56,7 @@ public class Wow3 extends Room {
             }               
         }
         
-        return "You are " + this + ".";
+        return STD_RM_OUT;
     }
 /*----------------------------------------------------------------------------*/    
 }

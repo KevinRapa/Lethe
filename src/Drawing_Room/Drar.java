@@ -29,7 +29,7 @@ public class Drar extends Room {
             GUI.out("From across the room, an apparition stares at you with\n"
                    + "open eyes.");
           
-        return "You are " + this + ".";
+        return STD_RM_OUT;
     }
 /*----------------------------------------------------------------------------*/   
 }

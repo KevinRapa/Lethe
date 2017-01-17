@@ -17,14 +17,12 @@ public class Mha1 extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
-        String dialog = "You are " + this + ".";
-        
         if (! Player.hasVisited(this.ID)) {
             GUI.out("\nAs soon as you enter, you catch a glimpse of a white\n"
                     + "figure passing through a door in the middle of the\n"
                     + "hallway.");
         }    
-        return dialog;
+        return STD_RM_OUT;
     }
 /*----------------------------------------------------------------------------*/  
 }

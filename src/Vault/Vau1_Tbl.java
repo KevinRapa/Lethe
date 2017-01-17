@@ -6,7 +6,6 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Vau1_Tbl extends Furniture {
-
     // ========================================================================
     public Vau1_Tbl (Item... items) {
         super(items);

@@ -10,8 +10,4 @@ public class Esc1 extends Esc {
                         "continues to the west and then turns north.");
     }
 // ============================================================================
-    @Override public String triggeredEvent() {
-        return "You are " + this + ".";
-    }
-// ============================================================================
 }

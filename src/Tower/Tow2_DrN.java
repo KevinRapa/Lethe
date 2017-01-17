@@ -1,5 +1,6 @@
 package Tower;
 
+import A_Main.ItemTypeConstants;
 import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Door;
@@ -13,8 +14,8 @@ public class Tow2_DrN extends Door {
         super(dir);
         
         this.description = "The metal double doors are incised with many curved\n"
-                         + "decorative etchings. Five circular etchings weave\n"
-                         + "themselves in with the numerous etchings in a pentagonal shape.\n"
+                         + "decorative etchings. Five circular etchings arranged pentagonally\n"
+                         + "weave themselves in with the numerous other etchings.\n"
                          + "A stream of blue light fills ";
 
         this.addNameKeys("(?:imposing )?(?:glowing )?(?:metal )?(?:double-?)?doors?", "(?:door )?etchings?");
@@ -24,7 +25,7 @@ public class Tow2_DrN extends Door {
         int numPhylacteries = 0;
         
         for (Item i : Player.getInv())
-            if (i.getType().matches("phylactery"))
+            if (i.getType().equals(ItemTypeConstants.PHYLACTERY))
                 numPhylacteries++;
         
         switch (numPhylacteries) {

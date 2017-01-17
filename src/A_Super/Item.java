@@ -23,7 +23,7 @@ public class Item implements Serializable {
     protected String type = "item";// Item type, used in the take() player method.    
     protected String description; // Item description. Used when item is inspected.
     protected String useDialog; // Prints when item with ID 1 is used.
-    protected int useID = 2; // 1 - used on itself | 2 - enters a sub-prompt
+    protected int useID = 2; // 1 - used on itself | 2 - enters a sub-prompt  
 //******************************************************************************
 // <editor-fold desc="CONSTRUCTORS">
 // 

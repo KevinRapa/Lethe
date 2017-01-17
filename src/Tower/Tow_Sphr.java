@@ -10,9 +10,9 @@ public class Tow_Sphr extends Furniture {
         super();
         this.searchable = false;
         
-        this.description = "The ball of bright yellow light pulses and few seconds and emits\n"
+        this.description = "The ball of bright yellow light pulses every few seconds and emits\n"
                          + "a dizzying low pitch. The sphere just hovers, still, high up in the center\n"
-                         + "of the tower. It fills you with unexplainable fear.";
+                         + "of the tower. You are compelled to keep staring, but you pull your eyes away.";
         
         this.searchDialog = "The sphere is too high to inspect more closely.";
 

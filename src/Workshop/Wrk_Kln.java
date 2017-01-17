@@ -41,7 +41,7 @@ public class Wrk_Kln extends Furniture {
             rep = "You pour the sand into the crucible.";
         }
         else if ((name.matches("\\w+ dye")) && ! hasDye()) {
-            if (name.matches("red dye")) {
+            if (name.equals("red dye")) {
                 this.hasRedDye = true;
             }
             else if (name.equals("blue dye")) {

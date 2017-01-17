@@ -16,7 +16,7 @@ public class Want_Gt extends Door {
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String interact(String key) {
-        if (key.matches("close"))
+        if (key.equals("close"))
             return "Now why would you try to do that??";
         else
             return this.actDialog;

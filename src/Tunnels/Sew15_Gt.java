@@ -14,7 +14,7 @@ public class Sew15_Gt extends Furniture {
         this.description = "Passed the iron gate, you can see the tunnel leading\n" +
                            "further down into darkness. The iron bars extend down\n" +
                            "into the water where they form a grate of sorts, you\n" +
-                           "suppose to prevent... things... from escaping\n" +
+                           "suppose to prevent things from... escaping\n" +
                            "unwantingly.";
         this.actDialog = "You can't get the gate open. It's locked.";
         this.searchDialog = "They're just iron bars.";

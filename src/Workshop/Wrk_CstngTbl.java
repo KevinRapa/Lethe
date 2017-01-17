@@ -35,7 +35,7 @@ public class Wrk_CstngTbl extends Furniture {
     @Override public String useEvent(Item item) {
         String rep, name = item.toString();
         
-        if (item.toString().matches("lens template")) {
+        if (item.toString().equals("lens template")) {
             this.hasTemplate = true;
             Player.getInv().remove(item);
             rep = "You fit the template onto the table's surface.";

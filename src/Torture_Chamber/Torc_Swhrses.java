@@ -32,7 +32,7 @@ public class Torc_Swhrses extends Furniture implements Resetable {
         this.searchDialog = "The sawhorses are holding up a ladder-like metal device.";
         this.useDialog = "You place the metal ladder back on the sawhorses.";
 
-        this.addNameKeys("(?:two )?sawhorses", "sawhorse");
+        this.addNameKeys("(?:two )?sawhorses?");
         this.addUseKeys("metal ladder");
     }
     // ======================================================================== 
@@ -83,7 +83,7 @@ public class Torc_Swhrses extends Furniture implements Resetable {
             this.CONTENTS.add(item);
             if (item.equals(METAL_LADDER)) 
                     Player.getRoomObj(Id.TORC).addFurniture(TORC_LDDR);
-            return true; // Some inventories have restrictions.
+            return true;
         }
     }
     // ========================================================================     
@@ -97,7 +97,7 @@ public class Torc_Swhrses extends Furniture implements Resetable {
             this.searchable = false;
 
             this.description = "The ladder-like object sits horizontally across the sawhorses.";
-            this.actDialog = "You take the metal device off of the sawhorses.";
+            this.actDialog = "You take the metal device off from the sawhorses.";
             
             this.addNameKeys("(?:metal )?ladder", "two parallel 10-foot long metal poles attached "
                            + "together via many shorter perpendicular metal poles");

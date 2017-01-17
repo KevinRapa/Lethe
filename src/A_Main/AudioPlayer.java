@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -139,6 +140,7 @@ public class AudioPlayer {
         put(22, new File(WD, "effects" + S + "keyClick2.wav"));
         put(23, new File(WD, "effects" + S + "keyClick3.wav"));
         put(24, new File(WD, "effects" + S + "dungeonDoor.wav"));
+        put(25, new File(WD, "effects" + S + "monster.wav"));
     }};
 //******************************************************************************    
 // </editor-fold>
@@ -178,7 +180,7 @@ public class AudioPlayer {
     }
 // ============================================================================
     /**
-     * Plays sound effects when certain events happen.
+     * Plays sound effects when certain events happen at a specified volume.
      * 
      * @param ID An integer corresponding to a sound effect.
      */
@@ -189,6 +191,27 @@ public class AudioPlayer {
             effectClip.start(); 
         } catch (LineUnavailableException | UnsupportedAudioFileException | 
                 IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+// ============================================================================
+    /**
+     * Plays sound effects when certain events happen.
+     * 
+     * @param ID An integer corresponding to a sound effect.
+     * @param volume Volume at which to adjust the effect.
+     */
+    public static void playEffect(int ID, int volume) {
+        try {
+            effectClip = AudioSystem.getClip();
+            effectClip.open(AudioSystem.getAudioInputStream(EFFECTS.get(ID)));
+
+            ((FloatControl)effectClip.getControl(FloatControl.Type.MASTER_GAIN))
+                    .setValue(volume);
+
+            effectClip.start();
+        } catch (LineUnavailableException | UnsupportedAudioFileException | 
+                 IOException e) {
             System.out.println(e.getMessage());
         }
     }

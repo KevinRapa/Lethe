@@ -35,7 +35,7 @@ public class Vest extends Room {
         Player.getRoomObj(Id.VEST).lock();
         GUI.out("You hear a click behind you.");
         
-        return "You are " + this;
+        return STD_RM_OUT;
     }            
 /*----------------------------------------------------------------------------*/
     public void switchWindow() {

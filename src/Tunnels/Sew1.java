@@ -14,8 +14,8 @@ public class Sew1 extends Dungeon_Tunnel {
         this.description= "You come to a bend in the tunnel. The tunnel turns to\n" +
                           "the south here away from the river of water, which\n" +
                           "continues past the east wall through a barred gate.\n" +
-                          "The tunnel leads far back to the west. On the walls\n" +
-                          "are several torches lighting the room a dim green hue\n" +
+                          "The tunnel leads far back west in the opposite direction. On the walls\n" +
+                          "are several torches lighting the room in a dim green hue\n" +
                           "resulting from moss growing everywhere.";
     }
 // ============================================================================

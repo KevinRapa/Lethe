@@ -21,9 +21,9 @@ public class Sew1_Rvr extends Sewer_River {
                            "It flows through an artificial square trench\n" +
                            "constructed into the floor. The water looks clear\n" +
                            "and smells quite clean. You imagine that it was\n" +
-                           "a natural spring at some point before being built \n" +
+                           "a natural spring at some point before being built\n" +
                            "around. It flows briskly and terminates here at\n" +
-                           "a metal grate. ";
+                           "a metal grate.";
     }
     // ========================================================================
     // ************************************************************************
@@ -43,7 +43,7 @@ public class Sew1_Rvr extends Sewer_River {
             this.CONTENTS.remove(item);
             GUI.out("Though your aren't fond of the idea of jumping in, you figure\n"
                   + "that your weight should be enough to keep you on your feet.\n"
-                  + "you jump in, holding on to the edge to retrieve the item.");
+                  + "you jump in, holding on to the edge, and retrieve the item.");
         }
     }
     // ========================================================================

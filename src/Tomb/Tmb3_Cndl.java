@@ -12,9 +12,9 @@ public class Tmb3_Cndl extends Furniture {
         this.searchable = false;
         
         this.description = "The candles stand in the wall niches without any base;\n"
-                         + "only a collection of melted wax at the bottom holds it\n"
-                         + "upright. Puzzlingly, the candle still burns steadily and\n"
-                         + "is not appearing to melt the wax any further.";
+                         + "only a collection of melted wax at the bottoms holds them\n"
+                         + "upright. Puzzlingly, the candles still burn steadily,\n"
+                         + "not appearing to melt the wax any further.";
 
         this.addNameKeys("(?:standing )?(?:wax )?candles?");
     }

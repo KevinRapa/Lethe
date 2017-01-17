@@ -1,14 +1,13 @@
 package Tunnels;
 
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Sew_Mss extends Furniture {
     // ========================================================================
-    public Sew_Mss (Item... items) {
-        super(items);
+    public Sew_Mss () {
+        super();
         this.searchable = false;
         
         this.description = "It looks like Sphagnum- a peaty moss genus. Peaty\n" +

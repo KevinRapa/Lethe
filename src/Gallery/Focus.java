@@ -1,5 +1,6 @@
 package Gallery;
 
+import A_Main.ItemTypeConstants;
 import A_Super.Item;
 /**
  * This item is used in the light machine puzzle.
@@ -12,7 +13,7 @@ public class Focus extends Item {
 /* CONSTRUCTOR ---------------------------------------------------------------*/           
     public Focus (String name, String desc) {
         super(name);
-        this.type = "focus";
+        this.type = ItemTypeConstants.FOCUS;
         this.description = desc;
     }
 /*----------------------------------------------------------------------------*/

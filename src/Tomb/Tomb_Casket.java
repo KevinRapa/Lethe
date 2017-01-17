@@ -15,7 +15,7 @@ abstract public class Tomb_Casket extends Furniture implements Openable {
                          + "couple hinges on one side. Its ominous, solemn presence\n"
                          + "in the forgotten chamber gives off a sinister vibe.";
 
-        this.addNameKeys("(?:decrepit )?(?:standing )?(?:wooden )?(?:casket|box|tomb|coffin");
+        this.addNameKeys("(?:decrepit )?(?:standing )?(?:wooden )?(?:casket|box|tomb|coffin)");
     }
     // ========================================================================    
 }

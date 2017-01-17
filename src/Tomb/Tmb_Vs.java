@@ -7,7 +7,6 @@ import A_Super.Openable;
  * @author Kevin Rapa
  */
 public class Tmb_Vs extends Furniture implements Openable {
-
     // ========================================================================
     public Tmb_Vs (Item... items) {
         super(items);

@@ -4,6 +4,7 @@ import A_Main.GUI;
 import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
+import A_Main.ItemTypeConstants;
 import A_Main.Player;
 /**
  * One of four components of the light machine puzzle in the gallery.
@@ -76,7 +77,7 @@ public class Gal6_Cnn extends LghtMchn {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {   
-            if (item.getType().matches("focus") || item.toString().matches("box thingy")) {
+            if (item.getType().matches(ItemTypeConstants.FOCUS) || item.toString().matches("box thingy")) {
                 this.CONTENTS.add(item);
                 this.trigger();
                 return true;

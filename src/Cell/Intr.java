@@ -34,7 +34,7 @@ public class Intr extends Room {
         if (! Player.hasVisited(this.ID))
             GUI.out("There's something wandering in the halls outside...");
         
-        return "You are " + this + ".";
+        return STD_RM_OUT;
     }
 // ============================================================================
 }

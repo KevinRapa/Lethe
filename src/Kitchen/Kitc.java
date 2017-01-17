@@ -45,7 +45,7 @@ public class Kitc extends Room{
         if (! this.isLit)
             return "You are in a pitch black room.";
         
-        return "You are " + this + ".";
+        return STD_RM_OUT;
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -20,7 +20,7 @@ public class Sewer_River extends Furniture {
                          + "out into the ocean?";
         this.actDialog = "You aren't getting in there unless you absolutely have to.";
         this.searchDialog = "You crouch down and scan the bottom of the river.";
-        this.useDialog = "You pick some of the water up in the bucket.";
+        this.useDialog = "You scoop up some of the water into the bucket.";
 
         this.addNameKeys("(?:raging )?river(?: of water)?", "(?:flowing )?water", "(?:square )?channel");
         this.addActKeys("swim", "jump", "drink");

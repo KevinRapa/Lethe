@@ -10,7 +10,7 @@ import java.util.Arrays;
  * <code>constructRoomReferences</code>.
  * @author Kevin Rapa                                                        
 // ***************************************************************************/
-public class Room_References {
+public class RoomReferences {
     private static final HashMap<String, String[]> ADJACENTS = new HashMap<>();
     private static final HashMap<String, int[]> COORDINATES = new HashMap<>();
 

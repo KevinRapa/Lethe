@@ -11,7 +11,7 @@ public class Blck_Strcs_Dr extends Door {
         super(dir);
         
         this.description = "The double doors are symmetrical and decorated with\n"
-                         + "a fine lattice edging. A carving of a snake curves\n"
+                         + "a fine lattice embossment. A carving of a snake curves\n"
                          + "around the edge of each door.";
 
         this.addNameKeys("(?:imposing )?(?:black )?(?:iron )?(?:double-?)?doors?");

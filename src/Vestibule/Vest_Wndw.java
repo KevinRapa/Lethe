@@ -28,12 +28,12 @@ public class Vest_Wndw extends Window {
         Vest vest = (Vest)Player.getPos(); // Player must be in vesibule.
         
         if (key.matches("open|close")) {
-            if (this.isOpen && key.matches("close")) {
+            if (this.isOpen && key.equals("close")) {
                 this.close(); 
                 vest.switchWindow();
                 return "You close the window.";
             }
-            else if (! this.isOpen && key.matches("open")) {
+            else if (! this.isOpen && key.equals("open")) {
                 this.open();
                 vest.switchWindow();
 
@@ -46,7 +46,7 @@ public class Vest_Wndw extends Window {
                     return "You open the window."; 
             }
             else
-                return "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
+                return "The window is already " + (key.equals("open") ? "open" : "closed") + "!";
         }
         else
             return this.escapeDialog;

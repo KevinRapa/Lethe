@@ -1,12 +1,13 @@
 package Study;
 
+import A_Main.ItemTypeConstants;
 import A_Super.Book;
 
 public class Stud_BookPhy extends Book {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Stud_BookPhy(String name) {
         super(name, 4);
-        this.type = "phylactery";
+        this.type = ItemTypeConstants.PHYLACTERY;
         
         PAGE_LIST[0] = "- A Young Mind's Guide to Lichery -\n" +
                        "- by Melroth Gfrorgozh -";

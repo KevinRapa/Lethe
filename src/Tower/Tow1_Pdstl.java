@@ -29,15 +29,11 @@ public class Tow1_Pdstl extends Furniture {
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        this.searchable = playerHasStaff();
+        this.searchable = Player.hasItem("dampening staff");
         
         return this.searchable ? "You approach the pedestal" : this.searchDialog;
     }
-    // ========================================================================  
-    private boolean playerHasStaff() {
-        return Player.hasItem("dampening staff");
-    }
-    // ========================================================================     
+    // ========================================================================    
 }
 
 

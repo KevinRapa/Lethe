@@ -16,13 +16,16 @@ public class Sew235_Pp extends Furniture {
                             + "on the south wall, along the ceiling to the\n"
                             + "north side of the room, and along the length of\n"
                             + "the tunnel westward.";
+                break;
             case 3:
                 description = "The metal pipe is bracketed to the ceiling\n"
                             + "over the river below. It's very rusty from the\n"
                             + "apparent years of neglect.";
+                break;
             case 5:
                 description = "The rusty metal pipe runs around the bend along\n"
                             + "the ceiling and into the wall above the door to the west.";
+                break;
         }
 
         this.searchDialog = "It doesn't seem to be hiding anything.";

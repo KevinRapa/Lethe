@@ -5,7 +5,6 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Tmb1_Bwl extends Furniture {
-
     // ========================================================================
     public Tmb1_Bwl () {
         super();

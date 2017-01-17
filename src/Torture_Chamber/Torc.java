@@ -20,7 +20,7 @@ public class Torc extends Room {
                           "is displayed on the wall above it. In the room's center\n" +
                           "is a table fit with many leather straps. A couple cages\n" +
                           "hang from the ceiling, and two torches light the room\n" +
-                          "on either side. To the east, in the back corner, is a\n"
+                          "on either side. In the back east corner is a\n"
                         + "metal door.";
     }
 // ============================================================================

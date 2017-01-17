@@ -8,6 +8,7 @@ import A_Super.Furniture;
  */
 public class Dng_Monst_Furn extends Furniture {
     private final String CANT_SEE_IT = "You can't hear or see it from here.";
+    private final String FAR_ROOMS_PATTERN = Id.CRY1+"|"+Id.CRY2+"|"+Id.DKCH+"|"+Id.TORC;
     // ========================================================================
     public Dng_Monst_Furn () {
         super();
@@ -26,10 +27,10 @@ public class Dng_Monst_Furn extends Furniture {
     @Override public String getDescription() {
         String result;
         
-        if (Player.getPosId().matches(Id.CRY1+"|"+Id.CRY2+"|"+Id.DKCH+"|"+Id.TORC)) {
+        if (Player.getPosId().matches(FAR_ROOMS_PATTERN)) {
             result = CANT_SEE_IT;
         }
-        else if (Player.getPosId().substring(0, 3).matches("ESC")) {
+        else if (Player.getPosId().matches("ESC.")) {
             result = "It's lurking around somewhere above your head... You can't hear it though.";
         }
         else if ((Dungeon_Monst.getPos().matches("CIS\\d") && ! Player.getPosId().matches("CIS\\d|OUB1|AARC")) ||

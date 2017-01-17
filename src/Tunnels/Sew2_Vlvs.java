@@ -29,11 +29,9 @@ public class Sew2_Vlvs extends Furniture implements Resetable {
             this.DIAL = dial;
             this.STATE = state;
         }
-        // ===================================
         @Override public String toString() {
             return this.DIAL;
         }
-        // ===================================
         public int state() {
             return this.STATE;
         }
@@ -58,14 +56,14 @@ public class Sew2_Vlvs extends Furniture implements Resetable {
         MAP.put("v", 4); MAP.put("vi", 5); MAP.put("vii", 6); MAP.put("viii", 7);
         MAP.put("ix", 8);
         
-        this.description = "There are a grid of 9 valves protruding from a console\n"
+        this.description = "They're a grid of 9 valves protruding from a console\n"
                          + "on the wall. Above each is a roman numeral and a small\n"
-                         + "dial. The rusty metal pipe originates fomr and leads out of the console's top.";
+                         + "gauge. The rusty metal pipe originates from and leads out of the console's top.";
         
         this.actDialog = null;
         this.searchDialog = "There's nothing here that you can take.";
 
-        this.addNameKeys("(?:metal )?valves?", "console");
+        this.addNameKeys("(?:metal )?valves?", "console", "grid of valves", "(?:roman )?(?:numerals|numbers)");
         this.addActKeys("turn", "rotate", "spin");
     }
     // ========================================================================   

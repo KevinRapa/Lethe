@@ -2,6 +2,7 @@ package Tower;
 
 import A_Main.GUI;
 import A_Main.Id;
+import A_Main.ItemTypeConstants;
 import A_Main.Player;
 import A_Super.Item;
 import Lichs_Quarters.Lich_Room;
@@ -12,7 +13,6 @@ public class Tow2 extends Lich_Room {
 // ============================================================================    
     public Tow2(String name, String ID) {
         super(name, ID);
-        this.lichDead = false;
         this.description = "You are on the circular balcony above the lower tower floor. To the north\n" +
                            "is another imposing metal door. Some of the etchings in the door emit a\n"
                          + "bright blue luminescence. To the east on the other side of the\n" +
@@ -23,8 +23,8 @@ public class Tow2 extends Lich_Room {
     @Override public String getDescription() {
         if (! this.lichDead)
             return description.concat(" You see a magnificent glowing sphere of light hovering in the highest area of the tower. ");
-        
-        return description;
+        else
+            return description;
     }
 // ============================================================================
     @Override public String triggeredEvent() {
@@ -32,7 +32,7 @@ public class Tow2 extends Lich_Room {
             int numPhylacteries = 0;
 
             for (Item i : Player.getInv())
-                if (i.getType().equals("phylactery"))
+                if (i.getType().equals(ItemTypeConstants.PHYLACTERY))
                     numPhylacteries++;
 
             if (numPhylacteries == 5) {
@@ -43,7 +43,7 @@ public class Tow2 extends Lich_Room {
         else
             return "The glowing sphere of light has disappeared...";
         
-        return "You are " + this + ".";
+        return STD_RM_OUT;
     }
 // ============================================================================
 }

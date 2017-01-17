@@ -31,7 +31,7 @@ public class Din1 extends Room{
             GUI.out("As you enter, you hear a door above you\n"
                   + "swing shut.");
         }    
-        return "You are " + this + ".";
+        return STD_RM_OUT;
     }
 /*----------------------------------------------------------------------------*/   
 }

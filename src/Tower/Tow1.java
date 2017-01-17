@@ -11,7 +11,6 @@ public class Tow1 extends Lich_Room {
     public Tow1(String name, String ID, Furniture pedestal) {
         super(name, ID);
         this.TOW_PEDESTAL = pedestal;
-        this.lichDead = false;
         this.description= "Through the door, you find yourself standing in a plain\n" +
                           "circular room with a blue and white checkered floor. Looking\n" +
                           "up, the room is a few stories high with a circular balcony\n" +
@@ -26,8 +25,8 @@ public class Tow1 extends Lich_Room {
         
         if (! this.lichDead)
             return result.replaceFirst("\\s(?=Wide)", " You see a magnificent glowing sphere of light hovering in the highest area of the tower. ");
-        
-        return result;
+        else
+            return result;
     }
 // ============================================================================
 }

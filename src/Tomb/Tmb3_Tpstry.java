@@ -11,7 +11,7 @@ public class Tmb3_Tpstry extends Wall_Art {
         super();
         this.description = "The tapestry is mainly just superficial designs,\n"
                          + "though woven in the center is a hexagram inside\n"
-                         + "a circle.";
+                         + "of a circle.";
 
         this.addNameKeys("(?:small )?(?:hanging )?(?:torn |ripped )?tapestry");
     }

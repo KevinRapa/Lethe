@@ -18,12 +18,12 @@ public class Sew2345_Rvr extends Sewer_River {
         this.inv = new River_Inventory(sew1RvrInv);
         
         this.description = "The river is about 11 feet across and 5 feet deep.\n" +
-                           "It flows through an artificial square trench\n" +
+                           "It flows through an artificial square channel\n" +
                            "constructed into the floor. The water looks clear\n" +
                            "and smells quite clean. You imagine that it was\n" +
-                           "a natural spring at some point before being built \n" +
-                           "around. The river flows down the tunnel to the \n" +
-                           "east with quite a strong current. ";
+                           "a natural spring at some point before being built\n" +
+                           "around. The river flows down the tunnel\n" +
+                           "eastwards with quite a strong current. ";
     }
     // ========================================================================
     // ************************************************************************
@@ -37,7 +37,7 @@ public class Sew2345_Rvr extends Sewer_River {
         }
         // ====================================================================
         @Override public boolean add(Item item) {
-            GUI.out("You drop the item in. It is immediately whisked away down\n"
+            GUI.out("You drop the item in. It immediately is whisked away down\n"
                   + "the river.");
             SEW1_RIVER_INV.contents().add(item);
             return true;

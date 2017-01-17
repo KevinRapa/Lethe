@@ -5,7 +5,6 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Tow_Blcny extends Furniture {
-
     // ========================================================================
     public Tow_Blcny () {
         super();
@@ -16,7 +15,7 @@ public class Tow_Blcny extends Furniture {
                          + "railing gaurds the balcony's inner edge.";
         this.actDialog = "And fall to your death?";
 
-        this.addNameKeys("(?:long )?(?:circular )?balcony");
+        this.addNameKeys("(?:long )?(?:circular )?balcony", "(?:black )?(?:metal )?railing");
         this.addActKeys("jump");
     }
     // ========================================================================    

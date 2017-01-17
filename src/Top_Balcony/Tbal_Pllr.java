@@ -1,14 +1,13 @@
 package Top_Balcony;
 
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Tbal_Pllr extends Furniture {
     // ========================================================================
-    public Tbal_Pllr (Item... items) {
-        super(items);
+    public Tbal_Pllr () {
+        super();
         this.searchable = false;
         
         this.description = "The wide column is about 20 feet wide and supports\n"

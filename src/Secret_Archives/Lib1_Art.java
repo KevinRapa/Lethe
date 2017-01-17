@@ -4,6 +4,7 @@ import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.GUI;
 import A_Main.Inventory;
+import A_Main.ItemTypeConstants;
 import A_Main.Player;
 
 public class Lib1_Art extends Furniture {
@@ -125,7 +126,7 @@ public class Lib1_Art extends Furniture {
         }
     /*------------------------------------------------------------------------*/
         @Override public boolean add(Item item) {
-            if (item.getType().matches("focus")) {
+            if (item.getType().matches(ItemTypeConstants.FOCUS)) {
                 this.CONTENTS.add(item);
                 triggerEvent();
                 return true;

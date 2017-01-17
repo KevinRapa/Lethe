@@ -33,7 +33,7 @@ public class Cou3 extends Room{
             GUI.out("As you walk into the front courtyard, the huge gates\n"
                 + "slowly swing shut behind you.");
         }               
-        return "You are " + this + ".";
+        return STD_RM_OUT;
     }
 /*----------------------------------------------------------------------------*/
 }

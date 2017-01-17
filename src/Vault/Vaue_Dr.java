@@ -8,6 +8,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Vaue_Dr extends Furniture {
+    // =====================================
     private enum State {
         ON("[o]"), OFF("[ ]");
         
@@ -20,6 +21,7 @@ public class Vaue_Dr extends Furniture {
             return this.STATE;
         }
     }
+    // =====================================
     
     private final State[][] BUTTONS = new State[4][4];
     // ========================================================================
@@ -27,8 +29,8 @@ public class Vaue_Dr extends Furniture {
         super();
         this.searchable = false;
         this.description = "Standing before you is an interesting wall resembling\n"
-                         + "a door of sorts. On it is a 4 by 4 grid of buttons. Each\n"
-                         + "button bears a dark circular rune";
+                         + "a sliding door. On it is a 4 by 4 grid of buttons. Drawn\n"
+                         + "on each is a dark circular rune";
         this.actDialog = null;
         this.searchDialog = "The only curiosity is the grid of buttons on the front.";
         
@@ -36,7 +38,7 @@ public class Vaue_Dr extends Furniture {
             for (int j = 0; j < 4; j++)
                 BUTTONS[i][j] = State.OFF;
         
-        this.addNameKeys("buttons?", "door", "(?:interesting |curious )?wall");
+        this.addNameKeys("buttons?", "(?:sliding )?door", "(?:interesting |curious )?wall");
         this.addActKeys("push", "activate", "solve", "open");
     }
     // ========================================================================   
@@ -49,7 +51,7 @@ public class Vaue_Dr extends Furniture {
             ans = GUI.promptOut();
             
             while (! ans.matches("(?:[1-4]\\s*,\\s*[1-4])|")) {
-                GUI.menOut("\nThat's not a valid choice.\n<#, #> Push\n< > Back");
+                GUI.menOut("\nThat's not a valid choice.\n<#,#> Push\n< > Back");
                 ans = GUI.promptOut();
             }
             
@@ -63,7 +65,7 @@ public class Vaue_Dr extends Furniture {
                 Player.getRoomObj(Id.VAU2).unlock();
                 Player.getPos().removeFurniture(this);
                 return "As you push the last button, all the runes become lit.\n"
-                     + "The large wall recedes into the floor slowly.\n"
+                     + "The wall recedes into the floor slowly.\n"
                      + "As the dust settles, a long room filled with treasure is revealed.";
             }
         } while (! ans.matches(""));
@@ -113,14 +115,12 @@ public class Vaue_Dr extends Furniture {
     }
     // ========================================================================  
     private boolean solved() {
-        boolean solved = true;
-        
         for (State[] i : this.BUTTONS)
             for (State j : i)
                 if (j == State.OFF)
                     return false;
         
-        return solved;    
+        return true;    
     }
     // ========================================================================  
 }

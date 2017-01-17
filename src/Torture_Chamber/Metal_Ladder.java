@@ -81,7 +81,6 @@ public class Metal_Ladder extends Item {
                 return "The metal ladder stands extended against the tunnel wall.\n"
                      + "It just reaches the pipe at the top.";
         }
-        // ====================================================================   
     }
     // ========================================================================
     // ************************************************************************

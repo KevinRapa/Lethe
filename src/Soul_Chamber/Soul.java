@@ -2,6 +2,7 @@ package Soul_Chamber;
 
 import A_Main.GUI;
 import A_Main.Id;
+import A_Main.ItemTypeConstants;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Room;
@@ -29,7 +30,7 @@ public class Soul extends Room {
 // ============================================================================
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.getID())) {
-            GUI.roomOut("You are " + this + ".");
+            GUI.roomOut(STD_RM_OUT);
             GUI.menOut("Press enter...");
             GUI.out("You stand before a pool of glowing aether, the very substance\n"
                   + "which frees the dead of their earthly bodies.");
@@ -61,11 +62,11 @@ public class Soul extends Room {
             Player.getRoomObj(Id.FOY1).removeAdjacent(Id.FOYW);
             Player.getRoomObj(Id.FOY1).removeAdjacent(Id.VEST);
         }
-        return "You are " + this + ".";
+        return STD_RM_OUT;
     }
 // ============================================================================
     private void removePhylacteries() {
-        Player.getInv().remove("phylactery");
+        Player.getInv().remove(ItemTypeConstants.PHYLACTERY);
         GUI.invOut("You are carrying:\n" + Player.getInv());
     }
 // ============================================================================    

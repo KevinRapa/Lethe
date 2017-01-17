@@ -16,7 +16,7 @@ public class Tmb2_Cskt extends Tomb_Casket {
                             "its features, including the eyes. The body is dressed\n" +
                             "in blue robes, probably a luxury during its time. A\n" +
                             "silky braided rope is tied around the robe at the waist.\n" +
-                            "It wears the hat of a scholar or academic and holds its \n" +
+                            "It wears the hat of a scholar or academic and holds its\n" +
                             "hands cupped at the waist. You look in its hands.";
     }
     // ========================================================================  

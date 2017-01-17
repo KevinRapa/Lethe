@@ -17,14 +17,14 @@ public class Sew4 extends Dungeon_Tunnel {
         this.SEW4_PP = (Sew4_Pp)sew4Pp;
         
         this.description= "The tunnel bends to the north here. The river, following\n" +
-                          "the tunnel's north wall, bends with it.\n" +
-                          "A metal pipe running along the ceiling follows the length\n" +
-                          "of the tunnel to the north and east. ";
+                          "the tunnel's north wall, bends with it. A metal pipe\n" +
+                          "running along the ceiling above the river follows\n" +
+                          "the length of the tunnel northwards and eastwards.";
     }
 // ============================================================================
     @Override public String getDescription() {
         if (SEW4_PP.isMissingPipe())
-            return this.description.concat("The pipe has a piece missing.");
+            return this.description.concat(" The pipe has a piece missing...");
         else
             return this.description;
     }

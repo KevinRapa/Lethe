@@ -26,7 +26,7 @@ public class Stud_Prtrt extends Wall_Art {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {  
-        if (key.matches("admire"))
+        if (key.equals("admire"))
             return "Yes, what a beautiful piece of artwork. You take a moment\n"
                  + "to soak in the creative essence. Yes...";
         else {

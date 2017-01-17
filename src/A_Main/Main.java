@@ -55,7 +55,7 @@ public class Main {
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = Id.COU4; // PLAYER'S STARTING LOCATION. DEFAULT Id.COU4.
+        String start = Id.SEWP; // PLAYER'S STARTING LOCATION. DEFAULT Id.COU4.
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -92,14 +92,14 @@ public class Main {
             ) 
         {
             System.out.println("Data found. Loading game.");
-            Room_References.constructCoorinateReferences();
+            RoomReferences.constructCoorinateReferences();
             ((PlayerAttributes)gameData.readObject()).loadAttributes();
             exitChoice = Player.mainPrompt(); // START GAME
         } 
         catch (java.lang.ClassNotFoundException | java.io.IOException e) {
             System.out.println(e.getMessage() + "\nData missing. Creating new game.");
-            Room_References.constructRoomReferences();
-            Player.setNewAttributes(Room_References.getCoords(start));
+            RoomReferences.constructRoomReferences();
+            Player.setNewAttributes(RoomReferences.getCoords(start));
             exitChoice = Player.startDialog(); // START GAME
         }
         //**********************************************************************
@@ -1681,7 +1681,9 @@ public class Main {
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE END ROOM">
+        
         Room end_ = new End_("", Id.END_);
+        
         // </editor-fold>
         
         // </editor-fold>
