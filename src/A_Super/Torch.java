@@ -1,7 +1,7 @@
 package A_Super;
 
-import A_Main.GUI;
 import A_Main.Player;
+import static A_Main.NameConstants.HAND_TORCH;
 /**
  * Represents a wall-mounted torch that can be taken.
  * Torches are useful for a few things.
@@ -17,7 +17,7 @@ public class Torch extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Torch() {
         super();
-        this.TORCH = new Item("hand torch", "It's a burning piece of wood. Stay it from your beard!");
+        this.TORCH = new Item(HAND_TORCH, "It's a burning piece of wood. Stay it from your beard!");
         this.inv = new Hldr_Inv(TORCH);
         
         this.description = "Sitting in a steel holder is a burning wall torch\n"
@@ -28,15 +28,15 @@ public class Torch extends Furniture {
         
         this.addActKeys(GETKEYS);
         this.addNameKeys("(?:wall )?torch(?:es)?", "(?:steel )?holders?");
-        this.addUseKeys("hand torch");
+        this.addUseKeys(HAND_TORCH);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
         String rep = this.actDialog;
         
-        if (this.containsItem("hand torch")) {
+        if (this.containsItem(HAND_TORCH)) {
             this.inv.give(TORCH, Player.getInv());
-            GUI.invOut("You are carrying:\n" + Player.getInv());
+            Player.printInv();
         }
         else
             rep = "The holder is empty you bumbling oaf.";
@@ -45,7 +45,7 @@ public class Torch extends Furniture {
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String useEvent(Item item) {
-        if (this.containsItem("hand torch"))
+        if (this.containsItem(HAND_TORCH))
             return "The holder already bears a torch you bumbling oaf.";
         else
             Player.getInv().give(item, this.inv);
@@ -54,7 +54,7 @@ public class Torch extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (! this.containsItem("hand torch"))
+        if (! this.containsItem(HAND_TORCH))
             return "The mounted steel holder is empty.";
             
         return this.description;

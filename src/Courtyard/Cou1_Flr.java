@@ -1,23 +1,25 @@
 package Courtyard;
 
+import static A_Main.NameConstants.SHOVEL;
+import static A_Main.NameConstants.TROWEL;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
 
 public class Cou1_Flr extends Furniture {
-    private final Furniture REF;
+    private final Furniture HOLE_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Cou1_Flr(Furniture hole, Item ... items) {
             super(items);
-            this.REF = hole;
+            this.HOLE_REF = hole;
             this.description = "The ground is a mixture of grass, weeds, and clover.\n"
                              + "It is roughened, as if someone had dug it up recently.";
             this.searchDialog = "You crouch down and scan the ground.";
             this.actDialog = "You have nothing to dig the ground with.";
             this.useDialog = "You dig about a foot-deep hole in the ground. In the hole,\n"
                            + "you uncover something.";
-            this.addActKeys("dig", "shovel");
-            this.addUseKeys("shovel", "trowel");
+            this.addActKeys("dig", SHOVEL);
+            this.addUseKeys(SHOVEL, TROWEL);
             this.addNameKeys("floor", "ground");
     }
 /*----------------------------------------------------------------------------*/
@@ -33,13 +35,13 @@ public class Cou1_Flr extends Furniture {
         if (Player.getPos().hasFurniture("hole"))
             return "You have already dug up the ground here.";
         else {
-            Player.getPos().addFurniture(REF);
+            Player.getPos().addFurniture(HOLE_REF);
             return this.useDialog;
         }
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) {              
-        if (Player.hasItem("shovel") || Player.hasItem("trowel"))
+        if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL))
             return this.useEvent(null); // Safe. Item is unused in interact here.
         else
             return "You have nothing suitable to dig the ground with.";

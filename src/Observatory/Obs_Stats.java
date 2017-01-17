@@ -3,29 +3,40 @@ package Observatory;
 import A_Super.Furniture;
 import A_Main.GUI;
 import java.util.Scanner;
-/** SOLUTION
+/** 
+ * The observatory statue puzzle. 
+ * Player must first find 8 brass plates around the castle and fit them into
+ * their respective indentation. On each plate reads a Greek diety, and its
+ * respective latinized equivalent is spelled in an indentation.
+ * 
+ * Then, player must manipulate statue positions until each statue is in
+ * front of its name. A book on the second floor observatory describes each diety.
+ * 
+ * SOLUTION
  *     5
  *  2     0
  * 6       1
  *  3     4
  *     7
  * 
+ * @see Observatory.Obs2_Bk
  * @author Kevin Rapa
  */
 public class Obs_Stats extends Furniture {
     private final Furniture[] STATS = {
-        new Obs_Stat("0", "A beautiful woman stands on this base. She\nstands with long hair and no clothing on \na large sea-shell.", 3),
-        new Obs_Stat("1", "The statue depicts a short-haired female\nfigure holding a newborn. She also appears \npregnant.", 2),
-        new Obs_Stat("2", "This statue shows a towering older male\nfigure. He wears a glorious beard and poses\ntriumphantly holding a trident.", 1),
-        new Obs_Stat("3", "This statue shows a glorious bearded male\nsitting. He is well-built and dressed in a\nheavy robe. He holds a scythe.", 4),
-        new Obs_Stat("4", "It shows a tall male figure dressed in \nsoldier's garb. He wears a tall galea\nhelmet and holds a spear and shield.", 5),
-        new Obs_Stat("5", "On its base stands a male figure of average\nbuild. He wears sandals, a heavy cloak, and\na winged helmet.", 6),
-        new Obs_Stat("6", "A male wearing light armor stands on this\nbase. He holds a staff in\nhis left hand.", 7),
-        new Obs_Stat("7", "This statue depicts a glorious bearded male\nstriding forward holding a lightning bolt. You\ncannot contain your tears.", 8),
-        new Obs_Stat("8", "The statue depicts a monumental male figure\ncrowned with a radiating halo. He rides in\na chariot pulled by four steeds.", 0),
+        new Obs_Stat("0", "A beautiful woman stands on this base. She stands with long hair and no clothing on a large sea-shell.", 3),
+        new Obs_Stat("1", "The statue depicts a pregnant short-haired female figure holding a newborn.", 2),
+        new Obs_Stat("2", "On this statue stands a towering older male figure. He wears a glorious beard and poses triumphantly holding a trident.", 1),
+        new Obs_Stat("3", "This statue shows a glorious sitting bearded male. He is well-built and dressed in a heavy robe. He holds a scythe.", 4),
+        new Obs_Stat("4", "It shows a tall male figure dressed in soldier's garb. He wears a tall galea helmet and holds a spear and shield.", 5),
+        new Obs_Stat("5", "On its base stands a male figure of average build. He wears sandals, a heavy cloak, and a winged helmet.", 6),
+        new Obs_Stat("6", "A male wearing light armor stands on this base. He holds a staff in his left hand.", 7),
+        new Obs_Stat("7", "This statue depicts a glorious bearded male striding forward holding a lightning bolt. You cannot contain your tears.", 8),
+        new Obs_Stat("8", "The statue displays a monumental male figure crowned with a radiating halo. He rides in a chariot pulled by four steeds.", 0),
     };
     private final Obs3_Chndlr CHNDLR_REF;
     private boolean solved = false, locked = true;
+    private final String[] SOLUTION = {"5", "0", "1", "4", "7", "3", "6", "2"};
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Obs_Stats(Furniture chandlr) {
         super();
@@ -54,12 +65,12 @@ public class Obs_Stats extends Furniture {
             
             if (choice.matches("[0-8]"))
                 rep = getStatRef(choice).getDescription();
-            else if (! choice.matches("")) {
+            else if (! choice.matches(NOTHING)) {
                 rep = "That's not a valid choice.";
                 choice = "";
             }
             
-        } while (! choice.matches(""));
+        } while (! choice.matches(NOTHING));
         
         return "";
     }
@@ -95,7 +106,7 @@ public class Obs_Stats extends Furniture {
                         GUI.out("That's not a valid choice.");           
                 }
                 catch (java.util.NoSuchElementException | java.lang.NumberFormatException e) {
-                    if (! choice.matches(""))
+                    if (! choice.matches(NOTHING))
                         GUI.out("Type an action and a statue number."); 
                 } 
 
@@ -107,7 +118,7 @@ public class Obs_Stats extends Furniture {
                     this.CHNDLR_REF.lower();
                     choice = "";
                 }
-            } while (! choice.matches(""));
+            } while (! choice.matches(NOTHING));
 
             collectToken.close();
         }
@@ -150,9 +161,7 @@ public class Obs_Stats extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private void rotateStat(String stat) {
-        int i = this.getIndex(stat);
-
-        switch (i) {
+        switch (getIndex(stat)) {
             case 0: case 1:
                 this.switchThese(0, 1); break;
             case 2: case 3:
@@ -175,7 +184,6 @@ public class Obs_Stats extends Furniture {
              
         return -1;
     }
-
 /*----------------------------------------------------------------------------*/
     private void switchThese(int first, int second) {
         Furniture temp = this.STATS[first];
@@ -202,16 +210,12 @@ public class Obs_Stats extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private boolean checkSolved() {
-        Furniture[] i = this.STATS;
-        boolean isSolved = true;
-        String[] correctSequence = {"5", "0", "1", "4", "7", "3", "6", "2"};
-        
         for (int index = 0; index < 8; index++) {
-            if (! i[index].toString().matches(correctSequence[index]))
-                isSolved = false;
+            if (! STATS[index].toString().matches(SOLUTION[index]))
+                return false;
         }
         
-        return isSolved;
+        return true;
     }
 /*----------------------------------------------------------------------------*/
     public void unlock() {

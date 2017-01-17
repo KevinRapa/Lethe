@@ -10,7 +10,7 @@ public class Sewp_Wtr extends Furniture {
         super();
         this.searchable = false;
         
-        this.description = "The water circles rapidly around the pool, turning\n"
+        this.description = "The water circles rapidly around the pool turning\n"
                          + "the wheel in the center. The driveshaft must be powering\n"
                          + "something. The water drains down a hole at the pool's bottom.";
         this.actDialog = "It's probably not a good idea to step near that pool.";

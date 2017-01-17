@@ -6,7 +6,6 @@ import A_Super.Openable;
  * @author Kevin Rapa
  */
 public class Pris_Gts extends Furniture implements Openable {
-
     // ========================================================================
     public Pris_Gts () {
         super();

@@ -1,6 +1,7 @@
 package Marble_Hall;
 
 import A_Main.Id;
+import static A_Main.NameConstants.*;
 import A_Super.Door;
 import A_Super.Room;
 import A_Super.Direction;
@@ -16,17 +17,17 @@ public class MhaM_Dr extends Door {
         this.angel = this.soldier = this.horse = false; // Slots
         this.numMedallions = 1;
         this.addNameKeys("(?:double )?doors");
-        this.addUseKeys("stone disk", "angel medallion", "horse medallion");
+        this.addUseKeys(STONE_DISK, ANGEL_MEDALLION, HORSE_MEDALLION);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         String rep = "You press the " + item + " into its socket.";
         
-        if (item.toString().matches("stone disk"))
+        if (item.toString().equals(STONE_DISK))
             this.soldier = true;
-        else if (item.toString().matches("angel medallion"))
+        else if (item.toString().equals(ANGEL_MEDALLION))
             this.angel = true;
-        else if (item.toString().matches("horse medallion"))
+        else if (item.toString().equals(HORSE_MEDALLION))
             this.horse = true;
         
         Player.getInv().remove(item);

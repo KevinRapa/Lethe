@@ -31,13 +31,14 @@ public class Gal6_Hlmt extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.actDialog;
-        String choice; String r;
+        String choice; 
+        String r;
         
         GUI.out("Are you really sure you want to wear the helmet?");
         do {
             choice = GUI.promptOut();
-            if (choice.matches("yes")) {
+            
+            if (choice.equals("yes")) {
                 Random generator = new Random();
                 for (int i = 0; i < 18000; i++) {
                     r = Integer.toString(generator.nextInt(2));
@@ -47,11 +48,11 @@ public class Gal6_Hlmt extends Furniture{
                     GUI.out(r);
                 }
             }
-            else if (choice.matches("no") || choice.matches(""))
-                rep = "That was a smart decision.";
+            else if (choice.matches("no|"))
+                return "That was a smart decision.";
             
-        } while (! choice.matches("yes") && ! choice.matches("no") && ! choice.matches(""));
+        } while (! choice.matches("yes|no|"));
         
-        return rep;
+        return this.actDialog;
     }
 }

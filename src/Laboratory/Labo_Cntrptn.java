@@ -1,15 +1,15 @@
 package Laboratory;
 
+import static A_Main.NameConstants.BEAKER;
+import static A_Main.NameConstants.FLORENCE_FLASK;
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Labo_Cntrptn extends Furniture {
-
     // ========================================================================
-    public Labo_Cntrptn (Item... items) {
-        super(items);
+    public Labo_Cntrptn () {
+        super();
         this.searchable = false;
         
         this.description = "The large contraption seems to be composed of two parts.\n"
@@ -22,9 +22,9 @@ public class Labo_Cntrptn extends Furniture {
                           + "out of the ordinary.";
         this.useDialog = this.actDialog;
 
-        this.addNameKeys("(?:complicated )?(?:alchemical )?contraption", "glass tubes");
+        this.addNameKeys("(?:complicated )?(?:alchemical )?contraption", "glass tubes?");
         this.addActKeys("use");
-        this.addUseKeys("beaker", "florence flask");
+        this.addUseKeys(BEAKER, FLORENCE_FLASK);
     }
     // ======================================================================== 
 }

@@ -2,6 +2,7 @@ package Laboratory;
 
 import A_Main.GUI;
 import A_Main.Player;
+import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -26,7 +27,7 @@ public class Labo_Dspensrs extends Furniture {
         this.actDialog = "You need a vial or test tube to dispense into!";
 
         this.addNameKeys("(?:opaque )?dispensers?", "dispenser stopcock");
-        this.addUseKeys("empty vial", "test tube");
+        this.addUseKeys(EMPTY_VIAL, TEST_TUBE);
         this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist", "empty");
     }
     // ========================================================================  
@@ -35,15 +36,15 @@ public class Labo_Dspensrs extends Furniture {
     }
     // ========================================================================   
     @Override public String interact(String key) {   
-        if (Player.hasItem("lab coat")) {
-            if (Player.hasItem("test tube")) {
+        if (Player.hasItem(LAB_COAT)) {
+            if (Player.hasItem(TEST_TUBE)) {
                 if (askToDispense()) {
                     Player.getInv().remove(TUBE_REF);
                     Player.getInv().add(dispense());
                 }
                 return null;
             }
-            else if (Player.hasItem("empty vial")) {
+            else if (Player.hasItem(EMPTY_VIAL)) {
                 if (askToDispense()) {
                     Player.getInv().remove(VIAL_REF);
                     Player.getInv().add(dispense());

@@ -8,7 +8,7 @@ public class Jha1 extends Room {
 // ============================================================================    
     public Jha1(String name, String ID) {
         super(name, ID);
-        this.description= "You stand at the north end of a short hallway going\n" +
+        this.description= "You stand at the north end of a short hallway heading\n" +
                           "south. This room impresses you. The walls are\n" +
                           "paneled in a polished wood and a jade-like stone. A\n" +
                           "single window gives view outside on the north wall.\n" +

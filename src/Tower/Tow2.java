@@ -2,7 +2,7 @@ package Tower;
 
 import A_Main.GUI;
 import A_Main.Id;
-import A_Main.ItemTypeConstants;
+import A_Main.NameConstants;
 import A_Main.Player;
 import A_Super.Item;
 import Lichs_Quarters.Lich_Room;
@@ -32,7 +32,7 @@ public class Tow2 extends Lich_Room {
             int numPhylacteries = 0;
 
             for (Item i : Player.getInv())
-                if (i.getType().equals(ItemTypeConstants.PHYLACTERY))
+                if (i.getType().equals(NameConstants.PHYLACTERY))
                     numPhylacteries++;
 
             if (numPhylacteries == 5) {

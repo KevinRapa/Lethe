@@ -2,6 +2,7 @@ package Torture_Chamber;
 
 import A_Main.Id;
 import A_Main.Inventory;
+import A_Main.NameConstants;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -18,7 +19,7 @@ import A_Super.Room;
  * @author Kevin Rapa
  */
 public class Torc_Swhrses extends Furniture implements Resetable {
-    private final Item METAL_LADDER = new Metal_Ladder("metal ladder");
+    private final Item METAL_LADDER = new Metal_Ladder(NameConstants.METAL_LADDER);
     private final Furniture TORC_LDDR = new Torc_Lddr();;
     // ========================================================================
     public Torc_Swhrses (Room torc, Item... items) {
@@ -33,7 +34,7 @@ public class Torc_Swhrses extends Furniture implements Resetable {
         this.useDialog = "You place the metal ladder back on the sawhorses.";
 
         this.addNameKeys("(?:two )?sawhorses?");
-        this.addUseKeys("metal ladder");
+        this.addUseKeys(NameConstants.METAL_LADDER);
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -55,7 +56,7 @@ public class Torc_Swhrses extends Furniture implements Resetable {
     }
     // ========================================================================     
     @Override public void reset() {
-        if (Player.hasItem("metal ladder")) {
+        if (Player.hasItem(NameConstants.METAL_LADDER)) {
             this.inv.add(METAL_LADDER);
             Player.getInv().remove(METAL_LADDER);
             Player.getRoomObj(Id.TORC).addFurniture(TORC_LDDR);
@@ -63,7 +64,7 @@ public class Torc_Swhrses extends Furniture implements Resetable {
     }
     // ========================================================================     
     private boolean hasLadder() {
-        return containsItem("metal ladder");
+        return containsItem(NameConstants.METAL_LADDER);
     }
     // ========================================================================     
     // ************************************************************************

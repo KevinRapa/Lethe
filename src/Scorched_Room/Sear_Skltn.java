@@ -1,5 +1,6 @@
 package Scorched_Room;
 
+import static A_Main.NameConstants.CROWBAR;
 import A_Super.Furniture;
 import A_Super.Item;
         
@@ -9,16 +10,14 @@ public class Sear_Skltn extends Furniture {
         super(items);
         this.description = "The scorched body lies against the boarded up door.";
         this.searchDialog = "You crouch down.";
-        this.addNameKeys("skeleton");
+        this.addNameKeys("skeleton", "(?:scorched )?body");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
-        if (this.containsItem("crowbar")) {
-            rep += "\nThere's a crowbar in its hand.";
-        }       
-        return rep;
+        if (this.containsItem(CROWBAR))
+            return this.description.concat(" There's a crowbar in its hand.");
+        else
+            return this.description;
     }
 /*----------------------------------------------------------------------------*/
 }

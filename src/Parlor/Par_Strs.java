@@ -11,12 +11,11 @@ public class Par_Strs extends Staircase {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (this.DIR == Direction.DOWN) {
-            rep = "The thin sandstone stairs lead down to the first floor.";
+            return "The thin sandstone stairs lead down to the first floor.";
         }
-        return rep;
+        
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
 }

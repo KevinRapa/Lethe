@@ -1,5 +1,6 @@
 package Workshop;
 
+import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
@@ -11,9 +12,9 @@ public class Wrk_Kln extends Furniture {
     public Wrk_Kln() {
         super();
         
-        this.REFGLSSR = new Item("molten red glass", "It's a crucible of molten red glass. Be careful!");
-        this.REFGLSSB = new Item("molten blue glass", "It's a crucible of molten blue glass. Be careful!");
-        this.REFGLSSY = new Item("molten yellow glass", "It's a crucible of molten yellow glass. Be careful!");
+        this.REFGLSSR = new Item(MOLTEN_RED_GLASS, "It's a crucible of molten red glass. Be careful!");
+        this.REFGLSSB = new Item(MOLTEN_BLUE_GLASS, "It's a crucible of molten blue glass. Be careful!");
+        this.REFGLSSY = new Item(MOLTEN_YELLOW_GLASS, "It's a crucible of molten yellow glass. Be careful!");
         
         this.searchable = false;
         
@@ -22,7 +23,7 @@ public class Wrk_Kln extends Furniture {
         this.description = "The kiln resembles a ceramic oven. Its intense heat\n" +
                            "keeps this room roasting hot.";
         
-        this.addUseKeys("(red dye", "yellow dye", "blue dye", "sand", "potash");
+        this.addUseKeys(RED_DYE, YELLOW_DYE, BLUE_DYE, SAND, POTASH);
         this.addNameKeys("kiln", "(?:ceramic )?oven");
     }
 /*----------------------------------------------------------------------------*/
@@ -32,28 +33,27 @@ public class Wrk_Kln extends Furniture {
         
         Player.getInv().remove(item);
         
-        if (name.equals("potash") && ! this.hasPotash) {
+        if (name.equals(POTASH) && ! this.hasPotash) {
             this.hasPotash = true;
             rep = "You pour the potash into the crucible.";  
         }    
-        else if (name.equals("sand") && ! this.hasSand) {
+        else if (name.equals(SAND) && ! this.hasSand) {
             this.hasSand = true;
             rep = "You pour the sand into the crucible.";
         }
         else if ((name.matches("\\w+ dye")) && ! hasDye()) {
-            if (name.equals("red dye")) {
-                this.hasRedDye = true;
+            switch (name) {
+                case RED_DYE:
+                    this.hasRedDye = true; break;
+                case BLUE_DYE:
+                    this.hasBlueDye = true; break;
+                case YELLOW_DYE:
+                    this.hasYllwDye = true; break;
             }
-            else if (name.equals("blue dye")) {
-                this.hasBlueDye = true;
-            }
-            else if (name.equals("yellow dye")) {
-                this.hasYllwDye = true;
-            }   
             rep = "You pour the " + name + " into the crucible.";
         }
-        else if ((name.equals("sand") && this.hasSand) ||
-                 (name.equals("potash") && this.hasPotash) ) 
+        else if ((name.equals(SAND) && this.hasSand) ||
+                 (name.equals(POTASH) && this.hasPotash) ) 
             rep = "The kiln already has " + name + " in it!";
         
         else if ((name.matches("(?:red|blue|yellow) dye")) && hasDye())

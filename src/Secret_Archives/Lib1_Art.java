@@ -4,7 +4,8 @@ import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.GUI;
 import A_Main.Inventory;
-import A_Main.ItemTypeConstants;
+import A_Main.NameConstants;
+import static A_Main.NameConstants.*;
 import A_Main.Player;
 
 public class Lib1_Art extends Furniture {
@@ -18,7 +19,7 @@ public class Lib1_Art extends Furniture {
         this.mode = "A blue beam";
         this.inv = new Art_Inv(items);   
         this.addNameKeys("artifact", "strange artifact");
-        this.addUseKeys("red focus", "blue focus", "yellow focus", "dark focus");
+        this.addUseKeys(RED_FOCUS, BLUE_FOCUS, YELLOW_FOCUS, DARK_FOCUS);
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {      
@@ -39,13 +40,13 @@ public class Lib1_Art extends Furniture {
         for (Item i : this.inv) {
             String j = i.toString();
             
-            if(j.matches("red focus"))
+            if(j.equals(RED_FOCUS))
                 red = true;
-            else if(j.matches("blue focus"))
+            else if(j.equals(BLUE_FOCUS))
                 blue = true;
-            else if(j.matches("yellow focus"))    
+            else if(j.equals(YELLOW_FOCUS))    
                 yellow = true;
-            else if(j.matches("dark focus"))    
+            else if(j.equals(DARK_FOCUS))    
                 dark = true;
         }        
         this.determineColor(red, blue, yellow, dark);
@@ -126,7 +127,7 @@ public class Lib1_Art extends Furniture {
         }
     /*------------------------------------------------------------------------*/
         @Override public boolean add(Item item) {
-            if (item.getType().matches(ItemTypeConstants.FOCUS)) {
+            if (item.getType().equals(NameConstants.FOCUS)) {
                 this.CONTENTS.add(item);
                 triggerEvent();
                 return true;

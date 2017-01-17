@@ -17,7 +17,7 @@ public class My18 extends Room {
     public void updateDescription() {
         this.description = "You stand at the rim of the circular chamber before\n"
                          + "the descending set of spiral stairs wrapping around\n"
-                         + "the center pillar, on which the pedestal still stands.\n";
+                         + "the center pillar on which the pedestal still stands.\n";
     }
 // ============================================================================
 }

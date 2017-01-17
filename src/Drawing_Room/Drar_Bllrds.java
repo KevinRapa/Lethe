@@ -4,11 +4,11 @@ import A_Super.Furniture;
 import A_Super.Item;
 
 public class Drar_Bllrds extends Furniture {
-    private final Drar_Ghst REF;
+    private final Drar_Ghst GHOST_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Drar_Bllrds(Furniture ghst, Item... items) {
         super();
-        this.REF = (Drar_Ghst)ghst;
+        this.GHOST_REF = (Drar_Ghst)ghst;
         this.description = "The billiard table is clothed in the typical green,\n"
                          + "though the pockets are missing...";
         this.searchDialog = "You look on the table's surface.";
@@ -19,7 +19,7 @@ public class Drar_Bllrds extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        if (REF.firstTime())
+        if (GHOST_REF.firstTime())
             return "Ignoring the ghost completely, you look on the billiard\n"
                 + "table's surface.";
         
@@ -27,7 +27,7 @@ public class Drar_Bllrds extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (REF.firstTime())
+        if (GHOST_REF.firstTime())
             return "Now is not the time for that. There's a ghost in here!";
         
         return this.actDialog;

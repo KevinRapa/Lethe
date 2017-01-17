@@ -8,7 +8,6 @@ import A_Super.Lever;
  * @author Kevin Rapa
  */
 public class Lqu2_Lvr extends Lever {
-
     // ========================================================================
     public Lqu2_Lvr () {
         super();
@@ -20,7 +19,7 @@ public class Lqu2_Lvr extends Lever {
     }
     // ========================================================================   
     @Override protected String event(String key) {
-        Player.getRoomObj(Id.COU3).addAdjacent(Id.END_);
+        Player.getRoomObj(Id.COU3).addAdjacent(Id.ENDG);
         Player.getRoomObj(Id.COU3).unlock();
         
         AudioPlayer.playEffect(7, -15);

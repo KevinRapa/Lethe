@@ -7,20 +7,21 @@ import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
 /**
- * Used to cool down vials of bromine
+ * Used to cool down vials of bromine.
+ * Multi-threaded. Runs a thread call Chill_THREAD.
  * 
  * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
 public class Labo_DryIce extends Furniture implements Openable {
-    private final Item DRY_ICE;
+    private final Item DRY_ICE_REF;
     private transient Chill_Thread chillBromine;
     // ========================================================================
     public Labo_DryIce (Item flask) {
         super();
         
-        DRY_ICE = new Item("dry ice", "This stuff is cold! It hurts for you to hold.");
-        this.inv = new Ice_Inventory(DRY_ICE, DRY_ICE, flask, DRY_ICE, DRY_ICE);
+        DRY_ICE_REF = new Item("dry ice", "This stuff is cold! It hurts for you to hold.");
+        this.inv = new Ice_Inventory(DRY_ICE_REF, DRY_ICE_REF, flask, DRY_ICE_REF, DRY_ICE_REF);
         
         this.description = "The wooden barrel is wrapped in some kind of foam. It looks insulated.";
         this.searchDialog = "The barrel is filled with dry ice.";
@@ -70,7 +71,7 @@ public class Labo_DryIce extends Furniture implements Openable {
         }
     // ========================================================================
         @Override public void remove(Item item) { 
-            if (! item.equals(DRY_ICE))
+            if (! item.equals(DRY_ICE_REF))
                 this.contents().remove(item);
         }
     }    

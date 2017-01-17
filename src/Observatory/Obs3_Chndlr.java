@@ -2,7 +2,11 @@ package Observatory;
 
 import A_Super.Furniture;
 import A_Super.Item;
-
+/**
+ * Holds a ruby, one item needed in the Jade Hall puzzle.
+ * 
+ * @author Kevin Rapa
+ */
 public class Obs3_Chndlr extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Obs3_Chndlr(String NAME, Item ... items) {
@@ -19,7 +23,7 @@ public class Obs3_Chndlr extends Furniture {
     @Override public String getDescription() {
         if (this.searchable) 
             return "The brass chandelier's chain, having extended from\n" +
-                   "the ceiling, puts the chandelier now level with the\n" +
+                   "the ceiling, suspends the chandelier now level with the\n" +
                    "observatory's top floor. It's just within reach.";
         
         return this.description;

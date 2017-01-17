@@ -9,7 +9,7 @@ public class Sst_Wndw extends Static_Wndw {
     public Sst_Wndw() {
         super();
         this.description = "The circular vented window lets in a small amount of\n"
-                         + "light.";
+                         + "moonlight.";
         this.actDialog = "You can't reach the window from here.";
         this.addNameKeys("light", "(?:circular )?(?:vented )?window");
     }

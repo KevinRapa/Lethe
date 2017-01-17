@@ -1,5 +1,6 @@
 package Escape_Tunnel;
 
+import static A_Main.NameConstants.METAL_BAR;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -20,13 +21,12 @@ public class Esc6_Grt extends Furniture implements Resetable {
         
         this.description = "The metal grate blocks access to the above room.";
         this.actDialog = "It's too heavy. You can't open it.";
-        this.searchDialog = "";
-        this.useDialog = "You jam the rod in the corner of the grate. The grate pops\n"
-                       + "up a bit, and you force the rod in more. With the rest of\n"
+        this.useDialog = "You jam the bar in the corner of the grate. The grate pops\n"
+                       + "up a bit, and you force the bar in more. With the rest of\n"
                        + "your strength, you pop the grate out.";
 
         this.addNameKeys("(?:metal )?grate");
-        this.addUseKeys("metal rod");
+        this.addUseKeys(METAL_BAR);
         this.addActKeys("lift", "move", "pry");
     }
     // ======================================================================== 
@@ -35,14 +35,14 @@ public class Esc6_Grt extends Furniture implements Resetable {
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        return this.opened ? "The ladder goes down a ways, you estimate about 30 feet." : 
+        return this.opened ? "The ladder goes down a ways. You estimate about 30 feet." : 
                 this.searchDialog;
     }
     // ========================================================================   
     @Override public String interact(String key) {  
         if (key.equals("lift") || key.equals("move")) 
             return opened ? MOVED_GRATE : this.actDialog;
-        else if (Player.hasItem("metal bar")) {
+        else if (Player.hasItem(METAL_BAR)) {
             return this.useEvent(null); // Safe. Arg unused here.
         }
         else

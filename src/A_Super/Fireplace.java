@@ -1,6 +1,7 @@
 package A_Super;
 
 import A_Main.Player;
+import static A_Main.NameConstants.BUCKET_OF_WATER;
 /**
  * Represents a fireplace with lit and unlit states.
  * 
@@ -25,7 +26,7 @@ public class Fireplace extends Furniture {
         this.useDialog = "You douse the flames with the water.";
         this.addActKeys("warm", "use", "relax");
         this.addNameKeys("fireplace", "hearth");
-        this.addUseKeys("bucket of water");
+        this.addUseKeys(BUCKET_OF_WATER);
     }    
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {        

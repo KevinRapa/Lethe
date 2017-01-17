@@ -1,4 +1,7 @@
 package Ancient_Archives;
+
+import static A_Main.NameConstants.HAND_TORCH;
+
 /**
  * @author Kevin Rapa
  */
@@ -15,7 +18,7 @@ public class Aarc_Chndlr extends Aarc_Furniture {
         this.searchDialog = "You cannot reach it.";
 
         this.addNameKeys("(?:unlit )?(?:iron )?chandelier");
-        this.addUseKeys("hand torch");
+        this.addUseKeys(HAND_TORCH);
         this.addActKeys("light");
     }
     // ========================================================================  

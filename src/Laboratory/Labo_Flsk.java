@@ -2,8 +2,9 @@ package Laboratory;
 
 import A_Main.GUI;
 import A_Main.Inventory;
-import A_Main.ItemTypeConstants;
+import A_Main.NameConstants;
 import A_Main.Player;
+import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -25,20 +26,16 @@ public class Labo_Flsk extends Furniture {
         this.actDialog = "There's no reason to do that now.";
         this.searchDialog = "Here's what you've added.";
         
-        this.addUseKeys("Br \\d{1,2}mL", 
-                        "aether \\d{1,2}mL", 
-                        "vinegar \\d{1,2}mL",
-                        "wine \\d{1,2}mL", 
-                        "H2CO3 \\d{1,2}mL", 
-                        "HF \\d{1,2}mL",
-                        "C20H14O4 \\d{1,2}mL", 
-                        "chilled Br \\d{1,2}mL", 
+        this.addUseKeys("Br \\d{1,2}mL",        "aether \\d{1,2}mL", 
+                        "vinegar \\d{1,2}mL",   "wine \\d{1,2}mL", 
+                        "H2CO3 \\d{1,2}mL",     "HF \\d{1,2}mL",
+                        "C20H14O4 \\d{1,2}mL",  "chilled Br \\d{1,2}mL", 
                         "NaCl \\d{1,2}mL");
         
         this.inv = new Flsk_Inventory();
 
         this.addUseKeys(".+"); // Anything can be used on this, but it must be of type "ingredient".
-        this.addNameKeys("(?:florence )?flask", "bulbous flask");
+        this.addNameKeys("(?:florence |bulbous )?flask");
         this.addActKeys(GETKEYS);
     }
     // ======================================================================== 
@@ -84,7 +81,7 @@ public class Labo_Flsk extends Furniture {
         }
         // ==========================================
         @Override public boolean add(Item item) {
-            if (item.getType().equals(ItemTypeConstants.INGREDIENT)) {
+            if (item.getType().equals(NameConstants.INGREDIENT)) {
                 GUI.out("You pour it in.");
                 this.CONTENTS.add(item);
                 Player.getInv().add(TUBE_REF);
@@ -101,13 +98,13 @@ public class Labo_Flsk extends Furniture {
                 GUI.out("You take the residue out.");
             }
             else if (this.size() == 1) {
-                if (Player.hasItem("test tube")) {
+                if (Player.hasItem(TEST_TUBE)) {
                     this.remove(item);
                     giveToThis.add(item);
                     Player.getInv().remove(TUBE_REF);
                     GUI.out("You take the residue out.");
                 }
-                else if (Player.hasItem("empty vial")) {
+                else if (Player.hasItem(EMPTY_VIAL)) {
                     this.remove(item);
                     giveToThis.add(item);
                     Player.getInv().remove(VIAL_REF);

@@ -1,5 +1,6 @@
 package Ransacked_Quarters;
 
+import static A_Main.NameConstants.CROWBAR;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Key;
@@ -25,7 +26,7 @@ public class Rqua_Pnl extends Furniture {
                            + "You put the molded key into your inventory.";
             this.addNameKeys("tile", "panel");
             this.addActKeys("pry", "move", "lift", "remove");
-            this.addUseKeys("crowbar");
+            this.addUseKeys(CROWBAR);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

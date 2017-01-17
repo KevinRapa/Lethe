@@ -17,11 +17,11 @@ public class Jha2 extends Room {
                           "southern door leading outside. At this end,\n" +
                           "another jade lion at the east stares at\n" +
                           "the blank western wall. A lantern hangs in the\n" +
-                          "center of this half of the hall.";
+                          "center of the ceiling.";
         this.desc2 = "You stand at the south end of the hall near a\n" +
                      "southern door leading outside. The jade lion at the east\n"
                    + "stares at the newly formed door on the west wall. A lantern\n"
-                   + "hangs in the center of this half of the hall.";
+                   + "hangs in the center of the ceiling.";
         this.LION_REF = (Jha_Ln)ln;
         this.LION_REF2 = (Jha_Ln)ln2;
     }

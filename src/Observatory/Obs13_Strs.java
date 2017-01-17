@@ -15,14 +15,12 @@ public class Obs13_Strs extends Staircase {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (this.DIR == Direction.DOWN) {
-            rep = "The spiral staircase sits in a round alcove carved\n"
-                + "into the wall to the southeast and leads down to the first\n"
-                + "floor.";
+            return "The spiral staircase sits in a round alcove carved\n"
+                 + "into the wall to the southeast and leads down to the first\n"
+                 + "floor.";
         }
-        return rep;
+        return this.description;
     }
 /*----------------------------------------------------------------------------*/
     @Override protected void playEffect() {

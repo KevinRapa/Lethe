@@ -11,9 +11,9 @@ public class Gar2_BrknHs extends Furniture {
         super();
         this.searchable = false;
         
-        this.description = "The old leather hose has broken it two... at just the\n"
+        this.description = "The old leather hose has broken in two... at just the\n"
                          + "right time.";
-        this.actDialog = "It has broken. It has no purpose now.";
+        this.actDialog = "It has broken and offers no purpose now.";
 
         this.addNameKeys("(?:broken )?(?:leather )?hose");
         this.addActKeys("untie", "climb");

@@ -1,5 +1,6 @@
 package Tomb;
 
+import static A_Main.NameConstants.POLEARM;
 import A_Super.Furniture;
 /**
  * @author Kevin Rapa
@@ -15,7 +16,7 @@ public class Tmb1_Bwl extends Furniture {
                        + "very good idea.";
 
         this.addNameKeys("(?:hanging )?(?:burning )?(?:steel )?bowl(?: of fire)?");
-        this.addUseKeys("polearm");
+        this.addUseKeys(POLEARM);
     }
     // ========================================================================    
 }

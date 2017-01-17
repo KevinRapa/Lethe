@@ -1,5 +1,6 @@
 package Chapel;
 
+import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 
 public class Cha1_Cylx extends Furniture {
@@ -14,7 +15,7 @@ public class Cha1_Cylx extends Furniture {
                           + "you'd guess this vessel was filled with holy water.\n"
                           + "You can't pick up the water with your hands though.";
         this.addNameKeys("(?:wide )?(?:brass )?(?:cylix|bowl)");
-        this.addUseKeys("empty vial", "metal bucket", "glass bottle");
+        this.addUseKeys(EMPTY_VIAL, METAL_BUCKET, GLASS_BOTTLE);
     }
 /* -------------------------------------------------------------------------- */
 }

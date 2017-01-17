@@ -11,10 +11,10 @@ public class Labo_Shlf extends Furniture implements Openable {
     public Labo_Shlf (Item... items) {
         super(items);
         
-        this.description = "The metal shelf is holds many different mysterious alchemical ingredients.";
-        this.searchDialog = "The look on the shelves.";
+        this.description = "The metal shelf holds many different mysterious alchemical ingredients.";
+        this.searchDialog = "You look on the shelves.";
 
-        this.addNameKeys("shelf", "metal shelf");
+        this.addNameKeys("(?:metal )?shelf");
     }
     // ========================================================================   
 }

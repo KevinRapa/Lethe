@@ -1,5 +1,7 @@
 package Garden;
 
+import static A_Main.NameConstants.SHOVEL;
+import static A_Main.NameConstants.TROWEL;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -20,26 +22,28 @@ public class Gar4_Plntr extends Furniture {
         this.useDialog = this.actDialog;
 
         this.addNameKeys();
-        this.addUseKeys("shovel", "trowel");
+        this.addUseKeys(SHOVEL, TROWEL);
         this.addActKeys("dig", "plant", "garden");
     }
     // ========================================================================   
     @Override public String interact(String key) {              
-        if (Player.hasItem("shovel") || Player.hasItem("trowel")) {
+        if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
             if (PLQ_REF.isMoved()) {
                 if (this.inv.contains(PLT_REF)) {
                     this.inv.give(PLT_REF, Player.getInv());
                     return "You dig under where the plaque was to find a shiny plate!";
                 }
-                else return "You have already dug under the plaque";
+                else 
+                    return "You have already dug under the plaque";
             }
-            else return this.actDialog;
+            else 
+                return this.actDialog;
         }
         else return "You have nothing to dig with, and your stocky hands are terrible for digging.";   
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        return this.interact("");
+        return this.interact(NOTHING);
     }
     // ========================================================================     
 }

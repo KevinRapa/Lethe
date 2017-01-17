@@ -2,6 +2,7 @@ package Laboratory;
 
 import A_Main.GUI;
 import A_Main.Player;
+import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -23,22 +24,22 @@ public class Labo_Cndsr extends Furniture {
                          + "glass tube on a stand. The glass tube has a switch attached to a stopper inside the tube."
                          + "The tube extends from the condenser and ends hanging above a ";
         this.actDialog = "You toggle the switch attached to the stopper. It's now ";
-        this.searchDialog = "The contraption is comprised of many alchemical compnents.\n"
+        this.searchDialog = "The contraption is comprised of many alchemical components.\n"
                           + "Though they're alien to you, you note nothing out of the ordinary.";
         this.useDialog = "You place the beaker on top of the drain, under the glass tube.";
 
         this.addNameKeys("condenser", "glass tube", "stopper", "switch", "drain");
-        this.addUseKeys("beaker", "test tube", "florence flask", "empty vial");
+        this.addUseKeys(BEAKER, TEST_TUBE, FLORENCE_FLASK, EMPTY_VIAL);
         this.addActKeys("flick", "switch", "turn", "toggle", "rotate");
     }
     // ======================================================================== 
     @Override public String getDescription() {
-        return this.description.concat(Player.getPos().hasFurniture("beaker") ? 
+        return this.description.concat(Player.getPos().hasFurniture(BEAKER) ? 
                 "beaker." : "drain on the table.");
     }
     // ========================================================================   
     @Override public String interact(String key) { 
-        if (Player.hasItem("lab coat")) {
+        if (Player.hasItem(LAB_COAT)) {
             this.flapOpen = ! this.flapOpen; 
             return this.actDialog.concat(flapOpen ? "open." : "closed.");
         }
@@ -48,7 +49,7 @@ public class Labo_Cndsr extends Furniture {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (Player.hasItem("lab coat")) {
+        if (Player.hasItem(LAB_COAT)) {
             if (item.toString().matches("florence flask|test tube|empty vial")) {
                 return "That type of vessel was not designed for collecting liquid! Put it down before you poke your eye out.";
             }
@@ -64,34 +65,28 @@ public class Labo_Cndsr extends Furniture {
     }
     // ========================================================================  
     public boolean condense(int chemical) {
+        String result = "You strike the top of the burner. For a minute, it burns against the flask's bottom,\n"
+                      + "boiling the insides aggressively. % After a minute, the flame dies out.";
+        
         if (this.flapOpen) {
             if (Player.getPos().hasFurniture(BEAKER_REF)) {
                 this.BEAKER_REF.setMode(chemical);
-                GUI.out("You strike the top of the burner. For a minute, the burner burns\n"
-                      + "against the flasks bottom, boiling the insides aggressively. The\n"
-                      + "chemical condenses into the beaker on the other side. After a\n"
-                      + "minute, the flame dies out.");
+                GUI.out(result.replaceFirst("%", "The chemical condenses into the beaker on the other side."));
             }
             else {
-                GUI.out("You strike the top of the burner. For a minute, the burner burns\n"
-                      + "against the flasks bottom, boiling the insides aggressively. You\n"
-                      + "watch in horror as the chemical condenses into the glass tube and\n"
-                      + "flows down the drain under the condenser. After a\n"
-                      + "minute, the flame dies out.");
+                GUI.out(result.replaceFirst("%", 
+                        "You watch in horror as the chemical condenses into the glass tube and\n"
+                      + "flows down the drain under the condenser."));
             }
         return true;
         }
         else {
-            GUI.out("You strike the top of the burner. For a minute, the burner burns\n"
-                  + "against the flasks bottom, boiling the insides aggressively. The\n"
-                  + "liquid evaporates up into the glass tube, but starts dripping back\n"
-                  + "out into the florence flask. You scratch your head. After a\n"
-                  + "minute, the flame dies out.");
+            GUI.out(result.replaceFirst("%", 
+                    "The liquid evaporates up into the glass tube, but starts dripping back\n"
+                  + "out into the florence flask. You scratch your head."));
 
             return false; 
         }
-        
-        
     }
     // ========================================================================  
 }

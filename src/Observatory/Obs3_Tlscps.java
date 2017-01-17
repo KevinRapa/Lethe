@@ -10,7 +10,7 @@ public class Obs3_Tlscps extends Furniture {
         super();
         this.searchable = false;
         
-        this.description = "The telescopes has many different copper parts and\n"
+        this.description = "The telescopes have many different copper parts and\n"
                          + "intricate carvings. One of them is pointed at the\n"
                          + "lighthouse along the cliff in the distance.";
         this.actDialog = "You gaze through the telescope pointed at the lighthouse.\n"

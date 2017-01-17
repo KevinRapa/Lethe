@@ -1,6 +1,7 @@
 package Cistern;
 
 import A_Main.Player;
+import static A_Main.NameConstants.METAL_BUCKET;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -23,7 +24,7 @@ public class Cis_Wtr extends Furniture {
 
         this.addNameKeys("(?:stagnant )?(?:(?:large)? body of )?(?:putrid |disgusting |smelly |awful )?(?:stagnant )?water");
         this.addActKeys("swim", "jump", "drink");
-        this.addUseKeys("metal bucket");
+        this.addUseKeys(METAL_BUCKET);
     }
     // ======================================================================== 
     @Override public String useEvent(Item item) {

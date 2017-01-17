@@ -30,7 +30,7 @@ public class Par_BkMndrk extends Book {
                      + "but that is beyond the scope of this book.";
         
         PAGE_LIST[3] = "This page is blank except for a single line- \"-Experiment more\n"
-                     + "with holy water. Faster than regular watering.";
+                     + "with holy water. Faster than regular watering.\"";
     }
 // ============================================================================
 }

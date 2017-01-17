@@ -1,5 +1,6 @@
 package Tower;
 
+import static A_Main.NameConstants.DAMPENING_STAFF;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -19,7 +20,7 @@ public class Tow1_Pdstl extends Furniture {
 
         this.addNameKeys("(?:solid )?(?:gray )?(?:stone )?(?:pedestal|platform)", 
                 "(?:silver )?(?:glowing )?(?:object|scepter)", "(?:brass )?extensions?");
-        this.addUseKeys("dampening staff");
+        this.addUseKeys(DAMPENING_STAFF);
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -29,7 +30,7 @@ public class Tow1_Pdstl extends Furniture {
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        this.searchable = Player.hasItem("dampening staff");
+        this.searchable = Player.hasItem(DAMPENING_STAFF);
         
         return this.searchable ? "You approach the pedestal" : this.searchDialog;
     }

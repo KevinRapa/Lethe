@@ -3,13 +3,14 @@ package East_Outer_Wall;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
+import static A_Main.NameConstants.METAL_BUCKET;
 
 public class Water extends Furniture {
-    private final Item REF;
+    private final Item BUCKET_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Water(Item bckt) {
         super();
-        this.REF = bckt;
+        this.BUCKET_REF = bckt;
         this.searchable = false;
         this.description = "Clean, sparkling water.";
         this.searchDialog = "Just clean H2O here.";
@@ -19,18 +20,18 @@ public class Water extends Furniture {
         this.useDialog = "You dip the bucket in and fill it with water.";
         this.addActKeys("drink", "swim");
         this.addNameKeys("water", "clear water");
-        this.addUseKeys("metal bucket");
+        this.addUseKeys(METAL_BUCKET);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         Player.getInv().remove(item);
-        Player.getInv().add(REF);
+        Player.getInv().add(BUCKET_REF);
         
         return this.useDialog;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) { 
-        if (key.matches("swim"))
+        if (key.equals("swim"))
             return this.actDialog;
         
         return "You take a sip of water and feel refreshed. Carrying\n"

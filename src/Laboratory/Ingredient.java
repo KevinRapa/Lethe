@@ -1,6 +1,6 @@
 package Laboratory;
 
-import A_Main.ItemTypeConstants;
+import A_Main.NameConstants;
 import A_Super.Item;
 
 /**
@@ -14,7 +14,7 @@ public class Ingredient extends Item {
     // ========================================================================
     public Ingredient(String name, String desc) {
         super(name, desc);
-        this.type = ItemTypeConstants.INGREDIENT;
+        this.type = NameConstants.INGREDIENT;
     }
     // ========================================================================
 }

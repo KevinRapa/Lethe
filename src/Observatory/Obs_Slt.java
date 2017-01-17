@@ -2,10 +2,15 @@ package Observatory;
 
 import A_Main.GUI;
 import A_Main.Inventory;
-import A_Main.ItemTypeConstants;
+import A_Main.NameConstants;
 import A_Super.Furniture;
 import A_Super.Item;
-
+/**
+ * Holds the brass plates for observatory statue puzzle.
+ * 
+ * @see Observatory.Obs_Slts
+ * @author Kevin Rapa
+ */
 public class Obs_Slt extends Furniture {
     private final String CORRECT;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
@@ -20,7 +25,7 @@ public class Obs_Slt extends Furniture {
 /*----------------------------------------------------------------------------*/
     public boolean isCorrect() {
         if (this.inv.size() == 1) {
-            String plateName = this.inv.get(0).toString().substring(14).replaceAll("\"", "");
+            String plateName = this.inv.get(0).toString().substring(14).replaceAll("\"", NOTHING);
             return this.CORRECT.matches(plateName);
         }
         else return false;
@@ -52,7 +57,7 @@ public class Obs_Slt extends Furniture {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {
-            if (item.getType().matches(ItemTypeConstants.PLATE) && this.size() == 0) {
+            if (item.getType().matches(NameConstants.PLATE) && this.size() == 0) {
                 this.CONTENTS.add(item);
                 return true;
             }

@@ -1,5 +1,6 @@
 package Closet;
 
+import static A_Main.NameConstants.CROWBAR;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -18,11 +19,10 @@ public class Gqua_Skltn extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (this.containsItem("crowbar")) {
-            return this.description.concat(" There's a\ncrowbar in its hand.");
-        }
-        
-        return this.description;
+        if (this.containsItem(CROWBAR)) 
+            return this.description.concat(" There's a crowbar in its hand.");
+        else
+            return this.description;
     }
 /*----------------------------------------------------------------------------*/
 }

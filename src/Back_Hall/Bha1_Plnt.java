@@ -1,5 +1,6 @@
 package Back_Hall;
 
+import static A_Main.NameConstants.BUCKET_OF_WATER;
 import A_Super.Furniture;
 import A_Super.Item;
 
@@ -17,7 +18,7 @@ public class Bha1_Plnt extends Furniture{
                        + "You're sure the plant appreciated that.";
         this.addNameKeys("(?:potted )?plants?");
         this.addActKeys("water");
-        this.addUseKeys("bucket of water");
+        this.addUseKeys(BUCKET_OF_WATER);
     }
 /*----------------------------------------------------------------------------*/
 }

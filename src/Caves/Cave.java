@@ -7,6 +7,7 @@ import A_Super.Wall;
 
 import static A_Main.AudioPlayer.S;
 import static A_Main.AudioPlayer.WD;
+import static A_Main.NameConstants.HAND_TORCH;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
 import static java.lang.Math.round;
@@ -20,6 +21,8 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import static java.lang.Math.round;
+import static java.lang.Math.abs;
 /**
  * The caves comprise a maze of similar tunnels.
  * The caves will generate their own descriptions and will distort their own
@@ -155,7 +158,7 @@ public class Cave extends Room {
     }
 // ============================================================================
     @Override public String getDescription() {
-        if (Player.hasItem("hand torch"))
+        if (Player.hasItem(HAND_TORCH))
             return distortDescription(DISTANCE, descLit);
         else
             return distortDescription(DISTANCE, description);
@@ -180,7 +183,7 @@ public class Cave extends Room {
 
         
         
-        if (Player.hasItem("hand torch"))
+        if (Player.hasItem(HAND_TORCH))
             return distortDescription(DISTANCE, STD_RM_OUT);
         else
             return "???";

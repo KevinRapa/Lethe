@@ -1,5 +1,6 @@
 package Garden;
 
+import static A_Main.NameConstants.LEATHER_HOSE;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -23,21 +24,19 @@ public class Gar2_Hl extends Furniture {
                        + "it over the edge. Hopefully it will support your\n"
                        + "weight.";
 
-        this.addNameKeys("(?:granite) ?railing, hole");
-        this.addUseKeys("leather hose");
+        this.addNameKeys("(?:thick )?(?:granite )?railing", "hole");
+        this.addUseKeys(LEATHER_HOSE);
         this.addActKeys("jump", "climb");
     }
     // ======================================================================== 
     @Override public String getDescription() {
-        String rep = this.description;
-        
-        if (Player.getPos().hasFurniture("leather hose"))
-            rep += " The leather hose, tied around the railing, extends\n"
-                 + "downward and almost touches the floor.";
+        if (Player.getPos().hasFurniture(LEATHER_HOSE))
+            return description.concat(" The leather hose, tied around the railing, extends\n"
+                                    + "downward and almost touches the floor.");
         else if (Player.getPos().hasFurniture("broken hose"))
-            rep += " The broken leather hose is still tied around the railing.";
-        
-        return rep;
+            return description.concat(" The broken leather hose is still tied around the railing.");
+        else
+            return description;
     }
     // ========================================================================   
     @Override public String getSearchDialog() {

@@ -2,6 +2,7 @@ package Laboratory;
 
 import A_Main.GUI;
 import A_Main.Player;
+import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -39,12 +40,12 @@ public class Labo_Brtt extends Furniture {
         this.TUBE_REF = testTube;
         this.description = "It's a tall glass tube for dispensing particular quanities of liquids.\n"
                          + "On the top is an opening to pour a liquid. On the bottom is a nozzle\n"
-                         + "and stopcock for dispensing the liquid. Make sure you have a vial or\n"
+                         + "and stopcock for dispensing it. Make sure you have a vial or\n"
                          + "test tube to catch the liquid with. The burette has ";
         this.actDialog = "You need a vial or test tube to dispense into!";
 
         this.addNameKeys("(?:glass )?buret(?:te)?", "buret(?:te)? stopcock");
-        this.addUseKeys("bottle of wine", "bottle of vinegar", "test tube", "empty vial");
+        this.addUseKeys(BOTTLE_OF_WINE, BOTTLE_OF_VINEGAR, TEST_TUBE, EMPTY_VIAL);
         this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist", "empty");
     }
     // ========================================================================    
@@ -57,13 +58,13 @@ public class Labo_Brtt extends Furniture {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (item.toString().equals("bottle of vinegar")) {
+        if (item.toString().equals(BOTTLE_OF_VINEGAR)) {
             if (this.mode != Titrant.EMPTY)
                 return "The burette has liquid in it already!";
             else
                 this.mode = Titrant.VINEGAR;
         }
-        else if (item.toString().equals("bottle of wine")) {
+        else if (item.toString().equals(BOTTLE_OF_WINE)) {
             if (this.mode != Titrant.EMPTY)
                 return "The burette has liquid in it already!";
             else
@@ -74,7 +75,7 @@ public class Labo_Brtt extends Furniture {
     }
     // ========================================================================   
     @Override public String interact(String key) {   
-        if (Player.hasItem("lab coat")) {
+        if (Player.hasItem(LAB_COAT)) {
             if (mode != Titrant.EMPTY) {
                 GUI.out("Would you like to titrate the " + mode + " or empty the burette?");
                 GUI.menOut("\n<1> Empty the burette\n<2> Titrate the " + mode + ".\n< > Back");
@@ -84,7 +85,7 @@ public class Labo_Brtt extends Furniture {
                     GUI.menOut("Pick a valid answer.\n<1> Empty the burette\n<2> Titrate the " + mode + ".\n< > Back");
                     ans = GUI.promptOut();
                 }
-                if (! ans.matches("")) {
+                if (! ans.matches(NOTHING)) {
                     switch (Integer.parseInt(ans)) {
                         case 1:
                             this.mode = Titrant.EMPTY;
@@ -105,12 +106,12 @@ public class Labo_Brtt extends Furniture {
     }
     // ========================================================================   
     private String dispenseDialog() {
-        if (Player.hasItem("test tube")) {
+        if (Player.hasItem(TEST_TUBE)) {
             Player.getInv().remove(TUBE_REF);
             Player.getInv().add(dispense());
             return null;
         }
-        else if (Player.hasItem("empty vial")) {
+        else if (Player.hasItem(EMPTY_VIAL)) {
             Player.getInv().remove(VIAL_REF);
             Player.getInv().add(dispense());
             return null;

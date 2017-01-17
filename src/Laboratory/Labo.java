@@ -1,31 +1,36 @@
 package Laboratory;
+
+import A_Super.Room;
 /**
+ * Player must successfully create a phase door potion to progress in the game.
+ * The puzzle involves measuring and distilling various ingredient Items.
+ * Player must have a lab coat in order to use the lab equipment!
+ * 
+ * 1. Use florence flask on distiller
+ * 2. Connect hose to gas pipe and turn it on
+ * 3. Open condensing tube
+ * 3.5. Put bromine into barrel, let it chill for 30 seconds.
+ * 4. Titrate and add exactly these 5 ingredients (Use dispensers and burette):
+ *     chilled bromine, 10mL
+ *     vinegar, 5mL
+ *     aether, 20mL
+ *     wine, 15mL
+ *     carbonic acid, 35mL
+ * 5. Use beaker on condenser
+ * 6. Use striker on the bunsen burner
+ * 7. Take the beaker.
+ *
+ * @see Laboratory.Labo_BrnrBk
+ * @see Laboratory.Labo_BkGlsswr
+ * @see Laboratory.Labo_CoatNt
+ * @see Laboratory.Labo_DspnsrNt
+ * @see Laboratory.Ingredient
+ * @see Laboratory.Labo_Dspensrs
+ * @see Laboratory.Labo_Dstllr
+ * @see Laboratory.Labo_Cndsr
+ * @see Laboratory.Labo_DryIce
  * @author Kevin Rapa
  */
-import A_Super.Room;
-
-/*
-    Player must have the lab coat on to use the equipment.
-    Player must make a phase door potion.
-
-    1. Use florence flask on distiller
-    2. Connect hose to gas pipe and turn it on
-    3. Open condensing tube
-    3.5. Put bromine into barrel, let it chill for 30 seconds.
-    4. Titrate and add exactly these 5 ingredients (Use dispensers and burette):
-        chilled bromine, 10mL
-        vinegar, 5mL
-        aether, 20mL
-        wine, 15mL
-        carbonic acid, 35mL
-    5. Use beaker on condenser
-    6. Use striker on the bunsen burner
-    7. Take the beaker.
-
-    BOOKS:
-        One that describes condenser and a distiller.
-*/
-
 public class Labo extends Room {
 // ============================================================================    
     public Labo(String name, String ID) {

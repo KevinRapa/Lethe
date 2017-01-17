@@ -15,7 +15,7 @@ public class Obs1_Tlscp extends Furniture {
                          + "aluminum, bronze, and wood. A small eyepiece connects to a\n"
                          + "foot-wide lens near the top. Many various gears and other\n"
                          + "parts comprise it as well.";
-        this.searchDialog = "You carefully look through its various intricacies";
+        this.searchDialog = "You carefully look through its various intricacies.";
         this.actDialog = "You look into the eyepiece and see nothing but black.";
 
         this.addNameKeys("(?:large )?(?:old )?(?:heavy )?(?:antique )?telescope");

@@ -1,15 +1,14 @@
 package Garden;
 
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Gar4_Plq extends Furniture {
     private boolean isMoved;
     // ========================================================================
-    public Gar4_Plq (Item... items) {
-        super(items);
+    public Gar4_Plq () {
+        super();
         this.searchable = false;
         this.isMoved = false;
         
@@ -17,7 +16,7 @@ public class Gar4_Plq extends Furniture {
         this.actDialog = "You move the plaque off to the side.";
         this.searchDialog = "You look under the plaque to find just soil.";
 
-        this.addNameKeys("plaque");
+        this.addNameKeys("(?:small )?plaque");
         this.addActKeys("read", "move", "slide", "lift");
     }
     // ========================================================================   
@@ -26,7 +25,7 @@ public class Gar4_Plq extends Furniture {
     }
     // ========================================================================   
     @Override public String interact(String key) {              
-        if (key.matches("read"))
+        if (key.equals("read"))
             return this.description;
         else {
             if (! this.isMoved) {
@@ -34,7 +33,7 @@ public class Gar4_Plq extends Furniture {
                 return this.actDialog;
             }
             else
-                return "You have already moved the plaque";
+                return "You have already moved the plaque.";
         }
     }
     // ========================================================================  

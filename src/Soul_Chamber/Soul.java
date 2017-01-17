@@ -2,7 +2,7 @@ package Soul_Chamber;
 
 import A_Main.GUI;
 import A_Main.Id;
-import A_Main.ItemTypeConstants;
+import A_Main.NameConstants;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Room;
@@ -36,7 +36,7 @@ public class Soul extends Room {
                   + "which frees the dead of their earthly bodies.");
             GUI.promptOut();
             
-            GUI.out("You remove the five glowing objects you have collected and\n"
+            GUI.out("You remove the five phylacteries you have collected and\n"
                   + "stand quietly before the pool.");
             GUI.promptOut();
             
@@ -66,8 +66,8 @@ public class Soul extends Room {
     }
 // ============================================================================
     private void removePhylacteries() {
-        Player.getInv().remove(ItemTypeConstants.PHYLACTERY);
-        GUI.invOut("You are carrying:\n" + Player.getInv());
+        Player.getInv().remove(NameConstants.PHYLACTERY);
+        Player.printInv();
     }
 // ============================================================================    
 }

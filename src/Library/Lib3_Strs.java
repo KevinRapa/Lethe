@@ -1,6 +1,7 @@
 package Library;
 
 import A_Main.Id;
+import static A_Main.NameConstants.LEATHER_SHOES;
 import A_Main.Player;
 import A_Super.Furniture;
 
@@ -22,7 +23,7 @@ public class Lib3_Strs extends Furniture {
     @Override public String interact(String key) {     
         String rep;
         
-        if (Player.getShoes().matches("leather shoes")) {
+        if (Player.getShoes().equals(LEATHER_SHOES)) {
             Player.setOccupies(Id.LIB3);
                 
             rep = "You successfully climb the stairs to the second floor.";        

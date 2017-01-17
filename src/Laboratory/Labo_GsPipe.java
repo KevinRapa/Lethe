@@ -1,5 +1,6 @@
 package Laboratory;
 
+import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -19,8 +20,8 @@ public class Labo_GsPipe extends Furniture {
         this.useDialog = "You fit the rubber tube over the nozzle tightly and connect the other end to the bunsen burner.";
 
         this.addNameKeys("(?:metal )?(?:gas )?(?:pipe|valve|nozzle)");
-        this.addUseKeys("rubber hose");
-        this.addActKeys("turn", "rotate");
+        this.addUseKeys(RUBBER_HOSE);
+        this.addActKeys("turn", "rotate", "twist", "spin");
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -31,7 +32,7 @@ public class Labo_GsPipe extends Furniture {
     }
     // ========================================================================   
     @Override public String interact(String key) {          
-        if (Player.hasItem("lab coat")) {
+        if (Player.hasItem(LAB_COAT)) {
             boolean hoseConnected = Player.getPos().hasFurniture("hose");
             
             if (this.toggleGas()) 
@@ -47,7 +48,7 @@ public class Labo_GsPipe extends Furniture {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (Player.hasItem("lab coat")) {
+        if (Player.hasItem(LAB_COAT)) {
             Player.getInv().remove(item);
             Player.getPos().addFurniture(new Labo_Hose());
             return this.useDialog;

@@ -1,6 +1,7 @@
 package Scorched_Room;
 
 import A_Main.Id;
+import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Furniture;
@@ -21,11 +22,11 @@ public class Sear_Fssr extends Furniture {
                        + "begin to think the wood axe is the only tool\n"
                        + "you know how to use without it breaking.";
         this.addNameKeys("fissure");
-        this.addUseKeys("warhammer", "crowbar", "hammer");
+        this.addUseKeys(WARHAMMER, CROWBAR, HAMMER);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        if (item.toString().matches("warhammer")) {            
+        if (item.toString().equals(WARHAMMER)) {            
             Player.getPos().addAdjacent(Id.COU2);
             Player.getInv().remove(item);
             Player.getInv().add(new Item("broken warhammer", "It's snapped in half.", "Well, it's useless now."));
@@ -33,7 +34,7 @@ public class Sear_Fssr extends Furniture {
             return this.useDialog;
         }
         else if (! this.broken) {
-            if (item.toString().matches("hammer")) {
+            if (item.toString().equals(HAMMER)) {
                 return "You give it a swing, but this hammer is too\n"
                      + "small to break this wall. They must've been\n"
                      + "using something else.";

@@ -1,5 +1,7 @@
 package Garden;
 
+import static A_Main.NameConstants.SHOVEL;
+import static A_Main.NameConstants.TROWEL;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -21,7 +23,7 @@ public class Gar13_Plntr extends Furniture {
         this.useDialog = "You uncover nothing, but you do store a bit of soil in your pockets.";
 
         this.addNameKeys("planter", "bed of soil", "soil", "bed", "plants");
-        this.addUseKeys("hoe", "trowel", "shovel", "seed", "fertilizer");
+        this.addUseKeys("hoe", TROWEL, SHOVEL, "seed", "fertilizer");
         this.addActKeys("garden", "plant");
     }
     // ========================================================================     

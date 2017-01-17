@@ -1,5 +1,6 @@
 package Gallery;
 
+import static A_Main.NameConstants.BOX_THINGY;
 import A_Super.Furniture;
 import A_Super.Lever;
 /**
@@ -20,7 +21,7 @@ public class Gal6_Swtch extends Lever {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        if (! REF.isOn() && REF.containsItem("box thingy")) {
+        if (! REF.isOn() && REF.containsItem(BOX_THINGY)) {
             return "You flick the switch.\n" + REF.turnOn();
         }
         else if (REF.isOn()) {

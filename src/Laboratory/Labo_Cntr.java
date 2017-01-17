@@ -7,7 +7,6 @@ import A_Super.Openable;
  * @author Kevin Rapa
  */
 public class Labo_Cntr extends Furniture implements Openable {
-
     // ========================================================================
     public Labo_Cntr (Item... items) {
         super(items);

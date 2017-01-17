@@ -1,5 +1,6 @@
 package Iron_Hall;
 
+import static A_Main.NameConstants.POLEARM;
 import A_Super.Furniture;
 import A_Super.Item;
 
@@ -19,7 +20,7 @@ public class Iha2_Armr extends Furniture {
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        return this.containsItem("polearm") ? 
+        return this.containsItem(POLEARM) ? 
                 this.description : "It's a suit of armor. It's gauntlets are empty.";
     }
 /*----------------------------------------------------------------------------*/

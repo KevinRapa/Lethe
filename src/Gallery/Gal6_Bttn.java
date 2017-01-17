@@ -34,7 +34,7 @@ public class Gal6_Bttn extends Button {
         do {
             choice = GUI.promptOut();
             
-            if (choice.matches("yes")) {
+            if (choice.equals("yes")) {
                 Room room;
                 int x, y, z;
                 AudioPlayer.playEffect(11);

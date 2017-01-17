@@ -13,7 +13,7 @@ public class Dkch_Dsk extends Furniture {
         this.description = "The plain wooden table has no drawers and only\n"
                          + "bears some papers and gadgets on the surface.\n"
                          + "The chair sits pushed in under it.";
-        this.searchDialog = "You look on the desk's surface.";
+        this.searchDialog = "You look on the desk and chair surfaces.";
 
         this.addNameKeys("(?:plain )?(?:wooden )?(?:desk|chair|table)");
     }

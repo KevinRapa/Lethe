@@ -12,7 +12,7 @@ public class Par1_Hrp extends Furniture {
             this.description = "It's a renaissance-era harp. It looks gold plated,\n"
                              + "but you're no metallurgist. It sure does look\n"
                              + "tempting to play though.";
-            this.REF = (Par1_Orb) orb;
+            this.REF = (Par1_Orb)orb;
             this.addActKeys("play", "strum");
     }
 /*----------------------------------------------------------------------------*/ 
@@ -21,12 +21,12 @@ public class Par1_Hrp extends Furniture {
             REF.wake();
             return "You slouch next to the harp and give it a jarring strum. Suddenly, you\n"
                  + "hear a nearby voice. \"Hey! Stop playing that, you'll break something!\"\n"
-                 + "The voice is echoey, and have a hunch it's emanating from the orb.";
+                 + "The voice is echoey, and you have a hunch it's emanating from the orb.";
         }
         else
             return "You sit down again and play some more notes. \"Stop playing\n"
                  + "that before you break it!\" The orb yells. \"I'm the only\n"
-                 + "qualified musician in this castle!\"";
+                 + "experienced musician in this castle!\"";
     }
 /*----------------------------------------------------------------------------*/ 
 }

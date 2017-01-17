@@ -1,5 +1,6 @@
 package Mystical_Chamber;
 
+import static A_Main.NameConstants.IRIDESCENT_JEWEL;
 import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Furniture;
@@ -18,7 +19,7 @@ public class My18_Pdstl extends Furniture {
         this.searchDialog = "There's nothing interesting about the pedestal.";
 
         this.addNameKeys("(?:sandstone )?pedestal");
-        this.addUseKeys("iridescent jewel");
+        this.addUseKeys(IRIDESCENT_JEWEL);
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -35,7 +36,7 @@ public class My18_Pdstl extends Furniture {
         return "The stone fits perfectly into the indentation. Immediately, the\n"
              + "ground begins to shake lightly. You step back. The seams in the floor\n"
              + "begin to cascase downward forming a spiral staircase descending\n"
-             + "downward into dark.";
+             + "downwards into darkness.";
     }
     // ========================================================================     
 }

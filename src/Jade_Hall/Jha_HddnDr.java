@@ -13,7 +13,7 @@ public class Jha_HddnDr extends Door {
                          + "and bears many curved etchings. Carved in the center\n"
                          + "is a sphere with a smoke or mist rising from the top.";
 
-        this.addNameKeys("mysterious door", "secret door", "hidden door");
+        this.addNameKeys("(?:mysterious |secret |hidden )door");
     }
     // ========================================================================    
 }

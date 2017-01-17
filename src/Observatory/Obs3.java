@@ -12,7 +12,7 @@ public class Obs3 extends Room {
                      "the perimeter of the room from the north to the south wall.\n" +
                      "A large chandelier hangs in the center over a two-story drop.\n" +
                      "Two telescopes stand on opposite sides of the balcony facing\n" +
-                     "different directions. You can see a chest on the far side of\n" +
+                     "orthogonally. You can see a chest on the far side of\n" +
                      "the balcony.";
     }
 /*----------------------------------------------------------------------------*/   

@@ -1,6 +1,7 @@
 package Library;
 
 import A_Main.AudioPlayer;
+import static A_Main.NameConstants.CRYSTAL_ORB;
 import A_Super.Direction;
 import A_Super.Room;
 import A_Super.Furniture;
@@ -32,7 +33,7 @@ public class Lib4 extends Room{
     @Override public String getDescription() {
         String rep = this.description;
         
-        if (! REF.containsItem("crystal orb")) {
+        if (! REF.containsItem(CRYSTAL_ORB)) {
             rep = "At the top step of the stairs, you gaze into the north end\n" +
                   "of the second floor. A couch sits in front of a fireplace in\n" +
                   "the far corner. A bookshelf labeled \"Perdition\" is against\n" +

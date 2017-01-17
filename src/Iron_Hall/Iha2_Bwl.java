@@ -1,5 +1,6 @@
 package Iron_Hall;
 
+import static A_Main.NameConstants.POLEARM;
 import A_Super.Furniture;
 
 public class Iha2_Bwl extends Furniture {
@@ -7,7 +8,7 @@ public class Iha2_Bwl extends Furniture {
     public Iha2_Bwl() {
             super();
             this.searchable = false;
-            this.addUseKeys("polearm");
+            this.addUseKeys(POLEARM);
             this.addNameKeys("(?:hanging )?(?:burning )?(?:steel )?bowl(?: of fire)?");
 
             this.description = "It's a steel bowl of fire hanging from the ceiling\n"

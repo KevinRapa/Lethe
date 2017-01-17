@@ -1,5 +1,6 @@
 package Iron_Hall;
 
+import static A_Main.NameConstants.POLEARM;
 import A_Super.Item;
 import A_Super.Key;
 import A_Super.Furniture;
@@ -13,7 +14,7 @@ public class Iha1_Bwl extends Furniture {
             super();
             this.searchable = false;
             this.jabbed = false;
-            this.addUseKeys("polearm");
+            this.addUseKeys(POLEARM);
             this.addNameKeys("(?:hanging )?(?:burning )?(?:steel )?bowl(?: of fire)?");
             this.FLOOR_REF = iha1F;
             this.WOWKEY_REF = wow2Key;

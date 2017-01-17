@@ -3,14 +3,13 @@ package Crypt;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Cry2_Engrvng extends Furniture {
     // ========================================================================
-    public Cry2_Engrvng (Item... items) {
-        super(items);
+    public Cry2_Engrvng () {
+        super();
         this.searchable = false;
         
         this.description = "The tall coffin resembles a large stone box. The box\n"
@@ -31,7 +30,7 @@ public class Cry2_Engrvng extends Furniture {
     @Override public String getDescription() {
         if (Player.getPos().isAdjacent(Id.CAS1)) {
             return "The engraving frames a metal door in the center of it. The stone\n"
-                 + "coffin stands to the side of it.";
+                 + "coffin stands off to the side.";
         }
         return this.description;
     }

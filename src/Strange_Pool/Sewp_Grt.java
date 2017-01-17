@@ -8,7 +8,6 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Sewp_Grt extends Furniture {
-
     // ========================================================================
     public Sewp_Grt () {
         super();
@@ -19,7 +18,7 @@ public class Sewp_Grt extends Furniture {
         this.actDialog = "You've just escaped! No need to back into the dangerous tunnel.";
 
         this.addNameKeys("(?:metal )?(?:ladder|grate)");
-        this.addActKeys("climb", "descent", "use");
+        this.addActKeys("climb", "descend", "use");
     }
     // ========================================================================    
 }

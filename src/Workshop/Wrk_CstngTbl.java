@@ -1,5 +1,6 @@
 package Workshop;
 
+import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
@@ -28,14 +29,14 @@ public class Wrk_CstngTbl extends Furniture {
         this.hasTemplate = false;
         this.searchable = false;
         this.description = "It's a tall metal casting table for casting metal.";
-        this.addUseKeys("lens template", "molten red glass", "molten yellow glass", "molten blue glass");
+        this.addUseKeys(LENS_TEMPLATE, MOLTEN_RED_GLASS, MOLTEN_YELLOW_GLASS, MOLTEN_BLUE_GLASS);
         this.addNameKeys("table", "casting table");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         String rep, name = item.toString();
         
-        if (item.toString().equals("lens template")) {
+        if (item.toString().equals(LENS_TEMPLATE)) {
             this.hasTemplate = true;
             Player.getInv().remove(item);
             rep = "You fit the template onto the table's surface.";
@@ -45,11 +46,11 @@ public class Wrk_CstngTbl extends Furniture {
             
             if (this.hasTemplate) {   
                 String color;
-                if (name.equals("molten red glass")) {
+                if (name.equals(MOLTEN_RED_GLASS)) {
                     Player.getInv().add(this.REFRL); // Give player red lens.
                     color = "red";
                 }
-                else if (name.equals("molten blue glass")) {
+                else if (name.equals(MOLTEN_BLUE_GLASS)) {
                     Player.getInv().add(this.REFBL); // Give player blue lens.
                     this.REFSCK.getInv().add(this.REFSND); // Restock sand.
                     this.REFBRL.getInv().add(this.REFBD); // Restock dye.

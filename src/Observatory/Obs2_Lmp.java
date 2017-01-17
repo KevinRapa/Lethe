@@ -10,9 +10,9 @@ public class Obs2_Lmp extends Furniture {
         super();
         this.searchable = false;
         this.description = "The electric lamp looks like it's made of clay. It lights\n"
-                         + "the chair's vicinity with just enough light to read\n"
+                         + "the chair's vicinity just enough in order to read\n"
                          + "comfortably.";
-        this.addNameKeys("(?:electric )?(?:table )?lamp", "light");
+        this.addNameKeys("(?:electric )?(?:table )?(?:lamp|light)");
     }
     // ========================================================================     
 }

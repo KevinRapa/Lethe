@@ -1,6 +1,7 @@
 package Laboratory;
 
 import A_Main.Player;
+import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -26,40 +27,42 @@ public class Labo_Dstllr extends Furniture {
                           + "Though they're alien to you, you note nothing out of the ordinary.";
         this.description = "It's one half of a larger alchemical contraption in the room.\n"
                          + "On the table is a metal flask rack and a bunsen burner\n"
-                         + "under it. Above the setup is a curved glass tube connecting\n"
+                         + "under it. Above the setup is a curved glass tube connecting it\n"
                          + "to the condenser on the other side of the table.";
         this.useDialog = "none.";
 
         this.addNameKeys("distillery?", "(?:bunsen )?burner", "(?:flask )?rack");
-        this.addUseKeys("rubber hose", "florence flask", "striker", "torch", "beaker", "test tube", "empty vial");
+        this.addUseKeys(RUBBER_HOSE, FLORENCE_FLASK, STRIKER, HAND_TORCH, BEAKER, TEST_TUBE, EMPTY_VIAL);
     }
     // ======================================================================== 
     @Override public String getDescription() {
-        return Player.getPos().hasFurniture("florence flask") ?
+        return Player.getPos().hasFurniture(FLORENCE_FLASK) ?
                 "The flask now rests nicely on the rack in between the burner and the distillation tube." :
                 this.description;
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (Player.hasItem("lab coat")) {
-            if (item.toString().matches("rubber hose")) {
+        String name = item.toString();
+        
+        if (Player.hasItem(LAB_COAT)) {
+            if (name.equals(RUBBER_HOSE)) {
                 Player.getInv().remove(item);
                 Player.getPos().addFurniture(new Labo_Hose());
                 return "You connect the hose to the bunsen burner nozzle and the other end to the gas pipe.";
             }
-            else if (item.toString().matches("florence flask")) {
+            else if (name.equals(FLORENCE_FLASK)) {
                 Player.getInv().remove(item);
                 Labo_Flsk flask = new Labo_Flsk(CONDENSER_REF, TUBE_REF, VIAL_REF); // Don't want to pass this in constructor.
                 Player.getPos().addFurniture(flask);
                 this.distillMethod = () -> flask.distill();
                 return "You place the florence flask onto the rack.";
             }
-            else if (item.toString().matches("beaker|test tube|empty vial")) {
+            else if (name.matches("beaker|test tube|empty vial")) {
                 return "That type of vessel was not designed for boiling liquid! Put it down before you set the room on fire.";
             }
             else {
                 if (PIPE_REF.isOn() && Player.getPos().hasFurniture("hose")) {
-                    if (Player.getPos().hasFurniture("florence flask")) {
+                    if (Player.getPos().hasFurniture(FLORENCE_FLASK)) {
                         distillMethod.run(); // Cannot run before runDistill has been assigned a value.
                                              // Dialog is processed at Labo_Cndsr.condense because .run() returns void.
                             

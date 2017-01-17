@@ -4,7 +4,7 @@ import A_Main.GUI;
 import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
-import A_Main.ItemTypeConstants;
+import A_Main.NameConstants;
 import A_Main.Player;
 /**
  * One of four elements of the light machine puzzle in the gallery.
@@ -99,7 +99,7 @@ public class Gal1_Drgn extends LghtMchn {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) { 
-            if (item.getType().matches(ItemTypeConstants.FOCUS)) {
+            if (item.getType().equals(NameConstants.FOCUS)) {
                 this.CONTENTS.add(item);
                 this.trigger();
                 return true;

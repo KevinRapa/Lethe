@@ -1,6 +1,7 @@
 package Torture_Chamber;
 
 import A_Main.Id;
+import A_Main.NameConstants;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -9,7 +10,8 @@ import A_Super.Resetable;
  * @author Kevin Rapa
  */
 public class Torc_Scyth_Furn extends Furniture implements Resetable {
-    private final Item SCYTHE = new Item("scythe", "It's a large black scythe. The edge is quite sharp.");;
+    private final Item SCYTHE = new Item(NameConstants.SCYTHE, 
+            "It's a large black scythe. The edge is quite sharp.");;
     // ========================================================================
     public Torc_Scyth_Furn (Item... items) {
         super(items);

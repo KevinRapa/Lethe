@@ -1,5 +1,7 @@
 package Courtyard;
 
+import static A_Main.NameConstants.SHOVEL;
+import static A_Main.NameConstants.TROWEL;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -18,7 +20,7 @@ public class Cou1_Hl extends Furniture {
         this.actDialog = "There's no need to dig the hole any deeper.";
         this.useDialog = this.actDialog;
         this.addNameKeys("hole", "(?:foot-deep )?hole");
-        this.addUseKeys("shovel", "trowel");
+        this.addUseKeys(SHOVEL, TROWEL);
         this.addActKeys("dig");
     }
 /*----------------------------------------------------------------------------*/    

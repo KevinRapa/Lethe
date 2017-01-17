@@ -1,5 +1,6 @@
 package Workshop;
 
+import static A_Main.NameConstants.HAMMER;
 import A_Super.Furniture;
         
 public class Wrk_Anvl extends Furniture {
@@ -11,7 +12,7 @@ public class Wrk_Anvl extends Furniture {
                          + "It looks heavily used.";
         this.searchDialog = "There's nothing to search for on an anvil.";
         this.actDialog = "There's a plethora of weapons downstairs. No need for that.";
-        this.addActKeys("hammer", "use");
+        this.addActKeys(HAMMER, "use");
         this.addNameKeys("anvil");
     }
 /*----------------------------------------------------------------------------*/

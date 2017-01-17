@@ -1,5 +1,6 @@
 package Tunnels;
 
+import A_Main.NameConstants;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -31,7 +32,7 @@ public class Sew4_Pp extends Furniture implements Resetable {
         this.useDialog = "The pipe is too high up for you to reach!";
 
         this.addNameKeys("(?:large )?(?:rusty )?(?:metal )?pip(?:e|ing)");
-        this.addUseKeys("piece of pipe");
+        this.addUseKeys(NameConstants.PIECE_OF_PIPE);
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -46,7 +47,7 @@ public class Sew4_Pp extends Furniture implements Resetable {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (Player.getPos().hasFurniture("metal ladder")) {
+        if (Player.getPos().hasFurniture(NameConstants.METAL_LADDER)) {
             Player.getInv().remove(item);
             this.hasPipe = true;
             return "With all your strength, you shove the piping between the break in the piping. It's a good fit, but may not hold long...";

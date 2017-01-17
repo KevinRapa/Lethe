@@ -16,15 +16,15 @@ public class Obs_Slts extends Furniture {
         super();
         this.searchable = false;
         
-        SLOTS.add(new Obs_Slt("I", "Sol", "Inside the slot: \"Helios\""));
-        SLOTS.add(new Obs_Slt("A", "Mercury", "Inside the slot: \"Hermes\""));
-        SLOTS.add(new Obs_Slt("B", "Venus", "Inside the slot: \"Aphrodite\""));
-        SLOTS.add(new Obs_Slt("C", "Terra", "Inside the slot: \"Gaea\""));
-        SLOTS.add(new Obs_Slt("D", "Mars", "Inside the slot: \"Ares\""));
-        SLOTS.add(new Obs_Slt("E", "Jupiter", "Inside the slot: \"Zeus\""));
-        SLOTS.add(new Obs_Slt("F", "Saturn", "Inside the slot: \"Kronos\""));
-        SLOTS.add(new Obs_Slt("G", "Caelus", "Inside the slot: \"Uranus\""));
-        SLOTS.add(new Obs_Slt("H", "Neptune", "Inside the slot: \"Posiedon\""));
+        SLOTS.add(new Obs_Slt("I", "Sol",       "Inside the slot: \"Helios\""));
+        SLOTS.add(new Obs_Slt("A", "Mercury",   "Inside the slot: \"Hermes\""));
+        SLOTS.add(new Obs_Slt("B", "Venus",     "Inside the slot: \"Aphrodite\""));
+        SLOTS.add(new Obs_Slt("C", "Terra",     "Inside the slot: \"Gaea\""));
+        SLOTS.add(new Obs_Slt("D", "Mars",      "Inside the slot: \"Ares\""));
+        SLOTS.add(new Obs_Slt("E", "Jupiter",   "Inside the slot: \"Zeus\""));
+        SLOTS.add(new Obs_Slt("F", "Saturn",    "Inside the slot: \"Kronos\""));
+        SLOTS.add(new Obs_Slt("G", "Caelus",    "Inside the slot: \"Uranus\""));
+        SLOTS.add(new Obs_Slt("H", "Neptune",   "Inside the slot: \"Posiedon\""));
         
         MAP.put('i', 0); MAP.put('a', 1); MAP.put('b', 2); MAP.put('c', 3); 
         MAP.put('e', 5); MAP.put('f', 6); MAP.put('g', 7); MAP.put('h', 8); 
@@ -52,7 +52,7 @@ public class Obs_Slts extends Furniture {
             if (choice.matches("[abcdefghi]"))
                 GUI.descOut(SLOTS.get(MAP.get(choice.charAt(0))).getDescription());
 
-        } while (! choice.matches(""));
+        } while (! choice.matches(NOTHING));
         
         GUI.descOut(Player.getPos().getDescription());
         
@@ -83,9 +83,9 @@ public class Obs_Slts extends Furniture {
                     choice = "";
                 }
             }
-            GUI.invOut("You are carrying:\n" + Player.getInv());
+            Player.printInv();
 
-        } while (! choice.matches(""));
+        } while (! choice.matches(NOTHING));
         
         return rep;
     }

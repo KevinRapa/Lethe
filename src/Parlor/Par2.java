@@ -14,7 +14,7 @@ public class Par2 extends Room{
         description= "You stand on a second-floor loft bowing over a parlor.\n"
                    + "A thin flight of steps leads down to the first level.\n"
                    + "The room is cast in a warm glow from a hanging bowl of fire\n"
-                   + "helped by a burning fireplace below. This room resembles\n"
+                   + "helped by a fireplace below. This room resembles\n"
                    + "the old west wing, with sandstone walls\n"
                    + "and floors. The\n"
                    + "loft is mostly bare save a piano sitting on an extension\n"
@@ -24,12 +24,10 @@ public class Par2 extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         if (! this.isAdjacent(Id.JHA1))
-            rep += " Though, there is something odd about this door.";
-        
-        return rep;
+            return this.description.concat(" However, there is something odd about this door.");
+        else
+            return this.description;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
@@ -37,7 +35,7 @@ public class Par2 extends Room{
             AudioPlayer.playEffect(8);
             GUI.out("After stepping into the room, the door slams shut behind you.\n"
                   + "Startled, you spin around and miss a breath. You are alone.");
-            Player.getRoomObj(Id.FOY2).lock();
+            Player.getRoomObj(Id.FOY3).lock();
         }    
         return STD_RM_OUT;
     }
@@ -47,7 +45,7 @@ public class Par2 extends Room{
             return "There's nothing but a railing and open space over the lower\n"
                  + "level parlor.";
                 
-        return WALL_BARRIER;
+        return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/ 
 }

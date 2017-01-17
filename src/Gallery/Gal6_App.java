@@ -1,5 +1,6 @@
 package Gallery;
 
+import static A_Main.NameConstants.BOX_THINGY;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -25,7 +26,7 @@ public class Gal6_App extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (! this.containsItem("box thingy")) {
+        if (! this.containsItem(BOX_THINGY)) {
             return "The weird apparatus looks like a metal platform\n"
                  + "with three curved arms projecting out and overtop\n"
                  + "of itself. Its lights are off and the *bleeping*\n"
@@ -36,7 +37,7 @@ public class Gal6_App extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() { 
-        if (! this.containsItem("metal box thingy with wires")) 
+        if (! this.containsItem(BOX_THINGY)) 
             return "The platform in the center is empty.";
         
         return this.searchDialog;

@@ -25,7 +25,7 @@ public class Cry_Drwrs extends Furniture implements Openable {
                          + "each labeled a with a number from 1 to 100.";
         
         this.searchDialog = "You pull the knob on the drawer. The door swings\n"
-                          + "open, revealing a dessicated corpse inside.";
+                          + "open revealing a dessicated corpse inside.";
 
         this.addNameKeys("drawers?", "knobs?", "numerous drawers");
     }

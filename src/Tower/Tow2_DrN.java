@@ -1,6 +1,6 @@
 package Tower;
 
-import A_Main.ItemTypeConstants;
+import A_Main.NameConstants;
 import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Door;
@@ -25,7 +25,7 @@ public class Tow2_DrN extends Door {
         int numPhylacteries = 0;
         
         for (Item i : Player.getInv())
-            if (i.getType().equals(ItemTypeConstants.PHYLACTERY))
+            if (i.getType().equals(NameConstants.PHYLACTERY))
                 numPhylacteries++;
         
         switch (numPhylacteries) {

@@ -13,15 +13,15 @@ public class Labo_StpCck extends Furniture {
         super();
         this.searchable = false;
         
-        this.description = "They are small turnable switches for operating titrators.\n"
-                         + "Both the dispensers and the burette have a stopcock.\n"
-                         + "State 'burette stopcock' or 'dispenser stopcock'.";
         this.actDialog = "Both the dispensers and the burette have a stopcock.\n"
                        + "State 'burette stopcock' or 'dispenser stopcock'.";
-        this.searchDialog = "Both the dispensers and the burette have a stopcock.\n"
-                          + "State 'burette stopcock' or 'dispenser stopcock'.";;
+        
+        this.description = "They are small turnable switches for operating titrating instruments. " 
+                + this.actDialog;
+        
+        this.searchDialog = this.actDialog;
 
-        this.addNameKeys("stopcock");
+        this.addNameKeys("stopcocks?");
         this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist");
     }
     // ========================================================================   

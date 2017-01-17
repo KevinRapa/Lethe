@@ -1,5 +1,6 @@
 package Tunnels;
 
+import static A_Main.NameConstants.PIECE_OF_PIPE;
 import A_Super.Furniture;
 /**
  * @author Kevin Rapa
@@ -32,7 +33,7 @@ public class Sew235_Pp extends Furniture {
         this.useDialog = "There's nothing missing from the pipe in this area!";
 
         this.addNameKeys("(?:large )?(?:rusty )?(?:metal )?pip(?:e|ing)");
-        this.addUseKeys("piece of pipe");
+        this.addUseKeys(PIECE_OF_PIPE);
     }
     // ======================================================================== 
 }

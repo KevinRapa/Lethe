@@ -7,6 +7,8 @@ package Catacombs;
  * @author Kevin Rapa
  */
 import A_Main.Player;
+import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.NameConstants.IRIDESCENT_JEWEL;
 import A_Super.Direction;
 import A_Super.Floor;
 import A_Super.Furniture;
@@ -14,6 +16,7 @@ import A_Super.Item;
 import A_Super.Room;
 import A_Super.Wall;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Catacomb extends Room {
@@ -39,7 +42,6 @@ public class Catacomb extends Room {
            out what is in each direction of the catacombs. The description will
            reflect if there if empty space or a door in any direction.
         */
-        
         int X = COORDS[2], Y = COORDS[1]; // X and Y coordinates of this room.
 
         // List of X and Y coordinates of the adjacent catacomb rooms.
@@ -52,9 +54,10 @@ public class Catacomb extends Room {
         ArrayList<String> dirs = new ArrayList<>();
         
         for (String i : this.adjacent) {
+
             int[] coords = {i.charAt(2) - '0', 
                             i.charAt(3) - '0'};
-            
+
             if (i.matches("CT\\d{2}")) // Is catacomb.
                 adjCatacombCoords.add(coords);
             else                       // Isn't catacomb.
@@ -72,7 +75,7 @@ public class Catacomb extends Room {
             else if (j[1] == X + 1)
                 dirs.add("east");
         }
-
+        
         // Appends the correct directions to descLit.
         switch (dirs.size()) {
             case 1:
@@ -131,14 +134,14 @@ public class Catacomb extends Room {
     }
 // ============================================================================
     @Override public String getDescription() {
-        if (Player.hasItem("hand torch"))
+        if (Player.hasItem(HAND_TORCH))
             return this.descLit;
         else
             return this.description;
     }
 // ============================================================================
     @Override public String triggeredEvent() {
-        if (Player.hasItem("hand torch"))
+        if (Player.hasItem(HAND_TORCH))
             return STD_RM_OUT;
         else
             return "???";
@@ -154,7 +157,7 @@ public class Catacomb extends Room {
             target = Player.getRoomObj(5, y, x);
         } while (! target.getID().matches("CT\\d{2}"));
         
-        target.getFurnishings().get(0).getInv().add(new Item("iridescent jewel", "The polished stone feels warm to the touch,\n"
+        target.getFurnishings().get(0).getInv().add(new Item(IRIDESCENT_JEWEL, "The polished stone feels warm to the touch,\n"
                                                            + "and is constantly shifting color among red, black, and green."));
         
         return (x + ", " + y + ", " + 6);

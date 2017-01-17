@@ -3,11 +3,11 @@ package Drawing_Room;
 import A_Super.Furniture;
 
 public class Drar_Cch extends Furniture {
-    private final Drar_Ghst REF;
+    private final Drar_Ghst GHOST_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Drar_Cch(Furniture ghst) {
         super();
-        this.REF = (Drar_Ghst)ghst;
+        this.GHOST_REF = (Drar_Ghst)ghst;
         this.searchable = false;
         this.description = "The victorian-era couch is a bold green color. This\n"
                          + "one looks quite comfortable actually.";
@@ -19,14 +19,14 @@ public class Drar_Cch extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        if (REF.firstTime())
+        if (GHOST_REF.firstTime())
             return "You do realize that there's a ghost in here, right?";
         
         return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (REF.firstTime())
+        if (GHOST_REF.firstTime())
             return "You do realize that there's a ghost in here, right?";
         
         return this.actDialog;

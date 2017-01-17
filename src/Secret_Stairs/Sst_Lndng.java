@@ -10,11 +10,11 @@ public class Sst_Lndng extends Furniture {
         super();
         this.searchable = false;
         
-        this.description = "The stairs lead up to the small landing. It held up\n"
+        this.description = "The stairs lead up to the small landing. It's held up\n"
                          + "only by several old wood planks and looks just big\n"
                          + "enough to stand on.";
 
-        this.addNameKeys("landing", "small landing");
+        this.addNameKeys("(?:small )?landing");
     }
     // ======================================================================== 
 }

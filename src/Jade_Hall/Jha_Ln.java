@@ -1,6 +1,8 @@
 package Jade_Hall;
 
 import A_Main.Id;
+import static A_Main.NameConstants.AQUAMARINE;
+import static A_Main.NameConstants.RUBY;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -21,17 +23,17 @@ public class Jha_Ln extends Furniture {
                          + "is empty. Strange that someone decided to display\n"
                          + "them way back here where no one can see them.\n";
         this.DESC2 = "It's a menacing jade statue of a lion. Sparkling\n"
-                          + "rubies sit in both its eye sockets. Strange that\n"
-                          + "someone decided to display them way back here where\n"
-                          + "no one can see them.";
-        this.searchDialog = "There doesn't seem to be any secret compartments\n"
+                   + "rubies sit in both its eye sockets. Strange that\n"
+                   + "someone decided to display them way back here where\n"
+                   + "no one can see them.";
+        this.searchDialog = "There don't seem to be any secret compartments\n"
                           + "on this statue. Although, one of the rubies sitting\n"
-                          + "in its eye sockets has hone missing.";
+                          + "in its eye sockets has gone missing.";
         this.useDialog = "You place the ruby into the lion's eye socket. The ruby\n"
-                       + "glints and stays in place. ";
+                       + "glints and stays in place.";
 
         this.addNameKeys("jade statue", "lion statue", "statue", "jade lion statue");
-        this.addUseKeys("ruby", "aquamarine");
+        this.addUseKeys(RUBY, AQUAMARINE);
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -45,7 +47,7 @@ public class Jha_Ln extends Furniture {
     // ========================================================================   
     @Override public String useEvent(Item item) {
         if (! hasRuby) {
-            if (item.toString().matches("aquamarine"))
+            if (item.toString().equals(AQUAMARINE))
                 return "You insert the blue gem into the socket, but it sits\n"
                      + "there only momentarily before falling out.";
             else {
@@ -55,7 +57,7 @@ public class Jha_Ln extends Furniture {
             }
         }
         else
-            return "There's no place to put the " + item + ".";
+            return "There's no place to fit the " + item + ".";
     }
     // ========================================================================     
     public boolean hasRuby() {

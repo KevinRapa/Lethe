@@ -1,6 +1,7 @@
 package Cell;
 
 import A_Main.Id;
+import static A_Main.NameConstants.METAL_BAR;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -29,7 +30,7 @@ public class Intr_Grt extends Furniture implements Resetable {
 
         this.addNameKeys("(?:metal )?(?:grate|ladder)");
         this.addActKeys("jump", "climb", "lift", "move", "descend", "pry");
-        this.addUseKeys("metal bar");
+        this.addUseKeys(METAL_BAR);
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -45,7 +46,7 @@ public class Intr_Grt extends Furniture implements Resetable {
     @Override public String interact(String key) {  
         if (key.equals("lift") || key.equals("move")) 
             return opened ? MOVED_GRATE : this.actDialog;
-        else if (key.equals("pry") && Player.hasItem("metal bar")) {
+        else if (key.equals("pry") && Player.hasItem(METAL_BAR)) {
             return this.useEvent(null); // Safe. Arg unused here.
         }
         else

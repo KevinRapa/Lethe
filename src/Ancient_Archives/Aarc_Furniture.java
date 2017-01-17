@@ -1,6 +1,7 @@
 package Ancient_Archives;
 
 import A_Main.Player;
+import static A_Main.NameConstants.HAND_TORCH;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -33,7 +34,7 @@ public class Aarc_Furniture extends Furniture {
     }
     // ======================================================================== 
     private String checkForTorch(String dialog) {
-        return Player.hasItem("hand torch") ? dialog : TOO_DARK;
+        return Player.hasItem(HAND_TORCH) ? dialog : TOO_DARK;
     }
     // ======================================================================== 
 }

@@ -1,5 +1,6 @@
 package Laboratory;
 
+import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -36,14 +37,14 @@ public class Labo_Bkr extends Furniture {
         this.mode = Potion.EMPTY;
         
         this.BEAKER_REF = beakerItem;
-        this.PHASE_POTION = new Item("phase door potion", "It's a smoky brown liquid. You pray that this potion does what the tome said...", ""
-                                 + "You don't know the duration. Better get out to the front gate before drinking this!!");
-        this.GENERIC_POTION = new Item("potion of science", "This doesn't look like what the manual said... It looks potion-ey, better throw it out though.");
+        this.PHASE_POTION = new Item(PHASE_DOOR_POTION, "It's a smoky brown liquid. You pray that this potion does what the tome said...",
+                                     "You don't know the duration. Better get out to the front gate before drinking this!!");
+        this.GENERIC_POTION = new Item(POTION_OF_SCIENCE, "This doesn't look how the manual described... It looks potion-ey, better throw it out though.");
         
         this.description = "The beaker contains ";
         this.actDialog = "You take the beaker off of the contraption.";
 
-        this.addNameKeys("beaker");
+        this.addNameKeys(BEAKER);
         this.addActKeys(GETKEYS);
         this.addActKeys("drink");
     }

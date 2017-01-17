@@ -1,5 +1,6 @@
 package Marble_Hall;
 
+import static A_Main.NameConstants.SILVER_SPEAR;
 import A_Super.Furniture;
 
 public class Mha_LStat extends Furniture {
@@ -19,7 +20,7 @@ public class Mha_LStat extends Furniture {
                        + "tainted by your touch.";
         this.addNameKeys("left statue");
         this.addActKeys("touch", "grab", "hold");
-        this.addUseKeys("silver spear");
+        this.addUseKeys(SILVER_SPEAR);
     }
 /*----------------------------------------------------------------------------*/
 }

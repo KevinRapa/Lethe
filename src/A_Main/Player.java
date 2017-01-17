@@ -29,9 +29,9 @@ public final class Player {
     private static String lastVisited, shoes;
     private final static HashMap<Character, Runnable> CMD = new HashMap<>(); 
 //******************************************************************************
-// <editor-fold desc="GETTERS AND SETTERS">  
+// <editor-fold desc="ACCESSORS AND OUTPUT">  
 //******************************************************************************
-    // <editor-fold desc="Getters">
+    // <editor-fold desc="Accessors">
     
     /**
      * Converts a string of a piece of furniture to its object equivalent.
@@ -66,9 +66,6 @@ public final class Player {
         return Player.mapRef[pos[0]][pos[1]][pos[2]];
     }
     /*------------------------------------------------------------------------*/
-    /**
-     * @return The ID of the room you are in.
-     */
     public static String getPosId() {
         return Player.getPos().getID();
     }
@@ -127,6 +124,10 @@ public final class Player {
     // </editor-fold>
     
     /*------------------------------------------------------------------------*/
+    private static boolean isNonEmptyString(String input) {
+        return (! input.equals(""));
+    }
+    /*------------------------------------------------------------------------*/
     /**
      * Checks that you have a specific item.
      * @param item The item in question.
@@ -137,7 +138,14 @@ public final class Player {
                 anyMatch(i -> i.toString().matches(item));
     }
     /*------------------------------------------------------------------------*/
-    
+    public static void printInv() {
+        GUI.invOut("You are carrying: " + Player.inv);
+    }
+    /*------------------------------------------------------------------------*/
+    private static void printInv(Inventory furnInv) {
+        GUI.invOut("You find:\n" + furnInv + 
+            "\nYou are carrying:\n" + Player.inv);
+    }
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************
@@ -215,7 +223,7 @@ public final class Player {
         String ans;
         
         AudioPlayer.playTrack(getPosId());
-        GUI.invOut("You are carrying:\n" + Player.inv);
+        printInv();
         
         GUI.roomOut(getPos().triggeredEvent());
         describeRoom();
@@ -369,7 +377,7 @@ public final class Player {
         GUI.menOut("\n\n<object> Search\n    < > Back\n");
         String searchThis = GUI.promptOut();
         
-        if (! searchThis.matches("") && getPos().hasFurniture(searchThis))
+        if (isNonEmptyString(searchThis) && getPos().hasFurniture(searchThis))
             search(getFurnRef(searchThis));
         
         else if (searchThis.matches("it|them")) // Indefinite reference.
@@ -379,10 +387,10 @@ public final class Player {
         else if (searchThis.matches("furniture|furnishings"))
             GUI.out("You have to enter something specific.");
             
-        else if (! searchThis.matches("")) 
+        else if (isNonEmptyString(searchThis)) 
             GUI.out("There is no " + searchThis + " here."); 
 
-        GUI.invOut("You are carrying:\n" + Player.inv);
+        printInv();
     }    
     // ========================================================================  
     /**
@@ -394,8 +402,6 @@ public final class Player {
         GUI.out(furniture.getSearchDialog());
         
         if (furniture.isSearchable()) {
-            GUI.invOut("You find:\n" + furniture.getInv() + 
-                       "\nYou are carrying:\n" + Player.inv);
             searchPrompt(furniture); 
         }
     } 
@@ -408,6 +414,7 @@ public final class Player {
         String cmdItm; 
         
         do {
+            printInv(furniture.getInv());
             GUI.menOut("\n<'s' #> Store...\n<'t' #> Take...\n< > Back\"");
             
             cmdItm = GUI.promptOut();
@@ -429,10 +436,10 @@ public final class Player {
                 GUI.out("There's no item in that slot.");
             }
             catch (java.util.NoSuchElementException | java.lang.NumberFormatException e) {
-                if (! cmdItm.matches(""))
+                if (isNonEmptyString(cmdItm))
                     GUI.out("Type an action and the slot number."); 
             }
-        } while (! cmdItm.matches(""));
+        } while (isNonEmptyString(cmdItm));
         
         describeRoom();
     }
@@ -457,10 +464,6 @@ public final class Player {
         }
         else if (Player.inv.contains(take))
             GUI.out("You already have one of those."); 
-        
-        
-        GUI.invOut("You find:\n" + furniture.getInv() + 
-                   "\nYou are carrying:\n" + Player.inv);
     }
     // ========================================================================  
     /**
@@ -480,9 +483,6 @@ public final class Player {
             if (store.toString().matches(shoes))
                 Player.shoes = "";
         }
-        
-        GUI.invOut("You find:\n" + furniture.getInv() + 
-                   "\nYou are carrying:\n" + Player.inv);
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -542,7 +542,7 @@ public final class Player {
         else 
             GUI.out("There is no " + object + " here."); 
         
-        GUI.invOut("You are carrying:\n" + Player.inv);
+        printInv();
     }
     // ========================================================================  
     private static void checkOutSub() {
@@ -550,7 +550,7 @@ public final class Player {
         
         String checkThis = GUI.promptOut();
         
-        if (! checkThis.matches(""))
+        if (isNonEmptyString(checkThis))
             checkOut(checkThis);
     }
     // ========================================================================
@@ -577,7 +577,7 @@ public final class Player {
 // <editor-fold desc="INVENTORY ACTIONS">      
 //******************************************************************************    
     private static void inventoryPrompt() {
-        GUI.invOut("You are carrying:\n" + Player.inv);
+        printInv();
         AudioPlayer.playEffect(1);
         String ans;
         
@@ -598,12 +598,12 @@ public final class Player {
                     default:
                         combineSub();
                 }
-                GUI.invOut("You are carrying:\n" + Player.inv);
+                printInv();
             } 
-            else if (! ans.matches(""))
+            else if (isNonEmptyString(ans))
                 GUI.out("Enter a valid choice.");
             
-        } while (! ans.matches(""));
+        } while (isNonEmptyString(ans));
         
         GUI.clearDialog();
     }
@@ -621,10 +621,10 @@ public final class Player {
                 GUI.out(item.getDesc());  
             }
             catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
-                if (! ans.matches("")) 
+                if (isNonEmptyString(ans)) 
                     GUI.out("Type in a valid slot number.");
             }
-        } while (! ans.matches(""));
+        } while (isNonEmptyString(ans));
         
         GUI.clearDialog();
     }
@@ -632,7 +632,7 @@ public final class Player {
     private static void usePrompt() {
         String choice;
         
-        do { 
+        do {      
             GUI.menOut("\n<#> Use...\n< > Back");
             choice = GUI.promptOut();
             
@@ -643,11 +643,11 @@ public final class Player {
                 evalUse(useID, item);
             }
             catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
-                if (! choice.matches(""))
+                if (isNonEmptyString(choice))
                     GUI.out("Type in a valid slot number.");
                 
             }  
-        } while (! choice.matches(""));
+        } while (isNonEmptyString(choice));
     }
     // ========================================================================  
     /**
@@ -675,10 +675,10 @@ public final class Player {
                         GUI.out("You jam the " + item + " into the " + ans +
                                 "\nas hard as you can, but nothing happens.");
                 }                      
-                else if (! ans.matches("")) 
+                else if (isNonEmptyString(ans)) 
                     GUI.out("There is no " + ans + " here.");    
         }
-        GUI.invOut("You are carrying:\n" + Player.inv);
+        printInv();
     }
     // ========================================================================  
     /**
@@ -697,7 +697,7 @@ public final class Player {
 
             Item[] list = getTokenList(tokens);
             
-            if (! combineThese.matches("")) {
+            if (isNonEmptyString(combineThese)) {
                 if (list.length == 2 || list.length == 3)
                     evalCombine(list);
                 else {
@@ -712,7 +712,7 @@ public final class Player {
                 }    
             }
             tokens.close();  
-        } while (! combineThese.matches(""));        
+        } while (isNonEmptyString(combineThese));        
     }
     // ======================================================================== 
     /**
@@ -725,7 +725,7 @@ public final class Player {
             if (list[0].getThreshold() == list.length) {
                 // Verifies that the player entered the proper amount of itemList.
                 GUI.out(Player.inv.combine(list, list[0].getProduct())); 
-                GUI.invOut("You are carrying:\n" + Player.inv);
+                printInv();
             }
             else 
                 // 2 objects are correct, but 1 is missing.

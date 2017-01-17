@@ -22,7 +22,7 @@ public class Par1 extends Room{
         if (! this.isAdjacent(Id.BHA3))
             return this.description;
         else
-            return this.description.replaceFirst("door,\\w+\\.", ".");
+            return this.description.replaceFirst(", but something about it appears off", ".");
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String getBarrier(Direction dir) {

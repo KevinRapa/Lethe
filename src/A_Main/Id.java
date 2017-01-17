@@ -26,7 +26,8 @@ public final class Id {
         WOW2 = "WOW2",  WBAL = "WBAL",  SQUA = "SQUA",  CLOS = "CLOS",
         WOW3 = "WOW3",  SHAR = "SHAR",  SHA1 = "SHA1",  SHA2 = "SHA2",
             
-        CBNT = "CBNT", //SHA2 csbinet key.   
+        CBNT = "CBNT", //SHA2 csbinet key.  
+            
         // </editor-fold>   
         // <editor-fold desc="AREA 3: East wing">
             
@@ -37,7 +38,8 @@ public final class Id {
         EOW2 = "EOW2",  EOW4 = "EOW4",  LIB1 = "LIB1",  LIB2 = "LIB2",
         LIB3 = "LIB3",  LIB4 = "LIB4",  LIB5 = "LIB5",  DRAR = "DRAR",
             
-        GCBT = "GCBT", //GAL5 cabinet key.   
+        GCBT = "GCBT", //GAL5 cabinet key.  
+            
         // </editor-fold>    
         // <editor-fold desc="AREA 4: Castle rear">
 
@@ -106,7 +108,7 @@ public final class Id {
 
         BLS1 = "BLS1", TOW1 = "TOW1", SOUL = "SOUL", TBAL = "TBAL",
         BLS2 = "BLS2", TOW2 = "TOW2", LQU1 = "LQU1", LQU2 = "LQU2",
-        END_ = "END_";
+        ENDG = "ENDG";
         
         // </editor-fold>
     // ========================================================================

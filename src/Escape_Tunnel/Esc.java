@@ -3,6 +3,7 @@ package Escape_Tunnel;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Player;
+import static A_Main.NameConstants.HAND_TORCH;
 import A_Super.Room;
 import A_Super.Direction;
 import A_Super.Furniture;
@@ -17,10 +18,10 @@ import Tunnels.Dungeon_F;
  * @author Kevin Rapa
  */
 public class Esc extends Room {
-    private final Furniture MACHINERY = new Esc_Mchnry();
-    private final Furniture FLOOR = new Esc_F();
+    private final Furniture MACHINERY_REF = new Esc_Mchnry();
+    private final Furniture FLOOR_REF = new Esc_F();
     private final String MACHINERY_DESC = "You're crammed in a small utility tunnel.\n" +
-            "Many pieces of pistons, gears, and other complicated machinery operate around you.\n"
+            "Many pistons, gears, and other complicated machinery operate around you.\n"
           + "The hallway offers a bit of space in which to move forward. ",
                          REFUSE_TO_MOVE = "It's too dark to see anything, and there is\n"
           + "a lot of dangerous sounding machinery. You don't feel comfortable moving forward.",
@@ -30,7 +31,7 @@ public class Esc extends Room {
     public Esc(String name, String ID, String desc) {
         super(name, ID);
         this.description = desc;
-        this.addFurniture(MACHINERY, FLOOR, new Wall("The walls are masked by a wall of machinery."), new Dng_Monst_Furn());
+        this.addFurniture(MACHINERY_REF, FLOOR_REF, new Wall("The walls are masked by a wall of machinery."), new Dng_Monst_Furn());
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {
@@ -56,7 +57,7 @@ public class Esc extends Room {
     }
 // ============================================================================
     private boolean playerHasTorch() {
-        return Player.hasItem("hand torch");
+        return Player.hasItem(HAND_TORCH);
     }
 // ============================================================================
 // ****************************************************************************
@@ -90,7 +91,7 @@ public class Esc extends Room {
             super();
             this.searchable = false;
             this.searchDialog = "There's nothing here, and you don't feel comfortable\n"
-                              + "putting anything down where it will drop into the machinery.";
+                              + "putting anything down where it will drop into oblivion.";
         }
         @Override public String getDescription() {
             if (Esc.this.playerHasTorch())

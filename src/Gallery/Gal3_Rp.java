@@ -31,7 +31,7 @@ public class Gal3_Rp extends Furniture {
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) { 
         if (! this.cut) {
-            if (key.matches("cut")) {
+            if (key.equals("cut")) {
                 if (detectItem()) {
                     REF.lower();
                     this.cut = true;
@@ -40,7 +40,7 @@ public class Gal3_Rp extends Furniture {
                 else
                     return "You have nothing to cut the rope with.";
             }       
-            else if (key.matches("pull")) 
+            else if (key.equals("pull")) 
                 return "Pulling the rope is doing the opposite of what you want.";  
             
             else 

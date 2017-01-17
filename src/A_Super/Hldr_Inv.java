@@ -6,6 +6,7 @@ package A_Super;
  */
 import A_Main.Inventory;
 import A_Main.GUI;
+import static A_Main.NameConstants.HAND_TORCH;
 
 public class Hldr_Inv extends Inventory {  
 // CONSTRUCTOR -----------------------------------------------------------------      
@@ -14,7 +15,7 @@ public class Hldr_Inv extends Inventory {
     }
 /*----------------------------------------------------------------------------*/
     @Override public boolean add(Item item) { 
-        if (item.toString().matches("hand torch") && this.size() == 0) {
+        if (item.toString().equals(HAND_TORCH) && this.size() == 0) {
             this.CONTENTS.add(item);
             return true;
         }

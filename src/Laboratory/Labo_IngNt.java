@@ -9,7 +9,7 @@ public class Labo_IngNt extends Note {
         this.description = "How is it that I'm out of both acetic acid AND\n" +
                            "alcohol? I may have to use vinegar as a substitute\n" +
                            "for now. As for alcohol, I'm not sure I'm keen to\n" +
-                           "use anything below 10%...";
+                           "use anything below 15.5%...";
     }
 /*----------------------------------------------------------------------------*/
 }

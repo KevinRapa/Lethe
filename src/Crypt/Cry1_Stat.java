@@ -1,6 +1,7 @@
 package Crypt;
 
 import A_Main.Id;
+import A_Main.NameConstants;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -11,14 +12,14 @@ import A_Super.Statue;
  */
 public class Cry1_Stat extends Statue implements Resetable {
     private boolean hasScythe, eyesGlowing;
-    private final Furniture SCYTHE, DOOR;
+    private final Furniture SCYTHE_REF, DOOR_REF;
     // ========================================================================
     public Cry1_Stat (Furniture scythe, Furniture door) {
         super();
         
         this.hasScythe = this.eyesGlowing = false;
         
-        this.SCYTHE = scythe;   this.DOOR = door;
+        this.SCYTHE_REF = scythe;   this.DOOR_REF = door;
         
         this.useDialog = "You place the scythe into the statue's left hand.";
         this.description = "The tall statue stands in the center of this side\n"
@@ -28,7 +29,7 @@ public class Cry1_Stat extends Statue implements Resetable {
                          + "palm it reaches out openly towards you.";
         
         this.addNameKeys("(?:tall )?(?:stone )?(?:cloaked )?statue", "(?:bone?y)?(?:hand|palm)");
-        this.addUseKeys("scythe");
+        this.addUseKeys(NameConstants.SCYTHE);
         this.addActKeys("shake", "embrace", "greet", "hold", "grasp", 
                         "push", "pull", "move", "turn", "twist");
     }
@@ -40,8 +41,8 @@ public class Cry1_Stat extends Statue implements Resetable {
             result =  this.description;
         else
             result = this.description.replaceFirst(
-                    "up as if it were\ngrasping something, though its palm is empty", 
-                    " its palm is emptyholding the scythe.");
+                    "one of its boney hands up as if it were\ngrasping something, though its palm is empty", 
+                    "a scythe in one hand");
         
         if (this.eyesGlowing)
             return result.concat(" It's eyeholes glow with an orange light.");
@@ -63,7 +64,7 @@ public class Cry1_Stat extends Statue implements Resetable {
                      + "light glows deep in the statue's eyes.";
             }
             else {
-                return "You grasp the statue's right hand and twist. Nothing happens";
+                return "You grasp the statue's right hand and twist. Nothing happens.";
             }
         }
     }
@@ -76,8 +77,8 @@ public class Cry1_Stat extends Statue implements Resetable {
     // ========================================================================     
     @Override public void reset() {
         if (this.hasScythe) {
-            Player.getRoomObj(Id.CRY2).removeFurniture(DOOR);
-            Player.getRoomObj(Id.TORC).addFurniture(SCYTHE);
+            Player.getRoomObj(Id.CRY2).removeFurniture(DOOR_REF);
+            Player.getRoomObj(Id.TORC).addFurniture(SCYTHE_REF);
             this.hasScythe = false;
         }
         if (Player.getRoomObj(Id.CRY2).isAdjacent(Id.CAS1)) {

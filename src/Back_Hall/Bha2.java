@@ -4,6 +4,7 @@ import A_Super.Room;
 import A_Main.Player;
 import A_Main.GUI;
 import A_Main.Id;
+import static A_Main.NameConstants.SHROUDED_SHOES;
 /**
  * Sends player back to BHA1 if the player is not wearing the enchanted shoes.
  * Supposed to generate the illusion that the hallway is infinitely long.
@@ -23,7 +24,7 @@ public class Bha2 extends Room {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
-        if (! Player.getShoes().matches("shrouded shoes")) {
+        if (! Player.getShoes().equals(SHROUDED_SHOES)) {
             if (Player.getLastVisited().matches(Id.BHA1))
                 Player.setOccupies(Id.BHA1);
             else

@@ -13,7 +13,7 @@ public class Pris_Cbnt extends Furniture implements Openable {
 
         this.description = "It's an old wood cabinet. The doors look ready to\n"
                          + "fall off their hinges.";
-        this.searchDialog = "You open the cabinet.";
+        this.searchDialog = "You open up the cabinet.";
 
         this.addNameKeys("(?:old )?(?:wooden )?cabinet");
     }

@@ -11,7 +11,7 @@ public class Sst2 extends Room {
         this.description= "You stand at the foot of the steps on a small landing.\n"
                         + "Right before you to the east is an old wood door. In\n"
                         + "the open on the opposite wall is a vented window\n"
-                        + "letting in a small amount of light.";
+                        + "letting in a small amount of moonlight.";
     }
 // ============================================================================
 }

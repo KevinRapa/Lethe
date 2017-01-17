@@ -10,7 +10,7 @@ public class Dkch_Nt extends Note {
                          + "\"Death beckons you with its grim implement.\n"
                          + "Embrace its cold grasp and speak 'It is I, friend,\n"
                          + "welcome me' before its front door, and you will be\n"
-                         + "invited into its kingdom\"";
+                         + "invited into its kingdom.\"";
     }
 /*----------------------------------------------------------------------------*/
 }

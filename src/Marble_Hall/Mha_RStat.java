@@ -1,5 +1,6 @@
 package Marble_Hall;
 
+import static A_Main.NameConstants.SILVER_SPEAR;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
@@ -20,7 +21,7 @@ public class Mha_RStat extends Furniture {
                             + "tainted by your touch.";
         this.addNameKeys("right statue");
         this.addActKeys("touch", "grab", "hold");
-        this.addUseKeys("silver spear");
+        this.addUseKeys(SILVER_SPEAR);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

@@ -1,15 +1,13 @@
 package Laboratory;
 
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Labo_Dvcs extends Furniture {
-
     // ========================================================================
-    public Labo_Dvcs (Item... items) {
-        super(items);
+    public Labo_Dvcs () {
+        super();
         this.searchable = false;
         
         this.description = "You are overwhelmed with science. You have never been\n"

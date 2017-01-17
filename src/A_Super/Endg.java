@@ -6,9 +6,9 @@ import java.io.File;
 /**
  * @author Kevin Rapa
  */
-public class End_ extends Room {
+public class Endg extends Room {
 // ============================================================================    
-    public End_(String name, String ID) {
+    public Endg(String name, String ID) {
         super(name, ID);
         this.description= "You step out of the castle's front wall and into the forest. A\n" +
                           "ray of sunlight finds the back of your neck, and you feel warmth.\n" +

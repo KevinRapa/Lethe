@@ -23,7 +23,7 @@ package A_Main;
  * @see <a href="https://github.com/KevinRapa/Salamaa.git">GitHub Repository</a>
  */
 
-import A_Super.*;
+import A_Super.*;          import static A_Main.NameConstants.*;
 
 import Vestibule.*;        import Closet.*;             import Foyer.*;
 import Back_Balcony.*;     import Rotunda.*;            import Lookout.*; 
@@ -45,7 +45,7 @@ import Escape_Tunnel.*;    import Strange_Pool.*;       import Prison.*;
 import Torture_Chamber.*;  import Crypt.*;              import Ancient_Archives.*;
 import Keeper_Chamber.*;   import Vault.*;              import Tower.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
-import Soul_Chamber.*;
+import Soul_Chamber.*;     
         
 import java.awt.Toolkit;   import java.awt.Dimension; import javax.swing.*;  
 import java.io.*;          import java.util.Random;
@@ -55,7 +55,7 @@ public class Main {
     private static final String WD = System.getProperty("user.dir");
 // ============================================================================
     public static void main(String[] args) {
-        String start = Id.SEWP; // PLAYER'S STARTING LOCATION. DEFAULT Id.COU4.
+        String start = Id.COU4; // PLAYER'S STARTING LOCATION. DEFAULT Id.COU4.
         
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
@@ -149,7 +149,7 @@ public class Main {
         // is and the items are added to the respective furniture. 
         //**********************************************************************
 
-        // =====================================================================  
+        // ---------------------------------------------------------------------  
         // <editor-fold desc="INITIALIZE PHYLACTERIES">
         
         Item studBkPhy = new Stud_BookPhy("glowing book, \"A Young Mind's Guide to Lichery\"");
@@ -159,7 +159,7 @@ public class Main {
         Item towScptrPhy = new Tow_ScptrPhy("glowing scepter");
         
         // </editor-fold>
-        // =====================================================================  
+        // ---------------------------------------------------------------------  
         // <editor-fold desc="INITIALIZE KEYS AND GENERIC FURNITURE">
 
         // Keys
@@ -189,21 +189,24 @@ public class Main {
         Furniture wallEx = new Wall_Ex(); // Generic exterior castle wall.
         
         // </editor-fold>
-        // =====================================================================             
+        // --------------------------------------------------------------------- 
+        
+        
+        // ---------------------------------------------------------------------  
         // <editor-fold desc="AREA 1: CASTLE FRONT">
         
-        Item bckt = new Item("metal bucket", "It's an empty metal bucket."); // Used with all fireplaces
-        Item vial = new Item("empty vial", "A small glass vial for holding samples");
+        Item bckt = new Item(METAL_BUCKET, "It's an empty metal bucket."); // Used with all fireplaces
+        Item vial = new Item(EMPTY_VIAL, "A small glass vial for holding samples");
         // These items are a set used to create mandragora. Must be instantiated
         // before courtyard because soil can be found in the courtyard.
-        Item mndrk = new Item("mandragora", "The potato-shaped vegetable looks disturbingly life-like.");
-        Item hlyWtr = new Item("holy water", "Clear, salty, and boiled like hell.", mndrk, "mandragora", 2);
-        Item pttdMndrk = new Item("potted mandragora", "You have gently positioned the bulb under the soil.", mndrk, "mandragora", 2);
+        Item mndrk = new Item(MANDRAGORA, "The potato-shaped vegetable looks disturbingly life-like.");
+        Item hlyWtr = new Item("holy water", "Clear, salty, and boiled like hell.", mndrk, MANDRAGORA, 2);
+        Item pttdMndrk = new Item("potted mandragora", "You have gently positioned the bulb under the soil.", mndrk, MANDRAGORA, 2);
         Item mndrkBlb = new Item("mandragora bulb", "It's a baby mandragora!", pttdMndrk, "potted mandragora", 2);
         Item mndrkPt = new Item("potted soil and fertilizer", "The mixture of soil and fertilizer", pttdMndrk, "potted mandragora", 2);
         Item pot = new Item("clay pot", "It's a medium-sized clay pot for holding plants.", mndrkPt, "potted soil and fertilizer", 2);
         Item mxtr = new Item("fertilized soil", "It's a fertile mixture of soil, sand, and fertilizer", mndrkPt, "potted soil and fertilizer", 2);
-        Item snd = new Item("sand", "You have a pocket full of sand. It's grainy\nand uncomfortable.", mxtr, "fertilized soil", 3);
+        Item snd = new Item(SAND, "You have a pocket full of sand. It's grainy\nand uncomfortable.", mxtr, "fertilized soil", 3);
         Item sl = new Item("soil", "It's a soft pile of soil", mxtr, "fertilized soil", 3);
         Item frt = new Item("fertilizer", "It's a handful of mysterious gardening wizardry.", mxtr, "fertilized soil", 3);
         
@@ -304,14 +307,14 @@ public class Main {
         Room cou6 = new Cou6("in the northeast courtyard", Id.COU6);
         //-------------------------------ITEMS----------------------------------
         Item krnsPlt = new Obs_Plt("brass plate, \"Saturn\"", "The small plate bears an engraving: \"Saturn\"");
-        Item soldMed = new Item("stone disk", "The smooth disk is about four or five inches across.\n"
+        Item soldMed = new Item(STONE_DISK, "The smooth disk is about four or five inches across.\n"
                                             + "It's craftmanship is precise, although there's a\n"
                                             + "chip on its edge. On its surface is an embossment\n"
                                             + "of a soldier.");
         Item rck = new Item("rock", "It's a piece of the courtyard fountain.");
         Item trs = new Item("statue torso", "It's a stone torso, probably from\nthe courtyard statue");
         Item hd = new Item("statue head", "It's a stone head with a chiseled male face.");
-        Item sprcExtrct = new Item("spruce extract", "Evergreens are widely known to be resistant to burning.");
+        Item sprcExtrct = new Item(SPRUCE_EXTRACT, "Evergreens are widely known to be resistant to burning.");
         //-----------------------------FURNITURE--------------------------------
         Furniture cou3Stps = new Cou3_Stps(Direction.UP, 1);
         Furniture couStps = new Cou_Stps();
@@ -354,12 +357,12 @@ public class Main {
         // </editor-fold>
 
         // </editor-fold>
-        // =====================================================================     
+        // ---------------------------------------------------------------------     
         // <editor-fold desc="AREA 2: WEST WING">
         
         Item brRam = new Item("broken battering ram", "It's a battering ram, but without the other rope to\nhold it with, it's useless.", "It's useless now.");
         Item ram = new Item("battering ram", "You've restored the old battering ram back to its former glory");
-        Item rdFcs = new Focus("red focus", "It's a cool brass ring holding a red lens.");   
+        Item rdFcs = new Focus(RED_FOCUS, "It's a cool brass ring holding a red lens.");   
         
         // <editor-fold desc="INITIALIZE ROTUNDA">
         //-----------------------------THE ROOM---------------------------------
@@ -395,7 +398,7 @@ public class Main {
         Room iha1 = new Iha1("in the iron hall north", Id.IHA1);
         Room iha2 = new Iha2("in the iron hall south", Id.IHA2);
         //-------------------------------ITEMS----------------------------------
-        Item iha2plArm = new Item("polearm", "It looks like an old medieval polearm.");
+        Item iha2plArm = new Item(POLEARM, "It looks like an old medieval polearm.");
         //-----------------------------FURNITURE--------------------------------
         Furniture iha1Armr = new Iha1_Armr();
         Furniture iha1Hnd = new Iha1_Hnd();
@@ -410,7 +413,7 @@ public class Main {
         Room wow1 = new Wow1("in the west outer wall", Id.WOW1);
         Room wow2 = new Wow2("in the west outer wall", Id.WOW2);
         //-------------------------------ITEMS----------------------------------
-        Item vinegar = new Item("bottle of vinegar", "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"");
+        Item vinegar = new Item(BOTTLE_OF_VINEGAR, "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"");
         Item wowLddr = new Item("fixed ladder", "The spoke sits in there a bit awkwardly, but it\n"
                               + "seems like a good ladder. It may even support your heft.");   
         Item wow1Spk = new Item("wheel spoke", "It's a wooden rod, about a foot long.", wowLddr, "ladder", 3);
@@ -466,9 +469,9 @@ public class Main {
         // Used to be called "Groundskeeper's quarters"
         Room clos = new Clos("in a groundskeeping closet", Id.CLOS);
         //-------------------------------ITEMS----------------------------------
-        Item closCrwbr = new Item("crowbar", "A sweet iron crowbar.");
-        Item shvl = new Item("shovel", "A sturdy shovel for the digging of holes.");
-        Item hmmr = new Item("hammer", "It's a small handheld nailing device.");
+        Item closCrwbr = new Item(CROWBAR, "A sweet iron crowbar.");
+        Item shvl = new Item(SHOVEL, "A sturdy shovel for the digging of holes.");
+        Item hmmr = new Item(HAMMER, "It's a small handheld nailing device.");
         Item sd = new Item("seed", "It's a handful of mysterious gardening wizardry.");
         Item gl = new Item("glue bottle", "It's a bottle of sticky glue.");
         Item closGlv = new Item("gloves", "Some old gardening gloves", "They don't fit on your enormous hands.");
@@ -537,7 +540,7 @@ public class Main {
         //-----------------------------THE ROOM---------------------------------
         Room cous = new Sear("in a scorched room", Id.COUS);
         //-------------------------------ITEMS----------------------------------
-        Item wrhmmr = new Item("warhammer", "It's an old medieval warhammer. The head looks\n"
+        Item wrhmmr = new Item(WARHAMMER, "It's an old medieval warhammer. The head looks\n"
                                           + "extremely worn and dull.");
         Item ash = new Item("ash", "I'm sure there's people mixed in with this...");
         Item wd = new Item("charred wood", "It's a piece of burnt wood");
@@ -570,7 +573,7 @@ public class Main {
         // </editor-fold>
 
         // </editor-fold>
-        // =====================================================================     
+        // ---------------------------------------------------------------------     
         // <editor-fold desc="AREA 3: EAST WING">
 
         // <editor-fold desc="INITIALIZE TROPHY ROOM">
@@ -578,9 +581,9 @@ public class Main {
         Room gal5 = new Gal5("in Erik's trophy room", Id.GAL5);
         //-------------------------------ITEMS----------------------------------
         Item zsPlt = new Obs_Plt("brass plate, \"Jupiter\"", "The small plate bears an engraving: \"Jupiter\"");
-        Item emrld = new Item("glowing emerald", "The emerald pulses with a blue glow.", "This belongs to somebody important.");
-        Item aqmrn = new Item("aquamarine", "The emerald pulses with a blue glow.", "This belongs to somebody important.");
-        Item rby1 = new Item("ruby", "The ruby is well cut and clean, having been protected in the case for so long.");
+        Item emrld = new Item(GLOWING_EMERALD, "The emerald pulses with a blue glow.", "This belongs to somebody important.");
+        Item aqmrn = new Item(AQUAMARINE, "The emerald pulses with a blue glow.", "This belongs to somebody important.");
+        Item rby1 = new Item(RUBY, "The ruby is well cut and clean, having been protected in the case for so long.");
         //-----------------------------FURNITURE--------------------------------
         Furniture gal5Dr = new Gal4_Dr(Direction.SOUTH);
         Furniture gal5Dsply = new Gal5_Dsply(rby1, emrld, aqmrn);
@@ -601,12 +604,12 @@ public class Main {
         Room gal6 = new Gal6("in the gallery loft", Id.GAL6);
         Room gal7 = new Room("in the gallery loft", Id.GAL7);
         //-------------------------------ITEMS----------------------------------
-        Item blFcs = new Focus("blue focus", "It's a cool brass ring holding a blue lens.");
-        Item yllwFcs = new Focus("yellow focus", "It's a cool brass ring holding a yellow lens.");
-        Item drkFcs = new Focus("dark focus", "It's a cool brass ring holding a tinted lens.");
-        Item fnnyOrb = new Item("crystal orb", "It's extremely clean, and it contains a peculiar\n"
+        Item blFcs = new Focus(BLUE_FOCUS, "It's a cool brass ring holding a blue lens.");
+        Item yllwFcs = new Focus(YELLOW_FOCUS, "It's a cool brass ring holding a yellow lens.");
+        Item drkFcs = new Focus(DARK_FOCUS, "It's a cool brass ring holding a tinted lens.");
+        Item fnnyOrb = new Item(CRYSTAL_ORB, "It's extremely clean, and it contains a peculiar\n"
                                              + "gas, the color of which you cannot quite describe.");
-        Item bxThngy = new Item("box thingy", "This small black metal box has some surprising weight\n"
+        Item bxThngy = new Item(BOX_THINGY, "This small black metal box has some surprising weight\n"
                                             + "to it. It's a bit to big to fix in your palm. A small\n"
                                             + "red light is on top and shiny metal strips are attached\n"
                                             + "to each side.");
@@ -717,9 +720,9 @@ public class Main {
         Room mha2 = new Mha2("in the marble hall", Id.MHA3);
         Room mha3 = new Mha3("in the south marble hall", Id.MHA3);
         //-------------------------------ITEMS----------------------------------       
-        Item angMed = new Item("angel medallion", "It's a beautiful gold disk about four or five inches\n"
+        Item angMed = new Item(ANGEL_MEDALLION, "It's a beautiful gold disk about four or five inches\n"
                                                 + "across. On its surface is an embossment of an angel.");
-        Item horMed = new Item("horse medallion", "It's a silver disk about four or five inches across.\n"
+        Item horMed = new Item(HORSE_MEDALLION, "It's a silver disk about four or five inches across.\n"
                                                 + "On its surface is an embossment of a galloping horse.");
         //-----------------------------FURNITURE--------------------------------  
         Furniture mhaChndlr = new Mha_Chndlr();
@@ -745,13 +748,13 @@ public class Main {
         Room work = new Eow3("in the workshop", Id.WORK);
         //-------------------------------ITEMS----------------------------------
         Item redLns = new Item("red lens", "It's a proper lens tinted red.\n"
-                             + "Maybe you should pick up the glass trade!", rdFcs, "red focus", 3);
-        Item rdDy = new Item("red dye", "You have a handful of soft red powdered dye.");
-        Item blDy = new Item("blue dye", "You have a handful of soft blue powdered dye.");
-        Item yllwDy = new Item("yellow dye", "You have a handful of soft yellow powdered dye.");
-        Item stncl = new Item("lens template", "It's a sheet of metal with a small hole cut in it.\n");
+                             + "Maybe you should pick up the glass trade!", rdFcs, RED_FOCUS, 3);
+        Item rdDy = new Item(RED_DYE, "You have a handful of soft red powdered dye.");
+        Item blDy = new Item(BLUE_DYE, "You have a handful of soft blue powdered dye.");
+        Item yllwDy = new Item(YELLOW_DYE, "You have a handful of soft yellow powdered dye.");
+        Item stncl = new Item(LENS_TEMPLATE, "It's a sheet of metal with a small hole cut in it.\n");
         Item wrkNt = new Wrk_Nt("momento- glass");
-        Item ptsh = new Item("potash", "Good old potassium-rich potash salts!");
+        Item ptsh = new Item(POTASH, "Good old potassium-rich potash salts!");
         //-----------------------------FURNITURE--------------------------------
         Furniture wrkF = new Floor("A sandstone tiled floor.");
         Furniture wrkBrl = new Wrk_Brl(rdDy, rdDy, blDy, blDy, yllwDy, yllwDy);
@@ -769,13 +772,13 @@ public class Main {
         Room eow2 = new Eow2("in the east outer wall", Id.EOW2);
         Room eow4 = new Eow4("on the east outer wall balcony", Id.EOW4);
         //-------------------------------ITEMS----------------------------------
-        Item wtrBckt = new Item("bucket of water", "It's a metal bucket filled with water.");
+        Item wtrBckt = new Item(BUCKET_OF_WATER, "It's a metal bucket filled with water.");
         Item eowSwrd1 = new Item("silver sword", "The sword is finely polished and sharp.\nOrnamental probably.");
         Item eowSwrd2 = new Item("rusty sword", "The sword is rusty and a little dull, but still\nsomewhat effective.");
         Item eowSwrd3 = new Item("broken sword", "This sword is broken halfway down the blade.\nThis is a mark of poor craftsmanship.");
-        Item eowSSpr = new Item("silver spear", "This is beautiful! It's solid metal with a silvery shine.");
+        Item eowSSpr = new Item(SILVER_SPEAR, "This is beautiful! It's solid metal with a silvery shine.");
         Item woodSpr = new Item("wooden spear", "This looks like a plain wooden spear. A bit primitive looking.");
-        Item eowPlArm = new Item("polearm", "This is a typical polearm.");
+        Item eowPlArm = new Item(POLEARM, "This is a typical polearm.");
         Item eowAx = new Item("war axe", "This is your kind of tool! You could probably wield this."); 
         Item eowBtlAx = new Item("battle axe", "This like a hand axe, but longer. You don't care for it.");
         //-----------------------------FURNITURE--------------------------------
@@ -805,11 +808,11 @@ public class Main {
         Room lib4 = new Lib4("in the upper library north", Id.LIB4, lib4Tbl);
         Room lib5 = new Lib5("in the upper library south", Id.LIB5);
         //-------------------------------ITEMS----------------------------------
-        Item shs1 = new Shoes("leather shoes", "A fancy pair of shiny leather shoes.", 
+        Item shs1 = new Shoes(LEATHER_SHOES, "A fancy pair of shiny leather shoes.", 
                                   "You put on the shoes. They're a little big, but\ncomfortable!");
         Item shs2 = new Shoes("worn shoes", "A worn, dull pair of leather shoes.",
                                   "You put on the shoes. These aren't too comfortable.");
-        Item shs3 = new Shoes("night slippers", "A brown pair of cotton night slippers.",
+        Item shs3 = new Shoes(NIGHT_SLIPPERS, "A brown pair of cotton night slippers.",
                                   "You wear the slippers. You could wear these all day!");
         Item shs4 = new Shoes("work boots", "A rugged pair of boots.",
                                   "You put on the boots. You feel like you're at work.");
@@ -869,7 +872,7 @@ public class Main {
         Item lib1ImpNt = new Lib1_ImpNt("momento- lens");
         Item lib1Pln = new Lib1_Pln("vessel schematic");
         Item brkLns = new Item("cracked lens", "The red-tinted lens is cracked all the way through.", "You think this has lost its purpose by now.");
-        Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring. Looks like a screw is missing.", rdFcs, "red focus", 3);
+        Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring. Looks like a screw is missing.", rdFcs, RED_FOCUS, 3);
         //-----------------------------FURNITURE--------------------------------
         Furniture lib1Docs = new Lib1_Docs();
         Furniture lib1F = new Floor("It's a dusty wood parquet floor.", lib1Nt2);
@@ -912,7 +915,7 @@ public class Main {
         Room kitc = new Kitc("in the kitchen", Id.KITC);
         //-------------------------------ITEMS----------------------------------
         Item spng = new Item("sponge", "A plain old yellow kitchen sponge.");
-        Item wine = new Item("bottle of wine", "A very old bottle of red wine. The date says \"1822\"");
+        Item wine = new Item(BOTTLE_OF_WINE, "A very old bottle of red wine. The date says \"1822\"");
         Item rtnFrt = new Item("rotten fruit", "Was this an apple? Or ... plum once?", "Whatever you expect him to do with that,\nhe isn't going to.");
         Item petFrt = new Item("petrified vegetable", "Looks like a rock ... in the shape of a carrot.", "Whatever you expect him to do with that,\nhe isn't going to.");
         Item brly = new Item("barley", "It doesn't smell so great. Even grain doesn't keep this long.");
@@ -934,7 +937,6 @@ public class Main {
         // <editor-fold desc="INITIALIZE DUNGEON STAIRCASE">
         //-----------------------------THE ROOM---------------------------------
         Room dst1 = new Dst1("in an eerie chamber", Id.DST1);
-        
         //-----------------------------FURNITURE--------------------------------
         Furniture dst1Dr = new Eow1_Dr(Direction.EAST);
         Furniture dst1Strs = new Dst1_Strs(Direction.DOWN, 1);
@@ -944,7 +946,7 @@ public class Main {
         // </editor-fold>
 
         // </editor-fold>
-        // =====================================================================     
+        // ---------------------------------------------------------------------     
         // <editor-fold desc="AREA 4: CASTLE REAR">
         
         // <editor-fold desc="INITIALIZE OBSERVATORY"> 
@@ -960,7 +962,7 @@ public class Main {
         Item urnsPlt = new Obs_Plt("brass plate, \"Caelus\"", "The small plate bears an engraving: \"Caelus\"");
         Item psdnPlt = new Obs_Plt("brass plate, \"Neptune\"", "The small plate bears an engraving: \"Neptune\"");
         
-        Item rby2 = new Item("ruby", "The ruby is well cut and clean.");
+        Item rby2 = new Item(RUBY, "The ruby is well cut and clean.");
         Item cndl = new Item("candle", "It's a white candle. It looks new!");
         Item gr = new Item("small gear", "The small delicate gear fell right out of the telescope.");
         Item glssLns = new Item("glass lens", "The small lens once belonged to the telescope in the observatory.");
@@ -1016,7 +1018,7 @@ public class Main {
         Room gar3 = new Gar3("on a rooftop garden", Id.GAL3);
         Room gar4 = new Gar4("on a rooftop garden", Id.GAL4);   
         //-------------------------------ITEMS----------------------------------
-        Item hose = new Item("leather hose", "The roughly 30 foot old hose is cracked and rotted. It's certainly non-functional, but is still sturdy.");
+        Item hose = new Item(LEATHER_HOSE, "The roughly 30 foot old hose is cracked and rotted. It's certainly non-functional, but is still sturdy.");
         Item brknHose = new Item("broken hose", "The hose has broken in half, but it served a worthy final purpose.");
         Item hoe = new Item("hoe", "A rusty iron hoe for gardening.");
         Item trowel = new Item("trowel", "It's a small handheld shovel.");
@@ -1041,14 +1043,14 @@ public class Main {
         Room par2 = new Par2("on the parlor loft", Id.PAR2);
         Room par1 = new Par1("in the first floor parlor", Id.PAR1); 
         //-------------------------------ITEMS----------------------------------   
-        Item bttl = new Item("glass bottle", "It's a regular clear glass bottle.");
+        Item bttl = new Item(GLASS_BOTTLE, "It's a regular clear glass bottle.");
         Item enchntdBttl = new Item("enchanted bottle", "The bottle is now coated in a " );
         Item stlWr = new Item("steel wire", "It's some broken piano wire");
-        Item hndDrll = new Item("hand drill", "It's a drill for boring holes in wood.\n"
+        Item hndDrll = new Item(HAND_DRILL, "It's a drill for boring holes in wood.\n"
                               + "You can drill into almost anything you want now!");
-        Item fthr = new Item("raven feather", "It's a long, elegant feather");
-        Item athr = new Item("aether vial", "This looks expensive!");
-        Item frSlts = new Item("fire salts", "Seems to be just red ashes...");
+        Item fthr = new Item(RAVEN_FEATHER, "It's a long, elegant feather");
+        Item athr = new Item(AETHER_VIAL, "This looks expensive!");
+        Item frSlts = new Item(FIRE_SALTS, "Seems to be just red ashes...");
         Item parNt = new ParNt("note about vials");
         Item parBkMndrk = new Par_BkMndrk("tome, \"The Care of Mandragora\"");
         Item parBkEncht = new Par_BkEncht("tome, \"Enchanting for the Naive\"");
@@ -1063,8 +1065,7 @@ public class Main {
         Furniture par1F = new Floor("A sandstone tiled floor.");
         Furniture par1FrPlc = new Par1_FrPlc(bckt);
         Furniture par1Dr = new Par1_Dr(enchntdBttl, Direction.NORTH);
-        Furniture par1EnchntTbl = new Par1_EnchtTbl(enchntdBttl, frSlts, sprcExtrct, 
-                                                    mndrk, bttl, fthr, athr, shs3, bttl, chs1Key);
+        Furniture par1EnchntTbl = new Par1_EnchtTbl(enchntdBttl, bttl, chs1Key);
         Furniture par1Strs = new Par_Strs(Direction.UP, 1);
         Furniture par1Pllrs = new Par1_Pllrs();
         Furniture par1Hrp = new Par1_Hrp(par1Orb);
@@ -1085,8 +1086,8 @@ public class Main {
         Room sst1 = new Sst1("in the secret stairwell", Id.SST1);
         Room sst2 = new Sst2("on a small landing", Id.SST2);  
         //-----------------------------FURNITURE--------------------------------  
-        Furniture sst1Strs = new Sst_Strs(Direction.UP, 1);
-        Furniture sst2Strs = new Sst_Strs(Direction.DOWN, 1);
+        Furniture sst1Strs = new Sst_Strs(Direction.UP);
+        Furniture sst2Strs = new Sst_Strs(Direction.DOWN);
         Furniture sstLndng = new Sst_Lndng();
         Furniture sst1F = new Floor("The flooring in here is rudimentary. Just gray weathered planks of wood.");
         Furniture sst2F = new Floor("The flooring in here is rudimentary. Just gray weathered planks of wood.");
@@ -1098,18 +1099,18 @@ public class Main {
         //-----------------------------THE ROOM---------------------------------
         Room labo = new Labo("in the laboratory", Id.LABO);
         //-------------------------------ITEMS---------------------------------- 
-        Item rbbrTube = new Item("rubber hose", "It's a yellow rubber hose, about 8 feet long.");
-        Item tstTb = new Item("test tube", "A glass tube for transferring liquids");
-        Item bkr = new Item("beaker", "It's just an empty glass beaker for quick measuring.");
-        Item strkr = new Item("striker", "It's a metal tool for creating sparks");
+        Item rbbrTube = new Item(RUBBER_HOSE, "It's a yellow rubber hose, about 8 feet long.");
+        Item tstTb = new Item(TEST_TUBE, "A glass tube for transferring liquids");
+        Item bkr = new Item(BEAKER, "It's just an empty glass beaker for quick measuring.");
+        Item strkr = new Item(STRIKER, "It's a metal tool for creating sparks");
         Item scale = new Item("scale", "A machine for the weighing of things.");
         Item balance = new Item("balance", "You seem to remember these being called triple-beam balances in middle school.", "Oh boy! You could weigh just about anything with this!");
-        Item flrcFlsk = new Item("florence flask", "It's a piece of chemistry glassware. Has a bulbous bottom and a thin shaft");
+        Item flrcFlsk = new Item(FLORENCE_FLASK, "It's a piece of chemistry glassware. Has a bulbous bottom and a thin shaft");
         Item laboCtNt = new Labo_CoatNt("scientist momento");
         Item laboBrnrBk = new Labo_BrnrBk("manual, \"Playing With Fire\"");
         Item laboRcp = new Labo_PhsDrRcp("phase door potion recipe");
         Item laboIngNt = new Labo_IngNt("note- ingredients missing");
-        Item labDstllrNt = new Labo_DspnsrNt("contraption note");
+        Item labDstllrNt = new Labo_DstllrNt("contraption note");
         //-----------------------------FURNITURE--------------------------------  
         Furniture iceBrrl = new Labo_DryIce(flrcFlsk);
         Furniture laboRck = new Labo_Shlf(vial, laboRcp, tstTb, laboIngNt, vial, tstTb, bkr, tstTb, laboBrnrBk);
@@ -1170,7 +1171,7 @@ public class Main {
         // </editor-fold>
 
         // </editor-fold>
-        // =====================================================================     
+        // ---------------------------------------------------------------------     
         // <editor-fold desc="AREA 5: SUB-LEVELS">
         
         Furniture sewDrN = new Sew_Dr(Direction.NORTH);
@@ -1182,7 +1183,7 @@ public class Main {
         
         // Dungeon
         // <editor-fold desc="INITIALIZE TUNNELS">
-        Item pipePc = new Item("piece of pipe", "It's a piece of metal piping, about 2 feet long.");
+        Item pipePc = new Item(PIECE_OF_PIPE, "It's a piece of metal piping, about 2 feet long.");
         Furniture sew1Rvr = new Sew1_Rvr(pipePc, wtrBckt);
         Furniture sew4Pp = new Sew4_Pp(sew1Rvr, pipePc); // RESETABLE
         //-----------------------------THE ROOMS--------------------------------
@@ -1192,7 +1193,6 @@ public class Main {
         Room sew3 = new Sew3("in an underground tunnel", Id.SEW3);
         Room sew4 = new Sew4("in an underground tunnel", Id.SEW4, sew4Pp);
         Room sew5 = new Sew5("at the tunnel's end", Id.SEW5);
-        //-------------------------------ITEMS----------------------------------
         //-----------------------------FURNITURE-------------------------------- 
         Furniture sewF = new Dungeon_F();
                
@@ -1243,7 +1243,6 @@ public class Main {
         // <editor-fold desc="INITIALIZE TORTURE CHAMBER">
         //-----------------------------THE ROOM---------------------------------
         Room torc = new Torc("in a torture chamber", Id.TORC);
-        //-------------------------------ITEMS---------------------------------- 
         //-----------------------------FURNITURE-------------------------------- 
         Furniture torcF = new Dungeon_F();
         Furniture torcTrchs = new Torch();
@@ -1428,7 +1427,7 @@ public class Main {
         Item coin = new Item("stone coins", "A small collection of ancient coins. Many archaic markings decorate their surface, with holes bored in the centers.", "Where do you expect to spend these?");
         Item ring = new Item("bronze ring", "It's a tarnished ring. Some of the tarnish rubs off and stains your hand green.", "Now is not the time for dress-up.");
         Item nckLc = new Item("beaded neclace", "A lackluster necklace made with wooden beads.", "Now is not the time for dress-up.");
-        Item jwl = new Item("iridescent jewel", "The polished stone feels warm to the touch, and is constantly shifting color among red, black, and green.");
+        Item jwl = new Item(IRIDESCENT_JEWEL, "The polished stone feels warm to the touch, and is constantly shifting color among red, black, and green.");
         Item med1 = new Item("key of ancestry", "It's an archaic stone key. It has a disc-shaped head and a long protruding shaft bearing a few large teeth. Engraved on its head is a depiction of the sun.");
         Item med2 = new Item("key of intellect", "It's an archaic stone key. It has a disc-shaped head and a long protruding shaft bearing a few large teeth. An eye is engraved on its head.");
         Item med3 = new Item("key of continuity", "It's an archaic stone key. It has a disc-shaped head and a long protruding shaft bearing a few large teeth. The number '8' is engraved on its head.");
@@ -1530,7 +1529,7 @@ public class Main {
         // </editor-fold>
         
         // </editor-fold>
-        // =====================================================================     
+        // ---------------------------------------------------------------------     
         // <editor-fold desc="AREA 6 VAULT">
         
         // <editor-fold desc="INITIALIZE CHAPEL STAIRS"> 
@@ -1599,8 +1598,8 @@ public class Main {
         // </editor-fold>
         
         // </editor-fold>
-        // =====================================================================     
-        // <editor-fold desc="AREA 7: UPPER CASTLE">
+        // ---------------------------------------------------------------------     
+        // <editor-fold desc="AREA 7: TOWER">
 
         // <editor-fold desc="INITIALIZE BLACK STAIRCASE">
         //-----------------------------THE ROOM---------------------------------
@@ -1643,7 +1642,7 @@ public class Main {
         Room lqu1 = new Lqu1("in the lich's quarters", Id.LQU1);
         Room lqu2 = new Lqu2("at the lich's bed", Id.LQU1);
         //-------------------------------ITEMS----------------------------------
-        Item lquaStf = new Item("dampening staff", "It resembles a smooth branch of an oak tree with come kind of coil wrapped around it. It feels lifeless of power.");
+        Item lquaStf = new Item(DAMPENING_STAFF, "It resembles a smooth branch of an oak tree with come kind of coil wrapped around it. It feels lifeless of power.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture lquF = new Floor("The floor around the carpet is hard and cold stone.");
         Furniture lquW = new Wall("The walls are clean smooth stone and decorated with\n"
@@ -1682,12 +1681,12 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE END ROOM">
         
-        Room end_ = new End_("", Id.END_);
+        Room endg = new Endg("", Id.ENDG);
         
         // </editor-fold>
         
         // </editor-fold>
-        // =====================================================================     
+        // ---------------------------------------------------------------------     
 
         //**********************************************************************
         // </editor-fold>  
@@ -1706,79 +1705,94 @@ public class Main {
          * to the numerous 'NULL' elements, it provides a good visualization.
          * </p>
          * @see "Room_References.java"
-         * 
         //*********************************************************************/
 
-        Room ____ = new Room(Id.NULL, Id.NULL);
+        Room ____ = new Room(Id.NULL, Id.NULL); // Represents unreachable space.
 
         Room[][][] newMap = {                        
 
-        //  0    1    2    3    4    5    6    7   8
-        {{____,____,____,____,____,____,____,____,____},           //0 FLOOR 4 [0]
-         {____,____,____,____,____,soul,____,____,____},           //1
-         {____,____,____,____,____,tbal,____,____,____},           //2
-         {____,____,____,____,bls2,tow2,lqu1,lqu2,____},           //3
-         {____,____,____,____,____,____,____,____,____}},          //4
-        //  0    1    2    3    4    5    6    7    8    9  
-        {{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 3 [1]
-         {____,____,____,____,____,____,____,____,____,____}, //1
-         {____,____,obs3,att1,labo,foy4,gal6,gal7,____,____}, //2
-         {____,____,sst2,att2,bls1,tow1,____,____,chs3,____}, //3
-         {____,____,____,____,____,____,____,____,cha1,____}, //4
-         {____,____,____,____,____,____,____,____,cha2,____}, //5
-         {____,____,____,____,____,____,____,____,____,____}},//7
-        //  0    1    2    3    4    5    6    7    8    9  
-        {{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 2 [2]
-         {____,____,____,____,____,____,____,gal5,lib4,____}, //1
-         {____,____,obs2,jha1,par2,foy3,gal3,gal4,lib5,____}, //2
-         {____,____,sst1,jha2,____,____,____,____,____,____}, //3
-         {____,____,gar1,gar2,____,____,____,____,din2,____}, //4
-         {____,____,gar3,gar4,____,____,____,____,drar,____}, //5
-         {____,____,____,wow3,clos,____,____,work,eow4,____}, //6
-         {____,____,____,____,____,____,____,____,____,____}},//7
-        //  0    1    2    3    4    5    6    7    8    9  
-        {{____,____,____,____,____,____,____,____,____,____}, //0 FLOOR 1 [3]
-         {____,____,bha1,bha2,bha3,foyb,foyc,lib1,lib2,____}, //1
-         {____,____,obs1,stud,par1,foy2,gal1,gal2,lib3,____}, //2
-         {____,____,look,rotu,foyw,foy1,vest,mha1,chs1,____}, //3
-         {____,squa,sha2,iha1,cou1,cou7,cou6,mha2,din1,____}, //4
-         {____,shar,sha1,iha2,cou2,cou3,cou5,mha3,kitc,____}, //5
-         {____,wbal,wow1,wow2,cous,cou4,dst1,eow1,eow2,____}, //6
-         {____,____,____,____,____,end_,____,____,____,____}},//7
-        //  0    1    2    3    4    5    6    7    8    9  
-        {{____,____,____,____,____,____,____,____,____,____}, //0 BASEMENT [4]
-         {____,esc3,esc4,esc5,____,____,____,____,____,____}, //1
-         {____,esc2,esc1,esc6,____,____,____,____,____,____}, //2
-         {____,____,____,____,____,cas1,cry2,____,vau1,____}, //3
-         {____,cis2,cis1,sew5,pris,torc,cry1,____,vau2,____}, //4
-         {____,cis3,aarc,sew4,sew3,sew2,sew1,____,vaue,____}, //5
-         {____,cis4,oub1,intr,sewp,dkch,sew0,____,____,____}, //6    
-         {____,____,____,____,____,____,____,____,____,____}},//7
-        //  0    1    2    3    4    5    6    7    8    9  
-        {{____,____,____,____,____,____,____,____,____,____}, //0 CATACOMBS [5]
-         {____,ct11,ct12,ct13,ct14,ct15,tm16,ct17,my18,____}, //1
-         {____,ct21,ct22,ct23,ct24,ct25,ct26,ct27,ct28,____}, //2
-         {____,ct31,tm32,ct33,ct34,cs35,ct36,ct37,ct38,____}, //3
-         {____,ct41,ct42,ct43,ct44,ct45,ct46,ct47,ct48,____}, //4
-         {____,ct51,ct52,ct53,ct54,an55,ct56,ct57,ct58,____}, //5
-         {____,ct61,ou62,ct63,ct64,an65,tm66,ct67,ct68,____}, //6
-         {____,____,____,____,____,____,____,____,____,____}},//7      
-        //  0    1    2    3    4    5    6    7    8    9  
-        {{____,____,____,____,____,____,____,____,____,____}, //0 CAVES [6]
-         {____,cv11,cv12,cv13,cv14,cv15,cv16,cv17,cv18,____}, //1
-         {____,cv21,cv22,cv23,cv24,cv25,cv26,cv27,cv28,____}, //2
-         {____,cv31,cv32,cv33,cv34,cv35,cv36,cv37,cv38,____}, //3
-         {____,cv41,cv42,cv43,cv44,cv45,cv46,cv47,cv48,____}, //4
-         {____,cv51,cv52,cv53,cv54,cv55,cv56,cv57,cv58,____}, //5
-         {____,cv61,cv62,cv63,cv64,ms65,ms66,cv67,cv68,____}, //6
-         {____,____,____,____,____,____,____,____,____,____}} //7
+            // <editor-fold desc="FLOOR 4 [0]">    
+            //  0    1    2    3    4    5    6    7   8
+            {{____,____,____,____,____,____,____,____,____}, //0
+             {____,____,____,____,____,soul,____,____,____}, //1
+             {____,____,____,____,____,tbal,____,____,____}, //2
+             {____,____,____,____,bls2,tow2,lqu1,lqu2,____}, //3
+             {____,____,____,____,____,____,____,____,____}},//4
+            // </editor-fold>    
+            // <editor-fold desc="FLOOR 3 [1]">
+            //  0    1    2    3    4    5    6    7    8    9  
+            {{____,____,____,____,____,____,____,____,____,____}, //0
+             {____,____,____,____,____,____,____,____,____,____}, //1
+             {____,____,obs3,att1,labo,foy4,gal6,gal7,____,____}, //2
+             {____,____,sst2,att2,bls1,tow1,____,____,chs3,____}, //3
+             {____,____,____,____,____,____,____,____,cha1,____}, //4
+             {____,____,____,____,____,____,____,____,cha2,____}, //5
+             {____,____,____,____,____,____,____,____,____,____}},//7
+            // </editor-fold>   
+            // <editor-fold desc="FLOOR 2 [2]">
+            //  0    1    2    3    4    5    6    7    8    9  
+            {{____,____,____,____,____,____,____,____,____,____}, //0
+             {____,____,____,____,____,____,____,gal5,lib4,____}, //1
+             {____,____,obs2,jha1,par2,foy3,gal3,gal4,lib5,____}, //2
+             {____,____,sst1,jha2,____,____,____,____,____,____}, //3
+             {____,____,gar1,gar2,____,____,____,____,din2,____}, //4
+             {____,____,gar3,gar4,____,____,____,____,drar,____}, //5
+             {____,____,____,wow3,clos,____,____,work,eow4,____}, //6
+             {____,____,____,____,____,____,____,____,____,____}},//7
+            // </editor-fold>   
+            // <editor-fold desc="FLOOR 1 [3]">
+            //  0    1    2    3    4    5    6    7    8    9  
+            {{____,____,____,____,____,____,____,____,____,____}, //0
+             {____,____,bha1,bha2,bha3,foyb,foyc,lib1,lib2,____}, //1
+             {____,____,obs1,stud,par1,foy2,gal1,gal2,lib3,____}, //2
+             {____,____,look,rotu,foyw,foy1,vest,mha1,chs1,____}, //3
+             {____,squa,sha2,iha1,cou1,cou7,cou6,mha2,din1,____}, //4
+             {____,shar,sha1,iha2,cou2,cou3,cou5,mha3,kitc,____}, //5
+             {____,wbal,wow1,wow2,cous,cou4,dst1,eow1,eow2,____}, //6
+             {____,____,____,____,____,endg,____,____,____,____}},//7
+            // </editor-fold>   
+            // <editor-fold desc="TUNNELS [4]">
+            //  0    1    2    3    4    5    6    7    8    9  
+            {{____,____,____,____,____,____,____,____,____,____}, //0
+             {____,esc3,esc4,esc5,____,____,____,____,____,____}, //1
+             {____,esc2,esc1,esc6,____,____,____,____,____,____}, //2
+             {____,____,____,____,____,cas1,cry2,____,vau1,____}, //3
+             {____,cis2,cis1,sew5,pris,torc,cry1,____,vau2,____}, //4
+             {____,cis3,aarc,sew4,sew3,sew2,sew1,____,vaue,____}, //5
+             {____,cis4,oub1,intr,sewp,dkch,sew0,____,____,____}, //6    
+             {____,____,____,____,____,____,____,____,____,____}},//7
+            // </editor-fold>   
+            // <editor-fold desc="CATACOMBS [5]">
+            //  0    1    2    3    4    5    6    7    8    9  
+            {{____,____,____,____,____,____,____,____,____,____}, //0
+             {____,ct11,ct12,ct13,ct14,ct15,tm16,ct17,my18,____}, //1
+             {____,ct21,ct22,ct23,ct24,ct25,ct26,ct27,ct28,____}, //2
+             {____,ct31,tm32,ct33,ct34,cs35,ct36,ct37,ct38,____}, //3
+             {____,ct41,ct42,ct43,ct44,ct45,ct46,ct47,ct48,____}, //4
+             {____,ct51,ct52,ct53,ct54,an55,ct56,ct57,ct58,____}, //5
+             {____,ct61,ou62,ct63,ct64,an65,tm66,ct67,ct68,____}, //6
+             {____,____,____,____,____,____,____,____,____,____}},//7 
+            // </editor-fold>   
+            // <editor-fold desc="CAVES [6]">
+            //  0    1    2    3    4    5    6    7    8    9  
+            {{____,____,____,____,____,____,____,____,____,____}, //0
+             {____,cv11,cv12,cv13,cv14,cv15,cv16,cv17,cv18,____}, //1
+             {____,cv21,cv22,cv23,cv24,cv25,cv26,cv27,cv28,____}, //2
+             {____,cv31,cv32,cv33,cv34,cv35,cv36,cv37,cv38,____}, //3
+             {____,cv41,cv42,cv43,cv44,cv45,cv46,cv47,cv48,____}, //4
+             {____,cv51,cv52,cv53,cv54,cv55,cv56,cv57,cv58,____}, //5
+             {____,cv61,cv62,cv63,cv64,ms65,ms66,cv67,cv68,____}, //6
+             {____,____,____,____,____,____,____,____,____,____}} //7
+            // </editor-fold>   
                 
         };
-        // LOCK ROOMS ----------------------------------------------------------
+        
+        // <editor-fold desc="LOCK ROOMS">
         cous.lock(); rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
         par2.lock(); clos.lock(); din1.lock(); kitc.lock(); ou62.lock();
         chs1.lock(); work.lock(); tow1.lock(); tbal.lock(); sewp.lock();
         dkch.lock(); vau2.lock(); wow2.lock(); foyw.lock();
+        // </editor-fold>
         
         //**********************************************************************
         // </editor-fold> 
@@ -1789,7 +1803,7 @@ public class Main {
         // <editor-fold desc="PUT FURNITURE IN ROOMS">
         //*********************************************************************/  
         
-        // <editor-fold desc="AREA 1">
+        // <editor-fold desc="AREA 1: CASTLE FRONT">
         
         foy1.addFurniture(genDoor, foy1Gt, foyFrntDr, foyF, foyW, foy1Chnd, eastDoor, foy1Tbl, foy1Crpt, foy1Strs);
         foy2.addFurniture(foy2Gt, foy2Stat, foy2Alc, foyF, foyW, foy2Strcs, foyBnstr);
@@ -1807,8 +1821,8 @@ public class Main {
         cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps);
         foyw.addFurniture(genDoor, wantStat, wantTrchs, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt);
         
-        // </editor-fold>  // Castle front
-        // <editor-fold desc="AREA 2">    
+        // </editor-fold>
+        // <editor-fold desc="AREA 2: WEST WING">    
         
         rotu.addFurniture(genDoor, rotuFntn, rotuW, rotuF, rotuPlnts, rotuHl, rotuStat, rotuScnc, rotuFrms, rotuSky, rotuRock);
         look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, eastDoor);
@@ -1826,8 +1840,8 @@ public class Main {
         shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, lookLghths, lookClff, bbaSea, rquaPnl);
         stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, southDoor);
         
-        // </editor-fold>  // West wing
-        // <editor-fold desc="AREA 3">     
+        // </editor-fold>
+        // <editor-fold desc="AREA 3: EAST WING">     
         
         gal1.addFurniture(gal1Dr, gal1F, gal1W, gal1Drgn, gal1KtnFurn, gal1Pntng, gal1Pntng2, gal1Pntng3, gal1Armr, gal1Scr, gal1Scrn, gal1Pntngs, gal1Lghts, gal1Sclptrs, gal1Hrth);
         gal2.addFurniture(genDoor, gal2Stat, gal2Strcs, gal2F, gal2W, galBalc, gal1Lghts, rotuSky, galDm, gal2Clmns, mhaSDr, eastDoor);
@@ -1854,8 +1868,8 @@ public class Main {
         gal5.addFurniture(gal5Dsply, gal5Chndlr, gal5Cbwbs, gal5F, gal5W, gal5Clng, gal5Cbt, gal5Dr);
         kitc.addFurniture(kitcTrch, kitcF, kitcW, kitcWndw, kitcDr, kitcRck, kitcPts, kitcHrth, kitcBrls, kitcPntry, kitcShlf, kitcCntr);
 
-        // </editor-fold>  // East wing
-        // <editor-fold desc="AREA 4">
+        // </editor-fold>
+        // <editor-fold desc="AREA 4: CASTLE REAR">
         
         par2.addFurniture(genDoor, wWW, par2F, par2Wndw, westDoor, eastDoor, par2Strs, parLft, par2Bwl, par2Frplc, par2Pno, par2Shlf);
         par1.addFurniture(par1F, par1Dr, par1FrPlc, wWW, par1EnchntTbl, par1Strs, parLft,
@@ -1879,8 +1893,8 @@ public class Main {
         labo.addFurniture(laboF, att2Dr, wallEx, laboStpCck, laboBrtt, laboGsPipe, laboCntr, iceBrrl, 
                           laboRck, laboDspnsrs, laboDstllr, laboSnk, laboCntrptn, cndsr, laboTbl, laboDvcs); 
         
-        // </editor-fold>  // Castle rear
-        // <editor-fold desc="AREA 5">
+        // </editor-fold>
+        // <editor-fold desc="AREA 5: SUB-LEVELS">
         
         // <editor-fold desc="Tunnels and dungeon">
         sew0.addFurniture(sew0Strs, dngnW, sewF, sew0Trch, sewTnnl, sewMss);
@@ -1924,8 +1938,8 @@ public class Main {
         ms66.addFurniture(factum, dmmyFurniture);
         //</editor-fold>
         
-        // </editor-fold>  // Sub-levels
-        // <editor-fold desc="AREA 6">
+        // </editor-fold>
+        // <editor-fold desc="AREA 6: CHAPEL AND VAULT">
         
         chs1.addFurniture(chs1Strs, chsWndws, chs1F, chsW, din1Mnlght, chs1Stat, mhaWDr);
         chs3.addFurniture(chs3Strs, chsWndws, chsW, din1Mnlght, chs3F, southDoor);
@@ -1935,8 +1949,8 @@ public class Main {
         vau2.addFurniture(vau2Chsts, vauF, vauBwls, vauTrsr, vauClng);
         vaue.addFurniture(vaueF, vauBwls, vaueBttns, vauW);
         
-        // </editor-fold>  // Chapel and vault
-        // <editor-fold desc="AREA 7">
+        // </editor-fold>
+        // <editor-fold desc="AREA 7: TOWER">
         
         tow1.addFurniture(tow1F, wallEx, towWndw, towBlcny, tow1Dr, tow1BlckDr, towSphr);
         tow2.addFurniture(genDoor, towWndw, wallEx, towBlcny, eastDoor, towSphr, tow2DrN);
@@ -1947,7 +1961,7 @@ public class Main {
         lqu2.addFurniture(lquF, lquW, lqu_Crpt, lqu2Lvr, lqu2Bd);
         soul.addFurniture(soulPl, soulStat, soulF, wallEx, soulWndw);
         
-        // </editor-fold>  // Top floors
+        // </editor-fold>
          
         //**********************************************************************
         // </editor-fold>  

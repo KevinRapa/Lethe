@@ -82,10 +82,10 @@ public class Sew2_Vlvs extends Furniture implements Resetable {
 
             if (ans.matches("[1-9]")) 
                 this.turnValve(Integer.parseInt(ans) - 1);
-            else if (! ans.equals("")) 
+            else if (! ans.equals(NOTHING)) 
                 this.turnValve(ans);
             
-        } while (! ans.equals(""));
+        } while (! ans.equals(NOTHING));
         
         return this.actDialog;
     }

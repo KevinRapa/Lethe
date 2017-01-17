@@ -1,5 +1,6 @@
 package Kitchen;
 
+import static A_Main.NameConstants.HAND_TORCH;
 import A_Super.Furniture;
 import A_Super.Item;
 
@@ -16,7 +17,7 @@ public class Kitc_Hrth extends Furniture {
         
         this.addNameKeys("(?:unlit )?hearth", "(?:square )?pit");
         this.addActKeys("cook");
-        this.addUseKeys("hand torch");
+        this.addUseKeys(HAND_TORCH);
     }
 /*----------------------------------------------------------------------------*/
 }

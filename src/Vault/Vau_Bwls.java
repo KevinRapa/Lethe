@@ -1,5 +1,6 @@
 package Vault;
 
+import static A_Main.NameConstants.POLEARM;
 import A_Super.Furniture;
 /**
  * @author Kevin Rapa
@@ -17,7 +18,7 @@ public class Vau_Bwls extends Furniture {
                            + "very good idea.";
 
         this.addNameKeys("(?:hanging )?(?:steel )?bowl(?: of fire)?", "burning bowl");
-        this.addUseKeys("polearm");
+        this.addUseKeys(POLEARM);
     }
     // ========================================================================    
 }

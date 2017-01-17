@@ -1,7 +1,7 @@
 package Courtyard;
 
 import A_Main.GUI;
-import A_Main.ItemTypeConstants;
+import A_Main.NameConstants;
 import A_Main.Player;
 import java.util.HashMap;
 import A_Super.Item;
@@ -92,15 +92,15 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
             GUI.menOut("<'yes'>\n<'no'>");
             ans = GUI.promptOut();
             
-            if (ans.matches("yes")) {
+            if (ans.equals("yes")) {
                 played = true;
-                Player.getInv().remove(ItemTypeConstants.CARD); // Removes all cards from player inventory.
+                Player.getInv().remove(NameConstants.CARD); // Removes all cards from player inventory.
                 GUI.clearDialog();
                 this.playCards(); // Starts the game. 
             }
-            GUI.invOut("You are carrying:\n" + Player.getInv());
+            Player.printInv();
             
-        } while (! ans.matches("no"));
+        } while (! ans.equals("no"));
         
         GUI.clearDialog();
         
@@ -150,7 +150,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         Player.getInv().add(plyrCard2);
         yourVal += this.evalHit(plyrCard1.getVal(), yourVal); 
         yourVal += this.evalHit(plyrCard2.getVal(), yourVal);
-        GUI.invOut("You are carrying:\n" + Player.getInv());   
+        Player.printInv();
         
         System.out.println("\nGhost's starting score: " + ghostVal);
         
@@ -202,10 +202,10 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
                      + "<'hit'>\n<'stand'>");
             ans = GUI.promptOut();
             
-            if (ans.matches("hit")) {
+            if (ans.equals("hit")) {
                 Card current = deck.draw();
                 Player.getInv().add((Item) current);
-                GUI.invOut("You are carrying:\n" + Player.getInv());
+                Player.printInv();
                 score += this.evalHit(current.getVal(), score);
                 
                 if (this.bust(score))

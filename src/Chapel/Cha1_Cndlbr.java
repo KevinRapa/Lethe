@@ -1,5 +1,6 @@
 package Chapel;
 
+import static A_Main.NameConstants.HAND_TORCH;
 import A_Super.Furniture;
 /**
  * @author Kevin Rapa
@@ -14,7 +15,7 @@ public class Cha1_Cndlbr extends Furniture {
         this.useDialog = "They are already lit...";
 
         this.addNameKeys("(?:lit )?(?: )?(?: )?(?:|)");
-        this.addUseKeys("hand torch");
+        this.addUseKeys(HAND_TORCH);
     }
     // ======================================================================== 
 }

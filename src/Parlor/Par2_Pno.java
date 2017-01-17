@@ -30,7 +30,7 @@ public class Par2_Pno extends Furniture implements Openable {
         else
             return "You sit down again and play some more notes. \"Stop playing\n"
                  + "that before you break it!\" The orb yells. \"I'm the only\n"
-                 + "qualified musician in this castle!\"";
+                 + "experienced musician in this castle!\"";
     }
 /*----------------------------------------------------------------------------*/ 
 }

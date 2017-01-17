@@ -9,7 +9,7 @@ public class Par_BkEncht extends Book {
     public Par_BkEncht(String name) {
         super(name, 4);
         
-        PAGE_LIST[0] = "\"Enchanting for the Naive\" -- by Wendell Fancycape";
+        PAGE_LIST[0] = "\"Enchanting for the Naive\" -- by Wendell";
         
         PAGE_LIST[1] = "Let me guess- you're already bored and ready to slam this book\n"
                      + "shut. Believe me, you are just like every other student of\n"
@@ -31,8 +31,8 @@ public class Par_BkEncht extends Book {
                      + "which serve to modify the subject. It is important that the subject\n"
                      + "be in the center of the table, with the auxiliary ingredients on\n"
                      + "the perimeter of the binding ring. Most enchanting tables will\n"
-                     + "have a marker in the center, with a circle, about 2 feet wide,\n"
-                     + "surrounding it. In fact, the more perfect the circle, the better the\n"
+                     + "have a marker in the center, with a circle about 2 feet wide\n"
+                     + "surrounding it. In general, the more perfect the circle, the better the\n"
                      + "table. Many artisan enchanting tables have been inspected and graded\n"
                      + "by this quality. To get straight to the matter at hand, the next\n"
                      + "step is the binding...";

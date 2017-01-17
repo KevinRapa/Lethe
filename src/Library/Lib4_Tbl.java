@@ -1,5 +1,6 @@
 package Library;
 
+import static A_Main.NameConstants.CRYSTAL_ORB;
 import A_Super.Furniture;
 import A_Super.Item;
         
@@ -14,11 +15,11 @@ public class Lib4_Tbl extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (! this.containsItem("crystal orb")) {
-            return "The low table sits between the couch and the\n"
-                 + "fireplace.";
+        if (! this.containsItem(CRYSTAL_ORB)) {
+            return "The low table sits between the couch and the fireplace.";
         } 
-        return this.description;
+        else
+            return this.description;
     }
 /*----------------------------------------------------------------------------*/
 }

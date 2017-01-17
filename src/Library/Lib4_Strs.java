@@ -3,6 +3,7 @@ package Library;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Main.Id;
+import static A_Main.NameConstants.LEATHER_SHOES;
 
 public class Lib4_Strs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
@@ -20,19 +21,16 @@ public class Lib4_Strs extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {     
-        String rep;
-        
-        if (Player.getShoes().matches("leather shoes")) {
+        if (Player.getShoes().equals(LEATHER_SHOES)) {
             Player.setOccupies(Id.LIB3);
             
-            rep = "You climb down the stairs to the first floor.";  
+            return "You climb down the stairs to the first floor.";  
         }
         else {
-            rep = "As your foot touches the top step, the stairs flatten down\n"
-                + "causing you to fall to the first floor. 'Should have worn\n"
-                + "those shoes, dammit.'";
+            return "As your foot touches the top step, the stairs flatten down\n"
+                 + "causing you to fall to the first floor. 'Should have worn\n"
+                 + "those shoes, dammit.'";
         }
-        return rep;
     }
 /*----------------------------------------------------------------------------*/
 }

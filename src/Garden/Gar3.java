@@ -13,7 +13,7 @@ public class Gar3 extends Room {
                           "the vast expanse of sea hugging the cliff to the south.\n"
                         + "Against the west railing is a\n" +
                           "long planter containing a bed of soil and a small variety\n" +
-                          "of plants. To the northeast, in the garden's center, sits \n" +
+                          "of plants. To the northeast, in the garden's center, sits\n" +
                           "a fountain spouting water against the column supporting\n" +
                           "the glass dome. Behind you to the south is a small wooden\n" +
                           "utility chest.";

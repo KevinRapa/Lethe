@@ -1,5 +1,6 @@
 package Laboratory;
 
+import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -31,10 +32,10 @@ public class Labo_Snk extends Furniture {
                         "HF \\d{1,2}mL",
                         "C20H14O4 \\d{1,2}mL", 
                         "NaCl \\d{1,2}mL",
-                        "potion of science",
-                        "phase door potion",
-                        "bottle of wine",
-                        "bottle of vinegar");
+                        POTION_OF_SCIENCE,
+                        PHASE_DOOR_POTION,
+                        BOTTLE_OF_WINE,
+                        BOTTLE_OF_VINEGAR);
         this.addActKeys("use", "wash");
     }
     // ========================================================================     
@@ -44,7 +45,7 @@ public class Labo_Snk extends Furniture {
         else {
             Player.getInv().remove(item);
             
-            if (! item.toString().equals("potion of science"))
+            if (! item.toString().equals(POTION_OF_SCIENCE))
                 Player.getInv().add(BEAKER_REF);
             else
                 Player.getInv().add(TUBE_REF);

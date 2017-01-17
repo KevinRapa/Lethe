@@ -15,7 +15,7 @@ public class Cry_Dmmy extends Furniture {
         this.searchable = false;
         
         this.description = this.searchDialog = this.useDialog =
-                "That is nothing with that name here.";
+                "There is nothing with that name here.";
         this.actDialog = "You speak the words, but nothing happens";
         
         this.addNameKeys(".+");

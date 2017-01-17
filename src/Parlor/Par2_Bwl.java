@@ -1,5 +1,6 @@
 package Parlor;
 
+import static A_Main.NameConstants.POLEARM;
 import A_Super.Furniture;
 
 public class Par2_Bwl extends Furniture {
@@ -7,7 +8,7 @@ public class Par2_Bwl extends Furniture {
     public Par2_Bwl() {
             super();
             this.searchable = false;
-            this.addUseKeys("polearm");
+            this.addUseKeys(POLEARM);
             this.addNameKeys("(?:hanging )?(?:steel )?bowl(?: of fire)?", "burning bowl");
 
             this.description = "It's a steel bowl of fire hanging from the ceiling\n"

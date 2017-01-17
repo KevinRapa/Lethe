@@ -1,5 +1,6 @@
 package Gallery;
 
+import static A_Main.NameConstants.*;
 import A_Super.Item;
 import A_Super.Furniture;
 import java.util.HashMap;
@@ -42,7 +43,7 @@ abstract public class LghtMchn extends Furniture {
     public LghtMchn() {
         super();
         this.isOn = false;
-        this.addUseKeys("red focus", "blue focus", "yellow focus", "dark focus");
+        this.addUseKeys(RED_FOCUS, BLUE_FOCUS, YELLOW_FOCUS, DARK_FOCUS);
     }
 /*----------------------------------------------------------------------------*/
     public void determineColor() {

@@ -23,6 +23,7 @@ import java.io.Serializable;
  * @author Kevin Rapa
  */
 abstract public class Furniture implements Serializable {
+    protected final String NOTHING = "";
     protected Inventory inv;
     protected String description,   // Printed when inspected.
                      searchDialog,  // Printed when searched.
@@ -55,7 +56,7 @@ abstract public class Furniture implements Serializable {
      */
     public boolean containsItem(String name) {
         for (Item i : this.inv) {            
-            String j = i.toString().replaceAll(", .*", "");
+            String j = i.toString().replaceAll(", .*", NOTHING);
             if (j.matches(name)) {
                 return true; }
         }

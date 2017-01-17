@@ -2,6 +2,7 @@ package Courtyard;
 
 import A_Super.Furniture;
 import A_Main.Player;
+import static A_Main.NameConstants.*;
 import A_Super.Item;
 /**
  * This furniture provides spruce extract, a needed item.
@@ -27,11 +28,11 @@ public class Cou5_Sprc extends Furniture {
         this.drilled = false;
         
         this.addNameKeys("tree", "spruce", "spruce tree");
-        this.addUseKeys("hand drill", "empty vial");
+        this.addUseKeys(HAND_DRILL, EMPTY_VIAL);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        if (item.toString().matches("hand drill")) {
+        if (item.toString().equals(HAND_DRILL)) {
             if (drilled) {
                 return "You have already drilled a small hole.";
             }

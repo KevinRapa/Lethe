@@ -4,7 +4,8 @@ import A_Main.GUI;
 import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
-import A_Main.ItemTypeConstants;
+import A_Main.NameConstants;
+import static A_Main.NameConstants.BOX_THINGY;
 import A_Main.Player;
 /**
  * One of four components of the light machine puzzle in the gallery.
@@ -36,12 +37,12 @@ public class Gal6_Cnn extends LghtMchn {
         this.mode = "A clear scattered light";
         this.addActKeys("fire", "shoot");
         this.addNameKeys("(?:electr(?:on)?ic )?cannon");
-        this.addUseKeys("box thingy");
+        this.addUseKeys(BOX_THINGY);
         this.inv = new Cnn_Inv(items);       
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {   
-        if (containsItem("box thingy")) {
+        if (containsItem(BOX_THINGY)) {
             if (! isOn)
                 return "The battery fits like a glove in that top compartment! But\n"
                      + "why aren't the light all lighting up and bleeping?";
@@ -63,7 +64,7 @@ public class Gal6_Cnn extends LghtMchn {
     @Override public String useEvent(Item item) {
         Player.getInv().give(item, this.inv);
         
-        if (item.toString().matches("box thingy"))
+        if (item.toString().equals(BOX_THINGY))
             return "You place the box in the compartment.";
         else
             return "You place the focus in the barrel's slot.";
@@ -77,7 +78,7 @@ public class Gal6_Cnn extends LghtMchn {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {   
-            if (item.getType().matches(ItemTypeConstants.FOCUS) || item.toString().matches("box thingy")) {
+            if (item.getType().equals(NameConstants.FOCUS) || item.toString().equals(BOX_THINGY)) {
                 this.CONTENTS.add(item);
                 this.trigger();
                 return true;
@@ -90,7 +91,7 @@ public class Gal6_Cnn extends LghtMchn {
             this.CONTENTS.remove(item);
  
             if (isOn) {
-                if (item.toString().matches("box thingy"))
+                if (item.toString().equals(BOX_THINGY))
                     GUI.out(turnOff());
                 else {
                     determineColor();
@@ -98,7 +99,7 @@ public class Gal6_Cnn extends LghtMchn {
                 }
             }
             else {
-                if (item.toString().matches("box thingy"))
+                if (item.toString().equals(BOX_THINGY))
                     GUI.out("The box fits nicely in the slot on top. It's a battery!");
                 else
                     determineColor();

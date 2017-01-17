@@ -59,7 +59,7 @@ public class Safe extends Furniture implements Openable {
                                "< > Back\n");
                 }
             } 
-        } while (! action.matches(""));
+        } while (! action.matches(NOTHING));
     }
 /*----------------------------------------------------------------------------*/
     private boolean turnDial(int i) {

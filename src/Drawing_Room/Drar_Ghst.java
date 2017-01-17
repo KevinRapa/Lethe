@@ -5,6 +5,7 @@ import A_Super.Item;
 import A_Super.Key;
 import A_Main.GUI;
 import A_Main.Id;
+import static A_Main.NameConstants.GLOWING_EMERALD;
 import A_Main.Player;
 /**
  * NPC which assigns a task to the player in exchange for a couple items.
@@ -38,10 +39,10 @@ public class Drar_Ghst extends NonPlayerCharacter {
             this.converse1();
             this.firstTime = false;
         }
-        else if (! Player.hasItem("glowing emerald"))
+        else if (! Player.hasItem(GLOWING_EMERALD)) {
             this.converse2();
-          
-        else if (Player.hasItem("glowing emerald")) {
+        }
+        else {
             this.converse3();
             Player.getRoomObj(Id.DRAR).removeFurniture(this);           
             return "The apparition fades away into nothing."; 
@@ -99,7 +100,7 @@ public class Drar_Ghst extends NonPlayerCharacter {
         GUI.promptOut();
         
         Player.getInv().add(this.DRKFCS_REF);
-        GUI.invOut("You are carrying:\n" + Player.getInv());
+        Player.printInv();
         GUI.out("The apparition hands you a dark tinted lens...");
         GUI.promptOut();
         

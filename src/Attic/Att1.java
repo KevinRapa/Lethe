@@ -3,6 +3,7 @@ package Attic;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Inventory;
+import static A_Main.NameConstants.PHASE_DOOR_POTION;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Room;
@@ -17,12 +18,12 @@ import A_Super.Room;
  */
 public class Att1 extends Room {
     private boolean captured;
-    private final Inventory LICH_CHEST_INV;
+    private final Inventory REF_LICH_CHEST_INV;
 // ============================================================================    
     public Att1(String name, String ID, Inventory lichChstInv) {
         super(name, ID);
         this.captured = false;
-        this.LICH_CHEST_INV = lichChstInv;
+        this.REF_LICH_CHEST_INV = lichChstInv;
         this.description= "You stand on the north side of the Attic. Scattered\n" +
                           "around are piles of various boxes and suitcases collecting\n" +
                           "cobwebs and dust. The room extends back southwards. A bit \n" +
@@ -35,7 +36,7 @@ public class Att1 extends Room {
             GUI.out("You feel an unnerving presence here. You shutter and look\n"
                   + "around, but see nothing but dark.");
         
-        else if (Player.hasItem("phase door potion") && ! this.captured) {
+        else if (Player.hasItem(PHASE_DOOR_POTION) && ! this.captured) {
             this.captured = true;
             this.initiateDialog();
         }
@@ -69,13 +70,13 @@ public class Att1 extends Room {
         }
         
         for (Item i :Player. getInv())
-            this.LICH_CHEST_INV.add(i);
+            this.REF_LICH_CHEST_INV.add(i);
             
         Player.getInv().clear();
         
         Player.setOccupies(Id.INTR);
         Player.getRoomObj(Id.EOW1).lock();
-        GUI.invOut("You are carrying:\n" + Player.getInv());
+        Player.printInv();
     }
 // ============================================================================
 }
