@@ -22,7 +22,7 @@ public class Cis_Wtr extends Furniture {
         this.searchDialog = "You aren't searching that.";
         this.useDialog = "You pick some of the water up in the bucket.";
 
-        this.addNameKeys("(?:stagnant )?(?:(?:large)? body of )?(?:putrid |disgusting |smelly |awful )?(?:stagnant )?water");
+        this.addNameKeys("(?:stagnant )?(?:(?:large )?body of )?(?:putrid |disgusting |smelly |awful )?(?:stagnant )?water");
         this.addActKeys("swim", "jump", "drink");
         this.addUseKeys(METAL_BUCKET);
     }

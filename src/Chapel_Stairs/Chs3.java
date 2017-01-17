@@ -18,7 +18,6 @@ public class Chs3 extends Room {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
-        
         if (dir == Direction.WEST)
             return "The landing's railing protects you from tumbling three stories.";
         else

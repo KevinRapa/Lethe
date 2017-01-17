@@ -12,8 +12,8 @@ public class Cha1 extends Room {
                    + "seems fairly clean, though long abandoned. The walls are entirely\n"
                    + "wood and ornately carved. Rows of pews line\n"
                    + "either side of the room. Lit candelabras stand in each\n"
-                   + "norther corner. A small cylix on an end-table to your west\n"
-                   + "bears clear water. A long carpet runs between the pews to"
+                   + "northern corner. A small cylix on an end-table to your west\n"
+                   + "bears clear water. A long carpet runs between the pews to\n"
                    + "the far southern side of the chamber.";
     }
 /*----------------------------------------------------------------------------*/

@@ -16,7 +16,6 @@ import A_Super.Item;
 import A_Super.Room;
 import A_Super.Wall;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Catacomb extends Room {
@@ -157,8 +156,8 @@ public class Catacomb extends Room {
             target = Player.getRoomObj(5, y, x);
         } while (! target.getID().matches("CT\\d{2}"));
         
-        target.getFurnishings().get(0).getInv().add(new Item(IRIDESCENT_JEWEL, "The polished stone feels warm to the touch,\n"
-                                                           + "and is constantly shifting color among red, black, and green."));
+        target.getFurnishings().get(0).getInv().add(new Item(IRIDESCENT_JEWEL, "The polished stone feels warm to the touch\n"
+                                                           + "and constant shifts color among red, black, and green."));
         
         return (x + ", " + y + ", " + 6);
     }

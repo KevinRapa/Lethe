@@ -21,12 +21,12 @@ public class Cis1 extends Dungeon_Tunnel implements Resetable {
         this.hasToxicGas = true;
         this.description = "You stand on a thin walkway hugging a wall inside a\n" +
                            "huge cistern. Only a few torches on the wall light\n" +
-                           "the walkway. A large body of water spans outward \n" +
+                           "the walkway. A large body of water spans outward\n" +
                            "from the walkway to the north before disappearing\n" +
                            "into darkness. The stagnant water is algae-covered and smells\n"
                          + "awful. A few visible columns protrude out of\n" +
-                           "the water and extend upwards into a dark void. The \n" +
-                           "walkway continues west before wrapping around the \n" +
+                           "the water and extend upwards into a dark void. The\n" +
+                           "walkway continues west before wrapping around the\n" +
                            "wall to the south.";
     }
 // ============================================================================
@@ -34,11 +34,8 @@ public class Cis1 extends Dungeon_Tunnel implements Resetable {
         if (this.hasToxicGas) {
             Player.move(Direction.EAST);
             GUI.out("You walk into the room passed the door and are greeted by a thick\n"
-                  + "green smog. It burns your eyes and nose. You cannot bear and\n"
+                  + "green smog. It burns your eyes and nose. You cannot bear it and\n"
                   + "retreat back into the tunnel.");
-        }
-        else {
-            
         }
         
         return "You are " + Player.getPos() + ".";
