@@ -6,6 +6,9 @@ The entire game is written in Java. Salamaa is a personal project of mine
 that began before I could even code in Java, and I have been working on
 it as my experience with Java has developed. The game is nearly complete. 
 
+To play, just execute the .jar. Make sure the ambience and effects folders
+are in the same directory as the .jar.
+
 The game employs a save feature using serialization, a Swing GUI, sound,
 heavy regex usage, and a bit of multithreading, particularly in the Laboratory
 and the Tunnels.Dungeon_Monst class.
@@ -13,7 +16,7 @@ and the Tunnels.Dungeon_Monst class.
 The primary classes for the game are held in the A_Main package. Any class that
 is a parent class is held in the A_Super package. Interfaces and enums are held
 there too. All other packages represent rooms. Room classes consist of only four
-character responding to their ID.
+character corresponding to their ID.
 
 The game works like a large tree. The 3D array of Room objects has a reference
 to every room. Every room has references to the furniture inside it. Each furniture
