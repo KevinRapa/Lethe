@@ -93,15 +93,16 @@ public class AudioPlayer {
         putAllTracks(prisonCustom, PRIS, TORC);
         putAllTracks(sewerCogwork, INTR, ESC1, ESC2, ESC3, ESC4, ESC5, ESC6, DKCH);
         putAllTracks(torcCustom, TORC, CRY1, CRY2, CAS1, CS35);
-        putAllTracks(titleTrack, BLS1, BLS2, TOW1, TOW2, LQU1, LQU2, SOUL);
+        putAllTracks(titleTrack, BLS1, BLS2, TOW1, TOW2, LQU1, LQU2, SOUL, ENDG);
+        putAllTracks(antechamberCustom, FOYW, VAUE, VAU1, VAU2); 
         
         put(GAL1, gal1wCustom);       put(GAL3, gal2wCustom); 
         put(GAL6, gal3wCustom);       put(LABO, labCustom);
         put(KITC, kitchenCustom);     put(DST1, dungeonStairs);
-        put(STUD, fireplace);         put(FOYW, antechamberCustom); 
+        put(STUD, fireplace);         put(TBAL, tbalCustom);
         put(WORK, workshopCustom);    put(ROTU, rotundaCustom);
         put(WBAL, westBalconyCustom); put(COUS, deepSpace);
-        put(SEWP, sewpCustom);        put(TBAL, tbalCustom);
+        put(SEWP, sewpCustom);        
         }
         // ====================================================================
         private void putAllTracks(File track, String ... ids) {
