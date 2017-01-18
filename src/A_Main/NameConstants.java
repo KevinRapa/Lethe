@@ -50,6 +50,6 @@ public class NameConstants {
         KEY_OF_ANCESTRY = "key of ancestry",    KEY_OF_INTELLECT = "key of intellect",
         KEY_OF_CONTINUITY = "key of continuity",POTTED_MANDRAGORA = "potted mandragora",
         FERTILIZED_SOIL = "fertilized soil",    POTTED_SOIL_AND_FERTILIZER = "potted soil and fertilizer",
-        BATTERING_RAM = "battering ram";
+        BATTERING_RAM = "battering ram",        LOOPED_ROPE = "looped rope";
     // ========================================================================
 }

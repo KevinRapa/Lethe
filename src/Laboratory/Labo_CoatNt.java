@@ -10,7 +10,7 @@ public class Labo_CoatNt extends Note {
                            "I'm not around. I'll be hiding my lab coat in the\n" +
                            "brown studded suitcase in the front of the attic\n" +
                            "from now on when I'm not working. Now, just have\n" +
-                           "to figure out where to hide this momento...";
+                           "to figure out where to hide this momento... -Rhadamanthus";
     }
 /*----------------------------------------------------------------------------*/
 }

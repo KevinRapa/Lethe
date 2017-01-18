@@ -32,7 +32,7 @@ public class Labo_Dstllr extends Furniture {
         this.useDialog = "none.";
 
         this.addNameKeys("distillery?", "(?:bunsen )?burner", "(?:flask )?rack");
-        this.addUseKeys(RUBBER_HOSE, FLORENCE_FLASK, STRIKER, HAND_TORCH, BEAKER, TEST_TUBE, EMPTY_VIAL);
+        this.addUseKeys(RUBBER_HOSE, FLORENCE_FLASK, STRIKER, HAND_TORCH, BEAKER, TEST_TUBE, EMPTY_VIAL, "copper pot", "copper pan");
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -57,8 +57,8 @@ public class Labo_Dstllr extends Furniture {
                 this.distillMethod = () -> flask.distill();
                 return "You place the florence flask onto the rack.";
             }
-            else if (name.matches("beaker|test tube|empty vial")) {
-                return "That type of vessel was not designed for boiling liquid! Put it down before you set the room on fire.";
+            else if (name.matches("beaker|test tube|empty vial|copper pot|copper pan")) {
+                return "That type of vessel was not designed for boiling chemicals! Put it down before you set the room on fire.";
             }
             else {
                 if (PIPE_REF.isOn() && Player.getPos().hasFurniture("hose")) {

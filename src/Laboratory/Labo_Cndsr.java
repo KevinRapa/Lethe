@@ -29,7 +29,7 @@ public class Labo_Cndsr extends Furniture {
         this.useDialog = "You place the beaker on top of the drain, under the glass tube.";
 
         this.addNameKeys("condenser", "glass tube", "stopper", "switch", "drain");
-        this.addUseKeys(BEAKER, TEST_TUBE, FLORENCE_FLASK, EMPTY_VIAL);
+        this.addUseKeys(BEAKER, TEST_TUBE, FLORENCE_FLASK, EMPTY_VIAL, "copper pot", "copper pan");
         this.addActKeys("flick", "switch", "turn", "toggle", "rotate");
     }
     // ======================================================================== 
@@ -50,8 +50,8 @@ public class Labo_Cndsr extends Furniture {
     // ========================================================================     
     @Override public String useEvent(Item item) {
         if (Player.hasItem(LAB_COAT)) {
-            if (item.toString().matches("florence flask|test tube|empty vial")) {
-                return "That type of vessel was not designed for collecting liquid! Put it down before you poke your eye out.";
+            if (item.toString().matches("florence flask|test tube|empty vial|copper pot|copper pan")) {
+                return "That type of vessel was not designed for collecting chemicals! Put it down before you poke your eye out.";
             }
             else {
                 Player.getInv().remove(item);

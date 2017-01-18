@@ -1,5 +1,6 @@
 package Lookout;
 
+import static A_Main.NameConstants.LOOPED_ROPE;
 import A_Super.Furniture;
 import A_Super.Item;
 
@@ -15,7 +16,7 @@ public class Look_Rlng extends Furniture{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (this.containsItem("looped rope")) {
+        if (this.containsItem(LOOPED_ROPE)) {
             return "A wide, sturdy granite railing. There appears to be\n"
                  + "something tied to the bottom.";
         }
@@ -23,7 +24,7 @@ public class Look_Rlng extends Furniture{
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {     
-        if (this.containsItem("looped rope")) {
+        if (this.containsItem(LOOPED_ROPE)) {
             return "You take hold of the railing and peer outwards.\n"
                  + "Something tied to the railing catches your eye.";
         }

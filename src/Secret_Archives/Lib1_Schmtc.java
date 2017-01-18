@@ -16,7 +16,7 @@ public class Lib1_Schmtc extends Note {
                            "\n" +
                            "  \t\tTo self:\n" +
                            "require a vessel\n" +
-                           "thats holds a charge.";
+                           "thats holds a charge. -Rhadamanthus";
     }
 /*----------------------------------------------------------------------------*/
 }

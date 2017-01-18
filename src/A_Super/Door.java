@@ -9,10 +9,12 @@ public class Door extends Furniture {
         super();
         this.searchable = false;
         this.DIR = dir;
+        this.useDialog = "It's too large to fit it in the lock.";
         this.searchDialog = "You aren't sure what you'd search for on a door.";
         this.description = "It looks like a heavy wooden door.";
         this.actDialog = null;
 
+        this.addUseKeys("letter opener");
         this.addActKeys("open", "use", "close", "kick");
         this.addNameKeys(dir + " door", "door", "(?:heavy )?(?:wooden )?door");
     }

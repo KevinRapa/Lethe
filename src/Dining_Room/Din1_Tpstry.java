@@ -18,7 +18,7 @@ public class Din1_Tpstry extends Wall_Art {
         this.searchDialog = "Lifting the tapestry, you discover a crevice in the\n"
                           + "wall behind it.";
         this.actDialog = this.searchDialog;
-        this.addNameKeys("tapestry", "large tapestry");
+        this.addNameKeys("(?:large )?tapestry");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {

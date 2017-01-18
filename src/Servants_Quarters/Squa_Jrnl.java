@@ -1,7 +1,10 @@
 package Servants_Quarters;
 
 import A_Super.Book;
-
+/**
+ * From an earlier version of the plot. Unused.
+ * @author Kevin Rapa
+ */
 public class Squa_Jrnl extends Book{
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Squa_Jrnl(String name) {

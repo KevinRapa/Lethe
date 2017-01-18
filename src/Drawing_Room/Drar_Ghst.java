@@ -43,8 +43,7 @@ public class Drar_Ghst extends NonPlayerCharacter {
             this.converse2();
         }
         else {
-            this.converse3();
-            Player.getRoomObj(Id.DRAR).removeFurniture(this);           
+            this.converse3();       
             return "The apparition fades away into nothing."; 
         }
         return this.actDialog;
@@ -57,30 +56,29 @@ public class Drar_Ghst extends NonPlayerCharacter {
         GUI.menOut("\n\nPress enter...");
         GUI.promptOut();
         
-        GUI.out("\"You are the first living soul I have seen in over 1800\n" +
-                "years. Well, excluding my brother Eurynomos, though he is not really\n" +
+        GUI.out("\"You are the first living soul I have seen in 6 centuries.\n" +
+                "Well, excluding my brother Eurynomos, though he is not really\n" +
                 "alive anymore. Do you know of whom I speak of? What is\n" +
                 "your name even?...\"");
         GUI.promptOut();
         
         GUI.out("\"Is that so? Not a name I have heard before.\n" +
-                "Certainly never during those millennia ago.");
+                "Certainly never during my time.");
         GUI.menOut("\n\nPress enter...");
         GUI.promptOut();
         
-        GUI.out("\"My name is Rhadamanthus. I used to live here with my two\n"
-              + "brothers. We provided great services to this kingdom, if that's\n"
-              + "what you still call it. All of the citizens worshipped us, if\n" +
-                "I may dare say.\" But you, how could you have any idea who we\n"
-              + "were? Why would you even set foot here?");
+        GUI.out("\"My name is Asterion. I used to live here with my two\n"
+              + "brothers. We provided great services to this kingdom, if kingdom\n"
+              + "is what you still call it. We provided our intellectual services to\n"
+              + "the people here. Why are you here?");
         GUI.promptOut();
         
         GUI.out("\"You aren't sure? That doesn't make any sense!\n" +
                 "But then again, that does answer some questions now.\n" +
-                "I return to check on my brother. He is alive eternally,\n"
-              + "though not intentional... yet, it WAS intentional. Only\n"
-              + "the most taboo magic inspired him. I knew he was a danger\n"
-              + "to himself.");
+                "I keep wondering how Eurynomos could still be walking\n"
+              + "at this point. He is a lich, and has been for too long.\n"
+              + "His mind should have melted to a pulp by now. Perhaps\n"
+              + "he wished to use your life energy to fuel his.");
         GUI.promptOut();
         
         GUI.out("\"But this probably doesn't interest you. You are\n" +
@@ -88,9 +86,11 @@ public class Drar_Ghst extends NonPlayerCharacter {
                 "but I would also like you to do something for me.\n");
         GUI.promptOut();
         
-        GUI.out("I left my most valued possession, an emerald, in the\n"
-              + "trophy room. I would like it back. It is sealed in a\n"
-              + "room protected by a barrier. I cannot enter it.");
+        GUI.out("I was bound by Eurynomos to an emerald. Our discovery, the\n"
+              + "Factum, drove him mad. He killed my brother and I, and possessed\n"
+              + "many others in the castle. Many fled, others perished, I stayed.\n"
+              + "I wish you to bring me the emerald. I will not leave this place,\n"
+              + "but at least them I may be sure my soul is safe with me.");
         GUI.promptOut();
         
         GUI.out("\"I know enough to say that the\n" +
@@ -129,15 +129,24 @@ public class Drar_Ghst extends NonPlayerCharacter {
         
         GUI.out("\"There is a rack of keys in the kitchen. I'm not sure\n"
               + "there's one that will get you out of here, but it will\n" +
-                "open up more doors for you, quite literally.\"");
+                "open up more doors for you, quite literally. The kitchen\n"
+              + "is locked, and I have the key.\"");
+        GUI.promptOut();
+        
+        GUI.out("\"Eurynomos keeps a phylactery of his in the kitchen; a fruit. He split\n"
+              + "\"his soul among 5 objects, you know. One other is a scepter he\n"
+              + "took from Rhadamanthus. The other three, well I don't rightfully know.");
         GUI.promptOut();
         
         GUI.out("The apparition drops a key into your palm...");
         Player.getInv().add(KITCKEY_REF);
+        Player.printInv();
         GUI.promptOut();
         
+        GUI.out("\"Goodbye, my friend...\"\n");
+        GUI.promptOut();
         GUI.toMainMenu();
-        GUI.out("\"Goodbye, my friend.\"\n");
+        Player.getRoomObj(Id.DRAR).removeFurniture(this);  
     }
 /*----------------------------------------------------------------------------*/       
 }

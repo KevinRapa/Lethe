@@ -14,10 +14,9 @@ public class Cou5_Sprc extends Furniture {
     private final Item EXTRCT_REF, VIAL_REF;
     private boolean drilled;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
-    public Cou5_Sprc(Item vial, Item extrct) {
-        super();
-        this.searchable = false;
-        this.searchDialog = "There's nothing hiding in the branches, thankfully.";
+    public Cou5_Sprc(Item vial, Item extrct, Item ... items) {
+        super(items);
+        this.searchDialog = "There doesn't seem to be much...";
         this.useDialog = "Drilling a small hole into the trunk allows a small\n"
                        + "sample of sap to ooze out.";
         this.description = "The ancient tree looms over you and creaks slowly in\n"

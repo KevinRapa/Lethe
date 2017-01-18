@@ -29,13 +29,13 @@ public class Lib_BkGlss extends Book {
                        "to prepare casting table. Most important\n" +
                        "matter to keep in mind is to have clean\n" +
                        "surface! We do not want particles in glass!\n" +
-                       "Ok, enough time has passed. Take crucible \n" +
+                       "Ok, enough time has passed. Take crucible\n" +
                        "out of kiln and pour carefully on casting\n" +
                        "table. Not before long we have fresh glass!\n" +
                        "Now you may call yourself as \"proper glass-\n" +
                        "man!\" We did not discuss extra details. In\n" +
                        "addition to necessary steps, you may choose\n" +
-                       "to add dye to mixture for colored glass. For\n" +
+                       "to add dye to mixture in kiln for colored glass. For\n" +
                        "many shapes, be free to use templates! Glass\n" +
                        "is still art, despite you being idiot at\n" +
                        "blowing glass. It's ok!";

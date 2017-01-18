@@ -6,16 +6,19 @@ public class Lib1_Nt6 extends Note {
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Lib1_Nt6(String name) {
         super(name);
-        this.description = "16 Oct. 1651 \n\n" +
-                           "I have just returned from another successful\n" +
-                           "jump. This excursion was... an unusual success.\n" +
-                           "Beyond the usual trinket, I discovered a\n" +
-                           "remarkable artifact. This piece is beyond\n" +
-                           "arcane. It radiates light without any known\n" +
-                           "source of energy. But this cannot be magic,\n" +
-                           "for it is only magic if I cannot understand it.\n"
-                         + "This is my most spectacular discovery since \n" +
-                           "the excavation.";
+        this.description = "2 May. 1432 - Eurynomos -\n" +
+                           "The grey matter we retrieved has, at this\n" +
+                           "point, solidified. I have no way to describe\n" +
+                           "it- it lacks any shape or color I can describe.\n" +
+                           "In addition, in any place that we leave it, we\n" +
+                           "find it missing later, only to be found once\n" +
+                           "again in the deepest part of the cave. There\n" +
+                           "is not any place we can leave it unattended\n" +
+                           "without it leaving. Other small, nearby objects\n" +
+                           "move with it on occassion. We will leave it\n" +
+                           "in the chamber at the deepest part of the\n" +
+                           "caves for now, but I intend to figure out its\n" +
+                           "purpose!";
 /*----------------------------------------------------------------------------*/
     }
 }

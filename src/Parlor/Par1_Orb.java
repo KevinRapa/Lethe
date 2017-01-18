@@ -55,7 +55,7 @@ public class Par1_Orb extends NonPlayerCharacter {
               + "clumsy as you play...\"");
         GUI.promptOut();
         
-        GUI.out("\"It wasn't you? Who else could it be? The three original inhabitants of\n"
+        GUI.out("\"It wasn't you? Who else could it be? The original inhabitants of\n"
               + "this castle died long ago. Who are you anyway?...\"");
         GUI.promptOut();
         
@@ -68,28 +68,20 @@ public class Par1_Orb extends NonPlayerCharacter {
         GUI.promptOut();
         
         GUI.out("\"NO, of course I don't get bored in here. Though it has been\n"
-              + "... perhaps 300 years since I played? It doesn't matter. I'm\n"
+              + "... perhaps 500 years since I played? It doesn't matter. I'm\n"
               + "a musical THEORIST. At my level of experience, the notion of\n"
               + "creating music to be PLAYED is juvenile fuff. My creations are\n"
               + "too complex to be understood by playing. But I digress...\"");
         GUI.promptOut();
         
         GUI.out("\"I don't know about any magical barrier. But I'm not surprised\n"
-              + "\"this castle isn't brimming with power. The great ones could\n"
-              + "do anything they pleased.");
-        GUI.promptOut();
+              + "\"this castle isn't brimming with power. Eurynomos could\n"
+              + "do anything he pleased.");
+        GUI.promptOut();     
         
-        GUI.out("\"WHO ARE THE GREAT ONES?? What sort of question is that?\n"
-              + "OF course you know. The three original inhabitants of this castle.\n"
-              + "They showered our poor village with technology and gifts we had\n"
-              + "never seen, and we promised our wealth and service to them.\"\n"
-              + "I'm surprised I'm still calling them that actually.. They're dead.\n"
-              + "They were never gods. I don't know who they were.");
-        GUI.promptOut();
-        
-        GUI.out("I requested to be bound here by one of the great ones, so that\n"
-              + "I could write live eternally like them... or so I thought.\n"
-              + "I promised to write music for them as long as they wished to\n"
+        GUI.out("I requested Eurynomos to bind me here so that\n"
+              + "I could write live eternally like him... or so I thought.\n"
+              + "I promised to write music for him as long as he wished to\n"
               + "keep me alive in this... whatever I'm in. It's actually quite\n"
               + "nice in here.");
         GUI.promptOut();
