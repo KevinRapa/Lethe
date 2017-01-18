@@ -4,8 +4,7 @@ The final title will be "Lethe"
 
 The entire game is written in Java. Salamaa is a personal project of mine
 that began before I could even code in Java, and I have been working on
-it as my experience with Java has developed. The game currently employs
-a GUI, and is nearly complete. 
+it as my experience with Java has developed. The game is nearly complete. 
 
 The game employs a save feature using serialization, a Swing GUI, sound,
 heavy regex usage, and a bit of multithreading, particularly in the Laboratory
