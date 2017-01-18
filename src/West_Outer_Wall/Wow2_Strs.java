@@ -17,11 +17,8 @@ public class Wow2_Strs extends Staircase {
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) {     
-        int[] c = Player.getPos().getCoords(); // coordinates of player location.
-        
-        playEffect();        
-        Player.setOccupies(c[0] + DIR.Z, c[1], c[2]); // moves the player's Z coordinate.
-        
+        Player.move(this.DIR);
+        playEffect();       
         return null;       
     }
 /*----------------------------------------------------------------------------*/

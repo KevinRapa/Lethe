@@ -11,7 +11,7 @@ public class Bha1_Plnt extends Furniture{
         super(items);
         this.searchable = false;
         this.description = "The plant doesn't seem to be in good shape. Though\n"
-                         + "drooping a bit, it is still alive.";
+                         + "drooping a bit, it's still alive.";
         this.searchDialog = "You don't feel like getting dirt on your hands.";
         this.actDialog = "You will need a bucket of water to do that.";
         this.useDialog = "You pour a bit of the water out and water the plant.\n"

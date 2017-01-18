@@ -20,7 +20,7 @@ public class An55 extends Room {
                         + "a tomb- an important one most likely. Your gaze\n" +
                           "is immediately drawn to something... somebody standing\n" +
                           "on the far end of the room. The room extends to the\n" +
-                          "south, and a large stone casket lays in the center of\n" +
+                          "south, and a large stone casket lies in the center of\n" +
                           "the long chamber. Several other wooden caskets stand\n" +
                           "against the walls. A few torches on the walls light the\n" +
                           "room.";

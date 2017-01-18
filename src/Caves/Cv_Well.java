@@ -11,7 +11,7 @@ public class Cv_Well extends Furniture {
         
         this.actDialog = "That is definitely not a good idea!";
         this.description = "You peer down the well. It seems to go on for a couple\n"
-                         + "hundred feet. Far below, you can see a bright green glow.\n";
+                         + "hundred feet. A bright green glow emanates from far below.\n";
         this.searchDialog = this.description;
 
         this.addNameKeys("(?:ancient )?well");

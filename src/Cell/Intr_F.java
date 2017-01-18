@@ -11,9 +11,9 @@ import java.util.Arrays;
  * @author Kevin Rapa
  */
 public class Intr_F extends Dungeon_F implements Resetable {
-    private final Item METAL_BIT_REF = new Item("metal bit", "It's a small scrap of metal. You have no idea what's it's for."),
-                       SCREW_REF = new Item("screw", "a small metal screw"),
-                       METAL_BAR_REF = new Item(NameConstants.METAL_BAR, "A sturdy metal bar about 2 feet long. Possibly broke off from the gears."),
+    private final Item METAL_BIT_REF = new Item("metal bit", "It's a small scrap of metal. You have no idea what it's for."),
+                       SCREW_REF = new Item("screw", "A small metal screw."),
+                       METAL_BAR_REF = new Item(NameConstants.METAL_BAR, "A sturdy metal bar about 2 feet long. Possibly broken off from the gears."),
                        WOOD_CHUNK_REF = new Item("soggy wood chunk", "It's a rotted, wet chunk of wood.");
     
     private final Item[] ITEM_RESETS = {

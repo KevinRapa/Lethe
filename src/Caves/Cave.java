@@ -1,28 +1,17 @@
 package Caves;
 
-import A_Main.Player;
-import A_Super.Floor;
-import A_Super.Room;
-import A_Super.Wall;
+import A_Main.Player; import A_Super.Floor; 
+import A_Super.Wall;  import A_Super.Room;
 
 import static A_Main.AudioPlayer.S;
 import static A_Main.AudioPlayer.WD;
 import static A_Main.NameConstants.HAND_TORCH;
-import static java.lang.Math.sqrt;
-import static java.lang.Math.pow;
-import static java.lang.Math.round;
-import static java.lang.Math.abs;
+import static java.lang.Math.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import static java.lang.Math.round;
-import static java.lang.Math.abs;
+import javax.sound.sampled.*;
 /**
  * The caves comprise a maze of similar tunnels.
  * The caves will generate their own descriptions and will distort their own
@@ -49,35 +38,30 @@ public class Cave extends Room {
         
         switch (DISTANCE) {
             case 7: case 6: case 5:
-                descLit = "You feel inexlicably dizzy.";
-                description = "You feel inexlicably dizzy.";
+                descLit = "You feel inexplicably dizzy.";
                 break;
             case 4:
                 descLit = "You can feel the dizzyness intensifying.";
-                description = "You can feel the dizzyness intensifying.";
                 break;
             case 3:
                 descLit = "Your head begins to hurt, and the dizzyness intensifies.";
-                description = "Your head begins to hurt, and the dizzyness intensifies.";
                 break;
             case 2:
                 descLit = "You feel delirious, and your senses begin to numb.";
-                description = "You feel delirious, and your senses begin to numb.";
                 break;
-            case 1:
+            default:
                 descLit = "You start slipping into an acute dementia, and you can barely orient yourself.";
-                description = "You start slipping into an acute dementia, and you can barely orient yourself.";
-                break;
         }
+        this.description = descLit;
         
         this.description = description.concat(" This area is pitch black just like the level above.\n"
                          + "It's uncomfortably cold, and you hear nothing but\n"
-                         + "drops of water and an unsettling echo deep within\n"
-                         + "the tunnels. You feel inexplicably dizzy.");
+                         + "drops of water and an awful racket deep within\n"
+                         + "the tunnels.");
         
         this.descLit = descLit.concat(" The torch lights a short way ahead. This area is much\n"
                      + "like above, though the walls and floor are plain rock.\n"
-                     + "You can hear an unsettling noise deep within the tunnels. To the ");
+                     + "You can hear an awful noise deep within the tunnels. To the ");
         
         /* 
            Builds the lit description of the room. Here, the constructor figures

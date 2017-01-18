@@ -19,7 +19,7 @@ public class An65 extends Room {
                           "room. In the corner stands the dessicated, but alive figure, staring\n" +
                           "at you blankly with its mouth hung open and not moving.\n" +
                           "This end is also lit with a few wall torches. A heavy \n" +
-                          "stone casket lays in the center of the room, and several\n" +
+                          "stone casket lies in the center of the room, and several\n" +
                           "other wooden caskets lean on the walls.";
     }
 // ============================================================================

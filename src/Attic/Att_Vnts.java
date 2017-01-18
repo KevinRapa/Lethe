@@ -13,9 +13,9 @@ public class Att_Vnts extends Furniture {
         this.searchable = false;
         
         this.description = "So many times thus far you have felt so close to\n"
-                         + "the outside of this castle. The though taunts you.\n"
-                         + "It's felt as though days have passed, but it's been\n"
-                         + "just a few hours";
+                         + "the outside of this castle. The thought taunts you.\n"
+                         + "You feel as though days have passed, but it's been\n"
+                         + "just a few hours.";
 
         this.addNameKeys("vents?", "moonlight");
     }

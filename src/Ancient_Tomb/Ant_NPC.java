@@ -17,14 +17,14 @@ public class Ant_NPC extends NonPlayerCharacter {
         this.description = "The hideous dessicated figure is eyeless and frail. It just\n" +
                            "stands there in the corner of the room, pointing\n" +
                            "its face at you with its mouth hanging open. It\n" +
-                           "is clothed in simple farmer's clothes and keeps\n" +
+                           "is clothed in simple farming vestments and keeps\n" +
                            "one of its hands in its pocket. 'Is it alive?'\n" +
-                           "You think to yourself.";
+                           "You wonder to yourself.";
         this.actDialog =    "'I've gotten this far, what's the worst that could happen?',\n"
-                          + "you think to yourself. You\n"
+                          + "you ponder. You\n"
                           + "open your mouth to speak. As you do, the figure makes a\n" +
                             "loud moan. You jump, and every hair on your body stands.\n" +
-                            "The figure reaches into its pocket and hands you a\n" +
+                            "The figure removes its hand from its pocket and offers you a\n" +
                             "small boxey object. The figure makes another load moan\n"
                           + "and holds its hand out. You take the item. The figure\n" +
                             "makes a final loud moan and remains quiet.";

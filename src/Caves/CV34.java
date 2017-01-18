@@ -8,8 +8,8 @@ public class CV34 extends Cave {
 // ============================================================================    
     public CV34(String name, String ID) {
         super(ID);
-        this.description = "You found your way to an open area... There's something\n"
-                         + "in the center. It feels stone and round and is empty\n"
+        this.description = "You've found your way to an open area... There's something\n"
+                         + "in the center. It feels stone, round and empty\n"
                          + "in the center.";
         this.descLit = descLit.concat("This area is more open and circular than\n"
                                     + "the rest of the cave. A round well stands\n"

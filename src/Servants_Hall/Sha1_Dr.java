@@ -1,6 +1,7 @@
 package Servants_Hall;
 
 import A_Main.Id;
+import static A_Main.NameConstants.BATTERING_RAM;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
@@ -23,7 +24,7 @@ public class Sha1_Dr extends Furniture {
                        + "thing that worked on the first try.";
         this.addActKeys("open", "use");
         this.addNameKeys("west door");
-        this.addUseKeys("battering ram");
+        this.addUseKeys(BATTERING_RAM);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

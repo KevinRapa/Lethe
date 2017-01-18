@@ -39,7 +39,7 @@ public class Intr_Grt extends Furniture implements Resetable {
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        return this.opened ? "The ladder goes down a ways, you estimate about 30 feet." : 
+        return this.opened ? "The ladder goes down a ways; you estimate about 30 feet." : 
                 this.searchDialog;
     }
     // ========================================================================   

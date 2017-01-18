@@ -10,7 +10,6 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Dummy_Furniture extends Furniture {
-
     // ========================================================================
     public Dummy_Furniture (Item... items) {
         super(items);

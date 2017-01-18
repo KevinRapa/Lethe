@@ -34,7 +34,7 @@ public class Cha1_Water extends Furniture {
             return "The bucket is too large to dip into the cylix.";
         else
             return "The bottle is small enough to fit in, but the bottle is too\n"
-                 + "wide to get the neck into the water.";
+                 + "wide to submerge the neck.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) { 

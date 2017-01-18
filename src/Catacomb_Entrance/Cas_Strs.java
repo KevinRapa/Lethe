@@ -13,7 +13,7 @@ public class Cas_Strs extends Staircase {
         
         this.description = "The two curved stone staircases both lead " + dir + ".";
 
-        this.addNameKeys("curved (?:staircase|stairs|steps)");
+        this.addNameKeys("curved (?:staircases?|stairs|steps)");
     }
     // ======================================================================== 
 }

@@ -20,11 +20,8 @@ public class Staircase extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {     
-        int[] c = Player.getPos().getCoords();
-
         playEffect();
-        Player.setOccupies(c[0] + DIR.Z, c[1], c[2]);
-        
+        Player.move(DIR);
         return "You climb " + DIR + " the stairs.";
     }
 /*----------------------------------------------------------------------------*/

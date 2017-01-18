@@ -5,7 +5,6 @@ import A_Super.Static_Wndw;
  * @author Kevin Rapa
  */
 public class Cha_Wndws extends Static_Wndw {
-
     // ========================================================================
     public Cha_Wndws () {
         super();

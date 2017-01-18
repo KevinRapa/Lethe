@@ -19,9 +19,7 @@ public class Dst1_Strs extends Staircase {
     @Override public String interact(String key) {  
         if (Player.hasVisited(Id.SEW0)) {
             // Sets the room that the player is in.
-            int[] c = Player.getPos().getCoords(); // coordinates of player location.
-
-            Player.setOccupies(c[0] + DIR.Z, c[1], c[2]); // moves the player's Z coordinate.
+            Player.move(this.DIR);
             AudioPlayer.playEffect(15);
             
             return "You circle down the steps. You can't sense how many levels,\n"

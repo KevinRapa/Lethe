@@ -19,7 +19,7 @@ public class Att2 extends Room {
         super(name, ID);
         this.description= "You have made your way up to the castle attic. Scattered\n" +
                           "around are piles of various boxes and suitcases collecting\n" +
-                          "cobwebs and dust. The room extends northward with a door\n" +
+                          "cobwebs and dust. The room extends northwards with a door\n" +
                           "on the far east side of the room. A bit of moonlight\n" +
                           "shines in through a couple vents in the ceiling.";
     }
@@ -27,9 +27,9 @@ public class Att2 extends Room {
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(Id.ATT2))
             GUI.out("You feel an unnerving presence here. You shutter and look\n"
-                  + "around, but see nothing but dark.");
+                  + "around, but see only darkness.");
         
-        return "You are " + Player.getPos() + ".";
+        return this.STD_RM_OUT;
     }
 // ============================================================================
 }

@@ -37,7 +37,7 @@ public class Room implements Serializable {
     protected final int[] COORDS;               // Index coordinates of this room.
     protected boolean isLocked;                 // You cannot move into a locked room.
     protected String description;               // Description of the room.
-    protected ArrayList<String> adjacent;       // List of rooms one can move to from this one.
+    public ArrayList<String> adjacent;       // List of rooms one can move to from this one.
     protected ArrayList<Furniture> furnishings; // Holds furniture.
     protected final String WALL_BARRIER = "There is a wall that way.";
     // CONSTRUCTOR ============================================================

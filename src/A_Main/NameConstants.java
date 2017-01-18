@@ -46,6 +46,10 @@ public class NameConstants {
         PHASE_DOOR_POTION = "phase door potion",LAB_COAT = "lab coat",
         AQUAMARINE = "aquamarine",              TROWEL = "trowel",
         SHOVEL = "shovel",                      CROWBAR = "crowbar",
-        WARHAMMER = "warhammer",                HAMMER = "hammer";
+        WARHAMMER = "warhammer",                HAMMER = "hammer",
+        KEY_OF_ANCESTRY = "key of ancestry",    KEY_OF_INTELLECT = "key of intellect",
+        KEY_OF_CONTINUITY = "key of continuity",POTTED_MANDRAGORA = "potted mandragora",
+        FERTILIZED_SOIL = "fertilized soil",    POTTED_SOIL_AND_FERTILIZER = "potted soil and fertilizer",
+        BATTERING_RAM = "battering ram";
     // ========================================================================
 }

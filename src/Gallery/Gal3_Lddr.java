@@ -29,12 +29,8 @@ public class Gal3_Lddr extends Staircase {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {     
         if (this.lowered) {
-            // Sets the room that the player is in.
-            int[] c = Player.getPos().getCoords(); // coordinates of player location.
-            int Z = c[0]; int Y = c[1]; int X = c[2]; //Individual ZYX coordinates.
-                
+            Player.move(this.DIR);
             playEffect();
-            Player.setOccupies(Z + DIR.Z, Y, X); // moves the player's Z coordinate.
             
             return "You climb the ladder.";   
         }

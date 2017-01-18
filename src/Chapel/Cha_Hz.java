@@ -5,7 +5,6 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Cha_Hz extends Furniture {
-
     // ========================================================================
     public Cha_Hz () {
         super();

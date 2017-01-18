@@ -12,7 +12,7 @@ public class Bls1 extends Room {
                           "ceiling are all paned glass. The moon is beginning to fade\n" +
                           "and the first glint of day will appear soon. A curved black\n" +
                           "iron staircase suspended from the ceiling in the room's center\n" +
-                          "leads further up in the castle to balcony. A large black statue\n" +
+                          "leads further up in the castle to a balcony. A large black statue\n" +
                           "stands surrounded by the staircase. Many plants, well alive,\n" +
                           "decorate the atrium.";
     }

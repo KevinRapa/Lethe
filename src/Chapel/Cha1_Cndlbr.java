@@ -14,7 +14,7 @@ public class Cha1_Cndlbr extends Furniture {
         this.description = "The silver standing candelabras burn calmly and quietly.";
         this.useDialog = "They are already lit...";
 
-        this.addNameKeys("(?:lit )?(?: )?(?: )?(?:|)");
+        this.addNameKeys("(?:silver )?(?:standing )?(?:lit )?candelabras?");
         this.addUseKeys(HAND_TORCH);
     }
     // ======================================================================== 

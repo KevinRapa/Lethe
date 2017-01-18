@@ -6,7 +6,6 @@ import A_Main.Player;
 import A_Main.AudioPlayer;
 import A_Super.Direction;
 import Strange_Pool.Sewp;
-
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
@@ -14,7 +13,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
-import static java.lang.Math.abs;
 /**
  * This class simulates a creature that roams the halls of the tunnels.
  * 

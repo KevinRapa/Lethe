@@ -63,16 +63,16 @@ public class RoomReferences {
         // FLOOR 1 ROOM ADJS -------------------------------------------------- 
         {COU2}, {COU1,COU3}, {COU7,COU4,COU2,COU5}, {COU3}, {COU3,COU6}, {COU5}, 
         {FOY1,COU3}, {FOY1}, {FOY2,VEST,FOYW,COU7}, {FOY1,FOYB,FOY3}, 
-        {FOY1,ROTU}, {FOYC,FOY2}, {GAL1,FOYB}, {GAL2,GAL3,FOYC}, 
-        {GAL1,LIB3,MHA1}, {LIB2}, {LIB3}, {LIB2,LIB5,GAL2}, {OBS1,BHA2}, 
+        {FOY1,ROTU}, {FOYC,FOY2}, {GAL1,FOYB}, {GAL2,FOYC}, 
+        {GAL1,LIB3,MHA1,GAL4}, {LIB2}, {LIB3}, {LIB2,GAL2}, {OBS1,BHA2}, 
         {BHA1,BHA3}, {BHA2,PAR1}, {BHA1,OBS2}, {ROTU}, {PAR2}, {ROTU}, 
         {FOYW,LOOK}, {MHA2,GAL2,CHS1}, {MHA1}, {SHA2}, {SHA1,SQUA}, {IHA2,ROTU}, 
         {MHA1,MHA3,DIN1}, {DIN2,MHA2}, {SHA1}, {SHA2,WOW1}, {IHA1,WOW2}, 
-        {KITC,EOW1,MHA2}, {MHA3}, {WOW1}, {WBAL,WOW2,SHA1}, {IHA2,WOW1}, {}, 
-        {EOW1,SEW0}, {EOW2,DST1,MHA3}, {EOW1}, 
+        {KITC,EOW1,MHA2}, {MHA3}, {WOW1}, {WBAL,WOW2,SHA1}, {IHA2,WOW1}, {CLOS}, 
+        {EOW1,SEW0}, {EOW2,DST1,MHA3}, {EOW1,EOW4}, 
         // FLOOR 2 ROOM ADJS -------------------------------------------------- 
         {GAL4}, {LIB5}, {OBS1,OBS3}, {JHA2,PAR2}, {PAR1,FOY3,JHA1}, 
-        {PAR2,FOY2,FOY4}, {GAL4,GAL1}, {GAL3,GAL5}, {LIB3,LIB4}, {SST2,JHA2}, 
+        {PAR2,FOY2,FOY4}, {GAL4,GAL6}, {GAL3,GAL5,GAL2}, {LIB4}, {SST2,JHA2}, 
         {JHA1,GAR2}, {GAR2,GAR3}, {JHA2,GAR1,GAR4}, {DIN1,DRAR}, {GAR1,GAR4}, 
         {GAR3,GAR2}, {DIN2}, {CLOS,WOW2}, {WOW3,COUS}, {EOW4}, {WORK,EOW2}, 
         // FLOOR 3 ROOM ADJS -------------------------------------------------- 
@@ -88,7 +88,7 @@ public class RoomReferences {
         {SEW1,DST1}, {ESC2}, {ESC1,ESC3}, {ESC2,ESC4}, {ESC3,ESC5}, {ESC4,ESC6}, 
         {ESC5}, 
         // SUB-LEVEL ROOM ADJS ------------------------------------------------ 
-        {CAS1,CT34}, {OUB1,CT52}, {CT21,CT12}, {CT11,CT13,CT22}, {CT12,CT14}, 
+        {CAS1,CT34}, {CT52}, {CT21,CT12}, {CT11,CT13,CT22}, {CT12,CT14}, 
         {CT13,CT15,CT24}, {CT14}, {CT26}, {MY18,CT27}, {CT17}, {CT11}, 
         {CT12,CT23}, {CT22,CT33}, {CT14,CT25}, {CT24,CT26}, {TM16,CT25}, 
         {CT17,CT28}, {CT27,CT38}, {TM32,CT41}, {CT31}, {CT23,CT34,CT43}, 

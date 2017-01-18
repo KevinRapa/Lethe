@@ -33,8 +33,8 @@ public final class Id {
             
         KITC = "KITC",  DST1 = "DST1",  GAL1 = "GAL1",  GAL2 = "GAL2",
         GAL3 = "GAL3",  GAL4 = "GAL4",  GAL5 = "GAL5",  GAL6 = "GAL6",  
-        GAL7 = "GAL7",  DIN1 = "DIN1",  DIN2 = "DIN2",  MHA1 = "MAH1",
-        MHA2 = "MAH2",  MHA3 = "MAH3",  WORK = "WORK",  EOW1 = "EOW1",
+        GAL7 = "GAL7",  DIN1 = "DIN1",  DIN2 = "DIN2",  MHA1 = "MHA1",
+        MHA2 = "MHA2",  MHA3 = "MHA3",  WORK = "WORK",  EOW1 = "EOW1",
         EOW2 = "EOW2",  EOW4 = "EOW4",  LIB1 = "LIB1",  LIB2 = "LIB2",
         LIB3 = "LIB3",  LIB4 = "LIB4",  LIB5 = "LIB5",  DRAR = "DRAR",
             
