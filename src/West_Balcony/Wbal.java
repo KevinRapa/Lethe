@@ -11,7 +11,7 @@ public class Wbal extends Room{
         description = "You are on a square balcony at the front left corner of\n" +
                       "the castle. Littered all over the floor are pieces of\n" +
                       "wood. In the center stands a tall beacon of fire. To\n" +
-                      "the west, you see the sea following a long cliff and\n" +
+                      "the west, you see the sea following a long cliff to\n" +
                       "a distant lighthouse. To your south, you look upon the\n" +
                       "dark forest you walked through to get here.";
     }

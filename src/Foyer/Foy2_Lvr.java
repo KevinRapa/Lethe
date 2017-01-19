@@ -1,5 +1,6 @@
 package Foyer;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Room;
@@ -27,7 +28,7 @@ public class Foy2_Lvr extends Lever{
     @Override public String event(String key) {
         Room bba1 = Player.getRoomObj(Id.FOYB);
         Room want = Player.getRoomObj(Id.FOYW);
-
+        
         if (this.isOn) {
             want.unlock();
             bba1.lock();
@@ -39,6 +40,8 @@ public class Foy2_Lvr extends Lever{
         REF.swtch(); // Opens or closes gate.
         REF2.swtch(); // Opens or closes gate.
 
+        AudioPlayer.playEffect(28);
+        
         return this.actDialog;
     } 
 /*----------------------------------------------------------------------------*/    

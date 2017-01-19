@@ -26,6 +26,7 @@ public class Vest_Bttn extends Button {
             return "Ouch! There is fire in the way!";                    
         else {
             AudioPlayer.playEffect(11);
+            AudioPlayer.playEffect(5);
             Player.getRoomObj(Id.FOY1).unlock();
             return "You push the button and hear a click behind you.";
         }             

@@ -1,5 +1,6 @@
 package Parlor;
 
+import A_Main.AudioPlayer;
 import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -58,6 +59,7 @@ public class Par1_EnchtTbl extends Furniture {
             containsItem(GLASS_BOTTLE)) 
         {
             this.inv.clear();
+            AudioPlayer.playEffect(29);
             inv.add(REF_ENCH_BTTL);
             return 1;
         }
@@ -67,6 +69,7 @@ public class Par1_EnchtTbl extends Furniture {
             this.inv.clear();
             inv.add(new Shoes(SHROUDED_SHOES, "The pair of slippers carry almost no weight to them.", 
                               "You slip on the shoes. They are perhaps the most comfortable pair you've ever worn."));
+            AudioPlayer.playEffect(29);
             return 2;
         }
         else

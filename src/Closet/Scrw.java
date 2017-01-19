@@ -1,12 +1,11 @@
 package Closet;
 
-import static A_Main.NameConstants.RED_FOCUS;
 import A_Super.Item;
 
 public class Scrw extends Item {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Scrw(String name, Item forms) {
-        super(name, forms, RED_FOCUS, 3);
+    public Scrw(String name, Item forms, int thresh) {
+        super(name, forms, thresh);
         this.description = "It's a tiny little screw.";
     }    
 /*----------------------------------------------------------------------------*/  

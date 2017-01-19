@@ -1,4 +1,7 @@
 package A_Super;
+
+import A_Main.AudioPlayer;
+
 /**
  * Represents a window that can be opened and closed.'
  * Mainly for decoration. A few windows in the game are significant, however.
@@ -41,6 +44,8 @@ public class Window extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
         if (key.matches("open|close")) {
+            AudioPlayer.playEffect(26);
+            
             if (this.isOpen && key.matches("close")) {
                 this.close();
                 return "You close the window."; 

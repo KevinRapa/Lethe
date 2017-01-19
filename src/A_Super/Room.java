@@ -33,13 +33,14 @@ import A_Main.RoomReferences;
  * @author Kevin Rapa
  */
 public class Room implements Serializable { 
-    protected final String NAME, ID, STD_RM_OUT;// The name and unique ID of the room.
+    protected final String NAME, ID,            // The name and unique ID of the room.
+                           STD_RM_OUT;          // Prints where you are.
     protected final int[] COORDS;               // Index coordinates of this room.
     protected boolean isLocked;                 // You cannot move into a locked room.
     protected String description;               // Description of the room.
-    public ArrayList<String> adjacent;       // List of rooms one can move to from this one.
+    protected ArrayList<String> adjacent;       // Rooms one could move to from this.
     protected ArrayList<Furniture> furnishings; // Holds furniture.
-    protected final String WALL_BARRIER = "There is a wall that way.";
+    protected static final String WALL_BARRIER = "There is a wall that way.";
     // CONSTRUCTOR ============================================================
     public Room(String name, String ID) {  
         this.NAME = name;
@@ -54,32 +55,18 @@ public class Room implements Serializable {
 //******************************************************************************
 // <editor-fold desc="GETTERS">
 //******************************************************************************     
-    /**
-     * @return This room's name.
-     */
     @Override public String toString() {
         return this.NAME; 
     }
     // ========================================================================
-    /**
-     * @return This room's unique ID.
-     */
     public String getID() {
         return this.ID; 
     } 
     // ======================================================================== 
-    /**
-     * @return The coordinates of this room.
-     */
     public int[] getCoords() {
         return this.COORDS;
     } 
     // ========================================================================
-    /**
-     * The description that prints whenever a room is entered.
-     * @return A description of this room.
-     * @see Player#describeRoom
-     */
     public String getDescription() {
         return this.description; 
     }
@@ -99,9 +86,6 @@ public class Room implements Serializable {
         return WALL_BARRIER;
     }
     // ========================================================================
-    /**
-     * @return A list of the furniture in this room.
-     */
     public ArrayList<Furniture> getFurnishings() {
         return this.furnishings;
     }
@@ -186,7 +170,7 @@ public class Room implements Serializable {
                 if (name.matches(j))
                     return true;
 
-        return false;
+        return false;  
     }
     // ========================================================================
     public boolean hasFurniture(Furniture furn) {

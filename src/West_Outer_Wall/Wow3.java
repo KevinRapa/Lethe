@@ -51,6 +51,7 @@ public class Wow3 extends Room {
             else {
                 Player.getRoomObj(Id.WOW2).removeFurniture(WOW2LDDR_REF);
                 FLR_REF.add(LDDRITEM_REF);
+                AudioPlayer.playEffect(31);
                 GUI.out("You successfully scale the ladder, but you accidentally\n"
                       + "knock it down with your final step, you uncoordinated oaf.");
             }               

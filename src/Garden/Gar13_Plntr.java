@@ -1,7 +1,6 @@
 package Garden;
 
-import static A_Main.NameConstants.SHOVEL;
-import static A_Main.NameConstants.TROWEL;
+import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -29,7 +28,7 @@ public class Gar13_Plntr extends Furniture {
     // ========================================================================     
     @Override public String useEvent(Item item) {
         if (item.toString().matches("trowel|shovel")) {
-            if (Player.hasItem("soil"))
+            if (Player.hasItem(SOIL))
                 return "You dig around a bit, but uncover nothing.";
             else {
                 Player.getInv().add(SOIL_REF);

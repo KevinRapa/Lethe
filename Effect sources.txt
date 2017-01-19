@@ -1,0 +1,119 @@
+All sounds processed using Audacity
+All effects found from Freesound.org -- I did not create any of them.
+
+Key ring noise
+	https://www.freesound.org/people/rwm28/sounds/48189/
+	keys.wav -- rwm28
+
+Page turn
+	https://www.freesound.org/people/SmartWentCody/sounds/179007/
+	Book Page Turning.wav -- SmartWentCody
+
+Footsteps and inventory noise
+	https://www.freesound.org/people/LittleRobotSoundFactory/
+	LittleRobotSoundFactory
+
+Cave drips
+	https://www.freesound.org/people/everythingsounds/sounds/199515/
+	Cave Drips -- everythingsounds
+
+Metal swinging
+	https://www.freesound.org/people/eguaus/sounds/322588/
+	Columpio -- equaus
+
+Static noise -- Gallery third floor west
+	https://www.freesound.org/people/dotY21/sounds/335206/
+	Static Crush -- dotY21
+
+Latch noise -- Vesibule
+	https://www.freesound.org/people/mhtaylor67/sounds/126041/
+	Gate latch -- mhtaylor67
+
+Locked door
+	https://www.freesound.org/people/Benagain/sounds/321087/
+	Door Locked -- Benagain
+
+Wall Thump
+	https://www.freesound.org/people/Reitanna/sounds/332670/
+	low thump.wav -- Reitanna
+
+Gate slam
+	https://www.freesound.org/people/Hybrid_V/sounds/320737/
+	Creepy Dungeon Door Slam -- Hybrid_V
+
+door closing
+	https://www.freesound.org/people/Checkseven/sounds/245823/
+	Door Close -- Checkseven
+	
+basic Click
+	https://www.freesound.org/people/KorgMS2000B/sounds/54405/
+	KorgMS2000B -- Button Click.wav
+
+button press
+	https://www.freesound.org/people/GreekIrish/sounds/254713/
+	Projector Button Push.wav -- GreekIrish
+
+lever pull
+	https://www.freesound.org/people/BMacZero/sounds/94120/
+	Mechanical1.wav -- BMacZero
+
+unlocking door
+	https://www.freesound.org/people/qubodup/sounds/160215/
+	Unlocking Door Lock -- qubodup
+
+Black smith -- Workshop
+	https://www.freesound.org/people/thefilmbakery/sounds/137836/
+ 	Blacksmith Workshop.WAV -- thefilmbakery
+
+
+wooden stairs
+	https://www.freesound.org/people/thearxx08/sounds/265306/
+	climbing the ladder.mp3 -- thearxx08
+
+stone steps
+	https://www.freesound.org/people/Erdie/sounds/41579/
+	steps-on-stone01.ogg -- Erdie
+
+ladder
+	https://www.freesound.org/people/MalMan35/sounds/344196/
+	ladder.wav -- MalMan35
+
+sonar -- back hall
+	https://www.freesound.org/people/tiagusilva37/sounds/324107/
+	Sonar.wav -- tiagusilva37
+
+Clank
+	https://www.freesound.org/people/ignotus/sounds/20327/
+	clunk.flac -- ignotus
+
+Valve
+	https://www.freesound.org/people/FreqMan/sounds/31379/
+	FreqMan -- valve 2.wav
+
+Rushing water
+	https://www.freesound.org/people/jc144940/sounds/178734/
+	Rushing River Water.aif -- jc144940
+
+window opening
+	https://www.freesound.org/people/Taira%20Komori/sounds/212013/
+	small_window_C.mp3 -- Taira Komori
+
+key dropping
+	https://www.freesound.org/people/VSokorelos/sounds/346168/
+	Coin Drop.wav -- VSokorelos
+
+Foyer gate switch
+	https://www.freesound.org/people/viaaico2013/sounds/263532/
+	viaaico2013 -- irongate2.WAV
+
+Sparkles
+	https://www.freesound.org/people/tec%20studios/sounds/360835/
+	Fantasy SFX 006.wav -- tec studios
+	
+Rocks Crumbling
+	https://www.freesound.org/people/adamgryu/sounds/336023/
+	Rocks.wav -- adamgryu
+
+Wood falling
+	https://www.freesound.org/people/RutgerMuller/sounds/103997/
+	RutgerMuller -- Wood Hit in Hall.aif

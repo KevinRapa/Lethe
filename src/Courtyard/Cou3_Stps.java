@@ -22,10 +22,9 @@ public class Cou3_Stps extends Staircase {
             default:
                 Player.setOccupies(Id.COU3);
         }
+        playEffect();
         
-        String rep = "You climb " + DIR + " the crumbling steps.";  
-
-        return rep;
+        return "You climb " + DIR + " the crumbling steps.";  
     }
 /*----------------------------------------------------------------------------*/
 }

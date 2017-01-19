@@ -35,7 +35,7 @@ public class Torc_Scyth_Furn extends Furniture implements Resetable {
      * Replaces scythe if player has it.
      */
     @Override public void reset() {
-        if (Player.hasItem("scythe")) {
+        if (Player.hasItem(NameConstants.SCYTHE)) {
             Player.getInv().remove(SCYTHE);
             Player.getRoomObj(Id.TORC).addFurniture(this);
         }

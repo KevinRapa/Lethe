@@ -1,5 +1,6 @@
 package Scorched_Room;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import static A_Main.NameConstants.*;
 import A_Main.Player;
@@ -31,6 +32,7 @@ public class Sear_Fssr extends Furniture {
             Player.getInv().remove(item);
             Player.getInv().add(new Item("broken warhammer", "It's snapped in half.", "Well, it's useless now."));
             this.broken = true;
+            AudioPlayer.playEffect(30);
             return this.useDialog;
         }
         else if (! this.broken) {

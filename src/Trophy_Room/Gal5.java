@@ -17,10 +17,7 @@ public class Gal5 extends Room {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
-        if (dir != Direction.SOUTH)
-            return "It's pitch black, and you shouldn't wander in too far.";
-        
-        return "There's a wall in the way.";
+        return "It's pitch black, and you shouldn't wander in too far.";
     }
 /*----------------------------------------------------------------------------*/
 }

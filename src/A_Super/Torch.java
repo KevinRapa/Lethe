@@ -32,16 +32,14 @@ public class Torch extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.actDialog;
-        
-        if (this.containsItem(HAND_TORCH)) {
+        if (this.containsItem(HAND_TORCH) && ! Player.hasItem(HAND_TORCH)) {
             this.inv.give(TORCH, Player.getInv());
-            Player.printInv();
+            return this.actDialog;
         }
+        else if (! this.containsItem(HAND_TORCH))
+            return "The holder is empty you bumbling oaf.";
         else
-            rep = "The holder is empty you bumbling oaf.";
-        
-        return rep;
+            return "You are already carrying a torch.";
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String useEvent(Item item) {

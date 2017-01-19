@@ -104,6 +104,7 @@ public class Inventory implements Iterable<Item>, Serializable {
             this.remove(i); 
         
         this.add(gift);
+        AudioPlayer.playEffect(29);
         
         return "You created: " + gift + ".";
     }

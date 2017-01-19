@@ -22,7 +22,7 @@ public class Safe extends Furniture implements Openable {
         this.searchDialog = this.actDialog;
         this.searchable = false;
         this.addActKeys("use", "spin", "twist", "smash");
-        this.addNameKeys("(?:combination) ?safe", "strongbox");
+        this.addNameKeys("(?:combination )?safe", "strongbox");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {

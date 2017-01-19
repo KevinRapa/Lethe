@@ -68,7 +68,7 @@ public class RoomReferences {
         {BHA1,BHA3}, {BHA2,PAR1}, {BHA1,OBS2}, {ROTU}, {PAR2}, {ROTU}, 
         {FOYW,LOOK}, {MHA2,GAL2,CHS1}, {MHA1}, {SHA2}, {SHA1,SQUA}, {IHA2,ROTU}, 
         {MHA1,MHA3,DIN1}, {DIN2,MHA2}, {SHA1}, {SHA2,WOW1}, {IHA1,WOW2}, 
-        {KITC,EOW1,MHA2}, {MHA3}, {WOW1}, {WBAL,WOW2,SHA1}, {IHA2,WOW1}, {CLOS}, 
+        {KITC,EOW1,MHA2}, {MHA3}, {WOW1}, {WBAL,WOW2,SHA1}, {IHA2,WOW1,WOW3}, {CLOS}, 
         {EOW1,SEW0}, {EOW2,DST1,MHA3}, {EOW1,EOW4}, 
         // FLOOR 2 ROOM ADJS -------------------------------------------------- 
         {GAL4}, {LIB5}, {OBS1,OBS3}, {JHA2,PAR2}, {PAR1,FOY3,JHA1}, 

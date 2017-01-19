@@ -32,9 +32,10 @@ public final class Player {
 // <editor-fold desc="ACCESSORS AND OUTPUT">  
 //******************************************************************************
     // <editor-fold desc="Accessors">
-    
     /**
      * Converts a string of a piece of furniture to its object equivalent.
+     * This should never return null. Furniture is checked for existence
+     * before calling this method.
      * @param name The name of a piece of furniture in your location.
      * @return The furniture objects with the name.
      */
@@ -43,13 +44,9 @@ public final class Player {
             if (i.getValidNames().stream().anyMatch(j -> name.matches(j)))
                 return i;           
         }
-        return null; // Should never return null. Furniture is already checked for existence.
+        return null;
     }
     /*------------------------------------------------------------------------*/   
-    /**
-     * This method is used for certain triggered events.
-     * @return The ID of the last room you were in.
-     */
     public static String getLastVisited() {
         return Player.lastVisited;
     }
@@ -84,17 +81,26 @@ public final class Player {
     }
     /*------------------------------------------------------------------------*/
     public static ArrayList<String> getVisitedRooms() {
+        // Used for player data serialization only.
         return visited;
     }
     /*------------------------------------------------------------------------*/
     public static String getShoes() {
         return Player.shoes;
     }
-    
+    /*------------------------------------------------------------------------*/
+    /**
+     * Checks that you have a specific item.
+     * @param item The item in question.
+     * @return If you have the item.
+     */
+    public static boolean hasItem(String item) {
+        return Player.inv.contents().stream().
+                anyMatch(i -> i.toString().matches(item));
+    }
     // </editor-fold>
     
     // <editor-fold desc="Setters">
-    
     public static void setOccupies(int z, int y, int x) {
         Player.lastVisited = getPosId();
 
@@ -121,32 +127,7 @@ public final class Player {
     public static void setShoes(String shoes) {
         Player.shoes = shoes;
     }
-    
     // </editor-fold>
-    
-    /*------------------------------------------------------------------------*/
-    private static boolean isNonEmptyString(String input) {
-        return (! input.equals(""));
-    }
-    /*------------------------------------------------------------------------*/
-    /**
-     * Checks that you have a specific item.
-     * @param item The item in question.
-     * @return If you have the item.
-     */
-    public static boolean hasItem(String item) {
-        return Player.inv.contents().stream().
-                anyMatch(i -> i.toString().matches(item));
-    }
-    /*------------------------------------------------------------------------*/
-    public static void printInv() {
-        GUI.invOut("You are carrying: " + Player.inv);
-    }
-    /*------------------------------------------------------------------------*/
-    private static void printInv(Inventory furnInv) {
-        GUI.invOut("You find:\n" + furnInv + 
-            "\nYou are carrying:\n" + Player.inv);
-    }
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************
@@ -165,6 +146,7 @@ public final class Player {
         Player.visited = visited;
         Player.lastVisited = lastVisited;
         Player.shoes = shoesWearing;
+        Player.getRoomObj(Id.STUD).unlock();
     }
     // ========================================================================  
     /**
@@ -256,6 +238,10 @@ public final class Player {
         return ans.matches("s") ? 1 : 
                ans.matches("q") ? 3 : 2;
     }
+    // ======================================================================== 
+    private static boolean isNonEmptyString(String playerInput) {
+        return (! playerInput.equals(""));
+    }
 //******************************************************************************        
 // </editor-fold> 
 //******************************************************************************
@@ -294,37 +280,34 @@ public final class Player {
             AudioPlayer.playEffect(4); // Plays doorknob jiggle sound.
             GUI.out("The door here is locked."); 
         }
-        else { 
-            // You can move to the dest.
+        else { // Moves the player, determines the noise to play.
             GUI.clearDialog();
             lastVisited = getPosId();
             Player.pos = dest.getCoords();
             
             String destId = dest.getID();
-            GUI.roomOut(dest.triggeredEvent());
-
+            
             if (dir == Direction.UP || dir == Direction.DOWN)
                 ; // Let the stairs play the noise.
             
             else if (dest.isThisLocked() && ! visited.contains(destId))
                 AudioPlayer.playEffect(13); // Plays unlock sound.
             
-            else if (dest.getCoords()[0] < 5  && // If you're not in catacombs or caves.
+            else if (Player.pos[0] < 5  && // If you're not in catacombs or caves.
                      ! destId.substring(0,3).matches(lastVisited.substring(0,3))) {
-                if (dest.getCoords()[0] == 4 || destId.matches("CS35|CT34"))
+                if (Player.pos[0] == 4 || destId.matches("CS35|CT34"))
                     AudioPlayer.playEffect(24); // Plays metal open door sound. 
                 else
                     AudioPlayer.playEffect(9); // Plays wooden open door sound. 
             }
             
-            else if (dest.getCoords()[0] >= 5  && 
-                    ! destId.substring(0,2).matches(lastVisited.substring(0,2)))
-                // Catches the cases in catacombs and caves which are autogenerated.
-                AudioPlayer.playEffect(9);
+            else if (Player.pos[0] >= 5  && ! destId.substring(0,2).matches(lastVisited.substring(0,2)))
+                AudioPlayer.playEffect(9); // Catches the cases in catacombs and caves.
             
             else
                 AudioPlayer.playEffect(0); // Plays footsteps. No door there
             
+            GUI.roomOut(dest.triggeredEvent());
             describeRoom();
             
             if (! hasVisited(destId)) 
@@ -386,17 +369,18 @@ public final class Player {
         if (isNonEmptyString(searchThis) && getPos().hasFurniture(searchThis))
             search(getFurnRef(searchThis));
         
-        else if (searchThis.matches("it|them")) // Indefinite reference.
-            if (Player.getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture()))
+        else if (searchThis.matches("it|them") && // Indefinite reference.
+                Player.getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture()))
                 search(getFurnRef(searchThis));
         
         else if (searchThis.matches("furniture|furnishings"))
-            GUI.out("You have to enter something specific.");
+            GUI.out("You must be more specific.");
             
         else if (isNonEmptyString(searchThis)) 
             GUI.out("There is no " + searchThis + " here."); 
-
-        printInv();
+        
+        else
+            ; // Go back to main menu
     }    
     // ========================================================================  
     /**
@@ -426,6 +410,7 @@ public final class Player {
             cmdItm = GUI.promptOut();
 
             try (Scanner collectToken = new Scanner(cmdItm).useDelimiter("\\s+")) {
+                
                 String action = collectToken.next();            
                 int slot = Integer.parseInt(collectToken.next());
                 
@@ -437,6 +422,8 @@ public final class Player {
                     Item item = furniture.getInv().get(slot - 1);
                     evalTake(furniture, item);
                 }
+                describeRoom();
+                printInv();
             }
             catch (java.lang.IndexOutOfBoundsException e) {
                 GUI.out("There's no item in that slot.");
@@ -447,7 +434,7 @@ public final class Player {
             }
         } while (isNonEmptyString(cmdItm));
         
-        describeRoom();
+        printInv();
     }
     // ========================================================================  
     /**
@@ -461,14 +448,14 @@ public final class Player {
                 // Matches a non-cave/catacomb room ID, which keys use as types.
                 addToKeyRing(take, furniture);
                 AudioPlayer.playEffect(3);
-                GUI.out("You put the " + take + " in your key ring.");
+                GUI.out("You put the " + take + " into your key ring.");
             }
             else {
                 GUI.out("You take the " + take);
                 furniture.getInv().give(take, Player.inv);                 
             }   
         }
-        else if (Player.inv.contains(take))
+        else
             GUI.out("You already have one of those."); 
     }
     // ========================================================================  
@@ -485,9 +472,8 @@ public final class Player {
             GUI.out("You store the " + store);
             Player.inv.give(store , furniture.getInv()); 
             
-            // If player stores the shoes he/she is wearing.
             if (store.toString().matches(shoes))
-                Player.shoes = "";
+                Player.shoes = ""; // If player stores the shoes currently wearing.
         }
     }
 //******************************************************************************    
@@ -513,7 +499,7 @@ public final class Player {
             evaluateAction(object, action);
         }
         catch (java.util.NoSuchElementException e) {
-            GUI.out("Type an action and an object.");
+            GUI.out("You must type an action and an object.");
         } 
     }
     // ======================================================================== 
@@ -534,6 +520,7 @@ public final class Player {
             if (target.actKeyMatches(action)) {
                 GUI.out(target.interact(action)); 
                 describeRoom();
+                printInv();
             }
             else if (action.matches("c|check|look|view|inspect|watch")) 
                 GUI.out(target.getDescription()); 
@@ -547,8 +534,6 @@ public final class Player {
         }   
         else 
             GUI.out("There is no " + object + " here."); 
-        
-        printInv();
     }
     // ========================================================================  
     private static void checkOutSub() {
@@ -582,6 +567,14 @@ public final class Player {
 //******************************************************************************    
 // <editor-fold desc="INVENTORY ACTIONS">      
 //******************************************************************************    
+    public static void printInv() {
+        GUI.invOut("You are carrying:\n" + Player.inv);
+    }
+    // ========================================================================  
+    private static void printInv(Inventory furnInv) {
+        GUI.invOut("You find:\n" + furnInv + "\nYou are carrying:\n" + Player.inv);
+    }
+    // ========================================================================  
     private static void inventoryPrompt() {
         printInv();
         AudioPlayer.playEffect(1);
@@ -604,7 +597,6 @@ public final class Player {
                     default:
                         combineSub();
                 }
-                printInv();
             } 
             else if (isNonEmptyString(ans))
                 GUI.out("Enter a valid choice.");
@@ -651,7 +643,6 @@ public final class Player {
             catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
                 if (isNonEmptyString(choice))
                     GUI.out("Type in a valid slot number.");
-                
             }  
         } while (isNonEmptyString(choice));
     }
@@ -676,19 +667,20 @@ public final class Player {
                     if (target.useKeyMatches(item.toString())) {
                         GUI.out(target.useEvent(item));
                         describeRoom();
+                        printInv();
                     }
                     else
                         GUI.out("You jam the " + item + " into the " + ans +
                                 "\nas hard as you can, but nothing happens.");
                 }                      
                 else if (isNonEmptyString(ans)) 
-                    GUI.out("There is no " + ans + " here.");    
+                    GUI.out("There is no " + ans + " here.");  
         }
         printInv();
     }
     // ========================================================================  
     /**
-     * Prompts the player for a list of itemList, verifies it and moves to evalCombine().
+     * Prompts the player for a list of items, verifies it and moves to evalCombine().
      * A list is valid if it contains exactly 2 or 3 valid item in the
      * player's inventory.
      */
@@ -722,40 +714,35 @@ public final class Player {
     }
     // ======================================================================== 
     /**
-     * Receives a valid list of 2 or 3 itemList for a combine attempt and
+     * Receives a valid list of 2 or 3 items for a combine attempt and
      * verifies that it is a correct combine set.
-     * @param list a list of 2 or 3 itemList.
+     * @param list a list of 2 or 3 items.
      */
     private static void evalCombine(Item[] list) {
-        if (areAllCombinable(list)) {
+        if (allCombineToSame(list)) { 
             if (list[0].getThreshold() == list.length) {
-                // Verifies that the player entered the proper amount of itemList.
                 GUI.out(Player.inv.combine(list, list[0].getProduct())); 
                 printInv();
             }
-            else 
-                // 2 objects are correct, but 1 is missing.
+            else // 2 objects are correct, but 1 is missing.
                 GUI.out("You need something else for this to work."); 
         }
-        else {
+        else
             switch (list.length) {
-                case 2:
-                    // Player entered 2 itemList that don't combine.
+                case 2: // Player entered 2 items that don't combine.
                     GUI.out("You push them together as hard as you can,\n" +
                             "but it does nothing."); 
                     break;
-                case 3:
-                    // Player entered 3 itemList, some of which may combine.
+                case 3: // Player entered 3 items, some of which may combine.
                     GUI.out("You are pretty sure all these don't go together."); 
             } 
-        }
     }
     // ========================================================================  
     /**
-     * Returns a list of itemList that the player is trying to combine and catches
+     * Returns a list of items that the player is trying to combine and catches
      * errors in the player's syntax.
      * @param tokenizer A scanner holding the list of player entries
-     * @return A list of itemList the player wants to combine.
+     * @return A list of items the player wants to combine.
      */
     private static Item[] getTokenList(Scanner tokenizer) {
         ArrayList<Item> itemList = new ArrayList();
@@ -765,8 +752,7 @@ public final class Player {
                 int slot = Integer.parseInt(tokenizer.next());
                 Item item = Player.inv.get(slot - 1);
                 
-                if (! itemList.contains(item))
-                    // Prevents adding duplicate itemList.
+                if (! itemList.contains(item)) // Prevents adding duplicates.
                     itemList.add(item);
             }
         }
@@ -777,15 +763,15 @@ public final class Player {
     }
     // ========================================================================  
     /**
-     * Checks that all the itemList in the list combine into the same object.
-     * @param itemList A list of itemList
-     * @return If the itemList combine into the same object.
+     * Checks that all the items in the list combine into the same object.
+     * @param itemList A list of items
+     * @return If the items combine into the same object.
      */
-    private static boolean areAllCombinable(Item[] itemList) {
+    private static boolean allCombineToSame(Item[] itemList) {
         String combinesTo = itemList[0].getForms();
 
         for (Item i : itemList) {
-            if (i.getForms().equals("nothing") || ! i.getForms().matches(combinesTo))
+            if (i.getForms() == null || ! i.getForms().equals(combinesTo))
                 return false;
         } 
         return true;

@@ -62,7 +62,6 @@ public class Kitc_Trch extends Torch {
             if (item.toString().equals(HAND_TORCH) && this.size() == 0) {
                 this.CONTENTS.add(item);
                 ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
-                Player.describeRoom();
                 return true;
             }
             GUI.out("The " + item + " doesn't fit in.");
@@ -71,7 +70,6 @@ public class Kitc_Trch extends Torch {
     /*------------------------------------------------------------------------*/
         @Override public void remove(Item item) {
             this.CONTENTS.remove(item);
-            Player.describeRoom();
             ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
         }
     /*------------------------------------------------------------------------*/

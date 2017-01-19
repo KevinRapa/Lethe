@@ -163,7 +163,7 @@ public class Main {
         // <editor-fold desc="INITIALIZE KEYS AND GENERIC FURNITURE">
 
         // Keys
-        Key studKey = new Key("crude molded key", Id.VEST);        
+        Key studKey = new Key("crude molded key", Id.STUD);        
         Key gal1Key = new Key("key with a bearded face on its bow", Id.GAL1);       
         Key eow3Key = new Key("workshop key", Id.WORK);       
         Key par2Key = new Key("key with a rose on its bow", Id.PAR2);      
@@ -202,15 +202,15 @@ public class Main {
         // <editor-fold desc="Mandragora set">
         // Instantiated before courtyard because soil can be found in the courtyard.
         Item mndrk = new Item(MANDRAGORA, "The potato-shaped vegetable looks disturbingly life-like.");
-        Item hlyWtr = new Item("holy water", "Clear, salty, and boiled like hell.", mndrk, MANDRAGORA, 2);
-        Item pttdMndrk = new Item(POTTED_MANDRAGORA, "You have gently positioned the bulb under the soil.", mndrk, MANDRAGORA, 2);
-        Item mndrkBlb = new Item("mandragora bulb", "It's a baby mandragora!", pttdMndrk, POTTED_MANDRAGORA, 2);
-        Item mndrkPt = new Item(POTTED_SOIL_AND_FERTILIZER, "The mixture of soil and fertilizer", pttdMndrk, POTTED_MANDRAGORA, 2);
-        Item pot = new Item("clay pot", "It's a medium-sized clay pot for holding plants.", mndrkPt, POTTED_SOIL_AND_FERTILIZER, 2);
-        Item mxtr = new Item(FERTILIZED_SOIL, "It's a fertile mixture of soil, sand, and fertilizer", mndrkPt, POTTED_SOIL_AND_FERTILIZER, 2);
-        Item snd = new Item(SAND, "You have a pocket full of sand. It's grainy and uncomfortable.", mxtr, FERTILIZED_SOIL, 3);
-        Item sl = new Item("soil", "It's a soft pile of soil", mxtr, FERTILIZED_SOIL, 3);
-        Item frt = new Item("fertilizer", "It's a handful of mysterious gardening wizardry.", mxtr, FERTILIZED_SOIL, 3);
+        Item hlyWtr = new Item("holy water", "Clear, salty, and boiled like hell.", mndrk, 2);
+        Item pttdMndrk = new Item(POTTED_MANDRAGORA, "You have gently positioned the bulb under the soil.", mndrk, 2);
+        Item mndrkBlb = new Item("mandragora bulb", "It's a baby mandragora!", pttdMndrk, 2);
+        Item mndrkPt = new Item(POTTED_SOIL_AND_FERTILIZER, "The mixture of soil and fertilizer", pttdMndrk, 2);
+        Item pot = new Item("clay pot", "It's a medium-sized clay pot for holding plants.", mndrkPt, 2);
+        Item mxtr = new Item(FERTILIZED_SOIL, "It's a fertile mixture of soil, sand, and fertilizer", mndrkPt, 2);
+        Item snd = new Item(SAND, "You have a pocket full of sand. It's grainy and uncomfortable.", mxtr, 3);
+        Item sl = new Item(SOIL, "It's a soft pile of soil", mxtr, 3);
+        Item frt = new Item("fertilizer", "It's a handful of mysterious gardening wizardry.", mxtr, 3);
         // </editor-fold>
         
         // <editor-fold desc="INITIALIZE WEST ANTECHAMBER">
@@ -398,7 +398,7 @@ public class Main {
         //-------------------------------ITEMS----------------------------------
         Item lookRope = new Item(LOOPED_ROPE, "It's a short rope tied into a noose. It's pretty\n"
                                + "frayed in the center from being tied around that\n"
-                               + "railing for so long.", ram, BATTERING_RAM, 3);
+                               + "railing for so long.", ram, 3);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture lookVlv = new Look_Vlv(rotuFntn);
         Furniture lookLghths = new Look_Lghths();
@@ -429,16 +429,17 @@ public class Main {
         Item vinegar = new Item(BOTTLE_OF_VINEGAR, "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"");
         Item wowLddr = new Item("fixed ladder", "The spoke sits in there a bit awkwardly, but it\n"
                               + "seems like a good ladder. It may even support your heft.");   
-        Item wow1Spk = new Item("wheel spoke", "It's a wooden rod, about a foot long.", wowLddr, "ladder", 3);
+        Item wow1Spk = new Item("wheel spoke", "It's a wooden rod, about a foot long.", wowLddr, 3);
         Item clngSoln = new Item("cleaning solution", "It smells lemony fresh, unlick the rest of this room.");
         Item rppdBrlp = new Item("piece of ripped burlap", "It must have belonged to the broken cart in the west wing.");
         Item actn = new Item("acetone", "It's a strong-smelling solvent in an opaque jar.");
         //-----------------------------FURNITURE--------------------------------
-        Furniture wow2Strs = new Wow2_Strs(Direction.UP, 1); // Not in WOW2 to start.
+        Furniture wow2Lddr = new Wow2_Strs(Direction.UP, 1); // Not in WOW2 to start.
         Furniture wow2Armr = new Wow2_Armr();
         Furniture wow1Crt = new Wow1_Crt(wow1Spk, rppdBrlp);
-        Furniture wow2Blcny = new Wow2_Blcny(wow2Strs, wowLddr);
-        Furniture wow2F = new Floor("A sandstone tiled floor.");
+        Furniture wow1F = new Floor("A sandstone tiled floor.");
+        Furniture wow2Blcny = new Wow2_Blcny(wow2Lddr, wowLddr); // Fixed ladder can be used on this.
+        Furniture wow2F = new Wow2_F(wow2Lddr, wowLddr); // Fixed ladder can be used on this.
         Furniture wow2Dr = new Wow2_Dr(Direction.EAST);
         Furniture wow2Hole = new Wow2_Hole();
         Furniture wowWndw = new Wow_Wndw();
@@ -455,7 +456,7 @@ public class Main {
         Item wbalsp = new Item("wood splinter", "It's a splinter of wood.");
         Item wbalbr = new Item("branch", "A plain branch.");
         Item wbalBrg = new Item("broken rod", "It looks like it belonged to a ladder.");
-        Item wbalRng = new Item("wooden rod", "It's a wooden rod, about a foot long.", wowLddr, "ladder", 3);
+        Item wbalRng = new Item("wooden rod", "It's a wooden rod, about a foot long.", wowLddr, 3);
         //-----------------------------FURNITURE--------------------------------
         Furniture wbalF = new Floor("A shale tile floor. Many pieces of wood\nlitter it.", 
                                     wbalch, wbalbr, wbalBrg, wbalsp, wbalsp, wbalRng, wbalbr, wbalch, wbalch);
@@ -466,7 +467,7 @@ public class Main {
         //-----------------------------THE ROOM---------------------------------
         Room squa = new Squa("in a servant's quarters", Id.SQUA);
         //-------------------------------ITEMS----------------------------------
-        Item squaLddr = new Squa_Lddr("broken ladder", wowLddr);
+        Item squaLddr = new Squa_Lddr("broken ladder", wowLddr, 3);
         Item squaJrnl = new Note("note on ladder", "Need to get that ladder fixed. Too busy with the cart.\n"
                 + "Don't ask mages to fix, they've been busy lately. I'll keep it under my bed for now.");
         Item rags = new Item("worn rags", "Some dirty worn rags.", "You are perfectly content with the clothes you have on now.");
@@ -493,7 +494,7 @@ public class Main {
         Item gl = new Item("glue bottle", "It's a bottle of sticky glue.");
         Item closGlv = new Item("gloves", "Some old gardening gloves", "They don't fit on your enormous hands.");
         Item closStrw = new Item("straw", "It's just straw");
-        Item scrw1 = new Scrw("1mm screw", rdFcs);
+        Item scrw1 = new Scrw("1mm screw", rdFcs, 3);
         Item scrw2 = new Item("2mm screw", "Just a small screw.");
         Item scrw5 = new Item("5mm screw", "Just a small screw.");
         //-----------------------------FURNITURE--------------------------------
@@ -511,9 +512,9 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE WEST OUTER WALL BALCONY">
         //-----------------------------THE ROOM---------------------------------
-        Room wow3 = new Wow3("on the west outer wall balcony", Id.WOW3, wow2Strs, wow2F.getInv(), wowLddr);
+        Room wow3 = new Wow3("on the west outer wall balcony", Id.WOW3, wow2Lddr, wow2F.getInv(), wowLddr);
         //-------------------------------ITEMS----------------------------------
-        Item wowRope = new Item("rope", "It's a short coiled rope.", ram, BATTERING_RAM, 3);
+        Item wowRope = new Item("rope", "It's a short coiled rope.", ram, 3);
         //-----------------------------FURNITURE--------------------------------
         Furniture wow3Shlf = new Wow3_Shlf(wowRope, closKey);
         Furniture wow3F = new Floor("A sandstone tiled floor.");
@@ -540,7 +541,7 @@ public class Main {
         Room sha2 = new Sha2("in the north servant's hall", Id.SHA2);
         Room sha1 = new Sha1("in the south servant's hall", Id.SHA1);
         //-------------------------------ITEMS----------------------------------
-        Item wdChnk = new Wood_Chunk("wood log", ram);       
+        Item wdChnk = new Wood_Chunk("wood log", ram, 3);       
         Item shaMp = new Item("mop", "It's a classic mop.", "Yes, let's just make this a game about cleaning some madman's castle.");
         Item shaSpng = new Item("sponge", "It's a quintessential yellow sponge.", "I'm a lumberjack, not a maid!");
         //-----------------------------FURNITURE--------------------------------       
@@ -765,7 +766,7 @@ public class Main {
         Room work = new Eow3("in the workshop", Id.WORK);
         //-------------------------------ITEMS----------------------------------
         Item redLns = new Item("red lens", "It's a proper lens tinted red.\n"
-                             + "Maybe you should pick up the glass trade!", rdFcs, RED_FOCUS, 3);
+                             + "Maybe you should pick up the glass trade!", rdFcs, 3);
         Item rdDy = new Item(RED_DYE, "You have a handful of soft red powdered dye.");
         Item blDy = new Item(BLUE_DYE, "You have a handful of soft blue powdered dye.");
         Item yllwDy = new Item(YELLOW_DYE, "You have a handful of soft yellow powdered dye.");
@@ -891,7 +892,7 @@ public class Main {
         Item lib1ImpNt = new Lib1_ImpNt("momento- lens");
         Item lib1Pln = new Lib1_Pln("vessel schematic");
         Item brkLns = new Item("cracked lens", "The red-tinted lens is cracked all the way through.", "You think this has lost its purpose by now.");
-        Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring. Looks like a screw is missing.", rdFcs, RED_FOCUS, 3);
+        Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring. Looks like a screw is missing.", rdFcs, 3);
         //-----------------------------FURNITURE--------------------------------
         Furniture lib1Docs = new Lib1_Docs();
         Furniture lib1F = new Floor("It's a dusty wood parquet floor.", lib1Nt2);
@@ -1815,7 +1816,7 @@ public class Main {
         };
         
         // <editor-fold desc="LOCK ROOMS">
-        cous.lock(); rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
+        rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
         par2.lock(); clos.lock(); din1.lock(); kitc.lock(); ou62.lock();
         chs1.lock(); work.lock(); tow1.lock(); tbal.lock(); sewp.lock();
         dkch.lock(); vau2.lock(); wow2.lock(); foyw.lock();
@@ -1855,12 +1856,12 @@ public class Main {
         look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, eastDoor);
         iha1.addFurniture(northDoor, wWW, ihaF, iha1Armr, iha1Hnd, iha1Bwl, ihaWndw);
         iha2.addFurniture(southDoor, wWW, ihaF, iha2Armr, iha2Bwl, ihaWndw);
-        wow1.addFurniture(genDoor, wWW, westDoor, wow1NDr, wow1Crt, wow2F, wowWndw, wowHrth, wow1Shlvs);
+        wow1.addFurniture(genDoor, wWW, westDoor, wow1NDr, wow1Crt, wow1F, wowWndw, wowHrth, wow1Shlvs);
         wow2.addFurniture(genDoor, wWW, wow2Armr, wow2Blcny, wow2F, wow2Dr, northDoor, wow2Hole, wowWndw, wowHrth, wow2Strcs);
         wbal.addFurniture(wallEx, eastDoor, lookLghths, lookClff, lookRlng, wbalF, wbalBcn, wbalFrst, bbaSea);
         squa.addFurniture(wWW, squaF, squaBd, squaDsk, squaWndw, lookLghths, lookClff, bbaSea, squaWrdrb, squaCndl, squaDr);
         wow3.addFurniture(genDoor, wWW, wow3Shlf, wow3F, wow3Dr, bbaRlng, wow3NDr);
-        sha1.addFurniture(genDoor, wWW, shaF, sha1Trch, sha1Dr, sha1SDr);
+        sha1.addFurniture(wWW, shaF, sha1Trch, sha1Dr, sha1SDr);
         sha2.addFurniture(wWW, sha2Cbnt, shaF, sha2Dr, sha2Trch);
         clos.addFurniture(closW, closF, closShlf, closStl, closBrrl, closWrkbnch, closLddr, closScks, closClng, closSkltn, closDr);  
         cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searW, searAsh, closW);
@@ -1993,7 +1994,7 @@ public class Main {
         //**********************************************************************
         // </editor-fold>  
         //**********************************************************************
-
+        
         return newMap;
     }
 // ============================================================================

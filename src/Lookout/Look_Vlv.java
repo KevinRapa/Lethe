@@ -35,6 +35,7 @@ public class Look_Vlv extends Furniture{
             loosened = true; 
         }
         else {
+            AudioPlayer.playEffect(17);
             loosened = ! loosened; 
             
             if (loosened) 

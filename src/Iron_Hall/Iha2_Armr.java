@@ -1,14 +1,18 @@
 package Iron_Hall;
 
+import A_Main.Id;
+import A_Main.Inventory;
 import static A_Main.NameConstants.POLEARM;
+import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 
 public class Iha2_Armr extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Iha2_Armr(Item... items) {
-        super(items);
+        super();
         this.searchable = false;
+        this.inv = new Armor_Inventory(items);
         this.description = "It's a suit of armor holding a polearm. Its gauntlet\n"
                          + "is wrapped around it, but awkwardly as if the gauntlet\n"
                          + "had been pryed opened and then closed repeatedly.";
@@ -40,5 +44,31 @@ public class Iha2_Armr extends Furniture {
         else
             return "The gauntlet is already open.";
     }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/
+/*----------------------------------------------------------------------------*/
+    private class Armor_Inventory extends Inventory {
+        public Armor_Inventory(Item ... items) {
+            super(items);
+        }
+        /*--------------------------------------------------------------------*/
+        @Override public boolean add(Item item) {
+            this.CONTENTS.add(item);
+            
+            if (item.toString().equals(POLEARM))
+                ((Iha2)Player.getRoomObj(Id.IHA2)).addPolearm();
+                
+            return true; // Some inventories have restrictions.
+        }
+        /*--------------------------------------------------------------------*/
+        @Override public void remove(Item removeThis) {      
+            this.CONTENTS.remove(removeThis);
+            
+            if (removeThis.toString().equals(POLEARM))
+                ((Iha2)Player.getRoomObj(Id.IHA2)).removePolearm();
+        }
+    }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/
 /*----------------------------------------------------------------------------*/
 }

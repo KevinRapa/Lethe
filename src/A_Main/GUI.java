@@ -305,14 +305,12 @@ public class GUI extends JPanel {
         
         UNDO.stream().filter(i -> i.matches("(?:[a-z -]{3,})+")).forEach(j -> {
             // Filters out strings resembling phrases.
-            if (j.matches("([a-z -]{3,})+")) {
-                if (Player.getPos().hasFurniture(j))
-                    // No verb. Uses whole string.
-                    FURN_PARSER.add(j);
-                else if (Player.getPos().hasFurniture(j = j.replaceFirst("\\w+ ", "")))
-                    // First word might be a verb. Try second-last words.
-                    FURN_PARSER.add(j);
-            }
+            if (Player.getPos().hasFurniture(j))
+                // No verb. Uses whole string.
+                FURN_PARSER.add(j);
+            else if (Player.getPos().hasFurniture(j.replaceFirst("[a-z -]+ ", "")))
+                // First word might be a verb. Try second-last words.
+                FURN_PARSER.add(j);
         });
         return (FURN_PARSER.size() > 0) ? FURN_PARSER.get(0) : 
                                           "object with that name";

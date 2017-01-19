@@ -23,7 +23,7 @@ public class Sha1_Dr extends Furniture {
                        + "rope you're holding the ram with snaps in half. Good\n"
                        + "thing that worked on the first try.";
         this.addActKeys("open", "use");
-        this.addNameKeys("west door");
+        this.addNameKeys("door", "west door");
         this.addUseKeys(BATTERING_RAM);
     }
 /*----------------------------------------------------------------------------*/

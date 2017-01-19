@@ -1,5 +1,6 @@
 package Servants_Hall;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -36,6 +37,7 @@ public class Sha2_Cbnt extends Furniture implements Openable {
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
         if (Player.hasKey(Id.CBNT) && ! this.searchable) {
+            AudioPlayer.playEffect(13);
             this.searchable = true;
             return this.actDialog;
         }

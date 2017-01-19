@@ -31,7 +31,7 @@ public class Vest extends Room {
     @Override public String triggeredEvent() {        
         // Locks the door to the foyer.
         AudioPlayer.playEffect(5);
-        Player.getRoomObj(Id.VEST).lock();
+        Player.getRoomObj(Id.FOY1).lock();
 
         if (! Player.hasVisited(this.ID))
             GUI.out("You hear a click behind you. As you enter, you hear a\n"

@@ -146,6 +146,12 @@ public class AudioPlayer {
         put(23, new File(WD, "effects" + S + "keyClick3.wav"));
         put(24, new File(WD, "effects" + S + "dungeonDoor.wav"));
         put(25, new File(WD, "effects" + S + "monster.wav"));
+        put(26, new File(WD, "effects" + S + "windowOpening.wav"));
+        put(27, new File(WD, "effects" + S + "keyDrop.wav"));
+        put(28, new File(WD, "effects" + S + "foyGateSwitch.wav"));
+        put(29, new File(WD, "effects" + S + "sparkles.wav"));
+        put(30, new File(WD, "effects" + S + "rocksCrumbling.wav"));
+        put(31, new File(WD, "effects" + S + "ladderFalling.wav"));
     }};
 //******************************************************************************    
 // </editor-fold>

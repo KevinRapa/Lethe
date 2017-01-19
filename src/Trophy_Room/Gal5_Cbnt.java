@@ -1,5 +1,6 @@
 package Trophy_Room;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -33,9 +34,10 @@ public class Gal5_Cbnt extends Furniture implements Openable {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        if (Player.hasKey(Id.GCBT) && ! this.searchable) 
+        if (Player.hasKey(Id.GCBT) && ! this.searchable) {
+            AudioPlayer.playEffect(13);
             return  "It's locked but you have a key that looks like it might unlock it.";
-        
+        }
         else if (this.searchable)
             return  "You look inside the cabinet.";
 

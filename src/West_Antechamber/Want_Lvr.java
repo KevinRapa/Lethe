@@ -25,7 +25,7 @@ public class Want_Lvr extends Lever {
             return "You pull the lever, but nothing happens except a faint\n"
                  + "-click- sounding past the wall to your west.";
         else {
-            AudioPlayer.playEffect(19);
+            AudioPlayer.playEffect(19, -5);
             ref.rotate();
         }
         return this.actDialog;

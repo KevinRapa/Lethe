@@ -17,7 +17,7 @@ public class Rotu extends Room {
         this.NDOOR = new Rotu_Dr(Direction.NORTH);
         this.SDOOR = new Rotu_Dr(Direction.SOUTH);
         this.EDOOR = new Rotu_Dr(Direction.EAST);
-        this.WDOOR = new Rotu_Dr(Direction.NORTH);
+        this.WDOOR = new Rotu_Dr(Direction.WEST);
         
         this.addFurniture(WDOOR, EDOOR);
         

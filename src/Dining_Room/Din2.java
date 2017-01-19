@@ -20,7 +20,7 @@ public class Din2 extends Room{
         if (dir == Direction.EAST)
             return "There's a railing that way.";
         
-        return "There's a wall in the way.";
+        return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/
 }

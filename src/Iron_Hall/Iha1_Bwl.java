@@ -1,5 +1,6 @@
 package Iron_Hall;
 
+import A_Main.AudioPlayer;
 import static A_Main.NameConstants.POLEARM;
 import A_Super.Item;
 import A_Super.Key;
@@ -29,6 +30,7 @@ public class Iha1_Bwl extends Furniture {
     @Override public String useEvent(Item item) {
         if (! this.jabbed) {
             this.inv.give(WOWKEY_REF, FLOOR_REF.getInv()); 
+            AudioPlayer.playEffect(27);
             this.jabbed = true;
             return this.useDialog;
         }

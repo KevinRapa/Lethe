@@ -13,7 +13,7 @@ public class Stud_Prtrt extends Wall_Art {
         this.SAFE_REF = safe;
         this.description = "The portrait depicts a bald male with round glasses,\n"
                          + "maybe fifty years old. He looks a bit like an angry\n"
-                         + "Bob Gunton. 'Could this be a picture of Erik?' you say\n"
+                         + "Bob Gunton. 'Could this be a picture of Eurynomos?' you say\n"
                          + "to yourself. 'Wait, who's Bob Gunton?' you ask, but\n"
                          + "you hear no answer. With the light cast from the\n"
                          + "fireplace, it seems like this picture is not resting\n"

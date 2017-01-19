@@ -1,0 +1,16 @@
+BUGS TO FIX
+
+
+
+
+
+MOVING NOISES
+	portrait moving noise
+	bed moving noise
+
+BASHING NOISES
+	battering ram noise
+
+OTHER NOISES
+	safe opening click
+	panel prying noise

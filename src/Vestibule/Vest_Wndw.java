@@ -1,5 +1,6 @@
 package Vestibule;
 
+import A_Main.AudioPlayer;
 import A_Super.Window;
 import A_Super.Furniture;
 import A_Main.Player;
@@ -31,11 +32,13 @@ public class Vest_Wndw extends Window {
             if (this.isOpen && key.equals("close")) {
                 this.close(); 
                 vest.switchWindow();
+                AudioPlayer.playEffect(26);
                 return "You close the window.";
             }
             else if (! this.isOpen && key.equals("open")) {
                 this.open();
                 vest.switchWindow();
+                AudioPlayer.playEffect(26);
 
                 if (REF.isLit()) {
                     this.REF.extinguish();
