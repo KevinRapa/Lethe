@@ -9,7 +9,7 @@ public class Cas_Strs extends Staircase {
 
     // ========================================================================
     public Cas_Strs (Direction dir) {
-        super(dir, 1);
+        super(dir);
         
         this.description = "The two curved stone staircases both lead " + dir + ".";
 

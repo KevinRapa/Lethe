@@ -5,8 +5,8 @@ import A_Super.Staircase;
 
 public class Din1_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Din1_Strs(Direction direction, int height) {
-        super(direction, height);
+    public Din1_Strs(Direction direction) {
+        super(direction);
         this.description = "The stone staircase leads straight up to the\n"
                          + "balcony. A lavender carpet runs its surface.";
         this.searchDialog = "In searching the stairs, you find it as clean\n"

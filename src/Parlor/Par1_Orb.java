@@ -23,11 +23,11 @@ public class Par1_Orb extends NonPlayerCharacter {
             if (this.firstTime && this.woken) {
                 this.converse1();
                 this.firstTime = false;
-                return "";
+                return null;
             }
             else if (! this.firstTime && this.woken) {
                 this.converse2();
-                return "";
+                return null;
             }
             else 
                 return "You mutter a soft 'Hullo?' But hear no response";

@@ -6,8 +6,8 @@ import A_Super.Staircase;
 
 public class Gal6_Lddr extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal6_Lddr(Direction direction, int height) {
-        super(direction, height);
+    public Gal6_Lddr(Direction direction) {
+        super(direction);
         this.searchDialog = "The ladder hides nothing.";
         this.description = "The ladder leads down the hatch into the room below.";
     }

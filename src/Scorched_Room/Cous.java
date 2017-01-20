@@ -12,7 +12,7 @@ public class Cous extends Room{
                      "the floor is coated in ash and chunks of wood.\n" +
                      "Right beside you, against the door, a skeleton lies. \n" +
                      "They were definitely trying to escape this room. There\n"
-                   + "is an interesting fissure in the wall to the north.";
+                   + "is a fissure in the wall to the north.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {

@@ -13,7 +13,7 @@ abstract public class Button extends Furniture {
         super();
         this.searchable = false;
         this.searchDialog = "There's a sword here! No not really, just a button.";
-        this.addActKeys("push", "hit", "activate");
+        this.addActKeys("push", "hit", "activate", "press");
         this.addNameKeys("button"); 
     }
 /*----------------------------------------------------------------------------*/   

@@ -5,7 +5,6 @@ import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
 import A_Main.NameConstants;
-import A_Main.Player;
 /**
  * One of four elements of the light machine puzzle in the gallery.
  * Foci must be added to this in the correct order while the statue is holding
@@ -15,8 +14,8 @@ import A_Main.Player;
  * @author Kevin Rapa
  */
 public class Gal1_Drgn extends LghtMchn {
-    private final Gal2_Stat STAT_REF;
-    private boolean leftOn, rightOn;
+    private final Gal2_Stat GAL2_STAT_REF;
+    private final boolean[] EYES = {false, false};
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal1_Drgn(Furniture stat, Item... items) {
         super();
@@ -26,69 +25,49 @@ public class Gal1_Drgn extends LghtMchn {
                          + "dark green dragon statue. It looks original to east\n"
                          + "Asia. Its serpent-like body twists around and it stares\n"
                          + "menacingly ";
-        this.STAT_REF = (Gal2_Stat) stat;
-        leftOn = rightOn = false;
-        beam = 'y';
-        mode = "A yellow beam";
+        this.GAL2_STAT_REF = (Gal2_Stat) stat;
         addNameKeys("snake-like dragon(?: statue)?", "(?:dragon|statue)");
         this.inv = new Drgn_Inv(items);    
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
-        if (leftOn && ! rightOn) 
-            return description.concat("at the statue in the central chamber.\n"
-                                    + "Its left eye glows brightly from an unknown source.");
-        
-        else if (! leftOn && rightOn) 
-            return description.concat("at the statue in the central chamber.\n"
-                                    + "Its right eye glows brightly from an unknown source.");
-        
-        else if (leftOn && rightOn) 
+        if (this.isOn) 
             return description.concat("with its two eyes lit. A light from within\n"
                                     + "the dragon shines brightly through its mouth.");
+        else if (EYES[0] && ! EYES[1]) 
+            return description.concat("at the statue in the central chamber.\n"
+                                    + "Its left eye glows brightly from an unknown source.");
+        else if (! EYES[0] && EYES[1]) 
+            return description.concat("at the statue in the central chamber.\n"
+                                    + "Its right eye glows brightly from an unknown source.");
         else
             return description.concat("with cold eyes at the statue in the central chamber.");
     }
 /*----------------------------------------------------------------------------*/    
-    public String switchRight() {
-        rightOn = ! rightOn;
+    public String switchEye(int i) {
+        // 0 is left, 1 is right
+        EYES[i] = ! EYES[i];
+        String eye = (i == 0) ? "left" : "right";
         
-        String rep = rightOn ? "The dragon's right eye lights up." :
-                               "The glow in the dragon's right eye fades. ";
+        String rep = EYES[i] ? "The dragon's " + eye + " eye lights up. " :
+                               "The glow in the dragon's " + eye + " eye fades. ";
         
-        if (rightOn && leftOn)
-            rep += this.turnOn();
+        if (EYES[0] && EYES[1])
+            return rep.concat(this.turnOn());
         else if (isOn)
-            rep += this.turnOff();
-        
-        return rep;
+            return rep.concat(this.turnOff());
+        else
+            return rep;
     }
 /*----------------------------------------------------------------------------*/    
-    public String switchLeft() {
-        leftOn = ! leftOn;
-        
-        String rep = leftOn ? "The dragon's left eye begins to glow." :
-                              "The glow in the dragon's left eye fades. ";
-        
-        if (rightOn && leftOn)
-            rep += this.turnOn();
-        else if (isOn)
-            rep += this.turnOff();
-        
-        return rep;
-    }
-/*----------------------------------------------------------------------------*/    
-    private String turnOn() {
+    @Override protected String turnOn() {
         this.determineColor();
         this.isOn = true;       
-        return mode + " emits from the dragon's mouth. " + STAT_REF.activate(beam, true);
+        return mode + " emits from the dragon's mouth. " + GAL2_STAT_REF.activate(beam);
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String useEvent(Item item) {
-        this.useDialog = "You place the " + item + " into the dragon's mouth.";
-        Player.getInv().give(item, this.inv);
-        
-        return this.useDialog;
+    @Override protected void resetStatue() {
+        this.GAL2_STAT_REF.reset();
     }
 /*----------------------------------------------------------------------------*/
 /******************************************************************************/    
@@ -101,28 +80,30 @@ public class Gal1_Drgn extends LghtMchn {
         @Override public boolean add(Item item) { 
             if (item.getType().equals(NameConstants.FOCUS)) {
                 this.CONTENTS.add(item);
-                this.trigger();
+                
+                if (Gal1_Drgn.this.isOn)
+                    this.trigger();
+                else
+                    GUI.out("You place the " + item + " into the dragon's mouth.");
+                
                 return true;
             }
-            GUI.out("The " + item + " doesn't fit in.");
-            return false;
+            else {
+                GUI.out("The " + item + " doesn't look like it belongs there.");
+                return false;
+            }
         }
         /*--------------------------------------------------------------------*/
         @Override public void remove(Item removeThis) {
             this.CONTENTS.remove(removeThis);
-            this.trigger();
-        }
-        /*--------------------------------------------------------------------*/
-        @Override public void give(Item item, Inventory giveToThis) {
-            if (giveToThis.add(item))
-                this.remove(item);
+            
+            if (Gal1_Drgn.this.isOn)
+                this.trigger();
         }
         /*--------------------------------------------------------------------*/
         private void trigger() {
             determineColor();
-            
-            if (isOn)
-                GUI.out(mode + " emits from the dragon's mouth. " + STAT_REF.activate(beam, true));
+            GUI.out(mode + " emits from the dragon's mouth. " + GAL2_STAT_REF.activate(beam));
         }
     }
 /*----------------------------------------------------------------------------*/

@@ -1,5 +1,6 @@
 package Drawing_Room;
 
+import A_Main.AudioPlayer;
 import A_Super.NonPlayerCharacter;
 import A_Super.Item;
 import A_Super.Key;
@@ -70,7 +71,7 @@ public class Drar_Ghst extends NonPlayerCharacter {
         GUI.out("\"My name is Asterion. I used to live here with my two\n"
               + "brothers. We provided great services to this kingdom, if kingdom\n"
               + "is what you still call it. We provided our intellectual services to\n"
-              + "the people here. Why are you here?");
+              + "its people. So, why on Earth are you here?");
         GUI.promptOut();
         
         GUI.out("\"You aren't sure? That doesn't make any sense!\n" +
@@ -139,7 +140,8 @@ public class Drar_Ghst extends NonPlayerCharacter {
         GUI.promptOut();
         
         GUI.out("The apparition drops a key into your palm...");
-        Player.getInv().add(KITCKEY_REF);
+        Player.getKeys().add(KITCKEY_REF);
+        AudioPlayer.playEffect(3);
         Player.printInv();
         GUI.promptOut();
         
@@ -147,6 +149,7 @@ public class Drar_Ghst extends NonPlayerCharacter {
         GUI.promptOut();
         GUI.toMainMenu();
         Player.getRoomObj(Id.DRAR).removeFurniture(this);  
+        Player.describeRoom();
     }
 /*----------------------------------------------------------------------------*/       
 }

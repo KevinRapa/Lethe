@@ -11,7 +11,7 @@ import A_Main.Player;
 public class DoubleStaircase extends Staircase {
     // ========================================================================
     public DoubleStaircase () {
-        super(Direction.DOWN, 1); //Direction is UNUSED in Double stairs
+        super(Direction.DOWN); //Direction is UNUSED in Double stairs
     }
     // ========================================================================   
     @Override public String interact(String key) {     

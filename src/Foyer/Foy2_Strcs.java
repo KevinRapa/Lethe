@@ -6,7 +6,7 @@ import A_Super.Staircase;
 public class Foy2_Strcs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Foy2_Strcs(Direction direction) {
-        super(direction, 1);
+        super(direction);
         this.description = "A winding staircase run with red carpet all the way\n"
                          + "up. Looking straight " + direction + ", it winds around\n"
                          + "until terminating at the " + 

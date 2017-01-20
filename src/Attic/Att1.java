@@ -38,13 +38,21 @@ public class Att1 extends Room {
         
         else if (Player.hasItem(PHASE_DOOR_POTION) && ! this.captured) {
             this.captured = true;
-            this.initiateDialog();
+            this.dialog();
+            
+            for (Item i :Player. getInv())
+                this.REF_LICH_CHEST_INV.add(i);
+            
+            Player.getInv().clear();
+
+            Player.setOccupies(Id.INTR);
+            Player.getRoomObj(Id.EOW1).lock();
+            Player.printInv();
         }
-        
-        return "You are " + Player.getPos() + ".";
+        return null;
     }
 // ============================================================================
-    private void initiateDialog() {
+    private void dialog() {
         GUI.menOut("\nPress enter...");
         GUI.invOut("");
         
@@ -60,23 +68,11 @@ public class Att1 extends Room {
         GUI.promptOut();
         
         GUI.out("Several more seconds pass. Before you can realize, you are\n"
-              + "unconcious...\n");
+              + "unconcious...");
         GUI.promptOut();
         
-        try {
-            Thread.sleep(1500);
-        } catch(InterruptedException e) {
-            System.out.println(e.getMessage());
-        }
-        
-        for (Item i :Player. getInv())
-            this.REF_LICH_CHEST_INV.add(i);
-            
-        Player.getInv().clear();
-        
-        Player.setOccupies(Id.INTR);
-        Player.getRoomObj(Id.EOW1).lock();
-        Player.printInv();
+        GUI.out(".... ... ...");
+        GUI.promptOut();
     }
 // ============================================================================
 }

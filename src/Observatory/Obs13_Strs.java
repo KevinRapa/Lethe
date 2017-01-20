@@ -6,8 +6,8 @@ import A_Super.Staircase;
 
 public class Obs13_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Obs13_Strs (Direction direction, int height) {
-        super(direction, height);
+    public Obs13_Strs (Direction direction) {
+        super(direction);
         this.description = "The spiral staircase sits in a round alcove carved\n"
                          + "into the wall to the southeast and leads up to a long,\n"
                          + "wide balcony on the second floor.";

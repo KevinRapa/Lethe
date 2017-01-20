@@ -16,8 +16,10 @@ public class GenDoor extends Furniture {
         
         this.description = "There are several doors here. Use <'search' direction 'door'>";
         this.searchDialog = "All of the doors here are quite normal and insignificant.";
+        this.useDialog = "It's too big to fit into any of the doors here.";
         this.actDialog = this.description;
 
+        this.addUseKeys("letter opener");
         this.addNameKeys("door");
         this.addActKeys("open", "use", "close");
     }

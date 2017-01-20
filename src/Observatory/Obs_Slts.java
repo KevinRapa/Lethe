@@ -52,7 +52,7 @@ public class Obs_Slts extends Furniture {
             if (choice.matches("[abcdefghi]"))
                 GUI.descOut(SLOTS.get(MAP.get(choice.charAt(0))).getDescription());
 
-        } while (! choice.matches(NOTHING));
+        } while (Player.isNonEmptyString(choice));
         
         GUI.descOut(Player.getPos().getDescription());
         
@@ -60,7 +60,7 @@ public class Obs_Slts extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = "", choice;
+        String rep = NOTHING, choice;
         
         do {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
@@ -76,16 +76,16 @@ public class Obs_Slts extends Furniture {
                     rep = "A luminescence from an unknown source begins seeping through the seams\n"
                         + "in the floor and under each statue. You hear a click. Something has been activated.";
                     lockSlots();
-                    choice = "";
+                    choice = NOTHING;
                 }
                 else if (areSlotsLocked()) {
                     rep = "The " + slot + " has locked itself in place.";
-                    choice = "";
+                    choice = NOTHING;
                 }
             }
             Player.printInv();
 
-        } while (! choice.matches(NOTHING));
+        } while (Player.isNonEmptyString(choice));
         
         return rep;
     }

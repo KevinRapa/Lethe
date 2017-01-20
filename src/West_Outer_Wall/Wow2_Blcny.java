@@ -1,5 +1,6 @@
 package West_Outer_Wall;
 
+import static A_Main.NameConstants.FIXED_LADDER;
 import A_Super.Item;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -21,7 +22,7 @@ public class Wow2_Blcny extends Furniture {
         this.useDialog = "You lean the ladder against the balcony. It's just\n"
                        + "tall enough.";
         this.addNameKeys("balcony");
-        this.addUseKeys("fixed ladder");
+        this.addUseKeys(FIXED_LADDER);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

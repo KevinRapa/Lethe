@@ -24,7 +24,7 @@ public class Look_Vlv extends Furniture{
                     + "balcony.";
         this.FNTN_REF = (Rotu_Fntn) fntn;
         this.addNameKeys("valve", "(?:big )?(?:rusty )?valve");
-        this.addActKeys("turn", "rotate", "spin", "twist");
+        this.addActKeys("turn", "rotate", "spin", "twist", "open", "close");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {

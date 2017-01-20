@@ -35,61 +35,65 @@ public class Wrk_CstngTbl extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        String rep, name = item.toString();
+        String name = item.toString();
         
         if (item.toString().equals(LENS_TEMPLATE)) {
             this.hasTemplate = true;
             Player.getInv().remove(item);
-            rep = "You fit the template onto the table's surface.";
+            return "You fit the template onto the table's surface.";
         }
         else {
             Player.getInv().remove(item);
             
             if (this.hasTemplate) {   
                 String color;
-                if (name.equals(MOLTEN_RED_GLASS)) {
-                    Player.getInv().add(this.RED_LENS_REF); // Give player red lens.
-                    color = "red";
+                
+                switch (name) {
+                    case MOLTEN_RED_GLASS:
+                        Player.getInv().add(RED_LENS_REF); // Give player red lens.
+                        color = "red";
+                        break;
+                    case MOLTEN_BLUE_GLASS:
+                        Player.getInv().add(BLUE_LENS_REF); // Give player blue lens.
+                        this.REFSCK.getInv().add(SAND_REF); // Restock sand.
+                        this.REFBRL.getInv().add(BLUE_DYE_REF); // Restock dye.
+                        this.REFCBNT.getInv().add(POTASH_REF); // Restock potash.
+                        color = "blue";
+                        break;
+                    default:
+                        Player.getInv().add(YELLOW_LENS_REF); // Give player yellow lens.
+                        this.REFSCK.getInv().add(SAND_REF); // Restock sand.
+                        this.REFBRL.getInv().add(YELLOW_DYE_REF); // Restock dye.
+                        this.REFCBNT.getInv().add(POTASH_REF); // Restock potash.
+                        color = "yellow";
+                        break;
                 }
-                else if (name.equals(MOLTEN_BLUE_GLASS)) {
-                    Player.getInv().add(this.BLUE_LENS_REF); // Give player blue lens.
-                    this.REFSCK.getInv().add(this.SAND_REF); // Restock sand.
-                    this.REFBRL.getInv().add(this.BLUE_DYE_REF); // Restock dye.
-                    this.REFCBNT.getInv().add(this.POTASH_REF); // Restock potash.
-                    color = "blue";
-                }
-                else {  
-                    Player.getInv().add(this.YELLOW_LENS_REF); // Give player yellow lens.
-                    this.REFSCK.getInv().add(this.SAND_REF); // Restock sand.
-                    this.REFBRL.getInv().add(this.YELLOW_DYE_REF); // Restock dye.
-                    this.REFCBNT.getInv().add(this.POTASH_REF); // Restock potash.
-                    color = "yellow";
-                }
-                rep = "You pour the molten glass into the mold. In no time\n"
-                    + "at all, the glass dries into a fresh new " + color + " lens!\n"
-                    + "You take the lens. This is what you needed, right?";    
+                return "You pour the molten glass into the mold. In no time\n"
+                     + "at all, the glass dries into a fresh new " + color + " lens!\n"
+                     + "You take the lens. This is what you needed, right?";    
             }
             else {
-                Player.getInv().add(this.SHEET_REF);
-                this.REFSCK.getInv().add(this.SAND_REF);
-                this.REFCBNT.getInv().add(this.POTASH_REF);
+                Player.getInv().add(SHEET_REF);
+                this.REFSCK.getInv().add(SAND_REF);
+                this.REFCBNT.getInv().add(POTASH_REF);
                 
-                if (name.equals("red glass"))                     
-                    this.REFBRL.getInv().add(this.RED_DYE_REF);
-                
-                else if (name.equals("blue glass")) 
-                    this.REFBRL.getInv().add(this.BLUE_DYE_REF);
-                
-                else if (name.equals("yellow glass")) 
-                    this.REFBRL.getInv().add(this.YELLOW_DYE_REF);
-                
-                rep = "You pour the molten glass onto the casting table.\n" +
-                      "As the glass dries, you scratch your head. Didn't\n"
-                    + "the instructions say to use a template? You take the\n"
-                    + "solidified glass sheet from the casting table.";
+                switch (name) {
+                    case MOLTEN_RED_GLASS:
+                        this.REFBRL.getInv().add(RED_DYE_REF);
+                        break;
+                    case MOLTEN_BLUE_GLASS:
+                        this.REFBRL.getInv().add(BLUE_DYE_REF);
+                        break;
+                    default:
+                        this.REFBRL.getInv().add(YELLOW_DYE_REF);
+                        break;
+                }
+                return "You pour the molten glass onto the casting table.\n" +
+                       "As the glass dries, you scratch your head. Didn't\n"
+                     + "the instructions say to use a template? You take the\n"
+                     + "solidified glass sheet from the casting table.";
             }
         }        
-        return rep;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

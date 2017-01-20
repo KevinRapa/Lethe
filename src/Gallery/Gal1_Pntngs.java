@@ -8,11 +8,11 @@ public class Gal1_Pntngs extends Furniture {
         super();
         this.searchable = false;
         this.description = "You quickly browse around the paintings in the room.\n"
-                         + "You find:\n"
-                         + "-- A Tibetan painting\n"
-                         + "-- An Indian painting\n"
-                         + "-- A Korean painting\n"
-                         + "-- A Chinese scroll";
+                         + "You find:\t\t\t"
+                         + "<> A Tibetan painting\t\t"
+                         + "<> An Indian painting\t\t"
+                         + "<> A Korean painting\t\t"
+                         + "<> A Chinese scroll";
         this.searchDialog = "You aren't sure which one to search first.";
         this.actDialog = "You aren't sure which one to move.";
         this.addActKeys(GETKEYS);

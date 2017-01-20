@@ -8,13 +8,11 @@ import A_Main.Player;
  */        
 public class Staircase extends Furniture {
     protected final Direction DIR; // If it is an up or down staircase.
-    protected final int HT; // How many levels this moves the player.
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Staircase(Direction direction, int height) {
+    public Staircase(Direction direction) {
         super();
         this.searchable = false;
         this.DIR = direction;
-        this.HT = height;
         this.addActKeys("climb", "use", "walk");
         this.addNameKeys("stair(?:s|case)|steps");
     }

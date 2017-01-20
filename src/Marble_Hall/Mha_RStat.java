@@ -13,13 +13,13 @@ public class Mha_RStat extends Furniture {
         this.description = "The angel poses majestically with an indifferent\n"
                          + "gaze upwards. It's a mirror-image of the left\n"
                          + "statue, though its hand is empty.";
-        this.searchDialog = "There looks to not be compartment on this one.";
+        this.searchDialog = "There looks to be no compartment on this one.";
         this.useDialog = "You slide the spear back into the angel's grasp. The\n"
                        + "divines will be pleased with you. A compartment\n"
                        + "reveals itself at the statue's base.";
         this.actDialog = "Such an impressive work of artistry deserves not to be\n"
                             + "tainted by your touch.";
-        this.addNameKeys("right statue");
+        this.addNameKeys("right statue", "right compartment");
         this.addActKeys("touch", "grab", "hold");
         this.addUseKeys(SILVER_SPEAR);
     }
@@ -27,6 +27,7 @@ public class Mha_RStat extends Furniture {
     @Override public String useEvent(Item item) {
         this.searchable = true;
         Player.getInv().remove(item);
+        this.addNameKeys("compartment", "open compartment");
             
         return this.useDialog;
     }

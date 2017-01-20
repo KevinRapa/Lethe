@@ -5,8 +5,7 @@ import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
 import A_Main.NameConstants;
-import static A_Main.NameConstants.BOX_THINGY;
-import A_Main.Player;
+import static A_Main.NameConstants.*;
 /**
  * One of four components of the light machine puzzle in the gallery.
  * 
@@ -29,12 +28,8 @@ public class Gal6_Cnn extends LghtMchn {
                          + "Yeah, you're sure that's metal. It has a long barrel\n"
                          + "coming out the front with slots in it and the whole\n"
                          + "thing is covered in lights and wires. Wait... there's\n"
-                         + "an empty square compartment on top. What is that for?\n"
-                         + "And there's a weird switch thing over here on the\n"
-                         + "other side.";
+                         + "an empty square compartment on top. What is that for?";
         this.STAT = (Gal7_Stat) stat;
-        this.beam = 'c';
-        this.mode = "A clear scattered light";
         this.addActKeys("fire", "shoot");
         this.addNameKeys("(?:electr(?:on)?ic )?cannon");
         this.addUseKeys(BOX_THINGY);
@@ -42,32 +37,22 @@ public class Gal6_Cnn extends LghtMchn {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {   
-        if (containsItem(BOX_THINGY)) {
-            if (! isOn)
-                return "The battery fits like a glove in that top compartment! But\n"
-                     + "why aren't the light all lighting up and bleeping?";
-            else
-                return "The cannon is blinking and making bleeping noises.\n"
-                     + "A ray of light shoots out the barrel too. It must be on!";
-        }
-        return this.description; 
+        if (containsItem(BOX_THINGY)) 
+            return "The cannon is blinking and making bleeping noises.\n"
+                 + "A ray of light shoots out the barrel too. It must be on!";
+        else
+            return this.description; 
     }
 /*----------------------------------------------------------------------------*/    
-    public String turnOn() {
+    @Override protected String turnOn() {
         this.determineColor();
         this.isOn = true;       
-
-        return "The lights on the cannon light up and start bleeping.\n" + mode +
-               " emits from the barrel.\n" + STAT.activate(this.beam, true);
+        return "The lights on the cannon light up and start bleeping. " + mode +
+               " emits from the barrel. " + STAT.activate(beam);
     }
-/*----------------------------------------------------------------------------*/    
-    @Override public String useEvent(Item item) {
-        Player.getInv().give(item, this.inv);
-        
-        if (item.toString().equals(BOX_THINGY))
-            return "You place the box in the compartment.";
-        else
-            return "You place the focus in the barrel's slot.";
+/*----------------------------------------------------------------------------*/
+    @Override protected void resetStatue() {
+        // Do nothing. Once Gal 7 statue raises a level, it can't go back down.
     }
 /*----------------------------------------------------------------------------*/
 /******************************************************************************/    
@@ -78,44 +63,40 @@ public class Gal6_Cnn extends LghtMchn {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {   
-            if (item.getType().equals(NameConstants.FOCUS) || item.toString().equals(BOX_THINGY)) {
+            if (item.getType().equals(NameConstants.FOCUS)) {
                 this.CONTENTS.add(item);
-                this.trigger();
+                
+                if (Gal6_Cnn.this.isOn)
+                    this.trigger();
+                else
+                    GUI.out("You slide the " + item + " inside a slot on the cannon barrel.");
+                
                 return true;
             }
-            GUI.out("The " + item + " doesn't fit in.");
-            return false;
+            else if (item.toString().equals(BOX_THINGY)) {
+                this.CONTENTS.add(item);
+                GUI.out("You slide the box inside the square compartment in the cannon. " + Gal6_Cnn.this.turnOn());
+                return true;
+            }
+            else {
+                GUI.out("That doesn't look like it fits there.");
+                return false;
+            }
         }
         /*--------------------------------------------------------------------*/
         @Override public void remove(Item item) {
             this.CONTENTS.remove(item);
- 
-            if (isOn) {
-                if (item.toString().equals(BOX_THINGY))
-                    GUI.out(turnOff());
-                else {
-                    determineColor();
-                    GUI.out(mode + " shoots out the front of the cannon.\n" + STAT.activate(beam, true));
-                }
-            }
-            else {
-                if (item.toString().equals(BOX_THINGY))
-                    GUI.out("The box fits nicely in the slot on top. It's a battery!");
-                else
-                    determineColor();
-            }
-        }
-        /*--------------------------------------------------------------------*/
-        @Override public void give(Item item, Inventory giveToThis) {
-            if (giveToThis.add(item))
-                this.remove(item);
+            
+            if (item.toString().equals(BOX_THINGY))
+                GUI.out(turnOff());
+            
+            else if (Gal6_Cnn.this.isOn) 
+                this.trigger();
         }
         /*--------------------------------------------------------------------*/
         private void trigger() { 
             determineColor();
-            
-            if (isOn)
-                GUI.out(mode + " shoots out the front of the cannon.\n" + STAT.activate(beam, true));
+            GUI.out(mode + " shoots out the front of the cannon.\n" + STAT.activate(beam));
         }   
     }
 /*----------------------------------------------------------------------------*/

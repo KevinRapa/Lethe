@@ -11,25 +11,25 @@ public class Lib3_Stat extends Statue {
         this.leftEye = false;
         this.rightEye = false;
         this.description = "The towering statue reaches a bit over a story tall.\n"
-                         + "On its blocky rectangular base stands a prancing horse.";
+                         + "On its blocky rectangular base stands a prancing horse.\n"
+                         + "A small square seam on the statue's base piques your interest.";
         this.searchDialog = "A small square seam on the statue's base piques\n"
                           + "your interest.";
         this.actDialog = "Such an impressive work of artistry deserves not to be\n"
                        + "tainted by your touch.";
-        this.addNameKeys("impressive statue");
+        this.addNameKeys("(?:impressive )?(?:horse )?statue", "horse");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
-        if (this.leftEye && ! this.rightEye)
-            rep += "\nIts left eye glows eerily.";
+        if (! this.leftEye && ! this.rightEye)
+            return this.description;
+        else if (this.leftEye && ! this.rightEye)
+            return this.description.concat(" Its left eye glows eerily.");
         else if (! this.leftEye && this.rightEye)
-            rep += "\nIts right eye glows eerily.";
-        else if (this.rightEye && this.leftEye)
-            rep += "\nBoth of its eyes glow eerily.";
-        
-        return rep;
+            return this.description.concat(" Its right eye glows eerily.");
+        else
+            return this.description.concat(" Both of its eyes glow eerily.")
+                    .replaceAll(" small square seam", "n open compartment");
     }
 /*----------------------------------------------------------------------------*/
      @Override public String getSearchDialog() {

@@ -8,7 +8,7 @@ package A_Main;
  * @see A_Main.Id
  * @author Kevin Rapa
  */
-public class NameConstants {
+public final class NameConstants {
     // CONSTANTS FOR ITEM TYPE NAMES ==========================================
     public static final String 
             PHYLACTERY = "phylactery",  CARD = "card",
@@ -51,6 +51,6 @@ public class NameConstants {
         KEY_OF_CONTINUITY = "key of continuity",POTTED_MANDRAGORA = "potted mandragora",
         FERTILIZED_SOIL = "fertilized soil",    POTTED_SOIL_AND_FERTILIZER = "potted soil and fertilizer",
         BATTERING_RAM = "battering ram",        LOOPED_ROPE = "looped rope",
-        SOIL = "soil";
+        SOIL = "soil",                          FIXED_LADDER = "fixed ladder";
     // ========================================================================
 }

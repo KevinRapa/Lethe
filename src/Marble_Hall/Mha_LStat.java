@@ -7,7 +7,6 @@ public class Mha_LStat extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Mha_LStat() {
         super();
-        this.searchable = true;
         this.description = "The angel poses majestically with an indifferent\n"
                          + "gaze upwards. It holds a silver spear in its hand\n"
                          + "and points it upwards over the right angel. In its\n"
@@ -18,7 +17,7 @@ public class Mha_LStat extends Furniture {
                        + "a spear.";
         this.actDialog = "Such an impressive work of artistry deserves not to be\n"
                        + "tainted by your touch.";
-        this.addNameKeys("left statue");
+        this.addNameKeys("left statue", "(?:left )?(?:open )?compartment");
         this.addActKeys("touch", "grab", "hold");
         this.addUseKeys(SILVER_SPEAR);
     }

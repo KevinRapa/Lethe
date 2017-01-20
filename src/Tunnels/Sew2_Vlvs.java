@@ -2,6 +2,7 @@ package Tunnels;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Resetable;
@@ -64,7 +65,7 @@ public class Sew2_Vlvs extends Furniture implements Resetable {
         this.searchDialog = "There's nothing here that you can take.";
 
         this.addNameKeys("(?:metal )?valves?", "console", "grid of valves", "(?:roman )?(?:numerals|numbers)");
-        this.addActKeys("turn", "rotate", "spin");
+        this.addActKeys("turn", "rotate", "spin", "twist", "open", "close");
     }
     // ========================================================================   
     @Override public String interact(String key) {    
@@ -82,10 +83,10 @@ public class Sew2_Vlvs extends Furniture implements Resetable {
 
             if (ans.matches("[1-9]")) 
                 this.turnValve(Integer.parseInt(ans) - 1);
-            else if (! ans.equals(NOTHING)) 
+            else if (Player.isNonEmptyString(ans)) 
                 this.turnValve(ans);
             
-        } while (! ans.equals(NOTHING));
+        } while (Player.isNonEmptyString(ans));
         
         return this.actDialog;
     }

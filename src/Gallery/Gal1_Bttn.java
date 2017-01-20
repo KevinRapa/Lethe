@@ -19,7 +19,7 @@ public class Gal1_Bttn extends Button {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        return this.actDialog + REF.switchLeft();
+        return this.actDialog.concat(REF.switchEye(0));
     }   
 /*----------------------------------------------------------------------------*/
 }

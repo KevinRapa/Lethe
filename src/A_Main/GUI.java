@@ -216,6 +216,7 @@ public class GUI extends JPanel {
 // *****************************************************************************       
     /**
      * Collects all text not collected by the other collectors.
+     * Complicated events may send <code>null</code>.
      * @param txt dialog text.
      */
     public static void out(String txt) {
@@ -232,11 +233,13 @@ public class GUI extends JPanel {
     }
 /*----------------------------------------------------------------------------*/    
     /**
-     * Collects <code>triggeredEvent</code> return text
+     * Collects <code>triggeredEvent</code> return text.
+     * For triggered events that move the player, <code>null</code> is sent.
      * @param txt <code>triggeredEvent</code> room text
      */
     public static void roomOut(String txt) {
-        ROOM.setText(txt);
+        if (txt != null)
+            ROOM.setText(txt);
     }
 /*----------------------------------------------------------------------------*/    
     /**
@@ -296,24 +299,24 @@ public class GUI extends JPanel {
     }
 /*----------------------------------------------------------------------------*/
     /**
-     * The player may reference the last referenced furniture using the words
-     * 'it' or 'them'. This retrieves the last referenced furniture.
+     * The player may reference the last typed existing furniture using 'it' or 'them'.
+     * This retrieves the last referenced furniture if one exists.
+     * Firsts, filters out previous input resembling phrases.
+     * Then searches furniture matching the phrase,
+     *      - First tries whole string
+     *      - If none exists, tries with first word removed. Might be a verb.
      * @return The last referenced object in the player's location.
      */
     public static String parsePreviousFurniture() {
         FURN_PARSER.clear();
-        
-        UNDO.stream().filter(i -> i.matches("(?:[a-z -]{3,})+")).forEach(j -> {
-            // Filters out strings resembling phrases.
-            if (Player.getPos().hasFurniture(j))
-                // No verb. Uses whole string.
-                FURN_PARSER.add(j);
-            else if (Player.getPos().hasFurniture(j.replaceFirst("[a-z -]+ ", "")))
-                // First word might be a verb. Try second-last words.
-                FURN_PARSER.add(j);
+
+        UNDO.stream().filter(i -> i.matches("(?:[a-z -]{3,})+")).forEach(j -> 
+        {
+            if (Player.getPos().hasFurniture(j) ||
+                    Player.getPos().hasFurniture(j = j.replaceFirst("[a-z -]+ ", "")))
+                FURN_PARSER.add(j); 
         });
-        return (FURN_PARSER.size() > 0) ? FURN_PARSER.get(0) : 
-                                          "object with that name";
+        return (FURN_PARSER.size() > 0) ? FURN_PARSER.get(0) : "object with that name";
     }
 /*----------------------------------------------------------------------------*/
     /**
@@ -368,7 +371,9 @@ public class GUI extends JPanel {
                 current = 0;
         }
         /*------------------------------------------------------*/
-        @Override public void keyTyped(KeyEvent e) {}
+        @Override public void keyTyped(KeyEvent e) {
+            // Unused
+        }
     }
 /*----------------------------------------------------------------------------*/
     private class Text_Field_Listener implements ActionListener {

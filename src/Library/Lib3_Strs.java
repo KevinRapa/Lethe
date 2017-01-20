@@ -1,39 +1,40 @@
 package Library;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import static A_Main.NameConstants.LEATHER_SHOES;
 import A_Main.Player;
-import A_Super.Furniture;
+import A_Super.Direction;
+import A_Super.Staircase;
 
-public class Lib3_Strs extends Furniture {
+public class Lib3_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Lib3_Strs() {
-        super();
-        this.searchable = false;
+        super(Direction.UP);
         this.searchDialog = "You begin the search, but as soon as you touch the\n"
                           + "stairs, they flatten down to the floor before popping\n"
                           + "back up again.";
+        this.actDialog = "You successfully climb the stairs to the second floor.";
         this.description = "The stairs are a gray stone with salmon-colored\n"
                          + "marble steps. They lead up to the northern second-\n"
                          + "story area of the library.";
-        this.addNameKeys("stairs", "staircase", "steps");
-        this.addActKeys("use", "climb", "walk");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {     
-        String rep;
-        
         if (Player.getShoes().equals(LEATHER_SHOES)) {
-            Player.setOccupies(Id.LIB3);
-                
-            rep = "You successfully climb the stairs to the second floor.";        
+            this.playEffect();
+            Player.setOccupies(Id.LIB4);
+            return this.actDialog;        
         }
         else {
-            rep = "As soon as your foot touches the bottom step, the staircase\n"
-                + "flattens against the floor. You remove your foot, and the\n"
-                + "staircase pops back up again. 'How irritating!' you exclaim.";
+            return "As soon as your foot touches the bottom step, the staircase\n"
+                 + "flattens against the floor. You remove your foot, and the\n"
+                 + "staircase pops back up again. 'How irritating!' you exclaim.";
         }
-        return rep;
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public void playEffect() {
+        AudioPlayer.playEffect(14);
     }
 /*----------------------------------------------------------------------------*/
 }

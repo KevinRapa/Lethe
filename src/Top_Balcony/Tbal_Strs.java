@@ -8,7 +8,7 @@ import A_Super.Staircase;
 public class Tbal_Strs extends Staircase {
     // ========================================================================
     public Tbal_Strs () {
-        super(Direction.UP, 1);
+        super(Direction.UP);
 
         this.description = "The straight set of steps leads to a door\n"
                          + "giving entrace to the solemn building to the\n"

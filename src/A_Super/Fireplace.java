@@ -25,7 +25,7 @@ public class Fireplace extends Furniture {
         this.searchDialogLit = "Ouch! That's hot!";
         this.useDialog = "You douse the flames with the water.";
         this.addActKeys("warm", "use", "relax");
-        this.addNameKeys("fireplace", "hearth");
+        this.addNameKeys("fireplace", "hearth", "fire");
         this.addUseKeys(BUCKET_OF_WATER);
     }    
 /*----------------------------------------------------------------------------*/

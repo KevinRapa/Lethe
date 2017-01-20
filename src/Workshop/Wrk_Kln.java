@@ -31,17 +31,19 @@ public class Wrk_Kln extends Furniture {
         String rep = null;
         String name = item.toString();
         
-        Player.getInv().remove(item);
-        
         if (name.equals(POTASH) && ! this.hasPotash) {
+            Player.getInv().remove(item);
             this.hasPotash = true;
             rep = "You pour the potash into the crucible.";  
         }    
         else if (name.equals(SAND) && ! this.hasSand) {
+            Player.getInv().remove(item);
             this.hasSand = true;
             rep = "You pour the sand into the crucible.";
         }
         else if ((name.matches("\\w+ dye")) && ! hasDye()) {
+            Player.getInv().remove(item);
+            
             switch (name) {
                 case RED_DYE:
                     this.hasRedDye = true; break;

@@ -12,15 +12,14 @@ public class Drar_Br extends Furniture {
         this.description = "Behind its solid oak table and chairs, you see a\n"
                          + "shelf populated with many kinds of alcohol.";
         this.searchDialog = "You peruse the bar's shelves.";
-        this.addNameKeys("bar", "shelf");
+        this.addNameKeys("bar", "shelf", "alcohol", "wine", "beer", "liquor");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
         if (GHOST_REF.firstTime())
-            return "As a common drunk, you completely undermine the ghost in search\n"
-                 + "of alcohol.";
-        
-        return this.searchDialog;
+            return "As a common drunk, you completely undermine the ghost in search of alcohol.";
+        else
+            return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

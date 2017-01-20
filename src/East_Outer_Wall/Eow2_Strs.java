@@ -5,8 +5,8 @@ import A_Super.Staircase;
 
 public class Eow2_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Eow2_Strs (Direction direction, int height) {
-        super(direction, height);
+    public Eow2_Strs (Direction direction) {
+        super(direction);
         this.description = "The curved sandstone stairs lead to a small balcony\n"
                          + "above. It's a wonder why these didn't crumble like\n"
                          + "those in the west outer wall.";

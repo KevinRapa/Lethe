@@ -23,7 +23,7 @@ public class Eow2_Fntn extends Furniture {
                        + "don't even have a change of clothes, and you aren't wearing\n"
                        + "servant's garb.";
         this.addActKeys("jump", "swim");
-        this.addNameKeys("(?:great )?fountain");
+        this.addNameKeys("(?:great )?fountain", "(?:soldier )?statue");
     }
 /*----------------------------------------------------------------------------*/
 }

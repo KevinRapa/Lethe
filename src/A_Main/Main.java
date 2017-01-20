@@ -205,7 +205,7 @@ public class Main {
         Item hlyWtr = new Item("holy water", "Clear, salty, and boiled like hell.", mndrk, 2);
         Item pttdMndrk = new Item(POTTED_MANDRAGORA, "You have gently positioned the bulb under the soil.", mndrk, 2);
         Item mndrkBlb = new Item("mandragora bulb", "It's a baby mandragora!", pttdMndrk, 2);
-        Item mndrkPt = new Item(POTTED_SOIL_AND_FERTILIZER, "The mixture of soil and fertilizer", pttdMndrk, 2);
+        Item mndrkPt = new Item(POTTED_SOIL_AND_FERTILIZER, "The fertile soil mixture is packed gently into the pot. ", pttdMndrk, 2);
         Item pot = new Item("clay pot", "It's a medium-sized clay pot for holding plants.", mndrkPt, 2);
         Item mxtr = new Item(FERTILIZED_SOIL, "It's a fertile mixture of soil, sand, and fertilizer", mndrkPt, 2);
         Item snd = new Item(SAND, "You have a pocket full of sand. It's grainy and uncomfortable.", mxtr, 3);
@@ -338,7 +338,7 @@ public class Main {
         Furniture cou2Bshs = new Cou2_Bshs(brrs, brrs, brrs, brrs, brrs);
         Furniture cou2F = new Floor("The ground is a mixture of grass, weeds, and clover.", sl, sl, sl);
         
-        Furniture cou3Stps = new Cou3_Stps(Direction.UP, 1);
+        Furniture cou3Stps = new Cou3_Stps(Direction.UP);
         Furniture cou3Ivy = new Cou3_Ivy();
         Furniture cou3Fntns = new Cou3_Fntns();
         Furniture cou3Gt = new Cou3_Gt();
@@ -364,7 +364,7 @@ public class Main {
         Furniture entrRf = new Entr_Rf();
         Furniture entrStats = new Entr_Stats();
         Furniture entrDr = new Entr_Dr(Direction.NORTH);
-        Furniture entrStps = new Cou3_Stps(Direction.DOWN, 1);
+        Furniture entrStps = new Cou3_Stps(Direction.DOWN);
         // </editor-fold>
 
         // </editor-fold>
@@ -427,14 +427,14 @@ public class Main {
         Room wow2 = new Wow2("in the west outer wall", Id.WOW2);
         //-------------------------------ITEMS----------------------------------
         Item vinegar = new Item(BOTTLE_OF_VINEGAR, "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"");
-        Item wowLddr = new Item("fixed ladder", "The spoke sits in there a bit awkwardly, but it\n"
+        Item wowLddr = new Item(FIXED_LADDER, "The spoke sits in there a bit awkwardly, but it\n"
                               + "seems like a good ladder. It may even support your heft.");   
         Item wow1Spk = new Item("wheel spoke", "It's a wooden rod, about a foot long.", wowLddr, 3);
         Item clngSoln = new Item("cleaning solution", "It smells lemony fresh, unlick the rest of this room.");
         Item rppdBrlp = new Item("piece of ripped burlap", "It must have belonged to the broken cart in the west wing.");
         Item actn = new Item("acetone", "It's a strong-smelling solvent in an opaque jar.");
         //-----------------------------FURNITURE--------------------------------
-        Furniture wow2Lddr = new Wow2_Strs(Direction.UP, 1); // Not in WOW2 to start.
+        Furniture wow2Lddr = new Wow2_Strs(Direction.UP); // Not in WOW2 to start.
         Furniture wow2Armr = new Wow2_Armr();
         Furniture wow1Crt = new Wow1_Crt(wow1Spk, rppdBrlp);
         Furniture wow1F = new Floor("A sandstone tiled floor.");
@@ -499,7 +499,7 @@ public class Main {
         Item scrw5 = new Item("5mm screw", "Just a small screw.");
         //-----------------------------FURNITURE--------------------------------
         Furniture closDr = new Wow2_Dr(Direction.WEST);
-        Furniture closLddr = new Gqua_Lddr(Direction.DOWN, 1);
+        Furniture closLddr = new Gqua_Lddr(Direction.DOWN);
         Furniture closClng = new Gqua_Clng();
         Furniture closF = new Floor("It's a cold, hard, cobblestone floor", closStrw);
         Furniture closScks = new Gqua_Scks(sd, sd, sd, frt, frt, frt, snd, snd, snd, snd, snd);
@@ -565,8 +565,7 @@ public class Main {
         Furniture searDr = new Sear_Dr();
         Furniture searAsh = new Sear_Ash();
         Furniture searSkltn = new Sear_Skltn(closCrwbr);
-        Furniture searLddr = new Gqua_Lddr(Direction.UP, 1);
-        Furniture searW = new Wall("It's a plain cobblestone wall.");
+        Furniture searLddr = new Gqua_Lddr(Direction.UP);
         Furniture searF = new Floor("It's a cold, hard, cobblestone floor", ash, wd, ash, wrhmmr, wd, ash);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE STUDY">
@@ -644,7 +643,7 @@ public class Main {
         Furniture gal1Scr = new Gal1_Scr(gal1Bttn);
         Furniture gal1Scrn = new Gal1_Scrn(gal1Swtch);
         Furniture gal1Armr = new Gal1_Armr();
-        Furniture gal1F = new Floor("The floor is a dark hardwood.", blFcs, yllwFcs, drkFcs, rdFcs, fnnyOrb);
+        Furniture gal1F = new Floor("The floor is a dark hardwood.");
         Furniture gal1W = new Wall("The wall is tiled a dark green and purple. Interesting choice...");
         Furniture gal1Sclptrs = new Gal1_Sclptrs();
         Furniture gal1Pntngs = new Gal1_Pntngs();
@@ -656,7 +655,7 @@ public class Main {
         Furniture gal3Ttm = new Gal3_Ttm(gal4Stat);
         Furniture gal3Peg = new Gal3_Peg(gal3Ttm);
         Furniture gal3Sgmnt = new Gal3_Sgmnt(gal3Ttm);
-        Furniture gal3Lddr = new Gal3_Lddr(Direction.UP, 1);
+        Furniture gal3Lddr = new Gal3_Lddr(Direction.UP);
         Furniture gal3Rp = new Gal3_Rp(gal3Lddr);
         Furniture gal3Swtch = new Gal3_Swtch();
         Furniture gal3InstFurn = new Gal3_InstFurn();
@@ -681,13 +680,12 @@ public class Main {
         Furniture gal2W = new Wall("The wall here is ornate white-paneled wood.");
         Furniture gal4Dr = new Gal4_Dr(Direction.NORTH);
         Furniture gal4Lft = new Gal4_Lft();
-        Furniture gal2Strcs = new Gal2_Strcs(Direction.UP, 1);
-        Furniture gal4Strcs = new Gal2_Strcs(Direction.DOWN, 1);
+        Furniture gal2Strcs = new Gal2_Strcs(Direction.UP);
+        Furniture gal4Strcs = new Gal2_Strcs(Direction.DOWN);
 
         Furniture gal6Htch = new Gal6_Htch();
         Furniture gal6Cnn = new Gal6_Cnn(gal7Stat);
-        Furniture gal6Swtch = new Gal6_Swtch(gal6Cnn);
-        Furniture gal6Lddr = new Gal6_Lddr(Direction.DOWN, 1);
+        Furniture gal6Lddr = new Gal6_Lddr(Direction.DOWN);
         Furniture gal6Hlmt = new Gal6_Hlmt();
         Furniture gal6Mchn = new Gal6_Mchn();
         Furniture gal6Bttn = new Gal6_Bttn();
@@ -718,7 +716,7 @@ public class Main {
         Furniture din1Mnlght = new Din1_Mnlght();
         Furniture din1Crvc = new Din1_Crvc(aphrdtPlt);
         Furniture din1Tpstry = new Din1_Tpstry(din1Crvc);
-        Furniture din1Strs = new Din1_Strs(Direction.UP, 1);
+        Furniture din1Strs = new Din1_Strs(Direction.UP);
         Furniture din1Crpt = new Din1_Crpt();
         Furniture din1F = new Floor("The floor is a light gray stone. A large rectangular\n"
                                   + "lavender carpet covers much of it.");
@@ -728,7 +726,7 @@ public class Main {
         Furniture din2F = new Floor("The floor is a light gray stone.");
         Furniture din2W = new Wall("The walls up here are a gray stone.");
         Furniture din2Pntng = new Din2_Pntng();
-        Furniture din2Strs = new Din1_Strs(Direction.DOWN, 1);
+        Furniture din2Strs = new Din1_Strs(Direction.DOWN);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE MARBLE HALL">
         //-----------------------------THE ROOM---------------------------------
@@ -810,13 +808,13 @@ public class Main {
         Furniture eow2Fntn = new Eow2_Fntn();
         Furniture wtr = new Water(wtrBckt);
         Furniture eow2Rck = new Eow1_Rck(eowSwrd1, eowSwrd2, eowSSpr, woodSpr, eowBtlAx);
-        Furniture eow2Strs = new Eow2_Strs(Direction.UP, 1);
+        Furniture eow2Strs = new Eow2_Strs(Direction.UP);
         Furniture eow2Blcny = new Eow2_Blcny();
         Furniture eow2Cbnt = new Eow2_Cbnt(bckt, shaMp, shvl, vinegar);
         Furniture eow2Trch = new Torch();
 
         Furniture eow4F = new Floor("It's a sandstone tiled floor.");
-        Furniture eow4Strs = new Eow2_Strs(Direction.DOWN, 1);
+        Furniture eow4Strs = new Eow2_Strs(Direction.DOWN);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE LIBRARY">
         Furniture lib4Tbl = new Lib4_Tbl("table", fnnyOrb);
@@ -911,6 +909,7 @@ public class Main {
         //-----------------------------THE ROOM---------------------------------
         Room drar = new Drar("in the drawing room", Id.DRAR);
         //-------------------------------ITEMS----------------------------------
+        Item wine = new Item(BOTTLE_OF_WINE, "A very old bottle of red wine. The date says \"1822\"");
         Item rk = new Item("rook", "the small figure resembles a brick tower.", "You have no idea how to play chess.");
         Item knght = new Item("knight", "the small figure resembles a horse.", "You have no idea how to play chess.");
         Item bshp = new Item("bishop", "the small figure resembles... well... a bishop.", "You have no idea how to play chess.");
@@ -924,7 +923,7 @@ public class Main {
         Furniture drarF = new Floor("This room's floor is carpeted lavender with an intricate design.");
         Furniture drarW = new Wall("This is the first time you've seen wallpaper.\nIt's striped vertical in purple and lavender.");
         Furniture drarWndw = new Lib3_Wndw();
-        Furniture drarBr = new Drar_Br(drarGhst);
+        Furniture drarBr = new Drar_Br(drarGhst, wine, wine, wine);
         Furniture drarBllrds = new Drar_Bllrds(drarGhst, rdBl, cBl, cBl);
         Furniture drarChss = new Drar_Chss(drarGhst, rk, knght, bshp, qn, kng, bshp, knght, rk, pwn, pwn, pwn, pwn, pwn, pwn, pwn, pwn);
         Furniture drarCch = new Drar_Cch(drarGhst);
@@ -935,7 +934,6 @@ public class Main {
         Room kitc = new Kitc("in the kitchen", Id.KITC);
         //-------------------------------ITEMS----------------------------------
         Item spng = new Item("sponge", "A plain old yellow kitchen sponge.");
-        Item wine = new Item(BOTTLE_OF_WINE, "A very old bottle of red wine. The date says \"1822\"");
         Item rtnFrt = new Item("rotten fruit", "Was this an apple? Or ... plum once?", "Whatever you expect him to do with that, he isn't going to.");
         Item petFrt = new Item("petrified vegetable", "Looks like a rock ... in the shape of a carrot.", "Whatever you expect him to do with that, he isn't going to.");
         Item brly = new Item("barley", "It doesn't smell so great. Even grain doesn't keep this long.");
@@ -961,7 +959,7 @@ public class Main {
         Room dst1 = new Dst1("in an eerie chamber", Id.DST1);
         //-----------------------------FURNITURE--------------------------------
         Furniture dst1Dr = new Eow1_Dr(Direction.EAST);
-        Furniture dst1Strs = new Dst1_Strs(Direction.DOWN, 1);
+        Furniture dst1Strs = new Dst1_Strs(Direction.DOWN);
         Furniture dstW = new Wall("The walls in here are a mossy cobblestone.");
         Furniture dst1F = new Floor("The stone floor is mossy and dank.");
         Furniture dst1Lntrn = new Dst1_Lntrn();
@@ -1003,7 +1001,7 @@ public class Main {
         Furniture obsF = new Floor("The floor in here is gray and dark blue checkered tile.");
         Furniture obsW = new Wall("The walls are mahogany wood paneled, with each panel bearing a large round cavity displaying a painted constellation.");
         Furniture obsWndw = new Obs_Wndw();
-        Furniture obs1Strs = new Obs13_Strs(Direction.UP, 1);
+        Furniture obs1Strs = new Obs13_Strs(Direction.UP);
         Furniture obs1Tlscp = new Obs1_Tlscp(gr, mchnPc, glssLns);
         Furniture obs1Lmp = new Obs1_Lmp();
         Furniture obs1St = new Obs1_St(obs1Nt);
@@ -1017,7 +1015,7 @@ public class Main {
         Furniture obs2Tbl = new Bha1_Tbl(lttrOpnr, pen, ppr);
         Furniture obs2Lmp = new Obs2_Lmp();
         
-        Furniture obs3Strs = new Obs13_Strs(Direction.DOWN, 1);
+        Furniture obs3Strs = new Obs13_Strs(Direction.DOWN);
         Furniture obs3Chst = new Obs3_Chst(psdnPlt);
         Furniture obs3Tlscps = new Obs3_Tlscps();
         
@@ -1039,10 +1037,10 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="INITIALIZE GARDENS"> 
         //-----------------------------THE ROOM---------------------------------
-        Room gar1 = new Gar1("on a rooftop garden", Id.GAL1);
-        Room gar2 = new Gar2("on a rooftop garden", Id.GAL2);
-        Room gar3 = new Gar3("on a rooftop garden", Id.GAL3);
-        Room gar4 = new Gar4("on a rooftop garden", Id.GAL4);   
+        Room gar1 = new Gar1("on a rooftop garden", Id.GAR1);
+        Room gar2 = new Gar2("on a rooftop garden", Id.GAR2);
+        Room gar3 = new Gar3("on a rooftop garden", Id.GAR3);
+        Room gar4 = new Gar4("on a rooftop garden", Id.GAR4);   
         //-------------------------------ITEMS----------------------------------
         Item hose = new Item(LEATHER_HOSE, "The roughly 30-foot old hose is cracked and rotted. It's certainly non-functional, but is still sturdy.");
         Item brknHose = new Item("broken hose", "The hose has broken in half, but it served a worthy final purpose.");
@@ -1084,25 +1082,25 @@ public class Main {
         Item parNtShs = new Par_NtShs("'Novice Enchanting: Footwear'");
         Item parNtWpn = new Par_NtWpn("'Expert Enchanting: Weaponry'");
         Item parNtKey = new Par_NtKey("'Expert Enchanting: Skeleton Keys'");
-        Item parLchNt = new Note("I think the binding worked... Part of my soul, and this book, are one. The book will be stored in\n"
+        Item parLchNt = new Note("note- binding","I think the binding worked... Part of my soul, and this book, are one. The book will be stored in\n"
                                + "Rhadamanthus' safe in the study, he won't be needing it anymore. Don't forget where! The book said not to.");
         //-----------------------------FURNITURE--------------------------------  
         Furniture parLft = new Par_Lft();
         
         Furniture par1Orb = new Par1_Orb();
-        Furniture par1F = new Floor("A sandstone tiled floor.");
+        Furniture par1F = new Floor("It's a sandstone tiled floor.");
         Furniture par1FrPlc = new Par1_FrPlc(bckt);
         Furniture par1Dr = new Par1_Dr(enchntdBttl, Direction.NORTH);
         Furniture par1EnchntTbl = new Par1_EnchtTbl(enchntdBttl, bttl, chs1Key, parLchNt);
-        Furniture par1Strs = new Par_Strs(Direction.UP, 1);
+        Furniture par1Strs = new Par_Strs(Direction.UP);
         Furniture par1Pllrs = new Par1_Pllrs();
         Furniture par1Hrp = new Par1_Hrp(par1Orb);
         Furniture par1Shlf = new Wow3_Shlf(fthr, hndDrll, athr, parBkEncht, frSlts);
         Furniture par1Cshn = new Par1_Cshn(aresPlt);
         
-        Furniture par2F = new Floor("A sandstone tiled floor.");
+        Furniture par2F = new Floor("It's a sandstone tiled floor.");
         Furniture par2Wndw = new Par2_Wndw();
-        Furniture par2Strs = new Par_Strs(Direction.DOWN, 1);
+        Furniture par2Strs = new Par_Strs(Direction.DOWN);
         Furniture par2Bwl = new Par2_Bwl();
         Furniture par2Frplc = new Par2_Frplc();
         Furniture par2Pno = new Par2_Pno(par1Orb, stlWr);
@@ -1570,11 +1568,11 @@ public class Main {
         Furniture chsWndws = new Chs_Wndws("windows");
         Furniture chsW = new Wall("The white and pale orange paneled wall is decorated in gold lining.");
         
-        Furniture chs1Strs = new Chs1_Strs(Direction.UP, 2);
+        Furniture chs1Strs = new Chs1_Strs(Direction.UP);
         Furniture chs1F = new Floor("The dark red carpet covers the whole floor. It's a bit dusty from neglect.");
         Furniture chs1Stat = new Chs1_Stat("statue");
         
-        Furniture chs3Strs = new Chs1_Strs(Direction.DOWN, 2);
+        Furniture chs3Strs = new Chs1_Strs(Direction.DOWN);
         Furniture chs3F = new Floor("The dark red carpet covers the whole floor. It's a bit dusty from neglect.");
         
         // </editor-fold>
@@ -1816,10 +1814,10 @@ public class Main {
         };
         
         // <editor-fold desc="LOCK ROOMS">
-        rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
-        par2.lock(); clos.lock(); din1.lock(); kitc.lock(); ou62.lock();
+        rotu.lock(); stud.lock(); gal5.lock(); //gal1.lock();
+        par2.lock(); clos.lock(); din1.lock(); //kitc.lock(); ou62.lock();
         chs1.lock(); work.lock(); tow1.lock(); tbal.lock(); sewp.lock();
-        dkch.lock(); vau2.lock(); wow2.lock(); foyw.lock();
+        dkch.lock(); vau2.lock(); wow2.lock(); //foyw.lock();
         // </editor-fold>
         
         //**********************************************************************
@@ -1864,7 +1862,7 @@ public class Main {
         sha1.addFurniture(wWW, shaF, sha1Trch, sha1Dr, sha1SDr);
         sha2.addFurniture(wWW, sha2Cbnt, shaF, sha2Dr, sha2Trch);
         clos.addFurniture(closW, closF, closShlf, closStl, closBrrl, closWrkbnch, closLddr, closScks, closClng, closSkltn, closDr);  
-        cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searW, searAsh, closW);
+        cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searAsh, closW);
         shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, lookLghths, lookClff, bbaSea, rquaPnl);
         stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, southDoor);
         
@@ -1875,15 +1873,15 @@ public class Main {
         gal2.addFurniture(genDoor, gal2Stat, gal2Strcs, gal2F, gal2W, galBalc, gal1Lghts, rotuSky, galDm, gal2Clmns, mhaSDr, eastDoor);
         gal3.addFurniture(gal3Ttm, gal3Peg, gal3Hl, gal3Sgmnt, gal3Htch, gal3Lddr, gal3Rp, gal3Swtch, gal3InstFurn, gal3Msk, gal3Msk2, gal3Msk3, gal3Msks, gal3Hrth, gal3F, gal3W, gal3Art, gal3Art2, gal3Art3, gal3Arts);
         gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Dr, gal2Clmns, gal4Lft);
-        gal6.addFurniture(gal6Cnn, gal6Swtch, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl);
+        gal6.addFurniture(gal6Cnn, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl);
         gal7.addFurniture(wWW);
         mha1.addFurniture(genDoor, mhaChndlr, mhaChr, mha1Plnt, mhaF, mhaW, mhaNWndw1, mhaNDr, mhaNChaDr);
         mha2.addFurniture(mhaChndlr, mhaChr, mha2Plnt, mhaF, mhaW, mhaNWndw2, mhaMDr, mhaRStat, mhaLStat, mhaStats);
         mha3.addFurniture(genDoor, mhaChndlr, mhaChr, mha3Plnt, mhaF, mhaW, mhaSWndw, mha3KitcDr, mhaSDr);
         lib2.addFurniture(libLF, libW, libCch, lib2ShRck, lib2Stat, lib2Frplc, lib2Bttn, lib2WrFr, lib2Vyg, libBkShlf, libScncs, lib2Wndw);
-        lib3.addFurniture(libLF, libW, westDoor, lib3Strs, libCch, lib3Stat, lib3Crtn, libBkShlf, libScncs, lib3Blcny, lib3Wndw, lib3Pllr);
-        lib4.addFurniture(libUF, libW, libCch, lib4Frplc, lib4Bttn, lib4Prdtn, libBkShlf, libScncs, lib3Pllr, lib4Stat, lib4Glb, lib3Blcny, lib4Tbl, lib4Strs);
-        lib5.addFurniture(libUF, libW, lib5Bnshmnt, libBkShlf, libScncs, lib3Pllr, lib5Cndlbr);
+        lib3.addFurniture(libLF, libW, westDoor, lib3Strs, libCch, lib3Stat, lib3Crtn, libScncs, lib3Blcny, lib3Wndw, lib3Pllr);
+        lib4.addFurniture(libUF, libW, libCch, lib4Frplc, lib4Bttn, lib4Prdtn, libScncs, lib3Pllr, lib4Stat, lib4Glb, lib3Blcny, lib4Tbl, lib4Strs);
+        lib5.addFurniture(libUF, libW, lib5Bnshmnt, libScncs, lib3Pllr, lib5Cndlbr);
         eow1.addFurniture(genDoor, wWW, eowF, eow1Dr, eow1Rck, eow1Bskt, eow1Trch, wowWndw, mhaNDr);
         eow2.addFurniture(wWW, eowF, eow2Fntn, wtr, eow2Rck, wowWndw, eow2Strs, eow2Blcny, eow2Cbnt, eow2Trch);
         eow4.addFurniture(wWW, eow4F, eow4Strs, bbaRlng, westDoor);

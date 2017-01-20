@@ -26,6 +26,7 @@ public class Sha2_Cbnt extends Furniture implements Openable {
     @Override public String interact(String key) {            
         if (Player.hasKey(Id.CBNT) && ! this.searchable) {
             this.searchable = true; 
+            AudioPlayer.playEffect(13);
             return this.actDialog;
         }
         else if (! this.searchable)

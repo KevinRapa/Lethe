@@ -101,18 +101,6 @@ public final class Player {
     // </editor-fold>
     
     // <editor-fold desc="Setters">
-    public static void setOccupies(int z, int y, int x) {
-        Player.lastVisited = getPosId();
-
-        Player.pos[0] = z; Player.pos[1] = y; Player.pos[2] = x;
-        
-        describeRoom();
-        GUI.roomOut(Player.getPos().triggeredEvent());
-        
-        if (! Player.hasVisited(getPosId())) 
-            Player.visited.add(getPosId()); 
-    }
-    /*------------------------------------------------------------------------*/
     public static void setOccupies(String dest) {
         Player.lastVisited = getPosId();
         Player.pos = Player.getRoomObj(dest).getCoords();
@@ -210,7 +198,7 @@ public final class Player {
         
         GUI.roomOut(getPos().triggeredEvent());
         describeRoom();
-        
+
         do {
             GUI.toMainMenu();
             ans = GUI.promptOut();
@@ -220,6 +208,9 @@ public final class Player {
             
             else if (ans.matches("[a-z]+\\s[a-z ]+")) // Interacting
                 activateSub(ans);
+            
+            else if (isNonEmptyString(ans))
+                GUI.out("That's not valid.");
 
         } while (! ans.equals("quit"));
         
@@ -239,7 +230,7 @@ public final class Player {
                ans.matches("q") ? 3 : 2;
     }
     // ======================================================================== 
-    private static boolean isNonEmptyString(String playerInput) {
+    public static boolean isNonEmptyString(String playerInput) {
         return (! playerInput.equals(""));
     }
 //******************************************************************************        
@@ -272,9 +263,8 @@ public final class Player {
 
         Room dest = mapRef[c[0] + dir.Z][c[1] + dir.Y][c[2] + dir.X];
         
-        if (! getPos().isAdjacent(dest.getID())) {
+        if (! getPos().isAdjacent(dest.getID()))
             GUI.out(getPos().getBarrier(dir)); // There's a wall in the way.
-        }
               
         else if (dest.isThisLocked() && ! hasKey(dest.getID())) {
             AudioPlayer.playEffect(4); // Plays doorknob jiggle sound.
@@ -581,21 +571,26 @@ public final class Player {
         String ans;
         
         do {
-            GUI.menOut("\n<'1'> Inspect item"
+            GUI.menOut("<'1'> Inspect item"
                      + "\n<'2'> Use item" + 
                        "\n<'3'> Combine items"
-                     + "\n    < > Back");
+                     + "\n<'4'> Sort inventory"
+                     + "\n "
+                    + "< > Back");
             
             ans = GUI.promptOut();
             
-            if (ans.matches("[123]")) {
+            if (ans.matches("[1-4]")) {
                 switch(Integer.parseInt(ans)) {
                     case 1:
                         inspectPrompt(); break;
                     case 2:
                         usePrompt(); break;
+                    case 3:
+                        combineSub(); break;
                     default:
-                        combineSub();
+                        Player.getInv().contents().sort(Inventory.getComparator());
+                        printInv();
                 }
             } 
             else if (isNonEmptyString(ans))

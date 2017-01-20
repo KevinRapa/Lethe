@@ -1,5 +1,6 @@
 package Ransacked_Quarters;
 
+import A_Main.AudioPlayer;
 import static A_Main.NameConstants.CROWBAR;
 import A_Main.Player;
 import A_Super.Item;
@@ -36,6 +37,7 @@ public class Rqua_Pnl extends Furniture {
             rep = this.useDialog;
             this.lifted = true;
             Player.getKeys().add(STUDKEY_REF);
+            AudioPlayer.playEffect(3);
         }
         else if (! BED_REF.isMoved())
             rep = "You fully intend to do that, but there is a bed in the way.";

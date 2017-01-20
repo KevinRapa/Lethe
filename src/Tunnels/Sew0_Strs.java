@@ -8,7 +8,7 @@ import A_Super.Staircase;
 public class Sew0_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Sew0_Strs () {
-        super(Direction.UP, 1);
+        super(Direction.UP);
         this.description = "It's a mossy stone brick stairscase with no railings.\n"
                          + "The stairs sit right at the tunnel's end and lead\n"
                          + "upwards.";

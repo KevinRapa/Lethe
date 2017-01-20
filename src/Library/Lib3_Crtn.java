@@ -11,7 +11,7 @@ public class Lib3_Crtn extends Furniture {
                          + "\"Creation\".";
         this.actDialog = "You push against the shelf, but it doesn't budge.";
         this.searchDialog = "You peruse its shelves.";
-        this.addNameKeys("creation", "creation (?:book)?shelf");
+        this.addNameKeys("creation", "(?:south )?(?:book)?shelf");
         this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");
     }
 /*----------------------------------------------------------------------------*/

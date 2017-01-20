@@ -16,8 +16,9 @@ public class Gal4_Stat extends Statue {
         this.level = 0;
         this.actDialog = "The statue is out of reach";
         this.description = "The statue now stands surrounded by the second floor\n"
-                         + "balcony. Its orb has stopped glowing, though one of\n"
-                         + "its eyes has started to.";        
+                         + "balcony. The orb has stopped glowing and one of\n"
+                         + "the statue's eyes has started to.";  
+        this.addNameKeys("grandiose statue");
         this.searchDialog = "The statue's hand is out of reach";
     }
 /*----------------------------------------------------------------------------*/
@@ -25,28 +26,30 @@ public class Gal4_Stat extends Statue {
         return this.level;
     }
 /*----------------------------------------------------------------------------*/
-    public String activate(char color, boolean isOn) {
-        String rep = "The beam of light shines into the central chamber.";
-        
-        if (Player.getRoomObj(Id.GAL4).hasFurniture("statue") && isOn && this.level != 3) {
-            
+    /**
+     * Hits the orb in the statue's hand with light.
+     * @param color the color of the beam.
+     * @return returns a string of what happens.
+     */
+    public String activate(char color) {
+        if (Player.getRoomObj(Id.GAL4).hasFurniture(this)) {
             if ((color == 'b' && this.level == 0) || 
                 (color == 'g' && this.level == 1) || 
                 (color == 'w' && this.level == 2)) {
-                rep = this.raise(); 
+                return this.raise(); 
             }          
             else if (this.level == 0) {
-                rep = "The beam of light shines into the orb with no effect.";
+                return "The beam of light shines into the orb with no effect.";
             }
-            else if (this.level == 1 || this.level == 2) {
-                rep = "The orb's hum dies and its glow fades.";
+            else if (this.level <= 2) {
                 this.level = 0;
+                return "The orb's hum dies and its glow fades.";
             }
+            else
+                return "The beam of light shines at the statue's base.";
         }
-        else if (Player.getRoomObj(Id.GAL4).hasFurniture("statue") && this.level == 3 && isOn)
-            rep = "The beam of light shines at the statue's base.";
-        
-        return rep;
+        else 
+            return "The beam of light shines into the central chamber.";
     }     
 /*----------------------------------------------------------------------------*/
     private String raise() {
@@ -64,23 +67,24 @@ public class Gal4_Stat extends Statue {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
         switch(this.level) {
             case 1:
-                rep = "The statue stands holding the glowing orb. It hums softly."; 
-                break;
+                return "The statue stands holding the glowing orb. It hums softly."; 
             case 2:
-                rep = "The statue stands holding the glowing orb. It's humming\n"
+                return "The statue stands holding the glowing orb. It's humming\n"
                     + "quite loudly now."; 
-                break;
             case 3:
-                rep = "The statue has risen yet again to the highest area of\n"
+                return "The statue has risen yet again to the highest area of\n"
                     + "the central chamber across from the third floor loft.\n"
                     + "The statue's plinth is now exceedingly long and unusual.";
             default:
+                return this.description;
         }
-        return rep;
+    }
+/*----------------------------------------------------------------------------*/
+    public void reset() {
+        if (this.level <= 2)
+            this.level = 0;
     }
 /*----------------------------------------------------------------------------*/
 }

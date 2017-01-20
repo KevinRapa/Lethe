@@ -5,8 +5,8 @@ import A_Super.Staircase;
 
 public class Par_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Par_Strs (Direction direction, int height) {
-        super(direction, height);
+    public Par_Strs (Direction direction) {
+        super(direction);
         this.description = "The thin sandstone stairs lead to the balcony above.\n";
     }
 /*----------------------------------------------------------------------------*/

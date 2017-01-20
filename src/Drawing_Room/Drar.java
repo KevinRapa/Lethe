@@ -32,4 +32,15 @@ public class Drar extends Room {
         return STD_RM_OUT;
     }
 /*----------------------------------------------------------------------------*/   
+    @Override public String getDescription() {
+        if (this.hasFurniture("ghost"))
+            return this.description;
+        else
+            return "You are in a relaxing lounge. A drinking bar furnishes the\n"
+                 + "south of the room. There's a billiard table and chess table near a window\n" +
+                   "on the east wall. A couch and low table sit on the west side.\n" +
+                   "Next to you is a large black piano. This room is unlit save\n" +
+                   "the bright moonlight shining in.";
+    }
+/*----------------------------------------------------------------------------*/
 }

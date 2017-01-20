@@ -36,6 +36,7 @@ public class Cou5_Sprc extends Furniture {
                 return "You have already drilled a small hole.";
             }
             else {
+                this.addNameKeys("(?:tree ?)?sap", "hole");
                 drilled = true;
                 String rep = this.useDialog;
                 

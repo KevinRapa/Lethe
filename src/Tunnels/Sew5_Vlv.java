@@ -30,7 +30,7 @@ public class Sew5_Vlv extends Furniture {
         this.actDialog = "With all your strength, you manage to turn the valve.";
 
         this.addNameKeys("(?:metal )?valve", "console", "smaller pipe");
-        this.addActKeys("turn", "rotate", "spin");
+        this.addActKeys("turn", "rotate", "spin", "twist", "open", "close");
     }
     // ========================================================================   
     @Override public String interact(String key) {              

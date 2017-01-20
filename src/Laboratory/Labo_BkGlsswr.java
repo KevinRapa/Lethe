@@ -16,7 +16,7 @@ public class Labo_BkGlsswr extends Book {
                         "as it does art! Think you that we blow whichever shape\n" +
                         "we feel that day when we glass? \"Oh, I'm feeling like a\n" +
                         "triangle today, I will blow glass into triangle! Who cares?\"\n" +
-                        "I will tell you- EVERYONE. You aren't chemist if you\n" +
+                        "I will tell you- everybody does. You aren't chemist if you\n" +
                         "transfer liquids with beaker. You aren't chemist if you\n" +
                         "boil liquid in erlenmeyer flask. You are a casual chef...\n" +
                         "Ei, but a common kitchen peasant if you boil chemical\n" +
@@ -27,7 +27,7 @@ public class Labo_BkGlsswr extends Book {
                         "wide and straight along sides. If accuracy is not important\n" +
                         "in measuring, pour or condense into beaker. The wide opening\n" +
                         "at top prevents the missing of liquid! If you pour acid into\n" +
-                        "water, which you ALWAYS do, pour into beaker.";
+                        "water, which you should ALWAYS do (never water into acid), pour into beaker.";
         
         PAGE_LIST[3] = "The Erlenmeyer flask the the triangle shape chemistry glass.\n" +
                         "What is best virtue of Erlenmeyer flask? The triangle shape\n" +

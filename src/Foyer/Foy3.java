@@ -14,7 +14,8 @@ public class Foy3 extends Room {
         this.description = "You stand atop the first flight of steps on the\n"
                          + "front staircase. The stairs continue a flight up\n"
                          + "in the opposite direction. The landing is bare and\n"
-                         + "only a door to your west is of interest.";
+                         + "only a door to your west, bearing a carving of a\n"
+                         + "rose, is of interest.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {

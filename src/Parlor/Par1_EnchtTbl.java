@@ -24,7 +24,7 @@ public class Par1_EnchtTbl extends Furniture {
         
         this.addUseKeys(".+"); // Accepts any item to be put on it.
         this.addNameKeys("enchanting table", "table");
-        this.addActKeys("pound, hit, activate, enchant");
+        this.addActKeys("pound", "hit", "activate", "enchant");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

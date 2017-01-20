@@ -6,8 +6,8 @@ import A_Super.Staircase;
 
 public class Gqua_Lddr extends Staircase {
     
-    public Gqua_Lddr(Direction direction, int height) {
-        super(direction, height);
+    public Gqua_Lddr(Direction direction) {
+        super(direction);
         String mode = direction == Direction.DOWN ? "floor" : "ceiling";
         
         this.description = "It's a sturdy wood ladder nailed to the wall. It\n"

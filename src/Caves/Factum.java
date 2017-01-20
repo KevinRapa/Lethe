@@ -13,7 +13,7 @@ import java.util.Random;
  * @author Kevin Rapa
  */
 public class Factum extends Item {
-    Random generator;
+    private transient Random generator;
     // =========================================================================
     public Factum(String name) {
         super(name);
@@ -39,15 +39,20 @@ public class Factum extends Item {
             case Id.VAUE:
                 Player.setOccupies(Id.CHA2); break;
             default:
-                Room room;
-                int x, y, z;
-                do {
-                    x = generator.nextInt(8) + 1;
-                    y = generator.nextInt(6) + 1;
-                    z = generator.nextInt(7);
-                    room = Player.getRoomObj(z,y,x);
-                } while (! Player.hasVisited(room.getID()) || room.getID().matches("ESC\\d"));
-                Player.setOccupies(z, y, x); 
+                int index;
+                String roomId;
+                generator = new Random();
+                
+                index = generator.nextInt(Player.getVisitedRooms().size());
+                roomId = Player.getVisitedRooms().get(index);
+                
+                while (roomId.matches("STUD|LIB[45]|LOOK|ESC\\d") || 
+                       roomId.equals(Player.getPosId())) {
+                    index = generator.nextInt(Player.getVisitedRooms().size());
+                    roomId = Player.getVisitedRooms().get(index);
+                }
+                Player.setOccupies(roomId);
+                break;
         }
         return this.useDialog;
     }

@@ -15,14 +15,15 @@ public class Sear_Fssr extends Furniture {
         this.searchable = false;
         this.broken = false;
         this.searchDialog = "It's just an empty hole.";
-        this.description = "The fissure leads outside into the front\n"
+        this.description = "The north wall has been damaged, and a resulting\n"
+                         + "fissure in it leads outside through the wall into the front\n"
                          + "courtyard. It looks like this was part of\n"
                          + "the escape plan.";
         this.useDialog = "The wall gives way from the swing of the heavy\n"
                        + "warhammer, but the warhammer snaps in half. You\n"
                        + "begin to think the wood axe is the only tool\n"
                        + "you know how to use without it breaking.";
-        this.addNameKeys("fissure");
+        this.addNameKeys("fissure", "wall");
         this.addUseKeys(WARHAMMER, CROWBAR, HAMMER);
     }
 /*----------------------------------------------------------------------------*/

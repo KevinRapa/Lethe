@@ -3,7 +3,6 @@ package Gallery;
 import A_Main.AudioPlayer;
 import A_Super.Button;
 import A_Main.Player;
-import A_Super.Room;
 import java.util.Random;
 import A_Main.GUI;
 /**
@@ -26,36 +25,36 @@ public class Gal6_Bttn extends Button {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        String rep = this.actDialog;
-        String choice;
+        int index;
+        String choice, roomId;
 
         GUI.out("Are you really sure you want to press the button?");
-        GUI.menOut("\n<yes> Push\n<no> Don't push\n< > Back");
+        GUI.menOut("\n<'y'> Push\n<'n'> Don't push\n< > Back");
+        
         do {
             choice = GUI.promptOut();
             
-            if (choice.equals("yes")) {
-                Room room;
-                int x, y, z;
+            if (choice.matches("y|yes")) {
                 AudioPlayer.playEffect(11);
                 Random generator = new Random();
                 
-                do {    
-                    x = generator.nextInt(8) + 1;
-                    y = generator.nextInt(6) + 1;
-                    z = generator.nextInt(2) + 2;
-                    room = Player.getRoomObj(z, y, x);                
-                } while (! Player.hasVisited(room.getID()) || 
-                        room.getID().matches("STUD|LOOK|ESC\\d"));  // Player may get trapped in STUD or LOOK  
+                index = generator.nextInt(Player.getVisitedRooms().size());
+                roomId = Player.getVisitedRooms().get(index);
                 
-                Player.setOccupies(z, y, x);  
+                while (roomId.matches("STUD|LIB[45]|LOOK|ESC\\d") || 
+                       roomId.equals(Player.getPosId())) {
+                    index = generator.nextInt(Player.getVisitedRooms().size());
+                    roomId = Player.getVisitedRooms().get(index);
+                }
 
-                rep = "'... Huh? What just happened? This isn't the gallery loft.'\n" +
-                      "You scratch your head and look around the room.";
+                Player.setOccupies(roomId);  
+
+                return "'... Huh? What just happened? This isn't the gallery loft.'\n" +
+                       "You scratch your head and look around the room.";
             }
-        } while (! choice.matches("yes|no|"));
+        } while (! choice.matches("yes|no|[yn]|"));
         
-        return rep;
+        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

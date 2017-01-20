@@ -10,23 +10,18 @@ import A_Super.Lever;
  * @author Kevin Rapa
  */        
 public class Gal1_Swtch extends Lever {
-    private final Gal1_Drgn REF;    
+    private final Gal1_Drgn DRAGON_REF;    
     /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal1_Swtch(Furniture stat) {
         super();
         this.description = "It's a large black lever on the floor";
-        this.actDialog = "You pull the lever.\n";
-        this.REF = (Gal1_Drgn)stat; 
-        this.addNameKeys("lever", "black lever", "large black lever", "large lever");
+        this.actDialog = "You pull the lever. ";
+        this.DRAGON_REF = (Gal1_Drgn)stat; 
+        this.addNameKeys("(?:large )?(?:black )?lever");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        String rep = this.actDialog;
-
-        String rep2 = REF.switchRight();
-        rep += rep2; 
-            
-        return rep;
+        return this.actDialog.concat(DRAGON_REF.switchEye(1));
     }   
 /*----------------------------------------------------------------------------*/    
 }

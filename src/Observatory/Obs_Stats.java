@@ -2,6 +2,7 @@ package Observatory;
 
 import A_Super.Furniture;
 import A_Main.GUI;
+import A_Main.Player;
 import java.util.Scanner;
 /** 
  * The observatory statue puzzle. 
@@ -54,7 +55,7 @@ public class Obs_Stats extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = "", choice;
+        String rep = NOTHING, choice;
         
         GUI.out(this.description + "\n");
         
@@ -65,18 +66,18 @@ public class Obs_Stats extends Furniture {
             
             if (choice.matches("[0-8]"))
                 rep = getStatRef(choice).getDescription();
-            else if (! choice.matches(NOTHING)) {
+            else if (Player.isNonEmptyString(choice)) {
                 rep = "That's not a valid choice.";
-                choice = "";
+                choice = NOTHING;
             }
             
-        } while (! choice.matches(NOTHING));
+        } while (Player.isNonEmptyString(choice));
         
-        return "";
+        return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String choice, action, slot, rep = "";
+        String choice, action, slot, rep = NOTHING;
         int statNum;
         Scanner collectToken;
 
@@ -106,7 +107,7 @@ public class Obs_Stats extends Furniture {
                         GUI.out("That's not a valid choice.");           
                 }
                 catch (java.util.NoSuchElementException | java.lang.NumberFormatException e) {
-                    if (! choice.matches(NOTHING))
+                    if (Player.isNonEmptyString(choice))
                         GUI.out("Type an action and a statue number."); 
                 } 
 
@@ -116,9 +117,9 @@ public class Obs_Stats extends Furniture {
                        + "high up at the third level descends.";
                     this.solved = true;
                     this.CHNDLR_REF.lower();
-                    choice = "";
+                    choice = NOTHING;
                 }
-            } while (! choice.matches(NOTHING));
+            } while (Player.isNonEmptyString(choice));
 
             collectToken.close();
         }

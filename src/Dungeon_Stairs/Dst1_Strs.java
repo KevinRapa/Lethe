@@ -8,8 +8,8 @@ import A_Super.Direction;
 
 public class Dst1_Strs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Dst1_Strs(Direction direction, int height) {
-        super(direction, height);
+    public Dst1_Strs(Direction direction) {
+        super(direction);
         this.description = "The mossy stone spiral staircase winds down into\n"
                          + "the unknown.";
         this.actDialog = "The sense of dread is overwhelming.\n"

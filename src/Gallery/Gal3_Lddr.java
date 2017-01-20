@@ -8,8 +8,8 @@ import A_Super.Direction;
 public class Gal3_Lddr extends Staircase {
     private boolean lowered;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_Lddr(Direction direction, int height) {
-        super(direction, height);
+    public Gal3_Lddr(Direction direction) {
+        super(direction);
         this.searchDialog = "The ladder hides nothing.";
         this.description = "The ladder is suspended above the ground in the\n"
                          + "hatch, too high to grab hold of.";

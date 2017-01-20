@@ -21,7 +21,7 @@ public class Gar4_Plntr extends Furniture {
         this.searchDialog = "You look around the planter.";
         this.useDialog = this.actDialog;
 
-        this.addNameKeys();
+        this.addNameKeys("planter", "(?:bed of )?soil");
         this.addUseKeys(SHOVEL, TROWEL);
         this.addActKeys("dig", "plant", "garden");
     }

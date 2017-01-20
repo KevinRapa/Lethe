@@ -2,6 +2,7 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import A_Main.Player;
 /**
  * A combination safe that can be unlocked by entering the right combination.
  * Player may interact with or search this for an open attempt.
@@ -59,7 +60,7 @@ public class Safe extends Furniture implements Openable {
                                "< > Back\n");
                 }
             } 
-        } while (! action.matches(NOTHING));
+        } while (Player.isNonEmptyString(action));
     }
 /*----------------------------------------------------------------------------*/
     private boolean turnDial(int i) {
@@ -73,7 +74,7 @@ public class Safe extends Furniture implements Openable {
     }
 /*----------------------------------------------------------------------------*/
     private boolean check() {
-        String currentCombo = "";
+        String currentCombo = NOTHING;
         
         for (int dial : this.DIALS)
             currentCombo = currentCombo.concat(Integer.toString(dial));

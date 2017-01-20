@@ -24,7 +24,8 @@ public class Eow2 extends Room {
                            "wall is a barred window and a rack of weaponry below\n" +
                            "it. A tall cabinet stands to its east. The far east\n" +
                            "end of this area is rounded and contains a great\n" +
-                           "fountain spouting clear water. A torch is mounted on\n"
+                           "fountain spouting clear water. A soldier statue\n"
+                         + "stands on the fountain. A torch is mounted on\n"
                          + "both the north and south walls of the room.";
     }  
 /*----------------------------------------------------------------------------*/        

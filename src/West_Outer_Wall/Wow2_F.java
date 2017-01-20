@@ -1,5 +1,6 @@
 package West_Outer_Wall;
 
+import static A_Main.NameConstants.FIXED_LADDER;
 import A_Main.Player;
 import A_Super.Floor;
 import A_Super.Furniture;
@@ -17,8 +18,6 @@ public class Wow2_F extends Floor {
         this.STRS_REF = wow2Strs;
         this.LDDR_REF = lddr;
         this.useDialog = "You stand the ladder on the floor leaning against the balcony.";
-
-        this.addUseKeys("fixed ladder");
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {

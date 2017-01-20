@@ -15,7 +15,7 @@ import java.io.Serializable;
  * @see A_Super.Furniture#USEKEYS
  * @author Kevin Rapa
  */
-public class Item implements Serializable {
+public class Item implements Serializable, Comparable<Item> {
     protected final String NAME;    // The item's name.
     protected final String FORMS;   // Name of item formed when combined.
     protected final Item PRODUCT;   // Item given to player after a combine.
@@ -143,7 +143,14 @@ public class Item implements Serializable {
     public String useEvent() {
         return this.useDialog;
     }
+/*----------------------------------------------------------------------------*/
+    @Override public int compareTo(Item item) {
+        return this.toString().compareTo(item.toString());
+    } 
 //******************************************************************************        
 // </editor-fold>
 //******************************************************************************
+
+    
+    
 }

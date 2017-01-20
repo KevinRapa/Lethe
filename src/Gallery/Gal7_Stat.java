@@ -17,27 +17,29 @@ public class Gal7_Stat extends Statue {
         this.searchDialog = "The statue's hand is out of reach";
     }
 /*----------------------------------------------------------------------------*/
-    public int getState() {
+    public int getLevel() {
         return this.level;
     }
 /*----------------------------------------------------------------------------*/
-    public String activate(char color, boolean isOn) {
-        String rep = "The beam of light shines into the central chamber.";
-        
-        if (Player.getRoomObj(Id.GAL7).hasFurniture("statue") && isOn && this.level == 0) {
-            
-            if (color == 'D' && this.level == 0) {
-                rep = this.raise(); 
-            }              
-            else if (this.level == 0) {
-                rep = "The beam of light shines into the orb with no effect.";
+    /**
+     * Hits the orb in the statue's hand with light.
+     * @param color the color of the beam.
+     * @return returns a string of what happens.
+     */
+    public String activate(char color) {
+        if (Player.getRoomObj(Id.GAL7).hasFurniture(this)) {
+            if (level == 0) {
+                if (color == 'D') {
+                    return this.raise(); 
+                }              
+                else
+                    return "The beam of light shines into the orb with no effect.";
             }
+            else
+                return "The beam of light shines at the orb, but the orb continues to glow hellishly.";
         }
-        else if (Player.getRoomObj(Id.GAL7).hasFurniture("statue") && this.level == 1 && isOn)
-            rep = "The beam of light shines at the orb, but the orb continues\n"
-                + "to glow hellishly.";
-        
-        return rep;
+        else
+            return "The beam of light shines into the central chamber.";
     }     
 /*----------------------------------------------------------------------------*/
     private String raise() {
@@ -45,24 +47,19 @@ public class Gal7_Stat extends Statue {
         Player.getRoomObj(Id.GAL5).unlock();
      
         return "The crystal orb in the statue's palm glows with a dark\n"
-            + "hellish glow. Cogwork can be heard behind the walls and\n"
-            + "before long, you hear a clicking sound down below.";
+             + "hellish glow. Cogwork can be heard behind the walls and\n"
+             + "before long, you hear a clicking sound down below.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = this.description;
-        
-        switch(this.level) {
-            case 0:
-                break;
-            case 1:
-                rep = "The statue stands in the central chamber holding the orb.\n"
-                    + "Its eyes are brightly lit and the orb glows in a surreal\n"
-                    + "dark light while humming loudly."; 
-        }
-        return rep;
+        if (level == 1)
+                return "The statue stands in the central chamber holding the orb.\n"
+                     + "Its eyes are brightly lit and the orb glows in a surreal\n"
+                     + "dark light while humming loudly."; 
+        else 
+            return this.description;
     }
-/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/    
 }
 
 

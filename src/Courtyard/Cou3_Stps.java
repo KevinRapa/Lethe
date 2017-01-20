@@ -7,8 +7,8 @@ import A_Super.Direction;
 
 public class Cou3_Stps extends Staircase {
 /*----------------------------------------------------------------------------*/    
-    public Cou3_Stps(Direction direction, int height) {
-        super(direction, height);
+    public Cou3_Stps(Direction direction) {
+        super(direction);
         this.description = "The long set of crumbling steps climb to a front\n"
                          + "balcony before the castle's great front doors.";
     }

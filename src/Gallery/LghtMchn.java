@@ -1,6 +1,7 @@
 package Gallery;
 
 import static A_Main.NameConstants.*;
+import A_Main.Player;
 import A_Super.Item;
 import A_Super.Furniture;
 import java.util.HashMap;
@@ -20,7 +21,7 @@ abstract public class LghtMchn extends Furniture {
     protected boolean isOn;
     protected char beam;
     protected String mode, turnOffDialog;    
-    private final HashMap<String, String> COLOR_MAP = new HashMap() {{
+    protected final HashMap<String, String> COLOR_MAP = new HashMap() {{
            //drby {dark, red, blue, yellow}
         put("0000", "c A clear scattered light");                
         put("0001", "y A yellow beam");
@@ -42,29 +43,31 @@ abstract public class LghtMchn extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public LghtMchn() {
         super();
+        this.useDialog = null;
         this.isOn = false;
+        this.beam = 'c';
+        this.mode = "A clear scattered light";
         this.addUseKeys(RED_FOCUS, BLUE_FOCUS, YELLOW_FOCUS, DARK_FOCUS);
     }
 /*----------------------------------------------------------------------------*/
     public void determineColor() {
-        char red = '0', blue = '0', yellow = '0', dark = '0';
+                    // drk  rd  bl yllw
+        char[] data = {'0','0','0','0'};
         
         for (Item i : this.inv) {
-            switch (i.toString().charAt(0)) {
-                case 'r':
-                    red = '1'; break;
-                case 'b':
-                    blue = '1'; break;
-                case 'y':
-                    yellow = '1'; break;
-                default:
-                    dark = '1';
-            }
+            if (i.getType().matches(FOCUS))
+                switch (i.toString().charAt(0)) {
+                    case 'r':
+                        data[1] = '1'; break;
+                    case 'b':
+                        data[2] = '1'; break;
+                    case 'y':
+                        data[3] = '1'; break;
+                    case 'd':
+                        data[0] = '1';
+                }
         } 
-        char[] data = {dark, red, blue, yellow};
-        
         String result = COLOR_MAP.get(String.valueOf(data));
-
         beam = result.charAt(0);
         mode = result.substring(2);
     }
@@ -77,10 +80,19 @@ abstract public class LghtMchn extends Furniture {
         return beam;
     }
 /*----------------------------------------------------------------------------*/
+    abstract protected String turnOn();
+/*----------------------------------------------------------------------------*/
+    abstract protected void resetStatue();
+/*----------------------------------------------------------------------------*/
     public String turnOff() {
         this.isOn = false;      
-        
+        this.resetStatue();
         return turnOffDialog;
+    }
+/*----------------------------------------------------------------------------*/    
+    @Override public String useEvent(Item item) {
+        Player.getInv().give(item, this.inv);
+        return this.useDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

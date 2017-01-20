@@ -85,7 +85,7 @@ public class Labo_Brtt extends Furniture {
                     GUI.menOut("Pick a valid answer.\n<1> Empty the burette\n<2> Titrate the " + mode + ".\n< > Back");
                     ans = GUI.promptOut();
                 }
-                if (! ans.matches(NOTHING)) {
+                if (Player.isNonEmptyString(ans)) {
                     switch (Integer.parseInt(ans)) {
                         case 1:
                             this.mode = Titrant.EMPTY;

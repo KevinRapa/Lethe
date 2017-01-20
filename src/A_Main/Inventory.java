@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.io.Serializable;
+import java.util.Comparator;
 /**
  * @author Kevin Rapa
  */
@@ -112,5 +113,19 @@ public class Inventory implements Iterable<Item>, Serializable {
     @Override public Iterator<Item> iterator() {
         return this.CONTENTS.iterator();
     }
+    // ========================================================================
+    public static Comparator<Item> getComparator() {
+        return new Inventory_Sorter();
+    }
+    // ========================================================================
+    // ************************************************************************
+    // ========================================================================
+    private static class Inventory_Sorter<Item extends Comparable> implements Comparator<Item> {
+        @Override public int compare(Item item1, Item item2) {
+            return item1.compareTo(item2);
+        }
+    }
+    // ========================================================================
+    // ************************************************************************
     // ========================================================================
 }

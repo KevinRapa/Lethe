@@ -11,7 +11,7 @@ public class Lib2_WrFr extends Furniture {
         this.description = "The tall bookshelf bears a plaque on the top reading\n"
                          + "\"Warfare\".";
         this.searchDialog = "You peruse its shelves.";
-        this.addNameKeys("warfare", "warfare (?:book)?shelf");
+        this.addNameKeys("warfare", "(?:east|right) (?:book)?shelf");
         this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");
     }
 /*----------------------------------------------------------------------------*/

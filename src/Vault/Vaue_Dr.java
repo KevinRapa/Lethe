@@ -55,7 +55,7 @@ public class Vaue_Dr extends Furniture {
                 ans = GUI.promptOut();
             }
             
-            if (! ans.equals(NOTHING)) {
+            if (Player.isNonEmptyString(ans)) {
                 String[] crds = ans.split("\\s*,\\s*");
                 this.switchButtons(Integer.parseInt(crds[0]) - 1, 
                         4 - Integer.parseInt(crds[1]));
@@ -68,7 +68,7 @@ public class Vaue_Dr extends Furniture {
                      + "The wall recedes into the floor slowly.\n"
                      + "As the dust settles, a long room filled with treasure is revealed.";
             }
-        } while (! ans.equals(NOTHING));
+        } while (Player.isNonEmptyString(ans));
         
         return this.actDialog;
     }
