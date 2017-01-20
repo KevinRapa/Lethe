@@ -1814,10 +1814,10 @@ public class Main {
         };
         
         // <editor-fold desc="LOCK ROOMS">
-        rotu.lock(); stud.lock(); gal5.lock(); //gal1.lock();
-        par2.lock(); clos.lock(); din1.lock(); //kitc.lock(); ou62.lock();
+        rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
+        par2.lock(); clos.lock(); din1.lock(); kitc.lock(); ou62.lock();
         chs1.lock(); work.lock(); tow1.lock(); tbal.lock(); sewp.lock();
-        dkch.lock(); vau2.lock(); wow2.lock(); //foyw.lock();
+        dkch.lock(); vau2.lock(); wow2.lock(); foyw.lock();
         // </editor-fold>
         
         //**********************************************************************
