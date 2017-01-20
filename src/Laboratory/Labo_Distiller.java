@@ -1,5 +1,6 @@
 package Laboratory;
 
+import A_Main.AudioPlayer;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
 import A_Super.Furniture;
@@ -12,17 +13,19 @@ public class Labo_Distiller extends Furniture {
     private final Labo_GasPipe PIPE_REF;
     private final Labo_Condenser CONDENSER_REF;
     private final Item TUBE_REF, VIAL_REF;
-    private Runnable distillMethod;
+    private final Labo_Flask FLORENCE_FLASK_REF;
     // ========================================================================
     public Labo_Distiller (Furniture pipe, Furniture condenser, Item tstTube, Item vial) {
         super();
+        
+        this.searchable = false;
+        
         this.PIPE_REF = (Labo_GasPipe)pipe;
         this.CONDENSER_REF = (Labo_Condenser)condenser;
         this.TUBE_REF = tstTube;
         this.VIAL_REF = vial;
-        
-        this.searchable = false;
-        
+        this.FLORENCE_FLASK_REF = new Labo_Flask(CONDENSER_REF, TUBE_REF, VIAL_REF);
+
         this.searchDialog = "The contraption is comprised of many alchemical compnents.\n"
                           + "Though they're alien to you, you note nothing out of the ordinary.";
         this.description = "It's one half of a larger alchemical contraption in the room.\n"
@@ -52,9 +55,7 @@ public class Labo_Distiller extends Furniture {
             }
             else if (name.equals(FLORENCE_FLASK)) {
                 Player.getInv().remove(item);
-                Labo_Flask flask = new Labo_Flask(CONDENSER_REF, TUBE_REF, VIAL_REF); // Don't want to pass this in constructor.
-                Player.getPos().addFurniture(flask);
-                this.distillMethod = () -> flask.distill();
+                Player.getPos().addFurniture(FLORENCE_FLASK_REF);
                 return "You place the florence flask onto the rack.";
             }
             else if (name.matches("beaker|test tube|empty vial|copper pot|copper pan")) {
@@ -62,10 +63,8 @@ public class Labo_Distiller extends Furniture {
             }
             else {
                 if (PIPE_REF.isOn() && Player.getPos().hasFurniture("hose")) {
-                    if (Player.getPos().hasFurniture(FLORENCE_FLASK)) {
-                        distillMethod.run(); // Cannot run before runDistill has been assigned a value.
-                                             // Dialog is processed at Labo_Condenser.condense because .run() returns void.
-                            
+                    if (Player.getPos().hasFurniture(FLORENCE_FLASK_REF)) {
+                        FLORENCE_FLASK_REF.distill();
                         return null;
                     }
                     else {
@@ -74,6 +73,7 @@ public class Labo_Distiller extends Furniture {
                     }
                 }
                 else if (PIPE_REF.isOn() && ! Player.getPos().hasFurniture("hose")) {
+                    AudioPlayer.playEffect(32, 5);
                     return "As you squeeze the striker, a big poof of fire ignites and singes your face.\n"
                          + "The smell of gas fades momentarily and slowly comes back.";
                 }

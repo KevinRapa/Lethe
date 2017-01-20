@@ -32,15 +32,13 @@ public class Cry_Drawers extends Furniture implements Openable {
     // ========================================================================   
     @Override public String getSearchDialog() {
         GUI.out("The drawers are labeled from 1 to 100. Search which drawer?");
-        GUI.menOut("\n<#> Search...");
-        String ans = GUI.promptOut();
-        
-        while (! ans.matches("[1-100]")) {
-            GUI.menOut("\nThat's not a valid choice\n<#> Search...");
-            ans = GUI.promptOut();
+        String ans = GUI.askChoice("\n<#> Search...\n< > Back", "[1-100]|");
+
+        if (Player.isNonEmptyString(ans)) {
+            GUI.out(this.searchDialog);
+            Player.search(this.DRAWERS[Integer.parseInt(ans) - 1]); 
         }
-        GUI.out(this.searchDialog);
-        Player.search(this.DRAWERS[Integer.parseInt(ans) - 1]);
+        
         return null;
     }
     // ========================================================================     
@@ -49,7 +47,7 @@ public class Cry_Drawers extends Furniture implements Openable {
     private class Drwr extends Furniture {
         public Drwr() {
             super();
-            this.searchDialog = "none";
+            this.searchDialog = null;
         }
     }
     // ========================================================================  

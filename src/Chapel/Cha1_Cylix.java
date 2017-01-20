@@ -9,7 +9,7 @@ public class Cha1_Cylix extends Furniture {
         super();
         this.searchable = false;
         this.description = "The cylix looks like a wide brass bowl.";
-        this.useDialog = "You begin banging the container against the bowl, but the"
+        this.useDialog = "You begin banging the container against the bowl, but the\n"
                        + "bowl isn't fitting inside...";
         this.searchDialog = "If your logic holds as well as this bowl holds water,\n"
                           + "you'd guess this vessel was filled with the holy kind.\n"

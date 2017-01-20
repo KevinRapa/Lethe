@@ -9,7 +9,7 @@ import A_Main.GUI;
  * 
  * @author Kevin Rapa
  */
-public class Gal6_Helmet extends Furniture{
+public class Gal6_Helmet extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_Helmet() {
         super();
@@ -34,28 +34,22 @@ public class Gal6_Helmet extends Furniture{
         String r;
         
         GUI.out("Are you really sure you want to wear the helmet?");
-        GUI.menOut("\n<'y'> Wear it\n<'n'> Don't wear it\n< > Back");
-        
-        do {
-            choice = GUI.promptOut();
-            
-            if (choice.matches("yes|y")) {
-                Random generator = new Random();
-                for (int i = 0; i < 18000; i++) {
-                    r = Integer.toString(generator.nextInt(2));
-                    for (int j = 0; j < 60; j++) {
-                        r += Integer.toString(generator.nextInt(2));    
-                    }  
-                    GUI.out(r);
-                }
+ 
+        choice = GUI.askChoice("\n<'y'> Wear it\n<'n'> Don't wear it\n< > Back", "yes|no|[yn]|");
+
+        if (choice.matches("yes|y")) {
+            Random generator = new Random();
+            for (int i = 0; i < 18000; i++) {
+                r = Integer.toString(generator.nextInt(2));
+                for (int j = 0; j < 60; j++) {
+                    r += Integer.toString(generator.nextInt(2));    
+                }  
+                GUI.out(r);
             }
-            else if (choice.matches("no|n"))
-                return "That was a smart decision.";
-            
-        } while (! choice.matches("yes|no|[yn]|"));
-        
-        GUI.toMainMenu();
-        
+        }
+        else
+            return "That was a smart decision.";
+
         return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/

@@ -1,5 +1,6 @@
 package Cistern;
 
+import A_Main.AudioPlayer;
 import A_Main.Player;
 import static A_Main.NameConstants.METAL_BUCKET;
 import A_Super.Furniture;
@@ -28,6 +29,7 @@ public class Cis_Water extends Furniture {
     }
     // ======================================================================== 
     @Override public String useEvent(Item item) {
+        AudioPlayer.playEffect(42);
         Player.getInv().remove(item);
         Player.getInv().add(WTR_BCKT);
         

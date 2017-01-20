@@ -32,15 +32,11 @@ public class Foy_Gate extends Door {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
-        String rep = this.isOpen ? this.DESCOPEN : this.description;
-
-        return rep;
+        return this.isOpen ? this.DESCOPEN : this.description;
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getSearchDialog() {
-        String rep = this.isOpen ? this.SRCHOPEN : this.searchDialog;
-        
-        return rep;
+        return this.isOpen ? this.SRCHOPEN : this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
     public void swtch() {
@@ -48,9 +44,7 @@ public class Foy_Gate extends Door {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.isOpen ? this.DIALOPEN : this.actDialog;
-        
-        return rep;
+        return this.isOpen ? this.DIALOPEN : this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

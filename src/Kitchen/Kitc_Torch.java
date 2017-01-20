@@ -2,11 +2,11 @@ package Kitchen;
 
 import A_Main.GUI;
 import A_Main.Id;
+import A_Main.Inventory;
+import static A_Main.NameConstants.HAND_TORCH;
 import A_Super.Torch;
 import A_Super.Item;
 import A_Main.Player;
-import static A_Main.NameConstants.HAND_TORCH;
-import A_Super.HolderInventory;
 /**
  * Player must add a torch to this to light the room.
  * Begins empty.
@@ -18,43 +18,37 @@ public class Kitc_Torch extends Torch {
         super();
         this.useDialog = "You slide the torch into the steel holder, lighting\n"
                        + "the room.";
-        this.inv = new KitcHldr_Inv();
+        this.inv = new KitcHolderInventory();
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        String rep = this.actDialog;
-        
-        if (this.containsItem(HAND_TORCH)) {
-            this.inv.give(TORCH, Player.getInv());
+        if (this.containsItem(HAND_TORCH) && ! Player.hasItem(HAND_TORCH)) {
+            Player.getInv().add(TORCH);
+            this.inv.clear();
             ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
+            Player.describeRoom();
+            return this.actDialog;
         }
+        else if (! this.containsItem(HAND_TORCH))
+            return "The holder is empty you bumbling oaf.";
         else
-            rep = "The holder is empty you bumbling oaf.";
-        
-        return rep;
+            return "You are already carrying a torch.";
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String useEvent(Item item) {
-        String rep = this.useDialog;
-        
         if (this.containsItem(HAND_TORCH))
-            rep = "The holder already bears a torch you bumbling oaf.";
-        
-        else {
+            return "The holder already bears a torch you bumbling oaf.";
+        else 
             Player.getInv().give(item, this.inv);
-            ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
-        }
         
-        return rep;
-    }
+        return this.useDialog;
+    }    
 /*----------------------------------------------------------------------------*/
-    /**
-     * When a torch is added to or taken from this, the kitchen light is switched.
-     * @author Kevin Rapa
-     */
-    private class KitcHldr_Inv extends HolderInventory {
-    // CONSTRUCTOR ------------------------------------------------------------     
-        public KitcHldr_Inv() {
+/******************************************************************************/    
+/*----------------------------------------------------------------------------*/
+    private class KitcHolderInventory extends Inventory {  
+    // CONSTRUCTOR -------------------------------------------------------------      
+        public KitcHolderInventory() {
             super();
         }
     /*------------------------------------------------------------------------*/
@@ -62,17 +56,21 @@ public class Kitc_Torch extends Torch {
             if (item.toString().equals(HAND_TORCH) && this.size() == 0) {
                 this.CONTENTS.add(item);
                 ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
+                Player.describeRoom();
                 return true;
             }
             GUI.out("The " + item + " doesn't fit in.");
             return false;
         }
     /*------------------------------------------------------------------------*/
-        @Override public void remove(Item item) {
-            this.CONTENTS.remove(item);
+        @Override public void remove(Item removeThis) {      
+            this.CONTENTS.remove(removeThis);
             ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
+            Player.describeRoom();
         }
-    /*------------------------------------------------------------------------*/
     }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/    
+/*----------------------------------------------------------------------------*/
 }
 

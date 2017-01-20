@@ -312,7 +312,7 @@ public class Main {
         Room cou5 = new Cou5("in the southeast courtyard", Id.COU5);
         Room cou6 = new Cou6("in the northeast courtyard", Id.COU6);
         //-------------------------------ITEMS----------------------------------
-        Item krnsPlt = new Obs_Plate("brass plate, \"Saturn\"", "The small plate bears an engraving: \"Saturn\"");
+        Item krnsPlt = new Obs1_Plate("brass plate, \"Saturn\"", "The small plate bears an engraving: \"Saturn\"");
         Item soldMed = new Item(STONE_DISK, "The smooth disk is about four or five inches across.\n"
                                             + "Its craftmanship is precise, although there's a\n"
                                             + "chip on its edge. On its surface is an embossment\n"
@@ -594,7 +594,7 @@ public class Main {
         //-----------------------------THE ROOM---------------------------------
         Room gal5 = new Gal5("in a trophy room", Id.GAL5);
         //-------------------------------ITEMS----------------------------------
-        Item zsPlt = new Obs_Plate("brass plate, \"Jupiter\"", "The small plate bears an engraving: \"Jupiter\"");
+        Item zsPlt = new Obs1_Plate("brass plate, \"Jupiter\"", "The small plate bears an engraving: \"Jupiter\"");
         Item emrld = new Item(GLOWING_EMERALD, "The emerald pulses with a blue glow.", "This belongs to someone important.");
         Item aqmrn = new Item(AQUAMARINE, "It's a beautiful blue gem.");
         Item rby1 = new Item(RUBY, "The ruby is well cut and clean, having been protected in the case for so long.");
@@ -700,7 +700,7 @@ public class Main {
         Room din1 = new Din1("in the dining room", Id.DIN1);  
         Room din2 = new Din2("on the dining room balcony", Id.DIN2);
         //-------------------------------ITEMS----------------------------------
-        Item aphrdtPlt = new Obs_Plate("brass plate, \"Venus\"", "The small plate bears an engraving: \"Venus\"");
+        Item aphrdtPlt = new Obs1_Plate("brass plate, \"Venus\"", "The small plate bears an engraving: \"Venus\"");
         Item frk = new Item("fork", "It's a nice silver fork.", "You comb your beard with the fork until it's straight and tidy.");
         Item plt = new Item("plate", "It's fancy ceramic plate.");
         Item spn = new Item("spoon", "It's a nice silver spoon.", "You attempt to comb your beard with the spoon, but it's not working so well.");
@@ -862,6 +862,7 @@ public class Main {
         Furniture lib3Crtn = new Lib3_CreationShelf(ody, bkGlsswr);
         Furniture lib3Blcny = new Lib_Balcony();
         Furniture lib3Wndw = new Lib3_Window();
+        Furniture lib3Pntng = new Lib3_Painting();
 
         Furniture lib4Frplc = new Lib2_Fireplace(true, bckt);
         Furniture lib4Bttn = new Lib4_Button(lib4Frplc, lib3Stat);
@@ -951,7 +952,7 @@ public class Main {
         Furniture kitcBrls = new Kitc_Barrels(brly, brly, brly, rye, rye, rye);
         Furniture kitcPntry = new Kitc_Pantry(rtnFrt, rtnFrt, petFrt, kitcFrtPhy, petFrt);
         Furniture kitcShlf = new Kitc_Shelf(wine, wine, wine, wine, wine, wine, wine);
-        Furniture kitcCntr = new Kitc_Cntr(spng, vinegar);   
+        Furniture kitcCntr = new Kitc_Cntr(spng, vinegar, vial, vial);   
         // </editor-fold>
         // <editor-fold desc="INITIALIZE DUNGEON STAIRCASE">
         //-----------------------------THE ROOM---------------------------------
@@ -974,12 +975,12 @@ public class Main {
         Room obs2 = new Obs2("on the observatory balcony", Id.OBS2);
         Room obs3 = new Obs3("on the observatory aerie", Id.OBS3);
         //-------------------------------ITEMS----------------------------------  
-        Item hlsPlt = new Obs_Plate("brass plate, \"Sol\"", "The small plate bears an engraving: \"Sol\"");
-        Item hrmsPlt = new Obs_Plate("brass plate, \"Mercury\"", "The small plate bears an engraving: \"Mercury\"");
-        Item gaeaPlt = new Obs_Plate("brass plate, \"Terra\"", "The small plate bears an engraving: \"Terra\"");
-        Item aresPlt = new Obs_Plate("brass plate, \"Mars\"", "The small plate bears an engraving: \"Mars\"");
-        Item urnsPlt = new Obs_Plate("brass plate, \"Caelus\"", "The small plate bears an engraving: \"Caelus\"");
-        Item psdnPlt = new Obs_Plate("brass plate, \"Neptune\"", "The small plate bears an engraving: \"Neptune\"");
+        Item hlsPlt = new Obs1_Plate("brass plate, \"Sol\"", "The small plate bears an engraving: \"Sol\"");
+        Item hrmsPlt = new Obs1_Plate("brass plate, \"Mercury\"", "The small plate bears an engraving: \"Mercury\"");
+        Item gaeaPlt = new Obs1_Plate("brass plate, \"Terra\"", "The small plate bears an engraving: \"Terra\"");
+        Item aresPlt = new Obs1_Plate("brass plate, \"Mars\"", "The small plate bears an engraving: \"Mars\"");
+        Item urnsPlt = new Obs1_Plate("brass plate, \"Caelus\"", "The small plate bears an engraving: \"Caelus\"");
+        Item psdnPlt = new Obs1_Plate("brass plate, \"Neptune\"", "The small plate bears an engraving: \"Neptune\"");
         
         Item rby2 = new Item(RUBY, "The ruby is well cut and clean.");
         Item cndl = new Item("candle", "It's a white candle. It looks new!");
@@ -990,13 +991,13 @@ public class Main {
         Item obsBk = new Obs2_Book("tome, 'Planets and Myth'");
         Item obs2Nt = new Obs2_Note("journal page, Factum");
         Item obs3Nt = new Note("momento- plate locations", "It's only been a day since we discovered that artifact from the well, and\n"
-                + "already I don't want to be around it. Perhaps we can hide it in the chandelier up there.\n"
+                + "already I don't want to be around it. Perhaps we can hide it in the chandelier up there;\n"
                 + "we need a use for that compartment. I'll determine new areas to store those brass plates,\n"
                 + "and keep the locations in the picture frame back there...");
         //-----------------------------FURNITURE--------------------------------
         Furniture obs3Chndlr = new Obs3_Chandelier("chandelier", cndl, cndl, cndl, rby2, cndl, cndl);
-        Furniture obsStats = new Obs_Statues(obs3Chndlr);
-        Furniture obsSlts = new Obs_Slots(hlsPlt, obsStats);
+        Furniture obsStats = new Obs1_Statues(obs3Chndlr);
+        Furniture obsSlts = new Obs1_Slots(hlsPlt, obsStats);
         Furniture obsF = new Floor("The floor in here is gray and dark blue checkered tile.");
         Furniture obsW = new Wall("The walls are mahogany wood paneled, with each panel bearing a large round cavity displaying a painted constellation.");
         Furniture obsWndw = new Obs_Window();
@@ -1013,10 +1014,12 @@ public class Main {
         Furniture obs2Chr = new Obs2_Chair();
         Furniture obs2Tbl = new Bha1_Table(lttrOpnr, pen, ppr);
         Furniture obs2Lmp = new Obs2_Lamp();
+        Furniture obs2F = new Floor("The balconies are layed with polished wood.");
         
         Furniture obs3Strs = new Obs13_Stairs(Direction.DOWN);
         Furniture obs3Chst = new Obs3_Chest(psdnPlt);
         Furniture obs3Tlscps = new Obs3_Telescopes();
+        Furniture obs3F = new Floor("The balconies are layed with polished wood.");
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE JADE HALL"> 
@@ -1814,7 +1817,7 @@ public class Main {
         
         // <editor-fold desc="LOCK ROOMS">
         rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
-        par2.lock(); clos.lock(); din1.lock(); kitc.lock(); ou62.lock();
+        //par2.lock(); clos.lock(); din1.lock(); kitc.lock(); ou62.lock();
         chs1.lock(); work.lock(); tow1.lock(); tbal.lock(); sewp.lock();
         dkch.lock(); vau2.lock(); wow2.lock(); foyw.lock();
         // </editor-fold>
@@ -1878,7 +1881,7 @@ public class Main {
         mha2.addFurniture(mhaChndlr, mhaChr, mha2Plnt, mhaF, mhaW, mhaNWndw2, mhaMDr, mhaRStat, mhaLStat, mhaStats);
         mha3.addFurniture(genDoor, mhaChndlr, mhaChr, mha3Plnt, mhaF, mhaW, mhaSWndw, mha3KitcDr, mhaSDr);
         lib2.addFurniture(libLF, libW, libCch, lib2ShRck, lib2Stat, lib2Frplc, lib2Bttn, lib2WrFr, lib2Vyg, libBkShlf, libScncs, lib2Wndw);
-        lib3.addFurniture(libLF, libW, westDoor, lib3Strs, libCch, lib3Stat, lib3Crtn, libScncs, lib3Blcny, lib3Wndw, lib3Pllr);
+        lib3.addFurniture(libLF, libW, westDoor, lib3Strs, libCch, lib3Stat, lib3Crtn, libScncs, lib3Blcny, lib3Wndw, lib3Pllr, lib3Pntng);
         lib4.addFurniture(libUF, libW, libCch, lib4Frplc, lib4Bttn, lib4Prdtn, libScncs, lib3Pllr, lib4Stat, lib4Glb, lib3Blcny, lib4Tbl, lib4Strs);
         lib5.addFurniture(libUF, libW, lib5Bnshmnt, libScncs, lib3Pllr, lib5Cndlbr);
         eow1.addFurniture(genDoor, wWW, eowF, eow1Dr, eow1Rck, eow1Bskt, eow1Trch, wowWndw, mhaNDr);
@@ -1899,9 +1902,9 @@ public class Main {
         par2.addFurniture(genDoor, wWW, par2F, par2Wndw, westDoor, eastDoor, par2Strs, parLft, par2Bwl, par2Frplc, par2Pno, par2Shlf);
         par1.addFurniture(par1F, par1Dr, par1FrPlc, wWW, par1EnchntTbl, par1Strs, parLft,
                           par1Pllrs, par1Orb, par1Hrp, par1Shlf, lib1Rg, par1Cshn, vesChr);
-        bha1.addFurniture(southDoor, bha1Hrzn, bha1Plnt, bha1Tbl, bha1F, bhaW);
+        bha3.addFurniture(southDoor, bha1Hrzn, bha1Plnt, bha1Tbl, bha1F, bhaW);
         bha2.addFurniture(bha2F, bha2W, bha2Frm);
-        bha3.addFurniture(bha3F, bhaW, southDoor, bha3Wndw);
+        bha1.addFurniture(bha3F, bhaW, southDoor, bha3Wndw);
         jha1.addFurniture(eastDoor, jhaF, jhaW, par2Wndw, jha1Pntng, jhaLntrn, jhaJd, jha1Ln);
         jha2.addFurniture(southDoor, jhaF, jhaW, jhaLntrn, jhaJd, jha2Ln);
         sst1.addFurniture(wallEx, sst1Strs, sstLndng, sst1F, sst1Dr);
@@ -1911,8 +1914,8 @@ public class Main {
         gar3.addFurniture(lookClff, bbaSea, wallEx, bbaRlng, garF, gar13Plntr, gar3Chst, gal3Fntn, wtr, gar2Dm, gar2Clmn);
         gar4.addFurniture(wallEx, southDoor, gar4Plq, gar4Plntr, garF, gar24Scnc);
         obs1.addFurniture(obsSlts, obsStats, obsF, obsW, obsWndw, obs1Strs, obs1Tlscp, obs1Lmp, lib4Glb, obs1St, obsBlcny, northDoor);
-        obs2.addFurniture(obsW, obsWndw, obs2Strs, obsBlcny, obs2BkShlf, obs2Pntng, obs2Rlng, obs2Chr, obs2Tbl, obs2Lmp);
-        obs3.addFurniture(obs3Chndlr, obsW, obsWndw, obs3Strs, obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps);
+        obs2.addFurniture(obsW, obs2F, obsWndw, obs2Strs, obsBlcny, obs2BkShlf, obs2Pntng, obs2Rlng, obs2Chr, obs2Tbl, obs2Lmp);
+        obs3.addFurniture(obs3Chndlr, obsW, obs3F, obsWndw, obs3Strs, obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps);
         att1.addFurniture(attF, attW, sst2Dr, attCss, attBxs, attCbwbs, attVnts);
         att2.addFurniture(attF, attW, att2Dr, attBxs, attCss, attCbwbs, attVnts, att2CtCs);
         labo.addFurniture(laboF, att2Dr, wallEx, laboStpCck, laboBrtt, laboGsPipe, laboCntr, iceBrrl, 

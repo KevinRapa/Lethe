@@ -1,5 +1,6 @@
 package Observatory;
 
+import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import A_Main.GUI;
 import A_Main.Player;
@@ -23,23 +24,23 @@ import java.util.Scanner;
  * @see Observatory.Obs2_Bk
  * @author Kevin Rapa
  */
-public class Obs_Statues extends Furniture {
+public class Obs1_Statues extends Furniture {
     private final Furniture[] STATS = {
-        new Obs_Statue("0", "A beautiful woman stands on this base. She stands with long hair and no clothing on a large sea-shell.", 3),
-        new Obs_Statue("1", "The statue depicts a pregnant short-haired female figure holding a newborn.", 2),
-        new Obs_Statue("2", "On this statue stands a towering older male figure. He wears a glorious beard and poses triumphantly holding a trident.", 1),
-        new Obs_Statue("3", "This statue shows a glorious sitting bearded male. He is well-built and dressed in a heavy robe. He holds a scythe.", 4),
-        new Obs_Statue("4", "It shows a tall male figure dressed in soldier's garb. He wears a tall galea helmet and holds a spear and shield.", 5),
-        new Obs_Statue("5", "On its base stands a male figure of average build. He wears sandals, a heavy cloak, and a winged helmet.", 6),
-        new Obs_Statue("6", "A male wearing light armor stands on this base. He holds a staff in his left hand.", 7),
-        new Obs_Statue("7", "This statue depicts a glorious bearded male striding forward holding a lightning bolt. You cannot contain your tears.", 8),
-        new Obs_Statue("8", "The statue displays a monumental male figure crowned with a radiating halo. He rides in a chariot pulled by four steeds.", 0),
+        new Obs1_Statue("0", "A beautiful woman stands on this base. She stands with long hair and no clothing on a large sea-shell.", 3),
+        new Obs1_Statue("1", "The statue depicts a pregnant short-haired female figure holding a newborn.", 2),
+        new Obs1_Statue("2", "On this statue stands a towering older male figure. He wears a glorious beard and poses triumphantly holding a trident.", 1),
+        new Obs1_Statue("3", "This statue shows a glorious sitting bearded male. He is well-built and dressed in a heavy robe. He holds a scythe.", 4),
+        new Obs1_Statue("4", "It shows a tall male figure dressed in soldier's garb. He wears a tall galea helmet and holds a spear and shield.", 5),
+        new Obs1_Statue("5", "On its base stands a male figure of average build. He wears sandals, a heavy cloak, and a winged helmet.", 6),
+        new Obs1_Statue("6", "A male wearing light armor stands on this base. He holds a staff in his left hand.", 7),
+        new Obs1_Statue("7", "This statue depicts a glorious bearded male striding forward holding a lightning bolt. You cannot contain your tears.", 8),
+        new Obs1_Statue("8", "The statue displays a monumental male figure crowned with a radiating halo. He rides in a chariot pulled by four steeds.", 0),
     };
     private final Obs3_Chandelier CHNDLR_REF;
     private boolean solved = false, locked = true;
     private final String[] SOLUTION = {"5", "0", "1", "4", "7", "3", "6", "2"};
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Obs_Statues(Furniture chandlr) {
+    public Obs1_Statues(Furniture chandlr) {
         super();
         this.searchable = false;
         this.description = "An array of 9 statues arranged in a circle. In the\n"
@@ -60,20 +61,15 @@ public class Obs_Statues extends Furniture {
         GUI.out(this.description + "\n");
         
         do {
-            GUI.out(this.getArray() + "\t\t\t\t\t\t" + rep);
-            GUI.menOut("<#> Look...\n< > Back");       
-            choice = GUI.promptOut();
+            GUI.out(this.getArray() + "\t\t\t\t\t\t" + rep);    
+            choice = GUI.askChoice("<#> Look...\n< > Back", "[0-8]|");
             
             if (choice.matches("[0-8]"))
                 rep = getStatRef(choice).getDescription();
-            else if (Player.isNonEmptyString(choice)) {
-                rep = "That's not a valid choice.";
-                choice = NOTHING;
-            }
             
         } while (Player.isNonEmptyString(choice));
         
-        return NOTHING;
+        return null;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
@@ -123,11 +119,15 @@ public class Obs_Statues extends Furniture {
 
             collectToken.close();
         }
-        else if (this.locked)
+        else if (this.locked) {
+            AudioPlayer.playEffect(6);
             rep = "The statues aren't budging. Something might be locking\n"
-                + "them in place";    
-        else        
+                + "them in place";  
+        }
+        else {       
+            AudioPlayer.playEffect(6);
             rep = "The statues have locked in place once again.";
+        }
         
         return rep;
     }
@@ -145,11 +145,11 @@ public class Obs_Statues extends Furniture {
         
         return "\t\t\t\t\t     {"+a+"}¯¯\\" +
                "\t\t        {"+h+"}       {"+b+"}\n" +
-               "\t\t        /\t\t            "
+               "\t\t        /\t\t           "
              + "{"+g+"}    {"+i+"}    {"+c+"}\n" +
-               "\t\t\t    /\t              "
+               "\t\t\t    /\t             "
              + "{"+f+"}       {"+d+"}\n" +
-               "                  \\ _{"+e+"}";
+               "                 \\__{"+e+"}";
     }
 /*----------------------------------------------------------------------------*/
     private void moveStat(String stat) {

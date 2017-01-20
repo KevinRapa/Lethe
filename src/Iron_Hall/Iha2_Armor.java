@@ -20,7 +20,7 @@ public class Iha2_Armor extends Furniture {
                           + "gauntlet is wrapped around it awkwardly.";
         this.actDialog = "You will probably get hurt trying to do that.";
         this.addActKeys("equip", "wear", "pry", "open");
-        this.addNameKeys("(suit of |plate )?armor", "armor suit", "gauntlet");
+        this.addNameKeys("(suit of |plate )?armor", "armor suit", "gauntlet", "hand");
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

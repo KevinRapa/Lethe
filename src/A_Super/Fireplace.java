@@ -43,7 +43,7 @@ public class Fireplace extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     public void extinguish() {
-        AudioPlayer.playEffect(39);
+        AudioPlayer.playEffect(39, -10);
         this.isLit = false;
     }
 /*----------------------------------------------------------------------------*/

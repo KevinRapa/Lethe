@@ -29,31 +29,27 @@ public class Gal6_Button extends Button {
         String choice, roomId;
 
         GUI.out("Are you really sure you want to press the button?");
-        GUI.menOut("\n<'y'> Push\n<'n'> Don't push\n< > Back");
         
-        do {
-            choice = GUI.promptOut();
-            
-            if (choice.matches("y|yes")) {
-                AudioPlayer.playEffect(11);
-                Random generator = new Random();
-                
+        choice = GUI.askChoice("\n<'y'> Push\n<'n'> Don't push\n< > Back", "yes|no|[yn]|");
+
+        if (choice.matches("y|yes")) {
+            AudioPlayer.playEffect(11);
+            Random generator = new Random();
+
+            index = generator.nextInt(Player.getVisitedRooms().size());
+            roomId = Player.getVisitedRooms().get(index);
+
+            while (roomId.matches("STUD|LIB[45]|LOOK|ESC\\d") || 
+                   roomId.equals(Player.getPosId())) {
                 index = generator.nextInt(Player.getVisitedRooms().size());
                 roomId = Player.getVisitedRooms().get(index);
-                
-                while (roomId.matches("STUD|LIB[45]|LOOK|ESC\\d") || 
-                       roomId.equals(Player.getPosId())) {
-                    index = generator.nextInt(Player.getVisitedRooms().size());
-                    roomId = Player.getVisitedRooms().get(index);
-                }
-
-                Player.setOccupies(roomId);  
-
-                return "'... Huh? What just happened? This isn't the gallery loft.'\n" +
-                       "You scratch your head and look around the room.";
             }
-        } while (! choice.matches("yes|no|[yn]|"));
-        
+
+            Player.setOccupies(roomId);  
+
+            return "'... Huh? What just happened? This isn't the gallery loft.'\n" +
+                   "You scratch your head and look around the room.";
+        }
         return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/

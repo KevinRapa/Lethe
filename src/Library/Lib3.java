@@ -15,7 +15,7 @@ public class Lib3 extends Room{
                      "the center of this area is an impressive statue of a\n" +
                      "galloping horse. Against the east wall is both a set of stairs\n" +
                      "leading to the second story and a glass pane window. Against\n" +
-                     "the south wall is a bookshelf labeled \"Creation\". A couch\n" +
+                     "the south wall, below a huge portrait, is a bookshelf labeled \"Creation\". A couch\n" +
                      "sits just in front of a large pillar against the stairs.\n";
     }
 /*----------------------------------------------------------------------------*/

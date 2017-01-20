@@ -27,13 +27,8 @@ public class Pris_Cells extends Furniture implements Openable{
     @Override public String getDescription() {
         GUI.out("There are 6 cells in this room. Each one is labeled with\n"
               + "a number. Inspect which one?");
-        GUI.menOut("\n<#> Inspect");
-        String ans = GUI.promptOut();
         
-        while (! ans.matches("[1-6]|one|two|three|four|five|six")) {
-            GUI.menOut("\nThat's not a valid choice.\n<#> Inspect");
-            ans = GUI.promptOut();
-        }
+        String ans = GUI.askChoice("\n<#> Inspect", "[1-6]|one|two|three|four|five|six");
         
         if (ans.matches("[a-z]+"))
             return ((Pris)Player.getRoomObj(Id.PRIS))

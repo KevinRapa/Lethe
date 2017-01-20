@@ -11,11 +11,7 @@ public class Lib_ParadiseLostBook extends Book {
                        "Heaven and the Fall of Man through the temptation\n" +
                        "of Adam and Eve.";
         
-        PAGE_LIST[1] = "Paradise Lost is an 17th centure epic poem by John\n" +
-                       "Milton, and discusses both Satan's banishment from\n" +
-                       "Heaven and the Fall of Man through the temptation\n" +
-                       "of Adam and Eve.\n" +
-                       "Of Mans First Disobedience, and the Fruit\n" +
+        PAGE_LIST[1] = "Of Mans First Disobedience, and the Fruit\n" +
                        "Of that Forbidden Tree, whose mortal tast\n" +
                        "Brought Death into the World, and all our woe,\n" +
                        "With loss of Eden, till one greater Man\n" +

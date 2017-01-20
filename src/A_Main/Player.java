@@ -209,23 +209,18 @@ public final class Player {
             else if (ans.matches("[a-z]+\\s[a-z ]+")) // Interacting
                 activateSub(ans);
             
+            else if (ans.equals("quit"))
+                return endGame();
+            
             else if (isNonEmptyString(ans))
                 GUI.out("That's not valid.");
 
-        } while (! ans.equals("quit"));
-        
-        return endGame();
+        } while (true);
     }  
     // ========================================================================   
     private static int endGame() {
-        GUI.menOut("\n<'s'> Save and quit\n<'q'> Quit\n<'r'> Reset game and quit.");
-        String ans = GUI.promptOut();
+        String ans = GUI.askChoice("\n<'s'> Save and quit\n<'q'> Quit\n<'r'> Reset game and quit.", "[sqr]");
         
-        while (! ans.matches("[sqr]")) {
-            GUI.menOut("\nPlease enter 's', 'q', or 'r'.\n<'s'> Save and quit\n"
-                     + "<'q'> Quit\n<'r'> Reset game and quit.");
-            ans = GUI.promptOut();
-        }
         return ans.matches("s") ? 1 : 
                ans.matches("q") ? 3 : 2;
     }

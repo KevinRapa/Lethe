@@ -46,7 +46,7 @@ public class Labo_Burette extends Furniture {
 
         this.addNameKeys("(?:glass )?buret(?:te)?", "buret(?:te)? stopcock");
         this.addUseKeys(BOTTLE_OF_WINE, BOTTLE_OF_VINEGAR, TEST_TUBE, EMPTY_VIAL);
-        this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist", "empty");
+        this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist", "empty", "titrate");
     }
     // ========================================================================    
     @Override public String getDescription() {
@@ -78,13 +78,10 @@ public class Labo_Burette extends Furniture {
         if (Player.hasItem(LAB_COAT)) {
             if (mode != Titrant.EMPTY) {
                 GUI.out("Would you like to titrate the " + mode + " or empty the burette?");
-                GUI.menOut("\n<1> Empty the burette\n<2> Titrate the " + mode + ".\n< > Back");
-                String ans = GUI.promptOut();
+
+                String ans = GUI.askChoice("\n<1> Empty the burette\n<2> Titrate the " 
+                                        + mode + ".\n< > Back", "[12]|");
                 
-                while (! ans.matches("[12]|")) {
-                    GUI.menOut("Pick a valid answer.\n<1> Empty the burette\n<2> Titrate the " + mode + ".\n< > Back");
-                    ans = GUI.promptOut();
-                }
                 if (Player.isNonEmptyString(ans)) {
                     switch (Integer.parseInt(ans)) {
                         case 1:

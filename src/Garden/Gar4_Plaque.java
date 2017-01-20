@@ -14,7 +14,7 @@ public class Gar4_Plaque extends Furniture {
         
         this.description = "The small plaque reads, \"In memorium of Oswald, who lived to create.\"";
         this.actDialog = "You move the plaque off to the side.";
-        this.searchDialog = "You look under the plaque to find just soil.";
+        this.searchDialog = "You lift the plaque, but find only soil, and put it back down.";
 
         this.addNameKeys("(?:small )?plaque");
         this.addActKeys("read", "move", "slide", "lift");

@@ -16,15 +16,15 @@ public class Lib2 extends Room {
                       "sits in front of a fireplace. Against the west wall is a\n" +
                       "bookshelf labeled \"Voyage\". East is a second bookshelf\n" +
                       "labeled \"Warfare\". Aside the fireplace is a small rack\n" +
-                      "of shoes. Above that is a glass pane window. In the northeast\n" +
-                      "corner sits a statue.";
+                      "of shoes below a glass pane window. In the northeast\n" +
+                      "corner stands a statue.";
         DESC_MOVED = "You're in the small north end of the library directly under\n" +
                      "the upstairs floor. In the northwest corner, a couch sits\n" +
                      "in front of a fireplace. Against the west wall is the\n" +
                      "displaced bookshelf labeled \"Voyage\". East is a second\n" +
                      "bookshelf labeled \"Warfare\". Aside the fireplace is a\n" +
-                     "small rack of shoes. Above that is a glass pane window.\n" +
-                     "In the northeast corner sits a statue.";
+                     "small rack of shoes below a glass pane window.\n" +
+                     "In the northeast corner stands a statue.";
     }
 /*----------------------------------------------------------------------------*/
     public void moveShelf() {

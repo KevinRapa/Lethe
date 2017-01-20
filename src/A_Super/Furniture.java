@@ -23,7 +23,7 @@ import java.io.Serializable;
  * @author Kevin Rapa
  */
 abstract public class Furniture implements Serializable {
-    protected final String NOTHING = "";
+    protected static final String NOTHING = "";
     protected Inventory inv;
     protected String description,   // Printed when inspected.
                      searchDialog,  // Printed when searched.

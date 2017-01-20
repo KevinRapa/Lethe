@@ -72,14 +72,8 @@ public class Sew2_Valves extends Furniture implements Resetable {
         String ans;
         
         do {
-            GUI.out("There are dials above each.\t\t\t\t\t" + this.printValves() + "\t\t\t\tTurn which one?");
-            GUI.menOut("\n<#> Turn valve\n< > Back");
-            ans = GUI.promptOut();
-        
-            while(! ans.matches("[1-9]|v?i{1,3}|i[vx]|v|")) {
-                GUI.menOut("Enter a valid choice\n<#> Turn valve\n< > Back");
-                ans = GUI.promptOut();
-            }
+            GUI.out("There are dials above each.\t\t\t\t\t" + printValves() + "\t\t\t\tTurn which one?");
+            ans = GUI.askChoice("\n<#> Turn valve\n< > Back", "[1-9]|v?i{1,3}|i[vx]|v|");
 
             if (ans.matches("[1-9]")) 
                 this.turnValve(Integer.parseInt(ans) - 1);

@@ -11,10 +11,10 @@ import A_Super.Item;
  * @see Observatory.Obs_Slts
  * @author Kevin Rapa
  */
-public class Obs_Slot extends Furniture {
+public class Obs1_Slot extends Furniture {
     private final String CORRECT;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
-    public Obs_Slot(String NAME, String correct, String desc, Item ... items) {
+    public Obs1_Slot(String NAME, String correct, String desc, Item ... items) {
         super();
         this.CORRECT = correct;
         this.description = desc;
@@ -57,11 +57,15 @@ public class Obs_Slot extends Furniture {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {
-            if (item.getType().matches(NameConstants.PLATE) && this.size() == 0) {
+            if (item.getType().equals(NameConstants.PLATE) && this.size() == 0) {
                 this.CONTENTS.add(item);
                 return true;
             }
-            GUI.out("There's already a plate in here.");
+            else if (! item.getType().equals(NameConstants.PLATE))
+                GUI.out("There's already a plate in here.");
+            else
+                GUI.out("It doesn't seem like that belongs here.");
+            
             return false;
         }
     }    

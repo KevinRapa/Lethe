@@ -15,20 +15,18 @@ public class DoubleStaircase extends Staircase {
     }
     // ========================================================================   
     @Override public String interact(String key) {     
-        String ans;
+        String ans = GUI.askChoice("\nThere are two flights here.\n<'u'> Go up\n<'d'> Go down", "[ud]|up|down|");
+
+        if (Player.isNonEmptyString(ans)) {
+            Direction dir = ans.matches("up|u") ? Direction.UP : Direction.DOWN; // Z coordinate modifier.
+
+            Player.move(dir);
+            playEffect();  
         
-        GUI.menOut("\nThere are two flights here.\n       <'u'> Go up\n       <'d'> Go down");
-        
-        do {
-            ans = GUI.promptOut();
-        } while (! ans.matches("[ud]|up|down"));
-        
-        Direction dir = ans.matches("up|u") ? Direction.UP : Direction.DOWN; // Z coordinate modifier.
-                
-        Player.move(dir);
-        playEffect();  
-        
-        return "You climb " + dir + " the stairs.";    
+            return "You climb " + dir + " the stairs.";   
+        }
+        else
+            return null;
     }
     // ========================================================================      
 }

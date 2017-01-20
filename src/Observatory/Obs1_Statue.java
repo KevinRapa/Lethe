@@ -7,9 +7,9 @@ import A_Super.Statue;
  * @see Observatory.Obs_Stats
  * @author Kevin Rapa
  */
-public class Obs_Statue extends Statue {
+public class Obs1_Statue extends Statue {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Obs_Statue(String NAME, String desc, int position) {
+    public Obs1_Statue(String NAME, String desc, int position) {
         super();
         this.description = desc;
         this.NAMEKEYS.clear();

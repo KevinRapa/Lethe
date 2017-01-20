@@ -12,7 +12,6 @@ public class Cha2_Altar extends Furniture {
     // ========================================================================
     public Cha2_Altar (Item... items) {
         super(items);
-        this.searchable = false;
         
         this.description = "The altar rests atop a small riser in front of the\n"
                          + "rows of pews. The altar is a tan marble table bearing\n"

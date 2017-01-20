@@ -48,7 +48,7 @@ public class Gar4_Planter extends Furniture {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        return this.interact(NOTHING);
+        return this.interact(null);
     }
     // ========================================================================     
 }

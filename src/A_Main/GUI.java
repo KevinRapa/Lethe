@@ -283,6 +283,20 @@ public class GUI extends JPanel {
         return HOLDER.request();
     }
 /*----------------------------------------------------------------------------*/
+    public static String askChoice(String menu, String pattern) {
+        String answer;
+        
+        menOut(menu);
+        
+        answer = promptOut();
+        
+        while (! answer.matches(pattern)) {
+            menOut("That's not valid" + menu);
+            answer = promptOut();
+        }
+        return answer;
+    }
+/*----------------------------------------------------------------------------*/
     /**
      * Holds player input.
      * @see Text_Field_Listener#actionPerformed 

@@ -28,7 +28,7 @@ public class Labo_Dispensers extends Furniture {
 
         this.addNameKeys("(?:opaque )?dispensers?", "dispenser stopcock");
         this.addUseKeys(EMPTY_VIAL, TEST_TUBE);
-        this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist", "empty");
+        this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist", "empty", "titrate");
     }
     // ========================================================================  
     @Override public String getSearchDialog() {
@@ -69,15 +69,7 @@ public class Labo_Dispensers extends Furniture {
               + "but each bears a label. From left to right, the labels read: \t\t1 - H2CO3   2 - Br "
               + "         3 - Ae      4 - HF          5 - NACL    6 - C20H14O4 \t\t\t\t\tDispense which one?");
         
-        GUI.menOut("\n\n<#> Dispense");
-        String ans = GUI.promptOut();
-        
-        while (! ans.matches("[1-6]")) {
-            GUI.menOut("\nThat's not a valid choice.\n"
-                     + "        <#> Dispense.");
-            
-            ans = GUI.promptOut();
-        }
+        String ans = GUI.askChoice("\n<#> Dispense", "[1-6]");
         
         GUI.out("Liquid will be dispensed in 5 mL increments. Press enter to start titrating. Press enter to stop titrating.");
         GUI.menOut("Press enter...");
@@ -103,13 +95,9 @@ public class Labo_Dispensers extends Furniture {
     // ========================================================================  
     private boolean askToDispense() {
         GUI.out("You have something to dispense into. Would you like to dispense liquid?");
-        GUI.menOut("\nDispense?\n<'y'/'n'>");
-        String ans = GUI.promptOut();
+
+        String ans = GUI.askChoice("\nDispense?\n<'y'/'n'>", "[yn]|yes|no");
         
-        while (! ans.matches("[yn]|yes|no")) {
-            GUI.out("Please type a valid answer");
-            ans = GUI.promptOut();
-        }
         return ans.matches("y|yes");
     }
     // ========================================================================  

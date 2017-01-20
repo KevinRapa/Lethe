@@ -46,7 +46,7 @@ public class Gal7_Statue extends Statue {
     private String raise() {
         this.level++; 
         Player.getRoomObj(Id.GAL5).unlock();
-        AudioPlayer.playEffect(38);
+        AudioPlayer.playEffect(38, -10);
         return "The crystal orb in the statue's palm glows with a dark\n"
              + "hellish glow. Cogwork can be heard behind the walls and\n"
              + "before long, you hear a clicking sound down below.";

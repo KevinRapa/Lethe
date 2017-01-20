@@ -21,7 +21,7 @@ public class Labo_Condenser extends Furniture {
         this.BEAKER_REF = new Labo_Beaker(beakerItem);
         
         this.description = "This half of the contraption consists of a long, curved\n"
-                         + "glass tube on a stand. The glass tube has a switch attached to a stopper inside the tube."
+                         + "glass tube on a stand. The glass tube has a switch attached to a stopper inside the tube.\n"
                          + "The tube extends from the condenser and ends hanging above a ";
         this.actDialog = "You toggle the switch attached to the stopper. It's now ";
         this.searchDialog = "The contraption is comprised of many alchemical components.\n"

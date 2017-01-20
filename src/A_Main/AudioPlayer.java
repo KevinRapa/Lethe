@@ -163,6 +163,7 @@ public class AudioPlayer {
         add(new File(WD, "effects" + S + "fireDouse.wav"));     // 39
         add(new File(WD, "effects" + S + "stairFlatten.wav"));  // 40
         add(new File(WD, "effects" + S + "woodSliding.wav"));   // 41
+        add(new File(WD, "effects" + S + "waterScoop.wav"));    // 42
     }};
 //******************************************************************************    
 // </editor-fold>

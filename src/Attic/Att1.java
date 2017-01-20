@@ -33,11 +33,7 @@ public class Att1 extends Room {
     }
 // ============================================================================
     @Override public String triggeredEvent() {
-        if (! Player.hasVisited(Id.ATT1))
-            GUI.out("You feel an unnerving presence here. You shutter and look\n"
-                  + "around, but see nothing but dark.");
-        
-        else if (Player.hasItem(PHASE_DOOR_POTION) && ! this.captured) {
+        if (Player.hasItem(PHASE_DOOR_POTION) && ! this.captured) {
             this.captured = true;
             this.dialog();
             
@@ -59,14 +55,14 @@ public class Att1 extends Room {
         GUI.invOut("");
         
         GUI.out("As you exit the laboratory, you are startled to see a hideous, decrepit\n"
-              + "bald male standing among the shadows in the center of the attic.\n"
+              + "bald male wearing black robes standing among the shadows in the center of the attic.\n"
               + "You freeze, unable to move. Several seconds pass...");
         GUI.promptOut();
         
         GUI.out("   ...");
         GUI.promptOut();
         
-        GUI.out("\"I have been following you...\"");
+        GUI.out("\" ... ...");
         GUI.promptOut();
         
         GUI.out("Several more seconds pass. Before you can realize, you are\n"

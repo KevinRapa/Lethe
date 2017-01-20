@@ -89,10 +89,9 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         boolean played = false; // If the player has played at least once.
         
         do {
-            GUI.menOut("<'yes'>\n<'no'>");
-            ans = GUI.promptOut();
+            ans = GUI.askChoice("\nPlay?\n<'n'/'y'>", "yes|no|[yn]|");
             
-            if (ans.equals("yes")) {
+            if (ans.matches("y|yes")) {
                 played = true;
                 Player.getInv().remove(NameConstants.CARD); // Removes all cards from player inventory.
                 GUI.clearDialog();
@@ -100,7 +99,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
             }
             Player.printInv();
             
-        } while (! ans.equals("no"));
+        } while (! ans.matches("n|no"));
         
         GUI.clearDialog();
         

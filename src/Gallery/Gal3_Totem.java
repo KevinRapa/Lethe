@@ -81,16 +81,12 @@ public class Gal3_Totem extends Gal_LightMachine {
             GUI.out("           " + four + "       \t" + three + "\t\t" + 
                        two + "\t\t" + one + "\t\t\t\t\t\t" + result);
         
-            GUI.menOut("<#> Turn head\n< > Back");           
-
-            action = GUI.promptOut();
+            action = GUI.askChoice("\n<#> Turn head\n< > Back", "[1234]|");
         
             if (action.matches("[1234]")) {
                 this.turnHead(Integer.parseInt(action));
-                
                 result = this.check();
-            }          
-            
+            }            
         } while (Player.isNonEmptyString(action));
         
         return this.actDialog;

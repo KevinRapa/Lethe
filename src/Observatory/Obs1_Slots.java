@@ -7,24 +7,24 @@ import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Item;
 
-public class Obs_Slots extends Furniture {
-    private final ArrayList<Obs_Slot> SLOTS = new ArrayList<>();
+public class Obs1_Slots extends Furniture {
+    private final ArrayList<Obs1_Slot> SLOTS = new ArrayList<>();
     private final HashMap<Character, Integer> MAP = new HashMap<>();
-    private final Obs_Statues STATS_REF;
+    private final Obs1_Statues STATS_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Obs_Slots(Item hlsPlt, Furniture stats) {
+    public Obs1_Slots(Item hlsPlt, Furniture stats) {
         super();
         this.searchable = false;
         
-        SLOTS.add(new Obs_Slot("I", "Sol",       "Inside the slot: \"Helios\""));
-        SLOTS.add(new Obs_Slot("A", "Mercury",   "Inside the slot: \"Hermes\""));
-        SLOTS.add(new Obs_Slot("B", "Venus",     "Inside the slot: \"Aphrodite\""));
-        SLOTS.add(new Obs_Slot("C", "Terra",     "Inside the slot: \"Gaea\""));
-        SLOTS.add(new Obs_Slot("D", "Mars",      "Inside the slot: \"Ares\""));
-        SLOTS.add(new Obs_Slot("E", "Jupiter",   "Inside the slot: \"Zeus\""));
-        SLOTS.add(new Obs_Slot("F", "Saturn",    "Inside the slot: \"Kronos\""));
-        SLOTS.add(new Obs_Slot("G", "Caelus",    "Inside the slot: \"Uranus\""));
-        SLOTS.add(new Obs_Slot("H", "Neptune",   "Inside the slot: \"Posiedon\""));
+        SLOTS.add(new Obs1_Slot("I", "Sol",       "Inside the slot: \"Helios\""));
+        SLOTS.add(new Obs1_Slot("A", "Mercury",   "Inside the slot: \"Hermes\""));
+        SLOTS.add(new Obs1_Slot("B", "Venus",     "Inside the slot: \"Aphrodite\""));
+        SLOTS.add(new Obs1_Slot("C", "Terra",     "Inside the slot: \"Gaea\""));
+        SLOTS.add(new Obs1_Slot("D", "Mars",      "Inside the slot: \"Ares\""));
+        SLOTS.add(new Obs1_Slot("E", "Jupiter",   "Inside the slot: \"Zeus\""));
+        SLOTS.add(new Obs1_Slot("F", "Saturn",    "Inside the slot: \"Kronos\""));
+        SLOTS.add(new Obs1_Slot("G", "Caelus",    "Inside the slot: \"Uranus\""));
+        SLOTS.add(new Obs1_Slot("H", "Neptune",   "Inside the slot: \"Posiedon\""));
         
         MAP.put('i', 0); MAP.put('a', 1); MAP.put('b', 2); MAP.put('c', 3); 
         MAP.put('e', 5); MAP.put('f', 6); MAP.put('g', 7); MAP.put('h', 8); 
@@ -35,40 +35,40 @@ public class Obs_Slots extends Furniture {
         this.description = "It's an array of 9 brass indentations in the floor at the\n"
                          + "base of each statue. Each one bears an inscription inside.";
         this.searchDialog = "You inspect the array of slots.";
-        this.STATS_REF = (Obs_Statues)stats;
+        this.STATS_REF = (Obs1_Statues)stats;
         
         this.addNameKeys("(?:brass )?(?:slots?|indentations?)");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        String rep = "", choice;
+        String choice;
         
         do {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
-                    "\t\t\t\t\t\t\t\tLook at which slot? "); 
-            GUI.menOut("<'a-i'> Look...\n< > Back");
-            choice = GUI.promptOut();
+                    "\t\t\t\t\t\tLook at which slot? "); 
+
+            choice = GUI.askChoice("\n<'a-i'> Look...\n< > Back", "[a-i]|");
            
-            if (choice.matches("[abcdefghi]"))
+            if (choice.matches("[a-i]"))
                 GUI.descOut(SLOTS.get(MAP.get(choice.charAt(0))).getDescription());
 
         } while (Player.isNonEmptyString(choice));
         
         GUI.descOut(Player.getPos().getDescription());
         
-        return rep;
+        return null;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = NOTHING, choice;
+        String rep = null, choice;
         
         do {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
-                    "\t\t\t\t\t\t\t\tSearch which slot? "); 
-            GUI.menOut("<'a-i'> Search...\n< > Back");
-            choice = GUI.promptOut();
+                    "\t\t\t\t\t\tSearch which slot? "); 
+
+            choice = GUI.askChoice("\n<'a-i'> Search...\n< > Back", "[a-i]|");
            
-            if (choice.matches("[abcdefghi]")) {
+            if (choice.matches("[a-i]")) {
                 Furniture slot = SLOTS.get(MAP.get(choice.charAt(0)));
                 Player.search(slot);
                 
@@ -104,11 +104,11 @@ public class Obs_Slots extends Furniture {
         
         return "\t\t\t\t\t     {"+a+"}   " +
                "\t\t        {"+h+"}       {"+b+"}\n" +
-               "\t\t         \t\t            "
+               "\t\t         \t\t           "
              + "{"+g+"}    {"+i+"}    {"+c+"}\n" +
-               "\t\t\t     \t              "
+               "\t\t\t     \t             "
              + "{"+f+"}       {"+d+"}\n" +
-               "                     {"+e+"}";
+               "                    {"+e+"}";
     }
 /*----------------------------------------------------------------------------*/
     public int getIndex(String stat) {
@@ -126,7 +126,7 @@ public class Obs_Slots extends Furniture {
     public boolean checkSolved() {
         boolean isSolved = true;
         
-        for (Obs_Slot s : this.SLOTS) 
+        for (Obs1_Slot s : this.SLOTS) 
             if (! s.isCorrect())
                 isSolved = false;  
         

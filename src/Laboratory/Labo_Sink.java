@@ -45,7 +45,7 @@ public class Labo_Sink extends Furniture {
         else {
             Player.getInv().remove(item);
             
-            if (! item.toString().equals(POTION_OF_SCIENCE))
+            if (item.toString().equals(POTION_OF_SCIENCE))
                 Player.getInv().add(BEAKER_REF);
             else
                 Player.getInv().add(TUBE_REF);

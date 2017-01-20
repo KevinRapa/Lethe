@@ -47,13 +47,8 @@ public class Vaue_Door extends Furniture {
         
         do {
             GUI.out(this.printButtons());
-            GUI.menOut("\n<x, y> Push\n< > Back");
-            ans = GUI.promptOut();
-            
-            while (! ans.matches("(?:[1-4]\\s*,\\s*[1-4])|")) {
-                GUI.menOut("\nThat's not a valid choice.\n<#,#> Push\n< > Back");
-                ans = GUI.promptOut();
-            }
+
+            ans = GUI.askChoice("\n<x, y> Push\n< > Back", "(?:[1-4]\\s*,\\s*[1-4])|");
             
             if (Player.isNonEmptyString(ans)) {
                 String[] crds = ans.split("\\s*,\\s*");

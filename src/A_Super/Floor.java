@@ -18,7 +18,7 @@ public class Floor extends Furniture {
             this.searchDialog = "You crouch down and scan the ground.";
             this.actDialog = "That's solid floor! Why would you think to do that?";
             this.useDialog = "There's no reason to stand the ladder up in here.";
-            this.addActKeys("dig");
+            this.addActKeys("dig", "shovel");
             this.addUseKeys(FIXED_LADDER, SHOVEL, TROWEL);
             this.addNameKeys("floor", "ground", "walkway");
     }

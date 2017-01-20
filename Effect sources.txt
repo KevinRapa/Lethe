@@ -157,3 +157,7 @@ Library stairs flattening
 Wood sliding
 	https://www.freesound.org/people/Evil-Dog/sounds/265338/
 	Sliding Wooden Door.wav -- Evil-Dog
+
+Filling bucket
+	https://www.freesound.org/people/qubodup/sounds/210424/
+	Scooping Water -- qubodup

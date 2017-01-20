@@ -37,6 +37,7 @@ public class Sear_Fissure extends Furniture {
             return this.useDialog;
         }
         else if (! this.broken) {
+            AudioPlayer.playEffect(35);
             if (item.toString().equals(HAMMER)) {
                 return "You give it a swing, but this hammer is too\n"
                      + "small to break this wall. They must've been\n"

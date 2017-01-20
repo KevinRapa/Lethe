@@ -1,7 +1,9 @@
 package A_Super;
 
-import A_Main.Player;
+import A_Main.GUI;
+import A_Main.Inventory;
 import static A_Main.NameConstants.HAND_TORCH;
+import A_Main.Player;
 /**
  * Represents a wall-mounted torch that can be taken.
  * Torches are useful for a few things.
@@ -61,5 +63,25 @@ public class Torch extends Furniture {
     @Override public String getSearchDialog() {
         return this.getDescription();
     }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/    
+/*----------------------------------------------------------------------------*/
+    private class HolderInventory extends Inventory {  
+    // CONSTRUCTOR -------------------------------------------------------------      
+        public HolderInventory(Item ... items) {
+            super(items);
+        }
+    /*------------------------------------------------------------------------*/
+        @Override public boolean add(Item item) { 
+            if (item.toString().equals(HAND_TORCH) && this.size() == 0) {
+                this.CONTENTS.add(item);
+                return true;
+            }
+            GUI.out("The " + item + " doesn't fit in.");
+            return false;
+        }
+    }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/    
 /*----------------------------------------------------------------------------*/
 }

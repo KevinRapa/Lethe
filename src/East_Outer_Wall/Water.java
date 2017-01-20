@@ -1,5 +1,6 @@
 package East_Outer_Wall;
 
+import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
@@ -24,6 +25,7 @@ public class Water extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
+        AudioPlayer.playEffect(42);
         Player.getInv().remove(item);
         Player.getInv().add(BUCKET_REF);
         
