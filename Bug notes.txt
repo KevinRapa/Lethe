@@ -1,29 +1,18 @@
 BUGS TO FIX
-	turning totem doesnt switch heads
-	cannon battery buggy. warns after taking it away
-	cannon emits blue beam to starts
-	Correct spacing in light machine
-	machines in gal should print something else when incorrect item it used on it
 
-THERES STUFF ON THE GALLERY FLOOR
+
+
+
 
 MOVING NOISES
 	portrait moving noise
-	bed moving noise
-	sound of voyage moving
 	horse compartment opening
+
 BASHING NOISES
-	battering ram noise
-	stairs flattening		
-	door in dining room slamming
+
 OTHER NOISES
 	whirring noise for light machines
 	safe opening click
-	locked cabinets make handle noise
-	molded key, do key noise when found
 	mha2 door disk noise
-	perhaps make a sort inventory option in inventory
-	dousing flames noise
-	statue raising noise
 	totem roratin
 	rope being cut

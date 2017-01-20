@@ -4,7 +4,9 @@ import A_Main.Id;
 import A_Super.Staircase;
 import A_Main.Player;
 import A_Super.Direction;
-
+/**
+ * @author Kevin Rapa
+ */
 public class Cou3_Stps extends Staircase {
 /*----------------------------------------------------------------------------*/    
     public Cou3_Stps(Direction direction) {

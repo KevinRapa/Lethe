@@ -14,10 +14,10 @@ public class Rotu extends Room {
     public Rotu(String name, String ID) {
         super(name, ID);
         
-        this.NDOOR = new Rotu_Dr(Direction.NORTH);
-        this.SDOOR = new Rotu_Dr(Direction.SOUTH);
-        this.EDOOR = new Rotu_Dr(Direction.EAST);
-        this.WDOOR = new Rotu_Dr(Direction.WEST);
+        this.NDOOR = new Rotu_Door(Direction.NORTH);
+        this.SDOOR = new Rotu_Door(Direction.SOUTH);
+        this.EDOOR = new Rotu_Door(Direction.EAST);
+        this.WDOOR = new Rotu_Door(Direction.WEST);
         
         this.addFurniture(WDOOR, EDOOR);
         

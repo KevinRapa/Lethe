@@ -1,11 +1,19 @@
 package Courtyard;
 
+import A_Main.AudioPlayer;
 import static A_Main.NameConstants.SHOVEL;
 import static A_Main.NameConstants.TROWEL;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-
+/**
+ * The player digs a hole here to find a brass plate needed for Observatory puzzle
+ * 
+ * @see Observatory.Obs_Stats
+ * @see Observatory.Obs_Slts
+ * @see Courtyard.Cou1_Hl
+ * @author Kevin Rapa
+ */
 public class Cou1_Flr extends Furniture {
     private final Furniture HOLE_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
@@ -36,6 +44,7 @@ public class Cou1_Flr extends Furniture {
             return "You have already dug up the ground here.";
         else {
             Player.getPos().addFurniture(HOLE_REF);
+            AudioPlayer.playEffect(34);
             return this.useDialog;
         }
     }

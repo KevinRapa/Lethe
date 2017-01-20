@@ -7,11 +7,11 @@ import A_Super.Room;
 import A_Super.Furniture;
 
 public class Lib4 extends Room{
-    private final Lib4_Tbl REF;
+    private final Lib4_Table REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib4(String name, String ID, Furniture tbl) {
         super(name, ID);
-        this.REF = (Lib4_Tbl)tbl;
+        this.REF = (Lib4_Table)tbl;
         description= "At the top step of the stairs, you gaze into the north end\n" +
                      "of the second floor. A couch sits in front of a fireplace in\n" +
                      "the far corner. A glimmering object catches your eye on a table\n"

@@ -1,5 +1,6 @@
 package Foyer;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -30,6 +31,7 @@ public class Foy2_Stat extends Statue {
         if (key.matches("(?:push|pull|move|slide)")) {
             if (! this.moved) {
                 Player.getRoomObj(Id.FOY2).addFurniture(REF);
+                AudioPlayer.playEffect(41);
                 this.moved = true;
                 return "You push the statue and manage to displace it a bit.\n"
                      + "In the alcove, behind the statue, you discover a lever."; 

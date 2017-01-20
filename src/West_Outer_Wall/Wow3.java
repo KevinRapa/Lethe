@@ -44,7 +44,7 @@ public class Wow3 extends Room {
         if (Player.getLastVisited().equals(Id.WOW2)) {
             if (Player.hasVisited(this.ID)) {
                 if (! this.hasFurniture("ladder"))
-                    this.addFurniture(new Wow2_Strs(Direction.DOWN));
+                    this.addFurniture(new Wow2_Stairs(Direction.DOWN));
                 GUI.out("The ladder creaks with instability. You were more\n"
                       + "careful in scaling the ladder this time.");
             }

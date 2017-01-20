@@ -38,11 +38,10 @@ public class Cha1_Water extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) { 
-        
         if (key.matches("swim"))
             return "How in the world are you going to fit in there??";
-        
-        return "This water isn't for drinking.";
+        else
+            return "This water isn't for drinking.";
     }
 /*----------------------------------------------------------------------------*/
 }

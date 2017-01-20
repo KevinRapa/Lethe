@@ -1,8 +1,8 @@
 package Vestibule;
 
-import A_Super.Wall_Art;
+import A_Super.WallArt;
 
-public class Vest_Tpstr extends Wall_Art {
+public class Vest_Tpstr extends WallArt {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Vest_Tpstr() {
         super();

@@ -3,7 +3,6 @@ package Caves;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Item;
-import A_Super.Room;
 import java.util.Random;
 /**
  * This item teleports the player to a room in the castle that the player has
@@ -19,7 +18,6 @@ public class Factum extends Item {
         super(name);
         this.useID = 1;
         this.type = "phylactery";
-        this.generator = new Random();
         this.description = "You find that you can't describe it very well. It's\n"
                          + "quite light and keeps folding in on itself- changing\n"
                          + "shape. You can't recognize the color either. Almost ultraviolet.";

@@ -13,14 +13,14 @@ abstract public class Dungeon_Tunnel extends Room {
 // ============================================================================    
     public Dungeon_Tunnel(String name, String ID) {
         super(name, ID);
-        this.addFurniture(new Dng_Monst_Furn());
+        this.addFurniture(new DungeonMonsterFurniture());
     }
 // ============================================================================
     @Override public String triggeredEvent() {
-        if (Dungeon_Monst.isInactive())
-            Dungeon_Monst.startMovement();
+        if (DungeonMonster.isInactive())
+            DungeonMonster.startMovement();
             
-        Dungeon_Monst.checkForPlayer();
+        DungeonMonster.checkForPlayer();
         return "You are " + Player.getPos() + ".";
     }
 // ============================================================================

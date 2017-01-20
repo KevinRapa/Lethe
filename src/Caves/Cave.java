@@ -165,12 +165,7 @@ public class Cave extends Room {
             System.out.println(ex.getMessage());
         }
 
-        
-        
-        if (Player.hasItem(HAND_TORCH))
-            return distortDescription(DISTANCE, STD_RM_OUT);
-        else
-            return "???";
+        return Player.hasItem(HAND_TORCH) ? distortDescription(DISTANCE, STD_RM_OUT) : "???";
     }
 // ============================================================================
     /**
@@ -191,10 +186,7 @@ public class Cave extends Room {
             swapChars(charArray, i, j); 
             charArray[GENERATOR.nextInt(length)] += 20; // Shifts character up the unicode set.
         }
-        
-        for (int d = 42; d > degree*7; d--) {
-            
-        }
+
         return new String(charArray);
     }
 // ============================================================================

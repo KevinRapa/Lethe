@@ -2,7 +2,9 @@ package Courtyard;
 
 import A_Super.Furniture;
 import A_Super.Item;
-
+/**
+ * @author Kevin Rapa
+ */
 public class Cou2_Bshs extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou2_Bshs(Item ... items) {

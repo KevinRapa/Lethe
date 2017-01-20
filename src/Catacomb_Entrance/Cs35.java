@@ -1,11 +1,13 @@
 package Catacomb_Entrance;
+
+import A_Super.Room;
 /**
- * Serves as the entrance to the catacombs and is superficial.
+ * Access to catacombs, a maze complex leading to the caves.
  * 
+ * @see Caves.Cave
+ * @see Catacombs.Catacomb
  * @author Kevin Rapa
  */
-import A_Super.Room;
-
 public class Cs35 extends Room {
 // ============================================================================    
     public Cs35(String name, String ID) {

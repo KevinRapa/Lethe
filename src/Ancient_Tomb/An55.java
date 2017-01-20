@@ -7,8 +7,8 @@ import A_Super.Room;
  * The casket contains the location of the iridescent jewel. To open the casket,
  * the player must find three keys hidden in parts of the catacombs.
  * 
- * @see Ancient_Tomb.Ant_NPC
- * @see Ancient_Tomb.Ant_Cskt
+ * @see Ancient_Tomb.Ant_Zombie
+ * @see Ancient_Tomb.Ant_Casket
  * @author Kevin Rapa
  */
 public class An55 extends Room {

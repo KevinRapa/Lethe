@@ -18,6 +18,7 @@ public class Intr extends Room {
 // ============================================================================    
     public Intr(String name, String ID, Furniture ... furniture) {
         super(name, ID);
+        
         this.description= "You wake up in a noisy chamber. A torch on the\n" +
                           "north wall lights the room just dimly enough to see.\n" +
                           "A water wheel spins on an axle spanning the length\n" +

@@ -3,9 +3,11 @@ package Closet;
 import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Staircase;
-
+/**
+ * @author Kevin Rapa
+ */
 public class Gqua_Lddr extends Staircase {
-    
+/*----------------------------------------------------------------------------*/
     public Gqua_Lddr(Direction direction) {
         super(direction);
         String mode = direction == Direction.DOWN ? "floor" : "ceiling";
@@ -16,9 +18,9 @@ public class Gqua_Lddr extends Staircase {
         this.NAMEKEYS.clear();
         this.addNameKeys("(?:sturdy )?(?:wood )?ladder");
     }
-    /*------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
     @Override protected void playEffect() {
         AudioPlayer.playEffect(16);
     }
-    /*------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
 }

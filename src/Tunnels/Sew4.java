@@ -6,15 +6,15 @@ import A_Super.Furniture;
  * Superficial.
  * Contains a pipe with a missing piece which player must replace.
  * 
- * @see Tunnels.Sew4_Pp
+ * @see Tunnels.Sew4_Pipe
  * @author Kevin Rapa
  */
 public class Sew4 extends Dungeon_Tunnel {
-    private final Sew4_Pp SEW4_PP;
+    private final Sew4_Pipe SEW4_PP;
 // ============================================================================    
     public Sew4(String name, String ID, Furniture sew4Pp) {
         super(name, ID);
-        this.SEW4_PP = (Sew4_Pp)sew4Pp;
+        this.SEW4_PP = (Sew4_Pipe)sew4Pp;
         
         this.description= "The tunnel bends to the north here. The river, following\n" +
                           "the tunnel's north wall, bends with it. A metal pipe\n" +

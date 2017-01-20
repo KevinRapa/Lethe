@@ -8,7 +8,7 @@ import A_Super.Item;
  * Contains one of the plates needed for the observatory puzzle.
  * 
  * @see Observatory.Obs_Slts
- * @see Courtyard.Cou1_Hl
+ * @see Courtyard.Cou1_Flr
  * @author Kevin Rapa
  */
 public class Cou1_Hl extends Furniture {

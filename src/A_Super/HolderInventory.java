@@ -1,0 +1,26 @@
+package A_Super;
+/**
+ * This is a special inventory for mounted torch holders.
+ * Only hand torches can be added to this, and this may only hold one hand torch.
+ * @author Kevin Rapa
+ */
+import A_Main.Inventory;
+import A_Main.GUI;
+import static A_Main.NameConstants.HAND_TORCH;
+
+public class HolderInventory extends Inventory {  
+// CONSTRUCTOR -----------------------------------------------------------------      
+    public HolderInventory(Item ... items) {
+        super(items);
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public boolean add(Item item) { 
+        if (item.toString().equals(HAND_TORCH) && this.size() == 0) {
+            this.CONTENTS.add(item);
+            return true;
+        }
+        GUI.out("The " + item + " doesn't fit in.");
+        return false;
+    }
+/*----------------------------------------------------------------------------*/
+}

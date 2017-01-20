@@ -9,6 +9,7 @@ import static A_Main.Id.*;
 import java.util.HashMap;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
@@ -119,39 +120,49 @@ public class AudioPlayer {
 //******************************************************************************
 // <editor-fold desc="SOUND EFFECTS"> 
 //******************************************************************************    
-    private static final HashMap<Integer, File> EFFECTS = new HashMap() {{
-        put(0,  new File(WD, "effects" + S + "steps.wav"));      
-        put(1,  new File(WD, "effects" + S + "inventory.wav"));      
-        put(2,  new File(WD, "effects" + S + "pageTurn.wav"));
-        put(3,  new File(WD, "effects" + S + "keys.wav"));       
-        put(4,  new File(WD, "effects" + S + "doorKnock.wav"));    
-        put(5,  new File(WD, "effects" + S + "doorLocking.wav"));
-        put(6,  new File(WD, "effects" + S + "wallThump.wav"));  
-        put(7,  new File(WD, "effects" + S + "gateSlam.wav"));     
-        put(8,  new File(WD, "effects" + S + "doorSlam.wav"));
-        put(9,  new File(WD, "effects" + S + "doorClose.wav"));  
-        put(10, new File(WD, "effects" + S + "basicClick.wav"));  
-        put(11, new File(WD, "effects" + S + "buttonPush.wav"));
-        put(12, new File(WD, "effects" + S + "leverPull.wav")); 
-        put(13, new File(WD, "effects" + S + "doorUnlock.wav"));  
-        put(14, new File(WD, "effects" + S + "woodStairClimb.wav"));
-        put(15, new File(WD, "effects" + S + "stoneSteps.wav"));
-        put(16, new File(WD, "effects" + S + "ladder.wav"));
-        put(17, new File(WD, "effects" + S + "dungeonValve.wav"));
-        put(18, new File(WD, "effects" + S + "rotundaRotate.wav"));
-        put(19, new File(WD, "effects" + S + "rotundaRotate2.wav"));
-        put(20, new File(WD, "effects" + S + "valveTurn.wav"));
-        put(21, new File(WD, "effects" + S + "keyClick.wav"));
-        put(22, new File(WD, "effects" + S + "keyClick2.wav"));
-        put(23, new File(WD, "effects" + S + "keyClick3.wav"));
-        put(24, new File(WD, "effects" + S + "dungeonDoor.wav"));
-        put(25, new File(WD, "effects" + S + "monster.wav"));
-        put(26, new File(WD, "effects" + S + "windowOpening.wav"));
-        put(27, new File(WD, "effects" + S + "keyDrop.wav"));
-        put(28, new File(WD, "effects" + S + "foyGateSwitch.wav"));
-        put(29, new File(WD, "effects" + S + "sparkles.wav"));
-        put(30, new File(WD, "effects" + S + "rocksCrumbling.wav"));
-        put(31, new File(WD, "effects" + S + "ladderFalling.wav"));
+    private static final ArrayList<File> EFFECTS = new ArrayList() {{
+        add(new File(WD, "effects" + S + "steps.wav"));         // 0
+        add(new File(WD, "effects" + S + "inventory.wav"));     // 1
+        add(new File(WD, "effects" + S + "pageTurn.wav"));      // 2
+        add(new File(WD, "effects" + S + "keys.wav"));          // 3
+        add(new File(WD, "effects" + S + "doorKnobJiggle.wav"));// 4   
+        add(new File(WD, "effects" + S + "doorLocking.wav"));   // 5
+        add(new File(WD, "effects" + S + "wallThump.wav"));     // 6
+        add(new File(WD, "effects" + S + "gateSlam.wav"));      // 7
+        add(new File(WD, "effects" + S + "doorSlam.wav"));      // 8
+        add(new File(WD, "effects" + S + "doorClose.wav"));     // 9
+        add(new File(WD, "effects" + S + "basicClick.wav"));    // 10
+        add(new File(WD, "effects" + S + "buttonPush.wav"));    // 11
+        add(new File(WD, "effects" + S + "leverPull.wav"));     // 12
+        add(new File(WD, "effects" + S + "doorUnlock.wav"));    // 13
+        add(new File(WD, "effects" + S + "woodStairClimb.wav"));// 14
+        add(new File(WD, "effects" + S + "stoneSteps.wav"));    // 15
+        add(new File(WD, "effects" + S + "ladder.wav"));        // 16
+        add(new File(WD, "effects" + S + "dungeonValve.wav"));  // 17
+        add(new File(WD, "effects" + S + "rotundaRotate.wav")); // 18
+        add(new File(WD, "effects" + S + "rotundaRotate2.wav"));// 19
+        add(new File(WD, "effects" + S + "valveTurn.wav"));     // 20
+        add(new File(WD, "effects" + S + "keyClick.wav"));      // 21
+        add(new File(WD, "effects" + S + "keyClick2.wav"));     // 22
+        add(new File(WD, "effects" + S + "keyClick3.wav"));     // 23
+        add(new File(WD, "effects" + S + "dungeonDoor.wav"));   // 24
+        add(new File(WD, "effects" + S + "monster.wav"));       // 25
+        add(new File(WD, "effects" + S + "windowOpening.wav")); // 26
+        add(new File(WD, "effects" + S + "keyDrop.wav"));       // 27
+        add(new File(WD, "effects" + S + "foyGateSwitch.wav")); // 28
+        add(new File(WD, "effects" + S + "sparkles.wav"));      // 29
+        add(new File(WD, "effects" + S + "rocksCrumbling.wav"));// 30
+        add(new File(WD, "effects" + S + "ladderFalling.wav")); // 31
+        add(new File(WD, "effects" + S + "enchantPop.wav"));    // 32
+        add(new File(WD, "effects" + S + "handDrill.wav"));     // 33
+        add(new File(WD, "effects" + S + "digging.wav"));       // 34
+        add(new File(WD, "effects" + S + "metalPing.wav"));     // 35
+        add(new File(WD, "effects" + S + "hoseClimb.wav"));     // 36
+        add(new File(WD, "effects" + S + "galleryStatue.wav")); // 37
+        add(new File(WD, "effects" + S + "galleryGears.wav"));  // 38
+        add(new File(WD, "effects" + S + "fireDouse.wav"));     // 39
+        add(new File(WD, "effects" + S + "stairFlatten.wav"));  // 40
+        add(new File(WD, "effects" + S + "woodSliding.wav"));   // 41
     }};
 //******************************************************************************    
 // </editor-fold>

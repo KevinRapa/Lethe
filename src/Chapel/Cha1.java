@@ -1,7 +1,11 @@
 package Chapel;
 
 import A_Super.Room;
-
+/**
+ * Where the player obtains holy water to make the mandragora.
+ * 
+ * @author Kevin Rapa
+ */
 public class Cha1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cha1(String name, String ID) {

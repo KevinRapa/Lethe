@@ -1,7 +1,9 @@
 package Closet;
 
 import A_Super.Item;
-
+/**
+ * @author Kevin Rapa
+ */
 public class Scrw extends Item {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Scrw(String name, Item forms, int thresh) {

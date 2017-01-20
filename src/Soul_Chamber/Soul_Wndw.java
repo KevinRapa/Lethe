@@ -1,10 +1,10 @@
 package Soul_Chamber;
 
-import A_Super.Static_Wndw;
+import A_Super.StaticWndw;
 /**
  * @author Kevin Rapa
  */
-public class Soul_Wndw extends Static_Wndw {
+public class Soul_Wndw extends StaticWndw {
     // ========================================================================
     public Soul_Wndw () {
         super();

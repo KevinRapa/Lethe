@@ -1,7 +1,9 @@
 package Closet;
 
 import A_Super.Furniture;
-
+/**
+ * @author Kevin Rapa
+ */
 public class Gqua_Stl extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Stl() {

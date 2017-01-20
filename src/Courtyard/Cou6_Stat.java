@@ -1,7 +1,9 @@
 package Courtyard;
 
 import A_Super.Statue;
-
+/**
+ * @author Kevin Rapa
+ */
 public class Cou6_Stat extends Statue {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou6_Stat() {

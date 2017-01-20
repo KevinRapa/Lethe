@@ -1,5 +1,6 @@
 package Courtyard;
 
+import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
@@ -26,6 +27,7 @@ public class Cou5_Sprc extends Furniture {
         this.VIAL_REF = vial;
         this.drilled = false;
         
+        this.addActKeys("drill");
         this.addNameKeys("tree", "spruce", "spruce tree");
         this.addUseKeys(HAND_DRILL, EMPTY_VIAL);
     }
@@ -38,6 +40,7 @@ public class Cou5_Sprc extends Furniture {
             else {
                 this.addNameKeys("(?:tree ?)?sap", "hole");
                 drilled = true;
+                AudioPlayer.playEffect(33);
                 String rep = this.useDialog;
                 
                 if (Player.getInv().contains(VIAL_REF)) {
@@ -58,6 +61,13 @@ public class Cou5_Sprc extends Furniture {
             else
                 return "You have nothing to collect in the vial";
         }
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String interact(String action) {
+        if (Player.hasItem(HAND_DRILL))
+            return this.useEvent(new Item(HAND_DRILL));
+        else
+            return "You have nothing to drill into it with.";
     }
 /*----------------------------------------------------------------------------*/
 }

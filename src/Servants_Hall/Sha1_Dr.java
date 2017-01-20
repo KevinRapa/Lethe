@@ -1,5 +1,6 @@
 package Servants_Hall;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import static A_Main.NameConstants.BATTERING_RAM;
 import A_Super.Furniture;
@@ -28,6 +29,7 @@ public class Sha1_Dr extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
+        AudioPlayer.playEffect(40);
         Player.getRoomObj(Id.SHA1).addAdjacent(Id.SHAR); // Make SHAR accessible.
         Player.getRoomObj(Id.SHA1).removeFurniture(this); // Remove this door from the room.
         Player.getRoomObj(Id.SHA1).removeFurniture(GEN_DR);

@@ -8,8 +8,8 @@ import A_Super.Room;
 import A_Super.Direction;
 import A_Super.Furniture;
 import A_Super.Wall;
-import Tunnels.Dng_Monst_Furn;
-import Tunnels.Dungeon_F;
+import Tunnels.DungeonMonsterFurniture;
+import Tunnels.Dungeon_Floor;
 /**
  * Represents the tunnels the player must walk through to escape INTR (cell).
  * 
@@ -31,7 +31,7 @@ public class Esc extends Room {
     public Esc(String name, String ID, String desc) {
         super(name, ID);
         this.description = desc;
-        this.addFurniture(MACHINERY_REF, FLOOR_REF, new Wall("The walls are masked by a wall of machinery."), new Dng_Monst_Furn());
+        this.addFurniture(MACHINERY_REF, FLOOR_REF, new Wall("The walls are masked by a wall of machinery."), new DungeonMonsterFurniture());
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {
@@ -86,7 +86,7 @@ public class Esc extends Room {
 // ============================================================================
 // ****************************************************************************    
 // ============================================================================    
-    private class Esc_F extends Dungeon_F {
+    private class Esc_F extends Dungeon_Floor {
         public Esc_F() {
             super();
             this.searchable = false;

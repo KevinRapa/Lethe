@@ -3,6 +3,8 @@ package Black_Staircase;
 import A_Super.Room;
 import A_Super.Direction;
 /**
+ * Superficial
+ * 
  * @author Kevin Rapa
  */
 public class Bls2 extends Room {

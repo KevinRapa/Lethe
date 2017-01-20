@@ -1,11 +1,5 @@
 package Catacombs;
-/**
- * The catacombs comprise a maze of similar tunnels.
- * Each catacomb generates its own description, and will be described
- * differently depending on if the player is holding a torch.
- * 
- * @author Kevin Rapa
- */
+
 import A_Main.Player;
 import static A_Main.NameConstants.HAND_TORCH;
 import static A_Main.NameConstants.IRIDESCENT_JEWEL;
@@ -17,7 +11,13 @@ import A_Super.Room;
 import A_Super.Wall;
 import java.util.ArrayList;
 import java.util.Random;
-
+/**
+ * The catacombs comprise a maze of similar tunnels.
+ * Each catacomb generates its own description, and will be described
+ * differently depending on if the player is holding a torch.
+ * 
+ * @author Kevin Rapa
+ */
 public class Catacomb extends Room {
     protected String descLit;
     protected static final Random GENERATOR = new Random();
@@ -53,13 +53,12 @@ public class Catacomb extends Room {
         ArrayList<String> dirs = new ArrayList<>();
         
         for (String i : this.adjacent) {
-
             int[] coords = {i.charAt(2) - '0', 
                             i.charAt(3) - '0'};
 
-            if (i.matches("CT\\d{2}")) // Is catacomb.
+            if (i.matches("CT\\d{2}")) // Is a catacomb tunnel.
                 adjCatacombCoords.add(coords);
-            else                       // Isn't catacomb.
+            else                       // Is a side room.
                 adjOtherCoords = coords;
         }
         
@@ -98,26 +97,26 @@ public class Catacomb extends Room {
         if (adjOtherCoords != null) {
             if (adjOtherCoords[0] == Y - 1) {
                 descLit = descLit.concat("To the north");
-                this.addFurniture(new Ct_Dr(Direction.NORTH));
+                this.addFurniture(new Ct_Door(Direction.NORTH));
             }
             else if (adjOtherCoords[0] == Y + 1){
                 descLit = descLit.concat("To the south");
-                this.addFurniture(new Ct_Dr(Direction.SOUTH));
+                this.addFurniture(new Ct_Door(Direction.SOUTH));
             }
             else if (adjOtherCoords[1] == X - 1) {
                 descLit = descLit.concat("To the west");
-                this.addFurniture(new Ct_Dr(Direction.WEST));
+                this.addFurniture(new Ct_Door(Direction.WEST));
             }
             else {
                 descLit = descLit.concat("To the east");
-                this.addFurniture(new Ct_Dr(Direction.EAST));
+                this.addFurniture(new Ct_Door(Direction.EAST));
             }
             
             descLit = descLit.concat(", erected unevenly into the tunnel wall is an ancient door.");
         }
         
         // Puts a crevice furniture objects in here and adds items to it randomly.
-        Furniture ctGrv = new Ct_Grv();
+        Furniture ctGrv = new Ct_Grave();
         Item[] itemList = {
             new Item("dirt", "It's a damp, cold pile of rocky dirt"),
             new Item("bone", "It's a bone... not much else to say."),

@@ -29,9 +29,10 @@ public class Sha2_Cbnt extends Furniture implements Openable {
             AudioPlayer.playEffect(13);
             return this.actDialog;
         }
-        else if (! this.searchable)
+        else if (! this.searchable) {
+            AudioPlayer.playEffect(4);
             return "The door won't open. It's locked.";
-        
+        }
         else
             return "You have unlocked it already.";
     }
@@ -45,7 +46,10 @@ public class Sha2_Cbnt extends Furniture implements Openable {
         else if (this.searchable)
             return "You look inside the cabinet.";
 
-        return this.searchDialog;
+        else {
+            AudioPlayer.playEffect(4);
+            return this.searchDialog;
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

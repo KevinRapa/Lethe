@@ -1,5 +1,6 @@
 package A_Super;
 
+import A_Main.AudioPlayer;
 import A_Main.Player;
 import static A_Main.NameConstants.BUCKET_OF_WATER;
 /**
@@ -42,6 +43,7 @@ public class Fireplace extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     public void extinguish() {
+        AudioPlayer.playEffect(39);
         this.isLit = false;
     }
 /*----------------------------------------------------------------------------*/

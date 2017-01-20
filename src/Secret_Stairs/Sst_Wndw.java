@@ -1,10 +1,10 @@
 package Secret_Stairs;
 
-import A_Super.Static_Wndw;
+import A_Super.StaticWndw;
 /**
  * @author Kevin Rapa
  */
-public class Sst_Wndw extends Static_Wndw {
+public class Sst_Wndw extends StaticWndw {
 /*----------------------------------------------------------------------------*/
     public Sst_Wndw() {
         super();

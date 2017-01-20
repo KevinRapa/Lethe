@@ -1,7 +1,13 @@
 package Chapel;
 
 import A_Super.Room;
-
+/**
+ * Using the Factum here will teleport the player to the vault.
+ * 
+ * @see Caves.Factum
+ * @see Vault.Vaue
+ * @author Kevin Rapa
+ */
 public class Cha2 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cha2(String name, String ID) {

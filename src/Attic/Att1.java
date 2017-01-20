@@ -1,5 +1,6 @@
 package Attic;
 
+import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Inventory;
@@ -13,7 +14,7 @@ import A_Super.Room;
  * 
  * The player is captured in ATT1 after creating the phase door potion.
  * 
- * @see Laboratory.Labo_CoatNt
+ * @see Laboratory.Labo_CoatNote
  * @author Kevin Rapa
  */
 public class Att1 extends Room {
@@ -47,6 +48,7 @@ public class Att1 extends Room {
 
             Player.setOccupies(Id.INTR);
             Player.getRoomObj(Id.EOW1).lock();
+            AudioPlayer.playEffect(8, 5);
             Player.printInv();
         }
         return null;

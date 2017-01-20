@@ -4,7 +4,6 @@ import A_Super.Furniture;
 import A_Super.Item;
         
 public class Gqua_Shlf extends Furniture {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Shlf(Item... items) {
         super(items);

@@ -2,6 +2,8 @@ package Black_Staircase;
 
 import A_Super.Room;
 /**
+ * Superficial.
+ * 
  * @author Kevin Rapa
  */
 public class Bls1 extends Room {

@@ -1,8 +1,8 @@
 package Servants_Quarters;
 
-import A_Super.Static_Wndw;
+import A_Super.StaticWndw;
 
-public class Squa_Wndw extends Static_Wndw {
+public class Squa_Wndw extends StaticWndw {
 /*----------------------------------------------------------------------------*/
     public Squa_Wndw() {
         super();

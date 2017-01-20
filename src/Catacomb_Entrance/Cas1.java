@@ -3,6 +3,10 @@ package Catacomb_Entrance;
 import A_Super.Room;
 import A_Super.Direction;
 /**
+ * Access to catacombs, a maze complex leading to the caves.
+ * 
+ * @see Caves.Cave
+ * @see Catacombs.Catacomb
  * @author Kevin Rapa
  */
 public class Cas1 extends Room {
