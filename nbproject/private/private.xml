@@ -5,7 +5,7 @@
             <url>src/Marble_Hall/Mha_LStat.java</url>
             <bookmark id="3">
                 <name/>
-                <line>19</line>
+                <line>18</line>
                 <key/>
             </bookmark>
         </file>
@@ -21,14 +21,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/Main.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Super/Item.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Gallery/Gal7_Stat.java</file>
             <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/Player.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/Inventory.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Workshop/Wrk_Kln.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Library/Lib4_Strs.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Drawing_Room/Drar.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Workshop/Wrk_CstngTbl.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Parlor/Par_VialNote.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Gallery/Gal6_Apparatus.java</file>
         </group>
     </open-files>
 </project-private>
