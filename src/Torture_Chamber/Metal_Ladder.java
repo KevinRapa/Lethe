@@ -1,5 +1,6 @@
 package Torture_Chamber;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -62,6 +63,7 @@ public class Metal_Ladder extends Item {
         // ====================================================================  
         @Override public String interact(String key) {     
             if (key.equals("climb") || key.equals("use")) {
+                AudioPlayer.playEffect(47);
                 if (! Player.getPosId().equals(Id.SEW4))
                     return this.actDialog;
                 else

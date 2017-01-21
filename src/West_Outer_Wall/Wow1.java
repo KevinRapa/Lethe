@@ -1,7 +1,11 @@
 package West_Outer_Wall;
 
 import A_Super.Room;
-
+/**
+ * The spoke to make the fixed ladder is here in the cart.
+ * 
+ * @author Kevin Rapa
+ */
 public class Wow1 extends Room {
 /*----------------------------------------------------------------------------*/    
     public Wow1(String name, String ID) {

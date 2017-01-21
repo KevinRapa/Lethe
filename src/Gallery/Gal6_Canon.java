@@ -1,5 +1,6 @@
 package Gallery;
 
+import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Super.Item;
 import A_Super.Furniture;
@@ -18,7 +19,7 @@ import static A_Main.NameConstants.*;
 public class Gal6_Canon extends Gal_LightMachine {
     private final Gal7_Statue STAT;   
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal6_Canon(Furniture stat, Item... items) {
+    public Gal6_Canon(Furniture stat) {
         super();
         this.searchDialog = "You search around the futuristic cannon.";
         this.actDialog = "You have no idea how this thing works.";
@@ -33,7 +34,7 @@ public class Gal6_Canon extends Gal_LightMachine {
         this.addActKeys("fire", "shoot");
         this.addNameKeys("(?:electr(?:on)?ic )?cannon");
         this.addUseKeys(BOX_THINGY);
-        this.inv = new Cnn_Inv(items);       
+        this.inv = new Cnn_Inv();       
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {   
@@ -58,12 +59,13 @@ public class Gal6_Canon extends Gal_LightMachine {
 /******************************************************************************/    
 /*----------------------------------------------------------------------------*/     
     private class Cnn_Inv extends Inventory{
-        public Cnn_Inv(Item ... items) {
-            super(items);
+        public Cnn_Inv() {
+            super();
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {   
             if (item.getType().equals(NameConstants.FOCUS)) {
+                AudioPlayer.playEffect(43);
                 this.CONTENTS.add(item);
                 
                 if (Gal6_Canon.this.isOn)
@@ -74,6 +76,7 @@ public class Gal6_Canon extends Gal_LightMachine {
                 return true;
             }
             else if (item.toString().equals(BOX_THINGY)) {
+                AudioPlayer.playEffect(43);
                 this.CONTENTS.add(item);
                 GUI.out("You slide the box inside the square compartment in the cannon. " + Gal6_Canon.this.turnOn());
                 return true;

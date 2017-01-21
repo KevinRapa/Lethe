@@ -3,7 +3,11 @@ package West_Outer_Wall;
 import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
-
+/**
+ * Player must use the fixed ladder on the floor or balcony to reach Wow3
+ * 
+ * @author Kevin Rapa
+ */
 public class Wow2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Wow2(String name, String ID) {

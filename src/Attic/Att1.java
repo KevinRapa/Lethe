@@ -8,6 +8,7 @@ import static A_Main.NameConstants.PHASE_DOOR_POTION;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Room;
+import Tunnels.DungeonMonster;
 /**
  * The attic contains boxes and cases which display randomly chosen items when
  * searched, however there is a hidden suitcase containing a needed lab coat.
@@ -37,21 +38,25 @@ public class Att1 extends Room {
             this.captured = true;
             this.dialog();
             
-            for (Item i :Player. getInv())
-                this.REF_LICH_CHEST_INV.add(i);
+            for (Item i : Player.getInv()) 
+                if (! i.toString().equals(PHASE_DOOR_POTION))
+                    this.REF_LICH_CHEST_INV.add(i);
             
             Player.getInv().clear();
 
             Player.setOccupies(Id.INTR);
             Player.getRoomObj(Id.EOW1).lock();
+            DungeonMonster.startMovement();
             AudioPlayer.playEffect(8, 5);
             Player.printInv();
+            return null;
         }
-        return null;
+        return STD_RM_OUT;
     }
 // ============================================================================
     private void dialog() {
         GUI.menOut("\nPress enter...");
+        GUI.clearDesc();
         GUI.invOut("");
         
         GUI.out("As you exit the laboratory, you are startled to see a hideous, decrepit\n"
@@ -62,14 +67,14 @@ public class Att1 extends Room {
         GUI.out("   ...");
         GUI.promptOut();
         
-        GUI.out("\" ... ...");
+        GUI.out("   ... ...");
         GUI.promptOut();
         
         GUI.out("Several more seconds pass. Before you can realize, you are\n"
               + "unconcious...");
         GUI.promptOut();
         
-        GUI.out(".... ... ...");
+        GUI.out("   ... ... ...");
         GUI.promptOut();
     }
 // ============================================================================

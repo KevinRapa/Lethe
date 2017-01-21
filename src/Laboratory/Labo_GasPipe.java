@@ -1,5 +1,6 @@
 package Laboratory;
 
+import A_Main.AudioPlayer;
 import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -63,6 +64,7 @@ public class Labo_GasPipe extends Furniture {
     }
     // ======================================================================== 
     private boolean toggleGas() {
+        AudioPlayer.playEffect(17);
         this.gasIsOn = ! gasIsOn;
         return gasIsOn;
     }

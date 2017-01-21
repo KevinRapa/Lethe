@@ -4,7 +4,13 @@ import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-
+/**
+ * Used to create molten glass with dye, sand, and potash.
+ * Player must go back to the closet to get sand.
+ * 
+ * @see Closet.Clos
+ * @author Kevin Rapa
+ */
 public class Wrk_Kiln extends Furniture {
     private final Item REFGLSSR, REFGLSSB, REFGLSSY;
     private boolean hasSand, hasRedDye, hasBlueDye, hasYllwDye, hasPotash;

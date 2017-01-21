@@ -164,6 +164,16 @@ public class AudioPlayer {
         add(new File(WD, "effects" + S + "stairFlatten.wav"));  // 40
         add(new File(WD, "effects" + S + "woodSliding.wav"));   // 41
         add(new File(WD, "effects" + S + "waterScoop.wav"));    // 42
+        add(new File(WD, "effects" + S + "medallionClick.wav"));// 43
+        add(new File(WD, "effects" + S + "totemTurn.wav"));     // 44
+        add(new File(WD, "effects" + S + "bunsenBurner.wav"));  // 45
+        add(new File(WD, "effects" + S + "zombieMoan.wav"));    // 46
+        add(new File(WD, "effects" + S + "metalLadder.wav"));   // 47
+        add(new File(WD, "effects" + S + "grateMove.wav"));     // 48
+        add(new File(WD, "effects" + S + "teleportZap.wav"));   // 49
+        add(new File(WD, "effects" + S + "concreteBlock.wav")); // 50
+        add(new File(WD, "effects" + S + "concreteShort.wav")); // 51
+        add(new File(WD, "effects" + S + "atticNoise.wav"));    // 52
     }};
 //******************************************************************************    
 // </editor-fold>

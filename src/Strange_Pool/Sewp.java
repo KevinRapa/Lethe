@@ -1,6 +1,5 @@
 package Strange_Pool;
 
-import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Inventory;
 import A_Main.Player;

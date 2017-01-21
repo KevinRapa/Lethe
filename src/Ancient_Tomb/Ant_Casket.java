@@ -1,5 +1,6 @@
 package Ancient_Tomb;
 
+import A_Main.AudioPlayer;
 import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Main.Player;
@@ -25,27 +26,29 @@ public class Ant_Casket extends Furniture implements Openable {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        String rep = "You insert the key into one of its holes and turn it.";
-
+        String result = "You insert the key into one of its holes and turn it.";
+        AudioPlayer.playEffect(51);
         Player.getInv().remove(item);
         this.numKeys++;
         
         if (this.numKeys == 3) {
             this.searchable = true;
-            return rep.concat(" With the last key inserted, the casket lid *clicks* loudly.\n"
+            
+            AudioPlayer.playEffect(50);
+            return result.concat(" With the last key inserted, you feel the lid jolt a bit.\n"
                             + "You push the lid with all your might, and it slides off to the side.\n"
                             + "To your surprise, there is nothing inside except for a leaf of parchment.");
         } 
         else
-            return rep;
+            return result;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {    
         switch (this.numKeys) {
             case 1: 
-                return "The lid is locked. One of the keyholes remain empty.";
+                return "The lid is locked. Two of the keyholes remain empty.";
             case 2:
-                return "The lid remains locked tightly. 1 keyhole remains empty.";
+                return "The lid remains locked tightly. One keyhole remains empty.";
             case 3:
                 return "All of the keys have been inserted into the coffin keyholes.";
             default: // 0
@@ -55,9 +58,9 @@ public class Ant_Casket extends Furniture implements Openable {
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
         if (this.searchable)
-            return this.searchDialog;
-        else
             return "You look inside the coffin.";
+        else
+            return this.searchDialog;
     } 
 /*----------------------------------------------------------------------------*/
 }

@@ -18,7 +18,7 @@ public class Cry1_Carving extends Furniture {
                          + "as if the people wish to embrace the standing cloaked figure.\n"
                          + "Many clouds gather high above the skeleton.";
 
-        this.addNameKeys("(?:wall )?carving", "(?:death )?depiction", "art", "mural(?: of sorts)?");
+        this.addNameKeys("(?:wall )?(?:carving|engraving)", "(?:death )?depiction", "art", "mural(?: of sorts)?");
     }
     // ========================================================================    
 }

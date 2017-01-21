@@ -32,7 +32,6 @@ public class Labo_Distiller extends Furniture {
                          + "On the table is a metal flask rack and a bunsen burner\n"
                          + "under it. Above the setup is a curved glass tube connecting it\n"
                          + "to the condenser on the other side of the table.";
-        this.useDialog = "none.";
 
         this.addNameKeys("distillery?", "(?:bunsen )?burner", "(?:flask )?rack");
         this.addUseKeys(RUBBER_HOSE, FLORENCE_FLASK, STRIKER, HAND_TORCH, BEAKER, TEST_TUBE, EMPTY_VIAL, "copper pot", "copper pan");
@@ -64,10 +63,12 @@ public class Labo_Distiller extends Furniture {
             else {
                 if (PIPE_REF.isOn() && Player.getPos().hasFurniture("hose")) {
                     if (Player.getPos().hasFurniture(FLORENCE_FLASK_REF)) {
+                        AudioPlayer.playEffect(45);
                         FLORENCE_FLASK_REF.distill();
                         return null;
                     }
                     else {
+                        AudioPlayer.playEffect(45);
                         return "You strike the top of the burner. For a minute, the burner burns\n"
                              + "with an intense flame under open space before dying out.";
                     }

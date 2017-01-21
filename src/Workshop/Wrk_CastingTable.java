@@ -4,7 +4,13 @@ import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-
+/**
+ * Used to create lenses and glass sheets.
+ * Player must use the lens template on this plus molten red glass to 
+ * make the red lens.
+ * 
+ * @author Kevin Rapa
+ */
 public class Wrk_CastingTable extends Furniture {
     private final Furniture REFBRL, REFSCK, REFCBNT;
     private final Item SHEET_REF, RED_LENS_REF, BLUE_LENS_REF, YELLOW_LENS_REF, 

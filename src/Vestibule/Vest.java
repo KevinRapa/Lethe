@@ -5,7 +5,15 @@ import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Room;
-
+/**
+ * The first puzzle in the game, the player is locked in here upon entry and
+ * must find a way out.
+ * The room is escaped by opening the window and then pushing the button in
+ * the back of fireplace.
+ * 
+ * @see Vestibule.Vest_Button
+ * @author Kevin Rapa
+ */
 public class Vest extends Room {
     private boolean windowOpen;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -28,18 +36,20 @@ public class Vest extends Room {
             return this.description.replaceFirst(" closed", "n open");
     }
 /*----------------------------------------------------------------------------*/    
-    @Override public String triggeredEvent() {        
-        // Locks the door to the foyer.
-        AudioPlayer.playEffect(5);
-        Player.getRoomObj(Id.FOY1).lock();
+    @Override public String triggeredEvent() {  
+        // The check is in case player teleported here.
+        if (Player.getLastVisited().equals(Id.FOY1)) {
+            // Locks the door to the foyer.
+            AudioPlayer.playEffect(5);
+            Player.getRoomObj(Id.FOY1).lock();
 
-        if (! Player.hasVisited(this.ID))
-            GUI.out("You hear a click behind you. As you enter, you hear a\n"
-                  + "whispering voice coming from the corner of the room.\n"
-                  + "\'Hey! Over here, on the desk.\'");
-        else
-            GUI.out("You hear a click behind you.");
-        
+            if (! Player.hasVisited(this.ID))
+                GUI.out("You hear a click behind you. As you enter, you hear a\n"
+                      + "whispering voice coming from the corner of the room.\n"
+                      + "\'Hey! Over here, on the desk.\'");
+            else
+                GUI.out("You hear a click behind you.");
+        }
         return STD_RM_OUT;
     }            
 /*----------------------------------------------------------------------------*/

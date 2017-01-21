@@ -1,18 +1,5 @@
 BUGS TO FIX
 
-
-
-
-
-MOVING NOISES
-	portrait moving noise
-	horse compartment opening
-
-BASHING NOISES
-
 OTHER NOISES
 	whirring noise for light machines
-	safe opening click
-	mha2 door disk noise
-	totem roratin
 	rope being cut

@@ -6,7 +6,6 @@ import A_Super.Staircase;
  * @author Kevin Rapa
  */
 public class My18_Stairs extends Staircase {
-
     // ========================================================================
     public My18_Stairs (Direction direction) {
         super(direction);

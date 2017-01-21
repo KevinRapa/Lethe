@@ -89,7 +89,7 @@ public class RoomReferences {
         {ESC5}, 
         // SUB-LEVEL ROOM ADJS ------------------------------------------------ 
         {CAS1,CT34}, {CT52}, {CT21,CT12}, {CT11,CT13,CT22}, {CT12,CT14}, 
-        {CT13,CT15,CT24}, {CT14}, {CT26}, {MY18,CT27}, {CT17}, {CT11}, 
+        {CT13,CT15,CT24}, {CT14}, {CT26}, {MY18,CT27}, {CT17,CV18}, {CT11}, 
         {CT12,CT23}, {CT22,CT33}, {CT14,CT25}, {CT24,CT26}, {TM16,CT25}, 
         {CT17,CT28}, {CT27,CT38}, {TM32,CT41}, {CT31}, {CT23,CT34,CT43}, 
         {CT33,CS35}, {CT37,CT46}, {CT36}, {CT28,CT48}, {CT31,CT51}, 

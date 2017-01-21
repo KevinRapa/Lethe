@@ -139,10 +139,7 @@ public class Catacomb extends Room {
     }
 // ============================================================================
     @Override public String triggeredEvent() {
-        if (Player.hasItem(HAND_TORCH))
-            return STD_RM_OUT;
-        else
-            return "???";
+        return (Player.hasItem(HAND_TORCH)) ? STD_RM_OUT : "???";
     }
 // ============================================================================
     public static String addJewelRandomly(Room[][][] map) {

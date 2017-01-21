@@ -50,10 +50,12 @@ public class Labo_Flask extends Furniture {
                 containsItem("vinegar 5mL") && 
                 containsItem("ae 20mL") &&
                 containsItem("wine 15mL") && 
-                containsItem("H2CO3 35mL"))
+                containsItem("H2CO3 35mL")) {
             return 1;
-        else
+        }
+        else {
             return 0;
+        }
     }
     // ======================================================================== 
     @Override public String getDescription() {

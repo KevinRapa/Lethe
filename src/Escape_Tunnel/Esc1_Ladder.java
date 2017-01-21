@@ -1,5 +1,6 @@
 package Escape_Tunnel;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -21,7 +22,8 @@ public class Esc1_Ladder extends Furniture {
         this.addActKeys("use", "climb", "ascend");
     }
     // ========================================================================   
-    @Override public String interact(String key) {              
+    @Override public String interact(String key) {      
+        AudioPlayer.playEffect(47);
         Player.setOccupies(Id.INTR);
         return this.actDialog;
     }

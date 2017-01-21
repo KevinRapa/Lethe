@@ -153,6 +153,7 @@ public class Obs1_Statues extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private void moveStat(String stat) {
+        AudioPlayer.playEffect(44);
         int i = this.getIndex(stat);
         
         if (i == 0 || i == 2 || i == 4 || i == 6)
@@ -162,6 +163,7 @@ public class Obs1_Statues extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private void rotateStat(String stat) {
+        AudioPlayer.playEffect(44);
         switch (getIndex(stat)) {
             case 0: case 1:
                 this.switchThese(0, 1); break;
@@ -201,6 +203,7 @@ public class Obs1_Statues extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private void spinArray() {
+        AudioPlayer.playEffect(44);
         Furniture temp = this.STATS[0];
         this.STATS[0] = this.STATS[7];
 

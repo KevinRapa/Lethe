@@ -52,6 +52,7 @@ public class Safe extends Furniture implements Openable {
                 
                 if (successful) {
                     this.searchable = true;
+                    AudioPlayer.playEffect(43);
                     GUI.menOut("You here a click."); 
                 }
                 else {

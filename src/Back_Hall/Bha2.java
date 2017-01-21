@@ -40,7 +40,7 @@ public class Bha2 extends Room {
                   + "break free from your state of vertigo. Before long,\n"
                   + "you feel as though you have reached the room's center.");
         
-        return null;  
+        return STD_RM_OUT;  
     }
 /*----------------------------------------------------------------------------*/
 }

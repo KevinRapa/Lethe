@@ -1,5 +1,6 @@
 package Marble_Hall;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import static A_Main.NameConstants.*;
 import A_Super.Door;
@@ -22,13 +23,16 @@ public class Mha2_Door extends Door {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         String rep = "You press the " + item + " into its socket.";
+        AudioPlayer.playEffect(43);
         
-        if (item.toString().equals(STONE_DISK))
-            this.soldier = true;
-        else if (item.toString().equals(ANGEL_MEDALLION))
-            this.angel = true;
-        else if (item.toString().equals(HORSE_MEDALLION))
-            this.horse = true;
+        switch (item.toString()) {
+            case STONE_DISK:
+                this.soldier = true; break;
+            case ANGEL_MEDALLION:
+                this.angel = true;   break;
+            case HORSE_MEDALLION:
+                this.horse = true;   break;
+        }
         
         Player.getInv().remove(item);
         this.numMedallions ++;

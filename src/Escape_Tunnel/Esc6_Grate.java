@@ -1,5 +1,6 @@
 package Escape_Tunnel;
 
+import A_Main.AudioPlayer;
 import static A_Main.NameConstants.METAL_BAR;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -35,22 +36,22 @@ public class Esc6_Grate extends Furniture implements Resetable {
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        return this.opened ? "The ladder goes down a ways. You estimate about 30 feet." : 
+        return this.opened ? "The ladder goes up about 30 feet." : 
                 this.searchDialog;
     }
     // ========================================================================   
     @Override public String interact(String key) {  
         if (key.equals("lift") || key.equals("move")) 
             return opened ? MOVED_GRATE : this.actDialog;
-        else if (Player.hasItem(METAL_BAR)) {
+        else if (Player.hasItem(METAL_BAR))
             return this.useEvent(null); // Safe. Arg unused here.
-        }
         else
             return "You have nothing to do that with.";
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
         if (! opened) {
+            AudioPlayer.playEffect(48);
             this.opened = true;
             return this.useDialog;
         }

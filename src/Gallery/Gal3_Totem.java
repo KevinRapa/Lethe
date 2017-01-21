@@ -1,5 +1,6 @@
 package Gallery;
 
+import A_Main.AudioPlayer;
 import A_Super.Item;
 import A_Main.GUI;
 import A_Super.Furniture;
@@ -20,7 +21,7 @@ public class Gal3_Totem extends Gal_LightMachine {
     private final Gal4_Statue GAL4_STAT_REF;
     private final boolean[] HEADS = {false, false, false, false};    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_Totem(Furniture stat, Item... items) {
+    public Gal3_Totem(Furniture stat) {
         super();
         this.searchable = false;
         this.GAL4_STAT_REF = (Gal4_Statue) stat;
@@ -32,7 +33,7 @@ public class Gal3_Totem extends Gal_LightMachine {
         this.addActKeys("turn", "spin", "twist");
         this.addUseKeys(RED_FOCUS, BLUE_FOCUS, YELLOW_FOCUS, DARK_FOCUS);
         this.addNameKeys("totem", "wood totem", "wooden totem");
-        this.inv = new Ttm_Inv(items);       
+        this.inv = new Ttm_Inv();       
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
@@ -102,6 +103,7 @@ public class Gal3_Totem extends Gal_LightMachine {
     }
 /*----------------------------------------------------------------------------*/
     private void turnHead(int head) {
+        AudioPlayer.playEffect(44);
         switch(head) {
             case 1:
                 HEADS[0] = ! HEADS[0];
@@ -138,12 +140,13 @@ public class Gal3_Totem extends Gal_LightMachine {
 /******************************************************************************/    
 /*----------------------------------------------------------------------------*/     
     private class Ttm_Inv extends Inventory {   
-        public Ttm_Inv(Item ... items) {
-            super(items);
+        public Ttm_Inv() {
+            super();
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) { 
             if (item.getType().equals(NameConstants.FOCUS)) {
+                AudioPlayer.playEffect(43);
                 this.CONTENTS.add(item);
                 
                 if (Gal3_Totem.this.isOn)

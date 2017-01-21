@@ -1,7 +1,14 @@
 package Workshop;
 
 import A_Super.Room;
-
+/**
+ * The player must create a new red lens in this room by combining ingredients
+ * in the kiln, then casting it using the casting table and template.
+ * 
+ * @see Workshop.Wrk_Kiln
+ * @see Workshop.Wrk_CastingTable
+ * @author Kevin Rapa
+ */
 public class Work extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Work(String name, String ID) {

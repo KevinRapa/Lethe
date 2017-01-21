@@ -161,3 +161,34 @@ Wood sliding
 Filling bucket
 	https://www.freesound.org/people/qubodup/sounds/210424/
 	Scooping Water -- qubodup
+
+medallion placing noise
+	https://www.freesound.org/people/hanneswannerberger/sounds/275630/
+	hanneswannerberger -- Close switch/hatch on tape machine
+
+bunsen burner
+	https://www.freesound.org/people/MWLANDI/sounds/85839/
+	MWLANDI -- Gas Stove Turn Off 4.aif
+
+Zombie moan
+	https://www.freesound.org/people/missozzy/sounds/169836/
+	Zombie 19 -- missozzy
+
+Metal ladder climb
+	https://www.freesound.org/people/DasDeer/sounds/161809/
+	Ladder.WAV -- DasDeer
+
+Grate move
+	https://www.freesound.org/people/acclivity/sounds/20347/
+	ManholeRemove3.wav -- acclivity
+
+Teleporter zap
+	https://www.freesound.org/people/fons/sounds/62363/
+	fons -- zap 2.wav
+
+Concrete block
+	https://www.freesound.org/people/FreqMan/sounds/25846/
+	concrete blocks moving2.wav -- FreqMan
+	https://www.freesound.org/people/FreqMan/sounds/25847/
+	concrete blocks moving3.wav -- FreqMan
+	

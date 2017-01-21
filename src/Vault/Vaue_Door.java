@@ -1,5 +1,6 @@
 package Vault;
 
+import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Player;
@@ -59,6 +60,7 @@ public class Vaue_Door extends Furniture {
             if (solved()) {
                 Player.getRoomObj(Id.VAU2).unlock();
                 Player.getPos().removeFurniture(this);
+                AudioPlayer.playEffect(37);
                 return "As you push the last button, all the runes become lit.\n"
                      + "The wall recedes into the floor slowly.\n"
                      + "As the dust settles, a long room filled with treasure is revealed.";
@@ -91,6 +93,8 @@ public class Vaue_Door extends Furniture {
         flip(x - 1, y);
         flip(x, y + 1);
         flip(x, y - 1);
+        
+        AudioPlayer.playEffect(43);
     }
     // ========================================================================  
     private void flip(int x, int y) {

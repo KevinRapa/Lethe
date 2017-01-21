@@ -4,6 +4,8 @@ import A_Super.Room;
 import A_Super.Direction;
 import A_Super.Furniture;
 /**
+ * The chalice phylactery is found in here.
+ * 
  * @author Kevin Rapa
  */
 public class Vau2 extends Room {

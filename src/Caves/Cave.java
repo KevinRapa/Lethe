@@ -26,14 +26,14 @@ public class Cave extends Room {
     protected final int DISTANCE; // Distance this room is from MS65
     protected static final Random GENERATOR = new Random();
     protected static final File DISTORTION = new File(WD, "ambience" + S + "caveDistortion.wav");
-    protected Clip clip;
+    protected static Clip clip;
 // ============================================================================    
     public Cave(String ID) {
         super("in a cave network", ID);
         int X = COORDS[2], Y = COORDS[1]; // X and Y coordinates of this room.
 
         this.DISTANCE = (int)round(sqrt(  // Calculates DISTANCE from MS65.
-                pow(abs(6 - X), 2) +      // Pythagorean theorem
+                pow(abs(5 - X), 2) +      // Pythagorean theorem
                         pow(abs(6 - Y), 2)));
         
         switch (DISTANCE) {
@@ -148,10 +148,14 @@ public class Cave extends Room {
             return distortDescription(DISTANCE, description);
     }
 // ============================================================================
+    /**
+     * Plays hellish music at volume respective to player's distance from MS65.
+     * @return distorted room name.
+     */
     @Override public String triggeredEvent() {
         try {
-            if (Player.getLastVisited().matches("CV\\d{2}")) // Stop clip from previous room.
-                ((Cave)Player.getRoomObj(Player.getLastVisited())).stopClip();
+            if (clip != null)
+                stopClip();
             
             clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(DISTORTION));
@@ -180,7 +184,7 @@ public class Cave extends Room {
         
         if (degree == 7) return desc; // Degree 7 will not distort at all.
         
-        for (int d = 42; d > degree*7; d--) {
+        for (int d = 42; d > degree*7; d -= 2) {
             int i = GENERATOR.nextInt(length),
                 j = GENERATOR.nextInt(length);
             swapChars(charArray, i, j); 
@@ -196,8 +200,9 @@ public class Cave extends Room {
         array[j] = temp;
     }
 // ============================================================================
-    public void stopClip() {
-        this.clip.stop();
+    public static void stopClip() {
+        if (clip != null)
+            clip.stop();
     }
 // ============================================================================
 }

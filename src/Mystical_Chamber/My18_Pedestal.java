@@ -1,5 +1,6 @@
 package Mystical_Chamber;
 
+import A_Main.AudioPlayer;
 import static A_Main.NameConstants.IRIDESCENT_JEWEL;
 import A_Main.Player;
 import A_Super.Direction;
@@ -23,12 +24,13 @@ public class My18_Pedestal extends Furniture {
     }
     // ======================================================================== 
     @Override public String getDescription() {
-        return hasStone ? this.description : 
-                "The iridescent stone sits flush into the indentation.";
+        return this.hasStone ? "The iridescent stone sits flush into the indentation." : 
+                               this.description;
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
         this.hasStone = true;
+        AudioPlayer.playEffect(37);
         Player.getPos().addFurniture(new My18_Stairs(Direction.DOWN));
         Player.getInv().remove(item);
         ((My18)Player.getPos()).updateDescription();

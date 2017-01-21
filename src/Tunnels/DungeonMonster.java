@@ -6,13 +6,13 @@ import A_Main.Player;
 import A_Main.AudioPlayer;
 import A_Super.Direction;
 import Strange_Pool.Sewp;
-import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
+import static java.lang.Math.abs;
 import static java.lang.Math.abs;
 /**
  * This class simulates a creature that roams the halls of the tunnels.
@@ -22,6 +22,7 @@ import static java.lang.Math.abs;
  * 
  * The monster does not move if the player is not in the dungeon area.
  * 
+ * @see Tunnels.DungeonMonsterFurniture
  * @author Kevin Rapa
  */
 public class DungeonMonster {
@@ -46,7 +47,7 @@ public class DungeonMonster {
     } 
     // ==========================================
     private static String position = Id.SEW0;
-    private static final LinkedList<String> COORD_QUEUE = new LinkedList() {{
+    private static final LinkedList<String> ROOM_QUEUE = new LinkedList() {{
         String[] ROOM_LIST = {Id.SEW0, Id.SEW1, Id.SEW2, Id.SEW3, Id.SEW4, Id.SEW5,
                               Id.CIS1, Id.CIS2, Id.CIS3, Id.CIS4, Id.CIS3, Id.CIS2,
                               Id.CIS1, Id.SEW5, Id.SEW4, Id.SEW3, Id.SEW2, Id.SEW1};
@@ -62,11 +63,12 @@ public class DungeonMonster {
     // ========================================================================
     private static void move() {
         String temp = position.substring(0, 3);
-        position = COORD_QUEUE.peek();
-        COORD_QUEUE.offer(COORD_QUEUE.poll());
-        System.out.println("Monster: "+position);
+        position = ROOM_QUEUE.peek();
+        ROOM_QUEUE.offer(ROOM_QUEUE.poll());
+        System.out.println("Monster: " + position);
         
-        if (! temp.matches(position.substring(0, 3)))
+        if (! temp.matches(position.substring(0, 3)) && 
+                ! Player.getPosId().matches("TORC|CRY\\d|ESC\\d|DKCH|CAS1"))
             AudioPlayer.playEffect(24);
 
         Volume vol = determineVolume();
@@ -135,7 +137,7 @@ public class DungeonMonster {
     }
     // ========================================================================
     private static void warnPlayer() {
-        String result = "That thing's very close!\t\t\t\t\tIt's directly ";
+        String result = "That... creature is very close!\t\t\t\t\t\t\t\tIt's directly ";
         int[] plyrCrd = Player.getPos().getCoords();
         int[] thisCrd = Player.getRoomObj(position).getCoords();
         
@@ -164,6 +166,17 @@ public class DungeonMonster {
         return timer == null;
     }
     // ========================================================================
+    /**
+     * Turns the monster around when player climbs the stairs in SEW0.
+     * Allows player to escape the creature if cornered in SEW0.
+     */
+    public static void turnMonsterAround() {
+        while (! ROOM_QUEUE.peek().equals(DungeonMonster.position))
+            ROOM_QUEUE.offer(ROOM_QUEUE.poll());
+        
+        ROOM_QUEUE.offer(ROOM_QUEUE.poll());
+    }
+    // ========================================================================
     private static void captureDialog() {
         GUI.out("The hideous creature lassos you with its chain and drags\n"
               + "you back to the tiny untility room. Your items are taken.\n"
@@ -187,7 +200,7 @@ public class DungeonMonster {
             // Monster only moves if the player is in Z-coordinate 4, the dungeon/tunnel area.
             // Does not move if player is in the vault (Column 8 in map).
             if (Player.getPos().getCoords()[0] == 4 && 
-                    Player.getPos().getCoords()[1] < 7) {
+                    Player.getPos().getCoords()[2] < 7) {
                 DungeonMonster.move();
                 DungeonMonster.checkForPlayer();
             }

@@ -49,9 +49,10 @@ public class Esc extends Room {
     }
 // ============================================================================
     @Override public String triggeredEvent() {
-        if (! playerHasTorch()) {
+        GUI.out(this.REFUSE_TO_MOVE);
+        
+        if (! playerHasTorch() && ! Player.getPosId().equals(Id.ESC1)) {
             Player.setOccupies(Id.ESC1);
-            GUI.out(this.REFUSE_TO_MOVE);
         }
         return "You are " + Player.getPos() + ".";
     }

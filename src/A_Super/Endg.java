@@ -25,7 +25,6 @@ public class Endg extends Room {
     @Override public String triggeredEvent() {
         GUI.clearDialog();
         GUI.invOut("");
-        GUI.descOut(this.description);
         
         if ((new File(System.getProperty("user.dir"), "Game.data")).delete())
             System.out.println("Files deleted.");

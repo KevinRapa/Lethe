@@ -1,5 +1,6 @@
 package Caves;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Item;
@@ -31,6 +32,9 @@ public class Factum extends Item {
      * @return coordinates of the player.
      */
     @Override public String useEvent() {
+        Cave.stopClip();
+        AudioPlayer.playEffect(49);
+        
         switch (Player.getPosId()) {
             case Id.CHA2:
                 Player.setOccupies(Id.VAUE); break;     
@@ -44,7 +48,7 @@ public class Factum extends Item {
                 index = generator.nextInt(Player.getVisitedRooms().size());
                 roomId = Player.getVisitedRooms().get(index);
                 
-                while (roomId.matches("STUD|LIB[45]|LOOK|ESC\\d") || 
+                while (roomId.matches("STUD|LIB[45]|LOOK|ESC\\d|BHA2") || 
                        roomId.equals(Player.getPosId())) {
                     index = generator.nextInt(Player.getVisitedRooms().size());
                     roomId = Player.getVisitedRooms().get(index);

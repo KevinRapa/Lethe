@@ -27,7 +27,7 @@ public final class Player {
     private static Inventory inv, keys;
     private static ArrayList<String> visited;
     private static String lastVisited, shoes;
-    private final static HashMap<Character, Runnable> CMD = new HashMap<>(); 
+    private static HashMap<Character, Runnable> cmd; 
 //******************************************************************************
 // <editor-fold desc="ACCESSORS AND OUTPUT">  
 //******************************************************************************
@@ -134,7 +134,7 @@ public final class Player {
         Player.visited = visited;
         Player.lastVisited = lastVisited;
         Player.shoes = shoesWearing;
-        Player.getRoomObj(Id.STUD).unlock();
+        Player.cmd = new HashMap<>();
     }
     // ========================================================================  
     /**
@@ -146,6 +146,7 @@ public final class Player {
         Player.inv = new Inventory();
         Player.keys = new Inventory();
         Player.visited = new ArrayList();
+        Player.cmd = new HashMap<>();
         Player.pos = coords;
         Player.lastVisited = "";
         Player.shoes = "";
@@ -182,15 +183,15 @@ public final class Player {
      * @return Integer representing player choice to save, erase data, or just quit.
      */
     public static int mainPrompt() {
-        CMD.put('h', () -> Help.helpSub());
-        CMD.put('e', () -> searchSub());
-        CMD.put('c', () -> checkOutSub());
-        CMD.put('k', () -> viewKeyRing());
-        CMD.put('i', () -> inventoryPrompt());
-        CMD.put('w', () -> move(Direction.NORTH));
-        CMD.put('s', () -> move(Direction.SOUTH));
-        CMD.put('a', () -> move(Direction.WEST));
-        CMD.put('d', () -> move(Direction.EAST));
+        cmd.put('h', () -> Help.helpSub());
+        cmd.put('e', () -> searchSub());
+        cmd.put('c', () -> checkOutSub());
+        cmd.put('k', () -> viewKeyRing());
+        cmd.put('i', () -> inventoryPrompt());
+        cmd.put('w', () -> move(Direction.NORTH));
+        cmd.put('s', () -> move(Direction.SOUTH));
+        cmd.put('a', () -> move(Direction.WEST));
+        cmd.put('d', () -> move(Direction.EAST));
         String ans;
         
         AudioPlayer.playTrack(getPosId());
@@ -204,9 +205,9 @@ public final class Player {
             ans = GUI.promptOut();
 
             if (ans.matches("[heckiwsad]")) 
-                CMD.get(ans.charAt(0)).run();
+                cmd.get(ans.charAt(0)).run();
             
-            else if (ans.matches("[a-z]+\\s[a-z ]+")) // Interacting
+            else if (ans.matches("[a-z]+\\s[a-z ,.-]+")) // Interacting
                 activateSub(ans);
             
             else if (ans.equals("quit"))
@@ -254,9 +255,7 @@ public final class Player {
      * @param dir A cardinal direction.
      */
     public static void move(Direction dir) {  
-        int[] c = pos;
-
-        Room dest = mapRef[c[0] + dir.Z][c[1] + dir.Y][c[2] + dir.X];
+        Room dest = mapRef[pos[0] + dir.Z][pos[1] + dir.Y][pos[2] + dir.X];
         
         if (! getPos().isAdjacent(dest.getID()))
             GUI.out(getPos().getBarrier(dir)); // There's a wall in the way.
@@ -269,11 +268,10 @@ public final class Player {
             GUI.clearDialog();
             lastVisited = getPosId();
             Player.pos = dest.getCoords();
-            
             String destId = dest.getID();
             
             if (dir == Direction.UP || dir == Direction.DOWN)
-                ; // Let the stairs play the noise.
+                ; // Do nothing. Let the stairs play the noise.
             
             else if (dest.isThisLocked() && ! visited.contains(destId))
                 AudioPlayer.playEffect(13); // Plays unlock sound.
@@ -285,19 +283,20 @@ public final class Player {
                 else
                     AudioPlayer.playEffect(9); // Plays wooden open door sound. 
             }
-            
-            else if (Player.pos[0] >= 5  && ! destId.substring(0,2).matches(lastVisited.substring(0,2)))
-                AudioPlayer.playEffect(9); // Catches the cases in catacombs and caves.
+
+            else if (Player.pos[0] >= 5  && // If you're in catacombs or caves.
+                    ! destId.substring(0,2).matches(lastVisited.substring(0,2)))
+                AudioPlayer.playEffect(9); 
             
             else
                 AudioPlayer.playEffect(0); // Plays footsteps. No door there
             
-            GUI.roomOut(dest.triggeredEvent());
             describeRoom();
+            GUI.roomOut(dest.triggeredEvent());
             
             if (! hasVisited(destId)) 
                 visited.add(destId);  
-        } 
+        }
     }
     // ========================================================================  
     public static void describeRoom() {
@@ -357,10 +356,7 @@ public final class Player {
         else if (searchThis.matches("it|them") && // Indefinite reference.
                 Player.getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture()))
                 search(getFurnRef(searchThis));
-        
-        else if (searchThis.matches("furniture|furnishings"))
-            GUI.out("You must be more specific.");
-            
+
         else if (isNonEmptyString(searchThis)) 
             GUI.out("There is no " + searchThis + " here."); 
         

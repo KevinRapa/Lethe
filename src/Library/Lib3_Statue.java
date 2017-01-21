@@ -1,5 +1,6 @@
 package Library;
 
+import A_Main.AudioPlayer;
 import A_Super.Item;
 import A_Super.Statue;
 
@@ -42,6 +43,7 @@ public class Lib3_Statue extends Statue {
     }
 /*----------------------------------------------------------------------------*/
     private String makeSearchable() {
+            AudioPlayer.playEffect(44);
             this.searchable = true;
             
             return "\nBoth of the horse's eyes now glow. You hear a faint\n"

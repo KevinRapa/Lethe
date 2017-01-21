@@ -22,7 +22,7 @@ public class Cry2_Engraving extends Furniture {
         this.actDialog = "You can't pry it open. Something is holding the coffin\n"
                        + "tightly closed.";
         
-        this.addNameKeys("(?:wall )?engraving", "(?:stone )?(?:box|coffin|casket|lid)",
+        this.addNameKeys("(?:wall )?(?:engraving|carving)", "(?:stone )?(?:box|coffin|casket|lid)",
                 "(?:(?:artfully )?decorated)?lid");
         this.addActKeys("open");
     }

@@ -1,5 +1,6 @@
 package Gallery;
 
+import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Super.Item;
 import A_Super.Furniture;
@@ -17,7 +18,7 @@ public class Gal1_Dragon extends Gal_LightMachine {
     private final Gal2_Statue GAL2_STAT_REF;
     private final boolean[] EYES = {false, false};
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal1_Dragon(Furniture stat, Item... items) {
+    public Gal1_Dragon(Furniture stat, Item yellowFocus) {
         super();
         this.searchDialog = "The only place to search is the dragon's mouth.";
         this.turnOffDialog = "The light in the dragon's mouth shuts off.";
@@ -27,7 +28,7 @@ public class Gal1_Dragon extends Gal_LightMachine {
                          + "menacingly ";
         this.GAL2_STAT_REF = (Gal2_Statue) stat;
         addNameKeys("snake-like dragon(?: statue)?", "(?:dragon|statue)");
-        this.inv = new Drgn_Inv(items);    
+        this.inv = new Drgn_Inv(yellowFocus);    
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
@@ -73,12 +74,14 @@ public class Gal1_Dragon extends Gal_LightMachine {
 /******************************************************************************/    
 /*----------------------------------------------------------------------------*/    
     private class Drgn_Inv extends Inventory {   
-        public Drgn_Inv(Item ... items) {
-            super(items);
+        public Drgn_Inv(Item yellowFocus) {
+            super();
+            this.CONTENTS.add(yellowFocus);
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) { 
             if (item.getType().equals(NameConstants.FOCUS)) {
+                AudioPlayer.playEffect(43);
                 this.CONTENTS.add(item);
                 
                 if (Gal1_Dragon.this.isOn)

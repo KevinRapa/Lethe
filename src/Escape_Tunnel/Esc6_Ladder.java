@@ -1,5 +1,6 @@
 package Escape_Tunnel;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -36,6 +37,7 @@ public class Esc6_Ladder extends Furniture implements Resetable {
             Player.getRoomObj(Id.INTR).lock();
             Player.getRoomObj(Id.SEWP).unlock();
             Player.setOccupies(Id.SEWP);
+            AudioPlayer.playEffect(47);
             return this.actDialog;
         }
         else

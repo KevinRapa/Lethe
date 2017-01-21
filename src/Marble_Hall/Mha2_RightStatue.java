@@ -1,5 +1,6 @@
 package Marble_Hall;
 
+import A_Main.AudioPlayer;
 import static A_Main.NameConstants.SILVER_SPEAR;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -27,6 +28,7 @@ public class Mha2_RightStatue extends Furniture {
     @Override public String useEvent(Item item) {
         this.searchable = true;
         Player.getInv().remove(item);
+        AudioPlayer.playEffect(44);
         this.addNameKeys("compartment", "open compartment");
             
         return this.useDialog;

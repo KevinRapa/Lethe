@@ -45,6 +45,7 @@ public class Gal6_Button extends Button {
                 roomId = Player.getVisitedRooms().get(index);
             }
 
+            AudioPlayer.playEffect(49);
             Player.setOccupies(roomId);  
 
             return "'... Huh? What just happened? This isn't the gallery loft.'\n" +

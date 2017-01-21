@@ -1,5 +1,6 @@
 package Cell;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import static A_Main.NameConstants.METAL_BAR;
 import A_Main.Player;
@@ -46,15 +47,15 @@ public class Intr_Grate extends Furniture implements Resetable {
     @Override public String interact(String key) {  
         if (key.equals("lift") || key.equals("move")) 
             return opened ? MOVED_GRATE : this.actDialog;
-        else if (key.equals("pry") && Player.hasItem(METAL_BAR)) {
+        else if (key.equals("pry") && Player.hasItem(METAL_BAR))
             return this.useEvent(null); // Safe. Arg unused here.
-        }
         else
             return opened ? transport() : "You aren't going anywhere with that grate closed.";
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
         if (! opened) {
+            AudioPlayer.playEffect(48);
             this.opened = true;
             return this.useDialog;
         }
@@ -67,6 +68,7 @@ public class Intr_Grate extends Furniture implements Resetable {
     }
     // ========================================================================     
     private String transport() {
+        AudioPlayer.playEffect(47);
         Player.setOccupies(Id.ESC1);
         return "You climb down the ladder a ways into a small noisy tunnel.";
     }

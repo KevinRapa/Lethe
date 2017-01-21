@@ -1,30 +1,19 @@
 package West_Outer_Wall;
 
-import A_Main.AudioPlayer;
-import static A_Main.NameConstants.FIXED_LADDER;
-import A_Main.Player;
-import A_Super.Staircase;
-import A_Super.Direction;
+import A_Super.Furniture;
 
-public class Wow2_Stairs extends Staircase {
+public class Wow2_Stairs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wow2_Stairs(Direction direction) {
-        super(direction);
-        this.searchDialog = "The ladder hides nothing.";
-        this.description = "The ladder rests against the upper balcony, but it's\n"
-                         + "unstable from the debris.";
-        this.NAMEKEYS.clear();
-        this.addNameKeys("ladder", FIXED_LADDER);
+    public Wow2_Stairs() {
+        super();
+        this.searchable = false;
+        this.description = "The remnants of the stairs lie crumbled all over the\n"
+                         + "floor.";
+        this.searchDialog = "There's nothing among all these rocks but more rocks.";
+        this.actDialog = "Don't be ridiculous. The stairs are crumbled down.";
+        this.addNameKeys("staircase", "stairs", "steps");
+        this.addActKeys("climb", "walk", "use");
     }
-/*----------------------------------------------------------------------------*/ 
-    @Override public String interact(String key) {     
-        Player.move(this.DIR);
-        playEffect();       
-        return null;       
-    }
-/*----------------------------------------------------------------------------*/
-    @Override protected void playEffect() {
-        AudioPlayer.playEffect(16);
-    }
-/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/        
 }
+

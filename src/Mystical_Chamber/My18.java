@@ -2,7 +2,10 @@ package Mystical_Chamber;
 /**
  * @author Kevin Rapa
  */
+import A_Main.Id;
+import A_Main.Player;
 import A_Super.Room;
+import Caves.Cave;
 
 public class My18 extends Room {
 // ============================================================================    
@@ -18,6 +21,13 @@ public class My18 extends Room {
         this.description = "You stand at the rim of the circular chamber before\n"
                          + "the descending set of spiral stairs wrapping around\n"
                          + "the center pillar on which the pedestal still stands.\n";
+    }
+// ============================================================================
+    @Override public String triggeredEvent() {
+        if (Player.getLastVisited().equals(Id.CV18))
+            Cave.stopClip();
+        
+        return STD_RM_OUT;
     }
 // ============================================================================
 }

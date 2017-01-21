@@ -1,5 +1,6 @@
 package Ancient_Tomb;
 
+import A_Main.AudioPlayer;
 import A_Main.Player;
 import A_Super.NonPlayerCharacter;
 /**
@@ -34,10 +35,12 @@ public class Ant_Zombie extends NonPlayerCharacter {
         this.CONVERSE_REP2 = "The figure just stands there, staring at you with\n"
                            + "its mouth hanging open.";
 
-        this.addNameKeys("(?:frail )?(?:eyeless )?(?:dessicated )?(?:corpse|figure)");
+        this.addNameKeys("(?:frail )?(?:eyeless )?(?:dessicated )?(?:corpse|figure|zombie)");
     }
     // ========================================================================   
-    @Override public String interact(String key) {              
+    @Override public String interact(String key) { 
+        AudioPlayer.playEffect(46);
+        
         if (firstTime) {
             this.firstTime = false;
             return converse1();

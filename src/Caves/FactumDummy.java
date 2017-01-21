@@ -23,7 +23,7 @@ public class FactumDummy extends Furniture {
         this.actDialog = "You fumble around and grab the artifact.";
         this.searchDialog = this.description;
 
-        this.addNameKeys("factum", "the factum");
+        this.addNameKeys("factum", "the factum", "artifact", "the artifact");
         this.addActKeys(GETKEYS);
     }
     // ======================================================================== 

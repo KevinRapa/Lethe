@@ -32,7 +32,7 @@ public class Cry_Drawers extends Furniture implements Openable {
     // ========================================================================   
     @Override public String getSearchDialog() {
         GUI.out("The drawers are labeled from 1 to 100. Search which drawer?");
-        String ans = GUI.askChoice("\n<#> Search...\n< > Back", "[1-100]|");
+        String ans = GUI.askChoice("\n<#> Search...\n< > Back", "[1-9][0-9]?|100|");
 
         if (Player.isNonEmptyString(ans)) {
             GUI.out(this.searchDialog);

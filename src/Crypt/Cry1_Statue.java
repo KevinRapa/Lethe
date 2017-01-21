@@ -12,14 +12,14 @@ import A_Super.Statue;
  */
 public class Cry1_Statue extends Statue implements Resetable {
     private boolean hasScythe, eyesGlowing;
-    private final Furniture SCYTHE_REF, DOOR_REF;
+    private final Furniture SCYTHE_REF;
     // ========================================================================
-    public Cry1_Statue (Furniture scythe, Furniture door) {
+    public Cry1_Statue (Furniture scythe) {
         super();
         
         this.hasScythe = this.eyesGlowing = false;
         
-        this.SCYTHE_REF = scythe;   this.DOOR_REF = door;
+        this.SCYTHE_REF = scythe;
         
         this.useDialog = "You place the scythe into the statue's left hand.";
         this.description = "The tall statue stands in the center of this side\n"
@@ -77,13 +77,8 @@ public class Cry1_Statue extends Statue implements Resetable {
     // ========================================================================     
     @Override public void reset() {
         if (this.hasScythe) {
-            Player.getRoomObj(Id.CRY2).removeFurniture(DOOR_REF);
             Player.getRoomObj(Id.TORC).addFurniture(SCYTHE_REF);
             this.hasScythe = false;
-        }
-        if (Player.getRoomObj(Id.CRY2).isAdjacent(Id.CAS1)) {
-            Player.getRoomObj(Id.CRY2).removeAdjacent(Id.CAS1);
-            Player.getRoomObj(Id.CAS1).removeAdjacent(Id.CRY2);
         }
         this.eyesGlowing = false;
     }

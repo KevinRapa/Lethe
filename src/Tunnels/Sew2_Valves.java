@@ -21,7 +21,7 @@ import java.util.HashMap;
 public class Sew2_Valves extends Furniture implements Resetable {
     // =======================================
     private enum State {
-        ON("[ /]  ", 1), OFF("[\\ ]  ", 0);
+        ON("( /)  ", 1), OFF("(\\ )  ", 0);
         
         private final String DIAL;
         private final int STATE;

@@ -4,6 +4,10 @@ import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 /**
+ * Serves as a way to reference the tunnel monster.
+ * This furniture is important, as it helps the player in determining where
+ * the monster is.
+ * 
  * @author Kevin Rapa
  */
 public class DungeonMonsterFurniture extends Furniture {
@@ -20,7 +24,7 @@ public class DungeonMonsterFurniture extends Furniture {
         this.actDialog = "You wouldn't ever think of going near that thing...";
         this.searchDialog = this.actDialog;
 
-        this.addNameKeys("(?:disfigured )?(?:corpse-like )?(?:creature|monster)");
+        this.addNameKeys("(?:disfigured )?(?:corpse-like )?(?:creature|monster)", "thing");
         this.addActKeys(".{2,}");
     }
     // ======================================================================== 
@@ -51,7 +55,11 @@ public class DungeonMonsterFurniture extends Furniture {
                 default:
                     result = "It's lurking in the south end of the cistern walkway.";
             }
+            
+            if (Player.getPosId().matches("PRIS|OUB1|AARC"))
+                result = result.concat(" You should be out of its line of sight from here.");
         }
+        
         return this.description.concat("\t\t\t\t\t\t\t" + result);
     }
     // ========================================================================   

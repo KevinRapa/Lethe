@@ -5,10 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.Serializable;
 /**
- * <p>
  * In this game, the better term for furniture is "room object" because other
  * objects such as floors, walls, doors, buttons, etc. are treated as furniture.
- * </p> <p>
+ * <p>
  * Furniture is ANY object that can be interacted with from the main prompt.
  * Furniture may also be interacted with in the Inventory USE sub-prompt
  * </p> <p>
@@ -17,7 +16,12 @@ import java.io.Serializable;
  * </p> <p>
  * Furniture is referenced by the player by entering a string matching a string
  * in <code>NAMEKEYS</code>, which is generally a regex pattern.
+ * </p> <p>
+ * Any method in furniture that sends text through <code>GUI.out</code> or
+ * <code>GUI.roomOut</code> can safely return <code>null</code> and no text,
+ * including empty strings, will be displayed.
  * </p>
+ * 
  * @see A_Main.Player#searchPrompt(A_Super.Furniture) 
  * @see A_Main.Player#usePrompt() 
  * @author Kevin Rapa

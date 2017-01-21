@@ -33,7 +33,7 @@ public class Intr extends Room {
 // ============================================================================
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID))
-            GUI.out("There's something wandering in the halls outside...");
+            GUI.out("There's something, some kind of creature, wandering the halls outside...");
         
         return STD_RM_OUT;
     }

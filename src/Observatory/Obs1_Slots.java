@@ -1,5 +1,6 @@
 package Observatory;
 
+import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class Obs1_Slots extends Furniture {
         MAP.put('e', 5); MAP.put('f', 6); MAP.put('g', 7); MAP.put('h', 8); 
         MAP.put('d', 4); 
         
-        this.SLOTS.get(0).getInv().add(hlsPlt);
+        this.SLOTS.get(0).getInv().contents().add(hlsPlt);
         
         this.description = "It's an array of 9 brass indentations in the floor at the\n"
                          + "base of each statue. Each one bears an inscription inside.";
@@ -137,6 +138,8 @@ public class Obs1_Slots extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     private void lockSlots() {
+        AudioPlayer.playEffect(43);
+        
         SLOTS.stream().forEach((s) -> {
             s.lock();
         });
