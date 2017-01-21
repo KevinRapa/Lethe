@@ -251,10 +251,11 @@ public final class Player {
     }
     // ========================================================================  
     /**
-     * The movement algorithm for moving the player north, south, east, and west.
+     * The movement algorithm for moving the player.
      * Two rooms are considered not to have a door between them if the first
      * three characters of their IDs are identical. An exception is made for 
-     * caves and catacombs, which have no doors.
+     * caves and catacombs, which have no doors. Stairs and ladders move the
+     * player up and down, and no sound is played here for them.
      * 
      * @param dir A cardinal direction.
      */
@@ -361,6 +362,9 @@ public final class Player {
                 Player.getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture()))
                 search(getFurnRef(searchThis));
 
+        else if (searchThis.matches("furniture|furnishings|stuff|things?"))
+            GUI.out("There are too many things in the room. Specify your intention.");
+        
         else if (isNonEmptyString(searchThis)) 
             GUI.out("There is no " + searchThis + " here."); 
         
@@ -517,6 +521,10 @@ public final class Player {
             else
                 GUI.out("That seems unnecessary.");
         }   
+        
+        else if (object.matches("furniture|furnishings|stuff|things?"))
+            GUI.out("Be more specific.");
+        
         else 
             GUI.out("There is no " + object + " here."); 
     }
@@ -541,6 +549,10 @@ public final class Player {
         
         if (getPos().hasFurniture(inspecting))
             GUI.out(Player.getFurnRef(inspecting).getDescription());
+        
+        else if (inspecting.matches("furniture|furnishings|stuff|things?"))
+            GUI.out("Be more specific.");
+        
         else 
             GUI.out("There is no " + inspecting + " here.");
     }
