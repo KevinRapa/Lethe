@@ -89,7 +89,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         boolean played = false; // If the player has played at least once.
         
         do {
-            ans = GUI.askChoice("\nPlay?\n<'n'/'y'>", "yes|no|[yn]|");
+            ans = GUI.askChoice("\nPlay?\n<'y'/'n'>", "yes|no|[yn]|");
             
             if (ans.matches("y|yes")) {
                 played = true;

@@ -1,5 +1,6 @@
 package Gallery;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -34,6 +35,7 @@ public class Gal1_Screen extends Furniture {
     @Override public String interact(String key) {     
         if (! this.lifted) {
             this.lifted = true;
+            AudioPlayer.playEffect(41);
             Player.getRoomObj(Id.GAL1).addFurniture(REF);
             return this.actDialog;
         }            

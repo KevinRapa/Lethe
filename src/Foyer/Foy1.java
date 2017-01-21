@@ -1,5 +1,6 @@
 package Foyer;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Direction;
@@ -36,10 +37,15 @@ public class Foy1 extends Room{
     }    
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
-        if (dir == Direction.WEST || dir == Direction.EAST)
-            return "You should be getting out of here..."; // For end game.
-        else
-            return bumpIntoWall();
+        switch (dir) {
+            case WEST:
+                AudioPlayer.playEffect(4);
+                return "The gate that way is closed.";
+            case EAST:
+                return "You should be getting out of here..."; // For end game.
+            default:
+                return bumpIntoWall();
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -1,5 +1,6 @@
 package Iron_Hall;
 
+import A_Super.Direction;
 import A_Super.Room;
 
 public class Iha2 extends Room{
@@ -30,4 +31,11 @@ public class Iha2 extends Room{
             return this.description.replaceAll(" It hold a polearm in its gauntlet.", "");
     }
 /*----------------------------------------------------------------------------*/
+    @Override public String getBarrier(Direction dir) {
+        if (dir == Direction.SOUTH)
+            return "You should be getting out of here..."; // For end game.
+        else
+            return bumpIntoWall();
+    } 
+/*----------------------------------------------------------------------------*/    
 }

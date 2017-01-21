@@ -39,7 +39,7 @@ public class Gal6_Button extends Button {
             index = generator.nextInt(Player.getVisitedRooms().size());
             roomId = Player.getVisitedRooms().get(index);
 
-            while (roomId.matches("STUD|LIB[45]|LOOK|ESC\\d") || 
+            while (roomId.matches("LIB[45]|ESC\\d|INTR") || 
                    roomId.equals(Player.getPosId())) {
                 index = generator.nextInt(Player.getVisitedRooms().size());
                 roomId = Player.getVisitedRooms().get(index);

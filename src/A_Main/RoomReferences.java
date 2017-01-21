@@ -62,11 +62,11 @@ public class RoomReferences {
         {}, {}, 
         // FLOOR 1 ROOM ADJS -------------------------------------------------- 
         {COU2}, {COU1,COU3}, {COU7,COU4,COU2,COU5}, {COU3}, {COU3,COU6}, {COU5}, 
-        {FOY1,COU3}, {FOY1}, {FOY2,VEST,FOYW,COU7}, {FOY1,FOYB,FOY3}, 
-        {FOY1,ROTU}, {FOYC,FOY2}, {GAL1,FOYB}, {GAL2,FOYC}, 
+        {FOY1,COU3}, {FOY1}, {FOY2,VEST,COU7}, {FOY1,FOYB,FOY3}, 
+        {ROTU}, {FOYC,FOY2}, {GAL1,FOYB}, {GAL2,FOYC}, 
         {GAL1,LIB3,MHA1,GAL4}, {LIB2}, {LIB3}, {LIB2,GAL2}, {OBS1,BHA2}, 
-        {BHA1,BHA3}, {BHA2,PAR1}, {BHA1,OBS2}, {ROTU}, {PAR2}, {ROTU}, 
-        {FOYW,LOOK}, {MHA2,GAL2,CHS1}, {MHA1}, {SHA2}, {SHA1,SQUA}, {IHA2,ROTU}, 
+        {BHA1,BHA3}, {BHA2,PAR1}, {BHA1,OBS2}, {}, {PAR2}, {ROTU}, 
+        {FOYW,LOOK}, {MHA2,GAL2,CHS1}, {MHA1}, {SHA2}, {SHA1,SQUA}, {IHA2}, 
         {MHA1,MHA3,DIN1}, {DIN2,MHA2}, {SHA1}, {SHA2,WOW1}, {IHA1,WOW2}, 
         {KITC,EOW1,MHA2}, {MHA3}, {WOW1}, {WBAL,WOW2,SHA1}, {IHA2,WOW1,WOW3}, {CLOS}, 
         {EOW1,SEW0}, {EOW2,DST1,MHA3}, {EOW1,EOW4}, 
@@ -194,7 +194,7 @@ public class RoomReferences {
      * @param ID A room  
      * @return A list of rooms adjacent to the room. 
      */ 
-    public static ArrayList getAdj(String ID) { 
+    public static ArrayList<String> getAdj(String ID) { 
         ArrayList result = new ArrayList<>(); 
         
         result.addAll(Arrays.asList(ADJACENTS.get(ID))); 

@@ -19,10 +19,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class AudioPlayer {
     public final static String WD = System.getProperty("user.dir"),
                                 S = System.getProperty("file.separator");
+    
     private static String trackName;
     private static boolean muted = false;
     private static Clip currentMusic, effectClip;
-    
 //******************************************************************************
 // <editor-fold desc="AMBIENCE AND MUSIC"> 
 //******************************************************************************    
@@ -174,6 +174,8 @@ public class AudioPlayer {
         add(new File(WD, "effects" + S + "concreteBlock.wav")); // 50
         add(new File(WD, "effects" + S + "concreteShort.wav")); // 51
         add(new File(WD, "effects" + S + "atticNoise.wav"));    // 52
+        add(new File(WD, "effects" + S + "piano.wav"));         // 53
+        add(new File(WD, "effects" + S + "harp.wav"));          // 54
     }};
 //******************************************************************************    
 // </editor-fold>

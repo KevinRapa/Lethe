@@ -2,7 +2,7 @@ package Foyer;
 
 import A_Super.Furniture;
 /**
- * Contains a statue hiding a lever which switches gates in the foyer.
+ * Contains a statue hiding a button which switches gates in the foyer.
  * 
  * @see Foyer.Foy2_Lvr
  * @see Foyer.Foy_Gt
@@ -27,7 +27,7 @@ public class Foy2_Alcove extends Furniture{
             return this.description;
         else
             return "A shallow domed alcove carved into the wall. Behind\n"
-                 + "the displaced statue is a small lever.";
+                 + "the displaced statue is a small black button.";
     }
     
 /*----------------------------------------------------------------------------*/
@@ -35,7 +35,7 @@ public class Foy2_Alcove extends Furniture{
         if (! STAT_REF.moved())
             return this.searchDialog;
         else
-            return "With the statue moved, you see a small lever in the back.";
+            return "With the statue moved, you see a small black button in the back.";
     }
 /*----------------------------------------------------------------------------*/
 }

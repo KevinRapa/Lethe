@@ -1,5 +1,6 @@
 package Tunnels;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -33,7 +34,9 @@ public class Sew5_Valve extends Furniture {
         this.addActKeys("turn", "rotate", "spin", "twist", "open", "close");
     }
     // ========================================================================   
-    @Override public String interact(String key) {              
+    @Override public String interact(String key) {       
+        AudioPlayer.playEffect(17);
+        
         if (! SEW4PP.isMissingPipe() && SEW2VLVS.solved()) {
             ((Cis1)Player.getRoomObj(Id.CIS1)).turnOffGas();
         }

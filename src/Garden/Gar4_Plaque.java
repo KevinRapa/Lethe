@@ -1,5 +1,6 @@
 package Garden;
 
+import A_Main.AudioPlayer;
 import A_Super.Furniture;
 /**
  * @author Kevin Rapa
@@ -29,6 +30,7 @@ public class Gar4_Plaque extends Furniture {
             return this.description;
         else {
             if (! this.isMoved) {
+                AudioPlayer.playEffect(51);
                 this.isMoved = true;
                 return this.actDialog;
             }

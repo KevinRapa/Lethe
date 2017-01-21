@@ -10,10 +10,13 @@ public class Gal6_Ladder extends Staircase {
         super(direction);
         this.searchDialog = "The ladder hides nothing.";
         this.description = "The ladder leads down the hatch into the room below.";
+        this.NAMEKEYS.clear();
+        this.addNameKeys("ladder");
     }
 /*----------------------------------------------------------------------------*/
     @Override protected void playEffect() {
         // For overriding. Some stairs aren't wooden.
         AudioPlayer.playEffect(16);
     }
+/*----------------------------------------------------------------------------*/
 }

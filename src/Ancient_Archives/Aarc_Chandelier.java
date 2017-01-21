@@ -16,7 +16,7 @@ public class Aarc_Chandelier extends Aarc_Furniture {
         this.actDialog = this.useDialog = "The chandelier is broken and too high up.";
         this.searchDialog = "You cannot reach it.";
 
-        this.addNameKeys("(?:unlit )?(?:iron )?chandelier");
+        this.addNameKeys("(?:unlit )?(?:iron )?(?:chandelier|light)");
         this.addUseKeys(HAND_TORCH);
         this.addActKeys("light");
     }

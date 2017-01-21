@@ -6,7 +6,7 @@ import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Statue;
 /**
- * Player must move this to discover lever.
+ * Player must move this to discover a button.
  * 
  * @see Foyer.Foy2_Lvr
  * @author Kevin Rapa
@@ -34,7 +34,7 @@ public class Foy2_Stat extends Statue {
                 AudioPlayer.playEffect(41);
                 this.moved = true;
                 return "You push the statue and manage to displace it a bit.\n"
-                     + "In the alcove, behind the statue, you discover a lever."; 
+                     + "In the alcove, behind the statue, you discover a small black button."; 
             }
             else
                 return "You have moved the statue as far as you can.";

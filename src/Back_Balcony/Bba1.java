@@ -1,5 +1,6 @@
 package Back_Balcony;
 
+import A_Main.AudioPlayer;
 import A_Super.Room;
 import A_Super.Direction;
 /**
@@ -21,14 +22,19 @@ public class Bba1 extends Room {
                      "there is an immense drop to the the sea where waves crash\n" +
                      "against the cliff. The sea extends northwards and to the\n" +
                      "west indefinitely, but to the east, you can see the village\n" +
-                     "you left from behind a shoreline.";
+                     "you left from behind a shoreline. Behind you on the wall is\n"
+                   + "a small black button.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
-        if (dir == Direction.NORTH)
-            return "There's a couple hundred foot drop right there.";
-        else {
-            return bumpIntoWall();
+        switch (dir) {
+            case NORTH:
+                return "There's a couple hundred foot drop right there.";
+            case SOUTH:
+                AudioPlayer.playEffect(4);
+                return "The gate that way is closed.";
+            default:
+                return bumpIntoWall();
         }
     }
 /*----------------------------------------------------------------------------*/

@@ -1,5 +1,0 @@
-BUGS TO FIX
-
-OTHER NOISES
-	whirring noise for light machines
-	rope being cut

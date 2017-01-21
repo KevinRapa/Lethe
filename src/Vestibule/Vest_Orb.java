@@ -78,7 +78,7 @@ public class Vest_Orb extends NonPlayerCharacter {
         GUI.out("\"Eurynomos is kept alive by 5 phylacteries, however he cannot\n"
               + "remember where they are, for he lives in a state of dementia\n"
               + "now. The phylacteries are deteriorating, but I believe he supplements\n"
-              + "his life energy with that of others; the fools who enter here\n"
+              + "his life energy with that of others; the fools who enter here.\n"
               + "Find and destroy the phylacteries. Set us free from this place.\"");
         GUI.promptOut();
                 

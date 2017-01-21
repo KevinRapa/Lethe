@@ -1,5 +1,6 @@
 package Jade_Hall;
 
+import A_Main.AudioPlayer;
 import A_Main.Id;
 import static A_Main.NameConstants.AQUAMARINE;
 import static A_Main.NameConstants.RUBY;
@@ -52,6 +53,7 @@ public class Jha_Lion extends Furniture {
                      + "there only momentarily before falling out.";
             else {
                 this.hasRuby = true;
+                AudioPlayer.playEffect(43);
                 Player.getInv().remove(item);
                 return this.useDialog + ((Jha2)Player.getRoomObj(Id.JHA2)).lionCheck();
             }

@@ -20,7 +20,7 @@ public class Cha1_Water extends Furniture {
         this.searchDialog = "You can't pick this up with your bare hands.";
         this.useDialog = "You fill the small vial with the holy water.";
         this.addActKeys("drink", "swim");
-        this.addNameKeys("water", "holy water", "clear water");
+        this.addNameKeys("water", HOLY_WATER, "clear water");
         this.addUseKeys(METAL_BUCKET, EMPTY_VIAL, GLASS_BOTTLE);
     }
 /*----------------------------------------------------------------------------*/

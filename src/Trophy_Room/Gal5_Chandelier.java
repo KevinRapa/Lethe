@@ -11,7 +11,7 @@ public class Gal5_Chandelier extends Furniture {
         this.description = "The light holds only a few melted candles. It's\n"
                          + "covered in cobwebs. This light has not been lit\n"
                          + "for a while.";
-        this.addNameKeys("chandelier", "light");
+        this.addNameKeys("chandelier|light");
     }
 /*----------------------------------------------------------------------------*/
 }

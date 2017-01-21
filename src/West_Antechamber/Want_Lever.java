@@ -13,8 +13,8 @@ public class Want_Lever extends Lever {
         this.description = "It's a black iron lever resting on the plinth of the\n"
                          + "statue.";
         this.searchDialog = "There's a pile of gold! No, not really, just a lever.";
-        this.actDialog = "You pull the lever. The room you are in vibrates and you\n"
-                    + "here a prolonged rumble past the wall to your west.";
+        this.actDialog = "You pull the lever. The room vibrates and you\n"
+                       + "here a prolonged rumble past the wall to your west.";
         this.addNameKeys("lever", "(?:black )?(?:iron )?lever");
     }
 /*----------------------------------------------------------------------------*/    

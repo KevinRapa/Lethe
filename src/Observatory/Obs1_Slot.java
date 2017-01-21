@@ -58,15 +58,17 @@ public class Obs1_Slot extends Furniture {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {
-            if (item.getType().equals(NameConstants.PLATE) && this.size() == 0) {
-                AudioPlayer.playEffect(43);
-                this.CONTENTS.add(item);
-                return true;
+            if (this.size() == 0) {
+                if (item.getType().equals(NameConstants.PLATE)) {
+                    AudioPlayer.playEffect(43);
+                    this.CONTENTS.add(item);
+                    return true;
+                }
+                else
+                    GUI.out("It doesn't seem like that belongs here.");
             }
-            else if (! item.getType().equals(NameConstants.PLATE))
-                GUI.out("There's already a plate in here.");
             else
-                GUI.out("It doesn't seem like that belongs here.");
+                GUI.out("There's already a plate in here.");
             
             return false;
         }

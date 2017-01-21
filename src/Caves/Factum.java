@@ -48,7 +48,7 @@ public class Factum extends Item {
                 index = generator.nextInt(Player.getVisitedRooms().size());
                 roomId = Player.getVisitedRooms().get(index);
                 
-                while (roomId.matches("STUD|LIB[45]|LOOK|ESC\\d|BHA2") || 
+                while (roomId.matches("ESC\\d|BHA2") || 
                        roomId.equals(Player.getPosId())) {
                     index = generator.nextInt(Player.getVisitedRooms().size());
                     roomId = Player.getVisitedRooms().get(index);

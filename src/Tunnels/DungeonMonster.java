@@ -13,7 +13,6 @@ import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 import static java.lang.Math.abs;
-import static java.lang.Math.abs;
 /**
  * This class simulates a creature that roams the halls of the tunnels.
  * 
@@ -57,7 +56,6 @@ public class DungeonMonster {
     // ========================================================================
     public final static void startMovement() {
         timer = new Timer(true);
-        
         timer.schedule(new Creature_Task(), 4000, 4000);
     }
     // ========================================================================

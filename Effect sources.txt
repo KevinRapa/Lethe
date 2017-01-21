@@ -192,3 +192,10 @@ Concrete block
 	https://www.freesound.org/people/FreqMan/sounds/25847/
 	concrete blocks moving3.wav -- FreqMan
 	
+Piano
+	https://www.freesound.org/people/ecfike/sounds/183500/
+	Piano Cord.wav -- ecfike
+
+Harp
+	https://www.freesound.org/people/adriann/sounds/149187/
+	Harp Strum.wav -- adriann

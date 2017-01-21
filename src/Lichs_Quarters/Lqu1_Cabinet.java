@@ -16,7 +16,8 @@ public class Lqu1_Cabinet extends Furniture implements Openable {
 
         this.searchDialog = "You open the cabinet and look inside.";
 
-        this.addNameKeys("(?:tall )?(?:standing )?(?:glass )?(?:display )?(?:cabinet|case)");
+        this.addNameKeys("(?:tall )?(?:standing )?(?:glass )?(?:display )?(?:cabinet|case)", 
+                "(?:tall )?(?:standing )?(?:glass )?display");
     }
     // ========================================================================    
 }

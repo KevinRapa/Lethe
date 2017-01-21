@@ -59,7 +59,7 @@ public class Soul extends Room {
             // Closes off areas to direct player out and avoid conflictions with night and day.
             Player.getRoomObj(Id.FOYC).removeAdjacent(Id.GAL1);
             Player.getRoomObj(Id.FOY3).removeAdjacent(Id.PAR2);
-            Player.getRoomObj(Id.FOY1).removeAdjacent(Id.FOYW);
+            Player.getRoomObj(Id.IHA2).removeAdjacent(Id.WOW2);
             Player.getRoomObj(Id.FOY1).removeAdjacent(Id.VEST);
         }
         return STD_RM_OUT;

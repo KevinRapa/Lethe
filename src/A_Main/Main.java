@@ -53,9 +53,9 @@ import java.io.*;          import java.util.Random;
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Lethe");
     private static final String WD = System.getProperty("user.dir");
+    private static final String START = Id.COU4; // Default COU4
 // ============================================================================
     public static void main(String[] args) {
-        String start = Id.CAS1; // PLAYER'S STARTING LOCATION. DEFAULT Id.COU4.
         //**********************************************************************
         // <editor-fold desc="MAKE THE FRAME">
         //**********************************************************************
@@ -98,7 +98,7 @@ public class Main {
         catch (java.lang.ClassNotFoundException | java.io.IOException e) {
             System.out.println(e.getMessage() + "\nData missing. Creating new game.");
             RoomReferences.constructRoomReferences();
-            Player.setNewAttributes(RoomReferences.getCoords(start));
+            Player.setNewAttributes(RoomReferences.getCoords(START));
             exitChoice = Player.startDialog(); // START GAME
         }
         //**********************************************************************
@@ -146,22 +146,18 @@ public class Main {
         // Every room, furniture, and item is instantiated here. For each area, 
         // each room is instantiated, then each item is, then each furniture
         // is and the items are added to the respective furniture. 
-        //**********************************************************************
-
-        // ---------------------------------------------------------------------  
+        //**********************************************************************  
         // <editor-fold desc="INITIALIZE PHYLACTERIES">
         
         Item studBkPhy = new Stud_BookPhylactery("glowing book, \"A Young Mind's Guide to Lichery\"");
         Item kitcFrtPhy = new Kitc_FrtPhy("glowing pristine fruit");
         Item factumPhy = new Factum("the Factum");
         Item vauChlPhy = new Vau_ChalicePhylactery("glowing chalice");
-        Item towScptrPhy = new Tow_ScptrPhy("glowing scepter");
+        Item towScptrPhy = new Tow_ScepterPhylactery("glowing scepter");
         
         // </editor-fold>
         // ---------------------------------------------------------------------  
         // <editor-fold desc="INITIALIZE KEYS AND GENERIC FURNITURE">
-
-        // Keys
         Key studKey = new Key("crude molded key", Id.STUD);        
         Key gal1Key = new Key("key with a bearded face on its bow", Id.GAL1);       
         Key eow3Key = new Key("workshop key", Id.WORK);       
@@ -180,7 +176,6 @@ public class Main {
         Key bal1Key = new Key("key with a chalice on its bow", Id.TOW1); 
         Key rotuKey = new Key("key with a cobra head on its bow", Id.ROTU);   
                 
-        // Generic furniture 
         Door northDoor = new Door(Direction.NORTH); // Generic directional doors.
         Door southDoor = new Door(Direction.SOUTH);
         Door eastDoor = new Door(Direction.EAST);
@@ -197,11 +192,12 @@ public class Main {
         
         Item bckt = new Item(METAL_BUCKET, "It's an empty metal bucket."); // Used with all fireplaces
         Item vial = new Item(EMPTY_VIAL, "It's a small glass vial for holding samples");
+        Item ram = new Item(BATTERING_RAM, "You've restored the old battering ram back to its former glory.");
         
         // <editor-fold desc="Mandragora set">
         // Instantiated before courtyard because soil can be found in the courtyard.
         Item mndrk = new Item(MANDRAGORA, "The potato-shaped vegetable looks disturbingly life-like.");
-        Item hlyWtr = new Item("holy water", "Clear, salty, and boiled like hell.", mndrk, 2);
+        Item hlyWtr = new Item(HOLY_WATER, "Clear, salty, and boiled like hell.", mndrk, 2);
         Item pttdMndrk = new Item(POTTED_MANDRAGORA, "You have gently positioned the bulb under the soil.", mndrk, 2);
         Item mndrkBlb = new Item("mandragora bulb", "It's a baby mandragora!", pttdMndrk, 2);
         Item mndrkPt = new Item(POTTED_SOIL_AND_FERTILIZER, "The fertile soil mixture is packed gently into the pot. ", pttdMndrk, 2);
@@ -213,11 +209,14 @@ public class Main {
         // </editor-fold>
         
         // <editor-fold desc="INITIALIZE WEST ANTECHAMBER">
+        Furniture foy1Gt = new Foy_Gate(false, Direction.WEST);
+        Furniture foy2Gt = new Foy_Gate(true, Direction.NORTH);
+        Furniture foy2Bttn = new Foy2_Button(foy1Gt, foy2Gt);
         //-----------------------------THE ROOM---------------------------------
         Room foyw = new Want("in an antechamber", Id.FOYW);     
         //-----------------------------FURNITURE--------------------------------        
         Furniture wantLvr = new Want_Lever();
-        Furniture wantStat = new Want_Statue(wantLvr);
+        Furniture wantStat = new Want_Statue();
         Furniture wantPllrs = new Want_Pillars();
         Furniture wantTrchs = new Want_Torches();
         Furniture wWW = new Wall("It's made of big sandstone bricks");
@@ -225,6 +224,7 @@ public class Main {
         Furniture wantRmp = new Want_Ramp();
         Furniture wantDr = new Want_Door(Direction.WEST);
         Furniture wantGt = new Want_Gate(Direction.EAST);
+        Furniture wantBttn = new Want_Button(foy2Bttn);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE BACK BALCONY">
         //-----------------------------THE ROOM---------------------------------
@@ -262,15 +262,13 @@ public class Main {
         Furniture foyW = new Wall("A dark wood-paneled wall.");
         Furniture foyF = new Floor("Salmon-colored tiled marble. Its glint stuns you.");
         Furniture foyFrntDr = new Entr_Door(Direction.SOUTH);
-        Furniture foy1Gt = new Foy_Gate(false, Direction.WEST);
+        
         Furniture foy1Chnd = new Foy_Chandelier();
         Furniture foy1Tbl = new Foy1_Table(bskt, foy1Note, cndlStck);
         Furniture foy1Crpt = new Foy1_Carpet();
         Furniture foy1Strs = new Foy1_Stairs();    
         
-        Furniture foy2Gt = new Foy_Gate(true, Direction.NORTH);
-        Furniture foy2Lvr = new Foy2_Lever(foy1Gt, foy2Gt);
-        Furniture foy2Stat = new Foy2_Stat(foy2Lvr);
+        Furniture foy2Stat = new Foy2_Stat(foy2Bttn);
         Furniture foy2Alc = new Foy2_Alcove(foy2Stat);
         Furniture foy2Strcs = new Foy2_Staircase(Direction.UP);
         
@@ -289,13 +287,15 @@ public class Main {
         //-------------------------------ITEMS----------------------------------
         Item qllPn = new Item("quill pen", "It's an old matted feather stained with dried ink.");
         Item lttrOpnr = new Item("letter opener", "It's a very dull knife.");
+        Item loopedRope = new Item(LOOPED_ROPE, "It's a short rope tied into a noose. It's pretty\n"
+                                              + "frayed in the center.", ram, 3);
         //-----------------------------FURNITURE--------------------------------
         Furniture vesOrb = new Vest_Orb();
         Furniture vesFire = new Vest_Fireplace(true, bckt);
         Furniture vesBtn = new Vest_Button(vesFire);
         Furniture vesWin = new Vest_Window(vesFire);
         Furniture vesDr = new Vest_Dr(Direction.WEST);      
-        Furniture vesDsk = new Vest_Desk(qllPn, lttrOpnr);
+        Furniture vesDsk = new Vest_Desk(qllPn, lttrOpnr, loopedRope);
         Furniture vesEtbl = new Vest_EndTable();
         Furniture vesCase = new Vest_Case(rotuKey);
         Furniture vesTpstr = new Vest_Tpstr();
@@ -370,7 +370,6 @@ public class Main {
         // <editor-fold desc="AREA 2: WEST WING">
         
         Item brRam = new Item("broken battering ram", "It's a battering ram, but without the other rope to hold it with, it's useless.", "It's useless now.");
-        Item ram = new Item(BATTERING_RAM, "You've restored the old battering ram back to its former glory.");
         Item rdFcs = new Focus(RED_FOCUS, "It's a cool brass ring holding a red lens.");   
         
         // <editor-fold desc="INITIALIZE ROTUNDA">
@@ -393,15 +392,11 @@ public class Main {
         // <editor-fold desc="INITIALIZE LOOKOUT">
         //-----------------------------THE ROOM--------------------------------- 
         Room look = new Look("on the lookout", Id.LOOK);       
-        //-------------------------------ITEMS----------------------------------
-        Item lookRope = new Item(LOOPED_ROPE, "It's a short rope tied into a noose. It's pretty\n"
-                               + "frayed in the center from being tied around that\n"
-                               + "railing for so long.", ram, 3);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture lookVlv = new Look_Valve(rotuFntn);
         Furniture lookLghths = new Look_Lighthouse();
         Furniture lookClff = new Look_Cliff();
-        Furniture lookRlng = new Look_Railing(lookRope);
+        Furniture lookRlng = new Look_Railing(loopedRope);
         Furniture lookF = new Floor("Just a wet shale floor.");
         // </editor-fold> 
         // <editor-fold desc="INITIALIZE IRON HALL">
@@ -411,6 +406,7 @@ public class Main {
         //-------------------------------ITEMS----------------------------------
         Item iha2plArm = new Item(POLEARM, "It looks like an old medieval polearm.");
         //-----------------------------FURNITURE--------------------------------
+        Furniture iha1Lvr = new Iha1_Lever();
         Furniture iha1Armr = new Iha1_Armor();
         Furniture iha1Hnd = new Iha1_Hand();
         Furniture iha2Armr = new Iha2_Armor(iha2plArm);     
@@ -1147,8 +1143,8 @@ public class Main {
         Furniture laboDspnsrs = new Labo_Dispensers(vial, tstTb);
         Furniture laboBrtt = new Labo_Burette(vial, tstTb);
         Furniture laboStpCck = new Labo_StopCock();
-        Furniture laboF = new Floor("It's black and white checkered tile. A predictable floor for a laboratory.", tstTb, new Item(PHASE_DOOR_POTION));
-        Furniture laboSnk = new Labo_Sink(tstTb, bkr);
+        Furniture laboF = new Floor("It's black and white checkered tile. A predictable floor for a laboratory.", tstTb);
+        Furniture laboSnk = new Labo_Sink(vial, bkr);
         Furniture laboCntrptn = new Labo_Contraption();
         Furniture laboTbl = new Labo_Table();
         Furniture laboDvcs = new Labo_Devices();
@@ -1656,7 +1652,7 @@ public class Main {
         //-----------------------------FURNITURE-------------------------------- 
         Furniture towWndw = new Tow_Windows();
         Furniture towBlcny = new Tow_Balcony();
-        Furniture towSphr = new Tow_Sphr();
+        Furniture towSphr = new Tow_Sphere();
         
         Furniture tow1F = new Floor("The floor is checkered white and blue, and very clean.");
         Furniture tow1Dr = new Foy4_Door(Direction.NORTH);
@@ -1681,6 +1677,9 @@ public class Main {
         Furniture lqu1_Bd = new Lqu1_Bed();
         Furniture lqu_Crpt = new Lqu_Carpet();
         
+        Furniture lqu2Lvr = new Lqu2_Lever(cou3Gt);
+        Furniture lqu2Bd = new Lqu2_Bed();
+        
         // </editor-fold>
         // <editor-fold desc="INITIALIZE TOP BALCONY">
         //-----------------------------THE ROOM---------------------------------
@@ -1690,14 +1689,10 @@ public class Main {
         Furniture tbalPllr = new Tbal_Pillar();
         Furniture tbalDrS = new Tow2_NorthDoor(Direction.SOUTH);
         Furniture tbalF = new Floor("The floor is a gray mosaic formed from many tiny pieces of glossy ceramic.");
-        
-        Furniture lqu2Lvr = new Lqu2_Lever();
-        Furniture lqu2Bd = new Lqu2_Bed();
-        
         // </editor-fold>
         // <editor-fold desc="INITIALIZE SOUL CHAMBER">
         //-----------------------------THE ROOM---------------------------------
-        Room soul = new Soul("in the soul chamber", Id.SOUL, towSphr, lqu1, lqu2, tow1, tow2);
+        Room soul = new Soul("in the soul chamber", Id.SOUL, towSphr, lqu1, tow1, tow2);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture soulPl = new Soul_Pool();
         Furniture soulStat = new Soul_Statues();
@@ -1712,8 +1707,6 @@ public class Main {
         // </editor-fold>
         
         // </editor-fold>
-        // ---------------------------------------------------------------------     
-
         //**********************************************************************
         // </editor-fold>  
         //**********************************************************************
@@ -1813,14 +1806,7 @@ public class Main {
             // </editor-fold>   
                 
         };
-        
-        // <editor-fold desc="LOCK ROOMS">
-        rotu.lock(); stud.lock(); gal5.lock(); gal1.lock();
-        par2.lock(); clos.lock(); din1.lock(); kitc.lock(); ou62.lock();
-        chs1.lock(); work.lock(); tow1.lock(); tbal.lock(); sewp.lock();
-        dkch.lock(); vau2.lock(); wow2.lock(); foyw.lock();
-        // </editor-fold>
-        
+
         //**********************************************************************
         // </editor-fold> 
         //********************************************************************** 
@@ -1837,7 +1823,7 @@ public class Main {
         foy3.addFurniture(foy3Strs, westDoor, foyBnstr, foyW, foy3F, foy34Crpt);
         foy4.addFurniture(foy4Strs, foyBnstr, foyW, foy4F, foy34Crpt, foy4Dr);
         vest.addFurniture(vesFire, vesBtn, vesWin, vesDsk, vesEtbl, vesCase, vesTpstr, vesChr, vesF, vesDr, wallEx, vesOrb);
-        foyb.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, bbaRf, bbaBnch, bbaScnc, bbaWvs, bbaClff, bbaShrln, bbaSea, bba1Gt);
+        foyb.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, bbaRf, bbaBnch, bbaScnc, bbaWvs, bbaClff, bbaShrln, bbaSea, bba1Gt, wantBttn);
         foyc.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, bbaRf, bbaScnc, bbaWvs, bbaClff, bbaShrln, bbaSea, bba2Dr);
         cou1.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou1F, couCstl);
         cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl);
@@ -1846,14 +1832,14 @@ public class Main {
         cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, cou3Fntns, couCstl);
         cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl);
         cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps);
-        foyw.addFurniture(genDoor, wantStat, wantTrchs, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt);
+        foyw.addFurniture(genDoor, wantStat, wantTrchs, wantLvr, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt, wantBttn);
         
         // </editor-fold>
         // <editor-fold desc="AREA 2: WEST WING">    
         
         rotu.addFurniture(genDoor, rotuFntn, rotuW, rotuF, rotuPlnts, rotuHl, rotuStat, rotuScnc, rotuFrms, rotuSky, rotuRock);
-        look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, eastDoor);
-        iha1.addFurniture(northDoor, wWW, ihaF, iha1Armr, iha1Hnd, iha1Bwl, ihaWndw);
+        look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, eastDoor, iha1Lvr);
+        iha1.addFurniture(northDoor, wWW, ihaF, iha1Armr, iha1Hnd, iha1Bwl, ihaWndw, iha1Lvr);
         iha2.addFurniture(southDoor, wWW, ihaF, iha2Armr, iha2Bwl, ihaWndw);
         wow1.addFurniture(genDoor, wWW, westDoor, wow1NDr, wow1Crt, wow1F, wowWndw, wowHrth, wow1Shlvs);
         wow2.addFurniture(genDoor, wWW, wow2Armr, wow2Blcny, wow2F, wow2Dr, northDoor, wow2Hole, wowWndw, wowHrth, wow2Strcs);
@@ -1865,7 +1851,7 @@ public class Main {
         clos.addFurniture(closW, closF, closShlf, closStl, closBrrl, closWrkbnch, closLddr, closScks, closClng, closSkltn, closDr);  
         cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searAsh, closW);
         shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, lookLghths, lookClff, bbaSea, rquaPnl);
-        stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, southDoor);
+        stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, southDoor, iha1Lvr);
         
         // </editor-fold>
         // <editor-fold desc="AREA 3: EAST WING">     
@@ -1893,7 +1879,7 @@ public class Main {
         din2.addFurniture(din2W, din2F, southDoor, din2Pntng, din2Strs);
         drar.addFurniture(northDoor, drarGhst, drarF, drarW, din1Mnlght, drarChss, drarBr, drarBllrds, drarWndw, drarCch, drarTbl);
         gal5.addFurniture(gal5Dsply, gal5Chndlr, gal5Cbwbs, gal5F, gal5W, gal5Clng, gal5Cbt, gal5Dr);
-        kitc.addFurniture(kitcTrch, kitcF, kitcW, kitcWndw, kitcDr, kitcRck, kitcPts, kitcHrth, kitcBrls, kitcPntry, kitcShlf, kitcCntr);
+        kitc.addFurniture(kitcTrch, kitcF, kitcW, kitcWndw, kitcDr, kitcRck, kitcPts, kitcHrth, kitcBrls, kitcPntry, kitcShlf, kitcCntr, laboSnk);
 
         // </editor-fold>
         // <editor-fold desc="AREA 4: CASTLE REAR">
@@ -1979,7 +1965,7 @@ public class Main {
         // </editor-fold>
         // <editor-fold desc="AREA 7: TOWER">
         
-        tow1.addFurniture(tow1F, wallEx, towWndw, towBlcny, tow1Dr, tow1BlckDr, towSphr);
+        tow1.addFurniture(tow1F, wallEx, towWndw, towBlcny, tow1Pdstl, tow1Dr, tow1BlckDr, towSphr);
         tow2.addFurniture(genDoor, towWndw, wallEx, towBlcny, eastDoor, towSphr, tow2DrN);
         bls1.addFurniture(bls1Dr, bls1Strs, bls1_Plnts, blsWndw, bls1F, blsBlcny, bls1Stat);
         bls2.addFurniture(eastDoor, bls2Strs, blsWndw, bls2F, blsBlcny);
@@ -1993,6 +1979,20 @@ public class Main {
         //**********************************************************************
         // </editor-fold>  
         //**********************************************************************
+        
+        
+        //**********************************************************************
+        // <editor-fold desc="LOCK ROOMS">
+        //*********************************************************************/  
+        
+        rotu.lock(); stud.lock(); gal5.lock(); gal1.lock(); par2.lock();
+        clos.lock(); din1.lock(); kitc.lock(); ou62.lock(); chs1.lock();
+        work.lock(); tow1.lock(); tbal.lock(); sewp.lock(); dkch.lock();
+        vau2.lock(); wow2.lock();
+        
+        //**********************************************************************
+        // </editor-fold> 
+        //********************************************************************** 
         
         return newMap;
     }

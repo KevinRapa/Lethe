@@ -51,6 +51,7 @@ public final class NameConstants {
         KEY_OF_CONTINUITY = "key of continuity",POTTED_MANDRAGORA = "potted mandragora",
         FERTILIZED_SOIL = "fertilized soil",    POTTED_SOIL_AND_FERTILIZER = "potted soil and fertilizer",
         BATTERING_RAM = "battering ram",        LOOPED_ROPE = "looped rope",
-        SOIL = "soil",                          FIXED_LADDER = "fixed ladder";
+        SOIL = "soil",                          FIXED_LADDER = "fixed ladder",
+        HOLY_WATER = "holy water";
     // ========================================================================
 }

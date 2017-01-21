@@ -31,8 +31,8 @@ public class Lib4_Stairs extends Staircase {
         else {
             AudioPlayer.playEffect(40);
             return "As your foot touches the top step, the stairs flatten down\n"
-                 + "causing you to fall to the first floor. 'Should have worn\n"
-                 + "those shoes, dammit.'";
+                 + "against the floor. You jump back and avoid falling to the\n"
+                 + "first floor.";
         }
     }
 /*----------------------------------------------------------------------------*/

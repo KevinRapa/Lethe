@@ -13,7 +13,7 @@ public class Inventory implements Iterable<Item>, Serializable {
     protected final ArrayList<Item> CONTENTS; // This inventory's contents.
     // CONSTRUCTOR ============================================================   
     public Inventory (Item ... items) {
-        this.CONTENTS = new ArrayList();
+        this.CONTENTS = new ArrayList<>();
         this.CONTENTS.addAll(Arrays.asList(items));
     }
     // ========================================================================
@@ -120,7 +120,7 @@ public class Inventory implements Iterable<Item>, Serializable {
     // ========================================================================
     // ************************************************************************
     // ========================================================================
-    private static class Inventory_Sorter<Item extends Comparable> implements Comparator<Item> {
+    private static class Inventory_Sorter<Item extends Comparable<Item>> implements Comparator<Item> {
         @Override public int compare(Item item1, Item item2) {
             return item1.compareTo(item2);
         }

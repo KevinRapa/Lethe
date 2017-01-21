@@ -4,9 +4,9 @@ import A_Super.Furniture;
 /**
  * @author Kevin Rapa
  */
-public class Tow_Sphr extends Furniture {
+public class Tow_Sphere extends Furniture {
     // ========================================================================
-    public Tow_Sphr () {
+    public Tow_Sphere () {
         super();
         this.searchable = false;
         

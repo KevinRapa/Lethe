@@ -13,7 +13,7 @@ public class Foy_Chandelier extends Furniture {
                          + "same time, you ponder who has the time to maintain\n"
                          + "so many candles.";
         this.searchDialog = "You are pretty sure you can't jump that high.";
-        this.addNameKeys("(?:huge )?(?:iron )?chandelier");
+        this.addNameKeys("(?:huge )?(?:iron )?(?:chandelier|light)");
     }
 /*----------------------------------------------------------------------------*/
 }

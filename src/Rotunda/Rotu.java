@@ -38,28 +38,34 @@ public class Rotu extends Room {
         
         if (this.state == 'e') {
             this.addAdjacent(Id.STUD);
+            Player.getRoomObj(Id.STUD).addAdjacent(this.ID);
             this.addAdjacent(Id.IHA1); 
+            Player.getRoomObj(Id.IHA1).addAdjacent(this.ID);
             this.removeAdjacent(Id.FOYW);
+            Player.getRoomObj(Id.FOYW).removeAdjacent(this.ID);
             this.removeAdjacent(Id.LOOK);
+            Player.getRoomObj(Id.LOOK).removeAdjacent(this.ID);
             
             this.removeFurniture(EDOOR);
             this.removeFurniture(WDOOR);
             this.addFurniture(NDOOR);
             this.addFurniture(SDOOR);
-            Player.getRoomObj(Id.FOYW).removeAdjacent(Id.ROTU);
             this.state = 'n';
         }
         else {
             this.addAdjacent(Id.FOYW);
+            Player.getRoomObj(Id.FOYW).addAdjacent(this.ID);
             this.addAdjacent(Id.LOOK); 
+            Player.getRoomObj(Id.LOOK).addAdjacent(this.ID);
             this.removeAdjacent(Id.STUD);
+            Player.getRoomObj(Id.STUD).removeAdjacent(this.ID);
             this.removeAdjacent(Id.IHA1);
+            Player.getRoomObj(Id.IHA1).removeAdjacent(this.ID);
             
             this.removeFurniture(NDOOR);
             this.removeFurniture(SDOOR);
             this.addFurniture(EDOOR);
             this.addFurniture(WDOOR);
-            Player.getRoomObj(Id.FOYW).addAdjacent(Id.ROTU);
             this.state = 'e'; 
         }    
     }

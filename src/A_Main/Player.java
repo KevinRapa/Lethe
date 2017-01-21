@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 import A_Super.Openable;
+import Tunnels.DungeonMonster;
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -135,6 +136,9 @@ public final class Player {
         Player.lastVisited = lastVisited;
         Player.shoes = shoesWearing;
         Player.cmd = new HashMap<>();
+        
+        if (pos[0] == 4 && pos[2] < 7) // Starts monster if player is in the 
+            DungeonMonster.startMovement(); // tunnel area.
     }
     // ========================================================================  
     /**
@@ -145,7 +149,7 @@ public final class Player {
         Player.mapRef = Main.createMap();
         Player.inv = new Inventory();
         Player.keys = new Inventory();
-        Player.visited = new ArrayList();
+        Player.visited = new ArrayList<>();
         Player.cmd = new HashMap<>();
         Player.pos = coords;
         Player.lastVisited = "";
@@ -731,7 +735,7 @@ public final class Player {
      * @return A list of items the player wants to combine.
      */
     private static Item[] getTokenList(Scanner tokenizer) {
-        ArrayList<Item> itemList = new ArrayList();
+        ArrayList<Item> itemList = new ArrayList<>();
         
         try {
             while (tokenizer.hasNext()) {                                                                            

@@ -17,7 +17,7 @@ public class Obs3_Chandelier extends Furniture {
                          + "Secured in its center is a red jewel encompassed\n"
                          + "by the chandelier's many candles.";
         this.searchDialog = "The chandelier is too high up.";
-        this.addNameKeys("(?:curved )?(?:brass )?chandelier");
+        this.addNameKeys("(?:curved )?(?:brass )?(?:chandelier|light)");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

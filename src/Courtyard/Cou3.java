@@ -25,10 +25,8 @@ public class Cou3 extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
-        Room cou4 = Player.getRoomObj(Id.COU4);
-
-        if (! cou4.isThisLocked()) {
-            cou4.lock();
+        if (! Player.hasVisited(this.ID)) {
+            Player.getRoomObj(Id.COU4).lock();
             AudioPlayer.playEffect(7);
             GUI.out("As you walk into the front courtyard, the huge gates\n"
                 + "slowly swing shut behind you.");

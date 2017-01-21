@@ -10,7 +10,7 @@ public class Want_Gate extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Want_Gate (Direction dir) {
         super(dir);
-        this.actDialog = "It's just an open gate...";
+        this.actDialog = "You wouldn't be able to lift it with your hands.";
         this.description = "The open gate leads back into the foyer.";
         this.addNameKeys(dir + " gate", "gate");
     }

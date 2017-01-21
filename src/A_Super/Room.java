@@ -41,7 +41,6 @@ public class Room implements Serializable {
     protected ArrayList<String> adjacent;       // Rooms one could move to from this.
     protected ArrayList<Furniture> furnishings; // Holds furniture.
     protected static final String WALL_BARRIER = "There is a wall that way.";
-    private static final Furniture GEN_FURNITURE = new GenericFurniture();
     // CONSTRUCTOR ============================================================
     public Room(String name, String ID) {  
         this.NAME = name;
@@ -50,7 +49,6 @@ public class Room implements Serializable {
         this.isLocked = false;
         this.adjacent = new ArrayList<>();
         this.furnishings = new ArrayList<>();
-        this.furnishings.add(GEN_FURNITURE);
         this.COORDS = RoomReferences.getCoords(this.ID); 
         this.adjacent = RoomReferences.getAdj(this.ID);
 }

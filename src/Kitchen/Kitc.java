@@ -15,7 +15,8 @@ public class Kitc extends Room{
                            "end. A hearth for cooking sits in the room's center\n" +
                            "with pots hanging over it.  Aside the windows on the\n" +
                            "east wall is a shelf of wine and a couple open barrels.\n" +
-                           "A counter extends along the west wall. Mounted on the\n" +
+                           "A counter extends along the west wall, with a metal sink\n"
+                         + "on the end closest to you. Mounted on the\n" +
                            "south wall is the rack mentioned earlier by the\n" +
                            "apparition.";
     }

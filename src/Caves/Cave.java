@@ -120,7 +120,7 @@ public class Cave extends Room {
         
         // Appends additional information if a non-catacomb room is adjacent.
         // Adds a door to room.
-        if (adjOtherCoords != null) {
+        if (adjOtherCoords != null && adjOtherCoords[0] != 5) {
             if (adjOtherCoords[0] == Y - 1) {
                 descLit = descLit.concat("To the north");
             }

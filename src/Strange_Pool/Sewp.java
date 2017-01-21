@@ -42,6 +42,7 @@ public class Sewp extends Dungeon_Tunnel {
                 this.PRIS_CBNT_INV.add(i);
         
         Player.getInv().contents().clear();
+        Player.setShoes("");
         
         Player.printInv();
     }

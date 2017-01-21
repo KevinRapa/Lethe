@@ -22,8 +22,12 @@
         <group>
             <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/Main.java</file>
             <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/Player.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Parlor/Par_VialNote.java</file>
-            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Gallery/Gal6_Apparatus.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/Inventory.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/GUI.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Super/Room.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/RoomReferences.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/Ancient_Tomb/Ant_Zombie.java</file>
+            <file>file:/C:/Users/Mantis%20Toboggan/Documents/NetBeansProjects/SalamaaNew/src/A_Main/AudioPlayer.java</file>
         </group>
     </open-files>
 </project-private>

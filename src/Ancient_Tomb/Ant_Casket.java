@@ -21,7 +21,7 @@ public class Ant_Casket extends Furniture implements Openable {
                          + "covered by a thick lid. There are three keyholes lined\n"
                          + "up vertically in the center of the lid.";
         this.numKeys = 0;
-        this.addNameKeys("(?:stone )?(?:casket|coffin)");
+        this.addNameKeys("(?:stone )?(?:casket|coffin)", "keyholes?");
         this.addUseKeys(KEY_OF_ANCESTRY, KEY_OF_INTELLECT, KEY_OF_CONTINUITY);
     }
 /*----------------------------------------------------------------------------*/

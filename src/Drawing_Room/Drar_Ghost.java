@@ -64,14 +64,14 @@ public class Drar_Ghost extends NonPlayerCharacter {
         GUI.promptOut();
         
         GUI.out("\"Is that so? Not a name I have heard before.\n" +
-                "Certainly never during my time.");
+                "Certainly never during my time.\"");
         GUI.menOut("\n\nPress enter...");
         GUI.promptOut();
         
         GUI.out("\"My name is Asterion. I used to live here with my two\n"
               + "brothers. We provided great services to this kingdom, if kingdom\n"
               + "is what you still call it. We provided our intellectual services to\n"
-              + "its people. So, why on Earth are you here?");
+              + "its people. So, why on Earth are you here?\"");
         GUI.promptOut();
         
         GUI.out("\"You aren't sure? That doesn't make any sense!\n" +
@@ -79,19 +79,19 @@ public class Drar_Ghost extends NonPlayerCharacter {
                 "I keep wondering how Eurynomos could still be walking\n"
               + "at this point. He is a lich, and has been for too long.\n"
               + "His mind should have melted to a pulp by now. Perhaps\n"
-              + "he wished to use your life energy to fuel his.");
+              + "he wished to use your life energy to fuel his.\"");
         GUI.promptOut();
         
         GUI.out("\"But this probably doesn't interest you. You are\n" +
                 "concerned with escape. I would like to help you,\n" +
-                "but I would also like you to do something for me.\n");
+                "but I would also like you to do something for me.\"");
         GUI.promptOut();
         
         GUI.out("I was bound by Eurynomos to an emerald. Our discovery, the\n"
               + "Factum, drove him mad. He killed my brother and I, and possessed\n"
               + "many others in the castle. Many fled, others perished, I stayed.\n"
               + "I wish you to bring me the emerald. I will not leave this place,\n"
-              + "but at least them I may be sure my soul is safe with me.");
+              + "but at least them I may be sure my soul is safe with me.\"");
         GUI.promptOut();
         
         GUI.out("\"I know enough to say that the\n" +
@@ -136,7 +136,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
         
         GUI.out("\"Eurynomos keeps a phylactery of his in the kitchen; a fruit. He split\n"
               + "\"his soul among 5 objects, you know. One other is a scepter he\n"
-              + "took from Rhadamanthus. The other three, well I don't rightfully know.");
+              + "took from Rhadamanthus. The other three, well I don't rightfully know.\"");
         GUI.promptOut();
         
         GUI.out("The apparition drops a key into your palm...");
@@ -145,7 +145,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
         Player.printInv();
         GUI.promptOut();
         
-        GUI.out("\"Goodbye, my friend...\"\n");
+        GUI.out("\"Goodbye, my friend...\"");
         GUI.promptOut();
         GUI.toMainMenu();
         Player.getRoomObj(Id.DRAR).removeFurniture(this);  

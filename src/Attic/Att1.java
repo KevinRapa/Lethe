@@ -43,7 +43,8 @@ public class Att1 extends Room {
                     this.REF_LICH_CHEST_INV.add(i);
             
             Player.getInv().clear();
-
+            Player.setShoes("");
+            
             Player.setOccupies(Id.INTR);
             Player.getRoomObj(Id.EOW1).lock();
             DungeonMonster.startMovement();
