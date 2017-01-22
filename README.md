@@ -1,10 +1,14 @@
 # Salamaa
 This holds the current iteration of a large text-based adventure game.
-The final title will be "Lethe"
+The final title is "Lethe".
 
 The entire game is written in Java. Salamaa is a personal project of mine
 that began before I could even code in Java, and I have been working on
-it as my experience with Java has developed. The game is nearly complete. 
+it as my experience with Java has developed. The game is in 'beta'. 
+
+I still have plans to extend the natural language processing abilities of
+the game. Currently, the most complex types of input the game parses are simple
+<verb> <noun> commands (No articles or prepositions).
 
 To play, just execute the .jar. Make sure the ambience and effects folders
 are in the same directory as the .jar.
