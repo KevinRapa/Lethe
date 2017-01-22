@@ -16,6 +16,7 @@ import java.util.HashMap;
  *           110
  *           011
  * 
+ * @see Cistern.Cis1
  * @author Kevin Rapa
  */
 public class Sew2_Valves extends Furniture implements Resetable {

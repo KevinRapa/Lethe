@@ -3,6 +3,14 @@ package Tower;
 import A_Super.Furniture;
 import Lichs_Quarters.Lich_Room;
 /**
+ * Contains the fifth phylactery.
+ * Connects to Bls1 and Foy4.
+ * Accessed from a key found in Vau2 with the fourth phylactery.
+ * 
+ * @see Vault.Vau2
+ * @see Foyer.Foy4
+ * @see Black_Staircase.Bls1
+ * @see Tower.Tow_ScepterPhylactery
  * @author Kevin Rapa
  */
 public class Tow1 extends Lich_Room {

@@ -4,9 +4,9 @@ import A_Super.Furniture;
 /**
  * @author Kevin Rapa
  */
-public class Cha_Horizon extends Furniture {
+public class Cha_Haze extends Furniture {
     // ========================================================================
-    public Cha_Horizon () {
+    public Cha_Haze () {
         super();
         this.searchable = false;
         

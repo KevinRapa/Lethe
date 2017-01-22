@@ -2,7 +2,8 @@ package A_Super;
 /**
  * Represents a simple direction in the game.
  * Used with movement and doors.
- * @author Mantis Toboggan
+ * 
+ * @author Kevin Rapa
  */
 public enum Direction { 
 // ============================================================================

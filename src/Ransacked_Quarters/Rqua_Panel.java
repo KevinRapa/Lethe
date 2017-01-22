@@ -6,7 +6,11 @@ import A_Main.Player;
 import A_Super.Item;
 import A_Super.Key;
 import A_Super.Furniture;
-
+/**
+ * Pryed using a crowbar to give the player a key.
+ * 
+ * @author Kevin Rapa.
+ */
 public class Rqua_Panel extends Furniture {
     private boolean lifted;
     private final Key STUDKEY_REF;

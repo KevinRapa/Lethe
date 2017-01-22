@@ -1,7 +1,17 @@
 package Secret_Archives;
 
 import A_Super.Room;
-
+/**
+ * Contains information on the light puzzle, key to the workshop, the blue focus,
+ * the red lens, and story information.
+ * Accessed by solving the library bookshelf puzzle.
+ * Connects to Lib2.
+ * 
+ * @see Secret_Archives.Lib1_Schematic
+ * @see Library.Lib2_VoyageShelf
+ * @see Library.Lib2
+ * @author Kevin Rapa
+ */
 public class Lib1 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Lib1(String name, String ID) {

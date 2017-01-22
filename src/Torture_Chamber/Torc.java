@@ -4,7 +4,10 @@ import A_Super.Room;
 /**
  * Holds a metal ladder that the player needs to replace the pipe in SEW4 and
  * a scythe for the statue in the crypt.
+ * Connects to Cry1 and Pris
  * 
+ * @see Prison.Pris
+ * @see Crypt.Cry1
  * @author Kevin Rapa
  */
 public class Torc extends Room {

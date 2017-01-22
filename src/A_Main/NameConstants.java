@@ -2,7 +2,7 @@ package A_Main;
 
 /**
  * Holds name constants for item types.
- * Item types cannot be enum because keys use room Ids as types as well.
+ * Item types cannot be enumerations because keys use room Ids as types.
  * 
  * @see A_Super.Key
  * @see A_Main.Id

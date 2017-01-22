@@ -6,7 +6,11 @@ import A_Super.Room;
  * Contains a note which directs player to the first key.
  * Mainly superficial, for flavor. Offers view of the village the player left
  * from.
+ * Named Foyc in order to avoid door sound.
+ * Connected to Gal1 and Foyb
  * 
+ * @see Gallery.Gal1
+ * @see Back_Balcony.Bba1
  * @see Back_Balcony.Bba_Note
  * @author Kevin Rapa
  */

@@ -6,7 +6,10 @@ import A_Super.Room;
  * The NPC gives the player a tool to find the iridescent jewel in the catacombs.
  * The casket contains the location of the iridescent jewel. To open the casket,
  * the player must find three keys hidden in parts of the catacombs.
+ * Connects to An65 and Catacombs.
  * 
+ * @see Catacombs.Catacomb
+ * @see Ancient_Tomb.An65
  * @see Ancient_Tomb.Ant_Zombie
  * @see Ancient_Tomb.Ant_Casket
  * @author Kevin Rapa

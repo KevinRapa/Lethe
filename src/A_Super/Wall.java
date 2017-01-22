@@ -2,7 +2,8 @@ package A_Super;
 /**
  * Represents a wall. 
  * Superficial only. Would not make sense for game to say "there is no wall here"
- * @author Mantis Toboggan
+ * 
+ * @author Kevin Rapa
  */
 public class Wall extends Furniture{
 /*----------------------------------------------------------------------------*/    

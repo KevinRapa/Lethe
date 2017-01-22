@@ -1,7 +1,7 @@
 package A_Main;
 /**<p>
- * This is a text-based adventure game called <del>Salamaa</del> Lethe being 
- * written as a personal project.
+ * This is a text-based adventure game called <del>Salamaa</del> <ins>Lethe</ins>
+ * being written as a personal project.
  * </p> <p>
  * In browsing the classes in the Main package, it helps to collapse all folds.
  * All super classes are in package A_Super. Packages are organized by room.
@@ -22,7 +22,6 @@ package A_Main;
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Salamaa.git">GitHub Repository</a>
  */
-
 import A_Super.*;          import static A_Main.NameConstants.*;
 
 import Vestibule.*;        import Closet.*;             import Foyer.*;
@@ -1584,7 +1583,7 @@ public class Main {
         Furniture chaF = new Floor("The floor is made of dark, dusty floorboards.");
         Furniture chaW = new Wall("The walls are mostly carved wood paneling. Several religious scenes are painted at fixed distances along the wall.");
         Furniture chaPws = new Cha_Pews();
-        Furniture chaHz = new Cha_Horizon();
+        Furniture chaHz = new Cha_Haze();
         Furniture chaCrpt = new Cha_Carpet();
         Furniture chaWndws = new Cha_Windows();
         

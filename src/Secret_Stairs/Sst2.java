@@ -1,9 +1,13 @@
 package Secret_Stairs;
+
+import A_Super.Room;
 /**
+ * Connected to Sst1 and Att2
+ * 
+ * @see Attic.Att2
+ * @see Secret_Stairs.Sst1
  * @author Kevin Rapa
  */
-import A_Super.Room;
-
 public class Sst2 extends Room {
 // ============================================================================    
     public Sst2(String name, String ID) {

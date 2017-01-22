@@ -5,9 +5,9 @@ import A_Super.Room;
  * Contains a weapon rack with weapons. 
  * Weapons can be used in GAL3
  * 
- * @see East_Outer_Wall.Eow1_Rck
- * @see Gallery.Gal3_Rp
- * @author Mantis Toboggan
+ * @see East_Outer_Wall.Eow1_Rack
+ * @see Gallery.Gal3_Rope
+ * @author Kevin Rapa
  */
 public class Eow1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      

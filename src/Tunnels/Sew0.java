@@ -3,8 +3,10 @@ package Tunnels;
 /**
  * Hallway in which the monster walks.
  * Contains staircase up to DST1.
+ * Connects to Sew1
  * 
- * @see Tunnels.Creature_Singleton
+ * @see Tunnels.Sew2
+ * @see Tunnels.DungeonMonster
  * @see Dungeon_Stairs.Dst1
  * @author Kevin Rapa
  */

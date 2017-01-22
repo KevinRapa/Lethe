@@ -3,7 +3,13 @@ package Rotunda;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
-
+/**
+ * Rotates the rotunda when turned.
+ * Found in the fountain
+ * 
+ * @see Rotunda.Rotu_Fountain
+ * @author Kevin Rapa
+ */
 public class Rotu_Wheel extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rotu_Wheel() {

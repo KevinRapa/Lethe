@@ -10,7 +10,7 @@ import A_Main.Player;
 /**
  * Player must add a torch to this to light the room.
  * Begins empty.
- * @author Mantis Toboggan
+ * @author Kevin Rapa
  */
 public class Kitc_Torch extends Torch {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

@@ -7,6 +7,11 @@ import java.util.Iterator;
 import java.io.Serializable;
 import java.util.Comparator;
 /**
+ * Maintains a list of items.
+ * Both the player and furniture have these.
+ * 
+ * @see A_Main.Player
+ * @see A_Super.Furniture
  * @author Kevin Rapa
  */
 public class Inventory implements Iterable<Item>, Serializable {

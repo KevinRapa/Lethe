@@ -1,8 +1,15 @@
 package Servants_Quarters;
 
 import A_Super.Room;
-
-public class Squa extends Room{
+/**
+ * Contains the broken ladder and key to the nearby cabinet.
+ * Connects to Sha2
+ * 
+ * @see Servants_Hall.Sha2
+ * @see Servants_Hall.Sha2_Cabinet
+ * @author Kevin Rapa
+ */
+public class Squa extends Room {
 /*----------------------------------------------------------------------------*/
     public Squa(String name, String ID) {
         super(name, ID);

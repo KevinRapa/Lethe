@@ -3,7 +3,11 @@ package West_Outer_Wall;
 import A_Super.Room;
 /**
  * The spoke to make the fixed ladder is here in the cart.
+ * Connects to Sha1, Wbal, and Wow2
  * 
+ * @see West_Outer_Wall.Wow2
+ * @see West_Balcony.Wbal
+ * @see Servants_Hall.Sha1
  * @author Kevin Rapa
  */
 public class Wow1 extends Room {

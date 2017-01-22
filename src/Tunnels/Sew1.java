@@ -2,9 +2,12 @@ package Tunnels;
 
 import A_Super.Direction;
 /**
- * Superficial.
+ * River here contains pipe piece.
+ * Connects to Sew0 and Sew2
  * 
- * @see Tunnels.Creature_Singleton
+ * @see Tunnels.Sew0
+ * @see Tunnels.Sew2
+ * @see Tunnels.DungeonMonster
  * @author Kevin Rapa
  */
 public class Sew1 extends Dungeon_Tunnel {

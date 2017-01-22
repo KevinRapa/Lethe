@@ -6,7 +6,13 @@ import A_Super.Item;
 import A_Main.Player;
 import static A_Main.NameConstants.SACRED_FIRE;
 import A_Super.Direction;
-
+/**
+ * Has a magical ice ward over it. 
+ * Player must use the sacred fire on this to break the ward.
+ * 
+ * @see Parlor.Par1_FirePlace
+ * @author Kevin Rapa
+ */
 public class Par1_Door extends Door {
     private final Item ENCHNTBTTL_REF;
 /*----------------------------------------------------------------------------*/    

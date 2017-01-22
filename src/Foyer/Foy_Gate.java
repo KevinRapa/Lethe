@@ -6,8 +6,8 @@ import A_Super.Direction;
  * Open and closeable gate toggled by a button in Foy2.
  * Two of these in the foyer. Only one is ever open at a time.
  * 
- * @see Foyer.Foy2_Lvr
- * @author Mantis Toboggan
+ * @see Foyer.Foy2_Button
+ * @author Kevin Rapa
  */
 public class Foy_Gate extends Door {
     private final String DESCOPEN, SRCHOPEN, DIALOPEN;

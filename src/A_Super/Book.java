@@ -8,7 +8,7 @@ import A_Main.GUI;
  * Interacting with a book will take the player to sub prompt where the player
  * may turn pages to read further or close the book.
  * 
- * @author Mantis Toboggan
+ * @author Kevin Rapa
  */
 public class Book extends Note {
     protected final int PAGES;

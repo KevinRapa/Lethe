@@ -1,9 +1,15 @@
 package Secret_Stairs;
+
+import A_Super.Room;
 /**
+ * Superficial, inaccessible without having solved the jade hall lion puzzle.
+ * Connects to Jha2 and Sst2.
+ * 
+ * @see Secret_Stairs.Sst2
+ * @see Jade_Hall.Jha2
+ * @see Jade_Hall.Jha_Lion
  * @author Kevin Rapa
  */
-import A_Super.Room;
-
 public class Sst1 extends Room {
 // ============================================================================    
     public Sst1(String name, String ID) {

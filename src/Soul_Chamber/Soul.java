@@ -8,6 +8,10 @@ import A_Super.Furniture;
 import A_Super.Room;
 import Lichs_Quarters.Lich_Room;
 /**
+ * The player relinquishes all 5 phylacteries here and kills the lich.
+ * Connects to Tbal
+ * 
+ * @see Top_Balcony.Tbal
  * @author Kevin Rapa
  */
 public class Soul extends Room {

@@ -13,7 +13,7 @@ import A_Super.Item;
  * itself from the player inventory. When said furniture is picked up, it removes
  * itself from the room and is placed in the player's inventory.
  * 
- * @see Sewers.Sew4_Pp
+ * @see Tunnels.Sew4_Pipe
  * @author Kevin Rapa
  */
 public class Metal_Ladder extends Item {

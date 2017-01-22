@@ -4,7 +4,12 @@ import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
-
+/**
+ * Wakes up the orb NPC if played.
+ * 
+ * @see Parlor.Par1_Orb
+ * @author Kevin Rapa
+ */
 public class Par2_Piano extends Furniture implements Openable {
     private final Par1_Orb REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      

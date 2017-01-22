@@ -2,6 +2,7 @@ package A_Main;
 /**
  * Name space for all the room IDs in the game.
  * 
+ * @see A_Super.Room
  * @author Kevin Rapa
  */
 public final class Id {

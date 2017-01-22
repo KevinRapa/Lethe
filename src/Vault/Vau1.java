@@ -4,6 +4,11 @@ import A_Super.Room;
 import A_Super.Direction;
 import A_Super.Furniture;
 /**
+ * Contains the fourth phylactery.
+ * Connects to Vau2.
+ * 
+ * @see Vault.Vau2
+ * @see Vault.Vau_ChalicePhylactery
  * @author Kevin Rapa
  */
 public class Vau1 extends Room {

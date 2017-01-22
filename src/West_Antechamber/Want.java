@@ -3,7 +3,15 @@ package West_Antechamber;
 import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
-
+/**
+ * Contains a hidden lever that can be pulled to rotate the rotunda.
+ * Room description doesn't refer to lever. Player can assume one is there
+ * because there are one's in Stud, Look, and Iha1.
+ * 
+ * @see West_Antechamber.Want_Lever
+ * @see Rotunda.Rotu
+ * @author Kevin Rapa
+ */
 public class Want extends Room {
 /*----------------------------------------------------------------------------*/    
     public Want(String name, String ID) {

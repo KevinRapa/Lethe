@@ -2,6 +2,10 @@ package Parlor;
 
 import A_Super.Book;
 /**
+ * Explains how to create a mandragora, needed to create the enchanted bottle.
+ * 
+ * @see Parlor.Par1_Door
+ * @see Parlor.Par1_FirePlace
  * @author Kevin Rapa
  */
 public class Par_MandrakeBook extends Book {

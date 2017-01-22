@@ -5,6 +5,9 @@ import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
+ * Contains the scepter phylactery- player must have the dampening staff to obtain
+ * this.
+ * 
  * @author Kevin Rapa
  */
 public class Tow1_Pedestal extends Furniture {

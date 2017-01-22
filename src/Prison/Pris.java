@@ -6,7 +6,11 @@ import A_Super.Room;
 /**
  * Holds a clue for solving the valve puzzle, contains the oubliette key.
  * Oubliette key is not a necessary item.
+ * Connects to Sew3, Torc, and Sew5.
  * 
+ * @see Tunnels.Sew3
+ * @see Tunnels.Sew5
+ * @see Torture_Chamber.Torc
  * @author Kevin Rapa
  */
 public class Pris extends Room {

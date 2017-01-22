@@ -3,6 +3,9 @@ package Observatory;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
+ * Holds a book which helps with the observatory puzzle.
+ * 
+ * @see Observatory.Obs2_Book
  * @author Kevin Rapa
  */
 public class Obs2_BkShlf extends Furniture {

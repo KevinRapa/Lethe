@@ -11,7 +11,7 @@ import A_Super.Room;
  * 
  * The player is captured in ATT1 after creating the phase door potion.
  * 
- * @see Laboratory.Labo_CoatNt
+ * @see Laboratory.Labo_CoatNote
  * @author Kevin Rapa
  */
 public class Att2 extends Room {

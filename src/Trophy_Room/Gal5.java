@@ -2,7 +2,17 @@ package Trophy_Room;
 
 import A_Super.Direction;
 import A_Super.Room;
-
+/**
+ * Contains the ruby for the Jade Lion puzzle and a plate for the Statue puzzle.
+ * Accessible by completing the light puzzle.
+ * Connects to gal4.
+ * 
+ * @see Gallery.Gal_LightMachine
+ * @see Gallery.Gal4
+ * @see Observatory.Obs1_Statues
+ * @see Jade_Hall.Jha_Lion
+ * @author Kevin Rapa
+ */
 public class Gal5 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5(String name, String ID) {

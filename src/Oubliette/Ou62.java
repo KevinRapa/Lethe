@@ -1,9 +1,14 @@
 package Oubliette;
+
+import A_Super.Room;
 /**
+ * Superficial.
+ * Connects to catacombs.
+ * Bottom level of Oub1.
+ * 
+ * @see Catacombs.Catacomb
  * @author Kevin Rapa
  */
-import A_Super.Room;
-
 public class Ou62 extends Room {
 // ============================================================================    
     public Ou62(String name, String ID) {

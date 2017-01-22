@@ -4,7 +4,11 @@ import A_Super.Room;
 /**
  * The player must create a new red lens in this room by combining ingredients
  * in the kiln, then casting it using the casting table and template.
+ * The key to this room is found in a safe in the Secret Archives.
+ * Connects to Eow4.
  * 
+ * @see Secret_Archives.Lib1_Safe
+ * @see East_Outer_Wall.Eow4
  * @see Workshop.Wrk_Kiln
  * @see Workshop.Wrk_CastingTable
  * @author Kevin Rapa

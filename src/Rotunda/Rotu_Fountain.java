@@ -1,7 +1,14 @@
 package Rotunda;
 
 import A_Super.Furniture;
-
+/**
+ * Can be drained by a valve in Look which gives access to a wheel which
+ * rotates the Rotunda.
+ * 
+ * 
+ * @see Lookout.Look_Valve
+ * @author Kevin Rapa
+ */
 public class Rotu_Fountain extends Furniture {
     private boolean drained;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        

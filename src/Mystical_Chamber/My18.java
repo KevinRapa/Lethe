@@ -1,12 +1,19 @@
 package Mystical_Chamber;
-/**
- * @author Kevin Rapa
- */
+
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Room;
 import Caves.Cave;
-
+/**
+ * Provides access to the caves once the player finds the iridescent jewel and
+ * uses it on a pedestal in here.
+ * Connects to Catacombs and Caves.
+ * 
+ * @see Mystical_Chamber.My18_Pedestal
+ * @see Caves.Cave
+ * @see Catacombs.Catacomb
+ * @author Kevin Rapa
+ */
 public class My18 extends Room {
 // ============================================================================    
     public My18(String name, String ID) {

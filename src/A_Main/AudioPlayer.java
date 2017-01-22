@@ -2,6 +2,7 @@ package A_Main;
 /**
  * Maps every room to an audio file that will play whenever that room is moved
  * into, and maps various events to sound effects.
+ * Tried using mp3 instead, however the mp3s did not loop well.
  * 
  * @author Kevin Rapa
  */

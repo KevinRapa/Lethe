@@ -7,6 +7,12 @@ import A_Super.Direction;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
+ * Adds furniture to its room if the iridescent jewel is used on this.
+ * Iridescent jewel is somewhere in the catacombs- determined randomly.
+ * Its location is written on a note in the Ancient Tomb in a casket.
+ * 
+ * @see Ancient_Tomb.Compass
+ * @see Ancient_Tomb.Ant_Casket
  * @author Kevin Rapa
  */
 public class My18_Pedestal extends Furniture {

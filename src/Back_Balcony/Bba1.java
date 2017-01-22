@@ -6,8 +6,12 @@ import A_Super.Direction;
 /**
  * Contains a note which directs player to the first key.
  * Mainly superficial, for flavor. Offers view of the village the player left
- * from.
+ * from. 
+ * Named Foyb in order to avoid door noise.
+ * Connects to Foy2 and Foyc.
  * 
+ * @see Back_Balcony.Bba2
+ * @see Foyer.Foy2
  * @see Back_Balcony.Bba_Note
  * @author Kevin Rapa
  */

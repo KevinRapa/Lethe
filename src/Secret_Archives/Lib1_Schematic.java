@@ -1,7 +1,14 @@
 package Secret_Archives;
 
 import A_Super.Note;
-
+/**
+ * The solution for the light puzzle.
+ * Floor 3: All foci
+ * Floor 2: Blue -> Yellow -> Red
+ * Floor 1: Red -> Blue -> Dark
+ * 
+ * @author Kevin Rapa
+ */
 public class Lib1_Schematic extends Note {
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Lib1_Schematic(String name) {

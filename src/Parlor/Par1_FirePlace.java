@@ -5,7 +5,14 @@ import A_Super.Fireplace;
 import A_Super.Item;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
-
+/**
+ * Gives the player sacred fire if the player uses the enchanted bottle on
+ * this.
+ * 
+ * @see Parlor.Par1_EnchantingTable
+ * @see Parlor.Par1_Door
+ * @author Kevin Rapa
+ */
 public class Par1_FirePlace extends Fireplace {
     private final Item SCRDFR_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/           

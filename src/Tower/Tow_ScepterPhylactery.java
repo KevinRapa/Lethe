@@ -3,6 +3,8 @@ package Tower;
 import A_Main.NameConstants;
 import A_Super.Item;
 /**
+ * The fifth phylactery.
+ * 
  * @author Kevin Rapa
  */
 public class Tow_ScepterPhylactery extends Item {

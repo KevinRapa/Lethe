@@ -4,8 +4,10 @@ import A_Super.Room;
 import A_Super.Direction;
 import A_Super.Furniture;
 /**
- * The chalice phylactery is found in here.
+ * Connects to Vau1 and Vaue.
  * 
+ * @see Vault.Vaue
+ * @see Vault.Vau1
  * @author Kevin Rapa
  */
 public class Vau2 extends Room {

@@ -6,7 +6,11 @@ import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Furniture;
-
+/**
+ * Player must use the warhammer on this to escape the west wing.
+ * 
+ * @author Kevin Rapa
+ */
 public class Sear_Fissure extends Furniture {
     private boolean broken;
 /*----------------------------------------------------------------------------*/    

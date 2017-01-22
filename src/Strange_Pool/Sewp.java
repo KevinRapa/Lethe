@@ -10,8 +10,11 @@ import Cistern.Cis1;
 import Tunnels.Dungeon_Tunnel;
 /**
  * Player emerges into this room from the ladder in escape tunnel
+ * Connects to Dkch and Sew3
  * 
- * @see Escape_Tunnel.Esc6_Lddr
+ * @see Tunnels.Sew3
+ * @see Keeper_Chamber.Dkch
+ * @see Escape_Tunnel.Esc6_Ladder
  * @author Kevin Rapa
  */
 public class Sewp extends Dungeon_Tunnel {

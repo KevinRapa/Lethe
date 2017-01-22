@@ -6,7 +6,22 @@ import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Room;
 import A_Super.Furniture;
-
+/**
+ * This room rotates, only allowing access to two of its adjacent rooms at a time.
+ * Room is rotated by four levers in the adjacent rooms or by a wheel in the
+ * fountain, that must first be drained.
+ * Connects to Foyw, Look, Stud, and Iha1
+ * 
+ * @see Iron_Hall.Iha1_Lever
+ * @see West_Antechamber.Want_Lever
+ * @see Iron_Hall.Iha1
+ * @see Study.Stud
+ * @see Lookout.Look
+ * @see West_Antechamber.Want
+ * @see Rotunda.Rotu_Fountain
+ * @see Rotunda.Rotu_Wheel
+ * @author Kevin Rapa
+ */
 public class Rotu extends Room {
     private char state;
     private final Furniture NDOOR, SDOOR, EDOOR, WDOOR; 

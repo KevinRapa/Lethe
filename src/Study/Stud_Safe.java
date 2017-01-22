@@ -2,7 +2,13 @@ package Study;
 
 import A_Super.Item;
 import A_Super.Safe;
-
+/**
+ * Holds the first phylactery, a book.
+ * 
+ * @see Study.Stud_BookPhylactery
+ * @see A_Super.Safe
+ * @author Kevin Rapa
+ */
 public class Stud_Safe extends Safe {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Stud_Safe(String combo, Item... items) {

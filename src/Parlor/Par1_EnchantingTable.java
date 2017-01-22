@@ -6,7 +6,20 @@ import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
 import Library.Shoes;
-
+/**
+ * Used to make the shrouded shoes to traverse the back hall and the
+ * enchanted bottle to access the back hall.
+ * Recipes are scattered around the parlor. Player must visit previous areas
+ * of the castle to collect the ingredients.
+ * 
+ * @see Parlor.Par1_Door
+ * @see Back_Hall.Bha2
+ * @see Parlor.Par1_FirePlace
+ * @see Parlor.Par_EnchantingBook
+ * @see Parlor.Par_ShoeRecipe
+ * @see Parlor.Par_BottleRecipe
+ * @author Kevin Rapa
+ */
 public class Par1_EnchantingTable extends Furniture {
     private final Item REF_ENCH_BTTL;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     

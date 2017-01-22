@@ -7,6 +7,13 @@ import A_Main.Player;
 import A_Super.Item;
 import Lichs_Quarters.Lich_Room;
 /**
+ * Contains the source of the player's luring to the castle.
+ * Connects to Lqu1, Bls2, and Tbal
+ * 
+ * @see Tower.Tow_Sphere
+ * @see Top_Balcony.Tbal
+ * @see Black_Staircase.Bls2
+ * @see Lichs_Quarters.Lqu1
  * @author Kevin Rapa
  */
 public class Tow2 extends Lich_Room {

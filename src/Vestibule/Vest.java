@@ -10,7 +10,9 @@ import A_Super.Room;
  * must find a way out.
  * The room is escaped by opening the window and then pushing the button in
  * the back of fireplace.
+ * Connects to Foy1.
  * 
+ * @see Foyer.Foy1
  * @see Vestibule.Vest_Button
  * @author Kevin Rapa
  */

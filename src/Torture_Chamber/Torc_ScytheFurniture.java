@@ -7,6 +7,9 @@ import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Resetable;
 /**
+ * Gives player the scythe for the crypt puzzle.
+ * 
+ * @see Crypt.Cry1_Statue
  * @author Kevin Rapa
  */
 public class Torc_ScytheFurniture extends Furniture implements Resetable {

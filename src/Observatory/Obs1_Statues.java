@@ -21,6 +21,7 @@ import java.util.Scanner;
  *  3     4
  *     7
  * 
+ * @see Observatory.Obs1_Slots
  * @see Observatory.Obs2_Bk
  * @author Kevin Rapa
  */

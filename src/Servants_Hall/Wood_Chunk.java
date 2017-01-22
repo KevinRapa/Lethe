@@ -1,9 +1,13 @@
 package Servants_Hall;
 
 import A_Super.Item;
-
+/**
+ * A piece of the battering ram, required to access ransacked Quarters.
+ * 
+ * @see Ransacked_Quarters.Rqua
+ * @author Kevin Rapa
+ */
 public class Wood_Chunk extends Item {
-    
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wood_Chunk(String name, Item forms, int thresh) {
         super(name, forms, thresh);

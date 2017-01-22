@@ -4,7 +4,9 @@ import A_Super.Direction;
 import A_Super.Room;
 /**
  * The wooden rod for the fixed ladder can be found on the floor here.
+ * Connects to Wow1.
  * 
+ * @see West_Outer_Wall.Wow1
  * @author Kevin Rapa
  */
 public class Wbal extends Room{

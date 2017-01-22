@@ -2,8 +2,12 @@ package Tunnels;
 
 import A_Super.Direction;
 /**
- * The end of the tunnel.
+ * The end of the tunnel, contains valve to drain toxic gas from Cis1.
+ * Connects to Cis1, Pris, and Sew4
  * 
+ * @see Prison.Pris
+ * @see Cistern.Cis1
+ * @see Tunnels.Sew4
  * @author Kevin Rapa
  */
 public class Sew5 extends Dungeon_Tunnel {

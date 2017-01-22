@@ -7,7 +7,14 @@ import java.util.HashMap;
 import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Item;
-
+/**
+ * Before being able to move the statues in the observatory, the player
+ * must find 8 brass plates and fit them in their correct spots.
+ * 
+ * @see Observatory.Obs1_Statues
+ * @see Back_Hall.Bha2_Frame
+ * @author Kevin Rapa
+ */
 public class Obs1_Slots extends Furniture {
     private final ArrayList<Obs1_Slot> SLOTS = new ArrayList<>();
     private final HashMap<Character, Integer> MAP = new HashMap<>();

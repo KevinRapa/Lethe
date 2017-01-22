@@ -5,7 +5,9 @@ import static A_Main.NameConstants.HAND_TORCH;
 import A_Super.Room;
 /**
  * Contains a key to the Keepers chamber and a note hinting where the Factum is.
+ * Connects to Cis3
  * 
+ * @see Cistern.Cis3
  * @see Ancient_Archives.Aarc_Note
  * @see Keeper_Chamber.Dkch
  * @author Kevin Rapa

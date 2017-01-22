@@ -3,6 +3,9 @@ package Vault;
 import A_Main.NameConstants;
 import A_Super.Item;
 /**
+ * The fourth phylactery, found on a table.
+ * 
+ * @see Vault.Vau1_Table
  * @author Kevin Rapa
  */
 public class Vau_ChalicePhylactery extends Item {

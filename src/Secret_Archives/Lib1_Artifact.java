@@ -7,7 +7,12 @@ import A_Main.Inventory;
 import A_Main.NameConstants;
 import static A_Main.NameConstants.*;
 import A_Main.Player;
-
+/**
+ * Contains the blue lens for the gallery light puzzle.
+ * 
+ * @see Gallery.Gal_LightMachine
+ * @author Kevin Rapa
+ */
 public class Lib1_Artifact extends Furniture {
     private char beam;
     private String mode;

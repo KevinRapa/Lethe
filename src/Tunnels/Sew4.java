@@ -3,9 +3,11 @@ package Tunnels;
 import A_Super.Furniture;
 
 /**
- * Superficial.
  * Contains a pipe with a missing piece which player must replace.
+ * Connects to Sew3 and Sew5
  * 
+ * @see Tunnels.Sew5
+ * @see Tunnels.Sew3
  * @see Tunnels.Sew4_Pipe
  * @author Kevin Rapa
  */

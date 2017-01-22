@@ -3,6 +3,9 @@ package Oubliette;
 import A_Super.Room;
 /**
  * Superficial.
+ * Connects to Cis4.
+ * 
+ * @see Cistern.Cis4
  * @author Kevin Rapa
  */
 public class Oub1 extends Room {

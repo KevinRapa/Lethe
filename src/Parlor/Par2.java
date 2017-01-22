@@ -6,7 +6,14 @@ import A_Main.Id;
 import A_Super.Room;
 import A_Main.Player;
 import A_Super.Direction;
-
+/**
+ * Player is locked in the castle rear upon entering this room.
+ * Connects to Jha1 and Par1.
+ * 
+ * @see Parlor.Par1
+ * @see Jade_Hall.Jha1
+ * @author Kevin Rapa
+ */
 public class Par2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Par2(String name, String ID) {

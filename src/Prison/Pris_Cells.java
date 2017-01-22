@@ -7,6 +7,9 @@ import A_Super.Furniture;
 import A_Super.Openable;
 import java.util.HashMap;
 /**
+ * These can be searched to discover the solution to the Sew2 valve puzzle.
+ * 
+ * @see Tunnels.Sew2_Valves
  * @author Kevin Rapa
  */
 public class Pris_Cells extends Furniture implements Openable{

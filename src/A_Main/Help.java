@@ -55,7 +55,8 @@ public class Help {
         "intuitively obvious (e.g. a button, lever, wheel is revealed). Otherwise, I would\n" +
         "have to recursively make more furniture down to the atomic level.\n" +
         "Checking is important, as it can reveal clues about hidden objects and other\n" +
-        "things, as well as add color to what's in your head. You may also type <'c'/'check' object> to check something immediately without being asked.", 
+        "things, as well as add color to what's in your head.\n"
+      + "You may also type <'c'/'check' object> to check something immediately without being asked.", 
          
         "Searching is a main action, and is performed from the main prompt. The key for\n" +
         "searching is 'e'. You may search any discrete objects mentioned\n" +
@@ -72,7 +73,7 @@ public class Help {
       + "description, and your character will interact with it.\n" +
         "Interacting means your character is doing something to/with the object, like\n" +
         "'pull', 'sit', etc.\n" +
-        "You may type <'search'/'e' object>' to search the object if you wish,\n" +
+        "You may type <'search'/'e' object>' from the main prompt to search the object if you wish,\n" +
         "and 'check/view/look/watch/inspect <object>' to check the object. Also, you\n"
       + "may type <action 'it'/'them'> to reference the furniture you last performed\n"
       + "an action on. For example, if you search check a window, you may subsequently\n"
@@ -103,8 +104,8 @@ public class Help {
          
         "Access your inventory by entering 'i' from the main prompt.\n" +
         "Your inventory's contents will be listed. From here, you may perform the\n" +
-        "inventory actions 'inspect', 'use', and 'combine'. Press enter to back\n" +
-        "out to the main prompt.", 
+        "inventory actions 'inspect', 'use', 'sort', and 'combine'. Press enter to back\n" +
+        "out to the main prompt. Sorting is done alphabetically.", 
          
         "Access your key ring by pressing 'k' from the main prompt and pressing 'enter'.\n" +
         "The keys you are carrying will be listed. You cannot drop keys; you just have\n" +

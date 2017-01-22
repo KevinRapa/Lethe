@@ -2,9 +2,17 @@ package Servants_Hall;
 
 import A_Super.Direction;
 import A_Super.Room;
-
+/**
+ * Adjacent to the Ransacked Quarters, where the study key is.
+ * Connects to Sha2, Wow1, and Rqua
+ * 
+ * @see Servants_Hall.Sha2
+ * @see West_Outer_Wall.Wow1
+ * @see Ransacked_Quarters.Rqua
+ * @author Kevin Rapa
+ */
 public class Sha1 extends Room {
-    
+/*----------------------------------------------------------------------------*/
     public Sha1(String name, String ID) {
         super(name, ID);
         this.description = "You're on the south end of a short dark hallway.\n" +
@@ -28,8 +36,8 @@ public class Sha1 extends Room {
                    "torch on the wall dimly lights the hallway. Looking\n" +
                    "to the north, there's another door on the left side\n" +
                    "further down the hallway.";
-        
-        return this.description;
+        else
+            return this.description;
     }
 /*----------------------------------------------------------------------------*/ 
 }

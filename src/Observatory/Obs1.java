@@ -3,7 +3,10 @@ package Observatory;
 import A_Super.Room;
 /**
  * Holds the observatory statue puzzle, solved to obtain the ruby for the jade hall.
+ * Connects to Bha1 and Obs2
  * 
+ * @see Observatory.Obs2
+ * @see Back_Hall.Bha1
  * @see Observatory.Obs_Stats
  * @see Jade_Hall.Jha_Ln
  * @author Kevin Rapa
