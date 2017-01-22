@@ -4,6 +4,9 @@ import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
 /**
+ * Holds the dampening staff.
+ * 
+ * @see Tower.Tow1_Pedestal
  * @author Kevin Rapa
  */
 public class Lqu1_Cabinet extends Furniture implements Openable {

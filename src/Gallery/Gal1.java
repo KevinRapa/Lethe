@@ -4,8 +4,11 @@ import A_Super.Room;
 /**
  * Contains the GAL1 dragon which is a light machine interacted with in the
  * gallery light machine puzzle.
+ * Connects to Gal2 and Foyc
  * 
- * @see Gallery.Gal1_Drgn
+ * @see Back_Balcony.Bba2
+ * @see Gallery.Gal2
+ * @see Gallery.Gal1_Dragon
  * @author Kevin Rapa
  */
 public class Gal1 extends Room{

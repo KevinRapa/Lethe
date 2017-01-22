@@ -3,7 +3,15 @@ package Lookout;
 import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Room;
-
+/**
+ * Location of the valve that drains the rotunda fountain.
+ * Connects to Rotu
+ * 
+ * @see Rotunda.Rotu_Fountain
+ * @see Lookout.Look_Valve
+ * @see Rotunda.Rotu
+ * @author Kevin Rapa
+ */
 public class Look extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Look(String name, String ID) {

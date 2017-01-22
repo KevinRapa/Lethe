@@ -3,7 +3,10 @@ package Chapel;
 import A_Super.Room;
 /**
  * Where the player obtains holy water to make the mandragora.
+ * Connects to Chs3 and Cha2
  * 
+ * @see Chapel.Cha2
+ * @see Chapel_Stairs.Chs3
  * @author Kevin Rapa
  */
 public class Cha1 extends Room {

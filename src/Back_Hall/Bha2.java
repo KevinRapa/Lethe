@@ -8,8 +8,11 @@ import static A_Main.NameConstants.SHROUDED_SHOES;
 /**
  * Sends player back to BHA1 if the player is not wearing the enchanted shoes.
  * Supposed to generate the illusion that the hallway is infinitely long.
+ * Connects to Bha1 and Bha2
  * 
- * @see Parlor.Par1_EnchtTbl#enchant()
+ * @see Back_Hall.Bha2
+ * @see Back_Hall.Bha1
+ * @see Parlor.Par1_EnchantingTable
  * @author Kevin Rapa
  */
 public class Bha2 extends Room {

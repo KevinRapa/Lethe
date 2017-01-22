@@ -2,15 +2,18 @@ package Back_Hall;
 
 import A_Super.Note;
 /**
- * Under the cushion in the Parlor
- * On a shelf in the parlor
- * Dig a hole with a shovel in Cou4 to find another
- * Behind tapestry in dining room
- * In trophy room cabinet
- * Chest in observatory
- * In back hall end table
+ * Describes where the brass plates are.
+ * 
+ * Under the cushion in the Parlor.
+ * On a shelf in the parlor.
+ * Dig a hole with a shovel in Cou4 to find another.
+ * Behind tapestry in dining room.
+ * In trophy room cabinet.
+ * Chest in observatory.
+ * In back hall end table.
  * Under plaque in Garden.
  * 
+ * @see Observatory.Obs1_Slots
  * @author Kevin Rapa
  */
 public class Bha_Note extends Note {

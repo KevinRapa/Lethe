@@ -5,7 +5,14 @@ import static A_Main.NameConstants.SILVER_SPEAR;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-
+/**
+ * Player must find the silver spear located in the rack in Eow2 to open up
+ * this statue's compartment, revealing the angel medallion.
+ * 
+ * @see Marble_Hall.Mha2_Door
+ * @see East_Outer_Wall.Eow1_Rack
+ * @author Kevin Rapa
+ */
 public class Mha2_RightStatue extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Mha2_RightStatue(Item... items) {

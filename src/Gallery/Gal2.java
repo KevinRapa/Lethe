@@ -1,7 +1,18 @@
 package Gallery;
 
 import A_Super.Room;
-
+/**
+ * Holds the statue which the player must use the crystal orb on, found in
+ * lib4.
+ * Connects to Gal1, Gal3, Lib3, and Mha1
+ * 
+ * @see Gallery.Gal1
+ * @see Gallery.Gal3
+ * @see Marble_Hall.Mha1
+ * @see Library.Lib3
+ * @see Gallery.Gal2_Statue
+ * @author Kevin Rapa
+ */
 public class Gal2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal2(String name, String ID) {

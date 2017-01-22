@@ -1,7 +1,9 @@
 package Caves;
 /**
  * Contains a well which is related to story.
+ * Connects to catacombs.
  * 
+ * @see Catacombs.Catacomb
  * @author Kevin Rapa
  */
 public class CV34 extends Cave {

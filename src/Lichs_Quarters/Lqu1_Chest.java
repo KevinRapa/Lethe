@@ -3,6 +3,9 @@ package Lichs_Quarters;
 import A_Super.Furniture;
 import A_Super.Openable;
 /**
+ * Player's items are sent here after being captured in the Attic.
+ * 
+ * @see Attic.Att1#dialog()
  * @author Kevin Rapa
  */
 public class Lqu1_Chest extends Furniture implements Openable {

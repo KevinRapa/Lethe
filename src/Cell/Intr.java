@@ -11,6 +11,10 @@ import A_Super.Furniture;
  * 
  * If the player is captured, the torch and grate in here are reset.
  * 
+ * Connects to Esc1
+ * 
+ * @see Cell.Intr_Grate
+ * @see Escape_Tunnel.Esc1
  * @see Laboratory.Labo
  * @author Kevin Rapa
  */

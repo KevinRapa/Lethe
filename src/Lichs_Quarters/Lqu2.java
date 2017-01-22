@@ -1,8 +1,14 @@
 package Lichs_Quarters;
 
 import A_Super.Room;
-
 /**
+ * The lich sleeps here mostly the whole game, and once the player destroys
+ * the phylacteries, the lich is killed and the lever here may be pulled to
+ * unlock the front gate.
+ * Connects to Lqu1.
+ * 
+ * @see Lichs_Quarters.Lqu1
+ * @see Lichs_Quarters.Lqu2_Lever
  * @author Kevin Rapa
  */
 public class Lqu2 extends Room {

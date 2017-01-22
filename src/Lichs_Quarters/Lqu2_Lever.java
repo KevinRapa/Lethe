@@ -7,6 +7,7 @@ import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Lever;
 /**
+ * Unlocks the front gate.
  * @author Kevin Rapa
  */
 public class Lqu2_Lever extends Lever {

@@ -7,7 +7,7 @@ import A_Super.Furniture;
 /**
  * Hides a lever which must be pulled to turn on the GAL1 Dragon.
  * 
- * @see Gallery.Gal1_Drgn
+ * @see Gallery.Gal1_Dragon
  * @see Gallery.Gal1_Switch
  * @author Kevin Rapa
  */       

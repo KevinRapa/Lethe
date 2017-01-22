@@ -6,7 +6,12 @@ import A_Main.Player;
 import Rotunda.Rotu_Fountain;
 import A_Super.Furniture;
 import Rotunda.Rotu_Wheel;
-
+/**
+ * Drains the fountain in the rotunda.
+ * 
+ * @see Rotunda.Rotu_Fountain
+ * @author Kevin Rapa
+ */
 public class Look_Valve extends Furniture{
     private final Rotu_Fountain FNTN_REF;
     private boolean loosened;

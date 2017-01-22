@@ -6,7 +6,7 @@ import A_Super.Furniture;
  * One of two object which turn on the GAL1 Dragon
  * 
  * @see Gallery.Gal1_Dragon
- * @see Gallery.Gal1_Swtch
+ * @see Gallery.Gal1_Switch
  * @author Kevin Rapa
  */
 public class Gal1_Button extends Button {

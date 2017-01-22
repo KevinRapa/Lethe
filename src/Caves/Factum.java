@@ -8,7 +8,9 @@ import java.util.Random;
 /**
  * This item teleports the player to a room in the castle that the player has
  * visited.
+ * Used to access the Vault.
  * 
+ * @see Vault.Vaue
  * @see Escape_Tunnel.Esc1
  * @author Kevin Rapa
  */

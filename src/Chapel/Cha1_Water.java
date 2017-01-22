@@ -5,8 +5,10 @@ import A_Super.Item;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
 /**
- * Contains holy water that the player needs to grow the mandragora.
+ * Contains holy water that the player needs to grow the mandragora for the
+ * enchanted bottle.
  * 
+ * @see Parlor.Par1_EnchantingTable
  * @author Kevin Rapa
  */
 public class Cha1_Water extends Furniture {

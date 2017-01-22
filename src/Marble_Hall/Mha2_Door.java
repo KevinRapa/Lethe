@@ -8,7 +8,22 @@ import A_Super.Room;
 import A_Super.Direction;
 import A_Main.Player;
 import A_Super.Item;
-
+/**
+ * Leads to the dining room- player must locate 3 medallions and use them
+ * on this door in order to unlock the room.
+ * 
+ * <ul>
+ * <li>Angel medallion, in right angel statue in marble hall.</li>
+ * <li>Horse medallion, inside the horse statue in the library</li>
+ * <li>Soldier medallion, in the courtyard 5 fountain with the soldier statue</li>
+ * </ul>
+ * 
+ * @see Marble_Hall.Mha2_RightStatue
+ * @see Library.Lib3_Statue
+ * @see Courtyard.Cou5_Fntn
+ * @see Dining_Room.Din1
+ * @author Kevin Rapa
+ */
 public class Mha2_Door extends Door {
     private int numMedallions;
     private boolean angel, soldier, horse;

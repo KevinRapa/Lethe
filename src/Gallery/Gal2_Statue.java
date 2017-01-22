@@ -8,7 +8,14 @@ import static A_Main.NameConstants.CRYSTAL_ORB;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-
+/**
+ * Part of the light puzzle.
+ * Player must use the crystal orb on this.
+ * 
+ * @see Gallery.Gal4_Statue
+ * @see Gallery.Gal_LightMachine
+ * @author Kevin Rapa
+ */
 public class Gal2_Statue extends Furniture {
     private int level;
     private final Gal4_Statue REF3;

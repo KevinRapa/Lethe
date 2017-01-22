@@ -4,8 +4,11 @@ import A_Super.Room;
 /**
  * An 'infinitely long' hallway. Can only be traversed if the shrouded shoes
  * have been obtained by enchanting.
+ * Connects to Bha1 and Obs1
  * 
- * @see Parlor.Par1_EnchtTbl
+ * @see Back_Hall.Bha1
+ * @see Observatory.Obs1
+ * @see Parlor.Par1_EnchantingTable
  * @see Back_Hall.Bha2
  * @author Kevin Rapa
  */

@@ -11,6 +11,7 @@ import A_Main.NameConstants;
  * Foci must be added to this in the correct order while the statue is holding
  * the funny orb in order to raise the statue to the next level.
  * 
+ * @see Gallery.Gal_LightMachine
  * @see Gallery.Gal2_Statue
  * @author Kevin Rapa
  */

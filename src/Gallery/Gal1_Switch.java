@@ -6,7 +6,7 @@ import A_Super.Lever;
  * One of two object which turn on Gal1 Dragon
  * 
  * @see Gallery.Gal1_Dragon
- * @see Gallery.Gal1_Bttn
+ * @see Gallery.Gal1_Button
  * @author Kevin Rapa
  */        
 public class Gal1_Switch extends Lever {

@@ -7,7 +7,9 @@ import A_Main.Player;
 /**
  * A sword which can be taken off the wall.
  * When this is taken, this removes itself from the room and adds itself to
- * the player's inventory.
+ * the player's inventory. Can be used to cut the rope in Gal3.
+ * 
+ * @see Gallery.Gal3_Rope
  * @author Kevin Rapa
  */
 public class Gal1_KatanaFurniture extends Furniture { 

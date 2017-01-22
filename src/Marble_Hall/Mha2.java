@@ -1,7 +1,18 @@
 package Marble_Hall;
 
 import A_Super.Room;
-
+/**
+ * Connects to Mha1, Din1, and Mha3.
+ * Contains the angel statue puzzle, solved to obtain the angel medallion
+ * for the door.
+ * 
+ * @see Marble_Hall.Mha2_Door
+ * @see Marble_Hall.Mha2_RightStatue
+ * @see Dining_Room.Din1
+ * @see Marble_Hall.Mha1
+ * @see Marble_Hall.Mha3
+ * @author Kevin Rapa
+ */
 public class Mha2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Mha2(String name, String ID) {

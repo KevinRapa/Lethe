@@ -1,7 +1,15 @@
 package Gallery;
 
 import A_Super.Room;
-
+/**
+ * Contains the totem, part of the light puzzle, and a raised ladder which
+ * gives access to the gallery loft.
+ * 
+ * @see Gallery.Gal3_Totem
+ * @see Gallery.Gal4
+ * @see Gallery.Gal6
+ * @author Kevin Rapa
+ */
 public class Gal3 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3(String name, String ID) {

@@ -3,7 +3,12 @@ package Back_Hall;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
-
+/**
+ * Hides a brass plate for the observatory statue puzzle.
+ * 
+ * @see Observatory.Obs1_Statues
+ * @author Kevin Rapa
+ */
 public class Bha1_Table extends Furniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bha1_Table(Item ... items) {

@@ -3,7 +3,9 @@ package Chapel;
 import A_Super.Room;
 /**
  * Using the Factum here will teleport the player to the vault.
+ * Connects to Cha1 and Vaue
  * 
+ * @see Chapel.Cha1
  * @see Caves.Factum
  * @see Vault.Vaue
  * @author Kevin Rapa

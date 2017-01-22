@@ -6,8 +6,8 @@ import A_Super.Item;
  * Contains a note and key to assist in the finding of the brass plates needed
  * to solve the observatory puzzle.
  * 
- * @see Back_Hall.Bha_Nt
- * @see Observatory.Obs_Slts
+ * @see Back_Hall.Bha_Note
+ * @see Observatory.Obs1_Slots
  * @author Kevin Rapa
  */
 public class Bha2_Frame extends Furniture {

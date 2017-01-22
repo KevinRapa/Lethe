@@ -2,7 +2,13 @@ package Marble_Hall;
 
 import static A_Main.NameConstants.SILVER_SPEAR;
 import A_Super.Furniture;
-
+/**
+ * Resolves ambiguity from there being two statues in this room.
+ * 
+ * @see Marble_Hall.Mha2_LeftStatue
+ * @see Marble_Hall.Mha2_RightStatue
+ * @author Kevin Rapa
+ */
 public class Mha2_Statues extends Furniture {
     private final Furniture REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
