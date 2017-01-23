@@ -9,7 +9,6 @@ public class Cha1_Candelabra extends Furniture {
     // ========================================================================
     public Cha1_Candelabra () {
         super();
-        this.searchable = false;
         
         this.description = "The silver standing candelabras burn calmly and quietly.";
         this.useDialog = "They are already lit...";

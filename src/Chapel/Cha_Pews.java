@@ -1,11 +1,11 @@
 package Chapel;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Cha_Pews extends Furniture {
+public class Cha_Pews extends SearchableFurniture {
     // ========================================================================
     public Cha_Pews (Item... items) {
         super(items);

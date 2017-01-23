@@ -16,10 +16,9 @@ public class Esc6_Grate extends Furniture implements Resetable {
     private final String MOVED_GRATE = "You've already moved the grate!";
     private boolean opened;
     // ========================================================================
-    public Esc6_Grate (Item... items) {
-        super(items);
-        this.searchable = false;
-        
+    public Esc6_Grate () {
+        super();
+
         this.description = "The metal grate blocks access to the above room.";
         this.actDialog = "It's too heavy. You can't open it.";
         this.useDialog = "You jam the bar in the corner of the grate. The grate pops\n"

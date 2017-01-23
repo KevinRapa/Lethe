@@ -15,7 +15,6 @@ abstract public class Lever extends Furniture {
     // ========================================================================
     public Lever() {
         super();
-        this.searchable = false;
         this.isOn = false;
         this.addActKeys("pull", "push", "flick", "hit", "move");
     }

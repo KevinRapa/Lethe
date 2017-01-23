@@ -8,7 +8,6 @@ public class Torc_Tools extends Furniture {
     // ========================================================================
     public Torc_Tools () {
         super();
-        this.searchable = false;
         
         this.description = "You are trying your best not to think of what these\n"
                          + "were used for.";

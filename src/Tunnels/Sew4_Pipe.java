@@ -23,7 +23,6 @@ public class Sew4_Pipe extends Furniture implements Resetable {
         this.SEW1_RVR = sew1Rvr;
         this.PIPE_REF = pipe;
         
-        this.searchable = false;
         this.hasPipe = false;
         
         this.description = "The rusty pipe runs along the ceiling around the\n"

@@ -1,15 +1,13 @@
 package Cell;
 
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Intr_Water extends Furniture {
     // ========================================================================
-    public Intr_Water (Item... items) {
-        super(items);
-        this.searchable = false;
+    public Intr_Water () {
+        super();
         
         this.description = "The small river of water flows through a dip under the\n"
                          + "door. The square channel is only a couple feet wide.";

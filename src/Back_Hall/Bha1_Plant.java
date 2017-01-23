@@ -2,14 +2,13 @@ package Back_Hall;
 
 import static A_Main.NameConstants.BUCKET_OF_WATER;
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Bha1_Plant extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Bha1_Plant(Item ... items) {
-        super(items);
+    public Bha1_Plant() {
+        super();
         this.searchable = false;
         
         this.description = "The plant doesn't seem to be in good shape. Though\n"

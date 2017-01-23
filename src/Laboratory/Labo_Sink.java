@@ -12,8 +12,7 @@ public class Labo_Sink extends Furniture {
     // ========================================================================
     public Labo_Sink (Item vial, Item beaker) {
         super();
-        this.searchable = false;
-        
+
         this.VIAL_REF = vial;
         this.BEAKER_REF = beaker; 
         

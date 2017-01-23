@@ -3,7 +3,6 @@ package Servants_Quarters;
 import A_Super.Item;
 
 public class Squa_Ladder extends Item {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Squa_Ladder(String name, Item forms, int thresh) {
         super(name, forms, thresh);

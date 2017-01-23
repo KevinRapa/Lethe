@@ -11,8 +11,9 @@ public class Water extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Water(Item bckt) {
         super();
+        
         this.BUCKET_REF = bckt;
-        this.searchable = false;
+
         this.description = "Clean, sparkling water.";
         this.searchDialog = "Just clean H2O here.";
         this.actDialog = "Now is NOT the time for a swim, though it's tempting. You\n"

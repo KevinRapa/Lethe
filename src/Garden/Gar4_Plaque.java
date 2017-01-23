@@ -10,7 +10,6 @@ public class Gar4_Plaque extends Furniture {
     // ========================================================================
     public Gar4_Plaque () {
         super();
-        this.searchable = false;
         this.isMoved = false;
         
         this.description = "The small plaque reads, \"In memorium of Oswald, who lived to create.\"";

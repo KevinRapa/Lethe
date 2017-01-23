@@ -16,7 +16,6 @@ public class Labo_Condenser extends Furniture {
     public Labo_Condenser (Item beakerItem) {
         super();
         this.flapOpen = false;
-        this.searchable = false;
         
         this.BEAKER_REF = new Labo_Beaker(beakerItem);
         

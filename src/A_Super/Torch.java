@@ -14,7 +14,7 @@ import A_Main.Player;
  * @see Kitchen.Kitc_Trch
  * @author Kevin Rapa
  */
-public class Torch extends Furniture {
+public class Torch extends SearchableFurniture {
     protected final Item TORCH;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Torch() {

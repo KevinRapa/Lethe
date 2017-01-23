@@ -13,7 +13,7 @@ public class Gal6_Helmet extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_Helmet() {
         super();
-        this.searchable = false;
+
         this.searchDialog = "Everything on the helmet looks concretely attached\n"
                           + "to the helmet and not removable.";
         this.description = "The metal helmet is covered in wires and metal rods.\n"
@@ -26,7 +26,7 @@ public class Gal6_Helmet extends Furniture {
                     + "your sense of direction. You cannot comprehend what just\n"
                     + "happened.";
         this.addActKeys("wear");
-        this.addNameKeys("helmet", "bizarre helmet");
+        this.addNameKeys("(?:bizarre|cool )?helmet");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {

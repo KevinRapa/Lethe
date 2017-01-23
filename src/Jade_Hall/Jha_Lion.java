@@ -16,7 +16,7 @@ public class Jha_Lion extends Furniture {
     // ========================================================================
     public Jha_Lion () {
         super();
-        this.searchable = false;
+
         this.hasRuby = false;
         
         this.description = "It's a menacing jade statue of a lion. A sparkling\n"

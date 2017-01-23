@@ -13,7 +13,7 @@ public class Iha1_Bowl extends Furniture {
     private boolean jabbed;
     public Iha1_Bowl(Furniture iha1F, Key wow2Key) {
             super();
-            this.searchable = false;
+
             this.jabbed = false;
             this.addUseKeys(POLEARM);
             this.addNameKeys("(?:hanging )?(?:burning )?(?:steel )?bowl(?: of fire)?");

@@ -8,8 +8,7 @@ public class Ou62_Straw extends Furniture {
     // ========================================================================
     public Ou62_Straw () {
         super();
-        this.searchable = false;
-        
+
         this.description = "It's just plain straw.";
 
         this.addNameKeys("straw", "hay");

@@ -20,7 +20,6 @@ public class Fireplace extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Fireplace(boolean isLit, Item bckt) {       
         super();
-        this.searchable = false;
         this.isLit = isLit;
         this.BCKT_REF = bckt;
         this.searchDialogLit = "Ouch! That's hot!";

@@ -1,12 +1,11 @@
 package Garden;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Gal3_Fountain extends Furniture {
-
+public class Gal3_Fountain extends SearchableFurniture {
     // ========================================================================
     public Gal3_Fountain (Item... items) {
         super(items);

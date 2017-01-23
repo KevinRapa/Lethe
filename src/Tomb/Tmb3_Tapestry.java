@@ -5,7 +5,6 @@ import A_Super.WallArt;
  * @author Kevin Rapa
  */
 public class Tmb3_Tapestry extends WallArt {
-
     // ========================================================================
     public Tmb3_Tapestry () {
         super();

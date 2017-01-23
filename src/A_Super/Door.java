@@ -7,7 +7,6 @@ public class Door extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Door (Direction dir) {
         super();
-        this.searchable = false;
         this.DIR = dir;
         this.useDialog = "It's too large to fit it in the lock.";
         this.searchDialog = "You aren't sure what you'd search for on a door.";

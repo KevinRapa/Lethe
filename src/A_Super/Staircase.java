@@ -11,7 +11,6 @@ public class Staircase extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Staircase(Direction direction) {
         super();
-        this.searchable = false;
         this.DIR = direction;
         this.addActKeys("climb", "use", "walk");
         this.addNameKeys("stair(?:s|case)|steps");

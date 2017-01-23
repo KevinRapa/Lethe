@@ -17,7 +17,6 @@ public class Cha1_Water extends Furniture {
     public Cha1_Water(Item hlyWtr) {
         super();
         this.REF_HOLY_WATER = hlyWtr;
-        this.searchable = false;
         this.description = "It's seems to be just water, but it's most likely the holy kind.";
         this.searchDialog = "You can't pick this up with your bare hands.";
         this.useDialog = "You fill the small vial with the holy water.";

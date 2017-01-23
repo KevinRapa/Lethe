@@ -1,11 +1,11 @@
 package Crypt;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Cry2_Altar extends Furniture {
+public class Cry2_Altar extends SearchableFurniture {
     // ========================================================================
     public Cry2_Altar (Item... items) {
         super(items);

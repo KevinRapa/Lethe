@@ -4,6 +4,7 @@ import A_Main.GUI;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 /**
  * The player can search any of the cabinets, but none of them have anything
  * necessary in them.
@@ -44,7 +45,7 @@ public class Cry_Drawers extends Furniture implements Openable {
     // ========================================================================     
     // ************************************************************************
     // ========================================================================   
-    private class Drwr extends Furniture {
+    private class Drwr extends SearchableFurniture {
         public Drwr() {
             super();
             this.searchDialog = null;

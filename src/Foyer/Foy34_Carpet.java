@@ -1,15 +1,13 @@
 package Foyer;
 
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Foy34_Carpet extends Furniture {
     // ========================================================================
-    public Foy34_Carpet (Item... items) {
-        super(items);
-        this.searchable = false;
+    public Foy34_Carpet () {
+        super();
         
         this.description = "The thick red carpet runner follows up and down\n"
                          + "the foyer stairscase.";

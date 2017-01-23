@@ -40,11 +40,9 @@ abstract public class Furniture implements Serializable {
     /**
      * Constructor for furniture.
      * Many attributes are overwritten in furniture sub-classes.
-     * @param items A list of items that this furniture contains.
      */
-    public Furniture (Item... items) {
-        this.inv = new Inventory(items);
-        this.searchable = true;
+    public Furniture () {
+        this.searchable = false;
         this.NAMEKEYS = new ArrayList<>(); // Valid names of this. Regular expression.
         this.USEKEYS = new ArrayList<>();  // Valid items that may be used on this.
         this.ACTKEYS = new ArrayList<>();  // Valid actions that may be performed on this.

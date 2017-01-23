@@ -8,8 +8,7 @@ public class Bls1_Plants extends Furniture {
     // ========================================================================
     public Bls1_Plants () {
         super();
-        this.searchable = false;
-        
+
         this.description = "Many small potted trees and bushes decorate the\n"
                          + "atrium. They all look quite healthy and nurtured,\n"
                          + "to your pleasant surprise.";

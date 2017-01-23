@@ -7,7 +7,7 @@ public class Cha1_Cylix extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cha1_Cylix() {
         super();
-        this.searchable = false;
+
         this.description = "The cylix looks like a wide brass bowl.";
         this.useDialog = "You begin banging the container against the bowl, but the\n"
                        + "bowl isn't fitting inside...";

@@ -16,8 +16,7 @@ public class DungeonMonsterFurniture extends Furniture {
     // ========================================================================
     public DungeonMonsterFurniture () {
         super();
-        this.searchable = false;
-        
+
         this.description = "A disfigured corpse-like creature is roaming the tunnels.\n"
                          + "It holds a dangling chain wrapped around itself several times\n"
                          + "and drags its bare feet as it walks crookedly. ";

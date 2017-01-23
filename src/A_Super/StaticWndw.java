@@ -9,7 +9,6 @@ public class StaticWndw extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public StaticWndw() {
         super();
-        this.searchable = false;
         this.escapeDialog = "And fall to your death?";
         this.actDialog = "This is a plain window. It has no moving parts.";
         this.addActKeys("open", "close", "exit", "climb", "jump");

@@ -8,7 +8,6 @@ public class Att_Cobwebs extends Furniture {
     // ========================================================================
     public Att_Cobwebs() {
         super();
-        this.searchable = false;
         
         this.description = "Dust and cobwebs coat everything in this room, but not one spider is to be seen.";
 

@@ -22,8 +22,7 @@ public class Obs1_Slots extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Obs1_Slots(Item hlsPlt, Furniture stats) {
         super();
-        this.searchable = false;
-        
+
         SLOTS.add(new Obs1_Slot("I", "Sol",       "Inside the slot: \"Helios\""));
         SLOTS.add(new Obs1_Slot("A", "Mercury",   "Inside the slot: \"Hermes\""));
         SLOTS.add(new Obs1_Slot("B", "Venus",     "Inside the slot: \"Aphrodite\""));

@@ -1,9 +1,9 @@
 package Foyer;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 
-public class Foy1_Table extends Furniture {
+public class Foy1_Table extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy1_Table(Item... items) {
         super(items);

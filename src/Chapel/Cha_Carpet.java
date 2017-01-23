@@ -8,7 +8,6 @@ public class Cha_Carpet extends Furniture {
     // ========================================================================
     public Cha_Carpet () {
         super();
-        this.searchable = false;
         
         this.description = "The long red carpet runs in between the pews. Small\n"
                          + "puffs of smoke rise up with each step you take on it.";

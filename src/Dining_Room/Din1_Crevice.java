@@ -1,6 +1,6 @@
 package Dining_Room;
 
-import A_Super.Furniture;
+import A_Super.SearchableFurniture;
 import A_Super.Item;
 /**
  * Holds an observatory plate.
@@ -10,7 +10,7 @@ import A_Super.Item;
  * @see Dining_Room.Din1_Tpstry
  * @author Kevin Rapa
  */
-public class Din1_Crevice extends Furniture {
+public class Din1_Crevice extends SearchableFurniture {
     // ========================================================================
     public Din1_Crevice (Item... items) {
         super(items);

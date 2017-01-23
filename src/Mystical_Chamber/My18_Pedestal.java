@@ -20,7 +20,7 @@ public class My18_Pedestal extends Furniture {
     // ========================================================================
     public My18_Pedestal () {
         super();
-        this.searchable = false;
+
         this.hasStone = false;
         this.description = "The pedestal has a round indentation in the center.";
         this.searchDialog = "There's nothing interesting about the pedestal.";

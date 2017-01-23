@@ -1,13 +1,13 @@
 package Observatory;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * Holds a ruby, one item needed in the Jade Hall puzzle.
  * 
  * @author Kevin Rapa
  */
-public class Obs3_Chandelier extends Furniture {
+public class Obs3_Chandelier extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Obs3_Chandelier(String NAME, Item ... items) {
         super(items);

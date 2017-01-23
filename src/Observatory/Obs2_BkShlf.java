@@ -1,14 +1,14 @@
 package Observatory;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * Holds a book which helps with the observatory puzzle.
  * 
  * @see Observatory.Obs2_Book
  * @author Kevin Rapa
  */
-public class Obs2_BkShlf extends Furniture {
+public class Obs2_BkShlf extends SearchableFurniture {
     // ========================================================================
     public Obs2_BkShlf (Item... items) {
         super(items);

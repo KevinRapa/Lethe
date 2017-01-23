@@ -6,7 +6,6 @@ public class Bba_Sconce extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bba_Sconce() {
         super();
-        this.searchable = false;
         this.description = "It's a copper metal sconce holding a glass bulb. It dimly\n" +
                            "lights the wall with a flickering orange glow.";
         this.actDialog = "Ouch! That's hot!";

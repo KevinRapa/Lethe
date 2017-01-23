@@ -1,12 +1,12 @@
 package Observatory;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Obs3_Chest extends Furniture implements Openable {
+public class Obs3_Chest extends SearchableFurniture implements Openable {
     // ========================================================================
     public Obs3_Chest(Item... items) {
         super(items);

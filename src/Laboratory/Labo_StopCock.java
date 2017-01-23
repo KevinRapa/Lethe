@@ -11,8 +11,7 @@ public class Labo_StopCock extends Furniture {
     // ========================================================================
     public Labo_StopCock () {
         super();
-        this.searchable = false;
-        
+
         this.actDialog = "Both the dispensers and the burette have a stopcock.\n"
                        + "State 'burette stopcock' or 'dispenser stopcock'.";
         

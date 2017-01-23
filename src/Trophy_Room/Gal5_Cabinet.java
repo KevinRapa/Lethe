@@ -2,12 +2,12 @@ package Trophy_Room;
 
 import A_Main.AudioPlayer;
 import A_Main.Id;
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 
-public class Gal5_Cabinet extends Furniture implements Openable {
+public class Gal5_Cabinet extends SearchableFurniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5_Cabinet(Item... items) {
         super(items);

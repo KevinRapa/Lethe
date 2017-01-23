@@ -34,7 +34,6 @@ public class Wrk_CastingTable extends Furniture {
         this.POTASH_REF = ptsh; this.SAND_REF = snd; // Sand and potash to restock
         
         this.hasTemplate = false;
-        this.searchable = false;
         this.description = "It's a tall metal casting table for casting metal.";
         this.addUseKeys(LENS_TEMPLATE, MOLTEN_RED_GLASS, MOLTEN_YELLOW_GLASS, MOLTEN_BLUE_GLASS);
         this.addNameKeys("table", "casting table");

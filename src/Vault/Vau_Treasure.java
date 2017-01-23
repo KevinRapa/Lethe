@@ -1,11 +1,11 @@
 package Vault;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Vau_Treasure extends Furniture {
+public class Vau_Treasure extends SearchableFurniture {
     // ========================================================================
     public Vau_Treasure (Item... items) {
         super(items);

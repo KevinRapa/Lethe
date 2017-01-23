@@ -7,7 +7,7 @@ public class Par2_Bowl extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Par2_Bowl() {
             super();
-            this.searchable = false;
+
             this.addUseKeys(POLEARM);
             this.addNameKeys("(?:hanging )?(?:steel )?bowl(?: of fire)?", "burning bowl");
 

@@ -1,7 +1,7 @@
 package Parlor;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * Hides a brass plate for the observatory puzzle.
  * 
@@ -9,7 +9,7 @@ import A_Super.Item;
  * @see Observatory.Obs1_Slots
  * @author Mantis Toboggan
  */
-public class Par1_Cushion extends Furniture{
+public class Par1_Cushion extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Par1_Cushion(Item ... items) {
         super(items);

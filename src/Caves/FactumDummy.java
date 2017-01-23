@@ -15,7 +15,6 @@ public class FactumDummy extends Furniture {
     // ========================================================================
     public FactumDummy (Item factum) {
         super();
-        this.searchable = false;
         
         this.FACTUM_REF = factum;
         

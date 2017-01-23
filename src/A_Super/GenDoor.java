@@ -12,7 +12,6 @@ public class GenDoor extends Furniture {
     // ========================================================================
     public GenDoor () {
         super();
-        this.searchable = false;
         
         this.description = "There are several doors here. Use <'search' direction 'door'>";
         this.searchDialog = this.description;

@@ -14,7 +14,7 @@ public class Rotu_Wheel extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rotu_Wheel() {
         super();
-        this.searchable = false;
+
         this.searchDialog = "Nope, nothing. But there are interesting seams\n"
                           + "above and below the wheel.";
         this.description = "Looking closely at the wheel, you spot a seam\n"

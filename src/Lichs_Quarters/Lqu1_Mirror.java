@@ -8,7 +8,6 @@ public class Lqu1_Mirror extends Furniture {
     // ========================================================================
     public Lqu1_Mirror () {
         super();
-        this.searchable = false;
         
         this.description = "You look in the mirror, nearly not recognizing\n"
                          + "yourself. You look and feel exhausted and hungry.\n"

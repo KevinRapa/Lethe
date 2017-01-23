@@ -6,7 +6,7 @@ public class Foy1_Stairs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
         public Foy1_Stairs() {
         super();
-        this.searchable = false;
+
         this.description = "A winding stone staircase hugs the curved wall\n"
                          + "on the far north side of the room.";
         this.searchDialog = "It's too far away to see anything.";

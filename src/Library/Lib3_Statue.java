@@ -1,6 +1,7 @@
 package Library;
 
 import A_Main.AudioPlayer;
+import A_Main.Inventory;
 import A_Super.Item;
 import A_Super.Statue;
 
@@ -8,7 +9,8 @@ public class Lib3_Statue extends Statue {
     private boolean leftEye, rightEye;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Lib3_Statue(Item... items) {
-        super(items);
+        super();
+        this.inv = new Inventory(items);
         this.leftEye = false;
         this.rightEye = false;
         this.description = "The towering statue reaches a bit over a story tall.\n"

@@ -2,11 +2,11 @@ package Library;
 
 import A_Super.Furniture;
 
-public class Lib4_Globe extends Furniture{
+public class Lib4_Globe extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib4_Globe() {
         super();
-        this.searchable = false;
+ 
         this.description = "The globe looks antique, but on a closer look, it\n"
                          + "seems fairly modern. Early 1920s you guess.";
         this.actDialog = "You think to yourself, 'when I get out of here, I'd like\n"

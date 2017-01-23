@@ -5,13 +5,13 @@ import A_Main.Inventory;
 import A_Main.NameConstants;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
-public class Labo_Flask extends Furniture {
+public class Labo_Flask extends SearchableFurniture {
     private final Labo_Condenser CONDENSER_REF;
     private final Item TUBE_REF, VIAL_REF;
     // ========================================================================

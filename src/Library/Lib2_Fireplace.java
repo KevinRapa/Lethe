@@ -4,7 +4,6 @@ import A_Super.Fireplace;
 import A_Super.Item;
 
 public class Lib2_Fireplace extends Fireplace {
-     
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Lib2_Fireplace(boolean isLit, Item bckt) {       
         super(isLit, bckt);

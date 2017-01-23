@@ -1,10 +1,10 @@
 package East_Outer_Wall;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
         
-public class Eow2_Cabinet extends Furniture implements Openable {
+public class Eow2_Cabinet extends SearchableFurniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Eow2_Cabinet(Item... items) {
         super(items);

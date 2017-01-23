@@ -5,11 +5,10 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Obs2_Railing extends Furniture {
-
     // ========================================================================
     public Obs2_Railing () {
         super();
-        this.searchable = false;
+
         this.description = "The railing is quite thin, and does not appear as\n"
                          + "though it can take much weight. Certainly not your\n"
                          + "weight, that is.";

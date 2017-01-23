@@ -1,5 +1,7 @@
 package Tower;
 
+import A_Main.GUI;
+import A_Main.Inventory;
 import static A_Main.NameConstants.DAMPENING_STAFF;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -13,7 +15,9 @@ import A_Super.Item;
 public class Tow1_Pedestal extends Furniture {
     // ========================================================================
     public Tow1_Pedestal (Item... items) {
-        super(items);
+        super();
+        
+        this.inv = new Pedestal_Inventory(items);
         this.searchable = false;
         
         this.description = "The pedestal is a solid gray stone platform with two\n"
@@ -38,6 +42,26 @@ public class Tow1_Pedestal extends Furniture {
         return this.searchable ? "You approach the pedestal" : this.searchDialog;
     }
     // ========================================================================    
+    // ************************************************************************
+    // ========================================================================  
+    private class Pedestal_Inventory extends Inventory {
+        public Pedestal_Inventory(Item... items) {
+            super(items);
+        }
+        @Override public boolean add(Item item) {
+            if (! item.toString().equals(DAMPENING_STAFF)) {
+                this.add(item);
+                return true;
+            }
+            else {
+                GUI.out("Don't store that here or you'll never get it back!");
+                return false;
+            }
+        }
+    }
+    // ========================================================================    
+    // ************************************************************************
+    // ========================================================================
 }
 
 

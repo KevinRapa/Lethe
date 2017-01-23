@@ -6,7 +6,7 @@ public class Stud_Carpet extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Stud_Carpet() {
         super();
-        this.searchable = false;
+
         this.description = "A thick red carpet. On top sits the writing desk\n"
                          + "and chair.";
         this.searchDialog = "To your great curiosity, lifting up the carpet\n"

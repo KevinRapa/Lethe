@@ -8,8 +8,7 @@ public class Bls_Windows extends StaticWndw {
     // ========================================================================
     public Bls_Windows () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The atrium is glassed in from floor to ceiling. To\n"
                          + "the west, you can see the rooftop garden from which\n"
                          + "you escaped the parlor. To the north, you see a terminal\n"

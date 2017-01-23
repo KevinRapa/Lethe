@@ -7,7 +7,7 @@ public class Iha2_Bowl extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Iha2_Bowl() {
             super();
-            this.searchable = false;
+
             this.addUseKeys(POLEARM);
             this.addNameKeys("(?:hanging )?(?:burning )?(?:steel )?bowl(?: of fire)?");
 

@@ -1,19 +1,18 @@
 package Gallery;
 
 import static A_Main.NameConstants.BOX_THINGY;
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * Holds the box thingy; the battery for the GAL6 cannon
  * 
  * @see Gallery.Gal6_Cnn
  * @author KEvin Rapa
- */
-public class Gal6_Apparatus extends Furniture{
+ */ 
+public class Gal6_Apparatus extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_Apparatus(Item... items) {
         super(items);
-        this.searchable = true;
         this.searchDialog = "The only thing to take is the funny box in the center.";
         this.description = "The weird apparatus looks like a metal platform\n"
                          + "with three curved arms projecting out and overtop\n"

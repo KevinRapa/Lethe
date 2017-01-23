@@ -8,8 +8,7 @@ public class Obs2_Chair extends Furniture {
     // ========================================================================
     public Obs2_Chair () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The tall lavender lounge chair looks quite comfortable\n"
                          + "to sit in.";
         this.actDialog = "You sit down for a moment, pondering various worldly mysteries.\n"

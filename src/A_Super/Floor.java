@@ -10,7 +10,7 @@ import A_Main.Player;
  * 
  * @author Kevin Rapa
  */
-public class Floor extends Furniture {
+public class Floor extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Floor(String dsc, Item... items) {
             super(items);

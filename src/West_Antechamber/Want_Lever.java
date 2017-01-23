@@ -9,7 +9,7 @@ import Rotunda.Rotu;
 public class Want_Lever extends Lever {
     public Want_Lever() {
         super();
-        this.searchable = false;
+
         this.description = "It's a black iron lever resting on the plinth of the\n"
                          + "statue.";
         this.searchDialog = "There's a pile of gold! No, not really, just a lever.";

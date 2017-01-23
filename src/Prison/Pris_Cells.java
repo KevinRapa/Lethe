@@ -17,7 +17,6 @@ public class Pris_Cells extends Furniture implements Openable{
     // ========================================================================
     public Pris_Cells () {
         super();
-        this.searchable = false;
         
         MAP.put("one", 1);   MAP.put("two", 2);   MAP.put("three", 3);
         MAP.put("four", 4);  MAP.put("five", 5);  MAP.put("six", 6);

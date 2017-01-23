@@ -17,9 +17,8 @@ public class Intr_Grate extends Furniture implements Resetable {
     private boolean opened;
     private final String MOVED_GRATE = "You've already moved the grate!";
     // ========================================================================
-    public Intr_Grate (Item... items) {
-        super(items);
-        this.searchable = false;
+    public Intr_Grate () {
+        super();
         
         this.description = "The water in the room drains through this grate here.\n"
                          + "Squinting though it, you spot what you believe to be\n"

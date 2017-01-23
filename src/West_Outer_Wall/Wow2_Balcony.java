@@ -11,7 +11,7 @@ public class Wow2_Balcony extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wow2_Balcony(Furniture wow2Strs, Item lddr) {
         super();
-        this.searchable = false;
+
         this.STRS_REF = wow2Strs;
         this.LDDR_REF = lddr;
         this.description = "You can't see much from down here. The balcony\n"

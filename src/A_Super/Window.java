@@ -16,7 +16,6 @@ public class Window extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Window () {
         super();
-        this.searchable = false;
         this.isOpen = false;
         this.escapeDialog = "And fall to your death?";
         this.descOpen = "It's an open stone arched window. In the distance,\n" +

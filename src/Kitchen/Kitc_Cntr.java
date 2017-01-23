@@ -1,10 +1,10 @@
 package Kitchen;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 
-public class Kitc_Cntr extends Furniture implements Openable {
+public class Kitc_Cntr extends SearchableFurniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Kitc_Cntr(Item ... items) {
         super(items);

@@ -8,8 +8,7 @@ public class Tbal_Pillar extends Furniture {
     // ========================================================================
     public Tbal_Pillar () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The wide column is about 20 feet wide and supports\n"
                          + "the enormous weight of the chamber to the north.";
 

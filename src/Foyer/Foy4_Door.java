@@ -6,7 +6,6 @@ import A_Super.Door;
  * @author Kevin Rapa
  */
 public class Foy4_Door extends Door {
-
     // ========================================================================
     public Foy4_Door (Direction dir) {
         super(dir);

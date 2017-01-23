@@ -1,11 +1,11 @@
 package Prison;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Pris_Table extends Furniture {
+public class Pris_Table extends SearchableFurniture {
     // ========================================================================
     public Pris_Table (Item... items) {
         super(items);

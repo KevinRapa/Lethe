@@ -8,8 +8,7 @@ public class Vau_Ceiling extends Furniture {
     // ========================================================================
     public Vau_Ceiling () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The ceiling is sandstone like the rest of the room.\n"
                          + "It arches only feet above your head and gradually\n"
                          + "slopes down on either side of you meeting the floor.";

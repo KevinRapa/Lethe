@@ -8,8 +8,7 @@ public class Sewp_Ceiling extends Furniture {
     // ========================================================================
     public Sewp_Ceiling () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The ceiling is stone brick just like the rest of the room.";
 
         this.addNameKeys("ceiling");

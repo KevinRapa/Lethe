@@ -49,8 +49,6 @@ public class Metal_Ladder extends Item {
             super();
             
             this.LADDER_ITEM = ladderItem;
-            
-            this.searchable = false;
 
             this.description = "The old metal ladder stands in the center of the room, going nowhere.";
             this.actDialog = "You climb up the ladder. \"There's really not much\n"

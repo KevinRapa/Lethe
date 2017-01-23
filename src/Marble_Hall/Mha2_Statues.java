@@ -15,7 +15,7 @@ public class Mha2_Statues extends Furniture {
     public Mha2_Statues(Furniture Rstat) {
         super();
         this.REF = Rstat;
-        this.searchable = false;
+
         this.searchDialog = "You aren't sure which one to search. Specify\n"
                           + "'left statue' or 'right statue'";
         this.useDialog = "You aren't sure which one to use it on. Specify\n"

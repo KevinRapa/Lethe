@@ -2,13 +2,14 @@ package Rotunda;
 
 import A_Super.Furniture;
 
-public class Rotu_Plants extends Furniture{
+public class Rotu_Plants extends Furniture {
     private final Rotu_Fountain REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rotu_Plants(Furniture fntn) {
         super();
+        
         this.REF = (Rotu_Fountain)fntn;
-        this.searchable = false;
+
         this.description = "The plants don't seem to be in good shape. They\n"
                          + "droop and some are crowded with weeds.";
         this.searchDialog = "You don't feel like getting dirt on your hands.";

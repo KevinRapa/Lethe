@@ -11,9 +11,8 @@ import A_Super.Item;
  */
 public class Dummy_Furniture extends Furniture {
     // ========================================================================
-    public Dummy_Furniture (Item... items) {
-        super(items);
-        this.searchable = false;
+    public Dummy_Furniture () {
+        super();
         
         this.description = "a5 ojkvjkljelzx sf093knf k4kgjg094ng nvkjrhniog9 9ug\n"
                          + "fe 0e08 fjkSEJKO f0ej HEWBK9 jfe90 kfjnks FLeosj selg\n"

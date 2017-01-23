@@ -1,16 +1,14 @@
 package Tunnels;
 
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Sew15_Gate extends Furniture {
     // ========================================================================
-    public Sew15_Gate (Item... items) {
-        super(items);
-        this.searchable = false;
-        
+    public Sew15_Gate () {
+        super();
+
         this.description = "Passed the iron gate, you can see the tunnel leading\n" +
                            "further down into darkness. The iron bars extend down\n" +
                            "into the water where they form a grate of sorts, you\n" +

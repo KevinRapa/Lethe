@@ -12,7 +12,7 @@ public class Eow2_Fountain extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Eow2_Fountain() {
         super();
-        this.searchable = false;
+
         this.description = "The fountain is running smoothly with clear water.\n"
                          + "In its center is a tall statue of a helmed woman\n"
                          + "holding a staff and shield. It reminds you of the\n"

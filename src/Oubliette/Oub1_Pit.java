@@ -9,12 +9,10 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Oub1_Pit extends Furniture {
-
     // ========================================================================
     public Oub1_Pit () {
         super();
-        this.searchable = false;
-        
+
         this.description = "You peer over the 8-foot wide pit. The pit empties\n"
                          + "into blackness. You cannot see the bottom.";
         this.actDialog = "That doesn't seem like a very good idea.";

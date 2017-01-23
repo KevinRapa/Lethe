@@ -1,12 +1,12 @@
 package Library;
 
-import A_Super.Furniture;
+import A_Super.SearchableFurniture;
 
-public class Lib_BookShelf extends Furniture {
+public class Lib_BookShelf extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib_BookShelf() {
         super();
-        this.searchable = false;
+
         this.description = "There are a couple of bookshelves in here. Specify\n"
                          + "with just the label at the top or a direction.";
         this.searchDialog = this.description;

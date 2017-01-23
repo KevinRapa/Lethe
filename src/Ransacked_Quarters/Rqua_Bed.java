@@ -8,7 +8,7 @@ public class Rqua_Bed extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rqua_Bed () {
         super();
-        this.searchable = false;
+
         this.moved = false;
         this.description = "It's a plain, wooden bedframe. The mattress has been thrown off. A tile beneath\n"
                           + "the bed looks suspicious.";

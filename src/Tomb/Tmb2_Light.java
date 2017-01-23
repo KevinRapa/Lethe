@@ -8,7 +8,6 @@ public class Tmb2_Light extends Furniture {
     // ========================================================================
     public Tmb2_Light () {
         super();
-        this.searchable = false;
         
         this.description = "The orb is blinding and is the only thing lighting\n"
                          + "the room. It has no source, nor any vessel to contain it...";

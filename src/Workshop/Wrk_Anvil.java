@@ -7,7 +7,7 @@ public class Wrk_Anvil extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Anvil() {
         super();
-        this.searchable = false;
+
         this.description = "It's a quintessential anvil if you've ever seen one.\n"
                          + "It looks heavily used.";
         this.searchDialog = "There's nothing to search for on an anvil.";

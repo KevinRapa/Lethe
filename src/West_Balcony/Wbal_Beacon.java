@@ -6,7 +6,7 @@ public class Wbal_Beacon extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wbal_Beacon() {
         super();
-        this.searchable = false;
+
         this.description = "It's a ten foot high stone obelisk. At the top is\n"
                          + "a large bowl of flame. It's so bright, I'm sure one\n"
                          + "could see this from a long distance.";

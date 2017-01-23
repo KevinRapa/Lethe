@@ -1,9 +1,9 @@
 package Kitchen;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 
-public class Kitc_Pots extends Furniture {
+public class Kitc_Pots extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Kitc_Pots(Item ... items) {
         super(items);

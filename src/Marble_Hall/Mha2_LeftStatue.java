@@ -1,9 +1,9 @@
 package Marble_Hall;
 
 import static A_Main.NameConstants.SILVER_SPEAR;
-import A_Super.Furniture;
+import A_Super.SearchableFurniture;
 
-public class Mha2_LeftStatue extends Furniture {
+public class Mha2_LeftStatue extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Mha2_LeftStatue() {
         super();

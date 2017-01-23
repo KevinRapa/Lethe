@@ -1,9 +1,9 @@
 package Secret_Archives;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
         
-public class Lib1_Rack extends Furniture {
+public class Lib1_Rack extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Rack(Item... items) {
         super(items);

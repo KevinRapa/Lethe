@@ -50,10 +50,9 @@ public class Sew2_Valves extends Furniture implements Resetable {
                                     1, 1, 0, 
                                     0, 1, 1};
     // ========================================================================
-    public Sew2_Valves (Item... items) {
-        super(items);
-        this.searchable = false;
-        
+    public Sew2_Valves () {
+        super();
+
         MAP.put("i", 0); MAP.put("ii", 1); MAP.put("iii", 2); MAP.put("iv", 3);
         MAP.put("v", 4); MAP.put("vi", 5); MAP.put("vii", 6); MAP.put("viii", 7);
         MAP.put("ix", 8);

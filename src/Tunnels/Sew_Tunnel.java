@@ -9,8 +9,7 @@ public class Sew_Tunnel extends Furniture {
     // ========================================================================
     public Sew_Tunnel () {
         super();
-        this.searchable = false;
-        
+
         this.description = "This underground tunnel is warm and humid. The tunnel\n" +
                            "is about 20 feet wide and has an arched ceiling about\n" +
                            "20 feet above. A river flows down its length along one\n" +

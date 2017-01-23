@@ -4,10 +4,10 @@ import A_Main.Id;
 import A_Main.Inventory;
 import static A_Main.NameConstants.POLEARM;
 import A_Main.Player;
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 
-public class Iha2_Armor extends Furniture {
+public class Iha2_Armor extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Iha2_Armor(Item... items) {
         super();

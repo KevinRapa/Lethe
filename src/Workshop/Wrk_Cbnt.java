@@ -1,10 +1,10 @@
 package Workshop;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
         
-public class Wrk_Cbnt extends Furniture implements Openable{
+public class Wrk_Cbnt extends SearchableFurniture implements Openable{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Cbnt(Item... items) {
         super(items);

@@ -26,6 +26,7 @@ public class Torc_Sawhorses extends Furniture implements Resetable {
         super();
         
         this.inv = new Sawhorse_Inventory(METAL_LADDER);
+        this.searchable = true;
         
         torc.addFurniture(TORC_LDDR);
         

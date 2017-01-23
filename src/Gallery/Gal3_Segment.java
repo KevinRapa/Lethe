@@ -8,7 +8,6 @@ public class Gal3_Segment extends Furniture{
     public Gal3_Segment(Furniture gal3Ttm) {
         super();
         this.REF = gal3Ttm;
-        this.searchable = false;
         this.searchDialog = "The segments aren't hiding any items. But you\n"
                           + "notice a seam between each.";
         this.description = "The faces on each segment are surreal and spooky.\n "

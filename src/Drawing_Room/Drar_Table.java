@@ -2,12 +2,13 @@ package Drawing_Room;
 
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 
-public class Drar_Table extends Furniture {
+public class Drar_Table extends SearchableFurniture {
     private final Drar_Ghost GHOST_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Drar_Table(Furniture ghst, Item... items) {
-        super();
+        super(items);
         this.GHOST_REF = (Drar_Ghost)ghst;
         this.description = "The low coffee table is glossy and clean.";
         this.searchDialog = "You look on the table's surface.";

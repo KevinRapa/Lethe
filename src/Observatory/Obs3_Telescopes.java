@@ -8,8 +8,7 @@ public class Obs3_Telescopes extends Furniture {
     // ========================================================================
     public Obs3_Telescopes () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The telescopes have many different copper parts and\n"
                          + "intricate carvings. One of them is pointed at the\n"
                          + "lighthouse along the cliff in the distance.";

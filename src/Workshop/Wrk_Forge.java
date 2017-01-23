@@ -6,7 +6,7 @@ public class Wrk_Forge extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Forge() {
         super();
-        this.searchable = false;
+
         this.description = "The brick forge's heat envelops the room. Though\n"
                          + "there's no fire in it, the smouldering ashes have only begun\n"
                          + "to cool.";

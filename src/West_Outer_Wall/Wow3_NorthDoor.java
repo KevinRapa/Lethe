@@ -8,8 +8,7 @@ public class Wow3_NorthDoor extends Furniture {
     // ========================================================================
     public Wow3_NorthDoor () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The door is hopelessly blocked by the large shelf.";
         this.actDialog = this.description;
 

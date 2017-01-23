@@ -12,8 +12,7 @@ public class Gar2_Hole extends Furniture {
     // ========================================================================
     public Gar2_Hole (Furniture hose) {
         super();
-        this.searchable = false;
-        
+
         this.HOSE_REF = hose;
         this.description = "You peer over the thick granite railing into the\n"
                          + "hole. To your surprise, it's the rotunda you were\n"

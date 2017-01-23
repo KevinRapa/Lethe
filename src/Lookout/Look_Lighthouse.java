@@ -6,7 +6,7 @@ public class Look_Lighthouse extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Look_Lighthouse() {
         super();
-        this.searchable = false;
+
         this.description = "A classic red and white striped lighthouse. Its\n"
                          + "beacon illuminates northwards. You wish it would\n"
                          + "maybe spot you.";

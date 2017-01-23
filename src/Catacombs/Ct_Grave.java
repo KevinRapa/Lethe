@@ -1,14 +1,14 @@
 package Catacombs;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * One of these holds the iridescent jewel.
  * 
  * @see Ancient_Tomb.Ct_Cmpss
  * @author Kevin Rapa
  */
-public class Ct_Grave extends Furniture {
+public class Ct_Grave extends SearchableFurniture {
     // ========================================================================
     public Ct_Grave (Item... items) {
         super(items);

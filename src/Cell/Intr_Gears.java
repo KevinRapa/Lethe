@@ -9,8 +9,7 @@ public class Intr_Gears extends Furniture {
     // ========================================================================
     public Intr_Gears () {
         super();
-        this.searchable = false;
-        
+
         this.description = "Many gears and axles of different sizes spin on the\n"
                          + "walls. They must generate power for something.";
         this.actDialog = "You don't think sticking your hand in there is a good idea.";

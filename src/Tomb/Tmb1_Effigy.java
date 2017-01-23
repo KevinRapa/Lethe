@@ -5,7 +5,6 @@ import A_Super.WallArt;
  * @author Kevin Rapa
  */
 public class Tmb1_Effigy extends WallArt {
-
     // ========================================================================
     public Tmb1_Effigy () {
         this.description = "It is a goat or pig skull tied to some criss-crossed\n"

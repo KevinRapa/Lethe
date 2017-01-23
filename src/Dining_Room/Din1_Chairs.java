@@ -6,7 +6,7 @@ public class Din1_Chairs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Din1_Chairs() {
         super();
-        this.searchable = false;
+
         this.description = "The chairs are boxy with lavender upholstery. The\n"
                          + "hickory wood is meticulously carved. 'They can\n"
                          + "carve a chair worth twice my life, but not one I\n"

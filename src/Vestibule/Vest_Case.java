@@ -1,10 +1,10 @@
 package Vestibule;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 
-public class Vest_Case extends Furniture implements Openable {
+public class Vest_Case extends SearchableFurniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Vest_Case(Item... items) {
         super(items);

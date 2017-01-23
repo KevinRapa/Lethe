@@ -10,8 +10,6 @@ public class Cry2_Engraving extends Furniture {
     // ========================================================================
     public Cry2_Engraving () {
         super();
-        this.searchable = false;
-        
         this.description = "The tall coffin resembles a large stone box. The box\n"
                          + "has a lid, but something is holding it closed. The lid\n"
                          + "of the coffin is artfully decorated with a carving of\n"

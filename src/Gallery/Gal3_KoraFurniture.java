@@ -9,7 +9,7 @@ public class Gal3_KoraFurniture extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_KoraFurniture() {
         super();
-        this.searchable = false;
+
         this.description = "You've never seen anything like this before. You'd\n"
                          + "call it a guitar, but then again, it looks like a\n"
                          + "harp too. Beneath it you see a small label: \"Kora\".";

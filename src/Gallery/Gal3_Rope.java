@@ -10,7 +10,6 @@ public class Gal3_Rope extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Gal3_Rope(Furniture lddr) {
             super();
-            this.searchable = false;
             this.cut = false;
             this.REF = (Gal3_Ladder)lddr;
             this.addActKeys("cut", "pull", "untie");

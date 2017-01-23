@@ -8,7 +8,6 @@ public class Soul_Pool extends Furniture {
     // ========================================================================
     public Soul_Pool () {
         super();
-        this.searchable = false;
         
         this.description = "The pool of aether swirls with white... stuff, and\n"
                          + "gently bubbles infrequently. The blue liquid inside\n"

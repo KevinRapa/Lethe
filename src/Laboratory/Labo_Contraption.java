@@ -10,8 +10,7 @@ public class Labo_Contraption extends Furniture {
     // ========================================================================
     public Labo_Contraption () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The large contraption seems to be composed of two parts.\n"
                          + "The left half has a bunsen burner under a rack for a flask.\n"
                          + "Above it is an inch-wide glass tube bridging over. The\n"

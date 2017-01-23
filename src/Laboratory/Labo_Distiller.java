@@ -17,9 +17,7 @@ public class Labo_Distiller extends Furniture {
     // ========================================================================
     public Labo_Distiller (Furniture pipe, Furniture condenser, Item tstTube, Item vial) {
         super();
-        
-        this.searchable = false;
-        
+
         this.PIPE_REF = (Labo_GasPipe)pipe;
         this.CONDENSER_REF = (Labo_Condenser)condenser;
         this.TUBE_REF = tstTube;

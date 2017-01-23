@@ -8,8 +8,7 @@ public class Gar2_Dome extends Furniture {
     // ========================================================================
     public Gar2_Dome () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The paneled dome must be there to prevent rain from\n"
                          + "dripping into the room below. Still, why have a hole\n"
                          + "there in the first place?";

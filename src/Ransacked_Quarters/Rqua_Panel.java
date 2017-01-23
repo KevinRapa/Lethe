@@ -18,8 +18,9 @@ public class Rqua_Panel extends Furniture {
 /*----------------------------------------------------------------------------*/    
     public Rqua_Panel(Key studKey, Furniture bed) {
             super();
+            
             this.lifted = false;
-            this.searchable = false;
+            
             this.STUDKEY_REF = studKey;
             this.BED_REF = (Rqua_Bed)bed;
             this.description = "The tile underneath the bed looks loose.";

@@ -1,10 +1,10 @@
 package Library;
 
 import static A_Main.NameConstants.CRYSTAL_ORB;
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
         
-public class Lib4_Table extends Furniture {
+public class Lib4_Table extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib4_Table(String NAME, Item ... items) {
         super(items);

@@ -3,11 +3,10 @@ package Ransacked_Quarters;
 import A_Super.Furniture;
         
 public class Rqua_Mattress extends Furniture {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rqua_Mattress () {
         super();
-        this.searchable = false;
+
         this.description = "It's a debris-covered mattress.";
         this.searchDialog = "Nothing here. It's a bad place to hide something,\n"
                           + "as someone has already searched it.";

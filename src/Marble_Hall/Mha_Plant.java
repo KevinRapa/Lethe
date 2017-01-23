@@ -1,9 +1,9 @@
 package Marble_Hall;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 
-public class Mha_Plant extends Furniture { 
+public class Mha_Plant extends SearchableFurniture { 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Mha_Plant(Item ... items) {
         super(items);

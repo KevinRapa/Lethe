@@ -22,10 +22,9 @@ public class Wrk_Kiln extends Furniture {
         this.REFGLSSB = new Item(MOLTEN_BLUE_GLASS, "It's a crucible of molten blue glass. Be careful!");
         this.REFGLSSY = new Item(MOLTEN_YELLOW_GLASS, "It's a crucible of molten yellow glass. Be careful!");
         
-        this.searchable = false;
-        
         hasSand = hasPotash = hasRedDye = hasBlueDye = hasYllwDye = false;
        
+        this.searchDialog = "You look in the kiln. It's too hot for your hands!";
         this.description = "The kiln resembles a ceramic oven. Its intense heat\n" +
                            "keeps this room roasting hot.";
         

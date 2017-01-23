@@ -4,15 +4,15 @@ import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Inventory;
 import A_Main.NameConstants;
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * Holds the brass plates for observatory statue puzzle.
  * 
  * @see Observatory.Obs_Slts
  * @author Kevin Rapa
  */
-public class Obs1_Slot extends Furniture {
+public class Obs1_Slot extends SearchableFurniture {
     private final String CORRECT;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Obs1_Slot(String NAME, String correct, String desc, Item ... items) {

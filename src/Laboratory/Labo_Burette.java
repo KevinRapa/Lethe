@@ -34,7 +34,7 @@ public class Labo_Burette extends Furniture {
     // ========================================================================
     public Labo_Burette (Item emptyVial, Item testTube) {
         super();
-        this.searchable = false;
+
         this.mode = Titrant.EMPTY;
         this.VIAL_REF = emptyVial;
         this.TUBE_REF = testTube;

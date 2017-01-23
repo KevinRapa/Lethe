@@ -1,10 +1,10 @@
 package Servants_Quarters;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
         
-public class Squa_Wardrobe extends Furniture implements Openable {
+public class Squa_Wardrobe extends SearchableFurniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Squa_Wardrobe(Item... items) {
         super(items);

@@ -9,8 +9,7 @@ public class Tmb1_Bowl extends Furniture {
     // ========================================================================
     public Tmb1_Bowl () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The hanging steel bowl lights the room in a flickering dim light.";
         this.useDialog = "You don't think that jabbing a burning bowl is a\n"
                        + "very good idea.";

@@ -8,8 +8,7 @@ public class Cis_Columns extends Furniture {
     // ========================================================================
     public Cis_Columns () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The fat tiled pillars are each about 10 to 12 feet\n" +
                            "wide and extend upwards. Towards the bottom they are\n" +
                            "covered in algae. You cannot see the ceiling,\n" +

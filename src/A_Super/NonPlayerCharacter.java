@@ -16,7 +16,6 @@ abstract public class NonPlayerCharacter extends Furniture {
     // ========================================================================
     public NonPlayerCharacter () {
         super();
-        this.searchable = false;
         this.firstTime = true;
 
         this.addActKeys("speak", "talk", "converse");

@@ -13,7 +13,7 @@ public class Par1_Harp extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Par1_Harp(Furniture orb) {
             super();
-            this.searchable = false;
+
             this.addNameKeys("harp", "renaissance-era harp");
             this.description = "It's a renaissance-era harp. It looks gold plated,\n"
                              + "but you're no metallurgist. It sure does look\n"

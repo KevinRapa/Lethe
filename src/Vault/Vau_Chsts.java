@@ -1,11 +1,11 @@
 package Vault;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import java.util.Random;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 
-public class Vau_Chsts extends Furniture implements Openable {
+public class Vau_Chsts extends SearchableFurniture implements Openable {
     private final Item[] POSSIBILITIES;
     // ========================================================================
     public Vau_Chsts(Item ... items) {

@@ -1,9 +1,9 @@
 package Dining_Room;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
         
-public class Din1_Table extends Furniture {
+public class Din1_Table extends SearchableFurniture {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Din1_Table(Item... items) {

@@ -8,8 +8,7 @@ public class Gar24_Sconce extends Furniture {
     // ========================================================================
     public Gar24_Sconce () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The fire burning inside the black iron sconce emits a cold yellow hue.";
         this.actDialog = "That light looks pretty hot...";
 

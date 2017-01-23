@@ -6,7 +6,7 @@ public class Din1_Carpet extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Din1_Carpet() {
         super();
-        this.searchable = false;
+
         this.description = "The clean lavender carpet lies under the table and\n"
                          + "chairs, and covers most of the cold stone floor.";
         this.searchDialog = "To your great curiosity, lifting up the carpet\n"

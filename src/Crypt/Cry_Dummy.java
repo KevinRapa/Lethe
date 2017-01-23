@@ -12,8 +12,7 @@ public class Cry_Dummy extends Furniture {
     // ========================================================================
     public Cry_Dummy () {
         super();
-        this.searchable = false;
-        
+
         this.description = this.searchDialog = this.useDialog =
                 "There is nothing with that name here.";
         this.actDialog = "You speak the words, but nothing happens";

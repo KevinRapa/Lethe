@@ -6,7 +6,7 @@ public class Vest_EndTable extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Vest_EndTable() {
         super();
-        this.searchable = false;
+
         this.description = "An round, ornate, wooden end table. A ceramic\n" +
                            "case rests on top.";
         this.searchDialog = "The table does not seem to be hiding anything.\n" +

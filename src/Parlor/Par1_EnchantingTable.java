@@ -5,6 +5,7 @@ import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
+import A_Super.SearchableFurniture;
 import Library.Shoes;
 /**
  * Used to make the shrouded shoes to traverse the back hall and the
@@ -20,7 +21,7 @@ import Library.Shoes;
  * @see Parlor.Par_BottleRecipe
  * @author Kevin Rapa
  */
-public class Par1_EnchantingTable extends Furniture {
+public class Par1_EnchantingTable extends SearchableFurniture {
     private final Item REF_ENCH_BTTL;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Par1_EnchantingTable(Item enchtBttl, Item... items) {

@@ -9,8 +9,7 @@ public class Vau_Bowls extends Furniture {
     // ========================================================================
     public Vau_Bowls () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The steel bowls hang from chains and burn. They hang\n"
                          + "lowly, as the ceiling itself is quite low too, and you\n"
                          + "must take care avoiding them.";

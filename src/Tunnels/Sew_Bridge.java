@@ -11,8 +11,7 @@ public class Sew_Bridge extends Furniture {
     // ========================================================================
     public Sew_Bridge (Direction dir) {
         super();
-        
-        this.searchable = false;
+
         this.DIR = dir;
         
         this.description = "The small, 11-foot stone bridge crosses over the\n" +

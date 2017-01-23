@@ -18,7 +18,7 @@ public class Look_Valve extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Look_Valve(Furniture fntn) {
         super();
-        this.searchable = false;
+
         this.searchDialog = "There's nothing here. Honestly, you never expected\n"
                           + "to find anything.";
         this.description = "A big rusty valve. There's a small pipe sticking out\n"

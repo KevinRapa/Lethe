@@ -6,7 +6,7 @@ public class Mha_Chandelier extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Mha_Chandelier() {
         super();
-        this.searchable = false;
+
         this.description = "The silver chandelier hangs many feet above you. Its\n" +
                            "intricacy gives it a classical feel, unlike the black\n" +
                            "iron one in the foyer. It holds many candles; at least\n" +

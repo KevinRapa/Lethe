@@ -1,10 +1,9 @@
 package Library;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
         
-public class Lib5_BanishmentShelf extends Furniture {
-
+public class Lib5_BanishmentShelf extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib5_BanishmentShelf(Item... items) {
         super(items);

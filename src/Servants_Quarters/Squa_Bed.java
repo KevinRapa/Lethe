@@ -1,9 +1,9 @@
 package Servants_Quarters;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
         
-public class Squa_Bed extends Furniture {
+public class Squa_Bed extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Squa_Bed (Item... items) {
         super(items);

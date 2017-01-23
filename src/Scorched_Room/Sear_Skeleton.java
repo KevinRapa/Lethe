@@ -1,15 +1,15 @@
 package Scorched_Room;
 
 import static A_Main.NameConstants.CROWBAR;
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * Holds a crowbar, to pry the panel in the ransacked room.
  * 
  * @see Ransacked_Quarters.Rqua_Panel
  * @author Kevin Rapa
  */  
-public class Sear_Skeleton extends Furniture {
+public class Sear_Skeleton extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Sear_Skeleton(Item... items) {
         super(items);

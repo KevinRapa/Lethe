@@ -5,8 +5,9 @@ import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
         
-public class Lib2_VoyageShelf extends Furniture {
+public class Lib2_VoyageShelf extends SearchableFurniture {
     private final Furniture REF, REF2, REF3, REF4;
     private boolean moved;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

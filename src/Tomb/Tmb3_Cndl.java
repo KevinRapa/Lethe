@@ -5,11 +5,9 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Tmb3_Cndl extends Furniture {
-
     // ========================================================================
     public Tmb3_Cndl () {
         super();
-        this.searchable = false;
         
         this.description = "The candles stand in the wall niches without any base;\n"
                          + "only a collection of melted wax at the bottoms holds them\n"

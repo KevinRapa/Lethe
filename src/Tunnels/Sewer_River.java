@@ -3,13 +3,13 @@ package Tunnels;
 import A_Main.AudioPlayer;
 import A_Main.Player;
 import static A_Main.NameConstants.METAL_BUCKET;
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * Defines general methods for the river in the tunnels.
  * @author Kevin Rapa
  */
-public class Sewer_River extends Furniture {
+public class Sewer_River extends SearchableFurniture {
     protected final Item WTR_BCKT;
     // ========================================================================
     public Sewer_River (Item bckt, Item... items) {

@@ -8,7 +8,7 @@ public class Drar_Couch extends Furniture {
     public Drar_Couch(Furniture ghst) {
         super();
         this.GHOST_REF = (Drar_Ghost)ghst;
-        this.searchable = false;
+
         this.description = "The victorian-era couch is a bold green color. This\n"
                          + "one looks quite comfortable actually.";
         this.searchDialog = "There's nothing hidden on this couch.";

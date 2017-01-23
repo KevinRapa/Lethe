@@ -8,7 +8,6 @@ public class Bha1_Horizon extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bha1_Horizon() {
         super();
-        this.searchable = false;
         this.description = "The floor of the hallway warps downwards paradoxically.\n"
                          + "You cannot see beyond perhaps twenty feet down the hallway,\n"
                          + "for the floor's curvature forms a horizon.";

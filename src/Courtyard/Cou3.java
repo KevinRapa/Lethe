@@ -20,8 +20,7 @@ public class Cou3 extends Room{
                      "great set of crumbling steps to the castle's entrance.\n" +
                      "The courtyard forks to your left and right, wrapping\n" +
                      "around to the sides of the steps. Ivy grows rampantly\n" +
-                     "on and over everything. To your left and right appears\n" +
-                     "as what used to be a couple fountains.";
+                     "on and over everything.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {

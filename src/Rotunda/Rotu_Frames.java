@@ -6,7 +6,7 @@ public class Rotu_Frames extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rotu_Frames() {
         super();
-        this.searchable = false;
+
         this.description = "They are arched, door-shaped, and seem as if they\n"
                          + "form some kind of magical passage.";
         this.searchDialog = "These frames seem as though they hide something, but\n"

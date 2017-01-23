@@ -16,9 +16,7 @@ public class Labo_Dispensers extends Furniture {
     // ========================================================================
     public Labo_Dispensers (Item emptyVial, Item testTube) {
         super();
-        
-        this.searchable = false;
-        
+
         this.VIAL_REF = emptyVial;
         this.TUBE_REF = testTube;
         this.description = "The series of six opaque dispensers are\n"

@@ -8,8 +8,7 @@ public class Cry_Lights extends Furniture {
     // ========================================================================
     public Cry_Lights () {
         super();
-        this.searchable = false;
-        
+
         this.description = "From the wall extend boney arms, palms up, holding\n"
                          + "small dishes. The surfaces of the dishes burn and give\n"
                          + "off the smell of brimstone.";

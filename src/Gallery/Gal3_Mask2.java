@@ -3,7 +3,6 @@ package Gallery;
 import A_Super.WallArt;
 
 public class Gal3_Mask2 extends WallArt {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Mask2() {
         super();

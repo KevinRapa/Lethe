@@ -2,7 +2,7 @@ package Kitchen;
 
 import A_Super.StaticWndw;
 
-public class Kitc_Window extends StaticWndw{
+public class Kitc_Window extends StaticWndw {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Kitc_Window() {
         super();

@@ -5,11 +5,9 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Cry1_Carving extends Furniture {
-
     // ========================================================================
     public Cry1_Carving () {
         super();
-        this.searchable = false;
         
         this.description = "Carved into the wall is a mural of sorts. In the center\n"
                          + "is a standing cloaked figure resembling a skeleton. It\n"

@@ -6,10 +6,9 @@ package A_Super;
  */
 abstract public class Statue extends Furniture {
     // ========================================================================
-    public Statue(Item ... items) {
-        super(items);
-        this.searchable = false;
-        
+    public Statue() {
+        super();
+
         this.actDialog = "You feel the statue and marvel at its detail.";
         this.searchDialog = "You look around the statue but find nothing of interest.";
 

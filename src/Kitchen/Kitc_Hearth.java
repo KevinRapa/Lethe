@@ -1,10 +1,10 @@
 package Kitchen;
 
 import static A_Main.NameConstants.HAND_TORCH;
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 
-public class Kitc_Hearth extends Furniture {
+public class Kitc_Hearth extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Kitc_Hearth(Item ... items) {
         super(items);

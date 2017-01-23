@@ -1,12 +1,12 @@
 package Tomb;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-abstract public class Tomb_Casket extends Furniture implements Openable {
+abstract public class Tomb_Casket extends SearchableFurniture implements Openable {
     // ========================================================================
     public Tomb_Casket (Item... items) {
         super(items);

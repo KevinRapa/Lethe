@@ -1,13 +1,12 @@
 package Torture_Chamber;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Torc_Cages extends Furniture implements Openable {
-
+public class Torc_Cages extends SearchableFurniture implements Openable {
     // ========================================================================
     public Torc_Cages (Item... items) {
         super(items);

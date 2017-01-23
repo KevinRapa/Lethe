@@ -2,12 +2,12 @@ package Chapel;
 
 import A_Main.Id;
 import A_Main.Player;
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Cha2_Altar extends Furniture {
+public class Cha2_Altar extends SearchableFurniture {
     private final String URN_DESC = " In the center sits a decorated stone and gold urn.";
     // ========================================================================
     public Cha2_Altar (Item... items) {

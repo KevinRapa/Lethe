@@ -13,7 +13,7 @@ public class Labo_GasPipe extends Furniture {
     // ========================================================================
     public Labo_GasPipe () {
         super();
-        this.searchable = false;
+
         this.gasIsOn = false;
         
         this.description = "The metal pipe runs from the floor to ceiling. In the middle is a valve and an uncovered nozzle.";

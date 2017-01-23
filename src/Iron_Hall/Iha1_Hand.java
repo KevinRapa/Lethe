@@ -6,7 +6,7 @@ public class Iha1_Hand extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Iha1_Hand() {
         super();
-        this.searchable = false;
+
         this.description = "The gauntlet is gripping a polearm tightly.";
         this.searchDialog = this.description;
         this.actDialog = "You try to pry the gauntlet open, but its grip\n"

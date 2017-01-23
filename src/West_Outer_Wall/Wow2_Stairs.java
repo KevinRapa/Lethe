@@ -6,7 +6,7 @@ public class Wow2_Stairs extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wow2_Stairs() {
         super();
-        this.searchable = false;
+
         this.description = "The remnants of the stairs lie crumbled all over the\n"
                          + "floor.";
         this.searchDialog = "There's nothing among all these rocks but more rocks.";

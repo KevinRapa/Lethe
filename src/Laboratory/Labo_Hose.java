@@ -8,8 +8,7 @@ public class Labo_Hose extends Furniture {
     // ========================================================================
     public Labo_Hose () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The yellow rubber hose connects the gas pipe to the bunsen burner.";
 
         this.addNameKeys("(?:yellow )?(?:rubber )?hose");

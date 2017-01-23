@@ -1,10 +1,10 @@
 package Trophy_Room;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 
-public class Gal5_Display extends Furniture implements Openable {
+public class Gal5_Display extends SearchableFurniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5_Display(Item... items) {
         super(items);

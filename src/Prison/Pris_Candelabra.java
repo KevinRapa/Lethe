@@ -8,7 +8,6 @@ public class Pris_Candelabra extends Furniture {
     // ========================================================================
     public Pris_Candelabra () {
         super();
-        this.searchable = false;
         
         this.description = "Scattered around the prison are several standing\n"
                          + "candelabras. Each one is rusted, the candles are\n"

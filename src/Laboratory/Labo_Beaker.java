@@ -32,8 +32,7 @@ public class Labo_Beaker extends Furniture {
     // ========================================================================
     public Labo_Beaker (Item beakerItem) {
         super();
-        this.searchable = false;
-        
+
         this.mode = Potion.EMPTY;
         
         this.BEAKER_REF = beakerItem;

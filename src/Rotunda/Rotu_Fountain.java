@@ -14,7 +14,7 @@ public class Rotu_Fountain extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Rotu_Fountain() {       
         super();
-        this.searchable = false;
+
         this.drained = false;
         this.description = "It's rounded and carefully carved from a smooth rock.\n"
                          + "It looks quite beautiful, except that it's filled\n"

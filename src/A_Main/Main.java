@@ -322,34 +322,33 @@ public class Main {
         Item brrs = new Item("bright red berries", "They look firm and juicy", "You realize, the brightest, reddest berries are the most poisonous of all.");
         Item pnCn = new Item("pinecone", "It's scaley but smooth, and is shaped like a pickle. Yes, undoubtedly a spruce pinecone!", "This looks painful to eat...");
         //-----------------------------FURNITURE--------------------------------
-        Furniture couCstl = new Cou_Cstl();
+        Furniture couCstl = new Cou_Castle();
         Furniture couW = new Wall("The castle walls are several stories tall and made of granite blocks.");
-        Furniture couStps = new Cou_Stps();
+        Furniture couStps = new Cou_Steps();
         
-        Furniture cou1Bnch = new Cou1_Bnch();
-        Furniture cou1Thrns = new Cou1_Thrns();
-        Furniture cou1Hl = new Cou1_Hl(krnsPlt);
-        Furniture cou1F = new Cou1_Flr(cou1Hl, sl, sl, sl);
+        Furniture cou1Bnch = new Cou1_Bench();
+        Furniture cou1Thrns = new Cou1_Thorns();
+        Furniture cou1Hl = new Cou1_Hole(krnsPlt);
+        Furniture cou1F = new Cou1_Floor(cou1Hl, sl, sl, sl);
         
-        Furniture cou2Fntn = new Cou2_Fntn(rck, rck, rck, rck);
-        Furniture cou2Bshs = new Cou2_Bshs(brrs, brrs, brrs, brrs, brrs);
-        Furniture cou2F = new Cou_F(sl, sl, sl);
+        Furniture cou2Fntn = new Cou2_Fountain(rck, rck, rck, rck);
+        Furniture cou2Bshs = new Cou2_Bushes(brrs, brrs, brrs, brrs, brrs);
+        Furniture cou2F = new Cou_Floor(sl, sl, sl);
         
-        Furniture cou3Stps = new Cou3_Stps(Direction.UP);
+        Furniture cou3Stps = new Cou3_Steps(Direction.UP);
         Furniture cou3Ivy = new Cou3_Ivy();
-        Furniture cou3Fntns = new Cou3_Fntns();
-        Furniture cou3Gt = new Cou3_Gt();
-        Furniture cou3F = new Cou_F(sl, sl);
+        Furniture cou3Gt = new Cou3_Gate();
+        Furniture cou3F = new Cou_Floor(sl, sl);
         
-        Furniture cou4Gt = new Cou4_Gt();
-        Furniture cou4Frst = new Cou4_Frst();
-        Furniture cou4Trl = new Cou4_Trl();
+        Furniture cou4Gt = new Cou4_Gate();
+        Furniture cou4Frst = new Cou4_Forest();
+        Furniture cou4Trl = new Cou4_Trail();
         
-        Furniture cou5Fntn = new Cou5_Fntn(rck, soldMed, rck);
-        Furniture cou5Sprc = new Cou5_Sprc(vial, sprcExtrct, pnCn, pnCn, pnCn);
-        Furniture cou56F = new Cou_F(trs, sl, hd, sl);
+        Furniture cou5Fntn = new Cou5_Fountain(rck, soldMed, rck);
+        Furniture cou5Sprc = new Cou5_Spruce(vial, sprcExtrct, pnCn, pnCn, pnCn);
+        Furniture cou56F = new Cou_Floor(trs, sl, hd, sl);
 
-        Furniture cou6Stat = new Cou6_Stat();
+        Furniture cou6Stat = new Cou6_Statue();
         Furniture cou6Ghst = new Cou6_BlackJackGhost();
         // </editor-fold>
         // <editor-fold desc="INITIALIZE ENTRANCE">
@@ -361,7 +360,7 @@ public class Main {
         Furniture entrRf = new Entr_Roof();
         Furniture entrStats = new Entr_Statues();
         Furniture entrDr = new Entr_Door(Direction.NORTH);
-        Furniture entrStps = new Cou3_Stps(Direction.DOWN);
+        Furniture entrStps = new Cou3_Steps(Direction.DOWN);
         // </editor-fold>
 
         // </editor-fold>
@@ -395,7 +394,7 @@ public class Main {
         Furniture lookVlv = new Look_Valve(rotuFntn);
         Furniture lookLghths = new Look_Lighthouse();
         Furniture lookClff = new Look_Cliff();
-        Furniture lookRlng = new Look_Railing(loopedRope);
+        Furniture lookRlng = new Look_Railing();
         Furniture lookF = new Floor("Just a wet shale floor.");
         // </editor-fold> 
         // <editor-fold desc="INITIALIZE IRON HALL">
@@ -487,21 +486,21 @@ public class Main {
         Item gl = new Item("glue bottle", "It's a bottle of sticky glue.");
         Item closGlv = new Item("gloves", "Some old gardening gloves", "They don't fit on your enormous hands.");
         Item closStrw = new Item("straw", "It's just straw");
-        Item scrw1 = new Scrw("1mm screw", rdFcs, 3);
+        Item scrw1 = new Screw("1mm screw", rdFcs, 3);
         Item scrw2 = new Item("2mm screw", "Just a small screw.");
         Item scrw5 = new Item("5mm screw", "Just a small screw.");
         //-----------------------------FURNITURE--------------------------------
         Furniture closDr = new Wow2_Door(Direction.WEST);
-        Furniture closLddr = new Gqua_Lddr(Direction.DOWN);
-        Furniture closClng = new Gqua_Clng();
+        Furniture closLddr = new Gqua_Ladder(Direction.DOWN);
+        Furniture closClng = new Gqua_Ceiling();
         Furniture closF = new Floor("It's a cold, hard, cobblestone floor", closStrw);
-        Furniture closScks = new Gqua_Scks(sd, sd, sd, frt, frt, frt, snd, snd, snd, snd, snd);
-        Furniture closShlf = new Gqua_Shlf(bckt, closGlv, vial, shvl, pot, pot);
-        Furniture closWrkbnch = new Gqua_Wrkbnch(gl, hmmr, scrw2, scrw1, scrw2, scrw5, scrw5, scrw1);
-        Furniture closStl = new Gqua_Stl();
-        Furniture closBrrl = new Gqua_Brrl();
+        Furniture closScks = new Gqua_Sacks(sd, sd, sd, frt, frt, frt, snd, snd, snd, snd, snd);
+        Furniture closShlf = new Gqua_Shelf(bckt, closGlv, vial, shvl, pot, pot);
+        Furniture closWrkbnch = new Gqua_Workbench(gl, hmmr, scrw2, scrw1, scrw2, scrw5, scrw5, scrw1);
+        Furniture closStl = new Gqua_Stool();
+        Furniture closBrrl = new Gqua_Barrel();
         Furniture closW = new Wall("It's a plain cobblestone wall.");
-        Furniture closSkltn = new Gqua_Skltn(closCrwbr);
+        Furniture closSkltn = new Gqua_Skeleton(closCrwbr);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE WEST OUTER WALL BALCONY">
         //-----------------------------THE ROOM---------------------------------
@@ -558,7 +557,7 @@ public class Main {
         Furniture searDr = new Sear_Door();
         Furniture searAsh = new Sear_Ash();
         Furniture searSkltn = new Sear_Skeleton(closCrwbr);
-        Furniture searLddr = new Gqua_Lddr(Direction.UP);
+        Furniture searLddr = new Gqua_Ladder(Direction.UP);
         Furniture searF = new Floor("It's a cold, hard, cobblestone floor", ash, wd, ash, wrhmmr, wd, ash);
         // </editor-fold>
         // <editor-fold desc="INITIALIZE STUDY">
@@ -771,7 +770,7 @@ public class Main {
         Furniture wrkCstTbl = new Wrk_CastingTable(wrkBrl, closScks, redLns, snd, rdDy, 
                                                blDy, yllwDy, ptsh, wrkCbnt);
         Furniture wrkKln = new Wrk_Kiln();
-        Furniture wrkBnch = new Gqua_Wrkbnch(stncl, wrkNt);        
+        Furniture wrkBnch = new Gqua_Workbench(stncl, wrkNt);        
         Furniture wrkAnvl = new Wrk_Anvil();
         Furniture wrkFrg = new Wrk_Forge();
         // </editor-fold>
@@ -1367,7 +1366,7 @@ public class Main {
         Furniture dkchBd = new Dkch_Bed(lngChn);
         Furniture dkchAxl = new Dkch_Axle();
         Furniture dkchDsk = new Dkch_Desk(dkchNt, dkchNt2);
-        Furniture dkchClng = new Dkch_Cieling();
+        Furniture dkchClng = new Dkch_Ceiling();
         
         // </editor-fold>
         // <editor-fold desc="INITIALIZE STRANGE POOL">
@@ -1828,7 +1827,7 @@ public class Main {
         cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl);
         cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc);
         cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou56F, cou6Stat, couCstl, cou6Ghst);
-        cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, cou3Fntns, couCstl);
+        cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, couCstl);
         cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl);
         cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps);
         foyw.addFurniture(genDoor, wantStat, wantTrchs, wantLvr, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt, wantBttn);

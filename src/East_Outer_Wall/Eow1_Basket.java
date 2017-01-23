@@ -1,9 +1,9 @@
 package East_Outer_Wall;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
         
-public class Eow1_Basket extends Furniture {
+public class Eow1_Basket extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Eow1_Basket(Item... items) {
         super(items);

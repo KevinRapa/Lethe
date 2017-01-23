@@ -8,8 +8,7 @@ public class Obs_Balcony extends Furniture {
     // ========================================================================
     public Obs_Balcony () {
         super();
-        this.searchable = false;
-        
+
         this.description = "One balcony to the east on the second level serves\n"
                          + "as the sole access point to the third floor. The\n"
                          + "third floor balcony starts at the northeast and curves\n"

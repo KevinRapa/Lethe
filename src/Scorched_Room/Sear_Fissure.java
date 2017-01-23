@@ -16,7 +16,7 @@ public class Sear_Fissure extends Furniture {
 /*----------------------------------------------------------------------------*/    
     public Sear_Fissure() {
         super();
-        this.searchable = false;
+
         this.broken = false;
         this.searchDialog = "It's just an empty hole.";
         this.description = "The north wall has been damaged, and a resulting\n"

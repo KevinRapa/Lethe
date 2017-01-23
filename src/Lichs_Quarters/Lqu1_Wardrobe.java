@@ -1,13 +1,12 @@
 package Lichs_Quarters;
 
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Lqu1_Wardrobe extends Furniture implements Openable {
-
+public class Lqu1_Wardrobe extends SearchableFurniture implements Openable {
     // ========================================================================
     public Lqu1_Wardrobe (Item... items) {
         super(items);

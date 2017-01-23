@@ -12,8 +12,7 @@ public class Sewp_Grate extends Furniture {
     // ========================================================================
     public Sewp_Grate () {
         super();
-        this.searchable = false;
-        
+
         this.useDialog = "Why would you want to cover that back up?";
         this.description = "It's an open metal grate with the ladder descending\n"
                          + "into the hole that you escaped out of.";

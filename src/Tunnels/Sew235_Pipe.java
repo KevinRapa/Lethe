@@ -9,8 +9,7 @@ public class Sew235_Pipe extends Furniture {
     // ========================================================================
     public Sew235_Pipe (int room) {
         super();
-        this.searchable = false;
-        
+
         switch(room) {
             case 2:
                 description = "The rusty metal pipe runs out the top of the console\n"

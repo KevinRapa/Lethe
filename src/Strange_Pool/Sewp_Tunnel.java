@@ -8,8 +8,7 @@ public class Sewp_Tunnel extends Furniture {
     // ========================================================================
     public Sewp_Tunnel () {
         super();
-        this.searchable = false;
-        
+
         this.description = "To the north is a short way to a large open tunnel\n"
                          + "running to the west and east.";
         this.searchDialog = "You will need to go over there to do that.";

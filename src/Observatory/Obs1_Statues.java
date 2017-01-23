@@ -43,7 +43,7 @@ public class Obs1_Statues extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Obs1_Statues(Furniture chandlr) {
         super();
-        this.searchable = false;
+
         this.description = "An array of 9 statues arranged in a circle. In the\n"
                          + "center stands an additional larger statue looking\n"
                          + "upwards.";

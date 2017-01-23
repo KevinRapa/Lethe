@@ -3,8 +3,9 @@ package Secret_Archives;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
         
-public class Lib1_Desk extends Furniture implements Openable {
+public class Lib1_Desk extends SearchableFurniture implements Openable {
     private final Lib1_Artifact REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Desk(Furniture art, Item... items) {

@@ -8,7 +8,6 @@ public class Tow_Balcony extends Furniture {
     // ========================================================================
     public Tow_Balcony () {
         super();
-        this.searchable = false;
         
         this.description = "The long circular balcony wraps around the inner\n"
                          + "perimeter of the upper tower floor. A black metal\n"

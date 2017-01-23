@@ -4,12 +4,10 @@ package A_Super;
  * @author Kevin Rapa
  */
 public class WallArt extends Furniture {
-
     // ========================================================================
     public WallArt () {
         super();
-        this.searchable = false;
-        
+
         this.actDialog = "You lift it only to reveal a blank wall.";
         this.searchDialog = this.actDialog;
         

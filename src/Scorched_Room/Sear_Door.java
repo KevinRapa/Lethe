@@ -6,7 +6,7 @@ public class Sear_Door extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Sear_Door () {
         super();
-        this.searchable = false;
+
         this.description = "The door is in even worse condition from this side.\n"
                          + "Whoever it is lying there was hitting it very\n"
                          + "forcefully with that crowbar to break it down.";

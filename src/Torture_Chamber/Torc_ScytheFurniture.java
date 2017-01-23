@@ -16,10 +16,10 @@ public class Torc_ScytheFurniture extends Furniture implements Resetable {
     private final Item SCYTHE = new Item(NameConstants.SCYTHE, 
             "It's a large black scythe. The edge is quite sharp.");;
     // ========================================================================
-    public Torc_ScytheFurniture (Item... items) {
-        super(items);
-        this.searchable = false;
-        
+    public Torc_ScytheFurniture () {
+        super();
+
+        this.searchDialog = "It's just a big scythe on the wall.";
         this.description = "It's a sharp black scythe hanging sideways on the wall.\n"
                          + "Decoration... perhaps?";
         this.actDialog = "You reach up and take the scythe off the wall.";

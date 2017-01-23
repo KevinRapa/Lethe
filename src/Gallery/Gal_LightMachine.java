@@ -4,6 +4,7 @@ import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Furniture;
+import A_Super.SearchableFurniture;
 import java.util.HashMap;
 /**
  * A part of a puzzle in the gallery that emits colors of light depending on
@@ -17,7 +18,7 @@ import java.util.HashMap;
  * @see Gallery.Gal_2E_Stat
  * @author Kevin Rapa
  */
-abstract public class Gal_LightMachine extends Furniture {
+abstract public class Gal_LightMachine extends SearchableFurniture {
     protected boolean isOn;
     protected char beam;
     protected String mode, turnOffDialog;    

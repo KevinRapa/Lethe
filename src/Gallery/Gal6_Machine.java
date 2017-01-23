@@ -2,12 +2,11 @@ package Gallery;
 
 import A_Super.Furniture;
 
-public class Gal6_Machine extends Furniture{
-    
+public class Gal6_Machine extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_Machine() {
         super();
-        this.searchable = false;
+
         this.searchDialog = "Everything on the machine looks concretely attached\n"
                           + "to the machine and not removable.";
         this.description = "The machine is a tall metal box with a bunch of dials,\n"

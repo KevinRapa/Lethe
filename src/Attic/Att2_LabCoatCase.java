@@ -1,16 +1,16 @@
 package Attic;
 
 import static A_Main.NameConstants.LAB_COAT;
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 /**
  * Contains the needed lab coat.
  * 
  * @see Laboratory.Labo_CoatNote
  * @author Kevin Rapa
  */
-public class Att2_LabCoatCase extends Furniture implements Openable {
+public class Att2_LabCoatCase extends SearchableFurniture implements Openable {
     // ========================================================================
     public Att2_LabCoatCase () {
         super(new Item(LAB_COAT, "A white lab coat", "You wear the lab coat. Now you feel ready for chemistry."));

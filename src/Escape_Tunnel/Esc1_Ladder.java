@@ -4,15 +4,13 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
 public class Esc1_Ladder extends Furniture {
     // ========================================================================
-    public Esc1_Ladder (Item... items) {
-        super(items);
-        this.searchable = false;
+    public Esc1_Ladder () {
+        super();
         
         this.description = "It's a metal ladder with rudimentary rungs attached\n"
                          + "directly to the stone wall.";

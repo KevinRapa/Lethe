@@ -6,7 +6,7 @@ public class Lib1_Documents extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Documents() {
         super();
-        this.searchable = false;
+
         this.description = "Various papers and scrolls litter the surfaces and\n"
                          + "shelves of the room.";
         this.actDialog = "It would take at least a year to read all of these!";

@@ -18,8 +18,7 @@ public class Cry2_Password extends Furniture {
         super();
         
         this.CRY1_STAT = (Cry1_Statue)stat;
-        this.searchable = false;
-        
+
         this.actDialog = "As you speak the phrase before the stone coffin, it\n"
                        + "slides to the side with a rumble, revealing a metal\n"
                        + "door.";

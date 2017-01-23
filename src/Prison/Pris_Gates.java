@@ -9,8 +9,7 @@ public class Pris_Gates extends Furniture implements Openable {
     // ========================================================================
     public Pris_Gates () {
         super();
-        this.searchable = false;
-        
+
         this.searchDialog = "The gate is locked.";
         this.description = "Each cell is locked with an iron gate.";
 

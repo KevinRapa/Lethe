@@ -13,7 +13,6 @@ public class Cis_Water extends Furniture {
     // ========================================================================
     public Cis_Water (Item wtr) {
         super();
-        this.searchable = false;
         
         this.WTR_BCKT = wtr;
         

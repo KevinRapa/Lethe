@@ -8,8 +8,7 @@ public class Dkch_Axle extends Furniture {
     // ========================================================================
     public Dkch_Axle () {
         super();
-        this.searchable = false;
-        
+
         this.description = "The wooden axle spins only a couple feet from your\n"
                          + "head. 'This is dangerous!' You think to yourself.";
 

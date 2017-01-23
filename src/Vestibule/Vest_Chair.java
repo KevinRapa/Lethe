@@ -6,7 +6,7 @@ public class Vest_Chair extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Vest_Chair() {
         super();
-        this.searchable = false;
+
         this.description = "An ornate red velvet chair. Being a woodworker by\n" +
                            "trade, you have never been keen on upholstery.";
         this.searchDialog = "You look underneath, but find nothing.";

@@ -1,9 +1,9 @@
 package West_Outer_Wall;
 
-import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.SearchableFurniture;
 
-public class Wow1_Shelves extends Furniture{
+public class Wow1_Shelves extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wow1_Shelves(Item... items) {
         super(items);

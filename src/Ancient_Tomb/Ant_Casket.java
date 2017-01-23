@@ -2,14 +2,14 @@ package Ancient_Tomb;
 
 import A_Main.AudioPlayer;
 import static A_Main.NameConstants.*;
-import A_Super.Furniture;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Ant_Casket extends Furniture implements Openable {
+public class Ant_Casket extends SearchableFurniture implements Openable {
     private int numKeys;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Ant_Casket (Item ... items) {

@@ -14,7 +14,7 @@ public class Gar2_Hose extends Furniture {
     // ========================================================================
     public Gar2_Hose (Furniture brokenHoseFurn, Item brokenHoseItem) {
         super();
-        this.searchable = false;
+
         this.BRKNHOSE_REF = brokenHoseItem;
         this.BRKNHOSE_REF2 = brokenHoseFurn;
         
