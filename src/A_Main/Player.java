@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import A_Super.Openable;
 import Tunnels.DungeonMonster;
+import java.util.Iterator;
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -91,11 +92,16 @@ public final class Player {
     }
     /*------------------------------------------------------------------------*/
     /**
-     * Checks that you have a specific item.
+     * Checks that you have a specific item, ignores case.
      * @param item The item in question.
      * @return If you have the item.
      */
     public static boolean hasItem(String item) {
+        return Player.inv.contents().stream().
+                anyMatch(i -> i.toString().equalsIgnoreCase(item));
+    }
+    /*------------------------------------------------------------------------*/
+    public static boolean hasItemResembling(String item) {
         return Player.inv.contents().stream().
                 anyMatch(i -> i.toString().matches(item));
     }
@@ -205,17 +211,22 @@ public final class Player {
         describeRoom();
 
         do {
+            while (TextParser.moreCommands()) {
+                // Player may chain together commands.
+                TextParser.performNextCommand();
+            }
+            
             GUI.toMainMenu();
             ans = GUI.promptOut();
 
             if (ans.matches("[heckiwsad]")) 
                 cmd.get(ans.charAt(0)).run();
             
-            else if (ans.matches("[a-z]+\\s[a-z ,.-]+")) // Interacting
-                activateSub(ans);
-            
             else if (ans.equals("quit"))
                 return endGame();
+            
+            else if (ans.matches("[a-z]+\\s[a-z ,.-]+")) // Interacting
+                TextParser.processText(ans);
             
             else if (isNonEmptyString(ans))
                 GUI.out("That's not valid.");
@@ -474,36 +485,21 @@ public final class Player {
 // <editor-fold desc="ACTIVATING AND INSPECTING">  
 //****************************************************************************** 
     /**
-     * Subroutine entered when furniture is interacted with.
-     * @param actObj Two or more words; a verb followed by an object name
-     */
-    private static void activateSub(String actObj) {
-        try (Scanner collectToken = new Scanner(actObj).useDelimiter("\\s+")) {
-            String action = collectToken.next();            
-            String object = collectToken.next(); 
-
-            while (collectToken.hasNext()) // If item is 2+ words long.
-                object += (" " + collectToken.next());
-
-            evaluateAction(object, action);
-        }
-        catch (java.util.NoSuchElementException e) {
-            GUI.out("You must type an action and an object.");
-        } 
-    }
-    // ======================================================================== 
-    /**
      * Processes a player's action on furniture.
      * Player may use 'it' or 'them' to reference the last entered furniture.
      * @param object the name of the furniture being acted upon.
      * @param action the action the player is performing on the furniture.
-     * @param map a reference to the game map.
      */
-    private static void evaluateAction(String object, String action) {
-        if (object.matches("it|them")) // Indefinite reference.
-            object = GUI.parsePreviousFurniture();
-        
-        if (getPos().hasFurniture(object)) {                             
+    public static void evaluateAction(String action, String object) {
+        if (action.equals("go") && object.matches(
+                "north|forward|south|east|right|west|left|" +
+                "(?:down|back|up)(?:wards?)?")) {
+            parseMovement(object);
+        }
+        else if (getPos().hasFurniture(object) || 
+                (object.matches("it|them") && 
+                getPos().hasFurniture(object = GUI.parsePreviousFurniture()))) 
+        {    
             Furniture target = getFurnRef(object);
 
             if (target.actKeyMatches(action)) {
@@ -513,11 +509,10 @@ public final class Player {
             }
             else if (action.matches("c|check|look|view|inspect|watch")) 
                 GUI.out(target.getDescription()); 
-
+            
             else if (action.matches("search|e|s") || 
                     (action.equals("open") && target instanceof Openable))                    
                 search(target);
-            
             else
                 GUI.out("That seems unnecessary.");
         }   
@@ -527,6 +522,45 @@ public final class Player {
         
         else 
             GUI.out("There is no " + object + " here."); 
+    }
+    // ========================================================================  
+    private static void parseMovement(String dir) {
+        if (dir.matches("north|forward"))
+            Player.move(Direction.NORTH);
+        else if (dir.matches("south|back(?:wards?)?"))
+            Player.move(Direction.SOUTH);
+        else if (dir.matches("east|right"))
+            Player.move(Direction.EAST);
+        else if (dir.matches("west|left"))
+            Player.move(Direction.WEST);
+        else if (dir.matches("up(?:wards?)?"))
+            findStaircase(Direction.UP);
+        else
+            findStaircase(Direction.DOWN);
+    }
+    // ========================================================================  
+    private static void findStaircase(Direction dir) {
+        Furniture stairs = null;
+        
+        Iterator<Furniture> iter = Player.getPos().getFurnishings().iterator();
+        
+        while (iter.hasNext() && stairs == null) {
+            Furniture current = iter.next();
+            if (current instanceof A_Super.DoubleStaircase)
+                stairs = current;
+            else if (current instanceof A_Super.Staircase && 
+                    ((A_Super.Staircase)current).getDir() == dir)
+                stairs = current;
+        }
+        if (stairs instanceof A_Super.DoubleStaircase) {
+            Player.move(dir);
+            AudioPlayer.playEffect(15);
+        }
+        else if (stairs != null)
+            GUI.out(stairs.interact("climb"));
+        else
+            GUI.out("There's nothing here to take you that way.");
+        
     }
     // ========================================================================  
     private static void checkOutSub() {
@@ -640,7 +674,14 @@ public final class Player {
                 int slot = Integer.parseInt(choice);
                 Item item = Player.inv.get(slot - 1);
                 int useID = item.getUseID();
-                evalUse(useID, item);
+                switch (useID) {
+                    case 1:
+                        GUI.out(item.useEvent()); 
+                        break;           
+                    case 2:
+                        GUI.menOut("\n<object> Use on...\n< > Back");
+                        evalUse(item, GUI.promptOut());
+                }
             }
             catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
                 if (isNonEmptyString(choice))
@@ -651,33 +692,25 @@ public final class Player {
     // ========================================================================  
     /**
      * Subroutine entered into when an item is used from the player's inventory.
-     * @param useID Represents if the item is used on itself or something else.
+     * @param furniture Furniture the item is being used on.
      * @param item The item being used
      */
-    private static void evalUse(int useID, Item item) {
-        switch (useID) {
-            case 1:
-                GUI.out(item.useEvent()); break;           
-            case 2:
-                GUI.menOut("\n<object> Use on...\n< > Back");
+    public static void evalUse(Item item, String furniture) {
+        if (getPos().hasFurniture(furniture)) {                 
+            Furniture target = getFurnRef(furniture);
 
-                String ans = GUI.promptOut();
-
-                if (getPos().hasFurniture(ans)) {                 
-                    Furniture target = getFurnRef(ans);
-
-                    if (target.useKeyMatches(item.toString())) {
-                        GUI.out(target.useEvent(item));
-                        describeRoom();
-                        printInv();
-                    }
-                    else
-                        GUI.out("You jam the " + item + " into the " + ans +
-                                "\nas hard as you can, but nothing happens.");
-                }                      
-                else if (isNonEmptyString(ans)) 
-                    GUI.out("There is no " + ans + " here.");  
-        }
+            if (target.useKeyMatches(item.toString())) {
+                GUI.out(target.useEvent(item));
+                describeRoom();
+                printInv();
+            }
+            else
+                GUI.out("You jam the " + item + " into the " + furniture +
+                        "\nas hard as you can, but nothing happens.");
+        }                      
+        else if (isNonEmptyString(furniture)) 
+            GUI.out("There is no " + furniture + " here."); 
+        
         printInv();
     }
     // ========================================================================  

@@ -26,6 +26,15 @@ public class Inventory implements Iterable<Item>, Serializable {
         return CONTENTS.get(index);
     }
     // ========================================================================
+    public Item get(String itemName) {
+        // Never returns null, inventory is pre-checked for item.
+        for (Item i : this.contents())
+            if (i.toString().equalsIgnoreCase(itemName))
+                return i;
+        
+        return null;
+    }
+    // ========================================================================
     public boolean contains(Item item) {
         return CONTENTS.contains(item);
     }

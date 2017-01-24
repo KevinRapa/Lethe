@@ -19,10 +19,14 @@ public class Foy3 extends Room {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
-        if (dir == Direction.WEST)
-            return "You should be getting out of here..."; // For end game.
-        else
-            return bumpIntoWall();
+        switch (dir) {
+            case WEST:
+                return "You should be getting out of here..."; // For end game.
+            case SOUTH:
+                return "You aren't sure whether to go up or down";
+            default:
+                return bumpIntoWall();
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -52,7 +52,7 @@ import java.io.*;          import java.util.Random;
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Lethe");
     private static final String WD = System.getProperty("user.dir");
-    private static final String START = Id.COU4; // Default COU4
+    private static final String START = Id.VEST; // Default COU4
 // ============================================================================
     public static void main(String[] args) {
         //**********************************************************************
@@ -148,7 +148,7 @@ public class Main {
         //**********************************************************************  
         // <editor-fold desc="INITIALIZE PHYLACTERIES">
         
-        Item studBkPhy = new Stud_BookPhylactery("glowing book, \"A Young Mind's Guide to Lichery\"");
+        Item studBkPhy = new Stud_BookPhylactery("glowing book, 'A Young Mind's Guide to Lichery'");
         Item kitcFrtPhy = new Kitc_FrtPhy("glowing pristine fruit");
         Item factumPhy = new Factum("the Factum");
         Item vauChlPhy = new Vau_ChalicePhylactery("glowing chalice");
@@ -564,7 +564,7 @@ public class Main {
         //-----------------------------THE ROOM---------------------------------
         Room stud = new Stud("in the study", Id.STUD);
         //-------------------------------ITEMS----------------------------------
-        Item studBkPi = new Stud_PiBook("book, \"An Essential Pi\"");
+        Item studBkPi = new Stud_PiBook("book, 'An Essential Pi'");
         Item studNote = new Stud_Note("personal note");
         Item pen = new Item("pen", "It's a fancy ballpoint pen", "If only you had your diary with you to write down your feelings.");
         Item ppr = new Item("parchment", "Some old brown parchment", "You don't feel the need to write anything down.");
@@ -828,7 +828,7 @@ public class Main {
         Item bbl = new Lib_GenesisBook("biblical tome, 'The Book of Genesis'");
         Item ody = new Lib_OdysseyBook("epic tome, 'The Odyssey'");
         Item ili = new Lib_IlliadBook("greek tome, 'The Iliad'");
-        Item inf = new Lib_DantesInfernoBook("infernal tome, 'Dante's Inferno");
+        Item inf = new Lib_DantesInfernoBook("infernal tome, 'Dante's Inferno'");
         Item par = new Lib_ParadiseLostBook("divine tome, 'Paradise Lost'");
         Item bkGlss = new Lib_GlassBook("guide, 'The Master Glasser'");
         Item bkNts = new Lib_NotesBook("book, 'Note To Self'");
@@ -983,7 +983,7 @@ public class Main {
         Item obs1Nt = new Obs1_Note("scribbly note");
         Item obsBk = new Obs2_Book("tome, 'Planets and Myth'");
         Item obs2Nt = new Obs2_Note("journal page, Factum");
-        Item obs3Nt = new Note("momento- plate locations", "It's only been a day since we discovered that artifact from the well, and\n"
+        Item obs3Nt = new Note("momento: plate locations", "It's only been a day since we discovered that artifact from the well, and\n"
                 + "already I don't want to be around it. Perhaps we can hide it in the chandelier up there;\n"
                 + "we need a use for that compartment. I'll determine new areas to store those brass plates,\n"
                 + "and keep the locations in the picture frame back there...");
@@ -1387,7 +1387,7 @@ public class Main {
         //-----------------------------THE ROOM---------------------------------
         Room aarc = new Aarc("in ruined archives", Id.AARC);
         //-------------------------------ITEMS----------------------------------
-        Item algBk = new Item("algae-covered book", "The book is wet and slimy. Its pages have nearly fused.", "This is completely unreadable.");
+        Item algBk = new Item("algae covered book", "The book is wet and slimy. Its pages have nearly fused.", "This is completely unreadable.");
         Item rndBk = new Item("ruined book", "This book is damp, moldy, and covered in dirt.", "Whatever knowledge this book held is now lost.");
         Item stnBlck = new Item("stone block", "This is a piece of the now broken floor in the ancient archives.");
         Item slmyAlg = new Item("slimy algae", "Ugh... why are you holding this?");

@@ -94,22 +94,24 @@ public class Catacomb extends Room {
         
         // Appends additional information if a non-catacomb room is adjacent.
         // Adds a door to room.
+        Furniture door = null;
+        
         if (adjOtherCoords != null) {
             if (adjOtherCoords[0] == Y - 1) {
                 descLit = descLit.concat("To the north");
-                this.addFurniture(new Ct_Door(Direction.NORTH));
+                door = new Ct_Door(Direction.NORTH);
             }
             else if (adjOtherCoords[0] == Y + 1){
                 descLit = descLit.concat("To the south");
-                this.addFurniture(new Ct_Door(Direction.SOUTH));
+                door = new Ct_Door(Direction.SOUTH);
             }
             else if (adjOtherCoords[1] == X - 1) {
                 descLit = descLit.concat("To the west");
-                this.addFurniture(new Ct_Door(Direction.WEST));
+                door = new Ct_Door(Direction.WEST);
             }
             else {
                 descLit = descLit.concat("To the east");
-                this.addFurniture(new Ct_Door(Direction.EAST));
+                door = new Ct_Door(Direction.EAST);
             }
             
             descLit = descLit.concat(", erected unevenly into the tunnel wall is an ancient door.");
@@ -129,6 +131,10 @@ public class Catacomb extends Room {
             ctGrv.getInv().add(itemList[GENERATOR.nextInt(3)]);
 
         this.addFurniture(ctGrv, new Floor("It's a damp dirt floor."), new Wall("The walls are wet and rocky."));
+        
+        if (door != null)
+            this.addFurniture(door);
+        
     }
 // ============================================================================
     @Override public String getDescription() {

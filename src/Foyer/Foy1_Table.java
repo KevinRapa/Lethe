@@ -16,7 +16,7 @@ public class Foy1_Table extends SearchableFurniture {
                        + "another solid woody *knock* caresses your ear.";
         this.searchDialog = "You quickly scan the table."; 
         this.addActKeys("kick", "nudge", "hit");
-        this.addNameKeys("(?:long )?(?:mahogany |wood )?table");
+        this.addNameKeys("(?:long )?(?:mahogany |wood(?:en)? )?table");
     }
 /*----------------------------------------------------------------------------*/
 }

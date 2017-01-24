@@ -27,4 +27,8 @@ public class Staircase extends Furniture {
         AudioPlayer.playEffect(15);
     }
 /*----------------------------------------------------------------------------*/
+    public Direction getDir() {
+        return DIR;
+    }
+/*----------------------------------------------------------------------------*/
 }

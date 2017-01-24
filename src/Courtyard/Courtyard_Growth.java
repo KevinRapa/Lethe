@@ -21,7 +21,7 @@ abstract public class Courtyard_Growth extends Furniture {
     @Override public String interact(String key) {              
         if (key.matches("grab|touch|hold"))
             return this.actDialog;
-        else if (Player.hasItem("\\w* (?:axe|sword)|scythe"))
+        else if (Player.hasItemResembling("\\w* (?:axe|sword)|scythe"))
             return this.cutDialog;
         else
             return "You have nothing to cut it up with.";
