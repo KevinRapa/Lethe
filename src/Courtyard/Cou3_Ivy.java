@@ -23,7 +23,7 @@ public class Cou3_Ivy extends Courtyard_Growth {
             return this.actDialog;
         else if (key.equals("climb"))
             return "You are too heavy. This will never support you!";
-        else if (Player.hasItemResembling("\\w* (?:axe|sword)|scythe"))
+        else if (Player.hasItemResembling("axe|sword|scythe"))
             return this.cutDialog;
         else
             return "You have nothing to cut it up with.";

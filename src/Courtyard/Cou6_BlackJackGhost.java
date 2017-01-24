@@ -23,7 +23,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         this.description = "Leaning nonchalantely against the castle wall is a\n"
                          + "ghostly figure shuffling what seem to be cards. The apparition\n"
                          + "is garbed in distinctive clothing- a vest and a full-brimmed hat.";
-        this.addActKeys("play", "chat");
+        this.addActKeys("play");
         this.addNameKeys("ghost", "apparition", "spirit", "ghostly apparition");
     }
 /*----------------------------------------------------------------------------*/
@@ -36,7 +36,10 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
     @Override public String interact(String key) {
         String rep = this.actDialog;
         
-        if (this.firstTime) {
+        if (key.matches(ATTACK_PATTERN))
+            return ATTACK_DIALOG;
+        
+        else if (this.firstTime) {
             if(this.converse1())
                 rep = rep.concat(" Hey why don't you keep those cards? I can make more! Hah!");
             this.firstTime = false;

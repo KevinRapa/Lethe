@@ -4,9 +4,8 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Statue;
 
-public class Gal4_Statue extends Statue {
+public class Gal4_Statue extends Furniture {
     private int level;
     private final Gal7_Statue STAT_REF;
     

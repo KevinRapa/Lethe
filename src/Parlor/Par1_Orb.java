@@ -19,7 +19,10 @@ public class Par1_Orb extends NonPlayerCharacter {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (key.matches("[stc]\\w+")) {
+        if (key.matches(ATTACK_PATTERN))
+            return ATTACK_DIALOG;
+        
+        else if (key.matches("speak|talk|converse|chat")) {
             if (this.firstTime && this.woken) {
                 this.converse1();
                 this.firstTime = false;

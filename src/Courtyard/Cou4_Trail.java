@@ -10,8 +10,9 @@ public class Cou4_Trail extends Furniture {
         super();
 
         this.description = "The winding trail extends back into the dark forest.";
-        this.actDialog = "You feel compelled to enter through the front gate.";
-        this.addActKeys("walk");
+        this.actDialog = "If you want this game to start, you better go through\n"
+                       + "the front gate!";
+        this.addActKeys("walk", "travel", "run", "use");
         this.addNameKeys("(?:long )?(?:dark )?(?:winding )?trail");
     }
 /*----------------------------------------------------------------------------*/

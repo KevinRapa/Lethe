@@ -1,6 +1,7 @@
 package A_Super;
 
 import A_Main.Inventory;
+import static A_Main.NameConstants.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.Serializable;
@@ -35,7 +36,14 @@ abstract public class Furniture implements Serializable {
                      useDialog;     // Printed when an item is used on this.
     protected boolean searchable;   // Items can be traded with searchable furniture.  
     protected final ArrayList<String> USEKEYS, ACTKEYS, NAMEKEYS; 
-    protected static final String[] GETKEYS = {"get", "take", "acquire", "remove", "grab"};
+    protected static final String[] GETKEYS = {"get", "take", "acquire", "remove", "grab"},
+                                    WEAPONS = {POLEARM, SCYTHE, SILVER_SPEAR, 
+            METAL_BAR, PIECE_OF_PIPE, CROWBAR, HAMMER, "broken sword", "silver sword", 
+            "rusty sword", "wooden spear", "war axe", "battle axe", "ceramic shard",
+            "broken table leg", "copper pan", "copper pot", "brass candlestick"};
+    protected static final String SITPATTERN = "sit|relax|lay",
+                                  JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",
+                                  MOVEPATTERN = "move|slide|displace|push|pull";
     // ========================================================================
     /**
      * Constructor for furniture.

@@ -3,9 +3,9 @@ package Gallery;
 import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
-import A_Super.Statue;
+import A_Super.Furniture;
 
-public class Gal7_Statue extends Statue {
+public class Gal7_Statue extends Furniture {
     private int level;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal7_Statue() {

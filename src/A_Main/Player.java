@@ -41,7 +41,7 @@ public final class Player {
      * @param name The name of a piece of furniture in your location.
      * @return The furniture objects with the name.
      */
-    private static Furniture getFurnRef(String name) {
+    public static Furniture getFurnRef(String name) {
         for(Furniture i : getPos().getFurnishings()) {
             if (i.getValidNames().stream().anyMatch(j -> name.matches(j)))
                 return i;           
@@ -103,7 +103,7 @@ public final class Player {
     /*------------------------------------------------------------------------*/
     public static boolean hasItemResembling(String item) {
         return Player.inv.contents().stream().
-                anyMatch(i -> i.toString().matches(item));
+                anyMatch(i -> i.toString().matches(".*(" + item + ").*"));
     }
     // </editor-fold>
     
@@ -474,7 +474,7 @@ public final class Player {
      * @param furniture The furniture in which the item is being stored.
      * @param store The item being stored.
      */
-    private static void evalStore(Furniture furniture, Item store) {
+    public static void evalStore(Furniture furniture, Item store) {
         if (store.getType().equals("phylactery"))
             GUI.out("The " + store + " looks too important to get rid of.");
 

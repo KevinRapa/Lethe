@@ -54,9 +54,9 @@ public class Cry1_Statue extends Statue implements Resetable {
         return this.getDescription();
     }
     // ========================================================================   
-    @Override public String interact(String key) {              
-        if (key.matches("touch|feel"))
-            return this.actDialog;
+    @Override public String interact(String key) { 
+        if (key.matches(MOVEPATTERN) || key.matches("touch|feel"))
+            return super.interact(key);
         else {
             if (this.hasScythe) {
                 this.eyesGlowing = true;

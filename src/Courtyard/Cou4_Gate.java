@@ -12,8 +12,15 @@ public class Cou4_Gate extends Furniture {
 
         this.description = "It's a monstrous two-story solid oak gate.";
         this.actDialog = "It's open already.";
-        this.addActKeys("open", "use");
+        this.addActKeys("open", "use", "knock", "close", "shut");
         this.addNameKeys("(?:monstrous )?(?:two-story )?(?:solid )?(?:oak )?(?:main |front )?gate");
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String interact(String key) {              
+        if (key.matches("close|shut"))
+            return "It's way too big to close by hand!";
+        else
+            return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

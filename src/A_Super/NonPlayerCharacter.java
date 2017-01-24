@@ -1,5 +1,4 @@
 package A_Super;
-
 /**
  * Represents an NPC that you can talk to.
  * 
@@ -13,12 +12,16 @@ package A_Super;
  */
 abstract public class NonPlayerCharacter extends Furniture {
     protected boolean firstTime; // If the player hasn't talked to this before.
+    protected static final String ATTACK_PATTERN = "kill|hit|punch|murder",
+                                  ATTACK_DIALOG = "You really aren't a natural killer...";
     // ========================================================================
     public NonPlayerCharacter () {
         super();
         this.firstTime = true;
-
-        this.addActKeys("speak", "talk", "converse");
+        this.useDialog = ATTACK_DIALOG;
+        
+        this.addUseKeys(WEAPONS);
+        this.addActKeys("speak", "talk", "converse", "chat");
     }
     // ======================================================================== 
     abstract protected<T extends Object> T converse1();

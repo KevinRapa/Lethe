@@ -19,8 +19,11 @@ public class Vest_Orb extends NonPlayerCharacter {
         this.addNameKeys("(?:dusty )?(?:glass )?orb");
     }
     // ======================================================================== 
-    @Override public String interact(String key) {              
-        if (this.firstTime)
+    @Override public String interact(String key) {       
+        if (key.matches(ATTACK_PATTERN))
+            return ATTACK_DIALOG;
+        
+        else if (this.firstTime)
             converse1();
         else
             converse2();

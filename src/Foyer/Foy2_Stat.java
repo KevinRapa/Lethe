@@ -28,7 +28,7 @@ public class Foy2_Stat extends Statue {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (key.matches("(?:push|pull|move|slide)")) {
+        if (key.matches(MOVEPATTERN)) {
             if (! this.moved) {
                 Player.getRoomObj(Id.FOY2).addFurniture(REF);
                 AudioPlayer.playEffect(41);

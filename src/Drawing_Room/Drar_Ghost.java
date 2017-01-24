@@ -36,7 +36,10 @@ public class Drar_Ghost extends NonPlayerCharacter {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (this.firstTime) {
+        if (key.matches(ATTACK_PATTERN))
+            return ATTACK_DIALOG;
+        
+        else if (this.firstTime) {
             this.converse1();
             this.firstTime = false;
         }

@@ -39,7 +39,7 @@ public class Rotu extends Room {
         description = "You are in a symmetrical dome-shaped chamber. Everything\n" +
                       "is ornate and carved from polished rock. A fountain in the \n" +
                       "center serves as a focus. At each diagonal below a spherical\n" +
-                      "sconce is a glaring statue projecting from the wall. Various\n" +
+                      "sconce is a glaring statue. Various\n" +
                       "potted plants decorate the room. Looking straight up, there's\n" +
                       "a hole in the ceiling giving view to the sky. Only a single\n" +
                       "other door on the opposite side is apparent. At the perpendicular\n" +

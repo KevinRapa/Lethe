@@ -39,14 +39,18 @@ public class Ant_Zombie extends NonPlayerCharacter {
     }
     // ========================================================================   
     @Override public String interact(String key) { 
-        AudioPlayer.playEffect(46);
+        if (key.matches(ATTACK_PATTERN))
+            return ATTACK_DIALOG;
         
-        if (firstTime) {
+        else if (firstTime) {
+            AudioPlayer.playEffect(46);
             this.firstTime = false;
             return converse1();
         }
-        else
+        else {
+            AudioPlayer.playEffect(46);
             return converse2();
+        }
     }
     // ========================================================================   
     @Override protected<String> String converse1() {

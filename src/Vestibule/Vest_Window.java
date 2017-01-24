@@ -13,14 +13,14 @@ public class Vest_Window extends Window {
         super();
         this.isOpen = false;
         this.REF = (Vest_Fireplace)ref;
-        this.escapeDialog = "That won't do any good. It leads right back out into the courtyard.";
+        this.escapeDialog = "You would never be able to fit through those bars, and they're too thick to cut...";
         this.searchDialog = "The only place to look is on the sill,\n" + 
                             "but there's nothing there.";
-        this.descOpen = "It's an open arched window of stone. A strong\n" +
+        this.descOpen = "It's an open, barred arched window of stone. A strong\n" +
                         "draft rolls in. From it, you can see the front\n" +
                         "courtyard surrounded by the rest of the castle\n" +
                         "and a tall front gate.\n";
-        this.descClosed = "It's a closed, stone arched window with a\n" +
+        this.descClosed = "It's a closed, barred stone arched window with a\n" +
                           "small hole in the glass. A small gust of\n" +
                           "air forces it's way through.";
     }
