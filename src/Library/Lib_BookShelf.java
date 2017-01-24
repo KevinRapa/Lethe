@@ -1,8 +1,8 @@
 package Library;
 
-import A_Super.SearchableFurniture;
+import A_Super.Furniture;
 
-public class Lib_BookShelf extends SearchableFurniture {
+public class Lib_BookShelf extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib_BookShelf() {
         super();

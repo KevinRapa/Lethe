@@ -2,7 +2,6 @@ package Parlor;
 
 import A_Main.AudioPlayer;
 import static A_Main.NameConstants.*;
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
 import A_Super.SearchableFurniture;
@@ -42,6 +41,9 @@ public class Par1_EnchantingTable extends SearchableFurniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
+        if (item.getType().equals("phylactery"))
+            return "You probably shouldn't get rid of that.";
+        
         if (item.toString().matches(Player.getShoes()))
             Player.setShoes(NOTHING);
             

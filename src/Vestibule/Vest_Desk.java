@@ -16,7 +16,7 @@ public class Vest_Desk extends SearchableFurniture implements Openable{
         this.actDialog = "You give the desk a small kick. Though creaky and\n" +
                          "old, it's a good desk. Perhaps if you weren't trapped\n" +
                          "here, you'd take it home with you.";
-        this.addNameKeys("(?:tenuous )?(?:wooden )?desk");
+        this.addNameKeys("(?:tenuous |dusty )?(?:wooden )?desk");
         this.addActKeys("kick");
     }
 /*----------------------------------------------------------------------------*/

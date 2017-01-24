@@ -225,8 +225,18 @@ public final class Player {
             else if (ans.equals("quit"))
                 return endGame();
             
-            else if (ans.matches("[a-z]+\\s[a-z ,.-]+")) // Interacting
+            else if (ans.matches(".*(?:fuck|shit|cunt|damn).*"))
+                GUI.out("Mind yourself! You're a guest here!");
+                    
+            else if (ans.matches("[a-z]+\\s[a-z0-9 ,'.-]+")) // Interacting
                 TextParser.processText(ans);
+            
+            else if (ans.matches("(?:north|forward|south|east|right|west|left|"
+                               + "(?:down|back|up)(?:wards?)?)"))
+                parseMovement(ans);
+            
+            else if (ans.matches("hi|hello|hey|sup"))
+                GUI.out("What do you think this is? Zork?");
             
             else if (isNonEmptyString(ans))
                 GUI.out("That's not valid.");
@@ -507,7 +517,7 @@ public final class Player {
                 describeRoom();
                 printInv();
             }
-            else if (action.matches("c|check|look|view|inspect|watch")) 
+            else if (action.matches("c|check|examine|look|view|inspect|watch")) 
                 GUI.out(target.getDescription()); 
             
             else if (action.matches("search|e|s") || 
@@ -540,27 +550,22 @@ public final class Player {
     }
     // ========================================================================  
     private static void findStaircase(Direction dir) {
-        Furniture stairs = null;
-        
         Iterator<Furniture> iter = Player.getPos().getFurnishings().iterator();
         
-        while (iter.hasNext() && stairs == null) {
+        while (iter.hasNext()) {
             Furniture current = iter.next();
-            if (current instanceof A_Super.DoubleStaircase)
-                stairs = current;
-            else if (current instanceof A_Super.Staircase && 
-                    ((A_Super.Staircase)current).getDir() == dir)
-                stairs = current;
+
+            if (current instanceof A_Super.DoubleStaircase) {
+                GUI.out(((A_Super.DoubleStaircase)current).interact(dir));
+                return;
+            }
+            if (current instanceof A_Super.Staircase && 
+                    ((A_Super.Staircase)current).getDir() == dir) {
+                GUI.out(current.interact("climb"));
+                return;
+            }
         }
-        if (stairs instanceof A_Super.DoubleStaircase) {
-            Player.move(dir);
-            AudioPlayer.playEffect(15);
-        }
-        else if (stairs != null)
-            GUI.out(stairs.interact("climb"));
-        else
-            GUI.out("There's nothing here to take you that way.");
-        
+        GUI.out("There's nothing here to take you that way.");
     }
     // ========================================================================  
     private static void checkOutSub() {

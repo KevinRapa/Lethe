@@ -29,6 +29,12 @@ public class DoubleStaircase extends Staircase {
             return null;
     }
     // ========================================================================      
+    public String interact(Direction dir) {     
+        playEffect();
+        Player.move(DIR);
+        return "You climb " + DIR + " the stairs.";
+    }
+    // ========================================================================      
 }
 
 
