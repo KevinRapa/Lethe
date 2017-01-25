@@ -46,7 +46,7 @@ public class PlayerInventory extends Inventory {
         return "You created: " + gift + ".";
     }
     // ========================================================================
-        public Item get(String itemName) {
+    public Item get(String itemName) {
         // Shouldn't return null, inventory is pre-checked for item.
         for (Item i : this.contents())
             if (i.toString().matches(".*(?i:"+ itemName + ").*"))
@@ -56,7 +56,7 @@ public class PlayerInventory extends Inventory {
         return null;
     }
     // ========================================================================
-        public static Comparator<Item> getComparator() {
+    public static Comparator<Item> getComparator() {
         return new Inventory_Sorter();
     }
     // ========================================================================
