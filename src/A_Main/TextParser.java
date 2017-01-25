@@ -1,6 +1,5 @@
 package A_Main;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 /**
  * This processes more complex sentences into statements containing verbs,
@@ -9,20 +8,19 @@ import java.util.LinkedList;
  * @author Kevin Rapa
  */
 public class TextParser {
+    private final static LinkedList<Command> COMMAND_QUEUE = new LinkedList<>();
+    
     private static final String[] PREPOSITIONS = 
         {"up", "down", "(?:in|on)(?:to)?", "out", "of", "through", "against", "around", "to", "at"};
     
     private static final String INSTRUCTIVE_PATTERN = " with | using ",
-            
                                 INSPECT_PATTERN = "look(?: at)?|inspect|examine|check (?: out)?",
-            
                                 CONJUNCTION_PATTERN = " and(?: then| also)? | then(?: also)? ",
-            
                                 MOVEMENT_PATTERN = "(?:go|move|walk|run|crawl) "
                                 + "(?:north|forward|south|east|right|west|left|"
                                 + "(?:down|back|up)(?:wards?)?)";
     
-    private final static LinkedList<Command> COMMAND_QUEUE = new LinkedList<>();
+    private static final Command DEFAULT_COMMAND = new Command("What does that mean?");
     
     // <editor-fold desc="Queue methods">
     public static boolean moreCommands() {
@@ -30,6 +28,7 @@ public class TextParser {
     }
     // ========================================================================
     public static void performNextCommand() {
+        
         COMMAND_QUEUE.poll().perform();
     }
     // </editor-fold>
@@ -43,9 +42,17 @@ public class TextParser {
     public static void processText(String input) {
         String noArticles = input.replaceAll("\\bthe |\\.", "");
         
+        if (input.matches("commit suicide|kill (?:your)?self")) {
+            GUI.out("You haven't reached that point yet!!");
+            return;
+        }
+        else if (input.matches("(?:say|speak|yell|shout) .+")) {
+            GUI.out(input.replaceAll("\\w+ ", "").concat("!"));
+            return;
+        }
+        
         for (Command c : splitCommands(noArticles))
-            if (c != null)
-               COMMAND_QUEUE.offer(c);
+            COMMAND_QUEUE.offer(c);
 
        performNextCommand();
     }
@@ -107,32 +114,28 @@ public class TextParser {
     // <editor-fold desc="Command assemblers"> *******************************
     // ========================================================================
     /**
-     * Takes a string arrays and forms a command from it.
-     * If the array is length 2, then index 1 is presumably an item.
-     * @param s A string array of length 1 or 2.
-     * @return 
+     * Assembles a command where the player interacts with furniture with
+     * possibly an item.
      */
     private static Command getCommandActionFirst(String[] s) {
-        Command command = null;
         String actionObject = s[0];
         Verb verb = new Verb(actionObject.replaceFirst("\\s.+", "")); // Selects first word.
         DirectObject dirObj = new DirectObject(actionObject.trim().replaceFirst("[a-z]+\\s", "")); // Selects all but the first word.
         
         switch(s.length) {
             case 2:
-                Instrument inst = new Instrument(s[1]);
-                command = new Command(inst, dirObj);
-                break;
+                return new Command(new Instrument(s[1]), dirObj);
             case 1:
-                command = new Command(verb, dirObj);
-                break;
+                return new Command(verb, dirObj);
+            default:
+                return DEFAULT_COMMAND;
         }
-        return command;
     }
     // ========================================================================
+    /**
+     * Assembles a command where the player stores an item.
+     */
     private static Command getStoreCommand(String[] s) {
-        System.out.println(Arrays.toString(s));
-        Command command = null;
         String object = s[0];
         Instrument inst;
         
@@ -148,17 +151,19 @@ public class TextParser {
             inst = new Instrument(object);
 
         switch(s.length) {
-            case 1:
-                return null;
             case 2:
-                command = new Command(new Verb("put"), inst, new DirectObject(s[1]));
-                break;
+                return new Command(new Verb("put"), inst, new DirectObject(s[1]));
+            case 1:
+                return new Command("You need to specify something to put that in!");
+            default:
+                return DEFAULT_COMMAND;
         }
-        return command;
     }
     // ========================================================================
+    /**
+     * Assembles a command where the player uses an item.
+     */
     private static Command getInstrumentalCommand(String[] s) {
-        Command command = null;
         String verbObject = discardPrepositions(s[0]);
         Verb use = new Verb(verbObject.replaceFirst("\\s.+", ""));
         String object = verbObject.replaceFirst("\\w+ ", "");
@@ -177,14 +182,12 @@ public class TextParser {
 
         switch(s.length) {
             case 1:
-                command = new Command(use, inst);
-                break;
+                return new Command(use, inst);
             case 2:
-                command = new Command(inst, new DirectObject(s[1]));
-                break;
+                return new Command(inst, new DirectObject(s[1]));
+            default:
+                return DEFAULT_COMMAND;
         }
-        
-        return command;
     }
     // ========================================================================
     // </editor-fold> *******************************************************
@@ -222,8 +225,17 @@ public class TextParser {
             System.out.println("Creating store command: " + VALUE);
             ACTION = (() -> execute(v, i, o));
         }
+        // --------------------------------------------------------------------
+        public Command(String s) {
+            VALUE = s;
+            ACTION = (() -> GUI.out(s));
+        }
         // </editor-fold>
         // ====================================================================
+        
+        
+        // ====================================================================
+        // <editor-fold desc="execute methods">
         /**
          * Uses the item i on the furniture o.
          */
@@ -279,6 +291,10 @@ public class TextParser {
             else
                 GUI.out("You don't have a " + i);
         }
+        // </editor-fold>
+        // ====================================================================
+        
+        
         // ====================================================================
         public void perform() {
             this.ACTION.run();
@@ -296,7 +312,7 @@ public class TextParser {
     // ========================================================================
     // <editor-fold desc="Word Classes"> **************************************
     // ========================================================================
-    private class Word {
+    abstract private static class Word {
         protected final String VALUE;
         // -------------------------
         public Word(String word) {

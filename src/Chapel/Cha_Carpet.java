@@ -1,10 +1,10 @@
 package Chapel;
 
-import A_Super.Furniture;
+import A_Super.Carpet;
 /**
  * @author Kevin Rapa
  */
-public class Cha_Carpet extends Furniture {
+public class Cha_Carpet extends Carpet {
     // ========================================================================
     public Cha_Carpet () {
         super();

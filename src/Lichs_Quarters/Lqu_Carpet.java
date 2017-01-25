@@ -1,10 +1,10 @@
 package Lichs_Quarters;
 
-import A_Super.Furniture;
+import A_Super.Carpet;
 /**
  * @author Kevin Rapa
  */
-public class Lqu_Carpet extends Furniture {
+public class Lqu_Carpet extends Carpet {
     // ========================================================================
     public Lqu_Carpet () {
         super();

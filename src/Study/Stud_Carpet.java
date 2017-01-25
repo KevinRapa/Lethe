@@ -1,8 +1,8 @@
 package Study;
 
-import A_Super.Furniture;
+import A_Super.Carpet;
 
-public class Stud_Carpet extends Furniture{
+public class Stud_Carpet extends Carpet {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Stud_Carpet() {
         super();

@@ -1,8 +1,8 @@
 package Foyer;
 
-import A_Super.Furniture;
+import A_Super.Carpet;
 
-public class Foy1_Carpet extends Furniture{
+public class Foy1_Carpet extends Carpet {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy1_Carpet() {
         super();

@@ -221,10 +221,7 @@ public final class Player {
 
             if (ans.matches("[heckiwsad]")) 
                 cmd.get(ans.charAt(0)).run();
-            
-            else if (ans.equals("quit"))
-                return endGame();
-            
+
             else if (ans.matches(".*(?:fuck|shit|cunt|damn).*"))
                 GUI.out("Mind yourself! You're a guest here!");
                     
@@ -234,12 +231,17 @@ public final class Player {
             else if (ans.matches("(?:north|forward|south|east|right|west|left|"
                                + "(?:down|back|up)(?:wards?)?)"))
                 parseMovement(ans);
+            else if (ans.equals("quit"))
+                return endGame();
             
+            else if (ans.matches("jump")) 
+                GUI.out("You jump a short height into the air. Well, that was fun.");
+
             else if (ans.matches("hi|hello|hey|sup"))
                 GUI.out("What do you think this is? Zork?");
             
             else if (isNonEmptyString(ans))
-                GUI.out("That's not valid.");
+                GUI.out("That's not valid input.");
 
         } while (true);
     }  

@@ -20,9 +20,11 @@ public class Safe extends SearchableFurniture implements Openable {
         this.DIALS[1] = (int)(Math.random() * 10.0);
         this.DIALS[2] = (int)(Math.random() * 10.0);
         this.actDialog = "The safe is still locked.";
+        this.useDialog = "They didn't design safes to break open that easily.";
         this.searchDialog = this.actDialog;
         this.searchable = false;
-        this.addActKeys("use", "spin", "twist", "smash");
+        this.addUseKeys(WEAPONS);
+        this.addActKeys("use", "spin", "twist", "smash", "break");
         this.addNameKeys("(?:combination )?safe", "strongbox");
     }
 /*----------------------------------------------------------------------------*/
@@ -84,7 +86,7 @@ public class Safe extends SearchableFurniture implements Openable {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {              
-        if (key.matches("smash"))
+        if (key.matches("smash|break"))
             return "Now you WOULD like to do that, wouldn't you?";
         
         else if (! this.searchable) {

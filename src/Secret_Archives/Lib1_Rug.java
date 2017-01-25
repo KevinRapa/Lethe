@@ -1,8 +1,8 @@
 package Secret_Archives;
 
-import A_Super.Furniture;
+import A_Super.Carpet;
 
-public class Lib1_Rug extends Furniture {
+public class Lib1_Rug extends Carpet {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Rug() {
         super();

@@ -1,10 +1,10 @@
 package Foyer;
 
-import A_Super.Furniture;
+import A_Super.Carpet;
 /**
  * @author Kevin Rapa
  */
-public class Foy34_Carpet extends Furniture {
+public class Foy34_Carpet extends Carpet {
     // ========================================================================
     public Foy34_Carpet () {
         super();
