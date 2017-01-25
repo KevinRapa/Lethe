@@ -130,7 +130,7 @@ public class Catacomb extends Room {
         for (int start = 1; start <= numTimes; start++) 
             ctGrv.getInv().add(itemList[GENERATOR.nextInt(3)]);
 
-        this.addFurniture(ctGrv, new Floor("It's a damp dirt floor."), new Wall("The walls are wet and rocky."));
+        this.addFurniture(ctGrv, new Floor("It's a damp, rocky, dirty floor."), new Wall("The walls are wet and rocky."));
         
         if (door != null)
             this.addFurniture(door);

@@ -17,7 +17,7 @@ public class Cou_Floor extends Floor {
                        + "and kick the dirt back in the hole.";
         this.useDialog = this.actDialog;
 
-        this.addUseKeys(SHOVEL, TROWEL);
+        this.addUseKeys(SHOVEL, TROWEL, "hoe");
         this.addActKeys("dig");
     }
     // ========================================================================   
@@ -30,8 +30,12 @@ public class Cou_Floor extends Floor {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        AudioPlayer.playEffect(34);
-        return this.actDialog;
+        if (item.toString().equals("hoe"))
+            return "You aren't a gardener!";
+        else {
+            AudioPlayer.playEffect(34);
+            return this.actDialog;
+        }
     }
     // ========================================================================     
 }

@@ -13,7 +13,8 @@ import java.util.ArrayList;
 public final class PlayerAttributes implements Serializable {
     private final Room[][][] MAP;
     private final int[] OCC;
-    private final Inventory INV, KEYS; 
+    private final Inventory KEYS; 
+    private final PlayerInventory INV; 
     private final ArrayList<String> VISITED; 
     private final String LSTVISITED, SHOES; 
     // ========================================================================

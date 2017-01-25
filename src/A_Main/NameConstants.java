@@ -11,11 +11,11 @@ package A_Main;
 public final class NameConstants {
     // CONSTANTS FOR ITEM TYPE NAMES ==========================================
     public static final String 
-            PHYLACTERY = "phylactery",  CARD = "card",
-            FOCUS = "focus",            INGREDIENT = "ingredient",
-            SHOES = "shoes",            PLATE = "plate",
-            CLOTHING = "clothing",      READABLE = "readable",
-            LIQUID = "liguid";
+        PHYLACTERY = "phylactery",  CARD = "card",
+        FOCUS = "focus",            INGREDIENT = "ingredient",
+        SHOES = "shoes",            PLATE = "plate",
+        CLOTHING = "clothing",      READABLE = "readable",
+        LIQUID = "liguid";
 
     // CONSTANTS FOR ITEM NAMES ===============================================
     public static final String 

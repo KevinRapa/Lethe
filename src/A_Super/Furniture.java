@@ -43,7 +43,8 @@ abstract public class Furniture implements Serializable {
             "broken table leg", "copper pan", "copper pot", "brass candlestick"};
     protected static final String SITPATTERN = "sit|relax|lay",
                                   JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",
-                                  MOVEPATTERN = "move|slide|displace|push|pull";
+                                  MOVEPATTERN = "move|slide|displace|push|pull",
+                                  FEELPATTERN = "feel|touch";
     // ========================================================================
     /**
      * Constructor for furniture.
@@ -56,7 +57,6 @@ abstract public class Furniture implements Serializable {
         this.ACTKEYS = new ArrayList<>();  // Valid actions that may be performed on this.
         
         this.searchDialog = "There's nothing hiding here.";
-        this.useDialog = "Default";
     }
     // ========================================================================     
     /**
@@ -139,19 +139,13 @@ abstract public class Furniture implements Serializable {
      * @return If the action will trigger an event with this piece.
      */
     public boolean actKeyMatches(String key) {
-        for (String i : this.ACTKEYS) {
-            if (key.matches(i))
-                return true;
-        }
-        return false;
+        return this.ACTKEYS.stream()
+                .anyMatch(i -> (key.matches(i)));
     }    
     // ========================================================================     
     public boolean useKeyMatches(String name) {
-        for(String i : this.USEKEYS) {
-            if (name.matches(i))
-                return true;
-        }
-        return false;
+        return this.USEKEYS.stream()
+                .anyMatch(i -> (name.matches(i)));
     }
     // ========================================================================     
     /**

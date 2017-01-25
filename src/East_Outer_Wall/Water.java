@@ -5,8 +5,9 @@ import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
 import static A_Main.NameConstants.METAL_BUCKET;
+import A_Super.Gettable;
 
-public class Water extends Furniture {
+public class Water extends Furniture implements Gettable {
     private final Item BUCKET_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Water(Item bckt) {
@@ -20,6 +21,8 @@ public class Water extends Furniture {
                        + "don't even have a change of clothes, and you aren't wearing\n"
                        + "servant's garb.";
         this.useDialog = "You dip the bucket in and fill it with water.";
+        
+        this.addActKeys(GETKEYS);
         this.addActKeys("drink", "swim");
         this.addNameKeys("water", "clear water");
         this.addUseKeys(METAL_BUCKET);
@@ -36,9 +39,18 @@ public class Water extends Furniture {
     @Override public String interact(String key) { 
         if (key.equals("swim"))
             return this.actDialog;
-        
-        return "You take a sip of water and feel refreshed. Carrying\n"
-             + "all that stuff around has tired you.";
+        else if (key.equals("drink"))
+            return "You take a sip of water and feel refreshed. Carrying\n"
+                 + "all that stuff around has tired you.";
+        else
+            return getIt();
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String getIt() {
+        if (Player.hasItem(METAL_BUCKET))
+            return this.useEvent(Player.getInv().get(METAL_BUCKET));
+        else
+            return "You'll need an empty bucket...";
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -18,9 +18,16 @@ public class Aarc_Chandelier extends Aarc_Furniture {
 
         this.addNameKeys("(?:unlit )?(?:iron )?(?:chandelier|light)");
         this.addUseKeys(HAND_TORCH);
-        this.addActKeys("light");
+        this.addActKeys("light", "swing", "hang");
     }
     // ========================================================================  
+    @Override public String interact(String key) {
+        if (key.equals("light"))
+            return this.actDialog;
+        else
+            return "That's a very immature thing to do.";
+    }
+    // ========================================================================   
 }
 
 

@@ -14,7 +14,10 @@ public class Aarc_Desk extends Aarc_Furniture {
                          + "of luxury quality, the desk now lies crooked\n"
                          + "with two legs missing.";
         this.searchDialog = "You look inside the old desk.";
+        this.actDialog = "You give it a jostle. 'Hmph. Perhaps at one point this\n"
+                       + "was a fine piece of artistry, but it has lost its charm.'";
 
+        this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:old )?(?:wooden )?(?:drawered )?desk", "drawers?");
     }
     // ========================================================================   

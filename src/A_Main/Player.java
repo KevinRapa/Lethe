@@ -26,7 +26,8 @@ import java.util.Iterator;
 public final class Player {
     private static Room[][][] mapRef;
     private static int[] pos;
-    private static Inventory inv, keys;
+    private static Inventory keys;
+    private static PlayerInventory inv;
     private static ArrayList<String> visited;
     private static String lastVisited, shoes;
     private static HashMap<Character, Runnable> cmd; 
@@ -53,7 +54,7 @@ public final class Player {
         return Player.lastVisited;
     }
     /*------------------------------------------------------------------------*/ 
-    public static Inventory getInv() {
+    public static PlayerInventory getInv() {
         return Player.inv;
     }
     /*------------------------------------------------------------------------*/
@@ -131,7 +132,7 @@ public final class Player {
 //******************************************************************************
 // <editor-fold desc="START GAME"> 
 //******************************************************************************
-    public static void loadAttributes(Inventory inv, Inventory keys, ArrayList<String> visited, 
+    public static void loadAttributes(PlayerInventory inv, Inventory keys, ArrayList<String> visited, 
                                       String lastVisited, String shoesWearing, int[] pos, Room[][][] map) {
         // Sets saved game attributes. See PlayerAttributes.java.
         Player.mapRef = map;
@@ -153,7 +154,7 @@ public final class Player {
      */
     public static void setNewAttributes(int ... coords) {
         Player.mapRef = Main.createMap();
-        Player.inv = new Inventory();
+        Player.inv = new PlayerInventory();
         Player.keys = new Inventory();
         Player.visited = new ArrayList<>();
         Player.cmd = new HashMap<>();
@@ -455,20 +456,16 @@ public final class Player {
      * @param take The item being taken.
      */
     private static void evalTake(Furniture furniture, Item take) {
-        if (! Player.inv.contains(take)) {
-            if (take.getType().matches("[A-Z]{3}[A-Z1-9]")) {
-                // Matches a non-cave/catacomb room ID, which keys use as types.
-                addToKeyRing(take, furniture);
-                AudioPlayer.playEffect(3);
-                GUI.out("You put the " + take + " into your key ring.");
-            }
-            else {
-                GUI.out("You take the " + take);
-                furniture.getInv().give(take, Player.inv);                 
-            }   
+        if (take.getType().matches("[A-Z]{3}[A-Z1-9]")) {
+            // Matches a non-cave/catacomb room ID, which keys use as types.
+            addToKeyRing(take, furniture);
+            AudioPlayer.playEffect(3);
+            GUI.out("You put the " + take + " into your key ring.");
         }
-        else
-            GUI.out("You already have one of those."); 
+        else {
+            GUI.out("You take the " + take);
+            furniture.getInv().give(take, Player.inv);                 
+        }   
     }
     // ========================================================================  
     /**
@@ -637,7 +634,8 @@ public final class Player {
                     case 3:
                         combineSub(); break;
                     default:
-                        Player.getInv().contents().sort(Inventory.getComparator());
+                        Player.getInv().contents().sort(
+                                PlayerInventory.getComparator());
                         printInv();
                 }
             } 

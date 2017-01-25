@@ -5,10 +5,9 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.io.Serializable;
-import java.util.Comparator;
 /**
  * Maintains a list of items.
- * Both the player and furniture have these.
+ * Both the player (keys) and furniture have these.
  * 
  * @see A_Main.Player
  * @see A_Super.Furniture
@@ -24,15 +23,6 @@ public class Inventory implements Iterable<Item>, Serializable {
     // ========================================================================
     public Item get(int index) {
         return CONTENTS.get(index);
-    }
-    // ========================================================================
-    public Item get(String itemName) {
-        // Never returns null, inventory is pre-checked for item.
-        for (Item i : this.contents())
-            if (i.toString().matches(".*(?i:"+ itemName + ").*"))
-                return i;
-        
-        return null;
     }
     // ========================================================================
     public boolean contains(Item item) {
@@ -108,38 +98,8 @@ public class Inventory implements Iterable<Item>, Serializable {
         return rep.matches("") ? "   nothing." : rep;
     }
     // ========================================================================
-    /**
-     * Removes combined items from this inventory and adds the object formed to this.
-     * @param itemList A list of combinable items to be removed.
-     * @param gift The item which the combinable items combined into.
-     * @return Notifies the player what he or she received.
-     */
-    public String combine(Item[] itemList, Item gift) {
-        for (Item i : itemList)
-            this.remove(i); 
-        
-        this.add(gift);
-        AudioPlayer.playEffect(29);
-        
-        return "You created: " + gift + ".";
-    }
-    // ========================================================================
     @Override public Iterator<Item> iterator() {
         return this.CONTENTS.iterator();
     }
-    // ========================================================================
-    public static Comparator<Item> getComparator() {
-        return new Inventory_Sorter();
-    }
-    // ========================================================================
-    // ************************************************************************
-    // ========================================================================
-    private static class Inventory_Sorter<Item extends Comparable<Item>> implements Comparator<Item> {
-        @Override public int compare(Item item1, Item item2) {
-            return item1.compareTo(item2);
-        }
-    }
-    // ========================================================================
-    // ************************************************************************
     // ========================================================================
 }

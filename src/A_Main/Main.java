@@ -51,7 +51,7 @@ import java.io.*;          import java.util.Random;
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Lethe");
     private static final String WD = System.getProperty("user.dir");
-    private static final String START = Id.LIB2; // Default COU4
+    private static final String START = Id.EOW2; // Default COU4
 // ============================================================================
     public static void main(String[] args) {
         //**********************************************************************
@@ -1392,13 +1392,13 @@ public class Main {
         Item slmyAlg = new Item("slimy algae", "Ugh... why are you holding this?");
         Item aarcNt = new Aarc_Note("note: Factum");
         //-----------------------------FURNITURE--------------------------------  
-        Furniture aarcAlg = new Aarc_Algae();
+        Furniture aarcAlg = new Aarc_Algae(slmyAlg);
         Furniture aarcBks = new Aarc_Books(rndBk, algBk, slmyAlg, rndBk);
         Furniture aarcChndlr = new Aarc_Chandelier();
         Furniture aarcDsk = new Aarc_Desk(wbalch, archKey, aarcNt, rndBk);
         Furniture aarcF = new Aarc_Floor(algBk, wbalch, stnBlck, algBk, slmyAlg, algBk, stnBlck);
         Furniture aarcW = new Aarc_Wall();
-        Furniture aarcWd = new Aarc_Wood();
+        Furniture aarcWd = new Aarc_Wood(wbalch);
         Furniture aarcShlvs = new Aarc_Shelves(slmyAlg, wbalch, wbalch);
         
         // </editor-fold>

@@ -1,6 +1,7 @@
 package A_Main;
 
 import static A_Main.NameConstants.*;
+import A_Super.Furniture;
 import java.util.LinkedList;
 /**
  * This processes more complex sentences into statements containing verbs,
@@ -27,10 +28,11 @@ public class TextParser {
         INSTRUCTIVE_PATTERN =   " with | using ",
         INSPECT_PATTERN =       "look(?: at)?|inspect|examine|check (?: out)?",
         CONJUNCTION_PATTERN =   " and(?: then| also)? | then(?: also)? ",
-        USE_PATTERN =           "use|read|wear|remove|eat|drink|eat",
+        USE_PATTERN =           "use|read|drop|wear|remove|eat|drink|eat",
         MOVEMENT_PATTERN =      "(?:go|move|walk|run|crawl) "
                               + "(?:north|forward|south|east|right|west|left|"
-                              + "(?:down|back|up)(?:wards?)?)";
+                              + "(?:down|back|up)(?:wards?)?)",
+        DONT_HAVE_IT = "You aren't carrying that.";
     
     private static final Command DEFAULT_COMMAND = 
             new Command("What does that mean?");
@@ -54,7 +56,9 @@ public class TextParser {
     // <editor-fold desc="Text parser">
     //*************************************************************************
     public static void processText(String input) {
-        String noArticles = input.replaceAll("\\bthe |\\.", "");
+        // Removes articles 'a', 'an', 'the'. Removes the pronoun 'some'.
+        String noArticles = input
+                .replaceAll("\\bthe |\\.|\\b(?:an?)(?=\\s)|\\bsome ", "");
         
         if (input.matches("commit suicide|kill (?:your)?self")) 
             GUI.out("You haven't reached that point yet!!");
@@ -75,7 +79,7 @@ public class TextParser {
      * @param input An article-less string of input.
      * @return The sentence stripped of prepositions.
      */
-    private static String discardPrepositions(String input) {
+    private static String stripPrepositions(String input) {
         StringBuilder builder = new StringBuilder();
         
         for (String word : input.split(" ")) {
@@ -110,13 +114,13 @@ public class TextParser {
             
             else if (statements[i].matches("(?:" + USE_PATTERN + "|" 
                     + INSPECT_PATTERN + ") [a-z0-9: ,'-]+")) 
-                commands[i] = getInstrumentalCommand(statements[i].split(" on "));
+                commands[i] = getItemCmd(statements[i].split(" on "));
             
             else if (statements[i].matches("(?:put|store) [a-z0-9: ,'-]+"))
-                commands[i] = getStoreCommand(statements[i].replaceAll("(?:put|store) ", "")
+                commands[i] = getStoreCmd(statements[i].replaceAll("(?:put|store) ", "")
                                         .split(" (?:in|on)(?:to)? | under(?:neath) | next to | beside "));
             else 
-                commands[i] = getCommandActionFirst(discardPrepositions(statements[i])
+                commands[i] = getCmdActionFirst(stripPrepositions(statements[i])
                                         .split(INSTRUCTIVE_PATTERN));
         }
         return commands;
@@ -132,11 +136,17 @@ public class TextParser {
     /**
      * Assembles a command where the player interacts with furniture with
      * possibly an item.
+     * If s is size 2, then second string is presumably an item.
      */
-    private static Command getCommandActionFirst(String[] s) {
+    private static Command getCmdActionFirst(String[] s) {
         String actionObject = s[0];
-        Verb verb = new Verb(actionObject.replaceFirst("\\s.+", "")); // Selects first word.
-        DirectObject dirObj = new DirectObject(actionObject.trim().replaceFirst("[a-z]+\\s", "")); // Selects all but the first word.
+        
+        Verb verb = new Verb(actionObject
+                .replaceFirst("\\s.+", "")); // First word.
+        
+        DirectObject dirObj = new DirectObject(actionObject
+                .trim()
+                .replaceFirst("[a-z]+\\s", "")); // All but the first word.
         
         switch(s.length) {
             case 2:
@@ -151,7 +161,7 @@ public class TextParser {
     /**
      * Assembles a command where the player stores an item.
      */
-    private static Command getStoreCommand(String[] s) {
+    private static Command getStoreCmd(String[] s) {
         String object = s[0];
         Instrument inst;
         
@@ -168,7 +178,7 @@ public class TextParser {
 
         switch(s.length) {
             case 2:
-                return new Command(new Verb("put"), inst, new DirectObject(s[1]));
+                return new Command(Verb.PUT_VERB, inst, new DirectObject(s[1]));
             case 1:
                 return new Command("You need to specify something to put that in!");
             default:
@@ -179,8 +189,8 @@ public class TextParser {
     /**
      * Assembles a command where the player uses an item.
      */
-    private static Command getInstrumentalCommand(String[] s) {
-        String verbObject = discardPrepositions(s[0]);
+    private static Command getItemCmd(String[] s) {
+        String verbObject = stripPrepositions(s[0]);
         Verb use = new Verb(verbObject.replaceFirst("\\s.+", ""));
         String object = verbObject.replaceFirst("\\w+ ", "");
         Instrument inst;
@@ -191,7 +201,7 @@ public class TextParser {
             if (i >= 0 && i < Player.getInv().size())
                 inst = new Instrument(Player.getInv().get(i).toString());
             else
-                inst = new Instrument("thing there.");
+                inst = new Instrument("thing there."); // Becomes 'You don't have a thing there.'
         }
         else 
             inst = new Instrument(object);
@@ -259,7 +269,7 @@ public class TextParser {
             if (Player.hasItemResembling(i.toString()))
                 Player.evalUse(Player.getInv().get(i.toString()), o.toString());
             else
-                GUI.out("You don't have that.");
+                GUI.out(DONT_HAVE_IT);
         }
         // --------------------------------------------------------------------
         /**
@@ -292,6 +302,19 @@ public class TextParser {
                     else
                         GUI.out("That isn't something you can wear...");
                 
+                else if (verb.equals("drop"))
+                    if (Player.getPos().hasFurniture("floor")) {
+                        Furniture floor = Player.getFurnRef("floor");
+                        if (floor.isSearchable()) {
+                            Player.evalStore(floor, item);
+                            Player.printInv();
+                        }
+                        else
+                            GUI.out("It's not a good idea to drop that here.");
+                    }
+                    else
+                        System.err.println("Error: no floor in room.");
+                
                 else if (verb.matches("remove") && item.getType().equals(SHOES))
                     if (Player.getShoes().equals(""))
                         GUI.out("You aren't wearing any shoes.");
@@ -315,7 +338,7 @@ public class TextParser {
                     GUI.out("That... REALLY does not seem edible...");
             }
             else
-                GUI.out("You don't have a " + i);
+                GUI.out(DONT_HAVE_IT);
         }
         // --------------------------------------------------------------------
         /**
@@ -341,7 +364,7 @@ public class TextParser {
                     GUI.out("There is no " + o + " here.");
             }
             else
-                GUI.out("You don't have a " + i);
+                GUI.out(DONT_HAVE_IT);
         }
         // </editor-fold>
         // ====================================================================
@@ -377,6 +400,8 @@ public class TextParser {
     }
     // ========================================================================
     private static class Verb extends Word {
+        public final static Verb PUT_VERB = new Verb("put");
+        
         public Verb(String verb) {
             super(verb);
         }
