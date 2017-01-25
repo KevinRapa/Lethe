@@ -1,7 +1,7 @@
 package Attic;
 
 import static A_Main.NameConstants.LAB_COAT;
-import A_Super.Item;
+import A_Super.Clothing;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
@@ -13,7 +13,7 @@ import A_Super.SearchableFurniture;
 public class Att2_LabCoatCase extends SearchableFurniture implements Openable {
     // ========================================================================
     public Att2_LabCoatCase () {
-        super(new Item(LAB_COAT, "A white lab coat", "You wear the lab coat. Now you feel ready for chemistry."));
+        super(new Clothing(LAB_COAT, "A white lab coat", "You wear the lab coat. Now you feel ready for chemistry."));
         
         this.description = "Hidden behind a few boxes in the studded suitcase.";
         this.searchDialog = "You find the suitcase behind a few boxes tucked in the front of the attic. You open it.";

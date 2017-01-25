@@ -4,6 +4,7 @@ import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
+import A_Super.Liquid;
 /**
  * Used to create molten glass with dye, sand, and potash.
  * Player must go back to the closet to get sand.
@@ -18,9 +19,9 @@ public class Wrk_Kiln extends Furniture {
     public Wrk_Kiln() {
         super();
         
-        this.REFGLSSR = new Item(MOLTEN_RED_GLASS, "It's a crucible of molten red glass. Be careful!");
-        this.REFGLSSB = new Item(MOLTEN_BLUE_GLASS, "It's a crucible of molten blue glass. Be careful!");
-        this.REFGLSSY = new Item(MOLTEN_YELLOW_GLASS, "It's a crucible of molten yellow glass. Be careful!");
+        this.REFGLSSR = new Liquid(MOLTEN_RED_GLASS, "It's a crucible of molten red glass. Be careful!");
+        this.REFGLSSB = new Liquid(MOLTEN_BLUE_GLASS, "It's a crucible of molten blue glass. Be careful!");
+        this.REFGLSSY = new Liquid(MOLTEN_YELLOW_GLASS, "It's a crucible of molten yellow glass. Be careful!");
         
         hasSand = hasPotash = hasRedDye = hasBlueDye = hasYllwDye = false;
        

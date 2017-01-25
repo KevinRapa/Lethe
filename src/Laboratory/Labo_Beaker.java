@@ -4,6 +4,7 @@ import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Liquid;
 /**
  * @see Laboratory.Labo for solution
  * @author Kevin Rapa
@@ -36,9 +37,9 @@ public class Labo_Beaker extends Furniture {
         this.mode = Potion.EMPTY;
         
         this.BEAKER_REF = beakerItem;
-        this.PHASE_POTION = new Item(PHASE_DOOR_POTION, "It's a smoky brown liquid. You pray that this potion does what the recipe said...",
+        this.PHASE_POTION = new Liquid(PHASE_DOOR_POTION, "It's a smoky brown liquid. You pray that this potion does what the recipe said...",
                                      "You don't know the duration. Better get out to the front gate before drinking this!!");
-        this.GENERIC_POTION = new Item(POTION_OF_SCIENCE, "This doesn't look how the manual described... It looks potion-ey, better throw it out though.");
+        this.GENERIC_POTION = new Liquid(POTION_OF_SCIENCE, "This doesn't look how the manual described... It looks potion-ey, better throw it out though.");
         
         this.description = "The beaker contains ";
         this.useDialog = "That's not it's proper function right now!";

@@ -1,60 +1,73 @@
 package A_Main;
 
+import static A_Main.NameConstants.*;
 import java.util.LinkedList;
 /**
  * This processes more complex sentences into statements containing verbs,
  * items, and furniture.
  * 
+ * The command class below accepts verbs, furniture names, and item names as
+ * constructor parameters and then creates a runnable object from them.
+ * 
+ * The command queue is loaded with a number of commands depending on the
+ * number of conjunctions the player entered, then processed one at a time
+ * before allowing the player to add input.
+ * 
  * @author Kevin Rapa
  */
 public class TextParser {
-    private final static LinkedList<Command> COMMAND_QUEUE = new LinkedList<>();
+    private final static LinkedList<Command> COMMAND_QUEUE = 
+        new LinkedList<>();
     
     private static final String[] PREPOSITIONS = 
-        {"up", "down", "(?:in|on)(?:to)?", "out", "of", "through", "against", "around", "to", "at"};
+        {"up", "down", "(?:in|on)(?:to)?", "out", 
+            "of", "through", "against", "around", "to", "at"};
     
-    private static final String INSTRUCTIVE_PATTERN = " with | using ",
-                                INSPECT_PATTERN = "look(?: at)?|inspect|examine|check (?: out)?",
-                                CONJUNCTION_PATTERN = " and(?: then| also)? | then(?: also)? ",
-                                MOVEMENT_PATTERN = "(?:go|move|walk|run|crawl) "
-                                + "(?:north|forward|south|east|right|west|left|"
-                                + "(?:down|back|up)(?:wards?)?)";
+    private static final String 
+        INSTRUCTIVE_PATTERN =   " with | using ",
+        INSPECT_PATTERN =       "look(?: at)?|inspect|examine|check (?: out)?",
+        CONJUNCTION_PATTERN =   " and(?: then| also)? | then(?: also)? ",
+        USE_PATTERN =           "use|read|wear|remove|eat|drink|eat",
+        MOVEMENT_PATTERN =      "(?:go|move|walk|run|crawl) "
+                              + "(?:north|forward|south|east|right|west|left|"
+                              + "(?:down|back|up)(?:wards?)?)";
     
-    private static final Command DEFAULT_COMMAND = new Command("What does that mean?");
+    private static final Command DEFAULT_COMMAND = 
+            new Command("What does that mean?");
     
+    //*************************************************************************
     // <editor-fold desc="Queue methods">
+    //*************************************************************************
     public static boolean moreCommands() {
         return (! COMMAND_QUEUE.isEmpty());
     }
     // ========================================================================
     public static void performNextCommand() {
-        
         COMMAND_QUEUE.poll().perform();
     }
+    //*************************************************************************
     // </editor-fold>
+    //*************************************************************************
     
-    // ========================================================================
-    /**
-     * Strips the articles from the sentence, splits it into commands and
-     * enqueue's them.
-     * @param input Player input resembling a phrase or sentence.
-     */
+    
+    //*************************************************************************
+    // <editor-fold desc="Text parser">
+    //*************************************************************************
     public static void processText(String input) {
         String noArticles = input.replaceAll("\\bthe |\\.", "");
         
-        if (input.matches("commit suicide|kill (?:your)?self")) {
+        if (input.matches("commit suicide|kill (?:your)?self")) 
             GUI.out("You haven't reached that point yet!!");
-            return;
-        }
-        else if (input.matches("(?:say|speak|yell|shout) .+")) {
-            GUI.out(input.replaceAll("\\w+ ", "").concat("!"));
-            return;
-        }
-        
-        for (Command c : splitCommands(noArticles))
-            COMMAND_QUEUE.offer(c);
 
-       performNextCommand();
+        else if (input.matches("(?:say|speak|yell|shout) .+"))
+            GUI.out(input.replaceAll("\\w+ ", "").concat("!"));
+
+        else {
+            for (Command c : splitCommands(noArticles))
+                COMMAND_QUEUE.offer(c);
+
+            performNextCommand();
+        }
     }
     // ========================================================================
     /**
@@ -95,7 +108,8 @@ public class TextParser {
                 commands[i] = new Command(new Verb("go"), 
                         new DirectObject(statements[i].replaceFirst("\\w+ ", "")));
             
-            else if (statements[i].matches("(?:use|read|" + INSPECT_PATTERN + ") [a-z0-9: ,'-]+")) 
+            else if (statements[i].matches("(?:" + USE_PATTERN + "|" 
+                    + INSPECT_PATTERN + ") [a-z0-9: ,'-]+")) 
                 commands[i] = getInstrumentalCommand(statements[i].split(" on "));
             
             else if (statements[i].matches("(?:put|store) [a-z0-9: ,'-]+"))
@@ -107,12 +121,14 @@ public class TextParser {
         }
         return commands;
     }
-    // ========================================================================
+    //*************************************************************************
+    // </editor-fold>
+    //*************************************************************************
     
     
-    // ========================================================================
-    // <editor-fold desc="Command assemblers"> *******************************
-    // ========================================================================
+    //*************************************************************************
+    // <editor-fold desc="Command assemblers">
+    //*************************************************************************
     /**
      * Assembles a command where the player interacts with furniture with
      * possibly an item.
@@ -179,7 +195,7 @@ public class TextParser {
         }
         else 
             inst = new Instrument(object);
-
+        
         switch(s.length) {
             case 1:
                 return new Command(use, inst);
@@ -189,14 +205,14 @@ public class TextParser {
                 return DEFAULT_COMMAND;
         }
     }
-    // ========================================================================
-    // </editor-fold> *******************************************************
-    // ========================================================================
+    //*************************************************************************
+    // </editor-fold>
+    //*************************************************************************
     
     
-    // ========================================================================
-    // <editor-fold desc="Command class"> *************************************
-    // ========================================================================
+    //*************************************************************************
+    // <editor-fold desc="Command class">
+    //*************************************************************************
     private static class Command {
         private final Runnable ACTION;
         private final String VALUE;
@@ -243,24 +259,60 @@ public class TextParser {
             if (Player.hasItemResembling(i.toString()))
                 Player.evalUse(Player.getInv().get(i.toString()), o.toString());
             else
-                GUI.out("You don't know what to do.");
+                GUI.out("You don't have that.");
         }
         // --------------------------------------------------------------------
         /**
          * Uses the item i.
+         * Long chain of if statements in order to accept a variety of input!
          */
         private void execute(Verb v, Instrument i) {
             String verb = v.toString();
             
             if (Player.hasItemResembling(i.toString())) {
+                System.out.println(i);
                 A_Super.Item item = Player.getInv().get(i.toString());
+                String type = item.getType();
                 
-                if (verb.equals("use") || (verb.equals("read") && item instanceof A_Super.Note))
+                if (verb.equals("use"))
                     GUI.out(item.useEvent());
+                
                 else if (verb.matches(INSPECT_PATTERN))
                     GUI.out(item.getDesc());
-                else
-                    GUI.out("You can't read that.");
+                
+                else if (verb.equals("read"))
+                    if (type.equals(READABLE))
+                        GUI.out(item.useEvent());
+                    else
+                        GUI.out("That isn't something you can read...");
+                
+                else if (verb.equals("wear"))
+                    if (type.equals(SHOES) || type.equals(CLOTHING))
+                        GUI.out(item.useEvent());
+                    else
+                        GUI.out("That isn't something you can wear...");
+                
+                else if (verb.matches("remove") && item.getType().equals(SHOES))
+                    if (Player.getShoes().equals(""))
+                        GUI.out("You aren't wearing any shoes.");
+                    else
+                        GUI.out(item.useEvent());
+                
+                else if (verb.equals("drink"))
+                    if (type.equals(INGREDIENT) || type.equals(LIQUID))
+                        if (item.toString().equals(PHASE_DOOR_POTION))
+                            GUI.out(item.useEvent());
+                        else if (item.toString().equals(BUCKET_OF_WATER))
+                            GUI.out("Ah, refreshing!!");
+                        else if (item.toString().matches("molten.*"))
+                            GUI.out("No possible way you're doing something that stupid!");
+                        else
+                            GUI.out("You reluctantly take a small sip. 'Yugh! Bitter and disgusting!'");
+                    else
+                        GUI.out("That is not something you can drink...");
+                
+                else if (verb.equals("eat") || verb.equals("consume"))
+                    GUI.out("That... REALLY does not seem edible...");
             }
             else
                 GUI.out("You don't have a " + i);
@@ -304,14 +356,14 @@ public class TextParser {
             return VALUE;
         }
     }
-    // ========================================================================
-    // </editor-fold> ************************************************************
-    // ========================================================================
+    //*************************************************************************
+    // </editor-fold> 
+    //*************************************************************************
     
     
-    // ========================================================================
-    // <editor-fold desc="Word Classes"> **************************************
-    // ========================================================================
+    //*************************************************************************
+    // <editor-fold desc="Word Classes"> 
+    //*************************************************************************
     abstract private static class Word {
         protected final String VALUE;
         // -------------------------
@@ -341,7 +393,7 @@ public class TextParser {
             super(instrument);
         }
     }
-    // ========================================================================
-    // </editor-fold> *************************************************************
-    // ========================================================================
+    //*************************************************************************
+    // </editor-fold>
+    //*************************************************************************
 }

@@ -5,6 +5,7 @@ import A_Super.Fireplace;
 import A_Super.Item;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
+import A_Super.Liquid;
 /**
  * Gives the player sacred fire if the player uses the enchanted bottle on
  * this.
@@ -18,7 +19,7 @@ public class Par1_FirePlace extends Fireplace {
 /* CONSTRUCTOR ---------------------------------------------------------------*/           
     public Par1_FirePlace(Item bckt) {       
         super(true, bckt);
-        this.SCRDFR_REF = new Item(SACRED_FIRE, "The fire burns enigmatically inside "
+        this.SCRDFR_REF = new Liquid(SACRED_FIRE, "The fire burns enigmatically inside "
                                  + "the bottle. To your surprise, the fire gives off no heat.");
         this.descLit = "It's a large sandstone fireplace, about your height.\n"
                      + "Its mantle is supported on both sides by short columns\n"

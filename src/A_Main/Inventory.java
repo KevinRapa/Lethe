@@ -29,7 +29,7 @@ public class Inventory implements Iterable<Item>, Serializable {
     public Item get(String itemName) {
         // Never returns null, inventory is pre-checked for item.
         for (Item i : this.contents())
-            if (i.toString().toLowerCase().matches(".*("+ itemName + ").*"))
+            if (i.toString().matches(".*(?i:"+ itemName + ").*"))
                 return i;
         
         return null;

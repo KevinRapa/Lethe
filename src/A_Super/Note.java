@@ -1,6 +1,7 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
+import static A_Main.NameConstants.READABLE;
 /**
  * Represents a piece of paper with writing on it. 
  * Plays a paper noise when inspected or used.
@@ -11,6 +12,7 @@ public class Note extends Item {
 /*----------------------------------------------------------------------------*/    
     public Note(String name) {
         super(name);
+        this.type = READABLE;
         this.useID = 1;
     }
 /*----------------------------------------------------------------------------*/    

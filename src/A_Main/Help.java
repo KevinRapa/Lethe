@@ -37,7 +37,8 @@ public class Help {
          
          "In this game, you may move four directions; north, south, east, and west.\n"
        + "The keys for these are 'w', 's', 'a', and 'd'. Really, who wants to type\n"
-       + "in 'north' every time they want to move?", 
+       + "in 'north' every time they want to move? I mean, you can if you really want to.\n"
+       + "I can't stop you.", 
          
          "When you enter a room, especially for the first time, you may want to read\n"
        + "a description of it because this is a text-based game, so there are\n"
@@ -69,15 +70,15 @@ public class Help {
         "type 'take' or 'store' followed by a space, and then the item's slot.\n", 
          
         "Interacting is performed from the main prompt by entering an action followed by\n"
-      + "the name of an object in the room. You may interact with discrete objects mentioned in the room\n"
-      + "description, and your character will interact with it.\n" +
-        "Interacting means your character is doing something to/with the object, like\n" +
-        "'pull', 'sit', etc.\n" +
+      + "the name of an object in the room or an item in your inventory (or its slot number).\n"
+      + "You may interact with objects mentioned in the room description or items you have\n"
+      + "and your character will interact with it.\n" +
         "You may type <'search'/'e' object>' from the main prompt to search the object if you wish,\n" +
         "and 'check/view/look/watch/inspect <object>' to check the object. Also, you\n"
       + "may type <action 'it'/'them'> to reference the furniture you last performed\n"
-      + "an action on. For example, if you search check a window, you may subsequently\n"
-      + "type 'open it' to open the window.",
+      + "an action on. Well, actually you may type whatever you want. Heck, type,\n"
+      + "'kill yourself' if you feel like it, or 'eat <item>'. If that's how you think\n"
+      + "you can beat the game.",
          
         "Using is an inventory action, and is performed from the inventory ('i'). To\n" +
         "use an item, press '2' from the inventory menu, and you will be asked to\n" +

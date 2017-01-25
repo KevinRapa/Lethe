@@ -3,7 +3,6 @@ package A_Main;
  * This is a text-based adventure game called <del>Salamaa</del> <ins>Lethe</ins>
  * being written as a personal project.
  * </p> <p>
- * In browsing the classes in the Main package, it helps to collapse all folds.
  * All super classes are in package A_Super. Packages are organized by room.
  * A room class is named by its ID and is four characters long (i.e. Cou4, Torc).
  * </p> <p>
@@ -196,7 +195,7 @@ public class Main {
         // <editor-fold desc="Mandragora set">
         // Instantiated before courtyard because soil can be found in the courtyard.
         Item mndrk = new Item(MANDRAGORA, "The potato-shaped vegetable looks disturbingly life-like.");
-        Item hlyWtr = new Item(HOLY_WATER, "Clear, salty, and boiled like hell.", mndrk, 2);
+        Item hlyWtr = new Liquid(HOLY_WATER, "Clear, salty, and boiled like hell.", mndrk, 2);
         Item pttdMndrk = new Item(POTTED_MANDRAGORA, "You have gently positioned the bulb under the soil.", mndrk, 2);
         Item mndrkBlb = new Item("mandragora bulb", "It's a baby mandragora!", pttdMndrk, 2);
         Item mndrkPt = new Item(POTTED_SOIL_AND_FERTILIZER, "The fertile soil mixture is packed gently into the pot. ", pttdMndrk, 2);
@@ -318,7 +317,7 @@ public class Main {
         Item rck = new Item("rock", "It's a piece of the courtyard fountain.");
         Item trs = new Item("statue torso", "It's a stone torso, probably from the courtyard statue");
         Item hd = new Item("statue head", "It's a stone head with a chiseled male face.");
-        Item sprcExtrct = new Item(SPRUCE_EXTRACT, "Evergreens are widely known to be resistant to burning.");
+        Item sprcExtrct = new Liquid(SPRUCE_EXTRACT, "Evergreens are widely known to be resistant to burning.");
         Item brrs = new Item("bright red berries", "They look firm and juicy", "You realize, the brightest, reddest berries are the most poisonous of all.");
         Item pnCn = new Item("pinecone", "It's scaley but smooth, and is shaped like a pickle. Yes, undoubtedly a spruce pinecone!", "This looks painful to eat...");
         //-----------------------------FURNITURE--------------------------------
@@ -418,13 +417,13 @@ public class Main {
         Room wow1 = new Wow1("in the west outer wall", Id.WOW1);
         Room wow2 = new Wow2("in the west outer wall", Id.WOW2);
         //-------------------------------ITEMS----------------------------------
-        Item vinegar = new Item(BOTTLE_OF_VINEGAR, "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"");
+        Item vinegar = new Liquid(BOTTLE_OF_VINEGAR, "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"");
         Item wowLddr = new Item(FIXED_LADDER, "The spoke sits in there a bit awkwardly, but it\n"
                               + "seems like a good ladder. It may even support your heft.");   
         Item wow1Spk = new Item("wheel spoke", "It's a wooden rod, about a foot long.", wowLddr, 3);
-        Item clngSoln = new Item("cleaning solution", "It smells lemony fresh, unlick the rest of this room.");
+        Item clngSoln = new Liquid("cleaning solution", "It smells lemony fresh, unlick the rest of this room.");
         Item rppdBrlp = new Item("piece of ripped burlap", "It must have belonged to the broken cart in the west wing.");
-        Item actn = new Item("acetone", "It's a strong-smelling solvent in an opaque jar.");
+        Item actn = new Liquid("acetone", "It's a strong-smelling solvent in an opaque jar.");
         //-----------------------------FURNITURE--------------------------------
         Furniture wow2Lddr = new Wow2_Ladder(Direction.UP); // Not in WOW2 to start.
         Furniture wow2Armr = new Wow2_Armor();
@@ -462,8 +461,8 @@ public class Main {
         Item squaLddr = new Squa_Ladder("broken ladder", wowLddr, 3);
         Item squaJrnl = new Note("note: ladder", "Need to get that ladder fixed. Too busy with the cart.\n"
                 + "Don't ask mages to fix, they've been busy lately. I'll keep it under my bed for now.");
-        Item rags = new Item("worn rags", "Some dirty worn rags.", "You are perfectly content with the clothes you have on now.");
-        Item aprn = new Item("kitchen apron", "It's a kitchen apron.", "You are perfectly content with the clothes you have on now.");
+        Item rags = new Clothing("worn rags", "Some dirty worn rags.", "You are perfectly content with the clothes you have on now.");
+        Item aprn = new Clothing("kitchen apron", "It's a kitchen apron.", "You are perfectly content with the clothes you have on now.");
         Item shs = new Shoes("moccasins", "A pair of worn leather mocassins.", "You put on the moccasins. They're quite uncomfortable.");
         //-----------------------------FURNITURE--------------------------------
         Furniture squaF = new Floor("A sandstone tiled floor.");
@@ -483,8 +482,8 @@ public class Main {
         Item shvl = new Item(SHOVEL, "A sturdy shovel for the digging of holes.");
         Item hmmr = new Item(HAMMER, "It's a small handheld nailing device.");
         Item sd = new Item("seed", "It's a handful of mysterious gardening wizardry.");
-        Item gl = new Item("glue bottle", "It's a bottle of sticky glue.");
-        Item closGlv = new Item("gloves", "Some old gardening gloves", "They don't fit on your enormous hands.");
+        Item gl = new Liquid("glue bottle", "It's a bottle of sticky glue.");
+        Item closGlv = new Clothing("gloves", "Some old gardening gloves", "They don't fit on your enormous hands.");
         Item closStrw = new Item("straw", "It's just straw");
         Item scrw1 = new Screw("1mm screw", rdFcs, 3);
         Item scrw2 = new Item("2mm screw", "Just a small screw.");
@@ -902,7 +901,7 @@ public class Main {
         //-----------------------------THE ROOM---------------------------------
         Room drar = new Drar("in the drawing room", Id.DRAR);
         //-------------------------------ITEMS----------------------------------
-        Item wine = new Item(BOTTLE_OF_WINE, "A very old bottle of red wine. The date says \"1822\"");
+        Item wine = new Liquid(BOTTLE_OF_WINE, "A very old bottle of red wine. The date says \"1822\"");
         Item rk = new Item("rook", "the small figure resembles a brick tower.", "You have no idea how to play chess.");
         Item knght = new Item("knight", "the small figure resembles a horse.", "You have no idea how to play chess.");
         Item bshp = new Item("bishop", "the small figure resembles... well... a bishop.", "You have no idea how to play chess.");
