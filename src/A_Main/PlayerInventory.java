@@ -9,6 +9,9 @@ import java.util.Comparator;
  * @author Kevin Rapa
  */
 public class PlayerInventory extends Inventory {
+    private final Item NULL_ITEM = 
+            new Item("null item", "Oops! Looks like there's a bug in the game, "
+                   + "this item will self-destruct in 5 seconds... Just kidding.");
     // ========================================================================
     public PlayerInventory(Item ... items) {
         super(items);
@@ -47,13 +50,13 @@ public class PlayerInventory extends Inventory {
     }
     // ========================================================================
     public Item get(String itemName) {
-        // Shouldn't return null, inventory is pre-checked for item.
+        // Shouldn't return null item, inventory is pre-checked for item.
         for (Item i : this.contents())
             if (i.toString().matches(".*(?i:"+ itemName + ").*"))
                 return i;
         
-        System.err.println("Error: returned null at Inventory#get(String itemName)");
-        return null;
+        System.err.println("Error: returned null item at PlayerInventory.get(String itemName)");
+        return NULL_ITEM;
     }
     // ========================================================================
     public static Comparator<Item> getComparator() {

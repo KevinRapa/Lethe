@@ -21,6 +21,7 @@ package A_Main;
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Salamaa.git">GitHub Repository</a>
  */
+import Trophy_Room.Cobweb;
 import A_Super.*;          import static A_Main.NameConstants.*;
 
 import Vestibule.*;        import Closet.*;             import Foyer.*;
@@ -51,7 +52,7 @@ import java.io.*;          import java.util.Random;
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Lethe");
     private static final String WD = System.getProperty("user.dir");
-    private static final String START = Id.EOW2; // Default COU4
+    private static final String START = Id.COU1; // Default COU4
 // ============================================================================
     public static void main(String[] args) {
         //**********************************************************************
@@ -315,6 +316,8 @@ public class Main {
                                             + "chip on its edge. On its surface is an embossment\n"
                                             + "of a soldier.");
         Item rck = new Item("rock", "It's a piece of the courtyard fountain.");
+        Item grss = new Item("grass", "It's some dark green grass that you pulled from the ground.");
+        Item clvr = new Item("clover", "It's some clover you pulled from the ground.");
         Item trs = new Item("statue torso", "It's a stone torso, probably from the courtyard statue");
         Item hd = new Item("statue head", "It's a stone head with a chiseled male face.");
         Item sprcExtrct = new Liquid(SPRUCE_EXTRACT, "Evergreens are widely known to be resistant to burning.");
@@ -328,16 +331,16 @@ public class Main {
         Furniture cou1Bnch = new Cou1_Bench();
         Furniture cou1Thrns = new Cou1_Thorns();
         Furniture cou1Hl = new Cou1_Hole(krnsPlt);
-        Furniture cou1F = new Cou1_Floor(cou1Hl, sl, sl, sl);
+        Furniture cou1F = new Cou1_Floor(sl, grss, clvr, cou1Hl, sl, sl, sl);
         
         Furniture cou2Fntn = new Cou2_Fountain(rck, rck, rck, rck);
         Furniture cou2Bshs = new Cou2_Bushes(brrs, brrs, brrs, brrs, brrs);
-        Furniture cou2F = new Cou_Floor(sl, sl, sl);
+        Furniture cou2F = new Cou_Floor(sl, grss, clvr, sl, sl, sl);
         
         Furniture cou3Stps = new Cou3_Steps(Direction.UP);
         Furniture cou3Ivy = new Cou3_Ivy();
         Furniture cou3Gt = new Cou3_Gate();
-        Furniture cou3F = new Cou_Floor(sl, sl);
+        Furniture cou3F = new Cou_Floor(sl, grss, clvr, sl, sl);
         
         Furniture cou4Gt = new Cou4_Gate();
         Furniture cou4Frst = new Cou4_Forest();
@@ -345,7 +348,7 @@ public class Main {
         
         Furniture cou5Fntn = new Cou5_Fountain(rck, soldMed, rck);
         Furniture cou5Sprc = new Cou5_Spruce(vial, sprcExtrct, pnCn, pnCn, pnCn);
-        Furniture cou56F = new Cou_Floor(trs, sl, hd, sl);
+        Furniture cou56F = new Cou_Floor(sl, grss, clvr, trs, sl, hd, sl);
 
         Furniture cou6Stat = new Cou6_Statue();
         Furniture cou6Ghst = new Cou6_BlackJackGhost();
@@ -594,7 +597,7 @@ public class Main {
         Furniture gal5Dr = new Gal4_Door(Direction.SOUTH);
         Furniture gal5Dsply = new Gal5_Display(rby1, emrld, aqmrn);
         Furniture gal5Chndlr = new Gal5_Chandelier();
-        Furniture gal5Cbwbs = new Gal5_Cobwebs();
+        Furniture gal5Cbwbs = new Cobweb();
         Furniture gal5Clng = new Gal5_Ceiling();
         Furniture gal5F = new Floor("The floor is a black and white checkered tile.");
         Furniture gal5W = new Wall("The walls are just plain granite brick.");
@@ -1159,7 +1162,6 @@ public class Main {
         Furniture att2Dr = new Sst_Door(Direction.WEST);
         Furniture attCss = new Att_Cases();
         Furniture attBxs = new Att_Boxes();
-        Furniture attCbwbs = new Att_Cobwebs();
         Furniture attVnts = new Att_Vents();
         Furniture att2CtCs = new Att2_LabCoatCase();
         
@@ -1898,8 +1900,8 @@ public class Main {
         obs1.addFurniture(obsSlts, obsStats, obsF, obsW, obsWndw, obs1Strs, obs1Tlscp, obs1Lmp, lib4Glb, obs1St, obsBlcny, northDoor);
         obs2.addFurniture(obsW, obs2F, obsWndw, obs2Strs, obsBlcny, obs2BkShlf, obs2Pntng, obs2Rlng, obs2Chr, obs2Tbl, obs2Lmp);
         obs3.addFurniture(obs3Chndlr, obsW, obs3F, obsWndw, obs3Strs, obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps);
-        att1.addFurniture(attF, attW, sst2Dr, attCss, attBxs, attCbwbs, attVnts);
-        att2.addFurniture(attF, attW, att2Dr, attBxs, attCss, attCbwbs, attVnts, att2CtCs);
+        att1.addFurniture(attF, attW, sst2Dr, attCss, attBxs, gal5Cbwbs, attVnts);
+        att2.addFurniture(attF, attW, att2Dr, attBxs, attCss, gal5Cbwbs, attVnts, att2CtCs);
         labo.addFurniture(laboF, att2Dr, wallEx, laboStpCck, laboBrtt, laboGsPipe, laboCntr, iceBrrl, 
                           laboRck, laboDspnsrs, laboDstllr, laboSnk, laboCntrptn, cndsr, laboTbl, laboDvcs); 
         

@@ -5,7 +5,7 @@ import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
-public class Cou2_Bushes extends Courtyard_Growth{
+public class Cou2_Bushes extends Courtyard_Growth {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou2_Bushes(Item ... items) {
         super();

@@ -1,10 +1,10 @@
 package Ancient_Tomb;
 
-import A_Super.Furniture;
+import A_Super.Ceiling;
 /**
  * @author Kevin Rapa
  */
-public class Ant_Ceiling extends Furniture {
+public class Ant_Ceiling extends Ceiling {
     // ========================================================================
     public Ant_Ceiling () {
         super();

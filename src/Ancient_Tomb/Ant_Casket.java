@@ -16,11 +16,14 @@ public class Ant_Casket extends SearchableFurniture implements Openable {
         super(items);
         this.searchable = false;
         this.searchDialog = "You can't seem to push the lid off. It's sealed with an archaic lock system.";
+        this.actDialog = "It's very impolite to hit coffins!";
         this.description = "The casket lies horizontal in the center of the room.\n"
                          + "It's unlike the rest of the caskets; made of stone, and\n"
                          + "covered by a thick lid. There are three keyholes lined\n"
                          + "up vertically in the center of the lid.";
         this.numKeys = 0;
+        
+        this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:stone )?(?:casket|coffin)", "keyholes?");
         this.addUseKeys(KEY_OF_ANCESTRY, KEY_OF_INTELLECT, KEY_OF_CONTINUITY);
     }
