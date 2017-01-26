@@ -156,20 +156,4 @@ public class Catacomb extends Room {
         return (Player.hasItem(HAND_TORCH)) ? STD_RM_OUT : "???";
     }
 // ============================================================================
-    public static String addJewelRandomly(Room[][][] map) {
-        int x, y;
-        Room target;
-        
-        do {
-            x = GENERATOR.nextInt(8) + 1;
-            y = GENERATOR.nextInt(6) + 1;
-            target = Player.getRoomObj(5, y, x);
-        } while (! target.getID().matches("CT\\d{2}"));
-        
-        target.getFurnishings().get(0).getInv().add(new Item(IRIDESCENT_JEWEL, "The polished stone feels warm to the touch\n"
-                                                           + "and constant shifts color among red, black, and green."));
-        
-        return (x + ", " + y + ", " + 6);
-    }
-// ============================================================================
 }

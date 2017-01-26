@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import A_Super.Openable;
 import Tunnels.DungeonMonster;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Iterator;
 /**
  * Represents the player, the focal point of the game.
@@ -70,21 +73,12 @@ public final class Player {
         return Player.getPos().getID();
     }
     /*------------------------------------------------------------------------*/
-    public static Room[][][] getMapRef() {
-        return mapRef;
-    }
-    /*------------------------------------------------------------------------*/
     public static Room getRoomObj(String ID) {
         int[] c = RoomReferences.getCoords(ID);
         return mapRef[c[0]][c[1]][c[2]];
     }
     /*------------------------------------------------------------------------*/
-    public static Room getRoomObj(int z, int y, int x) {
-        return mapRef[z][y][x];
-    }
-    /*------------------------------------------------------------------------*/
     public static ArrayList<String> getVisitedRooms() {
-        // Used for player data serialization only.
         return visited;
     }
     /*------------------------------------------------------------------------*/
@@ -124,6 +118,14 @@ public final class Player {
         Player.shoes = shoes;
     }
     // </editor-fold>
+    
+    public static void packageAttributes(ObjectOutputStream stream) 
+            throws IOException
+    {
+        stream.writeObject(new PlayerAttributes(mapRef, pos, inv, keys,
+                                                visited, lastVisited, shoes));
+    }
+    
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************
@@ -132,16 +134,16 @@ public final class Player {
 //******************************************************************************
 // <editor-fold desc="START GAME"> 
 //******************************************************************************
-    public static void loadAttributes(PlayerInventory inv, Inventory keys, ArrayList<String> visited, 
-                                      String lastVisited, String shoesWearing, int[] pos, Room[][][] map) {
-        // Sets saved game attributes. See PlayerAttributes.java.
-        Player.mapRef = map;
-        Player.inv = inv;
-        Player.keys = keys;
-        Player.pos = pos;
-        Player.visited = visited;
-        Player.lastVisited = lastVisited;
-        Player.shoes = shoesWearing;
+    public static void loadAttributes(Object attr) throws ClassCastException {
+        PlayerAttributes attributes = (PlayerAttributes)attr;
+        
+        Player.mapRef = attributes.MAP;
+        Player.inv = attributes.INV;
+        Player.keys = attributes.KEYS;
+        Player.pos = attributes.POS;
+        Player.visited = attributes.VISITED;
+        Player.lastVisited = attributes.LSTVISITED;
+        Player.shoes = attributes.SHOES;
         Player.cmd = new HashMap<>();
         
         if (pos[0] == 4 && pos[2] < 7) // Starts monster if player is in the 
@@ -813,6 +815,42 @@ public final class Player {
         } 
         return true;
     }   
+//******************************************************************************    
+// </editor-fold>  
+//******************************************************************************
+    
+    
+//******************************************************************************    
+// <editor-fold desc="PLAYER ATTRIBUTES CLASS">  
+//******************************************************************************
+    /**
+     * This class holds all the attributes of the player to be serialized out to a file.
+     * When a game starts, if save game data exists, the serialized instance of this
+     * is read in and used as a template to form the player.
+     * 
+     * @author Kevin Rapa
+     */
+    private static final class PlayerAttributes implements Serializable {
+        public final Room[][][] MAP;
+        public final int[] POS;
+        public final Inventory KEYS; 
+        public final PlayerInventory INV; 
+        public final ArrayList<String> VISITED; 
+        public final String LSTVISITED, SHOES; 
+        // ========================================================================
+        public PlayerAttributes(Room[][][] map, int[] pos, PlayerInventory inv, 
+                                Inventory keys, ArrayList<String> vstd, 
+                                String lstVstd, String shoes) 
+        {
+            this.MAP = map;
+            this.POS = pos;
+            this.INV = inv;
+            this.KEYS = keys;
+            this.LSTVISITED = lstVstd;
+            this.SHOES = shoes;
+            this.VISITED = vstd;
+        }
+    }
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************

@@ -91,10 +91,13 @@ public class Main {
         {
             System.out.println("Data found. Loading game.");
             RoomReferences.constructCoorinateReferences();
-            ((PlayerAttributes)gameData.readObject()).loadAttributes();
+            Player.loadAttributes(gameData.readObject());
             exitChoice = Player.mainPrompt(); // START GAME
         } 
-        catch (java.lang.ClassNotFoundException | java.io.IOException e) {
+        catch (java.lang.ClassNotFoundException | 
+               java.io.IOException | 
+               ClassCastException e) 
+        {
             System.out.println(e.getMessage() + "\nData missing. Creating new game.");
             RoomReferences.constructRoomReferences();
             Player.setNewAttributes(RoomReferences.getCoords(START));
@@ -118,7 +121,7 @@ public class Main {
                                                    new File(WD, "Game.data")));
                     ) 
                 {
-                    gameData.writeObject(new PlayerAttributes());  
+                    Player.packageAttributes(gameData);  
                 } 
                 catch (java.io.IOException e) {
                     System.out.println(e.getMessage());
@@ -1910,6 +1913,7 @@ public class Main {
         // <editor-fold desc="AREA 5: SUB-LEVELS">
         
         // <editor-fold desc="Tunnels and dungeon">
+        
         sew0.addFurniture(sew0Strs, dngnW, sewF, sew0Trch, sewTnnl, sewMss);
         sew1.addFurniture(sew1Rvr, sewF, dngnW, sewTnnl, sew15Gt, sew1Trch, sewMss);
         sew2.addFurniture(sewRvr, sewF, dngnW, sewTnnl, sew2Trch, sewMss, sew2BrdgW, sew2Pp, sew2Vlvs);
@@ -1932,9 +1936,11 @@ public class Main {
         cry2.addFurniture(dngnW, cryF, cryDrwrs, cryLghts, cry2Engrvng, cry2Altr, dungMonst, cry2Psswd, cryDummy, clng);
         aarc.addFurniture(sewDrW, aarcF, aarcW, aarcWd, aarcBks, aarcChndlr, aarcDsk, aarcAlg, aarcShlvs, dungMonst, clng);
         dkch.addFurniture(sewDrW, dkchF, dngnW, dkchBd, dkchAxl, dkchDsk, squaCndl, dkchClng, dungMonst);
+        
         // </editor-fold>
         
         // <editor-fold desc="Catacombs and caves">
+        
         tm16.addFurniture(tmb1Cskt, catW, tm1F, catDrS, tm1Vs, tm1Bwl, tm1Effgy, clng);
         tm66.addFurniture(tmb2Cskt, catW, tm2F, catDrE, tm2Vs, tm2Orb, clng);
         tm32.addFurniture(tmb3Cskt, catW, tm3F, catDrW, tm3Vs, tm3Tpstry, tm3Cndl, clng);
@@ -1949,6 +1955,7 @@ public class Main {
         cv64.addFurniture(omnDr);
         ms65.addFurniture(dmmyFurniture);
         ms66.addFurniture(factum, dmmyFurniture);
+        
         //</editor-fold>
         
         // </editor-fold>
