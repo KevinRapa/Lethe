@@ -1,16 +1,13 @@
 package Back_Balcony;
 
-import A_Super.Furniture;
+import A_Super.Column;
 
-public class Bba_Columns extends Furniture {
+public class Bba_Columns extends Column {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bba_Columns() {
         super();
         this.description = "The granite columns are wide and bulging.";
-        this.searchDialog = "Nothing on these columns...";
-        this.actDialog = "These columns don't need extra help holding up the roof.";
-        this.addActKeys("grab", "hold");
-        this.addNameKeys("columns?");
+        this.addNameKeys("(?:granite )?(?:columns?|pillars?)");
     }
 /*----------------------------------------------------------------------------*/
 }

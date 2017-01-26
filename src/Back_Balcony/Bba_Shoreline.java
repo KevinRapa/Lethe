@@ -9,6 +9,8 @@ public class Bba_Shoreline extends Furniture{
         this.description = "It's a long, distant shoreline running in front of\n" +
                            "the small village.";
         this.searchDialog = "There's no way you are getting over there.";
+        this.actDialog = this.searchDialog;
+        this.addActKeys("get", "go", "walk", "fly", "jump");
         this.addNameKeys("shore ?(?:line)?");
     }
 /*----------------------------------------------------------------------------*/

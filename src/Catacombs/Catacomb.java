@@ -3,6 +3,7 @@ package Catacombs;
 import A_Main.Player;
 import static A_Main.NameConstants.HAND_TORCH;
 import static A_Main.NameConstants.IRIDESCENT_JEWEL;
+import A_Super.Ceiling;
 import A_Super.Direction;
 import A_Super.Floor;
 import A_Super.Furniture;
@@ -20,6 +21,13 @@ import java.util.Random;
  */
 public class Catacomb extends Room {
     protected String descLit;
+    private static final Furniture CAT_CEILING = 
+            new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}},
+                                   CAT_WALL = 
+            new Wall("The walls are wet and rocky."),
+                                   CAT_FLOOR = 
+            new Floor("It's a damp, rocky, dirty floor.");
+    
     protected static final Random GENERATOR = new Random();
     protected static int[] jewelCoords;
 // ============================================================================    
@@ -130,7 +138,7 @@ public class Catacomb extends Room {
         for (int start = 1; start <= numTimes; start++) 
             ctGrv.getInv().add(itemList[GENERATOR.nextInt(3)]);
 
-        this.addFurniture(ctGrv, new Floor("It's a damp, rocky, dirty floor."), new Wall("The walls are wet and rocky."));
+        this.addFurniture(ctGrv, CAT_FLOOR, CAT_WALL, CAT_CEILING);
         
         if (door != null)
             this.addFurniture(door);

@@ -337,8 +337,8 @@ public class GUI extends JPanel {
      * Prints the main menu of controls.
      */
     public static void toMainMenu() {
-        MEN.setText("    <'w'/'s'/'a'/'d'> Move\n"
-                  + "    <action object> Action\n"
+        MEN.setText("       <command> Action\n"
+                  + "    <'w'/'s'/'a'/'d'> Move\n"
                   + "<'e'> Search    <'c'>    Check\n"
                   + "<'i'> Inventory <'k'>    Keys\n"
                   + "<'h'> Get help  <'quit'> Quit");

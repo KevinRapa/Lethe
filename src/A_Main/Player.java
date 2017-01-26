@@ -223,9 +223,6 @@ public final class Player {
             if (ans.matches("[heckiwsad]")) 
                 cmd.get(ans.charAt(0)).run();
 
-            else if (ans.matches(".*(?:fuck|shit|cunt|damn|bitch|vittu|perkele|paska).*"))
-                GUI.out("Mind yourself! You're a guest here!");
-     
             else if (ans.matches("[a-z]+\\s[a-z0-9 ,'.-]+")) // Interacting
                 TextParser.processText(ans);
             

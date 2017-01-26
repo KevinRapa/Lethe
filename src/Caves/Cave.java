@@ -6,6 +6,8 @@ import A_Super.Wall;  import A_Super.Room;
 import static A_Main.AudioPlayer.S;
 import static A_Main.AudioPlayer.WD;
 import static A_Main.NameConstants.HAND_TORCH;
+import A_Super.Ceiling;
+import A_Super.Furniture;
 import static java.lang.Math.*;
 import java.io.File;
 import java.io.IOException;
@@ -23,6 +25,14 @@ import javax.sound.sampled.*;
  */
 public class Cave extends Room {
     protected String descLit;
+    
+    protected static final Furniture CV_FLOOR = 
+            new Floor("The floor is cold hard rock and uninteresting."),
+                                     CV_WALL = 
+            new Wall("The wall is damp, plain rock."),
+                                     CV_CEILING = 
+            new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}};
+    
     protected final int DISTANCE; // Distance this room is from MS65
     protected static final Random GENERATOR = new Random();
     protected static final File DISTORTION = new File(WD, "ambience" + S + "caveDistortion.wav");
@@ -137,8 +147,7 @@ public class Cave extends Room {
             descLit = descLit.concat(", erected unevenly into the tunnel wall is an ancient door.");
         }
 
-        this.addFurniture(new Floor("The floor is cold hard rock and uninteresting."),
-                          new Wall("The wall is damp, plain rock."));
+        this.addFurniture(CV_FLOOR, CV_WALL, CV_CEILING);
     }
 // ============================================================================
     @Override public String getDescription() {

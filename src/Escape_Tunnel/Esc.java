@@ -4,6 +4,7 @@ import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Player;
 import static A_Main.NameConstants.HAND_TORCH;
+import A_Super.Ceiling;
 import A_Super.Room;
 import A_Super.Direction;
 import A_Super.Furniture;
@@ -18,8 +19,10 @@ import Tunnels.Dungeon_Floor;
  * @author Kevin Rapa
  */
 public class Esc extends Room {
-    private final Furniture MACHINERY_REF = new Esc_Mchnry();
-    private final Furniture FLOOR_REF = new Esc_F();
+    private final Furniture MACHINERY_REF = new Esc_Mchnry(),
+                            FLOOR_REF = new Esc_F(),
+                            ESC_WALL = new Wall("The walls are masked by a wall of machinery."),
+                            ESC_CLNG = new Ceiling() {{this.description = "The ceiling is pretty low here.";}};
     private final String MACHINERY_DESC = "You're crammed in a small utility tunnel.\n" +
             "Many pistons, gears, and other complicated machinery operate around you.\n"
           + "The hallway offers a bit of space in which to move forward. ",
@@ -31,7 +34,7 @@ public class Esc extends Room {
     public Esc(String name, String ID, String desc) {
         super(name, ID);
         this.description = desc;
-        this.addFurniture(MACHINERY_REF, FLOOR_REF, new Wall("The walls are masked by a wall of machinery."), new DungeonMonsterFurniture());
+        this.addFurniture(MACHINERY_REF, FLOOR_REF, ESC_WALL, ESC_CLNG, new DungeonMonsterFurniture());
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {

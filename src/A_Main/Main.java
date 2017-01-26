@@ -52,7 +52,7 @@ import java.io.*;          import java.util.Random;
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Lethe");
     private static final String WD = System.getProperty("user.dir");
-    private static final String START = Id.COU1; // Default COU4
+    private static final String START = Id.COU4; // Default COU4
 // ============================================================================
     public static void main(String[] args) {
         //**********************************************************************
@@ -181,6 +181,7 @@ public class Main {
         Door westDoor = new Door(Direction.WEST);
         Furniture genDoor = new GenDoor();// Generic door, for rooms with multiple doors.
         Furniture wallEx = new ExteriorWall(); // Generic exterior castle wall.
+        Furniture clng = new Ceiling(); // Generic ceiling
         
         // </editor-fold>
         // --------------------------------------------------------------------- 
@@ -234,12 +235,10 @@ public class Main {
         //-----------------------------FURNITURE--------------------------------                       
         Furniture bbaF = new Floor("It's a shale tile floor.");
         Furniture bbaClmns = new Bba_Columns();   
-        Furniture bbaRlng = new Bba_Rlng();
-        Furniture bbaRf = new Bba_Roof();   
+        Furniture bbaRlng = new Bba_Rlng();  
         Furniture bbaVllg = new Bba_Village();
         Furniture bbaScnc = new Bba_Sconce();   
         Furniture bbaBnch = new Bba_Bench(bbaNote);
-        Furniture bbaWvs = new Bba_Waves();
         Furniture bbaClff = new Bba_Cliff();
         Furniture bbaShrln = new Bba_Shoreline();
         Furniture bbaSea = new Bba_Sea();
@@ -1163,6 +1162,7 @@ public class Main {
         Furniture attCss = new Att_Cases();
         Furniture attBxs = new Att_Boxes();
         Furniture attVnts = new Att_Vents();
+        Furniture attClng = new Att_Ceiling();
         Furniture att2CtCs = new Att2_LabCoatCase();
         
         // </editor-fold>        
@@ -1586,6 +1586,7 @@ public class Main {
         Furniture chaHz = new Cha_Haze();
         Furniture chaCrpt = new Cha_Carpet();
         Furniture chaWndws = new Cha_Windows();
+        Furniture chaClng = new Cha_Ceiling();
         
         Furniture cha1Cylx = new Cha1_Cylix();
         Furniture cha1Wtr = new Cha1_Water(hlyWtr);
@@ -1817,13 +1818,13 @@ public class Main {
         
         // <editor-fold desc="AREA 1: CASTLE FRONT">
         
-        foy1.addFurniture(genDoor, foy1Gt, foyFrntDr, foyF, foyW, foy1Chnd, eastDoor, foy1Tbl, foy1Crpt, foy1Strs);
-        foy2.addFurniture(foy2Gt, foy2Stat, foy2Alc, foyF, foyW, foy2Strcs, foyBnstr);
-        foy3.addFurniture(foy3Strs, westDoor, foyBnstr, foyW, foy3F, foy34Crpt);
-        foy4.addFurniture(foy4Strs, foyBnstr, foyW, foy4F, foy34Crpt, foy4Dr);
+        foy1.addFurniture(genDoor, foy1Gt, foyFrntDr, foyF, foyW, foy1Chnd, eastDoor, foy1Tbl, foy1Crpt, foy1Strs, clng);
+        foy2.addFurniture(foy2Gt, foy2Stat, foy2Alc, foyF, foyW, foy2Strcs, foyBnstr, clng);
+        foy3.addFurniture(foy3Strs, westDoor, foyBnstr, foyW, foy3F, foy34Crpt, clng);
+        foy4.addFurniture(foy4Strs, foyBnstr, foyW, foy4F, foy34Crpt, foy4Dr, clng);
         vest.addFurniture(vesFire, vesBtn, vesWin, vesDsk, vesEtbl, vesCase, vesTpstr, vesChr, vesF, vesDr, wallEx, vesOrb);
-        foyb.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, bbaRf, bbaBnch, bbaScnc, bbaWvs, bbaClff, bbaShrln, bbaSea, bba1Gt, wantBttn);
-        foyc.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, bbaRf, bbaScnc, bbaWvs, bbaClff, bbaShrln, bbaSea, bba2Dr);
+        foyb.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, clng, bbaBnch, bbaScnc, bbaClff, bbaShrln, bbaSea, bba1Gt, wantBttn);
+        foyc.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, clng, bbaScnc, bbaClff, bbaShrln, bbaSea, bba2Dr);
         cou1.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou1F, couCstl);
         cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl);
         cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc);
@@ -1831,67 +1832,67 @@ public class Main {
         cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, couCstl);
         cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl);
         cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps);
-        foyw.addFurniture(genDoor, wantStat, wantTrchs, wantLvr, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt, wantBttn);
+        foyw.addFurniture(genDoor, wantStat, wantTrchs, wantLvr, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt, wantBttn, clng);
         
         // </editor-fold>
         // <editor-fold desc="AREA 2: WEST WING">    
         
-        rotu.addFurniture(genDoor, rotuFntn, rotuW, rotuF, rotuPlnts, rotuHl, rotuStat, rotuScnc, rotuFrms, rotuSky, rotuRock);
+        rotu.addFurniture(genDoor, rotuFntn, rotuW, rotuF, rotuPlnts, rotuHl, rotuStat, rotuScnc, rotuFrms, rotuSky, rotuRock, clng);
         look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, eastDoor, iha1Lvr);
-        iha1.addFurniture(northDoor, wWW, ihaF, iha1Armr, iha1Hnd, iha1Bwl, ihaWndw, iha1Lvr);
-        iha2.addFurniture(southDoor, wWW, ihaF, iha2Armr, iha2Bwl, ihaWndw);
-        wow1.addFurniture(genDoor, wWW, westDoor, wow1NDr, wow1Crt, wow1F, wowWndw, wowHrth, wow1Shlvs);
-        wow2.addFurniture(genDoor, wWW, wow2Armr, wow2Blcny, wow2F, wow2Dr, northDoor, wow2Hole, wowWndw, wowHrth, wow2Strcs);
+        iha1.addFurniture(northDoor, wWW, ihaF, iha1Armr, iha1Hnd, iha1Bwl, ihaWndw, iha1Lvr, clng);
+        iha2.addFurniture(southDoor, wWW, ihaF, iha2Armr, iha2Bwl, ihaWndw, clng);
+        wow1.addFurniture(genDoor, wWW, westDoor, wow1NDr, wow1Crt, wow1F, wowWndw, wowHrth, wow1Shlvs, clng);
+        wow2.addFurniture(genDoor, wWW, wow2Armr, wow2Blcny, wow2F, wow2Dr, northDoor, wow2Hole, wowWndw, wowHrth, wow2Strcs, clng);
         wbal.addFurniture(wallEx, eastDoor, lookLghths, lookClff, lookRlng, wbalF, wbalBcn, wbalFrst, bbaSea);
-        squa.addFurniture(wWW, squaF, squaBd, squaDsk, squaWndw, lookLghths, lookClff, bbaSea, squaWrdrb, squaCndl, squaDr);
-        wow3.addFurniture(genDoor, wWW, wow3Shlf, wow3F, wow3Dr, bbaRlng, wow3NDr);
-        sha1.addFurniture(wWW, shaF, sha1Trch, sha1Dr, sha1SDr);
-        sha2.addFurniture(wWW, sha2Cbnt, shaF, sha2Dr, sha2Trch);
+        squa.addFurniture(wWW, squaF, squaBd, squaDsk, squaWndw, lookLghths, lookClff, bbaSea, squaWrdrb, squaCndl, squaDr, clng);
+        wow3.addFurniture(genDoor, wWW, wow3Shlf, wow3F, wow3Dr, bbaRlng, wow3NDr, clng);
+        sha1.addFurniture(wWW, shaF, sha1Trch, sha1Dr, sha1SDr, clng);
+        sha2.addFurniture(wWW, sha2Cbnt, shaF, sha2Dr, sha2Trch, clng);
         clos.addFurniture(closW, closF, closShlf, closStl, closBrrl, closWrkbnch, closLddr, closScks, closClng, closSkltn, closDr);  
-        cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searAsh, closW);
-        shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, lookLghths, lookClff, bbaSea, rquaPnl);
-        stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, southDoor, iha1Lvr);
+        cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searAsh, closW, clng);
+        shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, lookLghths, lookClff, bbaSea, rquaPnl, clng);
+        stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, southDoor, iha1Lvr, clng);
         
         // </editor-fold>
         // <editor-fold desc="AREA 3: EAST WING">     
         
-        gal1.addFurniture(gal1Dr, gal1F, gal1W, gal1Drgn, gal1KtnFurn, gal1Pntng, gal1Pntng2, gal1Pntng3, gal1Armr, gal1Scr, gal1Scrn, gal1Pntngs, gal1Lghts, gal1Sclptrs, gal1Hrth);
+        gal1.addFurniture(gal1Dr, gal1F, gal1W, gal1Drgn, gal1KtnFurn, gal1Pntng, gal1Pntng2, gal1Pntng3, gal1Armr, gal1Scr, gal1Scrn, gal1Pntngs, gal1Lghts, gal1Sclptrs, gal1Hrth, clng);
         gal2.addFurniture(genDoor, gal2Stat, gal2Strcs, gal2F, gal2W, galBalc, gal1Lghts, rotuSky, galDm, gal2Clmns, mhaSDr, eastDoor);
-        gal3.addFurniture(gal3Ttm, gal3Peg, gal3Hl, gal3Sgmnt, gal3Htch, gal3Lddr, gal3Rp, gal3Swtch, gal3InstFurn, gal3Msk, gal3Msk2, gal3Msk3, gal3Msks, gal3Hrth, gal3F, gal3W, gal3Art, gal3Art2, gal3Art3, gal3Arts);
+        gal3.addFurniture(gal3Ttm, gal3Peg, gal3Hl, gal3Sgmnt, gal3Htch, gal3Lddr, gal3Rp, gal3Swtch, gal3InstFurn, gal3Msk, gal3Msk2, gal3Msk3, gal3Msks, gal3Hrth, gal3F, gal3W, gal3Art, gal3Art2, gal3Art3, gal3Arts, clng);
         gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Dr, gal2Clmns, gal4Lft);
-        gal6.addFurniture(gal6Cnn, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl);
+        gal6.addFurniture(gal6Cnn, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl, clng);
         gal7.addFurniture(wWW);
-        mha1.addFurniture(genDoor, mhaChndlr, mhaChr, mha1Plnt, mhaF, mhaW, mhaNWndw1, mhaNDr, mhaNChaDr);
-        mha2.addFurniture(mhaChndlr, mhaChr, mha2Plnt, mhaF, mhaW, mhaNWndw2, mhaMDr, mhaRStat, mhaLStat, mhaStats);
-        mha3.addFurniture(genDoor, mhaChndlr, mhaChr, mha3Plnt, mhaF, mhaW, mhaSWndw, mha3KitcDr, mhaSDr);
-        lib2.addFurniture(libLF, libW, libCch, lib2ShRck, lib2Stat, lib2Frplc, lib2Bttn, lib2WrFr, lib2Vyg, libBkShlf, libScncs, lib2Wndw);
+        mha1.addFurniture(genDoor, mhaChndlr, mhaChr, mha1Plnt, mhaF, mhaW, mhaNWndw1, mhaNDr, mhaNChaDr, clng);
+        mha2.addFurniture(mhaChndlr, mhaChr, mha2Plnt, mhaF, mhaW, mhaNWndw2, mhaMDr, mhaRStat, mhaLStat, mhaStats, clng);
+        mha3.addFurniture(genDoor, mhaChndlr, mhaChr, mha3Plnt, mhaF, mhaW, mhaSWndw, mha3KitcDr, mhaSDr, clng);
+        lib2.addFurniture(libLF, libW, libCch, lib2ShRck, lib2Stat, lib2Frplc, lib2Bttn, lib2WrFr, lib2Vyg, libBkShlf, libScncs, lib2Wndw, clng);
         lib3.addFurniture(libLF, libW, westDoor, lib3Strs, libCch, lib3Stat, lib3Crtn, libScncs, lib3Blcny, lib3Wndw, lib3Pllr, lib3Pntng);
-        lib4.addFurniture(libUF, libW, libCch, lib4Frplc, lib4Bttn, lib4Prdtn, libScncs, lib3Pllr, lib4Stat, lib4Glb, lib3Blcny, lib4Tbl, lib4Strs);
-        lib5.addFurniture(libUF, libW, lib5Bnshmnt, libScncs, lib3Pllr, lib5Cndlbr);
-        eow1.addFurniture(genDoor, wWW, eowF, eow1Dr, eow1Rck, eow1Bskt, eow1Trch, wowWndw, mhaNDr);
+        lib4.addFurniture(libUF, libW, libCch, lib4Frplc, lib4Bttn, lib4Prdtn, libScncs, lib3Pllr, lib4Stat, lib4Glb, lib3Blcny, lib4Tbl, lib4Strs, clng);
+        lib5.addFurniture(libUF, libW, lib5Bnshmnt, libScncs, lib3Pllr, lib5Cndlbr, clng);
+        eow1.addFurniture(genDoor, wWW, eowF, eow1Dr, eow1Rck, eow1Bskt, eow1Trch, wowWndw, mhaNDr, clng);
         eow2.addFurniture(wWW, eowF, eow2Fntn, wtr, eow2Rck, wowWndw, eow2Strs, eow2Blcny, eow2Cbnt, eow2Trch);
-        eow4.addFurniture(wWW, eow4F, eow4Strs, bbaRlng, westDoor);
-        dst1.addFurniture(dst1F, dstW, dst1Strs, dst1Dr, dst1Lntrn);
-        lib1.addFurniture(lib1F, lib1W, vesChr, lib1Dsk, lib1Art, lib1Docs, lib1Rg, lib1Wndw, lib1Rck, lib1Tbl, lib1Lght, lib1Mrrr, lib1Sf);
-        work.addFurniture(wWW, wrkF, eastDoor, wowWndw, wrkBrl, wrkCstTbl, wrkKln, wrkBnch, wrkCbnt, wrkFrg, wrkAnvl);
+        eow4.addFurniture(wWW, eow4F, eow4Strs, bbaRlng, westDoor, clng);
+        dst1.addFurniture(dst1F, dstW, dst1Strs, dst1Dr, dst1Lntrn, clng);
+        lib1.addFurniture(lib1F, lib1W, vesChr, lib1Dsk, lib1Art, lib1Docs, lib1Rg, lib1Wndw, lib1Rck, lib1Tbl, lib1Lght, lib1Mrrr, lib1Sf, clng);
+        work.addFurniture(wWW, wrkF, eastDoor, wowWndw, wrkBrl, wrkCstTbl, wrkKln, wrkBnch, wrkCbnt, wrkFrg, wrkAnvl, clng);
         din1.addFurniture(din1Clmns, din1Blcny, din1Tbl, din1Tpstry, din1F, din1W, din1Wndw, din1Chrs, din1Chndlr, din1Mnlght, din1Strs, din1Crpt, din1Dr);
-        din2.addFurniture(din2W, din2F, southDoor, din2Pntng, din2Strs);
-        drar.addFurniture(northDoor, drarGhst, drarF, drarW, din1Mnlght, drarChss, drarBr, drarBllrds, drarWndw, drarCch, drarTbl);
-        gal5.addFurniture(gal5Dsply, gal5Chndlr, gal5Cbwbs, gal5F, gal5W, gal5Clng, gal5Cbt, gal5Dr);
-        kitc.addFurniture(kitcTrch, kitcF, kitcW, kitcWndw, kitcDr, kitcRck, kitcPts, kitcHrth, kitcBrls, kitcPntry, kitcShlf, kitcCntr, laboSnk);
+        din2.addFurniture(din2W, din2F, southDoor, din2Pntng, din2Strs, clng);
+        drar.addFurniture(northDoor, drarGhst, drarF, drarW, din1Mnlght, drarChss, drarBr, drarBllrds, drarWndw, drarCch, drarTbl, clng);
+        gal5.addFurniture(gal5Dsply, gal5Chndlr, gal5Cbwbs, gal5F, gal5W, gal5Clng, gal5Cbt, gal5Dr, clng);
+        kitc.addFurniture(kitcTrch, kitcF, kitcW, kitcWndw, kitcDr, kitcRck, kitcPts, kitcHrth, kitcBrls, kitcPntry, kitcShlf, kitcCntr, laboSnk, clng);
 
         // </editor-fold>
         // <editor-fold desc="AREA 4: CASTLE REAR">
         
         par2.addFurniture(genDoor, wWW, par2F, par2Wndw, westDoor, eastDoor, par2Strs, parLft, par2Bwl, par2Frplc, par2Pno, par2Shlf);
         par1.addFurniture(par1F, par1Dr, par1FrPlc, wWW, par1EnchntTbl, par1Strs, parLft,
-                          par1Pllrs, par1Orb, par1Hrp, par1Shlf, lib1Rg, par1Cshn, vesChr);
-        bha3.addFurniture(southDoor, bha1Hrzn, bha1Plnt, bha1Tbl, bha1F, bhaW);
-        bha2.addFurniture(bha2F, bha2W, bha2Frm);
-        bha1.addFurniture(bha3F, bhaW, southDoor, bha3Wndw);
-        jha1.addFurniture(eastDoor, jhaF, jhaW, par2Wndw, jha1Pntng, jhaLntrn, jhaJd, jha1Ln);
-        jha2.addFurniture(southDoor, jhaF, jhaW, jhaLntrn, jhaJd, jha2Ln);
-        sst1.addFurniture(wallEx, sst1Strs, sstLndng, sst1F, sst1Dr);
+                          par1Pllrs, par1Orb, par1Hrp, par1Shlf, lib1Rg, par1Cshn, vesChr, clng);
+        bha3.addFurniture(southDoor, bha1Hrzn, bha1Plnt, bha1Tbl, bha1F, bhaW, clng);
+        bha2.addFurniture(bha2F, bha2W, bha2Frm, clng);
+        bha1.addFurniture(bha3F, bhaW, southDoor, bha3Wndw, clng);
+        jha1.addFurniture(eastDoor, jhaF, jhaW, par2Wndw, jha1Pntng, jhaLntrn, jhaJd, jha1Ln, clng);
+        jha2.addFurniture(southDoor, jhaF, jhaW, jhaLntrn, jhaJd, jha2Ln, clng);
+        sst1.addFurniture(wallEx, sst1Strs, sstLndng, sst1F, sst1Dr, clng);
         sst2.addFurniture(wallEx, sst2Strs, sstLndng, sst2F, sstWndw, sst2Dr);
         gar1.addFurniture(lookClff, bbaSea, wallEx, bbaRlng, garF, gar1Stat, gar13Plntr);
         gar2.addFurniture(wallEx, gar2Hl, northDoor, garF, gar2Dm, gar2Clmn, gar24Scnc);
@@ -1899,11 +1900,11 @@ public class Main {
         gar4.addFurniture(wallEx, southDoor, gar4Plq, gar4Plntr, garF, gar24Scnc);
         obs1.addFurniture(obsSlts, obsStats, obsF, obsW, obsWndw, obs1Strs, obs1Tlscp, obs1Lmp, lib4Glb, obs1St, obsBlcny, northDoor);
         obs2.addFurniture(obsW, obs2F, obsWndw, obs2Strs, obsBlcny, obs2BkShlf, obs2Pntng, obs2Rlng, obs2Chr, obs2Tbl, obs2Lmp);
-        obs3.addFurniture(obs3Chndlr, obsW, obs3F, obsWndw, obs3Strs, obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps);
-        att1.addFurniture(attF, attW, sst2Dr, attCss, attBxs, gal5Cbwbs, attVnts);
-        att2.addFurniture(attF, attW, att2Dr, attBxs, attCss, gal5Cbwbs, attVnts, att2CtCs);
+        obs3.addFurniture(obs3Chndlr, obsW, obs3F, obsWndw, obs3Strs, obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps, clng);
+        att1.addFurniture(attF, attW, sst2Dr, attCss, attBxs, gal5Cbwbs, attVnts, attClng);
+        att2.addFurniture(attF, attW, att2Dr, attBxs, attCss, gal5Cbwbs, attVnts, att2CtCs, attClng);
         labo.addFurniture(laboF, att2Dr, wallEx, laboStpCck, laboBrtt, laboGsPipe, laboCntr, iceBrrl, 
-                          laboRck, laboDspnsrs, laboDstllr, laboSnk, laboCntrptn, cndsr, laboTbl, laboDvcs); 
+                          laboRck, laboDspnsrs, laboDstllr, laboSnk, laboCntrptn, cndsr, laboTbl, laboDvcs, clng); 
         
         // </editor-fold>
         // <editor-fold desc="AREA 5: SUB-LEVELS">
@@ -1919,24 +1920,24 @@ public class Main {
         cis2.addFurniture(dngnW, cisF, cisWtr, cisClmns, cisDrknss);
         cis3.addFurniture(cis3Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
         cis4.addFurniture(cis4Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
-        oub1.addFurniture(sewDrW, tm1Bwl, oub1F, dngnW, oub1Pt, dungMonst);
-        intr.addFurniture(intrDr, intrWhl, intrGrs, intrF, dngnW, intrGrt, intrWtr, intrTrch, dungMonst);
+        oub1.addFurniture(sewDrW, tm1Bwl, oub1F, dngnW, oub1Pt, dungMonst, clng);
+        intr.addFurniture(intrDr, intrWhl, intrGrs, intrF, dngnW, intrGrt, intrWtr, intrTrch, dungMonst, clng);
         esc1.addFurniture(esc1Lddr);
         esc6.addFurniture(esc6Grt, esc6Lddr);
-        cas1.addFurniture(casW, casStrs, casF, cs35Trchs, cs35Stat, sewDrE);
+        cas1.addFurniture(casW, casStrs, casF, cs35Trchs, cs35Stat, sewDrE, clng);
         sewp.addFurniture(genDoor, sewpCl, sewpGrt, sewpWtr, sewpF, dngnW, sewDrE, sewDrW, sewpTrch, sewpTnnl);
-        pris.addFurniture(genDoor, prisClls, dngnW, sewDrS, sewDrW, prisF, prisCndlbrs, prisTbl, prisCbnt, prisGts, dungMonst);
-        torc.addFurniture(genDoor, sewDrE, sewDrW, dngnW, torcF, torcTrchs, torcSwhrses, torcScythF, torcRck, torcCgs, torcWhl, torcWd, torcTls, dungMonst);
-        cry1.addFurniture(sewDrW, dngnW, cryF, cry1Stat, cryDrwrs, cry1Crvng, cryLghts, dungMonst, cryDummy);
-        cry2.addFurniture(dngnW, cryF, cryDrwrs, cryLghts, cry2Engrvng, cry2Altr, dungMonst, cry2Psswd, cryDummy);
-        aarc.addFurniture(sewDrW, aarcF, aarcW, aarcWd, aarcBks, aarcChndlr, aarcDsk, aarcAlg, aarcShlvs, dungMonst);
+        pris.addFurniture(genDoor, prisClls, dngnW, sewDrS, sewDrW, prisF, prisCndlbrs, prisTbl, prisCbnt, prisGts, dungMonst, clng);
+        torc.addFurniture(genDoor, sewDrE, sewDrW, dngnW, torcF, torcTrchs, torcSwhrses, torcScythF, torcRck, torcCgs, torcWhl, torcWd, torcTls, dungMonst, clng);
+        cry1.addFurniture(sewDrW, dngnW, cryF, cry1Stat, cryDrwrs, cry1Crvng, cryLghts, dungMonst, cryDummy, clng);
+        cry2.addFurniture(dngnW, cryF, cryDrwrs, cryLghts, cry2Engrvng, cry2Altr, dungMonst, cry2Psswd, cryDummy, clng);
+        aarc.addFurniture(sewDrW, aarcF, aarcW, aarcWd, aarcBks, aarcChndlr, aarcDsk, aarcAlg, aarcShlvs, dungMonst, clng);
         dkch.addFurniture(sewDrW, dkchF, dngnW, dkchBd, dkchAxl, dkchDsk, squaCndl, dkchClng, dungMonst);
         // </editor-fold>
         
         // <editor-fold desc="Catacombs and caves">
-        tm16.addFurniture(tmb1Cskt, catW, tm1F, catDrS, tm1Vs, tm1Bwl, tm1Effgy);
-        tm66.addFurniture(tmb2Cskt, catW, tm2F, catDrE, tm2Vs, tm2Orb);
-        tm32.addFurniture(tmb3Cskt, catW, tm3F, catDrW, tm3Vs, tm3Tpstry, tm3Cndl);
+        tm16.addFurniture(tmb1Cskt, catW, tm1F, catDrS, tm1Vs, tm1Bwl, tm1Effgy, clng);
+        tm66.addFurniture(tmb2Cskt, catW, tm2F, catDrE, tm2Vs, tm2Orb, clng);
+        tm32.addFurniture(tmb3Cskt, catW, tm3F, catDrW, tm3Vs, tm3Tpstry, tm3Cndl, clng);
         ou62.addFurniture(catDrN, oubSpk, oubStrw, oub2F, dngnW);
         an65.addFurniture(catW, antF, antCskt, antNPC, antClng, antCskts, ant2Trch, antW);
         an55.addFurniture(catW, antF, antCskt, catDrN, antClng, antCskts, ant1Trch, antW);
@@ -1954,24 +1955,24 @@ public class Main {
         // <editor-fold desc="AREA 6: CHAPEL AND VAULT">
         
         chs1.addFurniture(chs1Strs, chsWndws, chs1F, chsW, din1Mnlght, chs1Stat, mhaWDr);
-        chs3.addFurniture(chs3Strs, chsWndws, chsW, din1Mnlght, chs3F, southDoor);
-        cha1.addFurniture(cha1Cylx, cha1Wtr, northDoor, chaW, chaF, din1Mnlght, chaPws, cha1Cndlbr, chaHz, chaCrpt, chaWndws);
-        cha2.addFurniture(chaF, chaW, din1Mnlght, chaPws, chaHz, chaCrpt, chaWndws, cha2Alt);
+        chs3.addFurniture(chs3Strs, chsWndws, chsW, din1Mnlght, chs3F, southDoor, clng);
+        cha1.addFurniture(cha1Cylx, cha1Wtr, northDoor, chaW, chaF, din1Mnlght, chaPws, cha1Cndlbr, chaHz, chaCrpt, chaWndws, chaClng);
+        cha2.addFurniture(chaF, chaW, din1Mnlght, chaPws, chaHz, chaCrpt, chaWndws, cha2Alt, chaClng);
         vau1.addFurniture(vau1Chsts, vauF, vauBwls, vau1Tbl, vauTrsr, vauClng);
         vau2.addFurniture(vau2Chsts, vauF, vauBwls, vauTrsr, vauClng);
-        vaue.addFurniture(vaueF, vauBwls, vaueBttns, vauW);
+        vaue.addFurniture(vaueF, vauBwls, vaueBttns, vauW, clng);
         
         // </editor-fold>
         // <editor-fold desc="AREA 7: TOWER">
         
         tow1.addFurniture(tow1F, wallEx, towWndw, towBlcny, tow1Pdstl, tow1Dr, tow1BlckDr, towSphr);
-        tow2.addFurniture(genDoor, towWndw, wallEx, towBlcny, eastDoor, towSphr, tow2DrN);
+        tow2.addFurniture(genDoor, towWndw, wallEx, towBlcny, eastDoor, towSphr, tow2DrN, clng);
         bls1.addFurniture(bls1Dr, bls1Strs, bls1_Plnts, blsWndw, bls1F, blsBlcny, bls1Stat);
         bls2.addFurniture(eastDoor, bls2Strs, blsWndw, bls2F, blsBlcny);
         tbal.addFurniture(genDoor, tbalStrs, bbaSea, tbalPllr, northDoor, tbalDrS, tbalF);
-        lqu1.addFurniture(westDoor, lqu1Wrdrb, lquF, lqu1Chst, lqu1Mrrr, lquW, lqu1Cbnt, lqu1_Bd, lqu_Crpt);
-        lqu2.addFurniture(lquF, lquW, lqu_Crpt, lqu2Lvr, lqu2Bd);
-        soul.addFurniture(soulPl, soulStat, soulF, wallEx, soulWndw);
+        lqu1.addFurniture(westDoor, lqu1Wrdrb, lquF, lqu1Chst, lqu1Mrrr, lquW, lqu1Cbnt, lqu1_Bd, lqu_Crpt, clng);
+        lqu2.addFurniture(lquF, lquW, lqu_Crpt, lqu2Lvr, lqu2Bd, clng);
+        soul.addFurniture(soulPl, soulStat, soulF, wallEx, soulWndw, clng);
         
         // </editor-fold>
          

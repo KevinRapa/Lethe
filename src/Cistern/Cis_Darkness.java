@@ -14,7 +14,7 @@ public class Cis_Darkness extends Furniture {
                            "50 feet high, perhaps more. The darkness combined with\n" +
                            "the turgid air gives you claustrophobia.";
 
-        this.addNameKeys("darkness", "dark void", "void", "blackness");
+        this.addNameKeys("darkness", "dark void", "void", "blackness", "ceiling");
     }
     // ========================================================================    
 }
