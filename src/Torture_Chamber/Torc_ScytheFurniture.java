@@ -6,6 +6,7 @@ import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Resetable;
+import A_Super.Weapon;
 /**
  * Gives player the scythe for the crypt puzzle.
  * 
@@ -13,7 +14,7 @@ import A_Super.Resetable;
  * @author Kevin Rapa
  */
 public class Torc_ScytheFurniture extends Furniture implements Resetable {
-    private final Item SCYTHE = new Item(NameConstants.SCYTHE, 
+    private final Item SCYTHE = new Weapon(NameConstants.SCYTHE, 
             "It's a large black scythe. The edge is quite sharp.");;
     // ========================================================================
     public Torc_ScytheFurniture () {

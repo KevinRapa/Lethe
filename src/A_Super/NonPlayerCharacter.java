@@ -1,4 +1,7 @@
 package A_Super;
+
+import static A_Main.NameConstants.WEAPON;
+
 /**
  * Represents an NPC that you can talk to.
  * 
@@ -20,7 +23,7 @@ abstract public class NonPlayerCharacter extends Furniture {
         this.firstTime = true;
         this.useDialog = ATTACK_DIALOG;
         
-        this.addUseKeys(WEAPONS);
+        this.addUseKeys(".+");
         this.addActKeys("speak", "talk", "converse", "chat");
     }
     // ======================================================================== 
@@ -30,6 +33,13 @@ abstract public class NonPlayerCharacter extends Furniture {
     // ========================================================================  
     public boolean firstTime() {
         return this.firstTime;
+    }
+    // ========================================================================    
+    @Override public String useEvent(Item item) {
+        if (item.getType().equals(WEAPON))
+            return ATTACK_DIALOG;
+        else
+            return DEFAULT_USE;
     }
     // ========================================================================    
 }

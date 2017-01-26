@@ -15,7 +15,7 @@ public final class NameConstants {
         FOCUS = "focus",            INGREDIENT = "ingredient",
         SHOES = "shoes",            PLATE = "plate",
         CLOTHING = "clothing",      READABLE = "readable",
-        LIQUID = "liguid";
+        LIQUID = "liguid",          WEAPON = "weapon";
 
     // CONSTANTS FOR ITEM NAMES ===============================================
     public static final String 

@@ -36,15 +36,15 @@ abstract public class Furniture implements Serializable {
                      useDialog;     // Printed when an item is used on this.
     protected boolean searchable;   // Items can be traded with searchable furniture.  
     protected final ArrayList<String> USEKEYS, ACTKEYS, NAMEKEYS; 
-    protected static final String[] GETKEYS = {"get", "take", "acquire", "remove", "grab"},
-                                    WEAPONS = {POLEARM, SCYTHE, SILVER_SPEAR, 
-            METAL_BAR, PIECE_OF_PIPE, CROWBAR, HAMMER, "broken sword", "silver sword", 
-            "rusty sword", "wooden spear", "war axe", "battle axe", "ceramic shard",
-            "broken table leg", "copper pan", "copper pot", "brass candlestick"};
+    
+    protected static final String[] 
+            GETKEYS = {"get", "take", "acquire", "remove", "grab"};     
+    
     protected static final String SITPATTERN = "sit|relax|lay",
                                   JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",
                                   MOVEPATTERN = "move|slide|displace|push|pull",
-                                  FEELPATTERN = "feel|touch|poke";
+                                  FEELPATTERN = "feel|touch|poke",
+                                  DEFAULT_USE = "What good would that do?";
     // ========================================================================
     /**
      * Constructor for furniture.
@@ -56,6 +56,7 @@ abstract public class Furniture implements Serializable {
         this.USEKEYS = new ArrayList<>();  // Valid items that may be used on this.
         this.ACTKEYS = new ArrayList<>();  // Valid actions that may be performed on this.
         
+        this.useDialog = DEFAULT_USE;
         this.searchDialog = "There's nothing hiding here.";
     }
     // ========================================================================     

@@ -1,20 +1,17 @@
 package Marble_Hall;
 
 import A_Super.Item;
-import A_Super.SearchableFurniture;
+import A_Super.PottedPlant;
 
-public class Mha_Plant extends SearchableFurniture { 
+public class Mha_Plant extends PottedPlant { 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Mha_Plant(Item ... items) {
-        super(items);
-        this.actDialog = "There's no water in this room.";
-        this.useDialog = "You pour a bit of water on the plant. It seems to have appreciated that.";
+    public Mha_Plant(Item soil) {
+        super(soil);
+
         this.description = "The potted plant is in good shape. It sits in a\n"
                          + "fancy white vase.";
-        this.searchDialog = "You look in the pot.";
-        this.addNameKeys("plant", "potted plant");
-        this.addUseKeys("bucket of water");
-        this.addActKeys("water");
+
+        this.addNameKeys("(?:potted )?plants?");
     }
 /*----------------------------------------------------------------------------*/
 }

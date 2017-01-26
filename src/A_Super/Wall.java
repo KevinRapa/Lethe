@@ -1,7 +1,7 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
-
+import static A_Main.NameConstants.WEAPON;
 /**
  * Represents a wall. 
  * Superficial only. Would not make sense for game to say "there is no wall here"
@@ -17,13 +17,17 @@ public class Wall extends Furniture {
         this.searchDialog = "The walls here are solid and couldn't hide anything.";
         this.useDialog = "You whack the wall and jolt backwards. Well, that was productive.";
         this.addActKeys("break");
-        this.addUseKeys(WEAPONS);
+        this.addUseKeys(".+");
         this.addNameKeys("walls?");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        AudioPlayer.playEffect(35);
-        return this.actDialog;
+        if (item.getType().equals(WEAPON)) {
+            AudioPlayer.playEffect(35);
+            return this.actDialog;
+        }
+        else
+            return DEFAULT_USE;
     }
 /*----------------------------------------------------------------------------*/
 }

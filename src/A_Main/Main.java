@@ -256,7 +256,7 @@ public class Main {
         Room foy4 = new Foy4("on the third floor landing", Id.FOY4); 
         //-------------------------------ITEMS----------------------------------        
         Item foy1Note = new Foy1_Note("short letter");
-        Item cndlStck = new Item("brass candlestick", "The candle is missing. Well, at least no one can club you behind the head with it now.");
+        Item cndlStck = new Weapon("brass candlestick", "The candle is missing. Well, at least no one can club you behind the head with it now.");
         Item bskt = new Item("wicker basket", "A decorative wicker basket. Probably not very useful for you right now.");
         //-----------------------------FURNITURE--------------------------------    
         Furniture foyBnstr = new Foy_Banister();
@@ -378,12 +378,12 @@ public class Main {
         //-----------------------------THE ROOM---------------------------------
         Room rotu = new Rotu("in the rotunda", Id.ROTU);      
         //-------------------------------ITEMS----------------------------------
-        Item crmcShrd = new Item("ceramic shard", "It's a broken piece of ceramic. A useable, but inefficient weapon.");
+        Item crmcShrd = new Weapon("ceramic shard", "It's a broken piece of ceramic. A useable, but inefficient weapon.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture rotuFntn = new Rotu_Fountain();
         Furniture rotuW = new Wall("A clean white marble wall.");
         Furniture rotuF = new Floor("It's a dirty white-tiled floor littered with plant matter.", crmcShrd, crmcShrd);
-        Furniture rotuPlnts = new Rotu_Plants(rotuFntn);
+        Furniture rotuPlnts = new Rotu_Plants(sl);
         Furniture rotuHl = new Rotu_Hole();
         Furniture rotuStat = new Rotu_Statue();
         Furniture rotuScnc = new Rotu_Sconce();
@@ -406,7 +406,7 @@ public class Main {
         Room iha1 = new Iha1("in a north side hall", Id.IHA1);
         Room iha2 = new Iha2("in a south side hall", Id.IHA2);
         //-------------------------------ITEMS----------------------------------
-        Item iha2plArm = new Item(POLEARM, "It looks like an old medieval polearm.");
+        Item iha2plArm = new Weapon(POLEARM, "It looks like an old medieval polearm.");
         //-----------------------------FURNITURE--------------------------------
         Furniture iha1Lvr = new Iha1_Lever();
         Furniture iha1Armr = new Iha1_Armor();
@@ -483,9 +483,9 @@ public class Main {
         // Used to be called "Groundskeeper's quarters"
         Room clos = new Clos("in a groundskeeping closet", Id.CLOS);
         //-------------------------------ITEMS----------------------------------
-        Item closCrwbr = new Item(CROWBAR, "A sweet iron crowbar.");
-        Item shvl = new Item(SHOVEL, "A sturdy shovel for the digging of holes.");
-        Item hmmr = new Item(HAMMER, "It's a small handheld nailing device.");
+        Item closCrwbr = new Weapon(CROWBAR, "A sweet iron crowbar.");
+        Item shvl = new Weapon(SHOVEL, "A sturdy shovel for the digging of holes.");
+        Item hmmr = new Weapon(HAMMER, "It's a small handheld nailing device.");
         Item sd = new Item("seed", "It's a handful of mysterious gardening wizardry.");
         Item gl = new Liquid("glue bottle", "It's a bottle of sticky glue.");
         Item closGlv = new Clothing("gloves", "Some old gardening gloves", "They don't fit on your enormous hands.");
@@ -522,7 +522,7 @@ public class Main {
         Room shar = new Rqua("in ransacked quarters", Id.SHAR);
         //-------------------------------ITEMS----------------------------------
         Item cmb = new Item("comb", "A plain hair comb.", "You comb your beard for several seconds until it's nice and kept.");
-        Item cndlStk = new Item("candlestick", "A small brass candlestick.");
+        Item cndlStk = new Weapon("candlestick", "A small brass candlestick.");
         Item sht = new Item("sheet", "A white bedsheet.");
         //-----------------------------FURNITURE--------------------------------
         Furniture rquaBd = new Rqua_Bed();
@@ -747,9 +747,9 @@ public class Main {
         Furniture mhaWDr = new Mha_Door(Direction.WEST);
         Furniture mha3KitcDr = new Mha3_Door(Direction.EAST);
         Furniture mhaMDr = new Mha2_Door(din1, Direction.EAST);
-        Furniture mha1Plnt = new Mha_Plant(sl, sl, sl);
-        Furniture mha2Plnt = new Mha_Plant(sl, sl, sl);
-        Furniture mha3Plnt = new Mha_Plant(sl, sl, sl);
+        Furniture mha1Plnt = new Mha_Plant(sl);
+        Furniture mha2Plnt = new Mha_Plant(sl);
+        Furniture mha3Plnt = new Mha_Plant(sl);
         Furniture mhaChr = new Mha_Chair();
         Furniture mhaRStat = new Mha2_RightStatue(angMed);
         Furniture mhaLStat = new Mha2_LeftStatue();
@@ -784,15 +784,15 @@ public class Main {
         Room eow2 = new Eow2("in the east outer wall", Id.EOW2);
         Room eow4 = new Eow4("on the east outer wall balcony", Id.EOW4);
         //-------------------------------ITEMS----------------------------------
-        Item wtrBckt = new Item(BUCKET_OF_WATER, "It's a metal bucket filled with water.");
-        Item eowSwrd1 = new Item("silver sword", "The sword is finely polished and sharp. Ornamental possibly.");
-        Item eowSwrd2 = new Item("rusty sword", "The sword is rusty and a little dull, but still somewhat effective.");
-        Item eowSwrd3 = new Item("broken sword", "This sword is broken halfway down the blade. This is a mark of poor craftsmanship.");
-        Item eowSSpr = new Item(SILVER_SPEAR, "This is beautiful! It's solid metal with a silvery shine.");
-        Item woodSpr = new Item("wooden spear", "This looks like a plain wooden spear. A bit primitive looking.");
-        Item eowPlArm = new Item(POLEARM, "This is a typical polearm.");
-        Item eowAx = new Item("war axe", "This is your kind of tool! You could probably wield this."); 
-        Item eowBtlAx = new Item("battle axe", "This like a hand axe, but longer. Better for chopping trees.");
+        Item wtrBckt = new Liquid(BUCKET_OF_WATER, "It's a metal bucket filled with water.");
+        Item eowSwrd1 = new Weapon("silver sword", "The sword is finely polished and sharp. Ornamental possibly.");
+        Item eowSwrd2 = new Weapon("rusty sword", "The sword is rusty and a little dull, but still somewhat effective.");
+        Item eowSwrd3 = new Weapon("broken sword", "This sword is broken halfway down the blade. This is a mark of poor craftsmanship.");
+        Item eowSSpr = new Weapon(SILVER_SPEAR, "This is beautiful! It's solid metal with a silvery shine.");
+        Item woodSpr = new Weapon("wooden spear", "This looks like a plain wooden spear. A bit primitive looking.");
+        Item eowPlArm = new Weapon(POLEARM, "This is a typical polearm.");
+        Item eowAx = new Weapon("war axe", "This is your kind of tool! You could probably wield this."); 
+        Item eowBtlAx = new Weapon("battle axe", "This like a hand axe, but longer. Better for chopping trees.");
         //-----------------------------FURNITURE--------------------------------
         Furniture eowF = new Floor("It's a sandstone tiled floor.");
 
@@ -935,8 +935,8 @@ public class Main {
         Item petFrt = new Item("petrified vegetable", "Looks like a rock ... in the shape of a carrot.", "Whatever you expect him to do with that, he isn't going to.");
         Item brly = new Item("barley", "It doesn't smell so great. Even grain doesn't keep this long.");
         Item rye = new Item("rye", "It doesn't smell so great. Even grain doesn't keep this long.");
-        Item cpprPt = new Item("copper pot", "It's small and crudely fashioned. It was definitely hammered into shape.");
-        Item cpprPn = new Item("copper pan", "It's an old copper pan, crudely fashioned and hammered into shape.");
+        Item cpprPt = new Weapon("copper pot", "It's small and crudely fashioned. It was definitely hammered into shape.");
+        Item cpprPn = new Weapon("copper pan", "It's an old copper pan, crudely fashioned and hammered into shape.");
         //-----------------------------FURNITURE--------------------------------
         Furniture kitcTrch = new Kitc_Torch();
         Furniture kitcF = new Floor("The floor is dirty brown stone, composed of differently sized crudely cut bricks.");
@@ -1175,12 +1175,12 @@ public class Main {
         Room bha2 = new Bha2("somewhere in the hallway", Id.BHA2);
         Room bha3 = new Bha3("in a demonic hallway", Id.BHA3);
         //-------------------------------ITEMS----------------------------------   
-        Item tblLg = new Item("broken table leg", "A short wooden post about 3 feet long. It looks like it belonged to a table.");
+        Item tblLg = new Weapon("broken table leg", "A short wooden post about 3 feet long. It looks like it belonged to a table.");
         Item orgMttr = new Item("organic matter", "You can't tell what it is. It has a non-solid texture and feels organic.");
         Item bhaNt = new Bha_Note("note: plates");
         //-----------------------------FURNITURE--------------------------------  
         Furniture bha1Hrzn = new Bha1_Horizon();
-        Furniture bha1Plnt = new Bha1_Plant();
+        Furniture bha1Plnt = new Bha1_Plant(sl);
         Furniture bha1Tbl = new Bha1_Table(hrmsPlt);
         Furniture bhaW = new Wall("The walls are covered in a brown and red vertically striped wallpaper with wainscoting on the bottom.");
         Furniture bha1F = new Floor("The wood-plank floor bends with the hallway. Some of the planks have pryed themselves loose because of it");
@@ -1208,7 +1208,7 @@ public class Main {
         
         // Dungeon
         // <editor-fold desc="INITIALIZE TUNNELS">
-        Item pipePc = new Item(PIECE_OF_PIPE, "It's a piece of metal piping, about 2 feet long.");
+        Item pipePc = new Weapon(PIECE_OF_PIPE, "It's a piece of metal piping, about 2 feet long.");
         Furniture sew1Rvr = new Sew1_River(pipePc, wtrBckt);
         Furniture sew4Pp = new Sew4_Pipe(sew1Rvr, pipePc); // RESETABLE
         //-----------------------------THE ROOMS--------------------------------
@@ -1640,7 +1640,7 @@ public class Main {
         Furniture bls1Stat = new Bls1_Statue();
         Furniture bls1Dr = new AtriumDoor(Direction.EAST);
         Furniture bls1Strs = new Bls_Staircase(Direction.UP);
-        Furniture bls1_Plnts = new Bls1_Plants();
+        Furniture bls1_Plnts = new Bls1_Plants(sl);
         Furniture bls1F = new Floor("The floor is a gray mosaic formed from many tiny pieces of glossy ceramic.");
         
         Furniture bls2Strs = new Bls_Staircase(Direction.DOWN);

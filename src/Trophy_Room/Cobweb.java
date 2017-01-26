@@ -1,5 +1,6 @@
 package Trophy_Room;
 
+import static A_Main.NameConstants.WEAPON;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Gettable;
@@ -22,7 +23,7 @@ public class Cobweb extends Furniture implements Gettable {
         this.useDialog = "You ball up some of the cobwebs with it, but their are still a lot in this room.";
 
         this.addNameKeys("cobwebs?");
-        this.addUseKeys(WEAPONS);
+        this.addUseKeys(".+");
         this.addActKeys(GETKEYS);
     }
     // ========================================================================   
@@ -37,6 +38,13 @@ public class Cobweb extends Furniture implements Gettable {
             return "You already have all the cobweb you will ever need.";
     }
     // ========================================================================     
+    @Override public String useEvent(Item item) {
+        if (item.getType().equals(WEAPON))
+            return useDialog;
+        else
+            return DEFAULT_USE;
+    }
+    // ========================================================================   
 }
 
 

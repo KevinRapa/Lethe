@@ -2,6 +2,7 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import static A_Main.NameConstants.WEAPON;
 import A_Main.Player;
 /**
  * A combination safe that can be unlocked by entering the right combination.
@@ -23,7 +24,7 @@ public class Safe extends SearchableFurniture implements Openable {
         this.useDialog = "They didn't design safes to break open that easily.";
         this.searchDialog = this.actDialog;
         this.searchable = false;
-        this.addUseKeys(WEAPONS);
+        this.addUseKeys(".+");
         this.addActKeys("use", "spin", "twist", "smash", "break");
         this.addNameKeys("(?:combination )?safe", "strongbox");
     }
@@ -103,4 +104,11 @@ public class Safe extends SearchableFurniture implements Openable {
         return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
+    @Override public String useEvent(Item item) {
+        if (item.getType().equals(WEAPON))
+            return useDialog;
+        else
+            return DEFAULT_USE;
+    }
+/*----------------------------------------------------------------------------*/ 
 }
