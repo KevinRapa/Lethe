@@ -10,7 +10,6 @@ public class Lqu_Carpet extends Carpet {
         super();
 
         this.description = "The lavender carpet covers much of the cold floor.";
-        this.searchDialog = "You look under the carpet and find nothing.";
 
         this.addNameKeys("(?:lavender )?carpet");
     }

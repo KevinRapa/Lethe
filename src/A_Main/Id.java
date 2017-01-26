@@ -12,7 +12,7 @@ public final class Id {
     // ========================================================================
         NULL = "NULL",   
             
-        // <editor-fold desc="AREA 1: Castle front">
+        // <editor-fold defaultstate="collapsed" desc="AREA 1: Castle front">
             
         VEST = "VEST",  FOYW = "FOYW",  FOYC = "FOYC",  FOYB = "FOYB",
         FOY1 = "FOY1",  FOY2 = "FOY2",  FOY3 = "FOY3",  FOY4 = "FOY4",
@@ -20,7 +20,7 @@ public final class Id {
         COU5 = "COU5",  COU6 = "COU6",  COU7 = "COU7",
             
         // </editor-fold>    
-        // <editor-fold desc="AREA 2: West wing">
+        // <editor-fold defaultstate="collapsed" desc="AREA 2: West wing">
             
         ROTU = "ROTU",  COUS = "COUS",  STUD = "STUD",  
         LOOK = "LOOK",  IHA1 = "IHA1",  IHA2 = "IHA2",  WOW1 = "WOW1", 
@@ -30,7 +30,7 @@ public final class Id {
         CBNT = "CBNT", //SHA2 csbinet key.  
             
         // </editor-fold>   
-        // <editor-fold desc="AREA 3: East wing">
+        // <editor-fold defaultstate="collapsed" desc="AREA 3: East wing">
             
         KITC = "KITC",  DST1 = "DST1",  GAL1 = "GAL1",  GAL2 = "GAL2",
         GAL3 = "GAL3",  GAL4 = "GAL4",  GAL5 = "GAL5",  GAL6 = "GAL6",  
@@ -42,7 +42,7 @@ public final class Id {
         GCBT = "GCBT", //GAL5 cabinet key.  
             
         // </editor-fold>    
-        // <editor-fold desc="AREA 4: Castle rear">
+        // <editor-fold defaultstate="collapsed" desc="AREA 4: Castle rear">
 
         OBS1 = "OBS1",  OBS2 = "OBS2",  OBS3 = "OBS3",  JHA1 = "JHA1", 
         JHA2 = "JHA2",  GAR1 = "GAR1",  GAR2 = "GAR2",  GAR3 = "GAR3",
@@ -51,8 +51,8 @@ public final class Id {
         BHA1 = "BHA1",  BHA2 = "BHA2",  BHA3 = "BHA3", 
             
         // </editor-fold>    
-        // <editor-fold desc="AREA 5: Sub-levels">
-            // <editor-fold desc="Tunnels, cistern, dungeon">
+        // <editor-fold defaultstate="collapsed" desc="AREA 5: Sub-levels">
+            // <editor-fold defaultstate="collapsed" desc="Tunnels, cistern, dungeon">
             
         SEW0 = "SEW0",  SEW1 = "SEW1",  SEW2 = "SEW2",  AARC = "AARC",
         SEW3 = "SEW3",  SEW4 = "SEW4",  SEW5 = "SEW5",  CIS1 = "CIS1",
@@ -63,7 +63,7 @@ public final class Id {
         SEWP = "SEWP",  DKCH = "DKCH",    
             
             // </editor-fold>
-            // <editor-fold desc="Catacombs">
+            // <editor-fold defaultstate="collapsed" desc="Catacombs">
             
         CS35 = "CS35",  TM32 = "TM32",  AN55 = "AN55",  AN65 = "AN65",
         OU62 = "OU62",  MY18 = "MY18",  TM16 = "TM16",  TM66 = "TM66",
@@ -80,7 +80,7 @@ public final class Id {
         CT63 = "CT63",  CT64 = "CT64",  CT67 = "CT67",  CT68 = "CT68",
             
             // </editor-fold>
-            // <editor-fold desc="Caves">
+            // <editor-fold defaultstate="collapsed" desc="Caves">
             
         CV34 = "CV34",  MS65 = "MS65",  MS66 = "MS66",
 
@@ -99,13 +99,13 @@ public final class Id {
             
             // </editor-fold>
         // </editor-fold>    
-        // <editor-fold desc="AREA 6: Chapel and vault">
+        // <editor-fold defaultstate="collapsed" desc="AREA 6: Chapel and vault">
 
         CHS1 = "CHS1", CHS3 = "CHS3", CHA1 = "CHA1", CHA2 = "CHA2",
         VAU1 = "VAU1", VAU2 = "VAU2", VAUE = "VAUE", 
             
         // </editor-fold>   
-        // <editor-fold desc="AREA 7: Lich quarters">
+        // <editor-fold defaultstate="collapsed" desc="AREA 7: Lich quarters">
 
         BLS1 = "BLS1", TOW1 = "TOW1", SOUL = "SOUL", TBAL = "TBAL",
         BLS2 = "BLS2", TOW2 = "TOW2", LQU1 = "LQU1", LQU2 = "LQU2",

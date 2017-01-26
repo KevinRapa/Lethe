@@ -3,7 +3,7 @@ package A_Super;
  * Represents any type of wall art, e.g. paintings, tapestries.
  * @author Kevin Rapa
  */
-public class WallArt extends Furniture {
+abstract public class WallArt extends Furniture {
     // ========================================================================
     public WallArt () {
         super();

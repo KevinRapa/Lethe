@@ -10,8 +10,8 @@ public class Lib1_Rug extends Carpet {
         this.description = "A dusty Persian rug. Clearly an antique, but it looks\n"
                          + "surprisingly new.";
         this.searchDialog = "To your great curiosity, lifting up the rug\n"
-                          + "reveals a second identical rug underneath.\n"
-                          + "Confused, you leave the rug alone.";
+                          + "reveals a second identical rug underneath.";
+        
         this.addNameKeys("(?:dusty )?(?:persian )?(?:rug|carpet)");
     }
 /*----------------------------------------------------------------------------*/

@@ -3,6 +3,7 @@ package Cell;
 import A_Main.NameConstants;
 import A_Super.Item;
 import A_Super.Resetable;
+import A_Super.Weapon;
 import Tunnels.Dungeon_Floor;
 import java.util.Arrays;
 /**
@@ -13,7 +14,7 @@ import java.util.Arrays;
 public class Intr_Floor extends Dungeon_Floor implements Resetable {
     private final Item METAL_BIT_REF = new Item("metal bit", "It's a small scrap of metal. You have no idea what it's for."),
                        SCREW_REF = new Item("screw", "A small metal screw."),
-                       METAL_BAR_REF = new Item(NameConstants.METAL_BAR, "A sturdy metal bar about 2 feet long. Possibly broken off from the gears."),
+                       METAL_BAR_REF = new Weapon(NameConstants.METAL_BAR, "A sturdy metal bar about 2 feet long. Possibly broken off from the gears."),
                        WOOD_CHUNK_REF = new Item("soggy wood chunk", "It's a rotted, wet chunk of wood.");
     
     private final Item[] ITEM_RESETS = {
@@ -21,7 +22,7 @@ public class Intr_Floor extends Dungeon_Floor implements Resetable {
         WOOD_CHUNK_REF, SCREW_REF, WOOD_CHUNK_REF
     };
     // ========================================================================
-    public Intr_Floor (Item... items) {
+    public Intr_Floor () {
         super();
         
         this.description = "The wet cobblestone floor is littered with many bits of metal and machine parts.";

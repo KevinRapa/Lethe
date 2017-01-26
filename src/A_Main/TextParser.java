@@ -290,20 +290,26 @@ public class TextParser {
                 else if (verb.matches(INSPECT_PATTERN))
                     GUI.out(item.getDesc());
                 
-                else if (verb.equals("read"))
+                else if (verb.equals("read")) {
                     if (type.equals(READABLE))
                         GUI.out(item.useEvent());
                     else
                         GUI.out("That isn't something you can read...");
-                
-                else if (verb.equals("wear"))
+                }
+                else if (verb.equals("wear")) {
                     if (type.equals(SHOES) || type.equals(CLOTHING))
                         GUI.out(item.useEvent());
                     else
                         GUI.out("That isn't something you can wear...");
-                
-                else if (verb.equals("drop"))
-                    if (Player.getPos().hasFurniture("floor")) {
+                }
+                else if (verb.equals("drop") || verb.equals("remove")) {
+                    if (verb.equals("remove") && item.getType().equals(SHOES)) {
+                        if (Player.getShoes().equals(""))
+                            GUI.out("You aren't wearing any shoes.");
+                        else
+                            GUI.out(item.useEvent());
+                    }
+                    else if (Player.getPos().hasFurniture("floor")) {
                         Furniture floor = Player.getFurnRef("floor");
                         if (floor.isSearchable()) {
                             Player.evalStore(floor, item);
@@ -314,14 +320,8 @@ public class TextParser {
                     }
                     else
                         System.err.println("Error: no floor in room.");
-                
-                else if (verb.matches("remove") && item.getType().equals(SHOES))
-                    if (Player.getShoes().equals(""))
-                        GUI.out("You aren't wearing any shoes.");
-                    else
-                        GUI.out(item.useEvent());
-                
-                else if (verb.equals("drink"))
+                }
+                else if (verb.equals("drink")) {
                     if (type.equals(INGREDIENT) || type.equals(LIQUID))
                         if (item.toString().equals(PHASE_DOOR_POTION))
                             GUI.out(item.useEvent());
@@ -333,7 +333,7 @@ public class TextParser {
                             GUI.out("You reluctantly take a small sip. 'Yugh! Bitter and disgusting!'");
                     else
                         GUI.out("That is not something you can drink...");
-                
+                }
                 else if (verb.equals("eat") || verb.equals("consume"))
                     GUI.out("That... REALLY does not seem edible...");
             }

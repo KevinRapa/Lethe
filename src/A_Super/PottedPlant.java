@@ -16,12 +16,13 @@ abstract public class PottedPlant extends SearchableFurniture
         
         this.SOIL_REF = soil;
         
-        this.actDialog = "You pour some of the water on the plant. You are sure\n"
+        this.actDialog = "You pour a bit of the water on the plant. You are sure\n"
                        + "it appreciated that.";
         this.searchDialog = "You fan through the soil.";
         this.useDialog = "Pouring that on the plant is definitely not going to\n"
                        + "be good for it, you monster.";
 
+        this.addNameKeys("dirt", "soil");
         this.addUseKeys(".+");
         this.addActKeys(GETKEYS);
         this.addActKeys("water");
@@ -48,6 +49,10 @@ abstract public class PottedPlant extends SearchableFurniture
             return this.useDialog;
         else if (item.getType().equals(WEAPON))
             return "Attacking the plant isn't going to solve any of your problems.";
+        else if (item.toString().equals("soil")) {
+            Player.getInv().remove(item);
+            return "You return the soil to the plant.";
+        }
         else
             return DEFAULT_USE;
     }

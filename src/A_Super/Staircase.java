@@ -6,7 +6,7 @@ import A_Main.Player;
  * Defines generic attributes and methods for a staircase.
  * @author Kevin Rapa
  */        
-public class Staircase extends Furniture {
+abstract public class Staircase extends Furniture {
     protected final Direction DIR; // If it is an up or down staircase.
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Staircase(Direction direction) {

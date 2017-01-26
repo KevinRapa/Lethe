@@ -23,6 +23,7 @@ public class Intr_Wheel extends Furniture {
 
         this.addUseKeys(METAL_BAR);
         this.addNameKeys("(?:large )?(?:spinning )?(?:horizontal )?(?:(?:water )?wheel|axle)");
+        this.addActKeys(GETKEYS);
         this.addActKeys("stop");
     }
     // ========================================================================    

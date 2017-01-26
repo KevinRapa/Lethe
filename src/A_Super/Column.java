@@ -4,7 +4,7 @@ import static A_Main.NameConstants.WEAPON;
 /**
  * @author Kevin Rapa
  */
-public class Column extends Furniture {
+abstract public class Column extends Furniture {
     // ========================================================================
     public Column () {
         super();

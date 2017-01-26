@@ -3,12 +3,12 @@ package A_Super;
 import A_Main.GUI;
 import A_Main.Player;
 /**
- * Some rooms have two sets of stairs.
+ * Some rooms have two sets of stairs or a switchback staircase.
  * Allow the player to interact with either one and avoid problems of ambiguity.
  * 
  * @author Kevin Rapa
  */
-public class DoubleStaircase extends Staircase {
+abstract public class DoubleStaircase extends Staircase {
     // ========================================================================
     public DoubleStaircase () {
         super(Direction.DOWN); //Direction is UNUSED in Double stairs

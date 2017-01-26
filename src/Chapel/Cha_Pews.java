@@ -15,7 +15,7 @@ public class Cha_Pews extends SearchableFurniture {
         this.searchDialog = "You walk up and down the aisle, scanning the pews.";
 
         this.addNameKeys("(?:uncomfortable )?(?:wood(?:en)? )?pews?");
-        this.addActKeys("sit", "relax", "lay");
+        this.addActKeys(SITPATTERN);
     }
     // ========================================================================    
 }

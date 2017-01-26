@@ -34,8 +34,8 @@ public class Intr_Grate extends Furniture implements Resetable {
     }
     // ======================================================================== 
     @Override public String getDescription() {
-        return this.opened ? "The open hole in the floor reveals a simple\n"
-                           + "ladder leading downwards." : this.description;
+        return this.opened ?
+                "The open hole in the floor reveals a simple ladder leading downwards." : this.description;
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
@@ -45,11 +45,16 @@ public class Intr_Grate extends Furniture implements Resetable {
     // ========================================================================   
     @Override public String interact(String key) {  
         if (key.equals("lift") || key.equals("move")) 
-            return opened ? MOVED_GRATE : this.actDialog;
-        else if (key.equals("pry") && Player.hasItem(METAL_BAR))
-            return this.useEvent(null); // Safe. Arg unused here.
+            return opened ? 
+                    MOVED_GRATE : this.actDialog;
+        
+        else if (key.equals("pry"))
+            return Player.hasItem(METAL_BAR) ? 
+                    this.useEvent(null) : "You have nothing good to pry with.";
+        
         else
-            return opened ? transport() : "You aren't going anywhere with that grate closed.";
+            return opened ? 
+                    transport() : "You aren't going anywhere with that grate closed.";
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {

@@ -35,7 +35,7 @@ public final class Player {
     private static String lastVisited, shoes;
     private static HashMap<Character, Runnable> cmd; 
 //******************************************************************************
-// <editor-fold desc="ACCESSORS AND OUTPUT">  
+// <editor-fold defaultstate="collapsed" desc="ACCESSORS AND OUTPUT">  
 //******************************************************************************
     // <editor-fold desc="Accessors">
     /**
@@ -131,7 +131,7 @@ public final class Player {
 
 
 //******************************************************************************
-// <editor-fold desc="START GAME"> 
+// <editor-fold defaultstate="collapsed" desc="START GAME"> 
 //******************************************************************************
     public static void loadAttributes(Object attr) throws ClassCastException {
         PlayerAttributes attributes = (PlayerAttributes)attr;
@@ -261,7 +261,7 @@ public final class Player {
     
     
 //******************************************************************************
-// <editor-fold desc="MOVEMENT AND ROOMS">    
+// <editor-fold defaultstate="collapsed" desc="MOVEMENT AND ROOMS">    
 //******************************************************************************    
     /**
      * For some events that trigger the first time the player enters a room, etc.
@@ -336,7 +336,7 @@ public final class Player {
     
     
 //******************************************************************************
-// <editor-fold desc="KEYS">      
+// <editor-fold defaultstate="collapsed" desc="KEYS">      
 //******************************************************************************    
     /**
      * Adds a key to your key ring.
@@ -370,7 +370,7 @@ public final class Player {
  
     
 //******************************************************************************
-// <editor-fold desc="SEARCHING">   
+// <editor-fold defaultstate="collapsed" desc="SEARCHING">   
 //******************************************************************************    
     private static void searchSub() {
         // Initiates dialog asking player for a Furniture to search.
@@ -489,7 +489,7 @@ public final class Player {
     
     
 //******************************************************************************    
-// <editor-fold desc="ACTIVATING AND INSPECTING">  
+// <editor-fold defaultstate="collapsed" desc="ACTIVATING AND INSPECTING">  
 //****************************************************************************** 
     /**
      * Processes a player's action on furniture.
@@ -598,7 +598,7 @@ public final class Player {
     
    
 //******************************************************************************    
-// <editor-fold desc="INVENTORY ACTIONS">      
+// <editor-fold defaultstate="collapsed" desc="INVENTORY ACTIONS">      
 //******************************************************************************    
     public static void printInv() {
         GUI.invOut("You are carrying:\n" + Player.inv);
@@ -820,7 +820,7 @@ public final class Player {
     
     
 //******************************************************************************    
-// <editor-fold desc="PLAYER ATTRIBUTES CLASS">  
+// <editor-fold defaultstate="collapsed" desc="PLAYER ATTRIBUTES CLASS">  
 //******************************************************************************
     /**
      * This class holds all the attributes of the player to be serialized out to a file.

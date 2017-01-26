@@ -1,20 +1,18 @@
 package Chapel;
 
-import static A_Main.NameConstants.HAND_TORCH;
-import A_Super.Furniture;
+import A_Super.Candelabra;
+import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
-public class Cha1_Candelabra extends Furniture {
+public class Cha1_Candelabra extends Candelabra {
     // ========================================================================
-    public Cha1_Candelabra () {
-        super();
+    public Cha1_Candelabra (Item candle) {
+        super(candle);
         
         this.description = "The silver standing candelabras burn calmly and quietly.";
-        this.useDialog = "They are already lit...";
 
         this.addNameKeys("(?:silver )?(?:standing )?(?:lit )?candelabras?");
-        this.addUseKeys(HAND_TORCH);
     }
     // ======================================================================== 
 }

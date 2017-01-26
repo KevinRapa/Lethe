@@ -2,10 +2,11 @@ package Cell;
 
 import static A_Main.NameConstants.METAL_BAR;
 import A_Super.Furniture;
+import A_Super.Gettable;
 /**
  * @author Kevin Rapa
  */
-public class Intr_Gears extends Furniture {
+public class Intr_Gears extends Furniture implements Gettable {
     // ========================================================================
     public Intr_Gears () {
         super();
@@ -17,9 +18,17 @@ public class Intr_Gears extends Furniture {
         this.searchDialog = "You search around the machinery but cannot find anything\n"
                           + "useful.";
 
-        this.addNameKeys("(?:spinning )?gears", "machinery", "axles");
-        this.addActKeys("touch", "feel", "stop");
+        this.addNameKeys("(?:spinning )?gears?", "machinery", "axles");
+        this.addActKeys(GETKEYS);
+        this.addActKeys("touch|feel|stop");
         this.addUseKeys(METAL_BAR);
+    }
+    // ========================================================================  
+    @Override public String interact(String key) {
+        if (key.matches("touch|feel|stop"))
+            return this.actDialog;
+        else
+            return getIt();
     }
     // ========================================================================  
 }

@@ -21,7 +21,8 @@ package A_Main;
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Salamaa.git">GitHub Repository</a>
  */
-import Trophy_Room.Cobweb;
+
+// <editor-fold defaultstate="collapsed" desc="IMPORTS">
 import A_Super.*;          import static A_Main.NameConstants.*;
 
 import Vestibule.*;        import Closet.*;             import Foyer.*;
@@ -46,17 +47,18 @@ import Keeper_Chamber.*;   import Vault.*;              import Tower.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
 import Soul_Chamber.*;     
         
-import java.awt.Toolkit;   import java.awt.Dimension; import javax.swing.*;  
+import java.awt.Toolkit;   import java.awt.Dimension;   import javax.swing.*;  
 import java.io.*;          import java.util.Random;
+// </editor-fold>
 
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Lethe");
     private static final String WD = System.getProperty("user.dir");
-    private static final String START = Id.COU4; // Default COU4
+    private static final String START = Id.LIB5; // Default COU4
 // ============================================================================
     public static void main(String[] args) {
         //**********************************************************************
-        // <editor-fold desc="MAKE THE FRAME">
+        // <editor-fold defaultstate="collapsed" desc="MAKE THE FRAME">
         //**********************************************************************
         GUI panel = new GUI(); // Make false if window is too large.
                 
@@ -76,7 +78,7 @@ public class Main {
         
         
         //**********************************************************************
-        // <editor-fold desc="READ IN SAVE FILE OR START NEW GAME">
+        // <editor-fold defaultstate="collapsed" desc="READ IN SAVE FILE OR START NEW GAME">
         //
         // Rudimentary save system using serialization. Saves files in the same
         // location as Main.jar
@@ -109,7 +111,7 @@ public class Main {
         
         
         //**********************************************************************
-        // <editor-fold desc="EXIT GAME">
+        // <editor-fold defaultstate="collapsed" desc="EXIT GAME">
         //**********************************************************************
         AudioPlayer.stopTrack();
         GAME_FRAME.dispose();
@@ -143,13 +145,13 @@ public class Main {
 // ============================================================================        
     public static Room[][][] createMap() {
         //**********************************************************************
-        // <editor-fold desc="INITIALIZE ROOMS, FURNITURE, ITEMS">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE ROOMS, FURNITURE, ITEMS">
         //
         // Every room, furniture, and item is instantiated here. For each area, 
         // each room is instantiated, then each item is, then each furniture
         // is and the items are added to the respective furniture. 
         //**********************************************************************  
-        // <editor-fold desc="INITIALIZE PHYLACTERIES">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE PHYLACTERIES">
         
         Item studBkPhy = new Stud_BookPhylactery("glowing book, 'A Young Mind's Guide to Lichery'");
         Item kitcFrtPhy = new Kitc_FrtPhy("glowing pristine fruit");
@@ -159,7 +161,7 @@ public class Main {
         
         // </editor-fold>
         // ---------------------------------------------------------------------  
-        // <editor-fold desc="INITIALIZE KEYS AND GENERIC FURNITURE">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE KEYS AND GENERIC FURNITURE">
         Key studKey = new Key("crude molded key", Id.STUD);        
         Key gal1Key = new Key("key with a bearded face on its bow", Id.GAL1);       
         Key eow3Key = new Key("workshop key", Id.WORK);       
@@ -191,13 +193,13 @@ public class Main {
         
         
         // ---------------------------------------------------------------------  
-        // <editor-fold desc="AREA 1: CASTLE FRONT">
+        // <editor-fold defaultstate="collapsed" desc="AREA 1: CASTLE FRONT">
         
         Item bckt = new Item(METAL_BUCKET, "It's an empty metal bucket."); // Used with all fireplaces
         Item vial = new Item(EMPTY_VIAL, "It's a small glass vial for holding samples");
         Item ram = new Item(BATTERING_RAM, "You've restored the old battering ram back to its former glory.");
         
-        // <editor-fold desc="Mandragora set">
+        // <editor-fold defaultstate="collapsed" desc="Mandragora set">
         // Instantiated before courtyard because soil can be found in the courtyard.
         Item mndrk = new Item(MANDRAGORA, "The potato-shaped vegetable looks disturbingly life-like.");
         Item hlyWtr = new Liquid(HOLY_WATER, "Clear, salty, and boiled like hell.", mndrk, 2);
@@ -211,7 +213,7 @@ public class Main {
         Item frt = new Item("fertilizer", "It's a handful of mysterious gardening wizardry.", mxtr, 3);
         // </editor-fold>
         
-        // <editor-fold desc="INITIALIZE WEST ANTECHAMBER">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST ANTECHAMBER">
         Furniture foy1Gt = new Foy_Gate(false, Direction.WEST);
         Furniture foy2Gt = new Foy_Gate(true, Direction.NORTH);
         Furniture foy2Bttn = new Foy2_Button(foy1Gt, foy2Gt);
@@ -229,7 +231,7 @@ public class Main {
         Furniture wantGt = new Want_Gate(Direction.EAST);
         Furniture wantBttn = new Want_Button(foy2Bttn);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE BACK BALCONY">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE BACK BALCONY">
         //-----------------------------THE ROOM---------------------------------
         Room foyb = new Bba1("on the back balcony", Id.FOYB);
         Room foyc = new Bba2("on the back balcony", Id.FOYC);      
@@ -248,7 +250,7 @@ public class Main {
         Furniture bba2Dr = new Bba2_Door(Direction.SOUTH);
         Furniture bba1Gt = new Want_Gate(Direction.SOUTH);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE FOYER">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE FOYER">
         //-----------------------------THE ROOM---------------------------------
         Room foy1 = new Foy1("in the foyer", Id.FOY1);
         Room foy2 = new Foy2("at the grand staircase", Id.FOY2); 
@@ -282,7 +284,7 @@ public class Main {
         Furniture foy4Dr = new Foy4_Door(Direction.SOUTH);
         
         // </editor-fold>        
-        // <editor-fold desc="INITIALIZE VESTIBULE">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE VESTIBULE">
         //-----------------------------THE ROOM---------------------------------
         Room vest = new Vest("in a vestibule", Id.VEST); 
         //-------------------------------ITEMS----------------------------------
@@ -303,7 +305,7 @@ public class Main {
         Furniture vesChr = new Vest_Chair();
         Furniture vesF = new Floor("A cold, shale tile floor. It's slightly dusty.");          
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE COURTYARD">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE COURTYARD">
         //-----------------------------THE ROOM---------------------------------
         Room cou1 = new Cou1("in the northwest courtyard", Id.COU1);
         Room cou2 = new Cou2("in the southwest courtyard", Id.COU2);
@@ -355,7 +357,7 @@ public class Main {
         Furniture cou6Stat = new Cou6_Statue();
         Furniture cou6Ghst = new Cou6_BlackJackGhost();
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE ENTRANCE">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE ENTRANCE">
         //-----------------------------THE ROOM---------------------------------
         Room cou7 = new Entr("on the front balcony", Id.COU7);  
         //-----------------------------FURNITURE--------------------------------
@@ -369,12 +371,12 @@ public class Main {
 
         // </editor-fold>
         // ---------------------------------------------------------------------     
-        // <editor-fold desc="AREA 2: WEST WING">
+        // <editor-fold defaultstate="collapsed" desc="AREA 2: WEST WING">
         
         Item brRam = new Item("broken battering ram", "It's a battering ram, but without the other rope to hold it with, it's useless.", "It's useless now.");
         Item rdFcs = new Focus(RED_FOCUS, "It's a cool brass ring holding a red lens.");   
         
-        // <editor-fold desc="INITIALIZE ROTUNDA">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE ROTUNDA">
         //-----------------------------THE ROOM---------------------------------
         Room rotu = new Rotu("in the rotunda", Id.ROTU);      
         //-------------------------------ITEMS----------------------------------
@@ -391,7 +393,7 @@ public class Main {
         Furniture rotuSky = new Rotu_Sky();
         Furniture rotuRock = new Rotu_Rock();
         // </editor-fold>        
-        // <editor-fold desc="INITIALIZE LOOKOUT">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE LOOKOUT">
         //-----------------------------THE ROOM--------------------------------- 
         Room look = new Look("on the lookout", Id.LOOK);       
         //-----------------------------FURNITURE-------------------------------- 
@@ -401,7 +403,7 @@ public class Main {
         Furniture lookRlng = new Look_Railing();
         Furniture lookF = new Floor("Just a wet shale floor.");
         // </editor-fold> 
-        // <editor-fold desc="INITIALIZE IRON HALL">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE IRON HALL">
         //-----------------------------THE ROOM---------------------------------
         Room iha1 = new Iha1("in a north side hall", Id.IHA1);
         Room iha2 = new Iha2("in a south side hall", Id.IHA2);
@@ -417,7 +419,7 @@ public class Main {
         Furniture iha1Bwl = new Iha1_Bowl(ihaF, wow2Key);
         Furniture iha2Bwl = new Iha2_Bowl();
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE WEST OUTER WALL">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST OUTER WALL">
         //-----------------------------THE ROOM---------------------------------
         Room wow1 = new Wow1("in the west outer wall", Id.WOW1);
         Room wow2 = new Wow2("in the west outer wall", Id.WOW2);
@@ -444,7 +446,7 @@ public class Main {
         Furniture wow1NDr = new Sha_Door(Direction.NORTH);
         Furniture wow1Shlvs = new Wow1_Shelves(vial, vinegar, clngSoln, actn);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE WEST BALCONY">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST BALCONY">
         //-----------------------------THE ROOM---------------------------------
         Room wbal = new Wbal("on the west balcony", Id.WBAL);   
         //-------------------------------ITEMS----------------------------------
@@ -459,7 +461,7 @@ public class Main {
         Furniture wbalBcn = new Wbal_Beacon();
         Furniture wbalFrst = new Wbal_Forest();
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE SERVANTS QUARTERS">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SERVANTS QUARTERS">
         //-----------------------------THE ROOM---------------------------------
         Room squa = new Squa("in a servant's quarters", Id.SQUA);
         //-------------------------------ITEMS----------------------------------
@@ -478,7 +480,7 @@ public class Main {
         Furniture squaCndl = new Squa_Candle();
         Furniture squaWrdrb = new Squa_Wardrobe(rags, rags, aprn, shs);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE CLOSET">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE CLOSET">
         //-----------------------------THE ROOM---------------------------------
         // Used to be called "Groundskeeper's quarters"
         Room clos = new Clos("in a groundskeeping closet", Id.CLOS);
@@ -506,7 +508,7 @@ public class Main {
         Furniture closW = new Wall("It's a plain cobblestone wall.");
         Furniture closSkltn = new Gqua_Skeleton(closCrwbr);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE WEST OUTER WALL BALCONY">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST OUTER WALL BALCONY">
         //-----------------------------THE ROOM---------------------------------
         Room wow3 = new Wow3("on the west outer wall balcony", Id.WOW3, wow2Lddr, wow2F.getInv(), wowLddr);
         //-------------------------------ITEMS----------------------------------
@@ -517,7 +519,7 @@ public class Main {
         Furniture wow3NDr = new Wow3_NorthDoor();
         Furniture wow3Dr = new Wow3_Door(Direction.EAST);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE RANSACKED QUARTERS">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE RANSACKED QUARTERS">
         //-----------------------------THE ROOM---------------------------------
         Room shar = new Rqua("in ransacked quarters", Id.SHAR);
         //-------------------------------ITEMS----------------------------------
@@ -532,7 +534,7 @@ public class Main {
         Furniture rquaF = new Floor("A sandstone tiled floor.", rags, cmb, rags, sht, cndlStk, rags, shs);
         Furniture rquaPnl = new Rqua_Panel(studKey, rquaBd);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE SERVANTS HALL">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SERVANTS HALL">
         //-----------------------------THE ROOM---------------------------------
         Room sha2 = new Sha2("in the north servant's hall", Id.SHA2);
         Room sha1 = new Sha1("in the south servant's hall", Id.SHA1);
@@ -549,7 +551,7 @@ public class Main {
         Furniture sha2Trch = new Torch();
         Furniture sha1Dr = new Sha1_Door(ram, brRam, genDoor);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE SCORCHED ROOM">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SCORCHED ROOM">
         //-----------------------------THE ROOM---------------------------------
         Room cous = new Cous("in a scorched room", Id.COUS);
         //-------------------------------ITEMS----------------------------------
@@ -564,7 +566,7 @@ public class Main {
         Furniture searLddr = new Gqua_Ladder(Direction.UP);
         Furniture searF = new Floor("It's a cold, hard, cobblestone floor", ash, wd, ash, wrhmmr, wd, ash);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE STUDY">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE STUDY">
         //-----------------------------THE ROOM---------------------------------
         Room stud = new Stud("in the study", Id.STUD);
         //-------------------------------ITEMS----------------------------------
@@ -585,9 +587,9 @@ public class Main {
 
         // </editor-fold>
         // ---------------------------------------------------------------------     
-        // <editor-fold desc="AREA 3: EAST WING">
+        // <editor-fold defaultstate="collapsed" desc="AREA 3: EAST WING">
 
-        // <editor-fold desc="INITIALIZE TROPHY ROOM">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE TROPHY ROOM">
         //-----------------------------THE ROOM---------------------------------
         Room gal5 = new Gal5("in a trophy room", Id.GAL5);
         //-------------------------------ITEMS----------------------------------
@@ -606,7 +608,7 @@ public class Main {
         Furniture gal5Cbt = new Gal5_Cabinet(zsPlt);
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE GALLERY">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE GALLERY">
         //-----------------------------THE ROOM---------------------------------    
         Room gal1 = new Gal1("in the first floor gallery", Id.GAL1);
         Room gal2 = new Gal2("in the gallery central chamber", Id.GAL2);      
@@ -692,7 +694,7 @@ public class Main {
         Furniture gal6Elec = new Gal6_Technology();
         Furniture gal6Tbl = new Gal6_Table();
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE DINING ROOM">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE DINING ROOM">
         //-----------------------------THE ROOM---------------------------------
         Room din1 = new Din1("in the dining room", Id.DIN1);  
         Room din2 = new Din2("on the dining room balcony", Id.DIN2);
@@ -724,7 +726,7 @@ public class Main {
         Furniture din2Pntng = new Din2_Painting();
         Furniture din2Strs = new Din1_Stairs(Direction.DOWN);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE MARBLE HALL">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE MARBLE HALL">
         //-----------------------------THE ROOM---------------------------------
         Room mha1 = new Mha1("in the north marble hall", Id.MHA1);
         Room mha2 = new Mha2("in the marble hall", Id.MHA2);
@@ -755,7 +757,7 @@ public class Main {
         Furniture mhaLStat = new Mha2_LeftStatue();
         Furniture mhaStats = new Mha2_Statues(mhaRStat);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE WORKSHOP">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE WORKSHOP">
         //-----------------------------THE ROOM---------------------------------
         Room work = new Work("in the workshop", Id.WORK);
         //-------------------------------ITEMS----------------------------------
@@ -778,7 +780,7 @@ public class Main {
         Furniture wrkAnvl = new Wrk_Anvil();
         Furniture wrkFrg = new Wrk_Forge();
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE EAST OUTER WALL">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE EAST OUTER WALL">
         //-----------------------------THE ROOM---------------------------------
         Room eow1 = new Eow1("in the east outer wall", Id.EOW1);
         Room eow2 = new Eow2("in the east outer wall", Id.EOW2);
@@ -812,7 +814,7 @@ public class Main {
         Furniture eow4F = new Floor("It's a sandstone tiled floor.");
         Furniture eow4Strs = new Eow2_Stairs(Direction.DOWN);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE LIBRARY">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE LIBRARY">
         Furniture lib4Tbl = new Lib4_Table("table", fnnyOrb);
         //-----------------------------THE ROOM---------------------------------
         Room lib2 = new Lib2("in the north library", Id.LIB2);
@@ -820,6 +822,7 @@ public class Main {
         Room lib4 = new Lib4("in the north upper library", Id.LIB4, lib4Tbl);
         Room lib5 = new Lib5("in the south upper library", Id.LIB5);
         //-------------------------------ITEMS----------------------------------
+        Item cndl = new Item("candle", "It's a white candle. Must have been burning for some time.");
         Item shs1 = new Shoes(LEATHER_SHOES, "A fancy pair of shiny leather shoes.", 
                                   "You put on the shoes. They're a little big, but comfortable!");
         Item shs2 = new Shoes("worn shoes", "A worn, dull pair of leather shoes.",
@@ -869,11 +872,11 @@ public class Main {
         Furniture lib4Strs = new Lib4_Stairs();
 
         Furniture lib5Bnshmnt = new Lib5_BanishmentShelf(bbl);
-        Furniture lib5Cndlbr = new Lib5_Candelabra();
+        Furniture lib5Cndlbr = new Lib5_Candelabra(cndl);
 
         Furniture lib2Vyg = new Lib2_VoyageShelf(lib2WrFr, lib3Crtn, lib4Prdtn, lib5Bnshmnt, par, bkGlss);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE SECRET ARCHIVES">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SECRET ARCHIVES">
         //-----------------------------THE ROOM---------------------------------
         Room lib1 = new Lib1("in the secret archives", Id.LIB1);
         //-------------------------------ITEMS----------------------------------
@@ -902,7 +905,7 @@ public class Main {
         Furniture lib1Wndw = new Lib1_Window();
         Furniture lib1Sf = new Lib1_Safe("712", eow3Key, brkLns, brssRng);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE DRAWING ROOM">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE DRAWING ROOM">
         //-----------------------------THE ROOM---------------------------------
         Room drar = new Drar("in the drawing room", Id.DRAR);
         //-------------------------------ITEMS----------------------------------
@@ -926,7 +929,7 @@ public class Main {
         Furniture drarCch = new Drar_Couch(drarGhst);
         Furniture drarTbl = new Drar_Table(drarGhst);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE KITCHEN"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE KITCHEN"> 
         //-----------------------------THE ROOM---------------------------------
         Room kitc = new Kitc("in the kitchen", Id.KITC);
         //-------------------------------ITEMS----------------------------------
@@ -951,7 +954,7 @@ public class Main {
         Furniture kitcShlf = new Kitc_Shelf(wine, wine, wine, wine, wine, wine, wine);
         Furniture kitcCntr = new Kitc_Cntr(spng, vinegar, vial, vial);   
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE DUNGEON STAIRCASE">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE DUNGEON STAIRCASE">
         //-----------------------------THE ROOM---------------------------------
         Room dst1 = new Dst1("in an eerie chamber", Id.DST1);
         //-----------------------------FURNITURE--------------------------------
@@ -964,9 +967,9 @@ public class Main {
 
         // </editor-fold>
         // ---------------------------------------------------------------------     
-        // <editor-fold desc="AREA 4: CASTLE REAR">
+        // <editor-fold defaultstate="collapsed" desc="AREA 4: CASTLE REAR">
         
-        // <editor-fold desc="INITIALIZE OBSERVATORY"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE OBSERVATORY"> 
         //-----------------------------THE ROOM---------------------------------
         Room obs1 = new Obs1("in the observatory", Id.OBS1);
         Room obs2 = new Obs2("on the observatory balcony", Id.OBS2);
@@ -980,7 +983,6 @@ public class Main {
         Item psdnPlt = new Obs1_Plate("brass plate, \"Neptune\"", "The small plate bears an engraving: \"Neptune\"");
         
         Item rby2 = new Item(RUBY, "The ruby is well cut and clean.");
-        Item cndl = new Item("candle", "It's a white candle. It looks new!");
         Item gr = new Item("small gear", "The small delicate gear fell right out of the telescope.");
         Item glssLns = new Item("glass lens", "The small lens once belonged to the telescope in the observatory.");
         Item mchnPc = new Item("machine piece", "You aren't sure what it does... It's an oddly shaped piece of aluminium.");
@@ -1019,7 +1021,7 @@ public class Main {
         Furniture obs3F = new Floor("The balconies are layed with polished wood.");
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE JADE HALL"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE JADE HALL"> 
         //-----------------------------FURNITURE--------------------------------  
         Furniture jhaLntrn = new Jha_Lantern();
         Furniture jha1Pntng = new Jha1_Painting();
@@ -1034,7 +1036,7 @@ public class Main {
         Room jha2 = new Jha2("in a jade hallway", Id.JHA2, jha1Ln, jha2Ln); // Adds hidden door to room
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE GARDENS"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE GARDENS"> 
         //-----------------------------THE ROOM---------------------------------
         Room gar1 = new Gar1("on a rooftop garden", Id.GAR1);
         Room gar2 = new Gar2("on a rooftop garden", Id.GAR2);
@@ -1061,7 +1063,7 @@ public class Main {
         Furniture gar24Scnc = new Gar24_Sconce();
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE PARLOR"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE PARLOR"> 
         //-----------------------------THE ROOM---------------------------------
         Room par2 = new Par2("on the parlor loft", Id.PAR2);
         Room par1 = new Par1("in the first floor parlor", Id.PAR1); 
@@ -1106,7 +1108,7 @@ public class Main {
         Furniture par2Shlf = new Wow3_Shelf(vial, parNt, parNtShs, parNtWpn, parNtBttl, parBkMndrk, parNtKey, gaeaPlt);
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE SECRET STAIRS"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SECRET STAIRS"> 
         //-----------------------------THE ROOM---------------------------------
         Room sst1 = new Sst1("in the secret stairwell", Id.SST1);
         Room sst2 = new Sst2("on a small landing", Id.SST2);  
@@ -1120,7 +1122,7 @@ public class Main {
         Furniture sst1Dr = new Jha_HiddenDoor(Direction.EAST);
         Furniture sst2Dr = new Sst_Door(Direction.EAST);
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE LABORATORY"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE LABORATORY"> 
         //-----------------------------THE ROOM---------------------------------
         Room labo = new Labo("in the laboratory", Id.LABO);
         //-------------------------------ITEMS---------------------------------- 
@@ -1153,7 +1155,7 @@ public class Main {
         Furniture laboCntr = new Labo_Counter(strkr, labDstllrNt, scale, rbbrTube, laboCtNt, balance);
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE ATTIC"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE ATTIC"> 
         Furniture lqu1Chst = new Lqu1_Chest();
         //-----------------------------THE ROOM---------------------------------
         Room att1 = new Att1("in the attic", Id.ATT1, lqu1Chst.getInv());       
@@ -1169,7 +1171,7 @@ public class Main {
         Furniture att2CtCs = new Att2_LabCoatCase();
         
         // </editor-fold>        
-        // <editor-fold desc="INITIALIZE BACK HALL"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE BACK HALL"> 
         //-----------------------------THE ROOM---------------------------------
         Room bha1 = new Bha1("in a demonic hallway", Id.BHA1);
         Room bha2 = new Bha2("somewhere in the hallway", Id.BHA2);
@@ -1197,7 +1199,7 @@ public class Main {
 
         // </editor-fold>
         // ---------------------------------------------------------------------     
-        // <editor-fold desc="AREA 5: SUB-LEVELS">
+        // <editor-fold defaultstate="collapsed" desc="AREA 5: SUB-LEVELS">
         
         Furniture sewDrN = new Sew_Door(Direction.NORTH);
         Furniture sewDrS = new Sew_Door(Direction.SOUTH);
@@ -1207,7 +1209,7 @@ public class Main {
         Furniture dungMonst = new DungeonMonsterFurniture();
         
         // Dungeon
-        // <editor-fold desc="INITIALIZE TUNNELS">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE TUNNELS">
         Item pipePc = new Weapon(PIECE_OF_PIPE, "It's a piece of metal piping, about 2 feet long.");
         Furniture sew1Rvr = new Sew1_River(pipePc, wtrBckt);
         Furniture sew4Pp = new Sew4_Pipe(sew1Rvr, pipePc); // RESETABLE
@@ -1249,7 +1251,7 @@ public class Main {
         Furniture sew5Vlv = new Sew5_Valve(sew2Vlvs, sew4Pp);
 
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE ANCIENT CISTERN">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE ANCIENT CISTERN">
         //-----------------------------THE ROOMS--------------------------------
         Room cis1 = new Cis1("in a huge cistern", Id.CIS1); // RESETABLE
         Room cis2 = new Cis2("in a huge cistern", Id.CIS2);
@@ -1265,7 +1267,7 @@ public class Main {
         Furniture cisDrknss = new Cis_Darkness();
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE TORTURE CHAMBER">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE TORTURE CHAMBER">
         //-----------------------------THE ROOM---------------------------------
         Room torc = new Torc("in a torture chamber", Id.TORC);
         //-----------------------------FURNITURE-------------------------------- 
@@ -1280,7 +1282,7 @@ public class Main {
         Furniture torcScythF = new Torc_ScytheFurniture(); // RESETABLE
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE CRYPT">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE CRYPT">
         //-----------------------------THE ROOM---------------------------------
         Room cry2 = new Cry2("in the crypt", Id.CRY2);
         Room cry1 = new Cry1("in the crypt", Id.CRY1);
@@ -1300,7 +1302,7 @@ public class Main {
         Furniture cry2Psswd = new Cry2_Password(cry1Stat);
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE CELL">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE CELL">
         //-----------------------------THE ROOM---------------------------------
         Room intr = new Intr("in a noisy chamber", Id.INTR);      
         //-----------------------------FURNITURE-------------------------------- 
@@ -1313,7 +1315,7 @@ public class Main {
         Furniture intrWtr = new Intr_Water();
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE SUB-TUNNELS">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SUB-TUNNELS">
         //-----------------------------THE ROOMS--------------------------------
         Room esc1 = new Esc1("in a small tunnel", Id.ESC1);
         Room esc2 = new Esc("in a small tunnel", Id.ESC2, "The tunnel turns sharply to the north here.");
@@ -1327,7 +1329,7 @@ public class Main {
         Furniture esc6Lddr = new Esc6_Ladder(esc6Grt); // RESETABLE
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE CATACOMBS ACCESS">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE CATACOMBS ACCESS">
         //-----------------------------THE ROOM---------------------------------
         Room cas1 = new Cas1("in catacombs access", Id.CAS1);      
         //-----------------------------FURNITURE-------------------------------- 
@@ -1336,7 +1338,7 @@ public class Main {
         Furniture casF = new Floor("The floor is comprised of many large blocks, illuminated blue from the fire.");
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE OUBLIETTE">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE OUBLIETTE">
         //-----------------------------THE ROOM---------------------------------
         Room oub1 = new Oub1("in an oubliette", Id.OUB1);       
         //-----------------------------FURNITURE--------------------------------  
@@ -1344,7 +1346,7 @@ public class Main {
         Furniture oub1Pt = new Oub1_Pit();
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE PRISON">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE PRISON">
         //-----------------------------THE ROOM---------------------------------
         Room pris = new Pris("in some kind of prison", Id.PRIS);
         //-------------------------------ITEMS----------------------------------   
@@ -1352,13 +1354,13 @@ public class Main {
         //-----------------------------FURNITURE--------------------------------  
         Furniture prisClls = new Pris_Cells();
         Furniture prisF = new Dungeon_Floor();
-        Furniture prisCndlbrs = new Pris_Candelabra();
+        Furniture prisCndlbrs = new Pris_Candelabra(cndl);
         Furniture prisTbl = new Pris_Table(ou62Key, prisNt);
         Furniture prisGts = new Pris_Gates();
         Furniture prisCbnt = new Pris_Cabinet();
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE DUNGEON KEEPER CHAMBER">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE DUNGEON KEEPER CHAMBER">
         //-----------------------------THE ROOM---------------------------------
         Room dkch = new Dkch("in the dungeon-keeper's chamber", Id.DKCH);
         //-------------------------------ITEMS---------------------------------- 
@@ -1373,7 +1375,7 @@ public class Main {
         Furniture dkchClng = new Dkch_Ceiling();
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE STRANGE POOL">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE STRANGE POOL">
         Furniture[] resetables = {intrF, intrGrt, intrTrch, sew2Vlvs, torcSwhrses,
                 torcScythF, cry1Stat, esc6Grt, sew4Pp, esc6Lddr};
         //-----------------------------THE ROOM---------------------------------
@@ -1387,7 +1389,7 @@ public class Main {
         Furniture sewpTnnl = new Sewp_Tunnel();
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE ANCIENT ARCHIVES">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE ANCIENT ARCHIVES">
         //-----------------------------THE ROOM---------------------------------
         Room aarc = new Aarc("in ruined archives", Id.AARC);
         //-------------------------------ITEMS----------------------------------
@@ -1409,7 +1411,7 @@ public class Main {
         // </editor-fold>
         
         // Catacombs and caves
-        // <editor-fold desc="INITIALIZE CATACOMBS"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE CATACOMBS"> 
         // ROOMS --------------------------------------------------------------
         Room cs35 = new Cs35("at the catacombs entrance", Id.CS35);
         Room ou62 = new Ou62("in the bottom of the oubliette", Id.OU62);
@@ -1518,7 +1520,7 @@ public class Main {
         Furniture cs35Strs = new Cas_Stairs(Direction.UP);
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE CAVES"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE CAVES"> 
         //-----------------------------THE ROOMS--------------------------------
         Room cv34 = new CV34("at an ancient well", Id.CV34);
         Room ms65 = new Deep_Chamber("aykl xvldml fwe", Id.MS65);
@@ -1557,9 +1559,9 @@ public class Main {
         
         // </editor-fold>
         // ---------------------------------------------------------------------     
-        // <editor-fold desc="AREA 6 VAULT">
+        // <editor-fold defaultstate="collapsed" desc="AREA 6 VAULT">
         
-        // <editor-fold desc="INITIALIZE CHAPEL STAIRS"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE CHAPEL STAIRS"> 
         //-----------------------------THE ROOM---------------------------------
         Room chs1 = new Chs1("in the chapel stairwell", Id.CHS1);  
         Room chs3 = new Chs3("on the tower's top landing", Id.CHS3);  
@@ -1575,7 +1577,7 @@ public class Main {
         Furniture chs3F = new Floor("The dark red carpet covers the whole floor. It's a bit dusty from neglect.");
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE CHAPEL"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE CHAPEL"> 
         //-----------------------------THE ROOM---------------------------------
         Room cha1 = new Cha1("in the chapel nave", Id.CHA1);
         Room cha2 = new Cha2("at the chancel altar", Id.CHA2);
@@ -1593,12 +1595,12 @@ public class Main {
         
         Furniture cha1Cylx = new Cha1_Cylix();
         Furniture cha1Wtr = new Cha1_Water(hlyWtr);
-        Furniture cha1Cndlbr = new Cha1_Candelabra();
+        Furniture cha1Cndlbr = new Cha1_Candelabra(cndl);
         
         Furniture cha2Alt = new Cha2_Altar(gldUrn, chaNt);
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE VAULT">  
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE VAULT">  
         Furniture vau1Tbl = new Vau1_Table(vauChlPhy, bal1Key);
         //-----------------------------THE ROOM---------------------------------
         Room vau1 = new Vau1("in the vault", Id.VAU1, vau1Tbl);
@@ -1627,9 +1629,9 @@ public class Main {
         
         // </editor-fold>
         // ---------------------------------------------------------------------     
-        // <editor-fold desc="AREA 7: TOWER">
+        // <editor-fold defaultstate="collapsed" desc="AREA 7: TOWER">
 
-        // <editor-fold desc="INITIALIZE BLACK STAIRCASE">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE BLACK STAIRCASE">
         //-----------------------------THE ROOM---------------------------------
         Room bls1 = new Bls1("in a black atrium", Id.BLS1);
         Room bls2 = new Bls2("on the second-floor atrium", Id.BLS2); 
@@ -1647,7 +1649,7 @@ public class Main {
         Furniture bls2F = new Floor("The floor is iron lattice.");
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE TOWER">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE TOWER">
         Furniture tow1Pdstl = new Tow1_Pedestal(towScptrPhy);
         //-----------------------------THE ROOM---------------------------------
         Room tow1 = new Tow1("in a tower", Id.TOW1, tow1Pdstl);
@@ -1664,7 +1666,7 @@ public class Main {
         Furniture tow2DrN = new Tow2_NorthDoor(Direction.NORTH);
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE LICH'S QUARTERS">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE LICH'S QUARTERS">
         //-----------------------------THE ROOM---------------------------------
         Room lqu1 = new Lqu1("in the lich's quarters", Id.LQU1);
         Room lqu2 = new Lqu2("at the lich's bed", Id.LQU2);
@@ -1684,7 +1686,7 @@ public class Main {
         Furniture lqu2Bd = new Lqu2_Bed();
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE TOP BALCONY">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE TOP BALCONY">
         //-----------------------------THE ROOM---------------------------------
         Room tbal = new Tbal("on a high balcony", Id.TBAL);
         //-----------------------------FURNITURE--------------------------------
@@ -1693,7 +1695,7 @@ public class Main {
         Furniture tbalDrS = new Tow2_NorthDoor(Direction.SOUTH);
         Furniture tbalF = new Floor("The floor is a gray mosaic formed from many tiny pieces of glossy ceramic.");
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE SOUL CHAMBER">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SOUL CHAMBER">
         //-----------------------------THE ROOM---------------------------------
         Room soul = new Soul("in the soul chamber", Id.SOUL, towSphr, lqu1, tow1, tow2);
         //-----------------------------FURNITURE-------------------------------- 
@@ -1703,7 +1705,7 @@ public class Main {
         Furniture soulWndw = new Soul_Window();
         
         // </editor-fold>
-        // <editor-fold desc="INITIALIZE END ROOM">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE END ROOM">
         
         Room endg = new Endg("", Id.ENDG);
         
@@ -1716,7 +1718,7 @@ public class Main {
 
 
         //**********************************************************************
-        // <editor-fold desc="CREATE CASTLE ARRAY">
+        // <editor-fold defaultstate="collapsed" desc="CREATE CASTLE ARRAY">
         //
         /** The castle map is a 3D array composed of seven 8 x 10 2D arrays. 
          * The map behaves as a graph in that each room has an ID. That ID is
@@ -1729,7 +1731,7 @@ public class Main {
 
         Room[][][] newMap = {                        
 
-            // <editor-fold desc="FLOOR 4 [0]">    
+            // <editor-fold defaultstate="collapsed" desc="FLOOR 4 [0]">    
             //  0    1    2    3    4    5    6    7    8    9
             {{____,____,____,____,____,____,____,____,____,____}, //0
              {____,____,____,____,____,soul,____,____,____,____}, //1
@@ -1740,7 +1742,7 @@ public class Main {
              {____,____,____,____,____,____,____,____,____,____}, //6
              {____,____,____,____,____,____,____,____,____,____}},//7
             // </editor-fold>    
-            // <editor-fold desc="FLOOR 3 [1]">
+            // <editor-fold defaultstate="collapsed" desc="FLOOR 3 [1]">
             //  0    1    2    3    4    5    6    7    8    9  
             {{____,____,____,____,____,____,____,____,____,____}, //0
              {____,____,____,____,____,____,____,____,____,____}, //1
@@ -1752,7 +1754,7 @@ public class Main {
              {____,____,____,____,____,____,____,____,____,____}},//7
             
             // </editor-fold>   
-            // <editor-fold desc="FLOOR 2 [2]">
+            // <editor-fold defaultstate="collapsed" desc="FLOOR 2 [2]">
             //  0    1    2    3    4    5    6    7    8    9  
             {{____,____,____,____,____,____,____,____,____,____}, //0
              {____,____,____,____,____,____,____,gal5,lib4,____}, //1
@@ -1763,7 +1765,7 @@ public class Main {
              {____,____,____,wow3,clos,____,____,work,eow4,____}, //6
              {____,____,____,____,____,____,____,____,____,____}},//7
             // </editor-fold>   
-            // <editor-fold desc="FLOOR 1 [3]">
+            // <editor-fold defaultstate="collapsed" desc="FLOOR 1 [3]">
             //  0    1    2    3    4    5    6    7    8    9  
             {{____,____,____,____,____,____,____,____,____,____}, //0
              {____,____,bha1,bha2,bha3,foyb,foyc,lib1,lib2,____}, //1
@@ -1774,7 +1776,7 @@ public class Main {
              {____,wbal,wow1,wow2,cous,cou4,dst1,eow1,eow2,____}, //6
              {____,____,____,____,____,endg,____,____,____,____}},//7
             // </editor-fold>   
-            // <editor-fold desc="TUNNELS [4]">
+            // <editor-fold defaultstate="collapsed" desc="TUNNELS [4]">
             //  0    1    2    3    4    5    6    7    8    9  
             {{____,____,____,____,____,____,____,____,____,____}, //0
              {____,esc3,esc4,esc5,____,____,____,____,____,____}, //1
@@ -1785,7 +1787,7 @@ public class Main {
              {____,cis4,oub1,intr,sewp,dkch,sew0,____,____,____}, //6    
              {____,____,____,____,____,____,____,____,____,____}},//7
             // </editor-fold>   
-            // <editor-fold desc="CATACOMBS [5]">
+            // <editor-fold defaultstate="collapsed" desc="CATACOMBS [5]">
             //  0    1    2    3    4    5    6    7    8    9  
             {{____,____,____,____,____,____,____,____,____,____}, //0
              {____,ct11,ct12,ct13,ct14,ct15,tm16,ct17,my18,____}, //1
@@ -1796,7 +1798,7 @@ public class Main {
              {____,ct61,ou62,ct63,ct64,an65,tm66,ct67,ct68,____}, //6
              {____,____,____,____,____,____,____,____,____,____}},//7 
             // </editor-fold>   
-            // <editor-fold desc="CAVES [6]">
+            // <editor-fold defaultstate="collapsed" desc="CAVES [6]">
             //  0    1    2    3    4    5    6    7    8    9  
             {{____,____,____,____,____,____,____,____,____,____}, //0
              {____,cv11,cv12,cv13,cv14,cv15,cv16,cv17,cv18,____}, //1
@@ -1816,10 +1818,10 @@ public class Main {
 
 
         //**********************************************************************
-        // <editor-fold desc="PUT FURNITURE IN ROOMS">
+        // <editor-fold defaultstate="collapsed" desc="PUT FURNITURE IN ROOMS">
         //*********************************************************************/  
         
-        // <editor-fold desc="AREA 1: CASTLE FRONT">
+        // <editor-fold defaultstate="collapsed" desc="AREA 1: CASTLE FRONT">
         
         foy1.addFurniture(genDoor, foy1Gt, foyFrntDr, foyF, foyW, foy1Chnd, eastDoor, foy1Tbl, foy1Crpt, foy1Strs, clng);
         foy2.addFurniture(foy2Gt, foy2Stat, foy2Alc, foyF, foyW, foy2Strcs, foyBnstr, clng);
@@ -1838,7 +1840,7 @@ public class Main {
         foyw.addFurniture(genDoor, wantStat, wantTrchs, wantLvr, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt, wantBttn, clng);
         
         // </editor-fold>
-        // <editor-fold desc="AREA 2: WEST WING">    
+        // <editor-fold defaultstate="collapsed" desc="AREA 2: WEST WING">    
         
         rotu.addFurniture(genDoor, rotuFntn, rotuW, rotuF, rotuPlnts, rotuHl, rotuStat, rotuScnc, rotuFrms, rotuSky, rotuRock, clng);
         look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, eastDoor, iha1Lvr);
@@ -1857,7 +1859,7 @@ public class Main {
         stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, southDoor, iha1Lvr, clng);
         
         // </editor-fold>
-        // <editor-fold desc="AREA 3: EAST WING">     
+        // <editor-fold defaultstate="collapsed" desc="AREA 3: EAST WING">     
         
         gal1.addFurniture(gal1Dr, gal1F, gal1W, gal1Drgn, gal1KtnFurn, gal1Pntng, gal1Pntng2, gal1Pntng3, gal1Armr, gal1Scr, gal1Scrn, gal1Pntngs, gal1Lghts, gal1Sclptrs, gal1Hrth, clng);
         gal2.addFurniture(genDoor, gal2Stat, gal2Strcs, gal2F, gal2W, galBalc, gal1Lghts, rotuSky, galDm, gal2Clmns, mhaSDr, eastDoor);
@@ -1885,7 +1887,7 @@ public class Main {
         kitc.addFurniture(kitcTrch, kitcF, kitcW, kitcWndw, kitcDr, kitcRck, kitcPts, kitcHrth, kitcBrls, kitcPntry, kitcShlf, kitcCntr, laboSnk, clng);
 
         // </editor-fold>
-        // <editor-fold desc="AREA 4: CASTLE REAR">
+        // <editor-fold defaultstate="collapsed" desc="AREA 4: CASTLE REAR">
         
         par2.addFurniture(genDoor, wWW, par2F, par2Wndw, westDoor, eastDoor, par2Strs, parLft, par2Bwl, par2Frplc, par2Pno, par2Shlf);
         par1.addFurniture(par1F, par1Dr, par1FrPlc, wWW, par1EnchntTbl, par1Strs, parLft,
@@ -1910,9 +1912,9 @@ public class Main {
                           laboRck, laboDspnsrs, laboDstllr, laboSnk, laboCntrptn, cndsr, laboTbl, laboDvcs, clng); 
         
         // </editor-fold>
-        // <editor-fold desc="AREA 5: SUB-LEVELS">
+        // <editor-fold defaultstate="collapsed" desc="AREA 5: SUB-LEVELS">
         
-        // <editor-fold desc="Tunnels and dungeon">
+        // <editor-fold defaultstate="collapsed" desc="Tunnels and dungeon">
         
         sew0.addFurniture(sew0Strs, dngnW, sewF, sew0Trch, sewTnnl, sewMss);
         sew1.addFurniture(sew1Rvr, sewF, dngnW, sewTnnl, sew15Gt, sew1Trch, sewMss);
@@ -1939,7 +1941,7 @@ public class Main {
         
         // </editor-fold>
         
-        // <editor-fold desc="Catacombs and caves">
+        // <editor-fold defaultstate="collapsed" desc="Catacombs and caves">
         
         tm16.addFurniture(tmb1Cskt, catW, tm1F, catDrS, tm1Vs, tm1Bwl, tm1Effgy, clng);
         tm66.addFurniture(tmb2Cskt, catW, tm2F, catDrE, tm2Vs, tm2Orb, clng);
@@ -1959,7 +1961,7 @@ public class Main {
         //</editor-fold>
         
         // </editor-fold>
-        // <editor-fold desc="AREA 6: CHAPEL AND VAULT">
+        // <editor-fold defaultstate="collapsed" desc="AREA 6: CHAPEL AND VAULT">
         
         chs1.addFurniture(chs1Strs, chsWndws, chs1F, chsW, din1Mnlght, chs1Stat, mhaWDr);
         chs3.addFurniture(chs3Strs, chsWndws, chsW, din1Mnlght, chs3F, southDoor, clng);
@@ -1970,7 +1972,7 @@ public class Main {
         vaue.addFurniture(vaueF, vauBwls, vaueBttns, vauW, clng);
         
         // </editor-fold>
-        // <editor-fold desc="AREA 7: TOWER">
+        // <editor-fold defaultstate="collapsed" desc="AREA 7: TOWER">
         
         tow1.addFurniture(tow1F, wallEx, towWndw, towBlcny, tow1Pdstl, tow1Dr, tow1BlckDr, towSphr);
         tow2.addFurniture(genDoor, towWndw, wallEx, towBlcny, eastDoor, towSphr, tow2DrN, clng);
@@ -1989,7 +1991,7 @@ public class Main {
         
         
         //**********************************************************************
-        // <editor-fold desc="LOCK ROOMS">
+        // <editor-fold defaultstate="collapsed" desc="LOCK ROOMS">
         //*********************************************************************/  
         
         rotu.lock(); stud.lock(); gal5.lock(); gal1.lock(); par2.lock();

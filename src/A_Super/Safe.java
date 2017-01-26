@@ -9,7 +9,7 @@ import A_Main.Player;
  * Player may interact with or search this for an open attempt.
  * @author Kevin Rapa
  */
-public class Safe extends SearchableFurniture implements Openable {
+abstract public class Safe extends SearchableFurniture implements Openable {
     protected final String COMBO;
     protected final int[] DIALS; 
 /* CONSTRUCTOR ---------------------------------------------------------------*/      

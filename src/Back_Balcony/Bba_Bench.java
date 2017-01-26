@@ -14,7 +14,7 @@ public class Bba_Bench extends SearchableFurniture {
         this.searchDialog = "You look on the bench.";
         this.actDialog = "You sit down for a moment and let the salty\n"
                             + "breeze hit your face.";
-        this.addActKeys("sit", "use", "relax");
+        this.addActKeys(SITPATTERN);
         this.addNameKeys("(?:stone )?bench");
     }
 /*----------------------------------------------------------------------------*/

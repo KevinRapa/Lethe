@@ -11,7 +11,6 @@ public class Foy34_Carpet extends Carpet {
         
         this.description = "The thick red carpet runner follows up and down\n"
                          + "the foyer stairscase.";
-        this.searchDialog = "There's nothing under the carpet runner.";
 
         this.addNameKeys("rug", "carpet(?: runner)?");
     }

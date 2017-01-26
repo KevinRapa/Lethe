@@ -12,7 +12,7 @@ import static A_Main.NameConstants.BUCKET_OF_WATER;
  * @see Vestibule.Vest_Frplc
  * @author Kevin Rapa
  */
-public class Fireplace extends Furniture {
+abstract public class Fireplace extends Furniture {
     protected boolean isLit;
     protected String searchDialogLit, searchDialogUnlit; 
     protected String descLit, descUnlit;

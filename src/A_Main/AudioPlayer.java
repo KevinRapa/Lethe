@@ -25,7 +25,7 @@ public class AudioPlayer {
     private static boolean muted = false;
     private static Clip currentMusic, effectClip;
 //******************************************************************************
-// <editor-fold desc="AMBIENCE AND MUSIC"> 
+// <editor-fold defaultstate="collapsed" desc="AMBIENCE AND MUSIC"> 
 //******************************************************************************    
     private static File nightAmbience = new File(WD, "ambience" + S + "nightAmbience.wav");
     private static File wavesCrashing = new File(WD, "ambience" + S + "wavesCrashing.wav");
@@ -119,7 +119,7 @@ public class AudioPlayer {
     
 
 //******************************************************************************
-// <editor-fold desc="SOUND EFFECTS"> 
+// <editor-fold defaultstate="collapsed" desc="SOUND EFFECTS"> 
 //******************************************************************************    
     private static final ArrayList<File> EFFECTS = new ArrayList() {{
         add(new File(WD, "effects" + S + "steps.wav"));         // 0
@@ -184,7 +184,7 @@ public class AudioPlayer {
     
  
 //******************************************************************************
-// <editor-fold desc="METHODS"> 
+// <editor-fold defaultstate="collapsed" desc="METHODS"> 
 //******************************************************************************
     /**
      * Stops the current track and starts a new one if the room

@@ -1,7 +1,6 @@
 package A_Super;
 
 import A_Main.Inventory;
-import static A_Main.NameConstants.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.Serializable;
@@ -38,7 +37,7 @@ abstract public class Furniture implements Serializable {
     protected final ArrayList<String> USEKEYS, ACTKEYS, NAMEKEYS; 
     
     protected static final String[] 
-            GETKEYS = {"get", "take", "acquire", "remove", "grab"};     
+            GETKEYS = {"get", "take", "acquire", "grab", "scoop"};     
     
     protected static final String SITPATTERN = "sit|relax|lay",
                                   JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",

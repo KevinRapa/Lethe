@@ -10,8 +10,8 @@ public class Din1_Carpet extends Carpet {
         this.description = "The clean lavender carpet lies under the table and\n"
                          + "chairs, and covers most of the cold stone floor.";
         this.searchDialog = "To your great curiosity, lifting up the carpet\n"
-                          + "reveals a second identical carpet underneath.\n"
-                          + "Confused, you leave the carpet alone.";
+                          + "reveals a second identical carpet underneath.";
+        
         this.addNameKeys("(?:clean )?(?:lavender )?(?:carpet|rug)");
     }
 /*----------------------------------------------------------------------------*/

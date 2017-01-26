@@ -32,7 +32,7 @@ public class GUI extends JPanel {
         // =======================================
     }
     
-    // <editor-fold desc="COMPONENTS AND ATTRIBUTES"> =========================
+    // <editor-fold defaultstate="collapsed" desc="COMPONENTS AND ATTRIBUTES"> =========================
     private boolean big = true;
     private static int key = Click.SOFT.getEffectId();
     
@@ -69,7 +69,7 @@ public class GUI extends JPanel {
     // </editor-fold> ================================================
     
 // *****************************************************************************
-// <editor-fold desc="CONSTRUCTOR AND COMPONENT CONTROLLERS">
+// <editor-fold defaultstate="collapsed" desc="CONSTRUCTOR AND COMPONENT CONTROLLERS">
 // *****************************************************************************     
     public GUI() {
         Font myFont = new Font("Monospaced", Font.BOLD, 16);
@@ -209,7 +209,7 @@ public class GUI extends JPanel {
     
     
 // *****************************************************************************
-// <editor-fold desc="COLLECTORS">
+// <editor-fold defaultstate="collapsed" desc="COLLECTORS">
 //    
 // These methods collect all text output in the game for the player.
 // Each method sets the text of a different GUI component.    
@@ -264,7 +264,7 @@ public class GUI extends JPanel {
     
     
 // *****************************************************************************       
-// <editor-fold desc="INPUT RELATED">
+// <editor-fold defaultstate="collapsed" desc="INPUT RELATED">
 // *****************************************************************************           
     /**
      * Used for any request of player input.
@@ -357,7 +357,7 @@ public class GUI extends JPanel {
     
     
 // *****************************************************************************
-// <editor-fold desc="LISTENERS">  
+// <editor-fold defaultstate="collapsed" desc="LISTENERS">  
 // *****************************************************************************
     /**
      * Allows player to go to last keyboard input with arrow keys.

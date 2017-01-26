@@ -4,7 +4,7 @@ package A_Super;
  * 
  * @author Kevin Rapa
  */
-public class StaticWndw extends Furniture {
+abstract public class StaticWndw extends Furniture {
     protected String escapeDialog;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public StaticWndw() {

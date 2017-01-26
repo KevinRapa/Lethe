@@ -10,8 +10,8 @@ public class Stud_Carpet extends Carpet {
         this.description = "A thick red carpet. On top sits the writing desk\n"
                          + "and chair.";
         this.searchDialog = "To your great curiosity, lifting up the carpet\n"
-                          + "reveals a second identical carpet underneath.\n"
-                          + "Erik is truly mad.";
+                          + "reveals a second identical carpet underneath.";
+        
         this.addNameKeys("(?:thick )?(?:red )?(?:carpet|rug)");
     }
 /*----------------------------------------------------------------------------*/

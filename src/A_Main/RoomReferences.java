@@ -16,7 +16,7 @@ public class RoomReferences {
     private static final HashMap<String, String[]> ADJACENTS = new HashMap<>();
     private static final HashMap<String, int[]> COORDINATES = new HashMap<>(); 
 //****************************************************************************** 
-// <editor-fold desc="IDS"> 
+// <editor-fold defaultstate="collapsed" desc="IDS"> 
 // Each element maps to an element in ADJS for ADJACENTS. 
 // Each element maps to an element in COORDS for COORDINATES. 
 //****************************************************************************** 
@@ -56,58 +56,88 @@ public class RoomReferences {
     
     
 //****************************************************************************** 
-// <editor-fold desc="ADJACENTS"> 
+// <editor-fold defaultstate="collapsed" desc="ADJACENTS"> 
 //****************************************************************************** 
     private static final String[][] ADJS = { 
         {}, {}, 
         // FLOOR 1 ROOM ADJS -------------------------------------------------- 
-        {COU2}, {COU1,COU3}, {COU7,COU4,COU2,COU5}, {COU3}, {COU3,COU6}, {COU5}, 
-        {FOY1,COU3}, {FOY1}, {FOY2,VEST,COU7}, {FOY1,FOYB,FOY3}, {ROTU},
-        {FOYC,FOY2}, {GAL1,FOYB}, {GAL2,FOYC}, {GAL1,LIB3,MHA1,GAL4}, {LIB2},
-        {LIB3}, {LIB2,GAL2}, {OBS1,BHA2}, {BHA1,BHA3}, {BHA2,PAR1}, {BHA1,OBS2},
-        {}, {PAR2}, {ROTU}, {FOYW,LOOK}, {MHA2,GAL2,CHS1}, {MHA1}, {SHA2},
-        {SHA1,SQUA}, {IHA2}, {MHA1,MHA3,DIN1}, {DIN2,MHA2}, {SHA1}, {SHA2,WOW1},
-        {IHA1,WOW2}, {KITC,EOW1,MHA2}, {MHA3}, {WOW1}, {WBAL,WOW2,SHA1},
-        {IHA2,WOW1,WOW3}, {CLOS}, {EOW1,SEW0}, {EOW2,DST1,MHA3}, {EOW1,EOW4},
+        {COU2},                 {COU1,COU3},            {COU7,COU4,COU2,COU5}, 
+        {COU3},                 {COU3,COU6},            {COU5}, 
+        {FOY1,COU3},            {FOY1},                 {FOY2,VEST,COU7}, 
+        {FOY1,FOYB,FOY3},       {ROTU},                 {FOYC,FOY2}, 
+        {GAL1,FOYB},            {GAL2,FOYC},            {GAL1,LIB3,MHA1,GAL4}, 
+        {LIB2},                 {LIB3},                 {LIB2,GAL2}, 
+        {OBS1,BHA2},            {BHA1,BHA3},            {BHA2,PAR1}, 
+        {BHA1,OBS2},            {},                     {PAR2}, 
+        {ROTU},                 {FOYW,LOOK},            {MHA2,GAL2,CHS1}, 
+        {MHA1},                 {SHA2},                 {SHA1,SQUA}, 
+        {IHA2},                 {MHA1,MHA3,DIN1},       {DIN2,MHA2}, 
+        {SHA1},                 {SHA2,WOW1},            {IHA1,WOW2}, 
+        {KITC,EOW1,MHA2},       {MHA3},                 {WOW1}, 
+        {WBAL,WOW2,SHA1},       {IHA2,WOW1,WOW3},       {CLOS}, 
+        {EOW1,SEW0},            {EOW2,DST1,MHA3},       {EOW1,EOW4},
         // FLOOR 2 ROOM ADJS -------------------------------------------------- 
-        {GAL4}, {LIB5}, {OBS1,OBS3}, {JHA2,PAR2}, {PAR1,FOY3,JHA1}, 
-        {PAR2,FOY2,FOY4}, {GAL4,GAL6}, {GAL3,GAL5,GAL2}, {LIB4}, {SST2,JHA2}, 
-        {JHA1,GAR2}, {GAR2,GAR3}, {JHA2,GAR1,GAR4}, {DIN1,DRAR}, {GAR1,GAR4}, 
-        {GAR3,GAR2}, {DIN2}, {CLOS,WOW2}, {WOW3,COUS}, {EOW4}, {WORK,EOW2}, 
+        {GAL4},                 {LIB5},                 {OBS1,OBS3}, 
+        {JHA2,PAR2},            {PAR1,FOY3,JHA1},       {PAR2,FOY2,FOY4}, 
+        {GAL4,GAL6},            {GAL3,GAL5,GAL2},       {LIB4}, 
+        {SST2,JHA2},            {JHA1,GAR2},            {GAR2,GAR3}, 
+        {JHA2,GAR1,GAR4},       {DIN1,DRAR},            {GAR1,GAR4}, 
+        {GAR3,GAR2},            {DIN2},                 {CLOS,WOW2}, 
+        {WOW3,COUS},            {EOW4},                 {WORK,EOW2}, 
         // FLOOR 3 ROOM ADJS -------------------------------------------------- 
-        {OBS2}, {LABO,ATT2}, {ATT1}, {TOW1,FOY3}, {GAL3}, {}, {ATT2,SST1}, 
-        {ATT1,SST2}, {BLS2,TOW1}, {FOY4,BLS1}, {CHA1}, {CHA2,CHS3}, {CHA1}, 
+        {OBS2},                 {LABO,ATT2},            {ATT1}, 
+        {TOW1,FOY3},            {GAL3},                 {}, 
+        {ATT2,SST1},            {ATT1,SST2},            {BLS2,TOW1}, 
+        {FOY4,BLS1},            {CHA1},                 {CHA2,CHS3}, 
+        {CHA1}, 
         // FLOOR 4 ROOM ADJS -------------------------------------------------- 
-        {TBAL}, {SOUL,TOW2}, {TOW2,BLS1}, {TBAL,BLS2,LQU1}, {TOW2}, {LQU1}, 
+        {TBAL},                 {SOUL,TOW2},            {TOW2,BLS1}, 
+        {TBAL,BLS2,LQU1},       {TOW2},                 {LQU1}, 
         // BASEMENT ROOM ADJS ------------------------------------------------- 
-        {CS35}, {CRY1}, {VAU2}, {CIS3,CIS1}, {CIS2,SEW5}, {SEW4,CIS1,PRIS}, 
-        {TORC,SEW3,SEW5}, {PRIS,CRY1}, {TORC,CRY2}, {VAU1,VAUE}, {CIS3,OUB1}, 
-        {CIS3}, {SEW5,SEW3}, {SEWP,SEW4,SEW2,PRIS}, {SEW3,SEW1}, {SEW0,SEW2}, 
-        {VAU2}, {AARC,CIS4,CIS2}, {CIS4}, {SEWP}, {INTR,DKCH,SEW3}, {SEWP}, 
-        {SEW1,DST1}, {ESC2}, {ESC1,ESC3}, {ESC2,ESC4}, {ESC3,ESC5}, {ESC4,ESC6}, 
-        {ESC5}, 
+        {CS35},                 {CRY1},                 {VAU2}, 
+        {CIS3,CIS1},            {CIS2,SEW5},            {SEW4,CIS1,PRIS}, 
+        {TORC,SEW3,SEW5},       {PRIS,CRY1},            {TORC,CRY2}, 
+        {VAU1,VAUE},            {CIS3,OUB1},            {CIS3}, 
+        {SEW5,SEW3},            {SEWP,SEW4,SEW2,PRIS},  {SEW3,SEW1}, 
+        {SEW0,SEW2},            {VAU2},                 {AARC,CIS4,CIS2}, 
+        {CIS4},                 {SEWP},                 {INTR,DKCH,SEW3}, 
+        {SEWP},                 {SEW1,DST1},            {ESC2}, 
+        {ESC1,ESC3},            {ESC2,ESC4},            {ESC3,ESC5}, 
+        {ESC4,ESC6},            {ESC5}, 
         // SUB-LEVEL ROOM ADJS ------------------------------------------------ 
-        {CAS1,CT34}, {CT52}, {CT21,CT12}, {CT11,CT13,CT22}, {CT12,CT14}, 
-        {CT13,CT15,CT24}, {CT14}, {CT26}, {MY18,CT27}, {CT17,CV18}, {CT11}, 
-        {CT12,CT23}, {CT22,CT33}, {CT14,CT25}, {CT24,CT26}, {TM16,CT25}, 
-        {CT17,CT28}, {CT27,CT38}, {TM32,CT41}, {CT31}, {CT23,CT34,CT43}, 
-        {CT33,CS35}, {CT37,CT46}, {CT36}, {CT28,CT48}, {CT31,CT51}, 
-        {CT43,CT52}, {CT33,CT42}, {CT45,CT54}, {CT44,CT46,AN55}, 
-        {CT45,CT36,CT56}, {CT57}, {CT38,CT58}, {CT41,CT52,CT61}, 
-        {CT51,CT42,CT53,OU62}, {CT52,CT54}, {CT44,CT53,CT64}, {CT45,AN65}, 
-        {CT46,CT57}, {CT56,CT47,CT58}, {CT48,CT57,CT68}, {CT51}, {CT64}, 
-        {CT54,CT63}, {AN55}, {CT67}, {TM66,CT68}, {CT67,CT58}, 
+        {CAS1,CT34},            {CT52},                 {CT21,CT12}, 
+        {CT11,CT13,CT22},       {CT12,CT14},            {CT13,CT15,CT24}, 
+        {CT14},                 {CT26},                 {MY18,CT27}, 
+        {CT17,CV18},            {CT11},                 {CT12,CT23}, 
+        {CT22,CT33},            {CT14,CT25},            {CT24,CT26}, 
+        {TM16,CT25},            {CT17,CT28},            {CT27,CT38}, 
+        {TM32,CT41},            {CT31},                 {CT23,CT34,CT43}, 
+        {CT33,CS35},            {CT37,CT46},            {CT36}, 
+        {CT28,CT48},            {CT31,CT51},            {CT43,CT52}, 
+        {CT33,CT42},            {CT45,CT54},            {CT44,CT46,AN55}, 
+        {CT45,CT36,CT56},       {CT57},                 {CT38,CT58}, 
+        {CT41,CT52,CT61},       {CT51,CT42,CT53,OU62},  {CT52,CT54}, 
+        {CT44,CT53,CT64},       {CT45,AN65},            {CT46,CT57}, 
+        {CT56,CT47,CT58},       {CT48,CT57,CT68},       {CT51}, 
+        {CT64},                 {CT54,CT63},            {AN55}, 
+        {CT67},                 {TM66,CT68},            {CT67,CT58}, 
         // CAVES ROOM ADJS ---------------------------------------------------- 
-        {CV21}, {CV13,CV22}, {CV12,CV14}, {CV13,CV24}, {CV25,CV16}, 
-        {CV15,CV17}, {CV16,CV27,CV18}, {CV17,MY18}, {CV11,CV31}, {CV12,CV23}, 
-        {CV22}, {CV14,CV34}, {CV15,CV26}, {CV25}, {CV17,CV37}, {CV38}, 
-        {CV21,CV32}, {CV31,CV33}, {CV32,CV34}, {CV24,CV33,CV35,CV44}, 
-        {CV34,CV45}, {CV46,CV37}, {CV27,CV36,CV38}, {CV37,CV28,CV48}, {CV42}, 
-        {CV41,CV43}, {CV42,CV53}, {CV34,CV54}, {CV35,CV46}, {CV45,CV36}, 
-        {CV57}, {CV38,CV58}, {CV61,CV52}, {CV51,CV53,CV62}, {CV52,CV54,CV43}, 
-        {CV53,CV55,CV44}, {CV54}, {CV57}, {CV47,CV67,CV56,CV58}, 
-        {CV48,CV68,CV57}, {CV51}, {CV63,CV52}, {CV62,CV64}, {CV63,MS65}, 
-        {CV64,MS66}, {MS65}, {CV57}, {CV58} 
+        {CV21},                 {CV13,CV22},            {CV12,CV14}, 
+        {CV13,CV24},            {CV25,CV16},            {CV15,CV17}, 
+        {CV16,CV27,CV18},       {CV17,MY18},            {CV11,CV31}, 
+        {CV12,CV23},            {CV22},                 {CV14,CV34}, 
+        {CV15,CV26},            {CV25},                 {CV17,CV37}, 
+        {CV38},                 {CV21,CV32},            {CV31,CV33}, 
+        {CV32,CV34},            {CV24,CV33,CV35,CV44},  {CV34,CV45}, 
+        {CV46,CV37},            {CV27,CV36,CV38},       {CV37,CV28,CV48}, 
+        {CV42},                 {CV41,CV43},            {CV42,CV53}, 
+        {CV34,CV54},            {CV35,CV46},            {CV45,CV36}, 
+        {CV57},                 {CV38,CV58},            {CV61,CV52}, 
+        {CV51,CV53,CV62},       {CV52,CV54,CV43},       {CV53,CV55,CV44}, 
+        {CV54},                 {CV57},                 {CV47,CV67,CV56,CV58}, 
+        {CV48,CV68,CV57},       {CV51},                 {CV63,CV52}, 
+        {CV62,CV64},            {CV63,MS65},            {CV64,MS66}, 
+        {MS65},                 {CV57},                 {CV58} 
     }; 
 //****************************************************************************** 
 // </editor-fold>
@@ -115,7 +145,7 @@ public class RoomReferences {
     
     
 //****************************************************************************** 
-// <editor-fold desc="COORDINATES"> 
+// <editor-fold defaultstate="collapsed" desc="COORDINATES"> 
 //****************************************************************************** 
     private static final int[][] COORDS = { 
         {-1,-1,-1}, {3, 7, 5}, 
@@ -161,7 +191,7 @@ public class RoomReferences {
     
     
 //****************************************************************************** 
-// <editor-fold desc="METHODS"> 
+// <editor-fold defaultstate="collapsed" desc="METHODS"> 
 //****************************************************************************** 
     /** 
      * Constructs the two hash maps. 

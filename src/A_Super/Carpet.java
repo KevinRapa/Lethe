@@ -12,6 +12,7 @@ abstract public class Carpet extends Furniture {
                        + "what a wonderfully woven piece of artwork. It really\n"
                 +        "would be a shame to get this dirty. What a wonderful rug.";
         this.useDialog = "Don't pour that on there! That would most certainly ruin it.";
+        this.searchDialog = "There's nothing interesting under the carpet.";
 
         this.addUseKeys("acetone", "ash", "soil", "sand", ".+ dye", ".+ (?:wine|vinegar)");
         this.addActKeys(MOVEPATTERN, "admire", "lift|raise");
@@ -19,7 +20,7 @@ abstract public class Carpet extends Furniture {
     // ========================================================================   
     @Override public String interact(String key) {              
         if (key.matches(MOVEPATTERN) || key.matches("lift|raise"))
-            return "There's nothing interesting under the carpet.";
+            return this.searchDialog;
         else
             return this.actDialog;
     }

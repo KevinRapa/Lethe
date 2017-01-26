@@ -10,8 +10,6 @@ public class Intr_Door extends Sew_Door {
     public Intr_Door () {
         super(Direction.EAST);
         
-        this.searchable = false;
-        
         this.description = "The metal door offers a view to the outside. You can\n"
                          + "see into a larger room with a pool in the center. A vortex\n"
                          + "of water in the pool spins a water wheel attached to a\n"
