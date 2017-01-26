@@ -14,6 +14,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import static java.lang.Math.abs;
 import static java.lang.Math.abs;
+import static java.lang.Math.abs;
+import static java.lang.Math.abs;
 /**
  * This class simulates a creature that roams the halls of the tunnels.
  * 

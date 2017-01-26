@@ -119,13 +119,12 @@ public final class Player {
     }
     // </editor-fold>
     
-    public static void packageAttributes(ObjectOutputStream stream) 
-            throws IOException
-    {
-        stream.writeObject(new PlayerAttributes(mapRef, pos, inv, keys,
-                                                visited, lastVisited, shoes));
+    // <editor-fold desc="Save Player Attributes">
+    public static void savePlayerAttributes(ObjectOutputStream stream) 
+            throws IOException {
+        stream.writeObject(new PlayerAttributes());
     }
-    
+    // </editor-fold>
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************
@@ -838,17 +837,14 @@ public final class Player {
         public final ArrayList<String> VISITED; 
         public final String LSTVISITED, SHOES; 
         // ========================================================================
-        public PlayerAttributes(Room[][][] map, int[] pos, PlayerInventory inv, 
-                                Inventory keys, ArrayList<String> vstd, 
-                                String lstVstd, String shoes) 
-        {
-            this.MAP = map;
-            this.POS = pos;
-            this.INV = inv;
-            this.KEYS = keys;
-            this.LSTVISITED = lstVstd;
-            this.SHOES = shoes;
-            this.VISITED = vstd;
+        public PlayerAttributes() {
+            this.MAP = Player.mapRef;
+            this.POS = Player.pos;
+            this.INV = Player.inv;
+            this.KEYS = Player.keys;
+            this.LSTVISITED = Player.lastVisited;
+            this.SHOES = Player.shoes;
+            this.VISITED = Player.visited;
         }
     }
 //******************************************************************************    

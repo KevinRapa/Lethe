@@ -121,7 +121,7 @@ public class Main {
                                                    new File(WD, "Game.data")));
                     ) 
                 {
-                    Player.packageAttributes(gameData);  
+                    Player.savePlayerAttributes(gameData);  
                 } 
                 catch (java.io.IOException e) {
                     System.out.println(e.getMessage());
