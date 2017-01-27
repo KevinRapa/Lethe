@@ -58,13 +58,16 @@ public class TextParser {
     public static void processText(String input) {
         // Removes articles 'a', 'an', 'the'. Removes the pronoun 'some'.
         String noArticles = input
-                .replaceAll("\\bthe |\\.|\\b(?:an?)(?=\\s)|\\bsome ", "");
+                .replaceAll("\\bthe |\\.|\\ban? |\\bsome ", "");
         
         if (input.matches("commit suicide|kill (?:your)?self")) 
             GUI.out("You haven't reached that point yet!!");
 
         else if (input.matches("(?:say|speak|yell|shout) .+"))
             GUI.out(input.replaceAll("\\w+ ", "").concat("!"));
+        
+        else if (input.matches("(?:destroy|obliterate|wreak havoc) .+"))
+            GUI.out("Yes, you're frustrated, hungry, and angry, but don't be so reckless!");
 
         else {
             for (Command c : splitCommands(noArticles))
@@ -273,8 +276,11 @@ public class TextParser {
         }
         // --------------------------------------------------------------------
         /**
-         * Uses the item i.
+         * Uses the item i in the specified way (v).
          * Long chain of if statements in order to accept a variety of input!
+         * If player isn't carrying the item, checks if it's actually furniture
+         * the player typed. If it is, acts on it instead (Mainly for inspect/
+         * examine commands.
          */
         private void execute(Verb v, Instrument i) {
             String verb = v.toString();
@@ -336,6 +342,9 @@ public class TextParser {
                 }
                 else if (verb.equals("eat") || verb.equals("consume"))
                     GUI.out("That... REALLY does not seem edible...");
+            }
+            else if (Player.getPos().hasFurniture(i.toString())) {
+                Player.evaluateAction(v.toString(), i.toString());
             }
             else
                 GUI.out(DONT_HAVE_IT);

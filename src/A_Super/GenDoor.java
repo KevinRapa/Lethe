@@ -18,7 +18,7 @@ public class GenDoor extends Furniture {
         this.useDialog = "You have no idea how to pick a lot. And do you really think that will fit in there?";
         this.actDialog = this.description;
 
-        this.addUseKeys(".+");
+        this.addUseKeys(ANYTHING);
         this.addNameKeys("door");
         this.addActKeys("open", "use", "close", "kick", "knock|bang", "unlock", "lock");
     }

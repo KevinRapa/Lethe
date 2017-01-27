@@ -13,7 +13,7 @@ abstract public class Column extends Furniture {
         this.searchDialog = "There's nothing interesting on the column.";
         this.useDialog = "What are you trying to do? Bring the whole castle down?";
 
-        this.addUseKeys(".+");
+        this.addUseKeys(ANYTHING);
         this.addActKeys("lean");
     }
     // ======================================================================== 

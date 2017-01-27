@@ -23,7 +23,7 @@ abstract public class PottedPlant extends SearchableFurniture
                        + "be good for it, you monster.";
 
         this.addNameKeys("dirt", "soil");
-        this.addUseKeys(".+");
+        this.addUseKeys(ANYTHING);
         this.addActKeys(GETKEYS);
         this.addActKeys("water");
         

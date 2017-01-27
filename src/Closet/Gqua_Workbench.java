@@ -17,8 +17,17 @@ public class Gqua_Workbench extends SearchableFurniture implements Openable {
         this.description = "It's a poplar table with stuff on it.";
         this.searchDialog = "You look through its various drawers and nooks.";
         this.actDialog = "This is way too heavy to move.";
+        
         this.addNameKeys("(?:poplar |wood(?:en)? )?(?:table|workbench)");
+        this.addActKeys(JOSTLEPATTERN);
         this.addActKeys("move", "push", "pull");
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String interact(String key) {
+        if (key.matches(JOSTLEPATTERN))
+            return "You give it a kick. 'Wow, how sturdy! Truly a mark of artisan craftsmanship.'";
+        else
+            return DEFAULT_USE;
     }
 /*----------------------------------------------------------------------------*/
 }

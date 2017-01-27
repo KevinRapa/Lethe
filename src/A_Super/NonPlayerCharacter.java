@@ -23,7 +23,7 @@ abstract public class NonPlayerCharacter extends Furniture {
         this.firstTime = true;
         this.useDialog = ATTACK_DIALOG;
         
-        this.addUseKeys(".+");
+        this.addUseKeys(ANYTHING);
         this.addActKeys("speak", "talk", "converse", "chat");
     }
     // ======================================================================== 

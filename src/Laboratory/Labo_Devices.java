@@ -16,8 +16,8 @@ public class Labo_Devices extends Furniture {
         this.searchDialog = this.useDialog = this.actDialog;
 
         this.addNameKeys("(?:alchemical )?devices?");
-        this.addUseKeys(".+");
-        this.addActKeys(".+");
+        this.addUseKeys(ANYTHING);
+        this.addActKeys(ANYTHING);
     }
     // ========================================================================  
 }

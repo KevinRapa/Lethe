@@ -43,7 +43,8 @@ abstract public class Furniture implements Serializable {
                                   JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",
                                   MOVEPATTERN = "move|slide|displace|push|pull",
                                   FEELPATTERN = "feel|touch|poke",
-                                  DEFAULT_USE = "What good would that do?";
+                                  DEFAULT_USE = "What good would that do?",
+                                  ANYTHING = ".+";
     // ========================================================================
     /**
      * Constructor for furniture.

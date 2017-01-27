@@ -54,7 +54,7 @@ import java.io.*;          import java.util.Random;
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Lethe");
     private static final String WD = System.getProperty("user.dir");
-    private static final String START = Id.LIB5; // Default COU4
+    private static final String START = Id.COU4; // Default COU4
 // ============================================================================
     public static void main(String[] args) {
         //**********************************************************************

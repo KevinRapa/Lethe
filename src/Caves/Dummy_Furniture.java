@@ -18,9 +18,9 @@ public class Dummy_Furniture extends Furniture {
                          + "fe 0e08 fjkSEJKO f0ej HEWBK9 jfe90 kfjnks FLeosj selg\n"
                          + "wnmf 9f pg e9kf ;smn kfejp0fuesi3 ,n kk34p uofej9 yhfhbe.";
         
-        this.addNameKeys(".+"); // Any non-empty string matches this.
-        this.addUseKeys(".+");
-        this.addActKeys(".+");
+        this.addNameKeys(ANYTHING); // Any non-empty string matches this.
+        this.addUseKeys(ANYTHING);
+        this.addActKeys(ANYTHING);
     }
     // ======================================================================== 
     @Override public String getDescription() {

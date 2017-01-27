@@ -400,7 +400,7 @@ public class GUI extends JPanel {
             synchronized (HOLDER) {
                 HOLDER.recieve(INPUT.getText().toLowerCase().trim());
                 
-                if (HOLDER.request().matches("[a-z- ]{2,}|(?:[ts] \\d{1,2})")) {
+                if (HOLDER.request().matches("[a-z ,'-]{2,}|(?:[ts] \\d{1,2})")) {
                     if (UNDO.size() == 10)
                         UNDO.removeLast();
                     UNDO.push(HOLDER.request());

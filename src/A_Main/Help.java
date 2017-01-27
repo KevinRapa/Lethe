@@ -176,43 +176,43 @@ public class Help {
             choice = GUI.promptOut();
             GUI.out("");
         /*--------------------------------------------------------------------*/            
-            if (choice.matches("1")) {
+            if (choice.equals("1")) {
                 do {
                     GUI.menOut("<'1'> The prompt <'2'> Moving\n<'3'> Describing " +
                                "<'4'> Checking\n<'5'> Searching  <'6'> Interacting\n" +
                                "<'7'> Using      <'8'> Combining\n<'9'> Inspecting");
 
-                    choice = GUI.promptOut() + "c";
+                    choice = GUI.promptOut().concat("c");
 
-                    if (choice.matches("^[1-9]c$")) 
+                    if (choice.matches("[1-9]c")) 
                         GUI.out(get_help(TOPIC.get(choice)));  
                     
                 } while (! choice.matches("c"));          
             }
         /*--------------------------------------------------------------------*/          
-            if (choice.matches("2")) {    
+            if (choice.equals("2")) {    
                 do {
                     GUI.menOut("\n<'1'> Your inventory\n"
                                + "<'2'> Your key ring\n" +
                                  "<'3'> Your phylacteries");
 
-                    choice = GUI.promptOut() + "p";
+                    choice = GUI.promptOut().concat("p");
                     
-                    if (choice.matches("^[1-3]p$")) 
+                    if (choice.matches("[1-3]p")) 
                         GUI.out(get_help(TOPIC.get(choice)));
                     
                 } while (! choice.matches("p"));    
             }
         /*--------------------------------------------------------------------*/      
-            if (choice.matches("3")) {    
+            if (choice.equals("3")) {    
                 do {
                     GUI.menOut("\n<'1'> Doors\t<'2'> Rooms\n"
                                + "<'3'> Furniture\t<'4'> Items\n"
                                + "<'5'> Keys\t<'6'> Phylacteries");
 
-                    choice = GUI.promptOut() + "a";
+                    choice = GUI.promptOut().concat("a");
                     
-                    if (choice.matches("^[1-6]a$")) 
+                    if (choice.matches("[1-6]a")) 
                         GUI.out(get_help(TOPIC.get(choice)));
                     
                 } while (! choice.matches("a"));

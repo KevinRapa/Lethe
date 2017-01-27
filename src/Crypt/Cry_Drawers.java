@@ -28,7 +28,12 @@ public class Cry_Drawers extends Furniture implements Openable {
         this.searchDialog = "You pull the knob on the drawer. The door swings\n"
                           + "open revealing a dessicated corpse inside.";
 
+        this.addActKeys("slide", "pull", "remove");
         this.addNameKeys("drawers?", "knobs?", "numerous drawers");
+    }
+    // ======================================================================== 
+    @Override public String interact(String key) {
+        return this.getSearchDialog();
     }
     // ========================================================================   
     @Override public String getSearchDialog() {

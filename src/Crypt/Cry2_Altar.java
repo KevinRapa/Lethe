@@ -13,12 +13,12 @@ public class Cry2_Altar extends SearchableFurniture {
                          + "of many lit candles and dried flora. A few pieces of\n"
                          + "jewelry are distributed about the surface. At the\n"
                          + "center of the table is an effigy made of skull and bone.";
-        this.actDialog = "Now why would you do that?";
+        this.actDialog = "You really aren't part of whatever religion this is for.";
         this.searchDialog = "You look on the altar.";
 
         this.addNameKeys("altar", "(?:stone )?table(?: surface)?", 
                          "candles?", "flora", "effigy", "surface");
-        this.addActKeys("worship");
+        this.addActKeys("worship", "kneel", "sacrifice");
     }
     // ========================================================================  
 }

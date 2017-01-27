@@ -23,7 +23,7 @@ public class Water extends Furniture implements Gettable {
         this.useDialog = "You dip the bucket in and fill it with water.";
         
         this.addActKeys(GETKEYS);
-        this.addActKeys("drink", "swim");
+        this.addActKeys("drink", "swim", "jump", "dive");
         this.addNameKeys("water", "clear water");
         this.addUseKeys(METAL_BUCKET);
     }
@@ -37,7 +37,7 @@ public class Water extends Furniture implements Gettable {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) { 
-        if (key.equals("swim"))
+        if (key.equals("swim") || key.equals("jump") || key.equals("dive"))
             return this.actDialog;
         else if (key.equals("drink"))
             return "You take a sip of water and feel refreshed. Carrying\n"

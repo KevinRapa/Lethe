@@ -35,7 +35,7 @@ public class Par1_EnchantingTable extends SearchableFurniture {
                          + "runes and writing that seem to glow from the fire. Two"
                          + "circular runes decorate either side of the table.";
         
-        this.addUseKeys(".+"); // Accepts any item to be put on it.
+        this.addUseKeys(ANYTHING); // Accepts any item to be put on it.
         this.addNameKeys("enchanting table", "table");
         this.addActKeys("pound", "hit", "activate", "enchant");
     }

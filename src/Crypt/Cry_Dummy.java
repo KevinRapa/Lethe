@@ -17,8 +17,8 @@ public class Cry_Dummy extends Furniture {
                 "There is nothing with that name here.";
         this.actDialog = "You speak the words, but nothing happens";
         
-        this.addNameKeys(".+");
-        this.addUseKeys(".+");
+        this.addNameKeys(ANYTHING);
+        this.addUseKeys(ANYTHING);
         this.addActKeys("talk", "speak", "say", "announce", "whisper");
     }
     // ========================================================================  

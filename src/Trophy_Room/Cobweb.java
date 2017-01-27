@@ -23,7 +23,7 @@ public class Cobweb extends Furniture implements Gettable {
         this.useDialog = "You ball up some of the cobwebs with it, but their are still a lot in this room.";
 
         this.addNameKeys("cobwebs?");
-        this.addUseKeys(".+");
+        this.addUseKeys(ANYTHING);
         this.addActKeys(GETKEYS);
     }
     // ========================================================================   

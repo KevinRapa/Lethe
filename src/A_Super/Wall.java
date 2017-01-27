@@ -17,7 +17,7 @@ public class Wall extends Furniture {
         this.searchDialog = "The walls here are solid and couldn't hide anything.";
         this.useDialog = "You whack the wall and jolt backwards. Well, that was productive.";
         this.addActKeys("break");
-        this.addUseKeys(".+");
+        this.addUseKeys(ANYTHING);
         this.addNameKeys("walls?");
     }
 /*----------------------------------------------------------------------------*/

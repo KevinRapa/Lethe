@@ -26,7 +26,7 @@ public class Cry2_Password extends Furniture {
                 "There is nothing with that name here.";
 
         this.addNameKeys("it is i,? friend,? welcome me\\.?");
-        this.addUseKeys(".+");
+        this.addUseKeys(ANYTHING);
         this.addActKeys("talk", "speak", "say", "announce", "whisper");
     }
     // ========================================================================   

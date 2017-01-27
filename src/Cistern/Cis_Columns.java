@@ -1,10 +1,10 @@
 package Cistern;
 
-import A_Super.Furniture;
+import A_Super.Column;
 /**
  * @author Kevin Rapa
  */
-public class Cis_Columns extends Furniture {
+public class Cis_Columns extends Column {
     // ========================================================================
     public Cis_Columns () {
         super();

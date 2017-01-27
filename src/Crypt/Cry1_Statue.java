@@ -28,7 +28,7 @@ public class Cry1_Statue extends Statue implements Resetable {
                          + "grasping something, though its palm is empty. With the other\n"
                          + "palm it reaches out openly towards you.";
         
-        this.addNameKeys("(?:tall )?(?:stone )?(?:cloaked )?statue", "(?:bone?y)?(?:hand|palm)");
+        this.addNameKeys("(?:tall )?(?:stone )?(?:cloaked )?statue", "(?:statue's )?(?:bone?y)?(?:hand|palm)");
         this.addUseKeys(NameConstants.SCYTHE);
         this.addActKeys("shake", "embrace", "greet", "hold", "grasp", 
                         "push", "pull", "move", "turn", "twist");
