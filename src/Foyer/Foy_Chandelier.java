@@ -13,6 +13,9 @@ public class Foy_Chandelier extends Furniture {
                          + "same time, you ponder who has the time to maintain\n"
                          + "so many candles.";
         this.searchDialog = "You are pretty sure you can't jump that high.";
+        this.actDialog = "You will get hurt doing that.";
+        
+        this.addActKeys("swing", "hang");
         this.addNameKeys("(?:huge )?(?:iron )?(?:chandelier|light)");
     }
 /*----------------------------------------------------------------------------*/

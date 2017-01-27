@@ -31,12 +31,11 @@ public class Esc6_Grate extends Furniture implements Resetable {
     }
     // ======================================================================== 
     @Override public String getDescription() {
-        return this.opened ? "The grate has been moved." : this.description;
+        return opened ? "The grate has been moved." : description;
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        return this.opened ? "The ladder goes up about 30 feet." : 
-                this.searchDialog;
+        return opened ? "The ladder goes up about 30 feet." : searchDialog;
     }
     // ========================================================================   
     @Override public String interact(String key) {  

@@ -24,7 +24,7 @@ public class Water extends Furniture implements Gettable {
         
         this.addActKeys(GETKEYS);
         this.addActKeys("drink", "swim", "jump", "dive");
-        this.addNameKeys("water", "clear water");
+        this.addNameKeys("water", "clear water", "H20");
         this.addUseKeys(METAL_BUCKET);
     }
 /*----------------------------------------------------------------------------*/

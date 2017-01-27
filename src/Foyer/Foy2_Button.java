@@ -13,13 +13,13 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */        
 public class Foy2_Button extends Button {
-    private final Foy_Gate REF, REF2;
+    private final Foy_Gate NORTH_GATE_REF, SOUTH_GATE_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy2_Button(Furniture foy_Gt, Furniture foy2_Gt) {
         super();
         this.actDialog = "The two gates in the foyer switch positions.";
-        this.REF = (Foy_Gate)foy_Gt; 
-        this.REF2 = (Foy_Gate)foy2_Gt;
+        this.NORTH_GATE_REF = (Foy_Gate)foy_Gt; 
+        this.SOUTH_GATE_REF = (Foy_Gate)foy2_Gt;
         this.addNameKeys("(?:small )?(?:black )?button");
     }
 /*----------------------------------------------------------------------------*/    
@@ -46,8 +46,8 @@ public class Foy2_Button extends Button {
             foy2.addAdjacent(Id.FOYB);
             bba1.addAdjacent(Id.FOY2);
         }
-        REF.swtch(); // Opens or closes gate.
-        REF2.swtch(); // Opens or closes gate.
+        NORTH_GATE_REF.swtch(); // Opens or closes gate.
+        SOUTH_GATE_REF.swtch(); // Opens or closes gate.
 
         AudioPlayer.playEffect(28);
         
@@ -55,46 +55,3 @@ public class Foy2_Button extends Button {
     } 
 /*----------------------------------------------------------------------------*/    
 }
-
-/*
-
-public class Foy2_Lever extends Lever{
-    private final Foy_Gate REF, REF2;
-   
-    public Foy2_Lever(Furniture foy_Gt, Furniture foy2_Gt) {
-        super();
-        this.searchDialog = "Nope, this hidden lever isn't hiding anything.";
-        this.actDialog = "You pull the lever. The two gates in the foyer switch\n"
-                            + "positions.";
-        this.REF = (Foy_Gate)foy_Gt; 
-        this.REF2 = (Foy_Gate)foy2_Gt;
-        this.addNameKeys("(?:small )?(?:hidden )?lever");
-    }
-    
-    @Override public String event(String key) {
-        Room bba1 = Player.getRoomObj(Id.FOYB);
-        Room want = Player.getRoomObj(Id.FOYW);
-        
-        if (this.isOn) {
-            want.unlock();
-            bba1.lock();
-        }
-        else {
-            want.lock();
-            bba1.unlock();
-        }
-        REF.swtch(); 
-        REF2.swtch(); 
-
-        AudioPlayer.playEffect(28);
-        
-        return this.actDialog;
-    } 
-    
-    @Override public String getDescription() {
-        description = "A small lever. It's " + (this.isOn ? "on." : "off.");
-        return this.description; 
-    }
-    
-}
-*/

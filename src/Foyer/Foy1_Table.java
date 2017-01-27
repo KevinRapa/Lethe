@@ -7,6 +7,7 @@ public class Foy1_Table extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy1_Table(Item... items) {
         super(items);
+        
         this.description = "It's a long mahogany table. A respectable wood among\n"
                          + "lumberjacks, it's a durable and workable species. You\n"
                          + "nod your head in appreciation.";
@@ -15,7 +16,8 @@ public class Foy1_Table extends SearchableFurniture {
                        + "yourself. You give it another knock, and to your delight,\n"
                        + "another solid woody *knock* caresses your ear.";
         this.searchDialog = "You quickly scan the table."; 
-        this.addActKeys("kick", "nudge", "hit");
+        
+        this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:long )?(?:mahogany |wood(?:en)? )?table");
     }
 /*----------------------------------------------------------------------------*/

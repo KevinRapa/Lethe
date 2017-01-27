@@ -4,7 +4,6 @@ import A_Super.Item;
 import A_Super.SearchableFurniture;
         
 public class Eow1_Rack extends SearchableFurniture {
-
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Eow1_Rack(Item... items) {
         super(items);

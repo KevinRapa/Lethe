@@ -12,6 +12,9 @@ public class Drar_Table extends SearchableFurniture {
         this.GHOST_REF = (Drar_Ghost)ghst;
         this.description = "The low coffee table is glossy and clean.";
         this.searchDialog = "You look on the table's surface.";
+        this.actDialog= "How shameful it would be to dirty the table. Let's not touch it.";
+        
+        this.addUseKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:low )?(?:coffee )?table");
     }
 /*----------------------------------------------------------------------------*/
