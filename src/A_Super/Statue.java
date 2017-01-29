@@ -18,9 +18,9 @@ abstract public class Statue extends Furniture {
         this.actDialog = "You feel the statue and marvel at its detail.";
         this.searchDialog = "You look around the statue but find nothing of interest.";
 
-        this.addNameKeys("statue");
+        this.addNameKeys("statues?");
         this.addActKeys(MOVEPATTERN);
-        this.addActKeys("touch", "feel", "grab");
+        this.addActKeys(FEELPATTERN);
     }
     // ========================================================================   
     @Override public String interact(String key) {              

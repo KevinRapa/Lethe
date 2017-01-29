@@ -1,19 +1,23 @@
 package Gallery;
 
-import A_Super.Furniture;
+import A_Super.Lever;
         
-public class Gal3_Switch extends Furniture {           
+public class Gal3_Switch extends Lever {           
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Switch() {
         super();
+        
         this.description = "It's a small metal switch.";
-        this.searchDialog = "Nope, this switch isn't hiding anything.";
         this.actDialog = "To your displeasure, flicking the switch does nothing.\n"
                     + "'Maybe this pulley mechanism is broken,' you wonder.\n"
                     + "'It wouldn't be the only broken thing in this castle...'";
-        this.addActKeys("hit", "flip", "flick", "turn");
-        this.addNameKeys("metal switch", "switch");
+
+        this.addNameKeys("(?:metal )?switch");
     }
 /*----------------------------------------------------------------------------*/    
+    @Override protected String event(String key) {
+        return this.actDialog;
+    }
+/*----------------------------------------------------------------------------*/
 }
 

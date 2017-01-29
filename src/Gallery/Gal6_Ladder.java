@@ -11,7 +11,7 @@ public class Gal6_Ladder extends Staircase {
         this.searchDialog = "The ladder hides nothing.";
         this.description = "The ladder leads down the hatch into the room below.";
         this.NAMEKEYS.clear();
-        this.addNameKeys("ladder");
+        this.addNameKeys("(?:wood(?:en)? )?ladder");
     }
 /*----------------------------------------------------------------------------*/
     @Override protected void playEffect() {

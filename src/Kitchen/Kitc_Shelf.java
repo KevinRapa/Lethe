@@ -9,7 +9,10 @@ public class Kitc_Shelf extends SearchableFurniture {
         super(items);
         this.description = "The tall shelf is filled with old wines.";
         this.searchDialog = "You peruse the wine selection.";
-        this.addNameKeys("shelf of wine", "wine shelf", "wine rack", "shelf", "wine");
+        this.actDialog = "Do you really want wine and broken glass everywhere?";
+        
+        this.addActKeys(JOSTLEPATTERN);
+        this.addNameKeys("shelf of wine", "wine(?: shelf| rack)?", "shelf");
     }
 /*----------------------------------------------------------------------------*/
 }

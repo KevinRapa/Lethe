@@ -10,7 +10,10 @@ public class Gal6_Technology extends Furniture {
         this.description = "Wow! So much cool technology! This sure beats coal\n"
                          + "and steam.";
         this.searchDialog = "You can't decide which thing to search first!";
-        this.addNameKeys("technology");
+        this.useDialog = "You would have no idea what to do. This stuff is alien to you.";
+        
+        this.addUseKeys(ANYTHING);
+        this.addNameKeys("(?:cool )?technology");
     }
 /*----------------------------------------------------------------------------*/
 }

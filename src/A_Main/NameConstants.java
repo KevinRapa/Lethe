@@ -54,6 +54,7 @@ public final class NameConstants {
         FERTILIZED_SOIL = "fertilized soil",    POTTED_SOIL_AND_FERTILIZER = "potted soil and fertilizer",
         BATTERING_RAM = "battering ram",        LOOPED_ROPE = "looped rope",
         SOIL = "soil",                          FIXED_LADDER = "fixed ladder",
-        HOLY_WATER = "holy water";
+        HOLY_WATER = "holy water",              COPPER_POT = "copper pot",
+        COPPER_PAN = "copper pan",              CANDLE = "candle";
     // ========================================================================
 }

@@ -822,7 +822,7 @@ public class Main {
         Room lib4 = new Lib4("in the north upper library", Id.LIB4, lib4Tbl);
         Room lib5 = new Lib5("in the south upper library", Id.LIB5);
         //-------------------------------ITEMS----------------------------------
-        Item cndl = new Item("candle", "It's a white candle. Must have been burning for some time.");
+        Item cndl = new Item(CANDLE, "It's a white candle. Must have been burning for some time.");
         Item shs1 = new Shoes(LEATHER_SHOES, "A fancy pair of shiny leather shoes.", 
                                   "You put on the shoes. They're a little big, but comfortable!");
         Item shs2 = new Shoes("worn shoes", "A worn, dull pair of leather shoes.",
@@ -938,8 +938,8 @@ public class Main {
         Item petFrt = new Item("petrified vegetable", "Looks like a rock ... in the shape of a carrot.", "Whatever you expect him to do with that, he isn't going to.");
         Item brly = new Item("barley", "It doesn't smell so great. Even grain doesn't keep this long.");
         Item rye = new Item("rye", "It doesn't smell so great. Even grain doesn't keep this long.");
-        Item cpprPt = new Weapon("copper pot", "It's small and crudely fashioned. It was definitely hammered into shape.");
-        Item cpprPn = new Weapon("copper pan", "It's an old copper pan, crudely fashioned and hammered into shape.");
+        Item cpprPt = new Weapon(COPPER_POT, "It's small and crudely fashioned. It was definitely hammered into shape.");
+        Item cpprPn = new Weapon(COPPER_PAN, "It's an old copper pan, crudely fashioned and hammered into shape.");
         //-----------------------------FURNITURE--------------------------------
         Furniture kitcTrch = new Kitc_Torch();
         Furniture kitcF = new Floor("The floor is dirty brown stone, composed of differently sized crudely cut bricks.");
@@ -947,7 +947,7 @@ public class Main {
         Furniture kitcWndw = new Kitc_Window();
         Furniture kitcDr = new Mha3_Door(Direction.WEST);
         Furniture kitcRck = new Kitc_Rack(drwKey, par2Key, dngnKey);
-        Furniture kitcPts = new Kitc_Pots(cpprPt, cpprPn, cpprPt, cpprPn);
+        Furniture kitcPts = new Kitc_Pots(cpprPt, cpprPn, cpprPt, cpprPn, cpprPt, cpprPn);
         Furniture kitcHrth = new Kitc_Hearth(wbalch, wbalch, wbalch, wbalch);
         Furniture kitcBrls = new Kitc_Barrels(brly, brly, brly, rye, rye, rye);
         Furniture kitcPntry = new Kitc_Pantry(rtnFrt, rtnFrt, petFrt, kitcFrtPhy, petFrt);

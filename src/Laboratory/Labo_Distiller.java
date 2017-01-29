@@ -32,7 +32,8 @@ public class Labo_Distiller extends Furniture {
                          + "to the condenser on the other side of the table.";
 
         this.addNameKeys("distillery?", "(?:bunsen )?burner", "(?:flask )?rack");
-        this.addUseKeys(RUBBER_HOSE, FLORENCE_FLASK, STRIKER, HAND_TORCH, BEAKER, TEST_TUBE, EMPTY_VIAL, "copper pot", "copper pan");
+        this.addUseKeys(RUBBER_HOSE, FLORENCE_FLASK, STRIKER, HAND_TORCH, 
+                        BEAKER, TEST_TUBE, EMPTY_VIAL, COPPER_POT, COPPER_PAN);
     }
     // ======================================================================== 
     @Override public String getDescription() {

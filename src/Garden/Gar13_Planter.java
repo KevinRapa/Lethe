@@ -22,9 +22,10 @@ public class Gar13_Planter extends SearchableFurniture {
         this.searchDialog = "You fan around the plants in the planter.";
         this.useDialog = "You uncover nothing, but you do store a bit of soil in your pockets.";
 
-        this.addNameKeys("planter", "(?:bed of )?(?:soil|dirt)", "bed", "plants");
+        this.addNameKeys("planter", "(?:bed of )?(?:soil|dirt)", "bed", "plants", "dirt", "soil");
         this.addUseKeys("hoe", TROWEL, SHOVEL, "seed", "fertilizer");
-        this.addActKeys("garden", "plant", "dig");
+        this.addActKeys(GETKEYS);
+        this.addActKeys("garden", "plant", "dig", "shovel");
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
@@ -41,15 +42,16 @@ public class Gar13_Planter extends SearchableFurniture {
             return this.actDialog;
     }
     // ========================================================================     
-    @Override public String interact(String action) {
-        if (action.equals("dig")) {
+    @Override public String interact(String key) {
+        if (key.equals("garden") || key.equals("plant")) {
+            return this.actDialog;
+        }
+        else {
             if (Player.hasItem(TROWEL) || Player.hasItem(SHOVEL))
                 return useEvent(new Item(SHOVEL));
             else
                 return "You have nothing to dig with.";
         }
-        else
-            return this.actDialog;
     }
     // ========================================================================     
 }

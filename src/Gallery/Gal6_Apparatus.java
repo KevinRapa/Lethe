@@ -1,15 +1,16 @@
 package Gallery;
 
 import static A_Main.NameConstants.BOX_THINGY;
+import A_Super.Gettable;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**
  * Holds the box thingy; the battery for the GAL6 cannon
  * 
  * @see Gallery.Gal6_Cnn
- * @author KEvin Rapa
+ * @author Kevin Rapa
  */ 
-public class Gal6_Apparatus extends SearchableFurniture {
+public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_Apparatus(Item... items) {
         super(items);
@@ -21,7 +22,9 @@ public class Gal6_Apparatus extends SearchableFurniture {
                          + "some sort of blue light and in the center sits a\n"
                          + "metal box thingy. Next to the apparatus is a label\n"
                          + "that says: \"Plasma induction charger\".";
-        this.addNameKeys("apparatus", "unknown apparatus", "plasma induction");
+        
+        this.addActKeys(GETKEYS);
+        this.addNameKeys("apparatus", "unknown apparatus", "plasma induction charger");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
@@ -41,5 +44,9 @@ public class Gal6_Apparatus extends SearchableFurniture {
         
         return this.searchDialog;
     }  
-/*----------------------------------------------------------------------------*/  
+/*----------------------------------------------------------------------------*/
+    @Override public String interact(String key) {
+        return getIt();
+    }
+/*----------------------------------------------------------------------------*/
 }

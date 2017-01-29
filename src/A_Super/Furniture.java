@@ -39,7 +39,7 @@ abstract public class Furniture implements Serializable {
     protected static final String[] 
             GETKEYS = {"get", "take", "acquire", "grab", "scoop"};     
     
-    protected static final String SITPATTERN = "sit|relax|lay",
+    protected static final String SITPATTERN = "sit|relax|lay|use",
                                   JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",
                                   MOVEPATTERN = "move|slide|displace|push|pull",
                                   FEELPATTERN = "feel|touch|poke",

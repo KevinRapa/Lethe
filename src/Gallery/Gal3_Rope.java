@@ -12,9 +12,7 @@ public class Gal3_Rope extends Furniture {
             super();
             this.cut = false;
             this.REF = (Gal3_Ladder)lddr;
-            this.addActKeys("cut", "pull", "untie");
-            this.addUseKeys("katana", "silver sword", "rusty sword", "broken sword", "war axe", "battle axe");
-            this.addNameKeys("rope");
+            
             this.actDialog = "You cut the rope with the katana. The ladder\n"
                            + "drops down into the room, giving access to\n"
                            + "the loft.";
@@ -22,6 +20,10 @@ public class Gal3_Rope extends Furniture {
                              + "with a pulley. It feeds into a hole in the wall\n"
                              + "next to you. Above the hole, you see a switch.";
             this.searchDialog = "It's just an ordinary rope.";
+            
+            this.addActKeys("cut", "pull", "untie");
+            this.addUseKeys("katana", "silver sword", "rusty sword", "broken sword", "war axe", "battle axe");
+            this.addNameKeys("rope");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
@@ -40,7 +42,7 @@ public class Gal3_Rope extends Furniture {
                     return "You have nothing to cut the rope with.";
             }       
             else if (key.equals("pull")) 
-                return "Pulling the rope is doing the opposite of what you want.";  
+                return "The rope doesn't budge.";  
             
             else 
                 return "The knot in the rope is too high up to untie.";    
@@ -60,11 +62,7 @@ public class Gal3_Rope extends Furniture {
 /*----------------------------------------------------------------------------*/
     private boolean detectItem() {
         // Detects if you have a blade to cut the rope with.
-        for (String i : this.USEKEYS) {
-            if (Player.hasItem(i))
-                return true;
-        }
-        return false;
+        return this.USEKEYS.stream().anyMatch(i -> (Player.hasItem(i)));
     }
 /*----------------------------------------------------------------------------*/
 }

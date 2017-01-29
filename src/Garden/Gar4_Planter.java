@@ -23,13 +23,17 @@ public class Gar4_Planter extends SearchableFurniture {
         this.searchDialog = "The soil surface is bare and doesn't seem to hide anything.";
         this.useDialog = this.actDialog;
 
-        this.addNameKeys("planter", "(?:bed of )?(?:soil|dirt)", "bed");
+        this.addNameKeys("planter", "(?:bed of )?(?:soil|dirt)", "bed", "dirt", "soil");
         this.addUseKeys(SHOVEL, TROWEL);
-        this.addActKeys("dig", "plant", "garden");
+        this.addActKeys(GETKEYS);
+        this.addActKeys("dig", "plant", "garden", "shovel");
     }
     // ========================================================================   
     @Override public String interact(String key) {      
-        if (key.equals("dig")) {
+        if (key.equals("garden") || key.equals("plant")) {
+           return "You aren't a gardener!";
+        }
+        else {
             if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
                 if (PLQ_REF.isMoved()) {
                     if (this.inv.contains(PLT_REF)) {
@@ -46,10 +50,8 @@ public class Gar4_Planter extends SearchableFurniture {
                 }
             }
             else 
-                return "You have nothing to dig with, and your stocky hands are terrible for digging.";   
+                return "You have nothing to dig with, and your stocky hands are terrible for digging.";
         }
-        else
-            return "You aren't a gardener!";
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {

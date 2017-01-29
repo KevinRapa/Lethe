@@ -20,6 +20,7 @@ public class Gal1_KatanaFurniture extends Furniture {
         this.description = "The black katana looks exceptionally sharp.";
         this.actDialog = "You take the katana off its display.";
         this.addActKeys(GETKEYS);
+        this.addActKeys("wield");
         this.addNameKeys("(?:black )?(?:katana|sword)");
     }
 /*----------------------------------------------------------------------------*/ 

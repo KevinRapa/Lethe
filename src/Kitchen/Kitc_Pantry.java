@@ -8,10 +8,10 @@ public class Kitc_Pantry extends SearchableFurniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Kitc_Pantry(Item... items) {
         super(items);
-        this.description = "From the pantry emits a disgusting odor!";
+        this.description = "A disgusting odor seeps out of the tall pantry.";
         this.searchDialog = "The pantry creaks as you slowly open it.";
         
-        this.addNameKeys("pantry");
+        this.addNameKeys("(?:tall )?pantry");
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -9,7 +9,7 @@ public class Kitc_Rack extends SearchableFurniture {
         super(items);
         this.description = "It's a rack of hooks used to hold keys.";
         this.searchDialog = "You look among the hooks.";
-        this.addNameKeys("rack", "key rack");
+        this.addNameKeys("(?:key )?(?:rack|hooks?)");
     }
 /*----------------------------------------------------------------------------*/
 }

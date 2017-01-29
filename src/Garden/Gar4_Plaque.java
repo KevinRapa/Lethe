@@ -17,7 +17,7 @@ public class Gar4_Plaque extends Furniture {
         this.searchDialog = "You lift the plaque, but find only soil, and put it back down.";
 
         this.addNameKeys("(?:small )?plaque");
-        this.addActKeys("read", "move", "slide", "lift");
+        this.addActKeys(MOVEPATTERN);
     }
     // ========================================================================   
     @Override public String getSearchDialog() {

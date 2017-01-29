@@ -3,7 +3,6 @@ package Gallery;
 import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Item;
-import A_Super.Furniture;
 import A_Super.SearchableFurniture;
 import java.util.HashMap;
 /**

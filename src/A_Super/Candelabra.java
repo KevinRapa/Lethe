@@ -2,6 +2,7 @@ package A_Super;
 
 import A_Main.GUI;
 import A_Main.Inventory;
+import static A_Main.NameConstants.CANDLE;
 import static A_Main.NameConstants.HAND_TORCH;
 import A_Main.Player;
 
@@ -23,7 +24,7 @@ abstract public class Candelabra extends SearchableFurniture
                        + "your pocket this whole time.";
 
         this.addNameKeys("candles?", "fire");
-        this.addUseKeys(HAND_TORCH);
+        this.addUseKeys(HAND_TORCH, CANDLE);
         this.addActKeys(GETKEYS);
         this.addActKeys("touch");
         
@@ -37,14 +38,24 @@ abstract public class Candelabra extends SearchableFurniture
         if (this.inv.contains(CANDLE_REF))
             return this.description;
         else
-            return "The candelabra holds no more candles";
+            return "The candelabra holds no more candles.";
+    }
+    // ========================================================================   
+    @Override public String useEvent(Item item) {
+        if (item.equals(CANDLE_REF)) {
+            Player.getInv().remove(item);
+            this.inv.add(item);
+            return "You store a candle.";
+        }
+        else
+            return this.useDialog;
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
         if (this.inv.contains(CANDLE_REF))
             return this.searchDialog;
         else
-            return "The candelabra holds no more candles";
+            return "The candelabra holds no more candles.";
     }
     // ========================================================================   
     @Override public String interact(String key) {              

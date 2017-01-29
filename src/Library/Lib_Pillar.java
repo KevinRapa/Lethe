@@ -1,17 +1,16 @@
 package Library;
 
-import A_Super.Furniture;
+import A_Super.Column;
 
-public class Lib_Pillar extends Furniture{
+public class Lib_Pillar extends Column {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib_Pillar() {
         super();
 
         this.description = "The fat Corinthian pillar stands in the corner of\n"
                          + "where the stairs meet the second floor.";
-        this.actDialog = "This pillar doesn't need help holding up the ceiling.";
+
         this.addNameKeys("(?:fat )?(?:corinthian )?(?:pillar|column)");
-        this.addActKeys("hold", "grab");
     }
 /*----------------------------------------------------------------------------*/
 }

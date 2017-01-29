@@ -2,7 +2,7 @@ package Library;
 
 import A_Super.Furniture;
 
-public class Lib_Sconces extends Furniture{
+public class Lib_Sconces extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib_Sconces() {
         super();
@@ -11,7 +11,7 @@ public class Lib_Sconces extends Furniture{
                            "light the wall with a flickering orange glow.";
         this.actDialog = "Ouch! That's hot!";
         this.addNameKeys("(?:electric )?(?:copper )?(?:metal )?(?:sconces?|lights?)");
-        this.addActKeys("grab", "hold", "touch");
+        this.addActKeys("grab", "hold", FEELPATTERN);
     }
 /*----------------------------------------------------------------------------*/
 }

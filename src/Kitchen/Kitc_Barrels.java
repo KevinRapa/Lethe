@@ -12,7 +12,7 @@ public class Kitc_Barrels extends SearchableFurniture implements Openable {
                          + "barley and rye.";
         this.searchDialog = "You look into the barrels.";
         this.actDialog = "This is way too heavy to move.";
-        this.addActKeys("move", "push", "pull");
+        this.addActKeys(MOVEPATTERN);
         this.addNameKeys("barrels?");
     }
 /*----------------------------------------------------------------------------*/

@@ -25,7 +25,9 @@ public class Gal6_Helmet extends Furniture {
                     + "It takes you a few moments to catch your breath and recover\n"
                     + "your sense of direction. You cannot comprehend what just\n"
                     + "happened.";
-        this.addActKeys("wear");
+        
+        this.addActKeys(GETKEYS);
+        this.addActKeys("wear", "put");
         this.addNameKeys("(?:bizarre|cool )?helmet");
     }
 /*----------------------------------------------------------------------------*/

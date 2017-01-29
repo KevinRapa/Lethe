@@ -1,8 +1,8 @@
 package Gallery;
 
-import A_Super.Furniture;
+import A_Super.Statue;
 
-public class Gal3_Artifact2 extends Furniture {
+public class Gal3_Artifact2 extends Statue {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Artifact2() {
         super();

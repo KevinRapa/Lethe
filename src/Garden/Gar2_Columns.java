@@ -1,10 +1,10 @@
 package Garden;
 
-import A_Super.Furniture;
+import A_Super.Column;
 /**
  * @author Kevin Rapa
  */
-public class Gar2_Columns extends Furniture {
+public class Gar2_Columns extends Column {
     // ========================================================================
     public Gar2_Columns () {
         super();

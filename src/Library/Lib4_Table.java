@@ -11,6 +11,10 @@ public class Lib4_Table extends SearchableFurniture {
         this.description = "The low table sits between the couch and the\n"
                          + "fireplace. On its surface is something glinting.";
         this.searchDialog = "You look on the table.";
+        this.actDialog = "The table resists any give from the kick you give it.\n"
+                       + "It is a solidly built piece of artistry.";
+        
+        this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:low )?table", "(?:glimmering )?object");
     }
 /*----------------------------------------------------------------------------*/

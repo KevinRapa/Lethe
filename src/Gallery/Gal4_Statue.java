@@ -12,14 +12,18 @@ public class Gal4_Statue extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal4_Statue(Furniture stat) {
         super();
+        
         this.STAT_REF = (Gal7_Statue)stat;
         this.level = 0;
+        
         this.actDialog = "The statue is out of reach";
         this.description = "The statue now stands surrounded by the second floor\n"
                          + "balcony. The orb has stopped glowing and one of\n"
                          + "the statue's eyes has started to.";  
-        this.addNameKeys("grandiose statue");
         this.searchDialog = "The statue's hand is out of reach";
+        
+        this.addNameKeys("(?:grandiose )?statue");
+        this.addActKeys(ANYTHING);
     }
 /*----------------------------------------------------------------------------*/
     public int getState() {
