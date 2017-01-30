@@ -1,10 +1,10 @@
 package Secret_Stairs;
 
-import A_Super.Furniture;
+import A_Super.Balcony;
 /**
  * @author Kevin Rapa
  */
-public class Sst_Landing extends Furniture {
+public class Sst_Landing extends Balcony {
     // ========================================================================
     public Sst_Landing () {
         super();
@@ -13,7 +13,7 @@ public class Sst_Landing extends Furniture {
                          + "only by several old wood planks and looks just big\n"
                          + "enough to stand on.";
 
-        this.addNameKeys("(?:small )?landing");
+        this.addNameKeys("(?:small )?(?:landing|balcony)");
     }
     // ======================================================================== 
 }

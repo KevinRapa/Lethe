@@ -1,11 +1,10 @@
 package Mystical_Chamber;
 
-import A_Super.Furniture;
+import A_Super.Ceiling;
 /**
  * @author Kevin Rapa
  */
-public class My18_Ceiling extends Furniture {
-
+public class My18_Ceiling extends Ceiling {
     // ========================================================================
     public My18_Ceiling () {
         super();

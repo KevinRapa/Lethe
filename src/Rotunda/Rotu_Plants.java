@@ -10,8 +10,6 @@ public class Rotu_Plants extends PottedPlant {
 
         this.description = "The plants don't seem to be in good shape. They\n"
                          + "droop and some are crowded with weeds.";
-
-        this.addNameKeys("(?:potted )?plants?");
     }
 /*----------------------------------------------------------------------------*/
 }

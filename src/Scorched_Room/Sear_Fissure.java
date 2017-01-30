@@ -27,7 +27,7 @@ public class Sear_Fissure extends Furniture {
                        + "warhammer, but the warhammer snaps in half. You\n"
                        + "begin to think the wood axe is the only tool\n"
                        + "you know how to use without it breaking.";
-        this.addNameKeys("fissure", "wall");
+        this.addNameKeys("fissure", "wall", "(?:empty )?hole");
         this.addUseKeys(WARHAMMER, CROWBAR, HAMMER);
     }
 /*----------------------------------------------------------------------------*/

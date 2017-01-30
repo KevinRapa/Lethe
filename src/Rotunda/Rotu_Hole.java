@@ -16,8 +16,11 @@ public class Rotu_Hole extends Furniture {
         this.description = "It's a hole carved in the ceiling, about a meter\n"
                          + "wide. It looks to lead outside to the roof, although\n"
                          + "there's a glass encasing around the space above.";
+        this.actDialog = "The hole is high up in the ceiling...";
         this.searchDialog = "The hole is but empty space. You have nothing to\n"
                           + "search";
+        
+        this.addActKeys("climb", "jump");
         this.addNameKeys("hole");
     }
 /*----------------------------------------------------------------------------*/

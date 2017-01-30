@@ -1,10 +1,10 @@
 package Observatory;
 
-import A_Super.Furniture;
+import A_Super.Balcony;
 /**
  * @author Kevin Rapa
  */
-public class Obs_Balcony extends Furniture {
+public class Obs_Balcony extends Balcony {
     // ========================================================================
     public Obs_Balcony () {
         super();

@@ -1,21 +1,15 @@
 package Tomb;
 
-import static A_Main.NameConstants.POLEARM;
-import A_Super.Furniture;
+import A_Super.BurningBowl;
 /**
  * @author Kevin Rapa
  */
-public class Tmb1_Bowl extends Furniture {
+public class Tmb1_Bowl extends BurningBowl {
     // ========================================================================
     public Tmb1_Bowl () {
         super();
 
         this.description = "The hanging steel bowl lights the room in a flickering dim light.";
-        this.useDialog = "You don't think that jabbing a burning bowl is a\n"
-                       + "very good idea.";
-
-        this.addNameKeys("(?:hanging )?(?:burning )?(?:steel )?bowl(?: of fire)?");
-        this.addUseKeys(POLEARM);
     }
     // ========================================================================    
 }

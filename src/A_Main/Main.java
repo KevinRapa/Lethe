@@ -561,7 +561,8 @@ public class Main {
         //-----------------------------FURNITURE-------------------------------- 
         Furniture searFssr = new Sear_Fissure();
         Furniture searDr = new Sear_Door();
-        Furniture searAsh = new Sear_Ash();
+        Furniture searAsh = new Sear_Ash(ash);
+        Furniture searWood = new Sear_Wood(wd);
         Furniture searSkltn = new Sear_Skeleton(closCrwbr);
         Furniture searLddr = new Gqua_Ladder(Direction.UP);
         Furniture searF = new Floor("It's a cold, hard, cobblestone floor", ash, wd, ash, wrhmmr, wd, ash);
@@ -1854,7 +1855,7 @@ public class Main {
         sha1.addFurniture(wWW, shaF, sha1Trch, sha1Dr, sha1SDr, clng);
         sha2.addFurniture(wWW, sha2Cbnt, shaF, sha2Dr, sha2Trch, clng);
         clos.addFurniture(closW, closF, closShlf, closStl, closBrrl, closWrkbnch, closLddr, closScks, closClng, closSkltn, closDr);  
-        cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searAsh, closW, clng);
+        cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searAsh, closW, clng, searWood);
         shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, lookLghths, lookClff, bbaSea, rquaPnl, clng);
         stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, southDoor, iha1Lvr, clng);
         
@@ -1946,7 +1947,7 @@ public class Main {
         tm16.addFurniture(tmb1Cskt, catW, tm1F, catDrS, tm1Vs, tm1Bwl, tm1Effgy, clng);
         tm66.addFurniture(tmb2Cskt, catW, tm2F, catDrE, tm2Vs, tm2Orb, clng);
         tm32.addFurniture(tmb3Cskt, catW, tm3F, catDrW, tm3Vs, tm3Tpstry, tm3Cndl, clng);
-        ou62.addFurniture(catDrN, oubSpk, oubStrw, oub2F, dngnW);
+        ou62.addFurniture(catDrN, oubSpk, oubStrw, oub2F, dngnW, tm1Bwl);
         an65.addFurniture(catW, antF, antCskt, antNPC, antClng, antCskts, ant2Trch, antW);
         an55.addFurniture(catW, antF, antCskt, catDrN, antClng, antCskts, ant1Trch, antW);
         my18.addFurniture(antW, my18F, my18Pdstl, tm1Bwl, my18Clng);

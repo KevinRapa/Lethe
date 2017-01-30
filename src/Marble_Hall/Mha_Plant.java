@@ -10,8 +10,6 @@ public class Mha_Plant extends PottedPlant {
 
         this.description = "The potted plant is in good shape. It sits in a\n"
                          + "fancy white vase.";
-
-        this.addNameKeys("(?:potted )?plants?");
     }
 /*----------------------------------------------------------------------------*/
 }

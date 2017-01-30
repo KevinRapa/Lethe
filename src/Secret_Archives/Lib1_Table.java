@@ -12,6 +12,9 @@ public class Lib1_Table extends SearchableFurniture {
                          + "source.";
         this.searchDialog = "You fan through the boring papers scattered around\n"
                           + "the artifact. Here's what you find interesting: ";
+        this.actDialog = "You give it a kick. A thick woody clunk inundates your earholes, and you are enticed to hit it again.";
+        
+        this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:ornate )?table");
     }
 /*----------------------------------------------------------------------------*/

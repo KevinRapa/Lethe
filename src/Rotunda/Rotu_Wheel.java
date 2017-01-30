@@ -22,7 +22,7 @@ public class Rotu_Wheel extends Furniture {
                          + "fountain.";
         this.actDialog = "As you turn the wheel, your balance shifts and you hear a loud\n"
                        + "rumble. The room appears to have shifted.";
-        this.addNameKeys("wheel", "stone wheel");
+        this.addNameKeys("(?:stone )?wheel");
         this.addActKeys("turn", "rotate", "spin", "twist");
     }
 /*----------------------------------------------------------------------------*/    

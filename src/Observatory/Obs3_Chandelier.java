@@ -17,6 +17,9 @@ public class Obs3_Chandelier extends SearchableFurniture {
                          + "Secured in its center is a red jewel encompassed\n"
                          + "by the chandelier's many candles.";
         this.searchDialog = "The chandelier is too high up.";
+        this.actDialog = "You would most certainly fall to your death...";
+        
+        this.addActKeys("swing", "hang");
         this.addNameKeys("(?:curved )?(?:brass )?(?:chandelier|light)");
     }
 /*----------------------------------------------------------------------------*/
@@ -25,15 +28,15 @@ public class Obs3_Chandelier extends SearchableFurniture {
             return "The brass chandelier's chain, having extended from\n" +
                    "the ceiling, suspends the chandelier now level with the\n" +
                    "observatory's top floor. It's just within reach.";
-        
-        return this.description;
+        else
+            return this.description;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
         if (this.searchable)
             return "The chandelier is just within reach.";
-        
-        return this.searchDialog;
+        else
+            return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
     public void lower() {

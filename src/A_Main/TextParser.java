@@ -121,7 +121,7 @@ public class TextParser {
             
             else if (statements[i].matches("(?:put|store) [a-z0-9: ,'-]+"))
                 commands[i] = getStoreCmd(statements[i].replaceAll("(?:put|store) ", "")
-                                        .split(" (?:in|on)(?:to)? | under(?:neath) | next to | beside "));
+                                        .split(" (?:in|on)(?:to)? | under(?:neath)? | next to | beside "));
             else 
                 commands[i] = getCmdActionFirst(stripPrepositions(statements[i])
                                         .split(INSTRUCTIVE_PATTERN));

@@ -12,6 +12,9 @@ public class Mha_Chandelier extends Furniture {
                            "iron one in the foyer. It holds many candles; at least\n" +
                            "twenty. 'Who keeps these lit?' You think to yourself.";
         this.searchDialog = "You are pretty sure you can't jump that high.";
+        this.actDialog = "How would you even get up there to do that??";
+        
+        this.addActKeys("hang", "swing");
         this.addNameKeys("(?:silver )?(?:chandelier|light)");
     }
 /*----------------------------------------------------------------------------*/

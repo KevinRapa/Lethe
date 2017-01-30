@@ -1,10 +1,10 @@
 package Top_Balcony;
 
-import A_Super.Furniture;
+import A_Super.Column;
 /**
  * @author Kevin Rapa
  */
-public class Tbal_Pillar extends Furniture {
+public class Tbal_Pillar extends Column {
     // ========================================================================
     public Tbal_Pillar () {
         super();

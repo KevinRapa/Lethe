@@ -29,16 +29,20 @@ public class Mha2_RightStatue extends SearchableFurniture {
                             + "tainted by your touch.";
         this.addNameKeys("right statue", "right compartment");
         this.addActKeys("touch", "grab", "hold");
-        this.addUseKeys(SILVER_SPEAR);
+        this.addUseKeys(".+");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        this.searchable = true;
-        Player.getInv().remove(item);
-        AudioPlayer.playEffect(44);
-        this.addNameKeys("compartment", "open compartment");
-            
-        return this.useDialog;
+        if (item.toString().equals(SILVER_SPEAR)) {
+            this.searchable = true;
+            Player.getInv().remove(item);
+            AudioPlayer.playEffect(44);
+            this.addNameKeys("compartment", "open compartment");
+
+            return this.useDialog;
+        }
+        else
+            return "It doesn't seem like that belongs there.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
@@ -47,14 +51,15 @@ public class Mha2_RightStatue extends SearchableFurniture {
                  + "gaze upwards. It's a mirror-image of the left\n"
                  + "statue. In its right hand is a silver spear."; 
         }      
-        return this.description;
+        else
+            return this.description;
     }
 /*----------------------------------------------------------------------------*/
      @Override public String getSearchDialog() {
         if (this.searchable)
             return "You look into the compartment inside the statue's base.";
-        
-        return this.searchDialog;
+        else
+            return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

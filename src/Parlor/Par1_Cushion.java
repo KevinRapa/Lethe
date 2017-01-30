@@ -15,9 +15,10 @@ public class Par1_Cushion extends SearchableFurniture {
         super(items);
         this.description = "It's a lavender tasseled cushion for sitting on.";
         this.searchDialog = "You lift the cushion.";
-        this.actDialog = "Now is not the time for that!";
+        this.actDialog = "What a comfortable cushion! Well, the cushion is nice,\n"
+                       + "feels hard underneath though... Could just be the floor.";
         this.addNameKeys("(?:lavender )?(?:tasseled )?cushion");
-        this.addActKeys("sit", "relax");
+        this.addActKeys(SITPATTERN);
     }
 /*----------------------------------------------------------------------------*/
 }

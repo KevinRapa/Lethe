@@ -20,7 +20,7 @@ public class Rotu_Fountain extends Furniture {
                          + "It looks quite beautiful, except that it's filled\n"
                          + "with opaque brown water.";
         this.searchDialog = "You can't see anything through the brown water.";
-        this.addNameKeys("fountain", "marble fountain");
+        this.addNameKeys("(?:marble )?fountain");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {        

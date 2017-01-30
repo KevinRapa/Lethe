@@ -1,6 +1,7 @@
 package Marble_Hall;
 
-import static A_Main.NameConstants.SILVER_SPEAR;
+import static A_Main.NameConstants.WEAPON;
+import A_Super.Item;
 import A_Super.SearchableFurniture;
 
 public class Mha2_LeftStatue extends SearchableFurniture {
@@ -12,14 +13,22 @@ public class Mha2_LeftStatue extends SearchableFurniture {
                          + "and points it upwards over the right angel. In its\n"
                          + "hollow base is an open compartment.";
         this.searchDialog = "You look into the compartment inside its base.";
-        this.useDialog = "You start jamming the spear into the angel's hand\n"
+        this.useDialog = "You start jamming it into the angel's hand\n"
                        + "before realizing that the angel is already holding\n"
                        + "a spear.";
         this.actDialog = "Such an impressive work of artistry deserves not to be\n"
                        + "tainted by your touch.";
+        
         this.addNameKeys("left statue", "(?:left )?(?:open )?compartment");
         this.addActKeys("touch", "grab", "hold");
-        this.addUseKeys(SILVER_SPEAR);
+        this.addUseKeys(".+");
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String useEvent(Item item) {
+        if (item.getType().equals(WEAPON))
+            return this.useDialog;
+        else
+            return "It doesn't seem like that belongs there.";
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -22,7 +22,7 @@ abstract public class PottedPlant extends SearchableFurniture
         this.useDialog = "Pouring that on the plant is definitely not going to\n"
                        + "be good for it, you monster.";
 
-        this.addNameKeys("dirt", "soil");
+        this.addNameKeys("dirt", "soil", "(?:potted )?plants?");
         this.addUseKeys(ANYTHING);
         this.addActKeys(GETKEYS);
         this.addActKeys("water");

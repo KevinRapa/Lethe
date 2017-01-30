@@ -93,7 +93,7 @@ public class Gal1_Dragon extends Gal_LightMachine {
                 return true;
             }
             else {
-                GUI.out("The " + item + " doesn't look like it belongs there.");
+                GUI.out("It doesn't seem like that belongs there.");
                 return false;
             }
         }
