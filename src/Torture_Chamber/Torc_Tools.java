@@ -15,7 +15,7 @@ public class Torc_Tools extends Furniture {
         this.searchDialog = "You aren't sure which one to search.";
 
         this.addNameKeys("(?:sinister )?(?:tools?|instruments?|apparatus(?:es)?)");
-        this.addActKeys("use");
+        this.addActKeys("use", "play");
     }
     // ========================================================================  
 }

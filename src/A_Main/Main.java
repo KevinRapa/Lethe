@@ -1384,7 +1384,7 @@ public class Main {
         //-----------------------------FURNITURE--------------------------------  
         Furniture sewpCl = new Sewp_Ceiling();
         Furniture sewpGrt = new Sewp_Grate();
-        Furniture sewpWtr = new Sewp_Water();
+        Furniture sewpWtr = new Sewp_Water(wtrBckt);
         Furniture sewpTrch = new Torch();
         Furniture sewpF = new Dungeon_Floor();
         Furniture sewpTnnl = new Sewp_Tunnel();

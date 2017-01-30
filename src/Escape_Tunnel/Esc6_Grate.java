@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import static A_Main.NameConstants.METAL_BAR;
 import A_Main.Player;
 import A_Super.Furniture;
+import A_Super.Gettable;
 import A_Super.Item;
 import A_Super.Resetable;
 /**
@@ -12,7 +13,7 @@ import A_Super.Resetable;
  * 
  * @author Kevin Rapa
  */
-public class Esc6_Grate extends Furniture implements Resetable {
+public class Esc6_Grate extends Furniture implements Resetable, Gettable {
     private final String MOVED_GRATE = "You've already moved the grate!";
     private boolean opened;
     // ========================================================================
@@ -28,6 +29,7 @@ public class Esc6_Grate extends Furniture implements Resetable {
         this.addNameKeys("(?:metal )?grate");
         this.addUseKeys(METAL_BAR);
         this.addActKeys("lift", "move", "pry");
+        this.addActKeys(GETKEYS);
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -41,10 +43,12 @@ public class Esc6_Grate extends Furniture implements Resetable {
     @Override public String interact(String key) {  
         if (key.equals("lift") || key.equals("move")) 
             return opened ? MOVED_GRATE : this.actDialog;
-        else if (Player.hasItem(METAL_BAR))
+        else if (key.equals("pry") && Player.hasItem(METAL_BAR))
             return this.useEvent(null); // Safe. Arg unused here.
-        else
+        else if (key.equals("pry"))
             return "You have nothing to do that with.";
+        else
+            return getIt();
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {

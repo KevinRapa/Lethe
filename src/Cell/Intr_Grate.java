@@ -5,6 +5,7 @@ import A_Main.Id;
 import static A_Main.NameConstants.METAL_BAR;
 import A_Main.Player;
 import A_Super.Furniture;
+import A_Super.Gettable;
 import A_Super.Item;
 import A_Super.Resetable;
 /**
@@ -13,7 +14,7 @@ import A_Super.Resetable;
  * 
  * @author Kevin Rapa
  */
-public class Intr_Grate extends Furniture implements Resetable {
+public class Intr_Grate extends Furniture implements Resetable, Gettable {
     private boolean opened;
     private final String MOVED_GRATE = "You've already moved the grate!";
     // ========================================================================
@@ -30,6 +31,7 @@ public class Intr_Grate extends Furniture implements Resetable {
 
         this.addNameKeys("(?:metal )?(?:grate|ladder)");
         this.addActKeys("jump", "climb", "lift", "move", "descend", "pry");
+        this.addActKeys(GETKEYS);
         this.addUseKeys(METAL_BAR);
     }
     // ======================================================================== 
@@ -52,9 +54,11 @@ public class Intr_Grate extends Furniture implements Resetable {
             return Player.hasItem(METAL_BAR) ? 
                     this.useEvent(null) : "You have nothing good to pry with.";
         
-        else
+        else if (key.equals("climb") || key.equals("descend") || key.equals("jump"))
             return opened ? 
                     transport() : "You aren't going anywhere with that grate closed.";
+        else
+            return getIt();
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {

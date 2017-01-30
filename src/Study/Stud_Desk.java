@@ -14,6 +14,8 @@ public class Stud_Desk extends SearchableFurniture implements Openable {
         this.actDialog = "You give the desk a small kick. Though creaky and\n" +
                       "old, it's a good desk. Perhaps if you weren't trapped\n" +
                       "here, you'd take it home with you.";
+        
+        this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("desk", "fancy desk");
     }
 /*----------------------------------------------------------------------------*/
