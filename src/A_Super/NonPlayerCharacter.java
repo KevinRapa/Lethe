@@ -15,7 +15,7 @@ import static A_Main.NameConstants.WEAPON;
  */
 abstract public class NonPlayerCharacter extends Furniture {
     protected boolean firstTime; // If the player hasn't talked to this before.
-    protected static final String ATTACK_PATTERN = "kill|hit|punch|murder",
+    protected static final String ATTACK_PATTERN = "kill|hit|punch|murder|attack",
                                   ATTACK_DIALOG = "You really aren't a natural killer...";
     // ========================================================================
     public NonPlayerCharacter () {
@@ -24,6 +24,7 @@ abstract public class NonPlayerCharacter extends Furniture {
         this.useDialog = ATTACK_DIALOG;
         
         this.addUseKeys(ANYTHING);
+        this.addActKeys(ATTACK_PATTERN);
         this.addActKeys("speak", "talk", "converse", "chat");
     }
     // ======================================================================== 
