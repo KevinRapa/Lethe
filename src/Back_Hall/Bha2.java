@@ -28,7 +28,7 @@ public class Bha2 extends Room {
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
         if (! Player.getShoes().equals(SHROUDED_SHOES)) {
-            if (Player.getLastVisited().matches(Id.BHA1))
+            if (Player.getLastVisited().equals(Id.BHA1))
                 Player.setOccupies(Id.BHA1);
             else
                 Player.setOccupies(Id.BHA3);

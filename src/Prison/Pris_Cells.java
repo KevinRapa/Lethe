@@ -2,6 +2,7 @@ package Prison;
 
 import A_Main.GUI;
 import A_Main.Id;
+import static A_Main.Patterns.WORD;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Openable;
@@ -32,7 +33,7 @@ public class Pris_Cells extends Furniture implements Openable{
         
         String ans = GUI.askChoice("\n<#> Inspect", "[1-6]|one|two|three|four|five|six");
         
-        if (ans.matches("[a-z]+"))
+        if (WORD.matcher(ans).matches())
             return ((Pris)Player.getRoomObj(Id.PRIS))
                     .getCellDescription(MAP.get(ans));
         else

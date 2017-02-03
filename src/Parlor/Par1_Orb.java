@@ -22,7 +22,7 @@ public class Par1_Orb extends NonPlayerCharacter {
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
         
-        else if (key.matches("speak|talk|converse|chat")) {
+        else if (key.matches(TALK_PATTERN)) {
             if (this.firstTime && this.woken) {
                 this.converse1();
                 this.firstTime = false;

@@ -1,6 +1,7 @@
 package Workshop;
 
 import static A_Main.NameConstants.*;
+import static A_Main.Patterns.DYE_PATTERN;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
@@ -47,7 +48,7 @@ public class Wrk_Kiln extends Furniture {
             this.hasSand = true;
             rep = "You pour the sand into the crucible.";
         }
-        else if ((name.matches("\\w+ dye")) && ! hasDye()) {
+        else if (DYE_PATTERN.matcher(name).matches() && ! hasDye()) {
             Player.getInv().remove(item);
             
             switch (name) {
@@ -64,7 +65,7 @@ public class Wrk_Kiln extends Furniture {
                  (name.equals(POTASH) && this.hasPotash) ) 
             rep = "The kiln already has " + name + " in it!";
         
-        else if ((name.matches("(?:red|blue|yellow) dye")) && hasDye())
+        else if (DYE_PATTERN.matcher(name).matches() && hasDye())
             rep = "The kiln already has dye in it!";
         
         

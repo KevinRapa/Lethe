@@ -222,7 +222,7 @@ public class GUI extends JPanel {
      */
     public static void out(String txt) {
         if (txt != null)
-            DIAL.setText(txt.replaceAll("\n", " "));
+            DIAL.setText(NEWLINE.matcher(txt).replaceAll(" "));
     }
 /*----------------------------------------------------------------------------*/    
     /**
@@ -230,7 +230,7 @@ public class GUI extends JPanel {
      * @param txt a room description.
      */
     public static void descOut(String txt) {
-        DESC.setText(txt.replaceAll("\n", " "));
+        DESC.setText(NEWLINE.matcher(txt).replaceAll(" "));
     }
 /*----------------------------------------------------------------------------*/    
     /**

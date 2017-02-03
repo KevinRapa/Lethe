@@ -176,8 +176,15 @@ public class TextParser {
      */
     private static Command getItemCmd(String[] s) {
         String verbObject = stripPrepositions(s[0]);
-        Verb use = new Verb(ALL_AFTER_SPACE.matcher(verbObject).replaceFirst(NOTHING));
-        String object = WORD_THEN_SPACE.matcher(verbObject).replaceFirst(NOTHING);
+        
+        Verb use = new Verb(
+                ALL_AFTER_SPACE.matcher(verbObject)
+                        .replaceFirst(NOTHING));
+        
+        String object = 
+                WORD_THEN_SPACE.matcher(verbObject)
+                        .replaceFirst(NOTHING);
+        
         Instrument inst;
         
         if (SLOT_NUMBER.matcher(object).matches()) {

@@ -28,10 +28,10 @@ public class Door extends Furniture {
             return "You thrust your boot into the door, but the door is too\n" +
                    "well-built to give.";
         }
-        else if (key.matches("knock|bang")) {
+        else if (key.equals("knock") || key.equals("bang")) {
             return "You're a guest here, remember?";
         }
-        else if (key.matches("unlock|lock")) {
+        else if (key.equals("lock") || key.equals("unlock")) {
             return "That's not how this game works. Read the directions!";
         }
         else {

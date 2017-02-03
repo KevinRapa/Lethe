@@ -1,8 +1,8 @@
 package A_Super;
 
+import static A_Main.Patterns.*;
 import A_Main.Inventory;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.io.Serializable;
 import java.util.regex.Pattern;
 /**
@@ -67,7 +67,7 @@ abstract public class Furniture implements Serializable {
      */
     public boolean containsItem(String name) {
         for (Item i : this.inv) {
-            String j = i.toString().replaceAll(", .*", NOTHING);
+            String j = BOOK_TITLE.matcher(i.toString()).replaceAll(NOTHING);
             if (j.matches(name)) {
                 return true; }
         }

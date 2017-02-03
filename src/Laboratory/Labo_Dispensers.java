@@ -3,6 +3,7 @@ package Laboratory;
 import A_Main.GUI;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
+import static A_Main.Patterns.YES;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -96,7 +97,7 @@ public class Labo_Dispensers extends Furniture {
 
         String ans = GUI.askChoice("\nDispense?\n<'y'/'n'>", "[yn]|yes|no");
         
-        return ans.matches("y|yes");
+        return YES.matcher(ans).matches();
     }
     // ========================================================================  
     // ************************************************************************

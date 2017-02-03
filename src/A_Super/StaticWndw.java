@@ -16,7 +16,7 @@ abstract public class StaticWndw extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (key.matches("open|close"))
+        if (key.equals("open") || key.equals("close"))
             return this.actDialog;
         else
             return this.escapeDialog;

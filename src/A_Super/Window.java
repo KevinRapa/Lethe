@@ -42,19 +42,19 @@ abstract public class Window extends Furniture {
     }    
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (key.matches("open|close")) {
+        if (key.equals("open") || key.equals("close")) {
             AudioPlayer.playEffect(26);
             
-            if (this.isOpen && key.matches("close")) {
+            if (this.isOpen && key.equals("close")) {
                 this.close();
                 return "You close the window."; 
             }
-            else if (! this.isOpen && key.matches("open")) {
+            else if (! this.isOpen && key.equals("open")) {
                 this.open();
                 return "You open the window."; 
             }
             else 
-                return "The window is already " + (key.matches("open") ? "open" : "closed") + "!";
+                return "The window is already " + (key.equals("open") ? "open" : "closed") + "!";
         }
         else
             return this.escapeDialog;

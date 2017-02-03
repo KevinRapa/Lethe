@@ -91,13 +91,13 @@ public class Obs1_Statues extends Furniture {
                     slot = collectToken.next();
                     statNum = Integer.parseInt(slot);
 
-                    if (action.matches("r") && (statNum >= 0) && (statNum < 8)) {       
+                    if (action.equals("r") && (statNum >= 0) && (statNum < 8)) {       
                         this.rotateStat(slot);
                     }            
-                    else if (action.matches("m") && (statNum >= 0) && (statNum < 8)) {
+                    else if (action.equals("m") && (statNum >= 0) && (statNum < 8)) {
                         this.moveStat(slot);
                     }
-                    else if ((action.matches("r") || action.matches("m")) && statNum == 8) {
+                    else if ((action.equals("r") || action.equals("m")) && statNum == 8) {
                         this.spinArray();
                     }
                     else

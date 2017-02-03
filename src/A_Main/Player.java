@@ -305,8 +305,9 @@ public final class Player {
                 AudioPlayer.playEffect(13); // Plays unlock sound.
             
             else if (Player.pos[0] < 5  && // If you're not in catacombs or caves.
-                     ! destId.substring(0,3).matches(lastVisited.substring(0,3))) {
-                if (Player.pos[0] == 4 || destId.matches("CS35|CT34"))
+                     ! Id.areaName(destId).matches(Id.areaName(lastVisited))) 
+            {
+                if (Player.pos[0] == 4 || CATACOMB_ENTRANCE.matcher(destId).matches())
                     AudioPlayer.playEffect(24); // Plays metal open door sound. 
                 else
                     AudioPlayer.playEffect(9); // Plays wooden open door sound. 

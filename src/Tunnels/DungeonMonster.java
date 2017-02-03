@@ -1,21 +1,17 @@
 package Tunnels;
 
+import static java.lang.Math.*;
+import static A_Main.Patterns.*;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Player;
 import A_Main.AudioPlayer;
 import A_Super.Direction;
 import Strange_Pool.Sewp;
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
-import static java.lang.Math.abs;
-import static java.lang.Math.abs;
-import static java.lang.Math.abs;
-import static java.lang.Math.abs;
 /**
  * This class simulates a creature that roams the halls of the tunnels.
  * 
@@ -63,13 +59,13 @@ public class DungeonMonster {
     }
     // ========================================================================
     private static void move() {
-        String temp = position.substring(0, 3);
+        String temp = Id.areaName(position);
         position = ROOM_QUEUE.peek();
         ROOM_QUEUE.offer(ROOM_QUEUE.poll());
         System.out.println("Monster: " + position);
         
-        if (! temp.matches(position.substring(0, 3)) && 
-                ! Player.getPosId().matches("TORC|CRY\\d|ESC\\d|DKCH|CAS1"))
+        if (! temp.matches(Id.areaName(position)) && 
+            ! NO_SOUND_AREA.matcher(Id.areaName(Player.getPosId())).matches())
             AudioPlayer.playEffect(24);
 
         Volume vol = determineVolume();
@@ -79,14 +75,15 @@ public class DungeonMonster {
     }
     // ========================================================================
     private static Volume determineVolume() {
-        String monstId = position.substring(0, 3),
-               plyrId = Player.getPosId().substring(0, 3);
+        String monstId = Id.areaName(position),
+               plyrId = Id.areaName(Player.getPosId());
 
-        if ((monstId.matches("CIS") && ! plyrId.matches("OUB|AAR|CIS")) ||
-                (monstId.matches("SEW") && ! plyrId.matches("SEW|PRI|INT")) ||
-                    (plyrId.matches("TOR|CRY|DKC")))
+        if ((monstId.equals("CIS") && ! CISTERN_AREA.matcher(plyrId).matches()) ||
+            (monstId.equals("SEW") && ! TUNNEL_AREA.matcher(plyrId).matches()) ||
+            (NO_SOUND_AREA.matcher(plyrId).matches())) 
+        {
             return Volume.NONE;
-
+        }
         else if (Player.getPos().isAdjacent(position)) { 
             if (monstId.equals(plyrId)) 
                 return Volume.LOUD;
@@ -129,7 +126,7 @@ public class DungeonMonster {
     }
     // ========================================================================
     public static synchronized void checkForPlayer() {
-        if (Player.getPosId().substring(0, 3).matches(position.substring(0, 3)) 
+        if (Id.areaName(Player.getPosId()).matches(Id.areaName(position)) 
                 && (determineProximity() == 1.0))
             warnPlayer();
         

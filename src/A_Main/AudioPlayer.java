@@ -7,7 +7,7 @@ package A_Main;
  * @author Kevin Rapa
  */
 import static A_Main.Id.*;
-import static A_Main.Patterns.CAVES_CATACOMB;
+import static A_Main.Patterns.*;
 import java.util.HashMap;
 import java.io.File;
 import java.io.IOException;
@@ -196,8 +196,8 @@ public class AudioPlayer {
      */
     public static void playTrack(String ID) {
         if (CAVES_CATACOMB.matcher(ID).matches()) // For caves and catacombs.
-            ID = ID.replaceAll("\\d", "");
-        
+            ID = DIGIT.matcher(ID).replaceAll("");
+
         if (! muted && (trackName == null || ! trackName.matches(TRACKS.get(ID).getName())) ) {
             
             if (currentMusic != null)

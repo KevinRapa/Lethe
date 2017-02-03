@@ -1,10 +1,12 @@
 package Gallery;
 
+import static A_Main.Patterns.NO_TELEPORT;
 import A_Main.AudioPlayer;
 import A_Super.Button;
 import A_Main.Player;
 import java.util.Random;
 import A_Main.GUI;
+import static A_Main.Patterns.YES;
 /**
  * Teleports the player to a previously visited room when pressed.
  * Superficial, not important to game progression.
@@ -32,15 +34,16 @@ public class Gal6_Button extends Button {
         
         choice = GUI.askChoice("\n<'y'> Push\n<'n'> Don't push\n< > Back", "yes|no|[yn]|");
 
-        if (choice.matches("y|yes")) {
+        if (YES.matcher(choice).matches()) {
             AudioPlayer.playEffect(11);
             Random generator = new Random();
 
             index = generator.nextInt(Player.getVisitedRooms().size());
             roomId = Player.getVisitedRooms().get(index);
 
-            while (roomId.matches("LIB[45]|ESC\\d|INTR") || 
-                   roomId.equals(Player.getPosId())) {
+            while (NO_TELEPORT.matcher(roomId).matches() || 
+                        roomId.equals(Player.getPosId())) 
+            {
                 index = generator.nextInt(Player.getVisitedRooms().size());
                 roomId = Player.getVisitedRooms().get(index);
             }

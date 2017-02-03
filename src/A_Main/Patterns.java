@@ -9,6 +9,10 @@ import java.util.regex.Pattern;
 public final class Patterns {
     //=========================================================================
     public static final Pattern
+        YES = Pattern.compile("y|yes"),    
+        NO = Pattern.compile("n|no"),
+        WORD = Pattern.compile("[a-z]+"),
+            
         // Patterns used by the player.
         KEYCOMMAND = Pattern.compile("[heckiwsad]"),
         PHRASE = Pattern.compile("[a-z]+\\s[a-z0-9 ,'.-]+"),
@@ -28,6 +32,24 @@ public final class Patterns {
         KEY = Pattern.compile("[A-Z]{3}[A-Z1-9]"),
         INV_CHOICES = Pattern.compile("[1-4]"),
         MOVEMENT = Pattern.compile("go|walk|run"),
+        CATACOMB_ENTRANCE = Pattern.compile("CS35|CT34"),
+            
+        // Patterns used by Furniture
+        BOOK_TITLE = Pattern.compile(", .*"),
+        TOW1_SPHERE = Pattern.compile("\\s(?=Wide)"),
+        RUG_LIFT = Pattern.compile("lift|raise"),
+        TITRANT = Pattern.compile("[\\w\\d]+ \\d{1,2}mL"),
+        NO_TELEPORT = Pattern.compile("LIB[45]|ESC\\d|INTR"),
+        DYE_PATTERN = Pattern.compile("(?:red|blue|yellow) dye"),
+        ONE_TO_FOUR = Pattern.compile("[1234]"),
+            
+        // Patterns used by Dungeon_Monster
+        NO_SOUND_AREA = Pattern.compile("TOR|CRY|ESC|DKC|CAS"),
+        CISTERN_AREA = Pattern.compile("OUB|AAR|CIS"),
+        TUNNEL_AREA = Pattern.compile("SEW|PRI|INT"),
+        NO_SEE_AREA_E = Pattern.compile("SEW[0-5P]|PRIS|INTR"),
+        NO_SEE_AREA_W = Pattern.compile("CIS\\d|OUB1|AARC"),
+        SAFE_AREA = Pattern.compile("PRIS|OUB1|AARC"),
             
         // Patterns used by AudioPlayer    
         CAVES_CATACOMB = Pattern.compile("C[TV]\\d{2}"),
@@ -51,6 +73,8 @@ public final class Patterns {
         THREE_PLUS_LETTER_WORD = Pattern.compile("(?:[a-z -]{3,})+"),
         FIRST_WORD = Pattern.compile("[a-z -]+ "),
         VAILD_COMMAND = Pattern.compile("[a-z ,'-]{2,}|(?:[ts] \\d{1,2})"),
+        DIGIT = Pattern.compile("\\d"),
+        NEWLINE = Pattern.compile("\n"),
     
         // Patterns used by Help
         CONTROL_CHOICE = Pattern.compile("[1-9]c"),

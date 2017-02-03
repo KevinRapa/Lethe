@@ -2,6 +2,9 @@ package Courtyard;
 
 import A_Main.GUI;
 import A_Main.NameConstants;
+import A_Main.Patterns;
+import static A_Main.Patterns.NO;
+import static A_Main.Patterns.YES;
 import A_Main.Player;
 import java.util.HashMap;
 import A_Super.Item;
@@ -94,7 +97,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         do {
             ans = GUI.askChoice("\nPlay?\n<'y'/'n'>", "yes|no|[yn]|");
             
-            if (ans.matches("y|yes")) {
+            if (YES.matcher(ans).matches()) {
                 played = true;
                 Player.getInv().remove(NameConstants.CARD); // Removes all cards from player inventory.
                 GUI.clearDialog();
@@ -102,7 +105,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
             }
             Player.printInv();
             
-        } while (! ans.matches("n|no"));
+        } while (! NO.matcher(ans).matches());
         
         GUI.clearDialog();
         
