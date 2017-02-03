@@ -33,7 +33,7 @@ public final class Patterns {
         CAVES_CATACOMB = Pattern.compile("C[TV]\\d{2}"),
     
         // Patterns used by TextParser
-        INSPECT_PATTERN = Pattern.compile("look(?: at)?|inspect|examine|check (?: out)?"),
+        INSPECT_PATTERN = Pattern.compile("look(?: at)?|inspect|examine|check(?: out)?"),
         USE_PATTERN = Pattern.compile("use|read|drop|wear|remove|eat|drink|eat"),
         ITEM_COMMAND = Pattern.compile("(?:" + USE_PATTERN + "|" + INSPECT_PATTERN + ") [a-z0-9: ,'-]+"),
         SUICIDE = Pattern.compile("commit suicide|kill (?:your)?self"),
