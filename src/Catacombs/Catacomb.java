@@ -3,6 +3,7 @@ package Catacombs;
 import A_Main.Player;
 import static A_Main.NameConstants.HAND_TORCH;
 import static A_Main.NameConstants.IRIDESCENT_JEWEL;
+import static A_Main.NameConstants.ROCK;
 import A_Super.Ceiling;
 import A_Super.Direction;
 import A_Super.Floor;
@@ -130,7 +131,7 @@ public class Catacomb extends Room {
         Item[] itemList = {
             new Item("dirt", "It's a damp, cold pile of rocky dirt"),
             new Item("bone", "It's a bone... not much else to say."),
-            new Item("rock", "It's a normal hunk of rock that was mixed with the dirt.") 
+            new Item(ROCK, "It's a normal hunk of rock that was mixed with the dirt.") 
         };
         
         int numTimes = GENERATOR.nextInt(5) + 3;

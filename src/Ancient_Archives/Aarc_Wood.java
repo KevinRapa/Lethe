@@ -21,7 +21,7 @@ public class Aarc_Wood extends Aarc_Furniture implements Gettable {
                          + "drawered desk.";
         this.searchDialog = this.description;
        
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:piles of )?wood(?:en)?(?: rubble)?");
     }
     // ========================================================================

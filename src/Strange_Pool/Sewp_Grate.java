@@ -21,7 +21,7 @@ public class Sewp_Grate extends Furniture implements Gettable {
 
         this.addUseKeys(METAL_BAR);
         this.addNameKeys("(?:metal )?(?:ladder|grate)");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("climb", "descend", "use");
     }
     // ======================================================================== 

@@ -1,6 +1,7 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
+import static A_Main.NameConstants.WEAPON;
 import A_Main.Player;
 
 public class Door extends Furniture {
@@ -15,7 +16,7 @@ public class Door extends Furniture {
         this.actDialog = null;
 
         this.addUseKeys(ANYTHING);
-        this.addActKeys("open", "use", "close", "kick", "knock|bang", "unlock", "lock");
+        this.addActKeys("open", "use", "walk", "go" ,"close", "kick", "knock|bang", "unlock|lock");
         this.addNameKeys(dir + " door", "door", "(?:heavy )?(?:wooden )?door");
     }
 /*----------------------------------------------------------------------------*/    
@@ -38,5 +39,13 @@ public class Door extends Furniture {
             return this.actDialog;
         }
     } 
-/*----------------------------------------------------------------------------*/ 
+/*----------------------------------------------------------------------------*/
+    @Override public String useEvent(Item item) {
+        if (item.getType().equals(WEAPON)) 
+            return "The door is build too solidly and breaking if down is futile.";
+        else
+            return this.useDialog;
+        
+    }
+/*----------------------------------------------------------------------------*/
 }

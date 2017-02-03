@@ -95,7 +95,7 @@ public class Inventory implements Iterable<Item>, Serializable {
                 position++;
             }
         }
-        return rep.matches("") ? "   nothing." : rep;
+        return rep.equals("") ? "   nothing." : rep;
     }
     // ========================================================================
     @Override public Iterator<Item> iterator() {

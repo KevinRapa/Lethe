@@ -24,9 +24,9 @@ public class Cou_Floor extends Floor implements Gettable {
                        + "and kick the dirt back in the hole.";
         this.useDialog = this.actDialog;
 
-        this.addNameKeys("dirt", "earth", "soil", "grass", "weeds?", "clovers?");
-        this.addUseKeys(SHOVEL, TROWEL, "hoe");
-        this.addActKeys(GETKEYS);
+        this.addNameKeys("dirt", "earth", SOIL, GRASS, "weeds?", "clovers?");
+        this.addUseKeys(SHOVEL, TROWEL, HOE);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("dig", "shovel");
     }
     // ========================================================================   
@@ -58,7 +58,7 @@ public class Cou_Floor extends Floor implements Gettable {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (item.toString().equals("hoe"))
+        if (item.toString().equals(HOE))
             return "You aren't a gardener!";
         else {
             AudioPlayer.playEffect(34);

@@ -2,6 +2,7 @@ package Ancient_Archives;
 
 import A_Main.AudioPlayer;
 import static A_Main.NameConstants.SHOVEL;
+import static A_Main.NameConstants.SOIL;
 import static A_Main.NameConstants.TROWEL;
 import A_Super.Item;
 /**
@@ -22,7 +23,7 @@ public class Aarc_Floor extends Aarc_Furniture {
                        + "and kick the dirt back in the hole.";
 
         this.addUseKeys(SHOVEL, TROWEL);
-        this.addNameKeys("floor", "ground", "sinkhole", "soil", 
+        this.addNameKeys("floor", "ground", "sinkhole", SOIL, 
                 "(?:slightly raised )?(?:stone )?platform");
     }
     // ======================================================================== 

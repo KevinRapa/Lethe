@@ -22,7 +22,7 @@ public class Aarc_Books extends Aarc_Furniture implements Gettable {
         this.searchDialog = "You pick through the piles of books.";
 
         this.addNameKeys("books?");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("read");
     }
     // ========================================================================   

@@ -19,7 +19,7 @@ public class Tmb3_Cndl extends Furniture implements Gettable {
         this.actDialog = "Ouch! Really hot! Why would you do that to yourself?";
         
         this.addUseKeys(HAND_TORCH);
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys(FEELPATTERN);
         this.addNameKeys("(?:standing )?(?:wax )?candles?");
     }

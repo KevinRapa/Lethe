@@ -3,6 +3,7 @@ package Tower;
 import A_Main.GUI;
 import A_Main.Inventory;
 import static A_Main.NameConstants.DAMPENING_STAFF;
+import static A_Main.NameConstants.GLOWING_SCEPTER;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -31,7 +32,7 @@ public class Tow1_Pedestal extends Furniture {
     }
     // ======================================================================== 
     @Override public String getDescription() {
-        return this.containsItem("glowing scepter") ?
+        return this.containsItem(GLOWING_SCEPTER) ?
             this.description.concat(" The extensions support a silver glowing object.") :
             this.description;
     }

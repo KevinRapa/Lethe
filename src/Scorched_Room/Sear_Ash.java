@@ -16,7 +16,7 @@ public class Sear_Ash extends Furniture implements Gettable {
         this.description = "The ash is scattered all over the floor.";
         this.searchDialog = "Nothing here but more ash.";
         
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addNameKeys("ash(?:es)?");
     }
 /*----------------------------------------------------------------------------*/

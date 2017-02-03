@@ -25,7 +25,7 @@ abstract public class Candelabra extends SearchableFurniture
 
         this.addNameKeys("candles?", "fire");
         this.addUseKeys(HAND_TORCH, CANDLE);
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("touch");
         
         this.inv = new Candelabra_Inventory();

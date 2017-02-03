@@ -28,7 +28,7 @@ public class Torch extends SearchableFurniture {
         this.actDialog = "You slide the torch out of its holder and take it.";
         this.useDialog = "You slide the torch into the steel holder.";
         
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:wall )?torch(?:es)?", "(?:steel )?holders?");
         this.addUseKeys(HAND_TORCH);
     }

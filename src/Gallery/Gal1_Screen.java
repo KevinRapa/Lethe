@@ -27,7 +27,7 @@ public class Gal1_Screen extends Furniture {
                           + "silhouette on its surface.";
         this.actDialog = "You slide the screen out of the way some, revealing a\n"
                     + "large black lever mounted to the floor.";  
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("move", "lift", "slide");
         this.addNameKeys("screen", "japanese screen");
     }

@@ -55,7 +55,7 @@ public class Metal_Ladder extends Item {
                            + "need to be up here,\" you think to yourself, and climb down.";
 
             this.addNameKeys("(?:old )?(?:metal )?ladder");
-            this.addActKeys(GETKEYS);
+            this.addActKeys(GETPATTERN);
             this.addActKeys("climb", "use");
         }
         // ====================================================================  

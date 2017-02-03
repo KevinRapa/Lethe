@@ -1,6 +1,7 @@
 package Chapel;
 
 import A_Main.Id;
+import static A_Main.NameConstants.FACTUM;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
@@ -22,7 +23,7 @@ public class Cha2_Altar extends SearchableFurniture {
 
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:tan )?(?:marble )?altar");
-        this.addUseKeys("the Factum");
+        this.addUseKeys(FACTUM);
     }
     // ======================================================================== 
     @Override public String getDescription() {

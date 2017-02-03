@@ -1,7 +1,6 @@
 package Courtyard;
 
-import static A_Main.NameConstants.HAND_TORCH;
-import static A_Main.NameConstants.SCYTHE;
+import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -14,7 +13,7 @@ abstract public class Courtyard_Growth extends Furniture {
     public Courtyard_Growth () {
         super();
 
-        this.addUseKeys("\\w* (?:axe|sword)", SCYTHE, HAND_TORCH, "hoe");
+        this.addUseKeys("\\w* (?:axe|sword)", SCYTHE, HAND_TORCH, HOE);
         this.addActKeys("grab", "touch", "hold", "cut", "chop", "remove");
     }
     // ========================================================================   
@@ -32,7 +31,7 @@ abstract public class Courtyard_Growth extends Furniture {
         
         if (i.equals(HAND_TORCH))
             return this.useDialog;
-        else if (i.matches("hoe"))
+        else if (i.equals(HOE))
             return "You're not a gardener!";
         else 
             return this.cutDialog;

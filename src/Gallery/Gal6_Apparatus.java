@@ -23,7 +23,7 @@ public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
                          + "metal box thingy. Next to the apparatus is a label\n"
                          + "that says: \"Plasma induction charger\".";
         
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addNameKeys("apparatus", "unknown apparatus", "plasma induction charger");
     }
 /*----------------------------------------------------------------------------*/

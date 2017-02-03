@@ -155,9 +155,9 @@ public class Main {
         
         Item studBkPhy = new Stud_BookPhylactery("glowing book, 'A Young Mind's Guide to Lichery'");
         Item kitcFrtPhy = new Kitc_FrtPhy("glowing pristine fruit");
-        Item factumPhy = new Factum("the Factum");
+        Item factumPhy = new Factum(FACTUM);
         Item vauChlPhy = new Vau_ChalicePhylactery("glowing chalice");
-        Item towScptrPhy = new Tow_ScepterPhylactery("glowing scepter");
+        Item towScptrPhy = new Tow_ScepterPhylactery(GLOWING_SCEPTER);
         
         // </editor-fold>
         // ---------------------------------------------------------------------  
@@ -210,7 +210,7 @@ public class Main {
         Item mxtr = new Item(FERTILIZED_SOIL, "It's a fertile mixture of soil, sand, and fertilizer", mndrkPt, 2);
         Item snd = new Item(SAND, "You have a pocket full of sand. It's grainy and uncomfortable.", mxtr, 3);
         Item sl = new Item(SOIL, "It's a soft pile of soil", mxtr, 3);
-        Item frt = new Item("fertilizer", "It's a handful of mysterious gardening wizardry.", mxtr, 3);
+        Item frt = new Item(FERTILIZER, "It's a handful of mysterious gardening wizardry.", mxtr, 3);
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST ANTECHAMBER">
@@ -289,7 +289,7 @@ public class Main {
         Room vest = new Vest("in a vestibule", Id.VEST); 
         //-------------------------------ITEMS----------------------------------
         Item qllPn = new Item("quill pen", "It's an old matted feather stained with dried ink.");
-        Item lttrOpnr = new Item("letter opener", "It's a very dull knife.");
+        Item lttrOpnr = new Weapon("letter opener", "It's a very dull knife.");
         Item loopedRope = new Item(LOOPED_ROPE, "It's a short rope tied into a noose. It's pretty\n"
                                               + "frayed in the center.", ram, 3);
         //-----------------------------FURNITURE--------------------------------
@@ -319,8 +319,8 @@ public class Main {
                                             + "Its craftmanship is precise, although there's a\n"
                                             + "chip on its edge. On its surface is an embossment\n"
                                             + "of a soldier.");
-        Item rck = new Item("rock", "It's a piece of the courtyard fountain.");
-        Item grss = new Item("grass", "It's some dark green grass that you pulled from the ground.");
+        Item rck = new Item(ROCK, "It's a piece of the courtyard fountain.");
+        Item grss = new Item(GRASS, "It's some dark green grass that you pulled from the ground.");
         Item clvr = new Item("clover", "It's some clover you pulled from the ground.");
         Item trs = new Item("statue torso", "It's a stone torso, probably from the courtyard statue");
         Item hd = new Item("statue head", "It's a stone head with a chiseled male face.");
@@ -427,10 +427,10 @@ public class Main {
         Item vinegar = new Liquid(BOTTLE_OF_VINEGAR, "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"");
         Item wowLddr = new Item(FIXED_LADDER, "The spoke sits in there a bit awkwardly, but it\n"
                               + "seems like a good ladder. It may even support your heft.");   
-        Item wow1Spk = new Item("wheel spoke", "It's a wooden rod, about a foot long.", wowLddr, 3);
+        Item wow1Spk = new Item(WHEEL_SPOKE, "It's a wooden rod, about a foot long.", wowLddr, 3);
         Item clngSoln = new Liquid("cleaning solution", "It smells lemony fresh, unlick the rest of this room.");
         Item rppdBrlp = new Item("piece of ripped burlap", "It must have belonged to the broken cart in the west wing.");
-        Item actn = new Liquid("acetone", "It's a strong-smelling solvent in an opaque jar.");
+        Item actn = new Liquid(ACETONE, "It's a strong-smelling solvent in an opaque jar.");
         //-----------------------------FURNITURE--------------------------------
         Furniture wow2Lddr = new Wow2_Ladder(Direction.UP); // Not in WOW2 to start.
         Furniture wow2Armr = new Wow2_Armor();
@@ -488,7 +488,7 @@ public class Main {
         Item closCrwbr = new Weapon(CROWBAR, "A sweet iron crowbar.");
         Item shvl = new Weapon(SHOVEL, "A sturdy shovel for the digging of holes.");
         Item hmmr = new Weapon(HAMMER, "It's a small handheld nailing device.");
-        Item sd = new Item("seed", "It's a handful of mysterious gardening wizardry.");
+        Item sd = new Item(SEED, "It's a handful of mysterious gardening wizardry.");
         Item gl = new Liquid("glue bottle", "It's a bottle of sticky glue.");
         Item closGlv = new Clothing("gloves", "Some old gardening gloves", "They don't fit on your enormous hands.");
         Item closStrw = new Item("straw", "It's just straw");
@@ -540,7 +540,7 @@ public class Main {
         Room sha1 = new Sha1("in the south servant's hall", Id.SHA1);
         //-------------------------------ITEMS----------------------------------
         Item wdChnk = new Wood_Chunk("wood log", ram, 3);       
-        Item shaMp = new Item("mop", "It's a classic mop.", "Yes, let's just make this a game about cleaning some madman's castle.");
+        Item shaMp = new Item(MOP, "It's a classic mop.", "Yes, let's just make this a game about cleaning some madman's castle.");
         Item shaSpng = new Item("sponge", "It's a quintessential yellow sponge.", "I'm a lumberjack, not a maid!");
         //-----------------------------FURNITURE--------------------------------       
         Furniture sha2Cbnt = new Sha2_Cabinet(wdChnk, shaSpng, shvl, shaMp, bckt);
@@ -556,7 +556,7 @@ public class Main {
         Room cous = new Cous("in a scorched room", Id.COUS);
         //-------------------------------ITEMS----------------------------------
         Item wrhmmr = new Item(WARHAMMER, "It's an old medieval warhammer. The head looks extremely worn and dull.");
-        Item ash = new Item("ash", "You're sure there are people mixed in with this...");
+        Item ash = new Item(ASH, "You're sure there are people mixed in with this...");
         Item wd = new Item("charred wood", "It's a piece of burnt wood");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture searFssr = new Sear_Fissure();
@@ -774,8 +774,8 @@ public class Main {
         Furniture wrkF = new Floor("A sandstone tiled floor.");
         Furniture wrkBrl = new Wrk_Barrel(rdDy, rdDy, blDy, blDy, yllwDy, yllwDy);
         Furniture wrkCbnt = new Wrk_Cbnt(hmmr, gl, ptsh, ptsh);
-        Furniture wrkCstTbl = new Wrk_CastingTable(wrkBrl, closScks, redLns, snd, rdDy, 
-                                               blDy, yllwDy, ptsh, wrkCbnt);
+        Furniture wrkCstTbl = new Wrk_CastingTable(wrkBrl.getInv(), closScks.getInv(), 
+                redLns, snd, rdDy, blDy, yllwDy, ptsh, wrkCbnt.getInv());
         Furniture wrkKln = new Wrk_Kiln();
         Furniture wrkBnch = new Gqua_Workbench(stncl, wrkNt);        
         Furniture wrkAnvl = new Wrk_Anvil();
@@ -917,8 +917,8 @@ public class Main {
         Item qn = new Item("queen", "the small figure resembles... well... a queen.", "Isn't this the strongest piece?");
         Item kng = new Item("king", "the small figure resembles... well... a king.", "You have no idea how to play that.");
         Item pwn = new Item("pawn", "the small figure resembles... something.", "This is the weakest piece right? Hmph. Better not ask a chess player that.");
-        Item rdBl = new Item("red ball", "It's just a plain, heavy red ball. How in the world do you play with this?", "This is nonsense. Where are the numbers?");
-        Item cBl = new Item("cue ball", "It's a plain white ball. This IS the cue ball, right?", "You'd rather break a window with this and jump out rather than play this witchcraft.");
+        Item rdBl = new Item(RED_BALL, "It's just a plain, heavy red ball. How in the world do you play with this?", "This is nonsense. Where are the numbers?");
+        Item cBl = new Item(CUE_BALL, "It's a plain white ball. This IS the cue ball, right?", "You'd rather break a window with this and jump out rather than play this witchcraft.");
         //-----------------------------FURNITURE--------------------------------
         Furniture drarGhst = new Drar_Ghost(drkFcs, kitcKey, emrld);
         Furniture drarF = new Floor("This room's floor is carpeted lavender with an intricate design.");
@@ -1046,8 +1046,8 @@ public class Main {
         //-------------------------------ITEMS----------------------------------
         Item hose = new Item(LEATHER_HOSE, "The roughly 30-foot old hose is cracked and rotted. It's certainly non-functional, but is still sturdy.");
         Item brknHose = new Item("broken hose", "The hose has broken in half, but it served a worthy final purpose.");
-        Item hoe = new Item("hoe", "A rusty iron hoe for gardening.");
-        Item trowel = new Item("trowel", "It's a small handheld shovel.");
+        Item hoe = new Item(HOE, "A rusty iron hoe for gardening.");
+        Item trowel = new Item(TROWEL, "It's a small handheld shovel.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture gar13Plntr = new Gar13_Planter(sl, mndrkBlb, sl);
         Furniture gar1Stat = new Gar1_Statue();
@@ -1366,7 +1366,7 @@ public class Main {
         Room dkch = new Dkch("in the dungeon-keeper's chamber", Id.DKCH);
         //-------------------------------ITEMS---------------------------------- 
         Item dkchNt = new Dkch_Note("short verse");
-        Item lngChn = new Item("chain", "It's a chain, about 10 feet long.");
+        Item lngChn = new Weapon("chain", "It's a chain, about 10 feet long.");
         Item dkchNt2 = new Note("illegible note", "This note is gibberish. Unreadable.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture dkchF = new Dungeon_Floor();
@@ -1396,7 +1396,7 @@ public class Main {
         //-------------------------------ITEMS----------------------------------
         Item algBk = new Item("algae covered book", "The book is wet and slimy. Its pages have nearly fused.", "This is completely unreadable.");
         Item rndBk = new Item("ruined book", "This book is damp, moldy, and covered in dirt.", "Whatever knowledge this book held is now lost.");
-        Item stnBlck = new Item("stone block", "This is a piece of the now broken floor in the ancient archives.");
+        Item stnBlck = new Item(STONE_BLOCK, "This is a piece of the now broken floor in the ancient archives.");
         Item slmyAlg = new Item("slimy algae", "Ugh... why are you holding this?");
         Item aarcNt = new Aarc_Note("note: Factum");
         //-----------------------------FURNITURE--------------------------------  

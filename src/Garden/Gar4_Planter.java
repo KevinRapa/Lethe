@@ -2,6 +2,7 @@ package Garden;
 
 import A_Main.AudioPlayer;
 import static A_Main.NameConstants.SHOVEL;
+import static A_Main.NameConstants.SOIL;
 import static A_Main.NameConstants.TROWEL;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -23,9 +24,9 @@ public class Gar4_Planter extends SearchableFurniture {
         this.searchDialog = "The soil surface is bare and doesn't seem to hide anything.";
         this.useDialog = this.actDialog;
 
-        this.addNameKeys("planter", "(?:bed of )?(?:soil|dirt)", "bed", "dirt", "soil");
+        this.addNameKeys("planter", "(?:bed of )?(?:soil|dirt)", "bed", "dirt", SOIL);
         this.addUseKeys(SHOVEL, TROWEL);
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("dig", "plant", "garden", "shovel");
     }
     // ========================================================================   

@@ -1,5 +1,6 @@
 package A_Main;
 
+import static A_Main.Patterns.*;
 import java.util.LinkedList;
 import javax.swing.*;
 import java.awt.*;
@@ -324,10 +325,13 @@ public class GUI extends JPanel {
     public static String parsePreviousFurniture() {
         FURN_PARSER.clear();
 
-        UNDO.stream().filter(i -> i.matches("(?:[a-z -]{3,})+")).forEach(j -> 
-        {
-            if (Player.getPos().hasFurniture(j) ||
-                    Player.getPos().hasFurniture(j = j.replaceFirst("[a-z -]+ ", "")))
+        UNDO.stream()
+                .filter(i -> (THREE_PLUS_LETTER_WORD.matcher(i).matches()))
+                .forEach(j -> {
+            if (Player.getPos().hasFurniture(j) || 
+                    Player.getPos().hasFurniture(j = FIRST_WORD.matcher(j)
+                                                        .replaceFirst(""))
+                )
                 FURN_PARSER.add(j); 
         });
         return (FURN_PARSER.size() > 0) ? FURN_PARSER.get(0) : "object with that name";
@@ -400,7 +404,7 @@ public class GUI extends JPanel {
             synchronized (HOLDER) {
                 HOLDER.recieve(INPUT.getText().toLowerCase().trim());
                 
-                if (HOLDER.request().matches("[a-z ,'-]{2,}|(?:[ts] \\d{1,2})")) {
+                if (VAILD_COMMAND.matcher(HOLDER.request()).matches()) {
                     if (UNDO.size() == 10)
                         UNDO.removeLast();
                     UNDO.push(HOLDER.request());
@@ -426,7 +430,7 @@ public class GUI extends JPanel {
             }
             else if (push.getSource().equals(MUTE)) { // Toggles ambience
                 AudioPlayer.playEffect(10);
-                MUTE.setText(MUTE.getText().matches("Mute") ? "Unmute" : "Mute");
+                MUTE.setText(MUTE.getText().equals("Mute") ? "Unmute" : "Mute");
                 AudioPlayer.muteTrack();
             }
             else { // Changes key click

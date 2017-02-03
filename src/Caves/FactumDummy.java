@@ -23,7 +23,7 @@ public class FactumDummy extends Furniture {
         this.searchDialog = this.description;
 
         this.addNameKeys("factum", "the factum", "artifact", "the artifact");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
     }
     // ======================================================================== 
     @Override public String getDescription() {

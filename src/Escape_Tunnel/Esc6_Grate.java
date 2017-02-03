@@ -29,7 +29,7 @@ public class Esc6_Grate extends Furniture implements Resetable, Gettable {
         this.addNameKeys("(?:metal )?grate");
         this.addUseKeys(METAL_BAR);
         this.addActKeys("lift", "move", "pry");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
     }
     // ======================================================================== 
     @Override public String getDescription() {

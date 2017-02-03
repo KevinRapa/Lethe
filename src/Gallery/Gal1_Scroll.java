@@ -28,7 +28,7 @@ public class Gal1_Scroll extends Furniture {
                           + "scroll.";
         this.actDialog = "Upon lifting the scroll from the wall, you discover a\n"
                     + "hollow containing a dome-shaped button.";
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("move", "lift", "slide");
         this.addNameKeys("(?:hanging )?(?:chinese )?scroll");
     }

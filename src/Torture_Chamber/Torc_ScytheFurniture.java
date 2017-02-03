@@ -26,7 +26,7 @@ public class Torc_ScytheFurniture extends Furniture implements Resetable {
         this.actDialog = "You reach up and take the scythe off the wall.";
 
         this.addNameKeys("(?:large )?scythe");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
     }
     // ========================================================================   
     @Override public String interact(String key) {      

@@ -47,7 +47,7 @@ public class Labo_Beaker extends Furniture {
 
         this.addUseKeys("\\w+ \\d{1,2}mL");
         this.addNameKeys(BEAKER);
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("drink");
     }
     // ======================================================================== 

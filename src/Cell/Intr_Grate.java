@@ -31,7 +31,7 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable {
 
         this.addNameKeys("(?:metal )?(?:grate|ladder)");
         this.addActKeys("jump", "climb", "lift", "move", "descend", "pry");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addUseKeys(METAL_BAR);
     }
     // ======================================================================== 

@@ -19,7 +19,7 @@ public class Intr_Gears extends Furniture implements Gettable {
                           + "useful.";
 
         this.addNameKeys("(?:spinning )?gears?", "machinery", "axles");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("touch|feel|stop");
         this.addUseKeys(METAL_BAR);
     }

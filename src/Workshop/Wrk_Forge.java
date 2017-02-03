@@ -1,8 +1,10 @@
 package Workshop;
 
+import static A_Main.NameConstants.HAMMER;
 import A_Super.Furniture;
+import A_Super.Gettable;
         
-public class Wrk_Forge extends Furniture {
+public class Wrk_Forge extends Furniture implements Gettable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Forge() {
         super();
@@ -11,8 +13,19 @@ public class Wrk_Forge extends Furniture {
                          + "there's no fire in it, the smouldering ashes have only begun\n"
                          + "to cool.";
         this.actDialog = "You're smart enough not to put your hand in there.";
-        this.addActKeys("touch");
-        this.addNameKeys("forge", "brick forge");
+        this.useDialog = "You'd much rather work with wood than metal...";
+        
+        this.addActKeys(GETPATTERN);
+        this.addActKeys(FEELPATTERN);
+        this.addUseKeys(HAMMER);
+        this.addNameKeys("(?:brick )?forge", "(?:smouldering )?ash(?:es)?");
     }
 /*----------------------------------------------------------------------------*/
+    @Override public String interact(String key) {
+        if (key.matches(FEELPATTERN))
+            return this.actDialog;
+        else
+            return getIt();
+    }
+/*----------------------------------------------------------------------------*/    
 }

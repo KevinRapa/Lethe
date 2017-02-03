@@ -46,9 +46,8 @@ public class Item implements Serializable, Comparable<Item> {
      * @param desc A short description of the item.
      */
     public Item(String name, String desc) {
-        NAME = name;
+        this(name);
         description = desc;
-        FORMS = null;    PRODUCT = null;    THRESHOLD = 0; // Does not combine
     }
     // ========================================================================
     /**
@@ -59,11 +58,9 @@ public class Item implements Serializable, Comparable<Item> {
      * @param use A short string that prints when this item is used.
      */
     public Item(String name, String desc, String use) {
-        NAME = name;
-        description = desc;
+        this(name, desc);
         useDialog = use;
         useID = 1;
-        FORMS = null;    PRODUCT = null;    THRESHOLD = 0; // Does not combine
     }    
     // ========================================================================
     /**
@@ -86,12 +83,11 @@ public class Item implements Serializable, Comparable<Item> {
      * @param name The name of this item.
      * @param desc A short description of this item.
      * @param forms The object reference to the item this combines into.
-     * @param threshold The number of items in this one's set.
+     * @param thresh The number of items in this one's set.
      */
-    public Item(String name, String desc, Item forms, int threshold) {
-        NAME = name;
+    public Item(String name, String desc, Item forms, int thresh) {
+        this(name, forms, thresh);
         description = desc;
-        PRODUCT = forms;    THRESHOLD = threshold;    FORMS = forms.toString();
     }
 //******************************************************************************        
 // </editor-fold>

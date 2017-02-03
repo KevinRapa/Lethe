@@ -1,5 +1,6 @@
 package Workshop;
 
+import A_Main.Inventory;
 import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -12,31 +13,41 @@ import A_Main.Player;
  * @author Kevin Rapa
  */
 public class Wrk_CastingTable extends Furniture {
-    private final Furniture REFBRL, REFSCK, REFCBNT;
+    private final Inventory BRL_INV, SCK_INV, CBNT_INV;
     private final Item SHEET_REF, RED_LENS_REF, BLUE_LENS_REF, YELLOW_LENS_REF, 
                        SAND_REF, RED_DYE_REF, BLUE_DYE_REF, YELLOW_DYE_REF, POTASH_REF;
     private boolean hasTemplate;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Wrk_CastingTable(Furniture brl, Furniture sck, Item rdLns, Item snd, 
-                        Item rdDy, Item blDy, Item yllwDy, Item ptsh, Furniture cbnt) {
+    public Wrk_CastingTable(Inventory brl, Inventory sck, Item rdLns, Item snd, 
+                        Item rdDy, Item blDy, Item yllwDy, Item ptsh, Inventory cbnt) {
         super();
-        this.REFBRL = brl; this.REFSCK = sck; this.REFCBNT = cbnt; // Furniture refs to restock
+        this.BRL_INV = brl; // Inventory references to restock
+        this.SCK_INV = sck; 
+        this.CBNT_INV = cbnt; 
         
-        this.SHEET_REF = new Item("glass sheet", "Wait... this isn't right. Weren't you supposed to make a lens?");
-        this.BLUE_LENS_REF = new Item("blue lens", "You made a blue lens. Good job, but was this the right color?",
-                                           "Wait... was this the color you were supposed to make?");
-        this.YELLOW_LENS_REF = new Item("yellow lens", "You made a yellow lens. Good job, but was this the right color?", 
-                                             "Wait... was this the color you were supposed to make?");
+        this.SHEET_REF = 
+                new Item("glass sheet", "Wait... this isn't right. Weren't you supposed to make a lens?");
+        this.BLUE_LENS_REF = 
+                new Item("blue lens", "You made a blue lens. Good job, but was this the right color?",
+                         "Wait... was this the color you were supposed to make?");
+        this.YELLOW_LENS_REF = 
+                new Item("yellow lens", "You made a yellow lens. Good job, but was this the right color?", 
+                         "Wait... was this the color you were supposed to make?");
         
         this.RED_LENS_REF = rdLns; // Lenses to give player
         
-        this.RED_DYE_REF = rdDy; this.BLUE_DYE_REF = blDy; this.YELLOW_DYE_REF = yllwDy; // Dyes to restock
-        this.POTASH_REF = ptsh; this.SAND_REF = snd; // Sand and potash to restock
+        this.RED_DYE_REF = rdDy; 
+        this.BLUE_DYE_REF = blDy; 
+        this.YELLOW_DYE_REF = yllwDy; // Dyes to restock
+        
+        this.POTASH_REF = ptsh; 
+        this.SAND_REF = snd; // Sand and potash to restock
         
         this.hasTemplate = false;
+        this.searchDialog = "There's nothing... no drawers or anything here. Just a plain metal table.";
         this.description = "It's a tall metal casting table for casting metal.";
         this.addUseKeys(LENS_TEMPLATE, MOLTEN_RED_GLASS, MOLTEN_YELLOW_GLASS, MOLTEN_BLUE_GLASS);
-        this.addNameKeys("table", "casting table");
+        this.addNameKeys("(?:casting )?table");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
@@ -60,16 +71,16 @@ public class Wrk_CastingTable extends Furniture {
                         break;
                     case MOLTEN_BLUE_GLASS:
                         Player.getInv().add(BLUE_LENS_REF); // Give player blue lens.
-                        this.REFSCK.getInv().add(SAND_REF); // Restock sand.
-                        this.REFBRL.getInv().add(BLUE_DYE_REF); // Restock dye.
-                        this.REFCBNT.getInv().add(POTASH_REF); // Restock potash.
+                        this.SCK_INV.add(SAND_REF); // Restock sand.
+                        this.BRL_INV.add(BLUE_DYE_REF); // Restock dye.
+                        this.CBNT_INV.add(POTASH_REF); // Restock potash.
                         color = "blue";
                         break;
                     default:
                         Player.getInv().add(YELLOW_LENS_REF); // Give player yellow lens.
-                        this.REFSCK.getInv().add(SAND_REF); // Restock sand.
-                        this.REFBRL.getInv().add(YELLOW_DYE_REF); // Restock dye.
-                        this.REFCBNT.getInv().add(POTASH_REF); // Restock potash.
+                        this.SCK_INV.add(SAND_REF); // Restock sand.
+                        this.BRL_INV.add(YELLOW_DYE_REF); // Restock dye.
+                        this.CBNT_INV.add(POTASH_REF); // Restock potash.
                         color = "yellow";
                         break;
                 }
@@ -79,18 +90,18 @@ public class Wrk_CastingTable extends Furniture {
             }
             else {
                 Player.getInv().add(SHEET_REF);
-                this.REFSCK.getInv().add(SAND_REF);
-                this.REFCBNT.getInv().add(POTASH_REF);
+                this.SCK_INV.add(SAND_REF);
+                this.CBNT_INV.add(POTASH_REF);
                 
                 switch (name) {
                     case MOLTEN_RED_GLASS:
-                        this.REFBRL.getInv().add(RED_DYE_REF);
+                        this.BRL_INV.add(RED_DYE_REF);
                         break;
                     case MOLTEN_BLUE_GLASS:
-                        this.REFBRL.getInv().add(BLUE_DYE_REF);
+                        this.BRL_INV.add(BLUE_DYE_REF);
                         break;
                     default:
-                        this.REFBRL.getInv().add(YELLOW_DYE_REF);
+                        this.BRL_INV.add(YELLOW_DYE_REF);
                         break;
                 }
                 return "You pour the molten glass onto the casting table.\n" +

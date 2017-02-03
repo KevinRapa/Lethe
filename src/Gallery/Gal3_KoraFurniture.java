@@ -15,7 +15,7 @@ public class Gal3_KoraFurniture extends Furniture {
                          + "harp too. Beneath it you see a small label: \"Kora\".";
         this.actDialog = "You carefully remove the instrument from its display.";
         this.addNameKeys("instrument", "stringed instrument", "kora");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("hold", "play", "strum");
     }
 /*----------------------------------------------------------------------------*/ 

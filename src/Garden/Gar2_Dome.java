@@ -1,5 +1,6 @@
 package Garden;
 
+import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 /**
  * @author Kevin Rapa
@@ -16,7 +17,7 @@ public class Gar2_Dome extends Furniture {
         this.actDialog = "If you do that, the glass will probably rain\n"
                        + "rain down on you as a deadly shower of glass.";
 
-        this.addUseKeys("stone block", "red ball", "cue ball", "rock");
+        this.addUseKeys(STONE_BLOCK, RED_BALL, CUE_BALL, ROCK);
         this.addActKeys("shatter");
         this.addNameKeys("(?:paneled )?(?:glass )?dome");
     }

@@ -18,7 +18,7 @@ public class Cis_Darkness extends Furniture implements Gettable {
 
         this.useDialog = "The darkness swallows up the torch light, keeping visibility low.";
         
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addUseKeys(HAND_TORCH);
         this.addNameKeys("darkness", "dark void", "void", "blackness", "ceiling");
     }

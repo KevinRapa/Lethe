@@ -16,7 +16,7 @@ public class Tmb2_Light extends Furniture {
         this.searchDialog = this.actDialog;
 
         this.addNameKeys("(?:inexplicable )?(?:orb of |ball of )?(?:blinding )?light");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys(FEELPATTERN);
     }
     // ========================================================================     

@@ -9,9 +9,9 @@ public class Want_Torches extends Furniture {
 
         this.description = "They're tall, standing torches. They are burning\n"
                          + "quite audibly and furiously.";
-        this.actDialog = "This is not a hand torch.";
+        this.actDialog = "These are not hand torches.";
         
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:standing )?torch(?:es)?");
     }
 /*----------------------------------------------------------------------------*/

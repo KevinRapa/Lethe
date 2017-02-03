@@ -26,7 +26,7 @@ public class Gal6_Helmet extends Furniture {
                     + "your sense of direction. You cannot comprehend what just\n"
                     + "happened.";
         
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("wear", "put");
         this.addNameKeys("(?:bizarre|cool )?helmet");
     }

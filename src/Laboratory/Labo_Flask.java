@@ -36,7 +36,7 @@ public class Labo_Flask extends SearchableFurniture {
 
         this.addUseKeys(ANYTHING); // Anything can be used on this, but it must be of type "ingredient".
         this.addNameKeys("(?:florence |bulbous )?flask");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
     }
     // ======================================================================== 
     public void distill() {

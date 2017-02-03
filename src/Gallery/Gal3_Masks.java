@@ -13,7 +13,7 @@ public class Gal3_Masks extends Furniture {
                          + "<> A Gabonese mask";
         this.searchDialog = "You aren't sure which one to search first.";
         this.actDialog = "You aren't sure which one to move.";
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("move", "lift", "slide", "wear");
         this.addNameKeys("masks?");
     }

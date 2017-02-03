@@ -24,7 +24,7 @@ public class Cobweb extends Furniture implements Gettable {
 
         this.addNameKeys("cobwebs?");
         this.addUseKeys(ANYTHING);
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
     }
     // ========================================================================   
     @Override public String interact(String key) {              

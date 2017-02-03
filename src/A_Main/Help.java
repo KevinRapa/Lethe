@@ -1,6 +1,7 @@
 package A_Main;
 
 import java.util.HashMap;
+import static A_Main.Patterns.*;
 /**
  * This class comprises the help section of the game.
  * The Help is comprised of nested menus directing the player to different
@@ -184,10 +185,10 @@ public class Help {
 
                     choice = GUI.promptOut().concat("c");
 
-                    if (choice.matches("[1-9]c")) 
+                    if (CONTROL_CHOICE.matcher(choice).matches()) 
                         GUI.out(get_help(TOPIC.get(choice)));  
                     
-                } while (! choice.matches("c"));          
+                } while (! choice.equals("c"));          
             }
         /*--------------------------------------------------------------------*/          
             if (choice.equals("2")) {    
@@ -198,10 +199,10 @@ public class Help {
 
                     choice = GUI.promptOut().concat("p");
                     
-                    if (choice.matches("[1-3]p")) 
+                    if (PLAYER_CHOICE.matcher(choice).matches()) 
                         GUI.out(get_help(TOPIC.get(choice)));
                     
-                } while (! choice.matches("p"));    
+                } while (! choice.equals("p"));    
             }
         /*--------------------------------------------------------------------*/      
             if (choice.equals("3")) {    
@@ -212,13 +213,13 @@ public class Help {
 
                     choice = GUI.promptOut().concat("a");
                     
-                    if (choice.matches("[1-6]a")) 
+                    if (CASTLE_CHOICE.matcher(choice).matches()) 
                         GUI.out(get_help(TOPIC.get(choice)));
                     
-                } while (! choice.matches("a"));
+                } while (! choice.equals("a"));
             }
         /*--------------------------------------------------------------------*/      
-        } while (! choice.matches(""));   
+        } while (! choice.equals(""));   
         
         GUI.toMainMenu();
         GUI.clearDialog();

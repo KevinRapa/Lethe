@@ -4,6 +4,7 @@ import A_Main.Inventory;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.Serializable;
+import java.util.regex.Pattern;
 /**
  * In this game, the better term for furniture is "room object" because other
  * objects such as floors, walls, doors, buttons, etc. are treated as furniture.
@@ -34,12 +35,10 @@ abstract public class Furniture implements Serializable {
                      actDialog,     // Printed when interacted with.  
                      useDialog;     // Printed when an item is used on this.
     protected boolean searchable;   // Items can be traded with searchable furniture.  
-    protected final ArrayList<String> USEKEYS, ACTKEYS, NAMEKEYS; 
-    
-    protected static final String[] 
-            GETKEYS = {"get", "take", "acquire", "grab", "scoop"};     
-    
-    protected static final String SITPATTERN = "sit|relax|lay|use",
+    protected final ArrayList<Pattern> USEKEYS, ACTKEYS, NAMEKEYS; 
+
+    protected static final String GETPATTERN = "get|take|acquire|grab|scoop",      
+                                  SITPATTERN = "sit|relax|lay|use",
                                   JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",
                                   MOVEPATTERN = "move|slide|displace|push|pull",
                                   FEELPATTERN = "feel|touch|poke",
@@ -62,11 +61,12 @@ abstract public class Furniture implements Serializable {
     // ========================================================================     
     /**
      * Used to check if this piece contains a certain item.
+     * Removes titles from books.
      * @param name The name of an item.
      * @return If this piece contains an item with the name.
      */
     public boolean containsItem(String name) {
-        for (Item i : this.inv) {            
+        for (Item i : this.inv) {
             String j = i.toString().replaceAll(", .*", NOTHING);
             if (j.matches(name)) {
                 return true; }
@@ -96,16 +96,8 @@ abstract public class Furniture implements Serializable {
         return this.inv;
     }
     // ========================================================================     
-    /**
-     * This method returns all the names the player may use to interact with this.
-     * @return The list of names the player may use to interact with this.
-     */
-    public ArrayList<String> getValidNames() {
-        return this.NAMEKEYS;
-    }
-    // ========================================================================     
     @Override public String toString() {
-        return this.NAMEKEYS.get(0);
+        return this.NAMEKEYS.get(0).toString();
     }
 //******************************************************************************        
 // </editor-fold>
@@ -134,27 +126,28 @@ abstract public class Furniture implements Serializable {
         return this.useDialog;
     }
     // ========================================================================     
-    /**
-     * Determines if an action the player types will activate <code>interact()</code>.
-     * @param key The name of an action.
-     * @return If the action will trigger an event with this piece.
-     */
-    public boolean actKeyMatches(String key) {
+    public boolean actKeyMatches(String verb) {
         return this.ACTKEYS.stream()
-                .anyMatch(i -> (key.matches(i)));
+                .anyMatch(i -> i.matcher(verb).matches());
     }    
     // ========================================================================     
-    public boolean useKeyMatches(String name) {
+    public boolean useKeyMatches(String itemName) {
         return this.USEKEYS.stream()
-                .anyMatch(i -> (name.matches(i)));
+                .anyMatch(i -> i.matcher(itemName).matches());
     }
     // ========================================================================     
+    public boolean nameKeyMatches(String furnitureName) {
+        return this.NAMEKEYS.stream()
+                .anyMatch(i -> i.matcher(furnitureName).matches());
+    }
+    // ======================================================================== 
     /**
      * Adds a list of use keys to this furniture.
      * @param keys A list of use keys.
      */
     public final void addUseKeys(String ... keys) {
-        this.USEKEYS.addAll(Arrays.asList(keys));
+        for (String key : keys)
+            this.USEKEYS.add(Pattern.compile(key));
     }
     // ========================================================================     
     /**
@@ -162,7 +155,8 @@ abstract public class Furniture implements Serializable {
      * @param keys A list of name keys.
      */
     public final void addNameKeys(String ... keys) {
-        this.NAMEKEYS.addAll(Arrays.asList(keys));
+        for (String key : keys)
+            this.NAMEKEYS.add(Pattern.compile(key));
     }
     // ========================================================================     
     /**
@@ -170,7 +164,8 @@ abstract public class Furniture implements Serializable {
      * @param keys A list of action keys.
      */
     public final void addActKeys(String ... keys) {
-        this.ACTKEYS.addAll(Arrays.asList(keys));
+        for (String key : keys)
+            this.ACTKEYS.add(Pattern.compile(key));
     }
 //******************************************************************************        
 // </editor-fold>

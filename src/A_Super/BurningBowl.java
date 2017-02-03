@@ -19,7 +19,7 @@ public class BurningBowl extends Furniture implements Gettable {
                 "(?:hanging )?(?:steel )?burning bowl", "fire");
         
         this.addUseKeys(".+");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys(JOSTLEPATTERN, "jab");
     }
     // ========================================================================     

@@ -16,7 +16,7 @@ public class Cs35_Torches extends Furniture {
                        + "been carrying it all this time.";
         
         this.addNameKeys("(?:standing )?torch(?:es)?", "(?:bright )?(?:blue )?flame");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("touch");
         this.addUseKeys(HAND_TORCH);
     }

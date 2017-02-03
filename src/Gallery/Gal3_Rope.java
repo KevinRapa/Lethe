@@ -62,7 +62,7 @@ public class Gal3_Rope extends Furniture {
 /*----------------------------------------------------------------------------*/
     private boolean detectItem() {
         // Detects if you have a blade to cut the rope with.
-        return this.USEKEYS.stream().anyMatch(i -> (Player.hasItem(i)));
+        return this.USEKEYS.stream().anyMatch(i -> (Player.hasItem(i.toString())));
     }
 /*----------------------------------------------------------------------------*/
 }

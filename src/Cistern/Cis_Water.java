@@ -24,7 +24,7 @@ public class Cis_Water extends Furniture implements Gettable {
         this.useDialog = "You pick some of the water up in the bucket.";
 
         this.addNameKeys("(?:stagnant )?(?:(?:large )?body of )?(?:putrid |disgusting |smelly |awful )?(?:stagnant )?water");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("swim", "jump", "drink");
         this.addUseKeys(METAL_BUCKET);
     }

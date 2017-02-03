@@ -22,7 +22,7 @@ public class Aarc_Algae extends Aarc_Furniture implements Gettable {
 
         this.addActKeys("lick");
         this.addActKeys(FEELPATTERN);
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addNameKeys("algae");
     }
     // ========================================================================

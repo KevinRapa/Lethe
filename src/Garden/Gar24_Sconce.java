@@ -14,7 +14,7 @@ public class Gar24_Sconce extends Furniture implements Gettable {
         this.actDialog = "That light looks pretty hot...";
 
         this.addNameKeys("(?:black )?(?:iron )?(?:sconce|light)", "fire");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("touch", "hold", "grab");
     }
     // ======================================================================== 

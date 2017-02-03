@@ -11,7 +11,7 @@ public class Wrk_Barrel extends SearchableFurniture implements Openable {
         this.description = "It's not full sized... maybe only three feet high.\n"
                          + "It has a wooden lid on top.";
         this.searchDialog = "You open the lid and peer inside.";
-        this.addNameKeys("barrel");
+        this.addNameKeys("(?:wood(?:en)? )?barrel");
     }
 /*----------------------------------------------------------------------------*/
 }

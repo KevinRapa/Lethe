@@ -1,6 +1,7 @@
 package A_Main;
 
 import static A_Main.NameConstants.*;
+import static A_Main.Patterns.*;
 import A_Super.Furniture;
 import java.util.LinkedList;
 /**
@@ -19,20 +20,13 @@ import java.util.LinkedList;
 public class TextParser {
     private final static LinkedList<Command> COMMAND_QUEUE = 
         new LinkedList<>();
-    
-    private static final String[] PREPOSITIONS = 
-        {"up", "down", "(?:in|on)(?:to)?", "out", 
-            "of", "through", "against", "around", "to", "at"};
-    
-    private static final String 
+
+    private static final String // Delimiters
         INSTRUCTIVE_PATTERN =   " with | using ",
-        INSPECT_PATTERN =       "look(?: at)?|inspect|examine|check (?: out)?",
         CONJUNCTION_PATTERN =   " and(?: then| also)? | then(?: also)? ",
-        USE_PATTERN =           "use|read|drop|wear|remove|eat|drink|eat",
-        MOVEMENT_PATTERN =      "(?:go|move|walk|run|crawl) "
-                              + "(?:north|forward|south|east|right|west|left|"
-                              + "(?:down|back|up)(?:wards?)?)",
         DONT_HAVE_IT = "You aren't carrying that.";
+    
+    private static final String NOTHING = "", SPACE = " ";
     
     private static final Command DEFAULT_COMMAND = 
             new Command("What does that mean?");
@@ -57,16 +51,16 @@ public class TextParser {
     //*************************************************************************
     public static void processText(String input) {
         // Removes articles 'a', 'an', 'the'. Removes the pronoun 'some'.
-        String noArticles = input
-                .replaceAll("\\bthe |\\.|\\ban? |\\bsome ", "");
+        String noArticles = ARTICLE.matcher(input).replaceAll(NOTHING);
         
-        if (input.matches("commit suicide|kill (?:your)?self")) 
+        if (SUICIDE.matcher(input).matches()) 
             GUI.out("You haven't reached that point yet!!");
 
-        else if (input.matches("(?:say|speak|yell|shout) .+"))
-            GUI.out(input.replaceAll("\\w+ ", "").concat("!"));
+        else if (SHOUT.matcher(input).matches())
+            GUI.out(WORD_THEN_SPACE.matcher(input)
+                    .replaceAll(NOTHING).concat("!"));
         
-        else if (input.matches("(?:destroy|obliterate|wreak havoc) .+"))
+        else if (DESTROY.matcher(input).matches())
             GUI.out("Yes, you're frustrated, hungry, and angry, but don't be so reckless!");
 
         else {
@@ -85,19 +79,11 @@ public class TextParser {
     private static String stripPrepositions(String input) {
         StringBuilder builder = new StringBuilder();
         
-        for (String word : input.split(" ")) {
-            if (! isPreposition(word))
-                builder.append(word).append(" ");
+        for (String word : input.split(SPACE)) {
+            if (! PREPOSITION.matcher(word).matches())
+                builder.append(word).append(SPACE);
         }
         return builder.toString().trim();
-    }
-    // ========================================================================
-    private static boolean isPreposition(String s) {
-        for (String p : PREPOSITIONS)
-            if (s.matches(p))
-                return true;
-        
-        return false;
     }
     // ========================================================================
     /**
@@ -111,20 +97,16 @@ public class TextParser {
         Command[] commands = new Command[statements.length];
         
         for (int i = 0; i < commands.length; i++) {
-            if (statements[i].matches(MOVEMENT_PATTERN)) 
-                commands[i] = new Command(new Verb("go"), 
-                        new DirectObject(statements[i].replaceFirst("\\w+ ", "")));
-            
-            else if (statements[i].matches("(?:" + USE_PATTERN + "|" 
-                    + INSPECT_PATTERN + ") [a-z0-9: ,'-]+")) 
+            if (ITEM_COMMAND.matcher(statements[i]).matches()) 
                 commands[i] = getItemCmd(statements[i].split(" on "));
             
-            else if (statements[i].matches("(?:put|store) [a-z0-9: ,'-]+"))
-                commands[i] = getStoreCmd(statements[i].replaceAll("(?:put|store) ", "")
-                                        .split(" (?:in|on)(?:to)? | under(?:neath)? | next to | beside "));
+            else if (STORE_COMMAND.matcher(statements[i]).matches())
+                commands[i] = getStoreCmd(STORE_THEN_SPACE.matcher(statements[i])
+                                    .replaceAll(NOTHING)
+                                    .split(" (?:in|on)(?:to)? | under(?:neath)? | next to | beside "));
             else 
                 commands[i] = getCmdActionFirst(stripPrepositions(statements[i])
-                                        .split(INSTRUCTIVE_PATTERN));
+                                    .split(INSTRUCTIVE_PATTERN));
         }
         return commands;
     }
@@ -144,12 +126,12 @@ public class TextParser {
     private static Command getCmdActionFirst(String[] s) {
         String actionObject = s[0];
         
-        Verb verb = new Verb(actionObject
-                .replaceFirst("\\s.+", "")); // First word.
+        // Get just the first word
+        Verb verb = new Verb(ALL_AFTER_SPACE.matcher(actionObject)
+                                            .replaceAll(NOTHING));
         
         DirectObject dirObj = new DirectObject(actionObject
-                .trim()
-                .replaceFirst("[a-z]+\\s", "")); // All but the first word.
+                .trim().replaceFirst("[a-z]+\\s", NOTHING)); // All but the first word.
         
         switch(s.length) {
             case 2:
@@ -168,7 +150,7 @@ public class TextParser {
         String object = s[0];
         Instrument inst;
         
-        if (object.matches("[0-9]+")) {
+        if (SLOT_NUMBER.matcher(object).matches()) {
             int i = Integer.parseInt(object) - 1;
             
             if (i >= 0 && i < Player.getInv().size())
@@ -194,11 +176,11 @@ public class TextParser {
      */
     private static Command getItemCmd(String[] s) {
         String verbObject = stripPrepositions(s[0]);
-        Verb use = new Verb(verbObject.replaceFirst("\\s.+", ""));
-        String object = verbObject.replaceFirst("\\w+ ", "");
+        Verb use = new Verb(ALL_AFTER_SPACE.matcher(verbObject).replaceFirst(NOTHING));
+        String object = WORD_THEN_SPACE.matcher(verbObject).replaceFirst(NOTHING);
         Instrument inst;
         
-        if (object.matches("[0-9]+")) {
+        if (SLOT_NUMBER.matcher(object).matches()) {
             int i = Integer.parseInt(object) - 1;
             
             if (i >= 0 && i < Player.getInv().size())
@@ -232,25 +214,25 @@ public class TextParser {
         // ====================================================================
         // <editor-fold desc="constructors">
         public Command(Verb v, DirectObject o) {
-            VALUE = v.toString() + " " + o.toString();
+            VALUE = v.toString() + SPACE + o.toString();
             System.out.println("Creating verb -> object command: " + VALUE);
             ACTION = (() -> Player.evaluateAction(v.toString(), o.toString()));
         }
         // --------------------------------------------------------------------
         public Command(Instrument i, DirectObject o) {
-            VALUE = i.toString() + " " + o.toString();
+            VALUE = i.toString() + SPACE + o.toString();
             System.out.println("Creating item -> object command: " + VALUE);
             ACTION = (() -> execute(i, o));
         }
         // --------------------------------------------------------------------
         public Command(Verb v, Instrument i) {
-            VALUE = v.toString() + " " + i.toString();
+            VALUE = v.toString() + SPACE + i.toString();
             System.out.println("Creating use item command: " + VALUE);
             ACTION = (() -> execute(v, i));
         }
         // --------------------------------------------------------------------
         public Command(Verb v, Instrument i, DirectObject o) {
-            VALUE = v.toString() + " " + i.toString() + " " + o.toString();
+            VALUE = v.toString() + SPACE + i.toString() + SPACE + o.toString();
             System.out.println("Creating store command: " + VALUE);
             ACTION = (() -> execute(v, i, o));
         }
@@ -293,7 +275,7 @@ public class TextParser {
                 if (verb.equals("use"))
                     GUI.out(item.useEvent());
                 
-                else if (verb.matches(INSPECT_PATTERN))
+                else if (INSPECT_PATTERN.matcher(verb).matches())
                     GUI.out(item.getDesc());
                 
                 else if (verb.equals("read")) {
@@ -310,7 +292,7 @@ public class TextParser {
                 }
                 else if (verb.equals("drop") || verb.equals("remove")) {
                     if (verb.equals("remove") && item.getType().equals(SHOES)) {
-                        if (Player.getShoes().equals(""))
+                        if (Player.getShoes().equals(NOTHING))
                             GUI.out("You aren't wearing any shoes.");
                         else
                             GUI.out(item.useEvent());
@@ -343,7 +325,8 @@ public class TextParser {
                 else if (verb.equals("eat") || verb.equals("consume"))
                     GUI.out("That... REALLY does not seem edible...");
             }
-            else if (Player.getPos().hasFurniture(i.toString())) {
+            else if (Player.getPos().hasFurniture(i.toString()) || 
+                     INDEFINITE_PRONOUN.matcher(i.toString()).matches()) {
                 Player.evaluateAction(v.toString(), i.toString());
             }
             else

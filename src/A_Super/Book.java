@@ -54,7 +54,7 @@ public class Book extends Note {
                 GUI.promptOut(); 
                 choice = "no"; 
             }
-        } while (! choice.matches("no"));      
+        } while (! choice.matches("no|n"));      
     }
 /*----------------------------------------------------------------------------*/   
 }

@@ -165,12 +165,8 @@ public class Room implements Serializable {
      * @return If your location contains furniture with that name.
      */
     public boolean hasFurniture(String name) {   
-        for (Furniture i : this.furnishings) 
-            for (String j : i.getValidNames()) 
-                if (name.matches(j))
-                    return true;
-
-        return false;  
+        return this.furnishings.stream()
+                .anyMatch(i -> (i.nameKeyMatches(name)));
     }
     // ========================================================================
     public boolean hasFurniture(Furniture furn) {

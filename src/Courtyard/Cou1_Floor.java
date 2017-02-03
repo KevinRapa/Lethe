@@ -2,8 +2,7 @@ package Courtyard;
 
 import A_Main.AudioPlayer;
 import A_Main.Inventory;
-import static A_Main.NameConstants.SHOVEL;
-import static A_Main.NameConstants.TROWEL;
+import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
@@ -36,11 +35,11 @@ public class Cou1_Floor extends SearchableFurniture implements Gettable{
             this.useDialog = "You dig about a foot-deep hole in the ground. In the hole,\n"
                            + "you uncover something.";
             
-            this.addActKeys(GETKEYS);
+            this.addActKeys(GETPATTERN);
             this.addActKeys("dig", SHOVEL);
             this.addUseKeys(SHOVEL, TROWEL);
             this.addNameKeys("floor", "ground", "dirt", "earth", 
-                             "soil", "grass", "weeds?", "clovers?");
+                             SOIL, GRASS, "weeds?", "clovers?");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

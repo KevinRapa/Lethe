@@ -16,7 +16,7 @@ public class Cry_Lights extends Furniture {
 
         this.addNameKeys("(?:boney )?arms", "(?:burning )?(?:platters?|dish(?:es)?)", 
                 "torch(?:es)?", "protrusions?");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
     }
     // ========================================================================     
 }

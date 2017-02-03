@@ -2,6 +2,7 @@ package A_Super;
 
 import static A_Main.NameConstants.BUCKET_OF_WATER;
 import static A_Main.NameConstants.LIQUID;
+import static A_Main.NameConstants.SOIL;
 import static A_Main.NameConstants.WEAPON;
 import A_Main.Player;
 /**
@@ -22,9 +23,9 @@ abstract public class PottedPlant extends SearchableFurniture
         this.useDialog = "Pouring that on the plant is definitely not going to\n"
                        + "be good for it, you monster.";
 
-        this.addNameKeys("dirt", "soil", "(?:potted )?plants?");
+        this.addNameKeys("dirt", SOIL, "(?:potted )?plants?");
         this.addUseKeys(ANYTHING);
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("water");
         
         this.inv.add(soil); 
@@ -49,7 +50,7 @@ abstract public class PottedPlant extends SearchableFurniture
             return this.useDialog;
         else if (item.getType().equals(WEAPON))
             return "Attacking the plant isn't going to solve any of your problems.";
-        else if (item.toString().equals("soil")) {
+        else if (item.toString().equals(SOIL)) {
             Player.getInv().remove(item);
             return "You return the soil to the plant.";
         }

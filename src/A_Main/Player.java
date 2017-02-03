@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Iterator;
+import static A_Main.Patterns.*;
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -46,9 +47,9 @@ public final class Player {
      * @return The furniture objects with the name.
      */
     public static Furniture getFurnRef(String name) {
-        for(Furniture i : getPos().getFurnishings()) {
-            if (i.getValidNames().stream().anyMatch(j -> name.matches(j)))
-                return i;           
+        for(Furniture furn : getPos().getFurnishings()) {
+            if (furn.nameKeyMatches(name))
+                return furn;           
         }
         return null;
     }
@@ -221,22 +222,22 @@ public final class Player {
             GUI.toMainMenu();
             ans = GUI.promptOut();
 
-            if (ans.matches("[heckiwsad]")) 
+            if (KEYCOMMAND.matcher(ans).matches()) 
                 cmd.get(ans.charAt(0)).run();
 
-            else if (ans.matches("[a-z]+\\s[a-z0-9 ,'.-]+")) // Interacting
+            else if (PHRASE.matcher(ans).matches()) // Interacting
                 TextParser.processText(ans);
             
-            else if (ans.matches("(?:north|forward|south|east|right|west|left|"
-                               + "(?:down|back|up)(?:wards?)?)"))
+            else if (DIRECTION.matcher(ans).matches())
                 parseMovement(ans);
+            
             else if (ans.equals("quit"))
                 return endGame();
             
-            else if (ans.matches("jump")) 
+            else if (ans.equals("jump")) 
                 GUI.out("You jump a short height into the air. Well, that was fun.");
 
-            else if (ans.matches("hi|hello|hey|sup"))
+            else if (GREETING.matcher(ans).matches())
                 GUI.out("What do you think this is? Zork?");
             
             else if (isNonEmptyString(ans))
@@ -248,8 +249,8 @@ public final class Player {
     private static int endGame() {
         String ans = GUI.askChoice("\n<'s'> Save and quit\n<'q'> Quit\n<'r'> Reset game and quit.", "[sqr]");
         
-        return ans.matches("s") ? 1 : 
-               ans.matches("q") ? 3 : 2;
+        return ans.equals("s") ? 1 : 
+               ans.equals("q") ? 3 : 2;
     }
     // ======================================================================== 
     public static boolean isNonEmptyString(String playerInput) {
@@ -380,11 +381,11 @@ public final class Player {
         if (isNonEmptyString(searchThis) && getPos().hasFurniture(searchThis))
             search(getFurnRef(searchThis));
         
-        else if (searchThis.matches("it|them") && // Indefinite reference.
+        else if (INDEFINITE_PRONOUN.matcher(searchThis).matches() && 
                 Player.getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture()))
                 search(getFurnRef(searchThis));
 
-        else if (searchThis.matches("furniture|furnishings|stuff|things?"))
+        else if (FURNITURE.matcher(searchThis).matches())
             GUI.out("There are too many things in the room. Specify your intention.");
         
         else if (isNonEmptyString(searchThis)) 
@@ -425,11 +426,11 @@ public final class Player {
                 String action = collectToken.next();            
                 int slot = Integer.parseInt(collectToken.next());
                 
-                if (action.matches("s|store")) {
+                if (STORE.matcher(action).matches()) {
                     Item item = Player.inv.get(slot - 1);
                     evalStore(furniture, item);                            
                 }            
-                else if (action.matches("t|take")) {
+                else if (TAKE.matcher(action).matches()) {
                     Item item = furniture.getInv().get(slot - 1);
                     evalTake(furniture, item);
                 }
@@ -454,7 +455,7 @@ public final class Player {
      * @param take The item being taken.
      */
     private static void evalTake(Furniture furniture, Item take) {
-        if (take.getType().matches("[A-Z]{3}[A-Z1-9]")) {
+        if (KEY.matcher(take.getType()).matches()) {
             // Matches a non-cave/catacomb room ID, which keys use as types.
             addToKeyRing(take, furniture);
             AudioPlayer.playEffect(3);
@@ -479,7 +480,7 @@ public final class Player {
             GUI.out("You store the " + store);
             Player.inv.give(store , furniture.getInv()); 
             
-            if (store.toString().matches(shoes))
+            if (store.toString().equals(Player.shoes))
                 Player.shoes = ""; // If player stores the shoes currently wearing.
         }
     }
@@ -498,13 +499,11 @@ public final class Player {
      * @param action the action the player is performing on the furniture.
      */
     public static void evaluateAction(String action, String object) {
-        if (action.equals("go") && object.matches(
-                "north|forward|south|east|right|west|left|" +
-                "(?:down|back|up)(?:wards?)?")) {
+        if (MOVEMENT.matcher(action).matches() && DIRECTION.matcher(object).matches()) {
             parseMovement(object);
         }
         else if (getPos().hasFurniture(object) || 
-                (object.matches("it|them") && 
+                (INDEFINITE_PRONOUN.matcher(object).matches() && 
                 getPos().hasFurniture(object = GUI.parsePreviousFurniture()))) 
         {    
             Furniture target = getFurnRef(object);
@@ -514,17 +513,17 @@ public final class Player {
                 describeRoom();
                 printInv();
             }
-            else if (action.matches("c|check|examine|look|view|inspect|watch")) 
+            else if (CHECK.matcher(action).matches()) 
                 GUI.out(target.getDescription()); 
             
-            else if (action.matches("search|e|s") || 
+            else if (SEARCH.matcher(action).matches() || 
                     (action.equals("open") && target instanceof Openable))                    
                 search(target);
             else
                 GUI.out("That seems unnecessary.");
         }   
         
-        else if (object.matches("furniture|furnishings|stuff|things?"))
+        else if (FURNITURE.matcher(object).matches())
             GUI.out("Be more specific.");
         
         else 
@@ -532,15 +531,15 @@ public final class Player {
     }
     // ========================================================================  
     private static void parseMovement(String dir) {
-        if (dir.matches("north|forward"))
+        if (NORTH.matcher(dir).matches())
             Player.move(Direction.NORTH);
-        else if (dir.matches("south|back(?:wards?)?"))
+        else if (SOUTH.matcher(dir).matches())
             Player.move(Direction.SOUTH);
-        else if (dir.matches("east|right"))
+        else if (EAST.matcher(dir).matches())
             Player.move(Direction.EAST);
-        else if (dir.matches("west|left"))
+        else if (WEST.matcher(dir).matches())
             Player.move(Direction.WEST);
-        else if (dir.matches("up(?:wards?)?"))
+        else if (UP.matcher(dir).matches())
             findStaircase(Direction.UP);
         else
             findStaircase(Direction.DOWN);
@@ -580,13 +579,13 @@ public final class Player {
      * @param inspecting object name the player wants to inspect.
      */
     private static void checkOut(String inspecting) {
-        if (inspecting.matches("it|them")) // Indefinite reference.
+        if (INDEFINITE_PRONOUN.matcher(inspecting).matches()) // Indefinite reference.
             inspecting = GUI.parsePreviousFurniture();
         
         if (getPos().hasFurniture(inspecting))
             GUI.out(Player.getFurnRef(inspecting).getDescription());
         
-        else if (inspecting.matches("furniture|furnishings|stuff|things?"))
+        else if (FURNITURE.matcher(inspecting).matches())
             GUI.out("Be more specific.");
         
         else 
@@ -623,7 +622,7 @@ public final class Player {
             
             ans = GUI.promptOut();
             
-            if (ans.matches("[1-4]")) {
+            if (INV_CHOICES.matcher(ans).matches()) {
                 switch(Integer.parseInt(ans)) {
                     case 1:
                         inspectPrompt(); break;

@@ -11,7 +11,7 @@ abstract public class WallArt extends Furniture {
         this.actDialog = "You lift it only to reveal a blank wall.";
         this.searchDialog = this.actDialog;
         
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("move", "lift", "slide", "admire");
     }
     // ========================================================================   

@@ -1,5 +1,6 @@
 package Chapel;
 
+import static A_Main.NameConstants.MOP;
 import A_Super.Furniture;
 import A_Super.Gettable;
 /**
@@ -15,9 +16,9 @@ public class Cha_Haze extends Furniture implements Gettable {
                          + "the calm air.";
         this.actDialog = this.useDialog = "You aren't a maid!";
         
-        this.addUseKeys("mop");
+        this.addUseKeys(MOP);
         this.addActKeys("clean", "sweep");
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:dusty )?haze", "dust");
     }
     // ========================================================================     

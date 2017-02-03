@@ -15,7 +15,7 @@ public class Gal1_Paintings extends Furniture {
                          + "<> A Chinese scroll";
         this.searchDialog = "You aren't sure which one to search first.";
         this.actDialog = "You aren't sure which one to move.";
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addActKeys("move", "lift", "slide");
         this.addNameKeys("painting", "paintings");
 /*----------------------------------------------------------------------------*/

@@ -16,7 +16,7 @@ public class Sear_Wood extends Furniture implements Gettable {
         this.description = "Bits of burnt wood are littered everywhere.";
         this.searchDialog = "It's all just burnt wood.";
         
-        this.addActKeys(GETKEYS);
+        this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:bits of )?(?:burnt )?wood");
     }
 /*----------------------------------------------------------------------------*/

@@ -1,7 +1,6 @@
 package A_Main;
-
 /**
- * Holds name constants for item types.
+ * Holds name constants for item types and item names.
  * Item types cannot be enumerations because keys use room Ids as types.
  * 
  * @see A_Super.Key
@@ -55,6 +54,13 @@ public final class NameConstants {
         BATTERING_RAM = "battering ram",        LOOPED_ROPE = "looped rope",
         SOIL = "soil",                          FIXED_LADDER = "fixed ladder",
         HOLY_WATER = "holy water",              COPPER_POT = "copper pot",
-        COPPER_PAN = "copper pan",              CANDLE = "candle";
+        COPPER_PAN = "copper pan",              CANDLE = "candle",
+        GLOWING_SCEPTER = "glowing scepter",    FACTUM = "the Factum",
+        FERTILIZER = "fertilizer",              SEED = "seed",
+        GRASS = "grass",                        ROCK = "rock",
+        ACETONE = "acetone",                    MOP = "mop",
+        ASH = "ash",                            RED_BALL = "red ball",
+        CUE_BALL = "cue ball",                  STONE_BLOCK = "stone block",
+        HOE = "hoe",                            WHEEL_SPOKE = "wheel spoke";
     // ========================================================================
 }

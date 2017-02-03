@@ -103,7 +103,7 @@ public class Torc_Sawhorses extends Furniture implements Resetable {
             
             this.addNameKeys("(?:metal )?ladder", "two parallel 10-foot long metal poles attached "
                            + "together via many shorter perpendicular metal poles");
-            this.addActKeys(GETKEYS);
+            this.addActKeys(GETPATTERN);
         }
         // ==================================================================== 
         @Override public String interact(String key) {              
