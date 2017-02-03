@@ -58,7 +58,7 @@ public class TextParser {
 
         else if (SHOUT.matcher(input).matches())
             GUI.out(WORD_THEN_SPACE.matcher(input)
-                    .replaceAll(NOTHING).concat("!"));
+                    .replaceFirst(NOTHING).concat("!"));
         
         else if (DESTROY.matcher(input).matches())
             GUI.out("Yes, you're frustrated, hungry, and angry, but don't be so reckless!");
