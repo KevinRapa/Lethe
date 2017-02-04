@@ -7,7 +7,9 @@ import java.util.regex.Pattern;
  * @author Kevin Rapa
  */
 public final class Patterns {
-    //=========================================================================
+    // ========================================================================
+    // ************************************************************************
+    // ========================================================================
     public static final Pattern
         YES = Pattern.compile("y|yes"),    
         NO = Pattern.compile("n|no"),
@@ -26,7 +28,7 @@ public final class Patterns {
         INDEFINITE_PRONOUN = Pattern.compile("it|them"),
         CHECK = Pattern.compile("c|check|examine|look|view|inspect|watch"),
         SEARCH = Pattern.compile("search|e|s"),
-        FURNITURE = Pattern.compile("furniture|furnishings|stuff|things?"),
+        GENERIC_FURNITURE = Pattern.compile("furniture|furnishings|stuff|things?"),
         TAKE = Pattern.compile("t|take"),
         STORE = Pattern.compile("s|store"),
         KEY = Pattern.compile("[A-Z]{3}[A-Z1-9]"),
@@ -80,5 +82,7 @@ public final class Patterns {
         CONTROL_CHOICE = Pattern.compile("[1-9]c"),
         PLAYER_CHOICE = Pattern.compile("[1-3]p"),
         CASTLE_CHOICE = Pattern.compile("[1-6]a");
-    //=========================================================================
+    // ========================================================================
+    // ************************************************************************
+    // ========================================================================
 }

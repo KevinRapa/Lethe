@@ -18,15 +18,15 @@ import java.util.LinkedList;
  * @author Kevin Rapa
  */
 public class TextParser {
-    private final static LinkedList<Command> COMMAND_QUEUE = 
-        new LinkedList<>();
+    private final static LinkedList<Command> COMMAND_QUEUE = new LinkedList<>();
 
     private static final String // Delimiters
-        INSTRUCTIVE_PATTERN =   " with | using ",
-        CONJUNCTION_PATTERN =   " and(?: then| also)? | then(?: also)? ",
-        DONT_HAVE_IT = "You aren't carrying that.";
+        INSTRUCTIVE_PATTERN = " with | using ",
+        CONJUNCTION_PATTERN = " and(?: then| also)? | then(?: also)? ",
+        STORE_LOCATION = " (?:in|on)(?:to)? | under(?:neath)? | next to | beside ";
     
-    private static final String NOTHING = "", SPACE = " ";
+    private static final String NOTHING = "", SPACE = " ",
+            DONT_HAVE_IT = "You aren't carrying that.";
     
     private static final Command DEFAULT_COMMAND = 
             new Command("What does that mean?");
@@ -103,7 +103,7 @@ public class TextParser {
             else if (STORE_COMMAND.matcher(statements[i]).matches())
                 commands[i] = getStoreCmd(STORE_THEN_SPACE.matcher(statements[i])
                                     .replaceAll(NOTHING)
-                                    .split(" (?:in|on)(?:to)? | under(?:neath)? | next to | beside "));
+                                    .split(STORE_LOCATION));
             else 
                 commands[i] = getCmdActionFirst(stripPrepositions(statements[i])
                                     .split(INSTRUCTIVE_PATTERN));

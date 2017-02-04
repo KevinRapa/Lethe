@@ -1,5 +1,6 @@
 package A_Super;
         
+import static A_Main.NameConstants.ITEM;
 import java.io.Serializable;
 /**
  * Represents an object that can be stored in an inventory.
@@ -20,7 +21,7 @@ public class Item implements Serializable, Comparable<Item> {
     protected final String FORMS;   // Name of item formed when combined.
     protected final Item PRODUCT;   // Item given to player after a combine.
     protected final int THRESHOLD;  // Number of items in the combine set;
-    protected String type = "item"; // Useful to certain Inventories.    
+    protected String type = ITEM; // Useful to certain Inventories.    
     protected String description;   // Displayed when item is inspected.
     protected String useDialog;     // Displayed when items with Id 1 are used.
     protected int useID = 2;        // 1: used on itself | 2: enters sub-prompt  

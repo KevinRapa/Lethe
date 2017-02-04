@@ -199,10 +199,9 @@ public class RoomReferences {
     public static void constructRoomReferences() { 
         int index = 0; 
         
-        for (String key : IDS) { 
-            ADJACENTS.put(key, ADJS[index]); 
-            index++; 
-        } 
+        for (String key : IDS) 
+            ADJACENTS.put(key, ADJS[index++]);  
+
         constructCoorinateReferences(); 
     } 
     // ======================================================================== 
@@ -212,10 +211,8 @@ public class RoomReferences {
     public static void constructCoorinateReferences() { 
         int index = 0; 
         
-        for (String key : IDS) {
-            COORDINATES.put(key, COORDS[index]); 
-            index++; 
-        }
+        for (String key : IDS)
+            COORDINATES.put(key, COORDS[index++]); 
     } 
     // ======================================================================== 
     /** 
@@ -226,14 +223,15 @@ public class RoomReferences {
     public static ArrayList<String> getAdj(String ID) { 
         ArrayList result = new ArrayList<>(); 
         
-        result.addAll(Arrays.asList(ADJACENTS.get(ID))); 
+        new ArrayList<>().addAll(Arrays.asList(ADJACENTS.get(ID))); 
         
         return result; 
     }
     // ======================================================================== 
     /** 
      * For any room, this returns its coordinates in the castle array. 
-     * @param ID A room ID * @return The room's coordinates in the castle array. 
+     * @param ID A room ID * @return The room's coordinates in the castle array.
+     * @return array of coordinates
      */ 
     public static int[] getCoords(String ID) { 
         return COORDINATES.get(ID); 

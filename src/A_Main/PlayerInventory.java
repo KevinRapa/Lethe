@@ -4,13 +4,14 @@ import A_Super.Item;
 import java.util.Comparator;
 /**
  * Adds combine methods and sorting abilities which aren't used by furniture.
+ * The PlayerInventory may not contain duplicates.
  * Adds get(String itemName) method for use by the TextParser.
  * 
  * @author Kevin Rapa
  */
 public class PlayerInventory extends Inventory {
     private final Item NULL_ITEM = 
-            new Item("null item", "Oops! Looks like there's a bug in the game, "
+            new Item("null item", "Whoops! Looks like there's a bug in the game, "
                    + "this item will self-destruct in 5 seconds... Just kidding.");
     // ========================================================================
     public PlayerInventory(Item ... items) {
@@ -59,8 +60,8 @@ public class PlayerInventory extends Inventory {
         return NULL_ITEM;
     }
     // ========================================================================
-    public static Comparator<Item> getComparator() {
-        return new Inventory_Sorter();
+    public void sortInventory() {
+        this.CONTENTS.sort(Inventory_Sorter.getSorter());
     }
     // ========================================================================
     // ************************************************************************
@@ -68,6 +69,16 @@ public class PlayerInventory extends Inventory {
     private static class Inventory_Sorter<Item extends Comparable<Item>> 
             implements Comparator<Item> 
     {
+        private static final Inventory_Sorter SORTER = new Inventory_Sorter();
+        // --------------------------------------------------------------------
+        private Inventory_Sorter() {
+            // Singleton class.
+        }
+        // --------------------------------------------------------------------
+        public static Inventory_Sorter getSorter() {
+            return SORTER;
+        }
+        // --------------------------------------------------------------------
         @Override public int compare(Item item1, Item item2) {
             return item1.compareTo(item2);
         }

@@ -327,13 +327,16 @@ public class GUI extends JPanel {
 
         UNDO.stream()
                 .filter(i -> (THREE_PLUS_LETTER_WORD.matcher(i).matches()))
-                .forEach(j -> {
+                .forEach(j -> 
+        {
             if (Player.getPos().hasFurniture(j) || 
-                    Player.getPos().hasFurniture(j = FIRST_WORD.matcher(j)
-                                                        .replaceFirst(""))
-                )
+                Player.getPos().hasFurniture(j = FIRST_WORD.matcher(j)
+                                                        .replaceFirst("")))
+            {
                 FURN_PARSER.add(j); 
+            }
         });
+        
         return (FURN_PARSER.size() > 0) ? FURN_PARSER.get(0) : "object with that name";
     }
 /*----------------------------------------------------------------------------*/

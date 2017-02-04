@@ -379,19 +379,20 @@ public final class Player {
         GUI.menOut("\n\n<object> Search\n    < > Back\n");
         String searchThis = GUI.promptOut();
         
-        if (isNonEmptyString(searchThis) && getPos().hasFurniture(searchThis))
+        if (isNonEmptyString(searchThis) && getPos().hasFurniture(searchThis)) {
             search(getFurnRef(searchThis));
-        
+        }
         else if (INDEFINITE_PRONOUN.matcher(searchThis).matches() && 
-                Player.getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture()))
-                search(getFurnRef(searchThis));
-
-        else if (FURNITURE.matcher(searchThis).matches())
+                getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture())) 
+        {
+            search(getFurnRef(searchThis));
+        }
+        else if (GENERIC_FURNITURE.matcher(searchThis).matches()) {
             GUI.out("There are too many things in the room. Specify your intention.");
-        
-        else if (isNonEmptyString(searchThis)) 
+        }
+        else if (isNonEmptyString(searchThis)) {
             GUI.out("There is no " + searchThis + " here."); 
-        
+        }
         else
             ; // Go back to main menu
     }    
@@ -404,9 +405,8 @@ public final class Player {
     public static void search(Furniture furniture) {
         GUI.out(furniture.getSearchDialog());
         
-        if (furniture.isSearchable()) {
+        if (furniture.isSearchable())
             searchPrompt(furniture); 
-        }
     } 
     // ========================================================================  
     /**
@@ -500,7 +500,9 @@ public final class Player {
      * @param action the action the player is performing on the furniture.
      */
     public static void evaluateAction(String action, String object) {
-        if (MOVEMENT.matcher(action).matches() && DIRECTION.matcher(object).matches()) {
+        if (MOVEMENT.matcher(action).matches() && 
+            DIRECTION.matcher(object).matches()) 
+        {
             parseMovement(object);
         }
         else if (getPos().hasFurniture(object) || 
@@ -524,7 +526,7 @@ public final class Player {
                 GUI.out("That seems unnecessary.");
         }   
         
-        else if (FURNITURE.matcher(object).matches())
+        else if (GENERIC_FURNITURE.matcher(object).matches())
             GUI.out("Be more specific.");
         
         else 
@@ -534,14 +536,19 @@ public final class Player {
     private static void parseMovement(String dir) {
         if (NORTH.matcher(dir).matches())
             Player.move(Direction.NORTH);
+        
         else if (SOUTH.matcher(dir).matches())
             Player.move(Direction.SOUTH);
+        
         else if (EAST.matcher(dir).matches())
             Player.move(Direction.EAST);
+        
         else if (WEST.matcher(dir).matches())
             Player.move(Direction.WEST);
+        
         else if (UP.matcher(dir).matches())
             findStaircase(Direction.UP);
+        
         else
             findStaircase(Direction.DOWN);
     }
@@ -586,7 +593,7 @@ public final class Player {
         if (getPos().hasFurniture(inspecting))
             GUI.out(Player.getFurnRef(inspecting).getDescription());
         
-        else if (FURNITURE.matcher(inspecting).matches())
+        else if (GENERIC_FURNITURE.matcher(inspecting).matches())
             GUI.out("Be more specific.");
         
         else 
@@ -614,12 +621,11 @@ public final class Player {
         String ans;
         
         do {
-            GUI.menOut("<'1'> Inspect item"
-                     + "\n<'2'> Use item" + 
-                       "\n<'3'> Combine items"
-                     + "\n<'4'> Sort inventory"
-                     + "\n "
-                    + "< > Back");
+            GUI.menOut("<'1'> Inspect item\n"
+                     + "<'2'> Use item\n" + 
+                       "<'3'> Combine items\n"
+                     + "<'4'> Sort inventory\n"
+                     + " < > Back");
             
             ans = GUI.promptOut();
             
@@ -632,8 +638,7 @@ public final class Player {
                     case 3:
                         combineSub(); break;
                     default:
-                        Player.getInv().contents().sort(
-                                PlayerInventory.getComparator());
+                        getInv().sortInventory();
                         printInv();
                 }
             } 

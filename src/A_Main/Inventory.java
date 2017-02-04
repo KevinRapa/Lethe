@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class Inventory implements Iterable<Item>, Serializable {
     protected final ArrayList<Item> CONTENTS; // This inventory's contents.
     // CONSTRUCTOR ============================================================   
-    public Inventory (Item ... items) {
+    public Inventory(Item ... items) {
         this.CONTENTS = new ArrayList<>();
         this.CONTENTS.addAll(Arrays.asList(items));
     }
@@ -48,7 +48,6 @@ public class Inventory implements Iterable<Item>, Serializable {
      */
     public boolean add(Item item) {
         this.CONTENTS.add(item);
-        
         return true; // Some inventories have restrictions.
     }
     // ========================================================================
@@ -83,19 +82,24 @@ public class Inventory implements Iterable<Item>, Serializable {
      * @return A string representation of this inventory's contents.
      */
     @Override public String toString() {
-        String rep = "";
-        int position = 1;
-        
         if (! this.CONTENTS.isEmpty()) {
+            StringBuilder builder = new StringBuilder();
+            int slot = 1;
+            
             for (Item i : this.CONTENTS) {
-                String capital = Character.toUpperCase(i.toString().charAt(0)) 
-                               + i.toString().substring(1);
-                rep += ("<" + position + "> " + capital + "\n");
-
-                position++;
+                String name = i.toString();
+                String capitalized = name.substring(0,1).toUpperCase()
+                                            .concat(name.substring(1));
+                builder.append('<')
+                       .append(slot++)
+                       .append("> ")
+                       .append(capitalized)
+                       .append('\n');
             }
+            return builder.toString();
         }
-        return rep.equals("") ? "   nothing." : rep;
+        else
+            return "   nothing.";
     }
     // ========================================================================
     @Override public Iterator<Item> iterator() {

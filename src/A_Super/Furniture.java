@@ -37,13 +37,14 @@ abstract public class Furniture implements Serializable {
     protected boolean searchable;   // Items can be traded with searchable furniture.  
     protected final ArrayList<Pattern> USEKEYS, ACTKEYS, NAMEKEYS; 
 
-    protected static final String GETPATTERN = "get|take|acquire|grab|scoop",      
-                                  SITPATTERN = "sit|relax|lay|use",
-                                  JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",
-                                  MOVEPATTERN = "move|slide|displace|push|pull",
-                                  FEELPATTERN = "feel|touch|poke",
-                                  DEFAULT_USE = "What good would that do?",
-                                  ANYTHING = ".+";
+    protected static final String 
+            GETPATTERN = "get|take|acquire|grab|scoop",      
+            SITPATTERN = "sit|relax|lay|use",
+            JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",
+            MOVEPATTERN = "move|slide|displace|push|pull",
+            FEELPATTERN = "feel|touch|poke",
+            DEFAULT_USE = "What good would that do?",
+            ANYTHING = ".+";
     // ========================================================================
     /**
      * Constructor for furniture.
