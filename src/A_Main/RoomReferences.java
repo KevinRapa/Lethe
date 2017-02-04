@@ -223,8 +223,8 @@ public class RoomReferences {
     public static ArrayList<String> getAdj(String ID) { 
         ArrayList result = new ArrayList<>(); 
         
-        new ArrayList<>().addAll(Arrays.asList(ADJACENTS.get(ID))); 
-        
+        result.addAll(Arrays.asList(ADJACENTS.get(ID))); 
+
         return result; 
     }
     // ======================================================================== 

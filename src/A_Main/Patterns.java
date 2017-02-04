@@ -32,6 +32,7 @@ public final class Patterns {
         TAKE = Pattern.compile("t|take"),
         STORE = Pattern.compile("s|store"),
         KEY = Pattern.compile("[A-Z]{3}[A-Z1-9]"),
+        EXPLETIVE = Pattern.compile(".*(?:fuck|shit|cunt|damn|bitch|vittu|perkele|paska).*"),
         INV_CHOICES = Pattern.compile("[1-4]"),
         MOVEMENT = Pattern.compile("go|walk|run"),
         CATACOMB_ENTRANCE = Pattern.compile("CS35|CT34"),
@@ -58,7 +59,7 @@ public final class Patterns {
     
         // Patterns used by TextParser
         INSPECT_PATTERN = Pattern.compile("look(?: at)?|inspect|examine|check(?: out)?"),
-        USE_PATTERN = Pattern.compile("use|read|drop|wear|remove|eat|drink|eat"),
+        USE_PATTERN = Pattern.compile("use|read|drop|wear|remove|eat|drink|throw"),
         ITEM_COMMAND = Pattern.compile("(?:" + USE_PATTERN + "|" + INSPECT_PATTERN + ") [a-z0-9: ,'-]+"),
         SUICIDE = Pattern.compile("commit suicide|kill (?:your)?self"),
         SHOUT = Pattern.compile("(?:say|speak|yell|shout) .+"),
@@ -69,7 +70,7 @@ public final class Patterns {
         SLOT_NUMBER = Pattern.compile("[0-9]+"),
         ARTICLE = Pattern.compile("\\bthe |\\.|\\ban? |\\bsome "),
         WORD_THEN_SPACE = Pattern.compile("\\w+ "),
-        ALL_AFTER_SPACE = Pattern.compile("\\s.+"),
+        SPACE_THEN_EVERYTHING = Pattern.compile("\\s.+"),
             
         // Patterns used by GUI
         THREE_PLUS_LETTER_WORD = Pattern.compile("(?:[a-z -]{3,})+"),

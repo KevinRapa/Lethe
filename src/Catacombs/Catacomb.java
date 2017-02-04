@@ -12,6 +12,7 @@ import A_Super.Item;
 import A_Super.Room;
 import A_Super.Wall;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 /**
  * The catacombs comprise a maze of similar tunnels.
@@ -60,7 +61,7 @@ public class Catacomb extends Room {
         
         // Holds directions to append to descLit.
         ArrayList<String> dirs = new ArrayList<>();
-        
+
         for (String i : this.adjacent) {
             int[] coords = {i.charAt(2) - '0', 
                             i.charAt(3) - '0'};
@@ -70,7 +71,7 @@ public class Catacomb extends Room {
             else                       // Is a side room.
                 adjOtherCoords = coords;
         }
-        
+
         // Figures out the directions in which there are more catacombs.
         for (int[] j : adjCatacombCoords) {
             if (j[0] == Y - 1)
@@ -95,7 +96,7 @@ public class Catacomb extends Room {
                 int i; 
                 for (i = 0; i < dirs.size() - 1; i++)
                     descLit = descLit.concat(dirs.get(i) + ", ");
-                
+
                 descLit = descLit.concat("and " + dirs.get(i));
         }
         

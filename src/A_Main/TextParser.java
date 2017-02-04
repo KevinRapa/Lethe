@@ -97,7 +97,11 @@ public class TextParser {
         Command[] commands = new Command[statements.length];
         
         for (int i = 0; i < commands.length; i++) {
-            if (ITEM_COMMAND.matcher(statements[i]).matches()) 
+            if (DIRECTION.matcher(statements[i]).matches())
+                commands[i] = new Command(new Verb("go"), 
+                                          new DirectObj(statements[i]));
+                        
+            else if (ITEM_COMMAND.matcher(statements[i]).matches()) 
                 commands[i] = getItemCmd(statements[i].split(" on "));
             
             else if (STORE_COMMAND.matcher(statements[i]).matches())
@@ -127,10 +131,10 @@ public class TextParser {
         String actionObject = s[0];
         
         // Get just the first word
-        Verb verb = new Verb(ALL_AFTER_SPACE.matcher(actionObject)
+        Verb verb = new Verb(SPACE_THEN_EVERYTHING.matcher(actionObject)
                                             .replaceAll(NOTHING));
         
-        DirectObject dirObj = new DirectObject(actionObject
+        DirectObj dirObj = new DirectObj(actionObject
                 .trim().replaceFirst("[a-z]+\\s", NOTHING)); // All but the first word.
         
         switch(s.length) {
@@ -163,7 +167,7 @@ public class TextParser {
 
         switch(s.length) {
             case 2:
-                return new Command(Verb.PUT_VERB, inst, new DirectObject(s[1]));
+                return new Command(Verb.PUT_VERB, inst, new DirectObj(s[1]));
             case 1:
                 return new Command("You need to specify something to put that in!");
             default:
@@ -172,23 +176,24 @@ public class TextParser {
     }
     // ========================================================================
     /**
-     * Assembles a command where the player uses an item.
+     * Assembles a command where the player uses an item, possibly on a
+     * piece of furniture.
      */
     private static Command getItemCmd(String[] s) {
         String verbObject = stripPrepositions(s[0]);
         
         Verb use = new Verb(
-                ALL_AFTER_SPACE.matcher(verbObject)
+                SPACE_THEN_EVERYTHING.matcher(verbObject)
                         .replaceFirst(NOTHING));
         
-        String object = 
+        String item = 
                 WORD_THEN_SPACE.matcher(verbObject)
                         .replaceFirst(NOTHING);
         
         Instrument inst;
         
-        if (SLOT_NUMBER.matcher(object).matches()) {
-            int i = Integer.parseInt(object) - 1;
+        if (SLOT_NUMBER.matcher(item).matches()) {
+            int i = Integer.parseInt(item) - 1;
             
             if (i >= 0 && i < Player.getInv().size())
                 inst = new Instrument(Player.getInv().get(i).toString());
@@ -196,13 +201,13 @@ public class TextParser {
                 inst = new Instrument("thing there."); // Becomes 'You don't have a thing there.'
         }
         else 
-            inst = new Instrument(object);
+            inst = new Instrument(item);
         
         switch(s.length) {
             case 1:
                 return new Command(use, inst);
             case 2:
-                return new Command(inst, new DirectObject(s[1]));
+                return new Command(inst, new DirectObj(s[1]));
             default:
                 return DEFAULT_COMMAND;
         }
@@ -220,13 +225,13 @@ public class TextParser {
         private final String VALUE;
         // ====================================================================
         // <editor-fold desc="constructors">
-        public Command(Verb v, DirectObject o) {
+        public Command(Verb v, DirectObj o) {
             VALUE = v.toString() + SPACE + o.toString();
             System.out.println("Creating verb -> object command: " + VALUE);
             ACTION = (() -> Player.evaluateAction(v.toString(), o.toString()));
         }
         // --------------------------------------------------------------------
-        public Command(Instrument i, DirectObject o) {
+        public Command(Instrument i, DirectObj o) {
             VALUE = i.toString() + SPACE + o.toString();
             System.out.println("Creating item -> object command: " + VALUE);
             ACTION = (() -> execute(i, o));
@@ -238,7 +243,7 @@ public class TextParser {
             ACTION = (() -> execute(v, i));
         }
         // --------------------------------------------------------------------
-        public Command(Verb v, Instrument i, DirectObject o) {
+        public Command(Verb v, Instrument i, DirectObj o) {
             VALUE = v.toString() + SPACE + i.toString() + SPACE + o.toString();
             System.out.println("Creating store command: " + VALUE);
             ACTION = (() -> execute(v, i, o));
@@ -257,7 +262,7 @@ public class TextParser {
         /**
          * Uses the item i on the furniture o.
          */
-        private void execute(Instrument i, DirectObject o) {
+        private void execute(Instrument i, DirectObj o) {
             if (Player.hasItemResembling(i.toString()))
                 Player.evalUse(Player.getInv().get(i.toString()), o.toString());
             else
@@ -322,7 +327,7 @@ public class TextParser {
                             GUI.out(item.useEvent());
                         else if (item.toString().equals(BUCKET_OF_WATER))
                             GUI.out("Ah, refreshing!!");
-                        else if (item.toString().matches("molten.*"))
+                        else if (item.toString().equals(ACETONE) || item.toString().matches("molten.*"))
                             GUI.out("No possible way you're doing something that stupid!");
                         else
                             GUI.out("You reluctantly take a small sip. 'Yugh! Bitter and disgusting!'");
@@ -345,7 +350,7 @@ public class TextParser {
          * Verb parameter is always 'put'. It's there to disambiguate it from
          * execute(Instrument i, DirectObject o) constructor.
          */
-        private void execute(Verb v, Instrument i, DirectObject o) {
+        private void execute(Verb v, Instrument i, DirectObj o) {
             if (Player.hasItemResembling(i.toString())) {
                 A_Super.Item item = Player.getInv().get(i.toString());
                 
@@ -406,8 +411,8 @@ public class TextParser {
         }
     }
     // ========================================================================
-    private static class DirectObject extends Word {
-        public DirectObject(String object) {
+    private static class DirectObj extends Word {
+        public DirectObj(String object) {
             super(object);
         }
     }

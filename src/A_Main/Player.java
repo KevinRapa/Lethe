@@ -214,17 +214,18 @@ public final class Player {
         describeRoom();
 
         do {
-            while (TextParser.moreCommands()) {
-                // Player may chain together commands.
-                TextParser.performNextCommand();
-            }
+            while (TextParser.moreCommands()) 
+                TextParser.performNextCommand(); // Player may chain commands.
             
             GUI.toMainMenu();
             ans = GUI.promptOut();
 
             if (KEYCOMMAND.matcher(ans).matches()) 
                 cmd.get(ans.charAt(0)).run();
-
+            
+            else if (EXPLETIVE.matcher(ans).matches())
+                GUI.out("Mind yourself! You're a guest here!");    
+            
             else if (PHRASE.matcher(ans).matches()) // Interacting
                 TextParser.processText(ans);
             
@@ -236,7 +237,7 @@ public final class Player {
             
             else if (ans.equals("jump")) 
                 GUI.out("You jump a short height into the air. Well, that was fun.");
-
+            
             else if (GREETING.matcher(ans).matches())
                 GUI.out("What do you think this is? Zork?");
             
