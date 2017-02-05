@@ -1,5 +1,0 @@
-/NetBeansProjects/Adventure/nbproject/private/
-/NetBeansProjects/Adventure/build/
-
-else if (ans.matches(".*(?:fuck|shit|cunt|damn|bitch|vittu|perkele|paska).*"))
-                GUI.out("Mind yourself! You're a guest here!");
