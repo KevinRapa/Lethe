@@ -16,8 +16,8 @@ public class Door extends Furniture {
         this.actDialog = null;
 
         this.addUseKeys(ANYTHING);
-        this.addActKeys("open", "use", "walk", "go" ,"close", "kick", "knock|bang", "unlock|lock");
-        this.addNameKeys(dir + " door", "door", "(?:heavy )?(?:wooden )?door");
+        this.addActKeys("open|use|walk|go|close|kick", "knock|bang", "unlock|lock");
+        this.addNameKeys(dir + " door", "(?:heavy )?(?:wooden )?door");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {
@@ -32,7 +32,7 @@ public class Door extends Furniture {
             return "You're a guest here, remember?";
         }
         else if (key.equals("lock") || key.equals("unlock")) {
-            return "That's not how this game works. Read the directions!";
+            return "That isn't how this game works. Read the directions!";
         }
         else {
             Player.move(DIR);
@@ -42,7 +42,7 @@ public class Door extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON)) 
-            return "The door is build too solidly and breaking if down is futile.";
+            return "The door is build too solidly and breaking it down is futile.";
         else
             return this.useDialog;
         
