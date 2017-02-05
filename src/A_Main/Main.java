@@ -47,15 +47,24 @@ import Keeper_Chamber.*;   import Vault.*;              import Tower.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
 import Soul_Chamber.*;     
         
-import java.awt.Toolkit;   import java.awt.Dimension;   import javax.swing.*;  
-import java.io.*;          import java.util.Random;
+import java.awt.Dimension; import java.awt.Toolkit;     import java.io.*; 
+import java.util.Random;   import javax.swing.JFrame;
+
 // </editor-fold>
 
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Lethe");
-    private static final String WD = System.getProperty("user.dir");
-    private static final String START = Id.COU4; // Default COU4
+    
+    private static final String 
+            WD = System.getProperty("user.dir"),
+            START_LOCATION = Id.COU4, // Default COU4
+            FILE_NAME = "Game.data";
 // ============================================================================
+    /**
+     * Loads a game if there is one or starts a new game, quits when player is
+     * done.
+     * @param args Unused.
+     */
     public static void main(String[] args) {
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="MAKE THE FRAME">
@@ -88,7 +97,7 @@ public class Main {
         
         try (ObjectInputStream gameData = new ObjectInputStream(
                                           new FileInputStream(
-                                          new File(WD, "Game.data")));
+                                          new File(WD, FILE_NAME)));
             ) 
         {
             System.out.println("Data found. Loading game.");
@@ -102,7 +111,7 @@ public class Main {
         {
             System.out.println(e.getMessage() + "\nData missing. Creating new game.");
             RoomReferences.constructRoomReferences();
-            Player.setNewAttributes(RoomReferences.getCoords(START));
+            Player.setNewAttributes(RoomReferences.getCoords(START_LOCATION));
             exitChoice = Player.startDialog(); // START GAME
         }
         //**********************************************************************
@@ -120,7 +129,7 @@ public class Main {
                 // Saves the game.
                 try (ObjectOutputStream gameData = new ObjectOutputStream(
                                                    new FileOutputStream(
-                                                   new File(WD, "Game.data")));
+                                                   new File(WD, FILE_NAME)));
                     ) 
                 {
                     Player.savePlayerAttributes(gameData);  
@@ -131,7 +140,7 @@ public class Main {
                 break;
             case 2:
                 // Reset the game.
-                if ((new File(WD, "Game.data")).delete())
+                if ((new File(WD, FILE_NAME)).delete())
                     System.out.println("Files deleted.");
                 else
                     System.out.println("Files to delete not found.");
@@ -142,7 +151,12 @@ public class Main {
         // </editor-fold>  
         //**********************************************************************
     } 
-// ============================================================================        
+// ============================================================================    
+    /**
+     * Creates a new game.
+     * Very long, but has one discrete responsibility.
+     * @return A new game map.
+     */
     public static Room[][][] createMap() {
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE ROOMS, FURNITURE, ITEMS">
@@ -1738,10 +1752,8 @@ public class Main {
              {____,____,____,____,____,soul,____,____,____,____}, //1
              {____,____,____,____,____,tbal,____,____,____,____}, //2
              {____,____,____,____,bls2,tow2,lqu1,lqu2,____,____}, //3
-             {____,____,____,____,____,____,____,____,____,____}, //4
-             {____,____,____,____,____,____,____,____,____,____}, //5
-             {____,____,____,____,____,____,____,____,____,____}, //6
-             {____,____,____,____,____,____,____,____,____,____}},//7
+             {____,____,____,____,____,____,____,____,____,____}},//4
+            
             // </editor-fold>    
             // <editor-fold defaultstate="collapsed" desc="FLOOR 3 [1]">
             //  0    1    2    3    4    5    6    7    8    9  
@@ -1751,8 +1763,7 @@ public class Main {
              {____,____,sst2,att2,bls1,tow1,____,____,chs3,____}, //3
              {____,____,____,____,____,____,____,____,cha1,____}, //4
              {____,____,____,____,____,____,____,____,cha2,____}, //5
-             {____,____,____,____,____,____,____,____,____,____}, //6
-             {____,____,____,____,____,____,____,____,____,____}},//7
+             {____,____,____,____,____,____,____,____,____,____}},//6
             
             // </editor-fold>   
             // <editor-fold defaultstate="collapsed" desc="FLOOR 2 [2]">

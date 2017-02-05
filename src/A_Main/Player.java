@@ -35,6 +35,7 @@ public final class Player {
     private static ArrayList<String> visited;
     private static String lastVisited, shoes;
     private static HashMap<Character, Runnable> cmd; 
+    private static final String NOT_VALID_SLOT = "Enter a valid slot number.";
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="ACCESSORS AND OUTPUT">  
 //******************************************************************************
@@ -213,7 +214,7 @@ public final class Player {
         GUI.roomOut(getPos().triggeredEvent());
         describeRoom();
 
-        do {
+        while (true) {
             while (TextParser.moreCommands()) 
                 TextParser.performNextCommand(); // Player may chain commands.
             
@@ -233,7 +234,7 @@ public final class Player {
                 parseMovement(ans);
             
             else if (ans.equals("quit"))
-                return endGame();
+                break;
             
             else if (ans.equals("jump")) 
                 GUI.out("You jump a short height into the air. Well, that was fun.");
@@ -243,8 +244,9 @@ public final class Player {
             
             else if (isNonEmptyString(ans))
                 GUI.out("That's not valid input.");
-
-        } while (true);
+        } 
+        
+        return endGame();
     }  
     // ========================================================================   
     private static int endGame() {
@@ -383,7 +385,7 @@ public final class Player {
         if (isNonEmptyString(searchThis) && getPos().hasFurniture(searchThis)) {
             search(getFurnRef(searchThis));
         }
-        else if (INDEFINITE_PRONOUN.matcher(searchThis).matches() && 
+        else if (INDEF_PRONOUN.matcher(searchThis).matches() && 
                 getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture())) 
         {
             search(getFurnRef(searchThis));
@@ -507,7 +509,7 @@ public final class Player {
             parseMovement(object);
         }
         else if (getPos().hasFurniture(object) || 
-                (INDEFINITE_PRONOUN.matcher(object).matches() && 
+                (INDEF_PRONOUN.matcher(object).matches() && 
                 getPos().hasFurniture(object = GUI.parsePreviousFurniture()))) 
         {    
             Furniture target = getFurnRef(object);
@@ -588,7 +590,7 @@ public final class Player {
      * @param inspecting object name the player wants to inspect.
      */
     private static void checkOut(String inspecting) {
-        if (INDEFINITE_PRONOUN.matcher(inspecting).matches()) // Indefinite reference.
+        if (INDEF_PRONOUN.matcher(inspecting).matches()) // Indefinite reference.
             inspecting = GUI.parsePreviousFurniture();
         
         if (getPos().hasFurniture(inspecting))
@@ -665,7 +667,7 @@ public final class Player {
             }
             catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
                 if (isNonEmptyString(ans)) 
-                    GUI.out("Type in a valid slot number.");
+                    GUI.out(NOT_VALID_SLOT);
             }
         } while (isNonEmptyString(ans));
         
@@ -694,7 +696,7 @@ public final class Player {
             }
             catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
                 if (isNonEmptyString(choice))
-                    GUI.out("Type in a valid slot number.");
+                    GUI.out(NOT_VALID_SLOT);
             }  
         } while (isNonEmptyString(choice));
     }
@@ -745,7 +747,7 @@ public final class Player {
                 else {
                     switch (list.length) {
                         case 0:
-                            GUI.out("Enter a valid slot number."); break;
+                            GUI.out(NOT_VALID_SLOT); break;
                         case 1:
                             GUI.out("You must enter 2 or 3 items."); break;
                         default:
@@ -765,7 +767,7 @@ public final class Player {
     private static void evalCombine(Item[] list) {
         if (allCombineToSame(list)) { 
             if (list[0].getThreshold() == list.length) {
-                GUI.out(Player.inv.combine(list, list[0].getProduct())); 
+                GUI.out(Player.inv.combine(list, list[0].forms())); 
                 printInv();
             }
             else // 2 objects are correct, but 1 is missing.
@@ -812,10 +814,11 @@ public final class Player {
      * @return If the items combine into the same object.
      */
     private static boolean allCombineToSame(Item[] itemList) {
-        String combinesTo = itemList[0].getForms();
+        String combinesTo = itemList[0].forms().toString();
 
         for (Item i : itemList) {
-            if (i.getForms() == null || ! i.getForms().equals(combinesTo))
+            if (i.forms().toString() == null || 
+                    ! i.forms().toString().equals(combinesTo))
                 return false;
         } 
         return true;

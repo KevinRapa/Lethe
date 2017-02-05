@@ -168,12 +168,15 @@ public class Cave extends Room {
             
             clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(DISTORTION));
-            ((FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN)).setValue(-((float)Math.pow(DISTANCE, 2)));
+            
+            ((FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN))
+                    .setValue(-((float)Math.pow(DISTANCE, 2)));
+            
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             clip.start();
         } catch (LineUnavailableException | 
-                 UnsupportedAudioFileException | 
-                 IOException ex) 
+                    UnsupportedAudioFileException | 
+                        IOException ex) 
         {
             System.out.println(ex.getMessage());
         }

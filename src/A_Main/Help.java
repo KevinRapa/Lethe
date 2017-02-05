@@ -9,8 +9,9 @@ import static A_Main.Patterns.*;
  * @author Kevin Rapa
  */
 public class Help {
-    private static final HashMap<String, String> HELP = new HashMap<>(); // Maps keys to topics
-    private static final HashMap<String, String> TOPIC = new HashMap<>(); // Maps topics to explanations.
+    private static final HashMap<String, String> 
+            HELP = new HashMap<>(), // Maps keys to topics
+            TOPIC = new HashMap<>(); // Maps topics to explanations.
 /*----------------------------------------------------------------------------*/     
     private static final String[] HELP_KEYS = 
         {"prompt", "moving", "describing", "checking", "searching", "activating",
@@ -147,23 +148,21 @@ public class Help {
         int index = 0;
         
         for (String helpKey : HELP_KEYS) {
-            HELP.put(helpKey, HELP_VALUES[index]);               
-            index++;
+            HELP.put(helpKey, HELP_VALUES[index++]);      
         }
         index = 0;
         
         for (String topicKey : TOPIC_KEYS) {
-            TOPIC.put(topicKey, HELP_KEYS[index]); 
-            index++; 
+            TOPIC.put(topicKey, HELP_KEYS[index++]); 
         }
     }
 /*----------------------------------------------------------------------------*/
     private static String get_help(String topic) {
         return HELP.get(topic); 
     }
-/*******************************************************************************
---------------------------------------------------------------------------------
-*******************************************************************************/
+//******************************************************************************
+// <editor-fold desc="SUB-MENUS">
+//******************************************************************************
     /**
      * A structure of nested menus organizing game topics.
      */
@@ -172,8 +171,10 @@ public class Help {
         
         do {
             GUI.menOut("What would you like help on?\n\n" +
-                       "     <'1'> Controls\n     <'2'> Your player\n" +
-                       "     <'3'> The castle\n");
+                       "     <'1'> Controls\n"
+                     + "     <'2'> Your player\n" +
+                       "     <'3'> The castle\n"
+                     + "      < >  Back");
             choice = GUI.promptOut();
             GUI.out("");
         /*--------------------------------------------------------------------*/            
@@ -181,7 +182,8 @@ public class Help {
                 do {
                     GUI.menOut("<'1'> The prompt <'2'> Moving\n<'3'> Describing " +
                                "<'4'> Checking\n<'5'> Searching  <'6'> Interacting\n" +
-                               "<'7'> Using      <'8'> Combining\n<'9'> Inspecting");
+                               "<'7'> Using      <'8'> Combining\n<'9'> Inspecting "
+                             + " < > Back");
 
                     choice = GUI.promptOut().concat("c");
 
@@ -191,11 +193,12 @@ public class Help {
                 } while (! choice.equals("c"));          
             }
         /*--------------------------------------------------------------------*/          
-            if (choice.equals("2")) {    
+            else if (choice.equals("2")) {    
                 do {
                     GUI.menOut("\n<'1'> Your inventory\n"
                                + "<'2'> Your key ring\n" +
-                                 "<'3'> Your phylacteries");
+                                 "<'3'> Your phylacteries\n"
+                               + " < >  Back");
 
                     choice = GUI.promptOut().concat("p");
                     
@@ -205,11 +208,12 @@ public class Help {
                 } while (! choice.equals("p"));    
             }
         /*--------------------------------------------------------------------*/      
-            if (choice.equals("3")) {    
+            else if (choice.equals("3")) {    
                 do {
                     GUI.menOut("\n<'1'> Doors\t<'2'> Rooms\n"
                                + "<'3'> Furniture\t<'4'> Items\n"
-                               + "<'5'> Keys\t<'6'> Phylacteries");
+                               + "<'5'> Keys\t<'6'> Phylacteries\n"
+                               + " < > Back");
 
                     choice = GUI.promptOut().concat("a");
                     
@@ -224,7 +228,7 @@ public class Help {
         GUI.toMainMenu();
         GUI.clearDialog();
     }
-/*******************************************************************************
---------------------------------------------------------------------------------
-*******************************************************************************/    
+//******************************************************************************
+// </editor-fold>
+//******************************************************************************   
 }

@@ -8,8 +8,6 @@ package A_Main;
 public final class Id {
     public static final String  
     // ========================================================================
-    // ************************************************************************
-    // ========================================================================
         NULL = "NULL",   
             
         // <editor-fold defaultstate="collapsed" desc="AREA 1: Castle front">
@@ -52,6 +50,7 @@ public final class Id {
             
         // </editor-fold>    
         // <editor-fold defaultstate="collapsed" desc="AREA 5: Sub-levels">
+            
             // <editor-fold defaultstate="collapsed" desc="Tunnels, cistern, dungeon">
             
         SEW0 = "SEW0",  SEW1 = "SEW1",  SEW2 = "SEW2",  AARC = "AARC",
@@ -98,6 +97,7 @@ public final class Id {
         CV67 = "CV67",  CV68 = "CV68",
             
             // </editor-fold>
+            
         // </editor-fold>    
         // <editor-fold defaultstate="collapsed" desc="AREA 6: Chapel and vault">
 
@@ -114,10 +114,14 @@ public final class Id {
         // </editor-fold>
     
     // ========================================================================
+    /**
+     * Returns the general area the player is in as opposed to the specific cell.
+     * e.g., SEW (sewer) instead of a specific cell in the sewers.
+     * @param id Room Id
+     * @return The first three letters of the Id.
+     */
     public static String areaName(String id) {
         return id.substring(0, 3);
     }
-    // ========================================================================
-    // ************************************************************************
     // ========================================================================
 }

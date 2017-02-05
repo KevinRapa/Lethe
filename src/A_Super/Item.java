@@ -18,10 +18,9 @@ import java.io.Serializable;
  */
 public class Item implements Serializable, Comparable<Item> {
     protected final String NAME;    // The item's name.
-    protected final String FORMS;   // Name of item formed when combined.
-    protected final Item PRODUCT;   // Item given to player after a combine.
+    protected final Item FORMS;   // Item given to player after a combine.
     protected final int THRESHOLD;  // Number of items in the combine set;
-    protected String type = ITEM; // Useful to certain Inventories.    
+    protected String type = ITEM;   // Useful to certain Inventories.    
     protected String description;   // Displayed when item is inspected.
     protected String useDialog;     // Displayed when items with Id 1 are used.
     protected int useID = 2;        // 1: used on itself | 2: enters sub-prompt  
@@ -38,7 +37,8 @@ public class Item implements Serializable, Comparable<Item> {
      */
     public Item(String name) {
         NAME = name;
-        FORMS = null;    PRODUCT = null;    THRESHOLD = 0; // Does not combine
+        FORMS = null;    
+        THRESHOLD = 0; // Does not combine
     }   
     // ========================================================================       
     /**
@@ -73,8 +73,9 @@ public class Item implements Serializable, Comparable<Item> {
      * @param thresh The number of items in this one's set.
      */
     public Item(String name, Item forms, int thresh) {
-        NAME = name;
-        PRODUCT = forms;  THRESHOLD = thresh;  FORMS = forms.toString();
+        NAME = name; 
+        FORMS = forms;  
+        THRESHOLD = thresh;
     }
     // ========================================================================
     /**
@@ -117,12 +118,8 @@ public class Item implements Serializable, Comparable<Item> {
         return this.description; 
     }    
 /*----------------------------------------------------------------------------*/
-    public String getForms() {
+    public Item forms() {
         return this.FORMS; 
-    }      
-/*----------------------------------------------------------------------------*/
-    public Item getProduct() {
-        return this.PRODUCT; 
     }
 /*----------------------------------------------------------------------------*/
     public int getUseID() {

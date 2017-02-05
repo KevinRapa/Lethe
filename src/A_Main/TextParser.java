@@ -338,7 +338,7 @@ public class TextParser {
                     GUI.out("That... REALLY does not seem edible...");
             }
             else if (Player.getPos().hasFurniture(i.toString()) || 
-                     INDEFINITE_PRONOUN.matcher(i.toString()).matches()) {
+                     INDEF_PRONOUN.matcher(i.toString()).matches()) {
                 Player.evaluateAction(v.toString(), i.toString());
             }
             else

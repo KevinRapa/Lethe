@@ -44,7 +44,7 @@ public class PlayerInventory extends Inventory {
         for (Item i : itemList)
             this.remove(i); 
         
-        this.add(gift);
+        this.CONTENTS.add(gift);
         AudioPlayer.playEffect(29);
         
         return "You created: " + gift + ".";

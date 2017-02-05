@@ -8,8 +8,6 @@ import java.util.regex.Pattern;
  */
 public final class Patterns {
     // ========================================================================
-    // ************************************************************************
-    // ========================================================================
     public static final Pattern
         YES = Pattern.compile("y|yes"),    
         NO = Pattern.compile("n|no"),
@@ -25,7 +23,7 @@ public final class Patterns {
         EAST = Pattern.compile("east|right"),
         WEST = Pattern.compile("west|left"),
         UP = Pattern.compile("up(?:wards?)?"),
-        INDEFINITE_PRONOUN = Pattern.compile("it|them"),
+        INDEF_PRONOUN = Pattern.compile("it|them"),
         CHECK = Pattern.compile("c|check|examine|look|view|inspect|watch"),
         SEARCH = Pattern.compile("search|e|s"),
         GENERIC_FURNITURE = Pattern.compile("furniture|furnishings|stuff|things?"),
@@ -83,7 +81,5 @@ public final class Patterns {
         CONTROL_CHOICE = Pattern.compile("[1-9]c"),
         PLAYER_CHOICE = Pattern.compile("[1-3]p"),
         CASTLE_CHOICE = Pattern.compile("[1-6]a");
-    // ========================================================================
-    // ************************************************************************
     // ========================================================================
 }

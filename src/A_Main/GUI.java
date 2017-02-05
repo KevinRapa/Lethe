@@ -33,9 +33,9 @@ public class GUI extends JPanel {
         // =======================================
     }
     
-    // <editor-fold defaultstate="collapsed" desc="COMPONENTS AND ATTRIBUTES"> =========================
+    // <editor-fold defaultstate="collapsed" desc="COMPONENTS AND ATTRIBUTES">
     private boolean big = true;
-    private static int key = Click.SOFT.getEffectId();
+    private static int key = Click.NONE.getEffectId();
     
     private final static JTextArea MEN = new JTextArea(), DESC = new JTextArea(), 
                                    INV = new JTextArea(), DIAL = new JTextArea();
@@ -63,7 +63,7 @@ public class GUI extends JPanel {
     private final static Input_Holder HOLDER = new Input_Holder();
     
     private final static LinkedList<Click> KEYSOUND = new LinkedList() {{
-        add(Click.SOFT); add(Click.CLICK); add(Click.VINTAGE); add(Click.NONE);
+        add(Click.NONE); add(Click.SOFT); add(Click.CLICK); add(Click.VINTAGE); 
     }};
 
     private static final ArrayList<String> FURN_PARSER = new ArrayList<>();
@@ -450,7 +450,9 @@ public class GUI extends JPanel {
      * Keeps focus on the text field so user doesn't have to set in manually.
      */
     private class GameFocusListener implements FocusListener {
-        @Override public void focusGained(FocusEvent e) {}
+        @Override public void focusGained(FocusEvent e) {
+            // Unused
+        }
 
         @Override public void focusLost(FocusEvent e) {
             INPUT.requestFocus();
