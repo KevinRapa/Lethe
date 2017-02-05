@@ -57,7 +57,7 @@ public class GUI extends JPanel {
                                  MUTE = new JButton("Mute"),
                                  KEYS = new JButton("Key click");
     
-    private final static JTextField INPUT = new JTextField(23);
+    private final static JTextField INPUT = new JTextField(" ", 35);
     
     private final static LinkedList<String> UNDO = new LinkedList<>();
     private final static Input_Holder HOLDER = new Input_Holder();
