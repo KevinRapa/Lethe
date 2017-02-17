@@ -330,8 +330,9 @@ public class GUI extends JPanel {
                 .forEach(j -> 
         {
             if (Player.getPos().hasFurniture(j) || 
-                Player.getPos().hasFurniture(j = FIRST_WORD.matcher(j)
-                                                        .replaceFirst("")))
+                Player.getPos().hasFurniture(
+                        j = FIRST_WORD.matcher(j).replaceFirst("")
+                ))
             {
                 FURN_PARSER.add(j); 
             }
