@@ -3,6 +3,7 @@ package A_Main;
 import static A_Main.NameConstants.*;
 import static A_Main.Patterns.*;
 import A_Super.Furniture;
+import java.util.Arrays;
 import java.util.LinkedList;
 /**
  * This processes more complex sentences into statements containing verbs,
@@ -96,12 +97,8 @@ public class TextParser {
         String[] statements = sentence.split(CONJUNCTION_PATTERN);
         Command[] commands = new Command[statements.length];
         
-        for (int i = 0; i < commands.length; i++) {
-            if (DIRECTION.matcher(statements[i]).matches())
-                commands[i] = new Command(new Verb("go"), 
-                                          new DirectObj(statements[i]));
-                        
-            else if (ITEM_COMMAND.matcher(statements[i]).matches()) 
+        for (int i = 0; i < commands.length; i++) {    
+            if (ITEM_COMMAND.matcher(statements[i]).matches()) 
                 commands[i] = getItemCmd(statements[i].split(" on "));
             
             else if (STORE_COMMAND.matcher(statements[i]).matches())
@@ -153,8 +150,16 @@ public class TextParser {
     private static Command getStoreCmd(String[] s) {
         String object = s[0];
         Instrument inst;
+        DirectObj obj = null;
+        
+        if (object.matches(".+ down")) {
+            // Player typed "put <item> down"
+            obj = new DirectObj("floor");
+            object = object.replaceAll(" down", NOTHING);
+        }
         
         if (SLOT_NUMBER.matcher(object).matches()) {
+            // Player typed a slot number and not an item name.
             int i = Integer.parseInt(object) - 1;
             
             if (i >= 0 && i < Player.getInv().size())
@@ -164,12 +169,14 @@ public class TextParser {
         }
         else 
             inst = new Instrument(object);
-
+        
         switch(s.length) {
             case 2:
                 return new Command(Verb.PUT_VERB, inst, new DirectObj(s[1]));
             case 1:
-                return new Command("You need to specify something to put that in!");
+                return (obj == null) ?
+                    new Command("You need to specify something to put that in!") :
+                    new Command(Verb.PUT_VERB, inst, obj);
             default:
                 return DEFAULT_COMMAND;
         }

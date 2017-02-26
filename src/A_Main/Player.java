@@ -156,7 +156,7 @@ public final class Player {
      * @param coords Coordinates the player begins the game at.
      */
     public static void setNewAttributes(int ... coords) {
-        Player.mapRef = Main.createMap();
+        Player.mapRef = Map.getMap();
         Player.inv = new PlayerInventory();
         Player.keys = new Inventory();
         Player.visited = new ArrayList<>();
@@ -227,11 +227,11 @@ public final class Player {
             else if (EXPLETIVE.matcher(ans).matches())
                 GUI.out("Mind yourself! You're a guest here!");    
             
+            else if (DIRECTION.matcher(ans).matches()) 
+                parseMovement(ans);
+            
             else if (PHRASE.matcher(ans).matches()) // Interacting
                 TextParser.processText(ans);
-            
-            else if (DIRECTION.matcher(ans).matches())
-                parseMovement(ans);
             
             else if (ans.equals("quit"))
                 break;
@@ -537,19 +537,19 @@ public final class Player {
     }
     // ========================================================================  
     private static void parseMovement(String dir) {
-        if (NORTH.matcher(dir).matches())
+        if (NORTH.matcher(dir).find())
             Player.move(Direction.NORTH);
         
-        else if (SOUTH.matcher(dir).matches())
+        else if (SOUTH.matcher(dir).find())
             Player.move(Direction.SOUTH);
         
-        else if (EAST.matcher(dir).matches())
+        else if (EAST.matcher(dir).find())
             Player.move(Direction.EAST);
         
-        else if (WEST.matcher(dir).matches())
+        else if (WEST.matcher(dir).find())
             Player.move(Direction.WEST);
         
-        else if (UP.matcher(dir).matches())
+        else if (UP.matcher(dir).find())
             findStaircase(Direction.UP);
         
         else

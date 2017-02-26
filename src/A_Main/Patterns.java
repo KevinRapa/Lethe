@@ -16,7 +16,7 @@ public final class Patterns {
         // Patterns used by the player.
         KEYCOMMAND = Pattern.compile("[heckiwsad]"),
         PHRASE = Pattern.compile("[a-z]+\\s[a-z0-9 ,'.-]+"),
-        DIRECTION = Pattern.compile("(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?)?)"),
+        DIRECTION = Pattern.compile("(?:(move|walk|go|run|) ?)(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?)?)"),
         GREETING = Pattern.compile("hi|hello|hey|sup"),
         NORTH = Pattern.compile("north|forward"),
         SOUTH = Pattern.compile("south|back(?:wards?)?"),
