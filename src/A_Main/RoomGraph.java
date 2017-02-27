@@ -8,7 +8,7 @@ import java.util.Arrays;
  * This class is used by each room when it is instantiated, and allows the 
  * room to fetch its own coordinates and adjacent rooms by passing its  
  * The hash maps in this class populate themselves with 
- * constructRoomReferences. 
+ * constructRoomGraph. 
  * @author Kevin Rapa 
  ****************************************************************************/ 
 
@@ -230,8 +230,8 @@ public class RoomGraph {
     // ======================================================================== 
     /** 
      * For any room, this returns its coordinates in the castle array. 
-     * @param ID A room ID * @return The room's coordinates in the castle array.
-     * @return array of coordinates
+     * @param ID A room ID
+     * @return The room's coordinates in the castle array.
      */ 
     public static int[] getCoords(String ID) { 
         return COORDINATES.get(ID); 
