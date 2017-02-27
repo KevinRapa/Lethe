@@ -4,7 +4,7 @@ import A_Main.AudioPlayer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.Serializable;
-import A_Main.RoomReferences;
+import A_Main.RoomGraph;
 /**
  * <p>
  * Represents one element in the game map array. 
@@ -29,7 +29,7 @@ import A_Main.RoomReferences;
  * castle.
  * </p>
  * 
- * @see A_Main.RoomReferences
+ * @see A_Main.RoomGraph
  * @author Kevin Rapa
  */
 public class Room implements Serializable { 
@@ -49,8 +49,8 @@ public class Room implements Serializable {
         this.isLocked = false;
         this.adjacent = new ArrayList<>();
         this.furnishings = new ArrayList<>();
-        this.COORDS = RoomReferences.getCoords(this.ID); 
-        this.adjacent = RoomReferences.getAdj(this.ID);
+        this.COORDS = RoomGraph.getCoords(this.ID); 
+        this.adjacent = RoomGraph.getAdj(this.ID);
 }
 //******************************************************************************
 // <editor-fold desc="GETTERS">

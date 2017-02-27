@@ -12,7 +12,7 @@ import java.util.Arrays;
  * @author Kevin Rapa 
  ****************************************************************************/ 
 
-public class RoomReferences { 
+public class RoomGraph { 
     private static final HashMap<String, String[]> ADJACENTS = new HashMap<>();
     private static final HashMap<String, int[]> COORDINATES = new HashMap<>(); 
 //****************************************************************************** 
@@ -196,19 +196,19 @@ public class RoomReferences {
     /** 
      * Constructs the two hash maps. 
      */ 
-    public static void constructRoomReferences() { 
+    public static void constructRoomGraph() { 
         int index = 0; 
         
         for (String key : IDS) 
             ADJACENTS.put(key, ADJS[index++]);  
 
-        constructCoorinateReferences(); 
+        assignCoordinates(); 
     } 
     // ======================================================================== 
     /** 
      * Used when a saved game is loaded. 
      */ 
-    public static void constructCoorinateReferences() { 
+    public static void assignCoordinates() { 
         int index = 0; 
         
         for (String key : IDS)

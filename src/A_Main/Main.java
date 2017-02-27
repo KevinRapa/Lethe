@@ -74,7 +74,7 @@ public class Main {
             ) 
         {
             System.out.println("Data found. Loading game.");
-            RoomReferences.constructCoorinateReferences();
+            RoomGraph.assignCoordinates();
             Player.loadAttributes(gameData.readObject());
             exitChoice = Player.mainPrompt(); // START GAME
         } 
@@ -83,8 +83,8 @@ public class Main {
                ClassCastException e) 
         {
             System.out.println(e.getMessage() + "\nData missing. Creating new game.");
-            RoomReferences.constructRoomReferences();
-            Player.setNewAttributes(RoomReferences.getCoords(START_LOCATION));
+            RoomGraph.constructRoomGraph();
+            Player.setNewAttributes(RoomGraph.getCoords(START_LOCATION));
             exitChoice = Player.startDialog(); // START GAME
         }
         //**********************************************************************
