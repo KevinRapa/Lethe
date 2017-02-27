@@ -1,6 +1,7 @@
 package Laboratory;
 
 import A_Main.GUI;
+import A_Main.Menus;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
 import static A_Main.Patterns.YES;
@@ -95,7 +96,7 @@ public class Labo_Dispensers extends Furniture {
     private boolean askToDispense() {
         GUI.out("You have something to dispense into. Would you like to dispense liquid?");
 
-        String ans = GUI.askChoice("\nDispense?\n<'y'/'n'>", "[yn]|yes|no");
+        String ans = GUI.askChoice(Menus.LABO_DSPNSR, YES_NO);
         
         return YES.matcher(ans).matches();
     }

@@ -3,6 +3,7 @@ package Vault;
 import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Id;
+import A_Main.Menus;
 import A_Main.Player;
 import A_Super.Furniture;
 /**
@@ -49,7 +50,7 @@ public class Vaue_Door extends Furniture {
         do {
             GUI.out(this.printButtons());
 
-            ans = GUI.askChoice("\n<x, y> Push\n< > Back", "(?:[1-4]\\s*,\\s*[1-4])|");
+            ans = GUI.askChoice(Menus.VAEU_DOOR, "(?:[1-4]\\s*,\\s*[1-4])|");
             
             if (Player.isNonEmptyString(ans)) {
                 String[] crds = ans.split("\\s*,\\s*");

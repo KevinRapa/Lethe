@@ -3,6 +3,7 @@ package Observatory;
 import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import A_Main.GUI;
+import A_Main.Menus;
 import A_Main.Player;
 import java.util.Scanner;
 /** 
@@ -81,7 +82,7 @@ public class Obs1_Statues extends Furniture {
         if (! this.locked && ! this.solved) {
             do {          
                 GUI.out(this.getArray());
-                GUI.menOut("<'r'#> Rotate statue\n<'m'#> Move statue");
+                GUI.menOut(Menus.OBS_STAT_MEN);
 
                 choice = GUI.promptOut();
                 collectToken = new Scanner(choice).useDelimiter("\\s*");

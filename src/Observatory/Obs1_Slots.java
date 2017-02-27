@@ -5,6 +5,7 @@ import A_Super.Furniture;
 import java.util.ArrayList;
 import java.util.HashMap;
 import A_Main.GUI;
+import A_Main.Menus;
 import A_Main.Player;
 import A_Super.Item;
 /**
@@ -54,7 +55,7 @@ public class Obs1_Slots extends Furniture {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
                     "\t\t\t\t\t\tLook at which slot? "); 
 
-            choice = GUI.askChoice("\n<'a-i'> Look...\n< > Back", "[a-i]|");
+            choice = GUI.askChoice(Menus.OBS_SLOT_EX, "[a-i]|");
            
             if (choice.matches("[a-i]"))
                 GUI.descOut(SLOTS.get(MAP.get(choice.charAt(0))).getDescription());
@@ -73,7 +74,7 @@ public class Obs1_Slots extends Furniture {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
                     "\t\t\t\t\t\tSearch which slot? "); 
 
-            choice = GUI.askChoice("\n<'a-i'> Search...\n< > Back", "[a-i]|");
+            choice = GUI.askChoice(Menus.OBS_SLOT_SE, "[a-i]|");
            
             if (choice.matches("[a-i]")) {
                 Furniture slot = SLOTS.get(MAP.get(choice.charAt(0)));

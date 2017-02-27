@@ -44,6 +44,7 @@ abstract public class Furniture implements Serializable {
             MOVEPATTERN = "move|slide|displace|push|pull",
             FEELPATTERN = "feel|touch|poke",
             DEFAULT_USE = "What good would that do?",
+            YES_NO = "[yn]|yes|no|",
             ANYTHING = ".+";
     // ========================================================================
     /**

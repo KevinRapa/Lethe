@@ -170,20 +170,13 @@ public class Help {
         String choice;
         
         do {
-            GUI.menOut("What would you like help on?\n\n" +
-                       "     <'1'> Controls\n"
-                     + "     <'2'> Your player\n" +
-                       "     <'3'> The castle\n"
-                     + "      < >  Back");
+            GUI.menOut(Menus.HELP_MAIN);
             choice = GUI.promptOut();
             GUI.out("");
         /*--------------------------------------------------------------------*/            
             if (choice.equals("1")) {
                 do {
-                    GUI.menOut("<'1'> The prompt <'2'> Moving\n<'3'> Describing " +
-                               "<'4'> Checking\n<'5'> Searching  <'6'> Interacting\n" +
-                               "<'7'> Using      <'8'> Combining\n<'9'> Inspecting "
-                             + " < > Back");
+                    GUI.menOut(Menus.HELP_SUB1);
 
                     choice = GUI.promptOut().concat("c");
 
@@ -195,10 +188,7 @@ public class Help {
         /*--------------------------------------------------------------------*/          
             else if (choice.equals("2")) {    
                 do {
-                    GUI.menOut("\n<'1'> Your inventory\n"
-                               + "<'2'> Your key ring\n" +
-                                 "<'3'> Your phylacteries\n"
-                               + " < >  Back");
+                    GUI.menOut(Menus.HELP_SUB2);
 
                     choice = GUI.promptOut().concat("p");
                     
@@ -210,10 +200,7 @@ public class Help {
         /*--------------------------------------------------------------------*/      
             else if (choice.equals("3")) {    
                 do {
-                    GUI.menOut("\n<'1'> Doors\t<'2'> Rooms\n"
-                               + "<'3'> Furniture\t<'4'> Items\n"
-                               + "<'5'> Keys\t<'6'> Phylacteries\n"
-                               + " < > Back");
+                    GUI.menOut(Menus.HELP_SUB3);
 
                     choice = GUI.promptOut().concat("a");
                     

@@ -2,6 +2,7 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import A_Main.Menus;
 import static A_Main.NameConstants.WEAPON;
 import A_Main.Player;
 /**
@@ -44,7 +45,7 @@ abstract public class Safe extends SearchableFurniture implements Openable {
         boolean successful;
         String action;
         
-        GUI.menOut("\n<'1'> Turn dial one\n<'2'> Turn dial two\n<'3'> Turn dial three\n< > Back\n");
+        GUI.menOut(Menus.SAFE_MENU);
         do {
             GUI.out("\t  [" + DIALS[0] + "][" + DIALS[1] + "][" + DIALS[2] + "]");      
 
@@ -60,8 +61,7 @@ abstract public class Safe extends SearchableFurniture implements Openable {
                 }
                 else {
                     this.searchable = false;
-                    GUI.menOut("<'1'> Turn dial one\n<'2'> Turn dial two\n<'3'> Turn dial three\n" +
-                               "< > Back\n");
+                    GUI.menOut(Menus.SAFE_MENU);
                 }
             } 
         } while (Player.isNonEmptyString(action));

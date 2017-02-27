@@ -3,7 +3,6 @@ package A_Main;
 import static A_Main.NameConstants.*;
 import static A_Main.Patterns.*;
 import A_Super.Furniture;
-import java.util.Arrays;
 import java.util.LinkedList;
 /**
  * This processes more complex sentences into statements containing verbs,
@@ -172,6 +171,7 @@ public class TextParser {
         
         switch(s.length) {
             case 2:
+                // Player used the item on furniture.
                 return new Command(Verb.PUT_VERB, inst, new DirectObj(s[1]));
             case 1:
                 return (obj == null) ?
@@ -205,7 +205,7 @@ public class TextParser {
             if (i >= 0 && i < Player.getInv().size())
                 inst = new Instrument(Player.getInv().get(i).toString());
             else
-                inst = new Instrument("thing there."); // Becomes 'You don't have a thing there.'
+                inst = new Instrument("slot that high."); // Becomes 'You don't have a slot that high.'
         }
         else 
             inst = new Instrument(item);
@@ -354,6 +354,7 @@ public class TextParser {
         // --------------------------------------------------------------------
         /**
          * Stores the item i into the furniture o.
+         * Can be of the form "put *item* down" to drop an item.
          * Verb parameter is always 'put'. It's there to disambiguate it from
          * execute(Instrument i, DirectObject o) constructor.
          */

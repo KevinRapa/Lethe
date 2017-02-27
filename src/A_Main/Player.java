@@ -199,7 +199,7 @@ public final class Player {
     public static int mainPrompt() {
         cmd.put('h', () -> Help.helpSub());
         cmd.put('e', () -> searchSub());
-        cmd.put('c', () -> checkOutSub());
+        cmd.put('c', () -> examineSub());
         cmd.put('k', () -> viewKeyRing());
         cmd.put('i', () -> inventoryPrompt());
         cmd.put('w', () -> move(Direction.NORTH));
@@ -224,7 +224,7 @@ public final class Player {
             if (KEYCOMMAND.matcher(ans).matches()) 
                 cmd.get(ans.charAt(0)).run();
             
-            else if (EXPLETIVE.matcher(ans).matches())
+            else if (EXPLETIVE.matcher(ans).matches()) // Zork-inspired
                 GUI.out("Mind yourself! You're a guest here!");    
             
             else if (DIRECTION.matcher(ans).matches()) 
@@ -239,7 +239,7 @@ public final class Player {
             else if (ans.equals("jump")) 
                 GUI.out("You jump a short height into the air. Well, that was fun.");
             
-            else if (GREETING.matcher(ans).matches())
+            else if (GREETING.matcher(ans).matches()) // Zork-inspired
                 GUI.out("What do you think this is? Zork?");
             
             else if (isNonEmptyString(ans))
@@ -250,7 +250,7 @@ public final class Player {
     }  
     // ========================================================================   
     private static int endGame() {
-        String ans = GUI.askChoice("\n<'s'> Save and quit\n<'q'> Quit\n<'r'> Reset game and quit.", "[sqr]");
+        String ans = GUI.askChoice(Menus.SAVE_QUIT, "[sqr]");
         
         return ans.equals("s") ? 1 : 
                ans.equals("q") ? 3 : 2;
@@ -379,7 +379,7 @@ public final class Player {
 //******************************************************************************    
     private static void searchSub() {
         // Initiates dialog asking player for a Furniture to search.
-        GUI.menOut("\n\n<object> Search\n    < > Back\n");
+        GUI.menOut(Menus.SEARCH_SUB);
         String searchThis = GUI.promptOut();
         
         if (isNonEmptyString(searchThis) && getPos().hasFurniture(searchThis)) {
@@ -387,7 +387,7 @@ public final class Player {
         }
         else if (INDEF_PRONOUN.matcher(searchThis).matches() && 
                 getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture())) 
-        {
+        {   // Player used "it" or "them" in place of a furniture name.
             search(getFurnRef(searchThis));
         }
         else if (GENERIC_FURNITURE.matcher(searchThis).matches()) {
@@ -396,8 +396,7 @@ public final class Player {
         else if (isNonEmptyString(searchThis)) {
             GUI.out("There is no " + searchThis + " here."); 
         }
-        else
-            ; // Go back to main menu
+        else ; // Go back to main menu
     }    
     // ========================================================================  
     /**
@@ -421,7 +420,7 @@ public final class Player {
         
         do {
             printInv(furniture.getInv());
-            GUI.menOut("\n<'s' #> Store...\n<'t' #> Take...\n< > Back\"");
+            GUI.menOut(Menus.TRADE_SUB);
             
             cmdItm = GUI.promptOut();
 
@@ -575,13 +574,13 @@ public final class Player {
         GUI.out("There's nothing here to take you that way.");
     }
     // ========================================================================  
-    private static void checkOutSub() {
-        GUI.menOut("\n\n<object> Look at...\n< > Back\n");
+    private static void examineSub() {
+        GUI.menOut(Menus.EXAMINE_SUB);
         
         String checkThis = GUI.promptOut();
         
         if (isNonEmptyString(checkThis))
-            checkOut(checkThis);
+            examine(checkThis);
     }
     // ========================================================================
     /**
@@ -589,7 +588,7 @@ public final class Player {
      * Player may use 'it' or 'them' to reference the last entered furniture.
      * @param inspecting object name the player wants to inspect.
      */
-    private static void checkOut(String inspecting) {
+    private static void examine(String inspecting) {
         if (INDEF_PRONOUN.matcher(inspecting).matches()) // Indefinite reference.
             inspecting = GUI.parsePreviousFurniture();
         
@@ -624,11 +623,7 @@ public final class Player {
         String ans;
         
         do {
-            GUI.menOut("<'1'> Inspect item\n"
-                     + "<'2'> Use item\n" + 
-                       "<'3'> Combine items\n"
-                     + "<'4'> Sort inventory\n"
-                     + " < > Back");
+            GUI.menOut(Menus.INV_MAIN);
             
             ans = GUI.promptOut();
             
@@ -657,7 +652,7 @@ public final class Player {
         String ans;            
         
         do {
-            GUI.menOut("\n<#> Inspect...\n< > Back");
+            GUI.menOut(Menus.INV_INSPECT);
             ans = GUI.promptOut();
             
             try {
@@ -678,7 +673,7 @@ public final class Player {
         String choice;
         
         do {      
-            GUI.menOut("\n<#> Use...\n< > Back");
+            GUI.menOut(Menus.INV_USE);
             choice = GUI.promptOut();
             
             try {
@@ -690,7 +685,7 @@ public final class Player {
                         GUI.out(item.useEvent()); 
                         break;           
                     case 2:
-                        GUI.menOut("\n<object> Use on...\n< > Back");
+                        GUI.menOut(Menus.INV_USEON);
                         evalUse(item, GUI.promptOut());
                 }
             }
@@ -733,7 +728,7 @@ public final class Player {
     private static void combineSub() {
         String combineThese;
         Scanner tokens;
-        GUI.menOut("\n<#,#,(#)> Combine...\n< > Back");
+        GUI.menOut(Menus.INV_COMBINE);
         
         do {
             combineThese = GUI.promptOut();

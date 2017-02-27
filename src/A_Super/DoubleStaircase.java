@@ -1,6 +1,7 @@
 package A_Super;
 
 import A_Main.GUI;
+import A_Main.Menus;
 import A_Main.Player;
 /**
  * Some rooms have two sets of stairs or a switchback staircase.
@@ -15,7 +16,7 @@ abstract public class DoubleStaircase extends Staircase {
     }
     // ========================================================================   
     @Override public String interact(String key) {     
-        String ans = GUI.askChoice("\nThere are two flights here.\n<'u'> Go up\n<'d'> Go down", "[ud]|up|down|");
+        String ans = GUI.askChoice(Menus.DOUBLE_ST, "[ud]|up|down|");
 
         if (Player.isNonEmptyString(ans)) {
             Direction dir = ans.matches("up|u") ? Direction.UP : Direction.DOWN; // Z coordinate modifier.

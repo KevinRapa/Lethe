@@ -19,7 +19,7 @@ package A_Main;
  * </p>
  * 
  * @author Kevin Rapa
- * @see <a href="https://github.com/KevinRapa/Salamaa.git">GitHub Repository</a>
+ * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
  */
 
 import java.awt.Dimension; import java.awt.Toolkit;     import java.io.*; 

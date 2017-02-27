@@ -1,6 +1,7 @@
 package Crypt;
 
 import A_Main.GUI;
+import A_Main.Menus;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Openable;
@@ -38,7 +39,7 @@ public class Cry_Drawers extends Furniture implements Openable {
     // ========================================================================   
     @Override public String getSearchDialog() {
         GUI.out("The drawers are labeled from 1 to 100. Search which drawer?");
-        String ans = GUI.askChoice("\n<#> Search...\n< > Back", "[1-9][0-9]?|100|");
+        String ans = GUI.askChoice(Menus.CRY_DRWRS, "[1-9][0-9]?|100|");
 
         if (Player.isNonEmptyString(ans)) {
             GUI.out(this.searchDialog);

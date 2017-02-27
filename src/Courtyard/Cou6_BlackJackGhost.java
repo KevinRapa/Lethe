@@ -1,6 +1,7 @@
 package Courtyard;
 
 import A_Main.GUI;
+import A_Main.Menus;
 import A_Main.NameConstants;
 import A_Main.Patterns;
 import static A_Main.Patterns.NO;
@@ -95,7 +96,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         boolean played = false; // If the player has played at least once.
         
         do {
-            ans = GUI.askChoice("\nPlay?\n<'y'/'n'>", "yes|no|[yn]|");
+            ans = GUI.askChoice(Menus.BLCK_JCK_GST, YES_NO);
             
             if (YES.matcher(ans).matches()) {
                 played = true;

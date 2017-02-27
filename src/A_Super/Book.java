@@ -2,6 +2,7 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import A_Main.Menus;
 import static A_Main.Patterns.NO;
 import static A_Main.Patterns.YES;
 /**
@@ -43,8 +44,7 @@ public class Book extends Note {
 
             if (page != (this.PAGES - 1)) {
                 
-                choice = GUI.askChoice("\nTurn page?\n<'y'> Turn the page\n"
-                                     + "<'n'> Close the book", "[yn]|yes|no|");
+                choice = GUI.askChoice(Menus.BOOK_MEN, "[yn]|yes|no|");
 
                 if (YES.matcher(choice).matches()) 
                     page ++;

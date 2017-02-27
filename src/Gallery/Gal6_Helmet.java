@@ -3,6 +3,7 @@ package Gallery;
 import A_Super.Furniture;
 import java.util.Random;
 import A_Main.GUI;
+import A_Main.Menus;
 import static A_Main.Patterns.YES;
 /**
  * Prints a weird dialog when worn.
@@ -38,7 +39,7 @@ public class Gal6_Helmet extends Furniture {
         
         GUI.out("Are you really sure you want to wear the helmet?");
  
-        choice = GUI.askChoice("\n<'y'> Wear it\n<'n'> Don't wear it\n< > Back", "yes|no|[yn]|");
+        choice = GUI.askChoice(Menus.GAL6_HELM, YES_NO);
 
         if (YES.matcher(choice).matches()) {
             Random generator = new Random();

@@ -6,6 +6,7 @@ import A_Super.Button;
 import A_Main.Player;
 import java.util.Random;
 import A_Main.GUI;
+import A_Main.Menus;
 import static A_Main.Patterns.YES;
 /**
  * Teleports the player to a previously visited room when pressed.
@@ -32,7 +33,7 @@ public class Gal6_Button extends Button {
 
         GUI.out("Are you really sure you want to press the button?");
         
-        choice = GUI.askChoice("\n<'y'> Push\n<'n'> Don't push\n< > Back", "yes|no|[yn]|");
+        choice = GUI.askChoice(Menus.GAL6_BTTN, YES_NO);
 
         if (YES.matcher(choice).matches()) {
             AudioPlayer.playEffect(11);
