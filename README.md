@@ -1,4 +1,4 @@
-# Salamaa
+# Lethe
 This holds the current iteration of a large text-based adventure game.
 The final title is "Lethe".
 
@@ -6,8 +6,8 @@ The entire game is written in Java. Lethe is a personal project of mine
 that began before I could even code in Java, and I have been working on
 it as my experience with Java has developed. 
 
-To play, just execute the .jar. Make sure the ambience and effects folders
-are in the same directory as the .jar.
+To play, just execute the .jar. <bold>Make sure Title.jpg, and the ambience, maps and effects folders
+are in the same directory as the .jar!</bold>.
 
 The game employs a save feature using serialization, a Swing GUI, sound,
 heavy regex usage, and a bit of multithreading, particularly in the Laboratory
