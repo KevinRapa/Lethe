@@ -83,7 +83,7 @@ public class Inventory implements Iterable<Item>, Serializable {
      */
     @Override public String toString() {
         if (! this.CONTENTS.isEmpty()) {
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new StringBuilder(30);
             int slot = 1;
             
             for (Item i : this.CONTENTS) {
@@ -92,7 +92,8 @@ public class Inventory implements Iterable<Item>, Serializable {
                                             .concat(name.substring(1));
                 builder.append('<')
                        .append(slot++)
-                       .append("> ")
+                       .append('>')
+                       .append(' ')
                        .append(capitalized)
                        .append('\n');
             }

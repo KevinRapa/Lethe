@@ -66,7 +66,7 @@ public class Sew2_Valves extends Furniture implements Resetable {
         this.searchDialog = "There's nothing here that you can take.";
 
         this.addNameKeys("(?:metal )?valves?", "console", "grid of valves", "(?:roman )?(?:numerals|numbers)");
-        this.addActKeys("turn", "rotate", "spin", "twist", "open", "close");
+        this.addActKeys(VALVEPATTERN);
     }
     // ========================================================================   
     @Override public String interact(String key) {    

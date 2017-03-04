@@ -47,33 +47,36 @@ public class Cave extends Room {
         this.DISTANCE = (int)round(sqrt(  // Calculates DISTANCE from MS65.
                 pow(abs(5 - X), 2) +      // Pythagorean theorem
                         pow(abs(6 - Y), 2)));
+        StringBuilder descB = new StringBuilder(300),
+                      descL = new StringBuilder(150);
         
         switch (DISTANCE) {
             case 7: case 6: case 5:
-                descLit = "You feel inexplicably dizzy.";
+                descL.append("You feel inexplicably dizzy.");
                 break;
             case 4:
-                descLit = "You can feel the dizzyness intensifying.";
+                descL.append("You can feel the dizzyness intensifying.");
                 break;
             case 3:
-                descLit = "Your head begins to hurt, and the dizzyness intensifies.";
+                descL.append("Your head begins to hurt, and the dizzyness intensifies.");
                 break;
             case 2:
-                descLit = "You feel delirious, and your senses begin to numb.";
+                descL.append("You feel delirious, and your senses begin to numb.");
                 break;
             default:
-                descLit = "You start slipping into an acute dementia, and you can barely orient yourself.";
+                descL.append("You start slipping into an acute dementia, and you can barely orient yourself.");
         }
-        this.description = descLit;
         
-        this.description = description.concat(" This area is pitch black just like the level above.\n"
-                         + "It's uncomfortably cold, and you hear nothing but\n"
-                         + "drops of water and an awful racket deep within\n"
-                         + "the tunnels.");
+        descB.append(descL.toString());
         
-        this.descLit = descLit.concat(" The torch lights a short way ahead. This area is much\n"
-                     + "like above, though the walls and floor are plain rock.\n"
-                     + "You can hear an awful noise deep within the tunnels. To the ");
+        descB.append(" This area is pitch black just like the level above.\n"
+                   + "It's uncomfortably cold, and you hear nothing but\n"
+                   + "drops of water and an awful racket deep within\n"
+                   + "the tunnels.");
+        
+        descL.append(" The torch lights a short way ahead. This area is much\n"
+                 + "like above, though the walls and floor are plain rock.\n"
+                 + "You can hear an awful noise deep within the tunnels. To the ");
         
         /* 
            Builds the lit description of the room. Here, the constructor figures
@@ -88,7 +91,7 @@ public class Cave extends Room {
         int[] adjOtherCoords = null;
         
         // Holds directions to append to descLit.
-        ArrayList<String> dirs = new ArrayList<>();
+        ArrayList<String> dirs = new ArrayList<>(4);
         
         for (String i : this.adjacent) {
             int[] coords = {i.charAt(2) - '0', 
@@ -115,40 +118,43 @@ public class Cave extends Room {
         // Appends the correct directions to descLit.
         switch (dirs.size()) {
             case 1:
-                descLit = descLit.concat(dirs.get(0));
+                descL.append(dirs.get(0));
                 break;
             case 2:
-                descLit = descLit.concat(dirs.get(0) + " and " + dirs.get(1));
+                descL.append(dirs.get(0)).append(" and ").append(dirs.get(1));
                 break;
             default:
                 int i; 
                 for (i = 0; i < dirs.size() - 1; i++)
-                    descLit = descLit.concat(dirs.get(i) + ", ");
+                    descL.append(dirs.get(i)).append(", ");
                 
-                descLit = descLit.concat("and " + dirs.get(i));
+                descL.append("and ").append(dirs.get(i));
         }
         
-        descLit = descLit.concat(", the tunnel veers into darkness. ");
+        descL.append(", the tunnel veers into darkness. ");
         
         // Appends additional information if a non-catacomb room is adjacent.
         // Adds a door to room.
         if (adjOtherCoords != null && adjOtherCoords[0] != 5) {
             if (adjOtherCoords[0] == Y - 1) {
-                descLit = descLit.concat("To the north");
+                descL.append("To the north");
             }
             else if (adjOtherCoords[0] == Y + 1){
-                descLit = descLit.concat("To the south");
+                descL.append("To the south");
             }
             else if (adjOtherCoords[1] == X - 1) {
-                descLit = descLit.concat("To the west");
+                descL.append("To the west");
             }
             else {
-                descLit = descLit.concat("To the east");
+                descL.append("To the east");
             }
             
-            descLit = descLit.concat(", erected unevenly into the tunnel wall is an ancient door.");
+            descL.append(", erected unevenly into the tunnel wall is an ancient door.");
         }
 
+        this.descLit = descL.toString();
+        this.description = descB.toString();
+        
         this.addFurniture(CV_FLOOR, CV_WALL, CV_CEILING);
     }
 // ============================================================================

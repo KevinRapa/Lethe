@@ -18,7 +18,7 @@ public class Drar_Bar extends SearchableFurniture {
                        + "here must be stale and bitter by now though.";
         
         this.addActKeys("sit");
-        this.addNameKeys("bar", "shelf", "alcohol", "wine", "beer", "liquor");
+        this.addNameKeys("bar|shelf|alcohol|wine|beer|liquor");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {

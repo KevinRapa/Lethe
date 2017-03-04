@@ -13,8 +13,8 @@ public class Deck {
      * Constructs a deck of cards.
      */
     public Deck() {
-        String[] ranks = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", 
-                          "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+        String[] ranks = {"ace", "two", "three", "four", "five", "six", "seven", 
+                          "eight", "nine", "ten", "jack", "queen", "king"};
         String[] suits = {"hearts", "spades", "clubs", "diamonds"};
         
         for (String suit : suits) // Creates all the cards.

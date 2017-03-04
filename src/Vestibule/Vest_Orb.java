@@ -1,11 +1,12 @@
 package Vestibule;
 
 import A_Main.GUI;
+import A_Super.Gettable;
 import A_Super.NonPlayerCharacter;
 /**
  * @author Kevin Rapa
  */
-public class Vest_Orb extends NonPlayerCharacter {
+public class Vest_Orb extends NonPlayerCharacter implements Gettable {
     // ========================================================================
     public Vest_Orb () {
         super();
@@ -17,19 +18,28 @@ public class Vest_Orb extends NonPlayerCharacter {
         this.searchDialog = "You can't seem to find anything out of the ordinary. Suddenly, a voice speaks-\n"
                          + "\"Is staring at things a hobby of yours? Aren't you going to say anything to me?\"";
 
+        this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:dusty )?(?:glass )?orb");
     }
     // ======================================================================== 
     @Override public String interact(String key) {       
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
-        
+        else if (key.matches(GETPATTERN))
+            return getIt();
         else if (this.firstTime)
             converse1();
         else
             converse2();
         
         return this.actDialog;
+    }
+    // ========================================================================     
+    @Override public String getIt() {
+        return "You extend your hand out to grab the auspicious orb. A voice\n"
+             + "then speaks before you reach it. \"Hey you! Do not taint my\n"
+             + "window from this prison with your dirty hands. Say something\n"
+             + "to me damn you!\"";
     }
     // ========================================================================     
     @Override protected <Void> Void converse1() {

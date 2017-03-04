@@ -231,7 +231,7 @@ public class TextParser {
         private final Runnable ACTION;
         private final String VALUE;
         // ====================================================================
-        // <editor-fold desc="constructors">
+        // <editor-fold defaultstate="collapsed" desc="constructors">
         public Command(Verb v, DirectObj o) {
             VALUE = v.toString() + SPACE + o.toString();
             System.out.println("Creating verb -> object command: " + VALUE);
@@ -265,7 +265,7 @@ public class TextParser {
         
         
         // ====================================================================
-        // <editor-fold desc="execute methods">
+        // <editor-fold defaultstate="collapsed" desc="execute methods">
         /**
          * Uses the item i on the furniture o.
          */

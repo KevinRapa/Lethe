@@ -20,7 +20,7 @@ public class GenDoor extends Furniture {
 
         this.addUseKeys(ANYTHING);
         this.addNameKeys("door");
-        this.addActKeys("open", "use", "close", "kick", "knock|bang", "unlock", "lock");
+        this.addActKeys("open|close", "use", "kick|knock|bang", "unlock|lock");
     }
     // ======================================================================== 
 }

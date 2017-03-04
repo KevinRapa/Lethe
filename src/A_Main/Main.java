@@ -22,6 +22,7 @@ package A_Main;
  * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
  */
 
+import java.awt.Color;
 import java.awt.Dimension;          import java.awt.Toolkit;
 import java.awt.event.KeyEvent;     import java.awt.event.KeyListener; 
 import java.io.*;                   import javax.swing.ImageIcon; 
@@ -37,7 +38,9 @@ public class Main {
     private static final JPanel TITLE_PANEL = new JPanel();
 
     static {
-        TITLE_LABEL.setIcon(new ImageIcon("Title.jpg"));
+        TITLE_LABEL.setIcon(new ImageIcon(
+                "img" + System.getProperty("file.separator") + "Title.jpg"
+        ));
 
         TITLE_LABEL.addKeyListener(new KeyListener() {
             @Override public void keyTyped(KeyEvent e) {}
@@ -50,7 +53,7 @@ public class Main {
                 AudioPlayer.playTrack(Player.getPosId());
             }  
         });
-        
+        TITLE_PANEL.setBackground(Color.BLACK);
         TITLE_PANEL.add(TITLE_LABEL);
     }
     

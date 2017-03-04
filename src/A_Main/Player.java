@@ -103,7 +103,12 @@ public final class Player {
     }
     /*------------------------------------------------------------------------*/
     public static boolean hasItemResembling(String item) {
-        return Player.inv.contents().stream().
+        if (Patterns.DIGIT.matcher(item).matches()) {
+            int i = Integer.parseInt(item);
+            return (i <= Player.inv.size());
+        }
+        else
+            return Player.inv.contents().stream().
                 anyMatch(i -> i.toString().matches(".*(" + item + ").*"));
     }
     // </editor-fold>
@@ -181,7 +186,7 @@ public final class Player {
         GUI.menOut("\n\nPress enter...");
         GUI.out("It's 10:00pm, the night is clear and warm.\n" +
                 "You have just arrived on foot to your destination, and\n" +
-                "its even more colossal than what you had\n" +
+                "find it even more colossal than what you had\n" +
                 "expected. It also appears curiously more vacant...");
         GUI.promptOut();    
         GUI.out("You slowly approach until between the front gateway.\n" +
@@ -557,11 +562,12 @@ public final class Player {
         else if (WEST.matcher(dir).find())
             Player.move(Direction.WEST);
         
-        else if (UP.matcher(dir).find())
+        else if (UP.matcher(dir).find()) {
             findStaircase(Direction.UP);
-        
-        else
+        }
+        else {
             findStaircase(Direction.DOWN);
+        }
     }
     // ========================================================================  
     private static void findStaircase(Direction dir) {
@@ -795,7 +801,7 @@ public final class Player {
      * @return A list of items the player wants to combine.
      */
     private static Item[] getTokenList(Scanner tokenizer) {
-        ArrayList<Item> itemList = new ArrayList<>();
+        ArrayList<Item> itemList = new ArrayList<>(3);
         
         try {
             while (tokenizer.hasNext()) {                                                                            
@@ -818,7 +824,13 @@ public final class Player {
      * @return If the items combine into the same object.
      */
     private static boolean allCombineToSame(Item[] itemList) {
-        String combinesTo = itemList[0].forms().toString();
+        Item forms = itemList[0].forms();
+        String combinesTo;
+        
+        if (forms == null)
+            return false;
+        else
+            combinesTo = forms.toString();
 
         for (Item i : itemList) {
             if (i.forms().toString() == null || 

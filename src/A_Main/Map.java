@@ -22,12 +22,10 @@ import Escape_Tunnel.*;    import Strange_Pool.*;       import Prison.*;
 import Torture_Chamber.*;  import Crypt.*;              import Ancient_Archives.*;
 import Keeper_Chamber.*;   import Vault.*;              import Tower.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
-import Soul_Chamber.*;     
-import java.awt.Color;
-import java.util.Random;
+import Soul_Chamber.*;  
 
-import javax.swing.ImageIcon;   import javax.swing.JFrame;
-import javax.swing.JLabel;      import javax.swing.JPanel;
+import java.awt.Color;      import java.util.Random;    import javax.swing.ImageIcon;   
+import javax.swing.JFrame;  import javax.swing.JLabel;  import javax.swing.JPanel;
 
 /**
  * Creates a 3 dimensional array of rooms representing the game map.
@@ -36,7 +34,7 @@ import javax.swing.JLabel;      import javax.swing.JPanel;
  * @author Kevin Rapa
  */
 public class Map {
-    private final static String PATH = "maps" + System.getProperty("file.separator");
+    private final static String PATH = "img" + System.getProperty("file.separator");
     
     private static final JLabel MAP_LABEL = new JLabel();
     private static final JPanel MAP_PANEL = new JPanel();
@@ -60,6 +58,7 @@ public class Map {
         updateMap();
 
         if (! MAP_FRAME.isVisible()) {
+            AudioPlayer.playEffect(2);
             MAP_FRAME.setVisible(true);
         }
     }
@@ -236,7 +235,7 @@ public class Map {
         Room vest = new Vest("in a vestibule", Id.VEST); 
         //-------------------------------ITEMS----------------------------------
         Item qllPn = new Item("quill pen", "It's an old matted feather stained with dried ink.");
-        Item lttrOpnr = new Weapon("letter opener", "It's a very dull knife.");
+        Item lttrOpnr = new Item("letter opener", "It's a very dull knife.");
         Item loopedRope = new Item(LOOPED_ROPE, "It's a short rope tied into a noose. It's pretty\n"
                                               + "frayed in the center.", ram, 3);
         //-----------------------------FURNITURE--------------------------------

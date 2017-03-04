@@ -25,7 +25,7 @@ public class Iha2_Armor extends SearchableFurniture implements Gettable {
         this.actDialog = "You will probably get hurt trying to do that.";
         this.addActKeys(GETPATTERN);
         this.addActKeys("equip", "wear", "pry", "open");
-        this.addNameKeys("(suit of |plate )?armor", POLEARM, "armor suit", "gauntlet", "hand");
+        this.addNameKeys("(suit of |plate )?armor", POLEARM, "(?:armor )?suit|gauntlet|hand");
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

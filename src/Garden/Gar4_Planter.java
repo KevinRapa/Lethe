@@ -24,7 +24,7 @@ public class Gar4_Planter extends SearchableFurniture {
         this.searchDialog = "The soil surface is bare and doesn't seem to hide anything.";
         this.useDialog = this.actDialog;
 
-        this.addNameKeys("planter", "(?:bed of )?(?:soil|dirt)", "bed", "dirt", SOIL);
+        this.addNameKeys("planter", "(?:bed of )?(?:soil|dirt)", "bed|dirt", SOIL);
         this.addUseKeys(SHOVEL, TROWEL);
         this.addActKeys(GETPATTERN);
         this.addActKeys("dig", "plant", "garden", "shovel");

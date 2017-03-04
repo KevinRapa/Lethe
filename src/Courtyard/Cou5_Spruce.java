@@ -27,8 +27,8 @@ public class Cou5_Spruce extends SearchableFurniture {
         this.VIAL_REF = vial;
         this.drilled = false;
         
-        this.addActKeys("drill");
-        this.addNameKeys("tree", "spruce", "spruce tree");
+        this.addActKeys("drill", "climb", "swing");
+        this.addNameKeys("(?:spruce )?tree", "spruce", "branch(?:es)?");
         this.addUseKeys(HAND_DRILL, EMPTY_VIAL);
     }
 /*----------------------------------------------------------------------------*/
@@ -64,10 +64,16 @@ public class Cou5_Spruce extends SearchableFurniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String action) {
-        if (Player.hasItem(HAND_DRILL))
-            return this.useEvent(new Item(HAND_DRILL));
+        if (action.equals("drill")) {
+            if (Player.hasItem(HAND_DRILL))
+                return this.useEvent(new Item(HAND_DRILL));
+            else
+                return "You have nothing to drill into it with.";
+        }
+        else if (action.equals("climb"))
+            return "You are much too heavy to climb trees.";
         else
-            return "You have nothing to drill into it with.";
+            return "You're much too old for that.";
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -2,7 +2,6 @@ package Catacombs;
 
 import A_Main.Player;
 import static A_Main.NameConstants.HAND_TORCH;
-import static A_Main.NameConstants.IRIDESCENT_JEWEL;
 import static A_Main.NameConstants.ROCK;
 import A_Super.Ceiling;
 import A_Super.Direction;
@@ -12,7 +11,6 @@ import A_Super.Item;
 import A_Super.Room;
 import A_Super.Wall;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 /**
  * The catacombs comprise a maze of similar tunnels.
@@ -35,16 +33,19 @@ public class Catacomb extends Room {
 // ============================================================================    
     public Catacomb(String ID) {
         super("in the catacombs", ID);
+
         this.description = "This area is pitch black. Feeling around, you sense\n"
                          + "that you are in a rocky tunnel barely larger than you.\n"
                          + "A low breeze and sporadic droplets of water are all that\n"
                          + "you hear. You suspect you are in a cave of sorts. If\n"
                          + "only you had a light...";
+
+        StringBuilder builder = new StringBuilder(300);
         
-        this.descLit = "The torch offers a small radius of light to see. You\n"
-                     + "are in a thin rocky tunnel with scattered crevices dug\n"
-                     + "into the walls. These are definitely graves. You shudder,\n"
-                     + "perhaps from the cold... To your ";
+        builder.append("The torch offers a small radius of light to see. You\n")
+               .append("are in a thin rocky tunnel with scattered crevices dug\n")
+               .append("into the walls. These are definitely graves. You shudder,\n")
+               .append("perhaps from the cold... To your ");
         
         /* 
            Builds the lit description of the room. Here, the constructor figures
@@ -60,7 +61,7 @@ public class Catacomb extends Room {
         int[] adjOtherCoords = null;
         
         // Holds directions to append to descLit.
-        ArrayList<String> dirs = new ArrayList<>();
+        ArrayList<String> dirs = new ArrayList<>(4);
 
         for (String i : this.adjacent) {
             int[] coords = {i.charAt(2) - '0', 
@@ -87,20 +88,20 @@ public class Catacomb extends Room {
         // Appends the correct directions to descLit.
         switch (dirs.size()) {
             case 1:
-                descLit = descLit.concat(dirs.get(0));
+                builder.append(dirs.get(0));
                 break;
             case 2:
-                descLit = descLit.concat(dirs.get(0) + " and " + dirs.get(1));
+                builder.append(dirs.get(0)).append(" and ").append(dirs.get(1));
                 break;
             default:
                 int i; 
                 for (i = 0; i < dirs.size() - 1; i++)
-                    descLit = descLit.concat(dirs.get(i) + ", ");
+                    builder.append(dirs.get(i)).append(", ");
 
-                descLit = descLit.concat("and " + dirs.get(i));
+                builder.append("and ").append(dirs.get(i));
         }
         
-        descLit = descLit.concat(", the tunnel veers into darkness. ");
+        builder.append(", the tunnel veers into darkness. ");
         
         // Appends additional information if a non-catacomb room is adjacent.
         // Adds a door to room.
@@ -108,24 +109,26 @@ public class Catacomb extends Room {
         
         if (adjOtherCoords != null) {
             if (adjOtherCoords[0] == Y - 1) {
-                descLit = descLit.concat("To the north");
+                builder.append("To the north");
                 door = new Ct_Door(Direction.NORTH);
             }
             else if (adjOtherCoords[0] == Y + 1){
-                descLit = descLit.concat("To the south");
+                builder.append("To the south");
                 door = new Ct_Door(Direction.SOUTH);
             }
             else if (adjOtherCoords[1] == X - 1) {
-                descLit = descLit.concat("To the west");
+                builder.append("To the west");
                 door = new Ct_Door(Direction.WEST);
             }
             else {
-                descLit = descLit.concat("To the east");
+                builder.append("To the east");
                 door = new Ct_Door(Direction.EAST);
             }
             
-            descLit = descLit.concat(", erected unevenly into the tunnel wall is an ancient door.");
+            builder.append(", erected unevenly into the tunnel wall is an ancient door.");
         }
+        
+        this.descLit = builder.toString();
         
         // Puts a crevice furniture objects in here and adds items to it randomly.
         Furniture ctGrv = new Ct_Grave();

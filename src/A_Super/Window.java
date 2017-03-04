@@ -21,7 +21,7 @@ abstract public class Window extends Furniture {
         this.descOpen = "It's an open stone arched window. In the distance,\n" +
                         "you see an expanse of sea.";                    
         this.descClosed = "It's a closed stone arched window.";
-        this.addActKeys("open", "close", "climb", "exit", "jump");
+        this.addActKeys("open", "close", "climb", "exit", "jump", "escape");
         this.addNameKeys("window");
     }
 /*----------------------------------------------------------------------------*/

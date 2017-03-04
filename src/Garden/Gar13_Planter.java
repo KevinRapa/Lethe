@@ -22,7 +22,7 @@ public class Gar13_Planter extends SearchableFurniture {
         this.searchDialog = "You fan around the plants in the planter.";
         this.useDialog = "You uncover nothing, but you do store a bit of soil in your pockets.";
 
-        this.addNameKeys("planter", "(?:bed of )?(?:soil|dirt)", "bed", "plants", "dirt", SOIL);
+        this.addNameKeys("planter|bed|plants|dirt", "(?:bed of )?(?:soil|dirt)", SOIL);
         this.addUseKeys(HOE, TROWEL, SHOVEL, SEED, FERTILIZER);
         this.addActKeys(GETPATTERN);
         this.addActKeys("garden", "plant", "dig", "shovel");

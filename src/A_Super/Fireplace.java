@@ -29,8 +29,13 @@ abstract public class Fireplace extends Furniture {
         this.addUseKeys(BUCKET_OF_WATER);
     }    
 /*----------------------------------------------------------------------------*/
-    @Override public String getSearchDialog() {        
-        return this.isLit() ? this.searchDialogLit : this.searchDialogUnlit;
+    @Override public String getSearchDialog() {  
+        if (isLit) {
+            AudioPlayer.playEffect(39, -10);
+            return this.searchDialogLit;
+        }
+        else
+            return this.searchDialogUnlit;
     }
 /*----------------------------------------------------------------------------*/     
     @Override public String getDescription() {

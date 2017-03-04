@@ -16,24 +16,25 @@ public class Foy1 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy1(String name, String ID) {
         super(name, ID);   
-    }
-/*----------------------------------------------------------------------------*/
-    @Override public String getDescription() {
-        return "The huge dim foyer is sparsely furnished and\n"
+        this.description = "The huge dim foyer is sparsely furnished and\n"
              + "clean. The wind whistles through the chamber past a back gate.\n"
              + "Despite the openness, you feel claustrophobic. A\n"
              + "red carpet is neatly layed out in the center. To\n"
-             + "your west, " + this.descMode() + "\n"
+             + "your west, % \n"
              + "To your east, a heavy wooden door leads somewhere else.\n"
              + "A long wood table sits in the room's center under a huge\n"
              + "chandelier. This room extends further\n"
              + "north to a curved staircase at the other end.";
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String getDescription() {
+        return this.description.replaceFirst("%", descMode());
     }   
 /*----------------------------------------------------------------------------*/
     private String descMode() {       
-        return Player.getRoomObj(Id.FOYW).isThisLocked() ? 
-                "a closed gate blocks your way into another room." : 
-                "an opened gate leads into another room.";                                            
+        return Player.getPos().isAdjacent(Id.FOYW) ? 
+                "an opened gate leads into another room." :
+                "a closed gate blocks your way into another room.";                                               
     }    
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {

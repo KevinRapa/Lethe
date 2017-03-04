@@ -12,7 +12,7 @@ public class Lib_BookShelf extends Furniture {
         this.searchDialog = this.description;
         this.actDialog = this.description;
         this.addNameKeys("(?:book)?shel(?:f|ves)");
-        this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");
+        this.addActKeys(MOVEPATTERN);
     }
 /*----------------------------------------------------------------------------*/
 }

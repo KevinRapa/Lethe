@@ -42,7 +42,8 @@ abstract public class Furniture implements Serializable {
             GETPATTERN = "get|take|acquire|grab|scoop",      
             SITPATTERN = "sit|relax|lay|use",
             JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",
-            MOVEPATTERN = "move|slide|displace|push|pull",
+            VALVEPATTERN = "turn|rotate|spin|twist|open|close",
+            MOVEPATTERN = "move|slide|displace|push|pull|spin|rotate",
             FEELPATTERN = "feel|touch|poke",
             DEFAULT_USE = "What good would that do?",
             YES_NO = "[yn]|yes|no|",
@@ -54,9 +55,9 @@ abstract public class Furniture implements Serializable {
      */
     public Furniture () {
         this.searchable = false;
-        this.NAMEKEYS = new ArrayList<>(); // Valid names of this. Regular expression.
-        this.USEKEYS = new ArrayList<>();  // Valid items that may be used on this.
-        this.ACTKEYS = new ArrayList<>();  // Valid actions that may be performed on this.
+        this.NAMEKEYS = new ArrayList<>(5); // Valid names of this. Regular expression.
+        this.USEKEYS = new ArrayList<>(5);  // Valid items that may be used on this.
+        this.ACTKEYS = new ArrayList<>(6);  // Valid actions that may be performed on this.
         
         this.useDialog = DEFAULT_USE;
         this.searchDialog = "There's nothing hiding here.";

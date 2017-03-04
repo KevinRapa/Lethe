@@ -46,7 +46,7 @@ public class Labo_Burette extends Furniture {
 
         this.addNameKeys("(?:glass )?buret(?:te)?", "buret(?:te)? stopcock");
         this.addUseKeys(BOTTLE_OF_WINE, BOTTLE_OF_VINEGAR, TEST_TUBE, EMPTY_VIAL);
-        this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist", "empty", "titrate");
+        this.addActKeys("use", VALVEPATTERN, "dispense", "drain", "empty", "titrate");
     }
     // ========================================================================    
     @Override public String getDescription() {

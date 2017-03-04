@@ -12,7 +12,7 @@ public class Lib2_WarefareShelf extends SearchableFurniture {
                          + "\"Warfare\".";
         this.searchDialog = "You peruse its shelves.";
         this.addNameKeys("warfare", "(?:east|right) (?:book)?shelf");
-        this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");
+        this.addActKeys(MOVEPATTERN);
     }
 /*----------------------------------------------------------------------------*/
 }

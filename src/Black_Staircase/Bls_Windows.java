@@ -16,7 +16,7 @@ public class Bls_Windows extends StaticWndw {
                          + "The moon begins to fade and a small amount of light brightens\n"
                          + "the sky.";
 
-        this.addNameKeys("ceiling", "walls?", "windows", "glass", "moon", "day");
+        this.addNameKeys("ceiling|walls?|windows?|glass|moon|day");
     }
     // ========================================================================  
 }

@@ -18,59 +18,57 @@ public class GUI extends JPanel {
     
     // Click noises when player types.
     private enum Click {
-        // =======================================
         NONE(0), SOFT(21), CLICK(22), VINTAGE(23);
     
-        private final int soundEffectId;
-        // =======================================
-        Click(int key) {
-            this.soundEffectId = key;
-        }
-        // =======================================
-        public int getEffectId() {
-            return soundEffectId;
-        }
-        // =======================================
+        public final int soundEffectId;
+        //----------------------------------------
+        Click(int key) { this.soundEffectId = key; }
+        //----------------------------------------
     }
     
     // <editor-fold defaultstate="collapsed" desc="COMPONENTS AND ATTRIBUTES">
-    private boolean big = true;
-    private static int key = Click.NONE.getEffectId();
+    private static boolean big = true;
+    private static int key = Click.NONE.soundEffectId;
     
-    private final static JTextArea MEN = new JTextArea(), DESC = new JTextArea(), 
-                                   INV = new JTextArea(), DIAL = new JTextArea();
+    private final static JTextArea 
+            MEN = new JTextArea(), DESC = new JTextArea(), 
+            INV = new JTextArea(), DIAL = new JTextArea();
 
-    private final static JPanel EAST = new JPanel(new BorderLayout()), 
-                                CNORTH = new JPanel(new BorderLayout()),
-                                WEST = new JPanel(new BorderLayout()),
-                                CENTER = new JPanel(), CCENTER = new JPanel(), 
-                                CSOUTH = new JPanel(), SALAMAA = new JPanel(new FlowLayout(FlowLayout.LEFT));          
+    private final static JPanel 
+            EAST = new JPanel(new BorderLayout()), 
+            CNORTH = new JPanel(new BorderLayout()),
+            WEST = new JPanel(new BorderLayout()),
+            CENTER = new JPanel(), CCENTER = new JPanel(), 
+            CSOUTH = new JPanel(), SALAMAA = new JPanel(new FlowLayout(FlowLayout.LEFT));          
     
-    private final static JScrollPane SCROLLW = new JScrollPane(DIAL, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
-                                                                    JScrollPane.HORIZONTAL_SCROLLBAR_NEVER),
-                                     SCROLLE = new JScrollPane(INV, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
-                                                                     JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    private final static JLabel ROOM = new JLabel(), 
-                                INVLBL = new JLabel("Inventory");
+    private final static JScrollPane 
+            SCROLLW = new JScrollPane(DIAL, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+                    JScrollPane.HORIZONTAL_SCROLLBAR_NEVER),
+            SCROLLE = new JScrollPane(INV, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+                    JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     
-    private final static JButton SIZE = new JButton("Small mode"),
-                                 MUTE = new JButton("Mute"),
-                                 KEYS = new JButton("Key click");
+    private final static JLabel 
+            ROOM = new JLabel(), 
+            INVLBL = new JLabel("Inventory");
     
-    private final static JTextField INPUT = new JTextField(" ", 35);
+    private final static JButton 
+            SIZE = new JButton("Small mode"),
+            MUTE = new JButton("Mute"),
+            KEYS = new JButton("Key click");
+    
+    private final static JTextField 
+            INPUT = new JTextField(" ", 35);
     
     private final static LinkedList<String> UNDO = new LinkedList<>();
     private final static Input_Holder HOLDER = new Input_Holder();
-    
+    private final static ArrayList<String> FURN_PARSER = new ArrayList<>();
     private final static LinkedList<Click> KEYSOUND = new LinkedList<>();
 
     static {
         KEYSOUND.add(Click.NONE); KEYSOUND.add(Click.SOFT); 
         KEYSOUND.add(Click.CLICK); KEYSOUND.add(Click.VINTAGE); 
     }
-    
-    private static final ArrayList<String> FURN_PARSER = new ArrayList<>();
-    // </editor-fold> ================================================
+    // </editor-fold>
     
 // *****************************************************************************
 // <editor-fold defaultstate="collapsed" desc="CONSTRUCTOR AND COMPONENT CONTROLLERS">
@@ -332,10 +330,9 @@ public class GUI extends JPanel {
                 .filter(i -> (THREE_PLUS_LETTER_WORD.matcher(i).matches()))
                 .forEach(j -> 
         {
-            if (Player.getPos().hasFurniture(j) || 
-                Player.getPos().hasFurniture(
-                        j = FIRST_WORD.matcher(j).replaceFirst("")
-                ))
+            if (Player.getPos().hasFurniture(j)
+                 || Player.getPos().hasFurniture(
+                        j = FIRST_WORD.matcher(j).replaceFirst("")))
             {
                 FURN_PARSER.add(j); 
             }
@@ -398,9 +395,7 @@ public class GUI extends JPanel {
                 current = 0;
         }
         /*------------------------------------------------------*/
-        @Override public void keyTyped(KeyEvent e) {
-            // Unused
-        }
+        @Override public void keyTyped(KeyEvent e) {}
     }
 /*----------------------------------------------------------------------------*/
     private class Text_Field_Listener implements ActionListener {
@@ -444,7 +439,7 @@ public class GUI extends JPanel {
             }
             else { // Changes key click
                 KEYSOUND.offer(KEYSOUND.poll());
-                key = KEYSOUND.peek().getEffectId();
+                key = KEYSOUND.peek().soundEffectId;
                 
                 if (key != 0)
                     AudioPlayer.playEffect(key);

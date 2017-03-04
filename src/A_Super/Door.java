@@ -29,7 +29,8 @@ public class Door extends Furniture {
                    "well-built to give.";
         }
         else if (key.equals("knock") || key.equals("bang")) {
-            return "You're a guest here, remember?";
+            AudioPlayer.playEffect(55);
+            return "You give the door a knock. To your astonishment, your knock is left unanswered.";
         }
         else if (key.equals("lock") || key.equals("unlock")) {
             return "That isn't how this game works. Read the directions!";

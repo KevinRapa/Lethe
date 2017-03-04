@@ -29,7 +29,7 @@ public class Look_Valve extends Furniture{
                     + "balcony.";
         this.FNTN_REF = (Rotu_Fountain) fntn;
         this.addNameKeys("valve", "(?:big )?(?:rusty )?valve");
-        this.addActKeys("turn", "rotate", "spin", "twist", "open", "close");
+        this.addActKeys(VALVEPATTERN);
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {

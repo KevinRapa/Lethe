@@ -20,7 +20,7 @@ public class Cis_Darkness extends Furniture implements Gettable {
         
         this.addActKeys(GETPATTERN);
         this.addUseKeys(HAND_TORCH);
-        this.addNameKeys("darkness", "dark void", "void", "blackness", "ceiling");
+        this.addNameKeys("darkness|dark void|void|blackness|ceiling");
     }
     // ======================================================================== 
     @Override public String interact(String key) {

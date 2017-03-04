@@ -14,7 +14,7 @@ abstract public class Courtyard_Growth extends Furniture {
         super();
 
         this.addUseKeys("\\w* (?:axe|sword)", SCYTHE, HAND_TORCH, HOE);
-        this.addActKeys("grab", "touch", "hold", "cut", "chop", "remove");
+        this.addActKeys("grab|touch|hold", "cut|chop|prune|remove");
     }
     // ========================================================================   
     @Override public String interact(String key) {              
@@ -23,7 +23,7 @@ abstract public class Courtyard_Growth extends Furniture {
         else if (Player.hasItemResembling("axe|sword|scythe"))
             return this.cutDialog;
         else
-            return "You have nothing to cut it up with.";
+            return "You aren't a gardener!";
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
@@ -32,7 +32,7 @@ abstract public class Courtyard_Growth extends Furniture {
         if (i.equals(HAND_TORCH))
             return this.useDialog;
         else if (i.equals(HOE))
-            return "You're not a gardener!";
+            return "You aren't a gardener!";
         else 
             return this.cutDialog;
     }

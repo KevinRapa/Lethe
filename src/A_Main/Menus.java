@@ -52,7 +52,7 @@ public final class Menus {
                       + "<'e'> Search    <'c'>    Check\n"
                       + "<'i'> Inventory <'k'>    Keys\n"
                       + "<'h'> Get help  <'quit'> Quit\n"
-                      + "<'m'> Show map",
+                      + "<'m'> Map area",
             
             HELP_MAIN = "What would you like help on?\n\n" +
                         "     <'1'> Controls\n"

@@ -52,9 +52,16 @@ public class PlayerInventory extends Inventory {
     // ========================================================================
     public Item get(String itemName) {
         // Shouldn't return null item, inventory is pre-checked for item.
-        for (Item i : this.contents())
-            if (i.toString().matches(".*(?i:"+ itemName + ").*"))
-                return i;
+        if (Patterns.DIGIT.matcher(itemName).matches()) {
+            int i = Integer.parseInt(itemName); // Player used a slot number
+            if (i <= this.size())
+                return this.CONTENTS.get(i - 1);
+        }
+        else {
+            for (Item i : this.contents())
+                if (i.toString().matches(".*(?i:"+ itemName + ").*"))
+                    return i;
+        }
         
         System.err.println("Error: returned null item at PlayerInventory.get(String itemName)");
         return NULL_ITEM;
@@ -71,9 +78,7 @@ public class PlayerInventory extends Inventory {
     {
         private static final Inventory_Sorter SORTER = new Inventory_Sorter();
         // --------------------------------------------------------------------
-        private Inventory_Sorter() {
-            // Singleton class.
-        }
+        private Inventory_Sorter() {/* Singleton class. */}
         // --------------------------------------------------------------------
         public static Inventory_Sorter getSorter() {
             return SORTER;

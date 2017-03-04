@@ -53,8 +53,8 @@ public class Obs1_Statues extends Furniture {
                           + "fine seams in the floor connecting them in various\n"
                           + "ways.";
         this.CHNDLR_REF = (Obs3_Chandelier) chandlr;
-        this.addNameKeys("statue", "statues", "ring(?: of statues)?", "gods?", "goddess(?:es)?");
-        this.addActKeys("move", "turn", "push", "pull", "rotate", "spin");
+        this.addNameKeys("statues?", "ring(?: of statues)?", "gods?", "goddess(?:es)?");
+        this.addActKeys(MOVEPATTERN);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

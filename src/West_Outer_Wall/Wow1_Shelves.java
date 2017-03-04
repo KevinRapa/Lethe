@@ -10,7 +10,7 @@ public class Wow1_Shelves extends SearchableFurniture {
         this.description = "The shelves are stocked with many chemicals and\n"
                          + "tools.";
         this.searchDialog = "You look on the shelves.";
-        this.addNameKeys("shelf", "shelves", "jars", "(?:cleaning )?tools", "brushes", "liquids");
+        this.addNameKeys("shelf|shelves|jars|(?:cleaning )?tools|brushes|liquids");
     }
 /*----------------------------------------------------------------------------*/        
 }

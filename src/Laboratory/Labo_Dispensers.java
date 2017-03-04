@@ -28,7 +28,7 @@ public class Labo_Dispensers extends Furniture {
 
         this.addNameKeys("(?:opaque )?dispensers?", "dispenser stopcock");
         this.addUseKeys(EMPTY_VIAL, TEST_TUBE);
-        this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist", "empty", "titrate");
+        this.addActKeys("use", VALVEPATTERN, "dispense", "drain", "empty", "titrate");
     }
     // ========================================================================  
     @Override public String getSearchDialog() {

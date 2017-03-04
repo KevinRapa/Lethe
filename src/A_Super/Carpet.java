@@ -17,7 +17,7 @@ abstract public class Carpet extends Furniture {
         this.useDialog = "Don't pour that on there! That would most certainly ruin it.";
         this.searchDialog = "There's nothing interesting under the carpet.";
 
-        this.addUseKeys(ACETONE, ASH, SOIL, "sand", ".+ dye", ".+ (?:wine|vinegar)");
+        this.addUseKeys(ACETONE, ASH, SOIL, "sand|.+ dye", ".+ (?:wine|vinegar)");
         this.addActKeys(MOVEPATTERN, "admire", "lift|raise");
     }
     // ========================================================================   

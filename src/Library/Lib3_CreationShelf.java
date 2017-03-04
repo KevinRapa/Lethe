@@ -12,7 +12,7 @@ public class Lib3_CreationShelf extends SearchableFurniture {
         this.actDialog = "You push against the shelf, but it doesn't budge.";
         this.searchDialog = "You peruse its shelves.";
         this.addNameKeys("creation", "(?:south )?(?:book)?shelf");
-        this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");
+        this.addActKeys(MOVEPATTERN);
     }
 /*----------------------------------------------------------------------------*/
 }

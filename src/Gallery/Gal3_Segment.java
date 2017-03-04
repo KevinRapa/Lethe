@@ -12,7 +12,7 @@ public class Gal3_Segment extends Furniture{
                           + "notice a seam between each.";
         this.description = "The faces on each segment are surreal and spooky.\n "
                          + "Seams separate the four of them slightly.";
-        this.addActKeys("turn", "pull", "rotate", "spin", "move");
+        this.addActKeys(VALVEPATTERN, "pull", "move");
         this.addNameKeys("segments?");
     }
 /*----------------------------------------------------------------------------*/

@@ -21,7 +21,7 @@ public class Labo_StopCock extends Furniture {
         this.searchDialog = this.actDialog;
 
         this.addNameKeys("stopcocks?");
-        this.addActKeys("use", "dispense", "open", "drain", "rotate", "turn", "twist");
+        this.addActKeys("use", VALVEPATTERN, "dispense", "drain");
     }
     // ========================================================================   
 }

@@ -47,8 +47,8 @@ public class Room implements Serializable {
         this.ID = ID;
         this.STD_RM_OUT = "You are " + name + ".";
         this.isLocked = false;
-        this.adjacent = new ArrayList<>();
-        this.furnishings = new ArrayList<>();
+        this.adjacent = new ArrayList<>(5);
+        this.furnishings = new ArrayList<>(15);
         this.COORDS = RoomGraph.getCoords(this.ID); 
         this.adjacent = RoomGraph.getAdj(this.ID);
 }

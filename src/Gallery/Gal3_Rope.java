@@ -22,7 +22,7 @@ public class Gal3_Rope extends Furniture {
             this.searchDialog = "It's just an ordinary rope.";
             
             this.addActKeys("cut", "pull", "untie");
-            this.addUseKeys("katana", "silver sword", "rusty sword", "broken sword", "war axe", "battle axe");
+            this.addUseKeys("katana", "(?:silver|rusty|broken) sword", "(?:war|battle) axe");
             this.addNameKeys("rope");
     }
 /*----------------------------------------------------------------------------*/    

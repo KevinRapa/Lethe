@@ -185,6 +185,7 @@ public class AudioPlayer {
         new File(WD, FXPATH + "atticNoise.wav"),    // 52
         new File(WD, FXPATH + "piano.wav"),         // 53
         new File(WD, FXPATH + "harp.wav"),          // 54
+        new File(WD, FXPATH + "doorKnock.wav")      // 55
     };
 //******************************************************************************    
 // </editor-fold>

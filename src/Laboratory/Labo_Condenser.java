@@ -27,8 +27,8 @@ public class Labo_Condenser extends Furniture {
                           + "Though they're alien to you, you note nothing out of the ordinary.";
         this.useDialog = "You place the beaker on top of the drain, under the glass tube.";
 
-        this.addNameKeys("condenser", "glass tube", "stopper", "switch", "drain");
-        this.addUseKeys(BEAKER, TEST_TUBE, FLORENCE_FLASK, EMPTY_VIAL, "copper pot", "copper pan");
+        this.addNameKeys("condenser", "glass tube|stopper|switch|drain");
+        this.addUseKeys(BEAKER, TEST_TUBE, FLORENCE_FLASK, EMPTY_VIAL, "copper (?:pot|pan)");
         this.addActKeys("flick", "switch", "turn", "toggle", "rotate");
     }
     // ======================================================================== 

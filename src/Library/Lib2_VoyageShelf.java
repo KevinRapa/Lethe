@@ -24,7 +24,7 @@ public class Lib2_VoyageShelf extends SearchableFurniture {
                          + "consistent arched scratches on the floor.";
         this.searchDialog = "You peruse its shelves.";
         this.addNameKeys("voyage", "(?:west|left) (?:book)?shelf");
-        this.addActKeys("push", "move", "rotate", "pull", "slide", "spin");
+        this.addActKeys(MOVEPATTERN);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {              

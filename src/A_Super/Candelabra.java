@@ -1,5 +1,6 @@
 package A_Super;
 
+import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Inventory;
 import static A_Main.NameConstants.CANDLE;
@@ -60,8 +61,10 @@ abstract public class Candelabra extends SearchableFurniture
     // ========================================================================   
     @Override public String interact(String key) {              
         if (key.equals("touch")) {
-            if (this.inv.contains(CANDLE_REF))
+            if (this.inv.contains(CANDLE_REF)) {
+                AudioPlayer.playEffect(39, -10);
                 return this.actDialog;
+            }
             else
                 return "You touch it. The candelabra lacks any candles, so you avoid burning.";
         }
