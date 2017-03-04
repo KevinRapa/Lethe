@@ -129,7 +129,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
      */
     private void playCards() {
         // Maps outcomes to dialogs.
-        HashMap<Integer, String> results = new HashMap();
+        HashMap<Integer, String> results = new HashMap<>();
         results.put(122, "How lucky. You got a blackjack already! ... Want to play again?");
         results.put(112, "Hah! I have blackjack already. I win... Want to play again?");
         results.put(132, "We both got blackjack... So a tie, how boring... Want to play again?");

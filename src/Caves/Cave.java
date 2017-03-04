@@ -3,8 +3,6 @@ package Caves;
 import A_Main.Player; import A_Super.Floor; 
 import A_Super.Wall;  import A_Super.Room;
 
-import static A_Main.AudioPlayer.S;
-import static A_Main.AudioPlayer.WD;
 import static A_Main.NameConstants.HAND_TORCH;
 import A_Super.Ceiling;
 import A_Super.Furniture;
@@ -32,10 +30,14 @@ public class Cave extends Room {
             new Wall("The wall is damp, plain rock."),
                                      CV_CEILING = 
             new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}};
-    
+
     protected final int DISTANCE; // Distance this room is from MS65
+    
     protected static final Random GENERATOR = new Random();
-    protected static final File DISTORTION = new File(WD, "ambience" + S + "caveDistortion.wav");
+    
+    protected static final File DISTORTION = new File(System.getProperty("user.dir"), 
+            "ambience" + System.getProperty("file.separator") + "caveDistortion.wav");
+    
     protected static Clip clip;
 // ============================================================================    
     public Cave(String ID) {

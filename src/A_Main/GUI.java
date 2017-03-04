@@ -358,6 +358,12 @@ public class GUI extends JPanel {
     public static void clearDialog() {
         DIAL.setText("");
     }
+/*----------------------------------------------------------------------------*/
+    public static void giveFocus() {
+        // Only used by title frame when the game starts.
+        INPUT.requestFocus();
+        INPUT.setText(" ");
+    }
 // *****************************************************************************       
 // </editor-fold> CLEAR METHODS AND PARSERS   
 // *****************************************************************************           

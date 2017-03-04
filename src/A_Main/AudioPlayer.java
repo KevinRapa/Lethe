@@ -73,7 +73,8 @@ public class AudioPlayer {
         titleTrack =        new File(WD, TRKPATH + "titleTrack.wav"),
         tbalCustom =        new File(WD, TRKPATH + "tbalCustom.wav");
     
-    private static final HashMap<String, File> TRACKS = new HashMap() {
+    private static final HashMap<String, File> TRACKS = 
+            new HashMap<String, File>() {
         // ====================================================================
         {
         putAllTracks(nightAmbience, COU1, COU2, COU3, COU4, COU5, COU6, COU7);
@@ -119,6 +120,7 @@ public class AudioPlayer {
         }
         // ====================================================================
     };
+    
 //******************************************************************************    
 // </editor-fold>
 //******************************************************************************

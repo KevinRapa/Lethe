@@ -161,7 +161,7 @@ public final class Player {
      * @param coords Coordinates the player begins the game at.
      */
     public static void setNewAttributes(int ... coords) {
-        Player.mapRef = Map.getMap();
+        Player.mapRef = Map.createMap();
         Player.inv = new PlayerInventory();
         Player.keys = new Inventory();
         Player.visited = new ArrayList<>();
@@ -176,7 +176,7 @@ public final class Player {
      * @return Integer representing player choice to save, erase data, or just quit.
      */
     public static int startDialog() {
-        AudioPlayer.playTrack(Player.getPosId());
+        AudioPlayer.playTrack(Id.ENDG);
         
         GUI.menOut("\n\nPress enter...");
         GUI.out("It's 10:00pm, the night is clear and warm.\n" +
@@ -202,6 +202,8 @@ public final class Player {
      * @return Integer representing player choice to save, erase data, or just quit.
      */
     public static int mainPrompt() {
+        AudioPlayer.playTrack(Player.getPosId());
+        
         cmd.put('h', () -> Help.helpSub());
         cmd.put('e', () -> searchSub());
         cmd.put('c', () -> examineSub());
@@ -307,7 +309,7 @@ public final class Player {
             Player.pos = dest.getCoords();
             String destId = dest.getID();
             Map.updateMap();
-            
+
             if (dir == Direction.UP || dir == Direction.DOWN)
                 ; // Do nothing. Let the stairs play the noise.
             

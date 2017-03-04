@@ -22,11 +22,37 @@ package A_Main;
  * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
  */
 
-import java.awt.Dimension; import java.awt.Toolkit;     import java.io.*; 
-import javax.swing.JFrame;
+import java.awt.Dimension;          import java.awt.Toolkit;
+import java.awt.event.KeyEvent;     import java.awt.event.KeyListener; 
+import java.io.*;                   import javax.swing.ImageIcon; 
+import javax.swing.JFrame;          import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Main {
-    public static final JFrame GAME_FRAME = new JFrame("Lethe");
+    public static final JFrame GAME_FRAME = new JFrame("Lethe"),
+                               TITLE_FRAME = new JFrame("Lethe");
+    
+    private static final JLabel TITLE_LABEL = new JLabel();
+    
+    private static final JPanel TITLE_PANEL = new JPanel();
+
+    static {
+        TITLE_LABEL.setIcon(new ImageIcon("Title.jpg"));
+
+        TITLE_LABEL.addKeyListener(new KeyListener() {
+            @Override public void keyTyped(KeyEvent e) {}
+            @Override public void keyReleased(KeyEvent e) {}
+            @Override public void keyPressed(KeyEvent e) {
+                GAME_FRAME.setVisible(true);
+                TITLE_FRAME.setVisible(false);
+                TITLE_FRAME.dispose();
+                GUI.giveFocus();
+                AudioPlayer.playTrack(Player.getPosId());
+            }  
+        });
+        
+        TITLE_PANEL.add(TITLE_LABEL);
+    }
     
     private static final String 
             WD = System.getProperty("user.dir"),
@@ -53,7 +79,15 @@ public class Main {
         GAME_FRAME.getContentPane().add(panel);
         GAME_FRAME.setResizable(false);
         GAME_FRAME.pack();
-        GAME_FRAME.setVisible(true);
+
+        TITLE_FRAME.getContentPane().add(TITLE_PANEL);
+        TITLE_FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        TITLE_FRAME.setLocation(width > 1000 ? (width - 1000)/2 : 0, 100);
+        TITLE_FRAME.pack();
+        TITLE_FRAME.setVisible(true);
+        
+        TITLE_LABEL.setFocusable(true);
+        
         //**********************************************************************
         // </editor-fold>
         //**********************************************************************
@@ -97,6 +131,8 @@ public class Main {
         //**********************************************************************
         AudioPlayer.stopTrack();
         GAME_FRAME.dispose();
+        Map.disposeMap();
+        
         switch(exitChoice) {
             case 1:
                 // Saves the game.

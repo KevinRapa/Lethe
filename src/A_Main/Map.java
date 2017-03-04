@@ -51,11 +51,6 @@ public class Map {
         MAP_PANEL.add(MAP_LABEL);
     }
     
-    private final static Room[][][] MAP = createMap();
-    //==========================================================================
-    public static Room[][][] getMap() {
-        return MAP;
-    }
     //==========================================================================
     /**
      * Displays a map for when the player enters 'm'.
@@ -69,9 +64,14 @@ public class Map {
         }
     }
     //==========================================================================
+    public static void disposeMap() {
+        if (MAP_FRAME != null)
+            MAP_FRAME.dispose();
+    }
+    //==========================================================================
     public static void updateMap() {
         ImageIcon icon;
-        
+
         if (Player.floor() == 6)
             if (Player.getPosId().equals(Id.MS65) 
                     || Player.getPosId().equals(Id.MS66))
@@ -89,7 +89,7 @@ public class Map {
         MAP_FRAME.pack();
     }
     //==========================================================================
-    private static Room[][][] createMap() {
+    public static Room[][][] createMap() {
 
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE ROOMS, FURNITURE, ITEMS">

@@ -45,7 +45,7 @@ public class DungeonMonster {
     } 
     // ==========================================
     private static String position = Id.SEW0;
-    private static final LinkedList<String> ROOM_QUEUE = new LinkedList() {{
+    private static final LinkedList<String> ROOM_QUEUE = new LinkedList<String>() {{
         String[] ROOM_LIST = {Id.SEW0, Id.SEW1, Id.SEW2, Id.SEW3, Id.SEW4, Id.SEW5,
                               Id.CIS1, Id.CIS2, Id.CIS3, Id.CIS4, Id.CIS3, Id.CIS2,
                               Id.CIS1, Id.SEW5, Id.SEW4, Id.SEW3, Id.SEW2, Id.SEW1};

@@ -221,8 +221,8 @@ public class RoomGraph {
      * @return A list of rooms adjacent to the room. 
      */ 
     public static ArrayList<String> getAdj(String ID) { 
-        ArrayList result = new ArrayList<>(); 
-        
+        ArrayList<String> result = new ArrayList<>(); 
+
         result.addAll(Arrays.asList(ADJACENTS.get(ID))); 
 
         return result; 
