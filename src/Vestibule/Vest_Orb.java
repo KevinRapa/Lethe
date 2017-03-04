@@ -12,9 +12,10 @@ public class Vest_Orb extends NonPlayerCharacter {
         this.description = "It's a dusty glass orb on the desk in the corner.\n"
                          + "There's some sort of light coming from within. Did\n"
                          + "this thing speak to you? Suddenly, a voice speaks-\n"
-                         + "\"Is staring at things a hobby of yours?\"";
+                         + "\"Is staring at things a hobby of yours? Aren't you going to say anything to me?\"";
         this.actDialog = null;
-        this.searchDialog = "You can't seem to find anything out of the ordinary.";
+        this.searchDialog = "You can't seem to find anything out of the ordinary. Suddenly, a voice speaks-\n"
+                         + "\"Is staring at things a hobby of yours? Aren't you going to say anything to me?\"";
 
         this.addNameKeys("(?:dusty )?(?:glass )?orb");
     }

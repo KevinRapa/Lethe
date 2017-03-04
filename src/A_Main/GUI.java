@@ -62,10 +62,13 @@ public class GUI extends JPanel {
     private final static LinkedList<String> UNDO = new LinkedList<>();
     private final static Input_Holder HOLDER = new Input_Holder();
     
-    private final static LinkedList<Click> KEYSOUND = new LinkedList() {{
-        add(Click.NONE); add(Click.SOFT); add(Click.CLICK); add(Click.VINTAGE); 
-    }};
+    private final static LinkedList<Click> KEYSOUND = new LinkedList<>();
 
+    static {
+        KEYSOUND.add(Click.NONE); KEYSOUND.add(Click.SOFT); 
+        KEYSOUND.add(Click.CLICK); KEYSOUND.add(Click.VINTAGE); 
+    }
+    
     private static final ArrayList<String> FURN_PARSER = new ArrayList<>();
     // </editor-fold> ================================================
     

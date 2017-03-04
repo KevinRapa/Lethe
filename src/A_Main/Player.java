@@ -88,6 +88,10 @@ public final class Player {
         return Player.shoes;
     }
     /*------------------------------------------------------------------------*/
+    public static int floor() {
+        return pos[0];
+    }
+    /*------------------------------------------------------------------------*/
     /**
      * Checks that you have a specific item, ignores case.
      * @param item The item in question.
@@ -108,6 +112,7 @@ public final class Player {
     public static void setOccupies(String dest) {
         Player.lastVisited = getPosId();
         Player.pos = Player.getRoomObj(dest).getCoords();
+        Map.updateMap();
         
         describeRoom();
         GUI.roomOut(Player.getPos().triggeredEvent());
@@ -206,6 +211,7 @@ public final class Player {
         cmd.put('s', () -> move(Direction.SOUTH));
         cmd.put('a', () -> move(Direction.WEST));
         cmd.put('d', () -> move(Direction.EAST));
+        cmd.put('m', () -> Map.displayMap());
         String ans;
         
         AudioPlayer.playTrack(getPosId());
@@ -300,6 +306,7 @@ public final class Player {
             lastVisited = getPosId();
             Player.pos = dest.getCoords();
             String destId = dest.getID();
+            Map.updateMap();
             
             if (dir == Direction.UP || dir == Direction.DOWN)
                 ; // Do nothing. Let the stairs play the noise.

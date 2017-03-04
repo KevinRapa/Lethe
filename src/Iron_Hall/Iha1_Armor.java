@@ -1,8 +1,10 @@
 package Iron_Hall;
 
+import static A_Main.NameConstants.POLEARM;
 import A_Super.Furniture;
+import A_Super.Gettable;
 
-public class Iha1_Armor extends Furniture{
+public class Iha1_Armor extends Furniture implements Gettable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Iha1_Armor() {
         super();
@@ -12,8 +14,16 @@ public class Iha1_Armor extends Furniture{
         this.actDialog = "You will probably get hurt trying to do that.";
         this.searchDialog = "You find a long polearm, but the gauntlet is\n"
                           + "gripping it too tightly to be pryed open.";
+        this.addActKeys(GETPATTERN);
         this.addActKeys("equip", "wear");
-        this.addNameKeys("(suit of |plate )?armor", "armor suit", "gauntlet");
+        this.addNameKeys("(suit of |plate )?armor", POLEARM, "armor suit", "gauntlet", "hand");
     }    
+/*----------------------------------------------------------------------------*/
+    @Override public String interact(String key) {
+        if (key.equals("equip") || key.equals("wear"))
+            return this.actDialog;
+        else
+            return getIt();
+    }
 /*----------------------------------------------------------------------------*/
 }

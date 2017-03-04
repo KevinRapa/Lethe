@@ -23,7 +23,12 @@ import Torture_Chamber.*;  import Crypt.*;              import Ancient_Archives.
 import Keeper_Chamber.*;   import Vault.*;              import Tower.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
 import Soul_Chamber.*;     
+import java.awt.Color;
 import java.util.Random;
+
+import javax.swing.ImageIcon;   import javax.swing.JFrame;
+import javax.swing.JLabel;      import javax.swing.JPanel;
+
 /**
  * Creates a 3 dimensional array of rooms representing the game map.
  * This class is used only when a new game is started.
@@ -31,10 +36,57 @@ import java.util.Random;
  * @author Kevin Rapa
  */
 public class Map {
+    private final static String PATH = "maps" + System.getProperty("file.separator");
+    
+    private static final JLabel MAP_LABEL = new JLabel();
+    private static final JPanel MAP_PANEL = new JPanel();
+    private static final JFrame MAP_FRAME = new JFrame("Map");
+    
+    static {
+        MAP_FRAME.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        MAP_FRAME.getContentPane().add(MAP_PANEL);
+        MAP_FRAME.setResizable(false);
+        
+        MAP_PANEL.setBackground(Color.BLACK);
+        MAP_PANEL.add(MAP_LABEL);
+    }
+    
     private final static Room[][][] MAP = createMap();
     //==========================================================================
     public static Room[][][] getMap() {
         return MAP;
+    }
+    //==========================================================================
+    /**
+     * Displays a map for when the player enters 'm'.
+     * Displays current floor.
+     */
+    public static void displayMap() {
+        updateMap();
+
+        if (! MAP_FRAME.isVisible()) {
+            MAP_FRAME.setVisible(true);
+        }
+    }
+    //==========================================================================
+    public static void updateMap() {
+        ImageIcon icon;
+        
+        if (Player.floor() == 6)
+            if (Player.getPosId().equals(Id.MS65) 
+                    || Player.getPosId().equals(Id.MS66))
+                icon = new ImageIcon(PATH + "MS.jpg");
+            else    
+                icon = new ImageIcon(PATH + "CAVE.jpg");
+        else {
+            icon = new ImageIcon(PATH + Player.getPosId() + ".jpg");
+            
+            if (icon.getImage().getWidth(MAP_LABEL) == -1)
+                icon = new ImageIcon(PATH + "UNKN.jpg");
+        }
+
+        MAP_LABEL.setIcon(icon);
+        MAP_FRAME.pack();
     }
     //==========================================================================
     private static Room[][][] createMap() {
@@ -307,7 +359,6 @@ public class Map {
         //-----------------------------FURNITURE--------------------------------
         Furniture iha1Lvr = new Iha1_Lever();
         Furniture iha1Armr = new Iha1_Armor();
-        Furniture iha1Hnd = new Iha1_Hand();
         Furniture iha2Armr = new Iha2_Armor(iha2plArm);     
         Furniture ihaF = new Floor("A sandstone tiled floor.");
         Furniture ihaWndw = new Iha_Window();
@@ -727,14 +778,14 @@ public class Map {
                                   "You wear the slippers. You could wear these all day!");
         Item shs4 = new Shoes("work boots", "A rugged pair of boots.",
                                   "You put on the boots. You feel like you're at work.");
-        Item fin = new Lib_FinnishBook("book, 'The Essential Finnish'");
+        Item fin = new Lib_FinnishBook("language, 'The Essential Finnish'");
         Item bbl = new Lib_GenesisBook("biblical tome, 'The Book of Genesis'");
         Item ody = new Lib_OdysseyBook("epic tome, 'The Odyssey'");
         Item ili = new Lib_IlliadBook("greek tome, 'The Iliad'");
         Item inf = new Lib_DantesInfernoBook("infernal tome, 'Dante's Inferno'");
         Item par = new Lib_ParadiseLostBook("divine tome, 'Paradise Lost'");
         Item bkGlss = new Lib_GlassBook("guide, 'The Master Glasser'");
-        Item bkNts = new Lib_NotesBook("book, 'Note To Self'");
+        Item bkNts = new Lib_NotesBook("self help, 'Note To Self'");
         Item bkGlsswr = new Labo_GlasswareBook("manual, 'You Aren't Chemist'");
         //-----------------------------FURNITURE--------------------------------
         Furniture libLF = new Floor("The floor is a rough, dark blue stone.");
@@ -1737,7 +1788,7 @@ public class Map {
 
         rotu.addFurniture(genDoor, rotuFntn, rotuW, rotuF, rotuPlnts, rotuHl, rotuStat, rotuScnc, rotuFrms, rotuSky, rotuRock, clng);
         look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, eastDoor, iha1Lvr);
-        iha1.addFurniture(northDoor, wWW, ihaF, iha1Armr, iha1Hnd, iha1Bwl, ihaWndw, iha1Lvr, clng);
+        iha1.addFurniture(northDoor, wWW, ihaF, iha1Armr, iha1Bwl, ihaWndw, iha1Lvr, clng);
         iha2.addFurniture(southDoor, wWW, ihaF, iha2Armr, iha2Bwl, ihaWndw, clng);
         wow1.addFurniture(genDoor, wWW, westDoor, wow1NDr, wow1Crt, wow1F, wowWndw, wowHrth, wow1Shlvs, clng);
         wow2.addFurniture(genDoor, wWW, wow2Armr, wow2Blcny, wow2F, wow2Dr, northDoor, wow2Hole, wowWndw, wowHrth, wow2Strcs, clng);

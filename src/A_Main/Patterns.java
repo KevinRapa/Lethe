@@ -14,7 +14,7 @@ public final class Patterns {
         WORD = Pattern.compile("[a-z]+"),
             
         // Patterns used by the player.
-        KEYCOMMAND = Pattern.compile("[heckiwsad]"),
+        KEYCOMMAND = Pattern.compile("[heckiwsadm]"),
         PHRASE = Pattern.compile("[a-z]+\\s[a-z0-9 ,'.-]+"),
         DIRECTION = Pattern.compile("(?:(move|walk|go|run|) ?)(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?)?)"),
         GREETING = Pattern.compile("hi|hello|hey|sup"),
@@ -61,7 +61,7 @@ public final class Patterns {
         ITEM_COMMAND = Pattern.compile("(?:" + USE_PATTERN + "|" + INSPECT_PATTERN + ") [a-z0-9: ,'-]+"),
         SUICIDE = Pattern.compile("commit suicide|kill (?:your)?self"),
         SHOUT = Pattern.compile("(?:say|speak|yell|shout) .+"),
-        DESTROY = Pattern.compile("(?:destroy|obliterate|wreak havoc) .+"),
+        DESTROY = Pattern.compile("(?:destroy|obliterate|wreak havoc|throw) .+"),
         STORE_COMMAND = Pattern.compile("(?:put|store) [a-z0-9: ,'-]+"),
         STORE_THEN_SPACE = Pattern.compile("(?:put|store) "),
         PREPOSITION = Pattern.compile("up|down|(?:in|on)(?:to)?|out|of|through|against|around|to|at|under(?:neath)?"),

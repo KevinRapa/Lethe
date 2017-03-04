@@ -21,25 +21,26 @@ abstract public class Gal_LightMachine extends SearchableFurniture {
     protected boolean isOn;
     protected char beam;
     protected String mode, turnOffDialog;    
-    protected final HashMap<String, String> COLOR_MAP = new HashMap() {{
-           //drby {dark, red, blue, yellow}
-        put("0000", "c A clear scattered light");                
-        put("0001", "y A yellow beam");
-        put("0010", "b A blue beam");
-        put("0011", "g A green beam");            
-        put("0100", "r A red beam");
-        put("0101", "o An orange beam");
-        put("0110", "p A purple beam");
-        put("0111", "w A white beam");
-        put("1000", "W Barely any light");
-        put("1001", "Y A dark yellow beam");
-        put("1010", "B A dark blue beam");
-        put("1011", "G A dark green beam");
-        put("1100", "R A dark red beam");
-        put("1101", "O A dark orange beam");
-        put("1110", "P A dark purple beam");
-        put("1111", "D A dark beam");
-    }};
+    protected static final HashMap<String, String> COLOR_MAP = new HashMap<>();
+
+    static {
+        COLOR_MAP.put("0000", "c A clear scattered light");                
+        COLOR_MAP.put("0001", "y A yellow beam");
+        COLOR_MAP.put("0010", "b A blue beam");
+        COLOR_MAP.put("0011", "g A green beam");            
+        COLOR_MAP.put("0100", "r A red beam");
+        COLOR_MAP.put("0101", "o An orange beam");
+        COLOR_MAP.put("0110", "p A purple beam");
+        COLOR_MAP.put("0111", "w A white beam");
+        COLOR_MAP.put("1000", "W Barely any light");
+        COLOR_MAP.put("1001", "Y A dark yellow beam");
+        COLOR_MAP.put("1010", "B A dark blue beam");
+        COLOR_MAP.put("1011", "G A dark green beam");
+        COLOR_MAP.put("1100", "R A dark red beam");
+        COLOR_MAP.put("1101", "O A dark orange beam");
+        COLOR_MAP.put("1110", "P A dark purple beam");
+        COLOR_MAP.put("1111", "D A dark beam");
+    }
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal_LightMachine() {
         super();

@@ -1,5 +1,6 @@
 package Vault;
 
+import static A_Main.NameConstants.GLOWING_CHALICE;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**
@@ -18,7 +19,7 @@ public class Vau1_Table extends SearchableFurniture {
     }
     // ======================================================================== 
     @Override public String getDescription() {
-        return this.containsItem("glowing chalice") ? 
+        return this.containsItem(GLOWING_CHALICE) ? 
                 this.description.concat(", and a glowing chalice rests on its surface.") :
                 this.description.concat(".");
     }

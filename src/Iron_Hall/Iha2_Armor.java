@@ -1,26 +1,31 @@
 package Iron_Hall;
 
-import A_Main.Id;
+import A_Main.GUI;
 import A_Main.Inventory;
 import static A_Main.NameConstants.POLEARM;
 import A_Main.Player;
+import A_Super.Gettable;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 
-public class Iha2_Armor extends SearchableFurniture {
+public class Iha2_Armor extends SearchableFurniture implements Gettable {
+    private final Item PLRM_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Iha2_Armor(Item... items) {
+    public Iha2_Armor(Item plrm) {
         super();
+
+        this.PLRM_REF = plrm;
         this.searchable = false;
-        this.inv = new Armor_Inventory(items);
+        this.inv = new Armor_Inventory(plrm);
         this.description = "It's a suit of armor holding a polearm. Its gauntlet\n"
                          + "is wrapped around it, but awkwardly as if the gauntlet\n"
                          + "had been pryed opened and then closed repeatedly.";
         this.searchDialog = "The suit of armor is holding a polearm, but its\n"
                           + "gauntlet is wrapped around it awkwardly.";
         this.actDialog = "You will probably get hurt trying to do that.";
+        this.addActKeys(GETPATTERN);
         this.addActKeys("equip", "wear", "pry", "open");
-        this.addNameKeys("(suit of |plate )?armor", "armor suit", "gauntlet", "hand");
+        this.addNameKeys("(suit of |plate )?armor", POLEARM, "armor suit", "gauntlet", "hand");
     }    
 //*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
@@ -34,15 +39,31 @@ public class Iha2_Armor extends SearchableFurniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (key.matches("wear|equip"))
+        if (key.equals("equip") || key.equals("wear"))
             return this.actDialog;
         
-        else if (! searchable) {
-            this.searchable = true;
-            return "You manage to pry the gauntlet open.";
+        else if (key.equals("pry") || key.equals("open")) {
+            if (! this.searchable) {
+                this.searchable = true;
+                return "You manage to pry the gauntlet open.";
+            }
+            else
+                return "The gauntlet is already open.";
         }
         else
-            return "The gauntlet is already open.";
+            return getIt();
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String getIt() {
+        if (! this.containsItem(POLEARM))
+            return "The suit of armor isn't holding a polearm anymore.";
+        
+        else if (this.searchable) {
+            this.inv.give(PLRM_REF, Player.getInv());
+            return "You slide the weapon from the suit's gauntlet.";
+        }
+        else
+            return this.searchDialog;
     }
 /*----------------------------------------------------------------------------*/
 /******************************************************************************/
@@ -53,19 +74,20 @@ public class Iha2_Armor extends SearchableFurniture {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {
-            this.CONTENTS.add(item);
+            if (this.size() == 0 && item.toString().equals(POLEARM)) {
+                this.CONTENTS.add(item);
+                ((Iha2)Player.getPos()).addPolearm();
+                return true; // Only polearms may be added to this.
+            }
             
-            if (item.toString().equals(POLEARM))
-                ((Iha2)Player.getRoomObj(Id.IHA2)).addPolearm();
-                
-            return true; // Some inventories have restrictions.
+            GUI.out("The " + item + " doesn't fit in.");
+            return false;
         }
         /*--------------------------------------------------------------------*/
-        @Override public void remove(Item removeThis) {      
+        @Override public void remove(Item removeThis) {  
+            // Item must be a polearm.
             this.CONTENTS.remove(removeThis);
-            
-            if (removeThis.toString().equals(POLEARM))
-                ((Iha2)Player.getRoomObj(Id.IHA2)).removePolearm();
+            ((Iha2)Player.getPos()).removePolearm();
         }
     }
 /*----------------------------------------------------------------------------*/

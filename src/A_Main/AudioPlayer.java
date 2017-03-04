@@ -19,11 +19,12 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class AudioPlayer {
-    public final static String WD = System.getProperty("user.dir"),
-                                S = System.getProperty("file.separator"),
-                                TRKPATH = "ambience" + S,
-                                FXPATH = "effects" + S,
-                                EXT = ".wav";
+    public final static String 
+            WD = System.getProperty("user.dir"),
+            S = System.getProperty("file.separator"),
+            TRKPATH = "ambience" + S,
+            FXPATH = "effects" + S,
+            EXT = ".wav";
     
     private static String trackName;
     private static boolean muted = false;

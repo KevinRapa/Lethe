@@ -2,6 +2,7 @@ package A_Super;
 
 import static A_Main.Patterns.*;
 import A_Main.Inventory;
+import static A_Main.NameConstants.READABLE;
 import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.regex.Pattern;
@@ -69,8 +70,12 @@ abstract public class Furniture implements Serializable {
      */
     public boolean containsItem(String name) {
         for (Item i : this.inv) {
-            String j = BOOK_TITLE.matcher(i.toString()).replaceAll(NOTHING);
-            if (j.matches(name)) {
+            String j = i.toString();
+            
+            if (i.getType().equals(READABLE))
+                j = BOOK_TITLE.matcher(i.toString()).replaceAll(NOTHING);
+            
+            if (j.equals(name)) {
                 return true; }
         }
         return false;

@@ -56,12 +56,13 @@ public final class NameConstants {
         SOIL = "soil",                          FIXED_LADDER = "fixed ladder",
         HOLY_WATER = "holy water",              COPPER_POT = "copper pot",
         COPPER_PAN = "copper pan",              CANDLE = "candle",
-        GLOWING_SCEPTER = "glowing scepter",    FACTUM = "the Factum",
+        GLOWING_SCEPTER = "glowing scepter",    FACTUM = "the factum",
         FERTILIZER = "fertilizer",              SEED = "seed",
         GRASS = "grass",                        ROCK = "rock",
         ACETONE = "acetone",                    MOP = "mop",
         ASH = "ash",                            RED_BALL = "red ball",
         CUE_BALL = "cue ball",                  STONE_BLOCK = "stone block",
-        HOE = "hoe",                            WHEEL_SPOKE = "wheel spoke";
+        HOE = "hoe",                            WHEEL_SPOKE = "wheel spoke",
+        GLOWING_CHALICE = "glowing chalice";
     // ========================================================================
 }

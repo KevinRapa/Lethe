@@ -47,17 +47,17 @@ public class Torch extends SearchableFurniture {
     @Override public String useEvent(Item item) {
         if (this.containsItem(HAND_TORCH))
             return "The holder already bears a torch you bumbling oaf.";
-        else
+        else {
             Player.getInv().give(item, this.inv);
-        
-        return this.useDialog;
+            return this.useDialog;
+        }
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
         if (! this.containsItem(HAND_TORCH))
             return "The mounted steel holder is empty.";
-            
-        return this.description;
+        else    
+            return this.description;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {

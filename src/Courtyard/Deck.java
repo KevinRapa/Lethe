@@ -7,7 +7,7 @@ import java.util.Random;
  * @author Kevin Rapa
  */
 public class Deck {
-    private final Stack<Card> DECK = new Stack(); // The stack of cards.
+    private final Stack<Card> DECK = new Stack<>(); // The stack of cards.
     // ========================================================================
     /**
      * Constructs a deck of cards.

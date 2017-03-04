@@ -1,5 +1,6 @@
 package Vault;
 
+import static A_Main.NameConstants.GLOWING_CHALICE;
 import A_Super.Room;
 import A_Super.Direction;
 import A_Super.Furniture;
@@ -29,7 +30,7 @@ public class Vau1 extends Room {
     }
 // ============================================================================
     @Override public String getDescription() {
-        return this.Vau1_Tbl.containsItem("glowing chalice") ?
+        return this.Vau1_Tbl.containsItem(GLOWING_CHALICE) ?
                 this.description.concat(" Standing on the table is a glowing object.") :
                 this.description;
     }

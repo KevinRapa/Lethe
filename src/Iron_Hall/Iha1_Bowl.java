@@ -29,7 +29,7 @@ public class Iha1_Bowl extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         if (! this.jabbed) {
-            this.inv.give(WOWKEY_REF, FLOOR_REF.getInv()); 
+            FLOOR_REF.getInv().add(WOWKEY_REF); 
             AudioPlayer.playEffect(27);
             this.jabbed = true;
             return this.useDialog;

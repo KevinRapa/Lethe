@@ -10,13 +10,15 @@ import A_Super.Item;
 
 public class Card extends Item {
     private final int VALUE; // The card's face value;
-    private final static HashMap<String, Integer> MAP = new HashMap() {{
-        // Static mapping for card values.
-        put("Ac", 1);   put("Tw", 2);   put("Th", 3);  put("Fo", 4);  
-        put("Fi", 5);   put("Si", 6);   put("Se", 7);  put("Ei", 8);  
-        put("Ni", 9);   put("Te", 10);  put("Ja", 10); put("Qu", 10);
-        put("Ki", 10); 
-    }};
+    private final static HashMap<String, Integer> MAP = new HashMap<>();
+    
+    static {
+        MAP.put("Ac", 1);   MAP.put("Tw", 2);   MAP.put("Th", 3);  
+        MAP.put("Fo", 4);   MAP.put("Fi", 5);   MAP.put("Si", 6);   
+        MAP.put("Se", 7);   MAP.put("Ei", 8);   MAP.put("Ni", 9);   
+        MAP.put("Te", 10);  MAP.put("Ja", 10);  MAP.put("Qu", 10);
+        MAP.put("Ki", 10); 
+    }
     //=========================================================================
     /**
      * Constructs a card.

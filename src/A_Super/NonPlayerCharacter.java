@@ -15,9 +15,10 @@ import static A_Main.NameConstants.WEAPON;
  */
 abstract public class NonPlayerCharacter extends Furniture {
     protected boolean firstTime; // If the player hasn't talked to this before.
-    protected static final String ATTACK_PATTERN = "kill|hit|punch|murder|attack",
-                                  ATTACK_DIALOG = "You really aren't a natural killer...",
-                                  TALK_PATTERN = "speak|talk|converse|chat";
+    protected static final String 
+            ATTACK_PATTERN = "kill|hit|punch|murder|attack",
+            ATTACK_DIALOG = "You really aren't a natural killer...",
+            TALK_PATTERN = "speak|talk|converse|chat";
     // ========================================================================
     public NonPlayerCharacter () {
         super();
