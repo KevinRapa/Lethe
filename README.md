@@ -7,7 +7,7 @@ that began before I could even code in Java, and I have been working on
 it as my experience with Java has developed. 
 
 To play, just execute the .jar. <b>Make sure Title.jpg, and the ambience, maps and effects folders
-are in the same directory as the .jar!</b>.
+are in the same directory as the .jar!</b>
 
 The game employs a save feature using serialization, a Swing GUI, sound,
 heavy regex usage, and a bit of multithreading, particularly in the Laboratory
