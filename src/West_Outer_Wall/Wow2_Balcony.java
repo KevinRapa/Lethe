@@ -23,7 +23,7 @@ public class Wow2_Balcony extends Balcony {
         this.useDialog = "You lean the ladder against the balcony. It's just\n"
                        + "tall enough.";
         
-        this.addNameKeys("(?:small )?(?:crowded )?balcony");
+        this.addNameKeys("(?:small )?(?:crowded )?balcony", "wall");
         this.addUseKeys(FIXED_LADDER);
     }
 /*----------------------------------------------------------------------------*/
