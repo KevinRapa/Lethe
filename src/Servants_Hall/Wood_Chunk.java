@@ -13,7 +13,7 @@ public class Wood_Chunk extends Item {
         super(name, forms, thresh);
         this.description = "It's a fat hunk of oak, you'd know anywhere.\n"
                          + "A hole is bored through each end, and you can\n"
-                         + "see small fibers inside each."
+                         + "see small fibers inside each.\nhang yourse"
                          + "There's an inscription on the side. It says: \n"
                          + "-Bashmaster Batterworks-\n"
                          + "    -Quality battering rams since 1288-";

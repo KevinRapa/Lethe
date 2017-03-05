@@ -9,10 +9,11 @@ abstract public class StaticWndw extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public StaticWndw() {
         super();
-        this.escapeDialog = "And fall to your death?";
+        this.escapeDialog = "And fall to your death? You are a man of morals.\n"
+                          + "Stave off the morbid thoughts!";
         this.actDialog = "This is a plain window. It has no moving parts.";
-        this.addActKeys("open", "close", "exit", "climb", "jump");
-        this.addNameKeys("window", "barred window");
+        this.addActKeys("open|close", "exit|climb|jump|escape");
+        this.addNameKeys("(?:barred )?window");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {

@@ -15,13 +15,13 @@ public class Wow1_Cart extends SearchableFurniture {
         this.actDialog = "What are you trying to do? The cart is clearly broken.";
         
         this.addUseKeys(WHEEL_SPOKE);
-        this.addActKeys("ride", "use", "fix");
+        this.addActKeys("ride|use", "fix|repair");
         this.addActKeys(MOVEPATTERN);
         this.addNameKeys("(?:large )?(?:wooden )?cart", "wheel");
     }    
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (key.equalsIgnoreCase("fix"))
+        if (key.equals("fix") || key.equals("repair"))
             return "You aren't really learned enough in the school of cart fixing...";
         else
             return this.actDialog;

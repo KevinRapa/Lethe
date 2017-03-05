@@ -19,8 +19,16 @@ public class Rotu_Fountain extends Furniture {
         this.description = "It's rounded and carefully carved from a smooth rock.\n"
                          + "It looks quite beautiful, except that it's filled\n"
                          + "with opaque brown water.";
+        this.actDialog = "Are you really that desperate for a drink? There must be some cleaner water in here somewhere...";
         this.searchDialog = "You can't see anything through the brown water.";
-        this.addNameKeys("(?:marble )?fountain");
+        this.addActKeys("drink", "swim");
+        this.addNameKeys("(?:round )?(?:marble )?fountain");
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String interact(String key) {
+        return (this.drained) ? 
+            "The disgusting water has already been drained." :
+            this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {        

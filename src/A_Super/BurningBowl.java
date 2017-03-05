@@ -20,7 +20,7 @@ public class BurningBowl extends Furniture implements Gettable {
         
         this.addUseKeys(".+");
         this.addActKeys(GETPATTERN);
-        this.addActKeys(JOSTLEPATTERN, "jab");
+        this.addActKeys(JOSTLEPATTERN, "jab", "poke");
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {

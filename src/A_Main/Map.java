@@ -44,6 +44,7 @@ public class Map {
         MAP_FRAME.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         MAP_FRAME.getContentPane().add(MAP_PANEL);
         MAP_FRAME.setResizable(false);
+        MAP_FRAME.setAlwaysOnTop(true);
         
         MAP_PANEL.setBackground(Color.BLACK);
         MAP_PANEL.add(MAP_LABEL);
@@ -99,7 +100,7 @@ public class Map {
         //**********************************************************************  
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE PHYLACTERIES">
 
-        Item studBkPhy = new Stud_BookPhylactery("glowing book, 'A Young Mind's Guide to Lichery'");
+        Item studBkPhy = new Stud_BookPhylactery(BOOK_PHYL);
         Item kitcFrtPhy = new Kitc_FrtPhy("glowing pristine fruit");
         Item factumPhy = new Factum(FACTUM);
         Item vauChlPhy = new Vau_ChalicePhylactery("glowing chalice");
@@ -143,7 +144,7 @@ public class Map {
 
         Item bckt = new Item(METAL_BUCKET, "It's an empty metal bucket."); // Used with all fireplaces
         Item vial = new Item(EMPTY_VIAL, "It's a small glass vial for holding samples");
-        Item ram = new Item(BATTERING_RAM, "You've restored the old battering ram back to its former glory.");
+        Item ram = new Weapon(BATTERING_RAM, "You've restored the old battering ram back to its former glory.");
 
         // <editor-fold defaultstate="collapsed" desc="Mandragora set">
         // Instantiated before courtyard because soil can be found in the courtyard.
@@ -1787,7 +1788,7 @@ public class Map {
         // <editor-fold defaultstate="collapsed" desc="AREA 2: WEST WING">    
 
         rotu.addFurniture(genDoor, rotuFntn, rotuW, rotuF, rotuPlnts, rotuHl, rotuStat, rotuScnc, rotuFrms, rotuSky, rotuRock, clng);
-        look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, eastDoor, iha1Lvr);
+        look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, eastDoor, iha1Lvr, bbaSea);
         iha1.addFurniture(northDoor, wWW, ihaF, iha1Armr, iha1Bwl, ihaWndw, iha1Lvr, clng);
         iha2.addFurniture(southDoor, wWW, ihaF, iha2Armr, iha2Bwl, ihaWndw, clng);
         wow1.addFurniture(genDoor, wWW, westDoor, wow1NDr, wow1Crt, wow1F, wowWndw, wowHrth, wow1Shlvs, clng);

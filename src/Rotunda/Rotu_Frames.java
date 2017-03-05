@@ -8,11 +8,13 @@ public class Rotu_Frames extends Furniture {
         super();
 
         this.description = "They are arched, door-shaped, and seem as if they\n"
-                         + "form some kind of magical passage.";
+                         + "form the entry of some kind of hidden magical passage.";
         this.searchDialog = "These frames seem as though they hide something, but\n"
                           + "after inspecting every inch, you can only confirm\n"
                           + "they are plain carvings.";
+        this.actDialog = "You feel as though if you do that, you will get a face-full of rock.";
         
+        this.addActKeys("go|walk|run");
         this.addNameKeys("(?:arched )?frames?");
     }
 /*----------------------------------------------------------------------------*/

@@ -15,7 +15,10 @@ public class Gqua_Skeleton extends SearchableFurniture {
         super(items);
         this.description = "The body lies face down on the floor.";
         this.searchDialog = "You crouch down.";
-        this.addNameKeys("skeleton");
+        this.actDialog = "\"Hello? Are you okay? Do you know a way out?\" You repeatedly ask the skeleton.\n"
+                       + "The skeleton lies silently, motionless, rudely ignoring your inquiry.";
+        this.addActKeys("eat", "speak|talk|converse|chat|greet|listen");
+        this.addNameKeys("skeleton", "body");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
@@ -23,6 +26,13 @@ public class Gqua_Skeleton extends SearchableFurniture {
             return this.description.concat(" There's a crowbar in its hand.");
         else
             return this.description;
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String interact(String key) {
+        if (key.equals("eat"))
+            return "The thought of that makes you shutter...";
+        else
+            return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

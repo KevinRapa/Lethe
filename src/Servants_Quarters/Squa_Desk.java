@@ -15,7 +15,7 @@ public class Squa_Desk extends SearchableFurniture implements Openable {
                     + "you think to yourself. It's definitely not as\n"
                     + "impressive as that desk in the vestibule, though.";
         this.addNameKeys("(?:plain )?(?:wooden )?desk");
-        this.addActKeys("kick");
+        this.addActKeys(JOSTLEPATTERN);
     }
 /*----------------------------------------------------------------------------*/
 }

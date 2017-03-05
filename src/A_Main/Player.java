@@ -133,7 +133,8 @@ public final class Player {
     
     // <editor-fold desc="Save Player Attributes">
     public static void savePlayerAttributes(ObjectOutputStream stream) 
-            throws IOException {
+            throws IOException 
+    {
         stream.writeObject(new PlayerAttributes());
     }
     // </editor-fold>
@@ -246,8 +247,13 @@ public final class Player {
             else if (PHRASE.matcher(ans).matches()) // Interacting
                 TextParser.processText(ans);
             
-            else if (ans.equals("quit"))
+            else if (ans.equals("quit") || ans.equals("q"))
                 break;
+            
+            else if (ans.equals("save")) {
+                Main.saveGame();
+                GUI.out("Game saved.");
+            }
             
             else if (ans.equals("jump")) 
                 GUI.out("You jump a short height into the air. Well, that was fun.");
@@ -546,7 +552,10 @@ public final class Player {
             GUI.out("Be more specific.");
         
         else 
-            GUI.out("There is no " + object + " here."); 
+            GUI.out("There is no " + object + 
+                    " here that you can see. Or perhaps we are being lazy and\n"
+                  + ""
+                    + "seaeattempting to pick up items without searching something first?"); 
     }
     // ========================================================================  
     private static void parseMovement(String dir) {
@@ -833,7 +842,7 @@ public final class Player {
             combinesTo = forms.toString();
 
         for (Item i : itemList) {
-            if (i.forms().toString() == null || 
+            if (i.forms() == null || 
                     ! i.forms().toString().equals(combinesTo))
                 return false;
         } 

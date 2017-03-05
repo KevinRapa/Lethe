@@ -18,6 +18,7 @@ public class Note extends Item {
 /*----------------------------------------------------------------------------*/    
     public Note(String name, String desc) {
         super(name, desc);
+        this.type = READABLE;
         this.useID = 1;
     }
 /*----------------------------------------------------------------------------*/

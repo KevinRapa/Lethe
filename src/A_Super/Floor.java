@@ -16,7 +16,7 @@ public class Floor extends SearchableFurniture {
             super(items);
             this.description = dsc;
             this.searchDialog = "You crouch down and scan the ground.";
-            this.actDialog = "That's solid floor! Why would you think to do that?";
+            this.actDialog = "You jam the spade into the floor. Your body jolts and you stagger back. Why would you think to do that?";
             this.useDialog = "There's no reason to stand the ladder up in here.";
             this.addActKeys("dig", "shovel");
             this.addUseKeys(FIXED_LADDER, SHOVEL, TROWEL);

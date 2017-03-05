@@ -20,7 +20,7 @@ public class Gqua_Barrel extends Furniture implements Openable {
         
         this.addUseKeys(ANYTHING);
         this.addNameKeys("barrel", "cask");
-        this.addActKeys("move", "push", "pull");
+        this.addActKeys(MOVEPATTERN);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

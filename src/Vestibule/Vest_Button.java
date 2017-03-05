@@ -14,7 +14,7 @@ public class Vest_Button extends Button {
         this.description = "You look closely at the small rock protrusion scorched\n" +
                            "from the heat of the fire. It's definitely a button.";
         this.FRPLC_REF = (Vest_Fireplace)vesfrplc;
-        this.addNameKeys("(?:small )?(?:rock )?protrusion");
+        this.addNameKeys("(?:small )?(?:rock )?(?:protrusion|button)");
     }
 /*----------------------------------------------------------------------------*/   
     @Override public String interact(String key) {

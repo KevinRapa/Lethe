@@ -31,7 +31,7 @@ abstract public class Statue extends Furniture {
         }
         else if (key.equals("admire"))
             return "The statue's smooth and chiseled features trap your gaze\n"
-                 + "in mesmerisation. Its delicate curves.. ahhh whatever it's\n"
+                 + "in mesmerisation. Its delicate curves.. ehhh whatever it's\n"
                  + "a rock someone banged with a hammer and chisel a bunch of times.\n"
                  + "Woodworking! Now that's a refined art.";
         else

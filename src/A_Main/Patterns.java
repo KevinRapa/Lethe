@@ -16,7 +16,7 @@ public final class Patterns {
         // Patterns used by the player.
         KEYCOMMAND = Pattern.compile("[heckiwsadm]"),
         PHRASE = Pattern.compile("[a-z]+\\s[a-z0-9 ,'.-]+"),
-        DIRECTION = Pattern.compile("(?:(move|walk|go|run|) ?)(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?)?)"),
+        DIRECTION = Pattern.compile("(?:(move|walk|go|run|climb|) ?)(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?)?)"),
         GREETING = Pattern.compile("hi|hello|hey|sup"),
         NORTH = Pattern.compile("north|forward"),
         SOUTH = Pattern.compile("south|back(?:wards?)?"),
@@ -64,7 +64,7 @@ public final class Patterns {
         DESTROY = Pattern.compile("(?:destroy|obliterate|wreak havoc|throw) .+"),
         STORE_COMMAND = Pattern.compile("(?:put|store) [a-z0-9: ,'-]+"),
         STORE_THEN_SPACE = Pattern.compile("(?:put|store) "),
-        PREPOSITION = Pattern.compile("up|down|(?:in|on)(?:to)?|out|of|through|against|from|around|to|at|under(?:neath)?"),
+        PREPOSITION = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|over|of|against|through|against|from|around|to|at|under(?:neath)?"),
         SLOT_NUMBER = Pattern.compile("[0-9]+"),
         ARTICLE = Pattern.compile("\\bthe |\\.|\\ban? |\\bsome "),
         WORD_THEN_SPACE = Pattern.compile("\\w+ "),

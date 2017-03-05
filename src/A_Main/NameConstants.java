@@ -63,6 +63,6 @@ public final class NameConstants {
         ASH = "ash",                            RED_BALL = "red ball",
         CUE_BALL = "cue ball",                  STONE_BLOCK = "stone block",
         HOE = "hoe",                            WHEEL_SPOKE = "wheel spoke",
-        GLOWING_CHALICE = "glowing chalice";
+        GLOWING_CHALICE = "glowing chalice",    BOOK_PHYL = "glowing book, 'A Young Mind's Guide to Lichery'";
     // ========================================================================
 }

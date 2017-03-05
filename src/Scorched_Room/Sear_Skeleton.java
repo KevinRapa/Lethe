@@ -15,6 +15,9 @@ public class Sear_Skeleton extends SearchableFurniture {
         super(items);
         this.description = "The scorched body lies against the boarded up door.";
         this.searchDialog = "You crouch down.";
+        this.actDialog = "\"Hello? Are you okay? Do you know a way out?\" You repeatedly ask the skeleton.\n"
+                       + "The skeleton lies silently, motionless, rudely ignoring your inquiry.";
+        this.addActKeys("eat", "speak|talk|converse|chat|greet|listen");
         this.addNameKeys("skeleton", "(?:scorched )?body");
     }
 /*----------------------------------------------------------------------------*/
@@ -23,6 +26,13 @@ public class Sear_Skeleton extends SearchableFurniture {
             return this.description.concat(" There's a crowbar in its hand.");
         else
             return this.description;
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String interact(String key) {
+        if (key.equals("eat"))
+            return "The thought of that makes you shutter...";
+        else
+            return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

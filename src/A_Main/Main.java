@@ -139,16 +139,7 @@ public class Main {
         switch(exitChoice) {
             case 1:
                 // Saves the game.
-                try (ObjectOutputStream gameData = new ObjectOutputStream(
-                                                   new FileOutputStream(
-                                                   new File(WD, FILE_NAME)));
-                    ) 
-                {
-                    Player.savePlayerAttributes(gameData);  
-                } 
-                catch (java.io.IOException e) {
-                    System.out.println(e.getMessage());
-                }
+                saveGame();
                 break;
             case 2:
                 // Reset the game.
@@ -163,5 +154,18 @@ public class Main {
         // </editor-fold>  
         //**********************************************************************
     } 
-// ============================================================================    
+// ============================================================================   
+    public static synchronized void saveGame() {
+        try (ObjectOutputStream gameData = new ObjectOutputStream(
+                                           new FileOutputStream(
+                                           new File(WD, FILE_NAME)));
+            ) 
+        {
+            Player.savePlayerAttributes(gameData);  
+        } 
+        catch (java.io.IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+// ============================================================================   
 }

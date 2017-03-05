@@ -17,16 +17,20 @@ public class Rqua_Bed extends Furniture {
                           + "the bed looks suspicious, though.";
         this.actDialog = "You move the bed out of the way, exposing a loose tile.";
         this.addNameKeys("(?:flimsy )?(?:metal )?(?:bedframe|bed)");
-        this.addActKeys("move", "pull", "push", "slide");
+        this.addActKeys(MOVEPATTERN, SITPATTERN);
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(String key) {     
-        if (! this.moved) {
-            this.moved = true;
-            AudioPlayer.playEffect(41);
-            return this.actDialog;
+    @Override public String interact(String key) {  
+        if (key.matches(MOVEPATTERN)) {
+            if (! this.moved) {
+                this.moved = true;
+                AudioPlayer.playEffect(41);
+                return this.actDialog;
+            }
+            return "You have already moved the bed.";
         }
-        return "You have already moved the bed.";
+        else
+            return "This bed looks most uncomfortable.";
     }
 /*----------------------------------------------------------------------------*/
     public boolean isMoved() {

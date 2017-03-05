@@ -287,7 +287,6 @@ public class TextParser {
             String verb = v.toString();
             
             if (Player.hasItemResembling(i.toString())) {
-                System.out.println(i);
                 A_Super.Item item = Player.getInv().get(i.toString());
                 String type = item.getType();
                 
@@ -298,7 +297,8 @@ public class TextParser {
                     GUI.out(item.getDesc());
                 
                 else if (verb.equals("read")) {
-                    if (type.equals(READABLE))
+                    if (type.equals(READABLE) 
+                            || item.toString().equals(BOOK_PHYL)) // Phylactery type. Not readable
                         GUI.out(item.useEvent());
                     else
                         GUI.out("That isn't something you can read...");
