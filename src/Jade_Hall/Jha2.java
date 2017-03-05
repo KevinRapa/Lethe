@@ -30,7 +30,7 @@ public class Jha2 extends Room {
         if (LION_REF.hasRuby() && LION_REF2.hasRuby()) {
             this.addFurniture(new Jha_HiddenDoor(Direction.WEST));
             this.addAdjacent(Id.SST1);
-            return "At this moment, you hear a strange noise coming from close\n"
+            return " At this moment, you hear a strange noise coming from close\n"
                  + "behind you. You turn and discover that mysterious door has\n"
                  + "materialized at the south end of the hallway.";
         }

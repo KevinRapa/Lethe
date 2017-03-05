@@ -19,6 +19,7 @@ abstract public class Statue extends Furniture {
         this.searchDialog = "You look around the statue but find nothing of interest.";
 
         this.addNameKeys("statues?");
+        this.addActKeys("speak|talk|converse|chat|greet|listen");
         this.addActKeys(MOVEPATTERN);
         this.addActKeys(FEELPATTERN);
         this.addActKeys("admire");
@@ -34,8 +35,12 @@ abstract public class Statue extends Furniture {
                  + "in mesmerisation. Its delicate curves.. ehhh whatever it's\n"
                  + "a rock someone banged with a hammer and chisel a bunch of times.\n"
                  + "Woodworking! Now that's a refined art.";
-        else
+        else if (key.matches(FEELPATTERN))
             return this.actDialog;
+        else
+            return "\"Hello? Doth thou hast knowledge of an escape? Per chance\n"
+                 + "be you the owner? Hello?\" You redundantly make your inquiry,\n"
+                 + "but the statue stands motionless, nonchalant, and with a mark of disinterest.";
     }
     // ======================================================================== 
 }

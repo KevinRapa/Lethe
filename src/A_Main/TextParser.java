@@ -330,7 +330,7 @@ public class TextParser {
                     }
                 }
                 else if (verb.equals("drink")) {
-                    if (type.equals(INGREDIENT) || type.equals(LIQUID))
+                    if (type.equals(INGREDIENT) || type.equals(LIQUID)) {
                         if (item.toString().equals(PHASE_DOOR_POTION))
                             GUI.out(item.useEvent());
                         else if (item.toString().equals(BUCKET_OF_WATER))
@@ -339,11 +339,17 @@ public class TextParser {
                             GUI.out("No possible way you're doing something that stupid!");
                         else
                             GUI.out("You reluctantly take a small sip. 'Yugh! Bitter and disgusting!'");
+                    }
                     else
                         GUI.out("That is not something you can drink...");
                 }
-                else if (verb.equals("eat") || verb.equals("consume"))
-                    GUI.out("That... REALLY does not seem edible...");
+                else if (verb.equals("eat") || verb.equals("consume")) {
+                    if (i.toString().equals("glowing pristine fruit"))
+                        GUI.out("You know, that might destroy the phylactery, which you need to do, AND you're quite hungry...\n"
+                              + "but conversely it quite possibly may drive you into hopeless insanity, so let's not do that.");
+                    else
+                        GUI.out("That... REALLY does not seem edible...");
+                }
             }
             else if (Player.getPos().hasFurniture(i.toString()) || 
                      INDEF_PRONOUN.matcher(i.toString()).matches()) {
@@ -366,12 +372,19 @@ public class TextParser {
                 if (Player.getPos().hasFurniture(o.toString())) {
                     A_Super.Furniture furn = Player.getFurnRef(o.toString());
                     
+                    // Stores the furniture
                     if (furn.isSearchable()) {
                         Player.evalStore(furn, item);
                         Player.printInv();
                     }
+                    // Not searchable, but perhaps it's meant to be used by the item still.
+                    // e.g. the Labo distiller used by the florence flask.
+                    else if (furn.useKeyMatches(i.VALUE)) {
+                        GUI.out(furn.useEvent(item));
+                        Player.printInv();
+                    }
                     else 
-                        GUI.out("You can't store that in there.");
+                        GUI.out("You can't store that in there.");        
                 }
                 else
                     GUI.out("There is no " + o + " here.");

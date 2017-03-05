@@ -47,7 +47,7 @@ public final class Menus {
                       + "<'q'> Quit\n"
                       + "<'r'> Reset game and quit.",
             
-            MAIN_MENU = "       <command> Action\n"
+            MAIN_MENU = "      Type a command or:\n"
                       + "    <'w'/'s'/'a'/'d'> Move\n"
                       + "<'e'> Search    <'c'>    Check\n"
                       + "<'i'> Inventory <'k'>    Keys\n"

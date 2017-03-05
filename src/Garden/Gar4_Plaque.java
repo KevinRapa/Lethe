@@ -14,14 +14,16 @@ public class Gar4_Plaque extends Furniture {
         
         this.description = "The small plaque reads, \"In memorium of Oswald, who lived to create.\"";
         this.actDialog = "You move the plaque off to the side.";
-        this.searchDialog = "You lift the plaque, but find only soil, and put it back down.";
+        this.searchDialog = "You lift the plaque and find only soil. You put it back down to the side.";
 
         this.addNameKeys("(?:small )?plaque");
-        this.addActKeys(MOVEPATTERN);
+        this.addActKeys(MOVEPATTERN, "lift", "read");
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        return this.isMoved ? "You have already moved the plaque." : this.searchDialog;
+        this.isMoved = true;
+        return this.isMoved ? 
+                "You have already moved the plaque." : this.searchDialog;
     }
     // ========================================================================   
     @Override public String interact(String key) {              

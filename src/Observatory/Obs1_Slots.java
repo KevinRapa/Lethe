@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import A_Main.GUI;
 import A_Main.Menus;
+import static A_Main.NameConstants.PLATE;
 import A_Main.Player;
 import A_Super.Item;
 /**
@@ -45,7 +46,17 @@ public class Obs1_Slots extends Furniture {
         this.searchDialog = "You inspect the array of slots.";
         this.STATS_REF = (Obs1_Statues)stats;
         
+        this.addUseKeys(ANYTHING);
         this.addNameKeys("(?:brass )?(?:slots?|indentations?)");
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String useEvent(Item item) {
+        if (item.getType().equals(PLATE)) {
+            return "There are eight slots here. Perhaps you should search among\n"
+                 + "them the one in which to place that.";
+        }
+        else
+            return "That doesn't belong there.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

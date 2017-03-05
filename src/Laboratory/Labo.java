@@ -36,8 +36,7 @@ public class Labo extends Room {
     public Labo(String name, String ID) {
         super(name, ID);
         this.description= "You find yourself in a laboratory hidden\n" +
-                          "behind the attic in which many alchemical devices are\n" +
-                          "around the room. At the far east wall are a\n" +
+                          "behind the attic filled with many alchemical devices. At the far east wall are a\n" +
                           "line of opaque dispensers, probably filled with liquid.\n" +
                           "On a counter to the north is a complicated alchemical\n" +
                           "contraption with many glass tubes. On the same counter\n" +

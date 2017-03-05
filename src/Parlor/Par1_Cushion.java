@@ -18,7 +18,21 @@ public class Par1_Cushion extends SearchableFurniture {
         this.actDialog = "What a comfortable cushion! Well, the cushion is nice,\n"
                        + "feels hard underneath though... Could just be the floor.";
         this.addNameKeys("(?:lavender )?(?:tasseled )?cushion");
-        this.addActKeys(SITPATTERN);
+        this.addActKeys(SITPATTERN, MOVEPATTERN, "lift");
     }
 /*----------------------------------------------------------------------------*/
+    @Override public String interact(String key) {
+        if (key.matches(SITPATTERN))
+            return this.actDialog;
+        else {
+            if (this.containsItem("brass plate, \"Mars\""))
+                return "You lift up the cushion and affirm that there is in fact\n"
+                     + "a hard, shiny brass plate underneath. You place the cushion back\n"
+                     + "down.";
+            else
+                return "You lift the cushion and then put it back down again. Seems\n"
+                     + "productive.";
+        }
+    }
+/*----------------------------------------------------------------------------*/    
 }

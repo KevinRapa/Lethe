@@ -33,7 +33,7 @@ public class BurningBowl extends Furniture implements Gettable {
     }
     // ========================================================================    
     @Override public String interact(String key) {
-        if (key.equals("jab") || key.matches(JOSTLEPATTERN))
+        if (key.equals("jab") || key.equals("poke") || key.matches(JOSTLEPATTERN))
             return this.actDialog;
         else 
             return getIt();

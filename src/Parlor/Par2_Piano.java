@@ -31,7 +31,7 @@ public class Par2_Piano extends SearchableFurniture implements Openable {
             REF.wake();
             return "You sit at the piano and produce a few notes. Suddenly, you\n"
                  + "hear a voice from down below. \"Hey! Who is playing my piano?\"\n"
-                 + "The voice is echoey, and have a hunch it's emanating from the\n"
+                 + "The voice is echoey, and you have a hunch it's emanating from the\n"
                  + "orb below.";
             
         }

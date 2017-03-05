@@ -21,7 +21,7 @@ public class Cha1_Water extends Furniture implements Gettable {
         this.description = "It's seems to be just water, but it's most likely the holy kind.";
         this.searchDialog = "You can't pick this up with your bare hands.";
         this.useDialog = "You fill the small vial with a sample of holy water.";
-        this.addActKeys("drink", "swim");
+        this.addActKeys("drink", "swim", GETPATTERN);
         this.addNameKeys("water", HOLY_WATER, "clear water");
         this.addUseKeys(METAL_BUCKET, EMPTY_VIAL, GLASS_BOTTLE);
     }

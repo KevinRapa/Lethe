@@ -1024,7 +1024,7 @@ public class Map {
         Room par1 = new Par1("in the first floor parlor", Id.PAR1); 
         //-------------------------------ITEMS----------------------------------   
         Item bttl = new Item(GLASS_BOTTLE, "It's a regular clear glass bottle.");
-        Item enchntdBttl = new Item("enchanted bottle", "The bottle is now coated in glowing... stuff");
+        Item enchntdBttl = new Item(ENCHANTED_BOTTLE, "The bottle is now coated in glowing... stuff");
         Item stlWr = new Item("steel wire", "It's some broken piano wire.");
         Item hndDrll = new Item(HAND_DRILL, "It's a drill for boring holes in wood.\n"
                               + "You can drill into almost anything you want now!");
@@ -1044,7 +1044,7 @@ public class Map {
 
         Furniture par1Orb = new Par1_Orb();
         Furniture par1F = new Floor("It's a sandstone tiled floor.");
-        Furniture par1FrPlc = new Par1_FirePlace(bckt);
+        Furniture par1FrPlc = new Par1_FirePlace(bckt, enchntdBttl);
         Furniture par1Dr = new Par1_Door(enchntdBttl, Direction.NORTH);
         Furniture par1EnchntTbl = new Par1_EnchantingTable(enchntdBttl, bttl, chs1Key, parLchNt);
         Furniture par1Strs = new Par_Stairs(Direction.UP);

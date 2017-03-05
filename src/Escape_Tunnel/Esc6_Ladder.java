@@ -3,12 +3,13 @@ package Escape_Tunnel;
 import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
+import A_Super.Climbable;
 import A_Super.Furniture;
 import A_Super.Resetable;
 /**
  * @author Kevin Rapa
  */
-public class Esc6_Ladder extends Furniture implements Resetable {
+public class Esc6_Ladder extends Furniture implements Resetable, Climbable {
     private final Esc6_Grate GRATE_REF;
     // ========================================================================
     public Esc6_Ladder (Furniture sew6Grt) {
@@ -21,7 +22,7 @@ public class Esc6_Ladder extends Furniture implements Resetable {
                          + "directly to the stone wall.";
         this.actDialog = "You climb up the ladder.";
 
-        this.addNameKeys("(?:metal )?ladder");
+        this.addNameKeys("(?:metal )?ladder", "rungs?");
         this.addActKeys("use", "climb", "ascend");
     }
     // ========================================================================   

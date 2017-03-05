@@ -14,6 +14,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Iterator;
 import static A_Main.Patterns.*;
+import A_Super.Climbable;
 import Courtyard.Cou5_Spruce;
 /**
  * Represents the player, the focal point of the game.
@@ -594,7 +595,7 @@ public final class Player {
                 GUI.out(current.interact("climb"));
                 return;
             }
-            if (current instanceof Cou5_Spruce) {
+            if (current instanceof Climbable) {
                 GUI.out(current.interact("climb"));
                 return;
             }

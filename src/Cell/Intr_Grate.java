@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import static A_Main.NameConstants.METAL_BAR;
 import A_Main.Player;
+import A_Super.Climbable;
 import A_Super.Furniture;
 import A_Super.Gettable;
 import A_Super.Item;
@@ -14,7 +15,7 @@ import A_Super.Resetable;
  * 
  * @author Kevin Rapa
  */
-public class Intr_Grate extends Furniture implements Resetable, Gettable {
+public class Intr_Grate extends Furniture implements Resetable, Gettable, Climbable {
     private boolean opened;
     private final String MOVED_GRATE = "You've already moved the grate!";
     // ========================================================================
@@ -30,7 +31,7 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable {
                           + "you see what looks like the top rung of a ladder.";
 
         this.addNameKeys("(?:metal )?(?:grate|ladder)");
-        this.addActKeys("jump", "climb", "lift", "move", "descend", "pry");
+        this.addActKeys("jump", "climb|descend", MOVEPATTERN, "pry");
         this.addActKeys(GETPATTERN);
         this.addUseKeys(METAL_BAR);
     }
@@ -46,7 +47,7 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable {
     }
     // ========================================================================   
     @Override public String interact(String key) {  
-        if (key.equals("lift") || key.equals("move")) 
+        if (key.matches(MOVEPATTERN)) 
             return opened ? 
                     MOVED_GRATE : this.actDialog;
         

@@ -33,7 +33,7 @@ public class Jha_Lion extends Furniture {
         this.useDialog = "You place the ruby into the lion's eye socket. The ruby\n"
                        + "glints and stays in place.";
 
-        this.addNameKeys("(?:jade )?(?:lion )?statue", "(?:jade )?lion");
+        this.addNameKeys("(?:jade )?(?:lion )?statue", "(?:jade )?lion", "(?:lion'?s? )?eye");
         this.addUseKeys(RUBY, AQUAMARINE);
     }
     // ======================================================================== 

@@ -44,7 +44,7 @@ public class Par_EnchantingBook extends Book {
                      + "on the foci. The foci are etched circles on the front corners of the\n"
                      + "table. Pound firmly; as hard as possible without jostling the table.\n"
                      + "It is important that the ingredients not move. The enchant will be\n"
-                     + "accompanied by a lound bang and a puff of smoke. The smoke is added\n"
+                     + "accompanied by a loud bang and a puff of smoke. The smoke is added\n"
                      + "to the table's mechanism as a special effect, and is actually\n"
                      + "uneccessary for a proper bind. This is the only plague of the science\n"
                      + "to date, for true enchanters do not yearn for superfluous effects.";

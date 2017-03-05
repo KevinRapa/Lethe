@@ -12,7 +12,7 @@ import static A_Main.NameConstants.BUCKET_OF_WATER;
  * @see Vestibule.Vest_Frplc
  * @author Kevin Rapa
  */
-abstract public class Fireplace extends Furniture {
+abstract public class Fireplace extends Furniture implements Gettable {
     protected boolean isLit;
     protected String searchDialogLit, searchDialogUnlit; 
     protected String descLit, descUnlit;
@@ -24,7 +24,7 @@ abstract public class Fireplace extends Furniture {
         this.BCKT_REF = bckt;
         this.searchDialogLit = "Ouch! That's hot!";
         this.useDialog = "You douse the flames with the water.";
-        this.addActKeys("warm", "use", "relax");
+        this.addActKeys("warm", "use", GETPATTERN, "relax");
         this.addNameKeys("fireplace", "hearth", "fire");
         this.addUseKeys(BUCKET_OF_WATER);
     }    
@@ -52,9 +52,12 @@ abstract public class Fireplace extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {  
-        return this.isLit() ? 
-                "You warm your hands for a second, but you are still cold." :
-                "There's not much you can do to an unlit fireplace."; 
+        if (key.matches(GETPATTERN))
+            return this.getIt();
+        else
+            return this.isLit() ? 
+                    "You warm your hands for a second, but you are still cold." :
+                    "There's not much you can do to an unlit fireplace."; 
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item water) {

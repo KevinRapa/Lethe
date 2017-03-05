@@ -83,7 +83,7 @@ public class Par1_Orb extends NonPlayerCharacter {
         GUI.promptOut();     
         
         GUI.out("I requested Eurynomos to bind me here so that\n"
-              + "I could write live eternally like him... or so I thought.\n"
+              + "I could write music and live eternally like him... or so I thought.\n"
               + "I promised to write music for him as long as he wished to\n"
               + "keep me alive in this... whatever I'm in. It's actually quite\n"
               + "nice in here.");

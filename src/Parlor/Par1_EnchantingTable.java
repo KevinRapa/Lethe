@@ -32,7 +32,7 @@ public class Par1_EnchantingTable extends SearchableFurniture {
         this.useDialog = "You place it on the table.";
         this.searchDialog = "You look on the table.";
         this.description = "The black pentagonal table bears many carvings of strange\n"
-                         + "runes and writing that seem to glow from the fire. Two"
+                         + "runes and writing that seem to glow from the fire. Two\n"
                          + "circular runes decorate either side of the table.";
         
         this.addUseKeys(ANYTHING); // Accepts any item to be put on it.
@@ -91,6 +91,7 @@ public class Par1_EnchantingTable extends SearchableFurniture {
             return 2;
         }
         else
+            AudioPlayer.playEffect(40);
             return 0;
     }
 /*----------------------------------------------------------------------------*/

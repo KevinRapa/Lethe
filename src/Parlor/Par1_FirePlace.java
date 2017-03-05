@@ -15,10 +15,11 @@ import A_Super.Liquid;
  * @author Kevin Rapa
  */
 public class Par1_FirePlace extends Fireplace {
-    private final Item SCRDFR_REF;
+    private final Item SCRDFR_REF, ENCHT_BTTL_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/           
-    public Par1_FirePlace(Item bckt) {       
+    public Par1_FirePlace(Item bckt, Item bttl) {       
         super(true, bckt);
+        this.ENCHT_BTTL_REF = bttl;
         this.SCRDFR_REF = new Liquid(SACRED_FIRE, "The fire burns enigmatically inside "
                                  + "the bottle. To your surprise, the fire gives off no heat.");
         this.descLit = "It's a large sandstone fireplace, about your height.\n"
@@ -26,9 +27,19 @@ public class Par1_FirePlace extends Fireplace {
                      + "carved into angelic figures. The fire burns aggressively,\n"
                      + "but to your amazement, gives off no heat.";
         this.descUnlit = "A cold, unlit fireplace.";
-        this.useDialog = "Holding the bottle over the fire, some of the flames seep\n"
+        this.useDialog = "Holding the magical bottle over the fire, some of the flames seep\n"
                        + "inside. You quickly cork the bottle and stare at it, mesmerized.";
-        this.addUseKeys(GLASS_BOTTLE, "enchanted bottle");
+        this.addUseKeys(GLASS_BOTTLE, ENCHANTED_BOTTLE);
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String getIt() {
+        if (Player.getInv().contains(ENCHT_BTTL_REF)) {
+            Player.getInv().remove(ENCHT_BTTL_REF);
+            Player.getInv().add(SCRDFR_REF);
+            return this.useDialog;
+        }
+        else
+            return super.getIt();
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
@@ -39,7 +50,7 @@ public class Par1_FirePlace extends Fireplace {
                 AudioPlayer.playEffect(39);
                 return "The water steams aggressively upon contact, but fails to\n"
                      + "douse the flames.";
-            case "enchanted bottle":
+            case ENCHANTED_BOTTLE:
                 Player.getInv().remove(item);
                 Player.getInv().add(SCRDFR_REF);
                 return this.useDialog;

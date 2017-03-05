@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
+import A_Super.Climbable;
 import A_Super.Direction;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
@@ -13,7 +14,7 @@ import A_Super.SearchableFurniture;
  * @see Parlor.Par1_EnchtTbl
  * @author Kevin Rapa
  */
-public class Cou5_Spruce extends SearchableFurniture {
+public class Cou5_Spruce extends SearchableFurniture implements Climbable {
     private final Item EXTRCT_REF, VIAL_REF;
     private boolean drilled;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
@@ -69,8 +70,10 @@ public class Cou5_Spruce extends SearchableFurniture {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String action) {
         if (action.equals("drill")) {
-            if (Player.hasItem(HAND_DRILL))
+            if (Player.hasItem(HAND_DRILL)) {
+                this.addNameKeys("(?:spruce )?sap");
                 return this.useEvent(new Item(HAND_DRILL));
+            }
             else
                 return "You have nothing to drill into it with.";
         }

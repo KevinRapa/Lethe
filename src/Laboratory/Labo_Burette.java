@@ -76,7 +76,15 @@ public class Labo_Burette extends Furniture {
     // ========================================================================   
     @Override public String interact(String key) {   
         if (Player.hasItem(LAB_COAT)) {
-            if (mode != Titrant.EMPTY) {
+            if (key.equals("empty") || key.equals("drain")) {
+                if (this.mode == Titrant.EMPTY)
+                    return "The burette is currently empty.";
+                else {
+                    this.mode = Titrant.EMPTY;
+                    return "You empty everything from the buret.";
+                }
+            }
+            else if (mode != Titrant.EMPTY) {
                 GUI.out("Would you like to titrate the " + mode + " or empty the burette?");
 
                 String ans = GUI.askChoice("\n<1> Empty the burette\n<2> Titrate the " 
@@ -95,7 +103,7 @@ public class Labo_Burette extends Furniture {
                     return null;
             }
             else
-                return "The burette is empty.";
+                return "The burette is currently empty.";
         }
         else
             return "You know, it really wouldn't be safe to fool around with this dangerous "

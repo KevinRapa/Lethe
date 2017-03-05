@@ -30,7 +30,7 @@ public class Par_MandrakeBook extends Book {
                      + "watering, and the rain will do the rest. Just make sure to leave it\n"
                      + "outside. Within a month, your mandragora should be fully mature.\n"
                      + "Mandragora are known to have a very pleasant taste when cooked.\n"
-                     + "Mandragora are also used in certian alchemical and enchanting recipes,\n"
+                     + "Mandragora are also used in certain alchemical and enchanting recipes,\n"
                      + "but that is beyond the scope of this book.";
         
         PAGE_LIST[3] = "This page is blank except for a single line- \"-Experiment more\n"

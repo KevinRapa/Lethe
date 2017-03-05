@@ -30,7 +30,7 @@ public final class Patterns {
         TAKE = Pattern.compile("t|take"),
         STORE = Pattern.compile("s|store"),
         KEY = Pattern.compile("[A-Z]{3}[A-Z1-9]"),
-        EXPLETIVE = Pattern.compile(".*(?:fuck|shit|cunt|damn|bitch|vittu|perkele|paska).*"),
+        EXPLETIVE = Pattern.compile(".*(?:fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska).*"),
         INV_CHOICES = Pattern.compile("[1-4]"),
         MOVEMENT = Pattern.compile("go|walk|run"),
         CATACOMB_ENTRANCE = Pattern.compile("CS35|CT34"),
@@ -73,7 +73,7 @@ public final class Patterns {
         // Patterns used by GUI
         THREE_PLUS_LETTER_WORD = Pattern.compile("(?:[a-z -]{3,})+"),
         FIRST_WORD = Pattern.compile("[a-z -]+ "),
-        VAILD_COMMAND = Pattern.compile("[a-z ,'-]{2,}|(?:[ts] \\d{1,2})"),
+        VAILD_COMMAND = Pattern.compile("[a-z ,'-]{2,}(?: [1-9]+)?|(?:[ts] \\d{1,2})"),
         DIGIT = Pattern.compile("\\d"),
         NEWLINE = Pattern.compile("\n"),
     

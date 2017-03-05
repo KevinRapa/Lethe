@@ -18,7 +18,8 @@ public class Att2_LabCoatCase extends SearchableFurniture implements Openable {
         this.description = "Hidden behind a few boxes in the studded suitcase.";
         this.searchDialog = "You find the suitcase behind a few boxes tucked in the front of the attic. You open it.";
 
-        this.addNameKeys("studded brown (?:suitcase|case)", "(?:studded |brown )(?:suitcase|case)");
+        this.addNameKeys("(?:studded brown|brown studded) (?:suitcase|case)", 
+                "(?:studded |brown )(?:suitcase|case)");
     }
     // ======================================================================== 
 }
