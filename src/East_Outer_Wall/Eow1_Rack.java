@@ -9,7 +9,9 @@ public class Eow1_Rack extends SearchableFurniture {
         super(items);
         this.description = "It's a plain weapon rack.";
         this.searchDialog = "You take a look at its contents.";
-        this.addNameKeys("(?:plain )?(?:weapon )?rack");
+        this.actDialog = "Are we being lazy and not searching the rack first?";
+        this.addActKeys(GETPATTERN);
+        this.addNameKeys("(?:plain )?(?:weapon )?rack", "weapons?");
     }
 /*----------------------------------------------------------------------------*/
 }

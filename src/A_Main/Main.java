@@ -50,7 +50,6 @@ public class Main {
                 TITLE_FRAME.setVisible(false);
                 TITLE_FRAME.dispose();
                 GUI.giveFocus();
-                AudioPlayer.playTrack(Player.getPosId());
             }  
         });
         TITLE_PANEL.setBackground(Color.BLACK);

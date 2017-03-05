@@ -259,6 +259,7 @@ public class Map {
         Room cou4 = new Cou4("at the front gate", Id.COU4);
         Room cou5 = new Cou5("in the southeast courtyard", Id.COU5);
         Room cou6 = new Cou6("in the northeast courtyard", Id.COU6);
+        Room cou8 = new Cou8("up in the spruce tree", Id.COU8);
         //-------------------------------ITEMS----------------------------------
         Item krnsPlt = new Obs1_Plate("brass plate, \"Saturn\"", "The small plate bears an engraving: \"Saturn\"");
         Item soldMed = new Item(STONE_DISK, "The smooth disk is about four or five inches across.\n"
@@ -273,11 +274,14 @@ public class Map {
         Item sprcExtrct = new Liquid(SPRUCE_EXTRACT, "Evergreens are widely known to be resistant to burning.");
         Item brrs = new Item("bright red berries", "They look firm and juicy", "You realize, the brightest, reddest berries are the most poisonous of all.");
         Item pnCn = new Item("pinecone", "It's scaley but smooth, and is shaped like a pickle. Yes, undoubtedly a spruce pinecone!", "This looks painful to eat...");
+        Item fthr = new Item(RAVEN_FEATHER, "It's a long, elegant feather.");
+        Item strng = new Item("bit of string", "A delicate piece of white twine.");
         //-----------------------------FURNITURE--------------------------------
         Furniture couCstl = new Cou_Castle();
         Furniture couW = new Wall("The castle walls are several stories tall and made of granite blocks.");
         Furniture couStps = new Cou_Steps();
         Furniture coutWlkwy = new Cou_Tiles();
+        Furniture couRvns = new Cou_Ravens();
 
         Furniture cou1Bnch = new Cou1_Bench();
         Furniture cou1Thrns = new Cou1_Thorns();
@@ -303,6 +307,8 @@ public class Map {
 
         Furniture cou6Stat = new Cou6_Statue();
         Furniture cou6Ghst = new Cou6_BlackJackGhost();
+        
+        Furniture cou8Nest = new Cou8_Nest(fthr, strng);
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE ENTRANCE">
         //-----------------------------THE ROOM---------------------------------
@@ -876,6 +882,7 @@ public class Map {
         Furniture drarChss = new Drar_Chess(drarGhst, rk, knght, bshp, qn, kng, bshp, knght, rk, pwn, pwn, pwn, pwn, pwn, pwn, pwn, pwn);
         Furniture drarCch = new Drar_Couch(drarGhst);
         Furniture drarTbl = new Drar_Table(drarGhst);
+        Furniture drarPno = new Drar_Piano();
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE KITCHEN"> 
         //-----------------------------THE ROOM---------------------------------
@@ -1021,7 +1028,6 @@ public class Map {
         Item stlWr = new Item("steel wire", "It's some broken piano wire.");
         Item hndDrll = new Item(HAND_DRILL, "It's a drill for boring holes in wood.\n"
                               + "You can drill into almost anything you want now!");
-        Item fthr = new Item(RAVEN_FEATHER, "It's a long, elegant feather.");
         Item athr = new Item(AETHER_VIAL, "This looks expensive!");
         Item frSlts = new Item(FIRE_SALTS, "Seems to be just red ashes...");
         Item parNt = new Par_VialNote("note: vials");
@@ -1044,7 +1050,7 @@ public class Map {
         Furniture par1Strs = new Par_Stairs(Direction.UP);
         Furniture par1Pllrs = new Par1_Pillars();
         Furniture par1Hrp = new Par1_Harp(par1Orb);
-        Furniture par1Shlf = new Wow3_Shelf(fthr, hndDrll, athr, parBkEncht, frSlts);
+        Furniture par1Shlf = new Wow3_Shelf(hndDrll, athr, parBkEncht, frSlts);
         Furniture par1Cshn = new Par1_Cushion(aresPlt);
 
         Furniture par2F = new Floor("It's a sandstone tiled floor.");
@@ -1706,7 +1712,7 @@ public class Map {
              {____,____,obs2,jha1,par2,foy3,gal3,gal4,lib5,____}, //2
              {____,____,sst1,jha2,____,____,____,____,____,____}, //3
              {____,____,gar1,gar2,____,____,____,____,din2,____}, //4
-             {____,____,gar3,gar4,____,____,____,____,drar,____}, //5
+             {____,____,gar3,gar4,____,____,cou8,____,drar,____}, //5
              {____,____,____,wow3,clos,____,____,work,eow4,____}, //6
              {____,____,____,____,____,____,____,____,____,____}},//7
             // </editor-fold>   
@@ -1775,13 +1781,14 @@ public class Map {
         vest.addFurniture(vesFire, vesBtn, vesWin, vesDsk, vesEtbl, vesCase, vesTpstr, vesChr, vesF, vesDr, wallEx, vesOrb);
         foyb.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, clng, bbaBnch, bbaScnc, bbaClff, bbaShrln, bbaSea, bba1Gt, wantBttn);
         foyc.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, clng, bbaScnc, bbaClff, bbaShrln, bbaSea, bba2Dr);
-        cou1.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou1F, couCstl);
-        cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl, coutWlkwy);
-        cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc, coutWlkwy);
-        cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou56F, cou6Stat, couCstl, cou6Ghst);
-        cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, couCstl);
-        cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl);
-        cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps, entrBlcny);
+        cou1.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou1F, couCstl, couRvns);
+        cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl, coutWlkwy, couRvns);
+        cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc, coutWlkwy, couRvns);
+        cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou56F, cou6Stat, couCstl, cou6Ghst, couRvns);
+        cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, couCstl, couRvns);
+        cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl, couRvns);
+        cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps, entrBlcny, couRvns);
+        cou8.addFurniture(cou8Nest, cou5Sprc, couW);
         foyw.addFurniture(genDoor, wantStat, wantTrchs, wantLvr, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt, wantBttn, clng);
 
         // </editor-fold>
@@ -1827,7 +1834,7 @@ public class Map {
         work.addFurniture(wWW, wrkF, eastDoor, wowWndw, wrkBrl, wrkCstTbl, wrkKln, wrkBnch, wrkCbnt, wrkFrg, wrkAnvl, clng);
         din1.addFurniture(din1Clmns, din1Blcny, din1Tbl, din1Tpstry, din1F, din1W, din1Wndw, din1Chrs, din1Chndlr, din1Mnlght, din1Strs, din1Crpt, din1Dr);
         din2.addFurniture(din2W, din2F, southDoor, din2Pntng, din2Strs, clng);
-        drar.addFurniture(northDoor, drarGhst, drarF, drarW, din1Mnlght, drarChss, drarBr, drarBllrds, drarWndw, drarCch, drarTbl, clng);
+        drar.addFurniture(northDoor, drarGhst, drarF, drarW, din1Mnlght, drarChss, drarBr, drarPno, drarBllrds, drarWndw, drarCch, drarTbl, clng);
         gal5.addFurniture(gal5Dsply, gal5Chndlr, gal5Cbwbs, gal5F, gal5W, gal5Clng, gal5Cbt, gal5Dr, clng);
         kitc.addFurniture(kitcTrch, kitcF, kitcW, kitcWndw, kitcDr, kitcRck, kitcPts, kitcHrth, kitcBrls, kitcPntry, kitcShlf, kitcCntr, laboSnk, clng);
 

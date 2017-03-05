@@ -20,7 +20,7 @@ public class Drar extends Room {
                      "on it. The apparition sits at a bar on the south end of the\n" +
                      "room. There's a billiard table and chess table near a window\n" +
                      "on the east wall. A couch and low table sit on the west side.\n" +
-                     "Next to you is a large black piano. This room is unlit save\n" +
+                     "Next to you is an upright brown piano. This room is unlit save\n" +
                      "the bright moonlight shining in.";
     }
 /*----------------------------------------------------------------------------*/

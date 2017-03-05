@@ -8,6 +8,7 @@ import static A_Main.NameConstants.CRYSTAL_ORB;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
+import A_Super.SearchableFurniture;
 /**
  * Part of the light puzzle.
  * Player must use the crystal orb on this.
@@ -16,12 +17,15 @@ import A_Main.Player;
  * @see Gallery.Gal_LightMachine
  * @author Kevin Rapa
  */
-public class Gal2_Statue extends Furniture {
+public class Gal2_Statue extends SearchableFurniture {
     private int level;
     private final Gal4_Statue REF3;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal2_Statue(Furniture stat) {
         super();
+        
+        this.inv = new Stat_Inv();
+        
         this.REF3 = (Gal4_Statue)stat;
         this.level = 0;
         this.description = "The grandiose statue stands in the exact center of\n"
@@ -32,7 +36,6 @@ public class Gal2_Statue extends Furniture {
         this.searchDialog = "The statue's hand is empty";
         this.addNameKeys("(?:grandiose )?statue");
         this.addUseKeys(CRYSTAL_ORB);
-        this.inv = new Stat_Inv();
     }
 /*----------------------------------------------------------------------------*/
     public int getState() {

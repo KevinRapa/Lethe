@@ -48,7 +48,7 @@ public class Gal3_Rope extends Furniture {
                 return "The knot in the rope is too high up to untie.";    
         }
         else
-            return "The rope is cut already";
+            return "The rope is cut already.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
@@ -62,7 +62,9 @@ public class Gal3_Rope extends Furniture {
 /*----------------------------------------------------------------------------*/
     private boolean detectItem() {
         // Detects if you have a blade to cut the rope with.
-        return this.USEKEYS.stream().anyMatch(i -> (Player.hasItem(i.toString())));
+        return Player.getInv().contents().stream().anyMatch(
+                i -> i.toString().matches("katana|.+(?:sword|axe)")
+        );
     }
 /*----------------------------------------------------------------------------*/
 }

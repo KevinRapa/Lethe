@@ -1,11 +1,13 @@
 package Workshop;
 
+import A_Main.GUI;
+import A_Main.Inventory;
 import static A_Main.NameConstants.*;
-import static A_Main.Patterns.DYE_PATTERN;
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
 import A_Super.Liquid;
+import A_Super.Openable;
+import A_Super.SearchableFurniture;
 /**
  * Used to create molten glass with dye, sand, and potash.
  * Player must go back to the closet to get sand.
@@ -13,96 +15,104 @@ import A_Super.Liquid;
  * @see Closet.Clos
  * @author Kevin Rapa
  */
-public class Wrk_Kiln extends Furniture {
+public class Wrk_Kiln extends SearchableFurniture implements Openable {
     private final Item REFGLSSR, REFGLSSB, REFGLSSY;
-    private boolean hasSand, hasRedDye, hasBlueDye, hasYllwDye, hasPotash;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Wrk_Kiln() {
         super();
         
+        this.inv = new KilnInventory();
+        
         this.REFGLSSR = new Liquid(MOLTEN_RED_GLASS, "It's a crucible of molten red glass. Be careful!");
         this.REFGLSSB = new Liquid(MOLTEN_BLUE_GLASS, "It's a crucible of molten blue glass. Be careful!");
         this.REFGLSSY = new Liquid(MOLTEN_YELLOW_GLASS, "It's a crucible of molten yellow glass. Be careful!");
-        
-        hasSand = hasPotash = hasRedDye = hasBlueDye = hasYllwDye = false;
        
-        this.searchDialog = "You look in the kiln. It's too hot for your hands!";
+        this.actDialog = "No need to take that. Just add stuff and watch the magic happen.";
+        this.searchDialog = "You look in the kiln. It's pretty toasty in there.";
         this.description = "The kiln resembles a ceramic oven. Its intense heat\n" +
-                           "keeps this room roasting hot.";
+                           "keeps this room roasting hot. Inside is a small ceramic\n"
+                         + "crucible sitting on a metal rack.";
         
+        this.addActKeys(GETPATTERN);
         this.addUseKeys(RED_DYE, YELLOW_DYE, BLUE_DYE, SAND, POTASH);
-        this.addNameKeys("kiln", "(?:ceramic )?oven");
+        this.addNameKeys("(?:ceramic )?(?:oven|kiln|crucible)", "(?:metal )?rack");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        String rep = null;
-        String name = item.toString();
+        Player.getInv().give(item, this.inv);
         
-        if (name.equals(POTASH) && ! this.hasPotash) {
-            Player.getInv().remove(item);
-            this.hasPotash = true;
-            rep = "You pour the potash into the crucible.";  
-        }    
-        else if (name.equals(SAND) && ! this.hasSand) {
-            Player.getInv().remove(item);
-            this.hasSand = true;
-            rep = "You pour the sand into the crucible.";
-        }
-        else if (DYE_PATTERN.matcher(name).matches() && ! hasDye()) {
-            Player.getInv().remove(item);
-            
-            switch (name) {
-                case RED_DYE:
-                    this.hasRedDye = true; break;
-                case BLUE_DYE:
-                    this.hasBlueDye = true; break;
-                case YELLOW_DYE:
-                    this.hasYllwDye = true; break;
-            }
-            rep = "You pour the " + name + " into the crucible.";
-        }
-        else if ((name.equals(SAND) && this.hasSand) ||
-                 (name.equals(POTASH) && this.hasPotash) ) 
-            rep = "The kiln already has " + name + " in it!";
-        
-        else if (DYE_PATTERN.matcher(name).matches() && hasDye())
-            rep = "The kiln already has dye in it!";
-        
-        
-        if (hasDye() && this.hasSand && this.hasPotash)
-            rep += this.makeGlass();
-        
-        return rep;
+        return null;
     }
 /*----------------------------------------------------------------------------*/
     private String makeGlass() {
-        String color;
-        
-        if (this.hasRedDye) {
+        if (this.containsItem(RED_DYE)) 
             Player.getInv().add(REFGLSSR);
-            this.hasRedDye = false;
-            color = "red";
-        }
-        else if (this.hasBlueDye) {
+        else if (this.containsItem(BLUE_DYE)) 
             Player.getInv().add(REFGLSSB);
-            this.hasBlueDye = false;
-            color = "blue";
-        }
-        else {
+        else 
             Player.getInv().add(REFGLSSY);
-            this.hasYllwDye = false;
-            color = "yellow";
-        }
-        this.hasSand = false;
-        this.hasPotash = false;
         
-        return "You let the sand and the " + color + " dye bake for a bit. In no\n"
-             + "time, the mixture has blended into hot molten " + color + " glass.\n"
-             + "Delicious! You take the hot crucible of " + color + " glass.";
+        this.inv.clear();
+        
+        return " You let the sand and the dye bake for a bit. In no\n"
+             + "time, the mixture has blended into hot molten glass.\n"
+             + "Delicious! You take the hot crucible of liquid glass.";
     }
 /*----------------------------------------------------------------------------*/
     private boolean hasDye() {
-        return this.hasBlueDye || hasRedDye || hasYllwDye;
+        return (containsItem(RED_DYE) || containsItem(BLUE_DYE) || containsItem(YELLOW_DYE));
     }
+/*----------------------------------------------------------------------------*/
+    private boolean check() {
+        return hasDye() && containsItem(POTASH) && containsItem(SAND);
+    }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/
+/*----------------------------------------------------------------------------*/
+    private class KilnInventory extends Inventory {  
+    // CONSTRUCTOR -------------------------------------------------------------      
+        public KilnInventory() {
+            super();
+        }
+    /*------------------------------------------------------------------------*/
+        @Override public boolean add(Item item) { 
+            String n = item.toString();
+            
+            if (! (n.equals(RED_DYE) || n.equals(BLUE_DYE) || n.equals(YELLOW_DYE)
+                || n.equals(SAND)    || n.equals(POTASH))
+                ) 
+            {
+                if (n.equals(MOLTEN_RED_GLASS) || n.equals(MOLTEN_BLUE_GLASS) || n.equals(MOLTEN_YELLOW_GLASS))
+                    GUI.out("Is it... really not hot enough for you??");
+                else
+                    GUI.out("You're fairly sure the professionals don't put things like that into kilns.");
+            }
+            else if (this.size() < 3 && (
+                (n.equals(RED_DYE)    && ! containsItem(RED_DYE))    ||
+                (n.equals(BLUE_DYE)   && ! containsItem(BLUE_DYE))   ||
+                (n.equals(YELLOW_DYE) && ! containsItem(YELLOW_DYE)) ||
+                (n.equals(SAND)       && ! containsItem(SAND))       ||
+                (n.equals(POTASH)     && ! containsItem(POTASH)))
+                    )
+            {
+                String result = "You pour it in.";
+                this.CONTENTS.add(item);
+                
+                if (check())
+                    result += makeGlass();
+                
+                GUI.out(result);
+                return true;
+            }
+            else if (this.size() == 3) 
+                GUI.out("The crucible is full to the brim.");
+            else 
+                GUI.out("The kiln already has that in it.");
+            
+            return false;
+        }
+    }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/
 /*----------------------------------------------------------------------------*/
 }

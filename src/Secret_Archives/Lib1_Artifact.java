@@ -19,6 +19,7 @@ public class Lib1_Artifact extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Artifact(Item... items) {
         super();
+        this.searchable = true;
         this.searchDialog = "You squint and peek inside the head.";
         this.beam = 'b';
         this.mode = "A blue beam";

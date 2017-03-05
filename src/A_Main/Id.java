@@ -15,7 +15,7 @@ public final class Id {
         VEST = "VEST",  FOYW = "FOYW",  FOYC = "FOYC",  FOYB = "FOYB",
         FOY1 = "FOY1",  FOY2 = "FOY2",  FOY3 = "FOY3",  FOY4 = "FOY4",
         COU1 = "COU1",  COU2 = "COU2",  COU3 = "COU3",  COU4 = "COU4", 
-        COU5 = "COU5",  COU6 = "COU6",  COU7 = "COU7",
+        COU5 = "COU5",  COU6 = "COU6",  COU7 = "COU7",  COU8 = "COU8",
             
         // </editor-fold>    
         // <editor-fold defaultstate="collapsed" desc="AREA 2: West wing">

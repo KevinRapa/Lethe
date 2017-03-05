@@ -11,8 +11,8 @@ public class Gal_Dome extends Furniture {
         this.description = "The glass dome offers a nice view of the stars.";
         this.searchDialog = "The dome is way too high up.";
         this.useDialog = 
-        this.actDialog = "If you do that, the glass will probably rain\n"
-                       + "rain down on you as a deadly shower of glass.";
+        this.actDialog = "If you do that, the shards will probably rain\n"
+                       + "rain down on you as a deadly glass shower.";
         
         this.addUseKeys(STONE_BLOCK, RED_BALL, CUE_BALL, ROCK);
         this.addActKeys("shatter");

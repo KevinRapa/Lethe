@@ -11,7 +11,7 @@ public class Lib3 extends Room{
         description= "This room is too sophisticated for you. You stand on the\n" +
                      "south end of a library. The room extends north, and above\n" +
                      "you is open save a balcony on the library's second floor.\n" +
-                     "The room is well lit with spherical electric sconces. In \n" +
+                     "The room is well lit with spherical electric sconces. In\n" +
                      "the center of this area is an impressive statue of a\n" +
                      "galloping horse. Against the east wall is both a set of stairs\n" +
                      "leading to the second story and a glass pane window. Against\n" +

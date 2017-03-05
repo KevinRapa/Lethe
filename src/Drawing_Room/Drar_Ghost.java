@@ -73,8 +73,8 @@ public class Drar_Ghost extends NonPlayerCharacter {
         
         GUI.out("\"My name is Asterion. I used to live here with my two\n"
               + "brothers. We provided great services to this kingdom, if kingdom\n"
-              + "is what you still call it. We provided our intellectual services to\n"
-              + "its people. So, why on Earth are you here?\"");
+              + "is what you still call it today. Well specifically, we offered our intellectual services to\n"
+              + "the people. But enough of me. Tell me, why on Earth are you here?\"");
         GUI.promptOut();
         
         GUI.out("\"You aren't sure? That doesn't make any sense!\n" +

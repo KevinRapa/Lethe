@@ -10,11 +10,11 @@ public class Gal1_Sculptures extends Furniture {
         this.searchable = false;
         this.description = "You quickly browse around the sculptures in the room.\n"
                          + "You find:\n"
-                         + "<> A dragon\n"
-                         + "<> A screen\n"
-                         + "<> Some armor\n";
+                         + "\t\t\t<> A dragon\n"
+                         + "\t\t\t<> A screen\n"
+                         + "\t\t\t<> Some armor\n";
         this.searchDialog = "You aren't sure which one to search first.";
-        this.addNameKeys("sculptures", "sculpture");
+        this.addNameKeys("sculptures?");
 /*----------------------------------------------------------------------------*/
     }
 }

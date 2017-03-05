@@ -77,7 +77,7 @@ public class AudioPlayer {
             new HashMap<String, File>() {
         // ====================================================================
         {
-        putAllTracks(nightAmbience, COU1, COU2, COU3, COU4, COU5, COU6, COU7);
+        putAllTracks(nightAmbience, COU1, COU2, COU3, COU4, COU5, COU6, COU7, COU8);
         putAllTracks(spookyInterior, FOY1, FOY2, FOY3, FOY4, VEST);
         putAllTracks(wavesCrashing, FOYB, LOOK, FOYC);
         putAllTracks(ironHallCustom, IHA1, IHA2);

@@ -14,6 +14,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Iterator;
 import static A_Main.Patterns.*;
+import Courtyard.Cou5_Spruce;
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -109,7 +110,7 @@ public final class Player {
         }
         else
             return Player.inv.contents().stream().
-                anyMatch(i -> i.toString().matches(".*(" + item + ").*"));
+                anyMatch(i -> i.toString().matches(".*(?i:" + item + ").*"));
     }
     // </editor-fold>
     
@@ -554,8 +555,7 @@ public final class Player {
         else 
             GUI.out("There is no " + object + 
                     " here that you can see. Or perhaps we are being lazy and\n"
-                  + ""
-                    + "seaeattempting to pick up items without searching something first?"); 
+                  + "attempting to pick up items without searching something first?"); 
     }
     // ========================================================================  
     private static void parseMovement(String dir) {
@@ -589,8 +589,12 @@ public final class Player {
                 GUI.out(((A_Super.DoubleStaircase)current).interact(dir));
                 return;
             }
-            if (current instanceof A_Super.Staircase && 
-                    ((A_Super.Staircase)current).getDir() == dir) {
+            if (current instanceof A_Super.Staircase 
+                && ((A_Super.Staircase)current).getDir() == dir) {
+                GUI.out(current.interact("climb"));
+                return;
+            }
+            if (current instanceof Cou5_Spruce) {
                 GUI.out(current.interact("climb"));
                 return;
             }

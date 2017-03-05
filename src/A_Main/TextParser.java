@@ -325,8 +325,9 @@ public class TextParser {
                         else
                             GUI.out("It's not a good idea to drop that here.");
                     }
-                    else
-                        System.err.println("Error: no floor in room.");
+                    else {
+                        GUI.out("It's not a good idea to drop that here.");
+                    }
                 }
                 else if (verb.equals("drink")) {
                     if (type.equals(INGREDIENT) || type.equals(LIQUID))

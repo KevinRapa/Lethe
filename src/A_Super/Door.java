@@ -19,7 +19,7 @@ public class Door extends Furniture {
 
         this.addUseKeys(ANYTHING);
         this.addActKeys("open|use|walk|go|close", "kick|bash|break", "knock|bang", "unlock|lock");
-        this.addNameKeys(dir + " door", "(?:heavy )?(?:wooden )?door");
+        this.addNameKeys(dir + " door", "(?:heavy )?(?:wooden )?door", "lock");
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {

@@ -43,13 +43,13 @@ abstract public class Window extends Furniture {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
         if (key.equals("open") || key.equals("close")) {
-            AudioPlayer.playEffect(26);
-            
             if (this.isOpen && key.equals("close")) {
+                AudioPlayer.playEffect(26);
                 this.close();
                 return "You close the window."; 
             }
             else if (! this.isOpen && key.equals("open")) {
+                AudioPlayer.playEffect(26);
                 this.open();
                 return "You open the window."; 
             }

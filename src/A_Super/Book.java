@@ -52,7 +52,7 @@ public class Book extends Note {
                     choice = "no";
             }
             else {
-                GUI.menOut("< > Close the book");
+                GUI.menOut("\n\n< > Close the book");
                 GUI.promptOut(); 
                 choice = "no"; 
             }
