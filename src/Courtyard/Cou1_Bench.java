@@ -8,7 +8,6 @@ public class Cou1_Bench extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou1_Bench() {
         super();
-        this.searchable = false;
         this.description = "The bench is blanketed in multiflora. Its backrest\n"
                          + "lies on the ground behind it.";
         this.searchDialog = "You aren't risking getting pricked by those thorns.";

@@ -12,8 +12,8 @@ public class Vest_Chair extends Furniture {
         this.searchDialog = "You look underneath, but find nothing.";
         this.actDialog = "You sit down in the chair, but not for long,\n" +
                       "for the chair is hard and uncomfortable.";
-        this.addNameKeys("chair", "chairs");
-        this.addActKeys("sit", "use", "relax");
+        this.addNameKeys("chairs?");
+        this.addActKeys(SITPATTERN);
     }
 /*----------------------------------------------------------------------------*/
 }

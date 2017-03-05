@@ -38,6 +38,7 @@ public class Look_Valve extends Furniture{
             AudioPlayer.playEffect(20);
             Player.getRoomObj(Id.ROTU).addFurniture(new Rotu_Wheel());
             loosened = true; 
+            return this.actDialog;
         }
         else {
             AudioPlayer.playEffect(17);
@@ -48,7 +49,6 @@ public class Look_Valve extends Furniture{
             else 
                 return "You loosen the valve, but nothing happens.";         
         }       
-        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
     

@@ -12,6 +12,7 @@ public class Entr_Door extends Door {
                          + "pine wood with large iron hinges. Their knobs amuse\n"
                          + "you however, as they look way too miniscule to be\n"
                          + "appropriate for doors of this magnitude.";
+        this.addNameKeys("front doors?");
     }
 /*----------------------------------------------------------------------------*/ 
 }

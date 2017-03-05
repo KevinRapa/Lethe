@@ -17,7 +17,7 @@ public class Foy2_Alcove extends Furniture{
         this.STAT_REF = (Foy2_Stat)foy2Stat;
         
         this.description = "A shallow domed alcove carved into the wall.\n"
-                         + "A statue displays itself inside of it.";
+                         + "A statue has been displayed inside of it.";
         this.searchDialog = "The large statue makes searching difficult. You\n"
                           + "can't seem to find anything.";
         

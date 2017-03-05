@@ -15,7 +15,7 @@ public class Want_Statue extends Statue {
         this.searchDialog = "They are plain statues. Upon closer inspection\n"
                           + "of one though, you find a lever hidden.";
         this.actDialog = "You feel a statue, but you are discomforted in thinking\n"
-                            + "that somehow, the other statues may be watching you.";
+                       + "that somehow, the other statues may be watching you.";
         this.addNameKeys("statues");
     }
 /*----------------------------------------------------------------------------*/

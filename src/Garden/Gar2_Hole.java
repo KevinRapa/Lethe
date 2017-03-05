@@ -25,7 +25,7 @@ public class Gar2_Hole extends Furniture {
 
         this.addNameKeys("(?:thick )?(?:granite )?railing", "hole");
         this.addUseKeys(LEATHER_HOSE);
-        this.addActKeys("jump", "climb");
+        this.addActKeys("jump", "climb", "vault");
     }
     // ======================================================================== 
     @Override public String getDescription() {

@@ -23,9 +23,7 @@ public class Foy2_Button extends Button {
         this.addNameKeys("(?:small )?(?:black )?button");
     }
 /*----------------------------------------------------------------------------*/    
-    /**
-     * Public in order to allow access from FOYW and FOYB.
-     */
+    // Public in order to allow access from FOYW and FOYB.
     @Override public String event(String key) {
         Room bba1 = Player.getRoomObj(Id.FOYB);
         Room want = Player.getRoomObj(Id.FOYW);

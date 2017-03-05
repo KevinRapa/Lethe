@@ -207,7 +207,6 @@ public class Map {
         Item cndlStck = new Weapon("brass candlestick", "The candle is missing. Well, at least no one can club you behind the head with it now.");
         Item bskt = new Item("wicker basket", "A decorative wicker basket. Probably not very useful for you right now.");
         //-----------------------------FURNITURE--------------------------------    
-        Furniture foyBnstr = new Foy_Banister();
         Furniture foyW = new Wall("A dark wood-paneled wall.");
         Furniture foyF = new Floor("Salmon-colored tiled marble. Its glint stuns you.");
         Furniture foyFrntDr = new Entr_Door(Direction.SOUTH);
@@ -277,6 +276,7 @@ public class Map {
         Furniture couCstl = new Cou_Castle();
         Furniture couW = new Wall("The castle walls are several stories tall and made of granite blocks.");
         Furniture couStps = new Cou_Steps();
+        Furniture coutWlkwy = new Cou_Tiles();
 
         Furniture cou1Bnch = new Cou1_Bench();
         Furniture cou1Thrns = new Cou1_Thorns();
@@ -308,6 +308,7 @@ public class Map {
         Room cou7 = new Entr("on the front balcony", Id.COU7);  
         //-----------------------------FURNITURE--------------------------------
         Furniture entrF = new Floor("The balcony is layed with a brown shale tile.");
+        Furniture entrBlcny = new Entr_Balcony();
         Furniture entrClmns = new Entr_Columns();
         Furniture entrRf = new Entr_Roof();
         Furniture entrStats = new Entr_Statues();
@@ -1767,19 +1768,19 @@ public class Map {
         // <editor-fold defaultstate="collapsed" desc="AREA 1: CASTLE FRONT">
 
         foy1.addFurniture(genDoor, foy1Gt, foyFrntDr, foyF, foyW, foy1Chnd, eastDoor, foy1Tbl, foy1Crpt, foy1Strs, clng);
-        foy2.addFurniture(foy2Gt, foy2Stat, foy2Alc, foyF, foyW, foy2Strcs, foyBnstr, clng);
-        foy3.addFurniture(foy3Strs, westDoor, foyBnstr, foyW, foy3F, foy34Crpt, clng);
-        foy4.addFurniture(foy4Strs, foyBnstr, foyW, foy4F, foy34Crpt, foy4Dr, clng);
+        foy2.addFurniture(foy2Gt, foy2Stat, foy2Alc, foyF, foyW, foy2Strcs, clng);
+        foy3.addFurniture(foy3Strs, westDoor, foyW, foy3F, foy34Crpt, clng);
+        foy4.addFurniture(foy4Strs, foyW, foy4F, foy34Crpt, foy4Dr, clng);
         vest.addFurniture(vesFire, vesBtn, vesWin, vesDsk, vesEtbl, vesCase, vesTpstr, vesChr, vesF, vesDr, wallEx, vesOrb);
         foyb.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, clng, bbaBnch, bbaScnc, bbaClff, bbaShrln, bbaSea, bba1Gt, wantBttn);
         foyc.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, clng, bbaScnc, bbaClff, bbaShrln, bbaSea, bba2Dr);
         cou1.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou1F, couCstl);
-        cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl);
-        cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc);
+        cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl, coutWlkwy);
+        cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc, coutWlkwy);
         cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou56F, cou6Stat, couCstl, cou6Ghst);
         cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, couCstl);
         cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl);
-        cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps);
+        cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps, entrBlcny);
         foyw.addFurniture(genDoor, wantStat, wantTrchs, wantLvr, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt, wantBttn, clng);
 
         // </editor-fold>
@@ -1919,7 +1920,7 @@ public class Map {
 
         tow1.addFurniture(tow1F, wallEx, towWndw, towBlcny, tow1Pdstl, tow1Dr, tow1BlckDr, towSphr);
         tow2.addFurniture(genDoor, towWndw, wallEx, towBlcny, eastDoor, towSphr, tow2DrN, clng);
-        bls1.addFurniture(bls1Dr, bls1Strs, bls1_Plnts, blsWndw, bls1F, blsBlcny, bls1Stat);
+        bls1.addFurniture(bls1Dr, bls1Strs, bls1_Plnts, blsWndw, bls1F, bls1Stat);
         bls2.addFurniture(eastDoor, bls2Strs, blsWndw, bls2F, blsBlcny);
         tbal.addFurniture(genDoor, tbalStrs, bbaSea, tbalPllr, northDoor, tbalDrS, tbalF);
         lqu1.addFurniture(westDoor, lqu1Wrdrb, lquF, lqu1Chst, lqu1Mrrr, lquW, lqu1Cbnt, lqu1_Bd, lqu_Crpt, clng);

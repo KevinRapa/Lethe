@@ -27,8 +27,8 @@ public class Want_Lever extends Lever {
         else {
             AudioPlayer.playEffect(19, -10);
             ref.rotate();
+            return this.actDialog;
         }
-        return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

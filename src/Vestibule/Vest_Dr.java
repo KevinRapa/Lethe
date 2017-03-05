@@ -8,7 +8,7 @@ public class Vest_Dr extends Door {
     public Vest_Dr (Direction dir) {
         super(dir);
         this.description = "A heavy wooden door. There seems to be a lot\n"
-                         + "more mechanical works to this door than normal.";
+                         + "more mechanical works to this door than is typical of a door.";
     }
 /*----------------------------------------------------------------------------*/
 }

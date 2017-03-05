@@ -15,7 +15,7 @@ public class Vest_EndTable extends Furniture {
                          "craftsmanship impressive. The carvings on it are\n" + 
                          "equally such.";
         this.addNameKeys("(?:wood(?:en)? )?(?:end )?table");
-        this.addActKeys("move", "kick");
+        this.addActKeys(JOSTLEPATTERN);
     }
 /*----------------------------------------------------------------------------*/    
 }

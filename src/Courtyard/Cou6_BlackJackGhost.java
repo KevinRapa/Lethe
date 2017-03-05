@@ -3,7 +3,6 @@ package Courtyard;
 import A_Main.GUI;
 import A_Main.Menus;
 import A_Main.NameConstants;
-import A_Main.Patterns;
 import static A_Main.Patterns.NO;
 import static A_Main.Patterns.YES;
 import A_Main.Player;
@@ -56,7 +55,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
 /*----------------------------------------------------------------------------*/
     /**
      * Starts dialog with the ghost.
-     * Returns true or false, if the player has played the ghost at least once.
+     * @return if the player has played the ghost at least once.
      */
     @Override protected Boolean converse1() {
         GUI.menOut("\n\n<enter> Continue...");

@@ -16,7 +16,8 @@ public class Foy_Gate extends Door {
     public Foy_Gate (boolean open, Direction dir) {
         super(dir);
         
-        this.description = "An arched black iron gate barely taller than you.";
+        this.description = "An arched black iron gate barely taller than you.\n"
+                         + "It looks like this kind lifts upward by a hidden pulley or chain.";
         this.DESCOPEN = "With the gate retracted, there is only an open doorway.";
         
         this.searchDialog = "You aren't sure what you'd search for on a gate.";        
