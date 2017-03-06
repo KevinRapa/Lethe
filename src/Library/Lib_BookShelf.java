@@ -7,8 +7,8 @@ public class Lib_BookShelf extends Furniture {
     public Lib_BookShelf() {
         super();
 
-        this.description = "There are a couple of bookshelves in here. Specify\n"
-                         + "with just the label at the top or a direction.";
+        this.description = "There are a couple of bookshelves in here. You will\n"
+                         + "need to be a bit more specific.";
         this.searchDialog = this.description;
         this.actDialog = this.description;
         this.addNameKeys("(?:book)?shel(?:f|ves)");

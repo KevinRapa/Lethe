@@ -15,7 +15,6 @@ import java.io.Serializable;
 import java.util.Iterator;
 import static A_Main.Patterns.*;
 import A_Super.Climbable;
-import Courtyard.Cou5_Spruce;
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -159,7 +158,7 @@ public final class Player {
         Player.lastVisited = attributes.LSTVISITED;
         Player.shoes = attributes.SHOES;
         Player.cmd = new HashMap<>();
-        
+
         if (pos[0] == 4 && pos[2] < 7) // Starts monster if player is in the 
             DungeonMonster.startMovement(); // tunnel area.
     }
@@ -256,6 +255,9 @@ public final class Player {
                 Main.saveGame();
                 GUI.out("Game saved.");
             }
+            
+            else if (ans.equals("combine"))
+                Player.combineSub();
             
             else if (ans.equals("jump")) 
                 GUI.out("You jump a short height into the air. Well, that was fun.");
@@ -445,29 +447,46 @@ public final class Player {
             GUI.menOut(Menus.TRADE_SUB);
             
             cmdItm = GUI.promptOut();
-
-            try (Scanner collectToken = new Scanner(cmdItm).useDelimiter("\\s+")) {
+            
+            if (cmdItm.equals("loot") || cmdItm.equals("l")) {
+                ArrayList<Item> l = new ArrayList<>();
                 
-                String action = collectToken.next();            
-                int slot = Integer.parseInt(collectToken.next());
-                
-                if (STORE.matcher(action).matches()) {
-                    Item item = Player.inv.get(slot - 1);
-                    evalStore(furniture, item);                            
-                }            
-                else if (TAKE.matcher(action).matches()) {
-                    Item item = furniture.getInv().get(slot - 1);
-                    evalTake(furniture, item);
+                for (Item i : furniture.getInv()) {
+                    if (! Player.inv.contains(i))
+                        l.add(i);
                 }
-                describeRoom();
-                printInv();
+                for (Item i : l) {
+                    evalTake(furniture, i);
+                }
+                GUI.out("You stuff as much as you can into your pockets.");
             }
-            catch (java.lang.IndexOutOfBoundsException e) {
-                GUI.out("There's no item in that slot.");
-            }
-            catch (java.util.NoSuchElementException | java.lang.NumberFormatException e) {
-                if (isNonEmptyString(cmdItm))
-                    GUI.out("Type an action and the slot number."); 
+            else {
+                try (Scanner collectToken = 
+                        new Scanner(cmdItm).useDelimiter("\\s+")) 
+                {
+                    String action = collectToken.next();            
+                    int slot = Integer.parseInt(collectToken.next());
+
+                    if (STORE.matcher(action).matches()) {
+                        Item item = Player.inv.get(slot - 1);
+                        evalStore(furniture, item);                            
+                    }            
+                    else if (TAKE.matcher(action).matches()) {
+                        Item item = furniture.getInv().get(slot - 1);
+                        evalTake(furniture, item);
+                    }
+                    describeRoom();
+                    printInv();
+                }
+                catch (java.lang.IndexOutOfBoundsException e) {
+                    GUI.out("There's no item in that slot.");
+                }
+                catch (java.util.NoSuchElementException 
+                        | java.lang.NumberFormatException e) 
+                {
+                    if (isNonEmptyString(cmdItm))
+                        GUI.out("Type an action and the slot number."); 
+                }
             }
         } while (isNonEmptyString(cmdItm));
         

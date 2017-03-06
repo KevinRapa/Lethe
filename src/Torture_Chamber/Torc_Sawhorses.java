@@ -34,7 +34,7 @@ public class Torc_Sawhorses extends Furniture implements Resetable {
         this.searchDialog = "The sawhorses are holding up a ladder-like metal device.";
         this.useDialog = "You place the metal ladder back on the sawhorses.";
 
-        this.addNameKeys("(?:two )?sawhorses?");
+        this.addNameKeys("(?:two )?sawhorses?", "(?:long )?(?:metal )?device");
         this.addUseKeys(NameConstants.METAL_LADDER);
     }
     // ======================================================================== 

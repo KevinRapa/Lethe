@@ -29,7 +29,7 @@ public final class Patterns {
         GENERIC_FURNITURE = Pattern.compile("furniture|furnishings|stuff|things?"),
         TAKE = Pattern.compile("t|take"),
         STORE = Pattern.compile("s|store"),
-        KEY = Pattern.compile("[A-Z]{3}[A-Z1-9]"),
+        KEY = Pattern.compile("[A-Z]{3}[A-Z1-9]|OU62"), // Exception for oubliette key
         EXPLETIVE = Pattern.compile(".*(?:fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska).*"),
         INV_CHOICES = Pattern.compile("[1-4]"),
         MOVEMENT = Pattern.compile("go|walk|run"),
@@ -57,14 +57,13 @@ public final class Patterns {
     
         // Patterns used by TextParser
         INSPECT_PATTERN = Pattern.compile("look(?: at)?|inspect|examine|check(?: out)?"),
-        USE_PATTERN = Pattern.compile("use|read|drop|wear|remove|eat|drink|throw"),
+        USE_PATTERN = Pattern.compile("use|read|drop|wear|remove|eat|drink|throw|lean|tie"),
         ITEM_COMMAND = Pattern.compile("(?:" + USE_PATTERN + "|" + INSPECT_PATTERN + ") [a-z0-9: ,'-]+"),
         SUICIDE = Pattern.compile("commit suicide|kill (?:your)?self"),
-        SHOUT = Pattern.compile("(?:say|yell|shout) .+"),
         DESTROY = Pattern.compile("(?:destroy|obliterate|wreak havoc|throw) .+"),
-        STORE_COMMAND = Pattern.compile("(?:put|store) [a-z0-9: ,'-]+"),
-        STORE_THEN_SPACE = Pattern.compile("(?:put|store) "),
-        PREPOSITION = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|over|of|against|through|against|from|around|to|at|under(?:neath)?"),
+        STORE_COMMAND = Pattern.compile("(?:put|store|pour|dump) [a-z0-9: ,'-]+"),
+        STORE_THEN_SPACE = Pattern.compile("(?:put|store|pour|dump) "),
+        PREPOSITION = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|over|of|through|against|from|around|to|at|under(?:neath)?"),
         SLOT_NUMBER = Pattern.compile("[0-9]+"),
         ARTICLE = Pattern.compile("\\bthe |\\.|\\ban? |\\bsome "),
         WORD_THEN_SPACE = Pattern.compile("\\w+ "),

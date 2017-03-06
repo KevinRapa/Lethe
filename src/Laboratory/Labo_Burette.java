@@ -58,20 +58,24 @@ public class Labo_Burette extends Furniture {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (item.toString().equals(BOTTLE_OF_VINEGAR)) {
-            if (this.mode != Titrant.EMPTY)
-                return "The burette has liquid in it already!";
-            else
-                this.mode = Titrant.VINEGAR;
+        if (Player.hasItem(LAB_COAT)) {
+            if (item.toString().equals(BOTTLE_OF_VINEGAR)) {
+                if (this.mode != Titrant.EMPTY)
+                    return "The burette has liquid in it already!";
+                else
+                    this.mode = Titrant.VINEGAR;
+            }
+            else if (item.toString().equals(BOTTLE_OF_WINE)) {
+                if (this.mode != Titrant.EMPTY)
+                    return "The burette has liquid in it already!";
+                else
+                    this.mode = Titrant.WINE;
+            }
+            return this.interact("use");
         }
-        else if (item.toString().equals(BOTTLE_OF_WINE)) {
-            if (this.mode != Titrant.EMPTY)
-                return "The burette has liquid in it already!";
-            else
-                this.mode = Titrant.WINE;
-        }
-        
-        return this.interact("use");
+        else
+            return "You know, it really wouldn't be safe to fool around with this dangerous "
+                 + "science equipment without first putting on a lab coat. Better find a lab coat first.";
     }
     // ========================================================================   
     @Override public String interact(String key) {   

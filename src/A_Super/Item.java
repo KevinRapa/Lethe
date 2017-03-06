@@ -24,6 +24,7 @@ public class Item implements Serializable, Comparable<Item> {
     protected String description;   // Displayed when item is inspected.
     protected String useDialog;     // Displayed when items with Id 1 are used.
     protected int useID = 2;        // 1: used on itself | 2: enters sub-prompt  
+    protected static final String USE_DEFAULT = "You will need to be more specific.";
 //******************************************************************************
 // <editor-fold desc="CONSTRUCTORS">
 // In order to avoid creating an excessive number of classes, and due to the
@@ -39,6 +40,7 @@ public class Item implements Serializable, Comparable<Item> {
         NAME = name;
         FORMS = null;    
         THRESHOLD = 0; // Does not combine
+        useDialog = USE_DEFAULT;
     }   
     // ========================================================================       
     /**
@@ -73,6 +75,7 @@ public class Item implements Serializable, Comparable<Item> {
      * @param thresh The number of items in this one's set.
      */
     public Item(String name, Item forms, int thresh) {
+        useDialog = USE_DEFAULT;
         NAME = name; 
         FORMS = forms;  
         THRESHOLD = thresh;

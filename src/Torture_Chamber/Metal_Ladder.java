@@ -31,6 +31,7 @@ public class Metal_Ladder extends Item {
     @Override public String useEvent() {
         Player.getInv().remove(this);
         Player.getPos().addFurniture(LADDER_FURNITURE);
+        Player.printInv();
         
         if (! Player.getPosId().equals(Id.SEW4))
             return this.useDialog;

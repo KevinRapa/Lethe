@@ -21,9 +21,10 @@ public class Gar4_Plaque extends Furniture {
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        this.isMoved = true;
-        return this.isMoved ? 
+        String result = this.isMoved ? 
                 "You have already moved the plaque." : this.searchDialog;
+        this.isMoved = true;
+        return result;
     }
     // ========================================================================   
     @Override public String interact(String key) {              

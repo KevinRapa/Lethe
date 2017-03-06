@@ -56,10 +56,6 @@ public class TextParser {
         if (SUICIDE.matcher(input).matches()) 
             GUI.out("You haven't reached that point yet!!");
 
-        else if (SHOUT.matcher(input).matches())
-            GUI.out(WORD_THEN_SPACE.matcher(input)
-                    .replaceFirst(NOTHING).concat("!"));
-        
         else if (DESTROY.matcher(input).matches())
             GUI.out("Yes, you're frustrated, hungry, and angry, but don't be so reckless!");
 
@@ -98,7 +94,7 @@ public class TextParser {
         
         for (int i = 0; i < commands.length; i++) {    
             if (ITEM_COMMAND.matcher(statements[i]).matches()) 
-                commands[i] = getItemCmd(statements[i].split(" on "));
+                commands[i] = getItemCmd(statements[i].split(" (on|against|to) "));
             
             else if (STORE_COMMAND.matcher(statements[i]).matches())
                 commands[i] = getStoreCmd(STORE_THEN_SPACE.matcher(statements[i])
@@ -344,12 +340,14 @@ public class TextParser {
                         GUI.out("That is not something you can drink...");
                 }
                 else if (verb.equals("eat") || verb.equals("consume")) {
-                    if (i.toString().equals("glowing pristine fruit"))
+                    if (item.toString().equals(GLOWING_FRUIT))
                         GUI.out("You know, that might destroy the phylactery, which you need to do, AND you're quite hungry...\n"
                               + "but conversely it quite possibly may drive you into hopeless insanity, so let's not do that.");
                     else
                         GUI.out("That... REALLY does not seem edible...");
                 }
+                else
+                    GUI.out("You will need to be more specific.");
             }
             else if (Player.getPos().hasFurniture(i.toString()) || 
                      INDEF_PRONOUN.matcher(i.toString()).matches()) {
@@ -379,7 +377,7 @@ public class TextParser {
                     }
                     // Not searchable, but perhaps it's meant to be used by the item still.
                     // e.g. the Labo distiller used by the florence flask.
-                    else if (furn.useKeyMatches(i.VALUE)) {
+                    else if (furn.useKeyMatches(item.toString())) {
                         GUI.out(furn.useEvent(item));
                         Player.printInv();
                     }

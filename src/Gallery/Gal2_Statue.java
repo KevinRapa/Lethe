@@ -34,7 +34,7 @@ public class Gal2_Statue extends SearchableFurniture {
                          + "his head and left hand held low as if bearing an\n"
                          + "object, though it's empty.";        
         this.searchDialog = "The statue's hand is empty";
-        this.addNameKeys("(?:grandiose )?statue", "(?:statue(?:'s)? )?hand");
+        this.addNameKeys("(?:grandiose )?statue", "(?:statue(?:'s)? )?(?:hand|palm)");
         this.addUseKeys(CRYSTAL_ORB);
     }
 /*----------------------------------------------------------------------------*/

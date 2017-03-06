@@ -101,7 +101,7 @@ public class Map {
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE PHYLACTERIES">
 
         Item studBkPhy = new Stud_BookPhylactery(BOOK_PHYL);
-        Item kitcFrtPhy = new Kitc_FrtPhy("glowing pristine fruit");
+        Item kitcFrtPhy = new Kitc_FrtPhy(GLOWING_FRUIT);
         Item factumPhy = new Factum(FACTUM);
         Item vauChlPhy = new Vau_ChalicePhylactery("glowing chalice");
         Item towScptrPhy = new Tow_ScepterPhylactery(GLOWING_SCEPTER);
@@ -1101,7 +1101,7 @@ public class Map {
         Furniture laboDspnsrs = new Labo_Dispensers(vial, tstTb);
         Furniture laboBrtt = new Labo_Burette(vial, tstTb);
         Furniture laboStpCck = new Labo_StopCock();
-        Furniture laboF = new Floor("It's black and white checkered tile. A predictable floor for a laboratory.", tstTb);
+        Furniture laboF = new Floor("It's black and white checkered tile. A predictable floor for a laboratory.", tstTb, wine);
         Furniture laboSnk = new Labo_Sink(vial, bkr);
         Furniture laboCntrptn = new Labo_Contraption();
         Furniture laboTbl = new Labo_Table();

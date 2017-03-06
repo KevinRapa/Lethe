@@ -22,7 +22,7 @@ public class Aarc_Wood extends Aarc_Furniture implements Gettable {
         this.searchDialog = this.description;
        
         this.addActKeys(GETPATTERN);
-        this.addNameKeys("(?:piles of )?wood(?:en)?(?: rubble)?");
+        this.addNameKeys("(?:piles of )?wood(?:en)?(?: rubble)?", "(?:wood(?:en)? )?piles?");
     }
     // ========================================================================
     @Override public String interact(String key) {

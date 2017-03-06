@@ -23,7 +23,7 @@ public class Lib2_VoyageShelf extends SearchableFurniture {
                          + "\"Voyage\". At its base on the right, you notice\n"
                          + "consistent arched scratches on the floor.";
         this.searchDialog = "You peruse its shelves.";
-        this.addNameKeys("voyage", "(?:west|left) (?:book)?shelf");
+        this.addNameKeys("voyage", "(?:west|left) (?:(?:book)?shelf|one)");
         this.addActKeys(MOVEPATTERN);
     }
 /*----------------------------------------------------------------------------*/

@@ -24,7 +24,7 @@ public class Ant_Casket extends SearchableFurniture implements Openable {
         this.numKeys = 0;
         
         this.addActKeys(JOSTLEPATTERN);
-        this.addNameKeys("(?:stone )?(?:casket|coffin)", "keyholes?");
+        this.addNameKeys("(?:stone )?(?:casket|coffin)", "keyholes?", "holes?", "lid");
         this.addUseKeys(KEY_OF_ANCESTRY, KEY_OF_INTELLECT, KEY_OF_CONTINUITY);
     }
 /*----------------------------------------------------------------------------*/

@@ -1,6 +1,7 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
+import static A_Main.NameConstants.METAL_LADDER;
 import static A_Main.NameConstants.WEAPON;
 /**
  * Represents a wall. 
@@ -26,6 +27,8 @@ public class Wall extends Furniture {
             AudioPlayer.playEffect(35);
             return this.actDialog;
         }
+        else if (item.toString().equals(METAL_LADDER))
+            return item.useEvent();
         else
             return DEFAULT_USE;
     }

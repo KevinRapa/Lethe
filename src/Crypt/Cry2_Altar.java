@@ -18,7 +18,7 @@ public class Cry2_Altar extends SearchableFurniture {
 
         this.addNameKeys("altar", "(?:stone )?table(?: surface)?", 
                          "candles?", "flora", "effigy", "surface");
-        this.addActKeys("worship", "kneel", "sacrifice");
+        this.addActKeys("worship", "kneel", "sacrifice", "pray");
     }
     // ========================================================================  
 }
