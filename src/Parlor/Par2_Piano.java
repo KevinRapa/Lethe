@@ -16,12 +16,17 @@ public class Par2_Piano extends SearchableFurniture implements Openable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Par2_Piano(Furniture orb, Item... items) {
         super(items);
-        this.addNameKeys("(?:black )?(?:grand )?piano", "(?:piano )?keys?");
+        
         this.description = "The black grand piano sits solemnly on the loft\n"
                          + "extension. You're surprised anybody here has time\n"
                          + "for music!";
+        
+        this.useDialog = "You have little knowledge of musical instruments, much less in instrument repair."; 
         this.searchDialog = "You look under the piano's cover.";
         this.REF = (Par1_Orb) orb;
+        
+        this.addNameKeys("(?:black )?(?:grand )?piano", "(?:piano )?keys?");
+        this.addUseKeys("steel wire");
         this.addActKeys("play", "press");
     }
 /*----------------------------------------------------------------------------*/ 

@@ -58,7 +58,7 @@ public class Main {
     
     private static final String 
             WD = System.getProperty("user.dir"),
-            START_LOCATION = Id.LABO, // Default COU4
+            START_LOCATION = Id.COU4, // Default COU4
             FILE_NAME = "Game.data";
 // ============================================================================
     /**

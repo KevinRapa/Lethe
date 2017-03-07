@@ -72,7 +72,7 @@ public final class Patterns {
         // Patterns used by GUI
         THREE_PLUS_LETTER_WORD = Pattern.compile("(?:[a-z -]{3,})+"),
         FIRST_WORD = Pattern.compile("[a-z -]+ "),
-        VAILD_COMMAND = Pattern.compile("[a-z ,'-]{2,}(?: [1-9]+)?|(?:[ts] \\d{1,2})"),
+        VALID_COMMAND = Pattern.compile("[a-z ,'-]{2,}(?: [1-9]+)?|(?:[ts] \\d{1,2})"),
         DIGIT = Pattern.compile("\\d"),
         NEWLINE = Pattern.compile("\n"),
     

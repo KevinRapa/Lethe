@@ -6,6 +6,7 @@ import A_Main.Player;
 import static A_Main.NameConstants.*;
 import A_Super.Climbable;
 import A_Super.Direction;
+import A_Super.Gettable;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**
@@ -14,7 +15,7 @@ import A_Super.SearchableFurniture;
  * @see Parlor.Par1_EnchtTbl
  * @author Kevin Rapa
  */
-public class Cou5_Spruce extends SearchableFurniture implements Climbable {
+public class Cou5_Spruce extends SearchableFurniture implements Climbable, Gettable {
     private final Item EXTRCT_REF, VIAL_REF;
     private boolean drilled;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
@@ -26,14 +27,14 @@ public class Cou5_Spruce extends SearchableFurniture implements Climbable {
         this.description = "The ancient tree looms over you and creaks slowly in\n"
                          + "the breeze. It stands out as the most life-like thing\n"
                          + "in the courtyard, even more than the birds. The spruce\n"
-                         + "is an evergreen, genus Abies, with stiff sharp needles.\n"
+                         + "is an evergreen, genus Picea, with stiff sharp needles.\n"
                          + "The closely-spaced branches make climbing a possibility.";
         this.EXTRCT_REF = extrct;
         this.VIAL_REF = vial;
         this.drilled = false;
         
-        this.addActKeys("drill", "climb", "swing", "scale");
-        this.addNameKeys("(?:spruce )?tree", "spruce", "trunk", "branch(?:es)?");
+        this.addActKeys("drill", "climb", GETPATTERN, "swing", "scale");
+        this.addNameKeys("(?:spruce |hole )?tree", "spruce", "(?:hole )?trunk", "branch(?:es)?");
         this.addUseKeys(HAND_DRILL, EMPTY_VIAL);
     }
 /*----------------------------------------------------------------------------*/
@@ -64,7 +65,7 @@ public class Cou5_Spruce extends SearchableFurniture implements Climbable {
                 return " You collect some of the sap in the small vial you are carrying.";
             }
             else
-                return "You have nothing to collect in the vial";
+                return "You have nothing to put in the vial.";
         }
     }
 /*----------------------------------------------------------------------------*/
@@ -92,8 +93,25 @@ public class Cou5_Spruce extends SearchableFurniture implements Climbable {
                  + "flannel shirt.";
             }
         }
-        else
+        else if (action.equals("swing"))
             return "You're much too old for that.";
+        else
+            return getIt();
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String getIt() {
+        if (drilled)
+            if (Player.getInv().contains(VIAL_REF))
+                if (Player.getInv().add(EXTRCT_REF)) {
+                    Player.getInv().remove(VIAL_REF);
+                    return "You collect some of the sap in the small vial you are carrying.";
+                }
+                else
+                    return "You are already carrying some sap.";
+            else
+                return "You have nothing to collect the sap in.";
+        else
+            return "What exactly do you mean by that?";
     }
 /*----------------------------------------------------------------------------*/
 }

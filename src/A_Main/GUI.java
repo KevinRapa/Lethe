@@ -408,7 +408,7 @@ public class GUI extends JPanel {
             synchronized (HOLDER) {
                 HOLDER.recieve(INPUT.getText().toLowerCase().trim());
                 
-                if (VAILD_COMMAND.matcher(HOLDER.request()).matches()) {
+                if (VALID_COMMAND.matcher(HOLDER.request()).matches()) {
                     if (UNDO.size() == 10)
                         UNDO.removeLast();
                     UNDO.push(HOLDER.request());
