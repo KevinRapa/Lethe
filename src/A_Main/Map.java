@@ -1537,9 +1537,9 @@ public class Map {
         Room cha2 = new Cha2("at the chancel altar", Id.CHA2);
         //-------------------------------ITEMS---------------------------------- 
         Item chaNt = new Cha_Note("malevolent note");
-        Item gldUrn = new Item("gold urn", "the stone urn is fitted with a gold plate depicting a shining chalice.");
+        Item gldUrn = new Item("gold urn", "the stone urn is fitted with a gold plate bearing an etched shining chalice.");
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture chaF = new Floor("The floor is made of dark, dusty floorboards.");
+        Furniture chaF = new Floor("Faded, dusty boards line the length of the floor from north to south.");
         Furniture chaW = new Wall("The walls are mostly carved wood paneling. Several religious scenes are painted at fixed distances along the wall.");
         Furniture chaPws = new Cha_Pews();
         Furniture chaHz = new Cha_Haze();
@@ -1563,11 +1563,11 @@ public class Map {
         //-------------------------------ITEMS---------------------------------- 
         Item grl = new Item("grail", "It's treasure. A gold-plated grail studded with rubies. Where is all this from?");
         Item cns = new Item("coins", "It's treasure. A handful of golden coins... Not currency you've ever seen though.");
-        Item crwn = new Item("crown", "It's treasure. It's the crown of a king. But the crown of whom exactly?");
-        Item brclt = new Item("bracelet", "It's treasure. A jade bracelet.");
-        Item rng = new Item("ring", "It's treasure. It's a small bronze ring set with an aquamarine.");
-        Item dmnd = new Item("diamond", "It's treasure. A sparkling diamond.");
-        Item jdStat = new Item("jade statue", "It's treasure. This piece is a small statue made of jade.");
+        Item crwn = new Item("crown", "It's treasure. It's the crown of a king. Exactly who's crown, you cannot guess.");
+        Item brclt = new Item("bracelet", "It's treasure. A thick jade bracelet, cold and heavy.");
+        Item rng = new Item("ring", "It's treasure. It's a small bronze ring set with an opaque, smooth blue stone.");
+        Item dmnd = new Item("diamond", "It's treasure. A small, but undoubtedly valuable cut sparkling diamond.");
+        Item jdStat = new Item("jade statue", "It's treasure. A small statuette made of jade depicting a sitting female.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture vau1Chsts = new Vau_Chsts(grl, cns, crwn, brclt, rng, dmnd, jdStat);
         Furniture vau2Chsts = new Vau_Chsts(rng, cns, cns, dmnd, crwn, jdStat, dmnd);
@@ -1575,8 +1575,8 @@ public class Map {
         Furniture vauTrsr = new Vau_Treasure(cns, cns, crwn, jdStat, dmnd, rng, cns, rng, brclt);
         Furniture vauBwls = new Vau_Bowls();
         Furniture vauClng = new Vau_Ceiling();
-        Furniture vaueF = new Floor("The floors are made of ancient sandstone blocks.");
-        Furniture vauW = new Wall("The walls are made of sandstone blocks.");
+        Furniture vaueF = new Floor("The walls here are sandstone blocks, much like those in the west wing, but seemingly older.");
+        Furniture vauW = new Wall("The walls here are sandstone blocks, much like those in the west wing, but seemingly older.");
         Furniture vaueBttns = new Vaue_Door();
 
         // </editor-fold>
