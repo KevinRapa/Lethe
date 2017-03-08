@@ -47,6 +47,8 @@ public final class Id {
         GAR4 = "GAR4",  PAR1 = "PAR1",  PAR2 = "PAR2",  SST1 = "SST1",
         SST2 = "SST2",  LABO = "LABO",  ATT1 = "ATT1",  ATT2 = "ATT2",
         BHA1 = "BHA1",  BHA2 = "BHA2",  BHA3 = "BHA3", 
+    
+        GCHS = "GCHS", // Garden chest key.
             
         // </editor-fold>    
         // <editor-fold defaultstate="collapsed" desc="AREA 5: Sub-levels">
