@@ -112,7 +112,8 @@ public class Map {
         Key studKey = new Key("crude molded key", Id.STUD);        
         Key gal1Key = new Key("key with a bearded face on its bow", Id.GAL1);       
         Key eow3Key = new Key("workshop key", Id.WORK);       
-        Key par2Key = new Key("key with a rose on its bow", Id.PAR2);      
+        Key par2Key = new Key("key with a rose on its bow", Id.PAR2); 
+        Key garChstKey = new Key("chest key", Id.GCHS);
         Key kitcKey = new Key("kitchen key", Id.KITC);
         Key closKey = new Key("closet key", Id.CLOS);
         Key wow2Key = new Key("rusty key", Id.WOW2);
@@ -1011,7 +1012,7 @@ public class Map {
         Furniture gar2Clmn = new Gar2_Columns();
         Furniture gar2Dm = new Gar2_Dome();
         Furniture gar3Chst = new Gar3_Chest(hoe, trowel, hose, sd);
-        Furniture gal3Fntn = new Gal3_Fountain();
+        Furniture gal3Fntn = new Gal3_Fountain(garChstKey);
         Furniture gar4Plq = new Gar4_Plaque();
         Furniture gar4Plntr = new Gar4_Planter(gar4Plq, urnsPlt, urnsPlt, sl, sl);
         Furniture gar24Scnc = new Gar24_Sconce();
