@@ -6,28 +6,24 @@ import A_Main.Player;
 /**
  * @author Kevin Rapa
  */
-public class LockedCabinet extends SearchableFurniture implements Openable {
+abstract public class LockedCabinet extends SearchableFurniture implements Openable {
     private final String KEY;
     // ========================================================================
     public LockedCabinet(String key, Item ... items) {
         super(items);
         
-        this.KEY = key;
-        this.searchable = false;
+        this.KEY = key; // ID of the key (type) used to unlock this.
+        this.searchable = false; // Starts locked, need a key to make searchable.
 
         this.addNameKeys("cabinet");
         this.addActKeys("unlock");
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        if (Player.hasKey(KEY) && ! this.searchable) {
-            this.searchable = true;
-            AudioPlayer.playEffect(13);
-            return this.actDialog;
-        }
+        if (Player.hasKey(KEY) && ! this.searchable)
+            return this.unlock();
         else if (this.searchable)
             return "You look inside the cabinet.";
-
         else {
             AudioPlayer.playEffect(4);
             return this.searchDialog;
@@ -35,11 +31,8 @@ public class LockedCabinet extends SearchableFurniture implements Openable {
     }
     // ========================================================================   
     @Override public String interact(String key) {            
-        if (Player.hasKey(KEY) && ! this.searchable) {
-            this.searchable = true; 
-            AudioPlayer.playEffect(13);
-            return this.actDialog;
-        }
+        if (Player.hasKey(KEY) && ! this.searchable)
+            return this.unlock();
         else if (! this.searchable) {
             AudioPlayer.playEffect(4);
             return "The door won't open. You'll need a key.";
@@ -47,7 +40,13 @@ public class LockedCabinet extends SearchableFurniture implements Openable {
         else 
             return "You have unlocked it already.";
     }
-    // ========================================================================     
+    // ======================================================================== 
+    private String unlock() {
+        this.searchable = true; 
+        AudioPlayer.playEffect(13);
+        return this.actDialog;
+    }
+    // ======================================================================== 
 }
 
 
