@@ -20,9 +20,9 @@ public class LockedCabinet extends SearchableFurniture implements Openable {
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        if (Player.hasKey(Id.CBNT) && ! this.searchable) {
-            AudioPlayer.playEffect(13);
+        if (Player.hasKey(KEY) && ! this.searchable) {
             this.searchable = true;
+            AudioPlayer.playEffect(13);
             return this.actDialog;
         }
         else if (this.searchable)
