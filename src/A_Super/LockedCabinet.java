@@ -23,7 +23,7 @@ abstract public class LockedCabinet extends SearchableFurniture implements Opena
         if (Player.hasKey(KEY) && ! this.searchable)
             return this.unlock();
         else if (this.searchable)
-            return "You look inside the cabinet.";
+            return "You open it and look inside.";
         else {
             AudioPlayer.playEffect(4);
             return this.searchDialog;
@@ -35,10 +35,10 @@ abstract public class LockedCabinet extends SearchableFurniture implements Opena
             return this.unlock();
         else if (! this.searchable) {
             AudioPlayer.playEffect(4);
-            return "The door won't open. You'll need a key.";
+            return "It won't open. You'll need a key.";
         }
         else 
-            return "You have unlocked it already.";
+            return "Seems that you have already unlocked it.";
     }
     // ======================================================================== 
     private String unlock() {
