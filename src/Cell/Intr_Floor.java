@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public class Intr_Floor extends Dungeon_Floor implements Resetable {
     private final Item METAL_BIT_REF = new Item("metal bit", "It's a small scrap of metal. You have no idea what it's for."),
-                       SCREW_REF = new Item("screw", "A small metal screw."),
+                       SCREW_REF = new Item("screw", "A degraded piece of metal resembling a screw. The threads have worn away and bits of metal rub off on your hand."),
                        METAL_BAR_REF = new Weapon(NameConstants.METAL_BAR, "A sturdy metal bar about 2 feet long. Possibly broken off from the gears."),
                        WOOD_CHUNK_REF = new Item("soggy wood chunk", "It's a rotted, wet chunk of wood.");
     
