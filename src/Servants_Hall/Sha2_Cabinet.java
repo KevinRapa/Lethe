@@ -1,13 +1,13 @@
 package Servants_Hall;
 
-import A_Main.Id;
+import static A_Main.Id.CBNT;
 import A_Super.Item;
 import A_Super.LockedCabinet;
 
 public class Sha2_Cabinet extends LockedCabinet {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Sha2_Cabinet(Item... items) {
-        super(Id.CBNT, items);
+        super(CBNT, items);
         
         this.description = "It's a large wooden double-doored cabinet. It looks\n"
                          + "plain and cheap. It must just house tools for the\n"
