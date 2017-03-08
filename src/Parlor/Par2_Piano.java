@@ -1,5 +1,6 @@
 package Parlor;
 
+import static A_Main.NameConstants.STEEL_WIRE;
 import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -26,7 +27,7 @@ public class Par2_Piano extends SearchableFurniture implements Openable {
         this.REF = (Par1_Orb) orb;
         
         this.addNameKeys("(?:black )?(?:grand )?piano", "(?:piano )?keys?");
-        this.addUseKeys("steel wire");
+        this.addUseKeys(STEEL_WIRE);
         this.addActKeys("play", "press");
     }
 /*----------------------------------------------------------------------------*/ 
