@@ -979,7 +979,7 @@ public class Map {
         //-----------------------------FURNITURE--------------------------------  
         Furniture jhaLntrn = new Jha_Lantern();
         Furniture jha1Pntng = new Jha1_Painting();
-        Furniture jhaF = new Floor("The floor is a polished reddish birch.");
+        Furniture jhaF = new Floor("The floor is a polished birch stained a rust color. It gives off a pleasant fragrance.");
         Furniture jhaW = new Wall("These walls look expensive and one-of-a-kind. The lower third is a reddish birch wainscoting\n"
                                 + "and the upper part is solid rock resembling jade or marble.");
         Furniture jhaJd = new Jha_Jade();
@@ -1000,7 +1000,7 @@ public class Map {
         Item hose = new Item(LEATHER_HOSE, "The roughly 30-foot old hose is cracked and rotted. It's certainly non-functional, but is still sturdy.");
         Item brknHose = new Item("broken hose", "The hose has broken in half, but it served a worthy final purpose.");
         Item hoe = new Item(HOE, "A rusty iron hoe for gardening. The long wood handle is beginning to split along the grain.");
-        Item trowel = new Item(TROWEL, "It's like a small handheld shovel.");
+        Item trowel = new Item(TROWEL, "It's like a small handheld shovel. Cute, and functional to the extent of digging only smaller holes.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture gar13Plntr = new Gar13_Planter(sl, mndrkBlb, sl);
         Furniture gar1Stat = new Gar1_Statue();
@@ -1042,7 +1042,7 @@ public class Map {
         Furniture parLft = new Par_Loft();
 
         Furniture par1Orb = new Par1_Orb();
-        Furniture par1F = new Floor("It's a sandstone tiled floor.");
+        Furniture par1F = new Floor("It's a sandstone tiled floor, much like that in the west wing. The floor here does appear noticably cleaner and more refined, however.");
         Furniture par1FrPlc = new Par1_FirePlace(bckt, enchntdBttl);
         Furniture par1Dr = new Par1_Door(enchntdBttl, Direction.NORTH);
         Furniture par1EnchntTbl = new Par1_EnchantingTable(enchntdBttl, bttl, chs1Key, parLchNt);
@@ -1052,7 +1052,7 @@ public class Map {
         Furniture par1Shlf = new Wow3_Shelf(hndDrll, athr, parBkEncht, frSlts);
         Furniture par1Cshn = new Par1_Cushion(aresPlt);
 
-        Furniture par2F = new Floor("It's a sandstone tiled floor.");
+        Furniture par2F = new Floor("It's a sandstone tiled floor, much like that in the west wing. The floor here does appear noticably cleaner and more refined, however.");
         Furniture par2Wndw = new Par2_Window();
         Furniture par2Strs = new Par_Stairs(Direction.DOWN);
         Furniture par2Bwl = new Par2_Bowl();
@@ -1080,12 +1080,12 @@ public class Map {
         Room labo = new Labo("in the laboratory", Id.LABO);
         //-------------------------------ITEMS---------------------------------- 
         Item rbbrTube = new Item(RUBBER_HOSE, "It's a yellow rubber hose, about 8 feet long.");
-        Item tstTb = new Item(TEST_TUBE, "A glass tube for transferring liquids.");
-        Item bkr = new Item(BEAKER, "It's just an empty glass beaker for quick measuring.");
-        Item strkr = new Item(STRIKER, "It's a metal tool for creating sparks.");
+        Item tstTb = new Item(TEST_TUBE, "A small glass tube with a rounded bottom and a smooth rounded lip at the other end.");
+        Item bkr = new Item(BEAKER, "The vessel is straight on the edges and wide. Painted in wide intervals on the sides are white marks with numeric measurements.");
+        Item strkr = new Item(STRIKER, "It's a wierd metal tool. You squeeze it a couple times and a few sparks fly from the metal cap at the one end.");
         Item scale = new Item("scale", "A machine for the weighing of things.");
         Item balance = new Item("balance", "You seem to remember these being called triple-beam balances in middle school.", "Oh boy! You could weigh just about anything with this!");
-        Item flrcFlsk = new Item(FLORENCE_FLASK, "It's a piece of chemistry glassware. Has a bulbous bottom and a thin shaft");
+        Item flrcFlsk = new Item(FLORENCE_FLASK, "It's a piece of chemistry glassware. Has a bulbous bottom and a thin shaft with an opening at the top.");
         Item laboCtNt = new Labo_CoatNote("scientist momento");
         Item laboBrnrBk = new Labo_BurnerManual("manual, 'Playing With Fire'");
         Item laboRcp = new Labo_PhaseDoorRecipe("phase door potion recipe");
@@ -1100,7 +1100,7 @@ public class Map {
         Furniture laboDspnsrs = new Labo_Dispensers(vial, tstTb);
         Furniture laboBrtt = new Labo_Burette(vial, tstTb);
         Furniture laboStpCck = new Labo_StopCock();
-        Furniture laboF = new Floor("It's black and white checkered tile. A predictable floor for a laboratory.", tstTb);
+        Furniture laboF = new Floor("It's a black and white checkered tile. A predictable floor for a laboratory. A few burn marks taint the floor just at the foot of the counter to the north.", tstTb);
         Furniture laboSnk = new Labo_Sink(vial, bkr);
         Furniture laboCntrptn = new Labo_Contraption();
         Furniture laboTbl = new Labo_Table();
@@ -1115,7 +1115,7 @@ public class Map {
         Room att2 = new Att2("in the attic", Id.ATT2);    
         //-----------------------------FURNITURE--------------------------------  
         Furniture attW = new Wall("The gray wood plank walls in here angle up forming a roof.");
-        Furniture attF = new Floor("The flooring in here is rudimentary. Just gray weathered planks of wood.");
+        Furniture attF = new Floor("The flooring in here is rudimentary. Just gray weathered planks of wood with rot in a few areas.");
         Furniture att2Dr = new Sst_Door(Direction.WEST);
         Furniture attCss = new Att_Cases();
         Furniture attBxs = new Att_Boxes();
@@ -1131,22 +1131,22 @@ public class Map {
         Room bha3 = new Bha3("in a demonic hallway", Id.BHA3);
         //-------------------------------ITEMS----------------------------------   
         Item tblLg = new Weapon("broken table leg", "A short wooden post about 3 feet long. It looks like it belonged to a table.");
-        Item orgMttr = new Item("organic matter", "You can't tell what it is. It has a non-solid texture and feels organic.");
+        Item orgMttr = new Item("organic matter", "An unknown gray substance. It has a non-solid texture and feels organic. Its color appears to shift ever so slightly, giving it an oily appearance.");
         Item bhaNt = new Bha_Note("note: plates");
         //-----------------------------FURNITURE--------------------------------  
         Furniture bha1Hrzn = new Bha1_Horizon();
         Furniture bha1Plnt = new Bha1_Plant(sl);
         Furniture bha1Tbl = new Bha1_Table(hrmsPlt);
-        Furniture bhaW = new Wall("The walls are covered in a brown and red vertically striped wallpaper with wainscoting on the bottom.");
-        Furniture bha1F = new Floor("The wood-plank floor bends with the hallway. Some of the planks have pryed themselves loose because of it");
+        Furniture bhaW = new Wall("The walls are covered in a brown and red vertically striped wallpaper with wainscoting on the bottom. The wallpaper has torn and peeled at the seams it some areas.");
+        Furniture bha1F = new Floor("The wood-plank floor bends with the hallway. The planks bend with it without prying up. Could this all be an illusion?");
 
         Furniture bha2F = new Floor("The floor has changed. Most of the wood planks have been removed\n"
                                   + "revealing a dirt-like ground below... But it's not dirt.", wbalsp, wbalch, orgMttr, orgMttr, tblLg, wbalsp);
-        Furniture bha2W = new Wall("The walls are still intact, though some of the wallpaper has been ripped off, revealing wood planks.");
+        Furniture bha2W = new Wall("The walls are still intact, though much more of the wallpaper has been ripped off.");
         Furniture bha2Frm = new Bha2_Frame(gal5CbtKey, bhaNt);
 
         Furniture bha3Wndw = new Bha3_Window();
-        Furniture bha3F = new Floor("The wood-plank floor bends with the hallway. Some of the planks have pryed themselves loose because of it.");
+        Furniture bha3F = new Floor("The wood-plank floor bends with the hallway. The planks bend with it without prying up. Could this all be an illusion?");
 
         // </editor-fold>
 
@@ -1163,7 +1163,7 @@ public class Map {
 
         // Dungeon
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE TUNNELS">
-        Item pipePc = new Weapon(PIECE_OF_PIPE, "It's a piece of metal piping, about 2 feet long.");
+        Item pipePc = new Weapon(PIECE_OF_PIPE, "It's a piece of rought metal piping, about 2 feet long. It's covered in rust and slime.");
         Furniture sew1Rvr = new Sew1_River(pipePc, wtrBckt);
         Furniture sew4Pp = new Sew4_Pipe(sew1Rvr, pipePc); // RESETABLE
         //-----------------------------THE ROOMS--------------------------------
@@ -1223,11 +1223,13 @@ public class Map {
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE TORTURE CHAMBER">
         //-----------------------------THE ROOM---------------------------------
         Room torc = new Torc("in a torture chamber", Id.TORC);
+        //------------------------------ITEMS-----------------------------------
+        Item thmScrws = new Item("odd clamp", "Two small blocks of wood connected with a couple threaded bolts comprise the small device. It's slightly larger than your palm.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture torcF = new Dungeon_Floor();
         Furniture torcTrchs = new Torch();
         Furniture torcSwhrses = new Torc_Sawhorses(torc); // RESETABLE
-        Furniture torcRck = new Torc_Rack();
+        Furniture torcRck = new Torc_Rack(thmScrws);
         Furniture torcCgs = new Torc_Cages();
         Furniture torcWhl = new Torc_Wheel();
         Furniture torcWd = new Torc_Wood();
@@ -1240,9 +1242,9 @@ public class Map {
         Room cry2 = new Cry2("in the crypt", Id.CRY2);
         Room cry1 = new Cry1("in the crypt", Id.CRY1);
         //-------------------------------ITEMS----------------------------------      
-        Item drdFlwr = new Item("dried flower", "It's a brown, dried-up rose.");
-        Item ncklc = new Item("silver necklace", "A fine necklace made of silver. A blue jewel dangles from it.");
-        Item brnzCn = new Item("bronze coin", "It's some sort of extinct or exotic currency.");
+        Item drdFlwr = new Item("dried flower", "It's a brown, dried-up rose, perhaps given as a memorial or offering to an arcane spirit or diety.");
+        Item ncklc = new Item("silver necklace", "A thin, fine necklace made of silver. A blue jewel dangles from it.");
+        Item brnzCn = new Item("bronze coin", "It's some sort of extinct and exotic currency. A round hole is bored through the center, and remaining surface has visible but worn decorative etchings.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture cryF = new Dungeon_Floor();
         Furniture cryDummy = new Cry_Dummy();
@@ -1286,7 +1288,7 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room cas1 = new Cas1("in catacombs access", Id.CAS1);      
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture casW = new Wall("The walls are large granite blocks illuminated in a flickering bluish hue from the flame.");
+        Furniture casW = new Wall("The walls are large granite blocks reflecting a flickering bluish hue from the flame.");
         Furniture casStrs = new Cas_Stairs(Direction.DOWN);
         Furniture casF = new Floor("The floor is comprised of many large blocks, illuminated blue from the fire.");
 
@@ -1348,7 +1350,7 @@ public class Map {
         //-------------------------------ITEMS----------------------------------
         Item algBk = new Item("algae covered book", "The book is wet and slimy. Its pages have nearly fused.", "This is completely unreadable.");
         Item rndBk = new Item("ruined book", "This book is damp, moldy, and covered in dirt.", "Whatever knowledge this book held is now lost.");
-        Item stnBlck = new Item(STONE_BLOCK, "This is a piece of the now broken floor in the ancient archives.");
+        Item stnBlck = new Item(STONE_BLOCK, "This is a remnant of the collapsed floor in the ancient archives.");
         Item slmyAlg = new Item("slimy algae", "Ugh... why are you holding this?");
         Item aarcNt = new Aarc_Note("note: Factum");
         //-----------------------------FURNITURE--------------------------------  
@@ -1520,11 +1522,11 @@ public class Map {
         Room chs3 = new Chs3("on the tower's top landing", Id.CHS3);  
         //-----------------------------FURNITURE-------------------------------- 
         Furniture chsWndws = new Chs_Windows("windows");
-        Furniture chsW = new Wall("The white and pale orange paneled wall is decorated in gold lining.");
+        Furniture chsW = new Wall("The walls are clean, paneled in white and orange with gold leaf accents.");
 
         Furniture chs1Strs = new Chs1_Stairs(Direction.UP);
         Furniture chs1F = new Floor("The dark red carpet covers the whole floor. It's a bit dusty from neglect.");
-        Furniture chs1Stat = new Chs1_Statue("statue");
+        Furniture chs1Stat = new Chs1_Statue();
 
         Furniture chs3Strs = new Chs1_Stairs(Direction.DOWN);
         Furniture chs3F = new Floor("The dark red carpet covers the whole floor. It's a bit dusty from neglect.");
