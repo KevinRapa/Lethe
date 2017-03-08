@@ -1,13 +1,13 @@
 package Trophy_Room;
 
-import A_Main.Id;
+import static A_Main.Id.GCBT;
 import A_Super.Item;
 import A_Super.LockedCabinet;
 
 public class Gal5_Cabinet extends LockedCabinet {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5_Cabinet(Item... items) {
-        super(Id.GCBT, items);
+        super(GCBT, items);
 
         this.actDialog = "The tiny gold key fits perfectly. You turn it and the\n"
                             + "cabinet makes a satisfying *click*.";
