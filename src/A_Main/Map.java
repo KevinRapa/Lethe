@@ -675,8 +675,8 @@ public class Map {
         Furniture din1W = new Wall("The walls of this room are gray stone with dark wood paneling at the bottom.");
         Furniture din1Dr = new Din1_Door(Direction.WEST);
 
-        Furniture din2F = new Floor("The floor is a light gray stone.");
-        Furniture din2W = new Wall("The walls up here are a gray stone.");
+        Furniture din2F = new Floor("The floor is layed with square light-gray tiles.");
+        Furniture din2W = new Wall("The walls up here are smooth rock paneled on the lower half with vertical wooden slats.");
         Furniture din2Pntng = new Din2_Painting();
         Furniture din2Strs = new Din1_Stairs(Direction.DOWN);
         // </editor-fold>
@@ -687,12 +687,12 @@ public class Map {
         Room mha3 = new Mha3("in the south marble hall", Id.MHA3);
         //-------------------------------ITEMS----------------------------------       
         Item angMed = new Item(ANGEL_MEDALLION, "It's a beautiful gold disk about four or five inches\n"
-                                                + "across. On its surface is an embossment of an angel.");
+                                                + "across. An angel is embossed on the surface.");
         Item horMed = new Item(HORSE_MEDALLION, "It's a silver disk about four or five inches across.\n"
                                                 + "On its surface is an embossment of a galloping horse.");
         //-----------------------------FURNITURE--------------------------------  
         Furniture mhaChndlr = new Mha_Chandelier();
-        Furniture mhaF = new Floor("The floor is green tiled marble. Expensive!");
+        Furniture mhaF = new Floor("Large tiles running diagonally to the hall cover the floor. Their bright green hue is uncanny and must be artificial.");
         Furniture mhaW = new Wall("The walls are plain white granite. All that occupy them are the tall windows.");
         Furniture mhaNWndw1 = new Mha1_Window();
         Furniture mhaNWndw2 = new Mha1_Window();
@@ -715,16 +715,15 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room work = new Work("in the workshop", Id.WORK);
         //-------------------------------ITEMS----------------------------------
-        Item redLns = new Item("red lens", "It's a proper lens tinted red.\n"
-                             + "Maybe you should pick up the glass trade!", rdFcs, 3);
-        Item rdDy = new Item(RED_DYE, "You have a handful of soft red powdered dye.");
-        Item blDy = new Item(BLUE_DYE, "You have a handful of soft blue powdered dye.");
-        Item yllwDy = new Item(YELLOW_DYE, "You have a handful of soft yellow powdered dye.");
+        Item redLns = new Item("red lens", "It's a proper lens tinted red. Maybe you should pick up the glass trade!", rdFcs, 3);
+        Item rdDy = new Item(RED_DYE, "You have a handful of soft red powdered dye. It's quite soft and powdery.");
+        Item blDy = new Item(BLUE_DYE, "You have a handful of soft blue powdered dye. It's quite soft and powdery.");
+        Item yllwDy = new Item(YELLOW_DYE, "You have a handful of soft yellow powdered dye. It's quite soft and powdery.");
         Item stncl = new Item(LENS_TEMPLATE, "It's a sheet of metal with a small hole cut in it.");
         Item wrkNt = new Wrk_Note("disturbing momento");
-        Item ptsh = new Item(POTASH, "Good old K-rich potash salts!");
+        Item ptsh = new Item(POTASH, "Good old potassium-rich potash salts!");
         //-----------------------------FURNITURE--------------------------------
-        Furniture wrkF = new Floor("A sandstone tiled floor.");
+        Furniture wrkF = new Floor("A sandstone tiled floor, blackened and dirty from ash.");
         Furniture wrkBrl = new Wrk_Barrel(rdDy, rdDy, blDy, blDy, yllwDy, yllwDy);
         Furniture wrkCbnt = new Wrk_Cbnt(hmmr, gl, ptsh, ptsh);
         Furniture wrkCstTbl = new Wrk_CastingTable(wrkBrl.getInv(), closScks.getInv(), 
@@ -741,16 +740,16 @@ public class Map {
         Room eow4 = new Eow4("on the east outer wall balcony", Id.EOW4);
         //-------------------------------ITEMS----------------------------------
         Item wtrBckt = new Liquid(BUCKET_OF_WATER, "It's a metal bucket filled with water.");
-        Item eowSwrd1 = new Weapon("silver sword", "The sword is finely polished and sharp. Ornamental possibly.");
-        Item eowSwrd2 = new Weapon("rusty sword", "The sword is rusty and a little dull, but still somewhat effective.");
-        Item eowSwrd3 = new Weapon("broken sword", "This sword is broken halfway down the blade. This is a mark of poor craftsmanship.");
+        Item eowSwrd1 = new Weapon("silver sword", "The sword is finely polished and tapers evenly to a fine point at the end. Though possibly ornamental, silver is known to be effective against werewolves.");
+        Item eowSwrd2 = new Weapon("rusty sword", "The sword is rusty and a little dull, but still somewhat effective. The sword has certainly met its fair share of enemy blades in its life.");
+        Item eowSwrd3 = new Weapon("broken sword", "This sword is broken halfway down the blade. This is a mark of poor craftsmanship. Likely, the metal was reheated and cooled too many times during the forging.");
         Item eowSSpr = new Weapon(SILVER_SPEAR, "This is beautiful! It's solid metal with a silvery shine.");
         Item woodSpr = new Weapon("wooden spear", "This looks like a plain wooden spear. A bit primitive looking.");
-        Item eowPlArm = new Weapon(POLEARM, "This is a typical polearm.");
-        Item eowAx = new Weapon("war axe", "This is your kind of tool! You could probably wield this."); 
-        Item eowBtlAx = new Weapon("battle axe", "This like a hand axe, but longer. Better for chopping trees.");
+        Item eowPlArm = new Weapon(POLEARM, "This is a typical polearm, plain but very functional as a defense implement.");
+        Item eowAx = new Weapon("war axe", "This type of tool excites you. Small and sharp for agile use. An effective tool for both offense and tree chopping."); 
+        Item eowBtlAx = new Weapon("battle axe", "Essentially a long hand-axe with a double sided blade. This weapon has so much heft. You wonder if it were ever effective at all in battle.");
         //-----------------------------FURNITURE--------------------------------
-        Furniture eowF = new Floor("It's a sandstone tiled floor.");
+        Furniture eowF = new Floor("It's a sandstone tiled floor, just like that of the west wing.");
 
         Furniture eow1Dr = new Eow1_Door(Direction.WEST);
         Furniture eow1Rck = new Eow1_Rack(eowSwrd1, eowBtlAx, eowSwrd2, eowSwrd3, eowSwrd2, eowAx);
@@ -847,7 +846,7 @@ public class Map {
         Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring. Looks like a screw is missing.", rdFcs, 3);
         //-----------------------------FURNITURE--------------------------------
         Furniture lib1Docs = new Lib1_Documents();
-        Furniture lib1F = new Floor("It's a dusty wood parquet floor.", lib1Nt2);
+        Furniture lib1F = new Floor("It's a dusty wood parquet floor. Years of neglect have reduced its shine to a dull matte finish.", lib1Nt2);
         Furniture lib1W = new Wall("The walls are just horizontal wood slats.\n");
         Furniture lib1Art = new Lib1_Artifact(blFcs);
         Furniture lib1Dsk = new Lib1_Desk(lib1Art, lib1Schmtc, lib1Nt3, lib1ImpNt);
