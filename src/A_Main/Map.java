@@ -1662,6 +1662,11 @@ public class Map {
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE END ROOM">
 
+        /*
+            The game ends once the player enters this room. Player must exit
+            the game manually at this point. Game data is automatically
+            erased at this point also.
+        */
         Room endg = new Endg("", Id.ENDG);
 
         // </editor-fold>
