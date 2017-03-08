@@ -4,6 +4,11 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 /**
+ * Represents a locked container (Cabinet, chest, etc.) That requires a key to
+ * to be opened. These keys have a unique type that do not match any room ID.
+ * Container is opened by 'unlocking' or 'opening' it with the corresponding
+ * key in possession. This is otherwise unsearchable before being unlocked.
+ *
  * @author Kevin Rapa
  */
 abstract public class LockedCabinet extends SearchableFurniture implements Openable {
