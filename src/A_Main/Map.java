@@ -1025,7 +1025,7 @@ public class Map {
         //-------------------------------ITEMS----------------------------------   
         Item bttl = new Item(GLASS_BOTTLE, "It's a regular clear glass bottle, about 5 inches wide with a stubby neck.");
         Item enchntdBttl = new Item(ENCHANTED_BOTTLE, "The bottle is now coated in glowing... stuff.");
-        Item stlWr = new Item("steel wire", "It's some broken piano wire, snapped about a quarter the way down.");
+        Item stlWr = new Item(STEEL_WIRE, "It's some broken piano wire, snapped about a quarter the way down.");
         Item hndDrll = new Item(HAND_DRILL, "It's a drill for boring holes in wood. You can drill into almost anything you want now!");
         Item athr = new Item(AETHER_VIAL, "The small delicate vial holds a bluish cloudy substance; a gas, but flowing like a liquid. This looks expensive!");
         Item frSlts = new Item(FIRE_SALTS, "Seems to be just rust-colored ashes in a plain wooden bowl. They give off an unexpainable ambient warmth and smell of burning.");
