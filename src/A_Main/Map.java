@@ -745,7 +745,7 @@ public class Map {
         Item eowSwrd2 = new Weapon("rusty sword", "The sword is rusty and a little dull, but still somewhat effective. The sword has certainly met its fair share of enemy blades in its life.");
         Item eowSwrd3 = new Weapon("broken sword", "This sword is broken halfway down the blade. This is a mark of poor craftsmanship. Likely, the metal was reheated and cooled too many times during the forging.");
         Item eowSSpr = new Weapon(SILVER_SPEAR, "This is beautiful! It's solid metal with a silvery shine.");
-        Item woodSpr = new Weapon("wooden spear", "This looks like a plain wooden spear. A bit primitive looking.");
+        Item woodSpr = new Weapon("wooden spear", "This looks like a plain wooden spear. A bit primitive looking, and probably not built to last.");
         Item eowPlArm = new Weapon(POLEARM, "This is a typical polearm, plain but very functional as a defense implement.");
         Item eowAx = new Weapon("war axe", "This type of tool excites you. Small and sharp for agile use. An effective tool for both offense and tree chopping."); 
         Item eowBtlAx = new Weapon("battle axe", "Essentially a long hand-axe with a double sided blade. This weapon has so much heft. You wonder if it were ever effective at all in battle.");
@@ -1082,8 +1082,8 @@ public class Map {
         Item rbbrTube = new Item(RUBBER_HOSE, "It's a yellow rubber hose, about 8 feet long.");
         Item tstTb = new Item(TEST_TUBE, "A small glass tube with a rounded bottom and a smooth rounded lip at the other end.");
         Item bkr = new Item(BEAKER, "The vessel is straight on the edges and wide. Painted in wide intervals on the sides are white marks with numeric measurements.");
-        Item strkr = new Item(STRIKER, "It's a wierd metal tool. You squeeze it a couple times and a few sparks fly from the metal cap at the one end.");
-        Item scale = new Item("scale", "A machine for the weighing of things.");
+        Item strkr = new Item(STRIKER, "It's a weird metal tool. You squeeze it a couple times and a few sparks fly from the metal cap at the one end.");
+        Item scale = new Item("scale", "A machine for the weighing of things, comprised of a metal bed and a base comprised of many small mechanical parts.");
         Item balance = new Item("balance", "You seem to remember these being called triple-beam balances in middle school.", "Oh boy! You could weigh just about anything with this!");
         Item flrcFlsk = new Item(FLORENCE_FLASK, "It's a piece of chemistry glassware. Has a bulbous bottom and a thin shaft with an opening at the top.");
         Item laboCtNt = new Labo_CoatNote("scientist momento");
