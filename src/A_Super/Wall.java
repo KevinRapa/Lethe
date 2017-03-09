@@ -17,7 +17,7 @@ public class Wall extends Furniture {
         this.actDialog = "What do expect to find? A porkchop?";
         this.searchDialog = "The walls here are solid and couldn't hide anything.";
         this.useDialog = "You whack the wall and jolt backwards. Well, that was productive.";
-        this.addActKeys("break", "climb", "scale");
+        this.addActKeys("break", CLIMBPATTERN);
         this.addUseKeys(ANYTHING);
         this.addNameKeys("walls?");
     }

@@ -12,7 +12,7 @@ public class Stud_Couch extends SearchableFurniture {
         this.searchDialog = "You look underneath.";
         this.actDialog = "You relax on the couch for a moment, staring at the\n"
                        + "portrait resembling Bob Gunton. It looks a bit crooked.";
-        this.addActKeys("sit", "relax", "lay");
+        this.addActKeys(SITPATTERN);
         this.addNameKeys("couch", "sofa");
     }
 /*----------------------------------------------------------------------------*/

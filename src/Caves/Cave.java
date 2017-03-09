@@ -182,14 +182,14 @@ public class Cave extends Room {
             
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             clip.start();
-        } catch (LineUnavailableException | 
-                    UnsupportedAudioFileException | 
-                        IOException ex) 
+        } catch (LineUnavailableException | UnsupportedAudioFileException | 
+                    IOException ex) 
         {
             System.out.println(ex.getMessage());
         }
 
-        return Player.hasItem(HAND_TORCH) ? distortDescription(DISTANCE, STD_RM_OUT) : "???";
+        return Player.hasItem(HAND_TORCH) ? 
+                distortDescription(DISTANCE, STD_RM_OUT) : "???";
     }
 // ============================================================================
     /**

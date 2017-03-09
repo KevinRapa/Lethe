@@ -16,7 +16,7 @@ public class Obs1_Seat extends SearchableFurniture {
         this.searchDialog = "You look under the seat.";
 
         this.addNameKeys("(?:victorian-era )?(?:stiff )?(?:red )?(?:leather )?seat");
-        this.addActKeys("sit", "lay", "relax", "rest", "sleep");
+        this.addActKeys(SITPATTERN);
     }
     // ========================================================================   
 }

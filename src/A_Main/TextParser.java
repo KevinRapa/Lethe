@@ -100,9 +100,15 @@ public class TextParser {
                 commands[i] = getStoreCmd(STORE_THEN_SPACE.matcher(statements[i])
                                     .replaceAll(NOTHING)
                                     .split(STORE_LOCATION));
-            else 
+            else {
+                if (SEARCH_PATTERN.matcher(statements[i]).find()) {
+                    // Replaces "look at|on|around|under with just 'search'"
+                    statements[i] = SEARCH_PATTERN.matcher(statements[i])
+                            .replaceAll("search");
+                }
                 commands[i] = getCmdActionFirst(stripPrepositions(statements[i])
                                     .split(INSTRUCTIVE_PATTERN));
+            }
         }
         return commands;
     }
@@ -127,7 +133,7 @@ public class TextParser {
                                             .replaceAll(NOTHING));
         
         DirectObj dirObj = new DirectObj(actionObject
-                .trim().replaceFirst("[a-z]+\\s", NOTHING)); // All but the first word.
+                .trim().replaceFirst("[a-z]+\\s", NOTHING)); // Remove the first word.
         
         switch(s.length) {
             case 2:

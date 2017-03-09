@@ -12,7 +12,7 @@ public class Foy1_Stairs extends Furniture {
         this.searchDialog = "It's too far away to see anything.";
         this.actDialog = "'There's no way I can walk up those from here,' you\n"
                        + "think to yourself. 'I will have to walk closer.'";
-        this.addActKeys("use", "climb", "walk");
+        this.addActKeys(CLIMBPATTERN, "use", "walk");
         this.addNameKeys("(?:winding )?(?:stone )?(?:staircase|stairs|steps)");
     }
 /*----------------------------------------------------------------------------*/

@@ -36,7 +36,7 @@ public final class Menus {
             TRADE_SUB = "\n"
                       + "<'s' #>  Store...\n"
                       + "<'t' #>  Take...\n"
-                      + "<'loot'> Loot it!\n"
+                      + "<'loot'> Loot!!!\n"
                       + "< >      Back",
             
             SEARCH_SUB = "\n\n"

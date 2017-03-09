@@ -14,8 +14,7 @@ public class Rotu_Sconce extends Furniture {
         this.actDialog = "Hmm... You really expected that to hurt, but it is quite cool\n"
                        + "to the touch. The gas is encapsulated, and you cannot obtain any.";
         this.addNameKeys("(?:spherical )?(?:sconces?|lights?)", "(?:magical )?(?:gas|aether)");
-        this.addActKeys(GETPATTERN);
-        this.addActKeys("touch", "grab", "hold");
+        this.addActKeys(GETPATTERN, HOLDPATTERN);
     }
 /*----------------------------------------------------------------------------*/
 }

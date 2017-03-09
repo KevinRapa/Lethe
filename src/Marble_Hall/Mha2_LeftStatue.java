@@ -20,7 +20,7 @@ public class Mha2_LeftStatue extends SearchableFurniture {
                        + "tainted by your touch.";
         
         this.addNameKeys("left (?:statue|one|angel|hand|palm)", "(?:left )?(?:open )?compartment");
-        this.addActKeys("touch", "grab", "hold");
+        this.addActKeys(HOLDPATTERN);
         this.addUseKeys(".+");
     }
 /*----------------------------------------------------------------------------*/

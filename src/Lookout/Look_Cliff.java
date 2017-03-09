@@ -12,7 +12,7 @@ public class Look_Cliff extends Furniture {
         this.searchDialog = "The cliff is too far away to do that.";
         this.actDialog = "What are you talking about? The cliff is nearly a mile away!";
         
-        this.addActKeys("jump", "climb");
+        this.addActKeys("jump", CLIMBPATTERN);
         this.addNameKeys("(?:winding )?cliff");
     }
 /*----------------------------------------------------------------------------*/

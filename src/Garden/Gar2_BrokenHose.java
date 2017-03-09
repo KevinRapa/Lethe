@@ -14,7 +14,7 @@ public class Gar2_BrokenHose extends Furniture {
         this.actDialog = "It has broken and offers no purpose now.";
 
         this.addNameKeys("(?:broken )?(?:leather )?hose");
-        this.addActKeys("untie", "climb");
+        this.addActKeys("untie", CLIMBPATTERN);
     }
     // ========================================================================  
 }

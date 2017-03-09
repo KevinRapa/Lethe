@@ -56,11 +56,12 @@ public final class Patterns {
         CAVES_CATACOMB = Pattern.compile("C[TV]\\d{2}"),
     
         // Patterns used by TextParser
-        INSPECT_PATTERN = Pattern.compile("look(?: at)?|inspect|examine|check(?: out)?"),
+        SEARCH_PATTERN = Pattern.compile("look (?:on|in|under|around)"),
+        INSPECT_PATTERN = Pattern.compile("look(?! (?:in|on|under|around))|inspect|examine|check"),
         USE_PATTERN = Pattern.compile("use|read|drop|wear|remove|eat|drink|throw|lean|tie"),
         ITEM_COMMAND = Pattern.compile("(?:" + USE_PATTERN + "|" + INSPECT_PATTERN + ") [a-z0-9: ,'-]+"),
-        SUICIDE = Pattern.compile("commit suicide|kill (?:your)?self"),
-        DESTROY = Pattern.compile("(?:destroy|obliterate|wreak havoc|throw) .+"),
+        SUICIDE = Pattern.compile("commit suicide|(?:kill|hang) (?:your)?self"),
+        DESTROY = Pattern.compile("(?:destroy|shatter|obliterate|wreak havoc|throw) .+"),
         STORE_COMMAND = Pattern.compile("(?:put|store|pour|dump) [a-z0-9: ,'-]+"),
         STORE_THEN_SPACE = Pattern.compile("(?:put|store|pour|dump) "),
         PREPOSITION = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|over|of|through|against|from|around|to|at|under(?:neath)?"),

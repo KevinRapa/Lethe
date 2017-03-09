@@ -19,7 +19,7 @@ public class Rotu_Hole extends Furniture {
         this.actDialog = "The hole is high up in the ceiling...";
         this.searchDialog = "The hole is but empty space. You have nothing to search.";
         
-        this.addActKeys("climb", "jump");
+        this.addActKeys(CLIMBPATTERN, "jump");
         this.addNameKeys("hole");
     }
 /*----------------------------------------------------------------------------*/

@@ -31,7 +31,7 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable, Climba
                           + "you see what looks like the top rung of a ladder.";
 
         this.addNameKeys("(?:metal )?(?:grate|ladder)");
-        this.addActKeys("jump", "climb|descend", MOVEPATTERN, "pry");
+        this.addActKeys("jump", CLIMBPATTERN, MOVEPATTERN, "pry");
         this.addActKeys(GETPATTERN);
         this.addUseKeys(METAL_BAR);
     }
@@ -55,7 +55,7 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable, Climba
             return Player.hasItem(METAL_BAR) ? 
                     this.useEvent(null) : "You have nothing good to pry with.";
         
-        else if (key.equals("climb") || key.equals("descend") || key.equals("jump"))
+        else if (key.equals("jump") || key.matches(CLIMBPATTERN))
             return opened ? 
                     transport() : "You aren't going anywhere with that grate closed.";
         else

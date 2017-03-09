@@ -7,12 +7,16 @@ public class Want_Torches extends Furniture {
     public Want_Torches() {
         super();
 
-        this.description = "They're tall, standing torches. They are burning\n"
-                         + "quite audibly and furiously.";
-        this.actDialog = "These are not hand torches.";
+        this.description = "Tall tan obelisks standing in the corners of the room\n"
+                         + "support metal baskets of burning wood chunks. They\n"
+                         + "are burning quite audibly and furiously.";
+        this.actDialog = "These are large standing torches, and much too heavy\n"
+                       + "for you to just take and carry around. Find one on a\n"
+                       + "wall somewhere.";
         
         this.addActKeys(GETPATTERN);
-        this.addNameKeys("(?:standing )?torch(?:es)?");
+        this.addNameKeys("(?:standing )?torch(?:es)?", "(?:metal )?baskets", 
+                "(?:burning )?(?:wood(?:en)? )?chunks");
     }
 /*----------------------------------------------------------------------------*/
 }

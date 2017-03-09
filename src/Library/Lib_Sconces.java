@@ -11,7 +11,7 @@ public class Lib_Sconces extends Furniture {
                            "light the wall with a flickering orange glow.";
         this.actDialog = "Ouch! That's hot!";
         this.addNameKeys("(?:electric )?(?:copper )?(?:metal )?(?:sconces?|lights?)");
-        this.addActKeys("grab", "hold", FEELPATTERN);
+        this.addActKeys(HOLDPATTERN, FEELPATTERN);
     }
 /*----------------------------------------------------------------------------*/
 }

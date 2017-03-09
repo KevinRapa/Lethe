@@ -19,7 +19,8 @@ abstract public class DoubleStaircase extends Staircase {
         String ans = GUI.askChoice(Menus.DOUBLE_ST, "[ud]|up|down|");
 
         if (Player.isNonEmptyString(ans)) {
-            Direction dir = ans.matches("up|u") ? Direction.UP : Direction.DOWN; // Z coordinate modifier.
+            Direction dir = ans.matches("up|u") ? 
+                    Direction.UP : Direction.DOWN; // Z coordinate modifier.
 
             Player.move(dir);
             playEffect();  

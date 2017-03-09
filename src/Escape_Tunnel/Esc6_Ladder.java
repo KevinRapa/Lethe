@@ -23,7 +23,7 @@ public class Esc6_Ladder extends Furniture implements Resetable, Climbable {
         this.actDialog = "You climb up the ladder.";
 
         this.addNameKeys("(?:metal )?ladder", "rungs?");
-        this.addActKeys("use", "climb", "ascend");
+        this.addActKeys("use", CLIMBPATTERN);
     }
     // ========================================================================   
     @Override public String getDescription() {

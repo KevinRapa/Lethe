@@ -2,9 +2,11 @@ package Servants_Hall;
 
 import static A_Main.Id.CBNT;
 import A_Super.Item;
-import A_Super.LockedCabinet;
-
-public class Sha2_Cabinet extends LockedCabinet {
+import A_Super.LockedContainer;
+/**
+ * @author Kevin Rapa
+ */
+public class Sha2_Cabinet extends LockedContainer {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Sha2_Cabinet(Item... items) {
         super(CBNT, items);

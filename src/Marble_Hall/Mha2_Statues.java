@@ -30,7 +30,7 @@ public class Mha2_Statues extends Furniture {
         this.actDialog = "Such impressive works of artistry deserve not to be\n"
                     + "tainted by your touch.";
         this.addNameKeys("(?:angel )?statues?");
-        this.addActKeys("touch", "grab", "hold");
+        this.addActKeys(HOLDPATTERN);
         this.addUseKeys(".+");
     }
 /*----------------------------------------------------------------------------*/

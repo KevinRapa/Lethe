@@ -19,16 +19,16 @@ abstract public class Railing extends Furniture {
 
         this.addNameKeys("railing");
         this.addUseKeys(LOOPED_ROPE, LEATHER_HOSE, RUBBER_HOSE);
-        this.addActKeys("hold", "grab", "lean", "vault", "jump");
+        this.addActKeys(HOLDPATTERN, "lean", "vault", "jump");
     }
     // ========================================================================   
     @Override public String interact(String key) {              
         if (key.equals("lean"))
             return this.actDialog;
-        else if (key.equals("hold") || key.equals("grab"))
-            return "You grab the railing. There's no fear of falling over, right?";
-        else
+        else if (key.equals("jump") || key.equals("jump"))
             return "Why are you trying to kill yourself?";
+        else
+            return "You grab the railing. There's no fear of falling over, right?";
     }
     // ========================================================================        
 }

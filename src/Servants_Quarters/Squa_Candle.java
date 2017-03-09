@@ -12,11 +12,11 @@ public class Squa_Candle extends Furniture implements Gettable {
         this.description = "A lit candle. The wax has hardly melted!";
         this.actDialog = "Ouch! That's really hot!";
         this.addNameKeys("(?:lit )?(?:wax )?candle");
-        this.addActKeys(GETPATTERN, "hold", "touch");
+        this.addActKeys(GETPATTERN, HOLDPATTERN);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (key.equals("grab") || key.equals("hold") || key.equals("touch")) {
+        if (key.matches(HOLDPATTERN)) {
             AudioPlayer.playEffect(39, -10);
             return this.actDialog;
         }

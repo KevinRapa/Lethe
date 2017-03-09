@@ -15,7 +15,7 @@ public class Dkch_Bed extends SearchableFurniture {
         this.searchDialog = "You look under the bed.";
 
         this.addNameKeys("(?:cheap )?(?:spring )?bed", "(?:plain )?(?:dirty )?mattress");
-        this.addActKeys("sleep", "relax", "lay", "sit");
+        this.addActKeys(SITPATTERN);
     }
     // ======================================================================== 
 }

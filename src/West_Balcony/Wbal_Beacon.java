@@ -1,6 +1,6 @@
 package West_Balcony;
 
-import A_Main.NameConstants;
+import static A_Main.NameConstants.FIXED_LADDER;
 import A_Super.Furniture;
 
 public class Wbal_Beacon extends Furniture{
@@ -16,16 +16,16 @@ public class Wbal_Beacon extends Furniture{
         this.useDialog = "You think it better is stay as far from the roaring\n"
                        + "flame as possible. You wore your flammable overalls today.";
         
-        this.addUseKeys(NameConstants.FIXED_LADDER);
-        this.addActKeys("climb", "scale", "extinguish");
+        this.addUseKeys(FIXED_LADDER);
+        this.addActKeys(GETPATTERN, "extinguish");
         this.addNameKeys("(?:ten foot (?:high )?)?(?:stone )?(?:obelisk|beacon)");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (key.equals("climb") || key.equals("scale"))
-            return this.actDialog;
-        else
+        if (key.equals("extinguish"))
             return "The beacon is too tall for that.";
+        else
+            return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
 }

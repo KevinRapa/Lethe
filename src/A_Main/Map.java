@@ -575,12 +575,11 @@ public class Map {
         Item blFcs = new Focus(BLUE_FOCUS, "It's a cool brass ring holding a blue lens.");
         Item yllwFcs = new Focus(YELLOW_FOCUS, "It's a cool brass ring holding a yellow lens.");
         Item drkFcs = new Focus(DARK_FOCUS, "It's a cool brass ring holding a tinted lens.");
-        Item fnnyOrb = new Item(CRYSTAL_ORB, "It's extremely clean, and it contains a peculiar\n"
-                                             + "gas, the color of which you cannot quite describe.");
+        Item fnnyOrb = new Item(CRYSTAL_ORB, 
+                "It's extremely clean, and it contains a peculiar gas, the color of which you cannot quite describe.");
         Item bxThngy = new Item(BOX_THINGY, "This small black metal box has some surprising weight\n"
-                                            + "to it. It's a bit to big to fix in your palm. A small\n"
-                                            + "red light is on top and shiny metal strips are attached\n"
-                                            + "to each side.");
+                + "to it. It's a bit to big to fix in your palm. A small red light is on top\n"
+                + "and shiny metal strips are attached to each side.");
         //-----------------------------FURNITURE--------------------------------         
         Furniture gal7Stat = new Gal7_Statue();
         Furniture gal4Stat = new Gal4_Statue(gal7Stat);
@@ -1012,7 +1011,7 @@ public class Map {
         Furniture gar2Clmn = new Gar2_Columns();
         Furniture gar2Dm = new Gar2_Dome();
         Furniture gar3Chst = new Gar3_Chest(hoe, trowel, hose, sd);
-        Furniture gal3Fntn = new Gal3_Fountain(garChstKey);
+        Furniture gal3Fntn = new Gar3_Fountain(garChstKey);
         Furniture gar4Plq = new Gar4_Plaque();
         Furniture gar4Plntr = new Gar4_Planter(gar4Plq, urnsPlt, urnsPlt, sl, sl);
         Furniture gar24Scnc = new Gar24_Sconce();

@@ -2,9 +2,9 @@ package Trophy_Room;
 
 import static A_Main.Id.GCBT;
 import A_Super.Item;
-import A_Super.LockedCabinet;
+import A_Super.LockedContainer;
 
-public class Gal5_Cabinet extends LockedCabinet {
+public class Gal5_Cabinet extends LockedContainer {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5_Cabinet(Item... items) {
         super(GCBT, items);

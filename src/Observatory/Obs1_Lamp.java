@@ -15,7 +15,7 @@ public class Obs1_Lamp extends Furniture {
         this.actDialog = "That light looks really hot...";
 
         this.addNameKeys("(?:standing )?(?:lamp|light)");
-        this.addActKeys("touch", "hold", "grab");
+        this.addActKeys(HOLDPATTERN);
     }
     // ========================================================================   
 }

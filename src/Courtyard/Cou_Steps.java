@@ -12,7 +12,7 @@ public class Cou_Steps extends Furniture {
         this.description = "The long set of crumbling steps climb to a front\n"
                          + "balcony before the castle's great front doors.";
         this.actDialog = "You can't while at the side of the stairs.";
-        this.addActKeys("climb", "use");
+        this.addActKeys(CLIMBPATTERN, "use");
         this.addNameKeys("(?:crumbling )?(?:staircase|steps|stairs)");
     }
 /*----------------------------------------------------------------------------*/

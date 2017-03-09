@@ -18,7 +18,7 @@ public class Esc1_Ladder extends Furniture implements Climbable {
         this.actDialog = "You climb back up the ladder.";
 
         this.addNameKeys("(?:metal )?ladder", "rungs?");
-        this.addActKeys("use", "climb", "ascend");
+        this.addActKeys("use", CLIMBPATTERN);
     }
     // ========================================================================   
     @Override public String interact(String key) {      

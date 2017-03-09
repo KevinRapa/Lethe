@@ -14,7 +14,7 @@ public class Mha_Chair extends Furniture {
         this.searchDialog = "You look underneath but find nothing.";
         this.actDialog = "You sit down in the chair, noting its marvelous polish.";
         this.addNameKeys("(?:rosewood )?chairs?");
-        this.addActKeys("sit", "relax", "use");
+        this.addActKeys(SITPATTERN);
     }
 /*----------------------------------------------------------------------------*/
 }

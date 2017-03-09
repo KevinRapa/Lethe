@@ -7,8 +7,9 @@ public class Want_Pillars extends Column {
     public Want_Pillars() {
         super();
 
-        this.description = "They're grooved, sandstone pillars. They seem\n"
-                         + "to exist mostly for decoration.";
+        this.description = "They're grooved, sandstone pillars holding up the\n"
+                         + "ceiling two stories above. They're grand- about 5\n"
+                         + "feet in diameter and stand on square plinths.";
 
         this.addNameKeys("pillars?", "columns?");
     }

@@ -17,7 +17,7 @@ public class Cv_Well extends Furniture {
         this.searchDialog = this.description;
 
         this.addNameKeys("(?:ancient )?well");
-        this.addActKeys("jump", "climb");
+        this.addActKeys("jump", CLIMBPATTERN);
     }
     // ======================================================================== 
     @Override public String getDescription() {

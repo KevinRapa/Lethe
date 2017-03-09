@@ -22,11 +22,11 @@ public class Sewp_Grate extends Furniture implements Gettable {
         this.addUseKeys(METAL_BAR);
         this.addNameKeys("(?:metal )?(?:ladder|grate)");
         this.addActKeys(GETPATTERN);
-        this.addActKeys("climb", "descend", "use");
+        this.addActKeys(CLIMBPATTERN, GETPATTERN);
     }
     // ======================================================================== 
     @Override public String interact(String key) {
-        if (key.equals("use") || key.equals("descend") || key.equals("climb"))
+        if (key.matches(CLIMBPATTERN))
             return this.actDialog;
         else
             return getIt();

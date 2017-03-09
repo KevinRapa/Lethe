@@ -19,7 +19,7 @@ public class Lib4_Stairs extends Staircase {
                          + "library.";
         this.actDialog = "You climb down the stairs to the first floor.";
         this.addNameKeys("staircase", "stairs", "steps");
-        this.addActKeys("use", "climb", "walk");
+        this.addActKeys("use", CLIMBPATTERN, "walk");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {     

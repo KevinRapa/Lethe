@@ -15,7 +15,7 @@ public class Lqu1_Bed extends Furniture {
         this.searchDialog = "It's too far away to do that.";
 
         this.addNameKeys("body", "bed");
-        this.addActKeys("sleep", "lay", "sit");
+        this.addActKeys(SITPATTERN);
     }
     // ========================================================================    
 }

@@ -26,7 +26,7 @@ abstract public class Safe extends SearchableFurniture implements Openable {
         this.searchDialog = this.actDialog;
         this.searchable = false;
         this.addUseKeys(ANYTHING);
-        this.addActKeys("use", "spin", "twist", "smash", "break");
+        this.addActKeys("use|spin|twist", "smash|break");
         this.addNameKeys("(?:combination )?safe", "strongbox");
     }
 /*----------------------------------------------------------------------------*/

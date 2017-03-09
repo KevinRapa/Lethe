@@ -1,20 +1,13 @@
 package A_Main;
 
-import A_Super.Room;
-import A_Super.Item;
-import A_Super.Direction;
-import A_Super.Furniture;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.HashMap;
-import A_Super.Openable;
-import Tunnels.DungeonMonster;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.Iterator;
+import A_Super.Room;                import A_Super.Item;
+import A_Super.Direction;           import A_Super.Furniture;
+import java.util.Scanner;           import java.util.ArrayList;
+import java.util.HashMap;           import A_Super.Openable;
+import Tunnels.DungeonMonster;      import java.io.IOException;
+import java.io.ObjectOutputStream;  import java.io.Serializable;
+import java.util.Iterator;          import A_Super.Climbable;
 import static A_Main.Patterns.*;
-import A_Super.Climbable;
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -894,7 +887,7 @@ public final class Player {
         public final PlayerInventory INV; 
         public final ArrayList<String> VISITED; 
         public final String LSTVISITED, SHOES; 
-        // ========================================================================
+    // ========================================================================
         public PlayerAttributes() {
             this.MAP = Player.mapRef;
             this.POS = Player.pos;

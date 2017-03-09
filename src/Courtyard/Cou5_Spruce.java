@@ -33,7 +33,7 @@ public class Cou5_Spruce extends SearchableFurniture implements Climbable, Getta
         this.VIAL_REF = vial;
         this.drilled = false;
         
-        this.addActKeys("drill", "climb", GETPATTERN, "swing", "scale");
+        this.addActKeys("drill", CLIMBPATTERN, GETPATTERN, "swing");
         this.addNameKeys("(?:spruce |hole )?tree", "spruce", "(?:hole )?trunk", "branch(?:es)?");
         this.addUseKeys(HAND_DRILL, EMPTY_VIAL);
     }
@@ -78,7 +78,7 @@ public class Cou5_Spruce extends SearchableFurniture implements Climbable, Getta
             else
                 return "You have nothing to drill into it with.";
         }
-        else if (action.equals("climb") || action.equals("scale")) {
+        else if (action.matches(CLIMBPATTERN)) {
             if (Player.getPosId().equals(Id.COU8)) {
                 Player.move(Direction.DOWN);
                 return "You are uncomfortable with the idea of spending any\n"

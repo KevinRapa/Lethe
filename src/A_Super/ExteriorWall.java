@@ -10,7 +10,7 @@ public class ExteriorWall extends Furniture {
         super();
         this.description = "A fortress-like granite brick wall.";
         this.searchDialog = "The walls here are solid and couldn't hide anything.";
-        this.addNameKeys("wall", "walls");
+        this.addNameKeys("walls?");
     }
 /*----------------------------------------------------------------------------*/
 }

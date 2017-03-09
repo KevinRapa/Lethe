@@ -12,7 +12,7 @@ abstract public class Staircase extends Furniture {
     public Staircase(Direction direction) {
         super();
         this.DIR = direction;
-        this.addActKeys("climb", "use", "walk", "go");
+        this.addActKeys(CLIMBPATTERN, "use", "walk", "go");
         this.addNameKeys("stair(?:s|case)|steps?", "banister", "railing");
     }
 /*----------------------------------------------------------------------------*/

@@ -39,6 +39,8 @@ abstract public class Furniture implements Serializable {
     protected final ArrayList<Pattern> USEKEYS, ACTKEYS, NAMEKEYS; 
 
     protected static final String 
+            HOLDPATTERN = "grab|hold|touch",
+            CLIMBPATTERN = "climb|scale|ascend|descend",
             GETPATTERN = "get|take|acquire|grab|scoop",      
             SITPATTERN = "sit|relax|lay|use|sleep",
             JOSTLEPATTERN = "kick|hit|jostle|nudge|bump|knock|bang",

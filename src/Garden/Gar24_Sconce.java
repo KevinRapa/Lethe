@@ -14,12 +14,11 @@ public class Gar24_Sconce extends Furniture implements Gettable {
         this.actDialog = "That light looks pretty hot...";
 
         this.addNameKeys("(?:black )?(?:iron )?(?:sconce|light)", "fire");
-        this.addActKeys(GETPATTERN);
-        this.addActKeys("touch", "hold", "grab");
+        this.addActKeys(GETPATTERN, HOLDPATTERN);
     }
     // ======================================================================== 
     @Override public String interact(String key) {
-        if (key.equals("touch") || key.equals("hold") || key.equals("grab"))
+        if (key.matches(HOLDPATTERN))
             return this.actDialog;
         else
             return getIt();

@@ -14,7 +14,7 @@ public class Drar_Couch extends Furniture {
         this.searchDialog = "There's nothing hidden on this couch.";
         this.actDialog = "This is the most comfortable couch you've sat in yet.\n"
                             + "Why haven't you grabbed a drink?";
-        this.addActKeys("sit", "relax", "lay");
+        this.addActKeys(SITPATTERN);
         this.addNameKeys("(?:(?:bold )?green )?(?:victorian-era )?couch");
     }
 /*----------------------------------------------------------------------------*/

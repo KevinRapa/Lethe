@@ -11,7 +11,7 @@ public class Balcony extends Furniture {
         this.searchDialog = "The entire balcony? One thing at a time please.";
 
         this.addNameKeys("(?:balcony )?railing", "balcony");
-        this.addActKeys("lean", "jump", "vault", "hold", "grab");
+        this.addActKeys("lean", "jump", "vault", HOLDPATTERN);
     }
     // ========================================================================   
     @Override public String interact(String key) {              

@@ -22,7 +22,7 @@ public class Torc_Rack extends SearchableFurniture {
         this.searchDialog = "You look on the table.";
 
         this.addNameKeys("(?:plain )?(?:wooden )?(?:table|rack)");
-        this.addActKeys("lay", "sleep", "relax");
+        this.addActKeys(SITPATTERN);
     }
     // ======================================================================== 
 }

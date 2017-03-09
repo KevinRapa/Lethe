@@ -26,8 +26,7 @@ abstract public class Candelabra extends SearchableFurniture
 
         this.addNameKeys("candles?", "fire");
         this.addUseKeys(HAND_TORCH, CANDLE);
-        this.addActKeys(GETPATTERN);
-        this.addActKeys("touch");
+        this.addActKeys(GETPATTERN, "touch");
         
         this.inv = new Candelabra_Inventory();
         
@@ -66,7 +65,7 @@ abstract public class Candelabra extends SearchableFurniture
                 return this.actDialog;
             }
             else
-                return "You touch it. The candelabra lacks any candles, so you avoid burning.";
+                return "You touch it. Thankfully, the candelabra lacks any burning candles and you avoid burning.";
         }
         else
             return getIt();
@@ -79,9 +78,9 @@ abstract public class Candelabra extends SearchableFurniture
                 return "You take a candle off the candelabra.";
             }
             else
-                return "You already have a candle.";
+                return "You are already carrying a candle.";
         else
-            return "The candelabra holds no more candles";
+            return "The candelabra holds no more candles.";
     }
     // ========================================================================     
     // ************************************************************************
@@ -97,7 +96,7 @@ abstract public class Candelabra extends SearchableFurniture
                 return true;
             }
             else {
-                GUI.out("That doesn't belong there!");
+                GUI.out("Candelabras are not meant to hold such things.");
                 return false;
             }
         }

@@ -17,7 +17,7 @@ public class Drar_Bar extends SearchableFurniture {
         this.actDialog = "A drink sounds like a good idea right about now. All the alcohol\n"
                        + "here must be stale and bitter by now though.";
         
-        this.addActKeys("sit");
+        this.addActKeys(SITPATTERN);
         this.addNameKeys("bar|shelf|alcohol|wine|beer|liquor");
     }
 /*----------------------------------------------------------------------------*/

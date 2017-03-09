@@ -14,9 +14,8 @@ public class Gal3_KoraFurniture extends Furniture {
                          + "call it a guitar, but then again, it looks like a\n"
                          + "harp too. Beneath it you see a small label: \"Kora\".";
         this.actDialog = "You carefully remove the instrument from its display.";
-        this.addNameKeys("instrument", "stringed instrument", "kora");
-        this.addActKeys(GETPATTERN);
-        this.addActKeys("hold", "play", "strum");
+        this.addNameKeys("(?:stringed )?instrument", "kora");
+        this.addActKeys(GETPATTERN, "hold", "play", "strum");
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) { 

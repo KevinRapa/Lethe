@@ -1,15 +1,14 @@
 package Garden;
 
 import A_Super.Item;
-import A_Super.Openable;
-import A_Super.SearchableFurniture;
 import static A_Main.Id.GCHS;
+import A_Super.LockedContainer;
 /**
  * @author Kevin Rapa
  */
-public class Gar3_Chest extends LockedCabinet {
+public class Gar3_Chest extends LockedContainer {
     // ========================================================================
-    public Gar3_Chest (Item... items) {
+    public Gar3_Chest(Item... items) {
         super(GCHS, items);
         
         this.actDialog = "It takes a small bit of force, but the rusty key manages to open the chest.";

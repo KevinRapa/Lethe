@@ -56,12 +56,11 @@ public class Metal_Ladder extends Item {
                            + "need to be up here,\" you think to yourself, and climb down.";
 
             this.addNameKeys("(?:old )?(?:metal )?ladder");
-            this.addActKeys(GETPATTERN);
-            this.addActKeys("climb", "use");
+            this.addActKeys(CLIMBPATTERN, GETPATTERN, "use");
         }
         // ====================================================================  
         @Override public String interact(String key) {     
-            if (key.equals("climb") || key.equals("use")) {
+            if (key.matches(CLIMBPATTERN) || key.equals("use")) {
                 AudioPlayer.playEffect(47);
                 if (! Player.getPosId().equals(Id.SEW4))
                     return this.actDialog;

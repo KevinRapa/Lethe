@@ -1,7 +1,6 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
-import A_Main.Id;
 import A_Main.Player;
 /**
  * Represents a locked container (Cabinet, chest, etc.) That requires a key to
@@ -11,16 +10,15 @@ import A_Main.Player;
  *
  * @author Kevin Rapa
  */
-abstract public class LockedCabinet extends SearchableFurniture implements Openable {
+abstract public class LockedContainer extends SearchableFurniture implements Openable {
     private final String KEY;
     // ========================================================================
-    public LockedCabinet(String key, Item ... items) {
+    public LockedContainer(String key, Item ... items) {
         super(items);
         
         this.KEY = key; // ID of the key (type) used to unlock this.
         this.searchable = false; // Starts locked, need a key to make searchable.
 
-        this.addNameKeys("cabinet");
         this.addActKeys("unlock");
     }
     // ========================================================================   
@@ -29,27 +27,28 @@ abstract public class LockedCabinet extends SearchableFurniture implements Opena
             return this.unlock();
         else if (this.searchable)
             return "You open it and look inside.";
-        else {
-            AudioPlayer.playEffect(4);
-            return this.searchDialog;
-        }
+        else
+            return denyEntry();
     }
     // ========================================================================   
     @Override public String interact(String key) {            
         if (Player.hasKey(KEY) && ! this.searchable)
             return this.unlock();
-        else if (! this.searchable) {
-            AudioPlayer.playEffect(4);
-            return "It won't open. You'll need a key.";
-        }
-        else 
+        else if (this.searchable)
             return "Seems that you have already unlocked it.";
+        else 
+            return denyEntry();
     }
     // ======================================================================== 
     private String unlock() {
         this.searchable = true; 
         AudioPlayer.playEffect(13);
         return this.actDialog;
+    }
+    // ======================================================================== 
+    private String denyEntry() {
+        AudioPlayer.playEffect(4);
+        return this.searchDialog;
     }
     // ======================================================================== 
 }

@@ -5,9 +5,9 @@ import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Gal3_Fountain extends SearchableFurniture {
+public class Gar3_Fountain extends SearchableFurniture {
     // ========================================================================
-    public Gal3_Fountain (Item... items) {
+    public Gar3_Fountain (Item... items) {
         super(items);
         
         this.description = "The low fountain works, surprisingly, and is spouting\n"

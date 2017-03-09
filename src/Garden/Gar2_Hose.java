@@ -28,7 +28,7 @@ public class Gar2_Hose extends Furniture {
                        + "railing.";
 
         this.addNameKeys("(?:leather )?hose");
-        this.addActKeys("climb");
+        this.addActKeys(CLIMBPATTERN);
     }
     // ========================================================================   
     @Override public String interact(String key) {              

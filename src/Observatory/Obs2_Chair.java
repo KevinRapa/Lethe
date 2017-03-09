@@ -16,7 +16,7 @@ public class Obs2_Chair extends Furniture {
         this.searchDialog = "The chair isn't hiding anything unusual.";
 
         this.addNameKeys("(?:tall )?(?:lavender )?(?:lounge )?chair");
-        this.addActKeys("sit", "relax");
+        this.addActKeys(SITPATTERN);
     }
     // ========================================================================    
 }

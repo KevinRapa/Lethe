@@ -17,7 +17,7 @@ public class Torc_Cages extends SearchableFurniture implements Openable {
         this.searchDialog = "You open up one of the cages.";
         this.actDialog = "That would be uncomfortably cozy...";
          
-        this.addActKeys("go", "climb", "sit");
+        this.addActKeys("go", "climb", SITPATTERN);
         this.addNameKeys("(?:small )?(?:hanging )?(?:thick-barred )?cages?");
     }
     // ========================================================================   
