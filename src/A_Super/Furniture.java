@@ -76,7 +76,7 @@ abstract public class Furniture implements Serializable {
             String j = i.toString();
             
             if (i.getType().equals(READABLE))
-                j = BOOK_TITLE.matcher(i.toString()).replaceAll(NOTHING);
+                j = BOOK_TITLE.matcher(j).replaceAll(NOTHING);
             
             if (j.equals(name)) {
                 return true; }
