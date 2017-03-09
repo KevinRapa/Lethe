@@ -3,11 +3,12 @@ package Drawing_Room;
 import A_Main.AudioPlayer;
 import static A_Main.NameConstants.WEAPON;
 import A_Super.Furniture;
+import A_Super.Heavy;
 import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
-public class Drar_Piano extends Furniture {
+public class Drar_Piano extends Furniture implements Heavy {
     // ========================================================================
     public Drar_Piano () {
         super();

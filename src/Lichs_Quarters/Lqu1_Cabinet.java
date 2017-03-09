@@ -1,6 +1,7 @@
 package Lichs_Quarters;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
@@ -9,7 +10,7 @@ import A_Super.SearchableFurniture;
  * @see Tower.Tow1_Pedestal
  * @author Kevin Rapa
  */
-public class Lqu1_Cabinet extends SearchableFurniture implements Openable {
+public class Lqu1_Cabinet extends SearchableFurniture implements Openable, Moveable {
     // ========================================================================
     public Lqu1_Cabinet (Item... items) {
         super(items);

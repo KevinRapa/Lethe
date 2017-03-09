@@ -1,8 +1,9 @@
 package Ransacked_Quarters;
 
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
         
-public class Rqua_Table extends SearchableFurniture {
+public class Rqua_Table extends SearchableFurniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rqua_Table () {
         super();

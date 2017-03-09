@@ -1,9 +1,10 @@
 package Study;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
         
-public class Stud_BookCase extends SearchableFurniture {
+public class Stud_BookCase extends SearchableFurniture implements Moveable {
 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Stud_BookCase(Item... items) {

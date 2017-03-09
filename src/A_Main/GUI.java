@@ -407,12 +407,12 @@ public class GUI extends JPanel {
         @Override public void actionPerformed(ActionEvent event) {
             synchronized (HOLDER) {
                 HOLDER.recieve(INPUT.getText().toLowerCase().trim());
+
+                if (UNDO.size() == 10)
+                    UNDO.removeLast();
                 
-                if (VALID_COMMAND.matcher(HOLDER.request()).matches()) {
-                    if (UNDO.size() == 10)
-                        UNDO.removeLast();
-                    UNDO.push(HOLDER.request());
-                }
+                UNDO.push(HOLDER.request());
+                
                 INPUT.setText(" ");
                 HOLDER.notify();
             }

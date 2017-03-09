@@ -2,8 +2,9 @@ package Kitchen;
 
 import A_Super.Item;
 import A_Super.SearchableFurniture;
+import A_Super.Unmoveable;
         
-public class Kitc_Shelf extends SearchableFurniture {
+public class Kitc_Shelf extends SearchableFurniture implements Unmoveable{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Kitc_Shelf(Item... items) {
         super(items);

@@ -13,7 +13,7 @@ import static A_Main.NameConstants.WEAPON;
  * 
  * @author Kevin Rapa
  */
-abstract public class NonPlayerCharacter extends Furniture {
+abstract public class NonPlayerCharacter extends Furniture implements Moveable {
     protected boolean firstTime; // If the player hasn't talked to this before.
     protected static final String 
             ATTACK_PATTERN = "kill|hit|punch|murder|attack",
@@ -43,6 +43,10 @@ abstract public class NonPlayerCharacter extends Furniture {
             return ATTACK_DIALOG;
         else
             return DEFAULT_USE;
+    }
+    // ========================================================================    
+    @Override public String moveIt() {
+        return "It probably wouldn't enjoy that too much...";
     }
     // ========================================================================    
 }

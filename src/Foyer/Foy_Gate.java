@@ -2,6 +2,7 @@ package Foyer;
 
 import A_Super.Door;
 import A_Super.Direction;
+import A_Super.Heavy;
 /**
  * Open and closeable gate toggled by a button in Foy2.
  * Two of these in the foyer. Only one is ever open at a time.
@@ -9,7 +10,7 @@ import A_Super.Direction;
  * @see Foyer.Foy2_Button
  * @author Kevin Rapa
  */
-public class Foy_Gate extends Door {
+public class Foy_Gate extends Door implements Heavy {
     private final String DESCOPEN, SRCHOPEN, DIALOPEN;
     private boolean isOpen;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      

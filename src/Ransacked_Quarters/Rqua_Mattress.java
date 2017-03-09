@@ -1,8 +1,9 @@
 package Ransacked_Quarters;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
         
-public class Rqua_Mattress extends Furniture {
+public class Rqua_Mattress extends Furniture implements Moveable{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rqua_Mattress () {
         super();

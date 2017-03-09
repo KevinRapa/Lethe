@@ -1,11 +1,12 @@
 package Back_Balcony;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Bba_Bench extends SearchableFurniture {
+public class Bba_Bench extends SearchableFurniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bba_Bench(Item... items) {
         super(items);

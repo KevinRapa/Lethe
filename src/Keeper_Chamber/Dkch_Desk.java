@@ -1,11 +1,12 @@
 package Keeper_Chamber;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Dkch_Desk extends SearchableFurniture {
+public class Dkch_Desk extends SearchableFurniture implements Moveable {
     // ========================================================================
     public Dkch_Desk (Item... items) {
         super(items);

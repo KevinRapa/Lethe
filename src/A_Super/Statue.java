@@ -15,14 +15,12 @@ abstract public class Statue extends Furniture {
         this.moveDialog = "With a burst of almost super-human adrenaline, you\n"
                         + "passionately thrust yourself into the statue, moving\n"
                         + "it a small distance. You discover nothing interesting.";
-        this.actDialog = "You feel the statue and marvel at its detail.";
+        this.actDialog = "You brush your hand against the statue and marvel at its detail.";
         this.searchDialog = "You look around the statue but find nothing of interest.";
 
         this.addNameKeys("statues?");
         this.addActKeys("speak|talk|converse|chat|greet|listen");
-        this.addActKeys(MOVEPATTERN);
-        this.addActKeys(FEELPATTERN);
-        this.addActKeys("admire");
+        this.addActKeys(MOVEPATTERN, FEELPATTERN, "admire");
     }
     // ========================================================================   
     @Override public String interact(String key) {              

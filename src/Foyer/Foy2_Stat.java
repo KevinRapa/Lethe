@@ -24,6 +24,7 @@ public class Foy2_Stat extends Statue {
                          + "there appears to be some skid markings on the floor.";
         this.searchDialog = "The statue appears to hide nothing, although there\n"
                           + "streaks on the floor beginning at the statue's base.";
+        this.addNameKeys("(?:skid )?markings");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {

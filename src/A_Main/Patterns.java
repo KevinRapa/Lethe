@@ -15,6 +15,7 @@ public final class Patterns {
             
         // Patterns used by the player.
         KEYCOMMAND = Pattern.compile("[heckiwsadm]"),
+        MOVEPATTERN = Pattern.compile("move|slide|displace|push|pull|spin|rotate"),
         PHRASE = Pattern.compile("^(?!combine)[a-z]+\\s[a-z0-9 ,'.-]+"), // Avoids matching combine statements.
         COMBINE = Pattern.compile("combine\\s+(?:\\d\\s*,\\s*)*\\d"),
         DIRECTION = Pattern.compile("(?:(move|walk|go|run|climb|) ?)(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?)?)"),
@@ -31,7 +32,7 @@ public final class Patterns {
         TAKE = Pattern.compile("t|take"),
         STORE = Pattern.compile("s|store"),
         KEY = Pattern.compile("[A-Z]{3}[A-Z1-9]|OU62"), // Exception for oubliette key
-        EXPLETIVE = Pattern.compile(".*(?:fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska).*"),
+        EXPLETIVE = Pattern.compile("fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska"),
         INV_CHOICES = Pattern.compile("[1-4]"),
         MOVEMENT = Pattern.compile("go|walk|run"),
         CATACOMB_ENTRANCE = Pattern.compile("CS35|CT34"),
@@ -57,8 +58,8 @@ public final class Patterns {
         CAVES_CATACOMB = Pattern.compile("C[TV]\\d{2}"),
     
         // Patterns used by TextParser
-        SEARCH_PATTERN = Pattern.compile("look (?:on|in|under|around)"),
-        INSPECT_PATTERN = Pattern.compile("look(?! (?:in|on|under|around))|inspect|examine|check"),
+        SEARCH_PATTERN = Pattern.compile("look (?:on|in(?:side)?|under|around)"),
+        INSPECT_PATTERN = Pattern.compile("look(?! (?:on|in(?:side)?|under|around))|inspect|examine|check"),
         USE_PATTERN = Pattern.compile("use|read|drop|wear|remove|eat|drink|throw|lean|tie"),
         ITEM_COMMAND = Pattern.compile("(?:" + USE_PATTERN + "|" + INSPECT_PATTERN + ") [a-z0-9: ,'-]+"),
         SUICIDE = Pattern.compile("commit suicide|(?:kill|hang) (?:your)?self"),
@@ -74,7 +75,6 @@ public final class Patterns {
         // Patterns used by GUI
         THREE_PLUS_LETTER_WORD = Pattern.compile("(?:[a-z -]{3,})+"),
         FIRST_WORD = Pattern.compile("[a-z -]+ "),
-        VALID_COMMAND = Pattern.compile("[a-z ,'-]{2,}(?: [1-9]+)?|(?:[ts] \\d{1,2})"),
         DIGIT = Pattern.compile("\\d"),
         NEWLINE = Pattern.compile("\n"),
     

@@ -26,20 +26,16 @@ public class Vest_Orb extends NonPlayerCharacter implements Gettable {
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
         else if (key.matches(GETPATTERN))
-            return getIt();
+            return getIt("You extend your hand out to grab the auspicious orb. A voice\n"
+                       + "then speaks before you reach it. \"Hey you! Do not taint my\n"
+                       + "window from this prison with your dirty hands. Say something\n"
+                       + "to me damn you!\"");
         else if (this.firstTime)
             converse1();
         else
             converse2();
         
         return this.actDialog;
-    }
-    // ========================================================================     
-    @Override public String getIt() {
-        return "You extend your hand out to grab the auspicious orb. A voice\n"
-             + "then speaks before you reach it. \"Hey you! Do not taint my\n"
-             + "window from this prison with your dirty hands. Say something\n"
-             + "to me damn you!\"";
     }
     // ========================================================================     
     @Override protected <Void> Void converse1() {
@@ -107,7 +103,11 @@ public class Vest_Orb extends NonPlayerCharacter implements Gettable {
         
         return null;
     }
-    // ========================================================================     
+    // ========================================================================   
+    @Override public String moveIt() {
+        return "\"I am not a mere household decoration!\" The orb speaks. \"Be respectful and talk to me!\"";
+    }
+    // ========================================================================   
 }
 
 

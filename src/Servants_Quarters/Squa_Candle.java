@@ -21,13 +21,9 @@ public class Squa_Candle extends Furniture implements Gettable {
             return this.actDialog;
         }
         else
-            return getIt();
-    }
-/*----------------------------------------------------------------------------*/
-    @Override public String getIt() {
-        return "You attempt to blow out the flame before taking it. As though\n"
+            return getIt("You attempt to blow out the flame before taking it. As though\n"
              + "part of some elaborate prank, the flame refuses to die and thwarts\n"
-             + "your intention.";
+             + "your intention.");
     }
 /*----------------------------------------------------------------------------*/
 }

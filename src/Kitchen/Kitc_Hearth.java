@@ -3,8 +3,9 @@ package Kitchen;
 import static A_Main.NameConstants.HAND_TORCH;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
+import A_Super.Unmoveable;
 
-public class Kitc_Hearth extends SearchableFurniture {
+public class Kitc_Hearth extends SearchableFurniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Kitc_Hearth(Item ... items) {
         super(items);

@@ -24,12 +24,8 @@ public class Cou5_Fountain extends Courtyard_Fountain implements Gettable {
         if (key.equals("drink") || key.equals("swim"))
             return this.actDialog;
         else
-            return getIt();
-    }
-/*----------------------------------------------------------------------------*/
-    @Override public String getIt() {
-        return "Well... It's made of stone and attached to the fountain, so\n"
-             + "you're going to have to live without that.";
+            return getIt("Well... It's made of stone and attached to the fountain, so\n"
+             + "you're going to have to live without that.");
     }
 /*----------------------------------------------------------------------------*/
 }

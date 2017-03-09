@@ -1,6 +1,5 @@
 package Tunnels;
 
-import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 import static A_Main.Id.*;

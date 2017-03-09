@@ -2,13 +2,14 @@ package Parlor;
 
 import A_Main.AudioPlayer;
 import A_Super.Furniture;
+import A_Super.Moveable;
 /**
  * Wakes up the orb NPC if played.
  * 
  * @see Parlor.Par1_Orb
  * @author Kevin Rapa
  */
-public class Par1_Harp extends Furniture {
+public class Par1_Harp extends Furniture implements Moveable {
     private final Par1_Orb REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Par1_Harp(Furniture orb) {

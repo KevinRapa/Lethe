@@ -8,7 +8,7 @@ import Tunnels.DungeonMonster;      import java.io.IOException;
 import java.io.ObjectOutputStream;  import java.io.Serializable;
 import java.util.Iterator;          import A_Super.Climbable;
 import static A_Main.Patterns.*;
-import java.util.Arrays;
+import A_Super.Moveable;
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -233,7 +233,7 @@ public final class Player {
             if (KEYCOMMAND.matcher(ans).matches()) 
                 cmd.get(ans.charAt(0)).run();
             
-            else if (EXPLETIVE.matcher(ans).matches()) // Zork-inspired
+            else if (EXPLETIVE.matcher(ans).find()) // Zork-inspired
                 GUI.out("Mind yourself! You're a guest here!");    
             
             else if (DIRECTION.matcher(ans).matches()) 
@@ -242,11 +242,8 @@ public final class Player {
             else if (PHRASE.matcher(ans).matches()) // Interacting
                 TextParser.processText(ans);
             
-            else if (COMBINE.matcher(ans).matches()) {
-                String items = ans.replaceFirst("combine\\s+", "");
-                Scanner tokens = new Scanner(items).useDelimiter("\\s*,\\s*");
-                validateList(getTokenList(tokens));
-            }
+            else if (COMBINE.matcher(ans).matches())
+                combineSub(ans);
             
             else if (ans.equals("quit") || ans.equals("q"))
                 break;
@@ -257,7 +254,7 @@ public final class Player {
             }
             
             else if (ans.equals("combine"))
-                Player.combineSub();
+                combineSub();
             
             else if (ans.equals("jump")) 
                 GUI.out("You jump a short height into the air. Well, that was fun.");
@@ -565,6 +562,11 @@ public final class Player {
             else if (SEARCH.matcher(action).matches() || 
                     (action.equals("open") && target instanceof Openable))                    
                 search(target);
+            
+            else if (target instanceof Moveable && 
+                    MOVEPATTERN.matcher(action).matches())
+                GUI.out(((Moveable)target).moveIt());
+            
             else
                 GUI.out("That seems unnecessary.");
         }   
@@ -767,7 +769,8 @@ public final class Player {
         
         printInv();
     }
-    // ========================================================================  
+    // ======================================================================== 
+    // <editor-fold desc="COMBINE SUBROUTINES">
     /**
      * Prompts the player for a list of items, verifies it and moves to evalCombine().
      * A list is valid if it contains exactly 2 or 3 valid item in the
@@ -788,6 +791,18 @@ public final class Player {
             
             tokens.close();  
         } while (isNonEmptyString(combineThese));        
+    }
+    // ======================================================================== 
+    /**
+     * Does the same as combineSub() but with a starting string as input.
+     * For use from the main prompt.
+     */
+    private static void combineSub(String input) {
+        String items = input.replaceFirst("combine\\s+", "");
+        
+        try (Scanner tokens = new Scanner(items).useDelimiter("\\s*,\\s*")) {
+            validateList(getTokenList(tokens));
+        }
     }
     // ======================================================================== 
     /**
@@ -880,6 +895,9 @@ public final class Player {
         } 
         return true;
     }   
+    // </editor-fold>
+    // ======================================================================== 
+    
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************

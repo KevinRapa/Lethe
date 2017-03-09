@@ -7,10 +7,11 @@ import static A_Main.NameConstants.RUBY;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Moveable;
 /**
  * @author Kevin Rapa
  */
-public class Jha_Lion extends Furniture {
+public class Jha_Lion extends Furniture implements Moveable {
     private boolean hasRuby;
     private final String DESC2;
     // ========================================================================

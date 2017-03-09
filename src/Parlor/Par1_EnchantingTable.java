@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import static A_Main.NameConstants.*;
 import A_Super.Item;
 import A_Main.Player;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 import Library.Shoes;
 /**
@@ -20,7 +21,7 @@ import Library.Shoes;
  * @see Parlor.Par_BottleRecipe
  * @author Kevin Rapa
  */
-public class Par1_EnchantingTable extends SearchableFurniture {
+public class Par1_EnchantingTable extends SearchableFurniture implements Moveable {
     private final Item REF_ENCH_BTTL;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Par1_EnchantingTable(Item enchtBttl, Item... items) {

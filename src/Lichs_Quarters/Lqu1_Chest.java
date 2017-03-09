@@ -1,5 +1,6 @@
 package Lichs_Quarters;
 
+import A_Super.Moveable;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
@@ -8,7 +9,7 @@ import A_Super.SearchableFurniture;
  * @see Attic.Att1#dialog()
  * @author Kevin Rapa
  */
-public class Lqu1_Chest extends SearchableFurniture implements Openable {
+public class Lqu1_Chest extends SearchableFurniture implements Openable, Moveable {
     // ========================================================================
     public Lqu1_Chest () {
         super();

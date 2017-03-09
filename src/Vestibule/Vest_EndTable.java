@@ -1,8 +1,9 @@
 package Vestibule;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
 
-public class Vest_EndTable extends Furniture {
+public class Vest_EndTable extends Furniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Vest_EndTable() {
         super();

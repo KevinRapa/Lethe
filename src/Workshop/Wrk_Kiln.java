@@ -5,6 +5,7 @@ import A_Main.Inventory;
 import static A_Main.NameConstants.*;
 import A_Super.Item;
 import A_Main.Player;
+import A_Super.Heavy;
 import A_Super.Liquid;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
@@ -15,7 +16,7 @@ import A_Super.SearchableFurniture;
  * @see Closet.Clos
  * @author Kevin Rapa
  */
-public class Wrk_Kiln extends SearchableFurniture implements Openable {
+public class Wrk_Kiln extends SearchableFurniture implements Openable, Heavy {
     private final Item REFGLSSR, REFGLSSB, REFGLSSY;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Wrk_Kiln() {

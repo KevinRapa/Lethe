@@ -11,7 +11,7 @@ import A_Main.Player;
  * @author Kevin Rapa
  */
 abstract public class Candelabra extends SearchableFurniture 
-        implements Gettable {
+        implements Gettable, Moveable {
     private final Item CANDLE_REF;
     // ========================================================================
     public Candelabra (Item candle) {

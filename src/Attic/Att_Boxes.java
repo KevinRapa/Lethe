@@ -1,13 +1,14 @@
 package Attic;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import java.util.Random;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Att_Boxes extends SearchableFurniture implements Openable {
+public class Att_Boxes extends SearchableFurniture implements Openable, Moveable {
     Random generator = new Random();
     private static final Item[] POSSIBILITIES = {
         new Item("violin", "An old dusty violin. It has a string missing and sounds out of tune.", "Surely you could never play..."),

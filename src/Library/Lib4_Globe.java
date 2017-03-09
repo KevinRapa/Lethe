@@ -1,8 +1,9 @@
 package Library;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
 
-public class Lib4_Globe extends Furniture {
+public class Lib4_Globe extends Furniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib4_Globe() {
         super();

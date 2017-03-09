@@ -1,9 +1,10 @@
 package Ransacked_Quarters;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
 import A_Super.Openable;
         
-public class Rqua_Dresser extends Furniture implements Openable {
+public class Rqua_Dresser extends Furniture implements Openable, Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rqua_Dresser () {
         super();

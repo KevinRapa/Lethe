@@ -2,8 +2,9 @@ package West_Balcony;
 
 import static A_Main.NameConstants.FIXED_LADDER;
 import A_Super.Furniture;
+import A_Super.Unmoveable;
 
-public class Wbal_Beacon extends Furniture{
+public class Wbal_Beacon extends Furniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wbal_Beacon() {
         super();

@@ -50,9 +50,6 @@ public class TextParser {
     // <editor-fold desc="Text parser">
     //*************************************************************************
     public static void processText(String input) {
-        // Removes articles 'a', 'an', 'the'. Removes the pronoun 'some'.
-        String noArticles = ARTICLE.matcher(input).replaceAll(NOTHING);
-        
         if (SUICIDE.matcher(input).matches()) 
             GUI.out("You haven't reached that point yet!!");
 
@@ -60,6 +57,9 @@ public class TextParser {
             GUI.out("Yes, you're frustrated, hungry, and angry, but don't be so reckless!");
 
         else {
+            // Removes articles 'a', 'an', 'the'. Removes the pronoun 'some'.
+            String noArticles = ARTICLE.matcher(input).replaceAll(NOTHING);
+            
             for (Command c : splitCommands(noArticles))
                 COMMAND_QUEUE.offer(c);
 
@@ -102,7 +102,7 @@ public class TextParser {
                                     .split(STORE_LOCATION));
             else {
                 if (SEARCH_PATTERN.matcher(statements[i]).find()) {
-                    // Replaces "look at|on|around|under with just 'search'"
+                    // Replaces "look (in|on|around|under) with just 'search'"
                     statements[i] = SEARCH_PATTERN.matcher(statements[i])
                             .replaceAll("search");
                 }

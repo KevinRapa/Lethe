@@ -13,4 +13,9 @@ public interface Gettable {
     default String getIt() {
         return "You cannot pick that up with your hands...";
     }
+    //=========================================================================
+    default String getIt(String dialog) {
+        return dialog;
+    }
+    //=========================================================================
 }

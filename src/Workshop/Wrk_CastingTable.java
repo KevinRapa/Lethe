@@ -5,6 +5,7 @@ import A_Main.Inventory;
 import static A_Main.NameConstants.*;
 import A_Super.Item;
 import A_Main.Player;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 /**
  * Used to create lenses and glass sheets.
@@ -13,7 +14,7 @@ import A_Super.SearchableFurniture;
  * 
  * @author Kevin Rapa
  */
-public class Wrk_CastingTable extends SearchableFurniture {
+public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
     private final Inventory BRL_INV, SCK_INV, CBNT_INV;
     private final Item SHEET_REF, RED_LENS_REF, BLUE_LENS_REF, YELLOW_LENS_REF, 
                        SAND_REF, RED_DYE_REF, BLUE_DYE_REF, YELLOW_DYE_REF, POTASH_REF;

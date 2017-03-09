@@ -1,10 +1,11 @@
 package Observatory;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
 /**
  * @author Kevin Rapa
  */
-public class Obs3_Telescopes extends Furniture {
+public class Obs3_Telescopes extends Furniture implements Moveable {
     // ========================================================================
     public Obs3_Telescopes () {
         super();

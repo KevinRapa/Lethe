@@ -3,6 +3,7 @@ package Parlor;
 import static A_Main.NameConstants.STEEL_WIRE;
 import A_Main.AudioPlayer;
 import A_Super.Furniture;
+import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
@@ -12,7 +13,7 @@ import A_Super.SearchableFurniture;
  * @see Parlor.Par1_Orb
  * @author Kevin Rapa
  */
-public class Par2_Piano extends SearchableFurniture implements Openable {
+public class Par2_Piano extends SearchableFurniture implements Openable, Heavy {
     private final Par1_Orb REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Par2_Piano(Furniture orb, Item... items) {

@@ -2,7 +2,7 @@ package A_Super;
 /**
  * @author Kevin Rapa
  */
-public class Balcony extends Furniture {
+public class Balcony extends Furniture implements Unmoveable {
     // ========================================================================
     public Balcony () {
         super();

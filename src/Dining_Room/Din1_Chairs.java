@@ -1,8 +1,9 @@
 package Dining_Room;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
 
-public class Din1_Chairs extends Furniture {
+public class Din1_Chairs extends Furniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Din1_Chairs() {
         super();

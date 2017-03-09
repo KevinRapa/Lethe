@@ -7,13 +7,14 @@ import static A_Main.NameConstants.*;
 import static A_Main.Patterns.YES;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Unmoveable;
 /**
  * Dispenses various types of chemicals to be used in alchemy.
  * 
  * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
-public class Labo_Dispensers extends Furniture {
+public class Labo_Dispensers extends Furniture implements Unmoveable {
     private final Item VIAL_REF, TUBE_REF;
     // ========================================================================
     public Labo_Dispensers (Item emptyVial, Item testTube) {

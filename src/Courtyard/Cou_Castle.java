@@ -1,10 +1,11 @@
 package Courtyard;
 
 import A_Super.Furniture;
+import A_Super.Heavy;
 /**
  * @author Kevin Rapa
  */
-public class Cou_Castle extends Furniture {
+public class Cou_Castle extends Furniture implements Heavy {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou_Castle() {
         super();

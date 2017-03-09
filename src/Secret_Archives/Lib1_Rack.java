@@ -2,8 +2,9 @@ package Secret_Archives;
 
 import A_Super.Item;
 import A_Super.SearchableFurniture;
+import A_Super.Unmoveable;
         
-public class Lib1_Rack extends SearchableFurniture {
+public class Lib1_Rack extends SearchableFurniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Rack(Item... items) {
         super(items);

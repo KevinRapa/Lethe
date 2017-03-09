@@ -6,6 +6,7 @@ import A_Main.NameConstants;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.Resetable;
 import A_Super.Room;
 /**
@@ -18,7 +19,7 @@ import A_Super.Room;
  * @see Sewers.Sew4_Pp
  * @author Kevin Rapa
  */
-public class Torc_Sawhorses extends Furniture implements Resetable {
+public class Torc_Sawhorses extends Furniture implements Resetable, Moveable {
     private final Item METAL_LADDER = new Metal_Ladder(NameConstants.METAL_LADDER);
     private final Furniture TORC_LDDR = new Torc_Lddr();;
     // ========================================================================

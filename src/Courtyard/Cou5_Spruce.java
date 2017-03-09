@@ -7,6 +7,7 @@ import static A_Main.NameConstants.*;
 import A_Super.Climbable;
 import A_Super.Direction;
 import A_Super.Gettable;
+import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**
@@ -15,7 +16,9 @@ import A_Super.SearchableFurniture;
  * @see Parlor.Par1_EnchtTbl
  * @author Kevin Rapa
  */
-public class Cou5_Spruce extends SearchableFurniture implements Climbable, Gettable {
+public class Cou5_Spruce extends SearchableFurniture 
+        implements Climbable, Gettable, Heavy 
+{
     private final Item EXTRCT_REF, VIAL_REF;
     private boolean drilled;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      

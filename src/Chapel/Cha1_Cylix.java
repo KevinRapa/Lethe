@@ -2,8 +2,9 @@ package Chapel;
 
 import static A_Main.NameConstants.*;
 import A_Super.Furniture;
+import A_Super.Moveable;
 
-public class Cha1_Cylix extends Furniture {
+public class Cha1_Cylix extends Furniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cha1_Cylix() {
         super();

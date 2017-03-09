@@ -1,8 +1,9 @@
 package Drawing_Room;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
 
-public class Drar_Couch extends Furniture {
+public class Drar_Couch extends Furniture implements Moveable {
     private final Drar_Ghost GHOST_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Drar_Couch(Furniture ghst) {

@@ -6,10 +6,11 @@ import A_Main.Id;
 import A_Main.Menus;
 import A_Main.Player;
 import A_Super.Furniture;
+import A_Super.Heavy;
 /**
  * @author Kevin Rapa
  */
-public class Vaue_Door extends Furniture {
+public class Vaue_Door extends Furniture implements Heavy {
     // =====================================
     private enum State {
         ON("[o]"), OFF("[ ]");

@@ -1,10 +1,11 @@
 package Lichs_Quarters;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
 /**
  * @author Kevin Rapa
  */
-public class Lqu2_Bed extends Furniture {
+public class Lqu2_Bed extends Furniture implements Moveable {
     // ========================================================================
     public Lqu2_Bed () {
         super();

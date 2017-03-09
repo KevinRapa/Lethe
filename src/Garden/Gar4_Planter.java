@@ -8,10 +8,11 @@ import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
+import A_Super.Unmoveable;
 /**
  * @author Kevin Rapa
  */
-public class Gar4_Planter extends SearchableFurniture {
+public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
     private final Gar4_Plaque PLQ_REF;
     private final Item PLT_REF;
     // ========================================================================

@@ -1,6 +1,7 @@
 package East_Outer_Wall;
 
 import A_Super.Furniture;
+import A_Super.Unmoveable;
 /**
  * Superficial, but justifies the presence of water in the room for filling the metal bucket.
  * 
@@ -8,7 +9,7 @@ import A_Super.Furniture;
  * @see Library.Lib4
  * @author Kevin Rapa
  */
-public class Eow2_Fountain extends Furniture {
+public class Eow2_Fountain extends Furniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Eow2_Fountain() {
         super();

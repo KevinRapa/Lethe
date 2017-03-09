@@ -1,11 +1,12 @@
 package Torture_Chamber;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Torc_Rack extends SearchableFurniture {
+public class Torc_Rack extends SearchableFurniture implements Moveable {
     // ========================================================================
     public Torc_Rack (Item... items) {
         super(items);

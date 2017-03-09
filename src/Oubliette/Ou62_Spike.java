@@ -1,10 +1,11 @@
 package Oubliette;
 
 import A_Super.Furniture;
+import A_Super.Heavy;
 /**
  * @author Kevin Rapa
  */
-public class Ou62_Spike extends Furniture {
+public class Ou62_Spike extends Furniture implements Heavy {
     // ========================================================================
     public Ou62_Spike () {
         super();

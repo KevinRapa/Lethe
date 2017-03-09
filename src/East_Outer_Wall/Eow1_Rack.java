@@ -1,9 +1,10 @@
 package East_Outer_Wall;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
         
-public class Eow1_Rack extends SearchableFurniture {
+public class Eow1_Rack extends SearchableFurniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Eow1_Rack(Item... items) {
         super(items);

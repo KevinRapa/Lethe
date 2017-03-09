@@ -1,10 +1,11 @@
 package Observatory;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
 /**
  * @author Kevin Rapa
  */
-public class Obs2_Chair extends Furniture {
+public class Obs2_Chair extends Furniture implements Moveable {
     // ========================================================================
     public Obs2_Chair () {
         super();

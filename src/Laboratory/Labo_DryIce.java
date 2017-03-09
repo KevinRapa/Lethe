@@ -7,6 +7,7 @@ import A_Super.Item;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 import static A_Main.Patterns.TITRANT;
+import A_Super.Heavy;
 /**
  * Used to cool down vials of bromine.
  * Multi-threaded. Runs a thread call Chill_THREAD.
@@ -14,7 +15,7 @@ import static A_Main.Patterns.TITRANT;
  * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
-public class Labo_DryIce extends SearchableFurniture implements Openable {
+public class Labo_DryIce extends SearchableFurniture implements Openable, Heavy {
     private final Item DRY_ICE_REF;
     private transient Chill_Thread chillBromine;
     // ========================================================================

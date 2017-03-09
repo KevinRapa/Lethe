@@ -7,7 +7,7 @@ import static A_Main.NameConstants.LEATHER_HOSE;
 /**
  * @author Kevin Rapa
  */
-abstract public class Railing extends Furniture {
+abstract public class Railing extends Furniture implements Unmoveable {
     // ========================================================================
     public Railing () {
         super();
@@ -30,7 +30,7 @@ abstract public class Railing extends Furniture {
         else
             return "You grab the railing. There's no fear of falling over, right?";
     }
-    // ========================================================================        
+    // ========================================================================    
 }
 
 

@@ -1,8 +1,9 @@
 package Library;
 
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 
-public class Lib_Couch extends SearchableFurniture {
+public class Lib_Couch extends SearchableFurniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib_Couch() {
         super();

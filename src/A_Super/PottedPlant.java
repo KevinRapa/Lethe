@@ -8,8 +8,8 @@ import A_Main.Player;
 /**
  * @author Kevin Rapa
  */
-abstract public class PottedPlant extends SearchableFurniture 
-        implements Gettable {
+abstract public class PottedPlant extends SearchableFurniture
+        implements Gettable, Moveable {
     private final Item SOIL_REF;
     // ========================================================================
     public PottedPlant (Item soil) {

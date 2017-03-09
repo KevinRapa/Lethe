@@ -2,6 +2,7 @@ package Closet;
 
 import static A_Main.NameConstants.CROWBAR;
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 /**
  * Contains a crowbar, a required item.
@@ -9,7 +10,7 @@ import A_Super.SearchableFurniture;
  * @see Ransacked_Quarters.Rqua_Pnl
  * @author Kevin Rapa
  */
-public class Gqua_Skeleton extends SearchableFurniture {
+public class Gqua_Skeleton extends SearchableFurniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Skeleton(Item... items) {
         super(items);
@@ -33,6 +34,10 @@ public class Gqua_Skeleton extends SearchableFurniture {
             return "The thought of that makes you shutter...";
         else
             return this.actDialog;
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String moveIt() {
+        return "This skeleton is most likely dead at this point. May as well let it rest.";
     }
 /*----------------------------------------------------------------------------*/
 }

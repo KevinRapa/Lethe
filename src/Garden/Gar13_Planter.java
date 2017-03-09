@@ -5,10 +5,11 @@ import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
+import A_Super.Unmoveable;
 /**
  * @author Kevin Rapa
  */
-public class Gar13_Planter extends SearchableFurniture {
+public class Gar13_Planter extends SearchableFurniture implements Unmoveable {
     private final Item SOIL_REF;
     // ========================================================================
     public Gar13_Planter (Item soil, Item... items) {

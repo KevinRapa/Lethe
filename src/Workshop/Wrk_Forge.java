@@ -3,8 +3,9 @@ package Workshop;
 import static A_Main.NameConstants.HAMMER;
 import A_Super.Furniture;
 import A_Super.Gettable;
+import A_Super.Heavy;
         
-public class Wrk_Forge extends Furniture implements Gettable {
+public class Wrk_Forge extends Furniture implements Gettable, Heavy {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Forge() {
         super();

@@ -3,10 +3,11 @@ package Laboratory;
 import static A_Main.NameConstants.BEAKER;
 import static A_Main.NameConstants.FLORENCE_FLASK;
 import A_Super.Furniture;
+import A_Super.Moveable;
 /**
  * @author Kevin Rapa
  */
-public class Labo_Contraption extends Furniture {
+public class Labo_Contraption extends Furniture implements Moveable {
     // ========================================================================
     public Labo_Contraption () {
         super();
@@ -26,6 +27,10 @@ public class Labo_Contraption extends Furniture {
         this.addUseKeys(BEAKER, FLORENCE_FLASK);
     }
     // ======================================================================== 
+    @Override public String moveIt() {
+        return "The contraption looks pretty fragile. You think it best to leave it where it is.";
+    }
+    // ========================================================================
 }
 
 

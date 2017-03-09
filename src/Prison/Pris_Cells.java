@@ -6,6 +6,7 @@ import static A_Main.Patterns.WORD;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Openable;
+import A_Super.Unmoveable;
 import java.util.HashMap;
 /**
  * These can be searched to discover the solution to the Sew2 valve puzzle.
@@ -13,7 +14,7 @@ import java.util.HashMap;
  * @see Tunnels.Sew2_Valves
  * @author Kevin Rapa
  */
-public class Pris_Cells extends Furniture implements Openable{
+public class Pris_Cells extends Furniture implements Openable, Unmoveable {
     private final HashMap<String, Integer> MAP = new HashMap<>();
     // ========================================================================
     public Pris_Cells () {

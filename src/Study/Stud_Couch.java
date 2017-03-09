@@ -1,8 +1,9 @@
 package Study;
 
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 
-public class Stud_Couch extends SearchableFurniture {
+public class Stud_Couch extends SearchableFurniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Stud_Couch() {
         super();

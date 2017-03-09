@@ -1,8 +1,9 @@
 package Rotunda;
 
 import A_Super.Furniture;
+import A_Super.Heavy;
 
-public class Rotu_Frames extends Furniture {
+public class Rotu_Frames extends Furniture implements Heavy {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rotu_Frames() {
         super();
@@ -15,7 +16,7 @@ public class Rotu_Frames extends Furniture {
         this.actDialog = "You feel as though if you do that, you will get a face-full of rock.";
         
         this.addActKeys("go|walk|run");
-        this.addNameKeys("(?:arched )?frames?");
+        this.addNameKeys("(?:arched )?frames?", "carvings?");
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -1,10 +1,11 @@
 package Strange_Pool;
 
 import A_Super.Furniture;
+import A_Super.Heavy;
 /**
  * @author Kevin Rapa
  */
-public class Sewp_Tunnel extends Furniture {
+public class Sewp_Tunnel extends Furniture implements Heavy {
     // ========================================================================
     public Sewp_Tunnel () {
         super();

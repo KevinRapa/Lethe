@@ -1,12 +1,13 @@
 package Laboratory;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Labo_Shelf extends SearchableFurniture implements Openable {
+public class Labo_Shelf extends SearchableFurniture implements Openable, Moveable {
     // ========================================================================
     public Labo_Shelf (Item... items) {
         super(items);

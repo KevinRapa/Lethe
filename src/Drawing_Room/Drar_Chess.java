@@ -2,9 +2,10 @@ package Drawing_Room;
 
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 
-public class Drar_Chess extends SearchableFurniture {
+public class Drar_Chess extends SearchableFurniture implements Moveable {
     private final Drar_Ghost GHOST_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Drar_Chess(Furniture ghst, Item... items) {

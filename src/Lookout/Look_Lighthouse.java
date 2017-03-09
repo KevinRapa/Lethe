@@ -1,8 +1,9 @@
 package Lookout;
 
 import A_Super.Furniture;
+import A_Super.Heavy;
 
-public class Look_Lighthouse extends Furniture{
+public class Look_Lighthouse extends Furniture implements Heavy {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Look_Lighthouse() {
         super();
@@ -11,6 +12,10 @@ public class Look_Lighthouse extends Furniture{
                          + "beacon illuminates northwards. You wish it would\n"
                          + "maybe spot you.";
         this.searchDialog = "The lighthouse is absolutely too far away to do that.";
+        this.actDialog = "You consider yourself a decent swimmer, but that doesn't\n"
+                       + "seem very feasible to do.";
+        
+        this.addActKeys("walk", "swim", "go");
         this.addNameKeys("(?:classic )?(?:red and white )?(?:striped )?lighthouse");
     }
 /*----------------------------------------------------------------------------*/

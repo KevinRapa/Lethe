@@ -1,11 +1,12 @@
 package Observatory;
 
+import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Obs1_Telescope extends SearchableFurniture {
+public class Obs1_Telescope extends SearchableFurniture implements Heavy {
     // ========================================================================
     public Obs1_Telescope (Item... items) {
         super(items);

@@ -5,10 +5,11 @@ import static A_Main.NameConstants.*;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Unmoveable;
 /**
  * @author Kevin Rapa
  */
-public class Labo_GasPipe extends Furniture {
+public class Labo_GasPipe extends Furniture implements Unmoveable {
     private boolean gasIsOn;
     // ========================================================================
     public Labo_GasPipe () {

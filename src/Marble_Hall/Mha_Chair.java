@@ -1,8 +1,9 @@
 package Marble_Hall;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
 
-public class Mha_Chair extends Furniture {
+public class Mha_Chair extends Furniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Mha_Chair() {
         super();

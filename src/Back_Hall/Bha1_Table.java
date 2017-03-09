@@ -1,6 +1,7 @@
 package Back_Hall;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
@@ -9,7 +10,7 @@ import A_Super.SearchableFurniture;
  * @see Observatory.Obs1_Statues
  * @author Kevin Rapa
  */
-public class Bha1_Table extends SearchableFurniture implements Openable {
+public class Bha1_Table extends SearchableFurniture implements Openable, Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bha1_Table(Item ... items) {
         super(items);

@@ -1,10 +1,11 @@
 package Laboratory;
 
 import A_Super.Furniture;
+import A_Super.Moveable;
 /**
  * @author Kevin Rapa
  */
-public class Labo_Table extends Furniture {
+public class Labo_Table extends Furniture implements Moveable {
     // ========================================================================
     public Labo_Table () {
         super();

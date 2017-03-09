@@ -2,8 +2,9 @@ package Workshop;
 
 import static A_Main.NameConstants.HAMMER;
 import A_Super.Furniture;
+import A_Super.Heavy;
         
-public class Wrk_Anvil extends Furniture {
+public class Wrk_Anvil extends Furniture implements Heavy {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Anvil() {
         super();

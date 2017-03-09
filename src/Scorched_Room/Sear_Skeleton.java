@@ -2,6 +2,7 @@ package Scorched_Room;
 
 import static A_Main.NameConstants.CROWBAR;
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 /**
  * Holds a crowbar, to pry the panel in the ransacked room.
@@ -9,7 +10,7 @@ import A_Super.SearchableFurniture;
  * @see Ransacked_Quarters.Rqua_Panel
  * @author Kevin Rapa
  */  
-public class Sear_Skeleton extends SearchableFurniture {
+public class Sear_Skeleton extends SearchableFurniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Sear_Skeleton(Item... items) {
         super(items);
@@ -33,6 +34,10 @@ public class Sear_Skeleton extends SearchableFurniture {
             return "The thought of that makes you shutter...";
         else
             return this.actDialog;
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public String moveIt() {
+        return "This skeleton is most likely dead at this point. May as well let it rest.";
     }
 /*----------------------------------------------------------------------------*/
 }

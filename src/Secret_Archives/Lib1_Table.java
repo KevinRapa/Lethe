@@ -1,9 +1,10 @@
 package Secret_Archives;
 
+import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
         
-public class Lib1_Table extends SearchableFurniture {
+public class Lib1_Table extends SearchableFurniture implements Heavy {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Table(Item... items) {
         super(items);

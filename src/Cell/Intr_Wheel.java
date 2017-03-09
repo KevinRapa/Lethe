@@ -2,10 +2,11 @@ package Cell;
 
 import static A_Main.NameConstants.METAL_BAR;
 import A_Super.Furniture;
+import A_Super.Heavy;
 /**
  * @author Kevin Rapa
  */
-public class Intr_Wheel extends Furniture {
+public class Intr_Wheel extends Furniture implements Heavy {
     // ========================================================================
     public Intr_Wheel () {
         super();
@@ -26,7 +27,7 @@ public class Intr_Wheel extends Furniture {
         this.addActKeys(GETPATTERN);
         this.addActKeys("stop");
     }
-    // ========================================================================    
+    // ======================================================================== 
 }
 
 

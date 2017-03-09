@@ -28,13 +28,9 @@ public class Tmb3_Cndl extends Furniture implements Gettable {
         if (key.matches(FEELPATTERN))
             return this.actDialog;
         else
-            return getIt();
+            return getIt("The candles are melted to the surface. You can't pick any up.");
     }
-    // ========================================================================   
-    @Override public String getIt() {
-        return "The candles are melted to the surface. You can't pick any up.";
-    }
-    // ========================================================================  
+    // ========================================================================    
 }
 
 

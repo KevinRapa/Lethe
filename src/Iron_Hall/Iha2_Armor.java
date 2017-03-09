@@ -6,9 +6,10 @@ import static A_Main.NameConstants.POLEARM;
 import A_Main.Player;
 import A_Super.Gettable;
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 
-public class Iha2_Armor extends SearchableFurniture implements Gettable {
+public class Iha2_Armor extends SearchableFurniture implements Gettable, Moveable {
     private final Item PLRM_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Iha2_Armor(Item plrm) {
@@ -23,8 +24,8 @@ public class Iha2_Armor extends SearchableFurniture implements Gettable {
         this.searchDialog = "The suit of armor is holding a polearm, but its\n"
                           + "gauntlet is wrapped around it awkwardly.";
         this.actDialog = "You will probably get hurt trying to do that.";
-        this.addActKeys(GETPATTERN);
-        this.addActKeys("equip", "wear", "pry", "open");
+        
+        this.addActKeys("equip|wear", "pry|open", GETPATTERN);
         this.addNameKeys("(suit of |plate )?armor", POLEARM, "(?:armor )?suit|gauntlet|hand");
     }    
 //*----------------------------------------------------------------------------*/

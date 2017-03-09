@@ -3,10 +3,11 @@ package Tunnels;
 import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Furniture;
+import A_Super.Heavy;
 /**
  * @author Kevin Rapa
  */
-public class Sew_Bridge extends Furniture {
+public class Sew_Bridge extends Furniture implements Heavy {
     private final Direction DIR; 
     // ========================================================================
     public Sew_Bridge (Direction dir) {

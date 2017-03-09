@@ -3,6 +3,7 @@ package Tunnels;
 import A_Main.NameConstants;
 import A_Main.Player;
 import A_Super.Furniture;
+import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.Resetable;
 /**
@@ -12,7 +13,7 @@ import A_Super.Resetable;
  * @see Tunnels.Sew2_Vlvs
  * @author Kevin Rapa
  */
-public class Sew4_Pipe extends Furniture implements Resetable {
+public class Sew4_Pipe extends Furniture implements Resetable, Heavy {
     private boolean hasPipe;
     private final Furniture SEW1_RVR;
     private final Item PIPE_REF;

@@ -3,6 +3,7 @@ package Closet;
 import static A_Main.NameConstants.HAND_DRILL;
 import static A_Main.NameConstants.WEAPON;
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
@@ -11,7 +12,7 @@ import A_Super.SearchableFurniture;
  * @see Parlor.Par1_EnchtTbl
  * @author Kevin Rapa
  */
-public class Gqua_Sacks extends SearchableFurniture implements Openable {
+public class Gqua_Sacks extends SearchableFurniture implements Openable, Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Sacks(Item ... items) {
         super(items);

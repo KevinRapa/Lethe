@@ -1,6 +1,7 @@
 package Rotunda;
 
 import A_Super.Furniture;
+import A_Super.Heavy;
 /**
  * Can be drained by a valve in Look which gives access to a wheel which
  * rotates the Rotunda.
@@ -9,7 +10,7 @@ import A_Super.Furniture;
  * @see Lookout.Look_Valve
  * @author Kevin Rapa
  */
-public class Rotu_Fountain extends Furniture {
+public class Rotu_Fountain extends Furniture implements Heavy {
     private boolean drained;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Rotu_Fountain() {       
@@ -21,32 +22,35 @@ public class Rotu_Fountain extends Furniture {
                          + "with opaque brown water.";
         this.actDialog = "Are you really that desperate for a drink? There must be some cleaner water in here somewhere...";
         this.searchDialog = "You can't see anything through the brown water.";
-        this.addActKeys("drink", "swim");
+        this.addActKeys("drink", "swim", "drain", "empty");
         this.addNameKeys("(?:round )?(?:marble )?fountain");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
+    if (key.equals("swim") || key.equals("drink"))
         return (this.drained) ? 
             "The disgusting water has already been drained." :
             this.actDialog;
+    else
+        return (this.drained) ?
+            "The disgusting water has already been drained." :
+            "You have nothing useful with which to empty it.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {        
-        if (this.drained) {
-            return "Looking inside the bowl, you find decaying plant matter\n"
-                 + "resting on the bottom. A curious stone wheel wraps around\n"
-                 + "the base of the fountain inside the bowl."; 
-        }
-        return this.searchDialog; 
+        return (this.drained) ?
+           "Looking inside the bowl, you find decaying plant matter\n"
+         + "resting on the bottom. A curious stone wheel wraps around\n"
+         + "the base of the fountain inside the bowl."
+                : this.searchDialog; 
     }
 /*----------------------------------------------------------------------------*/     
     @Override public String getDescription() {
-        if (this.drained) {
-            return "With the fountain drained, you find decaying plant matter\n"
-                 + "resting on the bottom. A curious stone wheel wraps around\n"
-                 + "the base of the fountain inside the bowl."; 
-        }
-        return this.description; 
+        return (this.drained) ?
+           "With the fountain drained, you find decaying plant matter\n"
+         + "resting on the bottom. A curious stone wheel wraps around\n"
+         + "the base of the fountain inside the bowl." 
+                : this.description; 
     }
 /*----------------------------------------------------------------------------*/     
     public void drain() {

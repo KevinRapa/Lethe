@@ -1,11 +1,12 @@
 package Observatory;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Obs1_Seat extends SearchableFurniture {
+public class Obs1_Seat extends SearchableFurniture implements Moveable {
     // ========================================================================
     public Obs1_Seat (Item... items) {
         super(items);

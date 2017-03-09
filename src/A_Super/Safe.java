@@ -10,7 +10,7 @@ import A_Main.Player;
  * Player may interact with or search this for an open attempt.
  * @author Kevin Rapa
  */
-abstract public class Safe extends SearchableFurniture implements Openable {
+abstract public class Safe extends SearchableFurniture implements Openable, Moveable {
     protected final String COMBO;
     protected final int[] DIALS; 
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
@@ -111,4 +111,8 @@ abstract public class Safe extends SearchableFurniture implements Openable {
             return DEFAULT_USE;
     }
 /*----------------------------------------------------------------------------*/ 
+    @Override public String moveIt() {
+        return "It budges only a small amount before you're out of breath. This is much too heavy.";
+    }
+/*----------------------------------------------------------------------------*/
 }

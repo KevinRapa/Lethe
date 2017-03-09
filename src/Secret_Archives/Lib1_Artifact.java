@@ -20,11 +20,13 @@ public class Lib1_Artifact extends Furniture {
     public Lib1_Artifact(Item... items) {
         super();
         this.searchable = true;
+        this.actDialog = "The large stone head is too heavy to pick up.";
         this.searchDialog = "You squint and peek inside the head.";
         this.beam = 'b';
         this.mode = "A blue beam";
-        this.inv = new Art_Inv(items);   
-        this.addNameKeys("artifact", "strange artifact");
+        this.inv = new Art_Inv(items);  
+        this.addActKeys(GETPATTERN);
+        this.addNameKeys("(?:strange )?artifact", "(?:stone )?head");
         this.addUseKeys(RED_FOCUS, BLUE_FOCUS, YELLOW_FOCUS, DARK_FOCUS);
     }
 /*----------------------------------------------------------------------------*/    

@@ -1,13 +1,14 @@
 package Attic;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import java.util.Random;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Att_Cases extends SearchableFurniture implements Openable {
+public class Att_Cases extends SearchableFurniture implements Openable, Moveable {
     Random generator = new Random();
     private final Item[] POSSIBILITIES = {
         new Item("brown suit", "A brown wool suit jacket", "It's too hot out for this."),

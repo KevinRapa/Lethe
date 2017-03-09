@@ -2,11 +2,12 @@ package Vault;
 
 import static A_Main.NameConstants.GLOWING_CHALICE;
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Vau1_Table extends SearchableFurniture {
+public class Vau1_Table extends SearchableFurniture implements Moveable {
     // ========================================================================
     public Vau1_Table (Item... items) {
         super(items);

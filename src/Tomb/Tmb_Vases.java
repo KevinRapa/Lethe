@@ -1,12 +1,13 @@
 package Tomb;
 
 import A_Super.Item;
+import A_Super.Moveable;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
-public class Tmb_Vases extends SearchableFurniture implements Openable {
+public class Tmb_Vases extends SearchableFurniture implements Openable, Moveable {
     // ========================================================================
     public Tmb_Vases (Item... items) {
         super(items);

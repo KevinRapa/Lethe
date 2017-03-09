@@ -5,11 +5,12 @@ import A_Main.Player;
 import static A_Main.NameConstants.*;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Moveable;
 /**
  * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
-public class Labo_Condenser extends Furniture {
+public class Labo_Condenser extends Furniture implements Moveable {
     private boolean flapOpen;
     private final Labo_Beaker BEAKER_REF;
     // ========================================================================
@@ -88,6 +89,10 @@ public class Labo_Condenser extends Furniture {
         }
     }
     // ========================================================================  
+    @Override public String moveIt() {
+        return "The contraption looks pretty fragile. You think it best to leave it where it is.";
+    }
+    // ========================================================================
 }
 
 
