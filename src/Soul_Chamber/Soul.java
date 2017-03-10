@@ -48,7 +48,7 @@ public class Soul extends Room {
             GUI.out("A short moment passes, and you cast the five objects into\n"
                   + "the pool. At that moment, the feeling of burden and dread\n"
                   + "leaves you, and you feel comfortably alone. A burst of light\n"
-                  + "emerges from the pool and then disperses.");
+                  + "emerges from the pool and then disperses. The throbbing in your head ceases.");
             GUI.promptOut();
             GUI.toMainMenu();
             

@@ -15,7 +15,8 @@ public class Tow_Sphere extends Furniture implements Heavy {
 
         this.description = "The ball of bright yellow light pulses every few seconds and emits\n"
                          + "a dizzying low pitch. The sphere just hovers, still, high up in the center\n"
-                         + "of the tower. You are compelled to keep staring, but you pull your eyes away.";
+                         + "of the tower. The throbbing in your head exacerbates as you look.\n"
+                         + "You are compelled to keep staring, but you pull your eyes away.";
         
         this.searchDialog = "The sphere is too high to inspect more closely.";
 

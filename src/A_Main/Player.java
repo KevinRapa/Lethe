@@ -46,8 +46,14 @@ public final class Player {
         CMDS.put("m", () -> Map.displayMap());
         CMDS.put("q", () -> endGame());
         
+        CMDS.put("inspect", () -> examineSub());
+        CMDS.put("examine", () -> examineSub());
+        CMDS.put("keys", () -> viewKeyRing());
+        CMDS.put("keyring", () -> viewKeyRing());
+        CMDS.put("inventory", () -> inventoryPrompt());
+        CMDS.put("search", () -> searchSub());
         CMDS.put("help", () -> Help.helpSub());
-        CMDS.put("save", () -> Main.saveGame());
+        CMDS.put("save", () ->  { Main.saveGame(); GUI.out("Game saved"); });
         CMDS.put("combine", () -> combineSub());
         CMDS.put("jump", () -> GUI.out("You jump a short height into the air. Well, that was fun."));
         CMDS.put("sort", () -> { getInv().sortInventory(); Player.printInv(); });

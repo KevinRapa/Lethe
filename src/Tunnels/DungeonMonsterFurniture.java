@@ -3,7 +3,9 @@ package Tunnels;
 import A_Main.Player;
 import A_Super.Furniture;
 import static A_Main.Id.*;
+import A_Main.NameConstants;
 import static A_Main.Patterns.*;
+import A_Super.Item;
 /**
  * Serves as a way to reference the tunnel monster.
  * This furniture is important, as it helps the player in determining where
@@ -21,10 +23,12 @@ public class DungeonMonsterFurniture extends Furniture {
         this.description = "A disfigured corpse-like creature is roaming the tunnels.\n"
                          + "It holds a dangling chain wrapped around itself several times\n"
                          + "and drags its bare feet as it walks crookedly. ";
-        this.actDialog = "You wouldn't ever think of going near that thing...";
-        this.searchDialog = this.actDialog;
+        this.actDialog = "It's probably best to stay as far from that thing as possible.";
+        this.searchDialog = this.useDialog = this.actDialog;
 
-        this.addNameKeys("(?:disfigured )?(?:corpse-like )?(?:creature|monster)", "thing");
+        this.addNameKeys("(?:disfigured )?(?:corpse-like )?(?:creature|monster|thing)", 
+                "(?:unsettling )?(?:noise|sound)");
+        this.addUseKeys(ANYTHING);
         this.addActKeys(".{2,}");
     }
     // ======================================================================== 

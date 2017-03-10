@@ -35,6 +35,9 @@ public class Tow2 extends Lich_Room {
     }
 // ============================================================================
     @Override public String triggeredEvent() {
+        if (! Player.hasVisited(ID))
+            GUI.out("The throbbing in your head becomes quite uncomftable.");
+        
         if (! this.lichDead) {
             int numPhylacteries = 0;
 

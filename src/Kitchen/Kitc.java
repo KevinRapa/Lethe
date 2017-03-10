@@ -1,5 +1,7 @@
 package Kitchen;
 
+import A_Main.GUI;
+import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Room;
 
@@ -43,10 +45,11 @@ public class Kitc extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
-        if (! this.isLit)
-            return "You are in a pitch black room.";
-        
-        return STD_RM_OUT;
+        if (! Player.hasVisited(ID))
+            GUI.out("As you step in, a fetid stench immediately infiltrates your senses. "
+                  + "You gag a few times before attuning your yourself to the wretched odor.");
+            
+        return this.isLit ? STD_RM_OUT : "You are in a pitch black room.";
     }
 /*----------------------------------------------------------------------------*/
 }

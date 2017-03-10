@@ -1,6 +1,7 @@
 package Rotunda;
 
 import A_Main.AudioPlayer;
+import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Direction;
@@ -89,4 +90,10 @@ public class Rotu extends Room {
         return this.state;
     }
 /*----------------------------------------------------------------------------*/   
+    @Override public String triggeredEvent() {
+        if (! Player.hasVisited(ID))
+            GUI.out("\"What a foul stench of decay!\" You think to yourself as you enter this domed chamber.");
+            
+        return STD_RM_OUT;
+    }
 }

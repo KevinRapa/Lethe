@@ -1,5 +1,6 @@
 package Strange_Pool;
 
+import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Inventory;
 import A_Main.Player;
@@ -50,4 +51,13 @@ public class Sewp extends Dungeon_Tunnel {
         Player.printInv();
     }
 // ============================================================================
+    @Override public String triggeredEvent() {
+        if (! Player.hasVisited(ID))
+            GUI.out("You climb up the ladder into the room outside your cell. "
+                  + "Looking north, you peer down a short thin tunnel into "
+                  + "a larger area which you believe to be the source of the "
+                  + "unsettling noise.");
+            
+        return STD_RM_OUT;
+    }
 }           

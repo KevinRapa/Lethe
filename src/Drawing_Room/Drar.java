@@ -27,7 +27,7 @@ public class Drar extends Room {
     @Override public String triggeredEvent() {   
         if (! Player.hasVisited(this.ID)) 
             GUI.out("From across the room, an apparition stares at you with\n"
-                   + "open eyes.");
+                   + "open eyes. You freeze and meet its stare with your own.");
           
         return STD_RM_OUT;
     }

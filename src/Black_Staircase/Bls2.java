@@ -1,5 +1,7 @@
 package Black_Staircase;
 
+import A_Main.GUI;
+import A_Main.Player;
 import A_Super.Room;
 import A_Super.Direction;
 /**
@@ -18,4 +20,10 @@ public class Bls2 extends Room {
         return "The iron railing on the balcony is that way.";
     }
 // ============================================================================
+    @Override public String triggeredEvent() {
+        if (! Player.hasVisited(ID))
+            GUI.out("The throbbing in your head intensifies.");
+            
+        return STD_RM_OUT;
+    }
 }

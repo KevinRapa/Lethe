@@ -1,8 +1,10 @@
 package Tower;
 
+import A_Main.GUI;
 import A_Super.Furniture;
 import Lichs_Quarters.Lich_Room;
 import static A_Main.Patterns.TOW1_SPHERE_P;
+import A_Main.Player;
 /**
  * Contains the fifth phylactery.
  * Connects to Bls1 and Foy4.
@@ -39,4 +41,10 @@ public class Tow1 extends Lich_Room {
             return result;
     }
 // ============================================================================
+    @Override public String triggeredEvent() {
+        if (! Player.hasVisited(ID))
+            GUI.out("As you enter the room, your head begins to throb slightly.");
+            
+        return STD_RM_OUT;
+    }
 }

@@ -1,6 +1,8 @@
 package Library;
 
 import A_Main.AudioPlayer;
+import A_Main.GUI;
+import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Room;
 
@@ -28,5 +30,11 @@ public class Lib3 extends Room{
             return bumpIntoWall();
     }
 /*----------------------------------------------------------------------------*/
+    @Override public String triggeredEvent() {
+        if (! Player.hasVisited(ID))
+            GUI.out("As you step foot into this room, you feel your IQ rise a few points.");
+            
+        return STD_RM_OUT;
+    }
 }
 

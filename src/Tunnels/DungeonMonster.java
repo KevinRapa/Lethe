@@ -135,18 +135,18 @@ public class DungeonMonster {
     }
     // ========================================================================
     private static void warnPlayer() {
-        String result = "That... creature is very close!\t\t\t\t\t\t\t\tIt's directly ";
+        String result = "That creature is very close!\t\t\t\t\t\t\t\tIt's directly ";
         int[] plyrCrd = Player.getPos().getCoords();
         int[] thisCrd = Player.getRoomObj(position).getCoords();
         
         if (plyrCrd[1] < thisCrd[1])
-            GUI.out(result.concat(Direction.SOUTH + "!"));
+            GUI.out(result + Direction.SOUTH + "!");
         else if (plyrCrd[1] > thisCrd[1])            
-            GUI.out(result.concat(Direction.NORTH + "!"));
+            GUI.out(result + Direction.NORTH + "!");
         else if (plyrCrd[2] < thisCrd[2])
-            GUI.out(result.concat(Direction.EAST + "!"));
+            GUI.out(result + Direction.EAST + "!");
         else
-            GUI.out(result.concat(Direction.WEST + "!"));
+            GUI.out(result + Direction.WEST + "!");
         
     }
     // ========================================================================

@@ -1,10 +1,14 @@
 package A_Main;
 
+import static A_Main.NameConstants.WORK_DIR;
+import static A_Main.NameConstants.FILE_SEP;
 import static A_Main.Patterns.*;
 import java.util.LinkedList;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.embed.swing.JFXPanel;
 import javax.swing.border.BevelBorder;
@@ -31,6 +35,8 @@ public class GUI extends JFXPanel {
     private static boolean big = true;
     private static int key = Click.NONE.soundEffectId;
     
+    private static Font myFont;
+    
     private final static JTextArea 
             MEN = new JTextArea(), DESC = new JTextArea(), 
             INV = new JTextArea(), DIAL = new JTextArea();
@@ -53,9 +59,10 @@ public class GUI extends JFXPanel {
             INVLBL = new JLabel("Inventory");
     
     private final static JButton 
-            SIZE = new JButton("Small mode"),
+            SIZE = new JButton("Small"),
             MUTE = new JButton("Mute"),
-            KEYS = new JButton("Key click");
+            KEYS = new JButton("Click"),
+            COLOR = new JButton("Color");
     
     private final static JTextField 
             INPUT = new JTextField(" ", 35);
@@ -64,10 +71,17 @@ public class GUI extends JFXPanel {
     private final static Input_Holder HOLDER = new Input_Holder();
     private final static ArrayList<String> FURN_PARSER = new ArrayList<>();
     private final static LinkedList<Click> KEYSOUND = new LinkedList<>();
+    private final static LinkedList<Color> COLORS = new LinkedList<>();
 
     static {
         KEYSOUND.add(Click.NONE); KEYSOUND.add(Click.SOFT); 
         KEYSOUND.add(Click.CLICK); KEYSOUND.add(Click.VINTAGE); 
+        
+        COLORS.add(Color.GRAY);  
+        COLORS.add(Color.LIGHT_GRAY);
+        COLORS.add(Color.GREEN);  
+        COLORS.add(new Color(196, 11, 15)); 
+        COLORS.add(new Color(150, 84, 13));
     }
     // </editor-fold>
     
@@ -75,8 +89,20 @@ public class GUI extends JFXPanel {
 // <editor-fold defaultstate="collapsed" desc="CONSTRUCTOR AND COMPONENT CONTROLLERS">
 // *****************************************************************************     
     public GUI() {
-        Font myFont = new Font("Monospaced", Font.BOLD, 16);
-        Font labelFont = new Font("MagicMedieval", Font.BOLD, 20);
+        Font labelFont;
+        
+        try {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            myFont = Font
+                    .createFont(Font.TRUETYPE_FONT, new File(WORK_DIR, "img" + FILE_SEP + "fixedSys.ttf"))
+                    .deriveFont(20.0f);
+
+            ge.registerFont(myFont);
+        } catch (IOException | FontFormatException e) {
+            myFont = new Font("Monospaced", Font.BOLD, 16);
+        }
+
+        labelFont = new Font("MagicMedieval", Font.BOLD, 20);
         Color myColor = new Color(150, 84, 13);
         
         SCROLLW.setBackground(Color.DARK_GRAY);
@@ -86,12 +112,12 @@ public class GUI extends JFXPanel {
         SALAMAA.setPreferredSize(new Dimension(390, 45));
         SALAMAA.setBorder(BorderFactory.createRaisedBevelBorder());
         
-        JButton[] buttons = {SIZE, MUTE, KEYS};
+        JButton[] buttons = {SIZE, MUTE, KEYS, COLOR};
         for (JButton b : buttons) {
             b.setBackground(Color.DARK_GRAY);
             b.setFocusPainted(false);
             b.setForeground(Color.BLACK);
-            b.setPreferredSize(new Dimension(90, 30));
+            b.setPreferredSize(new Dimension(68, 30));
             b.setBorder(BorderFactory.createRaisedBevelBorder());
             b.setFont(new Font("MagicMedieval", Font.BOLD, 15));
             b.addActionListener(new Button_Listener());
@@ -189,6 +215,7 @@ public class GUI extends JFXPanel {
             DESC.setPreferredSize(new Dimension(390, 350));
             EAST.setPreferredSize(new Dimension(300, 600));
             SCROLLE.setPreferredSize(new Dimension(290, 555));
+            DESC.setFont(myFont);
         }
         else {
             WEST.setPreferredSize(new Dimension(300, 510));
@@ -197,10 +224,9 @@ public class GUI extends JFXPanel {
             DESC.setPreferredSize(new Dimension(390, 260));
             EAST.setPreferredSize(new Dimension(300, 510));
             SCROLLE.setPreferredSize(new Dimension(290, 465));
+            DESC.setFont(myFont.deriveFont(myFont.getSize() - 3.0f));
         }
-        
-        DESC.setFont(new Font("Monospaced", Font.BOLD, big ? 16 : 14));
-        
+
         this.addComponents(big);
         
         Main.GAME_FRAME.pack();
@@ -440,12 +466,21 @@ public class GUI extends JFXPanel {
                 AudioPlayer.playEffect(10);
                 big = ! big;
                 smallMode(big);
-                SIZE.setText(big ? "Small mode" : "Big mode");
+                SIZE.setText(big ? "Small" : "Big");
             }
             else if (push.getSource().equals(MUTE)) { // Toggles ambience
                 AudioPlayer.playEffect(10);
                 MUTE.setText(MUTE.getText().equals("Mute") ? "Unmute" : "Mute");
                 AudioPlayer.muteTrack();
+            }
+            else if (push.getSource().equals(COLOR)) { // Toggles ambience
+                AudioPlayer.playEffect(10);
+                Color newColor = COLORS.peek();
+                COLORS.offer(COLORS.poll());
+                MEN.setForeground(newColor);
+                INV.setForeground(newColor);
+                DESC.setForeground(newColor);
+                DIAL.setForeground(newColor);
             }
             else { // Changes key click
                 KEYSOUND.offer(KEYSOUND.poll());

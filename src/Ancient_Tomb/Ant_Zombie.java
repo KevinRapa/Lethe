@@ -29,13 +29,16 @@ public class Ant_Zombie extends NonPlayerCharacter {
                             "small boxey object. The figure makes another load moan\n"
                           + "and holds its hand out. You take the item. The figure\n" +
                             "makes a final loud moan and remains quiet.";
+        this.useDialog = "The zombie-like body, though horrific, appears passive. "
+                       + "You aren't very inclined to attack it.";
         
         this.searchDialog = "You never were much of a pickpocket.";
         
         this.CONVERSE_REP2 = "The figure just stands there, staring at you with\n"
                            + "its mouth hanging open.";
 
-        this.addNameKeys("(?:frail )?(?:eyeless )?(?:dessicated )?(?:corpse|figure|zombie)");
+        this.addNameKeys("(?:frail )?(?:eyeless )?(?:dessicated )?(?:corpse|figure|zombie)", 
+                "zombie-like (?:figure|body)");
     }
     // ========================================================================   
     @Override public String interact(String key) { 

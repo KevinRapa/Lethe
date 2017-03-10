@@ -1,5 +1,7 @@
 package Ancient_Tomb;
 
+import A_Main.GUI;
+import A_Main.Player;
 import A_Super.Room;
 /**
  * The two important objects in this room are Ant_NPC and Ant_Cskt.
@@ -23,4 +25,11 @@ public class An65 extends Room {
                           "other wooden caskets lean on the walls.";
     }
 // ============================================================================
+    @Override public String triggeredEvent() {
+        if (! Player.hasVisited(ID))
+            GUI.out("You step closer to the zombie-like figure. It remains still, "
+                  + "swaying slightly with its attention drawn to you.");
+            
+        return STD_RM_OUT;
+    }
 }

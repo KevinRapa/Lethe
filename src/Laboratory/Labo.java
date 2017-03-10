@@ -1,5 +1,7 @@
 package Laboratory;
 
+import A_Main.GUI;
+import A_Main.Player;
 import A_Super.Room;
 /**
  * Player must successfully create a phase door potion to progress in the game.
@@ -47,4 +49,10 @@ public class Labo extends Room {
                           "contraption is a pipe running up the height of the room.";
     }
 // ============================================================================
+    @Override public String triggeredEvent() {
+        if (! Player.hasVisited(ID))
+            GUI.out("As you enter this room, you feel overwhelmed at the sight of many unknown instruments of alchemy.");
+            
+        return STD_RM_OUT;
+    }
 }
