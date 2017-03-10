@@ -22,7 +22,7 @@ public class Lib4_Button extends Button {
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
         if (FRPLC_REF.isLit()) {
-            AudioPlayer.playEffect(39, -10);
+            AudioPlayer.playEffect(39, 0.3);
             return "Ouch! There is fire in the way!"; 
         }
         else {

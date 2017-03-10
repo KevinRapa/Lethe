@@ -61,7 +61,7 @@ abstract public class Candelabra extends SearchableFurniture
     @Override public String interact(String key) {              
         if (key.equals("touch")) {
             if (this.inv.contains(CANDLE_REF)) {
-                AudioPlayer.playEffect(39, -10);
+                AudioPlayer.playEffect(39, 0.3);
                 return this.actDialog;
             }
             else

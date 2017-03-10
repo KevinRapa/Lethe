@@ -39,7 +39,7 @@ public class Lqu2_Lever extends Lever {
         Player.getRoomObj(Id.COU4).unlock();
         Player.getRoomObj(Id.COU3).removeFurniture(COU_GATE_REF);
         Player.getRoomObj(Id.COU3).addFurniture(new Cou3_OpenedGate());
-        AudioPlayer.playEffect(7, -10);
+        AudioPlayer.playEffect(7, 0.1);
         return this.actDialog;
     }
     // ========================================================================

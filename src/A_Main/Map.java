@@ -24,8 +24,9 @@ import Keeper_Chamber.*;   import Vault.*;              import Tower.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
 import Soul_Chamber.*;  
 
-import java.awt.Color;      import java.util.Random;    import javax.swing.ImageIcon;   
-import javax.swing.JFrame;  import javax.swing.JLabel;  import javax.swing.JPanel;
+import java.awt.Color;      import javax.swing.JPanel;
+import java.util.Random;    import javax.swing.ImageIcon;   
+import javax.swing.JFrame;  import javax.swing.JLabel;  
 
 /**
  * Creates a 3 dimensional array of rooms representing the game map.
@@ -34,7 +35,7 @@ import javax.swing.JFrame;  import javax.swing.JLabel;  import javax.swing.JPane
  * @author Kevin Rapa
  */
 public class Map {
-    private final static String PATH = "img" + System.getProperty("file.separator");
+    private final static String PATH = WORK_DIR + FILE_SEP + "img" + FILE_SEP;
     
     private static final JLabel MAP_LABEL = new JLabel();
     private static final JPanel MAP_PANEL = new JPanel();
@@ -44,7 +45,6 @@ public class Map {
         MAP_FRAME.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         MAP_FRAME.getContentPane().add(MAP_PANEL);
         MAP_FRAME.setResizable(false);
-        MAP_FRAME.setAlwaysOnTop(true);
         
         MAP_PANEL.setBackground(Color.BLACK);
         MAP_PANEL.add(MAP_LABEL);

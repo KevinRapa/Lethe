@@ -2,7 +2,7 @@ package Tower;
 
 import A_Super.Furniture;
 import Lichs_Quarters.Lich_Room;
-import static A_Main.Patterns.TOW1_SPHERE;
+import static A_Main.Patterns.TOW1_SPHERE_P;
 /**
  * Contains the fifth phylactery.
  * Connects to Bls1 and Foy4.
@@ -33,7 +33,7 @@ public class Tow1 extends Lich_Room {
         String result = this.description.concat(TOW_PEDESTAL.getDescription());
         
         if (! this.lichDead)
-            return TOW1_SPHERE.matcher(result)
+            return TOW1_SPHERE_P.matcher(result)
                     .replaceFirst(" You see a magnificent glowing sphere of light hovering in the highest area of the tower. ");
         else
             return result;

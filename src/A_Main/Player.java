@@ -7,7 +7,7 @@ import java.util.HashMap;           import A_Super.Openable;
 import Tunnels.DungeonMonster;      import java.io.IOException;
 import java.io.ObjectOutputStream;  import java.io.Serializable;
 import java.util.Iterator;          import A_Super.Climbable;
-import static A_Main.Patterns.*;
+import static A_Main.Patterns.*;    import java.util.HashSet;
 import A_Super.Moveable;
 /**
  * Represents the player, the focal point of the game.
@@ -29,8 +29,34 @@ public final class Player {
     private static PlayerInventory inv;
     private static ArrayList<String> visited;
     private static String lastVisited, shoes;
-    private static HashMap<Character, Runnable> cmd; 
+    private static final HashMap<String, Runnable> CMDS = new HashMap<>(); 
+    private static final HashSet<String> CMDSET = new HashSet<>(); 
     private static final String NOT_VALID_SLOT = "Enter a valid slot number.";
+    
+    static {
+        CMDS.put("h", () -> Help.helpSub());
+        CMDS.put("e", () -> searchSub());
+        CMDS.put("c", () -> examineSub());
+        CMDS.put("k", () -> viewKeyRing());
+        CMDS.put("i", () -> inventoryPrompt());
+        CMDS.put("w", () -> move(Direction.NORTH));
+        CMDS.put("s", () -> move(Direction.SOUTH));
+        CMDS.put("a", () -> move(Direction.WEST));
+        CMDS.put("d", () -> move(Direction.EAST));
+        CMDS.put("m", () -> Map.displayMap());
+        CMDS.put("q", () -> endGame());
+        
+        CMDS.put("help", () -> Help.helpSub());
+        CMDS.put("save", () -> Main.saveGame());
+        CMDS.put("combine", () -> combineSub());
+        CMDS.put("jump", () -> GUI.out("You jump a short height into the air. Well, that was fun."));
+        CMDS.put("sort", () -> { getInv().sortInventory(); Player.printInv(); });
+        CMDS.put("quit", () -> endGame());
+        CMDS.put("map", () -> Map.displayMap());
+        
+        CMDSET.addAll(CMDS.keySet());
+    }
+    
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="ACCESSORS AND OUTPUT">  
 //******************************************************************************
@@ -151,7 +177,6 @@ public final class Player {
         Player.visited = attributes.VISITED;
         Player.lastVisited = attributes.LSTVISITED;
         Player.shoes = attributes.SHOES;
-        Player.cmd = new HashMap<>();
 
         if (pos[0] == 4 && pos[2] < 7) // Starts monster if player is in the 
             DungeonMonster.startMovement(); // tunnel area.
@@ -166,7 +191,6 @@ public final class Player {
         Player.inv = new PlayerInventory();
         Player.keys = new Inventory();
         Player.visited = new ArrayList<>();
-        Player.cmd = new HashMap<>();
         Player.pos = coords;
         Player.lastVisited = "";
         Player.shoes = "";
@@ -174,9 +198,8 @@ public final class Player {
     // ========================================================================  
     /**
      * This dialog prints at the start of a new game.
-     * @return Integer representing player choice to save, erase data, or just quit.
      */
-    public static int startDialog() {
+    public static void startDialog() {
         AudioPlayer.playTrack(Id.ENDG);
         
         GUI.menOut("\n\nPress enter...");
@@ -195,34 +218,22 @@ public final class Player {
                  + "your last action.\n\nPress enter...");
         GUI.promptOut();
         
-        return mainPrompt();
+        mainPrompt();
     }
     // ========================================================================   
     /**
      * The main prompt for controlling the player's moves.
-     * @return Integer representing player choice to save, erase data, or just quit.
      */
-    public static int mainPrompt() {
-        AudioPlayer.playTrack(Player.getPosId());
-        
-        cmd.put('h', () -> Help.helpSub());
-        cmd.put('e', () -> searchSub());
-        cmd.put('c', () -> examineSub());
-        cmd.put('k', () -> viewKeyRing());
-        cmd.put('i', () -> inventoryPrompt());
-        cmd.put('w', () -> move(Direction.NORTH));
-        cmd.put('s', () -> move(Direction.SOUTH));
-        cmd.put('a', () -> move(Direction.WEST));
-        cmd.put('d', () -> move(Direction.EAST));
-        cmd.put('m', () -> Map.displayMap());
-        String ans;
-        
+    public static void mainPrompt() {
         AudioPlayer.playTrack(getPosId());
+
         printInv();
         
         GUI.roomOut(getPos().triggeredEvent());
         describeRoom();
-
+        
+        String ans;
+        
         while (true) {
             while (TextParser.moreCommands()) 
                 TextParser.performNextCommand(); // Player may chain commands.
@@ -230,50 +241,23 @@ public final class Player {
             GUI.toMainMenu();
             ans = GUI.promptOut();
 
-            if (KEYCOMMAND.matcher(ans).matches()) 
-                cmd.get(ans.charAt(0)).run();
-            
-            else if (EXPLETIVE.matcher(ans).find()) // Zork-inspired
-                GUI.out("Mind yourself! You're a guest here!");    
-            
-            else if (DIRECTION.matcher(ans).matches()) 
-                parseMovement(ans);
-            
-            else if (PHRASE.matcher(ans).matches()) // Interacting
+            if (CMDSET.contains(ans)) 
+                CMDS.get(ans).run();
+
+            else if (isNonEmptyString(ans)) // Interacting
                 TextParser.processText(ans);
-            
-            else if (COMBINE.matcher(ans).matches())
-                combineSub(ans);
-            
-            else if (ans.equals("quit") || ans.equals("q"))
-                break;
-            
-            else if (ans.equals("save")) {
-                Main.saveGame();
-                GUI.out("Game saved.");
-            }
-            
-            else if (ans.equals("combine"))
-                combineSub();
-            
-            else if (ans.equals("jump")) 
-                GUI.out("You jump a short height into the air. Well, that was fun.");
-            
-            else if (GREETING.matcher(ans).matches()) // Zork-inspired
-                GUI.out("What do you think this is? Zork?");
-            
-            else if (isNonEmptyString(ans))
-                GUI.out("That's not valid input.");
-        } 
-        
-        return endGame();
+        }
     }  
     // ========================================================================   
-    private static int endGame() {
+    private static void endGame() {
         String ans = GUI.askChoice(Menus.SAVE_QUIT, "[sqr]");
         
-        return ans.equals("s") ? 1 : 
-               ans.equals("q") ? 3 : 2;
+        if (ans.equals("s")) 
+            Main.saveGame();
+        else if (ans.equals("r")) 
+            Main.deleteGame();
+        
+        Main.exitGame();
     }
     // ======================================================================== 
     public static boolean isNonEmptyString(String playerInput) {
@@ -331,7 +315,7 @@ public final class Player {
             else if (Player.pos[0] < 5  && // If you're not in catacombs or caves.
                      ! Id.areaName(destId).matches(Id.areaName(lastVisited))) 
             {
-                if (Player.pos[0] == 4 || CATACOMB_ENTRANCE.matcher(destId).matches())
+                if (Player.pos[0] == 4 || CS35_CT34_P.matcher(destId).matches())
                     AudioPlayer.playEffect(24); // Plays metal open door sound. 
                 else
                     AudioPlayer.playEffect(9); // Plays wooden open door sound. 
@@ -406,12 +390,12 @@ public final class Player {
         if (isNonEmptyString(searchThis) && getPos().hasFurniture(searchThis)) {
             search(getFurnRef(searchThis));
         }
-        else if (INDEF_PRONOUN.matcher(searchThis).matches() && 
+        else if (IT_THEM_P.matcher(searchThis).matches() && 
                 getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture())) 
         {   // Player used "it" or "them" in place of a furniture name.
             search(getFurnRef(searchThis));
         }
-        else if (GENERIC_FURNITURE.matcher(searchThis).matches()) {
+        else if (GEN_FURNITURE_P.matcher(searchThis).matches()) {
             GUI.out("There are too many things in the room. Specify your intention.");
         }
         else if (isNonEmptyString(searchThis)) {
@@ -464,11 +448,11 @@ public final class Player {
                     String action = collectToken.next();            
                     int slot = Integer.parseInt(collectToken.next());
 
-                    if (STORE.matcher(action).matches()) {
+                    if (STORE_P.matcher(action).matches()) {
                         Item item = Player.inv.get(slot - 1);
                         evalStore(furniture, item);                            
                     }            
-                    else if (TAKE.matcher(action).matches()) {
+                    else if (TAKE_P.matcher(action).matches()) {
                         Item item = furniture.getInv().get(slot - 1);
                         evalTake(furniture, item);
                     }
@@ -496,7 +480,7 @@ public final class Player {
      * @param take The item being taken.
      */
     private static void evalTake(Furniture furniture, Item take) {
-        if (KEY.matcher(take.getType()).matches()) {
+        if (KEY_P.matcher(take.getType()).matches()) {
             // Matches a non-cave/catacomb room ID, which keys use as types.
             addToKeyRing(take, furniture);
             AudioPlayer.playEffect(3);
@@ -540,60 +524,70 @@ public final class Player {
      * @param action the action the player is performing on the furniture.
      */
     public static void evaluateAction(String action, String object) {
-        if (MOVEMENT.matcher(action).matches() && 
-            DIRECTION.matcher(object).matches()) 
+        if (WALK_P.matcher(action).matches() && 
+            DIRECTION_P.matcher(object).matches()) 
         {
+            // Player typed something resemling "walk <direction>"
+            // The direction in this case is pretending to be furniture.
             parseMovement(object);
         }
         else if (getPos().hasFurniture(object) || 
-                (INDEF_PRONOUN.matcher(object).matches() && 
+                (IT_THEM_P.matcher(object).matches() && 
                 getPos().hasFurniture(object = GUI.parsePreviousFurniture()))) 
+            // In this case, a valid furniture exists to be interacted with.
         {    
             Furniture target = getFurnRef(object);
 
             if (target.actKeyMatches(action)) {
+                // Player typed an action specific to a furniture type.
                 GUI.out(target.interact(action)); 
                 describeRoom();
                 printInv();
             }
-            else if (CHECK.matcher(action).matches()) 
+            else if (CHECK_P.matcher(action).matches()) {
+                // Player typed something resembling "examine <furniture>"
                 GUI.out(target.getDescription()); 
-            
-            else if (SEARCH.matcher(action).matches() || 
-                    (action.equals("open") && target instanceof Openable))                    
+            }
+            else if (SEARCH_P.matcher(action).matches() || 
+                    (action.equals("open") && target instanceof Openable)) 
+            {              
+                // Player typed something implying a search on furniture
                 search(target);
-            
-            else if (target instanceof Moveable && 
-                    MOVEPATTERN.matcher(action).matches())
+            }
+            else if (MOVE_P.matcher(action).matches() 
+                    && target instanceof Moveable) 
+            {
+                // Player typed something resembling "move <furniture>"
                 GUI.out(((Moveable)target).moveIt());
-            
+            }
             else
                 GUI.out("That seems unnecessary.");
         }   
         
-        else if (GENERIC_FURNITURE.matcher(object).matches())
+        else if (GEN_FURNITURE_P.matcher(object).matches())
+            // Player used a very vague term to interact with.
             GUI.out("Be more specific.");
         
-        else 
+        else // Something invalid was entered in!
             GUI.out("There is no " + object + 
                     " here that you can see. Or perhaps we are being lazy and\n"
                   + "attempting to pick up items without searching something first?"); 
     }
     // ========================================================================  
     private static void parseMovement(String dir) {
-        if (NORTH.matcher(dir).find())
+        if (NORTH_P.matcher(dir).find())
             Player.move(Direction.NORTH);
         
-        else if (SOUTH.matcher(dir).find())
+        else if (SOUTH_P.matcher(dir).find())
             Player.move(Direction.SOUTH);
         
-        else if (EAST.matcher(dir).find())
+        else if (EAST_P.matcher(dir).find())
             Player.move(Direction.EAST);
         
-        else if (WEST.matcher(dir).find())
+        else if (WEST_P.matcher(dir).find())
             Player.move(Direction.WEST);
         
-        else if (UP.matcher(dir).find()) {
+        else if (UP_P.matcher(dir).find()) {
             findStaircase(Direction.UP);
         }
         else {
@@ -639,13 +633,13 @@ public final class Player {
      * @param inspecting object name the player wants to inspect.
      */
     private static void examine(String inspecting) {
-        if (INDEF_PRONOUN.matcher(inspecting).matches()) // Indefinite reference.
+        if (IT_THEM_P.matcher(inspecting).matches()) // Indefinite reference.
             inspecting = GUI.parsePreviousFurniture();
         
         if (getPos().hasFurniture(inspecting))
             GUI.out(Player.getFurnRef(inspecting).getDescription());
         
-        else if (GENERIC_FURNITURE.matcher(inspecting).matches())
+        else if (GEN_FURNITURE_P.matcher(inspecting).matches())
             GUI.out("Be more specific.");
         
         else 
@@ -677,7 +671,7 @@ public final class Player {
             
             ans = GUI.promptOut();
             
-            if (INV_CHOICES.matcher(ans).matches()) {
+            if (ONE_TO_FOUR.matcher(ans).matches()) {
                 switch(Integer.parseInt(ans)) {
                     case 1:
                         inspectPrompt(); break;
@@ -797,7 +791,7 @@ public final class Player {
      * Does the same as combineSub() but with a starting string as input.
      * For use from the main prompt.
      */
-    private static void combineSub(String input) {
+    public static void combineSub(String input) {
         String items = input.replaceFirst("combine\\s+", "");
         
         try (Scanner tokens = new Scanner(items).useDelimiter("\\s*,\\s*")) {

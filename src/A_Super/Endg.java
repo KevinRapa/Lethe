@@ -2,6 +2,7 @@ package A_Super;
 
 import A_Main.GUI;
 import java.io.File;
+import static A_Main.NameConstants.WORK_DIR;
 
 /**
  * @author Kevin Rapa
@@ -27,7 +28,7 @@ public class Endg extends Room {
         GUI.menOut("");
         GUI.invOut("");
         
-        if ((new File(System.getProperty("user.dir"), "Game.data")).delete())
+        if ((new File(WORK_DIR, "Game.data")).delete())
             System.out.println("Files deleted.");
         else
             System.out.println("Files to delete not found.");

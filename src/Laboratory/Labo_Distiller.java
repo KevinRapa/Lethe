@@ -74,7 +74,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
                     }
                 }
                 else if (PIPE_REF.isOn() && ! Player.getPos().hasFurniture("hose")) {
-                    AudioPlayer.playEffect(32, 5);
+                    AudioPlayer.playEffect(32);
                     return "As you squeeze the striker, a big poof of fire ignites and singes your face.\n"
                          + "The smell of gas fades momentarily and slowly comes back.";
                 }

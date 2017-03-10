@@ -20,17 +20,21 @@ import java.util.LinkedList;
 public class TextParser {
     private final static LinkedList<Command> COMMAND_QUEUE = new LinkedList<>();
 
-    private static final String // Delimiters
-        INSTRUCTIVE_PATTERN = " with | using ",
-        CONJUNCTION_PATTERN = " and(?: then| also)? | then(?: also)? ",
-        STORE_LOCATION = " (?:in|on)(?:to)? | under(?:neath)? | next to | beside ";
+    private static final String
+        NOTHING = "", 
+        SPACE = " ",
+        DONT_HAVE_IT = "You aren't carrying that.";
     
-    private static final String NOTHING = "", SPACE = " ",
-            DONT_HAVE_IT = "You aren't carrying that.";
-    
-    private static final Command DEFAULT_COMMAND = 
-            new Command("What does that mean?");
-    
+    // List of standard commands that are likely to be made many times.
+    private static final Command 
+            DEFAULT_CMD =   new Command("What does that mean?"),
+            EXPLETIVE_CMD = new Command("Mind yourself! You're a guest here!"),
+            SUICIDE_CMD =   new Command("You haven't reached that point yet!!"),
+            DESTROY_CMD =   new Command("Yes, you're frustrated, hungry, and angry, but don't be so reckless!"),
+            GREETING_CMD =  new Command("What do you think this is? Zork?"),
+            NO_SLOT_CMD =   new Command("Seems that you don't have an existing slot there."),
+            AMBIGUOUS_CMD = new Command("You need to specify something to put that in!");
+            
     //*************************************************************************
     // <editor-fold desc="Queue methods">
     //*************************************************************************
@@ -49,22 +53,18 @@ public class TextParser {
     //*************************************************************************
     // <editor-fold desc="Text parser">
     //*************************************************************************
+    /**
+     * Removes articles 'a', 'an', 'the', and the pronoun 'some' from the input,
+     * and then queue's up all the commands chained together by conjunctions.
+     * @param input An input string by the player
+     */
     public static void processText(String input) {
-        if (SUICIDE.matcher(input).matches()) 
-            GUI.out("You haven't reached that point yet!!");
+        String noArticles = ARTICLE_P.matcher(input).replaceAll(NOTHING);
 
-        else if (DESTROY.matcher(input).matches())
-            GUI.out("Yes, you're frustrated, hungry, and angry, but don't be so reckless!");
-
-        else {
-            // Removes articles 'a', 'an', 'the'. Removes the pronoun 'some'.
-            String noArticles = ARTICLE.matcher(input).replaceAll(NOTHING);
-            
-            for (Command c : splitCommands(noArticles))
-                COMMAND_QUEUE.offer(c);
-
-            performNextCommand();
-        }
+        for (Command c : splitCommands(noArticles))
+            COMMAND_QUEUE.offer(c);
+        
+        performNextCommand();
     }
     // ========================================================================
     /**
@@ -76,7 +76,7 @@ public class TextParser {
         StringBuilder builder = new StringBuilder();
         
         for (String word : input.split(SPACE)) {
-            if (! PREPOSITION.matcher(word).matches())
+            if (! PREPOS_P.matcher(word).matches())
                 builder.append(word).append(SPACE);
         }
         return builder.toString().trim();
@@ -89,26 +89,57 @@ public class TextParser {
      * @return a list of commands to execute.
      */
     private static Command[] splitCommands(String sentence) {
-        String[] statements = sentence.split(CONJUNCTION_PATTERN);
+        // Splits a chain of commands into individual commands.
+        String[] statements = CONJUNC_P.split(sentence);
         Command[] commands = new Command[statements.length];
         
-        for (int i = 0; i < commands.length; i++) {    
-            if (ITEM_COMMAND.matcher(statements[i]).matches()) 
-                commands[i] = getItemCmd(statements[i].split(" (on|against|to) "));
+        for (int i = 0; i < commands.length; i++) {   
+            //-----------------------------------------------------------------
+            // First six conditions handle simpler commands.
+            if (EXPLETIVE_P.matcher(sentence).find()) // Zork-inspired
+                commands[i] = EXPLETIVE_CMD;    
             
-            else if (STORE_COMMAND.matcher(statements[i]).matches())
-                commands[i] = getStoreCmd(STORE_THEN_SPACE.matcher(statements[i])
-                                    .replaceAll(NOTHING)
-                                    .split(STORE_LOCATION));
+            else if (DIRECTION_P.matcher(statements[i]).matches()) {
+                commands[i] = new Command(Verb.GO_VERB, 
+                        new DirectObj(FIRST_WORD_P
+                                .matcher(statements[i])
+                                .replaceFirst(NOTHING)));
+            }
+            else if (SUICIDE_P.matcher(statements[i]).matches()) {
+                commands[i] = SUICIDE_CMD;
+            }
+            else if (DESTROY_P.matcher(statements[i]).matches()) {
+                commands[i] = DESTROY_CMD;
+            }
+            else if (COMBINE_P.matcher(statements[i]).matches()) {
+                String s = statements[i]; // Variable for lambda must be final.
+                commands[i] = new Command(() -> Player.combineSub(s));
+            }
+            else if (HELLO_P.matcher(statements[i]).matches()) { // Zork-inspired
+                commands[i] = GREETING_CMD;
+            }
+            //-----------------------------------------------------------------
+            // These handle more comlicated input strings.
+            else if (USE_ITEM_CMD_P.matcher(statements[i]).matches()) {
+                    commands[i] = getItemCmd(USE_MANNER_P.split(statements[i]));
+            }
+            else if (STORE_CMD_P.matcher(statements[i]).matches()) {
+                commands[i] = getStoreCmd(STORE_AREA_P.split(
+                        STORE_SPACE_P.matcher(statements[i])
+                                    .replaceAll(NOTHING)));
+            }
             else {
-                if (SEARCH_PATTERN.matcher(statements[i]).find()) {
+                if (SEARCH_MANNER_P.matcher(statements[i]).find()) {
                     // Replaces "look (in|on|around|under) with just 'search'"
-                    statements[i] = SEARCH_PATTERN.matcher(statements[i])
+                    statements[i] = SEARCH_MANNER_P.matcher(statements[i])
                             .replaceAll("search");
                 }
-                commands[i] = getCmdActionFirst(stripPrepositions(statements[i])
-                                    .split(INSTRUCTIVE_PATTERN));
+                
+                commands[i] = getCmdActionFirst(INSTRUCTIVE_P.
+                        split(stripPrepositions(statements[i]))
+                );
             }
+            //-----------------------------------------------------------------
         }
         return commands;
     }
@@ -129,11 +160,12 @@ public class TextParser {
         String actionObject = s[0];
         
         // Get just the first word
-        Verb verb = new Verb(SPACE_THEN_EVERYTHING.matcher(actionObject)
+        Verb verb = new Verb(SPACE_THEN_ALL_P.matcher(actionObject)
                                             .replaceAll(NOTHING));
         
-        DirectObj dirObj = new DirectObj(actionObject
-                .trim().replaceFirst("[a-z]+\\s", NOTHING)); // Remove the first word.
+        DirectObj dirObj = new DirectObj(FIRST_WORD_P
+                .matcher(actionObject.trim())
+                .replaceFirst(NOTHING)); // Remove the first word.
         
         switch(s.length) {
             case 2:
@@ -141,32 +173,35 @@ public class TextParser {
             case 1:
                 return new Command(verb, dirObj);
             default:
-                return DEFAULT_COMMAND;
+                return DEFAULT_CMD;
         }
     }
     // ========================================================================
     /**
      * Assembles a command where the player stores an item.
+     * If the furniture turns out to not be searchable, the item is used
+     * on it instead in order to resolve ambiguity. If s is size 2, then
+     * the second string is presumably the name of furniture.
      */
     private static Command getStoreCmd(String[] s) {
         String object = s[0];
         Instrument inst;
         DirectObj obj = null;
         
-        if (object.matches(".+ down")) {
+        if (DROP_P.matcher(object).matches()) {
             // Player typed "put <item> down"
-            obj = new DirectObj("floor");
+            obj = DirectObj.FLOOR_OBJECT;
             object = object.replaceAll(" down", NOTHING);
         }
         
-        if (SLOT_NUMBER.matcher(object).matches()) {
+        if (NUMBER_P.matcher(object).matches()) {
             // Player typed a slot number and not an item name.
             int i = Integer.parseInt(object) - 1;
             
             if (i >= 0 && i < Player.getInv().size())
                 inst = new Instrument(Player.getInv().get(i).toString());
             else
-                inst = new Instrument("thing there.");
+                return NO_SLOT_CMD;
         }
         else 
             inst = new Instrument(object);
@@ -177,37 +212,37 @@ public class TextParser {
                 return new Command(Verb.PUT_VERB, inst, new DirectObj(s[1]));
             case 1:
                 return (obj == null) ?
-                    new Command("You need to specify something to put that in!") :
+                    AMBIGUOUS_CMD :
                     new Command(Verb.PUT_VERB, inst, obj);
             default:
-                return DEFAULT_COMMAND;
+                return DEFAULT_CMD;
         }
     }
     // ========================================================================
     /**
      * Assembles a command where the player uses an item, possibly on a
      * piece of furniture.
+     * If s is size 2, then the second string is presumably a furniture name.
      */
     private static Command getItemCmd(String[] s) {
         String verbObject = stripPrepositions(s[0]);
         
-        Verb use = new Verb(
-                SPACE_THEN_EVERYTHING.matcher(verbObject)
-                        .replaceFirst(NOTHING));
+        Verb use = new Verb( // Get just the first word.
+                SPACE_THEN_ALL_P.matcher(verbObject).replaceFirst(NOTHING)
+        );
         
-        String item = 
-                WORD_THEN_SPACE.matcher(verbObject)
-                        .replaceFirst(NOTHING);
+        String item = // Everything but the first word.
+                WORD_SPACE_P.matcher(verbObject).replaceFirst(NOTHING); 
         
         Instrument inst;
         
-        if (SLOT_NUMBER.matcher(item).matches()) {
+        if (NUMBER_P.matcher(item).matches()) {
             int i = Integer.parseInt(item) - 1;
             
             if (i >= 0 && i < Player.getInv().size())
                 inst = new Instrument(Player.getInv().get(i).toString());
             else
-                inst = new Instrument("slot that high."); // Becomes 'You don't have a slot that high.'
+                return NO_SLOT_CMD;
         }
         else 
             inst = new Instrument(item);
@@ -218,7 +253,7 @@ public class TextParser {
             case 2:
                 return new Command(inst, new DirectObj(s[1]));
             default:
-                return DEFAULT_COMMAND;
+                return DEFAULT_CMD;
         }
     }
     //*************************************************************************
@@ -260,7 +295,14 @@ public class TextParser {
         // --------------------------------------------------------------------
         public Command(String s) {
             VALUE = s;
+            System.out.println("Creating print command -> \"" + s + "\".");
             ACTION = (() -> GUI.out(s));
+        }
+        // --------------------------------------------------------------------
+        public Command(Runnable b) {
+            VALUE = b.toString();
+            System.out.println("Creating player method command -> " + VALUE);
+            ACTION = b;
         }
         // </editor-fold>
         // ====================================================================
@@ -295,7 +337,7 @@ public class TextParser {
                 if (verb.equals("use"))
                     GUI.out(item.useEvent());
                 
-                else if (INSPECT_PATTERN.matcher(verb).matches())
+                else if (INSPECT_P.matcher(verb).matches())
                     GUI.out(item.getDesc());
                 
                 else if (verb.equals("read")) {
@@ -356,7 +398,7 @@ public class TextParser {
                     GUI.out("You will need to be more specific.");
             }
             else if (Player.getPos().hasFurniture(i.toString()) || 
-                     INDEF_PRONOUN.matcher(i.toString()).matches()) {
+                     IT_THEM_P.matcher(i.toString()).matches()) {
                 Player.evaluateAction(v.toString(), i.toString());
             }
             else
@@ -430,7 +472,9 @@ public class TextParser {
     }
     // ========================================================================
     private static class Verb extends Word {
-        public final static Verb PUT_VERB = new Verb("put");
+        public final static Verb 
+                PUT_VERB = new Verb("put"),
+                GO_VERB = new Verb("go");
         
         public Verb(String verb) {
             super(verb);
@@ -438,6 +482,8 @@ public class TextParser {
     }
     // ========================================================================
     private static class DirectObj extends Word {
+        public final static DirectObj FLOOR_OBJECT = new DirectObj("floor");
+        
         public DirectObj(String object) {
             super(object);
         }

@@ -31,7 +31,7 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {  
         if (isLit) {
-            AudioPlayer.playEffect(39, -10);
+            AudioPlayer.playEffect(39, 0.3);
             return this.searchDialogLit;
         }
         else
@@ -47,7 +47,7 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
     }
 /*----------------------------------------------------------------------------*/
     public void extinguish() {
-        AudioPlayer.playEffect(39, -10);
+        AudioPlayer.playEffect(39, 0.3);
         this.isLit = false;
     }
 /*----------------------------------------------------------------------------*/

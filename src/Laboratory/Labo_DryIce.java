@@ -6,8 +6,8 @@ import A_Main.Player;
 import A_Super.Item;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
-import static A_Main.Patterns.TITRANT;
 import A_Super.Heavy;
+import static A_Main.Patterns.CHEMICAL_P;
 /**
  * Used to cool down vials of bromine.
  * Multi-threaded. Runs a thread call Chill_THREAD.
@@ -63,7 +63,7 @@ public class Labo_DryIce extends SearchableFurniture implements Openable, Heavy 
         @Override public boolean add(Item item) {
             this.CONTENTS.add(item);
             
-            if (TITRANT.matcher(item.toString()).matches()) {
+            if (CHEMICAL_P.matcher(item.toString()).matches()) {
                 // Chills the chemical for a bit, seals off barrel.
                 chillBromine = new Chill_Thread(item, this);
                 chillBromine.start();

@@ -17,7 +17,7 @@ public class Squa_Candle extends Furniture implements Gettable {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
         if (key.matches(HOLDPATTERN)) {
-            AudioPlayer.playEffect(39, -10);
+            AudioPlayer.playEffect(39, 0.3);
             return this.actDialog;
         }
         else

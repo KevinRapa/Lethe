@@ -26,7 +26,7 @@ public final class Menus {
                       + "< >      Back",
             
             INV_COMBINE = "\n"
-                        + "<#,#,(#)> Combine...\n"
+                        + "<#,#(,#)> Combine...\n"
                         + "< >       Back",
             
             EXAMINE_SUB = "\n\n"
@@ -62,8 +62,8 @@ public final class Menus {
                       + "< >   Back",
             
             HELP_SUB1 = "<'1'> The prompt <'2'> Moving\n"
-                      + "<'3'> Describing <'4'> Checking\n"
-                      + "<'5'> Searching  <'6'> Interacting\n" 
+                      + "<'3'> Describing <'4'> Examining\n"
+                      + "<'5'> Searching  <'6'> Commands\n" 
                       + "<'7'> Using      <'8'> Combining\n"
                       + "<'9'> Inspecting  < >  Back",
             

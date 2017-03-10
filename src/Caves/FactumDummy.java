@@ -24,7 +24,7 @@ public class FactumDummy extends SearchableFurniture implements Gettable {
         this.searchDialog = this.description;
 
         this.addNameKeys(ANYTHING);
-        this.addActKeys(GETPATTERN);
+        this.addActKeys(ANYTHING);
     }
     // ======================================================================== 
     @Override public String getDescription() {

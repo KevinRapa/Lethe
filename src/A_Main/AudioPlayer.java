@@ -11,70 +11,68 @@ import static A_Main.Id.*;
 import static A_Main.Patterns.*;
 import java.util.HashMap;
 import java.io.File;
-import java.io.IOException;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaException;
+import javafx.scene.media.MediaPlayer;
+import static A_Main.NameConstants.FILE_SEP;
+import static A_Main.NameConstants.WORK_DIR;
 
 public class AudioPlayer {
     public final static String 
-            WD = System.getProperty("user.dir"),
-            S = System.getProperty("file.separator"),
-            TRKPATH = "ambience" + S,
-            FXPATH = "effects" + S,
-            EXT = ".wav";
+            TRKPATH = "ambience" + FILE_SEP,
+            FXPATH = "effects" + FILE_SEP,
+            EXT = ".mp3";
     
     private static String trackName;
     private static boolean muted = false;
-    private static Clip currentMusic, effectClip;
+    private static Media currentMusic;
+    private static MediaPlayer player;
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="AMBIENCE AND MUSIC"> 
 //******************************************************************************    
     private static File 
-        nightAmbience =     new File(WD, TRKPATH + "nightAmbience.wav"),
-        wavesCrashing =     new File(WD, TRKPATH + "wavesCrashing.wav"),
-        spookyInterior =    new File(WD, TRKPATH + "spookyWindInterior.wav"),
-        antechamberCustom = new File(WD, TRKPATH + "antechamberCustom.wav"),
-        galChoir =          new File(WD, TRKPATH + "galChoir.wav"),
-        gal1wCustom =       new File(WD, TRKPATH + "gal1wCustom.wav"),
-        gal2wCustom =       new File(WD, TRKPATH + "gal2wCustom.wav"),
-        gal3wCustom =       new File(WD, TRKPATH + "gal3wCustom.wav"),
-        rotundaCustom =     new File(WD, TRKPATH + "rotundaCustom.wav"),
-        ironHallCustom =    new File(WD, TRKPATH + "ironHallCustom.wav"),
-        westWingCustom =    new File(WD, TRKPATH + "westWingCustom.wav"),
-        dungeonStairs =     new File(WD, TRKPATH + "dungeonStairs.wav"),
-        creepyOrgan =       new File(WD, TRKPATH + "creepyOrgan.wav"),
-        parlorCustom =      new File(WD, TRKPATH + "parlorCustom.wav"),
-        loungeCustom =      new File(WD, TRKPATH + "loungeCustom.wav"),
-        marbleHall =        new File(WD, TRKPATH + "marbleHall.wav"),
-        workshopCustom =    new File(WD, TRKPATH + "workshopCustom.wav"),
-        kitchenCustom =     new File(WD, TRKPATH + "kitchenCustom.wav"),
-        libraryCustom =     new File(WD, TRKPATH + "libraryCustom.wav"),
-        westBalconyCustom = new File(WD, TRKPATH + "westBalconyCustom.wav"),
-        fireplace =         new File(WD, TRKPATH + "fire.wav"),
-        backHallCustom =    new File(WD, TRKPATH + "backHall.wav"),
-        gardenCustom =      new File(WD, TRKPATH + "gardenCustom.wav"),
-        deepSpace =         new File(WD, TRKPATH + "deepSpace.wav"),
-        atticCustom =       new File(WD, TRKPATH + "atticCustom.wav"),
-        obsCustom =         new File(WD, TRKPATH + "obsCustom.wav"),
-        labCustom =         new File(WD, TRKPATH + "labCustom.wav"),
-        caves =             new File(WD, TRKPATH + "caveLoop.wav"),
-        deepCave =          new File(WD, TRKPATH + "caveDistortion.wav"),
-        tombs =             new File(WD, TRKPATH + "tombCustom.wav"),
-        sewerTunnels =      new File(WD, TRKPATH + "sewerHallCustom.wav"),
-        cistern =           new File(WD, TRKPATH + "cisternCustom.wav"),
-        aeolianHarp =       new File(WD, TRKPATH + "aeolianWindHarp.wav"),
-        prisonCustom =      new File(WD, TRKPATH + "prisonCustom.wav"),
-        sewerCogwork =      new File(WD, TRKPATH + "sewerCogwork.wav"),
-        sewpCustom =        new File(WD, TRKPATH + "sewpCustom.wav"),
-        torcCustom =        new File(WD, TRKPATH + "torcCustom.wav"),
-        titleTrack =        new File(WD, TRKPATH + "titleTrack.wav"),
-        tbalCustom =        new File(WD, TRKPATH + "tbalCustom.wav");
+        nightAmbience =     new File(WORK_DIR, TRKPATH + "nightAmbience" + EXT),
+        wavesCrashing =     new File(WORK_DIR, TRKPATH + "wavesCrashing" + EXT),
+        spookyInterior =    new File(WORK_DIR, TRKPATH + "spookyWindInterior" + EXT),
+        antechamberCustom = new File(WORK_DIR, TRKPATH + "antechamberCustom" + EXT),
+        galChoir =          new File(WORK_DIR, TRKPATH + "galChoir" + EXT),
+        gal1wCustom =       new File(WORK_DIR, TRKPATH + "gal1wCustom" + EXT),
+        gal2wCustom =       new File(WORK_DIR, TRKPATH + "gal2wCustom" + EXT),
+        gal3wCustom =       new File(WORK_DIR, TRKPATH + "gal3wCustom" + EXT),
+        rotundaCustom =     new File(WORK_DIR, TRKPATH + "rotundaCustom" + EXT),
+        ironHallCustom =    new File(WORK_DIR, TRKPATH + "ironHallCustom" + EXT),
+        westWingCustom =    new File(WORK_DIR, TRKPATH + "westWingCustom" + EXT),
+        dungeonStairs =     new File(WORK_DIR, TRKPATH + "dungeonStairs" + EXT),
+        creepyOrgan =       new File(WORK_DIR, TRKPATH + "creepyOrgan" + EXT),
+        parlorCustom =      new File(WORK_DIR, TRKPATH + "parlorCustom" + EXT),
+        loungeCustom =      new File(WORK_DIR, TRKPATH + "loungeCustom" + EXT),
+        marbleHall =        new File(WORK_DIR, TRKPATH + "marbleHall" + EXT),
+        workshopCustom =    new File(WORK_DIR, TRKPATH + "workshopCustom" + EXT),
+        kitchenCustom =     new File(WORK_DIR, TRKPATH + "kitchenCustom" + EXT),
+        libraryCustom =     new File(WORK_DIR, TRKPATH + "libraryCustom" + EXT),
+        westBalconyCustom = new File(WORK_DIR, TRKPATH + "westBalconyCustom" + EXT),
+        fireplace =         new File(WORK_DIR, TRKPATH + "fire" + EXT),
+        backHallCustom =    new File(WORK_DIR, TRKPATH + "backHall" + EXT),
+        gardenCustom =      new File(WORK_DIR, TRKPATH + "gardenCustom" + EXT),
+        deepSpace =         new File(WORK_DIR, TRKPATH + "deepSpace" + EXT),
+        atticCustom =       new File(WORK_DIR, TRKPATH + "atticCustom" + EXT),
+        obsCustom =         new File(WORK_DIR, TRKPATH + "obsCustom" + EXT),
+        labCustom =         new File(WORK_DIR, TRKPATH + "labCustom" + EXT),
+        caves =             new File(WORK_DIR, TRKPATH + "caveLoop" + EXT),
+        deepCave =          new File(WORK_DIR, TRKPATH + "caveDistortion.wav"),
+        tombs =             new File(WORK_DIR, TRKPATH + "tombCustom" + EXT),
+        sewerTunnels =      new File(WORK_DIR, TRKPATH + "sewerHallCustom" + EXT),
+        cistern =           new File(WORK_DIR, TRKPATH + "cisternCustom" + EXT),
+        aeolianHarp =       new File(WORK_DIR, TRKPATH + "aeolianWindHarp" + EXT),
+        prisonCustom =      new File(WORK_DIR, TRKPATH + "prisonCustom" + EXT),
+        sewerCogwork =      new File(WORK_DIR, TRKPATH + "sewerCogwork" + EXT),
+        sewpCustom =        new File(WORK_DIR, TRKPATH + "sewpCustom" + EXT),
+        torcCustom =        new File(WORK_DIR, TRKPATH + "torcCustom" + EXT),
+        titleTrack =        new File(WORK_DIR, TRKPATH + "titleTrack" + EXT),
+        tbalCustom =        new File(WORK_DIR, TRKPATH + "tbalCustom" + EXT);
     
-    private static final HashMap<String, File> TRACKS = 
-            new HashMap<String, File>() {
+    private static final HashMap<String, Media> TRACKS = 
+            new HashMap<String, Media>() {
         // ====================================================================
         {
         putAllTracks(nightAmbience, COU1, COU2, COU3, COU4, COU5, COU6, COU7, COU8);
@@ -105,18 +103,24 @@ public class AudioPlayer {
         putAllTracks(titleTrack, BLS1, BLS2, TOW1, TOW2, LQU1, LQU2, SOUL, ENDG);
         putAllTracks(antechamberCustom, FOYW, VAUE, VAU1, VAU2); 
         
-        put(GAL1, gal1wCustom);         put(GAL3, gal2wCustom); 
-        put(GAL6, gal3wCustom);         put(LABO, labCustom);
-        put(KITC, kitchenCustom);       put(DST1, dungeonStairs);
-        put(STUD, fireplace);           put(TBAL, tbalCustom);
-        put(WORK, workshopCustom);      put(ROTU, rotundaCustom);
-        put(WBAL, westBalconyCustom);   put(COUS, deepSpace);
-        put(SEWP, sewpCustom);        
+        put(GAL1, new Media(gal1wCustom.toURI().toString()));         
+        put(GAL3, new Media(gal2wCustom.toURI().toString()));     
+        put(GAL6, new Media(gal3wCustom.toURI().toString()));             
+        put(LABO, new Media(labCustom.toURI().toString()));    
+        put(KITC, new Media(kitchenCustom.toURI().toString()));          
+        put(DST1, new Media(dungeonStairs.toURI().toString()));    
+        put(STUD, new Media(fireplace.toURI().toString()));              
+        put(TBAL, new Media(tbalCustom.toURI().toString()));    
+        put(WORK, new Media(workshopCustom.toURI().toString()));         
+        put(ROTU, new Media(rotundaCustom.toURI().toString()));    
+        put(WBAL, new Media(westBalconyCustom.toURI().toString()));     
+        put(COUS, new Media(deepSpace.toURI().toString()));    
+        put(SEWP, new Media(sewpCustom.toURI().toString()));           
         }
         // ====================================================================
         private void putAllTracks(File track, String ... ids) {
             for (String id : ids) 
-                put(id, track);
+                put(id, new Media(track.toURI().toString()));
         }
         // ====================================================================
     };
@@ -130,63 +134,72 @@ public class AudioPlayer {
 // <editor-fold defaultstate="collapsed" desc="SOUND EFFECTS"> 
 //******************************************************************************    
     private static final File[] EFFECTS = {
-        new File(WD, FXPATH + "steps.wav"),         // 0
-        new File(WD, FXPATH + "inventory.wav"),     // 1
-        new File(WD, FXPATH + "pageTurn.wav"),      // 2
-        new File(WD, FXPATH + "keys.wav"),          // 3
-        new File(WD, FXPATH + "doorKnobJiggle.wav"),// 4   
-        new File(WD, FXPATH + "doorLocking.wav"),   // 5
-        new File(WD, FXPATH + "wallThump.wav"),     // 6
-        new File(WD, FXPATH + "gateSlam.wav"),      // 7
-        new File(WD, FXPATH + "doorSlam.wav"),      // 8
-        new File(WD, FXPATH + "doorClose.wav"),     // 9
-        new File(WD, FXPATH + "basicClick.wav"),    // 10
-        new File(WD, FXPATH + "buttonPush.wav"),    // 11
-        new File(WD, FXPATH + "leverPull.wav"),     // 12
-        new File(WD, FXPATH + "doorUnlock.wav"),    // 13
-        new File(WD, FXPATH + "woodStairClimb.wav"),// 14
-        new File(WD, FXPATH + "stoneSteps.wav"),    // 15
-        new File(WD, FXPATH + "ladder.wav"),        // 16
-        new File(WD, FXPATH + "dungeonValve.wav"),  // 17
-        new File(WD, FXPATH + "rotundaRotate.wav"), // 18
-        new File(WD, FXPATH + "rotundaRotate2.wav"),// 19
-        new File(WD, FXPATH + "valveTurn.wav"),     // 20
-        new File(WD, FXPATH + "keyClick.wav"),      // 21
-        new File(WD, FXPATH + "keyClick2.wav"),     // 22
-        new File(WD, FXPATH + "keyClick3.wav"),     // 23
-        new File(WD, FXPATH + "dungeonDoor.wav"),   // 24
-        new File(WD, FXPATH + "monster.wav"),       // 25
-        new File(WD, FXPATH + "windowOpening.wav"), // 26
-        new File(WD, FXPATH + "keyDrop.wav"),       // 27
-        new File(WD, FXPATH + "foyGateSwitch.wav"), // 28
-        new File(WD, FXPATH + "sparkles.wav"),      // 29
-        new File(WD, FXPATH + "rocksCrumbling.wav"),// 30
-        new File(WD, FXPATH + "ladderFalling.wav"), // 31
-        new File(WD, FXPATH + "enchantPop.wav"),    // 32
-        new File(WD, FXPATH + "handDrill.wav"),     // 33
-        new File(WD, FXPATH + "digging.wav"),       // 34
-        new File(WD, FXPATH + "metalPing.wav"),     // 35
-        new File(WD, FXPATH + "hoseClimb.wav"),     // 36
-        new File(WD, FXPATH + "galleryStatue.wav"), // 37
-        new File(WD, FXPATH + "galleryGears.wav"),  // 38
-        new File(WD, FXPATH + "fireDouse.wav"),     // 39
-        new File(WD, FXPATH + "stairFlatten.wav"),  // 40
-        new File(WD, FXPATH + "woodSliding.wav"),   // 41
-        new File(WD, FXPATH + "waterScoop.wav"),    // 42
-        new File(WD, FXPATH + "medallionClick.wav"),// 43
-        new File(WD, FXPATH + "totemTurn.wav"),     // 44
-        new File(WD, FXPATH + "bunsenBurner.wav"),  // 45
-        new File(WD, FXPATH + "zombieMoan.wav"),    // 46
-        new File(WD, FXPATH + "metalLadder.wav"),   // 47
-        new File(WD, FXPATH + "grateMove.wav"),     // 48
-        new File(WD, FXPATH + "teleportZap.wav"),   // 49
-        new File(WD, FXPATH + "concreteBlock.wav"), // 50
-        new File(WD, FXPATH + "concreteShort.wav"), // 51
-        new File(WD, FXPATH + "atticNoise.wav"),    // 52
-        new File(WD, FXPATH + "piano.wav"),         // 53
-        new File(WD, FXPATH + "harp.wav"),          // 54
-        new File(WD, FXPATH + "doorKnock.wav")      // 55
+        new File(WORK_DIR, FXPATH + "steps" + EXT),         // 0
+        new File(WORK_DIR, FXPATH + "inventory" + EXT),     // 1
+        new File(WORK_DIR, FXPATH + "pageTurn" + EXT),      // 2
+        new File(WORK_DIR, FXPATH + "keys" + EXT),          // 3
+        new File(WORK_DIR, FXPATH + "doorKnobJiggle" + EXT),// 4   
+        new File(WORK_DIR, FXPATH + "doorLocking" + EXT),   // 5
+        new File(WORK_DIR, FXPATH + "wallThump" + EXT),     // 6
+        new File(WORK_DIR, FXPATH + "gateSlam" + EXT),      // 7
+        new File(WORK_DIR, FXPATH + "doorSlam" + EXT),      // 8
+        new File(WORK_DIR, FXPATH + "doorClose" + EXT),     // 9
+        new File(WORK_DIR, FXPATH + "basicClick" + EXT),    // 10
+        new File(WORK_DIR, FXPATH + "buttonPush" + EXT),    // 11
+        new File(WORK_DIR, FXPATH + "leverPull" + EXT),     // 12
+        new File(WORK_DIR, FXPATH + "doorUnlock" + EXT),    // 13
+        new File(WORK_DIR, FXPATH + "woodStairClimb" + EXT),// 14
+        new File(WORK_DIR, FXPATH + "stoneSteps" + EXT),    // 15
+        new File(WORK_DIR, FXPATH + "ladder" + EXT),        // 16
+        new File(WORK_DIR, FXPATH + "dungeonValve" + EXT),  // 17
+        new File(WORK_DIR, FXPATH + "rotundaRotate" + EXT), // 18
+        new File(WORK_DIR, FXPATH + "rotundaRotate2" + EXT),// 19
+        new File(WORK_DIR, FXPATH + "valveTurn" + EXT),     // 20
+        new File(WORK_DIR, FXPATH + "keyClick" + EXT),      // 21
+        new File(WORK_DIR, FXPATH + "keyClick2" + EXT),     // 22
+        new File(WORK_DIR, FXPATH + "keyClick3" + EXT),     // 23
+        new File(WORK_DIR, FXPATH + "dungeonDoor" + EXT),   // 24
+        new File(WORK_DIR, FXPATH + "monster" + EXT),       // 25
+        new File(WORK_DIR, FXPATH + "windowOpening" + EXT), // 26
+        new File(WORK_DIR, FXPATH + "keyDrop" + EXT),       // 27
+        new File(WORK_DIR, FXPATH + "foyGateSwitch" + EXT), // 28
+        new File(WORK_DIR, FXPATH + "sparkles" + EXT),      // 29
+        new File(WORK_DIR, FXPATH + "rocksCrumbling" + EXT),// 30
+        new File(WORK_DIR, FXPATH + "ladderFalling" + EXT), // 31
+        new File(WORK_DIR, FXPATH + "enchantPop" + EXT),    // 32
+        new File(WORK_DIR, FXPATH + "handDrill" + EXT),     // 33
+        new File(WORK_DIR, FXPATH + "digging" + EXT),       // 34
+        new File(WORK_DIR, FXPATH + "metalPing" + EXT),     // 35
+        new File(WORK_DIR, FXPATH + "hoseClimb" + EXT),     // 36
+        new File(WORK_DIR, FXPATH + "galleryStatue" + EXT), // 37
+        new File(WORK_DIR, FXPATH + "galleryGears" + EXT),  // 38
+        new File(WORK_DIR, FXPATH + "fireDouse" + EXT),     // 39
+        new File(WORK_DIR, FXPATH + "stairFlatten" + EXT),  // 40
+        new File(WORK_DIR, FXPATH + "woodSliding" + EXT),   // 41
+        new File(WORK_DIR, FXPATH + "waterScoop" + EXT),    // 42
+        new File(WORK_DIR, FXPATH + "medallionClick" + EXT),// 43
+        new File(WORK_DIR, FXPATH + "totemTurn" + EXT),     // 44
+        new File(WORK_DIR, FXPATH + "bunsenBurner" + EXT),  // 45
+        new File(WORK_DIR, FXPATH + "zombieMoan" + EXT),    // 46
+        new File(WORK_DIR, FXPATH + "metalLadder" + EXT),   // 47
+        new File(WORK_DIR, FXPATH + "grateMove" + EXT),     // 48
+        new File(WORK_DIR, FXPATH + "teleportZap" + EXT),   // 49
+        new File(WORK_DIR, FXPATH + "concreteBlock" + EXT), // 50
+        new File(WORK_DIR, FXPATH + "concreteShort" + EXT), // 51
+        new File(WORK_DIR, FXPATH + "atticNoise" + EXT),    // 52
+        new File(WORK_DIR, FXPATH + "piano" + EXT),         // 53
+        new File(WORK_DIR, FXPATH + "harp" + EXT),          // 54
+        new File(WORK_DIR, FXPATH + "doorKnock" + EXT)      // 55
     };
+    
+    private static final Media[] MEDIA = new Media[EFFECTS.length];
+    
+    static {
+        for (int i = 0; i < MEDIA.length; i++) {
+            MEDIA[i] = new Media(EFFECTS[i].toURI().toString());
+        }
+    }
+    
 //******************************************************************************    
 // </editor-fold>
 //******************************************************************************
@@ -203,30 +216,26 @@ public class AudioPlayer {
      * @param ID A room ID.
      */
     public static void playTrack(String ID) {
-        if (CAVES_CATACOMB.matcher(ID).matches()) // For caves and catacombs.
+        if (CAVES_CAT_P.matcher(ID).matches()) // For caves and catacombs.
             ID = DIGIT.matcher(ID).replaceAll("");
 
-        if (! muted && (
-                trackName == null || 
-                ! trackName.equals(TRACKS.get(ID).getName())
-                )) 
+        if (! muted && 
+                (trackName == null || ! trackName.equals(TRACKS.get(ID).getSource()))) 
         {
             if (currentMusic != null)
                 stopTrack();
-            
-            try {
-                currentMusic = AudioSystem.getClip();
-                currentMusic.open(AudioSystem.getAudioInputStream(TRACKS.get(ID)));
-                currentMusic.start();
-                currentMusic.loop(Clip.LOOP_CONTINUOUSLY);
-            } catch (LineUnavailableException | 
-                        UnsupportedAudioFileException | 
-                            IOException e) 
-            {
+
+            try {    
+                currentMusic = TRACKS.get(ID);
+                player = new MediaPlayer(currentMusic);
+                player.setCycleCount(MediaPlayer.INDEFINITE);
+                player.play();
+
+                trackName = TRACKS.get(ID).getSource(); 
+            }
+            catch (MediaException e) {
                 System.out.println(e.getMessage());
             }
-            
-            trackName = TRACKS.get(ID).getName(); 
         }
     }
 // ============================================================================
@@ -237,12 +246,11 @@ public class AudioPlayer {
      */
     public static void playEffect(int ID) {
         try {
-            effectClip = AudioSystem.getClip();
-            effectClip.open(AudioSystem.getAudioInputStream(EFFECTS[ID]));
-            effectClip.start(); 
-        } catch (LineUnavailableException | 
-                    UnsupportedAudioFileException | 
-                        IOException e) {
+            MediaPlayer p = new MediaPlayer(MEDIA[ID]);
+            p.setOnEndOfMedia(() -> p.dispose());
+            p.play();
+        }
+        catch (MediaException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -253,35 +261,33 @@ public class AudioPlayer {
      * @param ID An integer corresponding to a sound effect.
      * @param volume Volume at which to adjust the effect.
      */
-    public static void playEffect(int ID, int volume) {
+    public static void playEffect(int ID, double volume) {
         try {
-            effectClip = AudioSystem.getClip();
-            effectClip.open(AudioSystem.getAudioInputStream(EFFECTS[ID]));
-
-            ((FloatControl)effectClip.getControl(FloatControl.Type.MASTER_GAIN))
-                    .setValue(volume);
-
-            effectClip.start();
-        } catch (LineUnavailableException | 
-                    UnsupportedAudioFileException | 
-                        IOException e) 
-        {
+            MediaPlayer p = new MediaPlayer(MEDIA[ID]);
+            p.setVolume(volume);
+            p.setOnEndOfMedia(() -> p.dispose());
+            p.play();
+        }
+        catch (MediaException e) {
             System.out.println(e.getMessage());
         }
     }
 // ============================================================================
     public static void stopTrack() {
-        currentMusic.close();
+        player.stop();
+        player.dispose();
         trackName = null;
     }
 // ============================================================================
     public static void muteTrack() {
         muted = ! muted;
         
-        if (currentMusic.isActive()) 
-            stopTrack();
-        else 
-            playTrack(Player.getPosId());
+        if (muted) {
+            player.setVolume(0.0);
+        }
+        else {
+            player.setVolume(1.0);
+        }
     }
 //******************************************************************************    
 // </editor-fold>

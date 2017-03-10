@@ -15,10 +15,9 @@ public final class NameConstants {
         SHOES = "shoes",            PLATE = "plate",
         CLOTHING = "clothing",      READABLE = "readable",
         LIQUID = "liguid",          WEAPON = "weapon",
-        ITEM = "item";
+        ITEM = "item",
 
     // CONSTANTS FOR ITEM NAMES ===============================================
-    public static final String 
         METAL_BUCKET = "metal bucket",          EMPTY_VIAL = "empty vial",
         GLASS_BOTTLE = "glass bottle",          TEST_TUBE = "test tube",
         SACRED_FIRE = "sacred fire",            HAND_TORCH = "hand torch",
@@ -65,6 +64,8 @@ public final class NameConstants {
         HOE = "hoe",                            WHEEL_SPOKE = "wheel spoke",
         GLOWING_CHALICE = "glowing chalice",    BOOK_PHYL = "glowing book, 'A Young Mind's Guide to Lichery'",
         ENCHANTED_BOTTLE = "enchanted bottle",  GLOWING_FRUIT = "glowing pristine fruit",
-        STEEL_WIRE = "steel wire";
-    // ========================================================================
+        STEEL_WIRE = "steel wire",
+    // PLATFORM DEPENDENT PROERTIES ===========================================
+        WORK_DIR = System.getProperty("user.dir"),
+        FILE_SEP = System.getProperty("file.separator");    
 }

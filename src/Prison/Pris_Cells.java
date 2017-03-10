@@ -2,12 +2,12 @@ package Prison;
 
 import A_Main.GUI;
 import A_Main.Id;
-import static A_Main.Patterns.WORD;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Openable;
 import A_Super.Unmoveable;
 import java.util.HashMap;
+import static A_Main.Patterns.WORD_P;
 /**
  * These can be searched to discover the solution to the Sew2 valve puzzle.
  * 
@@ -34,7 +34,7 @@ public class Pris_Cells extends Furniture implements Openable, Unmoveable {
         
         String ans = GUI.askChoice("\n<#> Inspect", "[1-6]|one|two|three|four|five|six");
         
-        if (WORD.matcher(ans).matches())
+        if (WORD_P.matcher(ans).matches())
             return ((Pris)Player.getRoomObj(Id.PRIS))
                     .getCellDescription(MAP.get(ans));
         else

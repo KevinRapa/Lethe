@@ -4,10 +4,10 @@ import A_Main.GUI;
 import A_Main.Menus;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
-import static A_Main.Patterns.YES;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Unmoveable;
+import static A_Main.Patterns.YES_P;
 /**
  * Dispenses various types of chemicals to be used in alchemy.
  * 
@@ -99,7 +99,7 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
 
         String ans = GUI.askChoice(Menus.LABO_DSPNSR, YES_NO);
         
-        return YES.matcher(ans).matches();
+        return YES_P.matcher(ans).matches();
     }
     // ========================================================================  
     // ************************************************************************

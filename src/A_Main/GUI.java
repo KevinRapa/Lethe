@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javafx.embed.swing.JFXPanel;
 import javax.swing.border.BevelBorder;
 /******************************************************************************
  * This class is responsible for the game interface.
@@ -14,7 +15,7 @@ import javax.swing.border.BevelBorder;
  * Any input from the player is processed here.
  * @author Kevin Rapa
  ******************************************************************************/
-public class GUI extends JPanel {
+public class GUI extends JFXPanel {
     
     // Click noises when player types.
     private enum Click {
@@ -327,12 +328,12 @@ public class GUI extends JPanel {
         FURN_PARSER.clear();
 
         UNDO.stream()
-                .filter(i -> (THREE_PLUS_LETTER_WORD.matcher(i).matches()))
+                .filter(i -> (THREE_PLUS_CHAR_WORD.matcher(i).matches()))
                 .forEach(j -> 
         {
             if (Player.getPos().hasFurniture(j)
                  || Player.getPos().hasFurniture(
-                        j = FIRST_WORD.matcher(j).replaceFirst("")))
+                        j = FURNITURE_SPACE_P.matcher(j).replaceFirst("")))
             {
                 FURN_PARSER.add(j); 
             }
@@ -373,26 +374,34 @@ public class GUI extends JPanel {
      * Allows player to go to last keyboard input with arrow keys.
      */
     private class Text_Field_Key_Listener implements KeyListener {
+        private boolean pressed = false;
         private int current = 0;
         /*------------------------------------------------------*/
         @Override public void keyReleased(KeyEvent e) {
-            switch(e.getKeyCode()) {
-                case KeyEvent.VK_UP:
-                    if (current < UNDO.size())
-                        INPUT.setText(UNDO.get(current++));
-                    break;
-                case KeyEvent.VK_DOWN:
-                    INPUT.setText(" "); 
-                    current = 0;
-                    break;  
-            }
+            pressed = false;
         }
         /*------------------------------------------------------*/
         @Override public void keyPressed(KeyEvent e) {
-            if (key != 0)
-                AudioPlayer.playEffect(key);
-            if (e.getKeyCode() == KeyEvent.VK_ENTER)
-                current = 0;
+            if (! pressed) {
+                // For playing the key sound
+                if (key != 0)
+                    AudioPlayer.playEffect(key);
+                if (e.getKeyCode() == KeyEvent.VK_ENTER)
+                    current = 0;
+                
+                // For fetching last command or clearing prompt.
+                switch(e.getKeyCode()) {
+                    case KeyEvent.VK_UP:
+                        if (current < UNDO.size())
+                            INPUT.setText(UNDO.get(current++));
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        INPUT.setText(" "); 
+                        current = 0;
+                        break;  
+                }   
+            }
+            pressed = true;
         }
         /*------------------------------------------------------*/
         @Override public void keyTyped(KeyEvent e) {}
@@ -411,7 +420,8 @@ public class GUI extends JPanel {
                 if (UNDO.size() == 10)
                     UNDO.removeLast();
                 
-                UNDO.push(HOLDER.request());
+                if (HOLDER.request().length() > 1)
+                    UNDO.push(HOLDER.request());
                 
                 INPUT.setText(" ");
                 HOLDER.notify();

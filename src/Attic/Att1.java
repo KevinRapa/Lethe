@@ -48,7 +48,7 @@ public class Att1 extends Room {
             Player.setOccupies(Id.INTR);
             Player.getRoomObj(Id.EOW1).lock();
             DungeonMonster.startMovement();
-            AudioPlayer.playEffect(8, 5);
+            AudioPlayer.playEffect(8, 0.8);
             Player.printInv();
             return null;
         }

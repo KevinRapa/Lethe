@@ -21,13 +21,13 @@ package A_Main;
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
  */
-
-import java.awt.Color;
+import java.awt.Color;              import javax.swing.JPanel;
 import java.awt.Dimension;          import java.awt.Toolkit;
 import java.awt.event.KeyEvent;     import java.awt.event.KeyListener; 
 import java.io.*;                   import javax.swing.ImageIcon; 
 import javax.swing.JFrame;          import javax.swing.JLabel;
-import javax.swing.JPanel;
+import static A_Main.NameConstants.FILE_SEP;
+import static A_Main.NameConstants.WORK_DIR;
 
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Lethe"),
@@ -38,9 +38,7 @@ public class Main {
     private static final JPanel TITLE_PANEL = new JPanel();
 
     static {
-        TITLE_LABEL.setIcon(new ImageIcon(
-                "img" + System.getProperty("file.separator") + "Title.jpg"
-        ));
+        TITLE_LABEL.setIcon(new ImageIcon("img" + FILE_SEP + "Title.jpg"));
 
         TITLE_LABEL.addKeyListener(new KeyListener() {
             @Override public void keyTyped(KeyEvent e) {}
@@ -57,13 +55,11 @@ public class Main {
     }
     
     private static final String 
-            WD = System.getProperty("user.dir"),
             START_LOCATION = Id.COU4, // Default COU4
             FILE_NAME = "Game.data";
 // ============================================================================
     /**
-     * Loads a game if there is one or starts a new game, quits when player is
-     * done.
+     * Loads a game if there is one or starts a new game.
      * @param args Unused.
      */
     public static void main(String[] args) {
@@ -80,6 +76,7 @@ public class Main {
         
         GAME_FRAME.getContentPane().add(panel);
         GAME_FRAME.setResizable(false);
+        GAME_FRAME.toBack();
         GAME_FRAME.pack();
 
         TITLE_FRAME.getContentPane().add(TITLE_PANEL);
@@ -102,62 +99,46 @@ public class Main {
         // location as Main.jar
         //**********************************************************************
         Help.constructHelp();
-        int exitChoice;
         
-        try (ObjectInputStream gameData = new ObjectInputStream(
-                                          new FileInputStream(
-                                          new File(WD, FILE_NAME)));
+        try (ObjectInputStream gameData = 
+                new ObjectInputStream(
+                new FileInputStream(
+                new File(WORK_DIR, FILE_NAME)))
             ) 
         {
             System.out.println("Data found. Loading game.");
             RoomGraph.assignCoordinates();
             Player.loadAttributes(gameData.readObject());
-            exitChoice = Player.mainPrompt(); // START GAME
+            Player.mainPrompt(); // START GAME
         } 
         catch (java.lang.ClassNotFoundException | 
                java.io.IOException | 
                ClassCastException e) 
         {
-            System.out.println(e.getMessage() + "\nData missing. Creating new game.");
+            System.out.println(e.getMessage() + 
+                    "\nData missing. Creating new game.");
+            
             RoomGraph.constructRoomGraph();
             Player.setNewAttributes(RoomGraph.getCoords(START_LOCATION));
-            exitChoice = Player.startDialog(); // START GAME
-        }
-        //**********************************************************************
-        // </editor-fold>  
-        //**********************************************************************
-        
-        
-        //**********************************************************************
-        // <editor-fold defaultstate="collapsed" desc="EXIT GAME">
-        //**********************************************************************
-        AudioPlayer.stopTrack();
-        GAME_FRAME.dispose();
-        Map.disposeMap();
-        
-        switch(exitChoice) {
-            case 1:
-                // Saves the game.
-                saveGame();
-                break;
-            case 2:
-                // Reset the game.
-                if ((new File(WD, FILE_NAME)).delete())
-                    System.out.println("Files deleted.");
-                else
-                    System.out.println("Files to delete not found.");
-                break;
-            default:
+            Player.startDialog(); // START GAME
         }
         //**********************************************************************
         // </editor-fold>  
         //**********************************************************************
     } 
 // ============================================================================   
+    public static void exitGame() {
+        AudioPlayer.stopTrack();
+        GAME_FRAME.dispose();
+        Map.disposeMap();
+        System.exit(0);
+    }
+// ============================================================================   
     public static synchronized void saveGame() {
-        try (ObjectOutputStream gameData = new ObjectOutputStream(
-                                           new FileOutputStream(
-                                           new File(WD, FILE_NAME)));
+        try (ObjectOutputStream gameData = 
+                new ObjectOutputStream(
+                new FileOutputStream(
+                new File(WORK_DIR, FILE_NAME)))
             ) 
         {
             Player.savePlayerAttributes(gameData);  
@@ -165,6 +146,13 @@ public class Main {
         catch (java.io.IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+// ============================================================================   
+    public static void deleteGame() {
+        if ((new File(WORK_DIR, FILE_NAME)).delete())
+            System.out.println("Files deleted.");
+        else
+            System.out.println("Files to delete not found.");
     }
 // ============================================================================   
 }

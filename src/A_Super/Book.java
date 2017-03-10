@@ -3,8 +3,8 @@ package A_Super;
 import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Menus;
-import static A_Main.Patterns.NO;
-import static A_Main.Patterns.YES;
+import static A_Main.Patterns.YES_P;
+import static A_Main.Patterns.NO_P;
 /**
  * Represents a book with one or more pages.
  * 
@@ -46,7 +46,7 @@ public class Book extends Note {
                 
                 choice = GUI.askChoice(Menus.BOOK_MEN, "[yn]|yes|no|");
 
-                if (YES.matcher(choice).matches()) 
+                if (YES_P.matcher(choice).matches()) 
                     page ++;
                 else
                     choice = "no";
@@ -56,7 +56,7 @@ public class Book extends Note {
                 GUI.promptOut(); 
                 choice = "no"; 
             }
-        } while (! NO.matcher(choice).matches());      
+        } while (! NO_P.matcher(choice).matches());      
     }
 /*----------------------------------------------------------------------------*/   
 }

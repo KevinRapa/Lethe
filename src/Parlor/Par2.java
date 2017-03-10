@@ -39,7 +39,7 @@ public class Par2 extends Room{
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID)) {
-            AudioPlayer.playEffect(8, 5);
+            AudioPlayer.playEffect(8, 0.8);
             GUI.out("After stepping into the room, the door slams shut behind you.\n"
                   + "Startled, you spin around and miss a breath. You are alone.");
             Player.getRoomObj(Id.FOY3).lock();

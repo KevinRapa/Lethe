@@ -1,7 +1,7 @@
 package A_Super;
 
 import static A_Main.NameConstants.*;
-import static A_Main.Patterns.RUG_LIFT;
+import static A_Main.Patterns.LIFT_P;
 
 /**
  * @author Kevin Rapa
@@ -22,7 +22,7 @@ abstract public class Carpet extends Furniture {
     }
     // ========================================================================   
     @Override public String interact(String key) {              
-        if (key.matches(MOVEPATTERN) || RUG_LIFT.matcher(key).matches())
+        if (key.matches(MOVEPATTERN) || LIFT_P.matcher(key).matches())
             return this.searchDialog;
         else
             return this.actDialog;

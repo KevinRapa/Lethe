@@ -26,20 +26,20 @@ import java.util.TimerTask;
 public class DungeonMonster {
     // ========================================================================
     private static enum Volume {
-        NONE(-50), // Not supposed to play.
-        VERY_SOFT(-40),
-        SOFT(-30),
-        MEDIUM_SOFT(-20),
-        MEDIUM(-15),
-        MEDIUM_LOUD(-10),
-        LOUD(0);
+        NONE(0.0), // Not supposed to play.
+        VERY_SOFT(0.02),
+        SOFT(0.04),
+        MEDIUM_SOFT(0.07),
+        MEDIUM(0.1),
+        MEDIUM_LOUD(0.3),
+        LOUD(0.5);
 
-        private final int VOL;
+        private final double VOL;
         
-        Volume(int vol) {
+        Volume(double vol) {
             this.VOL = vol;
         }
-        public int getVol() {
+        public double getVol() {
             return this.VOL;
         }
     } 
