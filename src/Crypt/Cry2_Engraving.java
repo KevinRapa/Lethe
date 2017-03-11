@@ -3,10 +3,11 @@ package Crypt;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
+import A_Super.Moveable;
 /**
  * @author Kevin Rapa
  */
-public class Cry2_Engraving extends Furniture {
+public class Cry2_Engraving extends Furniture implements Moveable {
     // ========================================================================
     public Cry2_Engraving () {
         super();
@@ -31,6 +32,13 @@ public class Cry2_Engraving extends Furniture {
                  + "coffin stands off to the side.";
         }
         return this.description;
+    }
+    // ========================================================================   
+    @Override public String moveIt() {
+        if (Player.getPos().isAdjacent(Id.CAS1))
+            return "There really is no reason. The coffin has already been moved.";
+        else
+            return "As hard as you try, you cannot manage to budge it even a small distance.";
     }
     // ========================================================================   
 }

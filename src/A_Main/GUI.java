@@ -56,6 +56,7 @@ public class GUI extends JFXPanel {
     
     private final static JLabel 
             ROOM = new JLabel(), 
+            PROMPT = new JLabel(">"),
             INVLBL = new JLabel("Inventory");
     
     private final static JButton 
@@ -65,7 +66,7 @@ public class GUI extends JFXPanel {
             COLOR = new JButton("Color");
     
     private final static JTextField 
-            INPUT = new JTextField(" ", 35);
+            INPUT = new JTextField("", 35);
     
     private final static LinkedList<String> UNDO = new LinkedList<>();
     private final static Input_Holder HOLDER = new Input_Holder();
@@ -90,9 +91,9 @@ public class GUI extends JFXPanel {
 // *****************************************************************************     
     public GUI() {
         Font labelFont;
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         
         try {
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             myFont = Font
                     .createFont(Font.TRUETYPE_FONT, new File(WORK_DIR, "img" + FILE_SEP + "fixedSys.ttf"))
                     .deriveFont(20.0f);
@@ -101,8 +102,16 @@ public class GUI extends JFXPanel {
         } catch (IOException | FontFormatException e) {
             myFont = new Font("Monospaced", Font.BOLD, 16);
         }
+        
+        try {
+            labelFont = Font
+                    .createFont(Font.TRUETYPE_FONT, new File(WORK_DIR, "img" + FILE_SEP + "MagicMedieval.ttf"));
 
-        labelFont = new Font("MagicMedieval", Font.BOLD, 20);
+            ge.registerFont(labelFont);
+        } catch (IOException | FontFormatException e) {
+            labelFont = new Font("Monospaced", Font.BOLD, 16);
+        }
+
         Color myColor = new Color(150, 84, 13);
         
         SCROLLW.setBackground(Color.DARK_GRAY);
@@ -119,7 +128,7 @@ public class GUI extends JFXPanel {
             b.setForeground(Color.BLACK);
             b.setPreferredSize(new Dimension(68, 30));
             b.setBorder(BorderFactory.createRaisedBevelBorder());
-            b.setFont(new Font("MagicMedieval", Font.BOLD, 15));
+            b.setFont(labelFont.deriveFont(Font.BOLD, 17.0f));
             b.addActionListener(new Button_Listener());
             SALAMAA.add(b);
         }
@@ -129,7 +138,7 @@ public class GUI extends JFXPanel {
         
         CENTER.setLayout(new BorderLayout());
         CNORTH.setBackground(Color.DARK_GRAY);
-        ROOM.setFont(labelFont);
+        ROOM.setFont(labelFont.deriveFont(Font.BOLD, 22.0f));
         ROOM.setForeground(Color.BLACK);
         CNORTH.add(DESC, BorderLayout.NORTH);
         CNORTH.add(ROOM, BorderLayout.SOUTH);
@@ -142,13 +151,20 @@ public class GUI extends JFXPanel {
         CSOUTH.setBackground(Color.DARK_GRAY);
         INPUT.addActionListener(new Text_Field_Listener());
         INPUT.addKeyListener(new Text_Field_Key_Listener());
-        INPUT.addFocusListener(new GameFocusListener());
         INPUT.setFont(myFont);
-        INPUT.setBorder(BorderFactory.createLoweredBevelBorder());
+        INPUT.setBorder(BorderFactory.createEmptyBorder());
         INPUT.setBackground(Color.DARK_GRAY);
         INPUT.setForeground(Color.BLACK);
-        INPUT.setCaretColor(Color.LIGHT_GRAY);
+        INPUT.setCaretColor(Color.GRAY);
+        PROMPT.setBackground(Color.DARK_GRAY);
+        PROMPT.setOpaque(true);
+        PROMPT.setHorizontalAlignment(JLabel.RIGHT);
+        PROMPT.setPreferredSize(new Dimension(25, 25));
+        PROMPT.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+        PROMPT.setFont(myFont.deriveFont(22.0f));
+        PROMPT.setForeground(Color.BLACK);
         
+        CSOUTH.add(PROMPT);
         CSOUTH.add(INPUT);
         CENTER.add(CNORTH, BorderLayout.NORTH);
         CENTER.add(CCENTER, BorderLayout.CENTER);
@@ -156,7 +172,7 @@ public class GUI extends JFXPanel {
             
         SCROLLE.setBackground(Color.DARK_GRAY);
         SCROLLE.setBorder(BorderFactory.createSoftBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.DARK_GRAY));
-        INVLBL.setFont(labelFont);
+        INVLBL.setFont(labelFont.deriveFont(Font.BOLD, 22.0f));
         INVLBL.setForeground(Color.BLACK);
         EAST.add(INVLBL, BorderLayout.NORTH);
         EAST.add(SCROLLE, BorderLayout.SOUTH);
@@ -167,7 +183,7 @@ public class GUI extends JFXPanel {
             l.setBackground(Color.DARK_GRAY);
             l.setHorizontalAlignment(JLabel.CENTER);
             l.setPreferredSize(new Dimension(390, 45));
-            l.setBorder(BorderFactory.createRaisedBevelBorder());
+            l.setBorder(BorderFactory.createEmptyBorder());
         }
         
         JTextArea[] textAreas = {DIAL, DESC, INV};
@@ -386,7 +402,6 @@ public class GUI extends JFXPanel {
     public static void giveFocus() {
         // Only used by title frame when the game starts.
         INPUT.requestFocus();
-        INPUT.setText(" ");
     }
 // *****************************************************************************       
 // </editor-fold> CLEAR METHODS AND PARSERS   
@@ -400,34 +415,28 @@ public class GUI extends JFXPanel {
      * Allows player to go to last keyboard input with arrow keys.
      */
     private class Text_Field_Key_Listener implements KeyListener {
-        private boolean pressed = false;
         private int current = 0;
         /*------------------------------------------------------*/
-        @Override public void keyReleased(KeyEvent e) {
-            pressed = false;
-        }
+        @Override public void keyReleased(KeyEvent e) {}
         /*------------------------------------------------------*/
         @Override public void keyPressed(KeyEvent e) {
-            if (! pressed) {
-                // For playing the key sound
-                if (key != 0)
-                    AudioPlayer.playEffect(key);
-                if (e.getKeyCode() == KeyEvent.VK_ENTER)
+            // For playing the key sound
+            if (key != 0)
+                AudioPlayer.playEffect(key);
+            if (e.getKeyCode() == KeyEvent.VK_ENTER)
+                current = 0;
+
+            // For fetching last command or clearing prompt.
+            switch(e.getKeyCode()) {
+                case KeyEvent.VK_UP:
+                    if (current < UNDO.size())
+                        INPUT.setText(UNDO.get(current++));
+                    break;
+                case KeyEvent.VK_DOWN:
+                    INPUT.setText(""); 
                     current = 0;
-                
-                // For fetching last command or clearing prompt.
-                switch(e.getKeyCode()) {
-                    case KeyEvent.VK_UP:
-                        if (current < UNDO.size())
-                            INPUT.setText(UNDO.get(current++));
-                        break;
-                    case KeyEvent.VK_DOWN:
-                        INPUT.setText(" "); 
-                        current = 0;
-                        break;  
-                }   
-            }
-            pressed = true;
+                    break;  
+            }   
         }
         /*------------------------------------------------------*/
         @Override public void keyTyped(KeyEvent e) {}
@@ -449,7 +458,7 @@ public class GUI extends JFXPanel {
                 if (HOLDER.request().length() > 1)
                     UNDO.push(HOLDER.request());
                 
-                INPUT.setText(" ");
+                INPUT.setText("");
                 HOLDER.notify();
             }
         } 
@@ -489,19 +498,7 @@ public class GUI extends JFXPanel {
                 if (key != 0)
                     AudioPlayer.playEffect(key);
             }
-        }
-    }
-/*----------------------------------------------------------------------------*/
-    /**
-     * Keeps focus on the text field so user doesn't have to set in manually.
-     */
-    private class GameFocusListener implements FocusListener {
-        @Override public void focusGained(FocusEvent e) {
-            // Unused
-        }
-
-        @Override public void focusLost(FocusEvent e) {
-            INPUT.requestFocus();
+            giveFocus();
         }
     }
 // *****************************************************************************

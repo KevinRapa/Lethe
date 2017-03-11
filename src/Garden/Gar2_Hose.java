@@ -3,12 +3,13 @@ package Garden;
 import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
+import A_Super.Climbable;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
-public class Gar2_Hose extends Furniture {
+public class Gar2_Hose extends Furniture implements Climbable {
     private final Item BRKNHOSE_REF;
     private final Furniture BRKNHOSE_REF2;
     // ========================================================================

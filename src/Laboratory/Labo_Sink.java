@@ -51,7 +51,8 @@ public class Labo_Sink extends Furniture {
             if (item.toString().equals(POTION_OF_SCIENCE))
                 Player.getInv().add(BEAKER_REF);
             else
-                Player.getInv().add(VIAL_REF);
+                // Forces vial in in case player already holds it
+                Player.getInv().contents().add(VIAL_REF);
             
             return this.useDialog;
         }

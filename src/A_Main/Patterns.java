@@ -15,9 +15,9 @@ public final class Patterns {
             
         // Patterns used by the player and text parser.
         MOVE_P = Pattern.compile("move|slide|displace|push|pull|spin|rotate"),
-        COMBINE_P = Pattern.compile("combine\\s+(?:\\d\\s*,\\s*)*\\d"),
+        COMBINE_P = Pattern.compile("combine\\s+(?:\\d+\\s*,\\s*)*\\d+"),
         DIRECTION_P = Pattern.compile("(?:(move|walk|go|run|climb|) ?)(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?)?)"),
-        HELLO_P = Pattern.compile("hi|hello|hey|sup"),
+        ZORK_P = Pattern.compile("hi|hello|hey|sup|brief|superbrief|verbose|diagnose"),
         NORTH_P = Pattern.compile("north|forward"),
         SOUTH_P = Pattern.compile("south|back(?:wards?)?"),
         EAST_P = Pattern.compile("east|right"),
@@ -27,8 +27,8 @@ public final class Patterns {
         CHECK_P = Pattern.compile("c|check|examine|look|view|inspect|watch"),
         SEARCH_P = Pattern.compile("search|e|s"),
         GEN_FURNITURE_P = Pattern.compile("furniture|furnishings|stuff|things?"),
-        TAKE_P = Pattern.compile("t|take"),
-        STORE_P = Pattern.compile("s|store"),
+        TAKE_P = Pattern.compile("t|take|get"),
+        STORE_P = Pattern.compile("s|store|put"),
         KEY_P = Pattern.compile("[A-Z]{3}[A-Z1-9]|OU62"), // Exception for oubliette key
         EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska"),
         WALK_P = Pattern.compile("go|walk|run"),

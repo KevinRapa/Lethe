@@ -13,11 +13,11 @@ public class Card extends Item {
     private final static HashMap<String, Integer> MAP = new HashMap<>();
     
     static {
-        MAP.put("Ac", 1);   MAP.put("Tw", 2);   MAP.put("Th", 3);  
-        MAP.put("Fo", 4);   MAP.put("Fi", 5);   MAP.put("Si", 6);   
-        MAP.put("Se", 7);   MAP.put("Ei", 8);   MAP.put("Ni", 9);   
-        MAP.put("Te", 10);  MAP.put("Ja", 10);  MAP.put("Qu", 10);
-        MAP.put("Ki", 10); 
+        MAP.put("ac", 1);   MAP.put("tw", 2);   MAP.put("th", 3);  
+        MAP.put("fo", 4);   MAP.put("fi", 5);   MAP.put("si", 6);   
+        MAP.put("se", 7);   MAP.put("ei", 8);   MAP.put("ni", 9);   
+        MAP.put("te", 10);  MAP.put("ja", 10);  MAP.put("qu", 10);
+        MAP.put("ki", 10); 
     }
     //=========================================================================
     /**

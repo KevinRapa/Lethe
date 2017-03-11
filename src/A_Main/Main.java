@@ -99,6 +99,7 @@ public class Main {
         // location as Main.jar
         //**********************************************************************
         Help.constructHelp();
+        boolean eraseGame;
         
         try (ObjectInputStream gameData = 
                 new ObjectInputStream(
@@ -109,7 +110,7 @@ public class Main {
             System.out.println("Data found. Loading game.");
             RoomGraph.assignCoordinates();
             Player.loadAttributes(gameData.readObject());
-            Player.mainPrompt(); // START GAME
+            eraseGame = Player.mainPrompt(); // START GAME
         } 
         catch (java.lang.ClassNotFoundException | 
                java.io.IOException | 
@@ -120,39 +121,34 @@ public class Main {
             
             RoomGraph.constructRoomGraph();
             Player.setNewAttributes(RoomGraph.getCoords(START_LOCATION));
-            Player.startDialog(); // START GAME
+            eraseGame = Player.startDialog(); // START GAME
         }
         //**********************************************************************
         // </editor-fold>  
         //**********************************************************************
-    } 
-// ============================================================================   
-    public static void exitGame() {
+
+        if (eraseGame)
+            new File(WORK_DIR, FILE_NAME).delete();
+        
         AudioPlayer.stopTrack();
         GAME_FRAME.dispose();
         Map.disposeMap();
         System.exit(0);
-    }
+    } 
 // ============================================================================   
     public static synchronized void saveGame() {
+        
         try (ObjectOutputStream gameData = 
                 new ObjectOutputStream(
                 new FileOutputStream(
                 new File(WORK_DIR, FILE_NAME)))
             ) 
         {
-            Player.savePlayerAttributes(gameData);  
+            Player.savePlayerAttributes(gameData); 
         } 
         catch (java.io.IOException e) {
             System.out.println(e.getMessage());
         }
     }
-// ============================================================================   
-    public static void deleteGame() {
-        if ((new File(WORK_DIR, FILE_NAME)).delete())
-            System.out.println("Files deleted.");
-        else
-            System.out.println("Files to delete not found.");
-    }
-// ============================================================================   
+// ============================================================================     
 }

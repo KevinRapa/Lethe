@@ -19,7 +19,7 @@ public class Rqua extends Room{
                            "something. Facing west, a bed and table furnish\n" +
                            "the left of the room. The table is toppled over\n" +
                            "and the mattress is on the floor. On the right is\n" +
-                           "a dresser searched thoroughly. Clothes lie scattered\n" +
+                           "a dresser searched thoroughly. Clothes and linens lie scattered\n" +
                            "on the floor. In the opposite wall is a window.";                  
     }
 /*----------------------------------------------------------------------------*/

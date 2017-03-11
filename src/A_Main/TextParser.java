@@ -115,7 +115,7 @@ public class TextParser {
                 String s = statements[i]; // Variable for lambda must be final.
                 commands[i] = new Command(() -> Player.combineSub(s));
             }
-            else if (HELLO_P.matcher(statements[i]).matches()) { // Zork-inspired
+            else if (ZORK_P.matcher(statements[i]).matches()) { // Zork-inspired
                 commands[i] = GREETING_CMD;
             }
             //-----------------------------------------------------------------
@@ -329,11 +329,12 @@ public class TextParser {
          */
         private void execute(Verb v, Instrument i) {
             String verb = v.toString();
-            
+
             if (Player.hasItemResembling(i.toString())) {
                 A_Super.Item item = Player.getInv().get(i.toString());
+
                 String type = item.getType();
-                
+
                 if (verb.equals("use"))
                     GUI.out(item.useEvent());
                 

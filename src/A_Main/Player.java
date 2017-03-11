@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;  import java.io.Serializable;
 import java.util.Iterator;          import A_Super.Climbable;
 import static A_Main.Patterns.*;    import java.util.HashSet;
 import A_Super.Moveable;
+
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -44,21 +45,19 @@ public final class Player {
         CMDS.put("a", () -> move(Direction.WEST));
         CMDS.put("d", () -> move(Direction.EAST));
         CMDS.put("m", () -> Map.displayMap());
-        CMDS.put("q", () -> endGame());
         
-        CMDS.put("inspect", () -> examineSub());
-        CMDS.put("examine", () -> examineSub());
-        CMDS.put("keys", () -> viewKeyRing());
-        CMDS.put("keyring", () -> viewKeyRing());
-        CMDS.put("inventory", () -> inventoryPrompt());
-        CMDS.put("search", () -> searchSub());
-        CMDS.put("help", () -> Help.helpSub());
-        CMDS.put("save", () ->  { Main.saveGame(); GUI.out("Game saved"); });
-        CMDS.put("combine", () -> combineSub());
-        CMDS.put("jump", () -> GUI.out("You jump a short height into the air. Well, that was fun."));
-        CMDS.put("sort", () -> { getInv().sortInventory(); Player.printInv(); });
-        CMDS.put("quit", () -> endGame());
-        CMDS.put("map", () -> Map.displayMap());
+        CMDS.put("inspect",     () -> examineSub());
+        CMDS.put("examine",     () -> examineSub());
+        CMDS.put("keys",        () -> viewKeyRing());
+        CMDS.put("keyring",     () -> viewKeyRing());
+        CMDS.put("inventory",   () -> inventoryPrompt());
+        CMDS.put("search",      () -> searchSub());
+        CMDS.put("help",        () -> Help.helpSub());
+        CMDS.put("save",        () ->  { Main.saveGame(); GUI.out("Game saved"); });
+        CMDS.put("combine",     () -> combineSub());
+        CMDS.put("jump",        () -> GUI.out("You jump a short height into the air. Well, that was fun."));
+        CMDS.put("sort",        () -> { getInv().sortInventory(); Player.printInv(); });
+        CMDS.put("map",         () -> Map.displayMap());
         
         CMDSET.addAll(CMDS.keySet());
     }
@@ -205,7 +204,7 @@ public final class Player {
     /**
      * This dialog prints at the start of a new game.
      */
-    public static void startDialog() {
+    public static boolean startDialog() {
         AudioPlayer.playTrack(Id.ENDG);
         
         GUI.menOut("\n\nPress enter...");
@@ -224,13 +223,13 @@ public final class Player {
                  + "your last action.\n\nPress enter...");
         GUI.promptOut();
         
-        mainPrompt();
+        return mainPrompt();
     }
     // ========================================================================   
     /**
      * The main prompt for controlling the player's moves.
      */
-    public static void mainPrompt() {
+    public static boolean mainPrompt() {
         AudioPlayer.playTrack(getPosId());
 
         printInv();
@@ -250,20 +249,25 @@ public final class Player {
             if (CMDSET.contains(ans)) 
                 CMDS.get(ans).run();
 
+            else if(ans.equals("quit") || ans.equals("q"))
+                break;
+            
             else if (isNonEmptyString(ans)) // Interacting
                 TextParser.processText(ans);
         }
+        
+        return endGame();
     }  
     // ========================================================================   
-    private static void endGame() {
+    private static boolean endGame() {
         String ans = GUI.askChoice(Menus.SAVE_QUIT, "[sqr]");
         
-        if (ans.equals("s")) 
+        if (ans.equals("s")) {
             Main.saveGame();
-        else if (ans.equals("r")) 
-            Main.deleteGame();
-        
-        Main.exitGame();
+            return false;
+        }
+        else 
+            return ans.equals("r");
     }
     // ======================================================================== 
     public static boolean isNonEmptyString(String playerInput) {

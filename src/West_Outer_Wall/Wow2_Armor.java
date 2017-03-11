@@ -10,7 +10,7 @@ public class Wow2_Armor extends Furniture {
         this.description = "It's a suit of armor with its gauntlets pryed open.";
         this.searchDialog = "It's not holding anything anymore.";
         this.actDialog = "You will probably get hurt trying to do that.";
-        this.addNameKeys("(suit of |plate )?armor", "armor suit");
+        this.addNameKeys("(?:suit (?:of )?|plate )?armor", "(?:armor )?suit|gauntlet|hand");
         this.addActKeys("wear", "equip");
     }    
 /*----------------------------------------------------------------------------*/

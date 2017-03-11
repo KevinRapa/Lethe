@@ -86,7 +86,7 @@ public class Labo_Flask extends SearchableFurniture {
             if (item.getType().equals(NameConstants.INGREDIENT)) {
                 GUI.out("You pour it in.");
                 this.CONTENTS.add(item);
-                Player.getInv().add(TUBE_REF);
+                Player.getInv().contents().add(TUBE_REF);
                 return true;
             }
             GUI.out("That's not an ingredient.");
@@ -96,21 +96,21 @@ public class Labo_Flask extends SearchableFurniture {
         @Override public void give(Item item, Inventory giveToThis) {
             if (item.toString().equals("gray residue")) {
                 this.remove(item);
-                giveToThis.add(item);
+                giveToThis.add(item); // Resiude unneeded. No need to force in.
                 GUI.out("You take the residue out.");
             }
             else if (this.size() == 1) {
                 if (Player.hasItem(TEST_TUBE)) {
                     this.remove(item);
-                    giveToThis.add(item);
-                    Player.getInv().remove(TUBE_REF);
-                    GUI.out("You take the residue out.");
+                    giveToThis.contents().add(item); // Forces it in to avoid losing items forever.
+                    giveToThis.remove(TUBE_REF);
+                    GUI.out("You pour it back out.");
                 }
                 else if (Player.hasItem(EMPTY_VIAL)) {
                     this.remove(item);
-                    giveToThis.add(item);
-                    Player.getInv().remove(VIAL_REF);
-                    GUI.out("You take the residue out.");
+                    giveToThis.contents().add(item); // Forces it in to avoid losing items forever.
+                    giveToThis.remove(VIAL_REF);
+                    GUI.out("You pour it back out.");
                 }
                 else {
                     GUI.out("You have no vial or test tube to empty it out into.\n");

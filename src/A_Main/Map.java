@@ -481,6 +481,7 @@ public class Map {
         Item sht = new Item("sheet", "A plain white bedsheet.");
         //-----------------------------FURNITURE--------------------------------
         Furniture rquaBd = new Rqua_Bed();
+        Furniture rquaClths = new Rqua_Clothes();
         Furniture rquaMttrss = new Rqua_Mattress();
         Furniture rquaTbl = new Rqua_Table();
         Furniture rquaDrssr = new Rqua_Dresser();
@@ -1099,7 +1100,8 @@ public class Map {
         Furniture laboDspnsrs = new Labo_Dispensers(vial, tstTb);
         Furniture laboBrtt = new Labo_Burette(vial, tstTb);
         Furniture laboStpCck = new Labo_StopCock();
-        Furniture laboF = new Floor("It's a black and white checkered tile. A predictable floor for a laboratory. A few burn marks taint the floor just at the foot of the counter to the north.", tstTb);
+        Furniture laboF = new Floor("It's a black and white checkered tile. A predictable floor for a laboratory. "
+                + "A few burn marks taint the floor just at the foot of the counter to the north.", tstTb);
         Furniture laboSnk = new Labo_Sink(vial, bkr);
         Furniture laboCntrptn = new Labo_Contraption();
         Furniture laboTbl = new Labo_Table();
@@ -1812,7 +1814,7 @@ public class Map {
         sha2.addFurniture(wWW, sha2Cbnt, shaF, sha2Dr, sha2Trch, clng);
         clos.addFurniture(closW, closF, closShlf, closStl, closBrrl, closWrkbnch, closLddr, closScks, closClng, closSkltn, closDr);  
         cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searAsh, closW, clng, searWood);
-        shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, lookLghths, lookClff, bbaSea, rquaPnl, clng);
+        shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, lookLghths, lookClff, bbaSea, rquaPnl, clng, rquaClths);
         stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, southDoor, iha1Lvr, clng);
 
         // </editor-fold>

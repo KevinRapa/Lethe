@@ -283,10 +283,10 @@ public class AudioPlayer {
         muted = ! muted;
         
         if (muted) {
-            player.setVolume(0.0);
+            stopTrack();
         }
         else {
-            player.setVolume(1.0);
+            playTrack(Player.getPosId());
         }
     }
 //******************************************************************************    

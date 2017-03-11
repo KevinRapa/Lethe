@@ -33,21 +33,21 @@ public class Look_Valve extends Furniture{
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String interact(String key) {
+        loosened = ! loosened; 
+        
         if (! FNTN_REF.isDrained()) {
             FNTN_REF.drain();
             AudioPlayer.playEffect(20);
             Player.getRoomObj(Id.ROTU).addFurniture(new Rotu_Wheel());
-            loosened = true; 
             return this.actDialog;
         }
         else {
             AudioPlayer.playEffect(17);
-            loosened = ! loosened; 
             
             if (loosened) 
-                return "You tighten back up the valve";
+                return "You loosen the valve, but nothing happens.";       
             else 
-                return "You loosen the valve, but nothing happens.";         
+                return "You tighten back up the valve";  
         }       
     }
 /*----------------------------------------------------------------------------*/
