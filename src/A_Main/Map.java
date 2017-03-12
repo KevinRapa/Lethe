@@ -35,7 +35,7 @@ import javax.swing.JFrame;  import javax.swing.JLabel;
  * @author Kevin Rapa
  */
 public class Map {
-    private final static String PATH = WORK_DIR + FILE_SEP + "img" + FILE_SEP;
+    private final static String PATH = W_DIR + SEP + "img" + SEP;
     
     private static final JLabel MAP_LABEL = new JLabel();
     private static final JPanel MAP_PANEL = new JPanel();
@@ -61,6 +61,7 @@ public class Map {
         if (! MAP_FRAME.isVisible()) {
             AudioPlayer.playEffect(2);
             MAP_FRAME.setVisible(true);
+            GUI.giveFocus();
         }
     }
     //==========================================================================
@@ -445,7 +446,7 @@ public class Map {
         Item gl = new Liquid("glue bottle", "It's a bottle of sticky glue. It's yellowish tinge clues you that it's the type for wood.");
         Item closGlv = new Clothing("gloves", "Some old gardening gloves", "They don't fit on your enormous manly hands.");
         Item closStrw = new Item("straw", "It's just straw.");
-        Item scrw1 = new Screw("1mm screw", rdFcs, 3);
+        Item scrwDrvr = new Item(SCREWDRIVER, "A small phillips-head screwdriver with a plastic handle. The tool seems perhaps a tad out of place in an old establishment like this.");
         Item scrw2 = new Item("2mm screw", "Just a small screw.");
         Item scrw5 = new Item("5mm screw", "Just a small screw.");
         //-----------------------------FURNITURE--------------------------------
@@ -455,7 +456,7 @@ public class Map {
         Furniture closF = new Floor("It's a cold, hard, cobblestone floor", closStrw);
         Furniture closScks = new Gqua_Sacks(sd, sd, sd, frt, frt, frt, snd, snd, snd, snd, snd);
         Furniture closShlf = new Gqua_Shelf(bckt, closGlv, vial, shvl, pot, pot);
-        Furniture closWrkbnch = new Gqua_Workbench(gl, hmmr, scrw2, scrw1, scrw2, scrw5, scrw5, scrw1);
+        Furniture closWrkbnch = new Gqua_Workbench(gl, hmmr, scrw2, scrwDrvr, scrw2, scrw5, scrw5);
         Furniture closStl = new Gqua_Stool();
         Furniture closBrrl = new Gqua_Barrel();
         Furniture closW = new Wall("It's a plain cobblestone wall.");
@@ -569,10 +570,11 @@ public class Map {
         Room gal1 = new Gal1("in the first floor gallery", Id.GAL1);
         Room gal2 = new Gal2("in the gallery central chamber", Id.GAL2);      
         Room gal3 = new Gal3("in the second floor gallery", Id.GAL3);
-        Room gal4 = new Gal4("on the second floor gallery balcony", Id.GAL4);
+        Room gal4 = new Gal4("on the second floor balcony", Id.GAL4);
         Room gal6 = new Gal6("in the gallery loft", Id.GAL6);
         Room gal7 = new Gal7("in the gallery loft", Id.GAL7);
         //-------------------------------ITEMS----------------------------------
+        Item scrw1 = new Screw("1mm screw", rdFcs, 3);
         Item blFcs = new Focus(BLUE_FOCUS, "It's a cool brass ring holding a blue lens.");
         Item yllwFcs = new Focus(YELLOW_FOCUS, "It's a cool brass ring holding a yellow lens.");
         Item drkFcs = new Focus(DARK_FOCUS, "It's a cool brass ring holding a tinted lens.");
@@ -635,6 +637,9 @@ public class Map {
         Furniture gal4Lft = new Gal4_Loft();
         Furniture gal2Strcs = new Gal2_Staircase(Direction.UP);
         Furniture gal4Strcs = new Gal2_Staircase(Direction.DOWN);
+        Furniture gal4Rdo = new Gal4_Radio(scrw1);
+        Furniture gal4F = new Floor("The floor here is checkered gray and tan in a smooth rock. Running along the floor around the balcony is a royal blue carpet-runner.");
+        Furniture gal4Crpt = new Gal4_Carpet();
 
         Furniture gal6Htch = new Gal6_Hatch();
         Furniture gal6Cnn = new Gal6_Canon(gal7Stat);
@@ -834,7 +839,7 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room lib1 = new Lib1("in the secret archives", Id.LIB1);
         //-------------------------------ITEMS----------------------------------
-        Item lib1Schmtc = new Lib1_Schematic("schematic");
+        Item lib1Schmtc = new Lib1_Schematic("architectural plan");
         Item lib1Nt2 = new Lib1_Note2("account, page 1");
         Item lib1Nt3 = new Lib1_Note3("journal page 1, Rhadamanthus");
         Item lib1Nt4 = new Lib1_Note4("account, page 2");
@@ -844,7 +849,8 @@ public class Map {
         Item lib1ImpNt = new Lib1_ImportantNote("momento- lens");
         Item lib1Pln = new Lib1_Plan("vessel schematic");
         Item brkLns = new Item("cracked lens", "The red-tinted lens is cracked all the way through.", "You think this has lost its purpose by now.");
-        Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring. Looks like a screw is missing.", rdFcs, 3);
+        Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring with a groove lining the inside. "
+                + "There's a small hole in each end, about 1mm diameter. Looks like a screw is missing.", rdFcs, 3);
         //-----------------------------FURNITURE--------------------------------
         Furniture lib1Docs = new Lib1_Documents();
         Furniture lib1F = new Floor("It's a dusty wood parquet floor. Years of neglect have reduced its shine to a dull matte finish.", lib1Nt2);
@@ -1823,7 +1829,7 @@ public class Map {
         gal1.addFurniture(gal1Dr, gal1F, gal1W, gal1Drgn, gal1KtnFurn, gal1Pntng, gal1Pntng2, gal1Pntng3, gal1Armr, gal1Scr, gal1Scrn, gal1Pntngs, gal1Lghts, gal1Sclptrs, gal1Hrth, clng);
         gal2.addFurniture(genDoor, gal2Stat, gal2Strcs, gal2F, gal2W, galBalc, gal1Lghts, rotuSky, galDm, gal2Clmns, mhaSDr, eastDoor);
         gal3.addFurniture(gal3Ttm, gal3Peg, gal3Hl, gal3Sgmnt, gal3Htch, gal3Lddr, gal3Rp, gal3Swtch, gal3InstFurn, gal3Msk, gal3Msk2, gal3Msk3, gal3Msks, gal3Hrth, gal3F, gal3W, gal3Art, gal3Art2, gal3Art3, gal3Arts, clng);
-        gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Dr, gal2Clmns, gal4Lft);
+        gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Dr, gal2Clmns, gal4Lft, gal4Rdo, gal4F, gal4Crpt);
         gal6.addFurniture(gal6Cnn, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl, clng);
         gal7.addFurniture(wWW);
         mha1.addFurniture(genDoor, mhaChndlr, mhaChr, mha1Plnt, mhaF, mhaW, mhaNWndw1, mhaNDr, mhaNChaDr, clng);

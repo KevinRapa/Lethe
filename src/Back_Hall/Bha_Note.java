@@ -22,10 +22,10 @@ public class Bha_Note extends Note {
         super(name);
         this.description = "Wherever you hide this, don't forget where! When the\n"
                          + "time comes to unbind yourself, you might need some\n"
-                         + "help getting there. (1)Harp; (2)Parlor, you know where; (3)Under\n"
+                         + "help getting there. (1)Hidden before the sacred fire; (2)Parlor, in plain sight; (3)Under\n"
                          + "the courtyard; (4)Dining room, behind the blue chalice;\n"
-                         + "(5)Trophy room, (6)Observatory, you know where; (7)In this room;\n"
-                         + "(8)Garden, remember Oswald?";
+                         + "(5)Safe with your treasures; (6)High above the Gods; (7)In this room;\n"
+                         + "(8)Beneath the memory of Oswald.";
     }
     // ========================================================================
 }

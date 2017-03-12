@@ -28,7 +28,7 @@ public class Gal1_Dragon extends Gal_LightMachine {
                          + "Asia. Its serpent-like body twists around and it stares\n"
                          + "menacingly ";
         this.GAL2_STAT_REF = (Gal2_Statue) stat;
-        addNameKeys("snake-like dragon(?: statue)?", "(?:dragon|statue)");
+        addNameKeys("snake-like dragon(?: statue)?", "(?:dragon|statue)", "(?:dragon's |statue's )?mouth");
         this.inv = new Drgn_Inv(yellowFocus);    
     }
 /*----------------------------------------------------------------------------*/    

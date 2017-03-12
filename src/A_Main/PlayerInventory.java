@@ -52,14 +52,14 @@ public class PlayerInventory extends Inventory {
     // ========================================================================
     public Item get(String itemName) {
         // Shouldn't return null item, inventory is pre-checked for item.
-        if (Patterns.DIGIT.matcher(itemName).matches()) {
+        if (Patterns.NUMBER_P.matcher(itemName).matches()) {
             int i = Integer.parseInt(itemName); // Player used a slot number
             if (i <= this.size())
                 return this.CONTENTS.get(i - 1);
         }
         else {
             for (Item i : this.contents())
-                if (i.toString().matches(".*(?i:"+ itemName + ").*"))
+                if (i.toString().matches(".*\\b(?i:"+ itemName + ")\\b.*"))
                     return i;
         }
         

@@ -12,7 +12,7 @@ import A_Super.Room;
  * @see Back_Hall.Bha3
  * @author Kevin Rapa
  */
-public class Par1 extends Room{
+public class Par1 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Par1(String name, String ID) {
         super(name, ID);
@@ -21,7 +21,7 @@ public class Par1 extends Room{
                    + "into the parlor on several pillars. Below it, a few lounge\n"
                    + "chairs sit around a curious glass orb. At\n"
                    + "the north west corner is a door, but something about it appears off. In the\n"
-                   + "open area of the parlor sit a harp and cushion on a persian rug.\n"
+                   + "open area of the parlor sit a harp and cushion on a persian rug before the great hearth.\n"
                    + "Standing at the east is a wood shelf. At the west side stands a table\n"
                    + "bearing numerous strange etched runes and letters.";
     }

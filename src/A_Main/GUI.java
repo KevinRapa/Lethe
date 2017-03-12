@@ -1,7 +1,5 @@
 package A_Main;
 
-import static A_Main.NameConstants.WORK_DIR;
-import static A_Main.NameConstants.FILE_SEP;
 import static A_Main.Patterns.*;
 import java.util.LinkedList;
 import javax.swing.*;
@@ -11,7 +9,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.embed.swing.JFXPanel;
-import javax.swing.border.BevelBorder;
+import static A_Main.NameConstants.SEP;
+import static A_Main.NameConstants.W_DIR;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultCaret;
+import javax.swing.text.JTextComponent;
 /******************************************************************************
  * This class is responsible for the game interface.
  * All graphical components are set up here.
@@ -82,6 +84,7 @@ public class GUI extends JFXPanel {
         COLORS.add(Color.LIGHT_GRAY);
         COLORS.add(Color.GREEN);  
         COLORS.add(new Color(196, 11, 15)); 
+        COLORS.add(new Color(141, 28, 179));
         COLORS.add(new Color(150, 84, 13));
     }
     // </editor-fold>
@@ -95,38 +98,36 @@ public class GUI extends JFXPanel {
         
         try {
             myFont = Font
-                    .createFont(Font.TRUETYPE_FONT, new File(WORK_DIR, "img" + FILE_SEP + "fixedSys.ttf"))
+                    .createFont(Font.TRUETYPE_FONT, new File(W_DIR, "img" + SEP + "fixedSys.ttf"))
                     .deriveFont(20.0f);
 
             ge.registerFont(myFont);
         } catch (IOException | FontFormatException e) {
             myFont = new Font("Monospaced", Font.BOLD, 16);
         }
-        
         try {
             labelFont = Font
-                    .createFont(Font.TRUETYPE_FONT, new File(WORK_DIR, "img" + FILE_SEP + "MagicMedieval.ttf"));
+                    .createFont(Font.TRUETYPE_FONT, new File(W_DIR, "img" + SEP + "MagicMedieval.ttf"));
 
             ge.registerFont(labelFont);
         } catch (IOException | FontFormatException e) {
             labelFont = new Font("Monospaced", Font.BOLD, 16);
         }
 
-        Color myColor = new Color(150, 84, 13);
+        Color myColor = COLORS.getLast();
         
         SCROLLW.setBackground(Color.DARK_GRAY);
-        SCROLLW.setBorder(BorderFactory.createSoftBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.DARK_GRAY));
-        
-        SALAMAA.setBackground(Color.darkGray);
-        SALAMAA.setPreferredSize(new Dimension(390, 45));
-        SALAMAA.setBorder(BorderFactory.createRaisedBevelBorder());
+        SCROLLW.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
+
+        SALAMAA.setBackground(Color.DARK_GRAY);
+        SALAMAA.setPreferredSize(new Dimension(390, 47));
         
         JButton[] buttons = {SIZE, MUTE, KEYS, COLOR};
         for (JButton b : buttons) {
             b.setBackground(Color.DARK_GRAY);
             b.setFocusPainted(false);
             b.setForeground(Color.BLACK);
-            b.setPreferredSize(new Dimension(68, 30));
+            b.setPreferredSize(new Dimension(69, 35));
             b.setBorder(BorderFactory.createRaisedBevelBorder());
             b.setFont(labelFont.deriveFont(Font.BOLD, 17.0f));
             b.addActionListener(new Button_Listener());
@@ -148,21 +149,22 @@ public class GUI extends JFXPanel {
         MEN.setBackground(Color.BLACK);
         MEN.setForeground(myColor);
         CCENTER.add(MEN);
-        CSOUTH.setBackground(Color.DARK_GRAY);
+        CSOUTH.setBackground(Color.BLACK);
         INPUT.addActionListener(new Text_Field_Listener());
         INPUT.addKeyListener(new Text_Field_Key_Listener());
         INPUT.setFont(myFont);
+        INPUT.setCaret(new RetroCaret());
+        INPUT.getCaret().setBlinkRate(450);
         INPUT.setBorder(BorderFactory.createEmptyBorder());
-        INPUT.setBackground(Color.DARK_GRAY);
-        INPUT.setForeground(Color.BLACK);
+        INPUT.setBackground(Color.BLACK);
+        INPUT.setForeground(Color.LIGHT_GRAY);
         INPUT.setCaretColor(Color.GRAY);
-        PROMPT.setBackground(Color.DARK_GRAY);
+        PROMPT.setBackground(Color.BLACK);
         PROMPT.setOpaque(true);
         PROMPT.setHorizontalAlignment(JLabel.RIGHT);
         PROMPT.setPreferredSize(new Dimension(25, 25));
-        PROMPT.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         PROMPT.setFont(myFont.deriveFont(22.0f));
-        PROMPT.setForeground(Color.BLACK);
+        PROMPT.setForeground(Color.LIGHT_GRAY);
         
         CSOUTH.add(PROMPT);
         CSOUTH.add(INPUT);
@@ -171,7 +173,7 @@ public class GUI extends JFXPanel {
         CENTER.add(CSOUTH, BorderLayout.SOUTH);
             
         SCROLLE.setBackground(Color.DARK_GRAY);
-        SCROLLE.setBorder(BorderFactory.createSoftBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.DARK_GRAY));
+        SCROLLE.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
         INVLBL.setFont(labelFont.deriveFont(Font.BOLD, 22.0f));
         INVLBL.setForeground(Color.BLACK);
         EAST.add(INVLBL, BorderLayout.NORTH);
@@ -480,7 +482,7 @@ public class GUI extends JFXPanel {
             else if (push.getSource().equals(MUTE)) { // Toggles ambience
                 AudioPlayer.playEffect(10);
                 MUTE.setText(MUTE.getText().equals("Mute") ? "Unmute" : "Mute");
-                AudioPlayer.muteTrack();
+                AudioPlayer.toggleMute();
             }
             else if (push.getSource().equals(COLOR)) { // Toggles ambience
                 AudioPlayer.playEffect(10);
@@ -503,5 +505,62 @@ public class GUI extends JFXPanel {
     }
 // *****************************************************************************
 // </editor-fold> BUTTON AND TEXT FIELD LISTENERS
+// *****************************************************************************   
+    
+
+// *****************************************************************************
+// <editor-fold defaultstate="collapsed" desc="CUSTOM CARET"> 
+// *****************************************************************************    
+    /**
+     * A simple block caret emulating the command prompt/terminal caret.
+     */
+    private class RetroCaret extends DefaultCaret {
+        @Override protected synchronized void damage(Rectangle rectangle) {
+            if (rectangle != null) {
+                this.x = rectangle.x;
+                this.y = rectangle.y;
+                this.height = rectangle.height;
+
+                if (width <= 0)
+                    width = getComponent().getWidth();
+
+                repaint();
+            }
+        }
+        //---------------------------------------------------------------------
+        @Override public void paint(Graphics g) {
+            JTextComponent comp = getComponent();
+
+            if (comp == null)
+                return;
+
+            int dot = getDot();
+            Rectangle r;
+
+            try {
+                r = comp.modelToView(dot);
+
+                if (r == null)
+                    return;
+            } catch (BadLocationException e) {
+                return;
+            }
+
+            if (x != r.x || y != r.y) {
+                repaint();
+                x = r.x;
+                y = r.y;
+                height = r.height;
+            }
+
+            g.setColor(Color.LIGHT_GRAY);
+            g.setXORMode(comp.getBackground()); // do this to draw in XOR mode
+
+            if (isVisible()) 
+                g.fillRect(x, y, 10, 20);
+        }
+    }
+// *****************************************************************************
+// </editor-fold> RETRO CARET
 // *****************************************************************************   
 }

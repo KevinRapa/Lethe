@@ -7,7 +7,8 @@ package A_Main;
  */
 public final class Menus {
     public static final String
-            INV_MAIN = "<'1'> Inspect item\n"
+            INV_MAIN = "\n"
+                     + "<'1'> Inspect item\n"
                      + "<'2'> Use item\n" + 
                        "<'3'> Combine items\n"
                      + "<'4'> Sort inventory\n"
@@ -55,13 +56,14 @@ public final class Menus {
                       + "<'h'> Get help  <'q'>    Quit\n"
                       + "<'m'> Show Map  <'save'> Save",
             
-            HELP_MAIN = "What would you like help on?\n\n" +
+            HELP_MAIN = "\nWhat would you like help on?\n" +
                         "<'1'> Controls\n"
                       + "<'2'> Your player\n" +
                         "<'3'> The castle\n"
                       + "< >   Back",
             
-            HELP_SUB1 = "<'1'> The prompt <'2'> Moving\n"
+            HELP_SUB1 = "\n"
+                      + "<'1'> The prompt <'2'> Moving\n"
                       + "<'3'> Describing <'4'> Examining\n"
                       + "<'5'> Searching  <'6'> Commands\n" 
                       + "<'7'> Using      <'8'> Combining\n"

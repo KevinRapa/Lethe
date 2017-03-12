@@ -64,8 +64,8 @@ public final class NameConstants {
         HOE = "hoe",                            WHEEL_SPOKE = "wheel spoke",
         GLOWING_CHALICE = "glowing chalice",    BOOK_PHYL = "glowing book, 'A Young Mind's Guide to Lichery'",
         ENCHANTED_BOTTLE = "enchanted bottle",  GLOWING_FRUIT = "glowing pristine fruit",
-        STEEL_WIRE = "steel wire",
+        STEEL_WIRE = "steel wire",              SCREWDRIVER = "screwdriver",
     // PLATFORM DEPENDENT PROERTIES ===========================================
-        WORK_DIR = System.getProperty("user.dir"),
-        FILE_SEP = System.getProperty("file.separator");    
+        W_DIR = System.getProperty("user.dir"),     // Current working directory.
+        SEP = System.getProperty("file.separator");    
 }

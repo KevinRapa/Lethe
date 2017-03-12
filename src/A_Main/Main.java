@@ -26,8 +26,8 @@ import java.awt.Dimension;          import java.awt.Toolkit;
 import java.awt.event.KeyEvent;     import java.awt.event.KeyListener; 
 import java.io.*;                   import javax.swing.ImageIcon; 
 import javax.swing.JFrame;          import javax.swing.JLabel;
-import static A_Main.NameConstants.FILE_SEP;
-import static A_Main.NameConstants.WORK_DIR;
+import static A_Main.NameConstants.SEP;
+import static A_Main.NameConstants.W_DIR;
 
 public class Main {
     public static final JFrame GAME_FRAME = new JFrame("Lethe"),
@@ -38,7 +38,7 @@ public class Main {
     private static final JPanel TITLE_PANEL = new JPanel();
 
     static {
-        TITLE_LABEL.setIcon(new ImageIcon("img" + FILE_SEP + "Title.jpg"));
+        TITLE_LABEL.setIcon(new ImageIcon("img" + SEP + "Title.jpg"));
 
         TITLE_LABEL.addKeyListener(new KeyListener() {
             @Override public void keyTyped(KeyEvent e) {}
@@ -104,7 +104,7 @@ public class Main {
         try (ObjectInputStream gameData = 
                 new ObjectInputStream(
                 new FileInputStream(
-                new File(WORK_DIR, FILE_NAME)))
+                new File(W_DIR, FILE_NAME)))
             ) 
         {
             System.out.println("Data found. Loading game.");
@@ -128,7 +128,7 @@ public class Main {
         //**********************************************************************
 
         if (eraseGame)
-            new File(WORK_DIR, FILE_NAME).delete();
+            new File(W_DIR, FILE_NAME).delete();
         
         AudioPlayer.stopTrack();
         GAME_FRAME.dispose();
@@ -141,7 +141,7 @@ public class Main {
         try (ObjectOutputStream gameData = 
                 new ObjectOutputStream(
                 new FileOutputStream(
-                new File(WORK_DIR, FILE_NAME)))
+                new File(W_DIR, FILE_NAME)))
             ) 
         {
             Player.savePlayerAttributes(gameData); 

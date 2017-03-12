@@ -195,50 +195,63 @@ public class Help {
      */
     public static void helpSub() {        
         String choice;
+        AudioPlayer.playEffect(2);
         
         do {
             GUI.menOut(Menus.HELP_MAIN);
             choice = GUI.promptOut();
-            GUI.out("");
+
         /*--------------------------------------------------------------------*/            
             if (choice.equals("1")) {
+                AudioPlayer.playEffect(2);
+                
                 do {
                     GUI.menOut(Menus.HELP_SUB1);
 
                     choice = GUI.promptOut().concat("c");
 
-                    if (CONTROL_CHOICE.matcher(choice).matches()) 
+                    if (CONTROL_CHOICE.matcher(choice).matches()) {
+                        AudioPlayer.playEffect(2);
                         GUI.out(get_help(TOPIC.get(choice)));  
-                    
+                    }
                 } while (! choice.equals("c"));          
             }
         /*--------------------------------------------------------------------*/          
             else if (choice.equals("2")) {    
+                AudioPlayer.playEffect(2);
+                
                 do {
                     GUI.menOut(Menus.HELP_SUB2);
 
                     choice = GUI.promptOut().concat("p");
                     
-                    if (PLAYER_CHOICE.matcher(choice).matches()) 
+                    if (PLAYER_CHOICE.matcher(choice).matches()) {
+                        AudioPlayer.playEffect(2);
                         GUI.out(get_help(TOPIC.get(choice)));
+                    }
                     
                 } while (! choice.equals("p"));    
             }
         /*--------------------------------------------------------------------*/      
             else if (choice.equals("3")) {    
+                AudioPlayer.playEffect(2);
+                
                 do {
                     GUI.menOut(Menus.HELP_SUB3);
 
                     choice = GUI.promptOut().concat("a");
                     
-                    if (CASTLE_CHOICE.matcher(choice).matches()) 
+                    if (CASTLE_CHOICE.matcher(choice).matches()) {
+                        AudioPlayer.playEffect(2);
                         GUI.out(get_help(TOPIC.get(choice)));
+                    }
                     
                 } while (! choice.equals("a"));
             }
         /*--------------------------------------------------------------------*/      
         } while (! choice.equals(""));   
         
+        GUI.clearDialog();
         GUI.toMainMenu();
         GUI.clearDialog();
     }

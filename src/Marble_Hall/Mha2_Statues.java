@@ -1,6 +1,5 @@
 package Marble_Hall;
 
-import static A_Main.NameConstants.SILVER_SPEAR;
 import A_Super.Furniture;
 /**
  * Resolves ambiguity from there being two statues in this room.
@@ -29,9 +28,9 @@ public class Mha2_Statues extends Furniture {
                          + "specifying 'left statue' or 'right statue'.";
         this.actDialog = "Such impressive works of artistry deserve not to be\n"
                     + "tainted by your touch.";
-        this.addNameKeys("(?:angel )?statues?");
+        this.addNameKeys("(?:angel )?statues?", "angels?");
         this.addActKeys(HOLDPATTERN);
-        this.addUseKeys(".+");
+        this.addUseKeys(ANYTHING);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
