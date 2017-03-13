@@ -31,19 +31,22 @@ public class AudioPlayer {
     /* 
     Because the faux keyboard key sounds will be played so frequently, it
     should be more efficient to hold players spefically for the key sounds.
-    Each sounds gets two media players which alternate playing every time a
-    key is pressed in order to handle the typing speed. The the players
-    alternating by an index which alternates between 0 and 1 using a bitmask
-    and XOR operation.
+    Each sounds gets three media players which rotate playing every time a
+    key is pressed in order to handle the typing speed. The players
+    alternating by an index which alternates between 0, 1, and 2 using a
+    bitmask and XOR operations.
     */ 
     private static final MediaPlayer[][] KEY_PLAYERS = 
-            {new MediaPlayer[2], new MediaPlayer[2], new MediaPlayer[2]};
+            {new MediaPlayer[3], new MediaPlayer[3], new MediaPlayer[3]};
     
     // Zero. Determines which of two players to play for each sound.
     private static byte playerAlternator = 0x0;  
     
-    // One. XOR's playerAlternator between 1 and 0
-    private static final byte XOR_MASK = 0x1;    
+    // One, three, two. XOR's playerAlternator between 0, 1, and 2
+    // 0 ^ 1 = 1
+    // 1 ^ 3 = 2
+    // 2 ^ 2 = 0
+    private static final byte[] XOR_MASKS = {0x1, 0x3, 0x2};    
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="AMBIENCE AND MUSIC"> 
 //******************************************************************************    
@@ -213,10 +216,13 @@ public class AudioPlayer {
         // Sets up media players for the faux keyboard sounds.
         KEY_PLAYERS[0][0] = new MediaPlayer(MEDIA[21]); 
         KEY_PLAYERS[0][1] = new MediaPlayer(MEDIA[21]);
+        KEY_PLAYERS[0][2] = new MediaPlayer(MEDIA[21]);
         KEY_PLAYERS[1][0] = new MediaPlayer(MEDIA[22]); 
         KEY_PLAYERS[1][1] = new MediaPlayer(MEDIA[22]);
+        KEY_PLAYERS[1][2] = new MediaPlayer(MEDIA[22]);
         KEY_PLAYERS[2][0] = new MediaPlayer(MEDIA[23]); 
         KEY_PLAYERS[2][1] = new MediaPlayer(MEDIA[23]);
+        KEY_PLAYERS[2][2] = new MediaPlayer(MEDIA[23]);
         
         for (MediaPlayer[] playerList : KEY_PLAYERS)
             for (MediaPlayer mPlayer : playerList)
@@ -303,12 +309,12 @@ public class AudioPlayer {
      * Specifically for the faux key sounds. 
      * Better handles the sounds being played in quick succession.
      * @param ID 0, 1, or 2. Indexes into the 2D media player array and
-     * corresponds to the key sound ton play.
+     * corresponds to the key sound to play.
      */
     public static void playKeySound(int ID) {
         try {
             (KEY_PLAYERS[ID][playerAlternator]).play();
-            playerAlternator ^= XOR_MASK;
+            playerAlternator ^= XOR_MASKS[playerAlternator];
         }
         catch (MediaException e) {
             System.out.println(e.getMessage());

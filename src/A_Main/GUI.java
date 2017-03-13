@@ -27,7 +27,7 @@ public class GUI extends JFXPanel {
     private enum Click {
         NONE(-1), SOFT(0), CLICK(1), VINTAGE(2);
     
-        public final int soundEffectId;
+        public final int soundEffectId; // Index. NONE's should never be used.
         //----------------------------------------
         Click(int key) { this.soundEffectId = key; }
         //----------------------------------------
@@ -418,23 +418,30 @@ public class GUI extends JFXPanel {
      */
     private class Text_Field_Key_Listener implements KeyListener {
         private int current = 0;
+        private final int 
+                BACKSPACE = KeyEvent.VK_BACK_SPACE,
+                UP = KeyEvent.VK_UP,
+                DOWN = KeyEvent.VK_DOWN,
+                ENTER = KeyEvent.VK_ENTER;
         /*------------------------------------------------------*/
         @Override public void keyReleased(KeyEvent e) {}
         /*------------------------------------------------------*/
         @Override public void keyPressed(KeyEvent e) {
+            int keyCode = e.getKeyCode();
+            
             // For playing the key sound
-            if (key != -1)
+            if (key != -1 && keyCode != BACKSPACE)
                 AudioPlayer.playKeySound(key);
-            if (e.getKeyCode() == KeyEvent.VK_ENTER)
+            if (keyCode == ENTER)
                 current = 0;
 
             // For fetching last command or clearing prompt.
-            switch(e.getKeyCode()) {
-                case KeyEvent.VK_UP:
+            switch(keyCode) {
+                case UP:
                     if (current < UNDO.size())
                         INPUT.setText(UNDO.get(current++));
                     break;
-                case KeyEvent.VK_DOWN:
+                case DOWN:
                     INPUT.setText(""); 
                     current = 0;
                     break;  
