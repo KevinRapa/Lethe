@@ -712,7 +712,7 @@ public final class Player {
                 }
             } 
             else if (isNonEmptyString(ans))
-                GUI.out("Enter a valid choice.");
+                GUI.out("That was not a valid choice.");
             
         } while (isNonEmptyString(ans));
         
@@ -723,6 +723,7 @@ public final class Player {
         String ans;            
         
         do {
+            // Prompts for furniture to inspect.
             GUI.menOut(Menus.INV_INSPECT);
             ans = GUI.promptOut();
             
@@ -733,6 +734,7 @@ public final class Player {
             }
             catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
                 if (isNonEmptyString(ans)) 
+                    // Player typed too high a digit or a non-digit
                     GUI.out(NOT_VALID_SLOT);
             }
         } while (isNonEmptyString(ans));
@@ -786,7 +788,7 @@ public final class Player {
                         "\nas hard as you can, but nothing happens.");
         }                      
         else if (isNonEmptyString(furniture)) 
-            GUI.out("There is no " + furniture + " here."); 
+            GUI.out("There is no " + furniture + " here that you can see."); 
         
         printInv();
     }
