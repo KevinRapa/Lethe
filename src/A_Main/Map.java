@@ -236,7 +236,8 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room vest = new Vest("in a vestibule", Id.VEST); 
         //-------------------------------ITEMS----------------------------------
-        Item qllPn = new Item("quill pen", "It's an old matted feather stained with dried ink.");
+        Item pen = new Item(PEN, "It's a fancy ballpoint pen", "You could write momentos to yourself if you have some paper.");
+        Item ppr = new Item(NOTEPAD, "This is a stack of many sheets of brown parchemtn.", "You could write momentos with this if you have a pen.");
         Item lttrOpnr = new Item("letter opener", "It's a very dull knife.");
         Item loopedRope = new Item(LOOPED_ROPE, "It's a short rope tied into a noose. It's pretty frayed in the center.", ram, 3);
         //-----------------------------FURNITURE--------------------------------
@@ -245,7 +246,7 @@ public class Map {
         Furniture vesBtn = new Vest_Button(vesFire);
         Furniture vesWin = new Vest_Window(vesFire);
         Furniture vesDr = new Vest_Dr(Direction.WEST);      
-        Furniture vesDsk = new Vest_Desk(qllPn, lttrOpnr, loopedRope);
+        Furniture vesDsk = new Vest_Desk(pen, lttrOpnr, ppr, loopedRope);
         Furniture vesEtbl = new Vest_EndTable();
         Furniture vesCase = new Vest_Case(rotuKey);
         Furniture vesTpstr = new Vest_Tpstr();
@@ -529,8 +530,6 @@ public class Map {
         //-------------------------------ITEMS----------------------------------
         Item studBkPi = new Stud_PiBook("book, 'An Essential Pi'");
         Item studNote = new Stud_Note("personal note");
-        Item pen = new Item("pen", "It's a fancy ballpoint pen", "If only you had your diary with you to write down your feelings.");
-        Item ppr = new Item("parchment", "Some old brown parchment", "You don't feel the need to write anything down.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture studSafe = new Stud_Safe("367", studBkPhy, gal1Key);
         Furniture studF = new Floor("The floor is a weathered dark hickory that creaks slowly as you walk. How nice!");
@@ -640,6 +639,7 @@ public class Map {
         Furniture gal4Rdo = new Gal4_Radio(scrw1);
         Furniture gal4F = new Floor("The floor here is checkered gray and tan in a smooth rock. Running along the floor around the balcony is a royal blue carpet-runner.");
         Furniture gal4Crpt = new Gal4_Carpet();
+        Furniture gal4Lvr = new Gal4_Lever();
 
         Furniture gal6Htch = new Gal6_Hatch();
         Furniture gal6Cnn = new Gal6_Canon(gal7Stat);
@@ -856,7 +856,7 @@ public class Map {
         Furniture lib1F = new Floor("It's a dusty wood parquet floor. Years of neglect have reduced its shine to a dull matte finish.", lib1Nt2);
         Furniture lib1W = new Wall("The walls are just horizontal wood slats, separated slightly as to see the underlying structural rock.");
         Furniture lib1Art = new Lib1_Artifact(blFcs);
-        Furniture lib1Dsk = new Lib1_Desk(lib1Art, lib1Schmtc, lib1Nt3, lib1ImpNt);
+        Furniture lib1Dsk = new Lib1_Desk(lib1Art, lib1Schmtc, ppr, pen, lib1Nt3, lib1ImpNt);
         Furniture lib1Rg = new Lib1_Rug();
         Furniture lib1Rck = new Lib1_Rack(lib1Nt4, lib1Nt6, lib1Nt5, lib1Nt7);
         Furniture lib1Tbl = new Lib1_Table(lib1Pln);
@@ -1829,7 +1829,7 @@ public class Map {
         gal1.addFurniture(gal1Dr, gal1F, gal1W, gal1Drgn, gal1KtnFurn, gal1Pntng, gal1Pntng2, gal1Pntng3, gal1Armr, gal1Scr, gal1Scrn, gal1Pntngs, gal1Lghts, gal1Sclptrs, gal1Hrth, clng);
         gal2.addFurniture(genDoor, gal2Stat, gal2Strcs, gal2F, gal2W, galBalc, gal1Lghts, rotuSky, galDm, gal2Clmns, mhaSDr, eastDoor);
         gal3.addFurniture(gal3Ttm, gal3Peg, gal3Hl, gal3Sgmnt, gal3Htch, gal3Lddr, gal3Rp, gal3Swtch, gal3InstFurn, gal3Msk, gal3Msk2, gal3Msk3, gal3Msks, gal3Hrth, gal3F, gal3W, gal3Art, gal3Art2, gal3Art3, gal3Arts, clng);
-        gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Dr, gal2Clmns, gal4Lft, gal4Rdo, gal4F, gal4Crpt);
+        gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Dr, gal2Clmns, gal4Lft, gal4Rdo, gal4F, gal4Crpt, gal4Lvr);
         gal6.addFurniture(gal6Cnn, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl, clng);
         gal7.addFurniture(wWW);
         mha1.addFurniture(genDoor, mhaChndlr, mhaChr, mha1Plnt, mhaF, mhaW, mhaNWndw1, mhaNDr, mhaNChaDr, clng);

@@ -26,7 +26,24 @@ public class AudioPlayer {
     private static String trackName;
     private static boolean muted = false;
     private static Media currentMusic;
-    private static MediaPlayer player;
+    private static MediaPlayer currentPlayer;
+    
+    /* 
+    Because the faux keyboard key sounds will be played so frequently, it
+    should be more efficient to hold players spefically for the key sounds.
+    Each sounds gets two media players which alternate playing every time a
+    key is pressed in order to handle the typing speed. The the players
+    alternating by an index which alternates between 0 and 1 using a bitmask
+    and XOR operation.
+    */ 
+    private static final MediaPlayer[][] KEY_PLAYERS = 
+            {new MediaPlayer[2], new MediaPlayer[2], new MediaPlayer[2]};
+    
+    // Zero. Determines which of two players to play for each sound.
+    private static byte playerAlternator = 0x0;  
+    
+    // One. XOR's playerAlternator between 1 and 0
+    private static final byte XOR_MASK = 0x1;    
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="AMBIENCE AND MUSIC"> 
 //******************************************************************************    
@@ -192,6 +209,20 @@ public class AudioPlayer {
         new Media(new File(W_DIR, EPTH + "doorKnock" + EXT).toURI().toString())      // 55
     };
     
+    static {
+        // Sets up media players for the faux keyboard sounds.
+        KEY_PLAYERS[0][0] = new MediaPlayer(MEDIA[21]); 
+        KEY_PLAYERS[0][1] = new MediaPlayer(MEDIA[21]);
+        KEY_PLAYERS[1][0] = new MediaPlayer(MEDIA[22]); 
+        KEY_PLAYERS[1][1] = new MediaPlayer(MEDIA[22]);
+        KEY_PLAYERS[2][0] = new MediaPlayer(MEDIA[23]); 
+        KEY_PLAYERS[2][1] = new MediaPlayer(MEDIA[23]);
+        
+        for (MediaPlayer[] playerList : KEY_PLAYERS)
+            for (MediaPlayer mPlayer : playerList)
+                mPlayer.setOnEndOfMedia(() -> mPlayer.stop());
+    }
+    
 //******************************************************************************    
 // </editor-fold>
 //******************************************************************************
@@ -218,13 +249,13 @@ public class AudioPlayer {
 
             try {    
                 currentMusic = TRACKS.get(ID);
-                player = new MediaPlayer(currentMusic);
-                player.setCycleCount(MediaPlayer.INDEFINITE);
+                currentPlayer = new MediaPlayer(currentMusic);
+                currentPlayer.setCycleCount(MediaPlayer.INDEFINITE);
                 
                 if (muted)
-                    player.setVolume(0.0);
+                    currentPlayer.setVolume(0.0);
                 
-                player.play();
+                currentPlayer.play();
 
                 trackName = TRACKS.get(ID).getSource(); 
             }
@@ -268,19 +299,44 @@ public class AudioPlayer {
         }
     }
 // ============================================================================
+    /**
+     * Specifically for the faux key sounds. 
+     * Better handles the sounds being played in quick succession.
+     * @param ID 0, 1, or 2. Indexes into the 2D media player array and
+     * corresponds to the key sound ton play.
+     */
+    public static void playKeySound(int ID) {
+        try {
+            (KEY_PLAYERS[ID][playerAlternator]).play();
+            playerAlternator ^= XOR_MASK;
+        }
+        catch (MediaException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+// ============================================================================
     public static void stopTrack() {
-        player.stop();
-        player.dispose();
+        currentPlayer.stop();
+        currentPlayer.dispose();
         trackName = null;
+    }
+// ============================================================================
+    /**
+     * Disposes key sound players when the game ends.
+     */
+    public static void disposeKeyPlayers() {
+        for (MediaPlayer[] mList : KEY_PLAYERS)
+            for (MediaPlayer mPlayer : mList)
+                mPlayer.dispose();
     }
 // ============================================================================
     public static void toggleMute() {
         muted = ! muted;
         
         if (muted)
-            player.setVolume(0.0);
+            currentPlayer.setVolume(0.0);
         else
-            player.setVolume(1.0);
+            currentPlayer.setVolume(1.0);
     }
 //******************************************************************************    
 // </editor-fold>

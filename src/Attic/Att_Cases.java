@@ -1,5 +1,6 @@
 package Attic;
 
+import A_Super.Clothing;
 import A_Super.Item;
 import A_Super.Moveable;
 import java.util.Random;
@@ -11,13 +12,13 @@ import A_Super.SearchableFurniture;
 public class Att_Cases extends SearchableFurniture implements Openable, Moveable {
     Random generator = new Random();
     private final Item[] POSSIBILITIES = {
-        new Item("brown suit", "A brown wool suit jacket", "It's too hot out for this."),
-        new Item("feathered hat", "A female hat with a long feather coming out the back.", "You put on the hat. Fabulous!"),
-        new Item("green checkered suit", "Who would wear this?", "Maybe if it were red-checkered, you'd wear it."),
-        new Item("dress", "It's a violet dress", "There's no time for dress up right now."),
+        new Clothing("brown suit", "A brown wool suit jacket", "It's slightly too warm and humid for this to be comfortable."),
+        new Clothing("feathered hat", "A female hat with a long feather coming out the back.", "You put on the hat. How fabulous!"),
+        new Clothing("green checkered suit", "Who would wear this?", "Maybe if it were red-plaid, you'd wear it."),
+        new Clothing("dress", "It's a violet dress", "You aren't too accustomed to wearing dresses."),
         new Item("old rags", "Just some assorted pieces of fabric"),
-        new Item("black trenchcoat", "It's a long, black wool trenchcoat.", "There's no time for dress up right now."),
-        new Item("suit pants", "Some dark gray pinstripe pants", "You really don't feel like removing your pants right now.")
+        new Clothing("black trenchcoat", "It's a long, black wool trenchcoat.", "There's no time for dress up right now."),
+        new Clothing("suit pants", "Some dark gray pinstripe pants", "You really don't feel like removing your pants right now.")
     };
     // ========================================================================
     public Att_Cases () {

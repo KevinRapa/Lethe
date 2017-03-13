@@ -25,6 +25,8 @@ public class Labo_Distiller extends Furniture implements Moveable {
         this.VIAL_REF = vial;
         this.FLORENCE_FLASK_REF = new Labo_Flask(CONDENSER_REF, TUBE_REF, VIAL_REF);
 
+        this.actDialog = "There doesn't seem to be much to work on with your hands. You\n"
+                       + "will need some tools to interact with this.";
         this.searchDialog = "The contraption is comprised of many alchemical compnents.\n"
                           + "Though they're alien to you, you note nothing out of the ordinary.";
         this.description = "It's one half of a larger alchemical contraption in the room.\n"
@@ -32,6 +34,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
                          + "under it. Above the setup is a curved glass tube connecting it\n"
                          + "to the condenser on the other side of the table.";
 
+        this.addActKeys("use", "distill", "boil");
         this.addNameKeys("distillery?", "(?:bunsen )?burner", "(?:flask )?rack");
         this.addUseKeys(RUBBER_HOSE, FLORENCE_FLASK, STRIKER, HAND_TORCH, 
                         BEAKER, TEST_TUBE, EMPTY_VIAL, COPPER_POT, COPPER_PAN);

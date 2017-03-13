@@ -239,8 +239,9 @@ public class TextParser {
         if (NUMBER_P.matcher(item).matches()) {
             int i = Integer.parseInt(item) - 1;
             
-            if (i >= 0 && i < Player.getInv().size())
+            if (i >= 0 && i < Player.getInv().size()) {
                 inst = new Instrument(Player.getInv().get(i).toString());
+            }
             else
                 return NO_SLOT_CMD;
         }
@@ -329,10 +330,9 @@ public class TextParser {
          */
         private void execute(Verb v, Instrument i) {
             String verb = v.toString();
-
-            if (Player.hasItemResembling(i.toString())) {
+            
+            if (Player.hasItem(i.toString())) {
                 A_Super.Item item = Player.getInv().get(i.toString());
-
                 String type = item.getType();
 
                 if (verb.equals("use"))
@@ -468,7 +468,7 @@ public class TextParser {
         }
         // -------------------------
         @Override public String toString() {
-            return (String)VALUE;
+            return VALUE;
         }
     }
     // ========================================================================

@@ -48,10 +48,11 @@ public final class Patterns {
         SPACE_THEN_ALL_P = Pattern.compile("\\s.+"),
         DROP_P = Pattern.compile(".+ down"),
         CONJUNC_P = Pattern.compile(" and(?: then| also)? | then(?: also)? "),
-        STORE_AREA_P = Pattern.compile(" (?:in|on)(?:to)? | under(?:neath)? | next to | beside "),
+        STORE_AREA_P = Pattern.compile(" (?:(?:in|on)(?:to)?|under(?:neath)?|next to|beside|over) "),
         USE_MANNER_P = Pattern.compile(" (on|against|to) "),
         INSTRUCTIVE_P = Pattern.compile(" with | using "),
         FIRST_WORD_P = Pattern.compile("[a-z]+\\s"),
+        INV_CHOICE_P = Pattern.compile("[1-5]"),
             
         // Patterns used by Furniture
         BOOK_TITLE_P = Pattern.compile(", .*"),
@@ -63,6 +64,7 @@ public final class Patterns {
         ONE_TO_FOUR = Pattern.compile("[1-4]"),
             
         // Patterns used by Dungeon_Monster
+        FAR_ROOMS_P = Pattern.compile("CRY1|CRY2|DKCH|INTR"),
         NO_SOUND_AREA = Pattern.compile("TOR|CRY|ESC|DKC|CAS"),
         CISTERN_AREA = Pattern.compile("OUB|AAR|CIS"),
         TUNNEL_AREA = Pattern.compile("SEW|PRI|INT"),
@@ -80,7 +82,7 @@ public final class Patterns {
         NEWLINE = Pattern.compile("\n"),
     
         // Patterns used by Help
-        CONTROL_CHOICE = Pattern.compile("[1-9]c"),
+        CONTROL_CHOICE = Pattern.compile("[1-9]c|10c"),
         PLAYER_CHOICE = Pattern.compile("[1-3]p"),
         CASTLE_CHOICE = Pattern.compile("[1-6]a");
     // ========================================================================

@@ -1,5 +1,7 @@
 package A_Main;
 
+import static A_Main.NameConstants.NO_LETTER_AFTER;
+import static A_Main.NameConstants.NO_LETTER_BEFORE;
 import A_Super.Item;
 import java.util.Comparator;
 /**
@@ -53,13 +55,19 @@ public class PlayerInventory extends Inventory {
     public Item get(String itemName) {
         // Shouldn't return null item, inventory is pre-checked for item.
         if (Patterns.NUMBER_P.matcher(itemName).matches()) {
-            int i = Integer.parseInt(itemName); // Player used a slot number
+            int i = Integer.parseInt(itemName); // Player used a slot number.
             if (i <= this.size())
                 return this.CONTENTS.get(i - 1);
         }
         else {
+            // First checks for an exact match.
             for (Item i : this.contents())
-                if (i.toString().matches(".*\\b(?i:"+ itemName + ")\\b.*"))
+                if (i.toString().equals(itemName))
+                    return i;
+            
+            // If nothing is found, finds something resembling the item name.
+            for (Item i : this.contents())
+                if (i.toString().matches(NO_LETTER_BEFORE + itemName + NO_LETTER_AFTER))
                     return i;
         }
         
@@ -69,6 +77,7 @@ public class PlayerInventory extends Inventory {
     // ========================================================================
     public void sortInventory() {
         this.CONTENTS.sort(Inventory_Sorter.getSorter());
+        Player.printInv();
     }
     // ========================================================================
     // ************************************************************************

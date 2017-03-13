@@ -68,11 +68,8 @@ public class Att1 extends Room {
         GUI.out("   ...");
         GUI.promptOut();
         
-        GUI.out("   ... ...");
-        GUI.promptOut();
-        
         GUI.out("Several more seconds pass. Before you can realize, you are\n"
-              + "unconcious...");
+              + "unconscious...");
         GUI.promptOut();
         
         GUI.out("   ... ... ...");

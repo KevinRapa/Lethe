@@ -3,9 +3,7 @@ package Tunnels;
 import A_Main.Player;
 import A_Super.Furniture;
 import static A_Main.Id.*;
-import A_Main.NameConstants;
 import static A_Main.Patterns.*;
-import A_Super.Item;
 /**
  * Serves as a way to reference the tunnel monster.
  * This furniture is important, as it helps the player in determining where
@@ -14,8 +12,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class DungeonMonsterFurniture extends Furniture {
-    private final String CANT_SEE_IT = "You can't hear or see it from here.";
-    private final String FAR_ROOMS_PATTERN = CRY1+"|"+CRY2+"|"+DKCH+"|"+TORC;
+    private final String CANT_SEE_IT = "You can't hear or see it from here. The creature attention is apparently drawn from your area.";
     // ========================================================================
     public DungeonMonsterFurniture () {
         super();
@@ -35,7 +32,7 @@ public class DungeonMonsterFurniture extends Furniture {
     @Override public String getDescription() {
         String result;
         
-        if (Player.getPosId().matches(FAR_ROOMS_PATTERN)) {
+        if (FAR_ROOMS_P.matcher(Player.getPosId()).matches()) {
             result = CANT_SEE_IT;
         }
         else if (areaName(Player.getPosId()).equals("ESC")) {

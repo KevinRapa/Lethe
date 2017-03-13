@@ -1,5 +1,6 @@
 package Gallery;
 
+import A_Main.AudioPlayer;
 import static A_Main.NameConstants.SCREWDRIVER;
 import static A_Main.NameConstants.WEAPON;
 import A_Main.Player;
@@ -51,7 +52,7 @@ public class Gal4_Radio extends Furniture implements Gettable, Heavy {
         this.addNameKeys("(?:tall )?(?:blue )?(?:modern )?(?:metal )?(?:machine|radio)", 
                 "(?:tiny )?screws?", "(?:front )?(?:glass )?panel");
         this.addUseKeys(ANYTHING);
-        this.addActKeys(MOVEPATTERN, "break", "unscrew");
+        this.addActKeys(MOVEPATTERN, "break", "unscrew", "listen");
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -61,6 +62,8 @@ public class Gal4_Radio extends Furniture implements Gettable, Heavy {
     @Override public String interact(String key) {              
         if (key.equals("break"))
             return this.actDialog;
+        else if (key.equals("listen"))
+            return "The radio isn't on for you to do that.";
         else
             return "The only obtainable thing on this box seems to be the front\n"
                  + "screws, but digging them out by hand seems infeasible.";

@@ -78,7 +78,7 @@ public class Labo_Condenser extends Furniture implements Moveable {
                         "You watch in horror as the chemical condenses into the glass tube and\n"
                       + "flows down the drain under the condenser."));
             }
-        return true;
+            return true;
         }
         else {
             GUI.out(result.replaceFirst("%", 

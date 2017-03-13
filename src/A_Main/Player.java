@@ -1,15 +1,14 @@
 package A_Main;
 
-import A_Super.Room;                import A_Super.Item;
-import A_Super.Direction;           import A_Super.Furniture;
-import java.util.Scanner;           import java.util.ArrayList;
-import java.util.HashMap;           import A_Super.Openable;
-import Tunnels.DungeonMonster;      import java.io.IOException;
-import java.io.ObjectOutputStream;  import java.io.Serializable;
-import java.util.Iterator;          import A_Super.Climbable;
-import static A_Main.Patterns.*;    import java.util.HashSet;
-import A_Super.Moveable;
+import static A_Main.NameConstants.*;
+import static A_Main.Patterns.*; 
+import A_Super.*;
 
+import java.util.Scanner;           import java.util.ArrayList;
+import java.util.HashMap;           import java.io.IOException;
+import Tunnels.DungeonMonster;      import java.io.Serializable;
+import java.io.ObjectOutputStream;  import java.util.HashSet;
+import java.util.Iterator;
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -45,19 +44,22 @@ public final class Player {
         CMDS.put("a", () -> move(Direction.WEST));
         CMDS.put("d", () -> move(Direction.EAST));
         CMDS.put("m", () -> Map.displayMap());
+        CMDS.put("n", () -> writeNote());
         
-        CMDS.put("inspect",     () -> examineSub());
-        CMDS.put("examine",     () -> examineSub());
-        CMDS.put("keys",        () -> viewKeyRing());
-        CMDS.put("keyring",     () -> viewKeyRing());
-        CMDS.put("inventory",   () -> inventoryPrompt());
-        CMDS.put("search",      () -> searchSub());
-        CMDS.put("help",        () -> Help.helpSub());
-        CMDS.put("save",        () ->  { Main.saveGame(); GUI.out("Game saved"); });
-        CMDS.put("combine",     () -> combineSub());
-        CMDS.put("jump",        () -> GUI.out("You jump a short height into the air. Well, that was fun."));
-        CMDS.put("sort",        () -> { getInv().sortInventory(); Player.printInv(); });
-        CMDS.put("map",         () -> Map.displayMap());
+        CMDS.put("inspect",   () -> examineSub());
+        CMDS.put("examine",   () -> examineSub());
+        CMDS.put("keys",      () -> viewKeyRing());
+        CMDS.put("keyring",   () -> viewKeyRing());
+        CMDS.put("inventory", () -> inventoryPrompt());
+        CMDS.put("search",    () -> searchSub());
+        CMDS.put("help",      () -> Help.helpSub());
+        CMDS.put("save",      () ->  { Main.saveGame(); GUI.out("Game saved"); });
+        CMDS.put("combine",   () -> combineSub());
+        CMDS.put("jump",      () -> GUI.out("You jump a short height into the air. Well, that was fun."));
+        CMDS.put("sort",      () -> getInv().sortInventory());
+        CMDS.put("map",       () -> Map.displayMap());
+        CMDS.put("note",      () -> writeNote());
+        CMDS.put("write",     () -> writeNote());
         
         CMDSET.addAll(CMDS.keySet());
     }
@@ -135,7 +137,7 @@ public final class Player {
         }
         else
             return Player.inv.contents().stream().
-                anyMatch(i -> i.toString().matches(".*(?i:" + item + ").*"));
+                anyMatch(i -> i.toString().matches(NO_LETTER_BEFORE + item + NO_LETTER_AFTER));
     }
     // </editor-fold>
     
@@ -681,7 +683,7 @@ public final class Player {
             
             ans = GUI.promptOut();
             
-            if (ONE_TO_FOUR.matcher(ans).matches()) {
+            if (INV_CHOICE_P.matcher(ans).matches()) {
                 switch(Integer.parseInt(ans)) {
                     case 1:
                         inspectPrompt(); break;
@@ -689,9 +691,10 @@ public final class Player {
                         usePrompt(); break;
                     case 3:
                         combineSub(); break;
+                    case 4:
+                        getInv().sortInventory(); break;
                     default:
-                        getInv().sortInventory();
-                        printInv();
+                        writeNote();
                 }
             } 
             else if (isNonEmptyString(ans))
@@ -774,6 +777,42 @@ public final class Player {
         printInv();
     }
     // ======================================================================== 
+    /**
+     * Allow the player to write a note to itself. This can only be done if the
+     * player has the notepad and a pen.
+     */
+    public static void writeNote() {
+        if (! Player.hasItem(PEN)) 
+            GUI.out("You will need a pen in order to write a note to yourself.");
+        else if (! Player.hasItem(NOTEPAD)) 
+            GUI.out("You will need some paper in order to write a note to yourself.");
+        else {
+            GUI.menOut("\nWrite a title "
+                     + "\nfor your note: ");
+            String title = GUI.promptOut();
+            
+            while (! isNonEmptyString(title)) {
+                GUI.menOut("\nI beg your "
+                         + "\npardon? Write "
+                         + "\na valid title:");
+                title = GUI.promptOut();
+            }
+            
+            GUI.menOut("Noted. Write down\n"
+                     + "your momento now...");
+            
+            String body = GUI.promptOut();
+            
+            GUI.out("Note has been written.");
+            
+            Player.inv.contents().add(new Note(
+                    "note - " + title + ':' + ' ', body)
+            );
+            
+            printInv();
+        }
+    }
+    // ========================================================================  
     // <editor-fold desc="COMBINE SUBROUTINES">
     /**
      * Prompts the player for a list of items, verifies it and moves to evalCombine().

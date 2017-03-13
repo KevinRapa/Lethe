@@ -14,7 +14,7 @@ public final class NameConstants {
         FOCUS = "focus",            INGREDIENT = "ingredient",
         SHOES = "shoes",            PLATE = "plate",
         CLOTHING = "clothing",      READABLE = "readable",
-        LIQUID = "liguid",          WEAPON = "weapon",
+        LIQUID = "liquid",          WEAPON = "weapon",
         ITEM = "item",
 
     // CONSTANTS FOR ITEM NAMES ===============================================
@@ -65,6 +65,10 @@ public final class NameConstants {
         GLOWING_CHALICE = "glowing chalice",    BOOK_PHYL = "glowing book, 'A Young Mind's Guide to Lichery'",
         ENCHANTED_BOTTLE = "enchanted bottle",  GLOWING_FRUIT = "glowing pristine fruit",
         STEEL_WIRE = "steel wire",              SCREWDRIVER = "screwdriver",
+        PEN = "pen",                            NOTEPAD = "notepad",
+            
+        // Used together in PlayerInventory.get and Player.hasItemResembling    
+        NO_LETTER_BEFORE = ".*(?<![a-z])(?i:",  NO_LETTER_AFTER = ")(?![a-z]).*",    
     // PLATFORM DEPENDENT PROERTIES ===========================================
         W_DIR = System.getProperty("user.dir"),     // Current working directory.
         SEP = System.getProperty("file.separator");    

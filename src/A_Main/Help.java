@@ -15,11 +15,11 @@ public class Help {
 /*----------------------------------------------------------------------------*/     
     private static final String[] HELP_KEYS = 
         {"prompt", "moving", "describing", "checking", "searching", "activating",
-         "using", "combining", "inspecting", "inventory", "key ring", "phylacteries",
+         "using", "combining", "inspecting", "notes", "inventory", "key ring", "phylacteries",
          "doors", "rooms", "furniture", "items", "keys", "phylacteries"};
 /*----------------------------------------------------------------------------*/    
     private static final String[] TOPIC_KEYS = 
-        {"1c","2c","3c","4c","5c","6c","7c","8c","9c",
+        {"1c","2c","3c","4c","5c","6c","7c","8c","9c","10c",
          "1p","2p","3p","1a","2a","3a","4a","5a","6a"};
 /*----------------------------------------------------------------------------*/     
     private static final String[] HELP_VALUES = {
@@ -120,6 +120,14 @@ public class Help {
         "information about items, and it may clue you into the next course " +
         "of action.", 
          
+        "As you progress, you may find yourself frequently dropping and " +
+        "storing items. You may also wish to make notes of interesting " +
+        "things you find and would like to remember for later. If you " +
+        "possess both pen and a notepad to write on, you may write " +
+        "momentos to yourself. Enter 'note', 'n', or 'write' at the main prompt " +
+        "to do this. Alternatively, you may do this from your inventory " +
+        "by entering in choice '5'.",
+        
         "Access your inventory by entering \"i\" from the main prompt. " +
         "Your inventory's contents will be listed. From here, you may " +
         "inspect, use, and combine items. You may also sort your " +

@@ -22,10 +22,10 @@ import javax.swing.text.JTextComponent;
  * @author Kevin Rapa
  ******************************************************************************/
 public class GUI extends JFXPanel {
-    
+
     // Click noises when player types.
     private enum Click {
-        NONE(0), SOFT(21), CLICK(22), VINTAGE(23);
+        NONE(-1), SOFT(0), CLICK(1), VINTAGE(2);
     
         public final int soundEffectId;
         //----------------------------------------
@@ -423,8 +423,8 @@ public class GUI extends JFXPanel {
         /*------------------------------------------------------*/
         @Override public void keyPressed(KeyEvent e) {
             // For playing the key sound
-            if (key != 0)
-                AudioPlayer.playEffect(key);
+            if (key != -1)
+                AudioPlayer.playKeySound(key);
             if (e.getKeyCode() == KeyEvent.VK_ENTER)
                 current = 0;
 
@@ -457,7 +457,9 @@ public class GUI extends JFXPanel {
                 if (UNDO.size() == 10)
                     UNDO.removeLast();
                 
-                if (HOLDER.request().length() > 1)
+                String input = HOLDER.request();
+                
+                if (input.length() > 1 && ! input.equals("save"))
                     UNDO.push(HOLDER.request());
                 
                 INPUT.setText("");
@@ -497,8 +499,8 @@ public class GUI extends JFXPanel {
                 KEYSOUND.offer(KEYSOUND.poll());
                 key = KEYSOUND.peek().soundEffectId;
                 
-                if (key != 0)
-                    AudioPlayer.playEffect(key);
+                if (key != -1)
+                    AudioPlayer.playKeySound(key);
             }
             giveFocus();
         }

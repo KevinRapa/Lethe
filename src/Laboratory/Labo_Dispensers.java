@@ -27,9 +27,9 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
                          + "of each one is a rotating stopcock.";
         this.actDialog = "You need a vial or test tube to dispense into!";
 
-        this.addNameKeys("(?:opaque )?dispensers?", "dispenser stopcock");
+        this.addNameKeys("(?:opaque )?dispensers?", "dispenser stopcock", "liquid|chemicals?(?: dispensers?)?");
         this.addUseKeys(EMPTY_VIAL, TEST_TUBE);
-        this.addActKeys("use", VALVEPATTERN, "dispense", "drain", "empty", "titrate");
+        this.addActKeys("use", VALVEPATTERN, GETPATTERN, "dispense|drain|empty|titrate");
     }
     // ========================================================================  
     @Override public String getSearchDialog() {

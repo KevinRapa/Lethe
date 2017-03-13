@@ -12,6 +12,7 @@ public final class Menus {
                      + "<'2'> Use item\n" + 
                        "<'3'> Combine items\n"
                      + "<'4'> Sort inventory\n"
+                     + "<'5'> Write a momento\n"
                      + " < >  Back",
             
             INV_INSPECT = "\n"
@@ -51,23 +52,25 @@ public final class Menus {
             
             MAIN_MENU = "      Type a command or:\n"
                       + "    <'w'/'s'/'a'/'d'> Move\n"
-                      + "<'e'> Search    <'c'>    Check\n"
-                      + "<'i'> Inventory <'k'>    Keys\n"
-                      + "<'h'> Get help  <'q'>    Quit\n"
-                      + "<'m'> Show Map  <'save'> Save",
+                      + "<'e'>  Search     <'c'>  Check\n"
+                      + "<'i'>  Inventory  <'k'>  Keys\n"
+                      + "<'h'>  Get help   <'n'>  Note\n"
+                      + "<'m'>  Show Map\n"
+                      + "<'save'> Save    <'quit'> Quit",
             
             HELP_MAIN = "\nWhat would you like help on?\n" +
                         "<'1'> Controls\n"
                       + "<'2'> Your player\n" +
                         "<'3'> The castle\n"
-                      + "< >   Back",
+                      + " < >   Back",
             
             HELP_SUB1 = "\n"
                       + "<'1'> The prompt <'2'> Moving\n"
                       + "<'3'> Describing <'4'> Examining\n"
                       + "<'5'> Searching  <'6'> Commands\n" 
                       + "<'7'> Using      <'8'> Combining\n"
-                      + "<'9'> Inspecting  < >  Back",
+                      + "<'9'> Inspecting <'10'> Notes\n"
+                      + " < >  Back",
             
             HELP_SUB2 = "\n"
                       + "<'1'> Your inventory\n"

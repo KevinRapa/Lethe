@@ -42,6 +42,10 @@ public class Labo_Flask extends SearchableFurniture {
     public void distill() {
         if (this.inv.size() != 0 && CONDENSER_REF.condense(determineProduct())) 
             ((Flsk_Inventory)this.inv).emptyAndAddResidue();
+        else if (this.inv.size() == 0)
+            GUI.out("You strike the burner, producing an aggressive flame. The\n"
+                  + "flame heats the empty flask for about a minute, yielding\n"
+                  + "no interesting results.");
     }
     // ======================================================================== 
     private int determineProduct() {
@@ -50,12 +54,12 @@ public class Labo_Flask extends SearchableFurniture {
                 containsItem("vinegar 5mL") && 
                 containsItem("ae 20mL") &&
                 containsItem("wine 15mL") && 
-                containsItem("H2CO3 35mL")) {
+                containsItem("H2CO3 35mL")) 
+        {
             return 1;
         }
-        else {
+        else
             return 0;
-        }
     }
     // ======================================================================== 
     @Override public String getDescription() {

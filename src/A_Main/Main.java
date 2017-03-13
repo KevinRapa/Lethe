@@ -131,6 +131,7 @@ public class Main {
             new File(W_DIR, FILE_NAME).delete();
         
         AudioPlayer.stopTrack();
+        AudioPlayer.disposeKeyPlayers();
         GAME_FRAME.dispose();
         Map.disposeMap();
         System.exit(0);
