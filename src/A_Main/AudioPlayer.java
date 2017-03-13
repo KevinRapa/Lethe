@@ -2,8 +2,6 @@ package A_Main;
 /**
  * Maps every room to an audio file that will play whenever that room is moved
  * into, and maps various events to sound effects.
- * Tried using mp3 instead, however the mp3s did not loop well.
- * Trying .ogg currently, but there is little support for it.
  * 
  * @author Kevin Rapa
  */
@@ -29,12 +27,12 @@ public class AudioPlayer {
     private static MediaPlayer currentPlayer;
     
     /* 
-    Because the faux keyboard key sounds will be played so frequently, it
-    should be more efficient to hold players spefically for the key sounds.
-    Each sounds gets three media players which rotate playing every time a
-    key is pressed in order to handle the typing speed. The players
-    alternating by an index which alternates between 0, 1, and 2 using a
-    bitmask and XOR operations.
+        Because the faux keyboard key sounds will be played so frequently, it
+        should be more efficient to hold players specifically for the key sounds.
+        Each sounds gets three media players which rotate playing every time a
+        key is pressed in order to handle the typing speed. The players
+        alternating by an index which alternates between 0, 1, and 2 using a
+        bitmask and XOR operations.
     */ 
     private static final MediaPlayer[][] KEY_PLAYERS = 
             {new MediaPlayer[3], new MediaPlayer[3], new MediaPlayer[3]};
@@ -95,32 +93,35 @@ public class AudioPlayer {
             new HashMap<String, Media>() {
         // ====================================================================
         {
-        putAllTracks(nightAmbience, COU1, COU2, COU3, COU4, COU5, COU6, COU7, COU8);
-        putAllTracks(spookyInterior, FOY1, FOY2, FOY3, FOY4, VEST);
-        putAllTracks(wavesCrashing, FOYB, LOOK, FOYC);
-        putAllTracks(ironHallCustom, IHA1, IHA2);
-        putAllTracks(westWingCustom, WOW1, WOW2, WOW3, SHA1, SHA2, SQUA, 
-                                     EOW1, EOW2, EOW4, SHAR, CLOS);
-        putAllTracks(galChoir, GAL2, GAL4, GAL5);
-        putAllTracks(creepyOrgan, CHS1, CHS3, CHA1, CHA2);
-        putAllTracks(parlorCustom, PAR1, PAR2, JHA1, JHA2);
-        putAllTracks(marbleHall, MHA1, MHA2, MHA3);
-        putAllTracks(loungeCustom, DIN1, DIN2, DRAR);
-        putAllTracks(libraryCustom, LIB1, LIB2, LIB3, LIB4, LIB5);
-        putAllTracks(backHallCustom, BHA1, BHA2, BHA3);
-        putAllTracks(gardenCustom, GAR1, GAR2, GAR3, GAR4);
-        putAllTracks(atticCustom, SST1, SST2, ATT1, ATT2);
-        putAllTracks(obsCustom, OBS1, OBS2, OBS3);
-        putAllTracks(caves, "CT", "CV", Id.MY18);
-        putAllTracks(deepCave, MS65, MS66);
-        putAllTracks(tombs, TM16, TM66, TM32, AN65, AN55, VAUE);
-        putAllTracks(sewerTunnels, SEW0, SEW1, SEW2, SEW3, SEW4, SEW5);
-        putAllTracks(cistern, CIS1, CIS2, CIS3, CIS4);
-        putAllTracks(aeolianHarp, OUB1, OU62, AARC);
-        putAllTracks(prisonCustom, PRIS, TORC);
-        putAllTracks(sewerCogwork, INTR, ESC1, ESC2, ESC3, ESC4, ESC5, ESC6, DKCH);
-        putAllTracks(torcCustom, TORC, CRY1, CRY2, CAS1, CS35);
-        putAllTracks(titleTrack, BLS1, BLS2, TOW1, TOW2, LQU1, LQU2, SOUL, ENDG);
+        putAllTracks(nightAmbience,     COU1, COU2, COU3, COU4, COU5, COU6, 
+                                        COU7, COU8);
+        putAllTracks(spookyInterior,    FOY1, FOY2, FOY3, FOY4, VEST);
+        putAllTracks(wavesCrashing,     FOYB, LOOK, FOYC);
+        putAllTracks(ironHallCustom,    IHA1, IHA2);
+        putAllTracks(westWingCustom,    WOW1, WOW2, WOW3, SHA1, SHA2, SQUA, 
+                                        EOW1, EOW2, EOW4, SHAR, CLOS);
+        putAllTracks(galChoir,          GAL2, GAL4, GAL5);
+        putAllTracks(creepyOrgan,       CHS1, CHS3, CHA1, CHA2);
+        putAllTracks(parlorCustom,      PAR1, PAR2, JHA1, JHA2);
+        putAllTracks(marbleHall,        MHA1, MHA2, MHA3);
+        putAllTracks(loungeCustom,      DIN1, DIN2, DRAR);
+        putAllTracks(libraryCustom,     LIB1, LIB2, LIB3, LIB4, LIB5);
+        putAllTracks(backHallCustom,    BHA1, BHA2, BHA3);
+        putAllTracks(gardenCustom,      GAR1, GAR2, GAR3, GAR4);
+        putAllTracks(atticCustom,       SST1, SST2, ATT1, ATT2);
+        putAllTracks(obsCustom,         OBS1, OBS2, OBS3);
+        putAllTracks(caves,             "CT", "CV", Id.MY18);
+        putAllTracks(deepCave,          MS65, MS66);
+        putAllTracks(tombs,             TM16, TM66, TM32, AN65, AN55, VAUE);
+        putAllTracks(sewerTunnels,      SEW0, SEW1, SEW2, SEW3, SEW4, SEW5);
+        putAllTracks(cistern,           CIS1, CIS2, CIS3, CIS4);
+        putAllTracks(aeolianHarp,       OUB1, OU62, AARC);
+        putAllTracks(prisonCustom,      PRIS, TORC);
+        putAllTracks(sewerCogwork,      INTR, ESC1, ESC2, ESC3, ESC4, ESC5, 
+                                        ESC6, DKCH);
+        putAllTracks(torcCustom,        TORC, CRY1, CRY2, CAS1, CS35);
+        putAllTracks(titleTrack,        BLS1, BLS2, TOW1, TOW2, LQU1, LQU2, 
+                                        SOUL, ENDG);
         putAllTracks(antechamberCustom, FOYW, VAUE, VAU1, VAU2); 
         
         put(GAL1, new Media(gal1wCustom.toURI().toString()));         
@@ -213,7 +214,7 @@ public class AudioPlayer {
     };
     
     static {
-        // Sets up media players for the faux keyboard sounds.
+        // Sets up media players for the faux keyboard sounds. Each sound gets three
         KEY_PLAYERS[0][0] = new MediaPlayer(MEDIA[21]); 
         KEY_PLAYERS[0][1] = new MediaPlayer(MEDIA[21]);
         KEY_PLAYERS[0][2] = new MediaPlayer(MEDIA[21]);
@@ -224,6 +225,7 @@ public class AudioPlayer {
         KEY_PLAYERS[2][1] = new MediaPlayer(MEDIA[23]);
         KEY_PLAYERS[2][2] = new MediaPlayer(MEDIA[23]);
         
+        // Sets them each to stop once their track ends.
         for (MediaPlayer[] playerList : KEY_PLAYERS)
             for (MediaPlayer mPlayer : playerList)
                 mPlayer.setOnEndOfMedia(() -> mPlayer.stop());
