@@ -30,9 +30,9 @@ public class AudioPlayer {
         Because the faux keyboard key sounds will be played so frequently, it
         should be more efficient to hold players specifically for the key sounds.
         Each sounds gets three media players which rotate playing every time a
-        key is pressed in order to handle the typing speed. The players
-        alternating by an index which alternates between 0, 1, and 2 using a
-        bitmask and XOR operations.
+        key is pressed in order to handle the typing speed. The media players
+        are indexed by a byte which alternates between 0, 1, and 2 using a
+        bitmask and XOR operation.
     */ 
     private static final MediaPlayer[][] KEY_PLAYERS = 
             {new MediaPlayer[3], new MediaPlayer[3], new MediaPlayer[3]};
