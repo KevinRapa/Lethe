@@ -130,12 +130,20 @@ public final class Player {
                 anyMatch(i -> i.toString().equalsIgnoreCase(item));
     }
     /*------------------------------------------------------------------------*/
+    /**
+     * Checks if the player has an item who's name contains the given word.
+     * @param item A word the player types in to refer to an item in his or
+     * her inventory.
+     * @return if the player has an item who's name resembles item.
+     */
     public static boolean hasItemResembling(String item) {
         if (Patterns.DIGIT.matcher(item).matches()) {
+            // Player used a slot number and not a name
             int i = Integer.parseInt(item);
             return (i <= Player.inv.size());
         }
         else
+            // Player typed in an item name
             return Player.inv.contents().stream().
                 anyMatch(i -> i.toString().matches(NO_LETTER_BEFORE + item + NO_LETTER_AFTER));
     }
@@ -243,7 +251,8 @@ public final class Player {
         
         while (true) {
             while (TextParser.moreCommands()) 
-                TextParser.performNextCommand(); // Player may chain commands.
+                // Ensures all chained-together commands are executed.
+                TextParser.performNextCommand();
             
             GUI.toMainMenu();
             ans = GUI.promptOut();
@@ -305,13 +314,16 @@ public final class Player {
         Room dest = mapRef[pos[0] + dir.Z][pos[1] + dir.Y][pos[2] + dir.X];
         
         if (! getPos().isAdjacent(dest.getID()))
-            GUI.out(getPos().getBarrier(dir)); // There's a wall in the way.
+            // There's a non-door barrier in the way
+            GUI.out(getPos().getBarrier(dir));
               
         else if (dest.isThisLocked() && ! hasKey(dest.getID())) {
-            AudioPlayer.playEffect(4); // Plays doorknob jiggle sound.
+            // Destination is locked and player doesn't have a key.
+            AudioPlayer.playEffect(4);
             GUI.out("The door here is locked."); 
         }
-        else { // Moves the player, determines the noise to play.
+        else { 
+            // Moves the player, determines the noise to play.
             GUI.clearDialog();
             lastVisited = getPosId();
             Player.pos = dest.getCoords();
@@ -328,13 +340,15 @@ public final class Player {
                      ! Id.areaName(destId).matches(Id.areaName(lastVisited))) 
             {
                 if (Player.pos[0] == 4 || CS35_CT34_P.matcher(destId).matches())
-                    AudioPlayer.playEffect(24); // Plays metal open door sound. 
+                    // Checks if player is in dungeon area- metal door sound.
+                    AudioPlayer.playEffect(24);  
                 else
-                    AudioPlayer.playEffect(9); // Plays wooden open door sound. 
+                    AudioPlayer.playEffect(9); // Wooden door sound. 
             }
 
-            else if (Player.pos[0] >= 5  && // If you're in catacombs or caves.
+            else if (Player.pos[0] >= 5  &&
                     ! destId.substring(0,2).matches(lastVisited.substring(0,2)))
+                // Plays wooden door sound in catacombs.
                 AudioPlayer.playEffect(9); 
             
             else
