@@ -4,7 +4,8 @@ import A_Super.Furniture;
 import java.util.Random;
 import A_Main.GUI;
 import A_Main.Menus;
-import static A_Main.Patterns.YES_P;
+import static A_Main.Patterns.YES_NO_P;
+import A_Main.Player;
 /**
  * Prints a weird dialog when worn.
  * Superficial, not important to game progression.
@@ -39,9 +40,9 @@ public class Gal6_Helmet extends Furniture {
         
         GUI.out("Are you really sure you want to wear the helmet?");
  
-        choice = GUI.askChoice(Menus.GAL6_HELM, YES_NO);
+        choice = GUI.askChoice(Menus.GAL6_HELM, YES_NO_P);
 
-        if (YES_P.matcher(choice).matches()) {
+        if (Player.answeredYes(choice)) {
             Random generator = new Random();
             for (int i = 0; i < 18000; i++) {
                 r = Integer.toString(generator.nextInt(2));

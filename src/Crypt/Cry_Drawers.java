@@ -6,6 +6,7 @@ import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
+import static A_Main.Patterns.ONE_TO_HUNDRED_P;
 /**
  * The player can search any of the cabinets, but none of them have anything
  * necessary in them.
@@ -39,7 +40,7 @@ public class Cry_Drawers extends Furniture implements Openable {
     // ========================================================================   
     @Override public String getSearchDialog() {
         GUI.out("The drawers are labeled from 1 to 100. Search which drawer?");
-        String ans = GUI.askChoice(Menus.CRY_DRWRS, "[1-9][0-9]?|100|");
+        String ans = GUI.askChoice(Menus.CRY_DRWRS, ONE_TO_HUNDRED_P);
 
         if (Player.isNonEmptyString(ans)) {
             GUI.out(this.searchDialog);

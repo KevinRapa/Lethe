@@ -2,6 +2,7 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import static A_Main.NameConstants.WEAPON;
+import static A_Main.Patterns.DESTROY_P;
 import A_Main.Player;
 
 public class Door extends Furniture {
@@ -18,8 +19,8 @@ public class Door extends Furniture {
         this.actDialog = null;
 
         this.addUseKeys(ANYTHING);
-        this.addActKeys("open|use|walk|go|close", "kick|bash|break", "knock|bang", "unlock|lock");
-        this.addNameKeys(dir + " door", "(?:heavy )?(?:wooden )?door", "lock");
+        this.addActKeys("open|use|walk|go|close", "kick|bash|break|obliterate|destroy", "knock|bang", "unlock|lock", "pick");
+        this.addNameKeys(dir + " door", "(?:heavy )?(?:wooden )?door", "(?:door )?lock");
         
         if (dir == Direction.EAST)
             this.addNameKeys("right door");
@@ -30,7 +31,9 @@ public class Door extends Furniture {
     @Override public String interact(String key) {
         if (key.equals("close"))
             return "The door is already closed.";
-        else if (key.equals("kick") || key.equals("break") || key.equals("bash")) {
+        else if (DESTROY_P.matcher(key).matches() 
+                || key.equals("kick") || key.equals("bash")) 
+        {
             AudioPlayer.playEffect(40);
             return "You thrust your boot into the door, but the door is too\n" +
                    "well-built to give.";
@@ -41,6 +44,9 @@ public class Door extends Furniture {
         }
         else if (key.equals("lock") || key.equals("unlock")) {
             return "That isn't how this game works. Read the directions!";
+        }
+        else if (key.equals("pick")) {
+            return "Lock picking is a skill you have always yearned for.";
         }
         else {
             Player.move(DIR);

@@ -1,6 +1,7 @@
 package Foyer;
 
 import A_Main.AudioPlayer;
+import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Direction;
@@ -17,8 +18,7 @@ public class Foy1 extends Room{
     public Foy1(String name, String ID) {
         super(name, ID);   
         this.description = "The huge dim foyer is sparsely furnished and\n"
-             + "clean. The wind whistles through the chamber past a back gate.\n"
-             + "Despite the openness, you feel claustrophobic. A\n"
+             + "clean. Despite the openness, you feel claustrophobic. A\n"
              + "red carpet is neatly layed out in the center. To\n"
              + "your west, % \n"
              + "To your east, a heavy wooden door leads somewhere else.\n"
@@ -36,6 +36,16 @@ public class Foy1 extends Room{
                 "an opened gate leads into another room." :
                 "a closed gate blocks your way into another room.";                                               
     }    
+/*----------------------------------------------------------------------------*/
+    @Override public String triggeredEvent() {
+        if (! Player.hasVisited(ID))
+            GUI.out("As you enter the spacious foyer, you recieve only the\n"
+                  + "greeting of a faint musty odor lingering in the air.\n"
+                  + "You carefully listen for any signs of inhabitants, but\n"
+                  + "only hear the wind whistling.");
+                    
+        return STD_RM_OUT;
+    }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
         switch (dir) {

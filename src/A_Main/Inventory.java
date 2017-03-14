@@ -17,8 +17,7 @@ public class Inventory implements Iterable<Item>, Serializable {
     protected final ArrayList<Item> CONTENTS; // This inventory's contents.
     // CONSTRUCTOR ============================================================   
     public Inventory(Item ... items) {
-        this.CONTENTS = new ArrayList<>();
-        this.CONTENTS.addAll(Arrays.asList(items));
+        this.CONTENTS = new ArrayList<>(Arrays.asList(items));
     }
     // ========================================================================
     public Item get(int index) {
@@ -69,9 +68,8 @@ public class Inventory implements Iterable<Item>, Serializable {
      * @param giveToThis The inventory to add the item to.
      */
     public void give(Item item, Inventory giveToThis) {
-        // Exchanges an item between two inventories.
         if (giveToThis.add(item)) {
-            this.remove(item);
+            this.CONTENTS.remove(item);
         }
     }
     // ========================================================================
@@ -88,8 +86,11 @@ public class Inventory implements Iterable<Item>, Serializable {
             
             for (Item i : this.CONTENTS) {
                 String name = i.toString();
-                String capitalized = name.substring(0,1).toUpperCase()
-                                            .concat(name.substring(1));
+                String capitalized = name
+                        .substring(0,1)
+                        .toUpperCase()
+                        .concat(name.substring(1));
+                
                 builder.append('<')
                        .append(slot++)
                        .append('>')

@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import A_Main.GUI;
 import A_Main.Menus;
+import static A_Main.Patterns.OBS_STATS_ONE_TO_EIGHT;
 import A_Main.Player;
 import java.util.Scanner;
 /** 
@@ -64,9 +65,9 @@ public class Obs1_Statues extends Furniture {
         
         do {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + rep);    
-            choice = GUI.askChoice("<#> Look...\n< > Back", "[0-8]|");
+            choice = GUI.askChoice(Menus.OBS_STATS, OBS_STATS_ONE_TO_EIGHT);
             
-            if (choice.matches("[0-8]"))
+            if (Player.isNonEmptyString(choice))
                 rep = getStatRef(choice).getDescription();
             
         } while (Player.isNonEmptyString(choice));

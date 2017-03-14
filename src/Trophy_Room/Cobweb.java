@@ -15,7 +15,7 @@ public class Cobweb extends Furniture implements Gettable {
     public Cobweb () {
         super();
 
-        this.COBWEB = new Item("ball of cobweb", "It's now just a white sticky ball.", "What good would a balled-up cobweb serve?");
+        this.COBWEB = new Item("cobweb ball", "It's now just a white sticky ball.", "What good would a balled-up cobweb serve?");
         
         this.description = "It's a sticky mess of cobwebs, thankfully without the spiders.";
         this.actDialog = "You grab some of the sticky matter.";

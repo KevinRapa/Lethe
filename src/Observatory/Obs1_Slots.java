@@ -9,6 +9,7 @@ import A_Main.Menus;
 import static A_Main.NameConstants.PLATE;
 import A_Main.Player;
 import A_Super.Item;
+import static A_Main.Patterns.OBS_SLOTS_A_TO_I;
 /**
  * Before being able to move the statues in the observatory, the player
  * must find 8 brass plates and fit them in their correct spots.
@@ -66,9 +67,9 @@ public class Obs1_Slots extends Furniture {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
                     "\t\t\t\t\t\tLook at which slot? "); 
 
-            choice = GUI.askChoice(Menus.OBS_SLOT_EX, "[a-i]|");
+            choice = GUI.askChoice(Menus.OBS_SLOT_EX, OBS_SLOTS_A_TO_I);
            
-            if (choice.matches("[a-i]"))
+            if (Player.isNonEmptyString(choice))
                 GUI.descOut(SLOTS.get(MAP.get(choice.charAt(0))).getDescription());
 
         } while (Player.isNonEmptyString(choice));
@@ -85,9 +86,9 @@ public class Obs1_Slots extends Furniture {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
                     "\t\t\t\t\t\tSearch which slot? "); 
 
-            choice = GUI.askChoice(Menus.OBS_SLOT_SE, "[a-i]|");
+            choice = GUI.askChoice(Menus.OBS_SLOT_SE, OBS_SLOTS_A_TO_I);
            
-            if (choice.matches("[a-i]")) {
+            if (Player.isNonEmptyString(choice)) {
                 Furniture slot = SLOTS.get(MAP.get(choice.charAt(0)));
                 Player.search(slot);
                 

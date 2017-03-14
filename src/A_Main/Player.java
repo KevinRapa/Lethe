@@ -29,39 +29,71 @@ public final class Player {
     private static PlayerInventory inv;
     private static ArrayList<String> visited;
     private static String lastVisited, shoes;
-    private static final HashMap<String, Runnable> CMDS = new HashMap<>(); 
-    private static final HashSet<String> CMDSET = new HashSet<>(); 
-    private static final String NOT_VALID_SLOT = "Enter a valid slot number.";
     
+    private static final HashMap<String, Runnable> 
+            MAIN_CMDS = new HashMap<>(),
+            INV_CMDS = new HashMap<>();
+    
+    private static final HashSet<String> 
+            MAIN_CMD_SET = new HashSet<>(),
+            INV_CMD_SET = new HashSet<>(); 
+    
+    private static final String 
+            NOT_VALID_SLOT = "You don't seem to have an item there.";
+    
+    /*
+        Maps various commands in the game to their actions and adds the keys to
+        a set to check when the player enters something.
+    */
     static {
-        CMDS.put("h", () -> Help.helpSub());
-        CMDS.put("e", () -> searchSub());
-        CMDS.put("c", () -> examineSub());
-        CMDS.put("k", () -> viewKeyRing());
-        CMDS.put("i", () -> inventoryPrompt());
-        CMDS.put("w", () -> move(Direction.NORTH));
-        CMDS.put("s", () -> move(Direction.SOUTH));
-        CMDS.put("a", () -> move(Direction.WEST));
-        CMDS.put("d", () -> move(Direction.EAST));
-        CMDS.put("m", () -> Map.displayMap());
-        CMDS.put("n", () -> writeNote());
+        MAIN_CMDS.put("h", () -> Help.helpSub());
+        MAIN_CMDS.put("e", () -> searchSub());
+        MAIN_CMDS.put("c", () -> examineSub());
+        MAIN_CMDS.put("k", () -> viewKeyRing());
+        MAIN_CMDS.put("i", () -> inventoryPrompt());
+        MAIN_CMDS.put("w", () -> move(Direction.NORTH));
+        MAIN_CMDS.put("s", () -> move(Direction.SOUTH));
+        MAIN_CMDS.put("a", () -> move(Direction.WEST));
+        MAIN_CMDS.put("d", () -> move(Direction.EAST));
+        MAIN_CMDS.put("m", () -> Map.displayMap());
+        MAIN_CMDS.put("n", () -> writeNote());
         
-        CMDS.put("inspect",   () -> examineSub());
-        CMDS.put("examine",   () -> examineSub());
-        CMDS.put("keys",      () -> viewKeyRing());
-        CMDS.put("keyring",   () -> viewKeyRing());
-        CMDS.put("inventory", () -> inventoryPrompt());
-        CMDS.put("search",    () -> searchSub());
-        CMDS.put("help",      () -> Help.helpSub());
-        CMDS.put("save",      () ->  { Main.saveGame(); GUI.out("Game saved"); });
-        CMDS.put("combine",   () -> combineSub());
-        CMDS.put("jump",      () -> GUI.out("You jump a short height into the air. Well, that was fun."));
-        CMDS.put("sort",      () -> getInv().sortInventory());
-        CMDS.put("map",       () -> Map.displayMap());
-        CMDS.put("note",      () -> writeNote());
-        CMDS.put("write",     () -> writeNote());
+        MAIN_CMDS.put("inspect",   () -> examineSub());
+        MAIN_CMDS.put("examine",   () -> examineSub());
+        MAIN_CMDS.put("keys",      () -> viewKeyRing());
+        MAIN_CMDS.put("keyring",   () -> viewKeyRing());
+        MAIN_CMDS.put("inventory", () -> inventoryPrompt());
+        MAIN_CMDS.put("search",    () -> searchSub());
+        MAIN_CMDS.put("help",      () -> Help.helpSub());
+        MAIN_CMDS.put("scream",    () -> GUI.out("AHHHHHGGGHHH!!!!!"));
+        MAIN_CMDS.put("yell",      () -> GUI.out("AHHHHHGGGHHH!!!!!"));
+        MAIN_CMDS.put("smell",     () -> GUI.out("Smells like a brisk autumn night in 1932."));
+        MAIN_CMDS.put("win",       () -> GUI.out("Oh wait, that's it! You win! Congratulations. You may go home now."));
+        MAIN_CMDS.put("combine",   () -> combineSub());
+        MAIN_CMDS.put("jump",      () -> GUI.out("You jump a short height into the air. Well, that was fun."));
+        MAIN_CMDS.put("sort",      () -> getInv().sortInventory());
+        MAIN_CMDS.put("map",       () -> Map.displayMap());
+        MAIN_CMDS.put("note",      () -> writeNote());
+        MAIN_CMDS.put("write",     () -> writeNote());
         
-        CMDSET.addAll(CMDS.keySet());
+        MAIN_CMDS.put("xyzzy",     () -> {
+            GUI.out("That word... What have you done to my game?!"); 
+            GUI.randomizeColors();
+        });
+        MAIN_CMDS.put("save",      () ->  { 
+            Main.saveGame(); 
+            GUI.out("Game saved"); 
+        });
+        
+        MAIN_CMD_SET.addAll(MAIN_CMDS.keySet());
+        
+        INV_CMDS.put("1", () -> inspectPrompt());
+        INV_CMDS.put("2", () -> usePrompt());
+        INV_CMDS.put("3", () -> combineSub());
+        INV_CMDS.put("4", () -> getInv().sortInventory());
+        INV_CMDS.put("5", () -> writeNote());
+        
+        INV_CMD_SET.addAll(INV_CMDS.keySet());
     }
     
 //******************************************************************************
@@ -116,7 +148,7 @@ public final class Player {
         return Player.shoes;
     }
     /*------------------------------------------------------------------------*/
-    public static int floor() {
+    public static int getCurrentFloor() {
         return pos[0];
     }
     /*------------------------------------------------------------------------*/
@@ -137,19 +169,25 @@ public final class Player {
      * @return if the player has an item who's name resembles item.
      */
     public static boolean hasItemResembling(String item) {
-        if (Patterns.DIGIT.matcher(item).matches()) {
+        if (Patterns.SINGLE_DIGIT_P.matcher(item).matches()) {
             // Player used a slot number and not a name
             int i = Integer.parseInt(item);
             return (i <= Player.inv.size());
         }
         else
             // Player typed in an item name
-            return Player.inv.contents().stream().
-                anyMatch(i -> i.toString().matches(NO_LETTER_BEFORE + item + NO_LETTER_AFTER));
+            return Player.inv.contents()
+                    .stream()
+                    .anyMatch(i -> i.toString()
+                    .matches(NO_LETTER_BEFORE + item + NO_LETTER_AFTER));
     }
     // </editor-fold>
     
     // <editor-fold desc="Setters">
+    /**
+     * 'Teleports' the player to another room.
+     * @param dest destination area.
+     */
     public static void setOccupies(String dest) {
         Player.lastVisited = getPosId();
         Player.pos = Player.getRoomObj(dest).getCoords();
@@ -168,6 +206,11 @@ public final class Player {
     // </editor-fold>
     
     // <editor-fold desc="Save Player Attributes">
+    /**
+     * Writes fields to a .data file to be read next time a game starts.
+     * @param stream ObjectOutputStream to write the file.
+     * @throws IOException 
+     */
     public static void savePlayerAttributes(ObjectOutputStream stream) 
             throws IOException 
     {
@@ -182,6 +225,11 @@ public final class Player {
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="START GAME"> 
 //******************************************************************************
+    /**
+     * Sets this class's fields to the saved player attributes.
+     * @param attr PlayerAttributes object
+     * @throws ClassCastException 
+     */
     public static void loadAttributes(Object attr) throws ClassCastException {
         PlayerAttributes attributes = (PlayerAttributes)attr;
         
@@ -213,6 +261,7 @@ public final class Player {
     // ========================================================================  
     /**
      * This dialog prints at the start of a new game.
+     * @return at end of game, if the player wishes to erase save data.
      */
     public static boolean startDialog() {
         AudioPlayer.playTrack(Id.ENDG);
@@ -238,6 +287,7 @@ public final class Player {
     // ========================================================================   
     /**
      * The main prompt for controlling the player's moves.
+     * @return at end of game, if the player wishes to erase save data.
      */
     public static boolean mainPrompt() {
         AudioPlayer.playTrack(getPosId());
@@ -257,13 +307,15 @@ public final class Player {
             GUI.toMainMenu();
             ans = GUI.promptOut();
 
-            if (CMDSET.contains(ans)) 
-                CMDS.get(ans).run();
+            if (MAIN_CMD_SET.contains(ans)) 
+                // Simple command
+                MAIN_CMDS.get(ans).run();
 
             else if(ans.equals("quit") || ans.equals("q"))
                 break;
             
-            else if (isNonEmptyString(ans)) // Interacting
+            else if (isNonEmptyString(ans))
+                // Processes more complicated sentences.
                 TextParser.processText(ans);
         }
         
@@ -271,7 +323,7 @@ public final class Player {
     }  
     // ========================================================================   
     private static boolean endGame() {
-        String ans = GUI.askChoice(Menus.SAVE_QUIT, "[sqr]");
+        String ans = GUI.askChoice(Menus.SAVE_QUIT, SAVE_QUIT_RESET_P);
         
         if (ans.equals("s")) {
             Main.saveGame();
@@ -283,6 +335,10 @@ public final class Player {
     // ======================================================================== 
     public static boolean isNonEmptyString(String playerInput) {
         return (! playerInput.equals(""));
+    }
+    // ======================================================================== 
+    public static boolean answeredYes(String playerChoice) {
+        return playerChoice.equals("yes") || playerChoice.equals("y");
     }
 //******************************************************************************        
 // </editor-fold> 
@@ -317,7 +373,7 @@ public final class Player {
             // There's a non-door barrier in the way
             GUI.out(getPos().getBarrier(dir));
               
-        else if (dest.isThisLocked() && ! hasKey(dest.getID())) {
+        else if (dest.isLocked() && ! hasKey(dest.getID())) {
             // Destination is locked and player doesn't have a key.
             AudioPlayer.playEffect(4);
             GUI.out("The door here is locked."); 
@@ -333,7 +389,7 @@ public final class Player {
             if (dir == Direction.UP || dir == Direction.DOWN)
                 ; // Do nothing. Let the stairs play the noise.
             
-            else if (dest.isThisLocked() && ! visited.contains(destId))
+            else if (dest.isLocked() && ! visited.contains(destId))
                 AudioPlayer.playEffect(13); // Plays unlock sound.
             
             else if (Player.pos[0] < 5  && // If you're not in catacombs or caves.
@@ -362,6 +418,9 @@ public final class Player {
         }
     }
     // ========================================================================  
+    /**
+     * Plays a room's music and displays its description.
+     */
     public static void describeRoom() {
         AudioPlayer.playTrack(getPosId());
         GUI.descOut(getPos().getDescription());
@@ -395,7 +454,7 @@ public final class Player {
      */
     public static boolean hasKey(String keyID) {
         for (Item key : Player.keys) {              
-            if (key.getType().matches(keyID))
+            if (key.getType().equals(keyID))
                 return true;
         }
         return false;
@@ -456,13 +515,16 @@ public final class Player {
             cmdItm = GUI.promptOut();
             
             if (cmdItm.equals("loot") || cmdItm.equals("l")) {
+                // Takes as many items as possible from the furniture.
                 ArrayList<Item> l = new ArrayList<>();
                 
                 for (Item i : furniture.getInv()) {
+                    // Finds everything in the inventory the player doesn't have.
                     if (! Player.inv.contains(i))
                         l.add(i);
                 }
                 for (Item i : l) {
+                    // Adds them all to the player's inventory.
                     evalTake(furniture, i);
                 }
                 GUI.out("You stuff as much as you can into your pockets.");
@@ -471,9 +533,11 @@ public final class Player {
                 try (Scanner collectToken = 
                         new Scanner(cmdItm).useDelimiter("\\s+")) 
                 {
+                    // Gets an item slot.
                     String action = collectToken.next();            
                     int slot = Integer.parseInt(collectToken.next());
 
+                    // Evaluates the store or take action given the slot.
                     if (STORE_P.matcher(action).matches()) {
                         Item item = Player.inv.get(slot - 1);
                         evalStore(furniture, item);                            
@@ -486,13 +550,13 @@ public final class Player {
                     printInv();
                 }
                 catch (java.lang.IndexOutOfBoundsException e) {
-                    GUI.out("There's no item in that slot.");
+                    GUI.out(NOT_VALID_SLOT);
                 }
                 catch (java.util.NoSuchElementException 
                         | java.lang.NumberFormatException e) 
                 {
                     if (isNonEmptyString(cmdItm))
-                        GUI.out("Type an action and the slot number."); 
+                        GUI.out("You will need to type an action and the slot number."); 
                 }
             }
         } while (isNonEmptyString(cmdItm));
@@ -575,24 +639,59 @@ public final class Player {
                 GUI.out(target.getDescription()); 
             }
             else if (SEARCH_P.matcher(action).matches() || 
-                    (action.equals("open") && target instanceof Openable)) 
-            {              
+                    (action.equals("open") && target instanceof Openable)) {              
                 // Player typed something implying a search on furniture
                 search(target);
             }
             else if (MOVE_P.matcher(action).matches() 
-                    && target instanceof Moveable) 
-            {
+                    && target instanceof Moveable) {
                 // Player typed something resembling "move <furniture>"
                 GUI.out(((Moveable)target).moveIt());
+            }
+            else if (TAKE_P.matcher(action).matches()) {
+                // Player typed something resembling "get <furniture>"
+                // Furniture isn't gettable.
+                GUI.out("A futile but worthy attempt.");
+            }
+            else if (DESTROY_P.matcher(action).matches()) {
+                // Player typed something resembling "get <furniture>"
+                // Furniture isn't gettable.
+                GUI.out("Yes, you're frustrated and hungry, but abstain from the wrathful thoughts.");
             }
             else
                 GUI.out("That seems unnecessary.");
         }   
         
+        // <editor-fold defaultstate="collapsed" desc="REFLEXIVE COMMANDS">
+        else if (object.equals("self") || object.equals("yourself")) {
+            if (CHECK_P.matcher(action).matches()) 
+                GUI.out("Yes, all your parts are still there, thank goodness."); 
+            else if (SEARCH_P.matcher(action).matches()) {              
+                GUI.out("Ummm... is this what you meant??");
+                inventoryPrompt();
+            }
+            else if (MOVE_P.matcher(action).matches()) {
+                Direction[] dirList = 
+                {Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.NORTH};
+                Direction dir = dirList[Math.abs((int)System.currentTimeMillis()) % 4];
+                move(dir);
+                GUI.out("Alrighty, how does " + dir + " sound?");
+            }
+            else if (TAKE_P.matcher(action).matches()) 
+                GUI.out("Indeed, how romantic!");
+            else if (DESTROY_P.matcher(action).matches()) {
+                GUI.out("Ok, you asked for it.");
+                GUI.menOut("Press enter...");
+                Main.exitGame();
+            }
+            else
+                GUI.out("Your binary isn't designed to do that.");
+        }
+        // </editor-fold>
+        
         else if (GEN_FURNITURE_P.matcher(object).matches())
             // Player used a very vague term to interact with.
-            GUI.out("Be more specific.");
+            GUI.out("Don't be lazy. Enter in something specific.");
         
         else // Something invalid was entered in!
             GUI.out("There is no " + object + 
@@ -600,6 +699,10 @@ public final class Player {
                   + "attempting to pick up items without searching something first?"); 
     }
     // ========================================================================  
+    /**
+     * Moves the player according to an input string.
+     * @param dir String resembling a direction the player wants to move in.
+     */
     private static void parseMovement(String dir) {
         if (NORTH_P.matcher(dir).find())
             Player.move(Direction.NORTH);
@@ -621,6 +724,10 @@ public final class Player {
         }
     }
     // ========================================================================  
+    /**
+     * Finds furniture in the room that will move the player up or down.
+     * @param dir Up or down direction.
+     */
     private static void findStaircase(Direction dir) {
         Iterator<Furniture> iter = Player.getPos().getFurnishings().iterator();
         
@@ -633,17 +740,23 @@ public final class Player {
             }
             if (current instanceof A_Super.Staircase 
                 && ((A_Super.Staircase)current).getDir() == dir) {
+                // Single stairs that have to proper direction.
                 GUI.out(current.interact("climb"));
                 return;
             }
             if (current instanceof Climbable) {
+                // Non-stair things that the player may climb
                 GUI.out(current.interact("climb"));
                 return;
             }
         }
+        
         GUI.out("There's nothing here to take you that way.");
     }
-    // ========================================================================  
+    // ========================================================================
+    /**
+     * Prompts the player for furniture to examine.
+     */
     private static void examineSub() {
         GUI.menOut(Menus.EXAMINE_SUB);
         
@@ -663,13 +776,15 @@ public final class Player {
             inspecting = GUI.parsePreviousFurniture();
         
         if (getPos().hasFurniture(inspecting))
+            // The furniture exists.
             GUI.out(Player.getFurnRef(inspecting).getDescription());
         
         else if (GEN_FURNITURE_P.matcher(inspecting).matches())
-            GUI.out("Be more specific.");
+            // The player typed something vague like 'furniture' or 'stuff'
+            GUI.out("That's quite vague of you. Please be more specific.");
         
         else 
-            GUI.out("There is no " + inspecting + " here.");
+            GUI.out("There is no " + inspecting + " here that you can see.");
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -687,6 +802,9 @@ public final class Player {
         GUI.invOut("You find:\n" + furnInv + "\nYou are carrying:\n" + Player.inv);
     }
     // ========================================================================  
+    /**
+     * Brings up the main inventory prompt and asks the player to enter an option.
+     */
     private static void inventoryPrompt() {
         printInv();
         AudioPlayer.playEffect(1);
@@ -697,20 +815,9 @@ public final class Player {
             
             ans = GUI.promptOut();
             
-            if (INV_CHOICE_P.matcher(ans).matches()) {
-                switch(Integer.parseInt(ans)) {
-                    case 1:
-                        inspectPrompt(); break;
-                    case 2:
-                        usePrompt(); break;
-                    case 3:
-                        combineSub(); break;
-                    case 4:
-                        getInv().sortInventory(); break;
-                    default:
-                        writeNote();
-                }
-            } 
+            if (INV_CMD_SET.contains(ans))
+                INV_CMDS.get(ans).run();
+            
             else if (isNonEmptyString(ans))
                 GUI.out("That was not a valid choice.");
             
@@ -741,28 +848,31 @@ public final class Player {
         
         GUI.clearDialog();
     }
-    // ========================================================================  
+    // ======================================================================== 
+    /**
+     * Prompts player for an item to use and then performs appropriate
+     * action.
+     */
     private static void usePrompt() {
         String choice;
         
         do {      
-            GUI.menOut(Menus.INV_USE);
-            choice = GUI.promptOut();
-            
+            choice = GUI.askChoice(Menus.INV_USE, DIGIT_OR_BLANK_P);
+
             try {
                 int slot = Integer.parseInt(choice);
                 Item item = Player.inv.get(slot - 1);
                 int useID = item.getUseID();
+                
                 switch (useID) {
-                    case 1:
-                        GUI.out(item.useEvent()); 
-                        break;           
-                    case 2:
+                    case 1: // Item only prints a dialog.
+                        GUI.out(item.useEvent()); break;           
+                    case 2: // Item is used on furniture.
                         GUI.menOut(Menus.INV_USEON);
                         evalUse(item, GUI.promptOut());
                 }
             }
-            catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
+            catch (IndexOutOfBoundsException | NumberFormatException e) {
                 if (isNonEmptyString(choice))
                     GUI.out(NOT_VALID_SLOT);
             }  
@@ -806,7 +916,7 @@ public final class Player {
             GUI.menOut("\nWrite a title "
                      + "\nfor your note: ");
             String title = GUI.promptOut();
-            
+
             while (! isNonEmptyString(title)) {
                 GUI.menOut("\nI beg your "
                          + "\npardon? Write "
@@ -824,7 +934,7 @@ public final class Player {
             Player.inv.contents().add(new Note(
                     "note - " + title + ':' + ' ', body)
             );
-            
+
             printInv();
         }
     }

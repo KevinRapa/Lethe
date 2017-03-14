@@ -36,7 +36,7 @@ public class Room implements Serializable {
     protected final String NAME, ID,            // The name and unique ID of the room.
                            STD_RM_OUT;          // Prints where you are.
     protected final int[] COORDS;               // Index coordinates of this room.
-    protected boolean isLocked;                 // You cannot move into a locked room.
+    protected boolean locked;                   // You cannot move into a locked room.
     protected String description;               // Description of the room.
     protected ArrayList<String> adjacent;       // Rooms one could move to from this.
     protected ArrayList<Furniture> furnishings; // Holds furniture.
@@ -46,9 +46,7 @@ public class Room implements Serializable {
         this.NAME = name;
         this.ID = ID;
         this.STD_RM_OUT = "You are " + name + ".";
-        this.isLocked = false;
-        this.adjacent = new ArrayList<>(5);
-        this.furnishings = new ArrayList<>(15);
+        this.locked = false;
         this.COORDS = RoomGraph.getCoords(this.ID); 
         this.adjacent = RoomGraph.getAdj(this.ID);
 }
@@ -98,11 +96,11 @@ public class Room implements Serializable {
 // <editor-fold desc="SETTERS">      
 //******************************************************************************    
     public final void lock() {
-        this.isLocked = true;
+        this.locked = true;
     }
     // ========================================================================
     public final void unlock() {
-        this.isLocked = false; 
+        this.locked = false; 
     }
     // ========================================================================
     /**
@@ -126,6 +124,9 @@ public class Room implements Serializable {
     }
     // ========================================================================
     public final void addFurniture(Furniture ... furnishings) {
+        if (this.furnishings == null)
+            this.furnishings = new ArrayList<>(furnishings.length);
+            
         this.furnishings.addAll(Arrays.asList(furnishings));
     }
 //******************************************************************************    
@@ -144,8 +145,8 @@ public class Room implements Serializable {
         return STD_RM_OUT;
     }
     // ========================================================================
-    public boolean isThisLocked() {
-        return this.isLocked; 
+    public boolean isLocked() {
+        return this.locked; 
     }
     // ========================================================================
     /**

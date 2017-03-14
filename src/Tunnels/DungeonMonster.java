@@ -135,7 +135,7 @@ public class DungeonMonster {
     }
     // ========================================================================
     private static void warnPlayer() {
-        String result = "That creature is very close!\t\t\t\t\t\t\t\tIt's directly ";
+        String result = "That creature is very close! It's directly ";
         int[] plyrCrd = Player.getPos().getCoords();
         int[] thisCrd = Player.getRoomObj(position).getCoords();
         

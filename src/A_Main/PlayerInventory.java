@@ -21,14 +21,15 @@ public class PlayerInventory extends Inventory {
     }
     // ========================================================================
     /**
-     * Adds an item to the inventory.
+     * Adds an item to the inventory, does not permit duplicates.
+     * On certain occasions, items will be forced into the inventory even
+     * if a duplicate results in order to avoid permanently losing items.
      * @param item An item to add to this inventory's contents.
      * @return If the add was successful. 
      */
     @Override public boolean add(Item item) {
         if (! CONTENTS.contains(item)) {
-            this.CONTENTS.add(item);
-            return true;
+            return this.CONTENTS.add(item);
         }
         else {
             GUI.out("You already have that.");
@@ -44,7 +45,7 @@ public class PlayerInventory extends Inventory {
      */
     public String combine(Item[] itemList, Item gift) {
         for (Item i : itemList)
-            this.remove(i); 
+            this.CONTENTS.remove(i); 
         
         this.CONTENTS.add(gift);
         AudioPlayer.playEffect(29);
@@ -54,7 +55,7 @@ public class PlayerInventory extends Inventory {
     // ========================================================================
     public Item get(String itemName) {
         // Shouldn't return null item, inventory is pre-checked for item.
-        if (Patterns.NUMBER_P.matcher(itemName).matches()) {
+        if (Patterns.ANY_DIGIT_P.matcher(itemName).matches()) {
             int i = Integer.parseInt(itemName); // Player used a slot number.
             if (i <= this.size())
                 return this.CONTENTS.get(i - 1);
@@ -87,7 +88,7 @@ public class PlayerInventory extends Inventory {
     {
         private static final Inventory_Sorter SORTER = new Inventory_Sorter();
         // --------------------------------------------------------------------
-        private Inventory_Sorter() {/* Singleton class. */}
+        private Inventory_Sorter() { /* Singleton class. */ }
         // --------------------------------------------------------------------
         public static Inventory_Sorter getSorter() {
             return SORTER;

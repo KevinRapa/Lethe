@@ -3,6 +3,7 @@ package Laboratory;
 import A_Main.GUI;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
+import static A_Main.Patterns.LABO_BURET_ONE_OR_TWO;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -91,8 +92,9 @@ public class Labo_Burette extends Furniture {
             else if (mode != Titrant.EMPTY) {
                 GUI.out("Would you like to titrate the " + mode + " or empty the burette?");
 
-                String ans = GUI.askChoice("\n<1> Empty the burette\n<2> Titrate the " 
-                                        + mode + ".\n< > Back", "[12]|");
+                String ans = GUI.askChoice("\n<1> Empty the burette"
+                                         + "\n<2> Titrate the " + mode
+                                         + "\n< > Back", LABO_BURET_ONE_OR_TWO);
                 
                 if (Player.isNonEmptyString(ans)) {
                     switch (Integer.parseInt(ans)) {

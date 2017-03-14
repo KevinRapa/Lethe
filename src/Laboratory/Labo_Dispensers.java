@@ -4,10 +4,11 @@ import A_Main.GUI;
 import A_Main.Menus;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
+import static A_Main.Patterns.YES_NO_P;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Unmoveable;
-import static A_Main.Patterns.YES_P;
+import static A_Main.Patterns.ONE_TO_SIX;
 /**
  * Dispenses various types of chemicals to be used in alchemy.
  * 
@@ -22,18 +23,17 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
 
         this.VIAL_REF = emptyVial;
         this.TUBE_REF = testTube;
+        
+        this.searchDialog = "Many foreign chemical can be dispensed from their containers on the wall.";
         this.description = "The series of six opaque dispensers are\n"
                          + "lined up next to eachother over a sink. At the bottom\n"
                          + "of each one is a rotating stopcock.";
         this.actDialog = "You need a vial or test tube to dispense into!";
 
-        this.addNameKeys("(?:opaque )?dispensers?", "dispenser stopcock", "liquid|chemicals?(?: dispensers?)?");
+        this.addNameKeys("(?:opaque )?(?:dispensers?|containers?)", 
+                "dispenser stopcock", "liquid|chemicals?(?: dispensers?)?");
         this.addUseKeys(EMPTY_VIAL, TEST_TUBE);
         this.addActKeys("use", VALVEPATTERN, GETPATTERN, "dispense|drain|empty|titrate");
-    }
-    // ========================================================================  
-    @Override public String getSearchDialog() {
-        return this.interact("use");
     }
     // ========================================================================   
     @Override public String interact(String key) {   
@@ -70,7 +70,7 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
               + "but each bears a label. From left to right, the labels read: \t\t1 - H2CO3   2 - Br "
               + "         3 - Ae      4 - HF          5 - NACL    6 - C20H14O4 \t\t\t\t\tDispense which one?");
         
-        String ans = GUI.askChoice("\n<#> Dispense", "[1-6]");
+        String ans = GUI.askChoice(Menus.LABO_DISP, ONE_TO_SIX);
         
         GUI.out("Liquid will be dispensed in 5 mL increments. Press enter to start titrating. Press enter to stop titrating.");
         GUI.menOut("Press enter...");
@@ -97,9 +97,9 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
     private boolean askToDispense() {
         GUI.out("You have something to dispense into. Would you like to dispense liquid?");
 
-        String ans = GUI.askChoice(Menus.LABO_DSPNSR, YES_NO);
+        String ans = GUI.askChoice("\nDispense a chemical?", YES_NO_P);
         
-        return YES_P.matcher(ans).matches();
+        return (Player.answeredYes(ans));
     }
     // ========================================================================  
     // ************************************************************************

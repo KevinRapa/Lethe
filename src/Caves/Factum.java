@@ -2,6 +2,7 @@ package Caves;
 
 import A_Main.AudioPlayer;
 import A_Main.Id;
+import static A_Main.Patterns.NO_TELEPORT_P;
 import A_Main.Player;
 import A_Super.Item;
 import java.util.Random;
@@ -50,7 +51,7 @@ public class Factum extends Item {
                 index = generator.nextInt(Player.getVisitedRooms().size());
                 roomId = Player.getVisitedRooms().get(index);
                 
-                while (roomId.matches("ESC\\d|BHA2") || 
+                while (NO_TELEPORT_P.matcher(roomId).matches() || 
                        roomId.equals(Player.getPosId())) {
                     index = generator.nextInt(Player.getVisitedRooms().size());
                     roomId = Player.getVisitedRooms().get(index);

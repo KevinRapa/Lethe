@@ -25,9 +25,9 @@ public class Cry2_Password extends Furniture {
         this.searchDialog = this.description = this.useDialog = 
                 "There is nothing with that name here.";
 
-        this.addNameKeys("it is i,? friend,? welcome me\\.?");
+        this.addNameKeys("it is i,? friend,? welcome me\\.?", "is i,? friend,? welcome me\\.?");
         this.addUseKeys(ANYTHING);
-        this.addActKeys("talk", "speak", "say", "announce", "whisper");
+        this.addActKeys("talk", "speak", "say", "announce", "whisper", "it");
     }
     // ========================================================================   
     @Override public String interact(String key) {    

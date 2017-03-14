@@ -12,7 +12,7 @@ import static A_Main.Patterns.*;
  * @author Kevin Rapa
  */
 public class DungeonMonsterFurniture extends Furniture {
-    private final String CANT_SEE_IT = "You can't hear or see it from here. The creature attention is apparently drawn from your area.";
+    private final String CANT_SEE_IT = "You can't hear or see it from here. The creature attention is apparently drawn from your position.";
     // ========================================================================
     public DungeonMonsterFurniture () {
         super();
@@ -50,7 +50,10 @@ public class DungeonMonsterFurniture extends Furniture {
                 case SEW0: case SEW1: case SEW2:
                     result = "It's lurking at the east end of the tunnel.";
                     break;
-                case SEW3: case SEW4: case SEW5:
+                case SEW3: 
+                    result = "It's lurking halfway down the tunnel's center, at the junction.";
+                    break;
+                case SEW4: case SEW5:
                     result = "It's lurking at the west end of the tunnel.";
                     break;
                 case CIS1: case CIS2:

@@ -76,7 +76,7 @@ public class Esc extends Room {
             this.actDialog = "You wouldn't dream of going anywhere near it.";
             this.searchDialog = "You best keep moving and get out of here.";
 
-            this.addNameKeys("machinery", "gears", "pistons");
+            this.addNameKeys("machinery", "gears?", "pistons?");
             this.addActKeys("touch", "operate");
         }
         @Override public String getDescription() {

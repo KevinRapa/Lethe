@@ -7,7 +7,7 @@ import java.util.Random;
 import A_Main.GUI;
 import A_Main.Menus;
 import static A_Main.Patterns.NO_TELEPORT_P;
-import static A_Main.Patterns.YES_P;
+import static A_Main.Patterns.YES_NO_P;
 /**
  * Teleports the player to a previously visited room when pressed.
  * Superficial, not important to game progression.
@@ -33,9 +33,9 @@ public class Gal6_Button extends Button {
 
         GUI.out("Are you really sure you want to press the button?");
         
-        choice = GUI.askChoice(Menus.GAL6_BTTN, YES_NO);
+        choice = GUI.askChoice(Menus.GAL6_BTTN, YES_NO_P);
 
-        if (YES_P.matcher(choice).matches()) {
+        if (Player.answeredYes(choice)) {
             AudioPlayer.playEffect(11);
             Random generator = new Random();
 

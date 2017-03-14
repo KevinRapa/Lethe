@@ -30,6 +30,10 @@ import static A_Main.NameConstants.SEP;
 import static A_Main.NameConstants.W_DIR;
 
 public class Main {
+    private static final String 
+            START_LOCATION = Id.COU4, // Default COU4
+            FILE_NAME = "Game.data";
+    
     public static final JFrame GAME_FRAME = new JFrame("Lethe"),
                                TITLE_FRAME = new JFrame("Lethe");
     
@@ -37,10 +41,12 @@ public class Main {
     
     private static final JPanel TITLE_PANEL = new JPanel();
 
+    // <editor-fold defaultstate="collapsed" desc="Static block sets up title screen">
     static {
         TITLE_LABEL.setIcon(new ImageIcon("img" + SEP + "Title.jpg"));
 
         TITLE_LABEL.addKeyListener(new KeyListener() {
+            // To progress to game frame from title frame with "Press any key"
             @Override public void keyTyped(KeyEvent e) {}
             @Override public void keyReleased(KeyEvent e) {}
             @Override public void keyPressed(KeyEvent e) {
@@ -53,10 +59,7 @@ public class Main {
         TITLE_PANEL.setBackground(Color.BLACK);
         TITLE_PANEL.add(TITLE_LABEL);
     }
-    
-    private static final String 
-            START_LOCATION = Id.COU4, // Default COU4
-            FILE_NAME = "Game.data";
+    // </editor-fold>
 // ============================================================================
     /**
      * Loads a game if there is one or starts a new game.
@@ -99,7 +102,7 @@ public class Main {
         // location as Main.jar
         //**********************************************************************
         Help.constructHelp();
-        boolean eraseGame;
+        boolean eraseTrue;
         
         try (ObjectInputStream gameData = 
                 new ObjectInputStream(
@@ -110,7 +113,7 @@ public class Main {
             System.out.println("Data found. Loading game.");
             RoomGraph.assignCoordinates();
             Player.loadAttributes(gameData.readObject());
-            eraseGame = Player.mainPrompt(); // START GAME
+            eraseTrue = Player.mainPrompt(); // START GAME
         } 
         catch (java.lang.ClassNotFoundException | 
                java.io.IOException | 
@@ -121,21 +124,26 @@ public class Main {
             
             RoomGraph.constructRoomGraph();
             Player.setNewAttributes(RoomGraph.getCoords(START_LOCATION));
-            eraseGame = Player.startDialog(); // START GAME
+            eraseTrue = Player.startDialog(); // START GAME
         }
         //**********************************************************************
         // </editor-fold>  
         //**********************************************************************
 
-        if (eraseGame)
+        // End the game
+        if (eraseTrue)
             new File(W_DIR, FILE_NAME).delete();
         
+        exitGame();
+    } 
+// ============================================================================   
+    public static void exitGame() {
         AudioPlayer.stopTrack();
         AudioPlayer.disposeKeyPlayers();
         GAME_FRAME.dispose();
         Map.disposeMap();
         System.exit(0);
-    } 
+    }
 // ============================================================================   
     public static synchronized void saveGame() {
         

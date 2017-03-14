@@ -34,8 +34,7 @@ public class AudioPlayer {
         are indexed by a byte which alternates between 0, 1, and 2 using a
         bitmask and XOR operation.
     */ 
-    private static final MediaPlayer[][] KEY_PLAYERS = 
-            {new MediaPlayer[3], new MediaPlayer[3], new MediaPlayer[3]};
+    private static final MediaPlayer[][] KEY_PLAYERS = new MediaPlayer[3][3];
     
     // Zero. Determines which of two players to play for each sound.
     private static byte playerAlternator = 0x0;  
@@ -154,81 +153,53 @@ public class AudioPlayer {
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="SOUND EFFECTS"> 
 //******************************************************************************    
-    private static final Media[] MEDIA = {
-        new Media(new File(W_DIR, EPTH + "steps" + EXT).toURI().toString()),         // 0
-        new Media(new File(W_DIR, EPTH + "inventory" + EXT).toURI().toString()),     // 1
-        new Media(new File(W_DIR, EPTH + "pageTurn" + EXT).toURI().toString()),      // 2
-        new Media(new File(W_DIR, EPTH + "keys" + EXT).toURI().toString()),          // 3
-        new Media(new File(W_DIR, EPTH + "doorKnobJiggle" + EXT).toURI().toString()),// 4   
-        new Media(new File(W_DIR, EPTH + "doorLocking" + EXT).toURI().toString()),   // 5
-        new Media(new File(W_DIR, EPTH + "wallThump" + EXT).toURI().toString()),     // 6
-        new Media(new File(W_DIR, EPTH + "gateSlam" + EXT).toURI().toString()),      // 7
-        new Media(new File(W_DIR, EPTH + "doorSlam" + EXT).toURI().toString()),      // 8
-        new Media(new File(W_DIR, EPTH + "doorClose" + EXT).toURI().toString()),     // 9
-        new Media(new File(W_DIR, EPTH + "basicClick" + EXT).toURI().toString()),    // 10
-        new Media(new File(W_DIR, EPTH + "buttonPush" + EXT).toURI().toString()),    // 11
-        new Media(new File(W_DIR, EPTH + "leverPull" + EXT).toURI().toString()),     // 12
-        new Media(new File(W_DIR, EPTH + "doorUnlock" + EXT).toURI().toString()),    // 13
-        new Media(new File(W_DIR, EPTH + "woodStairClimb" + EXT).toURI().toString()),// 14
-        new Media(new File(W_DIR, EPTH + "stoneSteps" + EXT).toURI().toString()),    // 15
-        new Media(new File(W_DIR, EPTH + "ladder" + EXT).toURI().toString()),        // 16
-        new Media(new File(W_DIR, EPTH + "dungeonValve" + EXT).toURI().toString()),  // 17
-        new Media(new File(W_DIR, EPTH + "rotundaRotate" + EXT).toURI().toString()), // 18
-        new Media(new File(W_DIR, EPTH + "rotundaRotate2" + EXT).toURI().toString()),// 19
-        new Media(new File(W_DIR, EPTH + "valveTurn" + EXT).toURI().toString()),     // 20
-        new Media(new File(W_DIR, EPTH + "keyClick" + EXT).toURI().toString()),      // 21
-        new Media(new File(W_DIR, EPTH + "keyClick2" + EXT).toURI().toString()),     // 22
-        new Media(new File(W_DIR, EPTH + "keyClick3" + EXT).toURI().toString()),     // 23
-        new Media(new File(W_DIR, EPTH + "dungeonDoor" + EXT).toURI().toString()),   // 24
-        new Media(new File(W_DIR, EPTH + "monster" + EXT).toURI().toString()),       // 25
-        new Media(new File(W_DIR, EPTH + "windowOpening" + EXT).toURI().toString()), // 26
-        new Media(new File(W_DIR, EPTH + "keyDrop" + EXT).toURI().toString()),       // 27
-        new Media(new File(W_DIR, EPTH + "foyGateSwitch" + EXT).toURI().toString()), // 28
-        new Media(new File(W_DIR, EPTH + "sparkles" + EXT).toURI().toString()),      // 29
-        new Media(new File(W_DIR, EPTH + "rocksCrumbling" + EXT).toURI().toString()),// 30
-        new Media(new File(W_DIR, EPTH + "ladderFalling" + EXT).toURI().toString()), // 31
-        new Media(new File(W_DIR, EPTH + "enchantPop" + EXT).toURI().toString()),    // 32
-        new Media(new File(W_DIR, EPTH + "handDrill" + EXT).toURI().toString()),     // 33
-        new Media(new File(W_DIR, EPTH + "digging" + EXT).toURI().toString()),       // 34
-        new Media(new File(W_DIR, EPTH + "metalPing" + EXT).toURI().toString()),     // 35
-        new Media(new File(W_DIR, EPTH + "hoseClimb" + EXT).toURI().toString()),     // 36
-        new Media(new File(W_DIR, EPTH + "galleryStatue" + EXT).toURI().toString()), // 37
-        new Media(new File(W_DIR, EPTH + "galleryGears" + EXT).toURI().toString()),  // 38
-        new Media(new File(W_DIR, EPTH + "fireDouse" + EXT).toURI().toString()),     // 39
-        new Media(new File(W_DIR, EPTH + "stairFlatten" + EXT).toURI().toString()),  // 40
-        new Media(new File(W_DIR, EPTH + "woodSliding" + EXT).toURI().toString()),   // 41
-        new Media(new File(W_DIR, EPTH + "waterScoop" + EXT).toURI().toString()),    // 42
-        new Media(new File(W_DIR, EPTH + "medallionClick" + EXT).toURI().toString()),// 43
-        new Media(new File(W_DIR, EPTH + "totemTurn" + EXT).toURI().toString()),     // 44
-        new Media(new File(W_DIR, EPTH + "bunsenBurner" + EXT).toURI().toString()),  // 45
-        new Media(new File(W_DIR, EPTH + "zombieMoan" + EXT).toURI().toString()),    // 46
-        new Media(new File(W_DIR, EPTH + "metalLadder" + EXT).toURI().toString()),   // 47
-        new Media(new File(W_DIR, EPTH + "grateMove" + EXT).toURI().toString()),     // 48
-        new Media(new File(W_DIR, EPTH + "teleportZap" + EXT).toURI().toString()),   // 49
-        new Media(new File(W_DIR, EPTH + "concreteBlock" + EXT).toURI().toString()), // 50
-        new Media(new File(W_DIR, EPTH + "concreteShort" + EXT).toURI().toString()), // 51
-        new Media(new File(W_DIR, EPTH + "atticNoise" + EXT).toURI().toString()),    // 52
-        new Media(new File(W_DIR, EPTH + "piano" + EXT).toURI().toString()),         // 53
-        new Media(new File(W_DIR, EPTH + "harp" + EXT).toURI().toString()),          // 54
-        new Media(new File(W_DIR, EPTH + "doorKnock" + EXT).toURI().toString())      // 55
+    private static final Media[] EFFECTS = {
+        getNewMedia("steps"),           getNewMedia("inventory"),       // 0  1
+        getNewMedia("pageTurn"),        getNewMedia("keys"),            // 2  3
+        getNewMedia("doorKnobJiggle"),  getNewMedia("doorLocking"),     // 4  5
+        getNewMedia("wallThump"),       getNewMedia("gateSlam"),        // 6  7
+        getNewMedia("doorSlam"),        getNewMedia("doorClose"),       // 7  9
+        getNewMedia("basicClick"),      getNewMedia("buttonPush"),      // 10 11
+        getNewMedia("leverPull"),       getNewMedia("doorUnlock"),      // 12 13
+        getNewMedia("woodStairClimb"),  getNewMedia("stoneSteps"),      // 14 15
+        getNewMedia("ladder"),          getNewMedia("dungeonValve"),    // 16 17
+        getNewMedia("rotundaRotate"),   getNewMedia("rotundaRotate2"),  // 18 19
+        getNewMedia("valveTurn"),       getNewMedia("keyClick"),        // 20 21
+        getNewMedia("keyClick2"),       getNewMedia("keyClick3"),       // 22 23
+        getNewMedia("dungeonDoor"),     getNewMedia("monster"),         // 24 25
+        getNewMedia("windowOpening"),   getNewMedia("keyDrop"),         // 26 27
+        getNewMedia("foyGateSwitch"),   getNewMedia("sparkles"),        // 28 29
+        getNewMedia("rocksCrumbling"),  getNewMedia("ladderFalling"),   // 30 31
+        getNewMedia("enchantPop"),      getNewMedia("handDrill"),       // 32 33
+        getNewMedia("digging"),         getNewMedia("metalPing"),       // 34 35
+        getNewMedia("hoseClimb"),       getNewMedia("galleryStatue"),   // 36 37
+        getNewMedia("galleryGears"),    getNewMedia("fireDouse"),       // 38 39
+        getNewMedia("stairFlatten"),    getNewMedia("woodSliding"),     // 40 41
+        getNewMedia("waterScoop"),      getNewMedia("medallionClick"),  // 42 43
+        getNewMedia("totemTurn"),       getNewMedia("bunsenBurner"),    // 44 45
+        getNewMedia("zombieMoan"),      getNewMedia("metalLadder"),     // 46 47
+        getNewMedia("grateMove"),       getNewMedia("teleportZap"),     // 48 49
+        getNewMedia("concreteBlock"),   getNewMedia("concreteShort"),   // 50 51
+        getNewMedia("atticNoise"),      getNewMedia("piano"),           // 52 53
+        getNewMedia("harp"),            getNewMedia("doorKnock")        // 54 55
     };
     
     static {
-        // Sets up media players for the faux keyboard sounds. Each sound gets three
-        KEY_PLAYERS[0][0] = new MediaPlayer(MEDIA[21]); 
-        KEY_PLAYERS[0][1] = new MediaPlayer(MEDIA[21]);
-        KEY_PLAYERS[0][2] = new MediaPlayer(MEDIA[21]);
-        KEY_PLAYERS[1][0] = new MediaPlayer(MEDIA[22]); 
-        KEY_PLAYERS[1][1] = new MediaPlayer(MEDIA[22]);
-        KEY_PLAYERS[1][2] = new MediaPlayer(MEDIA[22]);
-        KEY_PLAYERS[2][0] = new MediaPlayer(MEDIA[23]); 
-        KEY_PLAYERS[2][1] = new MediaPlayer(MEDIA[23]);
-        KEY_PLAYERS[2][2] = new MediaPlayer(MEDIA[23]);
+        // Sets up media players for the faux keyboard sounds. 
+        // Each sound gets three
+        for (int sound = 0; sound <= 2; sound++)
+            for (int i = 0; i <= 2; i++)
+                KEY_PLAYERS[sound][i] = new MediaPlayer(EFFECTS[sound + 21]);
         
         // Sets them each to stop once their track ends.
         for (MediaPlayer[] playerList : KEY_PLAYERS)
             for (MediaPlayer mPlayer : playerList)
                 mPlayer.setOnEndOfMedia(() -> mPlayer.stop());
+        
+    }
+    
+    private static Media getNewMedia(String file) {
+        return new Media(new File(W_DIR, EPTH + file + EXT).toURI().toString());
     }
     
 //******************************************************************************    
@@ -247,16 +218,21 @@ public class AudioPlayer {
      * @param ID A room ID.
      */
     public static void playTrack(String ID) {
-        if (CAVES_CAT_P.matcher(ID).matches()) // For caves and catacombs.
-            ID = DIGIT.matcher(ID).replaceAll("");
+        if (CAVES_CAT_P.matcher(ID).matches()) 
+            // For caves and catacombs. Removes final 2 digits so 
+            // they all map To the same track.
+            ID = SINGLE_DIGIT_P.matcher(ID).replaceAll("");
 
-        if (trackName == null || ! trackName.equals(TRACKS.get(ID).getSource())) 
+        Media newMedia = TRACKS.get(ID);
+        
+        // Switches music only if new area has different associated soundtrack.
+        if (trackName == null || ! trackName.equals(newMedia.getSource())) 
         {
             if (currentMusic != null)
                 stopTrack();
 
             try {    
-                currentMusic = TRACKS.get(ID);
+                currentMusic = newMedia;
                 currentPlayer = new MediaPlayer(currentMusic);
                 currentPlayer.setCycleCount(MediaPlayer.INDEFINITE);
                 
@@ -265,7 +241,7 @@ public class AudioPlayer {
                 
                 currentPlayer.play();
 
-                trackName = TRACKS.get(ID).getSource(); 
+                trackName = newMedia.getSource(); 
             }
             catch (MediaException e) {
                 System.out.println(e.getMessage());
@@ -280,7 +256,7 @@ public class AudioPlayer {
      */
     public static void playEffect(int ID) {
         try {
-            MediaPlayer p = new MediaPlayer(MEDIA[ID]);
+            MediaPlayer p = new MediaPlayer(EFFECTS[ID]);
             p.setOnEndOfMedia(() -> p.dispose());
             p.play();
         }
@@ -297,7 +273,7 @@ public class AudioPlayer {
      */
     public static void playEffect(int ID, double volume) {
         try {
-            MediaPlayer p = new MediaPlayer(MEDIA[ID]);
+            MediaPlayer p = new MediaPlayer(EFFECTS[ID]);
             p.setVolume(volume);
             p.setOnEndOfMedia(() -> p.dispose());
             p.play();
@@ -314,6 +290,8 @@ public class AudioPlayer {
      * corresponds to the key sound to play.
      */
     public static void playKeySound(int ID) {
+        if (ID == -1) return;
+        
         try {
             (KEY_PLAYERS[ID][playerAlternator]).play();
             playerAlternator ^= XOR_MASKS[playerAlternator];

@@ -1,14 +1,12 @@
 package Courtyard;
 
 import A_Main.GUI;
-import A_Main.Menus;
 import A_Main.NameConstants;
 import A_Main.Player;
 import java.util.HashMap;
 import A_Super.Item;
 import A_Super.NonPlayerCharacter;
-import static A_Main.Patterns.YES_P;
-import static A_Main.Patterns.NO_P;
+import static A_Main.Patterns.YES_NO_P;
 /**
  * This is an in-game non-player character that plays blackjack with the player.
  * The player may play as many times as her/she wants each encounter, and the
@@ -95,9 +93,9 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         boolean played = false; // If the player has played at least once.
         
         do {
-            ans = GUI.askChoice(Menus.BLCK_JCK_GST, YES_NO);
+            ans = GUI.askChoice("\nPlay him in blackjack?", YES_NO_P);
             
-            if (YES_P.matcher(ans).matches()) {
+            if (Player.answeredYes(ans)) {
                 played = true;
                 Player.getInv().remove(NameConstants.CARD); // Removes all cards from player inventory.
                 GUI.clearDialog();
@@ -105,7 +103,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
             }
             Player.printInv();
             
-        } while (! NO_P.matcher(ans).matches());
+        } while (! (ans.equals("no") || ans.equals("n") || ans.equals("")));
         
         GUI.clearDialog();
         

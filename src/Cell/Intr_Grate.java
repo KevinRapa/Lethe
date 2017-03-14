@@ -30,8 +30,8 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable, Climba
         this.searchDialog = "There's nothing unusual... Though squinting through the grate,\n"
                           + "you see what looks like the top rung of a ladder.";
 
-        this.addNameKeys("(?:metal )?(?:grate|ladder)");
-        this.addActKeys("jump", CLIMBPATTERN, MOVEPATTERN, "pry");
+        this.addNameKeys("(?:metal )?(?:grate|ladder|drain)", "hole");
+        this.addActKeys("jump", CLIMBPATTERN, MOVEPATTERN, "pry", "open", "lift");
         this.addActKeys(GETPATTERN);
         this.addUseKeys(METAL_BAR);
     }
@@ -47,7 +47,7 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable, Climba
     }
     // ========================================================================   
     @Override public String interact(String key) {  
-        if (key.matches(MOVEPATTERN)) 
+        if (key.matches(MOVEPATTERN) || key.equals("open") || key.equals("lift")) 
             return opened ? 
                     MOVED_GRATE : this.actDialog;
         

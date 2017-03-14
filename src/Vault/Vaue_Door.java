@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Menus;
+import static A_Main.Patterns.VAUE_DOOR_COORDS_P;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Heavy;
@@ -51,7 +52,7 @@ public class Vaue_Door extends Furniture implements Heavy {
         do {
             GUI.out(this.printButtons());
 
-            ans = GUI.askChoice(Menus.VAEU_DOOR, "(?:[1-4]\\s*,\\s*[1-4])|");
+            ans = GUI.askChoice(Menus.VAEU_DOOR, VAUE_DOOR_COORDS_P);
             
             if (Player.isNonEmptyString(ans)) {
                 String[] crds = ans.split("\\s*,\\s*");

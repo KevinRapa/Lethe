@@ -2,9 +2,8 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
-import A_Main.Menus;
-import static A_Main.Patterns.YES_P;
-import static A_Main.Patterns.NO_P;
+import static A_Main.Patterns.YES_NO_P;
+import A_Main.Player;
 /**
  * Represents a book with one or more pages.
  * 
@@ -14,13 +13,11 @@ import static A_Main.Patterns.NO_P;
  * @author Kevin Rapa
  */
 public class Book extends Note {
-    protected final int PAGES;
     protected final String[] PAGE_LIST;
     
     public Book(String name, int num) {
         super(name);
         this.useDialog = "You close the book.";
-        this.PAGES = num;
         this.PAGE_LIST = new String[num];
     }   
 /*----------------------------------------------------------------------------*/
@@ -34,29 +31,33 @@ public class Book extends Note {
         return this.getDesc();
     }
 /*----------------------------------------------------------------------------*/
+    /**
+     * Repeatedly asks player to flip through pages in the book until 'no'
+     * or a blank string is entered. Closes the book at end of pages.
+     */
     protected void Read() {
         int page = 0;
         String choice;
         
         do {
             AudioPlayer.playEffect(2);
-            GUI.out(this.PAGE_LIST[page] + "\n");
+            GUI.clearDialog();
+            GUI.resetScroll();
+            GUI.out(PAGE_LIST[page]);
 
-            if (page != (this.PAGES - 1)) {
+            if (page != (PAGE_LIST.length - 1)) {
                 
-                choice = GUI.askChoice(Menus.BOOK_MEN, "[yn]|yes|no|");
+                choice = GUI.askChoice("\n\nTurn the page?", YES_NO_P);
 
-                if (YES_P.matcher(choice).matches()) 
+                if (Player.answeredYes(choice)) 
                     page ++;
-                else
-                    choice = "no";
             }
             else {
                 GUI.menOut("\n\n< > Close the book");
                 GUI.promptOut(); 
-                choice = "no"; 
+                return;
             }
-        } while (! NO_P.matcher(choice).matches());      
+        } while (Player.answeredYes(choice));      
     }
 /*----------------------------------------------------------------------------*/   
 }

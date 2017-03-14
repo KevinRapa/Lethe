@@ -15,7 +15,7 @@ public final class NameConstants {
         SHOES = "shoes",            PLATE = "plate",
         CLOTHING = "clothing",      READABLE = "readable",
         LIQUID = "liquid",          WEAPON = "weapon",
-        ITEM = "item",
+        ITEM = "item",              BREAKABLE = "breakable",
 
     // CONSTANTS FOR ITEM NAMES ===============================================
         METAL_BUCKET = "metal bucket",          EMPTY_VIAL = "empty vial",

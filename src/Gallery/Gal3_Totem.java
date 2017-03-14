@@ -5,9 +5,10 @@ import A_Super.Item;
 import A_Main.GUI;
 import A_Super.Furniture;
 import A_Main.Inventory;
+import A_Main.Menus;
 import A_Main.NameConstants;
 import static A_Main.NameConstants.*;
-import static A_Main.Patterns.ONE_TO_FOUR;
+import static A_Main.Patterns.GAL_TOTEM_ONE_TO_FOUR;
 import A_Main.Player;
 /**
  * One of four components of the light machine puzzle in the gallery.
@@ -83,9 +84,9 @@ public class Gal3_Totem extends Gal_LightMachine {
             GUI.out("           " + four + "       \t" + three + "\t\t" + 
                        two + "\t\t" + one + "\t\t\t\t\t\t" + result);
         
-            action = GUI.askChoice("\n<#> Turn head\n< > Back", "[1234]|");
+            action = GUI.askChoice(Menus.GAL_TOTEM, GAL_TOTEM_ONE_TO_FOUR);
         
-            if (ONE_TO_FOUR.matcher(action).matches()) {
+            if (Player.isNonEmptyString(action)) {
                 this.turnHead(Integer.parseInt(action));
                 result = this.check();
             }            

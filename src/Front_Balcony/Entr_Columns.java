@@ -10,7 +10,7 @@ public class Entr_Columns extends Column {
                          + "up. They look like more than enough to hold up that\n"
                          + "roof.";
 
-        this.addNameKeys("(?:four-foot )?(?:wide )?columns?");
+        this.addNameKeys("(?:four-foot )?(?:wide )?(?:columns?|pillars?)");
     }
 /*----------------------------------------------------------------------------*/
 }

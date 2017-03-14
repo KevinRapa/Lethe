@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import javafx.embed.swing.JFXPanel;
 import static A_Main.NameConstants.SEP;
 import static A_Main.NameConstants.W_DIR;
+import java.util.Random;
+import java.util.regex.Pattern;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.JTextComponent;
@@ -23,13 +25,15 @@ import javax.swing.text.JTextComponent;
  ******************************************************************************/
 public class GUI extends JFXPanel {
 
-    // Click noises when player types.
+    // Faux click noises when player types. Optional feature.
     private enum Click {
         NONE(-1), SOFT(0), CLICK(1), VINTAGE(2);
     
         public final int soundEffectId; // Index. NONE's should never be used.
         //----------------------------------------
-        Click(int key) { this.soundEffectId = key; }
+        Click(int key) { 
+            this.soundEffectId = key; 
+        }
         //----------------------------------------
     }
     
@@ -311,7 +315,7 @@ public class GUI extends JFXPanel {
     
     
 // *****************************************************************************       
-// <editor-fold defaultstate="collapsed" desc="INPUT RELATED">
+// <editor-fold defaultstate="collapsed" desc="INPUT RELATED, CLEAR METHODS AND PARSERS">
 // *****************************************************************************           
     /**
      * Used for any request of player input.
@@ -330,14 +334,14 @@ public class GUI extends JFXPanel {
         return HOLDER.request();
     }
 /*----------------------------------------------------------------------------*/
-    public static String askChoice(String menu, String pattern) {
+    public static String askChoice(String menu, Pattern pattern) {
         String answer;
         
         menOut(menu);
         
         answer = promptOut();
         
-        while (! answer.matches(pattern)) {
+        while (! pattern.matcher(answer).matches()) {
             menOut("That's not valid" + menu);
             answer = promptOut();
         }
@@ -399,14 +403,42 @@ public class GUI extends JFXPanel {
 /*----------------------------------------------------------------------------*/
     public static void clearDialog() {
         DIAL.setText("");
+        DIAL.setCaretPosition(0);
+    }
+/*----------------------------------------------------------------------------*/
+    public static void resetScroll() {
+        SCROLLW.getVerticalScrollBar().setValue(0);
     }
 /*----------------------------------------------------------------------------*/
     public static void giveFocus() {
         // Only used by title frame when the game starts.
         INPUT.requestFocus();
     }
+/*----------------------------------------------------------------------------*/
+    /**
+     * For the easter egg command 'XYZZY'.
+     */
+    public static void randomizeColors() {
+        Random rand = new Random();
+        Component[] compList = 
+        {ROOM, INVLBL, DIAL, DESC, INV, SIZE, MUTE, CCENTER,
+            KEYS, COLOR, PROMPT, MEN, SALAMAA, CSOUTH, INPUT};
+        
+        for (Component c : compList) {
+            int r = rand.nextInt(255);
+            int g = rand.nextInt(255);
+            int b = rand.nextInt(255);
+            c.setBackground(new Color(r,g,b));
+        }
+        for (Component c : compList) {
+            int r = rand.nextInt(255);
+            int g = rand.nextInt(255);
+            int b = rand.nextInt(255);
+            c.setForeground(new Color(r,g,b));
+        }
+    }
 // *****************************************************************************       
-// </editor-fold> CLEAR METHODS AND PARSERS   
+// </editor-fold>  
 // *****************************************************************************           
     
     
@@ -417,44 +449,46 @@ public class GUI extends JFXPanel {
      * Allows player to go to last keyboard input with arrow keys.
      */
     private class Text_Field_Key_Listener implements KeyListener {
-        private int current = 0;
+        private int undoPosition = 0;
         private final int 
                 BACKSPACE = KeyEvent.VK_BACK_SPACE,
                 UP = KeyEvent.VK_UP,
                 DOWN = KeyEvent.VK_DOWN,
                 ENTER = KeyEvent.VK_ENTER;
         /*------------------------------------------------------*/
-        @Override public void keyReleased(KeyEvent e) {}
-        /*------------------------------------------------------*/
         @Override public void keyPressed(KeyEvent e) {
             int keyCode = e.getKeyCode();
             
             // For playing the key sound
-            if (key != -1 && keyCode != BACKSPACE)
+            if (keyCode != BACKSPACE)
                 AudioPlayer.playKeySound(key);
             if (keyCode == ENTER)
-                current = 0;
+                undoPosition = 0;
 
             // For fetching last command or clearing prompt.
             switch(keyCode) {
                 case UP:
-                    if (current < UNDO.size())
-                        INPUT.setText(UNDO.get(current++));
+                    if (undoPosition < UNDO.size())
+                        INPUT.setText(UNDO.get(undoPosition++));
                     break;
                 case DOWN:
                     INPUT.setText(""); 
-                    current = 0;
+                    undoPosition = 0;
                     break;  
             }   
         }
         /*------------------------------------------------------*/
         @Override public void keyTyped(KeyEvent e) {}
+        /*------------------------------------------------------*/
+        @Override public void keyReleased(KeyEvent e) {}
     }
 /*----------------------------------------------------------------------------*/
     private class Text_Field_Listener implements ActionListener {
         /**
          * Waits for text to entered by the player and stores it, then notifies
          * the game to receive the input.
+         * Doesn't add save in order to prevent saving repeatedly in quick 
+         * succession. Also ignores single-key input and empty strings.
          * @param event Text entered by the player into the text field.
          */
         @Override public void actionPerformed(ActionEvent event) {
@@ -505,9 +539,7 @@ public class GUI extends JFXPanel {
             else { // Changes key click
                 KEYSOUND.offer(KEYSOUND.poll());
                 key = KEYSOUND.peek().soundEffectId;
-                
-                if (key != -1)
-                    AudioPlayer.playKeySound(key);
+                AudioPlayer.playKeySound(key);
             }
             giveFocus();
         }
@@ -540,33 +572,32 @@ public class GUI extends JFXPanel {
         @Override public void paint(Graphics g) {
             JTextComponent comp = getComponent();
 
-            if (comp == null)
-                return;
+            if (comp != null) {
+                Rectangle r;
 
-            int dot = getDot();
-            Rectangle r;
+                try {
+                    r = comp.modelToView(getDot());
 
-            try {
-                r = comp.modelToView(dot);
-
-                if (r == null)
+                    if (r == null) 
+                        return;
+                        
+                } catch (BadLocationException e) {
                     return;
-            } catch (BadLocationException e) {
-                return;
+                }
+
+                if (x != r.x || y != r.y) {
+                    repaint();
+                    x = r.x;
+                    y = r.y;
+                    height = r.height;
+                }
+
+                g.setColor(Color.LIGHT_GRAY);
+                g.setXORMode(comp.getBackground());
+
+                if (isVisible()) 
+                    g.fillRect(x, y, 10, 20);
             }
-
-            if (x != r.x || y != r.y) {
-                repaint();
-                x = r.x;
-                y = r.y;
-                height = r.height;
-            }
-
-            g.setColor(Color.LIGHT_GRAY);
-            g.setXORMode(comp.getBackground()); // do this to draw in XOR mode
-
-            if (isVisible()) 
-                g.fillRect(x, y, 10, 20);
         }
     }
 // *****************************************************************************

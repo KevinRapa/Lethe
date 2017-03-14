@@ -3,6 +3,7 @@ package A_Main;
 import static A_Main.NameConstants.*;
 import static A_Main.Patterns.*;
 import A_Super.Furniture;
+import A_Super.Item;
 import java.util.LinkedList;
 /**
  * This processes more complex sentences into statements containing verbs,
@@ -20,6 +21,9 @@ import java.util.LinkedList;
 public class TextParser {
     private final static LinkedList<Command> COMMAND_QUEUE = new LinkedList<>();
 
+    private static final Item BROKEN_GLASS = new Item("broken shards", 
+            "The pieces of glass sit uncomfortably in your pocket. Of course, you certainly know what you're doing.");
+    
     private static final String
         NOTHING = "", 
         SPACE = " ",
@@ -27,16 +31,25 @@ public class TextParser {
     
     // List of standard commands that are likely to be made many times.
     private static final Command 
-            DEFAULT_CMD =   new Command("What does that mean?"),
-            EXPLETIVE_CMD = new Command("Mind yourself! You're a guest here!"),
-            SUICIDE_CMD =   new Command("You haven't reached that point yet!!"),
-            DESTROY_CMD =   new Command("Yes, you're frustrated, hungry, and angry, but don't be so reckless!"),
-            GREETING_CMD =  new Command("What do you think this is? Zork?"),
-            NO_SLOT_CMD =   new Command("Seems that you don't have an existing slot there."),
-            AMBIGUOUS_CMD = new Command("You need to specify something to put that in!");
+        DEFAULT_CMD =   new Command("What does that mean?"),
+        EXPLETIVE_CMD = new Command("Mind yourself! You're a guest here!"),
+        
+        // Ends the game.
+        SUICIDE_CMD =   new Command(() -> {
+            GUI.out("You succumb to the surreal, yet all too reachable decision. "
+                  + "Could this release you from your hopelessness? Prepare to "
+                  + "experience the grand state of nothingness."); 
+            GUI.menOut("\n\nPress enter...");
+            GUI.promptOut();
+            Main.exitGame();
+        }, "SUICIDE"),
+            
+        GREETING_CMD =  new Command("What do you think this is? Zork?"),
+        NO_SLOT_CMD =   new Command("Seems that you don't have an existing slot there."),
+        AMBIGUOUS_CMD = new Command("You need to specify something to put that in!");
             
     //*************************************************************************
-    // <editor-fold desc="Queue methods">
+    // <editor-fold defaultstate="collapsed" desc="Queue methods">
     //*************************************************************************
     public static boolean moreCommands() {
         return (! COMMAND_QUEUE.isEmpty());
@@ -51,7 +64,7 @@ public class TextParser {
     
     
     //*************************************************************************
-    // <editor-fold desc="Text parser">
+    // <editor-fold defaultstate="collapsed" desc="Text parser">
     //*************************************************************************
     /**
      * Removes articles 'a', 'an', 'the', and the pronoun 'some' from the input,
@@ -108,12 +121,9 @@ public class TextParser {
             else if (SUICIDE_P.matcher(statements[i]).matches()) {
                 commands[i] = SUICIDE_CMD;
             }
-            else if (DESTROY_P.matcher(statements[i]).matches()) {
-                commands[i] = DESTROY_CMD;
-            }
             else if (COMBINE_P.matcher(statements[i]).matches()) {
                 String s = statements[i]; // Variable for lambda must be final.
-                commands[i] = new Command(() -> Player.combineSub(s));
+                commands[i] = new Command(() -> Player.combineSub(s), "COMBINE");
             }
             else if (ZORK_P.matcher(statements[i]).matches()) { // Zork-inspired
                 commands[i] = GREETING_CMD;
@@ -149,7 +159,7 @@ public class TextParser {
     
     
     //*************************************************************************
-    // <editor-fold desc="Command assemblers">
+    // <editor-fold defaultstate="collapsed" desc="Command assemblers">
     //*************************************************************************
     /**
      * Assembles a command where the player interacts with furniture with
@@ -171,7 +181,11 @@ public class TextParser {
             case 2:
                 return new Command(new Instrument(s[1]), dirObj);
             case 1:
-                return new Command(verb, dirObj);
+                if (verb.VALUE.equals(dirObj.VALUE))
+                    // If they're equal, the player entered a single word.
+                    return new Command(Verb.SEARCH_VERB, dirObj);
+                else
+                    return new Command(verb, dirObj);
             default:
                 return DEFAULT_CMD;
         }
@@ -194,7 +208,7 @@ public class TextParser {
             object = object.replaceAll(" down", NOTHING);
         }
         
-        if (NUMBER_P.matcher(object).matches()) {
+        if (ANY_DIGIT_P.matcher(object).matches()) {
             // Player typed a slot number and not an item name.
             int i = Integer.parseInt(object) - 1;
             
@@ -222,6 +236,7 @@ public class TextParser {
     /**
      * Assembles a command where the player uses an item, possibly on a
      * piece of furniture.
+     * Has been recently modified to accept throwing an breaking commands.
      * If s is size 2, then the second string is presumably a furniture name.
      */
     private static Command getItemCmd(String[] s) {
@@ -236,7 +251,8 @@ public class TextParser {
         
         Instrument inst;
         
-        if (NUMBER_P.matcher(item).matches()) {
+        if (ANY_DIGIT_P.matcher(item).matches()) {
+            // Player used an item slot instead of an item name
             int i = Integer.parseInt(item) - 1;
             
             if (i >= 0 && i < Player.getInv().size()) {
@@ -245,14 +261,27 @@ public class TextParser {
             else
                 return NO_SLOT_CMD;
         }
-        else 
+        else if (INSTRUCTIVE_P.matcher(item).find()) {
+            // Player typed a phrase including "<furniture> with/using <item>
+            String[] furnItem = INSTRUCTIVE_P.split(item);
+            return new Command(new Instrument(furnItem[1]), 
+                               new DirectObj(furnItem[0]));
+        }
+        else
             inst = new Instrument(item);
+        
         
         switch(s.length) {
             case 1:
                 return new Command(use, inst);
             case 2:
-                return new Command(inst, new DirectObj(s[1]));
+                if (! (use.VALUE.equals("throw") || 
+                       use.VALUE.equals("break") || 
+                       use.VALUE.equals("destroy"))
+                    )
+                    return new Command(inst, new DirectObj(s[1]));
+                else
+                    return new Command(use, inst);
             default:
                 return DEFAULT_CMD;
         }
@@ -263,7 +292,7 @@ public class TextParser {
     
     
     //*************************************************************************
-    // <editor-fold desc="Command class">
+    // <editor-fold defaultstate="collapsed" desc="Command class">
     //*************************************************************************
     private static class Command {
         private final Runnable ACTION;
@@ -271,25 +300,25 @@ public class TextParser {
         // ====================================================================
         // <editor-fold defaultstate="collapsed" desc="constructors">
         public Command(Verb v, DirectObj o) {
-            VALUE = v.toString() + SPACE + o.toString();
+            VALUE = "VERB: " + v.toString() + "\tOBJECT: " + o.toString();
             System.out.println("Creating verb -> object command: " + VALUE);
             ACTION = (() -> Player.evaluateAction(v.toString(), o.toString()));
         }
         // --------------------------------------------------------------------
         public Command(Instrument i, DirectObj o) {
-            VALUE = i.toString() + SPACE + o.toString();
+            VALUE = "ITEM: " + i.toString() + "\tOBJECT: " + o.toString();
             System.out.println("Creating item -> object command: " + VALUE);
             ACTION = (() -> execute(i, o));
         }
         // --------------------------------------------------------------------
         public Command(Verb v, Instrument i) {
-            VALUE = v.toString() + SPACE + i.toString();
+            VALUE = "VERB: " + v.toString() + "\tITEM: " + i.toString();
             System.out.println("Creating use item command: " + VALUE);
             ACTION = (() -> execute(v, i));
         }
         // --------------------------------------------------------------------
         public Command(Verb v, Instrument i, DirectObj o) {
-            VALUE = v.toString() + SPACE + i.toString() + SPACE + o.toString();
+            VALUE = "VERB: " + v.toString() + "\tITEM: " + i.toString() + "\tOBJECT: " + o.toString();
             System.out.println("Creating store command: " + VALUE);
             ACTION = (() -> execute(v, i, o));
         }
@@ -300,8 +329,8 @@ public class TextParser {
             ACTION = (() -> GUI.out(s));
         }
         // --------------------------------------------------------------------
-        public Command(Runnable b) {
-            VALUE = b.toString();
+        public Command(Runnable b, String desc) {
+            VALUE = desc;
             System.out.println("Creating player method command -> " + VALUE);
             ACTION = b;
         }
@@ -331,16 +360,17 @@ public class TextParser {
         private void execute(Verb v, Instrument i) {
             String verb = v.toString();
             
-            if (Player.hasItem(i.toString())) {
+            if (Player.hasItemResembling(i.toString())) {
                 A_Super.Item item = Player.getInv().get(i.toString());
                 String type = item.getType();
 
                 if (verb.equals("use"))
                     GUI.out(item.useEvent());
-                
+                //-------------------------------------------------------------
                 else if (INSPECT_P.matcher(verb).matches())
                     GUI.out(item.getDesc());
-                
+                //-------------------------------------------------------------
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: READ">
                 else if (verb.equals("read")) {
                     if (type.equals(READABLE) 
                             || item.toString().equals(BOOK_PHYL)) // Phylactery type. Not readable
@@ -348,12 +378,18 @@ public class TextParser {
                     else
                         GUI.out("That isn't something you can read...");
                 }
+                // </editor-fold>
+                
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: WEAR">
                 else if (verb.equals("wear")) {
                     if (type.equals(SHOES) || type.equals(CLOTHING))
                         GUI.out(item.useEvent());
                     else
                         GUI.out("That isn't something you can wear...");
                 }
+                // </editor-fold>
+                
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: DROP">
                 else if (verb.equals("drop") || verb.equals("remove")) {
                     if (verb.equals("remove") && item.getType().equals(SHOES)) {
                         if (Player.getShoes().equals(NOTHING))
@@ -365,7 +401,6 @@ public class TextParser {
                         Furniture floor = Player.getFurnRef("floor");
                         if (floor.isSearchable()) {
                             Player.evalStore(floor, item);
-                            Player.printInv();
                         }
                         else
                             GUI.out("It's not a good idea to drop that here.");
@@ -374,6 +409,73 @@ public class TextParser {
                         GUI.out("It's not a good idea to drop that here.");
                     }
                 }
+                // </editor-fold>
+                
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: THROW">
+                else if (verb.equals("throw")) {
+                    Player.getInv().remove(item);
+                    Furniture floor = Player.getFurnRef("floor");
+                    
+                    if (floor != null) {
+                        if (type.equals(BREAKABLE)) {
+                            floor.getInv().add(
+                                    new Item("destroyed " + item, "The " + item + 
+                                            " is now broken and likely useless.")
+                            );
+                            GUI.out("After some quick thinking, you passionately launch the " 
+                                    + item + " as an olympic discus thrower would. The item "
+                                    + "lands on the floor.");
+                        }
+                        else if (type.equals(LIQUID) || type.equals(INGREDIENT) || type.equals(FOCUS)) {
+                            if (! item.toString().equals(BUCKET_OF_WATER)) {
+                                floor.getInv().add(BROKEN_GLASS);
+                                GUI.out("A quick ingenious thought convinces you to throw the " + item + 
+                                    ". The item lands on the floor. A glassy shatter swarms your ear and fills you with rue.");
+                            }
+                            else {
+                                GUI.out("Be careful with that. You wouldn't want to get the floor all soaked and risk dying of a clumsy step.");
+                            }
+                        }
+                        else {
+                            floor.getInv().add(item);
+                            GUI.out("After some quick thinking, you passionately launch the " 
+                                    + item + " as an olympic discus thrower would. The item "
+                                    + "lands on the floor.");
+                        }
+                    }
+                    else {
+                        GUI.out("A quick ingenious thought convinces you to throw the " + item + 
+                                ". The item lands in an unknown location, likely lost to the aether.");
+                    }
+                }
+                // </editor-fold>
+                
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: BREAK">
+                else if (verb.equals("destroy") || verb.equals("break")) {
+                    if (type.equals(BREAKABLE) || type.equals(FOCUS) || type.equals(INGREDIENT)) {
+                            Player.getInv().remove(item);
+                            Player.getInv().CONTENTS.add(
+                                    new Item("destroyed " + item, "The " + item + 
+                                            " is now broken and likely useless.")
+                            );
+                            GUI.out("An acute sense of frustration causes you to crush the feeble " 
+                                    + item + " in your hand.");
+                        }
+                        else if ((type.equals(LIQUID) && ! item.toString().equals(BUCKET_OF_WATER)) 
+                                || type.equals(FOCUS)) 
+                        {
+                            Player.getInv().remove(item);
+                            Player.getInv().CONTENTS.add(BROKEN_GLASS);
+                            GUI.out("An acute sense of frustration causes you to crush the feeble " 
+                                    + item + " in your hand.");
+                        }
+                        else {
+                            GUI.out("You lack the strength to do that.");
+                        }
+                }
+                // </editor-fold>
+                
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: DRINK">
                 else if (verb.equals("drink")) {
                     if (type.equals(INGREDIENT) || type.equals(LIQUID)) {
                         if (item.toString().equals(PHASE_DOOR_POTION))
@@ -388,22 +490,31 @@ public class TextParser {
                     else
                         GUI.out("That is not something you can drink...");
                 }
+                // </editor-fold>
+                
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: EAT">
                 else if (verb.equals("eat") || verb.equals("consume")) {
                     if (item.toString().equals(GLOWING_FRUIT))
                         GUI.out("You know, that might destroy the phylactery, which you need to do, AND you're quite hungry...\n"
                               + "but conversely it quite possibly may drive you into hopeless insanity, so let's not do that.");
                     else
-                        GUI.out("That... REALLY does not seem edible...");
+                        GUI.out("The " + item + " seems most inedible...");
                 }
+                // </editor-fold>
+                //-------------------------------------------------------------
                 else
                     GUI.out("You will need to be more specific.");
             }
             else if (Player.getPos().hasFurniture(i.toString()) || 
-                     IT_THEM_P.matcher(i.toString()).matches()) {
+                     IT_THEM_P.matcher(i.toString()).matches() ||
+                     i.VALUE.equals("self") || i.VALUE.equals("yourself")) 
+            {
                 Player.evaluateAction(v.toString(), i.toString());
             }
             else
                 GUI.out(DONT_HAVE_IT);
+            
+            Player.printInv();
         }
         // --------------------------------------------------------------------
         /**
@@ -458,7 +569,10 @@ public class TextParser {
     
     
     //*************************************************************************
-    // <editor-fold desc="Word Classes"> 
+    // <editor-fold defaultstate="collapsed" desc="Word Classes"> 
+    //
+    // Represent items, actions, and furniture mentioned in player input.
+    // Different word subclasses exist to differentiate Command constructors.
     //*************************************************************************
     abstract private static class Word {
         protected final String VALUE;
@@ -474,8 +588,9 @@ public class TextParser {
     // ========================================================================
     private static class Verb extends Word {
         public final static Verb 
-                PUT_VERB = new Verb("put"),
-                GO_VERB = new Verb("go");
+                PUT_VERB = new Verb("put"), // Default verb for storing
+                GO_VERB = new Verb("go"),   // Default verb for moving
+                SEARCH_VERB = new Verb("search");   // Default verb for moving
         
         public Verb(String verb) {
             super(verb);
@@ -483,7 +598,8 @@ public class TextParser {
     }
     // ========================================================================
     private static class DirectObj extends Word {
-        public final static DirectObj FLOOR_OBJECT = new DirectObj("floor");
+        public final static DirectObj 
+                FLOOR_OBJECT = new DirectObj("floor");  // For drop commands
         
         public DirectObj(String object) {
             super(object);
