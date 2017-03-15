@@ -20,19 +20,19 @@ package A_Main;
  * 
  * IDEAS:
  * Foyer now contains an armoire which has the loot sack, an umbrella, and a long black robe.
- * Sack starts empty and sits in your inventory. When examining it, it's very light and feels
- * like it has magical properties.
- * Phylacteries and vital items have no score.
- * Have encounter in Attic put items in the prison cabinet instead.
- * The sack also has an inventory. Give all items another field
- * called score. When an item is added to the sack, add the points to your own.
- * when an item is removed, subtract the points. When the sack is used or opened,
- * enter a prompt to trade items with the sack. This gives a secondary objective.
+ * Sack starts empty and sits in your inventory. 
+ * When examining it, it's very light and feels like it has magical properties.
+ * Phlacteries have VERY high score. Gross items have negative score.
+ * Add an NPC that just implies player can commit suicide. "The wealthy live comfortably in hell."
+ * Have encounter in attic put items in the prison cabinet instead, phylacteries in LQUA
+ * The sack also has an inventory. Give all items another field called score.
+ * When an item is added to the sack, add the points to your own. Subtract when removed.
+ * When the sack is used or opened, enter a prompt to trade items with the sack.
  * In item constructor, add points to a static number called maxPoints so the max
- * amount of obtainable points in the game is known. Player now needs two extra
- * fields for number of moves and score. Add 'l' or 'loot' command to main prompt
- * add another option to inventory prompt to look in sack. Add the loot sack method
- * to player.
+ * amount of obtainable points in the game is known. 
+ * Player now needs two extra fields for number of moves and score. 
+ * Add 'l' or 'loot' command to main prompt and another option to inventory prompt to look in sack.
+ * Add the loot sack method to player.
  * Print score and number of moves in upper right label.
  *
  * Have suicide now put player in Hades. Reference Zork. Have player judged by the
@@ -41,6 +41,9 @@ package A_Main;
  *
  * Modify search, evalTake, evalStore, and addToKeyring to accept only an inventory
  * as a parameter. This will make it easier to implement the loot sack.
+ *
+ * Add more treasure, make existing things more luxurious, like silverware in the the dining room
+ * The sack should have a max size, like 50.
  *
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
