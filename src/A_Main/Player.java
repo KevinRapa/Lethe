@@ -30,13 +30,19 @@ public final class Player {
     private static ArrayList<String> visited;
     private static String lastVisited, shoes;
     
+    private static boolean notEnd = true;
+    
     private static final HashMap<String, Runnable> 
             MAIN_CMDS = new HashMap<>(),
             INV_CMDS = new HashMap<>();
     
+    private static final HashMap<String, String> 
+            ODD_CMD_KEYS = new HashMap<>(); 
+    
     private static final HashSet<String> 
             MAIN_CMD_SET = new HashSet<>(),
-            INV_CMD_SET = new HashSet<>(); 
+            INV_CMD_SET = new HashSet<>(),
+            ODD_CMD_SET = new HashSet<>(); 
     
     private static final String 
             NOT_VALID_SLOT = "You don't seem to have an item there.";
@@ -57,8 +63,11 @@ public final class Player {
         MAIN_CMDS.put("d", () -> move(Direction.EAST));
         MAIN_CMDS.put("m", () -> Map.displayMap());
         MAIN_CMDS.put("n", () -> writeNote());
+        MAIN_CMDS.put("q", () -> {notEnd = false;});
         
-        MAIN_CMDS.put("inspect",   () -> examineSub());
+        MAIN_CMDS.put("quit", () -> {notEnd = false;});
+        MAIN_CMDS.put("zork",      () -> GUI.out("You must be mistaking me for someone else."));
+        MAIN_CMDS.put("inspect",   () -> GUI.out("AHHHHHGGGHHH!!!!!"));
         MAIN_CMDS.put("examine",   () -> examineSub());
         MAIN_CMDS.put("keys",      () -> viewKeyRing());
         MAIN_CMDS.put("keyring",   () -> viewKeyRing());
@@ -75,6 +84,9 @@ public final class Player {
         MAIN_CMDS.put("map",       () -> Map.displayMap());
         MAIN_CMDS.put("note",      () -> writeNote());
         MAIN_CMDS.put("write",     () -> writeNote());
+        MAIN_CMDS.put("wait",      () -> GUI.out("You stand and do nothing."));
+        MAIN_CMDS.put("sit down",  () -> GUI.out("You sit and rest a moment."));
+        MAIN_CMDS.put("sit",       () -> GUI.out("You sit and rest a moment."));
         
         MAIN_CMDS.put("xyzzy",     () -> {
             GUI.out("That word... What have you done to my game?!"); 
@@ -86,7 +98,7 @@ public final class Player {
         });
         
         MAIN_CMD_SET.addAll(MAIN_CMDS.keySet());
-        
+        //---------------------------------------------------------------------
         INV_CMDS.put("1", () -> inspectPrompt());
         INV_CMDS.put("2", () -> usePrompt());
         INV_CMDS.put("3", () -> combineSub());
@@ -94,6 +106,22 @@ public final class Player {
         INV_CMDS.put("5", () -> writeNote());
         
         INV_CMD_SET.addAll(INV_CMDS.keySet());
+        //---------------------------------------------------------------------
+        ODD_CMD_KEYS.put("eat", "That is quite an ambitious proposition.");
+        ODD_CMD_KEYS.put("speak", "Did you have much to drink before you came?");
+        ODD_CMD_KEYS.put("talk", "Did you have much to drink before you came?");
+        ODD_CMD_KEYS.put("climb", "Let us act like civilized guests whilst we're here.");
+        ODD_CMD_KEYS.put("jump", "Let us act like civilized guests whilst we're here.");
+        ODD_CMD_KEYS.put("smell", "You press your nose up against it and inhale deeply.");
+        ODD_CMD_KEYS.put("find", "You have already found it detective.");
+        ODD_CMD_KEYS.put("count", "You didn't climb all the way up to this precipice to do math.");
+        ODD_CMD_KEYS.put("burn", "Yes... burn it... burn it all down to the ground.");
+        ODD_CMD_KEYS.put("write", "You are sure the owner wouldn't wanting you doing that.");
+        ODD_CMD_KEYS.put("draw", "You are sure the owner wouldn't wanting you doing that.");
+        ODD_CMD_KEYS.put("inflate", "Does this look like some kind of balloon to you?");
+        ODD_CMD_KEYS.put("deflate", "Does this look like some kind of balloon to you?");
+        
+        ODD_CMD_SET.addAll(ODD_CMD_KEYS.keySet());
     }
     
 //******************************************************************************
@@ -267,20 +295,16 @@ public final class Player {
         AudioPlayer.playTrack(Id.ENDG);
         
         GUI.menOut("\n\nPress enter...");
-        GUI.out("It's 10:00pm, the night is clear and warm.\n" +
+        GUI.out("It's about 10:00pm and a warm, humid breeze passes through the trees.\n" +
                 "You have just arrived on foot to your destination, and\n" +
                 "find it even more colossal than what you had\n" +
                 "expected. It also appears curiously more vacant...");
         GUI.promptOut();    
-        GUI.out("You slowly approach until between the front gateway.\n" +
+        GUI.out("You slowly approach until inside the front gateway.\n" +
                 "A thought briefly flashes in your mind before being\n" +
-                "forgotten - what was your business here, again?...");     
+                "forgotten - what was your business here, again?");     
         GUI.promptOut();
         GUI.clearDialog();
-        
-        GUI.menOut("Press the up arrow key\nat any time to go to\n"
-                 + "your last action.\n\nPress enter...");
-        GUI.promptOut();
         
         return mainPrompt();
     }
@@ -291,38 +315,28 @@ public final class Player {
      */
     public static boolean mainPrompt() {
         AudioPlayer.playTrack(getPosId());
-
         printInv();
-        
         GUI.roomOut(getPos().triggeredEvent());
         describeRoom();
         
         String ans;
         
-        while (true) {
-            while (TextParser.moreCommands()) 
-                // Ensures all chained-together commands are executed.
-                TextParser.performNextCommand();
-            
+        do {
             GUI.toMainMenu();
             ans = GUI.promptOut();
 
-            if (MAIN_CMD_SET.contains(ans)) 
-                // Simple command
+            if (MAIN_CMD_SET.contains(ans)) // Simple command
                 MAIN_CMDS.get(ans).run();
 
-            else if(ans.equals("quit") || ans.equals("q"))
-                break;
-            
-            else if (isNonEmptyString(ans))
-                // Processes more complicated sentences.
+            else if (isNonEmptyString(ans)) // More complicated command
                 TextParser.processText(ans);
-        }
+            
+        } while (notEnd);
         
-        return endGame();
+        return endGameCode();
     }  
     // ========================================================================   
-    private static boolean endGame() {
+    private static boolean endGameCode() {
         String ans = GUI.askChoice(Menus.SAVE_QUIT, SAVE_QUIT_RESET_P);
         
         if (ans.equals("s")) {
@@ -473,12 +487,12 @@ public final class Player {
         String searchThis = GUI.promptOut();
         
         if (isNonEmptyString(searchThis) && getPos().hasFurniture(searchThis)) {
-            search(getFurnRef(searchThis));
+            searchPrompt(getFurnRef(searchThis));
         }
         else if (IT_THEM_P.matcher(searchThis).matches() && 
                 getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture())) 
         {   // Player used "it" or "them" in place of a furniture name.
-            search(getFurnRef(searchThis));
+            searchPrompt(getFurnRef(searchThis));
         }
         else if (GEN_FURNITURE_P.matcher(searchThis).matches()) {
             GUI.out("There are too many things in the room. Specify your intention.");
@@ -494,18 +508,18 @@ public final class Player {
      * Serves to block access from trading itemList with non searchable furniture.
      * @param furniture The furniture being searched.
      */
-    public static void search(Furniture furniture) {
+    public static void searchPrompt(Furniture furniture) {
         GUI.out(furniture.getSearchDialog());
         
         if (furniture.isSearchable())
-            searchPrompt(furniture); 
+            search(furniture); 
     } 
     // ========================================================================  
     /**
      * Subroutine for exchanging itemList between player and furniture inventories.
      * @param furniture The furniture being searched.
      */
-    private static void searchPrompt(Furniture furniture) {
+    private static void search(Furniture furniture) {
         String cmdItm; 
         
         do {
@@ -514,7 +528,7 @@ public final class Player {
             
             cmdItm = GUI.promptOut();
             
-            if (cmdItm.equals("loot") || cmdItm.equals("l")) {
+            if (cmdItm.equals("loot") || cmdItm.equals("l") || cmdItm.equals("take all")) {
                 // Takes as many items as possible from the furniture.
                 ArrayList<Item> l = new ArrayList<>();
                 
@@ -614,18 +628,27 @@ public final class Player {
      * @param action the action the player is performing on the furniture.
      */
     public static void evaluateAction(String action, String object) {
+
+        // <editor-fold defaultstate="collapsed" desc="MOVE COMMAND">
         if (WALK_P.matcher(action).matches() && 
-            DIRECTION_P.matcher(object).matches()) 
+                DIRECTION_P.matcher(object).matches()) 
         {
             // Player typed something resemling "walk <direction>"
             // The direction in this case is pretending to be furniture.
             parseMovement(object);
         }
-        else if (getPos().hasFurniture(object) || 
-                (IT_THEM_P.matcher(object).matches() && 
-                getPos().hasFurniture(object = GUI.parsePreviousFurniture()))) 
+        else if (WALK_P.matcher(action).matches() && 
+                INVALID_DIR_P.matcher(object).matches()) 
+        {
+            // Player typed something resemling "walk <direction>"
+            // The direction in this case is pretending to be furniture.
+            GUI.out("Your humble life as a tradesman knows not how to move " + object + ".");
+        }
+        // </editor-fold>
+        
+        // <editor-fold defaultstate="collapsed" desc="COMMAND ON FURNITURE">
+        else if (getPos().hasFurniture(object)) {
             // In this case, a valid furniture exists to be interacted with.
-        {    
             Furniture target = getFurnRef(object);
 
             if (target.actKeyMatches(action)) {
@@ -641,7 +664,7 @@ public final class Player {
             else if (SEARCH_P.matcher(action).matches() || 
                     (action.equals("open") && target instanceof Openable)) {              
                 // Player typed something implying a search on furniture
-                search(target);
+                searchPrompt(target);
             }
             else if (MOVE_P.matcher(action).matches() 
                     && target instanceof Moveable) {
@@ -658,9 +681,14 @@ public final class Player {
                 // Furniture isn't gettable.
                 GUI.out("Yes, you're frustrated and hungry, but abstain from the wrathful thoughts.");
             }
+            else if (ODD_CMD_SET.contains(action)) {
+                // Standard output stirngs for wierd input.
+                GUI.out(ODD_CMD_KEYS.get(action));
+            }
             else
-                GUI.out("That seems unnecessary.");
+                GUI.out("Doing that to the " + object + " seems unnecessary right now.");
         }   
+        // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="REFLEXIVE COMMANDS">
         else if (object.equals("self") || object.equals("yourself")) {
@@ -691,7 +719,7 @@ public final class Player {
         
         else if (GEN_FURNITURE_P.matcher(object).matches())
             // Player used a very vague term to interact with.
-            GUI.out("Don't be lazy. Enter in something specific.");
+            GUI.out("Don't be lazy now. Enter in something specific.");
         
         else // Something invalid was entered in!
             GUI.out("There is no " + object + 

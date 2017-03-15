@@ -5,6 +5,7 @@ import A_Main.Inventory;
 import static A_Main.NameConstants.*;
 import A_Super.Item;
 import A_Main.Player;
+import A_Super.BreakableItem;
 import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 /**
@@ -30,12 +31,12 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
         
         // Lens to give player
         this.SHEET_REF = 
-                new Item("glass sheet", "Wait... this isn't right. Weren't you supposed to make a lens?");
+                new BreakableItem("glass sheet", "Wait... this isn't right. Weren't you supposed to make a lens?");
         this.BLUE_LENS_REF = 
-                new Item("blue lens", "You made a blue lens. Good job, but was this the right color?",
+                new BreakableItem("blue lens", "You made a blue lens. Good job, but was this the right color?",
                          "Wait... was this the color you were supposed to make?");
         this.YELLOW_LENS_REF = 
-                new Item("yellow lens", "You made a yellow lens. Good job, but was this the right color?", 
+                new BreakableItem("yellow lens", "You made a yellow lens. Good job, but was this the right color?", 
                          "Wait... was this the color you were supposed to make?");
         this.RED_LENS_REF = rdLns; 
         

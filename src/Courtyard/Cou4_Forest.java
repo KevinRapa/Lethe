@@ -13,7 +13,7 @@ public class Cou4_Forest extends Furniture{
         this.searchDialog = "You have no intention of turning back now.";
         this.actDialog = "That's your trade, you know. But it's too late for logging now.";
         this.addActKeys("chop", "cut", "log");
-        this.addNameKeys("forest", "trees");
+        this.addNameKeys("forest", "trees?");
     }
 /*----------------------------------------------------------------------------*/    
 }

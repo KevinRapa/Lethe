@@ -25,7 +25,7 @@ public class GenDoor extends Furniture {
 
         this.addUseKeys(ANYTHING);
         this.addNameKeys("door");
-        this.addActKeys("open|close", "use", "kick|knock|bang", "unlock|lock");
+        this.addActKeys(ANYTHING);
     }
     /*------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

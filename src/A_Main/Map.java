@@ -153,10 +153,10 @@ public class Map {
         // Instantiated before courtyard because soil can be found in the courtyard.
         Item mndrk = new Item(MANDRAGORA, "The potato-shaped vegetable looks disturbingly life-like.");
         Item hlyWtr = new Liquid(HOLY_WATER, "Clear, salty, and boiled like hell.", mndrk, 2);
-        Item pttdMndrk = new Item(POTTED_MANDRAGORA, "You have gently positioned the bulb under the soil.", mndrk, 2);
+        Item pttdMndrk = new BreakableItem(POTTED_MANDRAGORA, "You have gently positioned the bulb under the soil.", mndrk, 2);
         Item mndrkBlb = new Item("mandragora bulb", "It's a baby mandragora!", pttdMndrk, 2);
-        Item mndrkPt = new Item(POTTED_SOIL_AND_FERTILIZER, "The fertile soil mixture is packed gently into the pot. ", pttdMndrk, 2);
-        Item pot = new Item("clay pot", "It's a medium-sized clay pot for holding plants.", mndrkPt, 2);
+        Item mndrkPt = new BreakableItem(POTTED_SOIL_AND_FERTILIZER, "The fertile soil mixture is packed gently into the pot. ", pttdMndrk, 2);
+        Item pot = new BreakableItem("clay pot", "It's a medium-sized clay pot for holding plants.", mndrkPt, 2);
         Item mxtr = new Item(FERTILIZED_SOIL, "It's a fertile mixture of soil, sand, and fertilizer", mndrkPt, 2);
         Item snd = new Item(SAND, "You have a pocket full of sand. It's grainy and uncomfortable.", mxtr, 3);
         Item sl = new Item(SOIL, "It's a soft pile of soil", mxtr, 3);
@@ -722,7 +722,7 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room work = new Work("in the workshop", Id.WORK);
         //-------------------------------ITEMS----------------------------------
-        Item redLns = new Item("red lens", "It's a proper lens tinted red. Maybe you should pick up the glass trade!", rdFcs, 3);
+        Item redLns = new BreakableItem("red lens", "It's a proper lens tinted red. Maybe you should pick up the glass trade!", rdFcs, 3);
         Item rdDy = new Item(RED_DYE, "You have a handful of soft red powdered dye. It's quite soft and powdery.");
         Item blDy = new Item(BLUE_DYE, "You have a handful of soft blue powdered dye. It's quite soft and powdery.");
         Item yllwDy = new Item(YELLOW_DYE, "You have a handful of soft yellow powdered dye. It's quite soft and powdery.");
@@ -1090,7 +1090,7 @@ public class Map {
         Item tstTb = new BreakableItem(TEST_TUBE, "A small glass tube with a rounded bottom and a smooth rounded lip at the other end.");
         Item bkr = new BreakableItem(BEAKER, "The vessel is straight on the edges and wide. Painted in wide intervals on the sides are white marks with numeric measurements.");
         Item strkr = new Item(STRIKER, "It's a weird metal tool. You squeeze it a couple times and a few sparks fly from the metal cap at the one end.");
-        Item scale = new Item("scale", "A machine for the weighing of things, comprised of a metal bed and a base comprised of many small mechanical parts.");
+        Item scale = new BreakableItem("scale", "A machine for the weighing of things, comprised of a metal bed and a base comprised of many small mechanical parts.");
         Item balance = new Item("balance", "You seem to remember these being called triple-beam balances in middle school.", "Oh boy! You could weigh just about anything with this!");
         Item flrcFlsk = new BreakableItem(FLORENCE_FLASK, "It's a piece of chemistry glassware. Has a bulbous bottom and a thin shaft with an opening at the top.");
         Item laboCtNt = new Labo_CoatNote("scientist momento");
@@ -1416,13 +1416,13 @@ public class Map {
 
         //-------------------------------ITEMS----------------------------------
         Item coin = new Item("stone coins", "A small collection of ancient coins. Many archaic markings decorate their surfaces, with holes bored in the centers.", "Where do you expect to spend these?");
-        Item ring = new Item("bronze ring", "It's a tarnished ring. Some of the tarnish rubs off and stains your hand green.", "Now is not the time for dress-up.");
-        Item nckLc = new Item("beaded neclace", "A lackluster necklace made with wooden beads.", "Now is not the time for dress-up.");
-        Item jwl = new Item(IRIDESCENT_JEWEL, "The polished stone feels warm to the touch, and is constantly shifting color among red, black, and green.");
+        Item ring = new Clothing("bronze ring", "It's a tarnished ring. Some of the tarnish rubs off and stains your hand green.", "You slip the small ring on your finger.");
+        Item nckLc = new Clothing("beaded neclace", "A lackluster necklace made with wooden beads.", "You fit the old ceremonial necklace over your head.");
+        Item jwl = new BreakableItem(IRIDESCENT_JEWEL, "The polished stone feels warm to the touch, and is constantly shifting color among red, black, and green.");
             String medString = "It's an archaic stone key. It has a thick disc-shaped head and a long protruding shaft bearing a few fat teeth. ";
-        Item med1 = new Item(KEY_OF_ANCESTRY, medString + "Engraved on its head is a depiction of the sun.");
-        Item med2 = new Item(KEY_OF_INTELLECT, medString + "An eye is engraved on its head.");
-        Item med3 = new Item(KEY_OF_CONTINUITY, medString + "The number '8' is engraved on its head.");
+        Item med1 = new BreakableItem(KEY_OF_ANCESTRY, medString + "Engraved on its head is a depiction of the sun.");
+        Item med2 = new BreakableItem(KEY_OF_INTELLECT, medString + "An eye is engraved on its head.");
+        Item med3 = new BreakableItem(KEY_OF_CONTINUITY, medString + "The number '8' is engraved on its head.");
             Random rand = new Random();
             int index = rand.nextInt(list.length);
             list[index].getFurnishings().get(0).getInv().add(jwl);  

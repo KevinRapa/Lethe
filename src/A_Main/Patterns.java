@@ -30,6 +30,7 @@ public final class Patterns {
         CS35_CT34_P = Pattern.compile("CS35|CT34"),
         SAVE_QUIT_RESET_P = Pattern.compile("[sqr]"),
         DIGIT_OR_BLANK_P = Pattern.compile("\\d+|"),
+        INVALID_DIR_P = Pattern.compile("(?:north|south)(?:east|west)"),
             
         // Patterns used by TextParser    
         ZORK_P = Pattern.compile("hi|hello|hey|sup|brief|superbrief|verbose|diagnose"),
@@ -37,7 +38,7 @@ public final class Patterns {
         EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska"),
         SEARCH_MANNER_P = Pattern.compile("look (?:on|in(?:side)?|under|around)"),
         INSPECT_P = Pattern.compile("look(?! (?:on|in(?:side)?|under|around))|inspect|examine|check"),
-        USE_P = Pattern.compile("use|read|drop|wear|remove|eat|drink|throw|destroy|break|lean|tie"),
+        USE_P = Pattern.compile("use|read|drop|wear|remove|eat|drink|throw|destroy|break|lean|tie|rip|tear"),
         USE_ITEM_CMD_P = Pattern.compile("(?:" + USE_P + "|" + INSPECT_P + ") [a-z0-9: ,'-]+"),
         SUICIDE_P = Pattern.compile("(?:commit )?suicide|(?:kill|hang) (?:your)?self(?: (?:with|using).+)?"),
         DESTROY_P = Pattern.compile("destroy|break|shatter|obliterate|throw"),

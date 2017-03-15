@@ -90,7 +90,7 @@ public class Obs1_Slots extends Furniture {
            
             if (Player.isNonEmptyString(choice)) {
                 Furniture slot = SLOTS.get(MAP.get(choice.charAt(0)));
-                Player.search(slot);
+                Player.searchPrompt(slot);
                 
                 if (checkSolved() && ! areSlotsLocked()) {
                     rep = "A luminescence from an unknown source begins seeping through the seams\n"

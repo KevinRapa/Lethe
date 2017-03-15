@@ -4,6 +4,7 @@ import static A_Main.NameConstants.*;
 import static A_Main.Patterns.*;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Note;
 import java.util.LinkedList;
 /**
  * This processes more complex sentences into statements containing verbs,
@@ -21,13 +22,19 @@ import java.util.LinkedList;
 public class TextParser {
     private final static LinkedList<Command> COMMAND_QUEUE = new LinkedList<>();
 
-    private static final Item BROKEN_GLASS = new Item("broken shards", 
-            "The pieces of glass sit uncomfortably in your pocket. Of course, you certainly know what you're doing.");
+    // Items to create when other items are thrown or broken.
+    private static final Item 
+            BROKEN_GLASS = new Item("broken shards", 
+                    "The pieces of glass sit uncomfortably in your pocket. "
+                            + "Of course, you certainly know what you're doing."),
+            RIPPED_SHREDS = new Note("ripped paper shreds", 
+                    "The gory mess of literature now exists crumpled up in your "
+                            + "pocket. This is unintelligible.");
     
     private static final String
         NOTHING = "", 
         SPACE = " ",
-        DONT_HAVE_IT = "You aren't carrying that.";
+        NONE_THERE = "You do not notice any ", NEARBY = " nearby.";
     
     // List of standard commands that are likely to be made many times.
     private static final Command 
@@ -49,21 +56,6 @@ public class TextParser {
         AMBIGUOUS_CMD = new Command("You need to specify something to put that in!");
             
     //*************************************************************************
-    // <editor-fold defaultstate="collapsed" desc="Queue methods">
-    //*************************************************************************
-    public static boolean moreCommands() {
-        return (! COMMAND_QUEUE.isEmpty());
-    }
-    // ========================================================================
-    public static void performNextCommand() {
-        COMMAND_QUEUE.poll().perform();
-    }
-    //*************************************************************************
-    // </editor-fold>
-    //*************************************************************************
-    
-    
-    //*************************************************************************
     // <editor-fold defaultstate="collapsed" desc="Text parser">
     //*************************************************************************
     /**
@@ -77,7 +69,8 @@ public class TextParser {
         for (Command c : splitCommands(noArticles))
             COMMAND_QUEUE.offer(c);
         
-        performNextCommand();
+        while (! COMMAND_QUEUE.isEmpty())
+            COMMAND_QUEUE.poll().perform();
     }
     // ========================================================================
     /**
@@ -173,9 +166,12 @@ public class TextParser {
         Verb verb = new Verb(SPACE_THEN_ALL_P.matcher(actionObject)
                                             .replaceAll(NOTHING));
         
-        DirectObj dirObj = new DirectObj(FIRST_WORD_P
-                .matcher(actionObject.trim())
-                .replaceFirst(NOTHING)); // Remove the first word.
+        // Everything but the first word.
+        String object = FIRST_WORD_P
+                        .matcher(actionObject.trim())
+                        .replaceFirst(NOTHING);
+        
+        DirectObj dirObj = new DirectObj(object);
         
         switch(s.length) {
             case 2:
@@ -222,7 +218,6 @@ public class TextParser {
         
         switch(s.length) {
             case 2:
-                // Player used the item on furniture.
                 return new Command(Verb.PUT_VERB, inst, new DirectObj(s[1]));
             case 1:
                 return (obj == null) ?
@@ -264,6 +259,7 @@ public class TextParser {
         else if (INSTRUCTIVE_P.matcher(item).find()) {
             // Player typed a phrase including "<furniture> with/using <item>
             String[] furnItem = INSTRUCTIVE_P.split(item);
+            
             return new Command(new Instrument(furnItem[1]), 
                                new DirectObj(furnItem[0]));
         }
@@ -302,7 +298,13 @@ public class TextParser {
         public Command(Verb v, DirectObj o) {
             VALUE = "VERB: " + v.toString() + "\tOBJECT: " + o.toString();
             System.out.println("Creating verb -> object command: " + VALUE);
-            ACTION = (() -> Player.evaluateAction(v.toString(), o.toString()));
+            
+            // Resolves an indefinite reference.
+            final String object = IT_THEM_P.matcher(o.toString()).matches() ? 
+                    GUI.parsePreviousFurniture() :
+                    o.toString();
+
+            ACTION = (() -> Player.evaluateAction(v.toString(), object));
         }
         // --------------------------------------------------------------------
         public Command(Instrument i, DirectObj o) {
@@ -343,11 +345,17 @@ public class TextParser {
         /**
          * Uses the item i on the furniture o.
          */
-        private void execute(Instrument i, DirectObj o) {
+        private static void execute(Instrument i, DirectObj o) {
+            String furniture = o.VALUE;
+            
+            if (IT_THEM_P.matcher(furniture).matches())
+                // Resolves indefinite reference
+                furniture = GUI.parsePreviousFurniture();
+            
             if (Player.hasItemResembling(i.toString()))
-                Player.evalUse(Player.getInv().get(i.toString()), o.toString());
+                Player.evalUse(Player.getInv().get(i.toString()), furniture);
             else
-                GUI.out(DONT_HAVE_IT);
+                GUI.out(NONE_THERE + i + NEARBY);
         }
         // --------------------------------------------------------------------
         /**
@@ -357,11 +365,16 @@ public class TextParser {
          * the player typed. If it is, acts on it instead (Mainly for inspect/
          * examine commands.
          */
-        private void execute(Verb v, Instrument i) {
-            String verb = v.toString();
+        private static void execute(Verb v, Instrument i) {
+            String verb = v.toString(),
+                   instrument = i.toString();
             
-            if (Player.hasItemResembling(i.toString())) {
-                A_Super.Item item = Player.getInv().get(i.toString());
+            // Resolves an indefinite reference.
+            if (IT_THEM_P.matcher(instrument).matches())
+                instrument = GUI.parsePreviousFurniture();
+            
+            if (Player.hasItemResembling(instrument)) {
+                A_Super.Item item = Player.getInv().get(instrument);
                 String type = item.getType();
 
                 if (verb.equals("use"))
@@ -413,65 +426,88 @@ public class TextParser {
                 
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: THROW">
                 else if (verb.equals("throw")) {
-                    Player.getInv().remove(item);
-                    Furniture floor = Player.getFurnRef("floor");
-                    
-                    if (floor != null) {
-                        if (type.equals(BREAKABLE)) {
-                            floor.getInv().add(
-                                    new Item("destroyed " + item, "The " + item + 
-                                            " is now broken and likely useless.")
-                            );
-                            GUI.out("After some quick thinking, you passionately launch the " 
-                                    + item + " as an olympic discus thrower would. The item "
-                                    + "lands on the floor.");
+                    if (! item.getType().equals(PHYLACTERY)) {
+                        Player.getInv().remove(item);
+                        Furniture floor = Player.getFurnRef("floor");
+
+                        if (floor == null) {
+                            GUI.out("A quick ingenious thought convinces you to "
+                                  + "throw the " + item + ". The item lands in "
+                                  + "an unknown location, likely lost to the aether.");
                         }
-                        else if (type.equals(LIQUID) || type.equals(INGREDIENT) || type.equals(FOCUS)) {
+                        else if (type.equals(BREAKABLE)) {
+                            floor.getInv().add(new Item("destroyed " + item, 
+                                    "The " + item + " is now broken and certainly useless."));
+                            
+                            GUI.out("After some quick thinking, you passionately "
+                                  + "launch the " + item + " as an olympic discus "
+                                  + "thrower would. The item lands on the floor.");
+                        }
+                        else if (type.equals(LIQUID) || type.equals(INGREDIENT) 
+                                || type.equals(FOCUS)) 
+                        {
                             if (! item.toString().equals(BUCKET_OF_WATER)) {
                                 floor.getInv().add(BROKEN_GLASS);
-                                GUI.out("A quick ingenious thought convinces you to throw the " + item + 
-                                    ". The item lands on the floor. A glassy shatter swarms your ear and fills you with rue.");
+                                GUI.out("A quick ingenious thought convinces you "
+                                      + "to throw the " + item + ". The item lands "
+                                      + "on the floor. A glassy shatter swarms your "
+                                      + "ear and fills you with rue.");
                             }
                             else {
-                                GUI.out("Be careful with that. You wouldn't want to get the floor all soaked and risk dying of a clumsy step.");
+                                GUI.out("Be careful with that. You wouldn't want "
+                                      + "to get the floor all soaked and risk "
+                                      + "dying of a clumsy step.");
                             }
                         }
                         else {
                             floor.getInv().add(item);
-                            GUI.out("After some quick thinking, you passionately launch the " 
-                                    + item + " as an olympic discus thrower would. The item "
-                                    + "lands on the floor.");
+                            GUI.out("After some quick thinking, you passionately "
+                                  + "launch the " + item + " as an olympic discus "
+                                  + "thrower would. The item lands on the floor.");
                         }
                     }
-                    else {
-                        GUI.out("A quick ingenious thought convinces you to throw the " + item + 
-                                ". The item lands in an unknown location, likely lost to the aether.");
-                    }
+                    else
+                        GUI.out("You have a strong sense that you will be needing that later.");
                 }
                 // </editor-fold>
                 
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: BREAK">
                 else if (verb.equals("destroy") || verb.equals("break")) {
-                    if (type.equals(BREAKABLE) || type.equals(FOCUS) || type.equals(INGREDIENT)) {
-                            Player.getInv().remove(item);
-                            Player.getInv().CONTENTS.add(
-                                    new Item("destroyed " + item, "The " + item + 
-                                            " is now broken and likely useless.")
-                            );
-                            GUI.out("An acute sense of frustration causes you to crush the feeble " 
-                                    + item + " in your hand.");
-                        }
-                        else if ((type.equals(LIQUID) && ! item.toString().equals(BUCKET_OF_WATER)) 
-                                || type.equals(FOCUS)) 
-                        {
-                            Player.getInv().remove(item);
-                            Player.getInv().CONTENTS.add(BROKEN_GLASS);
-                            GUI.out("An acute sense of frustration causes you to crush the feeble " 
-                                    + item + " in your hand.");
-                        }
-                        else {
-                            GUI.out("You lack the strength to do that.");
-                        }
+                    if (type.equals(BREAKABLE)) {
+                        Player.getInv().remove(item);
+                        Player.getInv().CONTENTS.add(new Item("destroyed " + item, 
+                                "The " + item + " is now broken and certainly useless."));
+                        GUI.out("An acute sense of frustration causes you to crush it in your hand.");
+                    }
+                    else if ((type.equals(LIQUID) && ! item.toString().equals(BUCKET_OF_WATER)) 
+                            || type.equals(FOCUS) || type.equals(INGREDIENT)) 
+                    {
+                        Player.getInv().remove(item);
+                        Player.getInv().CONTENTS.add(BROKEN_GLASS);
+                        GUI.out("An acute sense of frustration causes you to "
+                              + "crush the feeble glass in your hand.");
+                    }
+                    else if (type.equals(READABLE)) {
+                        Player.getInv().remove(item);
+                        Player.getInv().CONTENTS.add(RIPPED_SHREDS);
+                        GUI.out("A cunning idea forms. You rip up the paper "
+                              + "wantonly and stuff it back into your pocket.");
+                    }
+                    else {
+                        GUI.out("You lack the strength to do that.");
+                    }
+                }
+                // </editor-fold>
+                    
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: RIP">
+                else if (verb.equals("rip") || verb.equals("tear")) {
+                    if (type.equals(READABLE)) {
+                        Player.getInv().remove(item);
+                        Player.getInv().CONTENTS.add(RIPPED_SHREDS);
+                        GUI.out("A cunning idea forms. You rip up the paper wantonly and stuff it back into your pocket.");
+                    }
+                    else
+                        GUI.out("That is not something you could rip up.");
                 }
                 // </editor-fold>
                 
@@ -505,14 +541,14 @@ public class TextParser {
                 else
                     GUI.out("You will need to be more specific.");
             }
-            else if (Player.getPos().hasFurniture(i.toString()) || 
-                     IT_THEM_P.matcher(i.toString()).matches() ||
-                     i.VALUE.equals("self") || i.VALUE.equals("yourself")) 
+            else if (Player.getPos().hasFurniture(instrument) || 
+                     IT_THEM_P.matcher(instrument).matches() ||
+                     instrument.equals("self") || instrument.equals("yourself")) 
             {
-                Player.evaluateAction(v.toString(), i.toString());
+                Player.evaluateAction(v.toString(), instrument);
             }
             else
-                GUI.out(DONT_HAVE_IT);
+                GUI.out(NONE_THERE + instrument + NEARBY);
             
             Player.printInv();
         }
@@ -523,12 +559,17 @@ public class TextParser {
          * Verb parameter is always 'put'. It's there to disambiguate it from
          * execute(Instrument i, DirectObject o) constructor.
          */
-        private void execute(Verb v, Instrument i, DirectObj o) {
+        private static void execute(Verb v, Instrument i, DirectObj o) {
             if (Player.hasItemResembling(i.toString())) {
+                String furniture = o.toString();
                 A_Super.Item item = Player.getInv().get(i.toString());
                 
-                if (Player.getPos().hasFurniture(o.toString())) {
-                    A_Super.Furniture furn = Player.getFurnRef(o.toString());
+                // Resolves an indefinite reference.
+                if (IT_THEM_P.matcher(furniture).matches())
+                    furniture = GUI.parsePreviousFurniture();
+                
+                if (Player.getPos().hasFurniture(furniture)) {
+                    A_Super.Furniture furn = Player.getFurnRef(furniture);
                     
                     // Stores the furniture
                     if (furn.isSearchable()) {
@@ -545,10 +586,10 @@ public class TextParser {
                         GUI.out("You can't store that in there.");        
                 }
                 else
-                    GUI.out("There is no " + o + " here.");
+                    GUI.out("There is no " + furniture + " here.");
             }
             else
-                GUI.out(DONT_HAVE_IT);
+                GUI.out(NONE_THERE + i + NEARBY);
         }
         // </editor-fold>
         // ====================================================================
@@ -558,10 +599,6 @@ public class TextParser {
         public void perform() {
             this.ACTION.run();
         }
-        // ====================================================================
-        @Override public String toString() {
-            return VALUE;
-        }
     }
     //*************************************************************************
     // </editor-fold> 
@@ -569,7 +606,7 @@ public class TextParser {
     
     
     //*************************************************************************
-    // <editor-fold defaultstate="collapsed" desc="Word Classes"> 
+    // <editor-fold defaultstate="collapsed" desc="Word classes"> 
     //
     // Represent items, actions, and furniture mentioned in player input.
     // Different word subclasses exist to differentiate Command constructors.
