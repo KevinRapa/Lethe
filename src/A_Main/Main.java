@@ -39,6 +39,9 @@ package A_Main;
  * amount of loot and determine a score based on that. Hades is a room in the top
  * floor.
  *
+ * Modify search, evalTake, evalStore, and addToKeyring to accept only an inventory
+ * as a parameter. This will make it easier to implement the loot sack.
+ *
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
  */
