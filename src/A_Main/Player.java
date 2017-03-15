@@ -662,7 +662,9 @@ public final class Player {
                 GUI.out(target.getDescription()); 
             }
             else if (SEARCH_P.matcher(action).matches() || 
-                    (action.equals("open") && target instanceof Openable)) {              
+                        ((action.equals("open") || action.equals("empty")) 
+                        && target instanceof Openable)) 
+            {              
                 // Player typed something implying a search on furniture
                 searchPrompt(target);
             }
