@@ -139,6 +139,9 @@ Monster
 		https://www.freesound.org/people/richardemoore/sounds/362859/
 		richardemoore -- ChainWrapping.wav
 
+Hades
+	HellCenterOfTheEarth.wav	tc630
+	https://www.freesound.org/people/tc630/sounds/47834/
 
 
 

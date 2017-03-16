@@ -40,6 +40,7 @@ public class GUI extends JFXPanel {
     // <editor-fold defaultstate="collapsed" desc="COMPONENTS AND ATTRIBUTES">
     private static boolean big = true;
     private static int key = Click.NONE.soundEffectId;
+    private final static String MOVES = "Moves: ", SCORE = "      Score: ";
     
     private static Font myFont;
     
@@ -63,7 +64,7 @@ public class GUI extends JFXPanel {
     private final static JLabel 
             ROOM = new JLabel(), 
             PROMPT = new JLabel(">"),
-            INVLBL = new JLabel("Inventory");
+            INVLBL = new JLabel();
     
     private final static JButton 
             SIZE = new JButton("Small"),
@@ -404,6 +405,10 @@ public class GUI extends JFXPanel {
     public static void clearDialog() {
         DIAL.setText("");
         DIAL.setCaretPosition(0);
+    }
+/*----------------------------------------------------------------------------*/
+    public static void updateMovesAndScore(int moves, int score) {
+        INVLBL.setText(MOVES + moves + SCORE + score);
     }
 /*----------------------------------------------------------------------------*/
     public static void resetScroll() {

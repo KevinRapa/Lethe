@@ -55,7 +55,7 @@ public final class Menus {
                   + "<'e'>  Search     <'c'>  Check\n"
                   + "<'i'>  Inventory  <'k'>  Keys\n"
                   + "<'h'>  Get help   <'n'>  Note\n"
-                  + "<'m'>  Show Map\n"
+                  + "<'m'>  Show Map   <'l'>  Loot\n"
                   + "<'save'> Save    <'quit'> Quit",
 
         HELP_MAIN = "\nWhat would you like help on?\n" +

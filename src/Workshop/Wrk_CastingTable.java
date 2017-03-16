@@ -30,14 +30,14 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
         this.BRL_INV = brl;     this.SCK_INV = sck;     this.CBNT_INV = cbnt; 
         
         // Lens to give player
-        this.SHEET_REF = 
-                new BreakableItem("glass sheet", "Wait... this isn't right. Weren't you supposed to make a lens?");
-        this.BLUE_LENS_REF = 
-                new BreakableItem("blue lens", "You made a blue lens. Good job, but was this the right color?",
-                         "Wait... was this the color you were supposed to make?");
-        this.YELLOW_LENS_REF = 
-                new BreakableItem("yellow lens", "You made a yellow lens. Good job, but was this the right color?", 
-                         "Wait... was this the color you were supposed to make?");
+        this.SHEET_REF = new BreakableItem("glass sheet", 
+                "Wait... this isn't right. Weren't you supposed to make a lens?", 0);
+        this.BLUE_LENS_REF = new BreakableItem("blue lens", 
+                "You made a blue lens. Good job, but was this the right color?",
+                "Wait... was this the color you were supposed to make?", 20);
+        this.YELLOW_LENS_REF = new BreakableItem("yellow lens", 
+                "You made a yellow lens. Good job, but was this the right color?", 
+                "Wait... was this the color you were supposed to make?", 20);
         this.RED_LENS_REF = rdLns; 
         
         // Dyes to restock

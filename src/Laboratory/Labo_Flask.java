@@ -126,7 +126,7 @@ public class Labo_Flask extends SearchableFurniture {
         // ==========================================
         public void emptyAndAddResidue() {
             this.CONTENTS.clear();
-            this.CONTENTS.add(new Item("gray residue", "It smells awful! Just a product of distillation you suppose."));
+            this.CONTENTS.add(new Item("gray residue", "It smells awful! Just a product of distillation you suppose.", -50));
         }
         // ==========================================
     }    

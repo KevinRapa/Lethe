@@ -12,8 +12,8 @@ import A_Super.Item;
  */
 public class Ingredient extends Item {
     // ========================================================================
-    public Ingredient(String name, String desc) {
-        super(name, desc);
+    public Ingredient(String name, String desc, int score) {
+        super(name, desc, score);
         this.type = NameConstants.INGREDIENT;
     }
     // ========================================================================

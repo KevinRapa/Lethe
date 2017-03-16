@@ -9,8 +9,8 @@ import A_Main.NameConstants;
  */
 public class Clothing extends Item {
     // ========================================================================
-    public Clothing(String name, String desc, String use) {
-        super(name, desc, use);
+    public Clothing(String name, String desc, String use, int score) {
+        super(name, desc, use, score);
         this.type = NameConstants.CLOTHING;
     }
     // ========================================================================

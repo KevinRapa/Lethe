@@ -66,7 +66,7 @@ public final class Patterns {
         TOW1_SPHERE_P = Pattern.compile("\\s(?=Wide)"),
         LIFT_P = Pattern.compile("lift|raise"),
         CHEMICAL_P = Pattern.compile("[\\w\\d]+ \\d{1,2}mL"),
-        NO_TELEPORT_P = Pattern.compile("LIB[45]|ESC\\d|INTR|TBAL"),
+        NO_TELEPORT_P = Pattern.compile("LIB[45]|ESC\\d|INTR"),
         DYES_P = Pattern.compile("(?:red|blue|yellow) dye"),
         VAUE_DOOR_COORDS_P = Pattern.compile("(?:[1-4]\\s*,\\s*[1-4])|"),
         ROMAN_NUMERAL_P = Pattern.compile("[1-9]|v?i{1,3}|i[vx]|v|"),

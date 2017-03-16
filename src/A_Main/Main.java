@@ -19,28 +19,12 @@ package A_Main;
  * </p>
  * 
  * IDEAS:
- * Foyer now contains an armoire which has the loot sack, an umbrella, and a long black robe.
- * Sack starts empty and sits in your inventory. 
- * When examining it, it's very light and feels like it has magical properties.
- * Phlacteries have VERY high score. Gross items have negative score.
  * Add an NPC that just implies player can commit suicide. "The wealthy live comfortably in hell."
  * Have encounter in attic put items in the prison cabinet instead, phylacteries in LQUA
- * The sack also has an inventory. Give all items another field called score.
- * When an item is added to the sack, add the points to your own. Subtract when removed.
- * When the sack is used or opened, enter a prompt to trade items with the sack.
- * In item constructor, add points to a static number called maxPoints so the max
- * amount of obtainable points in the game is known. 
- * Player now needs two extra fields for number of moves and score. 
- * Add 'l' or 'loot' command to main prompt and another option to inventory prompt to look in sack.
- * Add the loot sack method to player.
- * Print score and number of moves in upper right label.
  *
  * Have suicide now put player in Hades. Reference Zork. Have player judged by the
  * amount of loot and determine a score based on that. Hades is a room in the top
  * floor.
- *
- * Add more treasure, make existing things more luxurious, like silverware in the the dining room
- * The sack should have a max size, like 50.
  *
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
@@ -55,7 +39,7 @@ import static A_Main.NameConstants.W_DIR;
 
 public class Main {
     private static final String 
-            START_LOCATION = Id.SHA1, // Default COU4
+            START_LOCATION = Id.COU4, // Default COU4
             FILE_NAME = "Game.data";
     
     public static final JFrame GAME_FRAME = new JFrame("Lethe"),

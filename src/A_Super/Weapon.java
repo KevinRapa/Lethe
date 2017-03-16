@@ -7,8 +7,8 @@ import A_Main.NameConstants;
  */
 public class Weapon extends Item {
     // ========================================================================
-    public Weapon(String name, String desc) {
-        super(name, desc);
+    public Weapon(String name, String desc, int score) {
+        super(name, desc, score);
         this.type = NameConstants.WEAPON;
     }
     // ========================================================================

@@ -22,8 +22,7 @@ public class Metal_Ladder extends Item {
     public Metal_Ladder(String name) {
         super(name, 
               "It's an old extendable metal ladder. It must rise maybe 20 feet total...",
-              "You stand the ladder up in the room." 
-              );
+              "You stand the ladder up in the room.", 0);
 
         this.LADDER_FURNITURE = new Metal_Ladder_Furniture(this);
     }

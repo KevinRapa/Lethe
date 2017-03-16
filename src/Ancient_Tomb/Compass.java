@@ -14,7 +14,7 @@ import A_Super.Item;
 public class Compass extends Item {
     // =========================================================================
     public Compass(String name) {
-        super(name);
+        super(name, 100);
         this.useID = 1;
         this.description = "You can't quite figure out what it is. It's a small\n"
                          + "metal box with a bit of heft. A polished rock of\n"

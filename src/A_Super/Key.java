@@ -11,7 +11,7 @@ package A_Super;
 public class Key extends Item {
 /* CONSTRUCTOR ---------------------------------------------------------------*/       
     public Key(String name, String ID) {
-        super(name);
+        super(name, 0);
         this.type = ID;
     }
 /*----------------------------------------------------------------------------*/      

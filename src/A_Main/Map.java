@@ -1,5 +1,6 @@
 package A_Main;
 
+import Hades.Hades;
 import A_Super.*;          import static A_Main.NameConstants.*;
 
 import Vestibule.*;        import Closet.*;             import Foyer.*;
@@ -22,7 +23,7 @@ import Escape_Tunnel.*;    import Strange_Pool.*;       import Prison.*;
 import Torture_Chamber.*;  import Crypt.*;              import Ancient_Archives.*;
 import Keeper_Chamber.*;   import Vault.*;              import Tower.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
-import Soul_Chamber.*;  
+import Soul_Chamber.*;     import Hades.*;
 
 import java.awt.Color;      import javax.swing.JPanel;
 import java.util.Random;    import javax.swing.ImageIcon;   
@@ -145,22 +146,22 @@ public class Map {
         // ---------------------------------------------------------------------  
         // <editor-fold defaultstate="collapsed" desc="AREA 1: CASTLE FRONT">
 
-        Item bckt = new Item(METAL_BUCKET, "It's an empty metal bucket."); // Used with all fireplaces
-        Item vial = new BreakableItem(EMPTY_VIAL, "It's a small glass vial for holding samples");
-        Item ram = new Weapon(BATTERING_RAM, "You've restored the old battering ram back to its former glory.");
+        Item bckt = new Item(METAL_BUCKET, "It's an empty metal bucket.", 25); // Used with all fireplaces
+        Item vial = new BreakableItem(EMPTY_VIAL, "It's a small glass vial for holding samples", 25);
+        Item ram = new Weapon(BATTERING_RAM, "You've restored the old battering ram back to its former glory.", 35);
 
         // <editor-fold defaultstate="collapsed" desc="Mandragora set">
         // Instantiated before courtyard because soil can be found in the courtyard.
-        Item mndrk = new Item(MANDRAGORA, "The potato-shaped vegetable looks disturbingly life-like.");
-        Item hlyWtr = new Liquid(HOLY_WATER, "Clear, salty, and boiled like hell.", mndrk, 2);
-        Item pttdMndrk = new BreakableItem(POTTED_MANDRAGORA, "You have gently positioned the bulb under the soil.", mndrk, 2);
-        Item mndrkBlb = new Item("mandragora bulb", "It's a baby mandragora!", pttdMndrk, 2);
-        Item mndrkPt = new BreakableItem(POTTED_SOIL_AND_FERTILIZER, "The fertile soil mixture is packed gently into the pot. ", pttdMndrk, 2);
-        Item pot = new BreakableItem("clay pot", "It's a medium-sized clay pot for holding plants.", mndrkPt, 2);
-        Item mxtr = new Item(FERTILIZED_SOIL, "It's a fertile mixture of soil, sand, and fertilizer", mndrkPt, 2);
-        Item snd = new Item(SAND, "You have a pocket full of sand. It's grainy and uncomfortable.", mxtr, 3);
-        Item sl = new Item(SOIL, "It's a soft pile of soil", mxtr, 3);
-        Item frt = new Item(FERTILIZER, "It's a handful of mysterious gardening wizardry.", mxtr, 3);
+        Item mndrk = new Item(MANDRAGORA, "The potato-shaped vegetable looks disturbingly life-like.", 60);
+        Item hlyWtr = new Liquid(HOLY_WATER, "Clear, salty, and boiled like hell.", mndrk, 2, 15);
+        Item pttdMndrk = new BreakableItem(POTTED_MANDRAGORA, "You have gently positioned the bulb under the soil.", mndrk, 2, 45);
+        Item mndrkBlb = new Item("mandragora bulb", "It's a baby mandragora!", pttdMndrk, 2, 35);
+        Item mndrkPt = new BreakableItem(POTTED_SOIL_AND_FERTILIZER, "The fertile soil mixture is packed gently into the pot. ", pttdMndrk, 2, 15);
+        Item pot = new BreakableItem("clay pot", "It's a medium-sized clay pot for holding plants.", mndrkPt, 2, 25);
+        Item mxtr = new Item(FERTILIZED_SOIL, "It's a fertile mixture of soil, sand, and fertilizer", mndrkPt, 2, 15);
+        Item snd = new Item(SAND, "You have a pocket full of sand. It's grainy and uncomfortable.", mxtr, 3, 0);
+        Item sl = new Item(SOIL, "It's a soft pile of soil", mxtr, 3, -5);
+        Item frt = new Item(FERTILIZER, "It's a handful of mysterious gardening wizardry.", mxtr, 3, 10);
         // </editor-fold>
 
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST ANTECHAMBER">
@@ -206,10 +207,16 @@ public class Map {
         Room foy2 = new Foy2("at the grand staircase", Id.FOY2); 
         Room foy3 = new Foy3("on the second floor landing", Id.FOY3);
         Room foy4 = new Foy4("on the third floor landing", Id.FOY4); 
-        //-------------------------------ITEMS----------------------------------        
+        //-------------------------------ITEMS---------------------------------- 
+        Item lootSack = new LootSack();
         Item foy1Note = new Foy1_Note("short letter");
-        Item cndlStck = new Weapon("brass candlestick", "It holds a stubby old candle. Well, at least no one can club you behind the head with it now.");
-        Item bskt = new Item("wicker basket", "A decorative wicker basket. Probably not very useful for you right now.");
+        Item cndlStck = new Weapon("brass candlestick", 
+                "It holds a stubby old candle. Well, at least no one can club you behind the head with it now.", 40);
+        Item bskt = new Item("wicker basket", "A decorative wicker basket. Probably not very useful for you right now.", 15);
+        Item bwlrHat = new Clothing("wool bowler hat", "A short-brimmed durable hat with a domed top.", 
+                "You slip the warm hat on your head.", 30);
+        Item umbr = new Item("umbrella", "A stately black umbrella with a lacquered wood handle.", 
+                "Is it raining out? You somehow must have not noticed.", 30);
         //-----------------------------FURNITURE--------------------------------    
         Furniture foyW = new Wall("A dark wood-paneled wall.");
         Furniture foyF = new Floor("Salmon-colored tiled marble. Its glint stuns you.");
@@ -219,17 +226,20 @@ public class Map {
         Furniture foy1Tbl = new Foy1_Table(bskt, foy1Note, cndlStck);
         Furniture foy1Crpt = new Foy1_Carpet();
         Furniture foy1Strs = new Foy1_Stairs();    
+        Furniture foy1Armr = new Foy1_Armoire(umbr, bwlrHat, lootSack);
 
         Furniture foy2Stat = new Foy2_Stat(foy2Bttn);
         Furniture foy2Alc = new Foy2_Alcove(foy2Stat);
         Furniture foy2Strcs = new Foy2_Staircase(Direction.UP);
 
         Furniture foy3Strs = new Foy3_Stairs();
-        Furniture foy3F = new Floor("The floor is a salmon-colored tile run with a red carpet, which continues along the staircase.");
+        Furniture foy3F = new Floor("The floor is a salmon-colored tile run with a red carpet, "
+                + "which continues along the staircase.");
         Furniture foy34Crpt = new Foy34_Carpet();
 
         Furniture foy4Strs = new Foy2_Staircase(Direction.DOWN);
-        Furniture foy4F = new Floor("The floor is a salmon-colored tile run with a red carpet, which continues along the staircase.");
+        Furniture foy4F = new Floor("The floor is a salmon-colored tile run with a red carpet, "
+                + "which continues along the staircase.");
         Furniture foy4Dr = new Foy4_Door(Direction.SOUTH);
 
         // </editor-fold>        
@@ -237,10 +247,13 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room vest = new Vest("in a vestibule", Id.VEST); 
         //-------------------------------ITEMS----------------------------------
-        Item pen = new Item(PEN, "It's a fancy ballpoint pen", "You could write momentos to yourself if you have some paper.");
-        Item ppr = new Item(NOTEPAD, "This is a stack of many sheets of brown parchemtn.", "You could write momentos with this if you have a pen.");
-        Item lttrOpnr = new Item("letter opener", "It's a very dull knife.");
-        Item loopedRope = new Item(LOOPED_ROPE, "It's a short rope tied into a noose. It's pretty frayed in the center.", ram, 3);
+        Item pen = new Item(PEN, "It's a fancy blue ballpoint pen.", 
+                "You could write momentos to yourself if you had some paper.", 40);
+        Item ppr = new Item(NOTEPAD, "This is a stack of many sheets of brown parchment.", 
+                "You could write momentos with this if you had a pen.", 15);
+        Item lttrOpnr = new Item("letter opener", "It's a very dull knife.", 30);
+        Item loopedRope = new Item(LOOPED_ROPE, 
+                "It's a short rope tied into a noose. It's pretty frayed in the center.", ram, 3, 25);
         //-----------------------------FURNITURE--------------------------------
         Furniture vesOrb = new Vest_Orb();
         Furniture vesFire = new Vest_Fireplace(true, bckt);
@@ -266,18 +279,23 @@ public class Map {
         //-------------------------------ITEMS----------------------------------
         Item krnsPlt = new Obs1_Plate("brass plate, \"Saturn\"", "The small plate bears an engraving: \"Saturn\"");
         Item soldMed = new BreakableItem(STONE_DISK, "The smooth disk is about four or five inches across.\n"
-                                          + "Its craftmanship is precise, although there's a\n"
-                                          + "chip on its edge. On its surface is an embossment of a soldier.");
-        Item rck = new Item(ROCK, "It's a chunk of the courtyard fountain. Plain except for a braided carving across one edge.");
-        Item grss = new Item(GRASS, "It's some dark-green grass that you pulled from the ground.");
-        Item clvr = new Item("clover", "It's some clover you pulled from the ground.");
-        Item trs = new Item("statue torso", "It's a stone torso, once attached to the courtyard statue.");
-        Item hd = new Item("statue head", "It's a stone head with a chiseled male face. It stares at you blankly as you hold it in your palms.");
-        Item sprcExtrct = new Liquid(SPRUCE_EXTRACT, "Evergreens are widely known to be resistant to burning.");
-        Item brrs = new Item("bright red berries", "They look firm and juicy", "You realize, the brightest, reddest berries are the most poisonous of all.");
-        Item pnCn = new Item("pinecone", "It's scaley but smooth, and is shaped like a pickle. Yes, undoubtedly a spruce pinecone!", "This looks painful to eat...");
-        Item fthr = new Item(RAVEN_FEATHER, "It's elegant- jet-black and long. A smooth glean runs across it as you tilt it to the light.");
-        Item strng = new Item("string", "A delicate piece of white twine. You're sure the bird didn't need that...");
+                + "Its craftmanship is precise, although there's a chip on its edge. "
+                + "On its surface is an embossment of a soldier.", 30);
+        Item rck = new Item(ROCK, "It's a chunk of the courtyard fountain. "
+                + "Plain except for a braided carving across one edge.", 0);
+        Item grss = new Item(GRASS, "It's some dark-green grass that you pulled from the ground.", -5);
+        Item clvr = new Item("clover", "It's some clover you pulled from the ground.", -5);
+        Item trs = new Item("statue torso", "It's a stone torso, once attached to the courtyard statue.", 40);
+        Item hd = new Item("statue head", "It's a stone head with a chiseled male face. "
+                + "It stares at you blankly as you hold it in your palms.", 40);
+        Item sprcExtrct = new Liquid(SPRUCE_EXTRACT, "Evergreens are widely known to be resistant to burning.", 35);
+        Item brrs = new Item("bright red berries", "They look firm and juicy", 
+                "You realize, the brightest, reddest berries are the most poisonous of all.", 0);
+        Item pnCn = new Item("pinecone", "It's scaley but smooth, and is shaped like a pickle. "
+                + "Yes, undoubtedly a spruce pinecone!", "This looks painful to eat...", 0);
+        Item fthr = new Item(RAVEN_FEATHER, "It's elegant- jet-black and long. A smooth "
+                + "glean runs across it as you tilt it to the light.", 20);
+        Item strng = new Item("string", "A delicate piece of white twine. You're sure the bird didn't need that...", 10);
         //-----------------------------FURNITURE--------------------------------
         Furniture couCstl = new Cou_Castle();
         Furniture couW = new Wall("The castle walls are several stories tall and made of rough granite blocks.");
@@ -329,14 +347,15 @@ public class Map {
         // ---------------------------------------------------------------------     
         // <editor-fold defaultstate="collapsed" desc="AREA 2: WEST WING">
 
-        Item brRam = new Item("broken battering ram", "It's a battering ram, but without the other rope to hold it with, it's useless.", "It's useless now.");
+        Item brRam = new Item("broken battering ram", "It's a battering ram, "
+                + "but without the other rope to hold it with, it's useless.", "It's useless now.", 5);
         Item rdFcs = new Focus(RED_FOCUS, "It's a cool brass ring holding a red lens.");   
 
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE ROTUNDA">
         //-----------------------------THE ROOM---------------------------------
         Room rotu = new Rotu("in the rotunda", Id.ROTU);      
         //-------------------------------ITEMS----------------------------------
-        Item crmcShrd = new Weapon("ceramic shard", "It's a broken piece of ceramic. A useable, but inefficient weapon.");
+        Item crmcShrd = new Weapon("ceramic shard", "It's a broken piece of ceramic. A useable, but inefficient weapon.", 10);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture rotuFntn = new Rotu_Fountain();
         Furniture rotuW = new Wall("A clean white marble wall, polished smoothed and run with carved molding.");
@@ -365,7 +384,7 @@ public class Map {
         Room iha2 = new Iha2("in a south side hall", Id.IHA2);
         //-------------------------------ITEMS----------------------------------
         Item iha2plArm = new Weapon(POLEARM, 
-                "It's an old medieval polearm. It's simple but firm, composed of nothing but a wood staff and forged iron point.");
+                "It's an old medieval polearm. It's simple but firm, composed of nothing but a wood staff and forged iron point.", 30);
         //-----------------------------FURNITURE--------------------------------
         Furniture iha1Lvr = new Iha1_Lever();
         Furniture iha1Armr = new Iha1_Armor();
@@ -380,13 +399,13 @@ public class Map {
         Room wow1 = new Wow1("in the west outer wall", Id.WOW1);
         Room wow2 = new Wow2("in the west outer wall", Id.WOW2);
         //-------------------------------ITEMS----------------------------------
-        Item vinegar = new Liquid(BOTTLE_OF_VINEGAR, "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"");
+        Item vinegar = new Liquid(BOTTLE_OF_VINEGAR, "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"", 25);
         Item wowLddr = new BreakableItem(FIXED_LADDER, "The spoke sits in there a bit awkwardly, but it\n"
-                              + "seems like a good ladder. It may even support your heft.");   
-        Item wow1Spk = new Item(WHEEL_SPOKE, "It's a wooden rod, about a foot long.", wowLddr, 3);
-        Item clngSoln = new Liquid("cleaning solution", "It smells lemony fresh, unlick the rest of this room.");
-        Item rppdBrlp = new Item("ripped burlap", "It must have belonged to the broken cart in the west wing.");
-        Item actn = new Liquid(ACETONE, "It's a strong-smelling solvent in a glass jar.");
+                              + "seems like a good ladder. It may even support your heft.", 25);   
+        Item wow1Spk = new Item(WHEEL_SPOKE, "It's a wooden rod, about a foot long.", wowLddr, 3, 0);
+        Item clngSoln = new Liquid("cleaning solution", "It smells lemony fresh, unlick the rest of this room.", 25);
+        Item rppdBrlp = new Item("ripped burlap", "It must have belonged to the broken cart in the west wing.", 5);
+        Item actn = new Liquid(ACETONE, "It's a strong-smelling solvent in a glass jar.", 25);
         //-----------------------------FURNITURE--------------------------------
         Furniture wow2Lddr = new Wow2_Ladder(Direction.UP); // Not in WOW2 to start.
         Furniture wow2Armr = new Wow2_Armor();
@@ -406,11 +425,11 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room wbal = new Wbal("on the west balcony", Id.WBAL);   
         //-------------------------------ITEMS----------------------------------
-        Item wbalch = new Item("rotted wooden chunk", "It's a rotted chunk of wood.");
-        Item wbalsp = new Item("wood splinter", "It's a splinter of wood.");
-        Item wbalbr = new Item("branch", "A plain branch from a tree. Nothing too interesting.");
-        Item wbalBrg = new Item("broken rod", "It looks like it belonged to a ladder.");
-        Item wbalRng = new Item("wooden rod", "It's a wooden rod, about a foot long.", wowLddr, 3);
+        Item wbalch = new Item("rotted wooden chunk", "It's a rotted chunk of wood.", -50);
+        Item wbalsp = new Item("wood splinter", "It's a splinter of wood.", -15);
+        Item wbalbr = new Item("branch", "A plain branch from a tree. Nothing too interesting.", -10);
+        Item wbalBrg = new Item("broken rod", "It looks like it belonged to a ladder.", -10);
+        Item wbalRng = new Item("wooden rod", "It's a wooden rod, about a foot long.", wowLddr, 3, 10);
         //-----------------------------FURNITURE--------------------------------
         Furniture wbalF = new Floor("A shale tile floor. Many pieces of wood\nlitter it.", 
                                     wbalch, wbalbr, wbalBrg, wbalsp, wbalsp, wbalRng, wbalbr, wbalch, wbalch);
@@ -424,9 +443,13 @@ public class Map {
         Item squaLddr = new Squa_Ladder("broken ladder", wowLddr, 3);
         Item squaJrnl = new Note("note: ladder", "Need to get that ladder fixed. Too busy with the cart.\n"
                 + "Don't ask mages to fix, they've been busy lately. I'll keep it under my bed for now.");
-        Item rags = new Clothing("worn rags", "Some dirty worn rags.", "You are perfectly content with the clothes you have on now.");
-        Item aprn = new Clothing("kitchen apron", "It's a kitchen apron, stained black in the center from ash.", "You are perfectly content with the clothes you have on now.");
-        Item shs = new Shoes("moccasins", "A pair of worn leather mocassins. The leather has worn thin and the seams are separating.", "You put on the moccasins. They're quite uncomfortable.");
+        Item rags = new Clothing("worn rags", "Some dirty worn rags.", 
+                "You are perfectly content with the clothes you have on now.", 5);
+        Item aprn = new Clothing("kitchen apron", "It's a kitchen apron, stained black in the center from ash.", 
+                "You are perfectly content with the clothes you have on now.", 25);
+        Item shs = new Shoes("moccasins", 
+                "A pair of worn leather mocassins. The leather has worn thin and the seams are separating.", 
+                "You put on the moccasins. They're quite uncomfortable.", 10);
         //-----------------------------FURNITURE--------------------------------
         Furniture squaF = new Floor("A sandstone tiled floor.");
         Furniture squaDr = new Sha_Door(Direction.EAST);
@@ -441,16 +464,17 @@ public class Map {
         // Used to be called "Groundskeeper's quarters"
         Room clos = new Clos("in a groundskeeping closet", Id.CLOS);
         //-------------------------------ITEMS----------------------------------
-        Item closCrwbr = new Weapon(CROWBAR, "A sweet iron crowbar.");
-        Item shvl = new Weapon(SHOVEL, "A sturdy pointed shovel for the digging of holes.");
-        Item hmmr = new Weapon(HAMMER, "It's a small handheld nailing device.");
-        Item sd = new Item(SEED, "It's a handful of mysterious gardening wizardry.");
-        Item gl = new Liquid("glue bottle", "It's a glass bottle of sticky glue. It's yellowish tinge clues you that it's the type for wood.");
-        Item closGlv = new Clothing("gloves", "Some old gardening gloves", "They don't fit on your enormous manly hands.");
-        Item closStrw = new Item("straw", "It's just straw.");
-        Item scrwDrvr = new Item(SCREWDRIVER, "A small phillips-head screwdriver with a plastic handle. The tool seems perhaps a tad out of place in an old establishment like this.");
-        Item scrw2 = new Item("2mm screw", "Just a small screw.");
-        Item scrw5 = new Item("5mm screw", "Just a small screw.");
+        Item closCrwbr = new Weapon(CROWBAR, "A sweet iron crowbar.", 30);
+        Item shvl = new Weapon(SHOVEL, "A sturdy pointed shovel for the digging of holes.", 30);
+        Item hmmr = new Weapon(HAMMER, "It's a small handheld nailing device.", 30);
+        Item sd = new Item(SEED, "It's a handful of mysterious gardening wizardry.", 0);
+        Item gl = new Liquid("glue bottle", "It's a glass bottle of sticky glue. It's yellowish tinge clues you that it's the type for wood.", 15);
+        Item closGlv = new Clothing("gloves", "Some old gardening gloves", "They don't fit on your enormous manly hands.", 15);
+        Item closStrw = new Item("straw", "It's just straw.", 5);
+        Item scrwDrvr = new Item(SCREWDRIVER, "A small phillips-head screwdriver with a plastic handle. "
+                + "The tool seems perhaps a tad out of place in an old establishment like this.", 25);
+        Item scrw2 = new Item("2mm screw", "Just a small screw.", 15);
+        Item scrw5 = new Item("5mm screw", "Just a small screw.", 15);
         //-----------------------------FURNITURE--------------------------------
         Furniture closDr = new Wow2_Door(Direction.WEST);
         Furniture closLddr = new Gqua_Ladder(Direction.DOWN);
@@ -468,7 +492,7 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room wow3 = new Wow3("on the west outer wall balcony", Id.WOW3, wow2Lddr, wow2F.getInv(), wowLddr);
         //-------------------------------ITEMS----------------------------------
-        Item wowRope = new Item("rope", "It's a short, coiled rope.", ram, 3);
+        Item wowRope = new Item("rope", "It's a short, coiled rope.", ram, 3, 25);
         //-----------------------------FURNITURE--------------------------------
         Furniture wow3Shlf = new Wow3_Shelf(wowRope, closKey);
         Furniture wow3F = new Floor("A sandstone tiled floor. Small, loose grains grind against your shoes as you walk.");
@@ -479,9 +503,9 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room shar = new Rqua("in ransacked quarters", Id.SHAR);
         //-------------------------------ITEMS----------------------------------
-        Item cmb = new Item("comb", "A plain hair comb.", "You comb your beard for several seconds until it's nice and kept.");
-        Item cndlStk = new Weapon("candlestick", "A small brass candlestick.");
-        Item sht = new Item("sheet", "A plain white bedsheet.");
+        Item cmb = new Item("comb", "A plain hair comb.", "You comb your beard for several seconds until it's nice and kept.", 25);
+        Item cndlStk = new Weapon("candlestick", "A small brass candlestick.", 40);
+        Item sht = new Item("sheet", "A plain white bedsheet.", 15);
         //-----------------------------FURNITURE--------------------------------
         Furniture rquaBd = new Rqua_Bed();
         Furniture rquaClths = new Rqua_Clothes();
@@ -498,8 +522,8 @@ public class Map {
         Room sha1 = new Sha1("in the south servant's hall", Id.SHA1);
         //-------------------------------ITEMS----------------------------------
         Item wdChnk = new Wood_Chunk(WOOD_LOG, ram, 3);       
-        Item shaMp = new Item(MOP, "It's a classic mop.", "Yes, let's just make this a game about cleaning some madman's castle.");
-        Item shaSpng = new Item("sponge", "It's a quintessential square yellow sponge.", "I'm a lumberjack, not a maid!");
+        Item shaMp = new Item(MOP, "It's a classic mop.", "Yes, let's just make this a game about cleaning some madman's castle.", 25);
+        Item shaSpng = new Item("sponge", "It's a quintessential square yellow sponge.", "I'm a lumberjack, not a maid!", 5);
         //-----------------------------FURNITURE--------------------------------       
         Furniture sha2Cbnt = new Sha2_Cabinet(wdChnk, shaSpng, shvl, shaMp, bckt);
         Furniture shaF = new Floor("A sandstone tiled floor. Small, loose grains grind against your shoes as you walk.");
@@ -513,9 +537,9 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room cous = new Cous("in a scorched room", Id.COUS);
         //-------------------------------ITEMS----------------------------------
-        Item wrhmmr = new Item(WARHAMMER, "It's an old medieval warhammer. The head looks extremely worn and dull.");
-        Item ash = new Item(ASH, "You're pretty sure there are people mixed in with this...");
-        Item wd = new Item("charred wood", "It's a piece of burnt wood");
+        Item wrhmmr = new Item(WARHAMMER, "It's an old medieval warhammer. The head looks extremely worn and dull.", 35);
+        Item ash = new Item(ASH, "You're pretty sure there are people mixed in with this...", -15);
+        Item wd = new Item("charred wood", "It's a piece of burnt wood", -25);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture searFssr = new Sear_Fissure();
         Furniture searDr = new Sear_Door();
@@ -551,9 +575,12 @@ public class Map {
         Room gal5 = new Gal5("in a trophy room", Id.GAL5);
         //-------------------------------ITEMS----------------------------------
         Item zsPlt = new Obs1_Plate("brass plate, \"Jupiter\"", "The small plate bears an engraving: \"Jupiter\"");
-        Item emrld = new BreakableItem(GLOWING_EMERALD, "The emerald pulses with a bright glow. This looks pretty important.", "This belongs to someone important.");
-        Item aqmrn = new BreakableItem(AQUAMARINE, "It's a beautiful square blue gem, likely a trophy of sorts and not belonging to a larger object.");
-        Item rby1 = new BreakableItem(RUBY, "The ruby is well cut and clean, having been protected in the case for so long.");
+        Item emrld = new BreakableItem(GLOWING_EMERALD, 
+                "The emerald pulses with a bright glow. This looks pretty important.", 
+                "This belongs to someone important.", 300);
+        Item aqmrn = new BreakableItem(AQUAMARINE, 
+                "It's a beautiful square blue gem, likely a trophy of sorts and not belonging to a larger object.", 225);
+        Item rby1 = new BreakableItem(RUBY, "The ruby is well cut and clean, having been protected in the case for so long.", 200);
         //-----------------------------FURNITURE--------------------------------
         Furniture gal5Dr = new Gal4_Door(Direction.SOUTH);
         Furniture gal5Dsply = new Gal5_Display(rby1, emrld, aqmrn);
@@ -574,15 +601,15 @@ public class Map {
         Room gal6 = new Gal6("in the gallery loft", Id.GAL6);
         Room gal7 = new Gal7("in the gallery loft", Id.GAL7);
         //-------------------------------ITEMS----------------------------------
-        Item scrw1 = new Screw("1mm screw", rdFcs, 3);
+        Item scrw1 = new Item("1mm screw", "It's a tiny little screw.", rdFcs, 3, 0);
         Item blFcs = new Focus(BLUE_FOCUS, "It's a cool brass ring holding a blue lens.");
         Item yllwFcs = new Focus(YELLOW_FOCUS, "It's a cool brass ring holding a yellow lens.");
         Item drkFcs = new Focus(DARK_FOCUS, "It's a cool brass ring holding a tinted lens.");
         Item fnnyOrb = new BreakableItem(CRYSTAL_ORB, 
-                "It's extremely clean, and it contains a peculiar gas, the color of which you cannot quite describe.");
+                "It's extremely clean, and it contains a peculiar gas, the color of which you cannot quite describe.", 150);
         Item bxThngy = new BreakableItem(BOX_THINGY, "This small black metal box has some surprising weight\n"
                 + "to it. It's a bit to big to fix in your palm. A small red light is on top\n"
-                + "and shiny metal strips are attached to each side.");
+                + "and shiny metal strips are attached to each side.", 150);
         //-----------------------------FURNITURE--------------------------------         
         Furniture gal7Stat = new Gal7_Statue();
         Furniture gal4Stat = new Gal4_Statue(gal7Stat);
@@ -661,10 +688,13 @@ public class Map {
         Room din2 = new Din2("on the dining room balcony", Id.DIN2);
         //-------------------------------ITEMS----------------------------------
         Item aphrdtPlt = new Obs1_Plate("brass plate, \"Venus\"", "The small plate bears an engraving: \"Venus\"");
-        Item frk = new Item("fork", "It's a nice silver fork.", "You comb your beard with the fork until it's straight and tidy.");
-        Item plt = new Item("plate", "It's fancy ceramic plate.");
-        Item spn = new Item("spoon", "It's a nice silver spoon.", "You attempt to comb your beard with the spoon, but it's not working so well.");
-        Item npkn = new Item("napkin", "A white cloth napkin.", "You wipe the sweat off your forehead. Carrying all these items has taken its toll on you.");
+        Item frk = new Item("silver fork", "It's an ornately carved silver fork.", 
+                "You comb your beard with the fork until it's straight and tidy.", 75);
+        Item plt = new Item("silver platter", "It's shiny silver platter, polished ad nauseum.", 80);
+        Item spn = new Item("silver spoon", "It's an ornately carved silver fork.", 
+                "You attempt to comb your beard with the spoon, but it's not working so well.", 75);
+        Item npkn = new Item("napkin", "A silky white cloth napkin. A luxury napkin indeed.", 
+                "You wipe the sweat off your forehead. Carrying all these items has taken its toll on you.", 60);
         //-----------------------------FURNITURE--------------------------------  
         Furniture din1Clmns = new Din1_Columns();
         Furniture din1Blcny = new Din1_Balcony();
@@ -693,13 +723,16 @@ public class Map {
         Room mha2 = new Mha2("in the marble hall", Id.MHA2);
         Room mha3 = new Mha3("in the south marble hall", Id.MHA3);
         //-------------------------------ITEMS----------------------------------       
-        Item angMed = new Item(ANGEL_MEDALLION, "It's a beautiful gold disk about four or five inches\n"
-                                                + "across. An angel is embossed on the surface.");
-        Item horMed = new Item(HORSE_MEDALLION, "It's a silver disk about four or five inches across.\n"
-                                                + "On its surface is an embossment of a galloping horse.");
+        Item angMed = new Item(ANGEL_MEDALLION, 
+                "It's a beautiful gold disk about four or five inches across. "
+                        + "An angel is embossed on the surface.", 130);
+        Item horMed = new Item(HORSE_MEDALLION, 
+                "It's a silver disk about four or five inches across. "
+                        + "On its surface is an embossment of a galloping horse.", 90);
         //-----------------------------FURNITURE--------------------------------  
         Furniture mhaChndlr = new Mha_Chandelier();
-        Furniture mhaF = new Floor("Large tiles running diagonally to the hall cover the floor. Their bright green hue is uncanny and must be artificial.");
+        Furniture mhaF = new Floor("Large tiles running diagonally to the hall cover the floor. "
+                + "Their bright green hue is uncanny and must be artificial.");
         Furniture mhaW = new Wall("The walls are plain white granite. All that occupy them are the tall windows.");
         Furniture mhaNWndw1 = new Mha1_Window();
         Furniture mhaNWndw2 = new Mha1_Window();
@@ -722,13 +755,13 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room work = new Work("in the workshop", Id.WORK);
         //-------------------------------ITEMS----------------------------------
-        Item redLns = new BreakableItem("red lens", "It's a proper lens tinted red. Maybe you should pick up the glass trade!", rdFcs, 3);
-        Item rdDy = new Item(RED_DYE, "You have a handful of soft red powdered dye. It's quite soft and powdery.");
-        Item blDy = new Item(BLUE_DYE, "You have a handful of soft blue powdered dye. It's quite soft and powdery.");
-        Item yllwDy = new Item(YELLOW_DYE, "You have a handful of soft yellow powdered dye. It's quite soft and powdery.");
-        Item stncl = new Item(LENS_TEMPLATE, "It's a sheet of metal with a small hole cut in it.");
+        Item redLns = new BreakableItem("red lens", "It's a proper lens tinted red. Maybe you should pick up the glass trade!", rdFcs, 3, 60);
+        Item rdDy = new Item(RED_DYE, "You have a handful of soft red powdered dye. It's quite soft and powdery.", 15);
+        Item blDy = new Item(BLUE_DYE, "You have a handful of soft blue powdered dye. It's quite soft and powdery.", 15);
+        Item yllwDy = new Item(YELLOW_DYE, "You have a handful of soft yellow powdered dye. It's quite soft and powdery.", 15);
+        Item stncl = new Item(LENS_TEMPLATE, "It's a sheet of metal with a small hole cut in it.", 20);
         Item wrkNt = new Wrk_Note("disturbing momento");
-        Item ptsh = new Item(POTASH, "Good old potassium-rich potash salts!");
+        Item ptsh = new Item(POTASH, "Good old potassium-rich potash salts!", 5);
         //-----------------------------FURNITURE--------------------------------
         Furniture wrkF = new Floor("A sandstone tiled floor, blackened and dirty from ash.");
         Furniture wrkBrl = new Wrk_Barrel(rdDy, rdDy, blDy, blDy, yllwDy, yllwDy);
@@ -746,15 +779,23 @@ public class Map {
         Room eow2 = new Eow2("in the east outer wall", Id.EOW2);
         Room eow4 = new Eow4("on the east outer wall balcony", Id.EOW4);
         //-------------------------------ITEMS----------------------------------
-        Item wtrBckt = new Liquid(BUCKET_OF_WATER, "It's a metal bucket filled with water.");
-        Item eowSwrd1 = new Weapon("silver sword", "The sword is finely polished and tapers evenly to a fine point at the end. Though possibly ornamental, silver is known to be effective against werewolves.");
-        Item eowSwrd2 = new Weapon("rusty sword", "The sword is rusty and a little dull, but still somewhat effective. The sword has certainly met its fair share of enemy blades in its life.");
-        Item eowSwrd3 = new Weapon("broken sword", "This sword is broken halfway down the blade. This is a mark of poor craftsmanship. Likely, the metal was reheated and cooled too many times during the forging.");
-        Item eowSSpr = new Weapon(SILVER_SPEAR, "This is beautiful! It's solid metal with a silvery shine.");
-        Item woodSpr = new Weapon("wooden spear", "This looks like a plain wooden spear. A bit primitive looking, and probably not built to last.");
-        Item eowPlArm = new Weapon(POLEARM, "This is a typical polearm, plain but very functional as a defense implement.");
-        Item eowAx = new Weapon("war axe", "This type of tool excites you. Small and sharp for agile use. An effective tool for both offense and tree chopping."); 
-        Item eowBtlAx = new Weapon("battle axe", "Essentially a long hand-axe with a double sided blade. This weapon has so much heft. You wonder if it were ever effective at all in battle.");
+        Item wtrBckt = new Liquid(BUCKET_OF_WATER, "It's a metal bucket filled with water.", 25);
+        Item eowSwrd1 = new Weapon("silver sword", "The sword is finely polished and tapers evenly "
+                + "to a fine point at the end. Though possibly ornamental, "
+                + "silver is known to be effective against werewolves.", 100);
+        Item eowSwrd2 = new Weapon("rusty sword", "The sword is rusty and a little dull, "
+                + "but still somewhat effective. The sword has certainly met its fair share of enemy blades in its life.", 20);
+        Item eowSwrd3 = new Weapon("broken sword", "This sword is broken halfway down the blade. "
+                + "This is a mark of poor craftsmanship. Likely, the metal was "
+                + "reheated and cooled too many times during the forging.", 10);
+        Item eowSSpr = new Weapon(SILVER_SPEAR, "This is beautiful! It's solid metal with a silvery shine.", 100);
+        Item woodSpr = new Weapon("wooden spear", "This looks like a plain wooden spear. "
+                + "A bit primitive looking, and probably not built to last.", 15);
+        Item eowPlArm = new Weapon(POLEARM, "This is a typical polearm, plain but very functional as a defense implement.", 30);
+        Item eowAx = new Weapon("war axe", "This type of tool excites you. Small and sharp for agile use. "
+                + "An effective tool for both offense and tree chopping.", 40); 
+        Item eowBtlAx = new Weapon("battle axe", "Essentially a long hand-axe with a double sided blade. "
+                + "This weapon has so much heft. You wonder if it were ever effective at all in battle.", 40);
         //-----------------------------FURNITURE--------------------------------
         Furniture eowF = new Floor("It's a sandstone tiled floor, just like that of the west wing.");
 
@@ -782,15 +823,15 @@ public class Map {
         Room lib4 = new Lib4("in the north upper library", Id.LIB4, lib4Tbl);
         Room lib5 = new Lib5("in the south upper library", Id.LIB5);
         //-------------------------------ITEMS----------------------------------
-        Item cndl = new BreakableItem(CANDLE, "It's a white candle. Must have been burning for some time.");
-        Item shs1 = new Shoes(LEATHER_SHOES, "A fancy pair of shiny leather shoes.", 
-                                  "You put on the shoes. They're a little big, but comfortable!");
-        Item shs2 = new Shoes("worn shoes", "A worn, dull pair of leather shoes.",
-                                  "You put on the shoes. These aren't too comfortable.");
-        Item shs3 = new Shoes(NIGHT_SLIPPERS, "A brown pair of cotton night slippers.",
-                                  "You wear the slippers. You could wear these all day!");
-        Item shs4 = new Shoes("work boots", "A rugged pair of boots.",
-                                  "You put on the boots. You feel like you're at work.");
+        Item cndl = new BreakableItem(CANDLE, "It's a white candle. Must have been burning for some time.", 15);
+        Item shs1 = new Shoes(LEATHER_SHOES, 
+                "A fancy pair of shiny leather shoes.", "You put on the shoes. They're a little big, but comfortable!", 60);
+        Item shs2 = new Shoes("worn shoes", 
+                "A worn, dull pair of leather shoes.", "You put on the shoes. These aren't too comfortable.", 10);
+        Item shs3 = new Shoes(NIGHT_SLIPPERS, 
+                "A brown pair of cotton night slippers.", "You wear the slippers. You could wear these all day!", 60);
+        Item shs4 = new Shoes("work boots", 
+                "A rugged pair of boots.", "You put on the boots. You feel like you're at work.", 15);
         Item fin = new Lib_FinnishBook("language, 'The Essential Finnish'");
         Item bbl = new Lib_GenesisBook("biblical tome, 'The Book of Genesis'");
         Item ody = new Lib_OdysseyBook("epic tome, 'The Odyssey'");
@@ -849,9 +890,10 @@ public class Map {
         Item lib1Nt7 = new Lib1_Note7("journal page 2, Rhadamanthus");
         Item lib1ImpNt = new Lib1_ImportantNote("momento- lens");
         Item lib1Pln = new Lib1_Plan("vessel schematic");
-        Item brkLns = new Item("cracked lens", "The red-tinted lens is cracked all the way through.", "You think this has lost its purpose by now.");
+        Item brkLns = new Item("cracked lens", "The red-tinted lens is cracked all the way through.", 
+                "You think this has lost its purpose by now.", 5);
         Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring with a groove lining the inside. "
-                + "There's a small hole in each end, about 1mm diameter. Looks like a screw is missing.", rdFcs, 3);
+                + "There's a small hole in each end, about 1mm diameter. Looks like a screw is missing.", rdFcs, 3, 25);
         //-----------------------------FURNITURE--------------------------------
         Furniture lib1Docs = new Lib1_Documents();
         Furniture lib1F = new Floor("It's a dusty wood parquet floor. Years of neglect have reduced its shine to a dull matte finish.", lib1Nt2);
@@ -870,15 +912,24 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room drar = new Drar("in the drawing room", Id.DRAR);
         //-------------------------------ITEMS----------------------------------
-        Item wine = new Liquid(BOTTLE_OF_WINE, "A very old bottle of red wine. The date says \"1722\"");
-        Item rk = new Item("rook", "the small figure resembles a brick tower.", "You have no idea how to play chess.");
-        Item knght = new Item("knight", "the small figure resembles a horse.", "You have no idea how to play chess.");
-        Item bshp = new Item("bishop", "the small figure resembles... something.", "You have no idea how to play chess.");
-        Item qn = new Item("queen", "the small figure resembles... well... a queen.", "Isn't this the strongest piece?");
-        Item kng = new Item("king", "the small figure resembles... well... a king.", "You have no idea how to play that.");
-        Item pwn = new Item("pawn", "the small figure resembles... something.", "This is the weakest piece right? Hmph. Better not ask a chess player that.");
-        Item rdBl = new Item(RED_BALL, "It's just a plain, heavy red ball. Where's the number on this?", "This is nonsense. Where are the numbers?");
-        Item cBl = new Item(CUE_BALL, "It's a plain white ball. This IS the cue ball, right?", "You'd rather break a window with this and jump out rather than play this witchcraft.");
+        Item wine = new Liquid(BOTTLE_OF_WINE, "A very old bottle of red wine. "
+                + "The date says \"1722\". It has likely lost its taste by now", 15);
+        Item rk = new Item("rook", "the small figure resembles a brick tower.", 
+                "You have no idea how to play chess.", 30);
+        Item knght = new Item("knight", "the small figure resembles a horse.", 
+                "You have no idea how to play chess.", 30);
+        Item bshp = new Item("bishop", "the small figure resembles... something.", 
+                "You have no idea how to play chess.", 30);
+        Item qn = new Item("jeweled queen", "the small queen is carved in ivory and embedded with sapphires.", 
+                "Isn't this the strongest piece?", 225);
+        Item kng = new Item("jeweld king", "the small king is carved in ivory and embedded with garnets.", 
+                "You have no idea how to play that.", 225);
+        Item pwn = new Item("pawn", "the small figure resembles... something.", 
+                "This is the weakest piece right? Hmph. Better not ask a chess player that.", 15);
+        Item rdBl = new Item(RED_BALL, "It's just a plain, heavy red ball. Where's the number on this?", 
+                "This is nonsense. Where are the numbers?", 30);
+        Item cBl = new Item(CUE_BALL, "It's a plain white ball. This IS the cue ball, right?", 
+                "You'd rather break a window with this and jump out rather than play this witchcraft.", 30);
         //-----------------------------FURNITURE--------------------------------
         Furniture drarGhst = new Drar_Ghost(drkFcs, kitcKey, emrld);
         Furniture drarF = new Floor("The room is carpeted in lavender with tenuous gold lines curving intricately along the edges.");
@@ -895,16 +946,18 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room kitc = new Kitc("in the kitchen", Id.KITC);
         //-------------------------------ITEMS----------------------------------
-        Item rtnFrt = new Item("rotten fruit", "Was this an apple? Or ... plum once?", "Whatever you expect him to do with that, he isn't going to.");
-        Item petFrt = new Item("petrified vegetable", "Looks like a rock ... in the shape of a carrot.", "Whatever you expect him to do with that, he isn't going to.");
-        Item brly = new Item("barley", "It doesn't smell so great. Even grain doesn't keep this long.");
-        Item rye = new Item("rye", "It doesn't smell so great. Even grain doesn't keep this long.");
-        Item cpprPt = new Weapon(COPPER_POT, "It's small and crudely fashioned. It was definitely hammered into shape.");
-        Item cpprPn = new Weapon(COPPER_PAN, "It's an old copper pan, crudely fashioned and hammered into shape.");
+        Item rtnFrt = new Item("rotten fruit", "Was this an apple? Or ... plum once?", 
+                "Whatever you expect him to do with that, he isn't going to.", -50);
+        Item petFrt = new Item("petrified vegetable", "Looks like a rock ... in the shape of a carrot.", 
+                "Whatever you expect him to do with that, he isn't going to.", -10);
+        Item brly = new Item("barley", "It doesn't smell so great. Even grain doesn't keep this long.", 0);
+        Item rye = new Item("rye", "It doesn't smell so great. Even grain doesn't keep this long.", 0);
+        Item cpprPt = new Weapon(COPPER_POT, "It's small and crudely fashioned. It was definitely hammered into shape.", 30);
+        Item cpprPn = new Weapon(COPPER_PAN, "It's an old copper pan, crudely fashioned and hammered into shape.", 30);
         //-----------------------------FURNITURE--------------------------------
         Furniture kitcTrch = new Kitc_Torch();
-        Furniture kitcF = new Floor("The floor is dirty brown stone, composed of differently sized bricks.\n"
-                + "                  The bricks are nicked all over, as if pelted numerous times with heavy objects.");
+        Furniture kitcF = new Floor("The floor is dirty brown stone, composed of differently sized bricks. "
+                + "The bricks are nicked all over, as if pelted numerous times with heavy objects.");
         Furniture kitcW = new Wall("The wall is mostly cobblestone supported by wooden vertical beams along the walls.");
         Furniture kitcWndw = new Kitc_Window();
         Furniture kitcDr = new Mha3_Door(Direction.WEST);
@@ -944,14 +997,18 @@ public class Map {
         Item urnsPlt = new Obs1_Plate("brass plate, \"Caelus\"", "The small plate bears an engraving: \"Caelus\"");
         Item psdnPlt = new Obs1_Plate("brass plate, \"Neptune\"", "The small plate bears an engraving: \"Neptune\"");
 
-        Item rby2 = new BreakableItem(RUBY, "The ruby is well cut and clean.");
-        Item gr = new Item("small gear", "The small delicate gear fell right out of the telescope.");
-        Item glssLns = new BreakableItem("glass lens", "The small lens once belonged to the telescope in the observatory.");
-        Item mchnPc = new Item("machine piece", "You aren't sure what it does... It's an oddly shaped piece of aluminium.");
+        Item rby2 = new BreakableItem(RUBY, "The ruby is well cut and clean.", 200);
+        Item gr = new Item("small gear", 
+                "The small delicate gear fell right out of the telescope.", 15);
+        Item glssLns = new BreakableItem("glass lens", 
+                "The small lens once belonged to the telescope in the observatory.", 30);
+        Item mchnPc = new Item("machine piece", 
+                "You aren't sure what it does... It's an oddly shaped piece of aluminium.", 15);
         Item obs1Nt = new Obs1_Note("scribbly note");
         Item obsBk = new Obs2_Book("tome, 'Planets and Myth'");
         Item obs2Nt = new Obs2_Note("journal page, Factum");
-        Item obs3Nt = new Note("momento: plate locations", "It's only been a day since we discovered that artifact from the well, and\n"
+        Item obs3Nt = new Note("momento: plate locations", 
+                "It's only been a day since we discovered that artifact from the well, and\n"
                 + "already I don't want to be around it. Perhaps we can hide it in the chandelier up there;\n"
                 + "we need a use for that compartment. I'll determine new areas to store those brass plates,\n"
                 + "and keep the locations in the picture frame back there...");
@@ -959,8 +1016,10 @@ public class Map {
         Furniture obs3Chndlr = new Obs3_Chandelier("chandelier", cndl, cndl, cndl, rby2, cndl, cndl);
         Furniture obsStats = new Obs1_Statues(obs3Chndlr);
         Furniture obsSlts = new Obs1_Slots(hlsPlt, obsStats);
-        Furniture obsF = new Floor("The floor in here is gray and dark blue checkered tile with thin veins of gold running between them.");
-        Furniture obsW = new Wall("The walls are mahogany wood paneled, with each panel bearing a large round cavity displaying a painted constellation.");
+        Furniture obsF = new Floor("The floor in here is gray and dark blue checkered "
+                + "tile with thin veins of gold running between them.");
+        Furniture obsW = new Wall("The walls are mahogany wood paneled, "
+                + "with each panel bearing a large round cavity displaying a painted constellation.");
         Furniture obsWndw = new Obs_Window();
         Furniture obs1Strs = new Obs13_Stairs(Direction.UP);
         Furniture obs1Tlscp = new Obs1_Telescope(gr, mchnPc, glssLns);
@@ -1005,17 +1064,21 @@ public class Map {
         Room gar3 = new Gar3("on a rooftop garden", Id.GAR3);
         Room gar4 = new Gar4("on a rooftop garden", Id.GAR4);   
         //-------------------------------ITEMS----------------------------------
-        Item hose = new Item(LEATHER_HOSE, "The roughly 30-foot old hose is cracked and rotted. It's certainly non-functional, but is still sturdy.");
-        Item brknHose = new Item("broken hose", "The hose has broken in half, but it served a worthy final purpose.");
-        Item hoe = new Item(HOE, "A rusty iron hoe for gardening. The long wood handle is beginning to split along the grain.");
-        Item trowel = new Item(TROWEL, "It's like a small handheld shovel. Cute, and functional to the extent of digging only smaller holes.");
+        Item hose = new Item(LEATHER_HOSE, "The roughly 30-foot old hose is cracked and rotted. "
+                + "It's certainly non-functional, but is still sturdy.", 5);
+        Item brknHose = new Item("broken hose", "The hose has broken in half, but it served a worthy final purpose.", 5);
+        Item hoe = new Item(HOE, "A rusty iron hoe for gardening. "
+                + "The long wood handle is beginning to split along the grain.", 30);
+        Item trowel = new Item(TROWEL, "It's like a small handheld shovel. "
+                + "Cute, and functional to the extent of digging only smaller holes.", 30);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture gar13Plntr = new Gar13_Planter(sl, mndrkBlb, sl);
         Furniture gar1Stat = new Gar1_Statue();
         Furniture gar2BrknHose = new Gar2_BrokenHose();
         Furniture gar2Hs = new Gar2_Hose(gar2BrknHose, brknHose);
         Furniture gar2Hl = new Gar2_Hole(gar2Hs);
-        Furniture garF = new Floor("The floor out here is made of large shale slabs. It's a miracle this castle's architecture can hold this area up.");
+        Furniture garF = new Floor("The floor out here is made of large shale slabs. "
+                + "It's a miracle this castle's architecture can hold this area up.");
         Furniture gar2Clmn = new Gar2_Columns();
         Furniture gar2Dm = new Gar2_Dome();
         Furniture gar3Chst = new Gar3_Chest(hoe, trowel, hose, sd);
@@ -1030,12 +1093,14 @@ public class Map {
         Room par2 = new Par2("on the parlor loft", Id.PAR2);
         Room par1 = new Par1("in the first floor parlor", Id.PAR1); 
         //-------------------------------ITEMS----------------------------------   
-        Item bttl = new BreakableItem(GLASS_BOTTLE, "It's a regular clear glass bottle, about 5 inches wide with a stubby neck.");
-        Item enchntdBttl = new BreakableItem(ENCHANTED_BOTTLE, "The bottle is now coated in glowing... stuff.");
-        Item stlWr = new Item(STEEL_WIRE, "It's some broken piano wire, snapped about a quarter the way down.");
-        Item hndDrll = new Item(HAND_DRILL, "It's a drill for boring holes in wood. You can drill into almost anything you want now!");
-        Item athr = new Liquid(AETHER_VIAL, "The small delicate vial holds a bluish cloudy substance; a gas, but flowing like a liquid. This looks expensive!");
-        Item frSlts = new Item(FIRE_SALTS, "Seems to be just rust-colored ashes in a plain wooden bowl. They give off an unexpainable ambient warmth and smell of burning.");
+        Item bttl = new BreakableItem(GLASS_BOTTLE, "It's a regular clear glass bottle, about 5 inches wide with a stubby neck.", 25);
+        Item enchntdBttl = new BreakableItem(ENCHANTED_BOTTLE, "The bottle is now coated in glowing... stuff.", 70);
+        Item stlWr = new Item(STEEL_WIRE, "It's some broken piano wire, snapped about a quarter the way down.", 5);
+        Item hndDrll = new Item(HAND_DRILL, "It's a drill for boring holes in wood. You can drill into almost anything you want now!", 25);
+        Item athr = new Liquid(AETHER_VIAL, "The small delicate vial holds a bluish cloudy substance; "
+                + "a gas, but flowing like a liquid.", 60);
+        Item frSlts = new Item(FIRE_SALTS, "Seems to be just rust-colored ashes in a plain wooden bowl. "
+                + "They give off an unexpainable ambient warmth and smell of burning.", 70);
         Item parNt = new Par_VialNote("note: vials");
         Item parBkMndrk = new Par_MandrakeBook("tome, 'The Care of Mandragora'");
         Item parBkEncht = new Par_EnchantingBook("tome, 'Enchanting for the Naive'");
@@ -1043,13 +1108,16 @@ public class Map {
         Item parNtShs = new Par_ShoeRecipe("'Novice Enchanting: Footwear'");
         Item parNtWpn = new Par_WeaponRecipe("'Expert Enchanting: Weaponry'");
         Item parNtKey = new Par_KeyRecipe("'Expert Enchanting: Skeleton Keys'");
-        Item parLchNt = new Note("note: binding","I think the binding worked... Part of my soul, and this book, are one. The book will be stored in\n"
-                               + "Rhadamanthus' safe in the study, he won't be needing it anymore. Don't forget where! The book said not to.");
+        Item parLchNt = new Note("note: binding","I think the binding worked... Part of my soul, "
+                + "and this book, are one. The book will be stored in\n"
+                + "Rhadamanthus' safe in the study, he won't be needing it anymore. "
+                + "Don't forget where! The book said not to.");
         //-----------------------------FURNITURE--------------------------------  
         Furniture parLft = new Par_Loft();
 
         Furniture par1Orb = new Par1_Orb();
-        Furniture par1F = new Floor("It's a sandstone tiled floor, much like that in the west wing. The floor here does appear noticably cleaner and more refined, however.");
+        Furniture par1F = new Floor("It's a sandstone tiled floor, much like that in the west wing. "
+                + "The floor here does appear noticably cleaner and more refined, however.");
         Furniture par1FrPlc = new Par1_FirePlace(bckt, enchntdBttl);
         Furniture par1Dr = new Par1_Door(enchntdBttl, Direction.NORTH);
         Furniture par1EnchntTbl = new Par1_EnchantingTable(enchntdBttl, bttl, chs1Key, parLchNt);
@@ -1059,7 +1127,8 @@ public class Map {
         Furniture par1Shlf = new Wow3_Shelf(hndDrll, athr, parBkEncht, frSlts);
         Furniture par1Cshn = new Par1_Cushion(aresPlt);
 
-        Furniture par2F = new Floor("It's a sandstone tiled floor, much like that in the west wing. The floor here does appear noticably cleaner and more refined, however.");
+        Furniture par2F = new Floor("It's a sandstone tiled floor, much like that in the west wing. "
+                + "The floor here does appear noticably cleaner and more refined, however.");
         Furniture par2Wndw = new Par2_Window();
         Furniture par2Strs = new Par_Stairs(Direction.DOWN);
         Furniture par2Bwl = new Par2_Bowl();
@@ -1086,13 +1155,22 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room labo = new Labo("in the laboratory", Id.LABO);
         //-------------------------------ITEMS---------------------------------- 
-        Item rbbrTube = new Item(RUBBER_HOSE, "It's a yellow rubber hose, about 8 feet long.");
-        Item tstTb = new BreakableItem(TEST_TUBE, "A small glass tube with a rounded bottom and a smooth rounded lip at the other end.");
-        Item bkr = new BreakableItem(BEAKER, "The vessel is straight on the edges and wide. Painted in wide intervals on the sides are white marks with numeric measurements.");
-        Item strkr = new Item(STRIKER, "It's a weird metal tool. You squeeze it a couple times and a few sparks fly from the metal cap at the one end.");
-        Item scale = new BreakableItem("scale", "A machine for the weighing of things, comprised of a metal bed and a base comprised of many small mechanical parts.");
-        Item balance = new Item("balance", "You seem to remember these being called triple-beam balances in middle school.", "Oh boy! You could weigh just about anything with this!");
-        Item flrcFlsk = new BreakableItem(FLORENCE_FLASK, "It's a piece of chemistry glassware. Has a bulbous bottom and a thin shaft with an opening at the top.");
+        Item rbbrTube = new Item(RUBBER_HOSE, "It's a yellow rubber hose, about 8 feet long.", 25);
+        Item tstTb = new BreakableItem(TEST_TUBE, "A small glass tube with a rounded "
+                + "bottom and a smooth rounded lip at the other end.", 25);
+        Item bkr = new BreakableItem(BEAKER, "The vessel is straight on the edges and wide. "
+                + "Painted in wide intervals on the sides are white marks with numeric measurements.", 25);
+        Item strkr = new Item(STRIKER, "It's a weird metal tool. You squeeze it a "
+                + "couple times and a few sparks fly from the metal cap at the one end.", 30);
+        Item scale = new BreakableItem("scale", 
+                "A machine for the weighing of things, comprised of a metal bed "
+                + "and a base comprised of many small mechanical parts.", 30);
+        Item balance = new Item("balance", 
+                "You seem to remember these being called triple-beam balances in middle school.", 
+                "Oh boy! You could weigh just about anything with this!", 30);
+        Item flrcFlsk = new BreakableItem(FLORENCE_FLASK, 
+                "It's a piece of chemistry glassware. "
+                + "Has a bulbous bottom and a thin shaft with an opening at the top.", 25);
         Item laboCtNt = new Labo_CoatNote("scientist momento");
         Item laboBrnrBk = new Labo_BurnerManual("manual, 'Playing With Fire'");
         Item laboRcp = new Labo_PhaseDoorRecipe("phase door potion recipe");
@@ -1138,23 +1216,31 @@ public class Map {
         Room bha2 = new Bha2("somewhere in the hallway", Id.BHA2);
         Room bha3 = new Bha3("in a demonic hallway", Id.BHA3);
         //-------------------------------ITEMS----------------------------------   
-        Item tblLg = new Weapon("broken table leg", "A short wooden post about 3 feet long. It looks like it belonged to a table.");
-        Item orgMttr = new Item("organic matter", "An unknown gray substance. It has a non-solid texture and feels organic. Its color appears to shift ever so slightly, giving it an oily appearance.");
+        Item tblLg = new Weapon("broken table leg", "A short wooden post about 3 feet long. "
+                + "It looks like it belonged to a table.", -10);
+        Item orgMttr = new Item("organic matter", "An unknown gray substance. "
+                + "It has a non-solid texture and feels organic. Its color appears "
+                + "to shift ever so slightly, giving it an oily appearance.", 10);
         Item bhaNt = new Bha_Note("note: plates");
         //-----------------------------FURNITURE--------------------------------  
         Furniture bha1Hrzn = new Bha1_Horizon();
         Furniture bha1Plnt = new Bha1_Plant(sl);
         Furniture bha1Tbl = new Bha1_Table(hrmsPlt);
-        Furniture bhaW = new Wall("The walls are covered in a brown and red vertically striped wallpaper with wainscoting on the bottom. The wallpaper has torn and peeled at the seams it some areas.");
-        Furniture bha1F = new Floor("The wood-plank floor bends with the hallway. The planks bend with it without prying up. Could this all be an illusion?");
+        Furniture bhaW = new Wall("The walls are covered in a brown and red vertically "
+                + "striped wallpaper with wainscoting on the bottom. The wallpaper "
+                + "has torn and peeled at the seams it some areas.");
+        Furniture bha1F = new Floor("The wood-plank floor bends with the hallway. "
+                + "The planks bend with it without prying up. Could this all be an illusion?");
 
         Furniture bha2F = new Floor("The floor has changed. Most of the wood planks have been removed\n"
-                                  + "revealing a dirt-like ground below... But it's not dirt.", wbalsp, wbalch, orgMttr, orgMttr, tblLg, wbalsp);
+                + "revealing a dirt-like ground below... But it's not dirt.", 
+                wbalsp, wbalch, orgMttr, orgMttr, tblLg, wbalsp);
         Furniture bha2W = new Wall("The walls are still intact, though much more of the wallpaper has been ripped off.");
         Furniture bha2Frm = new Bha2_Frame(gal5CbtKey, bhaNt);
 
         Furniture bha3Wndw = new Bha3_Window();
-        Furniture bha3F = new Floor("The wood-plank floor bends with the hallway. The planks bend with it without prying up. Could this all be an illusion?");
+        Furniture bha3F = new Floor("The wood-plank floor bends with the hallway. "
+                + "The planks bend with it without prying up. Could this all be an illusion?");
 
         // </editor-fold>
 
@@ -1171,7 +1257,7 @@ public class Map {
 
         // Dungeon
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE TUNNELS">
-        Item pipePc = new Weapon(PIECE_OF_PIPE, "It's a piece of rought metal piping, about 2 feet long. It's covered in rust and slime.");
+        Item pipePc = new Weapon(PIECE_OF_PIPE, "It's a piece of rought metal piping, about 2 feet long. It's covered in rust and slime.", 15);
         Furniture sew1Rvr = new Sew1_River(pipePc, wtrBckt);
         Furniture sew4Pp = new Sew4_Pipe(sew1Rvr, pipePc); // RESETABLE
         //-----------------------------THE ROOMS--------------------------------
@@ -1232,7 +1318,9 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room torc = new Torc("in a torture chamber", Id.TORC);
         //------------------------------ITEMS-----------------------------------
-        Item thmScrws = new Item("odd clamp", "Two small blocks of wood connected with a couple threaded bolts comprise the small device. It's slightly larger than your palm.");
+        Item thmScrws = new Item("odd clamp", 
+                "Two small blocks of wood connected with a couple threaded bolts "
+                + "comprise the small device. It's slightly larger than your palm.", 35);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture torcF = new Dungeon_Floor();
         Furniture torcTrchs = new Torch();
@@ -1250,9 +1338,14 @@ public class Map {
         Room cry2 = new Cry2("in the crypt", Id.CRY2);
         Room cry1 = new Cry1("in the crypt", Id.CRY1);
         //-------------------------------ITEMS----------------------------------      
-        Item drdFlwr = new Item("dried flower", "It's a brown, dried-up rose, perhaps given as a memorial or offering to an arcane spirit or diety.");
-        Item ncklc = new Clothing("silver necklace", "A thin, fine necklace made of silver. A blue jewel dangles from it.", "You put it around your neck. The heavy coldness fills you with feelings of luxury.");
-        Item brnzCn = new Item("bronze coin", "It's some sort of extinct and exotic currency. A round hole is bored through the center, and remaining surface has visible but worn decorative etchings.");
+        Item drdFlwr = new Item("dried flower", "It's a brown, dried-up rose, "
+                + "perhaps given as a memorial or offering to an arcane spirit or diety.", 10);
+        Item ncklc = new Clothing("silver necklace", 
+                "A thin, fine necklace made of silver. A blue jewel dangles from it.", 
+                "You put it around your neck. The heavy coldness fills you with feelings of luxury.", 170);
+        Item brnzCn = new Item("bronze coin", 
+                "It's some sort of extinct and exotic currency. A round hole is bored through the center, "
+                        + "and remaining surface has visible but worn decorative etchings.", 50);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture cryF = new Dungeon_Floor();
         Furniture cryDummy = new Cry_Dummy();
@@ -1328,7 +1421,7 @@ public class Map {
         Room dkch = new Dkch("in the dungeon-keeper's chamber", Id.DKCH);
         //-------------------------------ITEMS---------------------------------- 
         Item dkchNt = new Dkch_Note("short verse");
-        Item lngChn = new Weapon("chain", "It's a chain, about 10 feet long.");
+        Item lngChn = new Weapon("chain", "It's a chain, about 10 feet long.", 35);
         Item dkchNt2 = new Note("illegible note", "This note is gibberish. Unreadable.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture dkchF = new Dungeon_Floor();
@@ -1356,10 +1449,15 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room aarc = new Aarc("in ruined archives", Id.AARC);
         //-------------------------------ITEMS----------------------------------
-        Item algBk = new Item("algae covered book", "The book is wet and slimy. Its pages have nearly fused.", "This is completely unreadable.");
-        Item rndBk = new Item("ruined book", "This book is damp, moldy, and covered in dirt.", "Whatever knowledge this book held is now lost.");
-        Item stnBlck = new BreakableItem(STONE_BLOCK, "This is a remnant of the collapsed floor in the ancient archives.");
-        Item slmyAlg = new Item("slimy algae", "Ugh... why are you holding this?");
+        Item algBk = new Item("algae covered book", 
+                "The book is wet and slimy. Its pages have nearly fused.", 
+                "This is completely unreadable.", -20);
+        Item rndBk = new Item("ruined book", 
+                "This book is damp, moldy, and covered in dirt.", 
+                "Whatever knowledge this book held is now lost.", -20);
+        Item stnBlck = new BreakableItem(STONE_BLOCK, 
+                "This is a remnant of the collapsed floor in the ancient archives.", 10);
+        Item slmyAlg = new Item("slimy algae", "Ugh... why are you holding this?", -35);
         Item aarcNt = new Aarc_Note("note: Factum");
         //-----------------------------FURNITURE--------------------------------  
         Furniture aarcAlg = new Aarc_Algae(slmyAlg);
@@ -1415,21 +1513,35 @@ public class Map {
                        ct63, ct64, ct67, ct68};
 
         //-------------------------------ITEMS----------------------------------
-        Item coin = new Item("stone coins", "A small collection of ancient coins. Many archaic markings decorate their surfaces, with holes bored in the centers.", "Where do you expect to spend these?");
-        Item ring = new Clothing("bronze ring", "It's a tarnished ring. Some of the tarnish rubs off and stains your hand green.", "You slip the small ring on your finger.");
-        Item nckLc = new Clothing("beaded neclace", "A lackluster necklace made with wooden beads.", "You fit the old ceremonial necklace over your head.");
-        Item jwl = new BreakableItem(IRIDESCENT_JEWEL, "The polished stone feels warm to the touch, and is constantly shifting color among red, black, and green.");
-            String medString = "It's an archaic stone key. It has a thick disc-shaped head and a long protruding shaft bearing a few fat teeth. ";
-        Item med1 = new BreakableItem(KEY_OF_ANCESTRY, medString + "Engraved on its head is a depiction of the sun.");
-        Item med2 = new BreakableItem(KEY_OF_INTELLECT, medString + "An eye is engraved on its head.");
-        Item med3 = new BreakableItem(KEY_OF_CONTINUITY, medString + "The number '8' is engraved on its head.");
+        Item coin = new Item("stone coins", 
+                "A small collection of ancient coins. Many archaic markings decorate "
+                + "their surfaces, with holes bored in the centers.", 
+                "Where do you expect to spend these?", 35);
+        Item ring = new Clothing("bronze ring", 
+                "It's a tarnished ring. Some of the tarnish rubs off and stains your hand green.", 
+                "You slip the small ring on your finger.", 50);
+        Item nckLc = new Clothing("beaded neclace", 
+                "A lackluster necklace made with wooden beads.", 
+                "You fit the old ceremonial necklace over your head.", 40);
+        Item jwl = new BreakableItem(IRIDESCENT_JEWEL, 
+                "The polished glassy pebble feels warm to the touch, "
+                + "and is constantly shifting color among red, black, and green.", 250);
+        
+        String medString = "It's an archaic stone key. It has a thick disc-shaped "
+                + "head and a long protruding shaft bearing a few fat teeth. ";
+        Item med1 = new BreakableItem(KEY_OF_ANCESTRY, 
+                medString + "Engraved on its head is a depiction of the sun.", 35);
+        Item med2 = new BreakableItem(KEY_OF_INTELLECT, 
+                medString + "An eye is engraved on its head.", 35);
+        Item med3 = new BreakableItem(KEY_OF_CONTINUITY, 
+                medString + "The number '8' is engraved on its head.", 35);
+        
             Random rand = new Random();
             int index = rand.nextInt(list.length);
             list[index].getFurnishings().get(0).getInv().add(jwl);  
             int y = Math.abs(list[index].getCoords()[1] - 7);
             String result = (list[index].getCoords()[2] + ", " + y + ", " + -2);
         Item tmbNt = new Note("torn parchment", "In the center, written in large scribbly handwriting are the numbers: \"" + result + "\".");
-        Item strw = new Item("straw", "It's just a handful of straw.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture catDrN = new Ct_Door(Direction.NORTH);
         Furniture catDrS = new Ct_Door(Direction.SOUTH);
@@ -1456,7 +1568,7 @@ public class Map {
         // Oubliette
         Furniture oubStrw = new Ou62_Straw();
         Furniture oubSpk = new Ou62_Spike();
-        Furniture oub2F = new Dungeon_Floor(strw, strw, strw);
+        Furniture oub2F = new Dungeon_Floor(closStrw, closStrw, closStrw);
 
         // Ancient tomb
         Furniture antNPC = new Ant_Zombie();
@@ -1546,10 +1658,11 @@ public class Map {
         Room cha2 = new Cha2("at the chancel altar", Id.CHA2);
         //-------------------------------ITEMS---------------------------------- 
         Item chaNt = new Cha_Note("malevolent note");
-        Item gldUrn = new Item("gold urn", "the stone urn is fitted with a gold plate bearing an etched shining chalice.");
+        Item gldUrn = new Item("gold urn", "The beautiful gold urn is set around the lid with emeralds and sapphires.", 500);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture chaF = new Floor("Faded, dusty boards line the length of the floor from north to south.");
-        Furniture chaW = new Wall("The walls are mostly carved wood paneling. Several religious scenes are painted at fixed distances along the wall.");
+        Furniture chaW = new Wall("The walls are mostly carved wood paneling. "
+                + "Several religious scenes are painted at fixed distances along the wall.");
         Furniture chaPws = new Cha_Pews();
         Furniture chaHz = new Cha_Haze();
         Furniture chaCrpt = new Cha_Carpet();
@@ -1570,18 +1683,25 @@ public class Map {
         Room vau2 = new Vau2("in the vault", Id.VAU2, vau1Tbl);
         Room vaue = new Vaue("in front of a curious wall", Id.VAUE);
         //-------------------------------ITEMS---------------------------------- 
-        Item grl = new Item("grail", "It's treasure. A gold-plated grail studded with rubies. Where is all this from?");
-        Item cns = new Item("coins", "It's treasure. A handful of golden coins... Not currency you've ever seen though.");
-        Item crwn = new Clothing("crown", "It's treasure. It's the crown of a king. Exactly who's crown, you cannot guess.", "You position the crown on your head. You've never felt so wealthy.");
-        Item brclt = new Clothing("bracelet", "It's treasure. A thick jade bracelet, cold and heavy.", "You put the bracelet on your wrist.");
-        Item rng = new Clothing("ring", "It's treasure. It's a small bronze ring set with an opaque, smooth blue stone.", "You slide the small ring onto your finger.");
-        Item dmnd = new BreakableItem("diamond", "It's treasure. A small, but undoubtedly valuable cut sparkling diamond.");
-        Item jdStat = new BreakableItem("jade statue", "It's treasure. A small statuette made of jade depicting a sitting female.");
+        Item grl = new Item("grail", 
+                "It's treasure. A gold-plated grail studded with rubies. Where is all this from?", 300);
+        Item cns = new Item("leather coin bag", 
+                "It's treasure. A handful of golden coins... Not currency you've ever seen though.", 170);
+        Item crwn = new Clothing("crown", 
+                "It's treasure. It's the crown of a king. Exactly who's crown, you cannot guess.", 
+                "You position the crown on your head. You've never felt so wealthy.", 400);
+        Item brclt = new Clothing("bracelet", "It's treasure. A thick jade bracelet, cold and heavy.", 
+                "You put the bracelet on your wrist.", 250);
+        Item rng = new Clothing("ring", 
+                "It's treasure. It's a small bronze ring set with an opaque, smooth blue stone.", 
+                "You slide the small ring onto your finger.", 200);
+        Item dmnd = new BreakableItem("diamond", 
+                "It's treasure. A small, but undoubtedly valuable cut sparkling diamond.", 500);
+        Item jdStat = new BreakableItem("jade statue", 
+                "It's treasure. A small statuette made of jade depicting a sitting female.", 350);
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture vau1Chsts = new Vau_Chsts(grl, cns, crwn, brclt, rng, dmnd, jdStat);
-        Furniture vau2Chsts = new Vau_Chsts(rng, cns, cns, dmnd, crwn, jdStat, dmnd);
-        Furniture vauF = new Floor("The floors are sandstone blocks and covered in treasure.", cns, rng, cns, cns, brclt, dmnd, grl, cns, cns, dmnd, crwn);
-        Furniture vauTrsr = new Vau_Treasure(cns, cns, crwn, jdStat, dmnd, rng, cns, rng, brclt);
+        Furniture vau2Chsts = new Vau_Chsts(rng, cns, dmnd, jdStat);
+        Furniture vauF = new Floor("The floors are sandstone blocks and covered in treasure.", brclt, grl, cns, crwn);
         Furniture vauBwls = new Vau_Bowls();
         Furniture vauClng = new Vau_Ceiling();
         Furniture vaueF = new Floor("The walls here are sandstone blocks, much like those in the west wing, but seemingly older.");
@@ -1634,7 +1754,9 @@ public class Map {
         Room lqu1 = new Lqu1("in the lich's quarters", Id.LQU1);
         Room lqu2 = new Lqu2("at the lich's bed", Id.LQU2);
         //-------------------------------ITEMS----------------------------------
-        Item lquaStf = new BreakableItem(DAMPENING_STAFF, "It resembles the smooth branch of an oak tree with some kind of coil wrapped around it. It feels lifeless of power.");
+        Item lquaStf = new BreakableItem(DAMPENING_STAFF, 
+                "It resembles the smooth branch of an oak tree with some kind "
+                + "of coil wrapped around it. It feels lifeless of power.", 80);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture lquF = new Floor("The floor around the carpet is hard and cold stone.");
         Furniture lquW = new Wall("The walls are clean smooth stone and decorated with faux columns.");
@@ -1660,9 +1782,9 @@ public class Map {
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE SOUL CHAMBER">
         //-----------------------------THE ROOM---------------------------------
-        Room soul = new Soul("in the soul chamber", Id.SOUL, towSphr, lqu1, tow1, tow2);
+        Room soul = new Soul("in the soul chamber", Id.SOUL);
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture soulPl = new Soul_Pool();
+        Furniture soulPl = new Soul_Pool(towSphr, lqu1, tow1, tow2);
         Furniture soulStat = new Soul_Statues();
         Furniture soulF = new Floor("It's a light-gray tiled floor.");
         Furniture soulWndw = new Soul_Window();
@@ -1676,6 +1798,28 @@ public class Map {
             erased at this point also.
         */
         Room endg = new Endg("", Id.ENDG);
+
+        // </editor-fold>
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE HADES">
+
+        /*
+            If the player dies, the player ends up here where the game stops
+            progressing.
+        */
+        //-----------------------------THE ROOM---------------------------------
+        Room hads = new Hades("at the Entrance to Hades", Id.HADS);
+        //-------------------------------ITEMS----------------------------------
+        Item leg = new Item("mangled leg", "It's a disembodied rotting leg, dirty, and awful smelling.", -1000);
+        Item torso = new Item("mangled torso", "It's a disembodied rotting torso, dirty, and awful smelling.", -1000);
+        Item hand = new Item("mangled hand", "It's a disembodied rotting hand, dirty, and awful smelling.", -1000);
+        Item arm = new Item("mangled arm", "It's a disembodied rotting arm, dirty, and awful smelling.", -1000);
+        //-----------------------------FURNITURE-------------------------------- 
+        Furniture hadsCrpses = new Hads_Corpses(leg, torso, hand, leg, arm, torso, hand);
+        Furniture hadsSprts = new Hads_Spirits();
+        Furniture hadsVcs = new Hads_Voices();
+        Furniture hadsGtwy = new Hads_Gateway();
+        Furniture hadsF = new Floor("The scorched brimstone burns beneath your feet.");
+        Furniture hadsW = new Wall("High rock walls hopelessly bar you from escape.");
 
         // </editor-fold>
 
@@ -1702,7 +1846,7 @@ public class Map {
             // <editor-fold defaultstate="collapsed" desc="FLOOR 4 [0]">    
             //  0    1    2    3    4    5    6    7    8    9
             {{____,____,____,____,____,____,____,____,____,____}, //0
-             {____,____,____,____,____,soul,____,____,____,____}, //1
+             {____,____,____,____,____,soul,____,____,hads,____}, //1
              {____,____,____,____,____,tbal,____,____,____,____}, //2
              {____,____,____,____,bls2,tow2,lqu1,lqu2,____,____}, //3
              {____,____,____,____,____,____,____,____,____,____}},//4
@@ -1788,74 +1932,102 @@ public class Map {
 
         // <editor-fold defaultstate="collapsed" desc="AREA 1: CASTLE FRONT">
 
-        foy1.addFurniture(genDoor, foy1Gt, foyFrntDr, foyF, foyW, foy1Chnd, eastDoor, foy1Tbl, foy1Crpt, foy1Strs, clng);
+        foy1.addFurniture(foyFrntDr, genDoor, foy1Gt, foy1Armr, foyF, foyW, 
+                foy1Chnd, eastDoor, foy1Tbl, foy1Crpt, foy1Strs, clng);
         foy2.addFurniture(foy2Gt, foy2Stat, foy2Alc, foyF, foyW, foy2Strcs, clng);
         foy3.addFurniture(foy3Strs, westDoor, foyW, foy3F, foy34Crpt, clng);
         foy4.addFurniture(foy4Strs, foyW, foy4F, foy34Crpt, foy4Dr, clng);
-        vest.addFurniture(vesFire, vesBtn, vesWin, vesDsk, vesEtbl, vesCase, vesTpstr, vesChr, vesF, vesDr, wallEx, vesOrb);
-        foyb.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, clng, bbaBnch, bbaScnc, bbaClff, bbaShrln, bbaSea, bba1Gt, wantBttn);
-        foyc.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, clng, bbaScnc, bbaClff, bbaShrln, bbaSea, bba2Dr);
+        vest.addFurniture(vesFire, vesBtn, vesWin, vesDsk, vesEtbl, vesCase, 
+                vesTpstr, vesChr, vesF, vesDr, wallEx, vesOrb);
+        foyb.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, clng, bbaBnch, 
+                bbaScnc, bbaClff, bbaShrln, bbaSea, bba1Gt, wantBttn);
+        foyc.addFurniture(bbaF, wallEx, bbaClmns, bbaRlng, bbaVllg, clng, bbaScnc, 
+                bbaClff, bbaShrln, bbaSea, bba2Dr);
         cou1.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou1F, couCstl, couRvns);
         cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl, coutWlkwy, couRvns);
         cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc, coutWlkwy, couRvns);
         cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou56F, cou6Stat, couCstl, cou6Ghst, couRvns);
         cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, couCstl, couRvns);
         cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl, couRvns);
-        cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, entrStps, entrBlcny, couRvns);
+        cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, 
+                entrStps, entrBlcny, couRvns);
         cou8.addFurniture(cou8Nest, cou5Sprc, couW);
-        foyw.addFurniture(genDoor, wantStat, wantTrchs, wantLvr, wantPllrs, wWW, wantF, wantRmp, wantDr, wantGt, wantBttn, clng);
+        foyw.addFurniture(genDoor, wantStat, wantTrchs, wantLvr, wantPllrs, wWW, wantF, 
+                wantRmp, wantDr, wantGt, wantBttn, clng);
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="AREA 2: WEST WING">    
 
-        rotu.addFurniture(genDoor, rotuFntn, rotuW, rotuF, rotuPlnts, rotuHl, rotuStat, rotuScnc, rotuFrms, rotuSky, rotuRock, clng);
+        rotu.addFurniture(genDoor, rotuFntn, rotuW, rotuF, rotuPlnts, rotuHl, rotuStat, 
+                rotuScnc, rotuFrms, rotuSky, rotuRock, clng);
         look.addFurniture(lookVlv, lookLghths, lookClff, lookRlng, lookF, wallEx, eastDoor, iha1Lvr, bbaSea);
         iha1.addFurniture(northDoor, wWW, ihaF, iha1Armr, iha1Bwl, ihaWndw, iha1Lvr, clng);
         iha2.addFurniture(southDoor, wWW, ihaF, iha2Armr, iha2Bwl, ihaWndw, clng);
         wow1.addFurniture(genDoor, wWW, westDoor, wow1NDr, wow1Crt, wow1F, wowWndw, wowHrth, wow1Shlvs, clng);
-        wow2.addFurniture(genDoor, wow2Blcny, wow2Armr, wow2F, wow2Dr, northDoor, wow2Hole, wowWndw, wowHrth, wow2Strcs, clng);
+        wow2.addFurniture(genDoor, wow2Blcny, wow2Armr, wow2F, wow2Dr, northDoor, 
+                wow2Hole, wowWndw, wowHrth, wow2Strcs, clng);
         wbal.addFurniture(wallEx, eastDoor, lookLghths, lookClff, lookRlng, wbalF, wbalBcn, wbalFrst, bbaSea);
-        squa.addFurniture(wWW, squaF, squaBd, squaDsk, squaWndw, lookLghths, lookClff, bbaSea, squaWrdrb, squaCndl, squaDr, clng);
+        squa.addFurniture(wWW, squaF, squaBd, squaDsk, squaWndw, lookLghths, lookClff, 
+                bbaSea, squaWrdrb, squaCndl, squaDr, clng);
         wow3.addFurniture(genDoor, wWW, wow3Shlf, wow3F, wow3Dr, bbaRlng, wow3NDr, clng);
         sha1.addFurniture(wWW, shaF, sha1Trch, sha1Dr, sha1SDr, clng);
         sha2.addFurniture(wWW, sha2Cbnt, shaF, sha2Dr, sha2Trch, clng);
-        clos.addFurniture(closW, closF, closShlf, closStl, closBrrl, closWrkbnch, closLddr, closScks, closClng, closSkltn, closDr);  
-        cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, searAsh, closW, clng, searWood);
-        shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, lookLghths, lookClff, bbaSea, rquaPnl, clng, rquaClths);
-        stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, studBkCs, studCrpt, southDoor, iha1Lvr, clng);
+        clos.addFurniture(closW, closF, closShlf, closStl, closBrrl, closWrkbnch, 
+                closLddr, closScks, closClng, closSkltn, closDr);  
+        cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, 
+                searAsh, closW, clng, searWood);
+        shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, 
+                lookLghths, lookClff, bbaSea, rquaPnl, clng, rquaClths);
+        stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, 
+                studBkCs, studCrpt, southDoor, iha1Lvr, clng);
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="AREA 3: EAST WING">     
 
-        gal1.addFurniture(gal1Dr, gal1F, gal1W, gal1Drgn, gal1KtnFurn, gal1Pntng, gal1Pntng2, gal1Pntng3, gal1Armr, gal1Scr, gal1Scrn, gal1Pntngs, gal1Lghts, gal1Sclptrs, gal1Hrth, clng);
-        gal2.addFurniture(genDoor, gal2Stat, gal2Strcs, gal2F, gal2W, galBalc, gal1Lghts, rotuSky, galDm, gal2Clmns, mhaSDr, eastDoor);
-        gal3.addFurniture(gal3Ttm, gal3Peg, gal3Hl, gal3Sgmnt, gal3Htch, gal3Lddr, gal3Rp, gal3Swtch, gal3InstFurn, gal3Msk, gal3Msk2, gal3Msk3, gal3Msks, gal3Hrth, gal3F, gal3W, gal3Art, gal3Art2, gal3Art3, gal3Arts, clng);
-        gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Dr, gal2Clmns, gal4Lft, gal4Rdo, gal4F, gal4Crpt, gal4Lvr);
-        gal6.addFurniture(gal6Cnn, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl, clng);
+        gal1.addFurniture(gal1Dr, gal1F, gal1W, gal1Drgn, gal1KtnFurn, gal1Pntng, 
+                gal1Pntng2, gal1Pntng3, gal1Armr, gal1Scr, gal1Scrn, gal1Pntngs, 
+                gal1Lghts, gal1Sclptrs, gal1Hrth, clng);
+        gal2.addFurniture(genDoor, gal2Stat, gal2Strcs, gal2F, gal2W, galBalc, 
+                gal1Lghts, rotuSky, galDm, gal2Clmns, mhaSDr, eastDoor);
+        gal3.addFurniture(gal3Ttm, gal3Peg, gal3Hl, gal3Sgmnt, gal3Htch, gal3Lddr, 
+                gal3Rp, gal3Swtch, gal3InstFurn, gal3Msk, gal3Msk2, gal3Msk3, gal3Msks, 
+                gal3Hrth, gal3F, gal3W, gal3Art, gal3Art2, gal3Art3, gal3Arts, clng);
+        gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Dr, gal2Clmns, 
+                gal4Lft, gal4Rdo, gal4F, gal4Crpt, gal4Lvr);
+        gal6.addFurniture(gal6Cnn, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, 
+                gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl, clng);
         gal7.addFurniture(wWW);
         mha1.addFurniture(genDoor, mhaChndlr, mhaChr, mha1Plnt, mhaF, mhaW, mhaNWndw1, mhaNDr, mhaNChaDr, clng);
         mha2.addFurniture(mhaChndlr, mhaChr, mha2Plnt, mhaF, mhaW, mhaNWndw2, mhaMDr, mhaRStat, mhaLStat, mhaStats, clng);
         mha3.addFurniture(genDoor, mhaChndlr, mhaChr, mha3Plnt, mhaF, mhaW, mhaSWndw, mha3KitcDr, mhaSDr, clng);
-        lib2.addFurniture(libLF, libW, libCch, lib2ShRck, lib2Stat, lib2Frplc, lib2Bttn, lib2WrFr, lib2Vyg, libBkShlf, libScncs, lib2Wndw, clng);
-        lib3.addFurniture(libLF, libW, westDoor, lib3Strs, libCch, lib3Stat, lib3Crtn, libScncs, lib3Blcny, lib3Wndw, lib3Pllr, lib3Pntng);
-        lib4.addFurniture(libUF, libW, libCch, lib4Frplc, lib4Bttn, lib4Prdtn, libScncs, lib3Pllr, lib4Stat, lib4Glb, lib3Blcny, lib4Tbl, lib4Strs, clng);
+        lib2.addFurniture(libLF, libW, libCch, lib2ShRck, lib2Stat, lib2Frplc, lib2Bttn, 
+                lib2WrFr, lib2Vyg, libBkShlf, libScncs, lib2Wndw, clng);
+        lib3.addFurniture(libLF, libW, westDoor, lib3Strs, libCch, lib3Stat, lib3Crtn, 
+                libScncs, lib3Blcny, lib3Wndw, lib3Pllr, lib3Pntng);
+        lib4.addFurniture(libUF, libW, libCch, lib4Frplc, lib4Bttn, lib4Prdtn, libScncs, 
+                lib3Pllr, lib4Stat, lib4Glb, lib3Blcny, lib4Tbl, lib4Strs, clng);
         lib5.addFurniture(libUF, libW, lib5Bnshmnt, libScncs, lib3Pllr, lib5Cndlbr, clng);
         eow1.addFurniture(genDoor, wWW, eowF, eow1Dr, eow1Rck, eow1Bskt, eow1Trch, wowWndw, mhaNDr, clng);
         eow2.addFurniture(wWW, eowF, eow2Fntn, wtr, eow2Rck, wowWndw, eow2Strs, eow2Blcny, eow2Cbnt, eow2Trch);
         eow4.addFurniture(wWW, eow4F, eow4Strs, bbaRlng, westDoor, clng);
         dst1.addFurniture(dst1F, dstW, dst1Strs, dst1Dr, dst1Lntrn, clng);
-        lib1.addFurniture(lib1F, lib1W, vesChr, lib1Dsk, lib1Art, lib1Docs, lib1Rg, lib1Wndw, lib1Rck, lib1Tbl, lib1Lght, lib1Mrrr, lib1Sf, clng);
+        lib1.addFurniture(lib1F, lib1W, vesChr, lib1Dsk, lib1Art, lib1Docs, lib1Rg, 
+                lib1Wndw, lib1Rck, lib1Tbl, lib1Lght, lib1Mrrr, lib1Sf, clng);
         work.addFurniture(wWW, wrkF, eastDoor, wowWndw, wrkBrl, wrkCstTbl, wrkKln, wrkBnch, wrkCbnt, wrkFrg, wrkAnvl, clng);
-        din1.addFurniture(din1Clmns, din1Blcny, din1Tbl, din1Tpstry, din1F, din1W, din1Wndw, din1Chrs, din1Chndlr, din1Mnlght, din1Strs, din1Crpt, din1Dr);
+        din1.addFurniture(din1Clmns, din1Blcny, din1Tbl, din1Tpstry, din1F, din1W, 
+                din1Wndw, din1Chrs, din1Chndlr, din1Mnlght, din1Strs, din1Crpt, din1Dr);
         din2.addFurniture(din2W, din2F, southDoor, din2Pntng, din2Strs, clng);
-        drar.addFurniture(northDoor, drarGhst, drarF, drarW, din1Mnlght, drarChss, drarBr, drarPno, drarBllrds, drarWndw, drarCch, drarTbl, clng);
+        drar.addFurniture(northDoor, drarGhst, drarF, drarW, din1Mnlght, drarChss, 
+                drarBr, drarPno, drarBllrds, drarWndw, drarCch, drarTbl, clng);
         gal5.addFurniture(gal5Dsply, gal5Chndlr, gal5Cbwbs, gal5F, gal5W, gal5Clng, gal5Cbt, gal5Dr, clng);
-        kitc.addFurniture(kitcTrch, kitcF, kitcW, kitcWndw, kitcDr, kitcRck, kitcPts, kitcHrth, kitcBrls, kitcPntry, kitcShlf, kitcCntr, laboSnk, clng);
+        kitc.addFurniture(kitcTrch, kitcF, kitcW, kitcWndw, kitcDr, kitcRck, kitcPts, 
+                kitcHrth, kitcBrls, kitcPntry, kitcShlf, kitcCntr, laboSnk, clng);
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="AREA 4: CASTLE REAR">
 
-        par2.addFurniture(genDoor, wWW, par2F, par2Wndw, westDoor, eastDoor, par2Strs, parLft, par2Bwl, par2Frplc, par2Pno, par2Shlf);
+        par2.addFurniture(genDoor, wWW, par2F, par2Wndw, westDoor, eastDoor, par2Strs, 
+                parLft, par2Bwl, par2Frplc, par2Pno, par2Shlf);
         par1.addFurniture(par1F, par1Dr, par1FrPlc, wWW, par1EnchntTbl, par1Strs, parLft,
                           par1Pllrs, par1Orb, par1Hrp, par1Shlf, lib1Rg, par1Cshn, vesChr, clng);
         bha3.addFurniture(southDoor, bha1Hrzn, bha1Plnt, bha1Tbl, bha1F, bhaW, clng);
@@ -1887,7 +2059,8 @@ public class Map {
         sew2.addFurniture(sewRvr, sewF, dngnW, sewTnnl, sew2Trch, sewMss, sew2BrdgW, sew2Pp, sew2Vlvs);
         sew3.addFurniture(sewRvr, sewF, sewDrN, dngnW, sewTnnl, sew3Trch, sewMss, sew3BrdgE, sew3BrdgN, sew3Pp);
         sew4.addFurniture(sewRvr, sewF, dngnW, sewTnnl, sew4Trch, sewMss, sew4Pp);
-        sew5.addFurniture(genDoor, sewRvr, sewF, sewDrW, sewDrE, dngnW, sewTnnl, sew15Gt, sew5Trch, sewMss, sew5BrdgE, sew5Pp, sew5Vlv);
+        sew5.addFurniture(genDoor, sewRvr, sewF, sewDrW, sewDrE, dngnW, sewTnnl, 
+                sew15Gt, sew5Trch, sewMss, sew5BrdgE, sew5Pp, sew5Vlv);
         cis1.addFurniture(cis1Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
         cis2.addFurniture(dngnW, cisF, cisWtr, cisClmns, cisDrknss);
         cis3.addFurniture(cis3Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
@@ -1898,8 +2071,10 @@ public class Map {
         esc6.addFurniture(esc6Grt, esc6Lddr);
         cas1.addFurniture(casW, casStrs, casF, cs35Trchs, cs35Stat, sewDrE, clng);
         sewp.addFurniture(genDoor, sewpCl, sewpGrt, sewpWtr, sewpF, dngnW, sewDrE, sewDrW, sewpTrch, sewpTnnl);
-        pris.addFurniture(genDoor, prisClls, dngnW, sewDrS, sewDrW, prisF, prisCndlbrs, prisTbl, prisCbnt, prisGts, dungMonst, clng);
-        torc.addFurniture(genDoor, sewDrE, sewDrW, dngnW, torcF, torcTrchs, torcSwhrses, torcScythF, torcRck, torcCgs, torcWhl, torcWd, torcTls, dungMonst, clng);
+        pris.addFurniture(genDoor, prisClls, dngnW, sewDrS, sewDrW, prisF, prisCndlbrs, 
+                prisTbl, prisCbnt, prisGts, dungMonst, clng);
+        torc.addFurniture(genDoor, sewDrE, sewDrW, dngnW, torcF, torcTrchs, torcSwhrses, 
+                torcScythF, torcRck, torcCgs, torcWhl, torcWd, torcTls, dungMonst, clng);
         cry1.addFurniture(sewDrW, dngnW, cryF, cry1Stat, cryDrwrs, cry1Crvng, cryLghts, dungMonst, cryDummy, clng);
         cry2.addFurniture(dngnW, cryF, cryDrwrs, cryLghts, cry2Engrvng, cry2Altr, dungMonst, cry2Psswd, cryDummy, clng);
         aarc.addFurniture(sewDrW, aarcF, aarcW, aarcWd, aarcBks, aarcChndlr, aarcDsk, aarcAlg, aarcShlvs, dungMonst, clng);
@@ -1931,10 +2106,11 @@ public class Map {
 
         chs1.addFurniture(chs1Strs, chsWndws, chs1F, chsW, din1Mnlght, chs1Stat, mhaWDr);
         chs3.addFurniture(chs3Strs, chsWndws, chsW, din1Mnlght, chs3F, southDoor, clng);
-        cha1.addFurniture(cha1Cylx, cha1Wtr, northDoor, chaW, chaF, din1Mnlght, chaPws, cha1Cndlbr, chaHz, chaCrpt, chaWndws, chaClng);
+        cha1.addFurniture(cha1Cylx, cha1Wtr, northDoor, chaW, chaF, din1Mnlght, chaPws, 
+                cha1Cndlbr, chaHz, chaCrpt, chaWndws, chaClng);
         cha2.addFurniture(chaF, chaW, din1Mnlght, chaPws, chaHz, chaCrpt, chaWndws, cha2Alt, chaClng);
-        vau1.addFurniture(vau1Chsts, vauF, vauBwls, vau1Tbl, vauTrsr, vauClng);
-        vau2.addFurniture(vau2Chsts, vauF, vauBwls, vauTrsr, vauClng);
+        vau1.addFurniture(vauF, vauBwls, vau1Tbl, vauClng);
+        vau2.addFurniture(vau2Chsts, vauF, vauBwls, vauClng);
         vaue.addFurniture(vaueF, vauBwls, vaueBttns, vauW, clng);
 
         // </editor-fold>
@@ -1948,6 +2124,7 @@ public class Map {
         lqu1.addFurniture(westDoor, lqu1Wrdrb, lquF, lqu1Chst, lqu1Mrrr, lquW, lqu1Cbnt, lqu1_Bd, lqu_Crpt, clng);
         lqu2.addFurniture(lquF, lquW, lqu_Crpt, lqu2Lvr, lqu2Bd, clng);
         soul.addFurniture(soulPl, soulStat, soulF, wallEx, soulWndw, clng);
+        hads.addFurniture(hadsVcs, hadsGtwy, hadsSprts, hadsCrpses, hadsF, hadsW);
 
         // </editor-fold>
 
@@ -1962,7 +2139,7 @@ public class Map {
 
         rotu.lock(); stud.lock(); gal5.lock(); gal1.lock(); par2.lock();
         clos.lock(); din1.lock(); kitc.lock(); ou62.lock(); chs1.lock();
-        work.lock(); tow1.lock(); tbal.lock(); sewp.lock(); dkch.lock();
+        work.lock(); tow1.lock(); sewp.lock(); dkch.lock();
         vau2.lock(); wow2.lock();
 
         //**********************************************************************

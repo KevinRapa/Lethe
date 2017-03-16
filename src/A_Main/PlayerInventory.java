@@ -1,8 +1,10 @@
 package A_Main;
 
+import static A_Main.NameConstants.LOOT_SACK;
 import static A_Main.NameConstants.NO_LETTER_AFTER;
 import static A_Main.NameConstants.NO_LETTER_BEFORE;
 import A_Super.Item;
+import Foyer.LootSack;
 import java.util.Comparator;
 /**
  * Adds combine methods and sorting abilities which aren't used by furniture.
@@ -12,9 +14,10 @@ import java.util.Comparator;
  * @author Kevin Rapa
  */
 public class PlayerInventory extends Inventory {
+    private static final int MAX_SIZE = 15;
     private final Item NULL_ITEM = 
             new Item("null item", "Whoops! Looks like there's a bug in the game, "
-                   + "this item will self-destruct in 5 seconds... Just kidding.");
+                   + "this item will self-destruct in 5 seconds... Just kidding.", 0);
     // ========================================================================
     public PlayerInventory(Item ... items) {
         super(items);
@@ -28,13 +31,33 @@ public class PlayerInventory extends Inventory {
      * @return If the add was successful. 
      */
     @Override public boolean add(Item item) {
-        if (! CONTENTS.contains(item)) {
-            return this.CONTENTS.add(item);
+        if (CONTENTS.size() < MAX_SIZE) {
+            this.CONTENTS.add(item);
+
+            if (item.getType().equals(LOOT_SACK)) {
+                // Shouldn't throw anything, unless 
+                // there's another item given LOOT_SACK type.
+                try { 
+                    LootSack sack = (LootSack)item;
+                    Player.updateScore(sack.getWorth());
+                }
+                catch (ClassCastException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+            return true;
         }
         else {
-            GUI.out("You already have that.");
+            GUI.out("You are already carrying too much!");
             return false;
         }
+    }
+    // ========================================================================
+    @Override public void remove(Item removeThis) {
+        super.remove(removeThis);
+        
+        if (removeThis.getType().equals(LOOT_SACK))
+            Player.updateScore(0);
     }
     // ========================================================================
     /**
@@ -77,6 +100,7 @@ public class PlayerInventory extends Inventory {
     }
     // ========================================================================
     public void sortInventory() {
+        Player.incrementMoves();
         this.CONTENTS.sort(Inventory_Sorter.getSorter());
         Player.printInv();
     }

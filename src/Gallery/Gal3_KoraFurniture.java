@@ -31,7 +31,7 @@ public class Gal3_KoraFurniture extends Furniture {
 /*----------------------------------------------------------------------------*/    
     private class Gal3_Inst extends Item {
         public Gal3_Inst (String name) {
-            super(name);
+            super(name, 30);
             this.useID = 1;
             this.description = "The exotic instrument consists of a half-sphere for\n"
                              + "a body and a long neck. But it resembles a harp more\n"

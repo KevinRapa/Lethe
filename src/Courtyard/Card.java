@@ -27,7 +27,7 @@ public class Card extends Item {
      * @param name The name of the card.
      */
     public Card(String name) {
-        super(name);
+        super(name, 0);
         this.type = NameConstants.CARD;
         this.description = "A ghostly and eerily solid playing card. It feels cool to the touch.";
         this.VALUE = this.determineValue(name.substring(0,2));

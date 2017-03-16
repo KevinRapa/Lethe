@@ -86,7 +86,8 @@ public class AudioPlayer {
         sewpCustom =        new File(W_DIR, TPTH + "sewpCustom" + EXT),
         torcCustom =        new File(W_DIR, TPTH + "torcCustom" + EXT),
         titleTrack =        new File(W_DIR, TPTH + "titleTrack" + EXT),
-        tbalCustom =        new File(W_DIR, TPTH + "tbalCustom" + EXT);
+        tbalCustom =        new File(W_DIR, TPTH + "tbalCustom" + EXT),
+        hadesTrack =        new File(W_DIR, TPTH + "hell" + EXT);
     
     private static final HashMap<String, Media> TRACKS = 
             new HashMap<String, Media>() {
@@ -123,6 +124,7 @@ public class AudioPlayer {
                                         SOUL, ENDG);
         putAllTracks(antechamberCustom, FOYW, VAUE, VAU1, VAU2); 
         
+        put(HADS, new Media(hadesTrack.toURI().toString()));
         put(GAL1, new Media(gal1wCustom.toURI().toString()));         
         put(GAL3, new Media(gal2wCustom.toURI().toString()));     
         put(GAL6, new Media(gal3wCustom.toURI().toString()));             

@@ -38,7 +38,7 @@ public class Sear_Fissure extends Furniture {
         if (item.toString().equals(WARHAMMER)) {            
             Player.getPos().addAdjacent(Id.COU2);
             Player.getInv().remove(item);
-            Player.getInv().add(new Item("broken warhammer", "It's snapped in half.", "Well, it's useless now."));
+            Player.getInv().add(new Item("broken warhammer", "It's snapped in half.", "Well, it's useless now.", -30));
             this.broken = true;
             AudioPlayer.playEffect(30);
             return this.useDialog;

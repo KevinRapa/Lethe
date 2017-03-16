@@ -19,7 +19,7 @@ public class Torch extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Torch() {
         super();
-        this.TORCH = new Item(HAND_TORCH, "It's a burning piece of wood. Stay it from your beard!");
+        this.TORCH = new Item(HAND_TORCH, "It's a burning piece of wood. Stay it from your beard!", 0);
         this.inv = new HolderInventory(TORCH);
         
         this.description = "Sitting in a steel holder is a burning wall torch\n"

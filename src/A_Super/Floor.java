@@ -28,7 +28,7 @@ public class Floor extends SearchableFurniture {
             return "Oh yes, you're sure the owner of this castle would love that.";
         else if (key.equals(MOP) || key.equals("sweep")) {
             if (Player.hasItem(MOP))
-                return this.useEvent(new Item(MOP));
+                return this.useEvent(new Item(MOP, 0)); // Dummy item
             else
                 return "You have nothing mop the floor with. "
                      + "Do you really want to do that anyway? "
@@ -36,14 +36,14 @@ public class Floor extends SearchableFurniture {
         }
         else {
             if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL))
-                return this.useEvent(new Item(SHOVEL));
+                return this.useEvent(new Item(SHOVEL, 0));
             else
                 return "You have nothing with which to dig.";
         }
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String useEvent(Item item) {
-        if (item.toString().equals(FIXED_LADDER))
+        if (item.toString().equals(FIXED_LADDER)) // Dummy item
             return this.useDialog;
         else if (item.toString().equals(MOP))
             return "Yes, let's just make this a game about cleaning some madman's castle.";

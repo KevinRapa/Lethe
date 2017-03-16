@@ -7,18 +7,18 @@ import A_Main.NameConstants;
  */
 public class Liquid extends Item {
     // ========================================================================
-    public Liquid(String name, String desc) {
-        super(name, desc);
+    public Liquid(String name, String desc, int score) {
+        super(name, desc, score);
         this.type = NameConstants.LIQUID;
     }
     // ========================================================================
-    public Liquid(String name, String desc, String use) {
-        super(name, desc, use);
+    public Liquid(String name, String desc, String use, int score) {
+        super(name, desc, score);
         this.type = NameConstants.LIQUID;
     }
     // ========================================================================
-    public Liquid(String name, String desc, Item forms, int threshold) {
-        super(name, desc, forms, threshold);
+    public Liquid(String name, String desc, Item forms, int threshold, int score) {
+        super(name, desc, forms, threshold, score);
         this.type = NameConstants.LIQUID;
     }
     // ========================================================================

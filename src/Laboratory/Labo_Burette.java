@@ -140,9 +140,9 @@ public class Labo_Burette extends Furniture {
         
         switch(this.mode) {
             case WINE:
-                return new Ingredient("wine " + volume + "mL", "The vial holds a small amount of wine.");
+                return new Ingredient("wine " + volume + "mL", "The vial holds a small amount of wine.", 0);
             default: // Never EMPTY. Ensured in interact()
-                return new Ingredient("vinegar " + volume + "mL", "The vial holds a small amount of vinegar.");
+                return new Ingredient("vinegar " + volume + "mL", "The vial holds a small amount of vinegar.", 0);
         }
     }
     // ========================================================================  

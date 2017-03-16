@@ -133,9 +133,9 @@ public class Catacomb extends Room {
         // Puts a crevice furniture objects in here and adds items to it randomly.
         Furniture ctGrv = new Ct_Grave();
         Item[] itemList = {
-            new Item("dirt", "It's a damp, cold pile of rocky dirt"),
-            new Item("bone", "It's a bone... not much else to say."),
-            new Item(ROCK, "It's a normal hunk of rock that was mixed with the dirt.") 
+            new Item("dirt", "It's a damp, cold pile of rocky dirt", -50),
+            new Item("bone", "It's a bone... not much else to say.", -50),
+            new Item(ROCK, "It's a normal hunk of rock that was mixed with the dirt.", -50) 
         };
         
         int numTimes = GENERATOR.nextInt(5) + 3;

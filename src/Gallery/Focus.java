@@ -12,7 +12,7 @@ import A_Super.Item;
 public class Focus extends Item {
 /* CONSTRUCTOR ---------------------------------------------------------------*/           
     public Focus (String name, String desc) {
-        super(name);
+        super(name, 50);
         this.type = NameConstants.FOCUS;
         this.description = desc;
     }

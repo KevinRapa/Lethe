@@ -11,7 +11,7 @@ import A_Super.Item;
 public class Vau_ChalicePhylactery extends Item {
     /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Vau_ChalicePhylactery(String name) {
-        super(name);
+        super(name, 1200);
         this.type = NameConstants.PHYLACTERY;
         
         this.description = "The enigmatic, jewel-encrusted chalice glows a light blue and emits a deep hum.";

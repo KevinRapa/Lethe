@@ -66,7 +66,7 @@ public final class NameConstants {
         ENCHANTED_BOTTLE = "enchanted bottle",  GLOWING_FRUIT = "glowing pristine fruit",
         STEEL_WIRE = "steel wire",              SCREWDRIVER = "screwdriver",
         PEN = "pen",                            NOTEPAD = "notepad",
-        WOOD_LOG = "Wooden holed log",
+        WOOD_LOG = "Wooden holed log",          LOOT_SACK = "loot sack",
             
         // Used together in PlayerInventory.get and Player.hasItemResembling    
         NO_LETTER_BEFORE = ".*(?<![a-z])(?i:",  NO_LETTER_AFTER = ")(?![a-z]).*",    

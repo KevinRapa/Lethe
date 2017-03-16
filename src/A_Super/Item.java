@@ -23,75 +23,45 @@ public class Item implements Serializable, Comparable<Item> {
     protected String type = ITEM;   // Useful to certain inventories.    
     protected String description;   // Displayed when item is inspected.
     protected String useDialog;     // Displayed when items with Id 1 are used.
-    protected int useID = 2;        // 1: used on itself | 2: enters sub-prompt  
+    protected int useID;            // 1: used on itself | 2: enters sub-prompt
+    protected final int SCORE;      // However many points this is worth.
     protected static final String USE_DEFAULT = "You will need to be more specific.";
 //******************************************************************************
 // <editor-fold desc="CONSTRUCTORS">
 // In order to avoid creating an excessive number of classes, and due to the
 // simplicity of items, multiple constructers for items are defined.
 //******************************************************************************             
-    /**
-     * Default constructor.
-     * For non-combinable items with their own class. Their descriptions
-     * are too long to fit in the parameter list, or they are more complex.
-     * @param name The name of this item.
-     */
-    public Item(String name) {
+    public Item(String name, int score) {
         NAME = name;
-        FORMS = null;    
+        FORMS = null;   
+        useID = 2;
+        this.SCORE = score;
         THRESHOLD = 0; // Does not combine
         useDialog = USE_DEFAULT;
     }   
     // ========================================================================       
-    /**
-     * Constructor for items with short descriptions.
-     * @param name The name of this item.
-     * @param desc A short description of the item.
-     */
-    public Item(String name, String desc) {
-        this(name);
+    public Item(String name, String desc, int score) {
+        this(name, score);
         description = desc;
     }
     // ========================================================================
-    /**
-     * Constructor for decorative items with no purpose and do not enter a 
-     * sub-prompt when used.
-     * @param name The name of this item.
-     * @param desc A short description of the item.
-     * @param use A short string that prints when this item is used.
-     */
-    public Item(String name, String desc, String use) {
-        this(name, desc);
+    public Item(String name, String desc, String use, int score) {
+        this(name, desc, score);
         useDialog = use;
         useID = 1;
     }    
     // ========================================================================
-    /**
-     * Constructor for combinable items with long descriptions.
-     * Combinable items belong in a set, where each item in the set
-     * has the same forms, formsStr, and thresh attributes.
-     * @param name The name of this item.
-     * @param forms The object reference to the item this combines into.
-     * @param thresh The number of items in this one's set.
-     */
-    public Item(String name, Item forms, int thresh) {
+    public Item(String name, Item forms, int thresh, int score) {
         useDialog = USE_DEFAULT;
+        useID = 2;
+        this.SCORE = score;
         NAME = name; 
         FORMS = forms;  
         THRESHOLD = thresh;
     }
     // ========================================================================
-    /**
-     * Constructor for combinable items with short descriptions.
-     * Combinable items belong in a set, where each item in the set
-     * has the same forms, formsStr, and threshold attributes.
-     * @param name The name of this item.
-     * @param desc A short description of this item.
-     * @param forms The object reference to the item this combines into.
-     * @param thresh The number of items in this one's set.
-     */
-    public Item(String name, String desc, Item forms, int thresh) {
-        this(name, forms, thresh);
+    public Item(String name, String desc, Item forms, int thresh, int score) {
+        this(name, forms, thresh, score);
         description = desc;
     }
 //******************************************************************************        
@@ -131,6 +101,10 @@ public class Item implements Serializable, Comparable<Item> {
 /*----------------------------------------------------------------------------*/
     public int getThreshold() {
         return this.THRESHOLD; 
+    }
+/*----------------------------------------------------------------------------*/
+    public int getScore() {
+        return this.SCORE;
     }
 /*----------------------------------------------------------------------------*/
     /**

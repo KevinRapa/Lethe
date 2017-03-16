@@ -37,10 +37,14 @@ public class Labo_Beaker extends Furniture {
         this.mode = Potion.EMPTY;
         
         this.BEAKER_REF = beakerItem;
-        this.PHASE_POTION = new Liquid(PHASE_DOOR_POTION, "It's a smoky brown liquid. You pray that this potion does what the recipe said...",
-                                    "You don't know the duration. Better get out to the front gate before drinking this!!");
-        this.GENERIC_POTION = new Liquid(POTION_OF_SCIENCE, "This doesn't look how the manual described... It looks potion-ey, better throw it out though.",
-                                    "You really aren't sure enough about the safety of doing that...");
+        this.PHASE_POTION = 
+                new Liquid(PHASE_DOOR_POTION, 
+                        "It's a smoky brown liquid. You pray that this potion does what the recipe said...",
+                        "You don't know the duration. Better get out to the front gate before drinking this!!", 150);
+        this.GENERIC_POTION = 
+                new Liquid(POTION_OF_SCIENCE, 
+                        "This doesn't look how the manual described... It looks potion-ey, better throw it out though.",
+                        "You really aren't sure enough about the safety of doing that...", 0);
         
         this.description = "The beaker contains ";
         this.useDialog = "That's not it's proper function right now!";

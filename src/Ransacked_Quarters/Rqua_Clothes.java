@@ -7,7 +7,8 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Rqua_Clothes extends Furniture {
-    private final Item LINENS = new Item("wrinkled sheet", "A carelessly thrown about bed linen that you found in the servant's wing.");
+    private final Item LINENS = 
+            new Item("wrinkled sheet", "A carelessly thrown about bed linen that you found in the servant's wing.", 0);
     // ========================================================================
     public Rqua_Clothes () {
         super();

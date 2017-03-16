@@ -19,7 +19,7 @@ public class Factum extends Item {
     private transient Random generator;
     // =========================================================================
     public Factum(String name) {
-        super(name);
+        super(name, 1500);
         this.useID = 1;
         this.type = "phylactery";
         this.description = "You find that you can't describe it very well. It's\n"

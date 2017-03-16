@@ -21,7 +21,7 @@ public class RoomGraph {
 // Each element maps to an element in COORDS for COORDINATES. 
 //****************************************************************************** 
     private static final String[] IDS = { 
-        NULL, ENDG, 
+        NULL, ENDG, HADS,
         // FLOOR 1 ROOM ID'S -------------------------------------------------- 
         COU1, COU2, COU3, COU4, COU5, COU6, COU7, VEST, FOY1, FOY2, FOYW, FOYB, 
         FOYC, GAL1, GAL2, LIB1, LIB2, LIB3, BHA1, BHA2, BHA3, OBS1, STUD, PAR1, 
@@ -59,7 +59,7 @@ public class RoomGraph {
 // <editor-fold defaultstate="collapsed" desc="ADJACENTS"> 
 //****************************************************************************** 
     private static final String[][] ADJS = { 
-        {}, {}, 
+        {}, {}, {},
         // FLOOR 1 ROOM ADJS -------------------------------------------------- 
         {COU2},                 {COU1,COU3},            {COU7,COU4,COU2,COU5}, 
         {COU3},                 {COU3,COU6,COU8},       {COU5}, 
@@ -149,7 +149,7 @@ public class RoomGraph {
 // <editor-fold defaultstate="collapsed" desc="COORDINATES"> 
 //****************************************************************************** 
     private static final int[][] COORDS = { 
-        {-1,-1,-1}, {3, 7, 5}, 
+        {-1,-1,-1}, {3, 7, 5}, {0, 1, 8},
     // 1ST FLOOR COORDINATES -------------------------------------------------- 
         {3,4,4}, {3,5,4}, {3,5,5}, {3,6,5}, {3,5,6}, {3,4,6}, {3,4,5}, {3,3,6}, 
         {3,3,5}, {3,2,5}, {3,3,4}, {3,1,5}, {3,1,6}, {3,2,6}, {3,2,7}, {3,1,7}, 

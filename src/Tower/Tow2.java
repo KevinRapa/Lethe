@@ -36,21 +36,9 @@ public class Tow2 extends Lich_Room {
 // ============================================================================
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
-            GUI.out("The throbbing in your head becomes quite uncomftable.");
+            GUI.out("The throbbing in your head becomes quite uncomfortable.");
         
-        if (! this.lichDead) {
-            int numPhylacteries = 0;
-
-            for (Item i : Player.getInv())
-                if (i.getType().equals(NameConstants.PHYLACTERY))
-                    numPhylacteries++;
-
-            if (numPhylacteries == 5) {
-                Player.getRoomObj(Id.TBAL).unlock();
-                GUI.out("The five etchings on the northern door are now glowing.");
-            }
-        }
-        else
+        if (this.lichDead) 
             GUI.out("The glowing sphere of light has disappeared...");
         
         return STD_RM_OUT;

@@ -3,6 +3,7 @@ package A_Main;
 import static A_Main.NameConstants.*;
 import static A_Main.Patterns.*; 
 import A_Super.*;
+import Foyer.LootSack;
 
 import java.util.Scanner;           import java.util.ArrayList;
 import java.util.HashMap;           import java.io.IOException;
@@ -24,7 +25,7 @@ import java.util.Iterator;
  */
 public final class Player {
     private static Room[][][] mapRef;
-    private static int[] pos;
+    private static int pos[], moves, score;
     private static Inventory keys;
     private static PlayerInventory inv;
     private static ArrayList<String> visited;
@@ -46,7 +47,7 @@ public final class Player {
     
     private static final String 
             NOT_VALID_SLOT = "You don't seem to have an item there.";
-    
+
     /*
         Maps various commands in the game to their actions and adds the keys to
         a set to check when the player enters something.
@@ -63,6 +64,7 @@ public final class Player {
         MAIN_CMDS.put("d", () -> move(Direction.EAST));
         MAIN_CMDS.put("m", () -> Map.displayMap());
         MAIN_CMDS.put("n", () -> writeNote());
+        MAIN_CMDS.put("l", () -> openLootSack());
         MAIN_CMDS.put("q", () -> {notEnd = false;});
         
         MAIN_CMDS.put("quit", () -> {notEnd = false;});
@@ -72,6 +74,7 @@ public final class Player {
         MAIN_CMDS.put("keys",      () -> viewKeyRing());
         MAIN_CMDS.put("keyring",   () -> viewKeyRing());
         MAIN_CMDS.put("inventory", () -> inventoryPrompt());
+        MAIN_CMDS.put("loot",      () -> openLootSack());
         MAIN_CMDS.put("search",    () -> searchSub());
         MAIN_CMDS.put("help",      () -> Help.helpSub());
         MAIN_CMDS.put("scream",    () -> GUI.out("AHHHHHGGGHHH!!!!!"));
@@ -147,42 +150,28 @@ public final class Player {
         return null;
     }
     /*------------------------------------------------------------------------*/   
-    public static String getLastVisited() {
-        return Player.lastVisited;
-    }
+    public static String getLastVisited() { return lastVisited; }
     /*------------------------------------------------------------------------*/ 
-    public static PlayerInventory getInv() {
-        return Player.inv;
-    }
+    public static PlayerInventory getInv() { return inv; }
     /*------------------------------------------------------------------------*/
-    public static Inventory getKeys() {
-        return Player.keys;
-    }
+    public static Inventory getKeys() { return keys; }
     /*------------------------------------------------------------------------*/
-    public static Room getPos() {
-        return Player.mapRef[pos[0]][pos[1]][pos[2]];
-    }
+    public static Room getPos() { return mapRef[pos[0]][pos[1]][pos[2]]; }
     /*------------------------------------------------------------------------*/
-    public static String getPosId() {
-        return Player.getPos().getID();
-    }
+    public static String getPosId() { return getPos().getID(); }
     /*------------------------------------------------------------------------*/
     public static Room getRoomObj(String ID) {
         int[] c = RoomGraph.getCoords(ID);
         return mapRef[c[0]][c[1]][c[2]];
     }
     /*------------------------------------------------------------------------*/
-    public static ArrayList<String> getVisitedRooms() {
-        return visited;
-    }
+    public static ArrayList<String> getVisitedRooms() { return visited; }
     /*------------------------------------------------------------------------*/
-    public static String getShoes() {
-        return Player.shoes;
-    }
+    public static String getShoes() { return Player.shoes; }
     /*------------------------------------------------------------------------*/
-    public static int getCurrentFloor() {
-        return pos[0];
-    }
+    public static int getCurrentFloor() { return pos[0]; }
+    /*------------------------------------------------------------------------*/
+    public static int getScore() { return score; }
     /*------------------------------------------------------------------------*/
     /**
      * Checks that you have a specific item, ignores case.
@@ -217,6 +206,28 @@ public final class Player {
     
     // <editor-fold desc="Setters">
     /**
+     * Sends the player to Hades.
+     * A Zork reference.
+     */
+    public static void commitSuicide() {
+        if (! getPosId().equals(Id.HADS)) {
+            incrementMoves();
+            
+            GUI.out("You succumb to the surreal, yet all too reachable decision. "
+                      + "Could this release you from your hopelessness?"); 
+            GUI.menOut("\n\nPress enter...");
+            GUI.promptOut();
+
+            inv.clear();
+            keys.clear();
+            setOccupies(Id.HADS);
+            printInv();
+        }
+        else
+            GUI.out("You can't do even that.");
+    }
+    /*------------------------------------------------------------------------*/
+    /**
      * 'Teleports' the player to another room.
      * @param dest destination area.
      */
@@ -235,6 +246,16 @@ public final class Player {
     public static void setShoes(String shoes) {
         Player.shoes = shoes;
     }
+    /*------------------------------------------------------------------------*/
+    public static void incrementMoves() {
+        Player.moves++;
+        GUI.updateMovesAndScore(Player.moves, Player.score);
+    }
+    /*------------------------------------------------------------------------*/
+    public static void updateScore(int score) {
+        Player.score = score;
+        GUI.updateMovesAndScore(Player.moves, Player.score);
+    }
     // </editor-fold>
     
     // <editor-fold desc="Save Player Attributes">
@@ -249,6 +270,7 @@ public final class Player {
         stream.writeObject(new PlayerAttributes());
     }
     // </editor-fold>
+    
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************
@@ -272,6 +294,9 @@ public final class Player {
         Player.visited = attributes.VISITED;
         Player.lastVisited = attributes.LSTVISITED;
         Player.shoes = attributes.SHOES;
+        Player.score = attributes.SCORE;
+        Player.moves = attributes.MOVES;
+        GUI.updateMovesAndScore(Player.moves, Player.score);
 
         if (pos[0] == 4 && pos[2] < 7) // Starts monster if player is in the 
             DungeonMonster.startMovement(); // tunnel area.
@@ -288,7 +313,9 @@ public final class Player {
         Player.visited = new ArrayList<>();
         Player.pos = coords;
         Player.lastVisited = "";
+        Player.moves = score = 0;
         Player.shoes = "";
+        GUI.updateMovesAndScore(0, 0);
     }
     // ========================================================================  
     /**
@@ -329,8 +356,9 @@ public final class Player {
             GUI.toMainMenu();
             ans = GUI.promptOut();
 
-            if (MAIN_CMD_SET.contains(ans)) // Simple command
+            if (MAIN_CMD_SET.contains(ans)) {// Simple command
                 MAIN_CMDS.get(ans).run();
+            }
 
             else if (isNonEmptyString(ans)) // More complicated command
                 TextParser.processText(ans);
@@ -386,6 +414,7 @@ public final class Player {
      */
     public static void move(Direction dir) {  
         Room dest = mapRef[pos[0] + dir.Z][pos[1] + dir.Y][pos[2] + dir.X];
+        Player.incrementMoves();
         
         if (! getPos().isAdjacent(dest.getID()))
             // There's a non-door barrier in the way
@@ -461,6 +490,7 @@ public final class Player {
     }
     // ========================================================================  
     private static void viewKeyRing() {
+        Player.incrementMoves();
         AudioPlayer.playEffect(3);
         GUI.invOut("Keys:\n" + Player.keys.toString()); 
     }
@@ -498,6 +528,9 @@ public final class Player {
         {   // Player used "it" or "them" in place of a furniture name.
             searchPrompt(getFurnRef(searchThis));
         }
+        else if (searchThis.equals(LOOT_SACK) || searchThis.equals("sack")) {
+            Player.openLootSack();
+        }
         else if (GEN_FURNITURE_P.matcher(searchThis).matches()) {
             GUI.out("There are too many things in the room. Specify your intention.");
         }
@@ -523,7 +556,7 @@ public final class Player {
      * Subroutine for exchanging itemList between player and furniture inventories.
      * @param furnInv The furniture being searched.
      */
-    private static void search(Inventory furnInv) {
+    public static void search(Inventory furnInv) {
         String cmdItm; 
         
         do {
@@ -535,6 +568,7 @@ public final class Player {
             if (cmdItm.equals("loot") || cmdItm.equals("l") || cmdItm.equals("take all")) {
                 // Takes as many items as possible from the furniture.
                 ArrayList<Item> l = new ArrayList<>();
+                Player.incrementMoves();
                 
                 for (Item i : furnInv) {
                     // Finds everything in the inventory the player doesn't have.
@@ -558,10 +592,12 @@ public final class Player {
                     // Evaluates the store or take action given the slot.
                     if (STORE_P.matcher(action).matches()) {
                         Item item = Player.inv.get(slot - 1);
+                        Player.incrementMoves();
                         evalStore(furnInv, item);                            
                     }            
                     else if (TAKE_P.matcher(action).matches()) {
                         Item item = furnInv.get(slot - 1);
+                        Player.incrementMoves();
                         evalTake(furnInv, item);
                     }
                     describeRoom();
@@ -606,16 +642,11 @@ public final class Player {
      * @param store The item being stored.
      */
     public static void evalStore(Inventory furnInv, Item store) {
-        if (store.getType().equals("phylactery"))
-            GUI.out("The " + store + " looks too important to get rid of.");
+        GUI.out("You store the " + store);
+        Player.inv.give(store , furnInv); 
 
-        else {
-            GUI.out("You store the " + store);
-            Player.inv.give(store , furnInv); 
-            
-            if (store.toString().equals(Player.shoes))
-                Player.shoes = ""; // If player stores the shoes currently wearing.
-        }
+        if (store.toString().equals(Player.shoes))
+            Player.shoes = ""; // If player stores the shoes currently wearing.
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -632,7 +663,6 @@ public final class Player {
      * @param action the action the player is performing on the furniture.
      */
     public static void evaluateAction(String action, String object) {
-
         // <editor-fold defaultstate="collapsed" desc="MOVE COMMAND">
         if (WALK_P.matcher(action).matches() && 
                 DIRECTION_P.matcher(object).matches()) 
@@ -644,8 +674,9 @@ public final class Player {
         else if (WALK_P.matcher(action).matches() && 
                 INVALID_DIR_P.matcher(object).matches()) 
         {
-            // Player typed something resemling "walk <direction>"
+            // Player typed something resemling "walk <northeast>"
             // The direction in this case is pretending to be furniture.
+            Player.incrementMoves();
             GUI.out("Your humble life as a tradesman knows not how to move " + object + ".");
         }
         // </editor-fold>
@@ -657,12 +688,14 @@ public final class Player {
 
             if (target.actKeyMatches(action)) {
                 // Player typed an action specific to a furniture type.
+                Player.incrementMoves();
                 GUI.out(target.interact(action)); 
                 describeRoom();
                 printInv();
             }
             else if (CHECK_P.matcher(action).matches()) {
                 // Player typed something resembling "examine <furniture>"
+                Player.incrementMoves();
                 GUI.out(target.getDescription()); 
             }
             else if (SEARCH_P.matcher(action).matches() || 
@@ -675,26 +708,33 @@ public final class Player {
             else if (MOVE_P.matcher(action).matches() 
                     && target instanceof Moveable) {
                 // Player typed something resembling "move <furniture>"
+                Player.incrementMoves();
                 GUI.out(((Moveable)target).moveIt());
             }
             else if (DESTROY_P.matcher(action).matches()) {
                 // Player typed something resembling "get <furniture>"
                 // Furniture isn't gettable.
+                Player.incrementMoves();
                 GUI.out("Yes, you're frustrated and hungry, but abstain from the wrathful thoughts.");
             }
             else if (ODD_CMD_SET.contains(action)) {
                 // Standard output stirngs for wierd input.
+                Player.incrementMoves();
                 GUI.out(ODD_CMD_KEYS.get(action));
             }
-            else
+            else {
+                Player.incrementMoves();
                 GUI.out("Doing that to the " + object + " seems unnecessary right now.");
+            }
         }   
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="REFLEXIVE COMMANDS">
         else if (object.equals("self") || object.equals("yourself")) {
-            if (CHECK_P.matcher(action).matches()) 
+            if (CHECK_P.matcher(action).matches()) {
+                Player.incrementMoves();
                 GUI.out("Yes, all your parts are still there, thank goodness."); 
+            }
             else if (SEARCH_P.matcher(action).matches()) {              
                 GUI.out("Ummm... is this what you meant??");
                 inventoryPrompt();
@@ -706,26 +746,34 @@ public final class Player {
                 move(dir);
                 GUI.out("Alrighty, how does " + dir + " sound?");
             }
-            else if (TAKE_P.matcher(action).matches()) 
+            else if (TAKE_P.matcher(action).matches()) {
+                Player.incrementMoves();
                 GUI.out("Indeed, how romantic!");
+            }
             else if (DESTROY_P.matcher(action).matches()) {
-                GUI.out("Ok, you asked for it.");
-                GUI.menOut("Press enter...");
-                Main.exitGame();
+                Player.commitSuicide();
             }
             else
                 GUI.out("Your binary isn't designed to do that.");
         }
         // </editor-fold>
         
-        else if (GEN_FURNITURE_P.matcher(object).matches())
+        else if ((SEARCH_P.matcher(action).matches() || action.equals("open") 
+                || action.equals("empty"))
+                     && (object.equals("sack") || object.equals("loot sack"))) 
+        {
+            // Player typed something like "<open> sack|loot sack"
+            Player.openLootSack();
+        }
+        else if (GEN_FURNITURE_P.matcher(object).matches()) {
             // Player used a very vague term to interact with.
             GUI.out("Don't be lazy now. Enter in something specific.");
-        
-        else // Something invalid was entered in!
+        }
+        else { // Something invalid was entered in!
             GUI.out("There is no " + object + 
                     " here that you can see. Or perhaps we are being lazy and\n"
                   + "attempting to pick up items without searching something first?"); 
+        }
     }
     // ========================================================================  
     /**
@@ -804,16 +852,24 @@ public final class Player {
         if (IT_THEM_P.matcher(inspecting).matches()) // Indefinite reference.
             inspecting = GUI.parsePreviousFurniture();
         
-        if (getPos().hasFurniture(inspecting))
+        if (getPos().hasFurniture(inspecting)) {
             // The furniture exists.
+            Player.incrementMoves();
             GUI.out(Player.getFurnRef(inspecting).getDescription());
-        
+        }
         else if (GEN_FURNITURE_P.matcher(inspecting).matches())
             // The player typed something vague like 'furniture' or 'stuff'
             GUI.out("That's quite vague of you. Please be more specific.");
         
         else 
             GUI.out("There is no " + inspecting + " here that you can see.");
+    }
+    // ========================================================================
+    private static void openLootSack() {
+        if (Player.hasItem(LOOT_SACK))
+            Player.getInv().get(LOOT_SACK).useEvent();
+        else 
+            GUI.out("There is nothing here with that name that you can see."); 
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -866,6 +922,7 @@ public final class Player {
             try {
                 int slot = Integer.parseInt(ans);
                 Item item = Player.inv.get(slot - 1);
+                Player.incrementMoves();
                 GUI.out(item.getDesc());  
             }
             catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
@@ -916,15 +973,17 @@ public final class Player {
     public static void evalUse(Item item, String furniture) {
         if (getPos().hasFurniture(furniture)) {                 
             Furniture target = getFurnRef(furniture);
+            Player.incrementMoves();
 
             if (target.useKeyMatches(item.toString())) {
                 GUI.out(target.useEvent(item));
                 describeRoom();
                 printInv();
             }
-            else
+            else {
                 GUI.out("You jam the " + item + " into the " + furniture +
                         "\nas hard as you can, but nothing happens.");
+            }
         }                      
         else if (isNonEmptyString(furniture)) 
             GUI.out("There is no " + furniture + " here that you can see."); 
@@ -937,6 +996,8 @@ public final class Player {
      * player has the notepad and a pen.
      */
     public static void writeNote() {
+        Player.incrementMoves();
+        
         if (! Player.hasItem(PEN)) 
             GUI.out("You will need a pen in order to write a note to yourself.");
         else if (! Player.hasItem(NOTEPAD)) 
@@ -963,7 +1024,6 @@ public final class Player {
             Player.inv.contents().add(new Note(
                     "note - " + title + ':' + ' ', body)
             );
-
             printInv();
         }
     }
@@ -984,6 +1044,7 @@ public final class Player {
             tokens = new Scanner(combineThese).useDelimiter("\\s*,\\s*");
 
             if (isNonEmptyString(combineThese)) {
+                Player.incrementMoves();
                 validateList(getTokenList(tokens));
             }
             
@@ -1113,7 +1174,7 @@ public final class Player {
      */
     private static final class PlayerAttributes implements Serializable {
         public final Room[][][] MAP;
-        public final int[] POS;
+        public final int POS[], SCORE, MOVES;
         public final Inventory KEYS; 
         public final PlayerInventory INV; 
         public final ArrayList<String> VISITED; 
@@ -1127,6 +1188,8 @@ public final class Player {
             this.LSTVISITED = Player.lastVisited;
             this.SHOES = Player.shoes;
             this.VISITED = Player.visited;
+            this.SCORE = Player.score;
+            this.MOVES = Player.moves;
         }
     }
 //******************************************************************************    

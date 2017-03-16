@@ -33,7 +33,7 @@ public class Cou_Floor extends Floor implements Gettable {
     @Override public String interact(String key) {
         if (key.equals("dig") || key.equals("shovel")) {
             if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
-                return this.useEvent(new Item(SHOVEL));
+                return this.useEvent(new Item(SHOVEL, 0)); // Dummy item
             }
             else
                 return "You have nothing with which to dig.";

@@ -5,6 +5,7 @@ import static A_Main.Patterns.*;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Note;
+import Foyer.LootSack;
 import java.util.LinkedList;
 /**
  * This processes more complex sentences into statements containing verbs,
@@ -26,7 +27,7 @@ public class TextParser {
     private static final Item 
             BROKEN_GLASS = new Item("broken shards", 
                     "The pieces of glass sit uncomfortably in your pocket. "
-                            + "Of course, you certainly know what you're doing."),
+                  + "Of course, you certainly know what you're doing.", -50),
             RIPPED_SHREDS = new Note("ripped paper shreds", 
                     "The gory mess of literature now exists crumpled up in your "
                             + "pocket. This is unintelligible.");
@@ -42,15 +43,7 @@ public class TextParser {
         EXPLETIVE_CMD = new Command("Mind yourself! You're a guest here!"),
         
         // Ends the game.
-        SUICIDE_CMD =   new Command(() -> {
-            GUI.out("You succumb to the surreal, yet all too reachable decision. "
-                  + "Could this release you from your hopelessness? Prepare to "
-                  + "experience the grand state of nothingness."); 
-            GUI.menOut("\n\nPress enter...");
-            GUI.promptOut();
-            Main.exitGame();
-        }, "SUICIDE"),
-            
+        SUICIDE_CMD =   new Command(() -> {Player.commitSuicide();}, "SUICIDE"),
         GREETING_CMD =  new Command("What do you think this is? Zork?"),
         NO_SLOT_CMD =   new Command("Seems that you don't have an existing slot there."),
         AMBIGUOUS_CMD = new Command("You need to specify something to put that in!");
@@ -426,48 +419,50 @@ public class TextParser {
                 
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: THROW">
                 else if (verb.equals("throw")) {
-                    if (! item.getType().equals(PHYLACTERY)) {
-                        Player.getInv().remove(item);
-                        Furniture floor = Player.getFurnRef("floor");
+                    Player.getInv().remove(item);
+                    Furniture floor = Player.getFurnRef("floor");
 
-                        if (floor == null) {
-                            GUI.out("A quick ingenious thought convinces you to "
-                                  + "throw the " + item + ". The item lands in "
-                                  + "an unknown location, likely lost to the aether.");
-                        }
-                        else if (type.equals(BREAKABLE)) {
-                            floor.getInv().add(new Item("destroyed " + item, 
-                                    "The " + item + " is now broken and certainly useless."));
-                            
-                            GUI.out("After some quick thinking, you passionately "
-                                  + "launch the " + item + " as an olympic discus "
-                                  + "thrower would. The item lands on the floor.");
-                        }
-                        else if (type.equals(LIQUID) || type.equals(INGREDIENT) 
-                                || type.equals(FOCUS)) 
-                        {
-                            if (! item.toString().equals(BUCKET_OF_WATER)) {
-                                floor.getInv().add(BROKEN_GLASS);
-                                GUI.out("A quick ingenious thought convinces you "
-                                      + "to throw the " + item + ". The item lands "
-                                      + "on the floor. A glassy shatter swarms your "
-                                      + "ear and fills you with rue.");
-                            }
-                            else {
-                                GUI.out("Be careful with that. You wouldn't want "
-                                      + "to get the floor all soaked and risk "
-                                      + "dying of a clumsy step.");
-                            }
+                    if (floor == null) {
+                        GUI.out("A quick ingenious thought convinces you to "
+                              + "throw the " + item + ". The item lands in "
+                              + "an unknown location, likely lost to the aether.");
+                    }
+                    else if (type.equals(BREAKABLE)) {
+                        floor.getInv().add(new Item("destroyed " + item, 
+                                "The " + item + " is now broken and certainly useless.", -50));
+
+                        GUI.out("After some quick thinking, you passionately "
+                              + "launch the " + item + " as an olympic discus "
+                              + "thrower would. The item lands on the floor.");
+                    }
+                    else if (type.equals(LIQUID) || type.equals(INGREDIENT) 
+                            || type.equals(FOCUS)) 
+                    {
+                        if (! item.toString().equals(BUCKET_OF_WATER)) {
+                            floor.getInv().add(BROKEN_GLASS);
+                            GUI.out("A quick ingenious thought convinces you "
+                                  + "to throw the " + item + ". The item lands "
+                                  + "on the floor. A glassy shatter swarms your "
+                                  + "ear and fills you with rue.");
                         }
                         else {
-                            floor.getInv().add(item);
-                            GUI.out("After some quick thinking, you passionately "
-                                  + "launch the " + item + " as an olympic discus "
-                                  + "thrower would. The item lands on the floor.");
+                            GUI.out("Be careful with that. You wouldn't want "
+                                  + "to get the floor all soaked and risk "
+                                  + "dying of a clumsy step.");
                         }
                     }
-                    else
-                        GUI.out("You have a strong sense that you will be needing that later.");
+                    else if (type.equals(PHYLACTERY)) {
+                        floor.getInv().add(item);
+                        GUI.out("You naively launch the " + item + " across the\n"
+                              + "room in hopes of destroying the cursed item. The "
+                              + item + " lands unscathed on the floor.");
+                    }
+                    else {
+                        floor.getInv().add(item);
+                        GUI.out("After some quick thinking, you passionately "
+                              + "launch the " + item + " as an olympic discus "
+                              + "thrower would. The item lands on the floor.");
+                    }
                 }
                 // </editor-fold>
                 
@@ -476,7 +471,7 @@ public class TextParser {
                     if (type.equals(BREAKABLE)) {
                         Player.getInv().remove(item);
                         Player.getInv().CONTENTS.add(new Item("destroyed " + item, 
-                                "The " + item + " is now broken and certainly useless."));
+                                "The " + item + " is now broken and certainly useless.", -50));
                         GUI.out("An acute sense of frustration causes you to crush it in your hand.");
                     }
                     else if ((type.equals(LIQUID) && ! item.toString().equals(BUCKET_OF_WATER)) 
@@ -492,6 +487,10 @@ public class TextParser {
                         Player.getInv().CONTENTS.add(RIPPED_SHREDS);
                         GUI.out("A cunning idea forms. You rip up the paper "
                               + "wantonly and stuff it back into your pocket.");
+                    }
+                    else if (type.equals(PHYLACTERY)) {
+                        GUI.out("You try with all your might to destroy the "
+                            + item + ", but fail to leave even a fingerprint.");
                     }
                     else {
                         GUI.out("You lack the strength to do that.");
@@ -530,9 +529,11 @@ public class TextParser {
                 
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: EAT">
                 else if (verb.equals("eat") || verb.equals("consume")) {
-                    if (item.toString().equals(GLOWING_FRUIT))
-                        GUI.out("You know, that might destroy the phylactery, which you need to do, AND you're quite hungry...\n"
-                              + "but conversely it quite possibly may drive you into hopeless insanity, so let's not do that.");
+                    if (item.toString().equals(GLOWING_FRUIT)) {
+                        GUI.out("The fruit's glow and tasteful aroma entice you irresistibly. "
+                              + "You bite down and find the fruit as hard as a rock. "
+                              + "A sharp pain comes and you pull the fruit away.");
+                    }
                     else
                         GUI.out("The " + item + " seems most inedible...");
                 }
@@ -584,6 +585,26 @@ public class TextParser {
                     }
                     else 
                         GUI.out("You can't store that in there.");        
+                }
+                else if (furniture.equals(LOOT_SACK) || furniture.equals("sack")) {
+                    // If the player wants to put something in the loot sack.
+                    if (Player.hasItem(LOOT_SACK)) {
+                        try {
+                            LootSack sack = (LootSack)Player.getInv().get(LOOT_SACK);
+                            Player.evalStore(sack.getInv(), item);
+                            Player.printInv();
+
+                            if (item.toString().equals(LOOT_SACK))
+                                GUI.out("You stuff the sack inside itself and pull the string. "
+                                      + "All of the sudden, the sack is gone. You stand there, "
+                                      + "empty-handed, and confused.");
+                        }
+                        catch (ClassCastException e) {
+                            System.err.println(e.getMessage());
+                        }
+                    }
+                    else
+                        GUI.out("There is no " + furniture + " here.");
                 }
                 else
                     GUI.out("There is no " + furniture + " here.");

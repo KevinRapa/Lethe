@@ -24,9 +24,12 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Heavy {
         
         this.inv = new KilnInventory();
         
-        this.REFGLSSR = new Liquid(MOLTEN_RED_GLASS, "It's a crucible of molten red glass. Be careful!");
-        this.REFGLSSB = new Liquid(MOLTEN_BLUE_GLASS, "It's a crucible of molten blue glass. Be careful!");
-        this.REFGLSSY = new Liquid(MOLTEN_YELLOW_GLASS, "It's a crucible of molten yellow glass. Be careful!");
+        this.REFGLSSR = new Liquid(MOLTEN_RED_GLASS, 
+                "It's a crucible of molten red glass. Be careful!", -5);
+        this.REFGLSSB = new Liquid(MOLTEN_BLUE_GLASS, 
+                "It's a crucible of molten blue glass. Be careful!", -5);
+        this.REFGLSSY = new Liquid(MOLTEN_YELLOW_GLASS, 
+                "It's a crucible of molten yellow glass. Be careful!", -5);
        
         this.actDialog = "No need to take that. Just add stuff and watch the magic happen.";
         this.searchDialog = "You look in the kiln. It's pretty toasty in there.";

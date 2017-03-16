@@ -23,8 +23,8 @@ public class Foy1 extends Room{
              + "your west, % \n"
              + "To your east, a heavy wooden door leads somewhere else.\n"
              + "A long wood table sits in the room's center under a huge\n"
-             + "chandelier. This room extends further\n"
-             + "north to a curved staircase at the other end.";
+             + "chandelier and next to the front door is a lavender armoire.\n"
+             + "This room extends further north to a curved staircase at the other end.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

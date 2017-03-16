@@ -19,9 +19,12 @@ public class Par1_FirePlace extends Fireplace {
 /* CONSTRUCTOR ---------------------------------------------------------------*/           
     public Par1_FirePlace(Item bckt, Item bttl) {       
         super(true, bckt);
+        
         this.ENCHT_BTTL_REF = bttl;
-        this.SCRDFR_REF = new Liquid(SACRED_FIRE, "The fire burns enigmatically inside "
-                                 + "the bottle. To your surprise, the fire gives off no heat.");
+        this.SCRDFR_REF = 
+                new Liquid(SACRED_FIRE, "The fire burns enigmatically inside "
+                         + "the bottle. To your surprise, the fire gives off no heat.", 150);
+        
         this.descLit = "It's a large sandstone fireplace, about your height.\n"
                      + "Its mantle is supported on both sides by short columns\n"
                      + "carved into angelic figures. The fire burns aggressively,\n"
@@ -29,6 +32,7 @@ public class Par1_FirePlace extends Fireplace {
         this.descUnlit = "A cold, unlit fireplace.";
         this.useDialog = "Holding the magical bottle over the fire, some of the flames seep\n"
                        + "inside. You quickly cork the bottle and stare at it, mesmerized.";
+        
         this.addUseKeys(GLASS_BOTTLE, ENCHANTED_BOTTLE);
     }
 /*----------------------------------------------------------------------------*/

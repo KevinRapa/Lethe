@@ -76,7 +76,7 @@ public class Cou5_Spruce extends SearchableFurniture
         if (action.equals("drill")) {
             if (Player.hasItem(HAND_DRILL)) {
                 this.addNameKeys("(?:spruce )?sap");
-                return this.useEvent(new Item(HAND_DRILL));
+                return this.useEvent(new Item(HAND_DRILL, 0)); // Dummy item
             }
             else
                 return "You have nothing to drill into it with.";

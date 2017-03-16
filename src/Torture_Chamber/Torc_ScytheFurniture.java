@@ -15,7 +15,7 @@ import A_Super.Weapon;
  */
 public class Torc_ScytheFurniture extends Furniture implements Resetable {
     private final Item SCYTHE = new Weapon(NameConstants.SCYTHE, 
-            "It's a large black scythe. The edge is quite sharp.");;
+            "It's a large black scythe. The edge is quite sharp.", 80);;
     // ========================================================================
     public Torc_ScytheFurniture () {
         super();

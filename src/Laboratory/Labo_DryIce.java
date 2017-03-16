@@ -22,7 +22,7 @@ public class Labo_DryIce extends SearchableFurniture implements Openable, Heavy 
     public Labo_DryIce (Item flask) {
         super();
         
-        DRY_ICE_REF = new Item("dry ice", "This stuff is cold! It hurts for you to hold.");
+        DRY_ICE_REF = new Item("dry ice", "This stuff is cold! It hurts for you to hold.", 0);
         this.inv = new Ice_Inventory(DRY_ICE_REF, DRY_ICE_REF, flask, DRY_ICE_REF, DRY_ICE_REF);
         
         this.description = "The wooden barrel is wrapped in some kind of foam. It looks to function as insulation.";
@@ -117,7 +117,7 @@ public class Labo_DryIce extends SearchableFurniture implements Openable, Heavy 
             if (! interrupted && BARREL_INV.contains(BROMINE)) {
                 BARREL_INV.remove(BROMINE);
                 BARREL_INV.add(new Ingredient("chilled " + 
-                    ITEM_NAME, "The chemical feels cold to the touch."));   
+                    ITEM_NAME, "The chemical feels cold to the touch.", 0));   
             }
             else if (BARREL_INV.contains(BROMINE)) {
                 BARREL_INV.give(BROMINE, Player.getInv());

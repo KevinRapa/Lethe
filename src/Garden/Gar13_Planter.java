@@ -49,7 +49,7 @@ public class Gar13_Planter extends SearchableFurniture implements Unmoveable {
         }
         else {
             if (Player.hasItem(TROWEL) || Player.hasItem(SHOVEL))
-                return useEvent(new Item(SHOVEL));
+                return useEvent(new Item(SHOVEL, 0)); // Dummy item
             else
                 return "You have nothing to dig with.";
         }

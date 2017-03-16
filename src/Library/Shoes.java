@@ -6,8 +6,8 @@ import A_Super.Clothing;
 
 public class Shoes extends Clothing {
 /* CONSTRUCTOR ---------------------------------------------------------------*/  
-    public Shoes (String name, String desc, String use) {
-        super(name, desc, use);
+    public Shoes (String name, String desc, String use, int score) {
+        super(name, desc, use, score);
         this.type = NameConstants.SHOES;
     }
 /*----------------------------------------------------------------------------*/

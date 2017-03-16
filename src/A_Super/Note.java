@@ -11,13 +11,13 @@ import static A_Main.NameConstants.READABLE;
 public class Note extends Item {
 /*----------------------------------------------------------------------------*/    
     public Note(String name) {
-        super(name);
+        super(name, 0);
         this.type = READABLE;
         this.useID = 1;
     }
 /*----------------------------------------------------------------------------*/    
     public Note(String name, String desc) {
-        super(name, desc);
+        super(name, desc, 0);
         this.type = READABLE;
         this.useID = 1;
     }

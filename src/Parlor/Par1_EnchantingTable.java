@@ -87,8 +87,10 @@ public class Par1_EnchantingTable extends SearchableFurniture implements Moveabl
             this.inv.clear();
             AudioPlayer.playEffect(32);
             AudioPlayer.playEffect(29);
-            inv.add(new Shoes(SHROUDED_SHOES, "The pair of slippers carry almost no weight to them.", 
-                              "You slip on the shoes. They are perhaps the most comfortable pair you've ever worn."));
+            inv.add(new Shoes(SHROUDED_SHOES, 
+                    "The pair of slippers carry almost no weight to them. ", 
+                    "You slip on the shoes. They are perhaps the most "
+                  + "comfortable pair you've ever worn.", 100));
             return 2;
         }
         else

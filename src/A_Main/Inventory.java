@@ -50,7 +50,7 @@ public class Inventory implements Iterable<Item>, Serializable {
         return true; // Some inventories have restrictions.
     }
     // ========================================================================
-    public void remove(Item removeThis) {      
+    public void remove(Item removeThis) {  
         this.CONTENTS.remove(removeThis);
     }
     // ========================================================================
@@ -69,7 +69,7 @@ public class Inventory implements Iterable<Item>, Serializable {
      */
     public void give(Item item, Inventory giveToThis) {
         if (giveToThis.add(item)) {
-            this.CONTENTS.remove(item);
+            this.remove(item);
         }
     }
     // ========================================================================
