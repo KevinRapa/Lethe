@@ -47,4 +47,3 @@ public class Att_Boxes extends SearchableFurniture implements Openable, Moveable
     }
     // ========================================================================
 }
-
