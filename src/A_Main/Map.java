@@ -497,7 +497,7 @@ public class Map {
         Room sha2 = new Sha2("in the north servant's hall", Id.SHA2);
         Room sha1 = new Sha1("in the south servant's hall", Id.SHA1);
         //-------------------------------ITEMS----------------------------------
-        Item wdChnk = new Wood_Chunk("wood log with holes", ram, 3);       
+        Item wdChnk = new Wood_Chunk(WOOD_LOG, ram, 3);       
         Item shaMp = new Item(MOP, "It's a classic mop.", "Yes, let's just make this a game about cleaning some madman's castle.");
         Item shaSpng = new Item("sponge", "It's a quintessential square yellow sponge.", "I'm a lumberjack, not a maid!");
         //-----------------------------FURNITURE--------------------------------       

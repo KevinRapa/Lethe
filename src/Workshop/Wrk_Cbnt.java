@@ -11,7 +11,7 @@ public class Wrk_Cbnt extends SearchableFurniture implements Openable, Unmoveabl
         super(items);
         this.description = "The row of cabinets hang over the workbench.";
         this.searchDialog = "You open the cabinets.";
-        this.addNameKeys("cabinet", "cabinets");
+        this.addNameKeys("cabinets?");
     }
 /*----------------------------------------------------------------------------*/
 }

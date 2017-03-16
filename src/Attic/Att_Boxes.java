@@ -30,7 +30,7 @@ public class Att_Boxes extends SearchableFurniture implements Openable, Moveable
         this.searchDialog = "You pick a few boxes randomly and look inside.";
         this.actDialog = "You really aren't very good at folding.";
         
-        this.addActKeys("fold");
+        this.addActKeys("fold", GETPATTERN);
         this.addNameKeys("(?:cardboard )?box(?:es)?", "pile");
         
         for (int i = 1; i <= 7; i++) {
@@ -39,6 +39,12 @@ public class Att_Boxes extends SearchableFurniture implements Openable, Moveable
         }
     }
     // ========================================================================      
+    @Override public String interact(String key) {
+        if (key.equals("fold"))
+            return this.actDialog;
+        else
+            return "The boxes are too large and heavy to simply put in your pocket.";
+    }
+    // ========================================================================
 }
-
 

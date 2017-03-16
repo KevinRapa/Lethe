@@ -18,12 +18,14 @@ abstract public class Carpet extends Furniture {
         this.searchDialog = "There's nothing interesting under the carpet.";
 
         this.addUseKeys(ACETONE, ASH, SOIL, "sand|.+ dye", ".+ (?:wine|vinegar)");
-        this.addActKeys(MOVEPATTERN, "admire", "lift|raise");
+        this.addActKeys(MOVEPATTERN, "admire", "lift|raise", "roll");
     }
     // ========================================================================   
     @Override public String interact(String key) {              
         if (key.matches(MOVEPATTERN) || LIFT_P.matcher(key).matches())
             return this.searchDialog;
+        else if (key.equals("roll"))
+            return "You're really not intending to take that with you, right?";
         else
             return this.actDialog;
     }

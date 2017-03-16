@@ -108,6 +108,7 @@ public final class Player {
         INV_CMD_SET.addAll(INV_CMDS.keySet());
         //---------------------------------------------------------------------
         ODD_CMD_KEYS.put("eat", "That is quite an ambitious proposition.");
+        ODD_CMD_KEYS.put("fight", "Did you have much to drink before you came?");
         ODD_CMD_KEYS.put("speak", "Did you have much to drink before you came?");
         ODD_CMD_KEYS.put("talk", "Did you have much to drink before you came?");
         ODD_CMD_KEYS.put("climb", "Let us act like civilized guests whilst we're here.");
@@ -120,6 +121,9 @@ public final class Player {
         ODD_CMD_KEYS.put("draw", "You are sure the owner wouldn't wanting you doing that.");
         ODD_CMD_KEYS.put("inflate", "Does this look like some kind of balloon to you?");
         ODD_CMD_KEYS.put("deflate", "Does this look like some kind of balloon to you?");
+        ODD_CMD_KEYS.put("take", "A futile but worthy attempt.");
+        ODD_CMD_KEYS.put("get", "A futile but worthy attempt.");
+        GUI.out("A futile but worthy attempt.");
         
         ODD_CMD_SET.addAll(ODD_CMD_KEYS.keySet());
     }
@@ -452,8 +456,8 @@ public final class Player {
      * @param key A key to add to your key ring.
      * @param furniture The furniture from which to take the key.
      */
-    private static void addToKeyRing(Item key, Furniture furniture) {
-        furniture.getInv().give(key, Player.keys);
+    private static void addToKeyRing(Item key, Inventory furnInv) {
+        furnInv.give(key, Player.keys);
     }
     // ========================================================================  
     private static void viewKeyRing() {
@@ -512,18 +516,18 @@ public final class Player {
         GUI.out(furniture.getSearchDialog());
         
         if (furniture.isSearchable())
-            search(furniture); 
+            search(furniture.getInv()); 
     } 
     // ========================================================================  
     /**
      * Subroutine for exchanging itemList between player and furniture inventories.
-     * @param furniture The furniture being searched.
+     * @param furnInv The furniture being searched.
      */
-    private static void search(Furniture furniture) {
+    private static void search(Inventory furnInv) {
         String cmdItm; 
         
         do {
-            printInv(furniture.getInv());
+            printInv(furnInv);
             GUI.menOut(Menus.TRADE_SUB);
             
             cmdItm = GUI.promptOut();
@@ -532,14 +536,14 @@ public final class Player {
                 // Takes as many items as possible from the furniture.
                 ArrayList<Item> l = new ArrayList<>();
                 
-                for (Item i : furniture.getInv()) {
+                for (Item i : furnInv) {
                     // Finds everything in the inventory the player doesn't have.
                     if (! Player.inv.contains(i))
                         l.add(i);
                 }
                 for (Item i : l) {
                     // Adds them all to the player's inventory.
-                    evalTake(furniture, i);
+                    evalTake(furnInv, i);
                 }
                 GUI.out("You stuff as much as you can into your pockets.");
             }
@@ -554,11 +558,11 @@ public final class Player {
                     // Evaluates the store or take action given the slot.
                     if (STORE_P.matcher(action).matches()) {
                         Item item = Player.inv.get(slot - 1);
-                        evalStore(furniture, item);                            
+                        evalStore(furnInv, item);                            
                     }            
                     else if (TAKE_P.matcher(action).matches()) {
-                        Item item = furniture.getInv().get(slot - 1);
-                        evalTake(furniture, item);
+                        Item item = furnInv.get(slot - 1);
+                        evalTake(furnInv, item);
                     }
                     describeRoom();
                     printInv();
@@ -583,31 +587,31 @@ public final class Player {
      * @param furniture The furniture from which to take an item.
      * @param take The item being taken.
      */
-    private static void evalTake(Furniture furniture, Item take) {
+    private static void evalTake(Inventory furnInv, Item take) {
         if (KEY_P.matcher(take.getType()).matches()) {
             // Matches a non-cave/catacomb room ID, which keys use as types.
-            addToKeyRing(take, furniture);
+            addToKeyRing(take, furnInv);
             AudioPlayer.playEffect(3);
             GUI.out("You put the " + take + " into your key ring.");
         }
         else {
             GUI.out("You take the " + take);
-            furniture.getInv().give(take, Player.inv);                 
+            furnInv.give(take, Player.inv);                 
         }   
     }
     // ========================================================================  
     /**
      * Evaluates the player's store action.
-     * @param furniture The furniture in which the item is being stored.
+     * @param furnInv The inventory in which the item is being stored.
      * @param store The item being stored.
      */
-    public static void evalStore(Furniture furniture, Item store) {
+    public static void evalStore(Inventory furnInv, Item store) {
         if (store.getType().equals("phylactery"))
             GUI.out("The " + store + " looks too important to get rid of.");
 
         else {
             GUI.out("You store the " + store);
-            Player.inv.give(store , furniture.getInv()); 
+            Player.inv.give(store , furnInv); 
             
             if (store.toString().equals(Player.shoes))
                 Player.shoes = ""; // If player stores the shoes currently wearing.
@@ -670,11 +674,6 @@ public final class Player {
                     && target instanceof Moveable) {
                 // Player typed something resembling "move <furniture>"
                 GUI.out(((Moveable)target).moveIt());
-            }
-            else if (TAKE_P.matcher(action).matches()) {
-                // Player typed something resembling "get <furniture>"
-                // Furniture isn't gettable.
-                GUI.out("A futile but worthy attempt.");
             }
             else if (DESTROY_P.matcher(action).matches()) {
                 // Player typed something resembling "get <furniture>"

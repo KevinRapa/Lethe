@@ -31,6 +31,7 @@ public final class Patterns {
         SAVE_QUIT_RESET_P = Pattern.compile("[sqr]"),
         DIGIT_OR_BLANK_P = Pattern.compile("\\d+|"),
         INVALID_DIR_P = Pattern.compile("(?:north|south)(?:east|west)"),
+        DESTROY_P = Pattern.compile("destroy|break|shatter|obliterate|throw"),
             
         // Patterns used by TextParser    
         ZORK_P = Pattern.compile("hi|hello|hey|sup|brief|superbrief|verbose|diagnose"),
@@ -41,7 +42,6 @@ public final class Patterns {
         USE_P = Pattern.compile("use|read|drop|wear|remove|eat|drink|throw|destroy|break|lean|tie|rip|tear"),
         USE_ITEM_CMD_P = Pattern.compile("(?:" + USE_P + "|" + INSPECT_P + ") [a-z0-9: ,'-]+"),
         SUICIDE_P = Pattern.compile("(?:commit )?suicide|(?:kill|hang) (?:your)?self(?: (?:with|using).+)?"),
-        DESTROY_P = Pattern.compile("destroy|break|shatter|obliterate|throw"),
         STORE_CMD_P = Pattern.compile("(?:put|store|pour|dump|give) [a-z0-9: ,'-]+"),
         STORE_SPACE_P = Pattern.compile("(?:put|store|pour|dump|give) "),
         PREPOS_P = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|over|of|through"

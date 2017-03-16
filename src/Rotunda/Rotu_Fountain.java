@@ -27,10 +27,14 @@ public class Rotu_Fountain extends Furniture implements Heavy {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-    if (key.equals("swim") || key.equals("drink"))
+    if (key.equals("drink"))
         return (this.drained) ? 
             "The disgusting water has already been drained." :
             this.actDialog;
+    else if (key.equals("swim"))
+        return (this.drained) ? 
+            "The disgusting water has already been drained." :
+            "An absolutely smashing idea. You'll be out of here in no time.";
     else
         return (this.drained) ?
             "The disgusting water has already been drained." :

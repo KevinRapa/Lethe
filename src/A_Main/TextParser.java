@@ -413,7 +413,7 @@ public class TextParser {
                     else if (Player.getPos().hasFurniture("floor")) {
                         Furniture floor = Player.getFurnRef("floor");
                         if (floor.isSearchable()) {
-                            Player.evalStore(floor, item);
+                            Player.evalStore(floor.getInv(), item);
                         }
                         else
                             GUI.out("It's not a good idea to drop that here.");
@@ -573,7 +573,7 @@ public class TextParser {
                     
                     // Stores the furniture
                     if (furn.isSearchable()) {
-                        Player.evalStore(furn, item);
+                        Player.evalStore(furn.getInv(), item);
                         Player.printInv();
                     }
                     // Not searchable, but perhaps it's meant to be used by the item still.
