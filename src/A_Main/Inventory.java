@@ -67,10 +67,12 @@ public class Inventory implements Iterable<Item>, Serializable {
      * @param item The item to give.
      * @param giveToThis The inventory to add the item to.
      */
-    public void give(Item item, Inventory giveToThis) {
+    public boolean give(Item item, Inventory giveToThis) {
         if (giveToThis.add(item)) {
             this.remove(item);
+            return true;
         }
+        return false;
     }
     // ========================================================================
     /**

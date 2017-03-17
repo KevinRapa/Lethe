@@ -27,7 +27,12 @@ public class Vaue_Door extends Furniture implements Heavy {
     }
     // =====================================
     
-    private final State[][] BUTTONS = new State[4][4];
+    private final State[][] BUTTONS = {
+        {State.OFF,State.OFF,State.OFF,State.OFF},
+        {State.OFF,State.ON, State.OFF,State.OFF},
+        {State.OFF,State.OFF,State.OFF,State.OFF},
+        {State.OFF,State.OFF,State.ON, State.ON}
+    };
     // ========================================================================
     public Vaue_Door () {
         super();
@@ -37,10 +42,6 @@ public class Vaue_Door extends Furniture implements Heavy {
                          + "on each is a dark circular rune";
         this.actDialog = null;
         this.searchDialog = "The only curiosity is the grid of buttons on the front.";
-        
-        for (int i = 0; i < 4; i++)
-            for (int j = 0; j < 4; j++)
-                BUTTONS[i][j] = State.OFF;
         
         this.addNameKeys("buttons?", "(?:sliding )?door", "(?:interesting |curious )?wall");
         this.addActKeys("push", "activate", "solve", "open");

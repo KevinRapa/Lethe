@@ -8,7 +8,7 @@ public class Look_Railing extends Railing {
         super();
         
         this.description = "A wide, sturdy granite railing.";
-        this.addNameKeys("(?:wide )?(?:sturdy )?(?:granite )?(?:balcony )?railing");
+        this.addNameKeys("(?:wide )?(?:sturdy )?(?:granite )?(?:balcony )?railing", "balcony");
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -7,8 +7,8 @@ import A_Super.PottedPlant;
  */
 public class Bha1_Plant extends PottedPlant { 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Bha1_Plant(Item soil) {
-        super(soil);
+    public Bha1_Plant(Item soil, Item gift) {
+        super(soil, gift);
 
         this.description = "The plant doesn't seem to be in good shape. Though\n"
                          + "drooping a bit, it's still alive.";

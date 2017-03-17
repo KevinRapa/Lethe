@@ -10,10 +10,9 @@ public class Ou62_Spike extends Furniture implements Heavy {
     public Ou62_Spike () {
         super();
 
-        this.description = "The spike is made of iron and is quite sharp.\n"
-                         + "It protrudes out the center of the room, though\n"
-                         + "it doesn't seem as though one would fall on this\n"
-                         + "if pushed into here.";
+        this.description = "The spike is made of iron and is quite sharp. Much "
+                         + "more interesting, of course, is the clean skeleton "
+                         + "adorning the spike.";
 
         this.addNameKeys("(?:sharp )?(?:iron )?spike");
     }

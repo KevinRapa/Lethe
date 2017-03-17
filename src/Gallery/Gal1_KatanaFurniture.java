@@ -25,13 +25,17 @@ public class Gal1_KatanaFurniture extends Furniture {
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) { 
-        Player.getRoomObj(Id.GAL1).removeFurniture(this);
-        Player.getInv().add(
-                new Item("katana", "An expensive-looking icon of Japanese culture with not a detail spared. "
-                        + "The long, slender blade gently curves to a braided handle.", 80)
-        );
-           
-        return this.actDialog;
+        
+        if (Player.getInv().add(
+            new Item("katana", "An expensive-looking icon of Japanese culture with not a detail spared. "
+                    + "The long, slender blade gently curves to a braided handle.", 80))
+           ) 
+        {
+            Player.getRoomObj(Id.GAL1).removeFurniture(this);
+            return this.actDialog;
+        }
+        else
+            return null;
     }
 /*----------------------------------------------------------------------------*/    
     

@@ -35,7 +35,6 @@ public class Lqu2_Lever extends Lever {
     } 
     // ========================================================================   
     @Override protected String event(String key) {
-        Player.getRoomObj(Id.COU4).addAdjacent(Id.ENDG);
         Player.getRoomObj(Id.COU4).unlock();
         Player.getRoomObj(Id.COU3).removeFurniture(COU_GATE_REF);
         Player.getRoomObj(Id.COU3).addFurniture(new Cou3_OpenedGate());

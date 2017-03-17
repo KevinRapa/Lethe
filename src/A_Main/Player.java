@@ -3,54 +3,52 @@ package A_Main;
 import static A_Main.NameConstants.*;
 import static A_Main.Patterns.*; 
 import A_Super.*;
-import Foyer.LootSack;
 
 import java.util.Scanner;           import java.util.ArrayList;
 import java.util.HashMap;           import java.io.IOException;
 import Tunnels.DungeonMonster;      import java.io.Serializable;
-import java.io.ObjectOutputStream;  import java.util.HashSet;
-import java.util.Iterator;
+import java.io.ObjectOutputStream;  import java.util.Iterator;
+import java.util.HashSet;
+
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
  * to its own location, and thereby each furniture and item in the location
  * too.
  * 
- * The player attributes (including the map) are wrapped in <code>PlayerAttributes</code>
- * and serialized to a file upon a save game. The attributes are set during
- * startup if save game data exists.
- * 
- * @see A_Main.PlayerAttributes
  * @author Kevin Rapa
  */
 public final class Player {
-    private static Room[][][] mapRef;
-    private static int pos[], moves, score;
-    private static Inventory keys;
-    private static PlayerInventory inv;
-    private static ArrayList<String> visited;
-    private static String lastVisited, shoes;
-    
-    private static boolean notEnd = true;
-    
+    private static Room[][][] mapRef;           // Game map reference
+    private static Inventory keys;              // Player inventory (for keys)
+    private static PlayerInventory inv;         // Player inventory
+    private static ArrayList<String> visited;   // Rooms the player has visited so far
+    private static boolean end = false;         // Game ends when this is false
+    private static int 
+        pos[],      // Integer coordinates of the player in the map
+        moves,      // How many valid moves the player has made
+        score;      // Worth of items in the player's loot sack
+    private static String 
+        lastVisited,    // Id of the last room the player was in
+        shoes;          // Name of the shoes the player wears
+
     private static final HashMap<String, Runnable> 
-            MAIN_CMDS = new HashMap<>(),
-            INV_CMDS = new HashMap<>();
-    
+        MAIN_CMDS = new HashMap<>(),    // Maps commands from main prompt
+        INV_CMDS = new HashMap<>();     // Maps commands from inventory
     private static final HashMap<String, String> 
-            ODD_CMD_KEYS = new HashMap<>(); 
-    
+        ODD_CMD_KEYS = new HashMap<>(); // Maps random commands
     private static final HashSet<String> 
-            MAIN_CMD_SET = new HashSet<>(),
-            INV_CMD_SET = new HashSet<>(),
-            ODD_CMD_SET = new HashSet<>(); 
+        MAIN_CMD_SET = new HashSet<>(), // Commands from the main prompt
+        INV_CMD_SET = new HashSet<>(),  // Commands from the inventory
+        ODD_CMD_SET = new HashSet<>();  // Random commands
     
     private static final String 
-            NOT_VALID_SLOT = "You don't seem to have an item there.";
+        NOT_VALID_SLOT = "You don't seem to have an item there.";
 
     /*
-        Maps various commands in the game to their actions and adds the keys to
-        a set to check when the player enters something.
+        Maps various commands in the game to their actions 
+        Adds the keys to a set which is consulted whenever 
+        the player enters something.
     */
     static {
         MAIN_CMDS.put("h", () -> Help.helpSub());
@@ -65,11 +63,11 @@ public final class Player {
         MAIN_CMDS.put("m", () -> Map.displayMap());
         MAIN_CMDS.put("n", () -> writeNote());
         MAIN_CMDS.put("l", () -> openLootSack());
-        MAIN_CMDS.put("q", () -> {notEnd = false;});
+        MAIN_CMDS.put("q", () -> {end = true;});
         
-        MAIN_CMDS.put("quit", () -> {notEnd = false;});
+        MAIN_CMDS.put("quit",      () -> {end = true;});
         MAIN_CMDS.put("zork",      () -> GUI.out("You must be mistaking me for someone else."));
-        MAIN_CMDS.put("inspect",   () -> GUI.out("AHHHHHGGGHHH!!!!!"));
+        MAIN_CMDS.put("inspect",   () -> examineSub());
         MAIN_CMDS.put("examine",   () -> examineSub());
         MAIN_CMDS.put("keys",      () -> viewKeyRing());
         MAIN_CMDS.put("keyring",   () -> viewKeyRing());
@@ -95,7 +93,7 @@ public final class Player {
             GUI.out("That word... What have you done to my game?!"); 
             GUI.randomizeColors();
         });
-        MAIN_CMDS.put("save",      () ->  { 
+        MAIN_CMDS.put("save",      () -> { 
             Main.saveGame(); 
             GUI.out("Game saved"); 
         });
@@ -126,7 +124,6 @@ public final class Player {
         ODD_CMD_KEYS.put("deflate", "Does this look like some kind of balloon to you?");
         ODD_CMD_KEYS.put("take", "A futile but worthy attempt.");
         ODD_CMD_KEYS.put("get", "A futile but worthy attempt.");
-        GUI.out("A futile but worthy attempt.");
         
         ODD_CMD_SET.addAll(ODD_CMD_KEYS.keySet());
     }
@@ -258,7 +255,6 @@ public final class Player {
     }
     // </editor-fold>
     
-    // <editor-fold desc="Save Player Attributes">
     /**
      * Writes fields to a .data file to be read next time a game starts.
      * @param stream ObjectOutputStream to write the file.
@@ -269,8 +265,6 @@ public final class Player {
     {
         stream.writeObject(new PlayerAttributes());
     }
-    // </editor-fold>
-    
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************
@@ -323,7 +317,7 @@ public final class Player {
      * @return at end of game, if the player wishes to erase save data.
      */
     public static boolean startDialog() {
-        AudioPlayer.playTrack(Id.ENDG);
+        AudioPlayer.playTrack(getPosId());
         
         GUI.menOut("\n\nPress enter...");
         GUI.out("It's about 10:00pm and a warm, humid breeze passes through the trees.\n" +
@@ -351,7 +345,7 @@ public final class Player {
         describeRoom();
         
         String ans;
-        
+
         do {
             GUI.toMainMenu();
             ans = GUI.promptOut();
@@ -363,7 +357,7 @@ public final class Player {
             else if (isNonEmptyString(ans)) // More complicated command
                 TextParser.processText(ans);
             
-        } while (notEnd);
+        } while (! end);
         
         return endGameCode();
     }  
@@ -572,7 +566,7 @@ public final class Player {
                 
                 for (Item i : furnInv) {
                     // Finds everything in the inventory the player doesn't have.
-                    if (! Player.inv.contains(i))
+                    if (l.size() <= (PlayerInventory.MAX_SIZE - inv.size()))
                         l.add(i);
                 }
                 for (Item i : l) {
@@ -771,8 +765,8 @@ public final class Player {
         }
         else { // Something invalid was entered in!
             GUI.out("There is no " + object + 
-                    " here that you can see. Or perhaps we are being lazy and\n"
-                  + "attempting to pick up items without searching something first?"); 
+                    " here that you can see. Or are we perhaps being lazy and "
+                  + "attempting to pick up items that aren't mentioned in the room description?"); 
         }
     }
     // ========================================================================  
@@ -997,6 +991,10 @@ public final class Player {
      */
     public static void writeNote() {
         Player.incrementMoves();
+        if (inv.size() >= PlayerInventory.MAX_SIZE) {
+            GUI.out("You are carrying too much stuff to write a note.");
+            return;
+        }
         
         if (! Player.hasItem(PEN)) 
             GUI.out("You will need a pen in order to write a note to yourself.");

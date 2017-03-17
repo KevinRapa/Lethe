@@ -18,8 +18,9 @@ public class Vau1 extends Room {
     public Vau1(String name, String ID, Furniture tbl) {
         super(name, ID);
         this.Vau1_Tbl = tbl;
-        this.description= "You walk over to the north side of the chamber, before\n"
-                        + "the marble table.";
+        this.description= 
+                "You walk over to the north side of the chamber, before\n"
+              + "the marble table.";
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {

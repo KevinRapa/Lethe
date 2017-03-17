@@ -21,12 +21,15 @@ import java.util.Random;
  */
 public class Catacomb extends Room {
     protected String descLit;
-    private static final Furniture CAT_CEILING = 
-            new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}},
-                                   CAT_WALL = 
-            new Wall("The walls are wet and rocky."),
-                                   CAT_FLOOR = 
-            new Floor("It's a damp, rocky, dirty floor.");
+    private static final Furniture 
+        CAT_CEILING = new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}},
+        CAT_WALL = new Wall("The walls are wet and rocky."),
+        CAT_FLOOR = new Floor("It's a damp, rocky, dirty floor.");
+    
+    private static final Item
+        DIRT = new Item("dirt", "It's a damp, cold pile of rocky dirt", -50),
+        BONE = new Item("bone", "It's a bone... not much else to say.", -50),
+        RCK = new Item(ROCK, "It's a normal hunk of rock that was mixed with the dirt.", -50); 
     
     protected static final Random GENERATOR = new Random();
     protected static int[] jewelCoords;
@@ -132,11 +135,7 @@ public class Catacomb extends Room {
         
         // Puts a crevice furniture objects in here and adds items to it randomly.
         Furniture ctGrv = new Ct_Grave();
-        Item[] itemList = {
-            new Item("dirt", "It's a damp, cold pile of rocky dirt", -50),
-            new Item("bone", "It's a bone... not much else to say.", -50),
-            new Item(ROCK, "It's a normal hunk of rock that was mixed with the dirt.", -50) 
-        };
+        Item[] itemList = {DIRT, BONE, RCK};
         
         int numTimes = GENERATOR.nextInt(5) + 3;
         

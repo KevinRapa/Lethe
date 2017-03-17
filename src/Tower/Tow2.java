@@ -1,10 +1,7 @@
 package Tower;
 
 import A_Main.GUI;
-import A_Main.Id;
-import A_Main.NameConstants;
 import A_Main.Player;
-import A_Super.Item;
 import Lichs_Quarters.Lich_Room;
 /**
  * Contains the source of the player's luring to the castle.
@@ -20,11 +17,12 @@ public class Tow2 extends Lich_Room {
 // ============================================================================    
     public Tow2(String name, String ID) {
         super(name, ID);
-        this.description = "You are on the circular balcony above the lower tower floor. To the north\n" +
-                           "is another imposing metal door. Some of the etchings in the door emit a\n"
-                         + "bright blue luminescence. To the east on the other side of the\n" +
-                           "balcony is a wood door. Wide paned windows\n" +
-                           "extend along the wall to the south.";
+        this.description = 
+                "You are on the circular balcony above the lower tower floor. To the north\n" +
+                "is another imposing metal door. Some of the etchings in the door emit a\n"
+              + "bright blue luminescence. To the east on the other side of the\n" +
+                "balcony is a wood door. Wide paned windows\n" +
+                "extend along the wall to the south.";
     }
 // ============================================================================
     @Override public String getDescription() {

@@ -5,11 +5,11 @@ import A_Super.PottedPlant;
 
 public class Mha_Plant extends PottedPlant { 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Mha_Plant(Item soil) {
-        super(soil);
+    public Mha_Plant(Item soil, Item gift) {
+        super(soil, gift);
 
-        this.description = "The potted plant is in good shape. It sits in a\n"
-                         + "fancy white vase.";
+        this.description = "The potted plant is in okay shape, but could afford a bit more care. "
+                + "It sits in a fancy white vase.";
     }
 /*----------------------------------------------------------------------------*/
 }

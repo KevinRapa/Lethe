@@ -4,7 +4,7 @@ import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Inventory;
 import static A_Main.NameConstants.HAND_TORCH;
-import A_Super.Torch;
+import A_Super.Torch_Holder;
 import A_Super.Item;
 import A_Main.Player;
 /**
@@ -12,7 +12,7 @@ import A_Main.Player;
  * Begins empty.
  * @author Kevin Rapa
  */
-public class Kitc_Torch extends Torch {
+public class Kitc_Torch extends Torch_Holder {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Kitc_Torch() {
         super();
@@ -22,26 +22,26 @@ public class Kitc_Torch extends Torch {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (this.containsItem(HAND_TORCH) && ! Player.hasItem(HAND_TORCH)) {
-            Player.getInv().add(TORCH);
-            this.inv.clear();
-            ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
-            Player.describeRoom();
-            return this.actDialog;
+        if (this.inv.contains(TORCH)) {
+            if (this.inv.give(TORCH, Player.getInv())) {
+                ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
+                Player.describeRoom();
+                return this.actDialog;
+            }
+            else
+                return null;
         }
-        else if (! this.containsItem(HAND_TORCH))
-            return "The holder is empty you bumbling oaf.";
         else
-            return "You are already carrying a torch.";
+            return "The holder is empty you bumbling oaf.";
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String useEvent(Item item) {
-        if (this.containsItem(HAND_TORCH))
+        if (this.inv.contains(TORCH))
             return "The holder already bears a torch you bumbling oaf.";
-        else 
+        else {
             Player.getInv().give(item, this.inv);
-        
-        return this.useDialog;
+            return this.useDialog;
+        }
     }    
 /*----------------------------------------------------------------------------*/
 /******************************************************************************/    

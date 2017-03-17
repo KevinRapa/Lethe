@@ -50,14 +50,11 @@ public class Tow1_Pedestal extends Furniture {
             super(items);
         }
         @Override public boolean add(Item item) {
-            if (! item.toString().equals(DAMPENING_STAFF)) {
-                this.add(item);
-                return true;
-            }
-            else {
-                GUI.out("Don't store that here or you'll never get it back!");
-                return false;
-            }
+            if (! item.toString().equals(DAMPENING_STAFF)) 
+                GUI.out("You may not want to leave that there, unless you never want it back.");
+            
+            this.CONTENTS.add(item);
+            return true;
         }
     }
     // ========================================================================    

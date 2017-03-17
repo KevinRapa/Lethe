@@ -43,7 +43,11 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Heavy {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        Player.getInv().give(item, this.inv);
+        // Cannot use Player.getInv().give() here because the molten glass
+        // Can be added to player inventory before removing the item.
+        // Must remove the item FIRST.
+        Player.getInv().remove(item);
+        this.inv.add(item);
         
         return null;
     }

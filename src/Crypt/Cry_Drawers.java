@@ -2,11 +2,14 @@ package Crypt;
 
 import A_Main.GUI;
 import A_Main.Menus;
+import static A_Main.NameConstants.BRAIN;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 import static A_Main.Patterns.ONE_TO_HUNDRED_P;
+import A_Super.Item;
+import A_Super.Liquid;
 /**
  * The player can search any of the cabinets, but none of them have anything
  * necessary in them.
@@ -15,13 +18,21 @@ import static A_Main.Patterns.ONE_TO_HUNDRED_P;
  */
 public class Cry_Drawers extends Furniture implements Openable {
     private final Furniture[] DRAWERS = new Furniture[100];
+    private final Item 
+            BRAIN_REF = new Liquid(BRAIN, "The preserved brain in the glass jar "
+                                + "is not something you're used to holding.", 10);
+    public final int DRAWER_NUM;
     // ========================================================================
     public Cry_Drawers () {
         super();
         this.searchable = false;
         
-        for (int i = 0; i < 100; i++)
+        this.DRAWER_NUM = (Math.abs((int)System.currentTimeMillis() % 99)) + 1;
+        
+        for (int i = 0; i < 100; i++) 
             this.DRAWERS[i] = new Drwr();
+
+        DRAWERS[DRAWER_NUM - 1].getInv().add(BRAIN_REF);
         
         this.description = "The drawers are most likely being used to hold the\n"
                          + "dead. Who exactly, you don't know. The drawers are\n"

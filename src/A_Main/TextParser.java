@@ -25,12 +25,12 @@ public class TextParser {
 
     // Items to create when other items are thrown or broken.
     private static final Item 
-            BROKEN_GLASS = new Item("broken shards", 
-                    "The pieces of glass sit uncomfortably in your pocket. "
-                  + "Of course, you certainly know what you're doing.", -50),
-            RIPPED_SHREDS = new Note("ripped paper shreds", 
-                    "The gory mess of literature now exists crumpled up in your "
-                            + "pocket. This is unintelligible.");
+        BROKEN_GLASS = new Item("broken shards", 
+                "The pieces of glass sit uncomfortably in your pocket. "
+              + "Of course, you certainly know what you're doing.", -50),
+        RIPPED_SHREDS = new Note("ripped paper shreds", 
+                "The gory mess of literature now exists crumpled up in your "
+                        + "pocket. This is unintelligible.");
     
     private static final String
         NOTHING = "", 
@@ -41,8 +41,6 @@ public class TextParser {
     private static final Command 
         DEFAULT_CMD =   new Command("What does that mean?"),
         EXPLETIVE_CMD = new Command("Mind yourself! You're a guest here!"),
-        
-        // Ends the game.
         SUICIDE_CMD =   new Command(() -> {Player.commitSuicide();}, "SUICIDE"),
         GREETING_CMD =  new Command("What do you think this is? Zork?"),
         NO_SLOT_CMD =   new Command("Seems that you don't have an existing slot there."),
@@ -168,7 +166,20 @@ public class TextParser {
         
         switch(s.length) {
             case 2:
-                return new Command(new Instrument(s[1]), dirObj);
+                if (ANY_DIGIT_P.matcher(s[1]).matches()) {
+                    // Player typed a slot number and not an item name.
+                    int i = Integer.parseInt(s[1]) - 1;
+
+                    if (i >= 0 && i < Player.getInv().size())
+                        return new Command(
+                                new Instrument(Player.getInv().get(i).toString()), 
+                                dirObj
+                        );
+                    else
+                        return NO_SLOT_CMD;
+                }
+                else 
+                    return new Command(new Instrument(s[1]), dirObj);
             case 1:
                 if (verb.VALUE.equals(dirObj.VALUE))
                     // If they're equal, the player entered a single word.
@@ -290,7 +301,7 @@ public class TextParser {
         // <editor-fold defaultstate="collapsed" desc="constructors">
         public Command(Verb v, DirectObj o) {
             VALUE = "VERB: " + v.toString() + "\tOBJECT: " + o.toString();
-            System.out.println("Creating verb -> object command: " + VALUE);
+            System.out.println("Creating action -> furniture command: " + VALUE);
             
             // Resolves an indefinite reference.
             final String object = IT_THEM_P.matcher(o.toString()).matches() ? 
@@ -302,7 +313,7 @@ public class TextParser {
         // --------------------------------------------------------------------
         public Command(Instrument i, DirectObj o) {
             VALUE = "ITEM: " + i.toString() + "\tOBJECT: " + o.toString();
-            System.out.println("Creating item -> object command: " + VALUE);
+            System.out.println("Creating item -> furniture command: " + VALUE);
             ACTION = (() -> execute(i, o));
         }
         // --------------------------------------------------------------------
@@ -314,7 +325,7 @@ public class TextParser {
         // --------------------------------------------------------------------
         public Command(Verb v, Instrument i, DirectObj o) {
             VALUE = "VERB: " + v.toString() + "\tITEM: " + i.toString() + "\tOBJECT: " + o.toString();
-            System.out.println("Creating store command: " + VALUE);
+            System.out.println("Creating store item command: " + VALUE);
             ACTION = (() -> execute(v, i, o));
         }
         // --------------------------------------------------------------------
@@ -446,6 +457,7 @@ public class TextParser {
                                   + "ear and fills you with rue.");
                         }
                         else {
+                            floor.getInv().add(item);
                             GUI.out("Be careful with that. You wouldn't want "
                                   + "to get the floor all soaked and risk "
                                   + "dying of a clumsy step.");
@@ -615,8 +627,6 @@ public class TextParser {
         // </editor-fold>
         // ====================================================================
         
-        
-        // ====================================================================
         public void perform() {
             this.ACTION.run();
         }
@@ -646,9 +656,9 @@ public class TextParser {
     // ========================================================================
     private static class Verb extends Word {
         public final static Verb 
-                PUT_VERB = new Verb("put"), // Default verb for storing
-                GO_VERB = new Verb("go"),   // Default verb for moving
-                SEARCH_VERB = new Verb("search");   // Default verb for moving
+            PUT_VERB = new Verb("put"),         // Default verb for storing
+            GO_VERB = new Verb("go"),           // Default verb for moving
+            SEARCH_VERB = new Verb("search");   // Default verb for searching
         
         public Verb(String verb) {
             super(verb);
@@ -657,7 +667,7 @@ public class TextParser {
     // ========================================================================
     private static class DirectObj extends Word {
         public final static DirectObj 
-                FLOOR_OBJECT = new DirectObj("floor");  // For drop commands
+            FLOOR_OBJECT = new DirectObj("floor");  // For drop commands
         
         public DirectObj(String object) {
             super(object);

@@ -28,7 +28,7 @@ public class Sear_Ash extends Furniture implements Gettable {
         if (Player.getInv().add(ASH_REF))
             return "You take some ash.";
         else
-            return "You already have way too much ash.";
+            return null;
     }
 /*----------------------------------------------------------------------------*/
 }

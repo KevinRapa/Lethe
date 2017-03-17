@@ -22,21 +22,20 @@ public class Cou_Floor extends Floor implements Gettable {
         
         this.actDialog = "You dig a small hole in the ground, but find nothing of interest\n"
                        + "and kick the dirt back in the hole.";
-        this.useDialog = this.actDialog;
+        this.useDialog = "You have nothing with which to dig.";
 
         this.addNameKeys("dirt|earth", SOIL, GRASS, "weeds?|clovers?");
         this.addUseKeys(SHOVEL, TROWEL, HOE);
-        this.addActKeys(GETPATTERN);
-        this.addActKeys("dig", "shovel");
+        this.addActKeys(GETPATTERN, "dig", SHOVEL);
     }
     // ========================================================================   
     @Override public String interact(String key) {
-        if (key.equals("dig") || key.equals("shovel")) {
+        if (key.equals("dig") || key.equals(SHOVEL)) {
             if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
                 return this.useEvent(new Item(SHOVEL, 0)); // Dummy item
             }
             else
-                return "You have nothing with which to dig.";
+                return this.useDialog;
         }
         else
             return getIt();
@@ -45,16 +44,10 @@ public class Cou_Floor extends Floor implements Gettable {
     @Override public String getIt() {
         Inventory i = Player.getInv();
         
-        if (! (i.contains(SOIL_REF) && i.contains(GRASS_REF) && 
-               i.contains(CLOVER_REF))) 
-        {
-            Player.getInv().add(SOIL_REF);
-            Player.getInv().add(GRASS_REF);
-            Player.getInv().add(CLOVER_REF);
+        if (i.add(SOIL_REF) && i.add(GRASS_REF) && i.add(CLOVER_REF)) 
             return "You jam your fingers into the ground and grab a fistful of Earth.";
-        }
         else
-            return "You already have some ground.";
+            return "You have full pockets.";
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {

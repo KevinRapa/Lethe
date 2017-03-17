@@ -26,12 +26,10 @@ import static A_Main.NameConstants.W_DIR;
 public class Cave extends Room {
     protected String descLit;
     
-    protected static final Furniture CV_FLOOR = 
-            new Floor("The floor is cold hard rock and uninteresting."),
-                                     CV_WALL = 
-            new Wall("The wall is damp, plain rock."),
-                                     CV_CEILING = 
-            new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}};
+    protected static final Furniture 
+        CV_FLOOR = new Floor("The floor is cold hard rock and uninteresting."),
+        CV_WALL = new Wall("The wall is damp, plain rock."),
+        CV_CEILING = new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}};
 
     protected final int DISTANCE; // Distance this room is from MS65
     
@@ -138,19 +136,15 @@ public class Cave extends Room {
         // Appends additional information if a non-catacomb room is adjacent.
         // Adds a door to room.
         if (adjOtherCoords != null && adjOtherCoords[0] != 5) {
-            if (adjOtherCoords[0] == Y - 1) {
+            if (adjOtherCoords[0] == Y - 1)
                 descL.append("To the north");
-            }
-            else if (adjOtherCoords[0] == Y + 1){
+            else if (adjOtherCoords[0] == Y + 1)
                 descL.append("To the south");
-            }
-            else if (adjOtherCoords[1] == X - 1) {
+            else if (adjOtherCoords[1] == X - 1)
                 descL.append("To the west");
-            }
-            else {
+            else 
                 descL.append("To the east");
-            }
-            
+
             descL.append(", erected unevenly into the tunnel wall is an ancient door.");
         }
 

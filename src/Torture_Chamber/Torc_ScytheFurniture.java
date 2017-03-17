@@ -29,10 +29,13 @@ public class Torc_ScytheFurniture extends Furniture implements Resetable {
         this.addActKeys(GETPATTERN);
     }
     // ========================================================================   
-    @Override public String interact(String key) {      
-        Player.getPos().removeFurniture(this);
-        Player.getInv().add(SCYTHE);
-        return this.actDialog;
+    @Override public String interact(String key) {
+        if (Player.getInv().add(SCYTHE)) {
+            Player.getPos().removeFurniture(this);
+            return this.actDialog;
+        }
+        else
+            return null;
     }
     // ========================================================================  
     /**

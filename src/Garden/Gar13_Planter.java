@@ -32,12 +32,11 @@ public class Gar13_Planter extends SearchableFurniture implements Unmoveable {
     @Override public String useEvent(Item item) {
         if (item.toString().matches("trowel|shovel")) {
             AudioPlayer.playEffect(34);
-            if (Player.hasItem(SOIL))
-                return "You dig around a bit, but uncover nothing.";
-            else {
-                Player.getInv().add(SOIL_REF);
+            
+            if (Player.getInv().add(SOIL_REF))
                 return this.useDialog;
-            }
+            else
+                return null;
         }
         else 
             return this.actDialog;

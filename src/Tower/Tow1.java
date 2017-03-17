@@ -22,13 +22,14 @@ public class Tow1 extends Lich_Room {
     public Tow1(String name, String ID, Furniture pedestal) {
         super(name, ID);
         this.TOW_PEDESTAL = pedestal;
-        this.description= "Through the door, you find yourself standing in a plain\n" +
-                          "circular room with a blue and white checkered floor. Looking\n" +
-                          "up, the room is a few stories high with a circular balcony\n" +
-                          "wrapping around the room one story up. Wide paned windows\n" +
-                          "extend along the south and east walls. On the west side\n" +
-                          "is a pair of imposing black iron doors. Sitting in the\n" +
-                          "center of a room is a pedestal. ";
+        this.description= 
+                "Through the door, you find yourself standing in a plain\n" +
+                "circular room with a blue and white checkered floor. Looking\n" +
+                "up, the room is a few stories high with a circular balcony\n" +
+                "wrapping around the room one story up. Wide paned windows\n" +
+                "extend along the south and east walls. On the west side\n" +
+                "is a pair of imposing black iron doors. Sitting in the\n" +
+                "center of a room is a pedestal. ";
     }
 // ============================================================================
     @Override public String getDescription() {

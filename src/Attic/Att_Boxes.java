@@ -1,29 +1,16 @@
 package Attic;
 
-import A_Super.BreakableItem;
 import A_Super.Item;
 import A_Super.Moveable;
-import java.util.Random;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
 public class Att_Boxes extends SearchableFurniture implements Openable, Moveable {
-    Random generator = new Random();
-    private static final Item[] POSSIBILITIES = {
-        new BreakableItem("violin", "An old dusty violin. It has a string missing and sounds out of tune.", "Surely you could never play...", 50),
-        new Item("doll", "A rag doll in a dress with one eye hanging out. Very creepy.", 15),
-        new BreakableItem("sousaphone", "You never even thought these things were real!", "You can't fit it around your waist.", 35),
-        new Item("old wooden wheel", "It's a wheel from a cart or carriage.", 5),
-        new BreakableItem("antique lamp", "A brass table lamp with a green lampshade. Its bulb is missing.", 5),
-        new Item("bed linens", "White bedsheets. They are rough and emit a musty odor.", "A good night's sleep sounds pretty nice right now.", 15),
-        new BreakableItem("mirror", "It's a dusty mirror.", "You're afraid to look in it.", 50),
-        new BreakableItem("globe", "This thing doesn't at all look like a modern globe. Where's Prussia?", 35),
-    };
     // ========================================================================
-    public Att_Boxes() {
-        super();
+    public Att_Boxes(Item ... items) {
+        super(items);
         
         this.description = "There are plenty of old carboard boxes scattered\n"
                          + "around the room. They seem to be filled with various curios and science equipment.";
@@ -32,11 +19,6 @@ public class Att_Boxes extends SearchableFurniture implements Openable, Moveable
         
         this.addActKeys("fold", GETPATTERN);
         this.addNameKeys("(?:cardboard )?box(?:es)?", "pile");
-        
-        for (int i = 1; i <= 7; i++) {
-            int index = generator.nextInt(8);
-            this.inv.add(POSSIBILITIES[index]);
-        }
     }
     // ========================================================================      
     @Override public String interact(String key) {

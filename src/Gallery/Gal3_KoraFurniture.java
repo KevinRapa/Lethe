@@ -19,14 +19,15 @@ public class Gal3_KoraFurniture extends Furniture {
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) { 
-        if (key.matches("strum|play")) {
-            return "You would try, but it's up on the wall right now.";
-        }            
-        else {
-            Player.getRoomObj(Id.GAL3).removeFurniture(this);
-            Player.getInv().add(new Gal3_Inst("kora"));
-        }
-        return this.actDialog;
+        if (key.matches("strum|play"))
+            return "You would try, but it's up on the wall right now.";     
+        else
+            if (Player.getInv().add(new Gal3_Inst("kora"))) {
+                Player.getRoomObj(Id.GAL3).removeFurniture(this);
+                return this.actDialog;
+            }
+            else
+                return null;
     }
 /*----------------------------------------------------------------------------*/    
     private class Gal3_Inst extends Item {

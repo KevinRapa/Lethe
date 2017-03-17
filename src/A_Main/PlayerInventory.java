@@ -14,7 +14,7 @@ import java.util.Comparator;
  * @author Kevin Rapa
  */
 public class PlayerInventory extends Inventory {
-    private static final int MAX_SIZE = 15;
+    public static final int MAX_SIZE = 15;
     private final Item NULL_ITEM = 
             new Item("null item", "Whoops! Looks like there's a bug in the game, "
                    + "this item will self-destruct in 5 seconds... Just kidding.", 0);

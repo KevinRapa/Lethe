@@ -104,13 +104,11 @@ public class Cou5_Spruce extends SearchableFurniture
 /*----------------------------------------------------------------------------*/
     @Override public String getIt() {
         if (drilled)
-            if (Player.getInv().contains(VIAL_REF))
-                if (Player.getInv().add(EXTRCT_REF)) {
-                    Player.getInv().remove(VIAL_REF);
-                    return "You collect some of the sap in the small vial you are carrying.";
-                }
-                else
-                    return "You are already carrying some sap.";
+            if (Player.getInv().contains(VIAL_REF)) {
+                Player.getInv().remove(VIAL_REF);
+                Player.getInv().add(EXTRCT_REF);
+                return "You collect some of the sap in the small vial you are carrying.";
+            }
             else
                 return "You have nothing to collect the sap in.";
         else

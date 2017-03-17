@@ -13,12 +13,13 @@ public class Soul extends Room {
     public Soul(String name, String ID) {
         super(name, ID);
 
-        this.description= "You have reached the apex point of the castle; a\n" +
-                          "single chamber suspended high above the sea. The\n" +
-                          "tall room is arched at the top. Four tall statues\n" +
-                          "stand at each corner staring down into a pool of\n" +
-                          "aether in the center. A tall stained-glass window\n" +
-                          "covers the north wall.";
+        this.description= 
+                "You have reached the apex point of the castle; a\n" +
+                "single chamber suspended high above the sea. The\n" +
+                "tall room is arched at the top. Four tall statues\n" +
+                "stand at each corner staring down into a pool of\n" +
+                "aether in the center. A tall stained-glass window\n" +
+                "covers the north wall.";
     }
 // ============================================================================   
 }

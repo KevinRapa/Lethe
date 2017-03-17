@@ -14,12 +14,13 @@ public class Sew1 extends Dungeon_Tunnel {
 // ============================================================================    
     public Sew1(String name, String ID) {
         super(name, ID);
-        this.description= "You come to a bend in the tunnel. The tunnel turns to\n" +
-                          "the south here away from the river of water, which\n" +
-                          "continues past the east wall through a barred gate.\n" +
-                          "The tunnel leads far back west in the opposite direction. On the walls\n" +
-                          "are several torches lighting the room in a dim green hue\n" +
-                          "resulting from moss growing everywhere.";
+        this.description= 
+                "You come to a bend in the tunnel. The tunnel turns to\n" +
+              "the south here away from the river of water, which\n" +
+              "continues past the east wall through a barred gate.\n" +
+              "The tunnel leads far back west in the opposite direction. On the walls\n" +
+              "are several torches lighting the room in a dim green hue\n" +
+              "resulting from moss growing everywhere.";
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {

@@ -39,7 +39,7 @@ public class Par1_Orb extends NonPlayerCharacter {
             return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
-    @Override protected<Void> Void converse1() {
+    @Override protected Void converse1() {
         
         GUI.out("\"You should ask permission before playing with things that\n"
               + "aren't yours!\" Shouts the voice...");
@@ -102,7 +102,7 @@ public class Par1_Orb extends NonPlayerCharacter {
         return null;
     }
 /*----------------------------------------------------------------------------*/
-    @Override protected<Void> Void converse2() {
+    @Override protected Void converse2() {
         GUI.out("\"Egh... uhh... I'm not sure... on the shelf over there???\n"
               + "Ah! That's what this needs, more bassoons!\"");
         

@@ -62,7 +62,7 @@ public class RoomGraph {
         {}, {}, {},
         // FLOOR 1 ROOM ADJS -------------------------------------------------- 
         {COU2},                 {COU1,COU3},            {COU7,COU4,COU2,COU5}, 
-        {COU3},                 {COU3,COU6,COU8},       {COU5}, 
+        {COU3, ENDG},           {COU3,COU6,COU8},       {COU5}, 
         {FOY1,COU3},            {FOY1},                 {FOY2,VEST,COU7}, 
         {FOY1,FOYB,FOY3},       {ROTU},                 {FOYC,FOY2}, 
         {GAL1,FOYB},            {GAL2,FOYC},            {GAL1,LIB3,MHA1,GAL4}, 

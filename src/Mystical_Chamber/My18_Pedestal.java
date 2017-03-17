@@ -6,6 +6,7 @@ import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Furniture;
 import A_Super.Item;
+import A_Super.Unmoveable;
 /**
  * Adds furniture to its room if the iridescent jewel is used on this.
  * Iridescent jewel is somewhere in the catacombs- determined randomly.
@@ -15,18 +16,20 @@ import A_Super.Item;
  * @see Ancient_Tomb.Ant_Casket
  * @author Kevin Rapa
  */
-public class My18_Pedestal extends Furniture {
+public class My18_Pedestal extends Furniture implements Unmoveable {
     private boolean hasStone;
     // ========================================================================
     public My18_Pedestal () {
         super();
 
         this.hasStone = false;
-        this.description = "The pedestal has a round indentation in the center.";
+        this.description = "The pedestal has a globular indentation in the center.";
         this.searchDialog = "There's nothing interesting about the pedestal.";
+        this.useDialog = "That doesn't fit in the indentation.";
 
+        
         this.addNameKeys("(?:sandstone )?pedestal");
-        this.addUseKeys(IRIDESCENT_JEWEL);
+        this.addUseKeys(ANYTHING);
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -35,16 +38,20 @@ public class My18_Pedestal extends Furniture {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        this.hasStone = true;
-        AudioPlayer.playEffect(37);
-        Player.getPos().addFurniture(new My18_Stairs(Direction.DOWN));
-        Player.getInv().remove(item);
-        ((My18)Player.getPos()).updateDescription();
-        
-        return "The stone fits perfectly into the indentation. Immediately, the\n"
-             + "ground begins to shake lightly. You step back. The seams in the floor\n"
-             + "begin to cascase downward forming a spiral staircase descending\n"
-             + "downwards into darkness.";
+        if (item.toString().equals(IRIDESCENT_JEWEL)) {
+            this.hasStone = true;
+            AudioPlayer.playEffect(37);
+            Player.getPos().addFurniture(new My18_Stairs(Direction.DOWN));
+            Player.getInv().remove(item);
+            ((My18)Player.getPos()).updateDescription();
+
+            return "The stone fits perfectly into the indentation. Immediately, the\n"
+                 + "ground begins to shake lightly. You step back. The seams in the floor\n"
+                 + "begin to cascase downward forming a spiral staircase descending\n"
+                 + "downwards into darkness.";
+        }
+        else 
+            return this.useDialog;
     }
     // ========================================================================     
 }

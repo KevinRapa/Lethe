@@ -1,6 +1,7 @@
 package Tunnels;
 
 import A_Main.Player;
+import A_Super.Furniture;
 import A_Super.Room;
 /**
  * Hallway in which the monster walks. 
@@ -10,10 +11,11 @@ import A_Super.Room;
  * @author Kevin Rapa
  */
 abstract public class Dungeon_Tunnel extends Room {
+    private static Furniture MONSTER = new DungeonMonsterFurniture();
 // ============================================================================    
     public Dungeon_Tunnel(String name, String ID) {
         super(name, ID);
-        this.addFurniture(new DungeonMonsterFurniture());
+        this.addFurniture(MONSTER);
     }
 // ============================================================================
     @Override public String triggeredEvent() {

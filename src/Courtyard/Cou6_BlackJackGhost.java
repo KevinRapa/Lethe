@@ -16,6 +16,20 @@ import static A_Main.Patterns.YES_NO_P;
  * @author Kevin Rapa
  */
 public class Cou6_BlackJackGhost extends NonPlayerCharacter {
+    // Maps outcomes to dialogs.
+    
+    private final static HashMap<Integer, String> RES = new HashMap<>();
+    
+    static {
+        RES.put(122, "How lucky. You got a blackjack already! ... Want to play again?");
+        RES.put(112, "Hah! I have blackjack already. I win... Want to play again?");
+        RES.put(132, "We both got blackjack... So a tie, how boring... Want to play again?");
+        RES.put(211, "Agh... % too far over. I lose... Want to play again?");
+        RES.put(233, "Hm... a tie. How boring... Want to play again?");
+        RES.put(223, "You won. Good luck, mate, you need it tonight... Want to play again?");
+        RES.put(213, "Looks like I won, mate, fair and square... Want to play again?");
+        RES.put(221, "Looks like you busted! % too many! ... Want to play again?");
+    }
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou6_BlackJackGhost() {
         super();
@@ -39,7 +53,10 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
-        
+        else if (Player.getInv().size() >= 8) {
+            return "You are carrying too much stuff mate. "
+                    + "Come back after you've emptied your pockets some.";
+        }
         else if (this.firstTime) {
             if(this.converse1())
                 rep = rep.concat(" Hey why don't you keep those cards? I can make more! Hah!");
@@ -125,17 +142,6 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
      * Whatever the ghost draws is printed in the console (For testing).
      */
     private void playCards() {
-        // Maps outcomes to dialogs.
-        HashMap<Integer, String> results = new HashMap<>();
-        results.put(122, "How lucky. You got a blackjack already! ... Want to play again?");
-        results.put(112, "Hah! I have blackjack already. I win... Want to play again?");
-        results.put(132, "We both got blackjack... So a tie, how boring... Want to play again?");
-        results.put(211, "Agh... % too far over. I lose... Want to play again?");
-        results.put(233, "Hm... a tie. How boring... Want to play again?");
-        results.put(223, "You won. Good luck, mate, you need it tonight... Want to play again?");
-        results.put(213, "Looks like I won, mate, fair and square... Want to play again?");
-        results.put(221, "Looks like you busted! % too many! ... Want to play again?");
-        
         int ghostVal = 0, yourVal = 0; // The scores.
         Deck deck = new Deck();
         deck.shuffle();
@@ -162,7 +168,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
             int v = this.blackJack(yourVal) && this.blackJack(ghostVal) ? 132 :
                     this.blackJack(yourVal) ? 122 : 112;
             
-            GUI.out(results.get(v));
+            GUI.out(RES.get(v));
             return;
         }
 
@@ -170,7 +176,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         
         // Evaluates if you have busted.
         if (this.bust(yourVal)) {
-            GUI.out(results.get(221).replaceFirst("%", String.valueOf(yourVal - 21)));
+            GUI.out(RES.get(221).replaceFirst("%", String.valueOf(yourVal - 21)));
             return;
         }
         
@@ -178,7 +184,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         
         // Evaluates if the dealer has busted.
         if (this.bust(ghostVal)) {
-            GUI.out(results.get(211).replaceFirst("%", String.valueOf(ghostVal - 21)));
+            GUI.out(RES.get(211).replaceFirst("%", String.valueOf(ghostVal - 21)));
             return;
         }
         
@@ -186,7 +192,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         int val = (yourVal == ghostVal) ? 233 : 
                   ((ghostVal > yourVal) ? 213 : 223);
         
-        GUI.out(results.get(val));
+        GUI.out(RES.get(val));
     }
 /*----------------------------------------------------------------------------*/ 
     /**

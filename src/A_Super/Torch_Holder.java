@@ -14,12 +14,12 @@ import A_Main.Player;
  * @see Kitchen.Kitc_Trch
  * @author Kevin Rapa
  */
-public class Torch extends SearchableFurniture {
-    protected final Item TORCH;
+public class Torch_Holder extends SearchableFurniture {
+    protected static final Item TORCH = 
+            new Item(HAND_TORCH, "It's a burning piece of wood. Stay it from your beard!", 0);
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Torch() {
+    public Torch_Holder() {
         super();
-        this.TORCH = new Item(HAND_TORCH, "It's a burning piece of wood. Stay it from your beard!", 0);
         this.inv = new HolderInventory(TORCH);
         
         this.description = "Sitting in a steel holder is a burning wall torch\n"
@@ -34,18 +34,18 @@ public class Torch extends SearchableFurniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (this.containsItem(HAND_TORCH) && ! Player.hasItem(HAND_TORCH)) {
-            this.inv.give(TORCH, Player.getInv());
-            return this.actDialog;
+        if (this.containsItem(HAND_TORCH)) {
+            if (this.inv.give(TORCH, Player.getInv()))
+                return this.actDialog;
+            else
+                return null;
         }
-        else if (! this.containsItem(HAND_TORCH))
-            return "The holder is empty you bumbling oaf.";
         else
-            return "You are already carrying a torch.";
+            return "The holder is empty you bumbling oaf.";
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String useEvent(Item item) {
-        if (this.containsItem(HAND_TORCH))
+        if (this.inv.contains(TORCH))
             return "The holder already bears a torch you bumbling oaf.";
         else {
             Player.getInv().give(item, this.inv);
@@ -77,8 +77,10 @@ public class Torch extends SearchableFurniture {
                 this.CONTENTS.add(item);
                 return true;
             }
-            GUI.out("The " + item + " doesn't fit in.");
-            return false;
+            else {
+                GUI.out("The " + item + " doesn't fit in.");
+                return false;
+            }
         }
     }
 /*----------------------------------------------------------------------------*/

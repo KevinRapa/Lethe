@@ -24,7 +24,7 @@ public class Item implements Serializable, Comparable<Item> {
     protected String description;   // Displayed when item is inspected.
     protected String useDialog;     // Displayed when items with Id 1 are used.
     protected int useID;            // 1: used on itself | 2: enters sub-prompt
-    protected final int SCORE;      // However many points this is worth.
+    protected int score;            // However many points this is worth.
     protected static final String USE_DEFAULT = "You will need to be more specific.";
 //******************************************************************************
 // <editor-fold desc="CONSTRUCTORS">
@@ -35,7 +35,7 @@ public class Item implements Serializable, Comparable<Item> {
         NAME = name;
         FORMS = null;   
         useID = 2;
-        this.SCORE = score;
+        this.score = score;
         THRESHOLD = 0; // Does not combine
         useDialog = USE_DEFAULT;
     }   
@@ -54,7 +54,7 @@ public class Item implements Serializable, Comparable<Item> {
     public Item(String name, Item forms, int thresh, int score) {
         useDialog = USE_DEFAULT;
         useID = 2;
-        this.SCORE = score;
+        this.score = score;
         NAME = name; 
         FORMS = forms;  
         THRESHOLD = thresh;
@@ -104,7 +104,7 @@ public class Item implements Serializable, Comparable<Item> {
     }
 /*----------------------------------------------------------------------------*/
     public int getScore() {
-        return this.SCORE;
+        return this.score;
     }
 /*----------------------------------------------------------------------------*/
     /**

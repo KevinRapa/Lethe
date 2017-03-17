@@ -19,12 +19,8 @@ package A_Main;
  * </p>
  * 
  * IDEAS:
- * Add an NPC that just implies player can commit suicide. "The wealthy live comfortably in hell."
- * Have encounter in attic put items in the prison cabinet instead, phylacteries in LQUA
  *
- * Have suicide now put player in Hades. Reference Zork. Have player judged by the
- * amount of loot and determine a score based on that. Hades is a room in the top
- * floor.
+ * Have player judged by the amount of loot and determine a score based on that.
  *
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
@@ -39,11 +35,12 @@ import static A_Main.NameConstants.W_DIR;
 
 public class Main {
     private static final String 
-            START_LOCATION = Id.COU4, // Default COU4
+            START_LOCATION = Id.CRY2, // Default COU4
             FILE_NAME = "Game.data";
     
-    public static final JFrame GAME_FRAME = new JFrame("Lethe"),
-                               TITLE_FRAME = new JFrame("Lethe");
+    public static final JFrame 
+            GAME_FRAME = new JFrame("Lethe"),
+            TITLE_FRAME = new JFrame("Lethe");
     
     private static final JLabel TITLE_LABEL = new JLabel();
     

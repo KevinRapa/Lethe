@@ -36,21 +36,21 @@ public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
            return "You aren't a gardener!";
         }
         else {
-            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
-                if (PLQ_REF.isMoved()) {
-                    if (this.inv.contains(PLT_REF)) {
-                        this.inv.give(PLT_REF, Player.getInv());
-                        AudioPlayer.playEffect(34);
-                        return "You dig under where the plaque was to find a shiny plate!";
-                    }
+            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) 
+                if (PLQ_REF.isMoved())
+                    if (inv.contains(PLT_REF))
+                        if(inv.give(PLT_REF, Player.getInv())) {
+                            AudioPlayer.playEffect(34);
+                            return "You dig under where the plaque was to find a shiny plate!";
+                        }
+                        else
+                            return "You find a shiny plate under the dirt, but you are carrying too much stuff!";
                     else 
                         return "You have already dug under the plaque";
-                }
                 else {
                     AudioPlayer.playEffect(34);
                     return this.actDialog;
                 }
-            }
             else 
                 return "You have nothing to dig with, and your stocky hands are terrible for digging.";
         }
@@ -63,7 +63,7 @@ public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
     @Override public String getSearchDialog() {
         this.searchable = this.PLQ_REF.isMoved();
     
-        return this.interact("dig");
+        return searchable ? "You look in the planter" : this.searchDialog;
     }
     // ========================================================================     
 }

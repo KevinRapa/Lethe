@@ -28,12 +28,14 @@ public class Jha_Lion extends Furniture implements Moveable {
                    + "rubies sit in both its eye sockets. Strange that\n"
                    + "someone decided to display them way back here where\n"
                    + "no one can see them.";
+        this.actDialog = "These statues are absolutely too big and heavy to take.";
         this.searchDialog = "There don't seem to be any secret compartments\n"
                           + "on this statue. Although, one of the rubies sitting\n"
                           + "in its eye sockets has gone missing.";
         this.useDialog = "You place the ruby into the lion's eye socket. The ruby\n"
                        + "glints and stays in place.";
 
+        this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:jade )?(?:lion )?statue", "(?:jade )?lion", "(?:lion'?s? )?eye");
         this.addUseKeys(RUBY, AQUAMARINE);
     }

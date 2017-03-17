@@ -13,7 +13,7 @@ public class Liquid extends Item {
     }
     // ========================================================================
     public Liquid(String name, String desc, String use, int score) {
-        super(name, desc, score);
+        super(name, desc, use, score);
         this.type = NameConstants.LIQUID;
     }
     // ========================================================================

@@ -20,29 +20,33 @@ import Tunnels.DungeonMonster;
  */
 public class Att1 extends Room {
     private boolean captured;
-    private final Inventory REF_LICH_CHEST_INV;
+    private final Inventory PRIS_CBNT_INV_REF;
 // ============================================================================    
-    public Att1(String name, String ID, Inventory lichChstInv) {
+    public Att1(String name, String ID, Inventory prisCbntInv) {
         super(name, ID);
         this.captured = false;
-        this.REF_LICH_CHEST_INV = lichChstInv;
-        this.description= "You stand on the north side of the Attic. Scattered\n" +
-                          "around are piles of various boxes and suitcases collecting\n" +
-                          "cobwebs. The room extends back southwards. A bit\n" +
-                          "of moonlight shines in through a vent in the ceiling. To your\n" +
-                          "east is a door.";
+        this.PRIS_CBNT_INV_REF = prisCbntInv;
+        this.description= 
+                "You stand on the north side of the Attic. Scattered\n" +
+                "around are piles of various boxes and suitcases collecting\n" +
+                "cobwebs. The room extends back southwards. A bit\n" +
+                "of moonlight shines in through a vent in the ceiling. To your\n" +
+                "east is a door.";
     }
 // ============================================================================
     @Override public String triggeredEvent() {
         if (Player.hasItem(PHASE_DOOR_POTION) && ! this.captured) {
+            Inventory inv = Player.getInv();
+            
             this.captured = true;
             this.dialog();
             
-            for (Item i : Player.getInv()) 
+            for (Item i : inv) 
                 if (! i.toString().equals(PHASE_DOOR_POTION))
-                    this.REF_LICH_CHEST_INV.add(i);
+                    this.PRIS_CBNT_INV_REF.add(i);
             
-            Player.getInv().clear();
+            inv.clear();
+            Player.updateScore(0);
             Player.setShoes("");
             
             Player.setOccupies(Id.INTR);

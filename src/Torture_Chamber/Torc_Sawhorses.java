@@ -107,10 +107,13 @@ public class Torc_Sawhorses extends Furniture implements Resetable, Moveable {
             this.addActKeys(GETPATTERN);
         }
         // ==================================================================== 
-        @Override public String interact(String key) {              
-            Player.getPos().removeFurniture(this);
-            Torc_Sawhorses.this.getInv().give(METAL_LADDER, Player.getInv());
-            return this.actDialog;
+        @Override public String interact(String key) {  
+            if (Torc_Sawhorses.this.getInv().give(METAL_LADDER, Player.getInv())) {
+                Player.getPos().removeFurniture(this);
+                return this.actDialog;
+            }
+            else
+                return null;
         } 
     }
     // ========================================================================     

@@ -19,22 +19,26 @@ import Tunnels.Dungeon_Floor;
  * @author Kevin Rapa
  */
 public class Esc extends Room {
-    private final Furniture MACHINERY_REF = new Esc_Mchnry(),
-                            FLOOR_REF = new Esc_F(),
-                            ESC_WALL = new Wall("The walls are masked by a wall of machinery."),
-                            ESC_CLNG = new Ceiling() {{this.description = "The ceiling is pretty low here.";}};
-    private final String MACHINERY_DESC = "You're crammed in a small utility tunnel.\n" +
-            "Many pistons, gears, and other complicated machinery operate around you.\n"
-          + "The hallway offers a bit of space in which to move forward. ",
-                         REFUSE_TO_MOVE = "It's too dark to see anything, and there is\n"
-          + "a lot of dangerous sounding machinery. You don't feel comfortable moving forward.",
-                         TOO_DARK = "It's too dark to see anything at all. All you here is\n"
-          + "a bunch of dangerous sounding machinery.";
+    private static final Furniture 
+        MACHINERY_REF = new Esc_Mchnry(),
+        FLOOR_REF = new Esc_F(),
+        ESC_WALL = new Wall("The walls are masked by a wall of machinery."),
+        ESC_CLNG = new Ceiling() {{this.description = "The ceiling is pretty low here.";}},
+        MONSTER = new DungeonMonsterFurniture();
+    
+    private static final String 
+        MACHINERY_DESC = "You're crammed in a small utility tunnel. Many "
+        + "pistons, gears, and other complicated machinery operate around "
+        + "you. The hallway offers a bit of space in which to move forward. ",
+        REFUSE_TO_MOVE = "It's too dark to see anything, and there is a lot "
+        + "of dangerous sounding machinery. You don't feel comfortable moving forward.",
+        TOO_DARK = "It's too dark to see anything at all. "
+        + "All you here is a bunch of dangerous sounding machinery.";
 // ============================================================================    
     public Esc(String name, String ID, String desc) {
         super(name, ID);
         this.description = desc;
-        this.addFurniture(MACHINERY_REF, FLOOR_REF, ESC_WALL, ESC_CLNG, new DungeonMonsterFurniture());
+        this.addFurniture(MACHINERY_REF, FLOOR_REF, ESC_WALL, ESC_CLNG, MONSTER);
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {
@@ -46,29 +50,28 @@ public class Esc extends Room {
 // ============================================================================
     @Override public String getDescription() {
         if (playerHasTorch())
-            return this.MACHINERY_DESC + this.description;
+            return MACHINERY_DESC + this.description;
         else
             return TOO_DARK;
     }
 // ============================================================================
     @Override public String triggeredEvent() {
         if (! playerHasTorch() && ! Player.getPosId().equals(Id.ESC1)) {
-            GUI.out(this.REFUSE_TO_MOVE);
+            GUI.out(REFUSE_TO_MOVE);
             Player.setOccupies(Id.ESC1);
         }
         return "You are " + Player.getPos() + ".";
     }
 // ============================================================================
-    private boolean playerHasTorch() {
+    private static boolean playerHasTorch() {
         return Player.hasItem(HAND_TORCH);
     }
 // ============================================================================
 // ****************************************************************************
 // ============================================================================    
-    public class Esc_Mchnry extends Furniture {
+    public static class Esc_Mchnry extends Furniture {
         public Esc_Mchnry () {
             super();
-            this.searchable = false;
 
             this.description = "All sorts of dangerous exposed machinery operate\n"
                              + "around you. You better be careful moving. This\n"
@@ -80,27 +83,28 @@ public class Esc extends Room {
             this.addActKeys("touch", "operate");
         }
         @Override public String getDescription() {
-            if (Esc.this.playerHasTorch())
+            if (playerHasTorch())
                 return this.description;
             else
-                return Esc.this.TOO_DARK;
+                return TOO_DARK;
         }
     }
 // ============================================================================
 // ****************************************************************************    
 // ============================================================================    
-    private class Esc_F extends Dungeon_Floor {
+    private static class Esc_F extends Dungeon_Floor {
         public Esc_F() {
             super();
             this.searchable = false;
-            this.searchDialog = "There's nothing here, and you don't feel comfortable\n"
-                              + "putting anything down where it will drop into oblivion.";
+            this.searchDialog = 
+                    "There's nothing here, and you don't feel comfortable\n"
+                  + "putting anything down where it will drop into oblivion.";
         }
         @Override public String getDescription() {
-            if (Esc.this.playerHasTorch())
+            if (playerHasTorch())
                 return this.description;
             else
-                return Esc.this.TOO_DARK;
+                return TOO_DARK;
         }
     }
 // ============================================================================

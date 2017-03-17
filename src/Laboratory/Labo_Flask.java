@@ -93,35 +93,41 @@ public class Labo_Flask extends SearchableFurniture {
                 Player.getInv().contents().add(TUBE_REF);
                 return true;
             }
-            GUI.out("That's not an ingredient.");
+            GUI.out("That's not an ingredient!");
             return false;
         }
         // ==========================================
-        @Override public void give(Item item, Inventory giveToThis) {
+        @Override public boolean give(Item item, Inventory giveToThis) {
             if (item.toString().equals("gray residue")) {
                 this.remove(item);
-                giveToThis.add(item); // Resiude unneeded. No need to force in.
+                giveToThis.add(item); // Residue unneeded. No need to force in.
                 GUI.out("You take the residue out.");
+                return true;
             }
             else if (this.size() == 1) {
-                if (Player.hasItem(TEST_TUBE)) {
+                if (giveToThis.contains(TUBE_REF)) {
                     this.remove(item);
-                    giveToThis.contents().add(item); // Forces it in to avoid losing items forever.
                     giveToThis.remove(TUBE_REF);
+                    giveToThis.contents().add(item);
                     GUI.out("You pour it back out.");
+                    return true;
                 }
-                else if (Player.hasItem(EMPTY_VIAL)) {
+                else if (giveToThis.contains(VIAL_REF)) {
                     this.remove(item);
-                    giveToThis.contents().add(item); // Forces it in to avoid losing items forever.
                     giveToThis.remove(VIAL_REF);
+                    giveToThis.contents().add(item);
                     GUI.out("You pour it back out.");
+                    return true;
                 }
                 else {
                     GUI.out("You have no vial or test tube to empty it out into.\n");
+                    return false;
                 }
             }
-            else
+            else {
                 GUI.out("The ingredients are in solution. You can't take it back out.");
+                return false;
+            }
         }
         // ==========================================
         public void emptyAndAddResidue() {

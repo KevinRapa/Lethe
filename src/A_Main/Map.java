@@ -25,9 +25,8 @@ import Keeper_Chamber.*;   import Vault.*;              import Tower.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
 import Soul_Chamber.*;     import Hades.*;
 
-import java.awt.Color;      import javax.swing.JPanel;
-import java.util.Random;    import javax.swing.ImageIcon;   
-import javax.swing.JFrame;  import javax.swing.JLabel;  
+import java.awt.Color;     import javax.swing.JPanel;   import javax.swing.ImageIcon;   
+import javax.swing.JFrame; import javax.swing.JLabel;  
 
 /**
  * Creates a 3 dimensional array of rooms representing the game map.
@@ -103,11 +102,11 @@ public class Map {
         //**********************************************************************  
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE PHYLACTERIES">
 
-        Item studBkPhy = new Stud_BookPhylactery(BOOK_PHYL);
-        Item kitcFrtPhy = new Kitc_FrtPhy(GLOWING_FRUIT);
-        Item factumPhy = new Factum(FACTUM);
-        Item vauChlPhy = new Vau_ChalicePhylactery("glowing chalice");
-        Item towScptrPhy = new Tow_ScepterPhylactery(GLOWING_SCEPTER);
+        Item studBkPhy = new Stud_BookPhylactery(BOOK_PHYL, 1500);
+        Item kitcFrtPhy = new Kitc_FrtPhy(GLOWING_FRUIT, 1500);
+        Item factumPhy = new Factum(FACTUM, 1500);
+        Item vauChlPhy = new Vau_ChalicePhylactery("glowing chalice", 1500);
+        Item towScptrPhy = new Tow_ScepterPhylactery(GLOWING_SCEPTER, 1500);
 
         // </editor-fold>
         // ---------------------------------------------------------------------  
@@ -141,15 +140,29 @@ public class Map {
 
         // </editor-fold>
         // --------------------------------------------------------------------- 
-
-
-        // ---------------------------------------------------------------------  
-        // <editor-fold defaultstate="collapsed" desc="AREA 1: CASTLE FRONT">
-
-        Item bckt = new Item(METAL_BUCKET, "It's an empty metal bucket.", 25); // Used with all fireplaces
-        Item vial = new BreakableItem(EMPTY_VIAL, "It's a small glass vial for holding samples", 25);
-        Item ram = new Weapon(BATTERING_RAM, "You've restored the old battering ram back to its former glory.", 35);
-
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE ITEM SETS">
+        // These items all go together and must be high up in initialization
+        // in order to be distributed around the castle.
+        
+        // <editor-fold defaultstate="collapsed" desc="Dampening staff set">
+        // These create the dampening staff needed to obtain the final phylactery.
+        String fragDesc = "The jet black stone is partially smooth and rounded. "
+                + "You estimate it's about one-third a full sphere.";
+        
+        Item lquaStf = new BreakableItem(DAMPENING_STAFF, 
+                  "The smooth oak branch now holds the onyx ball inside its wooden "
+                + "cradle at the end. You sense power coming from it, but it isn't clear.", 250);
+        Item stffHndl = new BreakableItem("dampening staff handle", 
+                  "It's a long and smooth branch of oak with a cradle at the tip, "
+                + "but whatever the cradle was holding is now gone.", lquaStf, 2, 100);
+        Item onyxSphr = new BreakableItem("onyx sphere", 
+                "The fragments have magically fused together into a smooth black ball of onyx.", 
+                lquaStf, 2, 150);
+        Item onyxFrag1 = new Item(ONYX_FRAGMENT, fragDesc, onyxSphr, 3, 50);
+        Item onyxFrag2 = new Item(ONYX_FRAGMENT, fragDesc, onyxSphr, 3, 50);
+        Item onyxFrag3 = new Item(ONYX_FRAGMENT, fragDesc, onyxSphr, 3, 50);
+        // </editor-fold>
+        
         // <editor-fold defaultstate="collapsed" desc="Mandragora set">
         // Instantiated before courtyard because soil can be found in the courtyard.
         Item mndrk = new Item(MANDRAGORA, "The potato-shaped vegetable looks disturbingly life-like.", 60);
@@ -163,6 +176,37 @@ public class Map {
         Item sl = new Item(SOIL, "It's a soft pile of soil", mxtr, 3, -5);
         Item frt = new Item(FERTILIZER, "It's a handful of mysterious gardening wizardry.", mxtr, 3, 10);
         // </editor-fold>
+        
+        // <editor-fold defaultstate="collapsed" desc="Philosopher's stone set">
+        // These items create the philosopher's stone treature.
+        Item philSn = new BreakableItem("philosopher's stone", 
+                "The three pieces have joined into a treasure of nearly unmatched beauty. "
+                + "The silver jeweled base now supports the lapis stone in the center, "
+                + "capped by the sparkling sapphire lotus.", 1000);
+        Item stnBs = new BreakableItem("philosopher's stone base", 
+                "A beautiful square base studded with sapphires. Despite it's "
+                + "majesty, there appears to be something missing, as there's a "
+                + "small metal spoke protruding from the base's center.", philSn, 3, 200);
+        Item stnBdy = new BreakableItem("philosopher's stone body", 
+                "It's a handheld stone pyramid made of lapis lazuli. Each convex "
+                + "side gently curves to a point at the top. The bottom and "
+                + "top each bear a small hole, as if they're missing something.", philSn, 3, 200);
+        Item stnHd = new BreakableItem("philosopher's stone head", 
+                "It's a silver lotus head studded with sapphires. Despite its "
+                + "majesty, there appears to be something missing, as there's a "
+                + "small spoke protruding from its bottom", philSn, 3, 200);
+        
+        // </editor-fold>
+        
+        // </editor-fold>
+        // --------------------------------------------------------------------- 
+        
+        // ---------------------------------------------------------------------  
+        // <editor-fold defaultstate="collapsed" desc="AREA 1: CASTLE FRONT">
+
+        Item bckt = new Item(METAL_BUCKET, "It's an empty metal bucket.", 25); // Used with all fireplaces
+        Item vial = new BreakableItem(EMPTY_VIAL, "It's a small glass vial for holding samples", 25);
+        Item ram = new Weapon(BATTERING_RAM, "You've restored the old battering ram back to its former glory.", 35);
 
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST ANTECHAMBER">
         Furniture foy1Gt = new Foy_Gate(false, Direction.WEST);
@@ -285,11 +329,11 @@ public class Map {
                 + "Plain except for a braided carving across one edge.", 0);
         Item grss = new Item(GRASS, "It's some dark-green grass that you pulled from the ground.", -5);
         Item clvr = new Item("clover", "It's some clover you pulled from the ground.", -5);
-        Item trs = new Item("statue torso", "It's a stone torso, once attached to the courtyard statue.", 40);
-        Item hd = new Item("statue head", "It's a stone head with a chiseled male face. "
+        Item trs = new Item(STATUE_TORSO, "It's a stone torso, once attached to the courtyard statue.", 40);
+        Item hd = new Item(STATUE_HEAD, "It's a stone head with a chiseled male face. "
                 + "It stares at you blankly as you hold it in your palms.", 40);
         Item sprcExtrct = new Liquid(SPRUCE_EXTRACT, "Evergreens are widely known to be resistant to burning.", 35);
-        Item brrs = new Item("bright red berries", "They look firm and juicy", 
+        Item brrs = new Item("bright red berry", "Looks firm and juicy...", 
                 "You realize, the brightest, reddest berries are the most poisonous of all.", 0);
         Item pnCn = new Item("pinecone", "It's scaley but smooth, and is shaped like a pickle. "
                 + "Yes, undoubtedly a spruce pinecone!", "This looks painful to eat...", 0);
@@ -309,7 +353,7 @@ public class Map {
         Furniture cou1F = new Cou1_Floor(sl, grss, clvr, cou1Hl, sl, sl, sl);
 
         Furniture cou2Fntn = new Cou2_Fountain(rck, rck, rck, rck);
-        Furniture cou2Bshs = new Cou2_Bushes(brrs, brrs, brrs, brrs, brrs);
+        Furniture cou2Bshs = new Cou2_Bushes(brrs);
         Furniture cou2F = new Cou_Floor(sl, grss, clvr, sl, sl, sl);
 
         Furniture cou3Stps = new Cou3_Steps(Direction.UP);
@@ -325,7 +369,7 @@ public class Map {
         Furniture cou5Sprc = new Cou5_Spruce(vial, sprcExtrct, pnCn, pnCn, pnCn);
         Furniture cou56F = new Cou_Floor(sl, grss, clvr, trs, sl, hd, sl);
 
-        Furniture cou6Stat = new Cou6_Statue();
+        Furniture cou6Stat = new Cou6_Statue(cou56F.getInv());
         Furniture cou6Ghst = new Cou6_BlackJackGhost();
         
         Furniture cou8Nest = new Cou8_Nest(fthr, strng);
@@ -360,7 +404,7 @@ public class Map {
         Furniture rotuFntn = new Rotu_Fountain();
         Furniture rotuW = new Wall("A clean white marble wall, polished smoothed and run with carved molding.");
         Furniture rotuF = new Floor("It's a dirty white-tiled floor littered with plant matter.", crmcShrd, crmcShrd);
-        Furniture rotuPlnts = new Rotu_Plants(sl);
+        Furniture rotuPlnts = new Rotu_Plants(sl, onyxFrag1);
         Furniture rotuHl = new Rotu_Hole();
         Furniture rotuStat = new Rotu_Statue();
         Furniture rotuScnc = new Rotu_Sconce();
@@ -508,6 +552,7 @@ public class Map {
         Item sht = new Item("sheet", "A plain white bedsheet.", 15);
         //-----------------------------FURNITURE--------------------------------
         Furniture rquaBd = new Rqua_Bed();
+        Furniture rquaWmn = new Rqua_WomanNPC();
         Furniture rquaClths = new Rqua_Clothes();
         Furniture rquaMttrss = new Rqua_Mattress();
         Furniture rquaTbl = new Rqua_Table();
@@ -529,8 +574,8 @@ public class Map {
         Furniture shaF = new Floor("A sandstone tiled floor. Small, loose grains grind against your shoes as you walk.");
         Furniture sha2Dr = new Sha_Door(Direction.WEST);
         Furniture sha1SDr = new Sha_Door(Direction.SOUTH);
-        Furniture sha1Trch = new Torch();
-        Furniture sha2Trch = new Torch();
+        Furniture sha1Trch = new Torch_Holder();
+        Furniture sha2Trch = new Torch_Holder();
         Furniture sha1Dr = new Sha1_Door(ram, brRam, genDoor);
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE SCORCHED ROOM">
@@ -560,7 +605,7 @@ public class Map {
         Furniture studF = new Floor("The floor is a weathered dark hickory that creaks slowly as you walk. How nice!");
         Furniture studPrtrt = new Stud_Portrait(studSafe);
         Furniture studFire = new Stud_Fireplace(true, bckt);
-        Furniture studDsk = new Stud_Desk(pen, pen, ppr, servKey, studNote);
+        Furniture studDsk = new Stud_Desk(pen, ppr, servKey, studNote);
         Furniture studBkCs = new Stud_BookCase(studBkPi);
         Furniture studCch = new Stud_Couch();
         Furniture studCrpt = new Stud_Carpet();
@@ -743,9 +788,9 @@ public class Map {
         Furniture mhaWDr = new Mha_Door(Direction.WEST);
         Furniture mha3KitcDr = new Mha3_Door(Direction.EAST);
         Furniture mhaMDr = new Mha2_Door(din1, Direction.EAST);
-        Furniture mha1Plnt = new Mha_Plant(sl);
-        Furniture mha2Plnt = new Mha_Plant(sl);
-        Furniture mha3Plnt = new Mha_Plant(sl);
+        Furniture mha1Plnt = new Mha_Plant(sl, stnHd);
+        Furniture mha2Plnt = new Mha_Plant(sl, onyxFrag2);
+        Furniture mha3Plnt = new Mha_Plant(sl, stnBs);
         Furniture mhaChr = new Mha_Chair();
         Furniture mhaRStat = new Mha2_RightStatue(angMed);
         Furniture mhaLStat = new Mha2_LeftStatue();
@@ -802,7 +847,7 @@ public class Map {
         Furniture eow1Dr = new Eow1_Door(Direction.WEST);
         Furniture eow1Rck = new Eow1_Rack(eowSwrd1, eowBtlAx, eowSwrd2, eowSwrd3, eowSwrd2, eowAx);
         Furniture eow1Bskt = new Eow1_Basket(eowPlArm, woodSpr, woodSpr, eowPlArm);
-        Furniture eow1Trch = new Torch();
+        Furniture eow1Trch = new Torch_Holder();
 
         Furniture eow2Fntn = new Eow2_Fountain();
         Furniture wtr = new Water(wtrBckt);
@@ -810,7 +855,7 @@ public class Map {
         Furniture eow2Strs = new Eow2_Stairs(Direction.UP);
         Furniture eow2Blcny = new Eow2_Balcony();
         Furniture eow2Cbnt = new Eow2_Cabinet(bckt, shaMp, shvl, vinegar);
-        Furniture eow2Trch = new Torch();
+        Furniture eow2Trch = new Torch_Holder();
 
         Furniture eow4F = new Floor("It's a sandstone tiled floor.");
         Furniture eow4Strs = new Eow2_Stairs(Direction.DOWN);
@@ -916,26 +961,30 @@ public class Map {
                 + "The date says \"1722\". It has likely lost its taste by now", 15);
         Item rk = new Item("rook", "the small figure resembles a brick tower.", 
                 "You have no idea how to play chess.", 30);
-        Item knght = new Item("knight", "the small figure resembles a horse.", 
+        Item knght = new Item("knight", "The small figure resembles a horse.", 
                 "You have no idea how to play chess.", 30);
-        Item bshp = new Item("bishop", "the small figure resembles... something.", 
+        Item bshp = new Item("bishop", "The small figure resembles... something.", 
                 "You have no idea how to play chess.", 30);
-        Item qn = new Item("jeweled queen", "the small queen is carved in ivory and embedded with sapphires.", 
-                "Isn't this the strongest piece?", 225);
-        Item kng = new Item("jeweld king", "the small king is carved in ivory and embedded with garnets.", 
-                "You have no idea how to play that.", 225);
-        Item pwn = new Item("pawn", "the small figure resembles... something.", 
+        Item qn = new Item("jeweled queen", "The small delicate queen is carved in "
+                + "ivory and embedded with sapphires around the base. She holds a "
+                + "small sparkling staff with a small diamond set at its tip.", 
+                "Isn't this the strongest piece?", 250);
+        Item kng = new Item("jeweled king", "The small delicate chess piece is carved in ivory. "
+                + "The tiny figure of a king bears a tiny platinum crown holds a "
+                + "scepter. Its base is studded with cleanly-cut garnets.", 
+                "You have no idea how to play that.", 250);
+        Item pwn = new Item("pawn", "The small figure resembles... something.", 
                 "This is the weakest piece right? Hmph. Better not ask a chess player that.", 15);
         Item rdBl = new Item(RED_BALL, "It's just a plain, heavy red ball. Where's the number on this?", 
                 "This is nonsense. Where are the numbers?", 30);
         Item cBl = new Item(CUE_BALL, "It's a plain white ball. This IS the cue ball, right?", 
                 "You'd rather break a window with this and jump out rather than play this witchcraft.", 30);
         //-----------------------------FURNITURE--------------------------------
-        Furniture drarGhst = new Drar_Ghost(drkFcs, kitcKey, emrld);
+        Furniture drarBr = new Drar_Bar(wine, wine, wine);
+        Furniture drarGhst = new Drar_Ghost(drkFcs, kitcKey, emrld, drarBr.getInv());
         Furniture drarF = new Floor("The room is carpeted in lavender with tenuous gold lines curving intricately along the edges.");
         Furniture drarW = new Wall("This is the first time you've seen wallpaper in here. It's striped vertical in purple and lavender.");
         Furniture drarWndw = new Lib3_Window();
-        Furniture drarBr = new Drar_Bar(drarGhst, wine, wine, wine);
         Furniture drarBllrds = new Drar_Billiards(drarGhst, rdBl, cBl, cBl);
         Furniture drarChss = new Drar_Chess(drarGhst, rk, knght, bshp, qn, kng, bshp, knght, rk, pwn, pwn, pwn, pwn, pwn, pwn, pwn, pwn);
         Furniture drarCch = new Drar_Couch(drarGhst);
@@ -1195,16 +1244,40 @@ public class Map {
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE ATTIC"> 
-        Furniture lqu1Chst = new Lqu1_Chest();
+        Furniture prisCbnt = new Pris_Cabinet();
         //-----------------------------THE ROOM---------------------------------
-        Room att1 = new Att1("in the attic", Id.ATT1, lqu1Chst.getInv());       
+        Room att1 = new Att1("in the attic", Id.ATT1, prisCbnt.getInv());       
         Room att2 = new Att2("in the attic", Id.ATT2);    
+        //-------------------------------ITEMS----------------------------------  
+        Item attcVln = new BreakableItem("expensive violin", 
+                "A perfectly symmetrical violin, stately in appearance and still "
+              + "holding a satin shine. Looking closely, you can see inscribed on "
+              + "it, 'Stradivarius'.", "Surely you could never play...", 500);
+        Item attcDll = new Item("doll", "A rag doll in a dress with one eye hanging out. Very creepy.", 15);
+        Item attcSphn = new BreakableItem("sousaphone", 
+                "You never even thought these things were real!", 
+                "You can't fit it around your waist.", 35);
+        Item attcAntLmp = new BreakableItem("antique lamp", 
+                "A brass table lamp with a green lampshade. Its bulb is missing.", 5);
+        Item attcMrrr = new BreakableItem("mirror", "It's a dusty mirror.", 
+                "You're afraid to look in it.", 50);
+        Item attcGlb = new BreakableItem("globe", 
+                "This thing doesn't at all look like a modern globe. Where's Prussia?", 35);
+        Item attcGChSt = new Clothing("green checkered suit", "Who would wear this?", 
+                "Maybe if it were red-plaid, you'd wear it.", 40);
+        Item attcDrss = new Clothing("dress", "It's a violet dress", 
+                "You aren't too accustomed to wearing dresses.", 15);
+        Item attcOldRgs = new Item("old rags", "Just some assorted pieces of fabric", 0);
+        Item attcTrchCt = new Clothing("black trenchcoat", "It's a long, black wool trenchcoat.", 
+                "There's no time for dress up right now.", 15);
+        Item attcStPt = new Clothing("suit pants", "Some dark gray pinstripe pants", 
+                "You really don't feel like removing your pants right now.", 25);
         //-----------------------------FURNITURE--------------------------------  
         Furniture attW = new Wall("The gray wood plank walls in here angle up forming a roof.");
         Furniture attF = new Floor("The flooring in here is rudimentary. Just gray weathered planks of wood with rot in a few areas.");
         Furniture att2Dr = new Sst_Door(Direction.WEST);
-        Furniture attCss = new Att_Cases();
-        Furniture attBxs = new Att_Boxes();
+        Furniture attCss = new Att_Cases(attcTrchCt, attcGChSt, attcDrss, attcOldRgs, attcStPt);
+        Furniture attBxs = new Att_Boxes(attcSphn, attcMrrr, attcGlb, attcDll, attcVln, attcAntLmp);
         Furniture attVnts = new Att_Vents();
         Furniture attClng = new Att_Ceiling();
         Furniture att2CtCs = new Att2_LabCoatCase();
@@ -1224,7 +1297,7 @@ public class Map {
         Item bhaNt = new Bha_Note("note: plates");
         //-----------------------------FURNITURE--------------------------------  
         Furniture bha1Hrzn = new Bha1_Horizon();
-        Furniture bha1Plnt = new Bha1_Plant(sl);
+        Furniture bha1Plnt = new Bha1_Plant(sl, stnBdy);
         Furniture bha1Tbl = new Bha1_Table(hrmsPlt);
         Furniture bhaW = new Wall("The walls are covered in a brown and red vertically "
                 + "striped wallpaper with wainscoting on the bottom. The wallpaper "
@@ -1274,25 +1347,25 @@ public class Map {
         Furniture sewRvr = new Sew2345_River(sew1Rvr.getInv(), wtrBckt);
         Furniture sewMss = new Sew_Moss();
 
-        Furniture sew0Trch = new Torch();
+        Furniture sew0Trch = new Torch_Holder();
         Furniture sew0Strs = new Sew0_Stairs();
 
         Furniture sew15Gt = new Sew15_Gate();
-        Furniture sew1Trch = new Torch();
+        Furniture sew1Trch = new Torch_Holder();
 
         Furniture sew2Vlvs = new Sew2_Valves(); // RESETABLE
-        Furniture sew2Trch = new Torch();
+        Furniture sew2Trch = new Torch_Holder();
         Furniture sew2BrdgW = new Sew_Bridge(Direction.WEST);
         Furniture sew2Pp = new Sew235_Pipe(2);
 
-        Furniture sew3Trch = new Torch();
+        Furniture sew3Trch = new Torch_Holder();
         Furniture sew3BrdgN = new Sew_Bridge(Direction.NORTH);
         Furniture sew3BrdgE = new Sew_Bridge(Direction.EAST);
         Furniture sew3Pp = new Sew235_Pipe(3);
 
-        Furniture sew4Trch = new Torch();
+        Furniture sew4Trch = new Torch_Holder();
 
-        Furniture sew5Trch = new Torch();
+        Furniture sew5Trch = new Torch_Holder();
         Furniture sew5BrdgE = new Sew_Bridge(Direction.EAST);
         Furniture sew5Pp = new Sew235_Pipe(5);
         Furniture sew5Vlv = new Sew5_Valve(sew2Vlvs, sew4Pp);
@@ -1305,9 +1378,9 @@ public class Map {
         Room cis3 = new Cis3("in a huge cistern", Id.CIS3);
         Room cis4 = new Cis4("in a huge cistern", Id.CIS4); 
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture cis1Trch = new Torch();
-        Furniture cis3Trch = new Torch();
-        Furniture cis4Trch = new Torch();
+        Furniture cis1Trch = new Torch_Holder();
+        Furniture cis3Trch = new Torch_Holder();
+        Furniture cis4Trch = new Torch_Holder();
         Furniture cisF = new Dungeon_Floor();
         Furniture cisWtr = new Cis_Water(wtrBckt);
         Furniture cisClmns = new Cis_Columns();
@@ -1323,7 +1396,7 @@ public class Map {
                 + "comprise the small device. It's slightly larger than your palm.", 35);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture torcF = new Dungeon_Floor();
-        Furniture torcTrchs = new Torch();
+        Furniture torcTrchs = new Torch_Holder();
         Furniture torcSwhrses = new Torc_Sawhorses(torc); // RESETABLE
         Furniture torcRck = new Torc_Rack(thmScrws);
         Furniture torcCgs = new Torc_Cages();
@@ -1413,7 +1486,6 @@ public class Map {
         Furniture prisCndlbrs = new Pris_Candelabra(cndl);
         Furniture prisTbl = new Pris_Table(ou62Key, prisNt);
         Furniture prisGts = new Pris_Gates();
-        Furniture prisCbnt = new Pris_Cabinet();
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE DUNGEON KEEPER CHAMBER">
@@ -1440,7 +1512,7 @@ public class Map {
         Furniture sewpCl = new Sewp_Ceiling();
         Furniture sewpGrt = new Sewp_Grate();
         Furniture sewpWtr = new Sewp_Water(wtrBckt);
-        Furniture sewpTrch = new Torch();
+        Furniture sewpTrch = new Torch_Holder();
         Furniture sewpF = new Dungeon_Floor();
         Furniture sewpTnnl = new Sewp_Tunnel();
 
@@ -1517,15 +1589,19 @@ public class Map {
                 "A small collection of ancient coins. Many archaic markings decorate "
                 + "their surfaces, with holes bored in the centers.", 
                 "Where do you expect to spend these?", 35);
-        Item ring = new Clothing("bronze ring", 
-                "It's a tarnished ring. Some of the tarnish rubs off and stains your hand green.", 
-                "You slip the small ring on your finger.", 50);
-        Item nckLc = new Clothing("beaded neclace", 
+        Item ring = new Clothing("platinum diamond ring", 
+                "You have no words. The beauty stuns you. To think such a precious "
+                + "item was buried down there for so long.", 
+                "You slip the beautiful ring on your finger." ,500);
+        Item nckLc = new Clothing("beaded necklace", 
                 "A lackluster necklace made with wooden beads.", 
                 "You fit the old ceremonial necklace over your head.", 40);
         Item jwl = new BreakableItem(IRIDESCENT_JEWEL, 
                 "The polished glassy pebble feels warm to the touch, "
                 + "and is constantly shifting color among red, black, and green.", 250);
+        Item gldKnf = new Weapon("jewel-encrusted knife", "The weapon's grand majesty "
+                + "stuns you. Its polished blade curves smoothly down to a sparkling "
+                + "platinum handle set with peridot gems. ", 500);
         
         String medString = "It's an archaic stone key. It has a thick disc-shaped "
                 + "head and a long protruding shaft bearing a few fat teeth. ";
@@ -1536,11 +1612,12 @@ public class Map {
         Item med3 = new BreakableItem(KEY_OF_CONTINUITY, 
                 medString + "The number '8' is engraved on its head.", 35);
         
-            Random rand = new Random();
-            int index = rand.nextInt(list.length);
-            list[index].getFurnishings().get(0).getInv().add(jwl);  
-            int y = Math.abs(list[index].getCoords()[1] - 7);
-            String result = (list[index].getCoords()[2] + ", " + y + ", " + -2);
+        // <editor-fold desc="Randomly calculate jewel location" defaultstate="collapsed">
+            int index = (int)Math.abs(System.currentTimeMillis() % list.length); // generate random index into catacomb list
+            list[index].getFurnishings().get(0).getInv().add(jwl);               // add the jewel to that room.
+            int y = Math.abs(list[index].getCoords()[1] - 7);                    // get y-coord of that room.
+            String result = (list[index].getCoords()[2] + ", " + y + ", " + -2); // make the message that appears on the casket note.
+        // </editor-fold>
         Item tmbNt = new Note("torn parchment", "In the center, written in large scribbly handwriting are the numbers: \"" + result + "\".");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture catDrN = new Ct_Door(Direction.NORTH);
@@ -1548,44 +1625,45 @@ public class Map {
         Furniture catDrE = new Ct_Door(Direction.EAST);
         Furniture catDrW = new Ct_Door(Direction.WEST);
 
-        // Tombs
+        // <editor-fold desc="TOMB FURNITURE" defaultstate="collapsed">
         Furniture tmb1Cskt = new Tmb1_Casket(med1);
-        Furniture tm1Vs = new Tmb_Vases(coin, ring, coin, coin);
+        Furniture tm1Vs = new Tmb_Vases(coin);
         Furniture tm1Bwl = new Tmb1_Bowl();
         Furniture tm1Effgy = new Tmb1_Effigy();
         Furniture tmb2Cskt = new Tmb2_Casket(med2);
-        Furniture tm2Vs = new Tmb_Vases(nckLc, coin, coin, ring);
+        Furniture tm2Vs = new Tmb_Vases(nckLc, coin, ring);
         Furniture tm2Orb = new Tmb2_Light();
         Furniture tmb3Cskt = new Tmb3_Casket(med3);
-        Furniture tm3Vs = new Tmb_Vases(coin, coin, coin, nckLc);
+        Furniture tm3Vs = new Tmb_Vases(coin, nckLc);
         Furniture tm3Tpstry = new Tmb3_Tapestry();
         Furniture tm3Cndl = new Tmb3_Cndl();
         Furniture tm1F = new Floor("It's a damp dirt floor.");
         Furniture tm2F = new Floor("It's a damp dirt floor.");
         Furniture tm3F = new Floor("It's a damp dirt floor.");
         Furniture catW = new Wall("The walls are wet and rocky.");
-
-        // Oubliette
+        // </editor-fold>
+        // <editor-fold desc="OUBLIETTE FURNITURE" defaultstate="collapsed">
         Furniture oubStrw = new Ou62_Straw();
         Furniture oubSpk = new Ou62_Spike();
+        Furniture oubSkltn = new Ou62_Skeleton(gldKnf);
         Furniture oub2F = new Dungeon_Floor(closStrw, closStrw, closStrw);
-
-        // Ancient tomb
-        Furniture antNPC = new Ant_Zombie();
-        Furniture antCskt = new Ant_Casket(tmbNt);
+        // </editor-fold>
+        // <editor-fold desc="ANCIENT TOMB FURNITURE" defaultstate="collapsed">
         Furniture antF = new Floor("The floor in here is dusty sandstone.");
+        Furniture antNPC = new Ant_Zombie(antF.getInv(), ((Cry_Drawers)cryDrwrs).DRAWER_NUM);
+        Furniture antCskt = new Ant_Casket(tmbNt);
         Furniture antW = new Wall("They are carved sandstone.");
         Furniture antCskts = new Ant_Caskets();
-        Furniture ant1Trch = new Torch();
-        Furniture ant2Trch = new Torch();
+        Furniture ant1Trch = new Torch_Holder();
+        Furniture ant2Trch = new Torch_Holder();
         Furniture antClng = new Ant_Ceiling();
-
-        // Round chamber
+        // </editor-fold>
+        // <editor-fold desc="MYSTICAL CHAMBER FURNITURE" defaultstate="collapsed">
         Furniture my18F = new Floor("The floor is brick with a round seam circling around the central pedestal.");
         Furniture my18Pdstl = new My18_Pedestal();
         Furniture my18Clng = new My18_Ceiling();
-
-        // Catacomb entrance
+        // </editor-fold>
+        // <editor-fold desc="CATACOMB AND CAVE FURNITURE" defaultstate="collapsed">
         Furniture cs35Dr = new Cs35_Door(Direction.WEST);
         Furniture ct34Dr = new Cs35_Door(Direction.EAST);
         ct34.removeFurniture(ct34.getFurnishings().get(0)); // Removes old door from catacombs.
@@ -1593,6 +1671,7 @@ public class Map {
         Furniture cs35Trchs = new Cs35_Torches();
         Furniture cs35Stat = new Cs35_Statue();
         Furniture cs35Strs = new Cas_Stairs(Direction.UP);
+        // </editor-fold>
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE CAVES"> 
@@ -1686,22 +1765,19 @@ public class Map {
         Item grl = new Item("grail", 
                 "It's treasure. A gold-plated grail studded with rubies. Where is all this from?", 300);
         Item cns = new Item("leather coin bag", 
-                "It's treasure. A handful of golden coins... Not currency you've ever seen though.", 170);
+                "It's treasure. A handful of golden coins... Not currency you've ever seen though.", 200);
         Item crwn = new Clothing("crown", 
                 "It's treasure. It's the crown of a king. Exactly who's crown, you cannot guess.", 
-                "You position the crown on your head. You've never felt so wealthy.", 400);
+                "You position the crown on your head. You've never felt so wealthy.", 300);
         Item brclt = new Clothing("bracelet", "It's treasure. A thick jade bracelet, cold and heavy.", 
                 "You put the bracelet on your wrist.", 250);
-        Item rng = new Clothing("ring", 
-                "It's treasure. It's a small bronze ring set with an opaque, smooth blue stone.", 
-                "You slide the small ring onto your finger.", 200);
-        Item dmnd = new BreakableItem("diamond", 
-                "It's treasure. A small, but undoubtedly valuable cut sparkling diamond.", 500);
+        Item dmnd = new BreakableItem("large diamond", 
+                "It's treasure. A largely cut and undoubtedly valuable sparkling diamond.", 500);
         Item jdStat = new BreakableItem("jade statue", 
-                "It's treasure. A small statuette made of jade depicting a sitting female.", 350);
+                "It's treasure. A small statuette made of jade depicting a sitting female.", 250);
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture vau2Chsts = new Vau_Chsts(rng, cns, dmnd, jdStat);
-        Furniture vauF = new Floor("The floors are sandstone blocks and covered in treasure.", brclt, grl, cns, crwn);
+        Furniture vau2Chsts = new Vau_Chsts(cns, dmnd, jdStat);
+        Furniture vauF = new Floor("The floors are sandstone blocks and covered in treasure.", brclt, grl, crwn);
         Furniture vauBwls = new Vau_Bowls();
         Furniture vauClng = new Vau_Ceiling();
         Furniture vaueF = new Floor("The walls here are sandstone blocks, much like those in the west wing, but seemingly older.");
@@ -1725,7 +1801,7 @@ public class Map {
         Furniture bls1Stat = new Bls1_Statue();
         Furniture bls1Dr = new AtriumDoor(Direction.EAST);
         Furniture bls1Strs = new Bls_Staircase(Direction.UP);
-        Furniture bls1_Plnts = new Bls1_Plants(sl);
+        Furniture bls1_Plnts = new Bls1_Plants(sl, onyxFrag3);
         Furniture bls1F = new Floor("The floor is a gray mosaic formed from many tiny pieces of glossy ceramic.");
 
         Furniture bls2Strs = new Bls_Staircase(Direction.DOWN);
@@ -1754,16 +1830,15 @@ public class Map {
         Room lqu1 = new Lqu1("in the lich's quarters", Id.LQU1);
         Room lqu2 = new Lqu2("at the lich's bed", Id.LQU2);
         //-------------------------------ITEMS----------------------------------
-        Item lquaStf = new BreakableItem(DAMPENING_STAFF, 
-                "It resembles the smooth branch of an oak tree with some kind "
-                + "of coil wrapped around it. It feels lifeless of power.", 80);
+        // Items for the dampening staff are at higher up in this method.
         //-----------------------------FURNITURE-------------------------------- 
         Furniture lquF = new Floor("The floor around the carpet is hard and cold stone.");
         Furniture lquW = new Wall("The walls are clean smooth stone and decorated with faux columns.");
 
+        Furniture lqu1Chst = new Lqu1_Chest();
         Furniture lqu1Wrdrb = new Lqu1_Wardrobe();
         Furniture lqu1Mrrr = new Lqu1_Mirror();
-        Furniture lqu1Cbnt = new Lqu1_Cabinet(lquaStf);
+        Furniture lqu1Cbnt = new Lqu1_Cabinet(stffHndl);
         Furniture lqu1_Bd = new Lqu1_Bed();
         Furniture lqu_Crpt = new Lqu_Carpet();
 
@@ -1832,17 +1907,16 @@ public class Map {
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="CREATE CASTLE ARRAY">
         //
-        /** The castle map is a 3D array composed of seven 8 x 10 2D arrays. 
-         * The map behaves as a graph in that each room has an ID. That ID is
-         * mapped to an array of other ID's which represent adjacent rooms.
-         * Though this implementation uses up more space than it needs to due 
-         * to the numerous 'NULL' elements, it provides a good visualization.
+        // The castle map is a 3D array composed of seven 8 x 10 2D arrays. 
+        // The map behaves as a graph in that each room has an ID. That ID is
+        // mapped to an array of other ID's which represent adjacent rooms.
+        // Though this implementation uses up more space than it needs to due 
+        // to the numerous 'NULL' elements, it provides a good visualization.
         //*********************************************************************/
 
         Room ____ = new Room(Id.NULL, Id.NULL); // Represents unreachable space.
 
         Room[][][] newMap = {                        
-
             // <editor-fold defaultstate="collapsed" desc="FLOOR 4 [0]">    
             //  0    1    2    3    4    5    6    7    8    9
             {{____,____,____,____,____,____,____,____,____,____}, //0
@@ -1850,7 +1924,6 @@ public class Map {
              {____,____,____,____,____,tbal,____,____,____,____}, //2
              {____,____,____,____,bls2,tow2,lqu1,lqu2,____,____}, //3
              {____,____,____,____,____,____,____,____,____,____}},//4
-
             // </editor-fold>    
             // <editor-fold defaultstate="collapsed" desc="FLOOR 3 [1]">
             //  0    1    2    3    4    5    6    7    8    9  
@@ -1918,7 +1991,6 @@ public class Map {
              {____,cv61,cv62,cv63,cv64,ms65,ms66,cv67,cv68,____}, //6
              {____,____,____,____,____,____,____,____,____,____}} //7
             // </editor-fold>   
-
         };
 
         //**********************************************************************
@@ -1977,7 +2049,7 @@ public class Map {
         cous.addFurniture(searFssr, searDr, searLddr, searAsh, searSkltn, searF, 
                 searAsh, closW, clng, searWood);
         shar.addFurniture(wWW, rquaF, rquaBd, rquaTbl, rquaMttrss, rquaDrssr, squaWndw, 
-                lookLghths, lookClff, bbaSea, rquaPnl, clng, rquaClths);
+                rquaWmn, lookLghths, lookClff, bbaSea, rquaPnl, clng, rquaClths);
         stud.addFurniture(wWW, studF, studPrtrt, studFire, studDsk, vesChr, studCch, 
                 studBkCs, studCrpt, southDoor, iha1Lvr, clng);
 
@@ -2087,7 +2159,7 @@ public class Map {
         tm16.addFurniture(tmb1Cskt, catW, tm1F, catDrS, tm1Vs, tm1Bwl, tm1Effgy, clng);
         tm66.addFurniture(tmb2Cskt, catW, tm2F, catDrE, tm2Vs, tm2Orb, clng);
         tm32.addFurniture(tmb3Cskt, catW, tm3F, catDrW, tm3Vs, tm3Tpstry, tm3Cndl, clng);
-        ou62.addFurniture(catDrN, oubSpk, oubStrw, oub2F, dngnW, tm1Bwl);
+        ou62.addFurniture(catDrN, oubSpk, oubStrw, oub2F, dngnW, tm1Bwl, oubSkltn);
         an65.addFurniture(catW, antF, antCskt, antNPC, antClng, antCskts, ant2Trch, antW);
         an55.addFurniture(catW, antF, antCskt, catDrN, antClng, antCskts, ant1Trch, antW);
         my18.addFurniture(antW, my18F, my18Pdstl, tm1Bwl, my18Clng);
@@ -2135,13 +2207,11 @@ public class Map {
 
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="LOCK ROOMS">
-        //*********************************************************************/  
-
+        //*********************************************************************/ 
         rotu.lock(); stud.lock(); gal5.lock(); gal1.lock(); par2.lock();
         clos.lock(); din1.lock(); kitc.lock(); ou62.lock(); chs1.lock();
-        work.lock(); tow1.lock(); sewp.lock(); dkch.lock();
-        vau2.lock(); wow2.lock();
-
+        work.lock(); tow1.lock(); sewp.lock(); dkch.lock(); wow2.lock();
+        vau2.lock(); cou4.lock();
         //**********************************************************************
         // </editor-fold> 
         //********************************************************************** 

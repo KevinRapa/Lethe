@@ -29,7 +29,7 @@ public final class Patterns {
         WALK_P = Pattern.compile("go|walk|run"),
         CS35_CT34_P = Pattern.compile("CS35|CT34"),
         SAVE_QUIT_RESET_P = Pattern.compile("[sqr]"),
-        DIGIT_OR_BLANK_P = Pattern.compile("\\d+|"),
+        DIGIT_OR_BLANK_P = Pattern.compile("\\d{1,4}|"), // Protects from numberFormatException
         INVALID_DIR_P = Pattern.compile("(?:north|south)(?:east|west)"),
         DESTROY_P = Pattern.compile("destroy|break|shatter|obliterate|throw"),
             
@@ -47,7 +47,7 @@ public final class Patterns {
         PREPOS_P = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|over|of|through"
                                  + "|against|from|around|to|at|under(?:neath)?"),
         PREPOS_THEN_WORD = Pattern.compile("(?:" + PREPOS_P.toString() + ").+"),
-        ANY_DIGIT_P = Pattern.compile("[0-9]+"),
+        ANY_DIGIT_P = Pattern.compile("\\d{1,4}"), // Protects from numberFormatException
         ARTICLE_P = Pattern.compile("\\bthe |\\.|\\ban? |\\bsome "),
         WORD_SPACE_P = Pattern.compile("\\w+ "),
         SPACE_THEN_ALL_P = Pattern.compile("\\s.+"),

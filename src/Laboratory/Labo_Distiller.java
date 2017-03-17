@@ -35,7 +35,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
                          + "to the condenser on the other side of the table.";
 
         this.addActKeys("use", "distill", "boil");
-        this.addNameKeys("distillery?", "(?:bunsen )?burner", "(?:flask )?rack");
+        this.addNameKeys("distillery?", "(?:bunsen )?burner", "(?:flask )?rack", "distillation tube");
         this.addUseKeys(RUBBER_HOSE, FLORENCE_FLASK, STRIKER, HAND_TORCH, 
                         BEAKER, TEST_TUBE, EMPTY_VIAL, COPPER_POT, COPPER_PAN);
     }

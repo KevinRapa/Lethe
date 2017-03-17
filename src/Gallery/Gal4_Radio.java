@@ -1,6 +1,5 @@
 package Gallery;
 
-import A_Main.AudioPlayer;
 import static A_Main.NameConstants.SCREWDRIVER;
 import static A_Main.NameConstants.WEAPON;
 import A_Main.Player;
@@ -26,7 +25,7 @@ public class Gal4_Radio extends Furniture implements Gettable, Heavy {
         this.SCREW_REF = screw;
         
         this.description = "Its glassed-in surface " +
-                           "protects a many gauges, copper coils, " +
+                           "protects unsremany gauges, copper coils, " +
                            "vacuum tubes, and bulbs of which you know little. " +
                            "Holding the front glass panel in are several metal " +
                            "brackets around the edge as well as four small " +
@@ -70,22 +69,20 @@ public class Gal4_Radio extends Furniture implements Gettable, Heavy {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (item.getType().equals(WEAPON)) {
+        if (item.getType().equals(WEAPON))
             return actDialog;
-        }
-        else if (item.toString().equals(SCREWDRIVER)) {
+        else if (item.toString().equals(SCREWDRIVER))
             if (screwsLeft > 0) {
                 if (Player.getInv().add(SCREW_REF)) {
                     screwsLeft--;
                     return this.useDialog;
                 }
                 else
-                    return "You already have one of the small screws.";
+                    return null;
             }
             else
                 return "You have already unscrewed everything you can. Perhaps "
                      + "you should be more aware of where you leave things.";
-        }
         else
             return "You can't imagine what useful thing you could get done with that.";
     }

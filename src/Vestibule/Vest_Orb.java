@@ -38,7 +38,7 @@ public class Vest_Orb extends NonPlayerCharacter implements Gettable {
         return this.actDialog;
     }
     // ========================================================================     
-    @Override protected <Void> Void converse1() {
+    @Override protected Void converse1() {
         GUI.menOut("Press enter...");
         GUI.out("You open your mouth and utter a \"hello\".");
         GUI.promptOut();
@@ -95,7 +95,7 @@ public class Vest_Orb extends NonPlayerCharacter implements Gettable {
         return null;
     }
     // ========================================================================     
-    @Override protected <Void> Void converse2() {
+    @Override protected Void converse2() {
         GUI.out("Eurynomos is kept alive by 5 phylacteries, however he cannot\n"
               + "remember where they are, for he lives in a state of dementia\n"
               + "now. Find and destroy them. I'm sorry, I do not know what they\n"

@@ -67,6 +67,8 @@ public final class NameConstants {
         STEEL_WIRE = "steel wire",              SCREWDRIVER = "screwdriver",
         PEN = "pen",                            NOTEPAD = "notepad",
         WOOD_LOG = "Wooden holed log",          LOOT_SACK = "loot sack",
+        BRAIN = "jarred brain",                 ONYX_FRAGMENT = "onyx fragment",
+        STATUE_TORSO = "statue torso",          STATUE_HEAD = "statue head",
             
         // Used together in PlayerInventory.get and Player.hasItemResembling    
         NO_LETTER_BEFORE = ".*(?<![a-z])(?i:",  NO_LETTER_AFTER = ")(?![a-z]).*",    

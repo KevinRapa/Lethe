@@ -66,11 +66,12 @@ public class Metal_Ladder extends Item {
                 else
                     return "You climb high up the ladder to the pipe on the ceiling.";
             }
-            else {
+            else if (Player.getInv().add(LADDER_ITEM)) {
                 Player.getPos().removeFurniture(this);
-                Player.getInv().add(LADDER_ITEM);
                 return "You pick up the ladder.";
             }
+            else
+                return null;
         }
         // ====================================================================    
         @Override public String getDescription() {

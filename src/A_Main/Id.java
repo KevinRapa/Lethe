@@ -111,7 +111,7 @@ public final class Id {
 
         BLS1 = "BLS1", TOW1 = "TOW1", SOUL = "SOUL", TBAL = "TBAL",
         BLS2 = "BLS2", TOW2 = "TOW2", LQU1 = "LQU1", LQU2 = "LQU2",
-        ENDG = "ENDG", HADS = "HADS";
+        ENDG = "COUE", HADS = "HADS";
         
         // </editor-fold>
     

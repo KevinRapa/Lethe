@@ -6,6 +6,7 @@ import A_Super.Item;
 import A_Super.Key;
 import A_Main.GUI;
 import A_Main.Id;
+import A_Main.Inventory;
 import static A_Main.NameConstants.GLOWING_EMERALD;
 import A_Main.Player;
 /**
@@ -21,18 +22,22 @@ import A_Main.Player;
 public class Drar_Ghost extends NonPlayerCharacter {
     private final Item DRKFCS_REF, EMRLD_REF;
     private final Key KITCKEY_REF;
+    private final Inventory BAR_INV_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Drar_Ghost(Item drkFcs, Key kitcKey, Item glwEm) {
+    public Drar_Ghost(Item drkFcs, Key kitcKey, Item glwEm, Inventory bar) {
         super();
         this.DRKFCS_REF = drkFcs;
         this.KITCKEY_REF = kitcKey;
         this.EMRLD_REF = glwEm;
+        this.BAR_INV_REF = bar;
         this.searchDialog = "The ghost probably wouldn't appreciate that.";
         this.useDialog = "It's a ghost- translucent and gaseous, sooo...";
         this.actDialog = "The apparition returns to sipping from the ghostly cup.";
         this.description = "The white apparition resembles a male dressed in\n"
                          + "robes wearing the hat of a scolar. His face is\n"
                          + "disfigured and horribly wrinkly.";
+        
+        this.addUseKeys(GLOWING_EMERALD);
         this.addNameKeys("ghost", "(?:white )?(?:apparition|ghost)");
     }
 /*----------------------------------------------------------------------------*/
@@ -54,7 +59,12 @@ public class Drar_Ghost extends NonPlayerCharacter {
         return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
-    @Override protected<Void> Void converse1() {
+    @Override public String useEvent(Item item) {
+        this.converse3();
+        return null;
+    }
+/*----------------------------------------------------------------------------*/
+    @Override protected Void converse1() {
         
         GUI.out("As you open your mouth to speak, the apparition interrupts\n" +
                 "and begins to talk to you....");
@@ -104,9 +114,15 @@ public class Drar_Ghost extends NonPlayerCharacter {
                 "the unlocking mechanism. Please have it....\"");
         GUI.promptOut();
         
-        Player.getInv().add(this.DRKFCS_REF);
-        Player.printInv();
-        GUI.out("The apparition hands you a dark tinted lens...");
+        if (Player.getInv().add(this.DRKFCS_REF)) {
+            Player.printInv();
+            GUI.out("The apparition hands you a dark tinted lens...");
+        }
+        else {
+            this.BAR_INV_REF.add(this.DRKFCS_REF);
+            GUI.out("... \"Huh, you sure like to carry around lots. "
+                    + "I'll leave it here on the bar.\"");
+        }
         GUI.promptOut();
         
         GUI.toMainMenu();
@@ -115,7 +131,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
         return null;
     }
 /*----------------------------------------------------------------------------*/
-    @Override protected<Void> Void converse2() {
+    @Override protected Void converse2() {
         GUI.out("\"Do you have the emerald yet? It's so\n" +
                 "important to me. I will to repay you.\"");
         

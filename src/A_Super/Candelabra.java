@@ -73,12 +73,10 @@ abstract public class Candelabra extends SearchableFurniture
     // ========================================================================     
     @Override public String getIt() {
         if (this.inv.contains(CANDLE_REF))
-            if (Player.getInv().add(CANDLE_REF)) {
-                this.inv.remove(CANDLE_REF);
+            if (this.inv.give(CANDLE_REF, Player.getInv()))
                 return "You take a candle off the candelabra.";
-            }
             else
-                return "You are already carrying a candle.";
+                return null;
         else
             return "The candelabra holds no more candles.";
     }

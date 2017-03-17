@@ -40,40 +40,40 @@ public class GUI extends JFXPanel {
     // <editor-fold defaultstate="collapsed" desc="COMPONENTS AND ATTRIBUTES">
     private static boolean big = true;
     private static int key = Click.NONE.soundEffectId;
-    private final static String MOVES = "Moves: ", SCORE = "      Score: ";
+    private final static String MOVES = "Moves: ", SCORE = "    Score: ";
     
     private static Font myFont;
     
     private final static JTextArea 
-            MEN = new JTextArea(), DESC = new JTextArea(), 
-            INV = new JTextArea(), DIAL = new JTextArea();
+        MEN = new JTextArea(), DESC = new JTextArea(), 
+        INV = new JTextArea(), DIAL = new JTextArea();
 
     private final static JPanel 
-            EAST = new JPanel(new BorderLayout()), 
-            CNORTH = new JPanel(new BorderLayout()),
-            WEST = new JPanel(new BorderLayout()),
-            CENTER = new JPanel(), CCENTER = new JPanel(), 
-            CSOUTH = new JPanel(), SALAMAA = new JPanel(new FlowLayout(FlowLayout.LEFT));          
+        EAST = new JPanel(new BorderLayout()), 
+        CNORTH = new JPanel(new BorderLayout()),
+        WEST = new JPanel(new BorderLayout()),
+        CENTER = new JPanel(), CCENTER = new JPanel(), 
+        CSOUTH = new JPanel(), SALAMAA = new JPanel(new FlowLayout(FlowLayout.LEFT));          
     
     private final static JScrollPane 
-            SCROLLW = new JScrollPane(DIAL, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
-                    JScrollPane.HORIZONTAL_SCROLLBAR_NEVER),
-            SCROLLE = new JScrollPane(INV, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
-                    JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        SCROLLW = new JScrollPane(DIAL, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER),
+        SCROLLE = new JScrollPane(INV, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     
     private final static JLabel 
-            ROOM = new JLabel(), 
-            PROMPT = new JLabel(">"),
-            INVLBL = new JLabel();
+        ROOM = new JLabel(), 
+        PROMPT = new JLabel(">"),
+        INVLBL = new JLabel();
     
     private final static JButton 
-            SIZE = new JButton("Small"),
-            MUTE = new JButton("Mute"),
-            KEYS = new JButton("Click"),
-            COLOR = new JButton("Color");
+        SIZE = new JButton("Small"),
+        MUTE = new JButton("Mute"),
+        KEYS = new JButton("Click"),
+        COLOR = new JButton("Color");
     
     private final static JTextField 
-            INPUT = new JTextField("", 35);
+        INPUT = new JTextField("", 35);
     
     private final static LinkedList<String> UNDO = new LinkedList<>();
     private final static Input_Holder HOLDER = new Input_Holder();

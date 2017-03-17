@@ -2,6 +2,7 @@ package Laboratory;
 
 import static A_Main.NameConstants.*;
 import A_Main.Player;
+import A_Main.PlayerInventory;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Liquid;
@@ -68,7 +69,7 @@ public class Labo_Beaker extends Furniture {
         if (key.equals("drink")) {
             return "You can't do that while it's still on the table!";
         }
-        else {
+        else if (Player.getInv().size() < PlayerInventory.MAX_SIZE) {
             Player.getPos().removeFurniture(this);
             
             switch (mode) {
@@ -81,11 +82,12 @@ public class Labo_Beaker extends Furniture {
                 case PHASE_DOOR:
                     Player.getInv().add(PHASE_POTION);
             }
-            
             this.mode = Potion.EMPTY;
             
             return this.actDialog;
         }
+        else
+            return "You are already carrying too much!";
     }
     // ======================================================================== 
     public void setMode(int mode) {

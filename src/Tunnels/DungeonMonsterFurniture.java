@@ -29,6 +29,13 @@ public class DungeonMonsterFurniture extends Furniture {
         this.addActKeys(".{2,}");
     }
     // ======================================================================== 
+    @Override public String interact(String key) {
+        if (key.equals("listen"))
+            return this.getDescription();
+        else
+            return this.actDialog;
+    }
+    // ======================================================================== 
     @Override public String getDescription() {
         String result;
         

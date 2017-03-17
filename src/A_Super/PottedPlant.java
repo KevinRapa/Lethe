@@ -10,15 +10,18 @@ import A_Main.Player;
  */
 abstract public class PottedPlant extends SearchableFurniture
         implements Gettable, Moveable {
-    private final Item SOIL_REF;
+    protected final Item SOIL_REF, GIFT;
+    protected boolean watered;
     // ========================================================================
-    public PottedPlant (Item soil) {
+    public PottedPlant (Item soil, Item gift) {
         super();
         
+        this.watered = false;
+        this.GIFT = gift; // When watered for the first time, this is given to the player.
         this.SOIL_REF = soil;
         
-        this.actDialog = "You pour a bit of the water on the plant. You are sure\n"
-                       + "it appreciated that.";
+        this.actDialog = "You pour a bit of the water on the plant. "
+                + "The plant trembles some and a bit of life springs back to it. ";
         this.searchDialog = "You fan through the soil.";
         this.useDialog = "Pouring that on the plant is definitely not going to\n"
                        + "be good for it, you monster.";
@@ -35,8 +38,15 @@ abstract public class PottedPlant extends SearchableFurniture
     // ========================================================================   
     @Override public String interact(String key) {              
         if (key.equals("water"))
-            if (Player.hasItem(BUCKET_OF_WATER))
-                return this.actDialog;
+            if (Player.hasItem(BUCKET_OF_WATER)) {
+                if (watered) 
+                    return this.actDialog;
+                else {
+                    this.inv.add(GIFT);
+                    this.watered = true;
+                    return this.actDialog.concat("A small object rises from the soil and now rests on top.");
+                }
+            }
             else 
                 return "You have nothing to water the plant with.";
         else
@@ -45,7 +55,7 @@ abstract public class PottedPlant extends SearchableFurniture
     // ========================================================================     
     @Override public String useEvent(Item item) {
         if (item.toString().equals(BUCKET_OF_WATER))
-            return this.actDialog;
+            return this.interact("water");
         else if (item.getType().equals(LIQUID))
             return this.useDialog;
         else if (item.getType().equals(WEAPON))
