@@ -37,7 +37,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
                          + "robes wearing the hat of a scolar. His face is\n"
                          + "disfigured and horribly wrinkly.";
         
-        this.addUseKeys(GLOWING_EMERALD);
+        this.addUseKeys(ANYTHING);
         this.addNameKeys("ghost", "(?:white )?(?:apparition|ghost)");
     }
 /*----------------------------------------------------------------------------*/
@@ -60,8 +60,12 @@ public class Drar_Ghost extends NonPlayerCharacter {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        this.converse3();
-        return null;
+        if (item.toString().equals(GLOWING_EMERALD) {
+            this.converse3();
+            return null;
+        }
+        else
+            return "\"No no, that's not it. It's green and should be glowing, as souls do.\"";
     }
 /*----------------------------------------------------------------------------*/
     @Override protected Void converse1() {
