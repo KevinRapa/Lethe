@@ -1490,14 +1490,16 @@ public class Map {
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE DUNGEON KEEPER CHAMBER">
         //-----------------------------THE ROOM---------------------------------
-        Room dkch = new Dkch("in the dungeon-keeper's chamber", Id.DKCH);
+        Room dkch = new Dkch("in Kampe's quarters", Id.DKCH);
         //-------------------------------ITEMS---------------------------------- 
         Item dkchNt = new Dkch_Note("short verse");
+        Item wtch = new Item(SHINY_WATCH, "A beautiful etched pocket watch with a delicate " +
+                             "gold chain. It still clicks each second behind the polished crystal face.", 500);
         Item lngChn = new Weapon("chain", "It's a chain, about 10 feet long.", 35);
         Item dkchNt2 = new Note("illegible note", "This note is gibberish. Unreadable.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture dkchF = new Dungeon_Floor();
-        Furniture dkchBd = new Dkch_Bed(lngChn);
+        Furniture dkchBd = new Dkch_Bed(lngChn, wtch);
         Furniture dkchAxl = new Dkch_Axle();
         Furniture dkchDsk = new Dkch_Desk(dkchNt, dkchNt2);
         Furniture dkchClng = new Dkch_Ceiling();
