@@ -1,4 +1,4 @@
-package Keeper_Chamber;
+package Kampe_Quarters;
 
 import A_Super.Room;
 /**

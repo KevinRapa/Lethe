@@ -26,12 +26,13 @@ import java.awt.Dimension;          import java.awt.Toolkit;
 import java.awt.event.KeyEvent;     import java.awt.event.KeyListener; 
 import java.io.*;                   import javax.swing.ImageIcon; 
 import javax.swing.JFrame;          import javax.swing.JLabel;
+
 import static A_Main.NameConstants.SEP;
 import static A_Main.NameConstants.W_DIR;
 
 public class Main {
     private static final String 
-            START_LOCATION = Id.COU4, // Default COU4
+            START_LOCATION = Id.INTR, // Default COU4
             FILE_NAME = "save" + SEP + "Game.data";
     
     public static final JFrame 

@@ -60,7 +60,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        if (item.toString().equals(GLOWING_EMERALD) {
+        if (item.toString().equals(GLOWING_EMERALD)) {
             this.converse3();
             return null;
         }

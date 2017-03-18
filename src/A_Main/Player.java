@@ -655,97 +655,83 @@ public final class Player {
      * Processes a player's action on furniture.
      * Player may use 'it' or 'them' to reference the last entered furniture.
      * @param object the name of the furniture being acted upon.
-     * @param action the action the player is performing on the furniture.
+     * @param verb the action the player is performing on the furniture.
      */
-    public static void evaluateAction(String action, String object) {
+    public static void evaluateAction(String verb, String object) {
         // <editor-fold defaultstate="collapsed" desc="MOVE COMMAND">
-        if (WALK_P.matcher(action).matches() && 
-                DIRECTION_P.matcher(object).matches()) 
-        {
-            // Player typed something resemling "walk <direction>"
-            // The direction in this case is pretending to be furniture.
-            parseMovement(object);
-        }
-        else if (WALK_P.matcher(action).matches() && 
-                INVALID_DIR_P.matcher(object).matches()) 
-        {
-            // Player typed something resemling "walk <northeast>"
-            // The direction in this case is pretending to be furniture.
-            Player.incrementMoves();
-            GUI.out("Your humble life as a tradesman knows not how to move " + object + ".");
+        if (WALK_P.matcher(verb).matches()) {
+            if (DIRECTION_P.matcher(object).matches())
+                parseMovement(object);
+            else if (INVALID_DIR_P.matcher(object).matches())
+                GUI.out("Your humble life as a tradesman knows not how to move " + object + ".");
+            else 
+                GUI.out("You aren't sure which way that it.");
         }
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="COMMAND ON FURNITURE">
         else if (getPos().hasFurniture(object)) {
             // In this case, a valid furniture exists to be interacted with.
-            Furniture target = getFurnRef(object);
+            Furniture furn = getFurnRef(object);
 
-            if (target.actKeyMatches(action)) {
+            if (furn.actKeyMatches(verb)) {
                 // Player typed an action specific to a furniture type.
                 Player.incrementMoves();
-                GUI.out(target.interact(action)); 
+                GUI.out(furn.interact(verb)); 
                 describeRoom();
                 printInv();
             }
-            else if (CHECK_P.matcher(action).matches()) {
+            else if (CHECK_P.matcher(verb).matches()) {
                 // Player typed something resembling "examine <furniture>"
                 Player.incrementMoves();
-                GUI.out(target.getDescription()); 
+                GUI.out(furn.getDescription()); 
             }
-            else if (SEARCH_P.matcher(action).matches() || 
-                        ((action.equals("open") || action.equals("empty")) 
-                        && target instanceof Openable)) 
-            {              
-                // Player typed something implying a search on furniture
-                searchPrompt(target);
-            }
-            else if (MOVE_P.matcher(action).matches() 
-                    && target instanceof Moveable) {
-                // Player typed something resembling "move <furniture>"
-                Player.incrementMoves();
-                GUI.out(((Moveable)target).moveIt());
-            }
-            else if (DESTROY_P.matcher(action).matches()) {
-                // Player typed something resembling "get <furniture>"
-                // Furniture isn't gettable.
-                Player.incrementMoves();
-                GUI.out("Yes, you're frustrated and hungry, but abstain from the wrathful thoughts.");
-            }
-            else if (ODD_CMD_SET.contains(action)) {
-                // Standard output stirngs for wierd input.
-                Player.incrementMoves();
-                GUI.out(ODD_CMD_KEYS.get(action));
+            else if (SEARCH_P.matcher(verb).matches() || ((verb.equals("open") 
+                    || verb.equals("empty")) && furn instanceof Openable)) {       
+                searchPrompt(furn); // Player implied a search
             }
             else {
                 Player.incrementMoves();
-                GUI.out("Doing that to the " + object + " seems unnecessary right now.");
+                
+                if (MOVE_P.matcher(verb).matches() && furn instanceof Moveable) { 
+                    // Player typed something resembling "move <furniture>"
+                    GUI.out(((Moveable)furn).moveIt());
+                }
+                else if (DESTROY_P.matcher(verb).matches()) {
+                    // Player typed something like "get <furniture>" but isn't gettable.
+                    GUI.out("Yes, you're frustrated and hungry, but abstain from the wrathful thoughts.");
+                }
+                else if (ODD_CMD_SET.contains(verb))
+                    // Standard output stirngs for wierd input.
+                    GUI.out(ODD_CMD_KEYS.get(verb));
+                else 
+                    GUI.out("Doing that to the " + object + " seems unnecessary right now.");
             }
         }   
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="REFLEXIVE COMMANDS">
         else if (object.equals("self") || object.equals("yourself")) {
-            if (CHECK_P.matcher(action).matches()) {
+            if (CHECK_P.matcher(verb).matches()) {
                 Player.incrementMoves();
                 GUI.out("Yes, all your parts are still there, thank goodness."); 
             }
-            else if (SEARCH_P.matcher(action).matches()) {              
+            else if (SEARCH_P.matcher(verb).matches()) {              
                 GUI.out("Ummm... is this what you meant??");
                 inventoryPrompt();
             }
-            else if (MOVE_P.matcher(action).matches()) {
+            else if (MOVE_P.matcher(verb).matches()) {
                 Direction[] dirList = 
                 {Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.NORTH};
                 Direction dir = dirList[Math.abs((int)System.currentTimeMillis()) % 4];
                 move(dir);
                 GUI.out("Alrighty, how does " + dir + " sound?");
             }
-            else if (TAKE_P.matcher(action).matches()) {
+            else if (TAKE_P.matcher(verb).matches()) {
                 Player.incrementMoves();
                 GUI.out("Indeed, how romantic!");
             }
-            else if (DESTROY_P.matcher(action).matches()) {
+            else if (DESTROY_P.matcher(verb).matches()) {
                 Player.commitSuicide();
             }
             else
@@ -753,22 +739,30 @@ public final class Player {
         }
         // </editor-fold>
         
-        else if ((SEARCH_P.matcher(action).matches() || action.equals("open") 
-                || action.equals("empty"))
-                     && (object.equals("sack") || object.equals("loot sack"))) 
-        {
-            // Player typed something like "<open> sack|loot sack"
-            Player.openLootSack();
+        else if (SEARCH_P.matcher(verb).matches() || verb.matches("open|empty")) {
+            // Player wants to open an item
+            if (object.equals("sack") || object.equals(LOOT_SACK))
+                Player.openLootSack(); 
+            else if (object.equals(SHOE_BOX))
+                getInv().get(SHOE_BOX).useEvent(); 
+            else if (Player.hasItemResembling(object))
+                GUI.out("You don't possess the education level to open the " + object + ".");
+            else
+                GUI.out("You aren't quite sure what to do about that.");
+        }
+        else if (verb.equals("speak") || verb.equals("say")) {
+            // Player typed something like "<speak> <words>".
+            GUI.out("You speak the words, but they only echo and fade.");
         }
         else if (GEN_FURNITURE_P.matcher(object).matches()) {
             // Player used a very vague term to interact with.
             GUI.out("Don't be lazy now. Enter in something specific.");
         }
-        else { // Something invalid was entered in!
-            GUI.out("There is no " + object + 
-                    " here that you can see. Or are we perhaps being lazy and "
-                  + "attempting to pick up items that aren't mentioned in the room description?"); 
-        }
+        else  
+            // Something invalid was entered in!
+            GUI.out("There is no " + object + " here that you can see. Or are "
+                  + "we perhaps being lazy and attempting to pick up items that "
+                  + "aren't mentioned in the room description?"); 
     }
     // ========================================================================  
     /**
@@ -788,12 +782,11 @@ public final class Player {
         else if (WEST_P.matcher(dir).find())
             Player.move(Direction.WEST);
         
-        else if (UP_P.matcher(dir).find()) {
+        else if (UP_P.matcher(dir).find()) 
             findStaircase(Direction.UP);
-        }
-        else {
+        
+        else 
             findStaircase(Direction.DOWN);
-        }
     }
     // ========================================================================  
     /**

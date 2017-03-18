@@ -18,8 +18,8 @@ public class Pris extends Room {
     private final Furniture[] CELLS = {
         new Pris_Cll("1", "one", "You see a pair of wall shackles and a metal\n"
                    + "bucket on the floor."),
-        new Pris_Cll("2", "two", "This cell has a skeleton in\n"
-                   + "it. It sits in the corner with its two hands bound in the wall shackles."),
+        new Pris_Cll("2", "two", "Sitting in this cell is a spooky blue ghost; "
+                + "a scruffy bald male with a long beard and primitive clothing."),
         new Pris_Cll("3", "three", "This cell has the remains of a skeleton in it. It\n"
                    + "lacks anything below the pelvis, and one of its arms is\n"
                    + "shackled."),
@@ -46,7 +46,7 @@ public class Pris extends Room {
         this.description= 
                 "You are in a room with 6 prison cells lining the west and north.\n" +
                 "Metal doors lead both west and east. A large wooden table sits\n" +
-                "In the center of the room. Severalscattered standing candelabras "
+                "In the center of the room. Several scattered standing candelabras "
               + "give a low level of light, just enough to see an sitting figure "
               + "in cell 2. Against the north wall is a simple wooden cabinet.";
         this.addFurniture(CELLS);

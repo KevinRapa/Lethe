@@ -1,6 +1,9 @@
 package Prison;
 
+import A_Main.GUI;
 import static A_Main.NameConstants.SHINY_WATCH;
+import A_Main.Player;
+import A_Super.Item;
 import A_Super.NonPlayerCharacter;
 /**
  * @author Kevin Rapa
@@ -13,23 +16,26 @@ public class Pris_Ghost extends NonPlayerCharacter {
 
         this.pleased = false;    
         
-        this.description = "";
+        this.description = "The apparition resembles a middle-aged bald male with a long beard. "
+                         + "his eyes are blank, and he sits passively in the corner. He looks "
+                         + "at you funny. \"Do you have a habit of staring?\" He asks.";
         this.actDialog = "\"Now that I have my watch, I do not have any more reason " +
                          "to stay. I suppose I will find peace somewhere else in " +
                          "a little while.\"";
         this.searchDialog = "The ghost looks to not have anything interesting.";
 
-        this.addUseKeys(ANYTHING);
-        this.addNameKeys("(?:sitting )?(?:ghost|figure|person)");
+        this.addNameKeys("(?:spooky )?(?:sitting )?(?:blue )?(?:ghost|figure|person|apparition)");
     }
     // ========================================================================  
     @Override public String useEvent(Item item) {
-        if (! pleased) {        
-            if (item.toString().equals(SHINY_WATCH) {
-                Player.getInv().remove(item);
-                this.converse3();
-                return null;
-            }
+        if (item.toString().equals(SHINY_WATCH)) {
+            Player.getInv().remove(item);
+            this.converse2();
+            return null;
+        }
+        else if (! pleased) { 
+            if (firstTime)
+                return "\"What is this? This isn't mine... I mean, I appreciate the gesture, but I'm looking for something else.\"";
             else
                 return "\"I'm pretty sure that isn't it. Don't worry, I have all the time in the world.\"";
         }
@@ -37,15 +43,26 @@ public class Pris_Ghost extends NonPlayerCharacter {
             return "\"I appreciate the continued gifts, but I'm fine. Thank you.\"";
     }    
     // ========================================================================
-    @Override public String interact(String key) {       
-        if (! pleased) {
-            if (this.firstTime)
-                this.converse1();
-            else
-                this.converse2();
+    @Override public String interact(String key) {   
+        if (key.matches(ATTACK_PATTERN))
+            return ATTACK_DIALOG;
+        else if (this.firstTime) {
+            this.converse1();
+            return null;
         }
-        else
-            GUI.out(actDialog);
+        else {
+            if (! pleased)
+                return "\"Did you find something that might be it? "
+                        + "Hand it over and let me see...\"";
+            else 
+                return 
+                "\"I do understand that the Treasure is hidden in the caves " +
+                "beneath this castle. I have watched Eury travel through " +
+                "here many times, into the crypt, frustrated. The Treasure " +
+                "does not want to be here, and desires only to be close to " +
+                "where it was created. You should find the treasure where " +
+                "the stench of hell is the strongest.\"";
+        }    
     }
     // ========================================================================     
     @Override protected Void converse1() {
@@ -89,13 +106,13 @@ public class Pris_Ghost extends NonPlayerCharacter {
                 "know the word's meaning any longer. All I know of myself " + 
                 "is my name, Hypnos.\"");
         GUI.promptOut();
+        
+        return null;
     }
     // ========================================================================     
     @Override protected Void converse2() {
-        GUI.out("\"Did you find something that might be it? Hand it over and let me see...\"");
-    }
-    // ========================================================================     
-    private void converse3() {
+        this.pleased = true;
+        
         GUI.menOut("Press enter...");
         GUI.out("\"Ah yes! I do believe this is it, a valuable watch handed " +
                 "down to me from my mother. I would never leave this place " +
@@ -118,9 +135,10 @@ public class Pris_Ghost extends NonPlayerCharacter {
                 "into Kampe's quarters. Ghosts do not work that way! Now " +
                 "thank you, my friend.\"");
         GUI.promptOut();
-        this.pleased = true;
+        
+        return null;
     }
-    // ========================================================================             
+    // ========================================================================                 
 }
 
 

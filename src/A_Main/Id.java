@@ -61,7 +61,7 @@ public final class Id {
         CRY1 = "CRY1",  CRY2 = "CRY2",  INTR = "INTR",  ESC1 = "ESC1",
         ESC2 = "ESC2",  ESC3 = "ESC3",  ESC4 = "ESC4",  ESC5 = "ESC5",
         ESC6 = "ESC6",  CAS1 = "CAS1",  OUB1 = "OUB1",  PRIS = "PRIS",
-        SEWP = "SEWP",  DKCH = "DKCH",    
+        SEWP = "SEWP",  DKCH = "DKCH",  CIS5 = "CIS5",   
             
             // </editor-fold>
             // <editor-fold defaultstate="collapsed" desc="Catacombs">

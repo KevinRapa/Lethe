@@ -69,7 +69,8 @@ public final class NameConstants {
         WOOD_LOG = "Wooden holed log",          LOOT_SACK = "loot sack",
         BRAIN = "jarred brain",                 ONYX_FRAGMENT = "onyx fragment",
         STATUE_TORSO = "statue torso",          STATUE_HEAD = "statue head",
-        SHINY_WATCH = "shiny pocket watch",
+        SHINY_WATCH = "shiny pocket watch",     WOODEN_OAR = "wooden oar",
+        SHOE_BOX = "shoebox",
             
         // Used together in PlayerInventory.get and Player.hasItemResembling    
         NO_LETTER_BEFORE = ".*(?<![a-z])(?i:",  NO_LETTER_AFTER = ")(?![a-z]).*",    

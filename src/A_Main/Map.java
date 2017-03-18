@@ -1,6 +1,5 @@
 package A_Main;
 
-import Hades.Hades;
 import A_Super.*;          import static A_Main.NameConstants.*;
 
 import Vestibule.*;        import Closet.*;             import Foyer.*;
@@ -21,7 +20,7 @@ import Catacomb_Entrance.*;import Mystical_Chamber.*;   import Attic.*;
 import Laboratory.*;       import Cistern.*;            import Cell.*;
 import Escape_Tunnel.*;    import Strange_Pool.*;       import Prison.*;
 import Torture_Chamber.*;  import Crypt.*;              import Ancient_Archives.*;
-import Keeper_Chamber.*;   import Vault.*;              import Tower.*;
+import Vault.*;            import Tower.*;              import Kampe_Quarters.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
 import Soul_Chamber.*;     import Hades.*;
 
@@ -126,7 +125,7 @@ public class Map {
         Key drwKey = new Key("drawing room key", Id.DRAR);
         Key chs1Key = new Key("key with a cross on its bow", Id.CHS1);
         Key ou62Key = new Key("oubliette key", Id.OU62);
-        Key archKey = new Key("dungeon-keeper key", Id.DKCH);
+        Key archKey = new Key("Kampe's key", Id.DKCH);
         Key bal1Key = new Key("key with a chalice on its bow", Id.TOW1); 
         Key rotuKey = new Key("key with a cobra head on its bow", Id.ROTU);   
 
@@ -1327,6 +1326,9 @@ public class Map {
         Furniture sewDrW = new Sew_Door(Direction.WEST);   
         Furniture dngnW = new Wall("The walls are rough gray stone brick, covered in moss and wet to the touch from the humid air.");
         Furniture dungMonst = new DungeonMonsterFurniture();
+        
+        Item oar = new Item(WOODEN_OAR, "The two halves have been taped together.", "You will need to be in a boat to use this.", 10);
+        
 
         // Dungeon
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE TUNNELS">
@@ -1377,10 +1379,16 @@ public class Map {
         Room cis2 = new Cis2("in a huge cistern", Id.CIS2);
         Room cis3 = new Cis3("in a huge cistern", Id.CIS3);
         Room cis4 = new Cis4("in a huge cistern", Id.CIS4); 
+        Room cis5 = new Cis5("on a secret platform", Id.CIS5);
+        //-------------------------------ITEMS----------------------------------  
+        Item oarTl = new Item("broken wood handle", "It appears to be one half of an oar that was split in two.", oar, 3, 5);
         //-----------------------------FURNITURE-------------------------------- 
+        Furniture cis2Bt = new Cis2_Boat(oarTl);
         Furniture cis1Trch = new Torch_Holder();
         Furniture cis3Trch = new Torch_Holder();
         Furniture cis4Trch = new Torch_Holder();
+        Furniture cis5F = new Floor("The floor here is the same as the rest of the cistern.");
+        Furniture cis5Fgr = new Cis5_FigureNPC();
         Furniture cisF = new Dungeon_Floor();
         Furniture cisWtr = new Cis_Water(wtrBckt);
         Furniture cisClmns = new Cis_Columns();
@@ -1479,29 +1487,33 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room pris = new Pris("in some kind of prison", Id.PRIS);
         //-------------------------------ITEMS----------------------------------   
-        Item prisNt = new Pris_Note("barely legible note");
+        Item oarHd = new Item("broken wood paddle", "It appears to be one half of an oar that was split in two.", oar, 3, 5);
         //-----------------------------FURNITURE--------------------------------  
         Furniture prisClls = new Pris_Cells();
         Furniture prisF = new Dungeon_Floor();
         Furniture prisCndlbrs = new Pris_Candelabra(cndl);
-        Furniture prisTbl = new Pris_Table(ou62Key, prisNt);
+        Furniture prisTbl = new Pris_Table(ou62Key, oarHd);
         Furniture prisGts = new Pris_Gates();
+        Furniture prisFgr = new Pris_Ghost();
 
         // </editor-fold>
-        // <editor-fold defaultstate="collapsed" desc="INITIALIZE DUNGEON KEEPER CHAMBER">
+        // <editor-fold defaultstate="collapsed" desc="KAMPE'S QUARTERS">
         //-----------------------------THE ROOM---------------------------------
         Room dkch = new Dkch("in Kampe's quarters", Id.DKCH);
         //-------------------------------ITEMS---------------------------------- 
-        Item dkchNt = new Dkch_Note("short verse");
-        Item wtch = new Item(SHINY_WATCH, "A beautiful etched pocket watch with a delicate " +
-                             "gold chain. It still clicks each second behind the polished crystal face.", 500);
+        Item watch = new Item(SHINY_WATCH, "A beautiful etched pocket watch with a delicate " +
+                "gold chain. It still clicks each second behind the polished crystal face.", 500);
+        Item tape = new Item("duck tape", "State-of-the-art fabric tape made from cotton duck cloth. This is strong.", oar, 3, 15);
+        Item whip = new Weapon("leather whip", "A stylishly braided leather whip.", 25);
+        Item lthrHat = new Clothing("shiny leather hat", "A worn but polished leather stetson-style hat.", "You put it on.", 25);
+        Item shoeBx = new Kampe_Box(tape, whip, lthrHat, watch);
         Item lngChn = new Weapon("chain", "It's a chain, about 10 feet long.", 35);
         Item dkchNt2 = new Note("illegible note", "This note is gibberish. Unreadable.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture dkchF = new Dungeon_Floor();
-        Furniture dkchBd = new Dkch_Bed(lngChn, wtch);
+        Furniture dkchBd = new Dkch_Bed(lngChn, shoeBx);
         Furniture dkchAxl = new Dkch_Axle();
-        Furniture dkchDsk = new Dkch_Desk(dkchNt, dkchNt2);
+        Furniture dkchDsk = new Dkch_Desk(dkchNt2);
         Furniture dkchClng = new Dkch_Ceiling();
 
         // </editor-fold>
@@ -1963,7 +1975,7 @@ public class Map {
             // <editor-fold defaultstate="collapsed" desc="TUNNELS [4]">
             //  0    1    2    3    4    5    6    7    8    9  
             {{____,____,____,____,____,____,____,____,____,____}, //0
-             {____,esc3,esc4,esc5,____,____,____,____,____,____}, //1
+             {____,esc3,esc4,esc5,____,____,____,____,cis5,____}, //1
              {____,esc2,esc1,esc6,____,____,____,____,____,____}, //2
              {____,____,____,____,____,cas1,cry2,____,vau1,____}, //3
              {____,cis2,cis1,sew5,pris,torc,cry1,____,vau2,____}, //4
@@ -2136,17 +2148,18 @@ public class Map {
         sew5.addFurniture(genDoor, sewRvr, sewF, sewDrW, sewDrE, dngnW, sewTnnl, 
                 sew15Gt, sew5Trch, sewMss, sew5BrdgE, sew5Pp, sew5Vlv);
         cis1.addFurniture(cis1Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
-        cis2.addFurniture(dngnW, cisF, cisWtr, cisClmns, cisDrknss);
+        cis2.addFurniture(dngnW, cisF, cisWtr, cis2Bt, cisClmns, cisDrknss);
         cis3.addFurniture(cis3Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
         cis4.addFurniture(cis4Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
+        cis5.addFurniture(cis2Bt, cis5Fgr, cisClmns, cisDrknss, cisWtr, cis5F);
         oub1.addFurniture(sewDrW, tm1Bwl, oub1F, dngnW, oub1Pt, dungMonst, clng);
         intr.addFurniture(intrDr, intrWhl, intrGrs, intrF, dngnW, intrGrt, intrWtr, intrTrch, dungMonst, clng);
         esc1.addFurniture(esc1Lddr);
         esc6.addFurniture(esc6Grt, esc6Lddr);
         cas1.addFurniture(casW, casStrs, casF, cs35Trchs, cs35Stat, sewDrE, clng);
         sewp.addFurniture(genDoor, sewpCl, sewpGrt, sewpWtr, sewpF, dngnW, sewDrE, sewDrW, sewpTrch, sewpTnnl);
-        pris.addFurniture(genDoor, prisClls, dngnW, sewDrS, sewDrW, prisF, prisCndlbrs, 
-                prisTbl, prisCbnt, prisGts, dungMonst, clng);
+        pris.addFurniture(genDoor, prisClls, prisFgr, dngnW, sewDrS, sewDrW, prisF, 
+                prisCndlbrs, prisTbl, prisCbnt, prisGts, dungMonst, clng);
         torc.addFurniture(genDoor, sewDrE, sewDrW, dngnW, torcF, torcTrchs, torcSwhrses, 
                 torcScythF, torcRck, torcCgs, torcWhl, torcWd, torcTls, dungMonst, clng);
         cry1.addFurniture(sewDrW, dngnW, cryF, cry1Stat, cryDrwrs, cry1Crvng, cryLghts, dungMonst, cryDummy, clng);

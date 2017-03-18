@@ -26,8 +26,7 @@ abstract public class NonPlayerCharacter extends Furniture implements Moveable {
         this.useDialog = ATTACK_DIALOG;
         
         this.addUseKeys(ANYTHING);
-        this.addActKeys(ATTACK_PATTERN);
-        this.addActKeys(TALK_PATTERN);
+        this.addActKeys(ATTACK_PATTERN, TALK_PATTERN);
     }
     // ======================================================================== 
     abstract protected<T extends Object> T converse1();

@@ -114,7 +114,7 @@ public class AudioPlayer {
         putAllTracks(deepCave,          MS65, MS66);
         putAllTracks(tombs,             TM16, TM66, TM32, AN65, AN55, VAUE);
         putAllTracks(sewerTunnels,      SEW0, SEW1, SEW2, SEW3, SEW4, SEW5);
-        putAllTracks(cistern,           CIS1, CIS2, CIS3, CIS4);
+        putAllTracks(cistern,           CIS1, CIS2, CIS3, CIS4, CIS5);
         putAllTracks(aeolianHarp,       OUB1, OU62, AARC);
         putAllTracks(prisonCustom,      PRIS, TORC);
         putAllTracks(sewerCogwork,      INTR, ESC1, ESC2, ESC3, ESC4, ESC5, 
