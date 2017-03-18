@@ -86,11 +86,12 @@ public final class Player {
         MAIN_CMDS.put("note",      () -> writeNote());
         MAIN_CMDS.put("write",     () -> writeNote());
         MAIN_CMDS.put("wait",      () -> GUI.out("You stand and do nothing."));
+        MAIN_CMDS.put("stand",     () -> GUI.out("You stand and do nothing."));
         MAIN_CMDS.put("sit down",  () -> GUI.out("You sit and rest a moment."));
         MAIN_CMDS.put("sit",       () -> GUI.out("You sit and rest a moment."));
         
         MAIN_CMDS.put("xyzzy",     () -> {
-            GUI.out("That word... What have you done to my game?!"); 
+            GUI.out("A hollow clown says, \"surprise!\""); 
             GUI.randomizeColors();
         });
         MAIN_CMDS.put("save",      () -> { 

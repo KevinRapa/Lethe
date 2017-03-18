@@ -10,13 +10,18 @@ public class Vest_Orb extends NonPlayerCharacter implements Gettable {
     // ========================================================================
     public Vest_Orb () {
         super();
-        this.description = "It's a dusty glass orb on the desk in the corner.\n"
-                         + "There's some sort of light coming from within. Did\n"
-                         + "this thing speak to you? Suddenly, a voice speaks-\n"
-                         + "\"Is staring at things a hobby of yours? Aren't you going to say anything to me?\"";
+        this.description = 
+                "It's a dusty glass orb on the desk in the corner. "
+             + "There's some sort of light coming from within. Did "
+             + "this thing speak to you? Suddenly, a voice speaks- "
+             + "\"Is staring at things a hobby of yours? Aren't you "
+             + "going to say anything to me?\"";
         this.actDialog = null;
-        this.searchDialog = "You can't seem to find anything out of the ordinary. Suddenly, a voice speaks-\n"
-                         + "\"Is staring at things a hobby of yours? Aren't you going to say anything to me?\"";
+        this.searchDialog = 
+                "You can't seem to find anything out of the "
+                + "ordinary. Suddenly, a voice speaks-\n"
+                + "\"Is staring at things a hobby of yours? "
+                + "Aren't you going to say anything to me?\"";
 
         this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:dusty )?(?:glass )?orb");
@@ -40,13 +45,12 @@ public class Vest_Orb extends NonPlayerCharacter implements Gettable {
     // ========================================================================     
     @Override protected Void converse1() {
         GUI.menOut("Press enter...");
-        GUI.out("You open your mouth and utter a \"hello\".");
+        GUI.out("You open your mouth and utter a \"hullo\".");
         GUI.promptOut();
 
         GUI.out("\"Yes, thank you for not freaking out like the rest of the 'guests'.\n"
               + "Each other person who decided to wander in here couldn't figure\n"
-              + "out to come over here and talk to me. They just freaked out...\n"
-              + "except for one... He was smart.\"");
+              + "out to come over here and talk to me. They just freaked out...");
         GUI.promptOut();
         
         GUI.out("\"Well, they were taken. I don't know where, and I never saw them\n"
@@ -72,8 +76,7 @@ public class Vest_Orb extends NonPlayerCharacter implements Gettable {
         
         GUI.out("\"Oh, but anyway, my name is Rhadamanthus. I, too, am a victim\n"
               + "of the mad Eurynomos, my aforementioned brother. You see,\n"
-              + "centuries ago, I and my two mage brothers\n"
-              + "discovered a power source of magic deep under the castle which\n"
+              + "centuries ago, I discovered a power source of magic deep under the castle which\n"
               + "we called 'The Source'. This magic was different! It was powerful,\n"
               + "but sinister.\"");
         GUI.promptOut();

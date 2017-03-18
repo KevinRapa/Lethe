@@ -9,7 +9,7 @@ public class Wrk_Note extends Note {
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Wrk_Note(String name) {
         super(name);
-        this.description = "The idiots! Oswald could never keep this place\n" +
+        this.description = "The idiots! Daedalus could never keep this place\n" +
                            "stocked! He was a burden in life, and he's still\n" +
                            "a burden now. Where's the sand? I can't get into\n" +
                            "the trophy room without the lens! Solomon better\n" +

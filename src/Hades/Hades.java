@@ -106,8 +106,8 @@ public class Hades extends Room {
                 "\"Your wealth is null, and your accomplishments\n" +
                 "laughable. Though perhaps you have a good spirit\n" +
                 "and the sound ethics of a hard worker, you will\n" +
-                "be forgotten and fade into obscurity. You shall \n" +
-                "be sent Cocytus, so that you may swim in\n" +
+                "be forgotten and fade into obscurity. You shall " +
+                "be sent Cocytus, where you shall swim in\n" +
                 "lamentation for all eternity.\"";
     }
 // ============================================================================

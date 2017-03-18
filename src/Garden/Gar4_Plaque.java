@@ -12,7 +12,7 @@ public class Gar4_Plaque extends Furniture {
         super();
         this.isMoved = false;
         
-        this.description = "The small plaque reads, \"In memorium of Oswald, who lived to create.\"";
+        this.description = "The small plaque reads, \"In memorium of Daedalus, who lived to create.\"";
         this.actDialog = "You move the plaque off to the side.";
         this.searchDialog = "You lift the plaque and find only soil. You put it back down to the side.";
 

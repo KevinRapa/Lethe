@@ -25,7 +25,7 @@ public class Bha_Note extends Note {
                          + "help getting there. (1)Hidden before the sacred fire; (2)Parlor, in plain sight; (3)Under\n"
                          + "the courtyard; (4)Dining room, behind the blue chalice;\n"
                          + "(5)Safe with your treasures; (6)High above the Gods; (7)In this room;\n"
-                         + "(8)Beneath the memory of Oswald.";
+                         + "(8)Beneath the memory of Daedalus.";
     }
     // ========================================================================
 }
