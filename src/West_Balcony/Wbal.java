@@ -14,17 +14,17 @@ public class Wbal extends Room{
     public Wbal(String name, String ID) {
         super(name, ID);
         description = 
-                "You are on a square balcony at the front left corner of\n" +
-              "the castle. Littered all over the floor are pieces of\n" +
-              "wood. In the center stands a tall beacon of fire. To\n" +
-              "the west, you see the sea following a long cliff to\n" +
-              "a distant lighthouse. To your south, you look upon the\n" +
-              "dark forest you walked through to get here.";
+                "You are on a square balcony at the front west corner of " +
+                "the castle. Littered all over the floor are pieces of " +
+                "wood and debris. In the center stands a tall beacon. To " +
+                "the west, the ocean follows a long cliff to a distant "
+              + "lighthouse. To your south, you look upon the dark forest "
+              + "you walked through to get here.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.WEST || dir == Direction.SOUTH)
-            return "That's a couple hundred foot drop right there.";
+            return "There's a couple hundred foot drop right there.";
         else
             return bumpIntoWall();
     }

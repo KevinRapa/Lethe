@@ -2,8 +2,10 @@ package A_Super;
 
 import A_Main.GUI;
 import A_Main.Menus;
-import static A_Main.Patterns.UP_DOWN_P;
 import A_Main.Player;
+import static A_Main.Patterns.UP_DOWN_P;
+import static A_Super.Direction.DOWN;
+import static A_Super.Direction.UP;
 /**
  * Some rooms have two sets of stairs or a switchback staircase.
  * Allow the player to interact with either one and avoid problems of ambiguity.
@@ -16,7 +18,14 @@ abstract public class DoubleStaircase extends Staircase {
         super(Direction.DOWN); //Direction is UNUSED in Double stairs
     }
     // ========================================================================   
-    @Override public String interact(String key) {     
+    @Override public String interact(String key) {
+        if (key.equals(UP.toString()) || key.equals(DOWN.toString())) {
+            boolean isUp = key.equals(UP.toString());
+            playEffect();
+            Player.move(isUp ? UP : DOWN);
+            return "You climb " + (isUp ? UP : DOWN)  + " the stairs.";
+        }
+        
         String ans = GUI.askChoice(Menus.DOUBLE_ST, UP_DOWN_P);
 
         if (Player.isNonEmptyString(ans)) {
@@ -31,13 +40,7 @@ abstract public class DoubleStaircase extends Staircase {
         else
             return null;
     }
-    // ========================================================================      
-    public String interact(Direction dir) {     
-        playEffect();
-        Player.move(dir);
-        return "You climb " + dir + " the stairs.";
-    }
-    // ========================================================================      
+    // ========================================================================         
 }
 
 

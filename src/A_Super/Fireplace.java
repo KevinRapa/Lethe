@@ -18,12 +18,16 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
     protected String descLit, descUnlit;
     protected final Item BCKT_REF; // Empty bucket item reference to give to player.
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Fireplace(boolean isLit, Item bckt) {       
+    public Fireplace(Item bckt) {       
         super();
-        this.isLit = isLit;
+        
+        this.isLit = true;
         this.BCKT_REF = bckt;
+        
         this.searchDialogLit = "Ouch! That's hot!";
+        this.descUnlit = "It's a smoldering, unlit fireplace.";
         this.useDialog = "You douse the flames with the water.";
+        
         this.addActKeys("warm", "use", GETPATTERN, "relax");
         this.addNameKeys("fireplace", "hearth", "fire");
         this.addUseKeys(BUCKET_OF_WATER);

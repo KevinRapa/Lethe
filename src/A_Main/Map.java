@@ -299,7 +299,7 @@ public class Map {
                 "It's a short rope tied into a noose. It's pretty frayed in the center.", ram, 3, 25);
         //-----------------------------FURNITURE--------------------------------
         Furniture vesOrb = new Vest_Orb();
-        Furniture vesFire = new Vest_Fireplace(true, bckt);
+        Furniture vesFire = new Vest_Fireplace(bckt);
         Furniture vesBtn = new Vest_Button(vesFire);
         Furniture vesWin = new Vest_Window(vesFire);
         Furniture vesDr = new Vest_Dr(Direction.WEST);      
@@ -459,7 +459,7 @@ public class Map {
         Furniture wow2Dr = new Wow2_Door(Direction.EAST);
         Furniture wow2Hole = new Wow2_Hole();
         Furniture wowWndw = new Wow_Window();
-        Furniture wowHrth= new Wow_Hearth(true, bckt);
+        Furniture wowHrth= new Wow_Hearth(bckt);
         Furniture wow2Strcs = new Wow2_Stairs(); 
         Furniture wow1NDr = new Sha_Door(Direction.NORTH);
         Furniture wow1Shlvs = new Wow1_Shelves(vial, vinegar, clngSoln, actn);
@@ -484,11 +484,13 @@ public class Map {
         Room squa = new Squa("in a servant's quarters", Id.SQUA);
         //-------------------------------ITEMS----------------------------------
         Item squaLddr = new Squa_Ladder("broken ladder", wowLddr, 3);
-        Item squaJrnl = new Note("note: ladder", "Need to get that ladder fixed. Too busy with the cart.\n"
+        Item squaJrnl = new Note("note: ladder", 
+                "Need to get that ladder fixed. Too busy with the cart.\n"
                 + "Don't ask mages to fix, they've been busy lately. I'll keep it under my bed for now.");
         Item rags = new Clothing("worn rags", "Some dirty worn rags.", 
                 "You are perfectly content with the clothes you have on now.", 5);
-        Item aprn = new Clothing("kitchen apron", "It's a kitchen apron, stained black in the center from ash.", 
+        Item aprn = new Clothing("kitchen apron", 
+                "It's a kitchen apron, stained black in the center from ash.", 
                 "You are perfectly content with the clothes you have on now.", 25);
         Item shs = new Shoes("moccasins", 
                 "A pair of worn leather mocassins. The leather has worn thin and the seams are separating.", 
@@ -599,12 +601,17 @@ public class Map {
         //-------------------------------ITEMS----------------------------------
         Item studBkPi = new Stud_PiBook("book, 'An Essential Pi'");
         Item studNote = new Stud_Note("personal note");
+        Item studNote2 = new Note("sketches", 
+                "There are four drawings on this sheet of parchment. They're detailed sketches, "
+              + "not just simple doodles. You can identify a drawing of a chalice, some kind of "
+              + "fruit (A pome perhaps), a thick tome, and a scepter. In the middle, however, is "
+              + "just a scribble. A shapeless mass of ink that does not resemble anything at all.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture studSafe = new Stud_Safe("367", studBkPhy, gal1Key);
         Furniture studF = new Floor("The floor is a weathered dark hickory that creaks slowly as you walk. How nice!");
         Furniture studPrtrt = new Stud_Portrait(studSafe);
-        Furniture studFire = new Stud_Fireplace(true, bckt);
-        Furniture studDsk = new Stud_Desk(pen, ppr, servKey, studNote);
+        Furniture studFire = new Stud_Fireplace(bckt);
+        Furniture studDsk = new Stud_Desk(pen, ppr, studNote2, servKey, studNote);
         Furniture studBkCs = new Stud_BookCase(studBkPi);
         Furniture studCch = new Stud_Couch();
         Furniture studCrpt = new Stud_Carpet();
@@ -676,7 +683,7 @@ public class Map {
         Furniture gal1Pntng3 = new Gal1_Painting3();
         Furniture gal1Pntng2 = new Gal1_Painting2();
         Furniture gal1Pntng = new Gal1_Painting1();
-        Furniture gal1Hrth = new Gal1_Hearth(true, bckt);
+        Furniture gal1Hrth = new Gal1_Hearth(bckt);
 
         Furniture gal3Ttm = new Gal3_Totem(gal4Stat);
         Furniture gal3Peg = new Gal3_Peg(gal3Ttm);
@@ -689,7 +696,7 @@ public class Map {
         Furniture gal3Msk2 = new Gal3_Mask2();
         Furniture gal3Msk3 = new Gal3_Mask3();
         Furniture gal3Msks = new Gal3_Masks();
-        Furniture gal3Hrth = new Gal3_Hearth(true, bckt);
+        Furniture gal3Hrth = new Gal3_Hearth(bckt);
         Furniture gal3F = new Floor("The floor is a dark hardwood.");
         Furniture gal3W = new Wall("The wall an off-white plaster, creating an atmosperic warmth.");
         Furniture gal3Art = new Gal3_Artifact1();
@@ -867,21 +874,26 @@ public class Map {
         Room lib4 = new Lib4("in the north upper library", Id.LIB4, lib4Tbl);
         Room lib5 = new Lib5("in the south upper library", Id.LIB5);
         //-------------------------------ITEMS----------------------------------
-        Item cndl = new BreakableItem(CANDLE, "It's a white candle. Must have been burning for some time.", 15);
+        Item cndl = new BreakableItem(CANDLE, 
+                "It's a white candle. Must have been burning for some time.", 15);
         Item shs1 = new Shoes(LEATHER_SHOES, 
-                "A fancy pair of shiny leather shoes.", "You put on the shoes. They're a little big, but comfortable!", 60);
+                "A fancy pair of shiny leather shoes.", 
+                "You put on the shoes. They're a little big, but comfortable!", 60);
         Item shs2 = new Shoes("worn shoes", 
-                "A worn, dull pair of leather shoes.", "You put on the shoes. These aren't too comfortable.", 10);
+                "A worn, dull pair of leather shoes.", 
+                "You put on the shoes. These aren't too comfortable.", 10);
         Item shs3 = new Shoes(NIGHT_SLIPPERS, 
-                "A brown pair of cotton night slippers.", "You wear the slippers. You could wear these all day!", 60);
+                "A brown pair of cotton night slippers.", 
+                "You wear the slippers. You could wear these all day!", 60);
         Item shs4 = new Shoes("work boots", 
-                "A rugged pair of boots.", "You put on the boots. You feel like you're at work.", 15);
+                "A rugged pair of boots.", 
+                "You put on the boots. You feel like you're at work.", 15);
         Item fin = new Lib_FinnishBook("language, 'The Essential Finnish'");
-        Item bbl = new Lib_GenesisBook("biblical tome, 'The Book of Genesis'");
-        Item ody = new Lib_OdysseyBook("epic tome, 'The Odyssey'");
-        Item ili = new Lib_IlliadBook("greek tome, 'The Iliad'");
-        Item inf = new Lib_DantesInfernoBook("infernal tome, 'Dante's Inferno'");
-        Item par = new Lib_ParadiseLostBook("divine tome, 'Paradise Lost'");
+        Item bbl = new Lib_GenesisBook(BIBLE);
+        Item ody = new Lib_OdysseyBook(ODYSSEY);
+        Item ili = new Lib_IlliadBook(ILIAD);
+        Item inf = new Lib_DantesInfernoBook(DANTES_INFERNO);
+        Item par = new Lib_ParadiseLostBook(PARADISE_LOST);
         Item bkGlss = new Lib_GlassBook("guide, 'The Master Glasser'");
         Item bkNts = new Lib_NotesBook("self help, 'Note To Self'");
         Item bkGlsswr = new Labo_GlasswareBook("manual, 'You Aren't Chemist'");
@@ -897,7 +909,7 @@ public class Map {
 
         Furniture lib2ShRck = new Lib2_ShoeRack(shs3, shs2, shs1, shs4);
         Furniture lib2Stat = new Lib2_Statue();
-        Furniture lib2Frplc = new Lib2_Fireplace(true, bckt);
+        Furniture lib2Frplc = new Lib2_Fireplace(bckt);
         Furniture lib2Bttn = new Lib2_Button(lib2Frplc, lib3Stat);
         Furniture lib2WrFr = new Lib2_WarefareShelf(inf, fin);
         Furniture lib2Wndw = new Lib2_Window();
@@ -909,7 +921,7 @@ public class Map {
         Furniture lib3Wndw = new Lib3_Window();
         Furniture lib3Pntng = new Lib3_Painting();
 
-        Furniture lib4Frplc = new Lib2_Fireplace(true, bckt);
+        Furniture lib4Frplc = new Lib2_Fireplace(bckt);
         Furniture lib4Bttn = new Lib4_Button(lib4Frplc, lib3Stat);
         Furniture lib4Prdtn = new Lib4_PerditionShelf(ili, bkNts);
         Furniture lib4Glb = new Lib4_Globe();

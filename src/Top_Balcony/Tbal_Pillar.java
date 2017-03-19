@@ -14,7 +14,7 @@ public class Tbal_Pillar extends Column {
 
         this.searchDialog = "You can't reach it from here.";
 
-        this.addNameKeys("(?:wide )?(?:pillar|column)");
+        this.addNameKeys("(?:magnificent )?(?:wide )?(?:pillar|column)");
     }
     // ========================================================================   
 }

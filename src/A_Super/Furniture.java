@@ -71,15 +71,10 @@ abstract public class Furniture implements Serializable {
      * @return If this piece contains an item with the name.
      */
     public boolean containsItem(String name) {
-        for (Item i : this.inv) {
-            String j = i.toString();
-            
-            if (i.getType().equals(READABLE))
-                j = BOOK_TITLE_P.matcher(j).replaceAll(NOTHING);
-            
-            if (j.equals(name)) {
-                return true; }
-        }
+        for (Item i : this.inv)
+            if (i.toString().equals(name)) 
+                return true; 
+        
         return false;
     }
 //******************************************************************************
@@ -93,11 +88,8 @@ abstract public class Furniture implements Serializable {
         return this.searchDialog; 
     }
     // ========================================================================  
-    /**
-     * This method is used whenever furniture is searched.
-     * @return If items can be traded with this.
-     */
     public boolean isSearchable() {
+        // Item's can be traded with searchable furniture.
         return this.searchable;
     }
     // ========================================================================     

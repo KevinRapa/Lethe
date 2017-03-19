@@ -6,12 +6,11 @@ import A_Super.Item;
 public class Gal1_Hearth extends Fireplace {
      
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Gal1_Hearth(boolean isLit, Item bckt) {       
-        super(isLit, bckt);
-        this.isLit = isLit;
+    public Gal1_Hearth(Item bckt) {       
+        super(bckt);
+
         this.descLit = "The small hearth is tiled green and purple like the rest\n"
-                     + "of the room. It's lit and it crackles.";
-        this.descUnlit = "A cold, unlit fireplace.";
+                     + "of the room.";
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -22,18 +22,17 @@ public class Wow3 extends Room {
         this.LDDRITEM_REF = Ilddr;
         this.FLR_REF = flrInv;
         this.description = 
-                "You stand atop the small balcony overlooking the\n" +
-               "west outer wall. You feel claustrophobic. A large\n" +
-               "wood shelf blocks a door to the north. Immediately\n" +
-               "to your east, there's another door covered in gashes\n"
-             + "and splinters.";
+               "You stand atop the small balcony, claustrophobic, overlooking "
+             + "the large room. A large wood shelf blocks a door to the north. "
+             + "Immediately to your east, there's another door covered in "
+             + "gashes and splinters.";
     }
 /*----------------------------------------------------------------------------*/        
     @Override public String getBarrier(Direction dir) {
         switch (dir) {
             case NORTH:
                 AudioPlayer.playEffect(6);
-                return "There's a large shelf in the way.";
+                return "There's a rather large shelf in the way.";
             case WEST:
                 return "There's a railing there, and that drop looks intimidating.";
             default:

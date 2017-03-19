@@ -15,18 +15,17 @@ public class Sew1 extends Dungeon_Tunnel {
     public Sew1(String name, String ID) {
         super(name, ID);
         this.description= 
-                "You come to a bend in the tunnel. The tunnel turns to\n" +
-              "the south here away from the river of water, which\n" +
-              "continues past the east wall through a barred gate.\n" +
-              "The tunnel leads far back west in the opposite direction. On the walls\n" +
-              "are several torches lighting the room in a dim green hue\n" +
-              "resulting from moss growing everywhere.";
+              "You come to a bend in the tunnel. The tunnel turns " +
+              "south here away from the river which continues past "
+            + "the east wall through a barred gate. On the walls " +
+              "are several torches lighting the room in a dim green hue " +
+              "resulting from the rampant moss growth.";
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {
         switch (dir) {
             case NORTH:
-                return "There's a river of water running that way.";
+                return WATER_THAT_WAY;
             case EAST:
                 return "You can't get the gate open. It's locked.";
             default:

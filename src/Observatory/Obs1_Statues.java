@@ -46,6 +46,9 @@ public class Obs1_Statues extends Furniture {
     public Obs1_Statues(Furniture chandlr) {
         super();
 
+        this.actDialog = "As the statue settles in place, a bright\n"
+                       + "array of light forms on the floor. The chandelier\n"
+                       + "high up at the third level descends.";
         this.description = "An array of 9 statues arranged in a circle. In the\n"
                          + "center stands an additional larger statue looking\n"
                          + "upwards.";
@@ -111,9 +114,7 @@ public class Obs1_Statues extends Furniture {
                 } 
 
                 if (this.checkSolved()) {
-                    rep ="As the statue settles in place, a bright\n"
-                       + "array of light forms on the floor. The chandelier\n"
-                       + "high up at the third level descends.";
+                    rep = this.actDialog;
                     this.solved = true;
                     this.CHNDLR_REF.lower();
                     choice = NOTHING;
@@ -161,7 +162,7 @@ public class Obs1_Statues extends Furniture {
         
         if (i == 0 || i == 2 || i == 4 || i == 6)
             this.moveThese(0, 2, 4, 6);
-        else if (i == 1 || i == 3 || i == 5 || i == 7) 
+        else
             this.moveThese(1, 3, 5, 7);    
     }
 /*----------------------------------------------------------------------------*/
@@ -191,12 +192,14 @@ public class Obs1_Statues extends Furniture {
         return -1;
     }
 /*----------------------------------------------------------------------------*/
+    // Swaps two adjacent statues that are connected.
     private void switchThese(int first, int second) {
         Furniture temp = this.STATS[first];
         this.STATS[first] = this.STATS[second];
         this.STATS[second] = temp;
     }
 /*----------------------------------------------------------------------------*/
+    // Moves every other statue starting from first to the right.
     private void moveThese(int first, int second, int third, int fourth) {
         Furniture temp = this.STATS[first];
         this.STATS[first] = this.STATS[fourth];
@@ -205,6 +208,7 @@ public class Obs1_Statues extends Furniture {
         this.STATS[second] = temp; 
     }
 /*----------------------------------------------------------------------------*/
+    // Rotates every statue one to the right
     private void spinArray() {
         AudioPlayer.playEffect(44);
         Furniture temp = this.STATS[0];

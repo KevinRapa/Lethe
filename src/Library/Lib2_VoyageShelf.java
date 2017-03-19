@@ -6,6 +6,12 @@ import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
+
+import static A_Main.NameConstants.BIBLE;
+import static A_Main.NameConstants.DANTES_INFERNO;
+import static A_Main.NameConstants.ILIAD;
+import static A_Main.NameConstants.ODYSSEY;
+import static A_Main.NameConstants.PARADISE_LOST;
         
 public class Lib2_VoyageShelf extends SearchableFurniture {
     private final Furniture REF, REF2, REF3, REF4;
@@ -30,9 +36,9 @@ public class Lib2_VoyageShelf extends SearchableFurniture {
     @Override public String interact(String key) {              
         String rep = this.actDialog;
         
-        if (this.containsItem("epic tome") && REF.containsItem("greek tome") &&
-            REF2.containsItem("biblical tome") && REF3.containsItem("infernal tome") &&
-            REF4.containsItem("divine tome") && ! this.moved) 
+        if (this.containsItem(ODYSSEY)  && REF.containsItem(ILIAD) &&
+            REF2.containsItem(BIBLE)    && REF3.containsItem(DANTES_INFERNO) &&
+            REF4.containsItem(PARADISE_LOST) && ! this.moved) 
         {
             Lib2 lib2 = (Lib2)Player.getRoomObj(Id.LIB2);
             lib2.addAdjacent(Id.LIB1);

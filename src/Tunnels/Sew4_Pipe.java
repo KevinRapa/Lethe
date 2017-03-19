@@ -50,7 +50,9 @@ public class Sew4_Pipe extends Furniture implements Resetable, Heavy {
         if (Player.getPos().hasFurniture(NameConstants.METAL_LADDER)) {
             Player.getInv().remove(item);
             this.hasPipe = true;
-            return "With all your strength, you shove the piping between the break in the piping. It's a good fit, but may not hold long...";
+            Player.describeRoom();
+            return "With all your strength, you shove the piping between the "
+                    + "break in the piping. It's a good fit, but may not hold long...";
         }
             
         return this.useDialog;

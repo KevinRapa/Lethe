@@ -72,6 +72,12 @@ public final class NameConstants {
         SHINY_WATCH = "shiny pocket watch",     WOODEN_OAR = "wooden oar",
         SHOE_BOX = "shoebox",
             
+        BIBLE = "biblical tome, 'The Book of Genesis'",
+        ILIAD = "greek tome, 'The Iliad'",
+        ODYSSEY = "epic tome, 'The Odyssey'",
+        PARADISE_LOST = "divine tome, 'Paradise Lost'",
+        DANTES_INFERNO = "infernal tome, 'Dante's Inferno'",
+            
         // Used together in PlayerInventory.get and Player.hasItemResembling    
         NO_LETTER_BEFORE = ".*(?<![a-z])(?i:",  NO_LETTER_AFTER = ")(?![a-z]).*",    
     // PLATFORM DEPENDENT PROERTIES ===========================================

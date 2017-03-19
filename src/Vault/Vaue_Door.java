@@ -28,10 +28,10 @@ public class Vaue_Door extends Furniture implements Heavy {
     // =====================================
     
     private final State[][] BUTTONS = {
-        {State.OFF,State.OFF,State.OFF,State.OFF},
-        {State.OFF,State.ON, State.OFF,State.OFF},
-        {State.OFF,State.OFF,State.OFF,State.OFF},
-        {State.OFF,State.OFF,State.ON, State.ON}
+        {State.ON,State.ON,State.OFF,State.ON},
+        {State.OFF,State.OFF,State.OFF,State.ON},
+        {State.ON,State.ON,State.ON,State.OFF},
+        {State.OFF,State.ON,State.OFF,State.OFF}
     };
     // ========================================================================
     public Vaue_Door () {
@@ -76,19 +76,19 @@ public class Vaue_Door extends Furniture implements Heavy {
     // ========================================================================      
     private String printButtons() {
         int row = 4;
-        String result = "\t\t\t\t\t";
-        
+        StringBuilder b = new StringBuilder("\t\t\t\t\t");
+
         for (State[] i : BUTTONS) {
-            result += row;
+            b.append(row--);
             
             for (State j : i)
-                result = result.concat(j.toString());
+                b.append(j.toString());
             
-            result = result.concat("\t\t\t");
-            row--;
+            b.append("\t\t\t");
         }
+        b.append("  1  2  3  4 \t\t\t");
         
-        return result.concat("  1  2  3  4 \t\t\t");
+        return b.toString();
     }
     // ========================================================================      
     private void switchButtons(int x, int y) {
@@ -112,9 +112,7 @@ public class Vaue_Door extends Furniture implements Heavy {
                     break;
             }
         }
-        catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Button does not exists!");
-        }
+        catch (ArrayIndexOutOfBoundsException e) {}
     }
     // ========================================================================  
     private boolean solved() {

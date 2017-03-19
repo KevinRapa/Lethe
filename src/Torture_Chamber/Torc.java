@@ -17,22 +17,19 @@ public class Torc extends Room {
     public Torc(String name, String ID) {
         super(name, ID);
         this.description = 
-                "This room houses many sinister tools and apparatuses.\n" +
-               "Centered against the east wall is a vertical wooden\n" +
-               "wheel with many pegs around the edge. Sitting in the\n" +
-               "northwest corner are two sawhorses holding horizontally a long\n" +
-               "metal device. Against the south wall stands a pair of\n" +
-               "square wooden beams crossing each other. A large scythe is displayed on the wall above it. In the room's center\n" +
-               "is a table fit with many leather straps. A couple cages\n" +
-               "hang from the ceiling, and two torches light the room\n" +
-               "on either side. In the back east corner is a\n"
-             + "metal door.";
+               "Many sinister tools fill this room. Center on the east wall "
+             + "is a vertical wheel with many pegs around the edge. Two "
+             + "sawhorses in the northwest corner support a long metal device. "
+             + "Against the south wall cross a pair of wood beams. A large "
+             + "scythe is displayed above it. In the center is a table fit with "
+             + "many leather straps. A couple cages hang from the ceiling, and "
+             + "two torches light the room on either side. A metal door leads "
+             + "east here.";
     }
 // ============================================================================
     @Override public String getDescription() {
-        if (! Player.getPos().hasFurniture(SCYTHE)) {
-            return this.description.replaceFirst(" A large.+wall above it.", "");
-        }
+        if (! Player.getPos().hasFurniture(SCYTHE))
+            return this.description.replaceFirst(" A large.+above it.", "");
         else
             return this.description;
     }

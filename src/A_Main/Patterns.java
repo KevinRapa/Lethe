@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * @author Kevin Rapa
  */
 public final class Patterns {
-    // ========================================================================
+    
     public static final Pattern   
         // Patterns used by Player
         MOVE_P = Pattern.compile("move|slide|displace|push|pull|spin|rotate"),
@@ -99,5 +99,4 @@ public final class Patterns {
         CONTROL_CHOICE = Pattern.compile("[1-9]c|10c"),
         PLAYER_CHOICE = Pattern.compile("[1-3]p"),
         CASTLE_CHOICE = Pattern.compile("[1-6]a");
-    // ========================================================================
 }

@@ -15,12 +15,11 @@ public class Mha1 extends Room{
     public Mha1(String name, String ID) {
         super(name, ID);
         description= 
-                "The two-story hallway is clean with a white granite wall\n" +
-                 "and a green marble tiled floor. You stand at the north end\n" +
-                 "facing south. To your east is a white door with a cross on it. On the west wall is a tall window.\n" +
-                 "A silver chandelier hangs above you. Next to the\n" +
-                 "door is a small potted plant and chair. The door to your left\n"
-               + "bears a large, detailed carving of a cross.";
+                "The two-story hallway is clean with a white granite wall " +
+                "and a green marble tiled floor. You stand at the north end " +
+                "facing south. East is a white door with a brass cross on "
+              + "it and west is a tall window. A silver chandelier hangs "
+              + "above. Next to the door is a small potted plant and chair.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {

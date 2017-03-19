@@ -19,16 +19,14 @@ public class Par2 extends Room{
     public Par2(String name, String ID) {
         super(name, ID);
         description= 
-                "You stand on a second-floor loft bowing over a parlor.\n"
-               + "A thin flight of steps leads down to the first level.\n"
-               + "The room is cast in a warm glow from a hanging bowl of fire\n"
-               + "helped by a fireplace below. This room resembles\n"
-               + "the old west wing, with sandstone walls\n"
-               + "and floors. The\n"
-               + "loft is mostly bare save a piano sitting on an extension\n"
-               + "of the balcony. A couple barred windows to the north on\n"
-               + "opposite sides of a bookshelf give view outside. To the\n"
-               + "west, another door leads further into the castle depths.";
+                "This is a second-floor loft overlooking a parlor. A thin "
+              + "flight of steps leads down. The room is cast in a warm "
+              + "glow from a hanging light helped by a fireplace below. "
+              + "The walls and floor are all sandstone here. The loft is "
+              + "mostly bare save a piano sitting on a balcony extension. "
+              + "A couple barred windows to the north on opposite sides of "
+              + "a bookshelf give view outside. To the west, another door "
+              + "leads further into the castle depths.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

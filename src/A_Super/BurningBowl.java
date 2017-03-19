@@ -16,7 +16,7 @@ public class BurningBowl extends Furniture implements Gettable {
         this.useDialog = this.actDialog = "Jabbing a burning bowl isn't a very good idea.";
 
         this.addNameKeys("(?:hanging )?(?:steel )?bowl(?: of fire)?", 
-                "(?:hanging )?(?:steel )?burning bowl", "fire");
+                "(?:hanging )?(?:steel )?burning bowl", "fire", "light");
         
         this.addUseKeys(".+");
         this.addActKeys(GETPATTERN);

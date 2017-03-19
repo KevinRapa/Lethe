@@ -16,16 +16,14 @@ public class Obs1 extends Room{
     public Obs1(String name, String ID) {
         super(name, ID);
         description= 
-                "You stand in the castle's grandiose three-story observatory.\n" +
-                "A many-paned window extends up all three on the west side,\n" +
-                "and a balcony wraps against the window on the\n"
-              + "third level. A spiral staircase\n" +
-                "in a southeast nook lead up one level. This\n" +
-                "room is dominated by a ring of statues in the center, each\n" +
-                "resembling a Greek diety. On the floor at the base of each is a brass slot.\n"
-              + "Against the east wall is an old telescope, most likely nonfunctional.\n" +
-                "A long curved seat sits in front of the window on the\n" +
-                "west end next to a globe and standing lamp.";
+                "You stand in a three-story observatory. A humongous window "
+              + "to west extends all the way up. A spiral staircase in a "
+              + "southeast nook leads up to a balcony. This room is dominated "
+              + "by a ring of statues, each resembling a diety. On the floor "
+              + "at the base of each is a brass slot. Against the east wall "
+              + "is an old telescope, likely nonfunctional. A long curved "
+              + "seat sits in front of the window on the west end next to a "
+              + "globe and standing lamp.";
     }
 /*----------------------------------------------------------------------------*/   
 }

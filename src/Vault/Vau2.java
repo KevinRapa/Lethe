@@ -19,10 +19,10 @@ public class Vau2 extends Room {
         this.Vau1_Tbl = tbl;
         this.description= 
                 "You stand at the south end of a long, low chamber. The\n" +
-              "arched ceiling curves not more than three feet over your\n" +
-              "head and gradually meets the floor on each side of you.\n" +
-              "Many chests are scattered everywhere. The room is lit by "
-            + "three hanging, burning steel bowls.";
+                "arched ceiling curves not more than three feet over your\n" +
+                "head and gradually meets the floor on each side of you.\n" +
+                "Many chests are scattered everywhere. The room is lit by "
+              + "three hanging, burning steel bowls.";
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {

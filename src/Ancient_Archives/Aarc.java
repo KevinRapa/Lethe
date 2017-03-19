@@ -29,7 +29,7 @@ public class Aarc extends Room {
     @Override public String getDescription() {
         return Player.hasItem(HAND_TORCH) ? this.description :
                 "You are in a pitch black room. You can't sense a thing but the\n"
-              + "smell of wilt.";
+              + "smell of wilt and a wet floor.";
     }
 // ============================================================================
 }

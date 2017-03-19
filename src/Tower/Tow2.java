@@ -18,11 +18,11 @@ public class Tow2 extends Lich_Room {
     public Tow2(String name, String ID) {
         super(name, ID);
         this.description = 
-                "You are on the circular balcony above the lower tower floor. To the north\n" +
-                "is another imposing metal door. Some of the etchings in the door emit a\n"
-              + "bright blue luminescence. To the east on the other side of the\n" +
-                "balcony is a wood door. Wide paned windows\n" +
-                "extend along the wall to the south.";
+                "You are on the circular balcony above the lower tower floor. "
+              + "To the north is another imposing metal door. Some of the "
+              + "etchings in the door emit a bright blue luminescence. To the "
+              + "east on the other side of the balcony is a wood door. Wide "
+              + "paned windows extend along the wall to the south.";
     }
 // ============================================================================
     @Override public String getDescription() {

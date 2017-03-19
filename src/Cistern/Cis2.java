@@ -20,7 +20,7 @@ public class Cis2 extends Dungeon_Tunnel {
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {
-        return "There's a large body of water that way.";
+        return WATER_THAT_WAY;
     }
 // ============================================================================
 }

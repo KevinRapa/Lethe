@@ -61,7 +61,7 @@ public final class Player {
         MAIN_CMDS.put("a", () -> move(Direction.WEST));
         MAIN_CMDS.put("d", () -> move(Direction.EAST));
         MAIN_CMDS.put("m", () -> Map.displayMap());
-        MAIN_CMDS.put("n", () -> writeNote());
+        MAIN_CMDS.put("n", () -> writePrompt());
         MAIN_CMDS.put("l", () -> openLootSack());
         MAIN_CMDS.put("q", () -> {end = true;});
         
@@ -83,12 +83,16 @@ public final class Player {
         MAIN_CMDS.put("jump",      () -> GUI.out("You jump a short height into the air. Well, that was fun."));
         MAIN_CMDS.put("sort",      () -> getInv().sortInventory());
         MAIN_CMDS.put("map",       () -> Map.displayMap());
-        MAIN_CMDS.put("note",      () -> writeNote());
-        MAIN_CMDS.put("write",     () -> writeNote());
+        MAIN_CMDS.put("note",      () -> writePrompt());
+        MAIN_CMDS.put("write",     () -> writePrompt());
         MAIN_CMDS.put("wait",      () -> GUI.out("You stand and do nothing."));
         MAIN_CMDS.put("stand",     () -> GUI.out("You stand and do nothing."));
         MAIN_CMDS.put("sit down",  () -> GUI.out("You sit and rest a moment."));
         MAIN_CMDS.put("sit",       () -> GUI.out("You sit and rest a moment."));
+        MAIN_CMDS.put("northwest", () -> evaluateAction("go", "northwest"));
+        MAIN_CMDS.put("northeast", () -> evaluateAction("go", "northeast"));
+        MAIN_CMDS.put("southwest", () -> evaluateAction("go", "southwest"));
+        MAIN_CMDS.put("southeast", () -> evaluateAction("go", "southeast"));
         
         MAIN_CMDS.put("xyzzy",     () -> {
             GUI.out("A hollow clown says, \"surprise!\""); 
@@ -105,7 +109,7 @@ public final class Player {
         INV_CMDS.put("2", () -> usePrompt());
         INV_CMDS.put("3", () -> combineSub());
         INV_CMDS.put("4", () -> getInv().sortInventory());
-        INV_CMDS.put("5", () -> writeNote());
+        INV_CMDS.put("5", () -> writePrompt());
         
         INV_CMD_SET.addAll(INV_CMDS.keySet());
         //---------------------------------------------------------------------
@@ -794,28 +798,20 @@ public final class Player {
      * @param dir Up or down direction.
      */
     private static void findStaircase(Direction dir) {
-        Iterator<Furniture> iter = Player.getPos().getFurnishings().iterator();
-        
-        while (iter.hasNext()) {
-            Furniture current = iter.next();
-
-            if (current instanceof A_Super.DoubleStaircase) {
-                GUI.out(((A_Super.DoubleStaircase)current).interact(dir));
+        for (Furniture f : Player.getPos().getFurnishings()) {
+            if (f instanceof Staircase && ((Staircase)f).getDirection() == dir) {
+                GUI.out(f.interact("climb"));
                 return;
             }
-            if (current instanceof A_Super.Staircase 
-                && ((A_Super.Staircase)current).getDir() == dir) {
-                // Single stairs that have to proper direction.
-                GUI.out(current.interact("climb"));
+            if (f instanceof DoubleStaircase) {
+                GUI.out(f.interact(dir.toString()));
                 return;
             }
-            if (current instanceof Climbable) {
-                // Non-stair things that the player may climb
-                GUI.out(current.interact("climb"));
+            if (f instanceof Climbable) {
+                GUI.out(f.interact("climb"));
                 return;
             }
         }
-        
         GUI.out("There's nothing here to take you that way.");
     }
     // ========================================================================
@@ -857,7 +853,7 @@ public final class Player {
         if (Player.hasItem(LOOT_SACK))
             Player.getInv().get(LOOT_SACK).useEvent();
         else 
-            GUI.out("There is nothing here with that name that you can see."); 
+            GUI.out("You unfortunately do not have a giant sack of loot right now."); 
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -983,43 +979,57 @@ public final class Player {
      * Allow the player to write a note to itself. This can only be done if the
      * player has the notepad and a pen.
      */
-    public static void writeNote() {
-        Player.incrementMoves();
+    public static void writePrompt() {
         if (inv.size() >= PlayerInventory.MAX_SIZE) {
             GUI.out("You are carrying too much stuff to write a note.");
-            return;
         }
-        
-        if (! Player.hasItem(PEN)) 
-            GUI.out("You will need a pen in order to write a note to yourself.");
-        else if (! Player.hasItem(NOTEPAD)) 
-            GUI.out("You will need some paper in order to write a note to yourself.");
+        else if (! (Player.hasItem(PEN) && Player.hasItem(NOTEPAD))) {
+            GUI.out("You will need a pen and notepad in order to write a note to yourself.");
+        }
         else {
-            GUI.menOut("\nWrite a title "
-                     + "\nfor your note: ");
+            GUI.menOut("\nWrite a title for\nyour note, or enter\n"
+                       + "a slot number to\nwrite to an existing\nnote.");
+            
             String title = GUI.promptOut();
 
-            while (! isNonEmptyString(title)) {
-                GUI.menOut("\nI beg your "
-                         + "\npardon? Write "
-                         + "\na valid title:");
-                title = GUI.promptOut();
+            if (! isNonEmptyString(title)) 
+                ; // Go back to main prompt
+            else if (ANY_DIGIT_P.matcher(title).matches()) {
+                int slot = Integer.parseInt(title);
+
+                if (slot > 0 && slot <= inv.size()) {
+                    Item n = inv.get(slot - 1);
+
+                    if (n instanceof Note && ! (n instanceof Book)) {
+                        Player.inv.remove(n);
+                        Player.inv.contents().add(
+                            new Note(n.toString(), n.getDesc() + ' ' + getNoteBody())
+                        );
+                        Player.incrementMoves();
+                        printInv();
+                    }
+                    else 
+                        GUI.out("That, sir, is not a note.");
+                }
+                else GUI.out(NOT_VALID_SLOT);
             }
-            
-            GUI.menOut("Noted. Write down\n"
-                     + "your momento now...");
-            
-            String body = GUI.promptOut();
-            
-            GUI.out("Note has been written.");
-            
-            Player.inv.contents().add(new Note(
-                    "note - " + title + ':' + ' ', body)
-            );
-            printInv();
+            else {
+                Player.inv.contents().add(
+                    new Note("note - " + title + ':' + ' ', getNoteBody())
+                );
+                Player.incrementMoves();
+                printInv();
+            }
         }
     }
-    // ========================================================================  
+    // ========================================================================
+    private static String getNoteBody() {
+        GUI.menOut("Noted. Write down your momento now...");
+        String body = GUI.promptOut();
+        GUI.out("Note has been written.");
+        return body;
+    }
+    // ========================================================================
     // <editor-fold desc="COMBINE SUBROUTINES">
     /**
      * Prompts the player for a list of items, verifies it and moves to evalCombine().

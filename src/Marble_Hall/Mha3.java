@@ -14,11 +14,11 @@ public class Mha3 extends Room{
     public Mha3(String name, String ID) {
         super(name, ID);
         description= 
-                "You stand at the south end of the long hall facing north \n" +
-                "with a door at your right and a window at your left. This\n" +
-                "end is nearly a copy of the north end. A silver chandelier\n" +
-                "hangs above you and a chair with a plant sit next to the\n" +
-                "door. Another door to the south leads somewhere else.";
+                "This is the south end of the long hall. There's a door at "
+              + "your right and a window at your left. This end is nearly a "
+              + "copy of the north end. A silver chandelier hangs above you "
+              + "and a chair with a potted plant sit next to the door. Yet "
+              + "another door is to the south.";
     }
 /*----------------------------------------------------------------------------*/
 }

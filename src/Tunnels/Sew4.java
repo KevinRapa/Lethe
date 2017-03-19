@@ -20,9 +20,9 @@ public class Sew4 extends Dungeon_Tunnel {
         
         this.description= 
                 "The tunnel bends to the north here. The river, following\n" +
-                  "the tunnel's north wall, bends with it. A metal pipe\n" +
-                  "running along the ceiling above the river follows\n" +
-                  "the length of the tunnel northwards and eastwards.";
+                "the tunnel's north wall, bends with it. A metal pipe\n" +
+                "running along the ceiling above the river follows\n" +
+                "the length of the tunnel northwards and eastwards.";
     }
 // ============================================================================
     @Override public String getDescription() {

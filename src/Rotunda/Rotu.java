@@ -38,15 +38,14 @@ public class Rotu extends Room {
         this.addFurniture(WDOOR, EDOOR);
         
         description = 
-                "You are in a symmetrical dome-shaped chamber. Everything\n" +
-                "is ornate and carved from polished rock. A fountain in the \n" +
-                "center serves as a focus. At each diagonal below a spherical\n" +
-                "sconce is a glaring statue. Various\n" +
-                "potted plants decorate the room. Looking straight up, there's\n" +
-                "a hole in the ceiling giving view to the sky. Only a single\n" +
-                "other door on the opposite side is apparent. At the perpendicular\n" +
-                "ends are peculiar arched frames carved into the wall. Your\n" +
-                "only complaint is that this room smells quite awful.";
+                "You are in a symmetrical dome-shaped chamber. Everything is "
+              + "ornately carved from polished rock. There's a fountain in the "
+              + "center. At each diagonal below a spherical sconce is a "
+              + "glaring statue. Various hanging potted plants decorate the "
+              + "room. Straight up, there's a hole in the ceiling giving "
+              + "view to the sky. Only a single other door on the opposite "
+              + "side offers a way further. At the perpendicular ends are "
+              + "arched frames carved into the wall. This room smells quite awful.";
         this.state = 'e';
     }
 /*----------------------------------------------------------------------------*/

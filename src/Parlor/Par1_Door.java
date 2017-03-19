@@ -23,6 +23,7 @@ public class Par1_Door extends Door {
         this.description = "It looks like a heavy wooden door.";
         
         this.ENCHNTBTTL_REF = enchbttl;
+        this.addNameKeys("barrier");
         this.addUseKeys(SACRED_FIRE);
     }
 /*----------------------------------------------------------------------------*/

@@ -15,18 +15,18 @@ public class Sew2 extends Dungeon_Tunnel {
     public Sew2(String name, String ID) {
         super(name, ID);
         this.description= 
-                "The tunnel continues to the west and east here.\n" +
-              "The raging river of water flows eastwards against the\n" +
-              "north wall. Mounted on the south wall are a set\n" +
-              "of metal valves with roman numerals above each.\n" +
-              "Leading out the top of the valves is a large pipe\n" +
-              "running along the ceiling westwards. A bridge to the\n"
-            + "west crosses the fork in the river.";
+                "The tunnel continues to the west and east here. " +
+                "The raging river of continues along the north wall. "
+              + "Mounted on the south wall are a set of metal valves "
+              + "with roman numerals above each. Leading out the top "
+              + "of the console is a large pipe running along the "
+              + "ceiling westwards. A bridge to the west crosses the "
+              + "fork in the river.";
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.NORTH)
-            return "There's a river of water running that way.";
+            return WATER_THAT_WAY;
         else
             return bumpIntoWall();
     }

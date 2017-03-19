@@ -320,11 +320,8 @@ public class AudioPlayer {
 // ============================================================================
     public static void toggleMute() {
         muted = ! muted;
-        
-        if (muted)
-            currentPlayer.setVolume(0.0);
-        else
-            currentPlayer.setVolume(1.0);
+
+        currentPlayer.setVolume(muted ? 0.0 : 1.0);
     }
 //******************************************************************************    
 // </editor-fold>

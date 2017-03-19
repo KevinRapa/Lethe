@@ -32,8 +32,7 @@ public class Sewp extends Dungeon_Tunnel {
                 "flowing from a tunnel to the north spins in the pool\n" +
                 "and drives a large submerged wheel attached to a driveshaft\n" +
                 "protruding from the ceiling. Several torches light the\n" +
-                "room. To your east is a second metal door leading\n"
-              + "somewhere else.";
+                "room. To your east is a second metal door.";
     }
 // ============================================================================
     public void resetAllObjects() {

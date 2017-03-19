@@ -18,7 +18,7 @@ public class Par1_FirePlace extends Fireplace {
     private final Item SCRDFR_REF, ENCHT_BTTL_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/           
     public Par1_FirePlace(Item bckt, Item bttl) {       
-        super(true, bckt);
+        super(bckt);
         
         this.ENCHT_BTTL_REF = bttl;
         this.SCRDFR_REF = 
@@ -29,7 +29,7 @@ public class Par1_FirePlace extends Fireplace {
                      + "Its mantle is supported on both sides by short columns\n"
                      + "carved into angelic figures. The fire burns aggressively,\n"
                      + "but to your amazement, gives off no heat.";
-        this.descUnlit = "A cold, unlit fireplace.";
+
         this.useDialog = "Holding the magical bottle over the fire, some of the flames seep\n"
                        + "inside. You quickly cork the bottle and stare at it, mesmerized.";
         
