@@ -37,7 +37,7 @@ public class Aarc_Books extends Aarc_Furniture implements Gettable {
         if (Player.getInv().add(BOOK_REF))
             return "You take one of the books, not giving much thought about it.";
         else
-            return null;
+            return NOTHING;
     }
     // ========================================================================   
 }

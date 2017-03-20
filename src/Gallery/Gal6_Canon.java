@@ -33,12 +33,12 @@ public class Gal6_Canon extends Gal_LightMachine {
         this.STAT = (Gal7_Statue) stat;
         this.addActKeys("fire", "shoot");
         this.addNameKeys("(?:electr(?:on)?ic )?cannon");
-        this.addUseKeys(BOX_THINGY);
+        this.addUseKeys(BATTERY);
         this.inv = new Cnn_Inv();       
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {   
-        if (containsItem(BOX_THINGY)) 
+        if (containsItem(BATTERY)) 
             return "The cannon is blinking and making bleeping noises.\n"
                  + "A ray of light shoots out the barrel too. It must be on!";
         else
@@ -75,7 +75,7 @@ public class Gal6_Canon extends Gal_LightMachine {
                 
                 return true;
             }
-            else if (item.toString().equals(BOX_THINGY)) {
+            else if (item.toString().equals(BATTERY)) {
                 AudioPlayer.playEffect(43);
                 this.CONTENTS.add(item);
                 GUI.out("You slide the box inside the square compartment in the cannon. " + Gal6_Canon.this.turnOn());
@@ -90,7 +90,7 @@ public class Gal6_Canon extends Gal_LightMachine {
         @Override public void remove(Item item) {
             this.CONTENTS.remove(item);
             
-            if (item.toString().equals(BOX_THINGY))
+            if (item.toString().equals(BATTERY))
                 GUI.out(turnOff());
             
             else if (Gal6_Canon.this.isOn) 

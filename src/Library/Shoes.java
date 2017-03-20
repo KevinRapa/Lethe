@@ -12,8 +12,8 @@ public class Shoes extends Clothing {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent() {
-        if (! Player.getShoes().matches(this.NAME)) {
-            Player.setShoes(this.NAME);
+        if (! Player.getShoes().equals(NAME)) {
+            Player.setShoes(NAME);
         }
         else {
             Player.setShoes("");

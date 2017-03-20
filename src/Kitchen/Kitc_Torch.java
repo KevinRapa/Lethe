@@ -29,7 +29,7 @@ public class Kitc_Torch extends Torch_Holder {
                 return this.actDialog;
             }
             else
-                return null;
+                return NOTHING;
         }
         else
             return "The holder is empty you bumbling oaf.";

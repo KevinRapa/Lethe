@@ -49,7 +49,7 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Heavy {
         Player.getInv().remove(item);
         this.inv.add(item);
         
-        return null;
+        return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
     private String makeGlass() {

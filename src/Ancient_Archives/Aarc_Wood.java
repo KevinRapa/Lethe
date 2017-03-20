@@ -33,7 +33,7 @@ public class Aarc_Wood extends Aarc_Furniture implements Gettable {
         if (Player.getInv().add(WOOD_PIECE))
             return "You take one of the books, not giving much thought about it.";
         else
-            return null;
+            return NOTHING;
     }
     // ========================================================================  
 }

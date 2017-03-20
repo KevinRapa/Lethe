@@ -27,7 +27,7 @@ public class Gal3_KoraFurniture extends Furniture {
                 return this.actDialog;
             }
             else
-                return null;
+                return NOTHING;
     }
 /*----------------------------------------------------------------------------*/    
     private class Gal3_Inst extends Item {

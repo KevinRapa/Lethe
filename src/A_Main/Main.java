@@ -32,7 +32,7 @@ import static A_Main.NameConstants.W_DIR;
 
 public class Main {
     private static final String 
-            START_LOCATION = Id.COU4, // Default COU4
+            START_LOCATION = Id.LIB1, // Default COU4
             FILE_NAME = "save" + SEP + "Game.data";
     
     public static final JFrame 
@@ -142,6 +142,7 @@ public class Main {
     public static void exitGame() {
         AudioPlayer.stopTrack();
         AudioPlayer.disposeKeyPlayers();
+        GAME_FRAME.setVisible(false);
         GAME_FRAME.dispose();
         Map.disposeMap();
         System.exit(0);

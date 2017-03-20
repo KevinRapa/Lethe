@@ -64,7 +64,7 @@ public class Iha2_Armor extends SearchableFurniture implements Gettable, Moveabl
             if (this.inv.give(PLRM_REF, Player.getInv()))
                 return "You slide the weapon from the suit's gauntlet.";
             else
-                return null;
+                return NOTHING;
         }
         else
             return this.searchDialog;

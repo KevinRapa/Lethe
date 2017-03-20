@@ -1,12 +1,13 @@
 package Vestibule;
 
 import A_Main.GUI;
+import A_Main.Menus;
 import A_Super.Gettable;
 import A_Super.NonPlayerCharacter;
 /**
  * @author Kevin Rapa
  */
-public class Vest_Orb extends NonPlayerCharacter implements Gettable {
+public class Vest_Orb extends NonPlayerCharacter {
     // ========================================================================
     public Vest_Orb () {
         super();
@@ -16,7 +17,11 @@ public class Vest_Orb extends NonPlayerCharacter implements Gettable {
              + "this thing speak to you? Suddenly, a voice speaks- "
              + "\"Is staring at things a hobby of yours? Aren't you "
              + "going to say anything to me?\"";
-        this.actDialog = null;
+        this.actDialog = 
+                "You extend your hand out to grab the auspicious orb. A voice\n"
+              + "then speaks before you reach it. \"Hey you! Do not taint my\n"
+              + "window from this prison with your dirty hands. Say something\n"
+              + "to me damn you!\"";
         this.searchDialog = 
                 "You can't seem to find anything out of the "
                 + "ordinary. Suddenly, a voice speaks-\n"
@@ -31,20 +36,15 @@ public class Vest_Orb extends NonPlayerCharacter implements Gettable {
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
         else if (key.matches(GETPATTERN))
-            return getIt("You extend your hand out to grab the auspicious orb. A voice\n"
-                       + "then speaks before you reach it. \"Hey you! Do not taint my\n"
-                       + "window from this prison with your dirty hands. Say something\n"
-                       + "to me damn you!\"");
+            return this.actDialog;
         else if (this.firstTime)
-            converse1();
+            return converse1();
         else
-            converse2();
-        
-        return this.actDialog;
+            return converse2();
     }
     // ========================================================================     
-    @Override protected Void converse1() {
-        GUI.menOut("Press enter...");
+    @Override protected String converse1() {
+        GUI.menOut(Menus.ENTER);
         GUI.out("You open your mouth and utter a \"hullo\".");
         GUI.promptOut();
 
@@ -88,23 +88,18 @@ public class Vest_Orb extends NonPlayerCharacter implements Gettable {
               + "alone now.\"");
         GUI.promptOut();
         
-        GUI.out("\"Eurynomos is kept alive by 5 phylacteries, however he cannot\n"
-              + "remember where they are, for he lives in a state of dementia\n"
-              + "now. The phylacteries are deteriorating, but I believe he supplements\n"
-              + "his life energy with that of others; the fools who enter here.\n"
-              + "Find and destroy the phylacteries. Set us free from this place.\"");
-        GUI.promptOut();
-                
-        return null;
+        return "\"Eurynomos is kept alive by 5 phylacteries, however he cannot\n"
+             + "remember where they are, for he lives in a state of dementia\n"
+             + "now. The phylacteries are deteriorating, but I believe he supplements\n"
+             + "his life energy with that of others; the fools who enter here.\n"
+             + "Find and destroy the phylacteries. Set us free from this place.\"";
     }
     // ========================================================================     
-    @Override protected Void converse2() {
-        GUI.out("Eurynomos is kept alive by 5 phylacteries, however he cannot\n"
-              + "remember where they are, for he lives in a state of dementia\n"
-              + "now. Find and destroy them. I'm sorry, I do not know what they\n"
-              + "are either.");
-        
-        return null;
+    @Override protected String converse2() {
+        return "Eurynomos is kept alive by 5 phylacteries, however he cannot\n"
+             + "remember where they are, for he lives in a state of dementia\n"
+             + "now. Find and destroy them. I'm sorry, I do not know what they\n"
+             + "are either.";
     }
     // ========================================================================   
     @Override public String moveIt() {

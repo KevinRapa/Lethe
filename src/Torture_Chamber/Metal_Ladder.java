@@ -71,7 +71,7 @@ public class Metal_Ladder extends Item {
                 return "You pick up the ladder.";
             }
             else
-                return null;
+                return NOTHING;
         }
         // ====================================================================    
         @Override public String getDescription() {

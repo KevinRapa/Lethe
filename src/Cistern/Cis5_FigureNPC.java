@@ -1,6 +1,7 @@
 package Cistern;
 
 import A_Main.GUI;
+import A_Main.Menus;
 import A_Super.NonPlayerCharacter;
 /**
  * @author Kevin Rapa
@@ -35,7 +36,7 @@ public class Cis5_FigureNPC extends NonPlayerCharacter {
     }
     // ========================================================================     
     @Override protected String converse1() {
-        GUI.menOut("Press enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.out("You feel out of breath and can't muster any words. For "
                 + "a moment, you and the figure stand in silence. Suddenly, "
                 + "the figure brings its other hand to its staff and leans "
@@ -53,7 +54,7 @@ public class Cis5_FigureNPC extends NonPlayerCharacter {
     }
     // ========================================================================     
     @Override protected String converse2() {
-        GUI.menOut("Press enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.out("The black cloaked figure speaks a verse to you in a hideous voice:");
         GUI.promptOut();
         

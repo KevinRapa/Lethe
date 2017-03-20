@@ -28,7 +28,7 @@ public class Sear_Wood extends Furniture implements Gettable {
         if (Player.getInv().add(WOOD_REF))
             return "You take a chunk of wood.";
         else
-            return null;
+            return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
 }

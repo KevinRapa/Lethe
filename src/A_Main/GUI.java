@@ -272,7 +272,7 @@ public class GUI extends JFXPanel {
      * @param txt dialog text.
      */
     public static void out(String txt) {
-        if (txt != null)
+        if (! txt.equals(""))
             DIAL.setText(NEWLINE.matcher(txt).replaceAll(" "));
     }
 /*----------------------------------------------------------------------------*/    
@@ -290,7 +290,7 @@ public class GUI extends JFXPanel {
      * @param txt <code>triggeredEvent</code> room text
      */
     public static void roomOut(String txt) {
-        if (txt != null)
+        if (! txt.equals(""))
             ROOM.setText(txt);
     }
 /*----------------------------------------------------------------------------*/    

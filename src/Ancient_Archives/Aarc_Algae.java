@@ -39,7 +39,7 @@ public class Aarc_Algae extends Aarc_Furniture implements Gettable {
         if (Player.getInv().add(ALGAE_REF))
             return "You scrape off some of the algae. Yuck.";
         else
-            return null;
+            return NOTHING;
     }
     // ======================================================================== 
 }

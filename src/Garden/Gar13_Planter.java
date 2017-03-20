@@ -36,7 +36,7 @@ public class Gar13_Planter extends SearchableFurniture implements Unmoveable {
             if (Player.getInv().add(SOIL_REF))
                 return this.useDialog;
             else
-                return null;
+                return NOTHING;
         }
         else 
             return this.actDialog;

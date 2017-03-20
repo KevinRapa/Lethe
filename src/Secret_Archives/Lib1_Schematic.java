@@ -21,8 +21,7 @@ public class Lib1_Schematic extends Note {
                            "	    \t\t\t[|]" +
                            "	    \t\t\t[|]" +
                            "\n" +
-                           "  \t\tTo self:\n" +
-                           "require a vessel\n" +
+                           "Require a vessel\n" +
                            "thats holds a charge. -Rhadamanthus";
     }
 /*----------------------------------------------------------------------------*/

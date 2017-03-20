@@ -1,6 +1,7 @@
 package Prison;
 
 import A_Main.GUI;
+import A_Main.Menus;
 import static A_Main.NameConstants.SHINY_WATCH;
 import A_Main.Player;
 import A_Super.Item;
@@ -30,8 +31,7 @@ public class Pris_Ghost extends NonPlayerCharacter {
     @Override public String useEvent(Item item) {
         if (item.toString().equals(SHINY_WATCH)) {
             Player.getInv().remove(item);
-            this.converse2();
-            return null;
+            return this.converse2();
         }
         else if (! pleased) { 
             if (firstTime)
@@ -46,10 +46,8 @@ public class Pris_Ghost extends NonPlayerCharacter {
     @Override public String interact(String key) {   
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
-        else if (this.firstTime) {
-            this.converse1();
-            return null;
-        }
+        else if (this.firstTime) 
+            return this.converse1();
         else {
             if (! pleased)
                 return "\"Did you find something that might be it? "
@@ -65,10 +63,10 @@ public class Pris_Ghost extends NonPlayerCharacter {
         }    
     }
     // ========================================================================     
-    @Override protected Void converse1() {
+    @Override protected String converse1() {
         firstTime = false;
         
-        GUI.menOut("Press enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.out("\"... ... ... You aren't Kampe. You better tread " +
                 "carefully, or Kampe will lock you up as he did " +
                 "me. It is not a wise decision to be here, stranger. " +
@@ -100,20 +98,17 @@ public class Pris_Ghost extends NonPlayerCharacter {
                 "information on the Treasure.\"");
         GUI.promptOut();
         
-        GUI.out("\"Ehhhh... ... No, I cannot remember what it is to tell " +
-                "the truth. My mind is weakening on account of the water, " + 
-                "but do not worry. I do not suffer here, for I do not " +
-                "know the word's meaning any longer. All I know of myself " + 
-                "is my name, Hypnos.\"");
-        GUI.promptOut();
-        
-        return null;
+        return "\"Ehhhh... ... No, I cannot remember what it is to tell " +
+               "the truth. My mind is weakening on account of the water, " + 
+               "but do not worry. I do not suffer here, for I do not " +
+               "know the word's meaning any longer. All I know of myself " + 
+               "is my name, Hypnos.\"";
     }
     // ========================================================================     
-    @Override protected Void converse2() {
+    @Override protected String converse2() {
         this.pleased = true;
         
-        GUI.menOut("Press enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.out("\"Ah yes! I do believe this is it, a valuable watch handed " +
                 "down to me from my mother. I would never leave this place " +
                 "without it. Thank you, sir of the woods, knower of the " +
@@ -130,13 +125,10 @@ public class Pris_Ghost extends NonPlayerCharacter {
         
         GUI.out(actDialog);
         GUI.promptOut();
-        
-        GUI.out("\"... No I couldn't have just walked through the bars and " +
-                "into Kampe's quarters. Ghosts do not work that way! Now " +
-                "thank you, my friend.\"");
-        GUI.promptOut();
-        
-        return null;
+
+        return "\"... No I couldn't have just walked through the bars and " +
+               "into Kampe's quarters. Ghosts do not work that way! Now " +
+               "thank you, my friend.\"";
     }
     // ========================================================================                 
 }

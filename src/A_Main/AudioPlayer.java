@@ -314,8 +314,10 @@ public class AudioPlayer {
      */
     public static void disposeKeyPlayers() {
         for (MediaPlayer[] mList : KEY_PLAYERS)
-            for (MediaPlayer mPlayer : mList)
+            for (MediaPlayer mPlayer : mList) {
+                mPlayer.stop();
                 mPlayer.dispose();
+            }
     }
 // ============================================================================
     public static void toggleMute() {

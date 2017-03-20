@@ -36,10 +36,10 @@ public final class Menus {
                     + "< >      Back",
 
         TRADE_SUB = "\n"
-                  + "<'s' #>  Store...\n"
-                  + "<'t' #>  Take...\n"
-                  + "<'loot'> Loot!!!\n"
-                  + "< >      Back",
+                  + "<'s' #(,#)>  Store...\n"
+                  + "<'t' #(,#)>  Take...\n"
+                  + "<'loot'>     Loot!!!\n"
+                  + "< >          Back",
 
         SEARCH_SUB = "\n\n"
                    + "<object> Search\n"
@@ -136,5 +136,7 @@ public final class Menus {
                   + "\n< > Back",
             
         GAL_TOTEM = "\n<#> Turn head"
-                  + "\n< > Back";
+                  + "\n< > Back",
+        
+        ENTER = "\n\nPress enter...";
 }

@@ -65,8 +65,10 @@ public class Map {
     }
     //==========================================================================
     public static void disposeMap() {
-        if (MAP_FRAME != null)
+        if (MAP_FRAME != null) {
+            MAP_FRAME.setVisible(false);
             MAP_FRAME.dispose();
+        }
     }
     //==========================================================================
     public static void updateMap() {
@@ -103,7 +105,7 @@ public class Map {
 
         Item studBkPhy = new Stud_BookPhylactery(BOOK_PHYL, 1500);
         Item kitcFrtPhy = new Kitc_FrtPhy(GLOWING_FRUIT, 1500);
-        Item factumPhy = new Factum(FACTUM, 1500);
+        Item factumPhy = new Factum(FACTUM, 2000);
         Item vauChlPhy = new Vau_ChalicePhylactery("glowing chalice", 1500);
         Item towScptrPhy = new Tow_ScepterPhylactery(GLOWING_SCEPTER, 1500);
 
@@ -198,8 +200,6 @@ public class Map {
         // </editor-fold>
         
         // </editor-fold>
-        // --------------------------------------------------------------------- 
-        
         // ---------------------------------------------------------------------  
         // <editor-fold defaultstate="collapsed" desc="AREA 1: CASTLE FRONT">
 
@@ -658,7 +658,7 @@ public class Map {
         Item drkFcs = new Focus(DARK_FOCUS, "It's a cool brass ring holding a tinted lens.");
         Item fnnyOrb = new BreakableItem(CRYSTAL_ORB, 
                 "It's extremely clean, and it contains a peculiar gas, the color of which you cannot quite describe.", 150);
-        Item bxThngy = new BreakableItem(BOX_THINGY, "This small black metal box has some surprising weight\n"
+        Item bxThngy = new BreakableItem(BATTERY, "This small black metal box has some surprising weight\n"
                 + "to it. It's a bit to big to fix in your palm. A small red light is on top\n"
                 + "and shiny metal strips are attached to each side.", 150);
         //-----------------------------FURNITURE--------------------------------         
@@ -944,8 +944,8 @@ public class Map {
         Item lib1Nt5 = new Lib1_Note5("account, page 3");
         Item lib1Nt6 = new Lib1_Note6("account, page 4");
         Item lib1Nt7 = new Lib1_Note7("journal page 2, Rhadamanthus");
-        Item lib1ImpNt = new Lib1_ImportantNote("momento- lens");
-        Item lib1Pln = new Lib1_Plan("vessel schematic");
+        Item lib1ImpNt = new Lib1_ImportantNote("schematic: disc");
+        Item lib1Pln = new Lib1_Plan("schematic: vessel");
         Item brkLns = new Item("cracked lens", "The red-tinted lens is cracked all the way through.", 
                 "You think this has lost its purpose by now.", 5);
         Item brssRng = new Item("brass ring", "It's an unhinged shiny brass ring with a groove lining the inside. "

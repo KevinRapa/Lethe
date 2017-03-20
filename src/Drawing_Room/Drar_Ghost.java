@@ -7,6 +7,7 @@ import A_Super.Key;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Inventory;
+import A_Main.Menus;
 import static A_Main.NameConstants.GLOWING_EMERALD;
 import A_Main.Player;
 /**
@@ -62,17 +63,17 @@ public class Drar_Ghost extends NonPlayerCharacter {
     @Override public String useEvent(Item item) {
         if (item.toString().equals(GLOWING_EMERALD)) {
             this.converse3();
-            return null;
+            return NOTHING;
         }
         else
             return "\"No no, that's not it. It's green and should be glowing, as souls do.\"";
     }
 /*----------------------------------------------------------------------------*/
-    @Override protected Void converse1() {
+    @Override protected String converse1() {
         
         GUI.out("As you open your mouth to speak, the apparition interrupts\n" +
                 "and begins to talk to you....");
-        GUI.menOut("\n\nPress enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.promptOut();
         
         GUI.out("\"You are the first living soul I have seen in 6 centuries.\n" +
@@ -83,7 +84,6 @@ public class Drar_Ghost extends NonPlayerCharacter {
         
         GUI.out("\"Is that so? Not a name I have heard before.\n" +
                 "Certainly never during my time.\"");
-        GUI.menOut("\n\nPress enter...");
         GUI.promptOut();
         
         GUI.out("\"My name is Asterion. I used to live here with my two\n"
@@ -132,19 +132,19 @@ public class Drar_Ghost extends NonPlayerCharacter {
         GUI.toMainMenu();
         GUI.out("\"Please come back when you have the gem.\"\n");
 
-        return null;
+        return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
-    @Override protected Void converse2() {
+    @Override protected String converse2() {
         GUI.out("\"Do you have the emerald yet? It's so\n" +
                 "important to me. I will to repay you.\"");
         
-        return null;
+        return NOTHING;
     }
 /*----------------------------------------------------------------------------*/    
     private void converse3() {       
         
-        GUI.menOut("\n\nPress enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.out("\"Oh, you have found it! You have no idea what\n" +
                 "this means to me. Oh, well I suppose you do.\n" +
                 "As promised, I will help you find a way out\n" +

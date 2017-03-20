@@ -3,6 +3,7 @@ package Cistern;
 import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Id;
+import A_Main.Menus;
 import static A_Main.NameConstants.WOODEN_OAR;
 import A_Main.Player;
 import A_Super.Item;
@@ -26,7 +27,7 @@ public class Cis2_Boat extends SearchableFurniture {
 
         this.addNameKeys("(?:slender )?(?:wooden )?(?:canoe|boat)");
         this.addUseKeys(WOODEN_OAR);
-        this.addActKeys("ride", "paddle", "climb|enter|get|go", "leave");
+        this.addActKeys("ride|paddle|launch", "climb|enter|go", "leave");
     }
     // ========================================================================   
     @Override public String interact(String key) {              
@@ -50,13 +51,13 @@ public class Cis2_Boat extends SearchableFurniture {
             Player.setOccupies(Id.CIS2);
         
         AudioPlayer.playEffect(42);
-        GUI.menOut("Press enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.descOut(this.actDialog);
         GUI.clearDialog();
         GUI.promptOut();
         Player.describeRoom();
         
-        return null;
+        return NOTHING;
     }
     // ========================================================================     
 }

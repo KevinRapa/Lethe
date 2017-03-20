@@ -117,7 +117,7 @@ public class Gal2_Statue extends SearchableFurniture {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         Player.getInv().give(item, this.inv);
-        return null;
+        return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
     public void addDragonRef(Furniture dragon) {

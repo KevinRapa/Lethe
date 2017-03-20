@@ -68,7 +68,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
                     if (Player.getPos().hasFurniture(FLORENCE_FLASK_REF)) {
                         AudioPlayer.playEffect(45);
                         FLORENCE_FLASK_REF.distill();
-                        return null;
+                        return NOTHING;
                     }
                     else {
                         AudioPlayer.playEffect(45);

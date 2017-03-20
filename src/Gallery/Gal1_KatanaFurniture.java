@@ -35,7 +35,7 @@ public class Gal1_KatanaFurniture extends Furniture {
             return this.actDialog;
         }
         else
-            return null;
+            return NOTHING;
     }
 /*----------------------------------------------------------------------------*/    
     

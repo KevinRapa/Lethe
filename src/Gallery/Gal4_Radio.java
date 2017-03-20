@@ -24,26 +24,26 @@ public class Gal4_Radio extends Furniture implements Gettable, Heavy {
         this.screwsLeft = 4;
         this.SCREW_REF = screw;
         
-        this.description = "Its glassed-in surface " +
-                           "protects unsremany gauges, copper coils, " +
-                           "vacuum tubes, and bulbs of which you know little. " +
-                           "Holding the front glass panel in are several metal " +
-                           "brackets around the edge as well as four small " +
-                           "screws on the corners of the box. A small lever " +
-                           "sticks out from the right side of the box.";
+        this.description = 
+                "Its glassed-in surface protects many gauges, copper coils, " +
+                "and bulbs of which you know little. Holding the panel in are "
+              + "several metal brackets around the edge as well as four small " +
+                "screws on the corners of the box. A small lever " +
+                "sticks out from the right side of the box.";
         
-        this.DESC_2 = "Its glassed-in surface " +
-                      "protects a many gauges, copper coils, " +
-                      "vacuum tubes, and bulbs of which you know little. " +
-                      "Holding the front glass panel in are several metal " +
-                      "brackets around the edge. A small lever " +
-                      "sticks out from the right side of the box.";
+        this.DESC_2 = 
+                "Its glassed-in surface protects many gauges, copper coils, " +
+                "and bulbs of which you know little. Holding the front glass "
+              + "panel in are several metal brackets around the edge. A "
+              + "small lever sticks out from the right side of the box.";
 
         this.actDialog = "Nothing useful has ever been accomplished through senseless "
                        + "violence. Lets keep out wits and figure out a more rational "
                        + "course of action.";
+        
         this.searchDialog = "There is nothing interesting hidden on the box, nor "
                           + "are any of the odd mechanical parts inside of peculiarity.";
+        
         this.useDialog = "The screwdriver fits into one of the screws on the "
                        + "tall radio. You twist and with little-effort, the "
                        + "miniature screw falls out into your palm.";
@@ -51,7 +51,7 @@ public class Gal4_Radio extends Furniture implements Gettable, Heavy {
         this.addNameKeys("(?:tall )?(?:blue )?(?:modern )?(?:metal )?(?:machine|radio)", 
                 "(?:tiny )?screws?", "(?:front )?(?:glass )?panel");
         this.addUseKeys(ANYTHING);
-        this.addActKeys(MOVEPATTERN, "break", "unscrew", "listen");
+        this.addActKeys(GETPATTERN, "break", "unscrew", "listen");
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -78,7 +78,7 @@ public class Gal4_Radio extends Furniture implements Gettable, Heavy {
                     return this.useDialog;
                 }
                 else
-                    return null;
+                    return NOTHING;
             }
             else
                 return "You have already unscrewed everything you can. Perhaps "

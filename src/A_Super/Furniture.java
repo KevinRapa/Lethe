@@ -1,8 +1,6 @@
 package A_Super;
 
-import static A_Main.Patterns.*;
 import A_Main.Inventory;
-import static A_Main.NameConstants.READABLE;
 import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.regex.Pattern;

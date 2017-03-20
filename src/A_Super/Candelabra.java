@@ -76,7 +76,7 @@ abstract public class Candelabra extends SearchableFurniture
             if (this.inv.give(CANDLE_REF, Player.getInv()))
                 return "You take a candle off the candelabra.";
             else
-                return null;
+                return NOTHING;
         else
             return "The candelabra holds no more candles.";
     }

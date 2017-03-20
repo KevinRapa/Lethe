@@ -34,7 +34,7 @@ public class Cou2_Bushes extends Courtyard_Growth implements Gettable {
         if (Player.getInv().add(BERRY_REF))
             return "You pick a bright red berry off the bush.";
         else 
-            return null;
+            return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
 }

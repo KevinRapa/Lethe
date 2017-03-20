@@ -24,7 +24,7 @@ public class Wow2_Ladder extends Staircase {
     @Override public String interact(String key) {     
         Player.move(this.DIR);
         playEffect();       
-        return null;       
+        return NOTHING;       
     }
 /*----------------------------------------------------------------------------*/
     @Override protected void playEffect() {

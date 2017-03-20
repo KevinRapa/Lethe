@@ -24,14 +24,11 @@ public class Par1_Orb extends NonPlayerCharacter {
         
         else if (key.matches(TALK_PATTERN)) {
             if (this.firstTime && this.woken) {
-                this.converse1();
                 this.firstTime = false;
-                return null;
+                return this.converse1();
             }
-            else if (! this.firstTime && this.woken) {
-                this.converse2();
-                return null;
-            }
+            else if (! this.firstTime && this.woken) 
+                return this.converse2();
             else 
                 return "You mutter a soft 'Hullo?' But hear no response";
         }
@@ -39,7 +36,7 @@ public class Par1_Orb extends NonPlayerCharacter {
             return this.actDialog;
     }
 /*----------------------------------------------------------------------------*/
-    @Override protected Void converse1() {
+    @Override protected String converse1() {
         
         GUI.out("\"You should ask permission before playing with things that\n"
               + "aren't yours!\" Shouts the voice...");
@@ -95,18 +92,13 @@ public class Par1_Orb extends NonPlayerCharacter {
               + "there! I don't want this whole room charred...\"");
         GUI.promptOut();
         
-        GUI.out("\"Now, if you don't mind, I would like to get back to writing\n"
-                + "this twelve-hundred part symphony.\"");
-        GUI.promptOut();
-        
-        return null;
+        return "\"Now, if you don't mind, I would like to get back to writing\n"
+             + "this twelve-hundred part symphony.\"";
     }
 /*----------------------------------------------------------------------------*/
-    @Override protected Void converse2() {
-        GUI.out("\"Egh... uhh... I'm not sure... on the shelf over there???\n"
-              + "Ah! That's what this needs, more bassoons!\"");
-        
-        return null;
+    @Override protected String converse2() { 
+        return "\"Egh... uhh... I'm not sure... on the shelf over there???\n"
+              + "Ah! That's what this needs, more bassoons!\"";
     }
 /*----------------------------------------------------------------------------*/    
     public boolean woken() {

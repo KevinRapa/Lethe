@@ -2,6 +2,7 @@ package Soul_Chamber;
 
 import A_Main.GUI;
 import A_Main.Id;
+import A_Main.Menus;
 import static A_Main.NameConstants.PHYLACTERY;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -42,7 +43,7 @@ public class Soul_Pool extends Furniture {
             
             if (this.numPhylacteries == 5) {
                 killLich();
-                return null;
+                return NOTHING;
             }
         } 
         
@@ -51,7 +52,7 @@ public class Soul_Pool extends Furniture {
     }
     // ========================================================================    
     private void killLich() {    
-        GUI.menOut("Press enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.out("You stand before a pool of glowing aether, the very substance\n"
               + "which frees the dead of their earthly bodies.");
         GUI.promptOut();

@@ -35,7 +35,7 @@ public class Torc_ScytheFurniture extends Furniture implements Resetable {
             return this.actDialog;
         }
         else
-            return null;
+            return NOTHING;
     }
     // ========================================================================  
     /**

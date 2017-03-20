@@ -113,7 +113,7 @@ public class Torc_Sawhorses extends Furniture implements Resetable, Moveable {
                 return this.actDialog;
             }
             else
-                return null;
+                return NOTHING;
         } 
     }
     // ========================================================================     

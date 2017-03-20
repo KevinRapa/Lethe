@@ -65,7 +65,7 @@ public class Cou3 extends Room{
                 return this.actDialog;
             }
             else
-                return null;
+                return NOTHING;
         }
         // ====================================================================      
     }

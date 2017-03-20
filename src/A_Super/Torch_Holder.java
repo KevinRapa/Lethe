@@ -38,7 +38,7 @@ public class Torch_Holder extends SearchableFurniture {
             if (this.inv.give(TORCH, Player.getInv()))
                 return this.actDialog;
             else
-                return null;
+                return NOTHING;
         }
         else
             return "The holder is empty you bumbling oaf.";

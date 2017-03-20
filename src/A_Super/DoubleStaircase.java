@@ -38,7 +38,7 @@ abstract public class DoubleStaircase extends Staircase {
             return "You climb " + dir + " the stairs.";   
         }
         else
-            return null;
+            return NOTHING;
     }
     // ========================================================================         
 }

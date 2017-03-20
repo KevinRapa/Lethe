@@ -76,7 +76,7 @@ public class Obs1_Slots extends Furniture {
         
         GUI.descOut(Player.getPos().getDescription());
         
-        return null;
+        return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {

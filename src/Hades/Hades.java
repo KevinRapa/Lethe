@@ -1,6 +1,7 @@
 package Hades;
 
 import A_Main.GUI;
+import A_Main.Menus;
 import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Room;
@@ -44,7 +45,7 @@ public class Hades extends Room {
         
         GUI.clearDialog();
         GUI.descOut(END_DIALOG);
-        GUI.menOut("\n\nPress enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.promptOut();
         
         GUI.descOut(calculateScore(Player.getScore()));

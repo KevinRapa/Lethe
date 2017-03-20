@@ -58,7 +58,7 @@ public class Cry_Drawers extends Furniture implements Openable {
             Player.searchPrompt(this.DRAWERS[Integer.parseInt(ans) - 1]); 
         }
         
-        return null;
+        return NOTHING;
     }
     // ========================================================================     
     // ************************************************************************

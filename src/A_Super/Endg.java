@@ -3,6 +3,7 @@ package A_Super;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Main;
+import A_Main.Menus;
 import A_Main.Player;
 
 /**
@@ -38,13 +39,9 @@ public class Endg extends Room {
             return this.description;
     }
 // ============================================================================
-    @Override public String getBarrier(Direction dir) {
-        return null;
-    }
-// ============================================================================
     @Override public String triggeredEvent() {
         GUI.clearDialog();
-        GUI.menOut("\n\nPress enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.invOut("");
         GUI.promptOut();
 

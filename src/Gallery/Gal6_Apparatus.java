@@ -1,9 +1,9 @@
 package Gallery;
 
-import static A_Main.NameConstants.BOX_THINGY;
 import A_Super.Gettable;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
+import static A_Main.NameConstants.BATTERY;
 /**
  * Holds the box thingy; the battery for the GAL6 cannon
  * 
@@ -28,7 +28,7 @@ public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (! this.containsItem(BOX_THINGY)) {
+        if (! this.containsItem(BATTERY)) {
             return "The weird apparatus looks like a metal platform\n"
                  + "with three curved arms projecting out and overtop\n"
                  + "of itself. Its lights are off and the *bleeping*\n"
@@ -39,7 +39,7 @@ public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() { 
-        if (! this.containsItem(BOX_THINGY)) 
+        if (! this.containsItem(BATTERY)) 
             return "The platform in the center is empty.";
         
         return this.searchDialog;

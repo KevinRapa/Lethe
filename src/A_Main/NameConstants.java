@@ -23,7 +23,7 @@ public final class NameConstants {
         SACRED_FIRE = "sacred fire",            HAND_TORCH = "hand torch",
         BUCKET_OF_WATER = "bucket of water",    METAL_BAR = "metal bar",
         POLEARM = "polearm",                    METAL_LADDER = "metal ladder",
-        BOX_THINGY = "box thingy",              RED_FOCUS = "red focus",
+        BATTERY = "battery",                    RED_FOCUS = "red focus",
         BLUE_FOCUS = "blue focus",              YELLOW_FOCUS = "yellow focus",
         DARK_FOCUS = "dark focus",              CRYSTAL_ORB = "crystal orb",
         RUBY = "ruby",                          LEATHER_HOSE = "leather hose",

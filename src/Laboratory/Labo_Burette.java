@@ -1,6 +1,7 @@
 package Laboratory;
 
 import A_Main.GUI;
+import A_Main.Menus;
 import A_Main.Player;
 import static A_Main.NameConstants.*;
 import static A_Main.Patterns.LABO_BURET_ONE_OR_TWO;
@@ -106,7 +107,7 @@ public class Labo_Burette extends Furniture {
                     }
                 }
                 else
-                    return null;
+                    return NOTHING;
             }
             else
                 return "The burette is currently empty.";
@@ -120,12 +121,12 @@ public class Labo_Burette extends Furniture {
         if (Player.hasItem(TEST_TUBE)) {
             Player.getInv().remove(TUBE_REF);
             Player.getInv().add(dispense());
-            return null;
+            return NOTHING;
         }
         else if (Player.hasItem(EMPTY_VIAL)) {
             Player.getInv().remove(VIAL_REF);
             Player.getInv().add(dispense());
-            return null;
+            return NOTHING;
         }
         else 
             return this.actDialog;
@@ -133,7 +134,7 @@ public class Labo_Burette extends Furniture {
     // ========================================================================  
     private Item dispense() {
         GUI.out(mode.toString() + " will be dispensed in 5 mL increments. Press enter to start titrating. Press enter to stop titrating.");
-        GUI.menOut("Press enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.promptOut();
         
         int volume = TitrationTask.titrate();

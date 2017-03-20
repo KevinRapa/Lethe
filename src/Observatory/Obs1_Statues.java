@@ -75,7 +75,7 @@ public class Obs1_Statues extends Furniture {
             
         } while (Player.isNonEmptyString(choice));
         
-        return null;
+        return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
@@ -235,10 +235,10 @@ public class Obs1_Statues extends Furniture {
 /*----------------------------------------------------------------------------*/
     private Furniture getStatRef(String name) {
         for (Furniture s : this.STATS)
-            if (s.toString().matches(name))
+            if (s.toString().equals(name))
                 return s;
         
-        return null;
+        return null; // Shouldn't happen because name must be a number from 0 to 8
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -22,7 +22,7 @@ public class Hads_Corpses extends SearchableFurniture {
     @Override public String interact(String key) {
         if (SEARCH_P.matcher(key).matches()) {
             Player.searchPrompt(this);
-            return null;
+            return NOTHING;
         }
         else
             return this.actDialog;

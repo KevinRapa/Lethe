@@ -75,7 +75,7 @@ public class Labo_Flask extends SearchableFurniture {
     // ========================================================================     
     @Override public String useEvent(Item item) {
         Player.getInv().give(item, this.inv);
-        return null;
+        return NOTHING;
     }
     // ========================================================================    
     // ************************************************************************

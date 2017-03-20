@@ -7,7 +7,7 @@ import A_Super.*;
 import java.util.Scanner;           import java.util.ArrayList;
 import java.util.HashMap;           import java.io.IOException;
 import Tunnels.DungeonMonster;      import java.io.Serializable;
-import java.io.ObjectOutputStream;  import java.util.Iterator;
+import java.io.ObjectOutputStream;
 import java.util.HashSet;
 
 /**
@@ -175,14 +175,9 @@ public final class Player {
     /*------------------------------------------------------------------------*/
     public static int getScore() { return score; }
     /*------------------------------------------------------------------------*/
-    /**
-     * Checks that you have a specific item, ignores case.
-     * @param item The item in question.
-     * @return If you have the item.
-     */
-    public static boolean hasItem(String item) {
+    public static boolean hasItem(String itemName) {
         return Player.inv.contents().stream().
-                anyMatch(i -> i.toString().equalsIgnoreCase(item));
+                anyMatch(i -> i.toString().equalsIgnoreCase(itemName));
     }
     /*------------------------------------------------------------------------*/
     /**
@@ -217,7 +212,7 @@ public final class Player {
             
             GUI.out("You succumb to the surreal, yet all too reachable decision. "
                       + "Could this release you from your hopelessness?"); 
-            GUI.menOut("\n\nPress enter...");
+            GUI.menOut(Menus.ENTER);
             GUI.promptOut();
 
             inv.clear();
@@ -322,9 +317,9 @@ public final class Player {
      * @return at end of game, if the player wishes to erase save data.
      */
     public static boolean startDialog() {
-        AudioPlayer.playTrack(getPosId());
+        AudioPlayer.playTrack(Id.ENDG);
         
-        GUI.menOut("\n\nPress enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.out("It's about 10:00pm and a warm, humid breeze passes through the trees.\n" +
                 "You have just arrived on foot to your destination, and\n" +
                 "find it even more colossal than what you had\n" +
@@ -581,24 +576,22 @@ public final class Player {
                 GUI.out("You stuff as much as you can into your pockets.");
             }
             else {
-                try (Scanner collectToken = 
-                        new Scanner(cmdItm).useDelimiter("\\s+")) 
-                {
+                try (Scanner scan = new Scanner(cmdItm).useDelimiter("\\s+")) {
                     // Gets an item slot.
-                    String action = collectToken.next();            
-                    int slot = Integer.parseInt(collectToken.next());
+                    String action = scan.next();            
+                    int slot = Integer.parseInt(scan.next());
 
                     // Evaluates the store or take action given the slot.
                     if (STORE_P.matcher(action).matches()) {
                         Item item = Player.inv.get(slot - 1);
-                        Player.incrementMoves();
                         evalStore(furnInv, item);                            
                     }            
                     else if (TAKE_P.matcher(action).matches()) {
                         Item item = furnInv.get(slot - 1);
-                        Player.incrementMoves();
                         evalTake(furnInv, item);
                     }
+                    
+                    Player.incrementMoves();
                     describeRoom();
                     printInv();
                 }
@@ -609,7 +602,7 @@ public final class Player {
                         | java.lang.NumberFormatException e) 
                 {
                     if (isNonEmptyString(cmdItm))
-                        GUI.out("You will need to type an action and the slot number."); 
+                        GUI.out("Excuse me?"); 
                 }
             }
         } while (isNonEmptyString(cmdItm));

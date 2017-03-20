@@ -43,14 +43,14 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
                     Player.getInv().remove(TUBE_REF);
                     Player.getInv().add(dispense());
                 }
-                return null;
+                return NOTHING;
             }
             else if (Player.hasItem(EMPTY_VIAL)) {
                 if (askToDispense()) {
                     Player.getInv().remove(VIAL_REF);
                     Player.getInv().add(dispense());
                 }
-                return null;
+                return NOTHING;
             }
             else {
                 return this.actDialog;
@@ -73,7 +73,7 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
         String ans = GUI.askChoice(Menus.LABO_DISP, ONE_TO_SIX);
         
         GUI.out("Liquid will be dispensed in 5 mL increments. Press enter to start titrating. Press enter to stop titrating.");
-        GUI.menOut("Press enter...");
+        GUI.menOut(Menus.ENTER);
         GUI.promptOut();
         
         int volume = TitrationTask.titrate();

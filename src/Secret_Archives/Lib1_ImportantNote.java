@@ -7,16 +7,13 @@ public class Lib1_ImportantNote extends Note {
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Lib1_ImportantNote(String name) {
         super(name);
-        this.description = "Dropped red lens, another one. I cant remember\n" +
-                           "even how, its been  so many years since one broke last...\n"
-                         + "no, maybe I can repair it. Think\n" +
-                           "maybe I had a book on it in library.\n" +
-                           "In meantime I guess Ill try again in workshop.\n" +
-                           "Ill need to get to that later... the key though...\n"
-                         + "what was the code again? 217.. no wait it wasnt\n"
-                         + "that was it... it was those numbers though...\n"
-                         + "darn I cant remember which painting\n"
-                         + "the other switch was behind either... Those idiots!";
+        this.description = 
+                "Sketched roughly on the paper appears to be a schematic. "
+              + "Three parts are drawn separated: a disc, a ring, and a "
+              + "small screw. A few measurments are noted. Written next "
+              + "to the screw is \"1mm\", and written next to the disc is "
+              + "\"filters to 700nm\". At the bottom of the sheet reads, "
+              + "\"for Daedalus - 712\".";
 /*----------------------------------------------------------------------------*/
     }
 }
