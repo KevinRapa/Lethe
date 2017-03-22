@@ -55,15 +55,15 @@ public class Help {
         "to from your current location.", 
          
         "You may examine things you enounter by entering an appropriate verb " +
-        "(\"examine\", \"view\", etc.) followed by the thing you wish to examine. " +
-        "For your convenience, the shortcut for this is \"c\" for \"check\". You " +
+        "(\"examine\", \"look at\", etc.) followed by the thing you wish to examine. " +
+        "For your convenience, the shortcut for this is \"c\" for \"check\" (e.g. \"c window\"). You " +
         "may find this command useful in order to reveal clues about hidden " +
         "objects as well as to add color to your imagination.", 
          
         "Searching is one of the most useful commands you will use in order " +
         "to progress. You can search by entering an appropriate verb " +
         "(\"search\", \"look in/around\", etc.) followed by the thing you wish " +
-        "to search. You may use the shortcut key \"e\" at your leisure. If " +
+        "to search. You may use the shortcut key \"e\" at your leisure (e.g. \"e table\"). If " +
         "the object can be searched, you will be taken to a sub-prompt for " +
         "exchanging items with the object's contents. Remember that even if " +
         "something cannot be searched, this doesn't imply that it doesn't " +
