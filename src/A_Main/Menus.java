@@ -52,7 +52,6 @@ public final class Menus {
 
         MAIN_MENU = "      Type a command or:\n"
                   + "    <'w'/'s'/'a'/'d'> Move\n"
-                  + "<'e'>  Search     <'c'>  Check\n"
                   + "<'i'>  Inventory  <'k'>  Keys\n"
                   + "<'h'>  Get help   <'n'>  Note\n"
                   + "<'m'>  Show Map   <'l'>  Loot\n"
