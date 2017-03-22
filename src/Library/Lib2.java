@@ -1,16 +1,17 @@
 package Library;
 
 import A_Main.AudioPlayer;
+import A_Main.Id;
+import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Room;
 
 public class Lib2 extends Room {
-    private boolean shelfMoved;
     private final String DESC_MOVED;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib2(String name, String ID) {
         super(name, ID);
-        this.shelfMoved = false;
+
         description = "You're in the small north end of the library directly under\n" +
                       "the upstairs floor. In the northwest corner, a couch\n" +
                       "sits in front of a fireplace. Against the west wall is a\n" +
@@ -27,12 +28,10 @@ public class Lib2 extends Room {
                      "In the northeast corner stands a statue.";
     }
 /*----------------------------------------------------------------------------*/
-    public void moveShelf() {
-        this.shelfMoved = true;
-    }
-/*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-            return this.shelfMoved ? this.DESC_MOVED : this.description;
+            return Player.getPos().isAdjacent(Id.LIB1) ? 
+                    this.DESC_MOVED : 
+                    this.description;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {

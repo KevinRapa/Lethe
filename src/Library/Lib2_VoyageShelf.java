@@ -12,18 +12,21 @@ import static A_Main.Names.DANTES_INFERNO;
 import static A_Main.Names.ILIAD;
 import static A_Main.Names.ODYSSEY;
 import static A_Main.Names.PARADISE_LOST;
+import A_Super.Room;
         
 public class Lib2_VoyageShelf extends SearchableFurniture {
-    private final Furniture REF, REF2, REF3, REF4;
-    private boolean moved;
+    private final Furniture WARFARE, CREATION, PERDITION, BANISHMENT;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib2_VoyageShelf(Furniture wrfr, Furniture crtn, Furniture prdtn, Furniture bnshmnt, Item... items) {
+    public Lib2_VoyageShelf(Furniture wrfr, Furniture crtn, Furniture prdtn, 
+            Furniture bnshmnt, Item... items) 
+    {
         super(items);
-        this.REF = wrfr;
-        this.REF2 = crtn;
-        this.REF3 = prdtn;
-        this.REF4 = bnshmnt;
-        this.moved = false;
+        
+        this.WARFARE = wrfr;
+        this.CREATION = crtn;
+        this.PERDITION = prdtn;
+        this.BANISHMENT = bnshmnt;
+        
         this.actDialog = "You push against the shelf, but it doesn't budge.";
         this.description = "The tall bookshelf bears a plaque on the top reading\n"
                          + "\"Voyage\". At its base on the right, you notice\n"
@@ -33,22 +36,23 @@ public class Lib2_VoyageShelf extends SearchableFurniture {
         this.addActKeys(MOVEPATTERN);
     }
 /*----------------------------------------------------------------------------*/
-    @Override public String interact(String key) {              
-        String rep = this.actDialog;
+    @Override public String interact(String key) { 
+        Room lib2 = Player.getRoomObj(Id.LIB2);
         
-        if (this.containsItem(ODYSSEY)  && REF.containsItem(ILIAD) &&
-            REF2.containsItem(BIBLE)    && REF3.containsItem(DANTES_INFERNO) &&
-            REF4.containsItem(PARADISE_LOST) && ! this.moved) 
+        if (this.containsItem(ODYSSEY)  
+            && WARFARE.containsItem(ILIAD) 
+            && CREATION.containsItem(BIBLE)    
+            && PERDITION.containsItem(DANTES_INFERNO) 
+            && BANISHMENT.containsItem(PARADISE_LOST) 
+            && ! lib2.isAdjacent(Id.LIB1)) 
         {
-            Lib2 lib2 = (Lib2)Player.getRoomObj(Id.LIB2);
             lib2.addAdjacent(Id.LIB1);
-            lib2.moveShelf();
-            AudioPlayer.playEffect(41);
-            this.moved = true;           
-            rep = "You push against the shelf. To your wonder, the shelf slowly\n"
-                + "swivels clockwise on its center axis, revealing a hidden room.";
+            AudioPlayer.playEffect(41);       
+            return "You push against the shelf. To your wonder, the shelf slowly\n"
+                 + "swivels clockwise on its center axis, revealing a hidden room.";
         }
-        return rep;          
+        else
+            return this.actDialog;          
     }
 /*----------------------------------------------------------------------------*/   
 }

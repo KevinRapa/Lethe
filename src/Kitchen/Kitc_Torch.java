@@ -24,7 +24,6 @@ public class Kitc_Torch extends Torch_Holder {
     @Override public String interact(String key) {
         if (this.inv.contains(TORCH)) {
             if (this.inv.give(TORCH, Player.getInv())) {
-                ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
                 Player.describeRoom();
                 return this.actDialog;
             }
@@ -55,7 +54,6 @@ public class Kitc_Torch extends Torch_Holder {
         @Override public boolean add(Item item) { 
             if (item.toString().equals(HAND_TORCH) && this.size() == 0) {
                 this.CONTENTS.add(item);
-                ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
                 Player.describeRoom();
                 return true;
             }
@@ -65,7 +63,6 @@ public class Kitc_Torch extends Torch_Holder {
     /*------------------------------------------------------------------------*/
         @Override public void remove(Item removeThis) {      
             this.CONTENTS.remove(removeThis);
-            ((Kitc)Player.getRoomObj(Id.KITC)).swtch();
             Player.describeRoom();
         }
     }

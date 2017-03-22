@@ -33,15 +33,13 @@ public class TextParser {
                         + "pocket. This is unintelligible.");
     
     private static final String
-        NOTHING = "", 
-        SPACE = " ",
-        NONE_THERE = "You do not notice any ", NEARBY = " nearby.";
+        DONT_HAVE_IT = "It doesn't look like you're carrying anything resembling that.";
     
     // List of standard commands that are likely to be made many times.
     private static final Command 
         DEFAULT_CMD =   new Command("What does that mean?"),
         EXPLETIVE_CMD = new Command("Mind yourself! You're a guest here!"),
-        SUICIDE_CMD =   new Command(() -> {Player.commitSuicide();}, "SUICIDE"),
+        SUICIDE_CMD =   new Command(() -> Player.commitSuicide(), "SUICIDE"),
         GREETING_CMD =  new Command("What do you think this is? Zork?"),
         NO_SLOT_CMD =   new Command("Seems that you don't have an existing slot there."),
         AMBIGUOUS_CMD = new Command("You need to specify something to put that in!");
@@ -55,7 +53,7 @@ public class TextParser {
      * @param input An input string by the player
      */
     public static void processText(String input) {
-        String noArticles = ARTICLE_P.matcher(input).replaceAll(NOTHING);
+        String noArticles = ARTICLE_P.matcher(input).replaceAll("");
 
         for (Command c : splitCommands(noArticles))
             COMMAND_QUEUE.offer(c);
@@ -72,9 +70,9 @@ public class TextParser {
     private static String stripPrepositions(String input) {
         StringBuilder builder = new StringBuilder();
         
-        for (String word : input.split(SPACE)) {
+        for (String word : input.split(" ")) {
             if (! PREPOS_P.matcher(word).matches())
-                builder.append(word).append(SPACE);
+                builder.append(word).append(" ");
         }
         return builder.toString().trim();
     }
@@ -100,7 +98,7 @@ public class TextParser {
                 commands[i] = new Command(Verb.GO_VERB, 
                         new DirectObj(FIRST_WORD_P
                                 .matcher(statements[i])
-                                .replaceFirst(NOTHING)));
+                                .replaceFirst("")));
             }
             else if (SUICIDE_P.matcher(statements[i]).matches()) {
                 commands[i] = SUICIDE_CMD;
@@ -120,7 +118,7 @@ public class TextParser {
             else if (STORE_CMD_P.matcher(statements[i]).matches()) {
                 commands[i] = getStoreCmd(STORE_AREA_P.split(
                         STORE_SPACE_P.matcher(statements[i])
-                                    .replaceAll(NOTHING)));
+                                    .replaceAll("")));
             }
             else {
                 if (SEARCH_MANNER_P.matcher(statements[i]).find()) {
@@ -155,12 +153,12 @@ public class TextParser {
         
         // Get just the first word
         Verb verb = new Verb(SPACE_THEN_ALL_P.matcher(actionObject)
-                                            .replaceAll(NOTHING));
+                                            .replaceAll(""));
         
         // Everything but the first word.
         String object = FIRST_WORD_P
                         .matcher(actionObject.trim())
-                        .replaceFirst(NOTHING);
+                        .replaceFirst("");
         
         DirectObj dirObj = new DirectObj(object);
         
@@ -205,7 +203,7 @@ public class TextParser {
         if (DROP_P.matcher(object).matches()) {
             // Player typed "put <item> down"
             obj = DirectObj.FLOOR_OBJECT;
-            object = object.replaceAll(" down", NOTHING);
+            object = object.replaceAll(" down", "");
         }
         
         if (ANY_DIGIT_P.matcher(object).matches()) {
@@ -242,11 +240,11 @@ public class TextParser {
         String verbObject = stripPrepositions(s[0]);
         
         Verb use = new Verb( // Get just the first word.
-                SPACE_THEN_ALL_P.matcher(verbObject).replaceFirst(NOTHING)
+                SPACE_THEN_ALL_P.matcher(verbObject).replaceFirst("")
         );
         
         String item = // Everything but the first word.
-                WORD_SPACE_P.matcher(verbObject).replaceFirst(NOTHING); 
+                WORD_SPACE_P.matcher(verbObject).replaceFirst(""); 
         
         Instrument inst;
         
@@ -359,7 +357,7 @@ public class TextParser {
             if (Player.hasItemResembling(i.toString()))
                 Player.evalUse(Player.getInv().get(i.toString()), furniture);
             else
-                GUI.out(NONE_THERE + i + NEARBY);
+                GUI.out(DONT_HAVE_IT);
         }
         // --------------------------------------------------------------------
         /**
@@ -409,7 +407,7 @@ public class TextParser {
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: DROP">
                 else if (verb.equals("drop") || verb.equals("remove")) {
                     if (verb.equals("remove") && item.getType().equals(SHOES)) {
-                        if (Player.getShoes().equals(NOTHING))
+                        if (Player.getShoes().equals(""))
                             GUI.out("You aren't wearing any shoes.");
                         else
                             GUI.out(item.useEvent());
@@ -561,7 +559,7 @@ public class TextParser {
                 Player.evaluateAction(v.toString(), instrument);
             }
             else
-                GUI.out(NONE_THERE + instrument + NEARBY);
+                GUI.out("You do not notice any " + instrument + " nearby.");
             
             Player.printInv();
         }
@@ -622,7 +620,7 @@ public class TextParser {
                     GUI.out("There is no " + furniture + " here.");
             }
             else
-                GUI.out(NONE_THERE + i + NEARBY);
+                GUI.out(DONT_HAVE_IT);
         }
         // </editor-fold>
         // ====================================================================

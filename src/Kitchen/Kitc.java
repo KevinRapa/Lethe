@@ -1,17 +1,18 @@
 package Kitchen;
 
 import A_Main.GUI;
+import A_Main.Inventory;
 import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Room;
 
 public class Kitc extends Room{
-    private boolean isLit;
-    
+    private final Inventory TORCH_INV_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Kitc(String name, String ID) {
+    public Kitc(String name, String ID, Inventory torchInv) {
         super(name, ID);
-        this.isLit = false;
+        
+        this.TORCH_INV_REF = torchInv;
         this.description = "You have found the kitchen. This room's musty\n" +
                            "odor grows stronger near a pantry on the room's north\n" +
                            "end. A hearth for cooking sits in the room's center\n" +
@@ -24,7 +25,7 @@ public class Kitc extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
-        if ((dir != Direction.WEST) && ! this.isLit)
+        if ((dir != Direction.WEST) && TORCH_INV_REF.size() == 0)
             return "It's too dark to see anything, and you don't want\n"
                  + "to trip and fall.";
         else 
@@ -32,7 +33,7 @@ public class Kitc extends Room{
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
-        if (! this.isLit) {
+        if (TORCH_INV_REF.size() == 0) {
             return "This room is pitch black and fetid. All that's visible is an\n" +
                    "empty mounted holder on the wall next to you and a thin\n" +
                    "slitted window on the east end of the room.";
@@ -40,16 +41,12 @@ public class Kitc extends Room{
         return this.description;
     }
 /*----------------------------------------------------------------------------*/
-    public void swtch() {
-        this.isLit = ! this.isLit;
-    }
-/*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("As you step in, a fetid stench immediately infiltrates your senses. "
                   + "You gag a few times before attuning your yourself to the wretched odor.");
             
-        return this.isLit ? STD_RM_OUT : "You are in a pitch black room.";
+        return TORCH_INV_REF.size() != 0 ? STD_RM_OUT : "You are in a pitch black room.";
     }
 /*----------------------------------------------------------------------------*/
 }

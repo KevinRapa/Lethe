@@ -10,7 +10,7 @@ public class Gal3_Ladder extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Ladder(Direction direction) {
         super(direction);
-        this.searchDialog = "The ladder hides nothing.";
+
         this.description = "The ladder is suspended above the ground in the\n"
                          + "hatch, too high to grab hold of.";
         this.lowered = false;
@@ -19,7 +19,7 @@ public class Gal3_Ladder extends Staircase {
     }
 /*----------------------------------------------------------------------------*/     
     @Override public String getDescription() {
-        return (!this.lowered) ? this.description :
+        return (! this.lowered) ? this.description :
             "With the rope cut, the ladder now gives way to the gallery loft.";
     }
 /*----------------------------------------------------------------------------*/

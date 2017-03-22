@@ -30,7 +30,7 @@ public class Foy2_Stat extends Statue {
     @Override public String interact(String key) {
         if (key.matches(MOVEPATTERN)) {
             if (! this.moved) {
-                Player.getRoomObj(Id.FOY2).addFurniture(LVR_REF);
+                Player.getPos().addFurniture(LVR_REF);
                 AudioPlayer.playEffect(41);
                 this.moved = true;
                 return "You push the statue and manage to displace it a bit.\n"
@@ -39,7 +39,8 @@ public class Foy2_Stat extends Statue {
             else
                 return "You have moved the statue as far as you can.";
         }
-        return super.interact(key);
+        else
+            return super.interact(key);
     }
 /*----------------------------------------------------------------------------*/
     public boolean moved() {

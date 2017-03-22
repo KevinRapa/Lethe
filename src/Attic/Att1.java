@@ -20,12 +20,11 @@ import Tunnels.DungeonMonster;
  * @author Kevin Rapa
  */
 public class Att1 extends Room {
-    private boolean captured;
     private final Inventory PRIS_CBNT_INV_REF;
 // ============================================================================    
     public Att1(String name, String ID, Inventory prisCbntInv) {
         super(name, ID);
-        this.captured = false;
+
         this.PRIS_CBNT_INV_REF = prisCbntInv;
         this.description= 
                 "You stand on the north side of the attic. Scattered " +
@@ -36,10 +35,9 @@ public class Att1 extends Room {
     }
 // ============================================================================
     @Override public String triggeredEvent() {
-        if (Player.hasItem(PHASE_DOOR_POTION) && ! this.captured) {
+        if (Player.hasItem(PHASE_DOOR_POTION) && ! Player.hasVisited(Id.INTR)) {
             Inventory inv = Player.getInv();
             
-            this.captured = true;
             this.dialog();
             
             for (Item i : inv) 

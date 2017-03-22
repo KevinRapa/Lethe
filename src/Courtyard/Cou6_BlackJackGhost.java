@@ -58,21 +58,21 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
                     + "Come back after you've emptied your pockets some.";
         }
         else if (this.firstTime) {
-            if(this.converse1())
+            GUI.out(converse1());
+            if (askToPlay())
                 rep = rep.concat(" Hey why don't you keep those cards? I can make more! Hah!");
             this.firstTime = false;
         }
-        else if (this.converse2())
-            rep = rep.concat(" Hey why don't you keep those cards? I can make more! Hah!");
+        else {
+            GUI.out(converse2());
+            if (askToPlay())
+                rep = rep.concat(" Hey why don't you keep those cards? I can make more! Hah!");
+        }
 
         return rep;
     }
 /*----------------------------------------------------------------------------*/
-    /**
-     * Starts dialog with the ghost.
-     * @return if the player has played the ghost at least once.
-     */
-    @Override protected Boolean converse1() {
+    @Override protected String converse1() {
         GUI.menOut("\n\n<enter> Continue...");
         GUI.out("You approach the apparition loitering in the courtyard. Before\n"
               + "you can accost it, its mouth opens to speak...");
@@ -84,20 +84,14 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
               + "called blackjack...\"");
         GUI.promptOut();
         
-        GUI.out("\"... well not at all! ... Does it look like I need money in\n"
-              + "my state? Come on stranger, yes or no....\"");
         GUI.menOut("<'yes'>\n<'no'>");
         
-        return this.askToPlay();
+        return "\"... well not at all! ... Does it look like I need money in\n"
+              + "my state? Come on stranger, yes or no....\"";
     }
 /*----------------------------------------------------------------------------*/
-    /**
-     * Starts dialog with the ghost after he has be talked to a second time.
-     * Returns true or false, if the player has played the ghost at least once.
-     */
-    @Override protected Boolean converse2() {
-        GUI.out("Back to play?");
-        return this.askToPlay();
+    @Override protected String converse2() {
+        return "Back to play?";
     }
 /*----------------------------------------------------------------------------*/
     /**
@@ -241,12 +235,6 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         return ghostScore;
     }
 /*----------------------------------------------------------------------------*/     
-    /**
-     * Evaluates a hit action by calculating the new score.
-     * @param card A Card object.
-     * @param score a current score.
-     * @return The new score for the player who hit.
-     */
     private int evalHit(int val, int score) {
         if (val == 1)
             return (score + 11 <= 21) ? 11 : 1;
@@ -254,20 +242,10 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
             return val;
     }
 /*----------------------------------------------------------------------------*/ 
-    /**
-     * Checks if a bust has occurred.
-     * @param score A current score.
-     * @return If the score is over 21.
-     */
     private boolean bust(int score) {
         return score > 21;
     }
 /*----------------------------------------------------------------------------*/ 
-    /**
-     * Checks if a blackjack has occurred.
-     * @param score A current score.
-     * @return If the score equals 21.
-     */
     private boolean blackJack(int score) {
         return score == 21;
     }

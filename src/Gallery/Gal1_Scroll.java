@@ -1,6 +1,5 @@
 package Gallery;
 
-import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 /**
@@ -11,14 +10,12 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Gal1_Scroll extends Furniture {
-    private boolean lifted;
-    private final Gal1_Button BTTN_REF;
+    private final Furniture BTTN_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal1_Scroll (Furniture bttn) {
         super();
-        this.searchable = false;
-        this.lifted = false;
-        this.BTTN_REF = (Gal1_Button)bttn;
+
+        this.BTTN_REF = bttn;
         this.description = "The hanging scroll is ink drawn in black on an\n"
                          + "orange-stained parchment. It depicts a few scraggly\n"
                          + "trees in front of a mountain range. At the top,\n"
@@ -28,22 +25,17 @@ public class Gal1_Scroll extends Furniture {
                           + "scroll.";
         this.actDialog = "Upon lifting the scroll from the wall, you discover a\n"
                     + "hollow containing a dome-shaped button.";
-        this.addActKeys(GETPATTERN);
-        this.addActKeys("move", "lift", "slide");
+        this.addActKeys(MOVEPATTERN, GETPATTERN);
         this.addNameKeys("(?:hanging )?(?:chinese )?scroll");
     }
 /*----------------------------------------------------------------------------*/
         @Override public String interact(String key) {     
-            if (! this.lifted) {
-                this.lifted = true;
-                Player.getRoomObj(Id.GAL1).addFurniture(BTTN_REF);
+            if (! Player.getPos().hasFurniture(BTTN_REF)) {
+                Player.getPos().addFurniture(BTTN_REF);
                 return this.actDialog;
-            }            
-            return "You have already discovered the button.";
+            }      
+            else 
+                return "You have already moved it!";
     }
 /*----------------------------------------------------------------------------*/
-        public boolean isMoved() {
-            return this.lifted;
-        }
-/*----------------------------------------------------------------------------*/        
 }

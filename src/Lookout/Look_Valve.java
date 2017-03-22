@@ -12,7 +12,7 @@ import Rotunda.Rotu_Wheel;
  * @see Rotunda.Rotu_Fountain
  * @author Kevin Rapa
  */
-public class Look_Valve extends Furniture{
+public class Look_Valve extends Furniture {
     private final Rotu_Fountain FNTN_REF;
     private boolean loosened;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

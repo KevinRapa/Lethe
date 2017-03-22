@@ -1008,8 +1008,9 @@ public class Map {
         Furniture drarPno = new Drar_Piano();
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE KITCHEN"> 
+        Furniture kitcTrch = new Kitc_Torch();
         //-----------------------------THE ROOM---------------------------------
-        Room kitc = new Kitc("in the kitchen", Id.KITC);
+        Room kitc = new Kitc("in the kitchen", Id.KITC, kitcTrch.getInv());
         //-------------------------------ITEMS----------------------------------
         Item rtnFrt = new Item("rotten fruit", "Was this an apple? Or ... plum once?", 
                 "Whatever you expect him to do with that, he isn't going to.", -50);
@@ -1020,7 +1021,6 @@ public class Map {
         Item cpprPt = new Weapon(COPPER_POT, "It's small and crudely fashioned. It was definitely hammered into shape.", 30);
         Item cpprPn = new Weapon(COPPER_PAN, "It's an old copper pan, crudely fashioned and hammered into shape.", 30);
         //-----------------------------FURNITURE--------------------------------
-        Furniture kitcTrch = new Kitc_Torch();
         Furniture kitcF = new Floor("The floor is dirty brown stone, composed of differently sized bricks. "
                 + "The bricks are nicked all over, as if pelted numerous times with heavy objects.");
         Furniture kitcW = new Wall("The wall is mostly cobblestone supported by wooden vertical beams along the walls.");

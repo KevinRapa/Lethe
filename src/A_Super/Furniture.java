@@ -46,6 +46,7 @@ abstract public class Furniture implements Serializable {
             MOVEPATTERN = "move|slide|displace|push|pull|spin|rotate",
             FEELPATTERN = "feel|touch|poke",
             DEFAULT_USE = "What good would that do?",
+            NOTHING_HERE = "There's nothing hiding here.",
             ANYTHING = ".+";
     // ========================================================================
     /**
@@ -59,7 +60,7 @@ abstract public class Furniture implements Serializable {
         this.ACTKEYS = new ArrayList<>(6);  // Valid actions that may be performed on this.
         
         this.useDialog = DEFAULT_USE;
-        this.searchDialog = "There's nothing hiding here.";
+        this.searchDialog = NOTHING_HERE;
     }
     // ========================================================================     
     /**

@@ -29,9 +29,9 @@ abstract public class NonPlayerCharacter extends Furniture implements Moveable {
         this.addActKeys(ATTACK_PATTERN, TALK_PATTERN);
     }
     // ======================================================================== 
-    abstract protected<T extends Object> T converse1();
+    abstract protected String converse1();
     // ========================================================================   
-    abstract protected<T extends Object> T converse2();   
+    abstract protected String converse2();   
     // ========================================================================  
     public boolean firstTime() {
         return this.firstTime;

@@ -55,7 +55,7 @@ public class DungeonMonster {
     // ========================================================================
     public final static void startMovement() {
         timer = new Timer(true);
-        timer.schedule(new Creature_Task(), 4000, 4000);
+        timer.schedule(new Creature_Task(), 5000, 5000);
     }
     // ========================================================================
     private static void move() {

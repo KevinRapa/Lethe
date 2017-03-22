@@ -12,12 +12,10 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Sear_Fissure extends Furniture {
-    private boolean broken;
 /*----------------------------------------------------------------------------*/    
     public Sear_Fissure() {
         super();
 
-        this.broken = false;
         this.searchDialog = "It's just an empty hole.";
         this.description = "The north wall has been damaged, and a resulting\n"
                          + "fissure in it leads outside through the wall into the front\n"
@@ -39,11 +37,10 @@ public class Sear_Fissure extends Furniture {
             Player.getPos().addAdjacent(Id.COU2);
             Player.getInv().remove(item);
             Player.getInv().add(new Item("broken warhammer", "It's snapped in half.", "Well, it's useless now.", -30));
-            this.broken = true;
             AudioPlayer.playEffect(30);
             return this.useDialog;
         }
-        else if (! this.broken) {
+        else if (! Player.getPos().isAdjacent(Id.COU2)) {
             AudioPlayer.playEffect(35);
             if (item.toString().equals(HAMMER)) {
                 return "You give it a swing, but this hammer is too\n"
@@ -60,10 +57,9 @@ public class Sear_Fissure extends Furniture {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
-        if (this.broken)
-            return "The hole leads outside. It's big enough to fit through.";
-                   
-        return this.description; 
+        return (Player.getPos().isAdjacent(Id.COU2)) ?
+            "The hole leads outside. It's big enough to fit through." :
+            this.description; 
     }
 /*----------------------------------------------------------------------------*/
 }

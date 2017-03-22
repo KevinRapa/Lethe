@@ -1,20 +1,15 @@
 package Vestibule;
 
 import A_Main.GUI;
-import A_Main.Id;
 import A_Main.Menus;
-import A_Main.Player;
 import A_Super.NonPlayerCharacter;
 /**
  * @author Kevin Rapa
  */
 public class Vest_Orb extends NonPlayerCharacter {
-    private boolean second, third, fourth, fifth, sixth, seventh; 
     // ========================================================================
     public Vest_Orb () {
         super();
-        
-        this.second = third = fourth = fifth = sixth = seventh = false;
         
         this.description = 
                 "It's a dusty glass orb on the desk in the corner. "
