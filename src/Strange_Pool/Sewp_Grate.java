@@ -1,6 +1,6 @@
 package Strange_Pool;
 
-import static A_Main.NameConstants.METAL_BAR;
+import static A_Main.Names.METAL_BAR;
 import A_Super.Furniture;
 import A_Super.Gettable;
 /**

@@ -1,8 +1,8 @@
 package A_Super;
 
-import static A_Main.NameConstants.FIXED_LADDER;
-import static A_Main.NameConstants.METAL_LADDER;
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.FIXED_LADDER;
+import static A_Main.Names.METAL_LADDER;
+import static A_Main.Names.WEAPON;
 /**
  * @author Kevin Rapa
  */

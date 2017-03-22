@@ -2,7 +2,7 @@ package Laboratory;
 
 import A_Main.AudioPlayer;
 import A_Main.Player;
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Moveable;

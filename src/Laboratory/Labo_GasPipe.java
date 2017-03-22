@@ -1,7 +1,7 @@
 package Laboratory;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -17,7 +17,8 @@ public class Labo_GasPipe extends Furniture implements Unmoveable {
 
         this.gasIsOn = false;
         
-        this.description = "The metal pipe runs from the floor to ceiling. In the middle is a valve and an uncovered nozzle.";
+        this.description = "The metal pipe runs from the floor to ceiling in "
+                + "the room's corner. In the middle is a valve and an uncovered nozzle.";
         this.actDialog = "You turn the valve.";
         this.useDialog = "You fit the rubber tube over the nozzle tightly and connect the other end to the bunsen burner.";
 

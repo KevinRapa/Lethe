@@ -6,8 +6,8 @@ import A_Main.GUI;
 import A_Super.Furniture;
 import A_Main.Inventory;
 import A_Main.Menus;
-import A_Main.NameConstants;
-import static A_Main.NameConstants.*;
+import A_Main.Names;
+import static A_Main.Names.*;
 import static A_Main.Patterns.GAL_TOTEM_ONE_TO_FOUR;
 import A_Main.Player;
 /**
@@ -147,7 +147,7 @@ public class Gal3_Totem extends Gal_LightMachine {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) { 
-            if (item.getType().equals(NameConstants.FOCUS)) {
+            if (item.getType().equals(Names.FOCUS)) {
                 AudioPlayer.playEffect(43);
                 this.CONTENTS.add(item);
                 

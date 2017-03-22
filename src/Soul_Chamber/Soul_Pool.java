@@ -3,7 +3,7 @@ package Soul_Chamber;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Menus;
-import static A_Main.NameConstants.PHYLACTERY;
+import static A_Main.Names.PHYLACTERY;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;

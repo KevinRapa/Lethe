@@ -1,6 +1,6 @@
 package Courtyard;
 
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;

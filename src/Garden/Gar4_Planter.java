@@ -1,9 +1,9 @@
 package Garden;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.SHOVEL;
-import static A_Main.NameConstants.SOIL;
-import static A_Main.NameConstants.TROWEL;
+import static A_Main.Names.SHOVEL;
+import static A_Main.Names.SOIL;
+import static A_Main.Names.TROWEL;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;

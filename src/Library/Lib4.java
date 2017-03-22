@@ -1,7 +1,7 @@
 package Library;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.CRYSTAL_ORB;
+import static A_Main.Names.CRYSTAL_ORB;
 import A_Super.Direction;
 import A_Super.Room;
 import A_Super.Furniture;
@@ -15,10 +15,10 @@ public class Lib4 extends Room{
         description= "At the top step of the stairs, you gaze into the north end\n" +
                      "of the second floor. A couch sits in front of a fireplace in\n" +
                      "the far corner. A glimmering object catches your eye on a table\n"
-                   + "between them. A bookshelf labeled \"Perdition\" is against\n" +
-                     "the wall to your west. Furnished in the northeast corner is\n" +
-                     "another statue. In the center of the room is a large globe.\n" +
-                     "The balcony extends back south against the west wall.\n";
+                   + "between them. A west bookshelf labeled \"Perdition\" stands against\n" +
+                     "the wall. In the northeast corner is yet\n" +
+                     "another statue. A large globe stands in the room's center.\n" +
+                     "The floor extends south on a small balcony.\n";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {

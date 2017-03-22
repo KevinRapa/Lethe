@@ -1,7 +1,7 @@
 package Courtyard;
 
-import static A_Main.NameConstants.SHOVEL;
-import static A_Main.NameConstants.TROWEL;
+import static A_Main.Names.SHOVEL;
+import static A_Main.Names.TROWEL;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**

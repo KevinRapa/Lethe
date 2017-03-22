@@ -1,8 +1,8 @@
 package A_Super;
 
-import static A_Main.NameConstants.RUBBER_HOSE;
-import static A_Main.NameConstants.LOOPED_ROPE;
-import static A_Main.NameConstants.LEATHER_HOSE;
+import static A_Main.Names.RUBBER_HOSE;
+import static A_Main.Names.LOOPED_ROPE;
+import static A_Main.Names.LEATHER_HOSE;
 
 /**
  * @author Kevin Rapa

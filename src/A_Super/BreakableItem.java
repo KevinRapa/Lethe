@@ -1,6 +1,6 @@
 package A_Super;
 
-import static A_Main.NameConstants.BREAKABLE;
+import static A_Main.Names.BREAKABLE;
 
 /**
  * Represents an item that can be destroyed. 

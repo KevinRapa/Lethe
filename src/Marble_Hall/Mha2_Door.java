@@ -2,7 +2,7 @@ package Marble_Hall;
 
 import A_Main.AudioPlayer;
 import A_Main.Id;
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Super.Door;
 import A_Super.Room;
 import A_Super.Direction;

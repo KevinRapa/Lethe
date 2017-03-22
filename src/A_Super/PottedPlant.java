@@ -1,9 +1,9 @@
 package A_Super;
 
-import static A_Main.NameConstants.BUCKET_OF_WATER;
-import static A_Main.NameConstants.LIQUID;
-import static A_Main.NameConstants.SOIL;
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.BUCKET_OF_WATER;
+import static A_Main.Names.LIQUID;
+import static A_Main.Names.SOIL;
+import static A_Main.Names.WEAPON;
 import A_Main.Player;
 /**
  * @author Kevin Rapa

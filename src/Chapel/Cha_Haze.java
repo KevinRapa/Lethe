@@ -1,6 +1,6 @@
 package Chapel;
 
-import static A_Main.NameConstants.MOP;
+import static A_Main.Names.MOP;
 import A_Super.Furniture;
 import A_Super.Gettable;
 /**

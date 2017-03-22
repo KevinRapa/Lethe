@@ -4,7 +4,7 @@ package Courtyard;
  * 
  * @author Kevin Rapa
  */
-import A_Main.NameConstants;
+import A_Main.Names;
 import java.util.HashMap;
 import A_Super.Item;
 
@@ -28,7 +28,7 @@ public class Card extends Item {
      */
     public Card(String name) {
         super(name, 0);
-        this.type = NameConstants.CARD;
+        this.type = Names.CARD;
         this.description = "A ghostly and eerily solid playing card. It feels cool to the touch.";
         this.VALUE = this.determineValue(name.substring(0,2));
     }

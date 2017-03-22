@@ -1,7 +1,7 @@
 package Scorched_Room;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.WEAPON;
 import A_Super.Furniture;
 import A_Super.Item;
 

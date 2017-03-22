@@ -1,8 +1,8 @@
 package Courtyard;
 
 import A_Main.Inventory;
-import static A_Main.NameConstants.STATUE_HEAD;
-import static A_Main.NameConstants.STATUE_TORSO;
+import static A_Main.Names.STATUE_HEAD;
+import static A_Main.Names.STATUE_TORSO;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Statue;

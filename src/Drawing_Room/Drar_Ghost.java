@@ -8,7 +8,7 @@ import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Inventory;
 import A_Main.Menus;
-import static A_Main.NameConstants.GLOWING_EMERALD;
+import static A_Main.Names.GLOWING_EMERALD;
 import A_Main.Player;
 /**
  * NPC which assigns a task to the player in exchange for a couple items.
@@ -86,36 +86,58 @@ public class Drar_Ghost extends NonPlayerCharacter {
                 "Certainly never during my time.\"");
         GUI.promptOut();
         
-        GUI.out("\"My name is Asterion. I used to live here with my two\n"
-              + "brothers. We provided great services to this kingdom, if kingdom\n"
-              + "is what you still call it today. Well specifically, we offered our intellectual services to\n"
-              + "the people. But enough of me. Tell me, why on Earth are you here?\"");
+        GUI.out("I am Asterion. My family provided great services to this\n" +
+                "kingdom, ever since my parents' overthrow of the corrupt\n" +
+                "king Cronus. We offered freedom and knowledge to the\n" +
+                "people of this land. But enough of me. Tell me, why by\n" +
+                "the Gods are you here?");
         GUI.promptOut();
         
-        GUI.out("\"You aren't sure? That doesn't make any sense!\n" +
-                "But then again, that does answer some questions now.\n" +
-                "I keep wondering how Eurynomos could still be walking\n"
-              + "at this point. He is a lich, and has been for too long.\n"
-              + "His mind should have melted to a pulp by now. Perhaps\n"
-              + "he wished to use your life energy to fuel his.\"");
+        GUI.out("\"But then again, that does bring some questions to light. " +
+                "The magic of Eurynomos is foreign to me. He is " +
+                "impulsive; willing to delve into any uncharted realm " +
+                "of magic. Though I know little of the dark arts, I can " +
+                "only imagine this is the result of it. Eurynomos is a " +
+                "lich, and his mind should have melted to a pulp by now.\"");
         GUI.promptOut();
         
-        GUI.out("\"But this probably doesn't interest you. You are\n" +
-                "concerned with escape. I would like to help you,\n" +
-                "but I would also like you to do something for me.\"");
+        GUI.out("\"Lichery, my friend, is taboo; one of the most refrained " +
+                "upon divisions of magic. A lich walks as the living do, " +
+                "yet approaches death asymptotically, its mind and body " +
+                "rotting slowly, and its soul never leaving. Lichdom is " +
+                "a grand curse, and carries with it grim consequences.\"");
         GUI.promptOut();
         
-        GUI.out("I was bound by Eurynomos to an emerald. Our discovery, the\n"
-              + "Factum, drove him mad. He killed my brother and I, and possessed\n"
-              + "many others in the castle. Many fled, others perished, I stayed.\n"
-              + "I wish you to bring me the emerald. I will not leave this place,\n"
-              + "but at least them I may be sure my soul is safe with me.\"");
+        GUI.out("\"After our parents' death, we discovered a powerful, " +
+                "infernal fountain of magic in the castle depths. It " +
+                "birthed an artifact, named the Factum. We toyed with " +
+                "its ability to distort the fabric of the universe. We " +
+                "traveled many places. Many times. I soon identified it " +
+                "as a danger, but Eurynomos was much too stubborn to agree.\"");
         GUI.promptOut();
         
-        GUI.out("\"I know enough to say that the\n" +
-                "trophy room is off the second floor gallery.\n" +
-                "I have something that is connected to\n" +
-                "the unlocking mechanism. Please have it....\"");
+        GUI.out("\"The magic, the Source, was a toxin. It corroded all our " +
+                "minds here, and we began to forget. Before I knew it, " +
+                "I was dead by Eurynomos' hands, and many others in the " +
+                "castle followed. Eurynomos wished to live with the " +
+                "artifact, and thus he lived on under the wretched Curse.\"");
+        GUI.promptOut();
+        
+        GUI.out("\"But you are concerned with escape, not history. I would "
+              + "like to help you, but I would also like you to do something "
+              + "for me. As it turns out, Eurynomos bound me to a jewel. "
+                + "Though this castle houses my grave, it shall not be my "
+                + "resting place. I would like you to bring my the emerald "
+                + "so that I may destroy it.\"");
+        GUI.promptOut();
+        
+        GUI.out("\"I know enough to say that the trophy room is off the "
+              + "second floor gallery. I have something that is connected "
+              + "to the unlocking mechanism. Please have it....\"");
+        GUI.promptOut();
+        
+        GUI.out("\"... No I can't just walk in there because I'm a ghost.\n" +
+                "Death has rules! We don't live in anarchy here...\"");
         GUI.promptOut();
         
         if (Player.getInv().add(this.DRKFCS_REF)) {

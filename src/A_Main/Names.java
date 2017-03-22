@@ -7,7 +7,7 @@ package A_Main;
  * @see A_Main.Id
  * @author Kevin Rapa
  */
-public final class NameConstants {
+public final class Names {
     // CONSTANTS FOR ITEM TYPE NAMES ==========================================
     public static final String 
         PHYLACTERY = "phylactery",  CARD = "card",
@@ -23,7 +23,7 @@ public final class NameConstants {
         SACRED_FIRE = "sacred fire",            HAND_TORCH = "hand torch",
         BUCKET_OF_WATER = "bucket of water",    METAL_BAR = "metal bar",
         POLEARM = "polearm",                    METAL_LADDER = "metal ladder",
-        BATTERY = "battery",                    RED_FOCUS = "red focus",
+        DEAD_BATTERY = "battery thing",         RED_FOCUS = "red focus",
         BLUE_FOCUS = "blue focus",              YELLOW_FOCUS = "yellow focus",
         DARK_FOCUS = "dark focus",              CRYSTAL_ORB = "crystal orb",
         RUBY = "ruby",                          LEATHER_HOSE = "leather hose",
@@ -70,7 +70,8 @@ public final class NameConstants {
         BRAIN = "jarred brain",                 ONYX_FRAGMENT = "onyx fragment",
         STATUE_TORSO = "statue torso",          STATUE_HEAD = "statue head",
         SHINY_WATCH = "shiny pocket watch",     WOODEN_OAR = "wooden oar",
-        SHOE_BOX = "shoebox",
+        SHOE_BOX = "shoebox",                   RUBBER_GLOVES = "rubber gloves",
+        WORK_BOOTS = "work boots",              CHARGED_BATTERY = "charged battery",
             
         BIBLE = "biblical tome, 'The Book of Genesis'",
         ILIAD = "greek tome, 'The Iliad'",

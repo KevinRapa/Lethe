@@ -1,6 +1,6 @@
 package Workshop;
 
-import static A_Main.NameConstants.HAMMER;
+import static A_Main.Names.HAMMER;
 import A_Super.Furniture;
 import A_Super.Gettable;
 import A_Super.Heavy;

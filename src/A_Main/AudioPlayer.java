@@ -12,8 +12,8 @@ import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
-import static A_Main.NameConstants.SEP;
-import static A_Main.NameConstants.W_DIR;
+import static A_Main.Names.SEP;
+import static A_Main.Names.W_DIR;
 
 public class AudioPlayer {
     public final static String 

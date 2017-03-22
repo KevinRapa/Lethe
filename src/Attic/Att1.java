@@ -5,7 +5,7 @@ import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Inventory;
 import A_Main.Menus;
-import static A_Main.NameConstants.PHASE_DOOR_POTION;
+import static A_Main.Names.PHASE_DOOR_POTION;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Room;

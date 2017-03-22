@@ -1,6 +1,6 @@
 package Vault;
 
-import static A_Main.NameConstants.GLOWING_CHALICE;
+import static A_Main.Names.GLOWING_CHALICE;
 import A_Super.Room;
 import A_Super.Direction;
 import A_Super.Furniture;

@@ -1,6 +1,6 @@
 package West_Outer_Wall;
 
-import static A_Main.NameConstants.FIXED_LADDER;
+import static A_Main.Names.FIXED_LADDER;
 import A_Super.Item;
 import A_Main.Player;
 import A_Super.Balcony;

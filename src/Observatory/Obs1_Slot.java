@@ -3,7 +3,7 @@ package Observatory;
 import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Inventory;
-import A_Main.NameConstants;
+import A_Main.Names;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**
@@ -59,7 +59,7 @@ public class Obs1_Slot extends SearchableFurniture {
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {
             if (this.size() == 0) {
-                if (item.getType().equals(NameConstants.PLATE)) {
+                if (item.getType().equals(Names.PLATE)) {
                     AudioPlayer.playEffect(43);
                     this.CONTENTS.add(item);
                     return true;

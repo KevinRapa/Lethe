@@ -1,6 +1,6 @@
 package Garden;
 
-import static A_Main.NameConstants.LEATHER_HOSE;
+import static A_Main.Names.LEATHER_HOSE;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;

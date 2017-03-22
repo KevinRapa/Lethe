@@ -17,16 +17,13 @@ public class Lib1 extends Room{
     public Lib1(String name, String ID) {
         super(name, ID);
         this.description = 
-                "The small secret chamber is filled with documents\n"
-              + "scattered over the furniture and floor. In the center\n" +
-                "of the room is an unkept desk and chair standing on\n" +
-                "a Persian rug. Facing west, a large window spans most\n" +
-                "of the wall to your right. Ahead of you is a rack\n" +
-                "spanning the entire wall. To your left, a strange\n" +
-                "artifact on a table emits a beam of light. The light\n" +
-                "reflects off an angled ceiling mirror onto the desk,\n" +
-                "illuminating it. Under the table, a safe sits on the\n"
-              + "floor.";
+                "The small secret chamber is filled with documents scattered "
+              + "all over. In the center of the room is an unkept desk and "
+              + "chair standing on a Persian rug. A large window spans most " +
+                "of the north wall. A scroll rack fills the west wall "
+              + "completely. A strange artifact sits on a southern table "
+              + "emitting light which reflects off an angled ceiling mirror "
+              + "onto the desk. A black safe sits under the table.";
     }
 /*----------------------------------------------------------------------------*/        
 }

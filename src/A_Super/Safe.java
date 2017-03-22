@@ -3,7 +3,7 @@ package A_Super;
 import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Menus;
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.WEAPON;
 import A_Main.Player;
 /**
  * A combination safe that can be unlocked by entering the right combination.

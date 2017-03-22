@@ -1,6 +1,6 @@
 package Tower;
 
-import A_Main.NameConstants;
+import A_Main.Names;
 import A_Super.Item;
 /**
  * The fifth phylactery.
@@ -11,7 +11,7 @@ public class Tow_ScepterPhylactery extends Item {
     // ========================================================================
     public Tow_ScepterPhylactery(String name, int score) {
         super(name, score);
-        this.type = NameConstants.PHYLACTERY;
+        this.type = Names.PHYLACTERY;
         this.description = "It's a glimmering silver scepter holding a large opal\n"
                          + "at the top. The handle resembles a snake wrapped around\n"
                          + "a stick.";

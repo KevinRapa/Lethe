@@ -7,9 +7,10 @@ public class Par_VialNote extends Note {
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Par_VialNote(String name) {
         super(name);
-        this.description = "Were hav all my vials went? I swear these things\n"
-                         + "are to easy to lose. There might be some left in"
-                         + "the west wing somewhere... ";
+        this.description = 
+                "To all staff, please keep all utility chemicals in designated "
+                + "containers. DO NOT keep resupplying any needed glass vials "
+                + "from here! Let Daedalus create more for you if needed.";
 /*----------------------------------------------------------------------------*/
     }
 }

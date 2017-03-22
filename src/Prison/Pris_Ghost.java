@@ -2,7 +2,7 @@ package Prison;
 
 import A_Main.GUI;
 import A_Main.Menus;
-import static A_Main.NameConstants.SHINY_WATCH;
+import static A_Main.Names.SHINY_WATCH;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.NonPlayerCharacter;

@@ -1,6 +1,6 @@
 package West_Outer_Wall;
 
-import static A_Main.NameConstants.WHEEL_SPOKE;
+import static A_Main.Names.WHEEL_SPOKE;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 

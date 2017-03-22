@@ -1,8 +1,8 @@
 package Courtyard;
 
-import static A_Main.NameConstants.SHOVEL;
-import static A_Main.NameConstants.CROWBAR;
-import static A_Main.NameConstants.HOE;
+import static A_Main.Names.SHOVEL;
+import static A_Main.Names.CROWBAR;
+import static A_Main.Names.HOE;
 import A_Super.Furniture;
 import A_Super.Gettable;
 /**

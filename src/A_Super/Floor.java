@@ -1,7 +1,7 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Main.Player;
 
 /**

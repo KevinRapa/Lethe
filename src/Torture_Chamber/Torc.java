@@ -1,6 +1,6 @@
 package Torture_Chamber;
 
-import static A_Main.NameConstants.SCYTHE;
+import static A_Main.Names.SCYTHE;
 import A_Main.Player;
 import A_Super.Room;
 /**

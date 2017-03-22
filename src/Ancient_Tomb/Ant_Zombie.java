@@ -2,7 +2,7 @@ package Ancient_Tomb;
 
 import A_Main.AudioPlayer;
 import A_Main.Inventory;
-import static A_Main.NameConstants.BRAIN;
+import static A_Main.Names.BRAIN;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.NonPlayerCharacter;

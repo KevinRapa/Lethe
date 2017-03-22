@@ -5,8 +5,8 @@ import A_Main.GUI;
 import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
-import A_Main.NameConstants;
-import static A_Main.NameConstants.*;
+import A_Main.Names;
+import static A_Main.Names.*;
 /**
  * One of four components of the light machine puzzle in the gallery.
  * 
@@ -33,12 +33,12 @@ public class Gal6_Canon extends Gal_LightMachine {
         this.STAT = (Gal7_Statue) stat;
         this.addActKeys("fire", "shoot");
         this.addNameKeys("(?:electr(?:on)?ic )?cannon");
-        this.addUseKeys(BATTERY);
+        this.addUseKeys(CHARGED_BATTERY, DEAD_BATTERY);
         this.inv = new Cnn_Inv();       
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {   
-        if (containsItem(BATTERY)) 
+        if (containsItem(CHARGED_BATTERY)) 
             return "The cannon is blinking and making bleeping noises.\n"
                  + "A ray of light shoots out the barrel too. It must be on!";
         else
@@ -64,7 +64,7 @@ public class Gal6_Canon extends Gal_LightMachine {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) {   
-            if (item.getType().equals(NameConstants.FOCUS)) {
+            if (item.getType().equals(Names.FOCUS)) {
                 AudioPlayer.playEffect(43);
                 this.CONTENTS.add(item);
                 
@@ -75,10 +75,16 @@ public class Gal6_Canon extends Gal_LightMachine {
                 
                 return true;
             }
-            else if (item.toString().equals(BATTERY)) {
+            else if (item.toString().equals(CHARGED_BATTERY)) {
                 AudioPlayer.playEffect(43);
                 this.CONTENTS.add(item);
                 GUI.out("You slide the box inside the square compartment in the cannon. " + Gal6_Canon.this.turnOn());
+                return true;
+            }
+            else if (item.toString().equals(DEAD_BATTERY)) {
+                AudioPlayer.playEffect(43);
+                this.CONTENTS.add(item);
+                GUI.out("The box fits snugly inside the cannon, however nothing interesting happens.");
                 return true;
             }
             else {
@@ -90,7 +96,7 @@ public class Gal6_Canon extends Gal_LightMachine {
         @Override public void remove(Item item) {
             this.CONTENTS.remove(item);
             
-            if (item.toString().equals(BATTERY))
+            if (item.toString().equals(CHARGED_BATTERY))
                 GUI.out(turnOff());
             
             else if (Gal6_Canon.this.isOn) 

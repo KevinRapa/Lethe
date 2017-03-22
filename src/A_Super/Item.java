@@ -1,6 +1,6 @@
 package A_Super;
         
-import static A_Main.NameConstants.ITEM;
+import static A_Main.Names.ITEM;
 import java.io.Serializable;
 /**
  * Represents an object that can be stored in an inventory.

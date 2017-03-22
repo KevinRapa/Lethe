@@ -1,8 +1,8 @@
 package A_Main;
 
-import static A_Main.NameConstants.LOOT_SACK;
-import static A_Main.NameConstants.NO_LETTER_AFTER;
-import static A_Main.NameConstants.NO_LETTER_BEFORE;
+import static A_Main.Names.LOOT_SACK;
+import static A_Main.Names.NO_LETTER_AFTER;
+import static A_Main.Names.NO_LETTER_BEFORE;
 import A_Super.Item;
 import Foyer.LootSack;
 import java.util.Comparator;

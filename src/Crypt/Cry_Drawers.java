@@ -2,7 +2,7 @@ package Crypt;
 
 import A_Main.GUI;
 import A_Main.Menus;
-import static A_Main.NameConstants.BRAIN;
+import static A_Main.Names.BRAIN;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Openable;

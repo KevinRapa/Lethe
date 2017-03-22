@@ -1,6 +1,6 @@
 package Ancient_Archives;
 
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.HAND_TORCH;
 /**
  * @author Kevin Rapa
  */

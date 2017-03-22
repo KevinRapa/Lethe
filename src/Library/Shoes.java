@@ -1,6 +1,6 @@
 package Library;
 
-import A_Main.NameConstants;
+import A_Main.Names;
 import A_Main.Player;
 import A_Super.Clothing;
 
@@ -8,7 +8,7 @@ public class Shoes extends Clothing {
 /* CONSTRUCTOR ---------------------------------------------------------------*/  
     public Shoes (String name, String desc, String use, int score) {
         super(name, desc, use, score);
-        this.type = NameConstants.SHOES;
+        this.type = Names.SHOES;
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent() {

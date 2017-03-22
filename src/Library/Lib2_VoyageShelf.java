@@ -7,11 +7,11 @@ import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 
-import static A_Main.NameConstants.BIBLE;
-import static A_Main.NameConstants.DANTES_INFERNO;
-import static A_Main.NameConstants.ILIAD;
-import static A_Main.NameConstants.ODYSSEY;
-import static A_Main.NameConstants.PARADISE_LOST;
+import static A_Main.Names.BIBLE;
+import static A_Main.Names.DANTES_INFERNO;
+import static A_Main.Names.ILIAD;
+import static A_Main.Names.ODYSSEY;
+import static A_Main.Names.PARADISE_LOST;
         
 public class Lib2_VoyageShelf extends SearchableFurniture {
     private final Furniture REF, REF2, REF3, REF4;

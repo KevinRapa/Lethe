@@ -1,7 +1,7 @@
 package A_Super;
 
-import static A_Main.NameConstants.HAND_TORCH;
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.HAND_TORCH;
+import static A_Main.Names.WEAPON;
 
 /**
  * @author Kevin Rapa

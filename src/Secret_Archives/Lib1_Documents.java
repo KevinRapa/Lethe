@@ -1,6 +1,6 @@
 package Secret_Archives;
 
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.HAND_TORCH;
 import A_Super.Furniture;
 
 public class Lib1_Documents extends Furniture {

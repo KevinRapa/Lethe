@@ -2,7 +2,7 @@ package Lichs_Quarters;
 
 import A_Main.AudioPlayer;
 import A_Main.Id;
-import A_Main.NameConstants;
+import A_Main.Names;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Lever;
@@ -53,7 +53,7 @@ public class Lqu2_Lever extends Lever {
                               + "to stay busy?";
             this.useDialog = this.actDialog = this.description;
             
-            this.addUseKeys(NameConstants.HAND_DRILL);
+            this.addUseKeys(Names.HAND_DRILL);
             this.addActKeys("open", "use");
             this.addNameKeys("(?:monstrous )?(?:two-story )?(?:solid )?(?:oak )?(?:main |front )?gate");
         }

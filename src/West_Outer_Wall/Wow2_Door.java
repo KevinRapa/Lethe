@@ -1,6 +1,6 @@
 package West_Outer_Wall;
 
-import static A_Main.NameConstants.CROWBAR;
+import static A_Main.Names.CROWBAR;
 import A_Super.Direction;
 import A_Super.Door;
 

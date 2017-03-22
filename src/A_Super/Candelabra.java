@@ -3,8 +3,8 @@ package A_Super;
 import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Inventory;
-import static A_Main.NameConstants.CANDLE;
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.CANDLE;
+import static A_Main.Names.HAND_TORCH;
 import A_Main.Player;
 
 /**

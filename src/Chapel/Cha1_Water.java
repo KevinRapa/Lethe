@@ -3,7 +3,7 @@ package Chapel;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Super.Gettable;
 /**
  * Contains holy water that the player needs to grow the mandragora for the

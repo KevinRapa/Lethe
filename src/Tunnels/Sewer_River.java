@@ -2,7 +2,7 @@ package Tunnels;
 
 import A_Main.AudioPlayer;
 import A_Main.Player;
-import static A_Main.NameConstants.METAL_BUCKET;
+import static A_Main.Names.METAL_BUCKET;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**

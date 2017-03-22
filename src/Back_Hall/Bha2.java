@@ -4,7 +4,7 @@ import A_Super.Room;
 import A_Main.Player;
 import A_Main.GUI;
 import A_Main.Id;
-import static A_Main.NameConstants.SHROUDED_SHOES;
+import static A_Main.Names.SHROUDED_SHOES;
 /**
  * Sends player back to BHA1 if the player is not wearing the enchanted shoes.
  * Supposed to generate the illusion that the hallway is infinitely long.

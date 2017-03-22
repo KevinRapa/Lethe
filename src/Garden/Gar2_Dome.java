@@ -1,6 +1,6 @@
 package Garden;
 
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Super.Furniture;
 import A_Super.Unmoveable;
 /**

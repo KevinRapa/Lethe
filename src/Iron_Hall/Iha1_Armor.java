@@ -1,6 +1,6 @@
 package Iron_Hall;
 
-import static A_Main.NameConstants.POLEARM;
+import static A_Main.Names.POLEARM;
 import A_Super.Furniture;
 import A_Super.Moveable;
 

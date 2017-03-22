@@ -3,7 +3,7 @@ package Library;
 import A_Main.AudioPlayer;
 import A_Main.Player;
 import A_Main.Id;
-import static A_Main.NameConstants.LEATHER_SHOES;
+import static A_Main.Names.LEATHER_SHOES;
 import A_Super.Direction;
 import A_Super.Staircase;
 

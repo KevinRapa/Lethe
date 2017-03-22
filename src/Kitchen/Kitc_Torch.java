@@ -3,7 +3,7 @@ package Kitchen;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Inventory;
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.HAND_TORCH;
 import A_Super.Torch_Holder;
 import A_Super.Item;
 import A_Main.Player;

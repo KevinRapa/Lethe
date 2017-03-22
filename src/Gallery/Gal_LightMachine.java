@@ -1,6 +1,6 @@
 package Gallery;
 
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.SearchableFurniture;

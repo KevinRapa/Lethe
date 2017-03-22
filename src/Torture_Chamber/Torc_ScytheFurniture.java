@@ -1,7 +1,7 @@
 package Torture_Chamber;
 
 import A_Main.Id;
-import A_Main.NameConstants;
+import A_Main.Names;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -14,7 +14,7 @@ import A_Super.Weapon;
  * @author Kevin Rapa
  */
 public class Torc_ScytheFurniture extends Furniture implements Resetable {
-    private final Item SCYTHE = new Weapon(NameConstants.SCYTHE, 
+    private final Item SCYTHE = new Weapon(Names.SCYTHE, 
             "It's a large black scythe. The edge is quite sharp.", 80);;
     // ========================================================================
     public Torc_ScytheFurniture () {
@@ -42,7 +42,7 @@ public class Torc_ScytheFurniture extends Furniture implements Resetable {
      * Replaces scythe if player has it.
      */
     @Override public void reset() {
-        if (Player.hasItem(NameConstants.SCYTHE)) {
+        if (Player.hasItem(Names.SCYTHE)) {
             Player.getInv().remove(SCYTHE);
             Player.getRoomObj(Id.TORC).addFurniture(this);
         }

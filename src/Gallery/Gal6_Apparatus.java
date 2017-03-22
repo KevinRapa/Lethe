@@ -1,52 +1,111 @@
 package Gallery;
 
+import A_Main.GUI;
+import A_Main.Inventory;
 import A_Super.Gettable;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
-import static A_Main.NameConstants.BATTERY;
+import A_Super.BreakableItem;
+import static A_Main.Names.CHARGED_BATTERY;
+import static A_Main.Names.DEAD_BATTERY;
 /**
- * Holds the box thingy; the battery for the GAL6 cannon
+ * Player must use this to charge the dead battery before using it on the cannon
  * 
  * @see Gallery.Gal6_Cnn
  * @author Kevin Rapa
  */ 
 public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal6_Apparatus(Item... items) {
-        super(items);
-        this.searchDialog = "The only thing to take is the funny box in the center.";
+    public Gal6_Apparatus() {
+        super();
+        
+        this.inv = new Apparatus_Inventory();
+        
+        this.searchDialog = "You look on the platform.";
         this.description = "The weird apparatus looks like a metal platform\n"
                          + "with three curved arms projecting out and overtop\n"
                          + "of itself. Wires run all over the thing, and lights\n"
                          + "on it go *bleep bleep bleep*. The machine emits\n"
-                         + "some sort of blue light and in the center sits a\n"
-                         + "metal box thingy. Next to the apparatus is a label\n"
-                         + "that says: \"Plasma induction charger\".";
+                         + "some sort of blue light. Next to the apparatus is a label\n"
+                         + "that reads: \"Plasma induction charger\".";
         
         this.addActKeys(GETPATTERN);
-        this.addNameKeys("apparatus", "unknown apparatus", "plasma induction charger");
+        this.addNameKeys("(?:unknown )?apparatus", "(?:plasma induction )?charger");
     }
-/*----------------------------------------------------------------------------*/
-    @Override public String getDescription() {
-        if (! this.containsItem(BATTERY)) {
-            return "The weird apparatus looks like a metal platform\n"
-                 + "with three curved arms projecting out and overtop\n"
-                 + "of itself. Its lights are off and the *bleeping*\n"
-                 + "has stopped. Next to the apparatus is a label that\n"
-                 + "says: \"Plasma induction charger\".";
-        }
-        return this.description;
-    }
-/*----------------------------------------------------------------------------*/
-    @Override public String getSearchDialog() { 
-        if (! this.containsItem(BATTERY)) 
-            return "The platform in the center is empty.";
-        
-        return this.searchDialog;
-    }  
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        return getIt();
+        return getIt("This device is too big and heavy to put in your pockets.");
     }
-/*----------------------------------------------------------------------------*/
+// ============================================================================    
+// ****************************************************************************
+// ============================================================================   
+    /**
+     * Charges the battery for 25 seconds.
+     */
+    private class Apparatus_Inventory extends Inventory {
+        private transient Charge_Thread chargeThread;
+    // ========================================================================
+        @Override public boolean add(Item item) {
+            this.CONTENTS.add(item);
+            
+            if (item.toString().equals(DEAD_BATTERY)) {
+                // Charges the battery.
+                chargeThread = new Charge_Thread(item, this);
+                chargeThread.start();
+            }
+            
+            return true;
+        }
+     // ========================================================================
+        @Override public void remove(Item removeThis) {
+            this.contents().remove(removeThis);
+            
+            if (removeThis.toString().equals(DEAD_BATTERY) && chargeThread != null)
+                chargeThread.interrupt();
+        }
+    }    
+    // ========================================================================    
+    // ************************************************************************
+    // ======================================================================== 
+    /**
+     * Converts chemical into chilled chemicals in 25 seconds.
+     */
+    private static class Charge_Thread extends Thread {
+        private final Item DEAD_BATTERY;
+        private final Inventory APPARATUS_INV;
+    // ========================================================================
+        public Charge_Thread(Item battery, Inventory inv) {
+            super();
+            this.setDaemon(true);
+            this.DEAD_BATTERY = battery;
+            this.APPARATUS_INV = inv;
+        }
+    // ========================================================================
+        @Override public void run() {     
+            try {
+                synchronized (this) {
+                    GUI.out("The battery appears to be charging. Better give it some time.");
+                    this.wait(25000);
+
+                    if (APPARATUS_INV.contains(DEAD_BATTERY))
+                        GUI.out("The battery has likely charged enough at this point.");
+
+                    this.reOpen();
+                }
+            } catch (InterruptedException ex) {
+                GUI.out("Your impatience has interrupted the charging cycle.");
+            }
+        }
+    // ========================================================================
+        public void reOpen() {
+            if (APPARATUS_INV.contains(DEAD_BATTERY)) {
+                APPARATUS_INV.remove(DEAD_BATTERY);
+                APPARATUS_INV.add(new BreakableItem(CHARGED_BATTERY, 
+                        "The heavy metal box is now warm to the touch.", 160));
+            }   
+        }
+    }
+// ============================================================================
+// ****************************************************************************
+// ============================================================================
 }

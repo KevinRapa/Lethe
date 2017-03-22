@@ -1,8 +1,8 @@
 package Catacombs;
 
 import A_Main.Player;
-import static A_Main.NameConstants.HAND_TORCH;
-import static A_Main.NameConstants.ROCK;
+import static A_Main.Names.HAND_TORCH;
+import static A_Main.Names.ROCK;
 import A_Super.Ceiling;
 import A_Super.Direction;
 import A_Super.Floor;

@@ -1,7 +1,7 @@
 package Ancient_Archives;
 
 import A_Main.Player;
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.HAND_TORCH;
 import A_Super.Room;
 /**
  * Contains a key to the Keepers chamber and a note hinting where the Factum is.

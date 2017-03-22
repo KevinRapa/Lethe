@@ -2,7 +2,7 @@ package A_Super;
 
 import A_Main.GUI;
 import A_Main.Inventory;
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.HAND_TORCH;
 import A_Main.Player;
 /**
  * Represents a wall-mounted torch that can be taken.

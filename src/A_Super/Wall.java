@@ -1,8 +1,8 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.METAL_LADDER;
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.METAL_LADDER;
+import static A_Main.Names.WEAPON;
 /**
  * Represents a wall. 
  * Superficial only. Would not make sense for game to say "there is no wall here"

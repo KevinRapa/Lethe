@@ -1,15 +1,13 @@
 package A_Main;
 
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import static A_Main.Patterns.*; 
 import A_Super.*;
 
 import java.util.Scanner;           import java.util.ArrayList;
 import java.util.HashMap;           import java.io.IOException;
 import Tunnels.DungeonMonster;      import java.io.Serializable;
-import java.io.ObjectOutputStream;
-import java.util.HashSet;
-
+import java.io.ObjectOutputStream;  import java.util.HashSet;
 /**
  * Represents the player, the focal point of the game.
  * All player actions originate from the is class. The player has access
@@ -95,7 +93,7 @@ public final class Player {
         MAIN_CMDS.put("southeast", () -> evaluateAction("go", "southeast"));
         
         MAIN_CMDS.put("xyzzy",     () -> {
-            GUI.out("A hollow clown says, \"surprise!\""); 
+            GUI.out("A hollow clown says surprise."); 
             GUI.randomizeColors();
         });
         MAIN_CMDS.put("save",      () -> { 

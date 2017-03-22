@@ -2,7 +2,7 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import A_Main.Player;
-import static A_Main.NameConstants.BUCKET_OF_WATER;
+import static A_Main.Names.BUCKET_OF_WATER;
 /**
  * Represents a fireplace with lit and unlit states.
  * 

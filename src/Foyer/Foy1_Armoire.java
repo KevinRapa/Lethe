@@ -1,6 +1,6 @@
 package Foyer;
 
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.WEAPON;
 import A_Super.Item;
 import A_Super.Moveable;
 import A_Super.Openable;

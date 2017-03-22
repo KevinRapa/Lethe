@@ -4,7 +4,7 @@ import A_Main.Id;
 import A_Super.Door;
 import A_Super.Item;
 import A_Main.Player;
-import static A_Main.NameConstants.SACRED_FIRE;
+import static A_Main.Names.SACRED_FIRE;
 import A_Super.Direction;
 /**
  * Has a magical ice ward over it. 

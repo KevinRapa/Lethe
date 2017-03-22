@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import A_Main.GUI;
 import A_Main.Menus;
-import static A_Main.NameConstants.PLATE;
+import static A_Main.Names.PLATE;
 import A_Main.Player;
 import A_Super.Item;
 import static A_Main.Patterns.OBS_SLOTS_A_TO_I;

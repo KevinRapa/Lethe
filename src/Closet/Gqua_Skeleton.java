@@ -1,6 +1,6 @@
 package Closet;
 
-import static A_Main.NameConstants.CROWBAR;
+import static A_Main.Names.CROWBAR;
 import A_Super.Item;
 import A_Super.Skeleton;
 /**

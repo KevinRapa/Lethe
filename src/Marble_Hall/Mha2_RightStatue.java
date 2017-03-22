@@ -1,7 +1,7 @@
 package Marble_Hall;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.SILVER_SPEAR;
+import static A_Main.Names.SILVER_SPEAR;
 import A_Super.Item;
 import A_Main.Player;
 import A_Super.SearchableFurniture;

@@ -1,6 +1,6 @@
 package Attic;
 
-import static A_Main.NameConstants.LAB_COAT;
+import static A_Main.Names.LAB_COAT;
 import A_Super.Clothing;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;

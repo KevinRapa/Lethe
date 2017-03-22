@@ -2,8 +2,8 @@ package Tower;
 
 import A_Main.GUI;
 import A_Main.Inventory;
-import static A_Main.NameConstants.DAMPENING_STAFF;
-import static A_Main.NameConstants.GLOWING_SCEPTER;
+import static A_Main.Names.DAMPENING_STAFF;
+import static A_Main.Names.GLOWING_SCEPTER;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;

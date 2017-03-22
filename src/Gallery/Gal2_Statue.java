@@ -4,7 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Inventory;
-import static A_Main.NameConstants.CRYSTAL_ORB;
+import static A_Main.Names.CRYSTAL_ORB;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;

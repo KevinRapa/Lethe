@@ -1,6 +1,6 @@
 package Tomb;
 
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.HAND_TORCH;
 import A_Super.Furniture;
 import A_Super.Gettable;
 /**

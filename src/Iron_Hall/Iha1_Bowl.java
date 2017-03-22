@@ -1,7 +1,7 @@
 package Iron_Hall;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.POLEARM;
+import static A_Main.Names.POLEARM;
 import A_Super.Item;
 import A_Super.Key;
 import A_Super.Furniture;

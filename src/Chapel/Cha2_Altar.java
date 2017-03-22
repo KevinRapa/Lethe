@@ -1,7 +1,7 @@
 package Chapel;
 
 import A_Main.Id;
-import static A_Main.NameConstants.FACTUM;
+import static A_Main.Names.FACTUM;
 import A_Main.Player;
 import A_Super.Gettable;
 import A_Super.Item;

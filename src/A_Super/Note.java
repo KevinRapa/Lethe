@@ -1,7 +1,7 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.READABLE;
+import static A_Main.Names.READABLE;
 /**
  * Represents a piece of paper with writing on it. 
  * Plays a paper noise when inspected or used.

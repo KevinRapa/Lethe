@@ -1,6 +1,6 @@
 package Tunnels;
 
-import static A_Main.NameConstants.PIECE_OF_PIPE;
+import static A_Main.Names.PIECE_OF_PIPE;
 import A_Super.Furniture;
 /**
  * @author Kevin Rapa

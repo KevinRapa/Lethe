@@ -1,7 +1,7 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.WEAPON;
 import static A_Main.Patterns.DESTROY_P;
 import A_Main.Player;
 

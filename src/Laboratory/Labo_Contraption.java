@@ -1,7 +1,7 @@
 package Laboratory;
 
-import static A_Main.NameConstants.BEAKER;
-import static A_Main.NameConstants.FLORENCE_FLASK;
+import static A_Main.Names.BEAKER;
+import static A_Main.Names.FLORENCE_FLASK;
 import A_Super.Furniture;
 import A_Super.Moveable;
 /**

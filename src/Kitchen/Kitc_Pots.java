@@ -2,8 +2,8 @@ package Kitchen;
 
 import A_Main.GUI;
 import A_Main.Inventory;
-import static A_Main.NameConstants.COPPER_PAN;
-import static A_Main.NameConstants.COPPER_POT;
+import static A_Main.Names.COPPER_PAN;
+import static A_Main.Names.COPPER_POT;
 import A_Main.Player;
 import A_Super.Gettable;
 import A_Super.Item;

@@ -3,7 +3,7 @@ package Caves;
 import A_Main.Player; import A_Super.Floor; 
 import A_Super.Wall;  import A_Super.Room;
 
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.HAND_TORCH;
 import A_Super.Ceiling;
 import A_Super.Furniture;
 import static java.lang.Math.*;
@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.sound.sampled.*;
-import static A_Main.NameConstants.SEP;
-import static A_Main.NameConstants.W_DIR;
+import static A_Main.Names.SEP;
+import static A_Main.Names.W_DIR;
 /**
  * The caves comprise a maze of similar tunnels.
  * The caves will generate their own descriptions and will distort their own

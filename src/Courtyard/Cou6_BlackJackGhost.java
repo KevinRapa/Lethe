@@ -1,7 +1,7 @@
 package Courtyard;
 
 import A_Main.GUI;
-import A_Main.NameConstants;
+import A_Main.Names;
 import A_Main.Player;
 import java.util.HashMap;
 import A_Super.Item;
@@ -114,7 +114,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
             
             if (Player.answeredYes(ans)) {
                 played = true;
-                Player.getInv().remove(NameConstants.CARD); // Removes all cards from player inventory.
+                Player.getInv().remove(Names.CARD); // Removes all cards from player inventory.
                 GUI.clearDialog();
                 this.playCards(); // Starts the game. 
             }

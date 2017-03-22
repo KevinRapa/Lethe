@@ -1,6 +1,6 @@
 package A_Main;
 
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import static A_Main.Patterns.*;
 import A_Super.Furniture;
 import A_Super.Item;

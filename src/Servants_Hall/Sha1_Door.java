@@ -2,10 +2,10 @@ package Servants_Hall;
 
 import A_Main.AudioPlayer;
 import A_Main.Id;
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.HAND_TORCH;
 import A_Main.Player;
-import static A_Main.NameConstants.WEAPON;
-import static A_Main.NameConstants.WOOD_LOG;
+import static A_Main.Names.WEAPON;
+import static A_Main.Names.WOOD_LOG;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Direction;

@@ -4,7 +4,7 @@ import A_Main.AudioPlayer;
 import A_Super.Fireplace;
 import A_Super.Item;
 import A_Main.Player;
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Super.Liquid;
 /**
  * Gives the player sacred fire if the player uses the enchanted bottle on

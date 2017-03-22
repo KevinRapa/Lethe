@@ -2,9 +2,9 @@ package Laboratory;
 
 import A_Main.GUI;
 import A_Main.Inventory;
-import A_Main.NameConstants;
+import A_Main.Names;
 import A_Main.Player;
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**
@@ -87,7 +87,7 @@ public class Labo_Flask extends SearchableFurniture {
         }
         // ==========================================
         @Override public boolean add(Item item) {
-            if (item.getType().equals(NameConstants.INGREDIENT)) {
+            if (item.getType().equals(Names.INGREDIENT)) {
                 GUI.out("You pour it in.");
                 this.CONTENTS.add(item);
                 Player.getInv().contents().add(TUBE_REF);

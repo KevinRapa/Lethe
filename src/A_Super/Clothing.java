@@ -1,6 +1,6 @@
 package A_Super;
 
-import A_Main.NameConstants;
+import A_Main.Names;
 
 /**
  * Represents a class of items that are used by themselves, and that the player
@@ -11,7 +11,7 @@ public class Clothing extends Item {
     // ========================================================================
     public Clothing(String name, String desc, String use, int score) {
         super(name, desc, use, score);
-        this.type = NameConstants.CLOTHING;
+        this.type = Names.CLOTHING;
     }
     // ========================================================================
 }

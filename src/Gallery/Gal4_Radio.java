@@ -1,7 +1,7 @@
 package Gallery;
 
-import static A_Main.NameConstants.SCREWDRIVER;
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.SCREWDRIVER;
+import static A_Main.Names.WEAPON;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Gettable;

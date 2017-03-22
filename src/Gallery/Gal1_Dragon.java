@@ -5,7 +5,7 @@ import A_Main.GUI;
 import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
-import A_Main.NameConstants;
+import A_Main.Names;
 /**
  * One of four elements of the light machine puzzle in the gallery.
  * Foci must be added to this in the correct order while the statue is holding
@@ -81,7 +81,7 @@ public class Gal1_Dragon extends Gal_LightMachine {
         }
         /*--------------------------------------------------------------------*/
         @Override public boolean add(Item item) { 
-            if (item.getType().equals(NameConstants.FOCUS)) {
+            if (item.getType().equals(Names.FOCUS)) {
                 AudioPlayer.playEffect(43);
                 this.CONTENTS.add(item);
                 

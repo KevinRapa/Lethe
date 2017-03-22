@@ -1,6 +1,6 @@
 package Marble_Hall;
 
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.WEAPON;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 

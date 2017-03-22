@@ -1,6 +1,6 @@
 package Gallery;
 
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Super.Furniture;
 
 public class Gal_Dome extends Furniture {

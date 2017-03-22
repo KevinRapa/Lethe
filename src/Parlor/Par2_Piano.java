@@ -1,6 +1,6 @@
 package Parlor;
 
-import static A_Main.NameConstants.STEEL_WIRE;
+import static A_Main.Names.STEEL_WIRE;
 import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import A_Super.Heavy;

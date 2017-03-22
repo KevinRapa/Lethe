@@ -2,7 +2,7 @@ package Workshop;
 
 import A_Main.GUI;
 import A_Main.Inventory;
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Super.Item;
 import A_Main.Player;
 import A_Super.Heavy;

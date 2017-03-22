@@ -2,7 +2,7 @@ package Courtyard;
 
 import A_Main.AudioPlayer;
 import A_Main.Inventory;
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import A_Main.Player;
 import A_Super.Floor;
 import A_Super.Gettable;

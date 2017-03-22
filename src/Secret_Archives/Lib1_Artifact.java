@@ -4,8 +4,8 @@ import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.GUI;
 import A_Main.Inventory;
-import A_Main.NameConstants;
-import static A_Main.NameConstants.*;
+import A_Main.Names;
+import static A_Main.Names.*;
 import A_Main.Player;
 /**
  * Contains the blue lens for the gallery light puzzle.
@@ -135,7 +135,7 @@ public class Lib1_Artifact extends Furniture {
         }
     /*------------------------------------------------------------------------*/
         @Override public boolean add(Item item) {
-            if (item.getType().equals(NameConstants.FOCUS)) {
+            if (item.getType().equals(Names.FOCUS)) {
                 this.CONTENTS.add(item);
                 triggerEvent();
                 return true;

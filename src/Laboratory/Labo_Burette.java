@@ -3,7 +3,7 @@ package Laboratory;
 import A_Main.GUI;
 import A_Main.Menus;
 import A_Main.Player;
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import static A_Main.Patterns.LABO_BURET_ONE_OR_TWO;
 import A_Super.Furniture;
 import A_Super.Item;

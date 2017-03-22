@@ -2,7 +2,7 @@ package Iron_Hall;
 
 import A_Main.GUI;
 import A_Main.Inventory;
-import static A_Main.NameConstants.POLEARM;
+import static A_Main.Names.POLEARM;
 import A_Main.Player;
 import A_Super.Gettable;
 import A_Super.Item;

@@ -4,7 +4,7 @@ import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
-import static A_Main.NameConstants.METAL_BUCKET;
+import static A_Main.Names.METAL_BUCKET;
 import A_Super.Gettable;
 
 public class Water extends Furniture implements Gettable {

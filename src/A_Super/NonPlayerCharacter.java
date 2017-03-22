@@ -1,6 +1,6 @@
 package A_Super;
 
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.WEAPON;
 
 /**
  * Represents an NPC that you can talk to.

@@ -1,13 +1,13 @@
 package Study;
 
-import A_Main.NameConstants;
+import A_Main.Names;
 import A_Super.Book;
 
 public class Stud_BookPhylactery extends Book {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Stud_BookPhylactery(String name, int score) {
         super(name, 4);
-        this.type = NameConstants.PHYLACTERY;
+        this.type = Names.PHYLACTERY;
         this.score = score;
         
         PAGE_LIST[0] = "- A Young Mind's Guide to Lichery -\n" +

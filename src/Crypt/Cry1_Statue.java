@@ -1,7 +1,7 @@
 package Crypt;
 
 import A_Main.Id;
-import A_Main.NameConstants;
+import A_Main.Names;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
@@ -29,7 +29,7 @@ public class Cry1_Statue extends Statue implements Resetable {
                          + "palm it reaches out openly towards you.";
         
         this.addNameKeys("(?:tall )?(?:stone )?(?:cloaked )?statue", "(?:statue(?:'s)? )?(?:bone?y )?(?:hand|palm)");
-        this.addUseKeys(NameConstants.SCYTHE);
+        this.addUseKeys(Names.SCYTHE);
         this.addActKeys("shake", "embrace", "greet", "hold", "grasp", 
                         "push", "pull", "move", "turn", "twist");
     }

@@ -1,7 +1,7 @@
 package West_Outer_Wall;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.FIXED_LADDER;
+import static A_Main.Names.FIXED_LADDER;
 import A_Main.Player;
 import A_Super.Staircase;
 import A_Super.Direction;

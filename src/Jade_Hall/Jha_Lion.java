@@ -2,8 +2,8 @@ package Jade_Hall;
 
 import A_Main.AudioPlayer;
 import A_Main.Id;
-import static A_Main.NameConstants.AQUAMARINE;
-import static A_Main.NameConstants.RUBY;
+import static A_Main.Names.AQUAMARINE;
+import static A_Main.Names.RUBY;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;

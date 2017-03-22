@@ -4,7 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Menus;
-import static A_Main.NameConstants.WOODEN_OAR;
+import static A_Main.Names.WOODEN_OAR;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.SearchableFurniture;

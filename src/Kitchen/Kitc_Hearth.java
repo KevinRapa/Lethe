@@ -1,6 +1,6 @@
 package Kitchen;
 
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.HAND_TORCH;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 import A_Super.Unmoveable;

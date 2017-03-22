@@ -1,7 +1,7 @@
 package Ransacked_Quarters;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.CROWBAR;
+import static A_Main.Names.CROWBAR;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Key;

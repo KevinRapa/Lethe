@@ -1,6 +1,6 @@
 package Cell;
 
-import static A_Main.NameConstants.HAND_TORCH;
+import static A_Main.Names.HAND_TORCH;
 import A_Super.Resetable;
 import A_Super.Torch_Holder;
 /**

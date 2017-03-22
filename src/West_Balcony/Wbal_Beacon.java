@@ -1,6 +1,6 @@
 package West_Balcony;
 
-import static A_Main.NameConstants.FIXED_LADDER;
+import static A_Main.Names.FIXED_LADDER;
 import A_Super.Furniture;
 import A_Super.Unmoveable;
 

@@ -1,7 +1,7 @@
 package Closet;
 
-import static A_Main.NameConstants.HAND_DRILL;
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.HAND_DRILL;
+import static A_Main.Names.WEAPON;
 import A_Super.Item;
 import A_Super.Moveable;
 import A_Super.Openable;

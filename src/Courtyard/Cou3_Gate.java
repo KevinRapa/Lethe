@@ -1,6 +1,6 @@
 package Courtyard;
 
-import A_Main.NameConstants;
+import A_Main.Names;
 import A_Super.Furniture;
 import A_Main.AudioPlayer;
 import A_Super.Heavy;
@@ -20,7 +20,7 @@ public class Cou3_Gate extends Furniture implements Heavy {
         this.actDialog = "It's huge. Even if it were unlocked, you wouldn't be able\n"
                        + "to budge it alone.";
         
-        this.addUseKeys(NameConstants.HAND_DRILL);
+        this.addUseKeys(Names.HAND_DRILL);
         this.addActKeys("open", "use", "knock", "close", "shut");
         this.addNameKeys("(?:monstrous )?(?:two-story )?(?:solid )?(?:oak )?(?:main |front )?gate");
     }

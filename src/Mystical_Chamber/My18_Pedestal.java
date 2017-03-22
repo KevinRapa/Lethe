@@ -1,7 +1,7 @@
 package Mystical_Chamber;
 
 import A_Main.AudioPlayer;
-import static A_Main.NameConstants.IRIDESCENT_JEWEL;
+import static A_Main.Names.IRIDESCENT_JEWEL;
 import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Furniture;

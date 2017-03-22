@@ -1,6 +1,6 @@
 package Trophy_Room;
 
-import static A_Main.NameConstants.WEAPON;
+import static A_Main.Names.WEAPON;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Gettable;

@@ -9,14 +9,14 @@ public class Wrk_Note extends Note {
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Wrk_Note(String name) {
         super(name);
-        this.description = "The idiots! Daedalus could never keep this place\n" +
-                           "stocked! He was a burden in life, and he's still\n" +
-                           "a burden now. Where's the sand? I can't get into\n" +
-                           "the trophy room without the lens! Solomon better\n" +
-                           "have had some in his groundskeeping closet, cause\n" +
-                           "his corpse won't tell me where it is! There better\n" +
-                           "be a 1mm screw in there too. Perhaps Solomon was\n" +
-                           "slightly less inept! Idiots!";
+        this.description = 
+                "The note appears to be an order of ingredients.\n" +
+                "Oddly, it appears to never have been sent out.\n" +
+                "Among the ingredients are many kinds of\n" +
+                "dyes, potassium salts, aluminum, and steel.\n" +
+                "Written last is 'sand, 3 [unit missing]'\n" +
+                "but it has been crossed out with 'ask \n" +
+                "groundskeeper' written after it.";
     }
 /*----------------------------------------------------------------------------*/
 }

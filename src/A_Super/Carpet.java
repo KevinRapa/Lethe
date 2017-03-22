@@ -1,6 +1,6 @@
 package A_Super;
 
-import static A_Main.NameConstants.*;
+import static A_Main.Names.*;
 import static A_Main.Patterns.LIFT_P;
 
 /**
