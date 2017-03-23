@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Inventory;
 import static A_Main.Names.LOOT_SACK;
+import static A_Main.Names.PHASE_DOOR_POTION;
 import static A_Main.Names.PHYLACTERY;
 import A_Main.Player;
 import A_Super.Item;
@@ -61,6 +62,12 @@ public class LootSack extends Item {
         }
         //---------------------------------------------------------------------
         @Override public boolean add(Item item) {
+            if (item.toString().equals(PHASE_DOOR_POTION)) {
+                // Attic event must be able to remove the potion from the inventory.
+                GUI.out("You CAN'T EVEN put such an important item in the sack.");
+                return false;
+            }
+            
             if (this.CONTENTS.size() < MAX_SIZE) {
                 worth += item.getScore();
                 Player.updateScore(getWorth());

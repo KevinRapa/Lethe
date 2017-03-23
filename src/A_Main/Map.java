@@ -815,7 +815,7 @@ public class Map {
         Item blDy = new Item(BLUE_DYE, "You have a handful of soft blue powdered dye. It's quite soft and powdery.", 15);
         Item yllwDy = new Item(YELLOW_DYE, "You have a handful of soft yellow powdered dye. It's quite soft and powdery.", 15);
         Item stncl = new Item(LENS_TEMPLATE, "It's a sheet of metal with a small hole cut in it.", 20);
-        Item wrkNt = new Wrk_Note("disturbing momento");
+        Item wrkNt = new Wrk_Note("ingredient order");
         Item ptsh = new Item(POTASH, "Good old potassium-rich potash salts!", 5);
         //-----------------------------FURNITURE--------------------------------
         Furniture wrkF = new Floor("A sandstone tiled floor, blackened and dirty from ash.");

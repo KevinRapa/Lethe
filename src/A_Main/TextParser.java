@@ -302,13 +302,8 @@ public class TextParser {
         public Command(Verb v, DirectObj o) {
             VALUE = "VERB: " + v.toString() + "\tOBJECT: " + o.toString();
             System.out.println("Creating action -> furniture command: " + VALUE);
-            
-            // Resolves an indefinite reference.
-            final String object = IT_THEM_P.matcher(o.toString()).matches() ? 
-                    GUI.parsePreviousFurniture() :
-                    o.toString();
 
-            ACTION = (() -> Player.evaluateAction(v.toString(), object));
+            ACTION = (() -> Player.evaluateAction(v.toString(), o.toString()));
         }
         // --------------------------------------------------------------------
         public Command(Instrument i, DirectObj o) {
@@ -350,14 +345,12 @@ public class TextParser {
          * Uses the item i on the furniture o.
          */
         private static void execute(Instrument i, DirectObj o) {
-            String furniture = o.VALUE;
+            String itemName = Player.tryIndefRef_Item(i.toString());
             
-            if (IT_THEM_P.matcher(furniture).matches())
-                // Resolves indefinite reference
-                furniture = GUI.parsePreviousFurniture();
-            
-            if (Player.hasItemResembling(i.toString()))
-                Player.evalUse(Player.getInv().get(i.toString()), furniture);
+            if (Player.hasItemResembling(itemName)) {
+                Player.setLastInteract_Item(itemName);
+                Player.evalUse(Player.getInv().get(itemName), o.toString());
+            }
             else
                 GUI.out(DONT_HAVE_IT);
         }
@@ -371,13 +364,10 @@ public class TextParser {
          */
         private static void execute(Verb v, Instrument i) {
             String verb = v.toString(),
-                   instrument = i.toString();
-            
-            // Resolves an indefinite reference.
-            if (IT_THEM_P.matcher(instrument).matches())
-                instrument = GUI.parsePreviousFurniture();
+                   instrument = Player.tryIndefRef_Item(i.toString());
             
             if (Player.hasItemResembling(instrument)) {
+                Player.setLastInteract_Item(instrument);
                 A_Super.Item item = Player.getInv().get(instrument);
                 String type = item.getType();
 
@@ -555,15 +545,9 @@ public class TextParser {
                 else
                     GUI.out("You will need to be more specific.");
             }
-            else if (Player.getPos().hasFurniture(instrument) || 
-                     IT_THEM_P.matcher(instrument).matches() ||
-                     instrument.equals("self") || instrument.equals("yourself")) 
-            {
-                Player.evaluateAction(v.toString(), instrument);
-            }
-            else
-                GUI.out("You do not notice any " + instrument + " nearby.");
-            
+            else 
+                Player.evaluateAction(verb, i.toString());
+
             Player.printInv();
         }
         // --------------------------------------------------------------------
@@ -574,16 +558,16 @@ public class TextParser {
          * execute(Instrument i, DirectObject o) constructor.
          */
         private static void execute(Verb v, Instrument i, DirectObj o) {
-            if (Player.hasItemResembling(i.toString())) {
-                String furniture = o.toString();
-                A_Super.Item item = Player.getInv().get(i.toString());
-                
-                // Resolves an indefinite reference.
-                if (IT_THEM_P.matcher(furniture).matches())
-                    furniture = GUI.parsePreviousFurniture();
-                
+            String itemName = Player.tryIndefRef_Item(i.toString());
+            
+            if (Player.hasItemResembling(itemName)) {
+                String furniture = Player.tryIndefRef_Furn(o.toString());
+                Item item = Player.getInv().get(itemName);
+                Player.setLastInteract_Item(itemName);
+
                 if (Player.getPos().hasFurniture(furniture)) {
-                    A_Super.Furniture furn = Player.getFurnRef(furniture);
+                    Furniture furn = Player.getFurnRef(furniture);
+                    Player.setLastInteract_Furn(furniture);
                     
                     // Stores the furniture
                     if (furn.isSearchable()) {

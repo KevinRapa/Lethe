@@ -39,7 +39,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
                          + "disfigured and horribly wrinkly.";
         
         this.addUseKeys(ANYTHING);
-        this.addNameKeys("ghost", "(?:white )?(?:apparition|ghost)");
+        this.addNameKeys("ghost", "(?:white )?(?:apparition|ghost)", "him");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {

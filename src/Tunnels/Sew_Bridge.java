@@ -18,11 +18,11 @@ public class Sew_Bridge extends Furniture implements Heavy {
         this.description = "The small, 11-foot stone bridge crosses over the\n" +
                            "river to another area.";
         this.searchDialog = "There's nothing on or under the bridge.";
-        this.actDialog = null;
+        this.actDialog = NOTHING;
 
         this.addNameKeys("(?:under (?:the )?)?(?:small )?(?:stone )?bridge", 
                   dir + " (?:under (?:the )?)?(?:small )?(?:stone )?bridge");
-        this.addActKeys("cross");
+        this.addActKeys("cross", "go|walk|run");
     }
     // ========================================================================
     @Override public String interact(String key) {

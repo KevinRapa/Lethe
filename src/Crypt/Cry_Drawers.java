@@ -66,7 +66,7 @@ public class Cry_Drawers extends Furniture implements Openable {
     private class Drwr extends SearchableFurniture {
         public Drwr() {
             super();
-            this.searchDialog = null;
+            this.searchDialog = NOTHING;
         }
     }
     // ========================================================================  

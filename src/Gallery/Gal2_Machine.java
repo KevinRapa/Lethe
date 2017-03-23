@@ -1,6 +1,8 @@
 package Gallery;
 
 import A_Main.AudioPlayer;
+import A_Main.GUI;
+import A_Main.Inventory;
 import static A_Main.Names.BUCKET_OF_WATER;
 import static A_Main.Names.RUBBER_GLOVES;
 import static A_Main.Names.WEAPON;
@@ -18,8 +20,10 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
     private boolean pluggedIn, moved;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal2_Machine(Item ... items) {
-        super(items);
+        super();
 
+        this.inv = new Machine_Inventory(items);
+        
         this.pluggedIn = true;
         this.moved = false;
         
@@ -117,5 +121,30 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
         else
             return DEFAULT_USE;
     }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/
+/*----------------------------------------------------------------------------*/
+    private class Machine_Inventory extends Inventory {
+        public Machine_Inventory(Item ... items) {
+            super(items);
+        }
+        @Override public boolean add(Item item) {
+            Gal2_Machine.this.searchable = 
+                Player.hasItem(WORK_BOOTS)
+               || Player.hasItem(RUBBER_GLOVES) 
+               || ! pluggedIn;
+            
+            if (Gal2_Machine.this.searchable) {
+                this.CONTENTS.add(item);
+                return true;
+            }
+            else {
+                GUI.out(Gal2_Machine.this.searchDialog);
+                return false;
+            }
+        }
+    }
+/*----------------------------------------------------------------------------*/
+/******************************************************************************/
 /*----------------------------------------------------------------------------*/
 }

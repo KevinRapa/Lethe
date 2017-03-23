@@ -25,7 +25,7 @@ public class Pris_Ghost extends NonPlayerCharacter {
                          "a little while.\"";
         this.searchDialog = "The ghost looks to not have anything interesting.";
 
-        this.addNameKeys("(?:spooky )?(?:sitting )?(?:blue )?(?:ghost|figure|person|apparition)");
+        this.addNameKeys("(?:spooky )?(?:sitting )?(?:blue )?(?:ghost|figure|person|apparition)", "him");
     }
     // ========================================================================  
     @Override public String useEvent(Item item) {

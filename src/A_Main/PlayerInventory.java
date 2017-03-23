@@ -77,6 +77,7 @@ public class PlayerInventory extends Inventory {
         
         this.CONTENTS.add(gift);
         AudioPlayer.playEffect(29);
+        Player.setLastInteract_Item(gift.toString());
         
         return "You created: " + gift + ".";
     }

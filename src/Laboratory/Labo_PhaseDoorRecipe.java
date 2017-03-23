@@ -6,7 +6,8 @@ public class Labo_PhaseDoorRecipe extends Note {
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Labo_PhaseDoorRecipe(String name) {
         super(name);
-        this.description = "*IMPORTANT: For walking through doors. DO NOT LOSE!*\t\t\t\t\t" +
+        this.description = "*IMPORTANT: For walking through doors and large "
+                         + "wooden castle gates. DO NOT LOSE!*\t\t\t\t" +
                            "1: 10 mL bromine, chilled!\n" +
                            "2: 5 mL acetic acid\n" +
                            "\t\t3: 20 mL aether\n" +

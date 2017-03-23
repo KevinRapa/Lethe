@@ -365,33 +365,6 @@ public class GUI extends JFXPanel {
     }
 /*----------------------------------------------------------------------------*/
     /**
-     * The player may reference the last typed existing furniture using 'it' or 'them'.
-     * This retrieves the last referenced furniture if one exists.
-     * Firsts, filters out previous input resembling phrases.
-     * Then searches furniture matching the phrase,
-     *      - First tries whole string
-     *      - If none exists, tries with first word removed. Might be a verb.
-     * @return The last referenced object in the player's location.
-     */
-    public static String parsePreviousFurniture() {
-        FURN_PARSER.clear();
-
-        UNDO.stream()
-                .filter(i -> (THREE_PLUS_CHAR_WORD.matcher(i).matches()))
-                .forEach(j -> 
-        {
-            if (Player.getPos().hasFurniture(j)
-                 || Player.getPos().hasFurniture(
-                        j = FURNITURE_SPACE_P.matcher(j).replaceFirst("")))
-            {
-                FURN_PARSER.add(j); 
-            }
-        });
-        
-        return (FURN_PARSER.size() > 0) ? FURN_PARSER.get(0) : "object with that name";
-    }
-/*----------------------------------------------------------------------------*/
-    /**
      * Prints the main menu of controls.
      */
     public static void toMainMenu() {

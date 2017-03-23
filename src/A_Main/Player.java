@@ -28,7 +28,9 @@ public final class Player {
         score;      // Worth of items in the player's loot sack
     private static String 
         lastVisited,    // Id of the last room the player was in
-        shoes;          // Name of the shoes the player wears
+        shoes,          // Name of the shoes the player wears
+        lastItem = "",          // Last item the player interacted with
+        lastFurniture = "";     // Last furniture the player interacted with.
 
     private static final HashMap<String, Runnable> 
         MAIN_CMDS = new HashMap<>(),    // Maps commands from main prompt
@@ -169,6 +171,16 @@ public final class Player {
     /*------------------------------------------------------------------------*/
     public static int getScore() { return score; }
     /*------------------------------------------------------------------------*/
+    // If the argument equals "it/them" returns the last referenced furniture.
+    public static String tryIndefRef_Furn(String indef) {
+        return (IT_THEM_P.matcher(indef).matches()) ? lastFurniture : indef;
+    }
+    /*------------------------------------------------------------------------*/
+    // If the argument equals "it/them" returns the last referenced item.
+    public static String tryIndefRef_Item(String indef) {
+        return (IT_THEM_P.matcher(indef).matches()) ? Player.lastItem : indef;
+    }
+    /*------------------------------------------------------------------------*/
     public static boolean hasItem(String itemName) {
         return Player.inv.contents().stream().
                 anyMatch(i -> i.toString().equalsIgnoreCase(itemName));
@@ -222,6 +234,14 @@ public final class Player {
         
         if (! Player.hasVisited(getPosId())) 
             Player.visited.add(getPosId()); 
+    }
+    /*------------------------------------------------------------------------*/
+    public static void setLastInteract_Furn(String furnName) {
+        Player.lastFurniture = furnName;
+    }
+    /*------------------------------------------------------------------------*/
+        public static void setLastInteract_Item(String itemName) {
+        Player.lastItem = itemName;
     }
     /*------------------------------------------------------------------------*/
     public static void setShoes(String shoes) {
@@ -571,14 +591,25 @@ public final class Player {
      */
     private static Item[] getItemList(String itemList, Inventory inv) {
         if (Player.isNonEmptyString(itemList)) {
-            // Trims articles off.
-            String articleless = ARTICLE_P.matcher(itemList).replaceAll("");
-            String[] itemArray = LIST_P.split(articleless);
+            // Trims articles off and excess space.
+            String trimmed = ARTICLE_P.matcher(itemList)
+                    .replaceAll("")
+                    .trim()
+                    .replaceAll("\\s{2,}", " ");
+            
+            if ((trimmed.equals("it") || trimmed.equals("them")) && inv.size() == 1) {
+                // If "it/them" used, and has one item, only option is first item.
+                return new Item[] {inv.get(0)};
+            }
+            
+            String[] itemArray = LIST_P.split(trimmed);
             Item[] resultArray = new Item[itemArray.length];
             
-            for (int i = 0; i < itemArray.length; i++) 
+            for (int i = 0; i < itemArray.length; i++) {
+                String itemName = Player.tryIndefRef_Item(itemArray[i].trim());
                 // Inserts a NULL_ITEM if not found.
-                resultArray[i] = inv.get(itemArray[i].trim());
+                resultArray[i] = inv.get(itemName);
+            }
             
             return resultArray;
         }
@@ -600,6 +631,7 @@ public final class Player {
         }
         else {
             GUI.out("You take the " + take);
+            Player.setLastInteract_Item(take.toString());
             furnInv.give(take, Player.inv);                 
         }   
     }
@@ -627,10 +659,12 @@ public final class Player {
     /**
      * Processes a player's action on furniture.
      * Player may use 'it' or 'them' to reference the last entered furniture.
-     * @param object the name of the furniture being acted upon.
+     * @param furnName the name of the furniture being acted upon.
      * @param verb the action the player is performing on the furniture.
      */
-    public static void evaluateAction(String verb, String object) {
+    public static void evaluateAction(String verb, String furnName) {
+        String object = Player.tryIndefRef_Furn(furnName);
+        
         // <editor-fold defaultstate="collapsed" desc="MOVE COMMAND">
         if (WALK_P.matcher(verb).matches()) {
             if (DIRECTION_P.matcher(object).matches())
@@ -646,6 +680,7 @@ public final class Player {
         else if (getPos().hasFurniture(object)) {
             // In this case, a valid furniture exists to be interacted with.
             Furniture furn = getFurnRef(object);
+            setLastInteract_Furn(object);
 
             if (furn.actKeyMatches(verb)) {
                 // Player typed an action specific to a furniture type.
@@ -713,11 +748,17 @@ public final class Player {
         // </editor-fold>
         
         else if (SEARCH_P.matcher(verb).matches() || verb.matches("open|empty")) {
+            object = Player.tryIndefRef_Item(furnName);
+            
             // Player wants to open an item
-            if (object.equals("sack") || object.equals(LOOT_SACK))
-                Player.openLootSack(); 
-            else if (object.equals(SHOE_BOX))
+            if (object.equals("sack") || object.equals(LOOT_SACK)) {
+                openLootSack(); 
+                setLastInteract_Item(LOOT_SACK);
+            }
+            else if (object.equals(SHOE_BOX)) {
                 getInv().get(SHOE_BOX).useEvent(); 
+                setLastInteract_Item(SHOE_BOX);
+            }
             else if (Player.hasItemResembling(object))
                 GUI.out("You don't possess the education level to open the " + object + ".");
             else
@@ -768,12 +809,12 @@ public final class Player {
      */
     private static void findStaircase(Direction dir) {
         for (Furniture f : Player.getPos().getFurnishings()) {
-            if (f instanceof Staircase && ((Staircase)f).getDirection() == dir) {
-                GUI.out(f.interact("climb"));
-                return;
-            }
             if (f instanceof DoubleStaircase) {
                 GUI.out(f.interact(dir.toString()));
+                return;
+            }
+            if (f instanceof Staircase && ((Staircase)f).getDirection() == dir) {
+                GUI.out(f.interact("climb"));
                 return;
             }
             if (f instanceof Climbable) {
@@ -836,17 +877,19 @@ public final class Player {
         do {
             // Prompts for furniture to inspect.
             GUI.menOut(Menus.INV_INSPECT);
-            ans = GUI.promptOut();
+            ans = ARTICLE_P.matcher(GUI.promptOut()).replaceAll("");
 
             if (Player.isNonEmptyString(ans)) {
                 // Erases all articles before getting item.
-                Item item = Player.inv.get(ARTICLE_P.matcher(ans).replaceAll(""));
+                ans = Player.tryIndefRef_Item(ans);
+                Item item = Player.inv.get(ans);
 
                 if (item.equals(Inventory.NULL_ITEM)) {
                     GUI.out(ERRONEOUS_INPUT);
                     continue;
                 }
 
+                Player.setLastInteract_Item(item.toString());
                 Player.incrementMoves();
                 GUI.out(item.getDesc());  
             }
@@ -860,15 +903,15 @@ public final class Player {
      * action.
      */
     private static void usePrompt() {
-        String choice;
+        String ans;
         
         do {      
             GUI.menOut(Menus.INV_USE);
-            choice = ARTICLE_P.matcher(GUI.promptOut()).replaceAll("");
+            ans = ARTICLE_P.matcher(GUI.promptOut()).replaceAll("");
 
-            if (Player.isNonEmptyString(choice)) {
-                // Looks for an item in the inventory with the name.
-                Item item = Player.inv.get(choice);
+            if (Player.isNonEmptyString(ans)) {
+                ans = Player.tryIndefRef_Item(ans);
+                Item item = Player.inv.get(ans);
 
                 if (item.equals(Inventory.NULL_ITEM)) {
                     // No item found. Notifies player, repeats loop.
@@ -876,6 +919,8 @@ public final class Player {
                     continue;
                 }
 
+                Player.setLastInteract_Item(item.toString());
+                
                 if (item.getUseID() == 1) // Item only prints a dialog.
                     GUI.out(item.useEvent());          
                 else { // Enters a use-on prompt
@@ -883,7 +928,7 @@ public final class Player {
                     evalUse(item, GUI.promptOut());
                 }
             }
-        } while (isNonEmptyString(choice));
+        } while (isNonEmptyString(ans));
     }
     // ========================================================================  
     /**
@@ -892,7 +937,10 @@ public final class Player {
      * @param item The item being used
      */
     public static void evalUse(Item item, String furniture) {
-        if (getPos().hasFurniture(furniture)) {                 
+        furniture = Player.tryIndefRef_Furn(furniture);
+        
+        if (getPos().hasFurniture(furniture)) {
+            Player.setLastInteract_Furn(furniture);
             Furniture target = getFurnRef(furniture);
             Player.incrementMoves();
 
@@ -936,10 +984,10 @@ public final class Player {
 
                     if (n instanceof Note && ! (n instanceof Book)) {
                         // Player may write on notes but not books.
+                        Item newNote = new Note(n.toString(), n.getDesc() + ' ' + getNoteBody());
                         Player.inv.remove(n);
-                        Player.inv.contents().add(
-                            new Note(n.toString(), n.getDesc() + ' ' + getNoteBody())
-                        );
+                        Player.inv.contents().add(newNote);
+                        Player.setLastInteract_Item(newNote.toString());
                         Player.incrementMoves();
                         printInv();
                     }
@@ -949,9 +997,9 @@ public final class Player {
                 else GUI.out(NOT_VALID_SLOT);
             }
             else if (! Player.inv.isFull()) {
-                Player.inv.contents().add(
-                    new Note("note - " + title + ':' + ' ', getNoteBody())
-                );
+                Item newNote = new Note("note - " + title + ':' + ' ', getNoteBody());
+                Player.inv.add(newNote);
+                Player.setLastInteract_Item(newNote.toString());
                 Player.incrementMoves();
                 printInv();
             }
