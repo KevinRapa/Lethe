@@ -425,9 +425,9 @@ public class TextParser {
                     Furniture floor = Player.getFurnRef("floor");
 
                     if (floor == null) {
-                        GUI.out("A quick ingenious thought convinces you to "
+                        GUI.out("A quick ingenious thought convinces the player to "
                               + "throw the " + item + ". The item lands in "
-                              + "an unknown location, likely lost to the aether.");
+                              + "an unknown location, lost to the aether.");
                     }
                     else if (type.equals(BREAKABLE)) {
                         floor.getInv().add(new Item("destroyed " + item, 
@@ -442,8 +442,8 @@ public class TextParser {
                     {
                         if (! item.toString().equals(BUCKET_OF_WATER)) {
                             floor.getInv().add(BROKEN_GLASS);
-                            GUI.out("A quick ingenious thought convinces you "
-                                  + "to throw the " + item + ". The item lands "
+                            GUI.out("A cunning decision is made. The player "
+                                  + "throws the " + item + ". The item lands "
                                   + "on the floor. A glassy shatter swarms your "
                                   + "ear and fills you with rue.");
                         }
@@ -489,7 +489,7 @@ public class TextParser {
                         Player.getInv().remove(item);
                         Player.getInv().add(RIPPED_SHREDS);
                         GUI.out("A cunning idea forms. You rip up the paper "
-                              + "wantonly and stuff it back into your pocket.");
+                              + "to shreds and stuff it back into your pocket.");
                     }
                     else if (type.equals(PHYLACTERY)) {
                         GUI.out("You try with all your might to destroy the "

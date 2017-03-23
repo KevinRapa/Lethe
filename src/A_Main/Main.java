@@ -8,12 +8,14 @@ package A_Main;
  * </p> <p>
  * You control an unnamed character who is exploring a castle after having 
  * wandered through the woods to it without any apparent reason. As the game
- * progresses, puzzles get steadily more complex and a story develops.
+ * progresses, puzzles get steadily more complex and a story develops. As a
+ * secondary objective, the player may collect loot and add it to a loot sack
+ * found in the foyer.
  * </p> <p>
  * To play, just run this project. Unless testing, make sure <code>start</code>
  * under the main method is set to Id.COU4.
  * You may start from any room in the game, however the default start
- * is in <code>cou4</code>. Find the method <code>setOccupies</code> at the
+ * is in <code>Id.COU4</code>. Find the method <code>setOccupies</code> at the
  * bottom of this class to change this, and refer to the castle array for the
  * room object references.
  * </p>
@@ -31,7 +33,7 @@ import static A_Main.Names.SEP;
 import static A_Main.Names.W_DIR;
 
 public class Main {
-    private static final String 
+    public static final String 
             START_LOCATION = Id.COU4, // Default COU4
             FILE_NAME = "save" + SEP + "Game.data";
     

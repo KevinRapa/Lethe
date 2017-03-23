@@ -37,12 +37,12 @@ public final class Menus {
                   + "<'loot'>         Loot!!!\n"
                   + "< >              Back",
 
-        SAVE_QUIT = "\n"
+        SAVE_QUIT = "\n\n"
                   + "<'s'> Save and quit\n"
                   + "<'q'> Quit\n"
                   + "<'r'> Reset game and quit.",
 
-        MAIN_MENU = "      Type a command or:\n"
+        MAIN_MENU = "      Enter a command or\n\n"
                   + "    <'w'/'s'/'a'/'d'> Move\n"
                   + "<'i'>  Inventory  <'k'>  Keys\n"
                   + "<'h'>  Get help   <'n'>  Note\n"

@@ -63,7 +63,7 @@ public final class Player {
         MAIN_CMDS.put("n", () -> writePrompt());
         MAIN_CMDS.put("l", () -> openLootSack());
         MAIN_CMDS.put("q", () -> {end = true;});
-        
+
         MAIN_CMDS.put("quit",      () -> {end = true;});
         MAIN_CMDS.put("zork",      () -> GUI.out("You must be mistaking me for someone else."));
         MAIN_CMDS.put("keys",      () -> viewKeyRing());

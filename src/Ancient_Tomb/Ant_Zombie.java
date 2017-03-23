@@ -57,7 +57,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
 
         this.addUseKeys(BRAIN);
         this.addNameKeys("(?:frail )?(?:eyeless )?(?:dessicated )?(?:corpse|figure|zombie)", 
-                "zombie-like (?:figure|body)");
+                "zombie-like (?:figure|body)", "him");
     }
     /*------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
@@ -87,6 +87,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
     /*------------------------------------------------------------------------*/
     @Override protected String converse1() {
         // Player inv can't be full because the zombie just took the brain from the player.
+        AudioPlayer.playEffect(46);
         Player.getInv().add(QUARTZ_DEVICE);
         return actDialog;
     }
