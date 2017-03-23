@@ -45,6 +45,8 @@ public class Obs1_Slots extends Furniture {
         this.description = "It's an array of 9 brass indentations in the floor at the\n"
                          + "base of each statue. Each one bears an inscription inside.";
         this.searchDialog = "You inspect the array of slots.";
+        this.useDialog = "There are eight slots here. Perhaps you should search among\n"
+                 + "them the one in which to place that.";
         this.STATS_REF = (Obs1_Statues)stats;
         
         this.addUseKeys(ANYTHING);
@@ -52,10 +54,8 @@ public class Obs1_Slots extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        if (item.getType().equals(PLATE)) {
-            return "There are eight slots here. Perhaps you should search among\n"
-                 + "them the one in which to place that.";
-        }
+        if (item.getType().equals(PLATE))
+            return this.useDialog;
         else
             return "That doesn't belong there.";
     }
@@ -80,7 +80,7 @@ public class Obs1_Slots extends Furniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
-        String rep = null, choice;
+        String rep = "", choice;
         
         do {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
@@ -90,7 +90,7 @@ public class Obs1_Slots extends Furniture {
            
             if (Player.isNonEmptyString(choice)) {
                 Furniture slot = SLOTS.get(MAP.get(choice.charAt(0)));
-                Player.searchPrompt(slot);
+                Player.trySearch(slot);
                 
                 if (checkSolved() && ! areSlotsLocked()) {
                     rep = "A luminescence from an unknown source begins seeping through the seams\n"

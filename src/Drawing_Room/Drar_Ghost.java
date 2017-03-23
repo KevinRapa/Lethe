@@ -93,6 +93,12 @@ public class Drar_Ghost extends NonPlayerCharacter {
                 "the Gods are you here?");
         GUI.promptOut();
         
+        GUI.out("You were invited here? Do you remember recieving an "
+              + "invitation? Because if you did, you would never have "
+              + "accepted it. Besides, this residence has not had "
+              + "outgoing mail in centuries. No, this is not sensible...");
+        GUI.promptOut();
+        
         GUI.out("\"But then again, that does bring some questions to light. " +
                 "The magic of Eurynomos is foreign to me. He is " +
                 "impulsive; willing to delve into any uncharted realm " +

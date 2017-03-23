@@ -40,7 +40,6 @@ public class Vaue_Door extends Furniture implements Heavy {
         this.description = "Standing before you is an interesting wall resembling\n"
                          + "a sliding door. On it is a 4 by 4 grid of buttons. Drawn\n"
                          + "on each is a dark circular rune";
-        this.actDialog = null;
         this.searchDialog = "The only curiosity is the grid of buttons on the front.";
         
         this.addNameKeys("buttons?", "(?:sliding )?door", "(?:interesting |curious )?wall");

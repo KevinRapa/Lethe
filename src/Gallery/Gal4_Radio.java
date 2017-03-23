@@ -5,15 +5,15 @@ import static A_Main.Names.WEAPON;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Gettable;
-import A_Super.Heavy;
 import A_Super.Item;
+import A_Super.Moveable;
 /**
  * The 1mm screws for fixing the red focus are found here. The player must a use
  * a screwdriver found in the workshop to obtain the screws from here.
  * 
  * @author Kevin Rapa
  */
-public class Gal4_Radio extends Furniture implements Gettable, Heavy {
+public class Gal4_Radio extends Furniture implements Gettable, Moveable {
     private final String DESC_2;
     private final Item SCREW_REF;
     private int screwsLeft;

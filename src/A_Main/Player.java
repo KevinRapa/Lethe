@@ -41,7 +41,8 @@ public final class Player {
         ODD_CMD_SET = new HashSet<>();  // Random commands
     
     private static final String 
-        NOT_VALID_SLOT = "You don't seem to have an item there.";
+        NOT_VALID_SLOT = "You don't seem to have an item there.",
+        ERRONEOUS_INPUT = "You may have just entered something wrong...";
 
     /*
         Maps various commands in the game to their actions 
@@ -50,8 +51,6 @@ public final class Player {
     */
     static {
         MAIN_CMDS.put("h", () -> Help.helpSub());
-        MAIN_CMDS.put("e", () -> searchSub());
-        MAIN_CMDS.put("c", () -> examineSub());
         MAIN_CMDS.put("k", () -> viewKeyRing());
         MAIN_CMDS.put("i", () -> inventoryPrompt());
         MAIN_CMDS.put("w", () -> move(Direction.NORTH));
@@ -65,13 +64,10 @@ public final class Player {
         
         MAIN_CMDS.put("quit",      () -> {end = true;});
         MAIN_CMDS.put("zork",      () -> GUI.out("You must be mistaking me for someone else."));
-        MAIN_CMDS.put("inspect",   () -> examineSub());
-        MAIN_CMDS.put("examine",   () -> examineSub());
         MAIN_CMDS.put("keys",      () -> viewKeyRing());
         MAIN_CMDS.put("keyring",   () -> viewKeyRing());
         MAIN_CMDS.put("inventory", () -> inventoryPrompt());
         MAIN_CMDS.put("loot",      () -> openLootSack());
-        MAIN_CMDS.put("search",    () -> searchSub());
         MAIN_CMDS.put("help",      () -> Help.helpSub());
         MAIN_CMDS.put("scream",    () -> GUI.out("AHHHHHGGGHHH!!!!!"));
         MAIN_CMDS.put("yell",      () -> GUI.out("AHHHHHGGGHHH!!!!!"));
@@ -180,22 +176,12 @@ public final class Player {
     /*------------------------------------------------------------------------*/
     /**
      * Checks if the player has an item who's name contains the given word.
-     * @param item A word the player types in to refer to an item in his or
-     * her inventory.
+     * @param itemName A word the player types in to refer to an item in his 
+     * or her inventory.
      * @return if the player has an item who's name resembles item.
      */
-    public static boolean hasItemResembling(String item) {
-        if (Patterns.SINGLE_DIGIT_P.matcher(item).matches()) {
-            // Player used a slot number and not a name
-            int i = Integer.parseInt(item);
-            return (i <= Player.inv.size());
-        }
-        else
-            // Player typed in an item name
-            return Player.inv.contents()
-                    .stream()
-                    .anyMatch(i -> i.toString()
-                    .matches(NO_LETTER_BEFORE + item + NO_LETTER_AFTER));
+    public static boolean hasItemResembling(String itemName) {
+        return Player.inv.containsItemResembling(itemName);
     }
     // </editor-fold>
     
@@ -243,8 +229,7 @@ public final class Player {
     }
     /*------------------------------------------------------------------------*/
     public static void incrementMoves() {
-        Player.moves++;
-        GUI.updateMovesAndScore(Player.moves, Player.score);
+        GUI.updateMovesAndScore(++Player.moves, Player.score);
     }
     /*------------------------------------------------------------------------*/
     public static void updateScore(int score) {
@@ -351,7 +336,6 @@ public final class Player {
             if (MAIN_CMD_SET.contains(ans)) {// Simple command
                 MAIN_CMDS.get(ans).run();
             }
-
             else if (isNonEmptyString(ans)) // More complicated command
                 TextParser.processText(ans);
             
@@ -506,38 +490,12 @@ public final class Player {
     
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="SEARCHING">   
-//******************************************************************************    
-    private static void searchSub() {
-        // Initiates dialog asking player for a Furniture to search.
-        GUI.menOut(Menus.SEARCH_SUB);
-        String searchThis = GUI.promptOut();
-        
-        if (isNonEmptyString(searchThis) && getPos().hasFurniture(searchThis)) {
-            searchPrompt(getFurnRef(searchThis));
-        }
-        else if (IT_THEM_P.matcher(searchThis).matches() && 
-                getPos().hasFurniture(searchThis = GUI.parsePreviousFurniture())) 
-        {   // Player used "it" or "them" in place of a furniture name.
-            searchPrompt(getFurnRef(searchThis));
-        }
-        else if (searchThis.equals(LOOT_SACK) || searchThis.equals("sack")) {
-            Player.openLootSack();
-        }
-        else if (GEN_FURNITURE_P.matcher(searchThis).matches()) {
-            GUI.out("There are too many things in the room. Specify your intention.");
-        }
-        else if (isNonEmptyString(searchThis)) {
-            GUI.out("There is no " + searchThis + " here."); 
-        }
-        else ; // Go back to main menu
-    }    
-    // ========================================================================  
+//******************************************************************************     
     /**
-     * Subroutine entered after a searchable furniture is searched.
-     * Serves to block access from trading itemList with non searchable furniture.
+     * Prints the furniture search dialog and initiates search if searchable.
      * @param furniture The furniture being searched.
      */
-    public static void searchPrompt(Furniture furniture) {
+    public static void trySearch(Furniture furniture) {
         GUI.out(furniture.getSearchDialog());
         
         if (furniture.isSearchable())
@@ -549,63 +507,83 @@ public final class Player {
      * @param furnInv The furniture being searched.
      */
     public static void search(Inventory furnInv) {
-        String cmdItm; 
+        String command; 
         
         do {
             printInv(furnInv);
             GUI.menOut(Menus.TRADE_SUB);
             
-            cmdItm = GUI.promptOut();
+            command = GUI.promptOut();
             
-            if (cmdItm.equals("loot") || cmdItm.equals("l") || cmdItm.equals("take all")) {
+            if (LOOT_ACTION_P.matcher(command).matches()) {
                 // Takes as many items as possible from the furniture.
-                ArrayList<Item> l = new ArrayList<>();
                 Player.incrementMoves();
                 
-                for (Item i : furnInv) {
-                    // Finds everything in the inventory the player doesn't have.
-                    if (l.size() <= (PlayerInventory.MAX_SIZE - inv.size()))
-                        l.add(i);
-                }
-                for (Item i : l) {
-                    // Adds them all to the player's inventory.
-                    evalTake(furnInv, i);
-                }
-                GUI.out("You stuff as much as you can into your pockets.");
+                while (! furnInv.isEmpty() && ! Player.inv.isFull())
+                    evalTake(furnInv, furnInv.get(0)); // Adds them all to player inventory.
+                
+                GUI.out("You ravenously stuff your pockets.");
             }
-            else {
-                try (Scanner scan = new Scanner(cmdItm).useDelimiter("\\s+")) {
-                    // Gets an item slot.
-                    String action = scan.next();            
-                    int slot = Integer.parseInt(scan.next());
-
-                    // Evaluates the store or take action given the slot.
-                    if (STORE_P.matcher(action).matches()) {
-                        Item item = Player.inv.get(slot - 1);
-                        evalStore(furnInv, item);                            
-                    }            
-                    else if (TAKE_P.matcher(action).matches()) {
-                        Item item = furnInv.get(slot - 1);
-                        evalTake(furnInv, item);
-                    }
+            else if (Player.isNonEmptyString(command)) {
+                Scanner scan = new Scanner(command).useDelimiter("\\s+");
+                String action = scan.next(); // Should be take|t|store|s    
+                
+                if (! scan.hasNext()) {
+                    // Notifies that a list wasn't entered. Avoiding nested ifs.
+                    GUI.out("Did you... forget to enter something there?");
+                    continue;
+                }
                     
-                    Player.incrementMoves();
-                    describeRoom();
-                    printInv();
+                String itemList = scan.nextLine();
+                // Evaluates the store or take action given the slot.
+                if (STORE_P.matcher(action).matches()) {
+                    for (Item item : getItemList(itemList, Player.inv)) 
+                        if (! item.equals(Inventory.NULL_ITEM) && inv.contains(item)) {
+                            evalStore(furnInv, item);   
+                            Player.incrementMoves();
+                        } else
+                            GUI.out(ERRONEOUS_INPUT);
                 }
-                catch (java.lang.IndexOutOfBoundsException e) {
-                    GUI.out(NOT_VALID_SLOT);
+                else if (TAKE_P.matcher(action).matches()) {
+                    for (Item item : getItemList(itemList, furnInv)) 
+                        if (! item.equals(Inventory.NULL_ITEM) && furnInv.contains(item)) {
+                            evalTake(furnInv, item);
+                            Player.incrementMoves();
+                        } else
+                            GUI.out(ERRONEOUS_INPUT);
                 }
-                catch (java.util.NoSuchElementException 
-                        | java.lang.NumberFormatException e) 
-                {
-                    if (isNonEmptyString(cmdItm))
-                        GUI.out("Excuse me?"); 
-                }
+                else
+                    GUI.out("A thousand pardons... what was that first thing you typed??");
+
+                scan.close();
+                describeRoom();
             }
-        } while (isNonEmptyString(cmdItm));
-        
-        printInv();
+            printInv();
+        } while (isNonEmptyString(command));
+    }
+    // ========================================================================  
+    /**
+     * Takes a list of items and returns a list of item objects that were found
+     * in the inventory.
+     * Items that weren't found are replaced by a NULL_ITEM.
+     * Example: "take the book, the parchment, and the pen"
+     * Example 2: "take 1, 2, and 3"
+     */
+    private static Item[] getItemList(String itemList, Inventory inv) {
+        if (Player.isNonEmptyString(itemList)) {
+            // Trims articles off.
+            String articleless = ARTICLE_P.matcher(itemList).replaceAll("");
+            String[] itemArray = LIST_P.split(articleless);
+            Item[] resultArray = new Item[itemArray.length];
+            
+            for (int i = 0; i < itemArray.length; i++) 
+                // Inserts a NULL_ITEM if not found.
+                resultArray[i] = inv.get(itemArray[i].trim());
+            
+            return resultArray;
+        }
+        else 
+            return new Item[0];
     }
     // ========================================================================  
     /**
@@ -644,7 +622,7 @@ public final class Player {
     
     
 //******************************************************************************    
-// <editor-fold defaultstate="collapsed" desc="ACTIVATING AND INSPECTING">  
+// <editor-fold defaultstate="collapsed" desc="INTERACTING FROM MAIN PROMPT">  
 //****************************************************************************** 
     /**
      * Processes a player's action on furniture.
@@ -683,7 +661,7 @@ public final class Player {
             }
             else if (SEARCH_P.matcher(verb).matches() || ((verb.equals("open") 
                     || verb.equals("empty")) && furn instanceof Openable)) {       
-                searchPrompt(furn); // Player implied a search
+                trySearch(furn); // Player implied a search
             }
             else {
                 Player.incrementMoves();
@@ -806,40 +784,6 @@ public final class Player {
         GUI.out("There's nothing here to take you that way.");
     }
     // ========================================================================
-    /**
-     * Prompts the player for furniture to examine.
-     */
-    private static void examineSub() {
-        GUI.menOut(Menus.EXAMINE_SUB);
-        
-        String checkThis = GUI.promptOut();
-        
-        if (isNonEmptyString(checkThis))
-            examine(checkThis);
-    }
-    // ========================================================================
-    /**
-     * Processes player input to inspect an object.
-     * Player may use 'it' or 'them' to reference the last entered furniture.
-     * @param inspecting object name the player wants to inspect.
-     */
-    private static void examine(String inspecting) {
-        if (IT_THEM_P.matcher(inspecting).matches()) // Indefinite reference.
-            inspecting = GUI.parsePreviousFurniture();
-        
-        if (getPos().hasFurniture(inspecting)) {
-            // The furniture exists.
-            Player.incrementMoves();
-            GUI.out(Player.getFurnRef(inspecting).getDescription());
-        }
-        else if (GEN_FURNITURE_P.matcher(inspecting).matches())
-            // The player typed something vague like 'furniture' or 'stuff'
-            GUI.out("That's quite vague of you. Please be more specific.");
-        
-        else 
-            GUI.out("There is no " + inspecting + " here that you can see.");
-    }
-    // ========================================================================
     private static void openLootSack() {
         if (Player.hasItem(LOOT_SACK))
             Player.getInv().get(LOOT_SACK).useEvent();
@@ -879,7 +823,7 @@ public final class Player {
                 INV_CMDS.get(ans).run();
             
             else if (isNonEmptyString(ans))
-                GUI.out("That was not a valid choice.");
+                GUI.out(ERRONEOUS_INPUT);
             
         } while (isNonEmptyString(ans));
         
@@ -893,17 +837,18 @@ public final class Player {
             // Prompts for furniture to inspect.
             GUI.menOut(Menus.INV_INSPECT);
             ans = GUI.promptOut();
-            
-            try {
-                int slot = Integer.parseInt(ans);
-                Item item = Player.inv.get(slot - 1);
+
+            if (Player.isNonEmptyString(ans)) {
+                // Erases all articles before getting item.
+                Item item = Player.inv.get(ARTICLE_P.matcher(ans).replaceAll(""));
+
+                if (item.equals(Inventory.NULL_ITEM)) {
+                    GUI.out(ERRONEOUS_INPUT);
+                    continue;
+                }
+
                 Player.incrementMoves();
                 GUI.out(item.getDesc());  
-            }
-            catch (java.lang.NumberFormatException | java.lang.IndexOutOfBoundsException e) {
-                if (isNonEmptyString(ans)) 
-                    // Player typed too high a digit or a non-digit
-                    GUI.out(NOT_VALID_SLOT);
             }
         } while (isNonEmptyString(ans));
         
@@ -918,25 +863,26 @@ public final class Player {
         String choice;
         
         do {      
-            choice = GUI.askChoice(Menus.INV_USE, DIGIT_OR_BLANK_P);
+            GUI.menOut(Menus.INV_USE);
+            choice = ARTICLE_P.matcher(GUI.promptOut()).replaceAll("");
 
-            try {
-                int slot = Integer.parseInt(choice);
-                Item item = Player.inv.get(slot - 1);
-                int useID = item.getUseID();
-                
-                switch (useID) {
-                    case 1: // Item only prints a dialog.
-                        GUI.out(item.useEvent()); break;           
-                    case 2: // Item is used on furniture.
-                        GUI.menOut(Menus.INV_USEON);
-                        evalUse(item, GUI.promptOut());
+            if (Player.isNonEmptyString(choice)) {
+                // Looks for an item in the inventory with the name.
+                Item item = Player.inv.get(choice);
+
+                if (item.equals(Inventory.NULL_ITEM)) {
+                    // No item found. Notifies player, repeats loop.
+                    GUI.out(ERRONEOUS_INPUT);
+                    continue;
+                }
+
+                if (item.getUseID() == 1) // Item only prints a dialog.
+                    GUI.out(item.useEvent());          
+                else { // Enters a use-on prompt
+                    GUI.menOut(Menus.INV_USEON);
+                    evalUse(item, GUI.promptOut());
                 }
             }
-            catch (IndexOutOfBoundsException | NumberFormatException e) {
-                if (isNonEmptyString(choice))
-                    GUI.out(NOT_VALID_SLOT);
-            }  
         } while (isNonEmptyString(choice));
     }
     // ========================================================================  
@@ -957,11 +903,11 @@ public final class Player {
             }
             else {
                 GUI.out("You jam the " + item + " into the " + furniture +
-                        "\nas hard as you can, but nothing happens.");
+                        " as hard as you can with no exciting results.");
             }
         }                      
         else if (isNonEmptyString(furniture)) 
-            GUI.out("There is no " + furniture + " here that you can see."); 
+            GUI.out("A sharp squint around the room reveals no " + furniture + " at all."); 
         
         printInv();
     }
@@ -971,10 +917,7 @@ public final class Player {
      * player has the notepad and a pen.
      */
     public static void writePrompt() {
-        if (inv.size() >= PlayerInventory.MAX_SIZE) {
-            GUI.out("You are carrying too much stuff to write a note.");
-        }
-        else if (! (Player.hasItem(PEN) && Player.hasItem(NOTEPAD))) {
+        if (! (Player.hasItem(PEN) && Player.hasItem(NOTEPAD))) {
             GUI.out("You will need a pen and notepad in order to write a note to yourself.");
         }
         else {
@@ -992,6 +935,7 @@ public final class Player {
                     Item n = inv.get(slot - 1);
 
                     if (n instanceof Note && ! (n instanceof Book)) {
+                        // Player may write on notes but not books.
                         Player.inv.remove(n);
                         Player.inv.contents().add(
                             new Note(n.toString(), n.getDesc() + ' ' + getNoteBody())
@@ -1004,13 +948,15 @@ public final class Player {
                 }
                 else GUI.out(NOT_VALID_SLOT);
             }
-            else {
+            else if (! Player.inv.isFull()) {
                 Player.inv.contents().add(
                     new Note("note - " + title + ':' + ' ', getNoteBody())
                 );
                 Player.incrementMoves();
                 printInv();
             }
+            else
+                GUI.out("You're carrying too much stuff to write a new note!");
         }
     }
     // ========================================================================
@@ -1029,52 +975,63 @@ public final class Player {
      */
     private static void combineSub() {
         String combineThese;
-        Scanner tokens;
         GUI.menOut(Menus.INV_COMBINE);
         
         do {
             combineThese = GUI.promptOut();
-            tokens = new Scanner(combineThese).useDelimiter("\\s*,\\s*");
 
             if (isNonEmptyString(combineThese)) {
                 Player.incrementMoves();
-                validateList(getTokenList(tokens));
+                
+                Item[] itemList = getItemList(combineThese, inv);
+        
+                if (validateList(itemList))
+                    evalCombine(itemList);
             }
-            
-            tokens.close();  
         } while (isNonEmptyString(combineThese));        
     }
     // ======================================================================== 
-    /**
-     * Does the same as combineSub() but with a starting string as input.
-     * For use from the main prompt.
-     */
+    // Does the same as combineSub() but with a starting string as input.
+    // For use by the text parser.
     public static void combineSub(String input) {
-        String items = input.replaceFirst("combine\\s+", "");
+        Item[] itemList = getItemList(input, inv);
         
-        try (Scanner tokens = new Scanner(items).useDelimiter("\\s*,\\s*")) {
-            validateList(getTokenList(tokens));
-        }
+        if (validateList(itemList))
+            evalCombine(itemList);
     }
     // ======================================================================== 
     /**
      * Validates the correctness of a list of items to combine generated by the
-     * player.
+     * player, prints an error message if false.
      * @param list a variable-length list of items.
+     * @return if an attempt at combining can be performed on the list.
      */
-    private static void validateList(Item[] list) {
-        if (list.length == 2 || list.length == 3)
-            evalCombine(list);
-        else switch (list.length) {
-            case 0:
+    private static boolean validateList(Item[] list) {
+        for (Item i : list) // Checks for null items
+            if (i.equals(Inventory.NULL_ITEM)) {
                 GUI.out(NOT_VALID_SLOT); 
-                break;
-            case 1:
-                GUI.out("You take a moment to ponder how to combine an item with itself."); 
-                break;
-            default:
-                GUI.out("You possess the skill to combine only 2 or 3 items at a time.");
-        }    
+                return false;
+            }
+        if (list.length == 2 || list.length == 3)
+            // Checks if correct length
+            return true; 
+        
+        else {
+            // Prints appropriate message for error.
+            switch (list.length) {
+                case 0:
+                    GUI.out(NOT_VALID_SLOT); 
+                    return false;
+                case 1:
+                    GUI.out("You take a moment to ponder how "
+                            + "to combine an item with itself."); 
+                    return false;
+                default:
+                    GUI.out("You possess only the dexterity "
+                            + "to combine 2 or 3 items.");
+                    return false;
+            }   
+        }
     }
     // ======================================================================== 
     /**
@@ -1100,30 +1057,6 @@ public final class Player {
                 case 3: // Player entered 3 items, some of which may combine.
                     GUI.out("You are pretty sure all these don't go together."); 
             } 
-    }
-    // ========================================================================  
-    /**
-     * Returns a list of items that the player is trying to combine and catches
-     * errors in the player's syntax.
-     * @param tokenizer A scanner holding the list of player entries
-     * @return A list of items the player wants to combine.
-     */
-    private static Item[] getTokenList(Scanner tokenizer) {
-        ArrayList<Item> itemList = new ArrayList<>(3);
-        
-        try {
-            while (tokenizer.hasNext()) {                                                                            
-                int slot = Integer.parseInt(tokenizer.next());
-                Item item = Player.inv.get(slot - 1);
-                
-                if (! itemList.contains(item)) // Prevents adding duplicates.
-                    itemList.add(item);
-            }
-        }
-        catch (NumberFormatException | IndexOutOfBoundsException e) {
-            return new Item[0]; // List isn't valid.
-        }
-        return itemList.toArray(new Item[itemList.size()]);
     }
     // ========================================================================  
     /**

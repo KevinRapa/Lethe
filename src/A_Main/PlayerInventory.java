@@ -1,8 +1,6 @@
 package A_Main;
 
 import static A_Main.Names.LOOT_SACK;
-import static A_Main.Names.NO_LETTER_AFTER;
-import static A_Main.Names.NO_LETTER_BEFORE;
 import A_Super.Item;
 import Foyer.LootSack;
 import java.util.Comparator;
@@ -14,24 +12,23 @@ import java.util.Comparator;
  * @author Kevin Rapa
  */
 public class PlayerInventory extends Inventory {
-    public static final int MAX_SIZE = 15;
-    private final Item NULL_ITEM = 
-            new Item("null item", "Whoops! Looks like there's a bug in the game, "
-                   + "this item will self-destruct in 5 seconds... Just kidding.", 0);
+    private static final int MAX_SIZE = 15;
     // ========================================================================
     public PlayerInventory(Item ... items) {
         super(items);
     }
     // ========================================================================
+    public boolean isFull() {
+        return CONTENTS.size() >= MAX_SIZE;
+    }
+    // ========================================================================
     /**
-     * Adds an item to the inventory, does not permit duplicates.
-     * On certain occasions, items will be forced into the inventory even
-     * if a duplicate results in order to avoid permanently losing items.
+     * Adds an item to the inventory, unless the inventory is full.
      * @param item An item to add to this inventory's contents.
      * @return If the add was successful. 
      */
     @Override public boolean add(Item item) {
-        if (CONTENTS.size() < MAX_SIZE) {
+        if (! isFull()) {
             this.CONTENTS.add(item);
 
             if (item.getType().equals(LOOT_SACK)) {
@@ -61,6 +58,14 @@ public class PlayerInventory extends Inventory {
     }
     // ========================================================================
     /**
+     * Removes all items from this inventory of the given type.
+     * @param type The type of item to remove.
+     */
+    public void remove(String type) { 
+        this.CONTENTS.removeIf(item -> item.getType().matches(type));
+    }
+    // ========================================================================
+    /**
      * Removes combined items from this inventory and adds the object formed to this.
      * @param itemList A list of combinable items to be removed.
      * @param gift The item which the combinable items combined into.
@@ -74,29 +79,6 @@ public class PlayerInventory extends Inventory {
         AudioPlayer.playEffect(29);
         
         return "You created: " + gift + ".";
-    }
-    // ========================================================================
-    public Item get(String itemName) {
-        // Shouldn't return null item, inventory is pre-checked for item.
-        if (Patterns.ANY_DIGIT_P.matcher(itemName).matches()) {
-            int i = Integer.parseInt(itemName); // Player used a slot number.
-            if (i <= this.size())
-                return this.CONTENTS.get(i - 1);
-        }
-        else {
-            // First checks for an exact match.
-            for (Item i : this.contents())
-                if (i.toString().equals(itemName))
-                    return i;
-            
-            // If nothing is found, finds something resembling the item name.
-            for (Item i : this.contents())
-                if (i.toString().matches(NO_LETTER_BEFORE + itemName + NO_LETTER_AFTER))
-                    return i;
-        }
-        
-        System.err.println("Error: returned null item at PlayerInventory.get(String itemName)");
-        return NULL_ITEM;
     }
     // ========================================================================
     public void sortInventory() {

@@ -562,6 +562,7 @@ public class Map {
         Furniture rquaF = new Floor("A sandstone tiled floor. Small, loose grains grind against your shoes as you walk.", 
                 rags, cmb, rags, sht, cndlStk, rags, shs);
         Furniture rquaPnl = new Rqua_Panel(studKey, rquaBd);
+        
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE SERVANTS HALL">
         //-----------------------------THE ROOM---------------------------------

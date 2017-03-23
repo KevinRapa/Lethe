@@ -41,7 +41,7 @@ abstract public class NonPlayerCharacter extends Furniture implements Moveable {
         if (item.getType().equals(WEAPON))
             return ATTACK_DIALOG;
         else
-            return DEFAULT_USE;
+            return "It looks like it's faring perfectly well without that.";
     }
     // ========================================================================    
     @Override public String moveIt() {

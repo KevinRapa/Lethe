@@ -18,8 +18,6 @@ public class Pris_Cells extends Furniture implements Openable, Unmoveable {
     public Pris_Cells () {
         super();
         
-        this.description = this.searchDialog = null;
-        
         this.addNameKeys("(?:gated )?(?:prison )?cells?");
     }
     // ======================================================================== 

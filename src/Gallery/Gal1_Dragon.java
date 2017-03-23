@@ -43,7 +43,9 @@ public class Gal1_Dragon extends Gal_LightMachine {
             return description.concat("at the statue in the central chamber.\n"
                                     + "Its right eye glows brightly from an unknown source.");
         else
-            return description.concat("with cold eyes at the statue in the central chamber.");
+            return description.concat("with cold eyes at the statue in the central chamber. "
+                    + "Careful inspection reveals two wires coming out the back. One leads "
+                    + "behind the screen, the other behind the scroll.");
     }
 /*----------------------------------------------------------------------------*/    
     public String switchEye(int i) {

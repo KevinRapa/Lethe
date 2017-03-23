@@ -17,8 +17,8 @@ public class Sew_Bridge extends Furniture implements Heavy {
         
         this.description = "The small, 11-foot stone bridge crosses over the\n" +
                            "river to another area.";
-        this.actDialog = null;
         this.searchDialog = "There's nothing on or under the bridge.";
+        this.actDialog = null;
 
         this.addNameKeys("(?:under (?:the )?)?(?:small )?(?:stone )?bridge", 
                   dir + " (?:under (?:the )?)?(?:small )?(?:stone )?bridge");

@@ -80,6 +80,7 @@ public class TextParser {
     /**
      * Splits the sentence using a conjunction as a delimiter into statements,
      * then populates a list of commands.
+     * This does conflict with listing items using 'and' in combining.
      * @param sentence a sentence with the articles removed.
      * @return a list of commands to execute.
      */
@@ -105,7 +106,8 @@ public class TextParser {
             }
             else if (COMBINE_P.matcher(statements[i]).matches()) {
                 String s = statements[i]; // Variable for lambda must be final.
-                commands[i] = new Command(() -> Player.combineSub(s), "COMBINE");
+                commands[i] = new Command(() -> 
+                        Player.combineSub(s.replaceFirst("combine\\s+", "")), "COMBINE");
             }
             else if (ZORK_P.matcher(statements[i]).matches()) { // Zork-inspired
                 commands[i] = GREETING_CMD;
@@ -416,6 +418,7 @@ public class TextParser {
                         Furniture floor = Player.getFurnRef("floor");
                         if (floor.isSearchable()) {
                             Player.evalStore(floor.getInv(), item);
+                            GUI.out("It's dropped.");
                         }
                         else
                             GUI.out("It's not a good idea to drop that here.");
@@ -480,7 +483,7 @@ public class TextParser {
                 else if (verb.equals("destroy") || verb.equals("break")) {
                     if (type.equals(BREAKABLE)) {
                         Player.getInv().remove(item);
-                        Player.getInv().CONTENTS.add(new Item("destroyed " + item, 
+                        Player.getInv().add(new Item("destroyed " + item, 
                                 "The " + item + " is now broken and certainly useless.", -50));
                         GUI.out("An acute sense of frustration causes you to crush it in your hand.");
                     }
@@ -488,13 +491,13 @@ public class TextParser {
                             || type.equals(FOCUS) || type.equals(INGREDIENT)) 
                     {
                         Player.getInv().remove(item);
-                        Player.getInv().CONTENTS.add(BROKEN_GLASS);
+                        Player.getInv().add(BROKEN_GLASS);
                         GUI.out("An acute sense of frustration causes you to "
                               + "crush the feeble glass in your hand.");
                     }
                     else if (type.equals(READABLE)) {
                         Player.getInv().remove(item);
-                        Player.getInv().CONTENTS.add(RIPPED_SHREDS);
+                        Player.getInv().add(RIPPED_SHREDS);
                         GUI.out("A cunning idea forms. You rip up the paper "
                               + "wantonly and stuff it back into your pocket.");
                     }
@@ -512,7 +515,7 @@ public class TextParser {
                 else if (verb.equals("rip") || verb.equals("tear")) {
                     if (type.equals(READABLE)) {
                         Player.getInv().remove(item);
-                        Player.getInv().CONTENTS.add(RIPPED_SHREDS);
+                        Player.getInv().add(RIPPED_SHREDS);
                         GUI.out("A cunning idea forms. You rip up the paper wantonly and stuff it back into your pocket.");
                     }
                     else

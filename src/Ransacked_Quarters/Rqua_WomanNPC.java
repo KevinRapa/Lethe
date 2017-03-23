@@ -21,7 +21,7 @@ public class Rqua_WomanNPC extends NonPlayerCharacter {
                        + "with contempt!!!!\"";
         this.searchDialog = "Approaching her seems like a dangerous thing to do.";
 
-        this.addNameKeys("(?:elderly )?(?:laughing )?(?:robed )?woman", "her");
+        this.addNameKeys("(?:elderly )?(?:laughing )?(?:robed )?(?:woman|lady)", "her");
     }
     // ========================================================================   
     @Override public String interact(String key) {              

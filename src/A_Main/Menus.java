@@ -16,11 +16,11 @@ public final class Menus {
                  + " < >  Back",
 
         INV_INSPECT = "\n"
-                    + "<#> Inspect...\n"
+                    + "<item> Inspect...\n"
                     + "< > Back",
 
         INV_USE = "\n"
-                + "<#> Use...\n"
+                + "<item> Use...\n"
                 + "< > Back",
 
         INV_USEON = "\n"
@@ -28,22 +28,14 @@ public final class Menus {
                   + "< >      Back",
 
         INV_COMBINE = "\n"
-                    + "<#,#(,#)> Combine...\n"
-                    + "< >       Back",
-
-        EXAMINE_SUB = "\n\n"
-                    + "<object> Look at...\n"
-                    + "< >      Back",
+                    + "<item list> Combine...\n"
+                    + "< >         Back",
 
         TRADE_SUB = "\n"
-                  + "<'s' #>  Store...\n"
-                  + "<'t' #>  Take...\n"
-                  + "<'loot'> Loot!!!\n"
-                  + "< >      Back",
-
-        SEARCH_SUB = "\n\n"
-                   + "<object> Search\n"
-                   + "< >      Back\n",
+                  + "<'s' item list>  Store...\n"
+                  + "<'t' item list>  Take...\n"
+                  + "<'loot'>         Loot!!!\n"
+                  + "< >              Back",
 
         SAVE_QUIT = "\n"
                   + "<'s'> Save and quit\n"

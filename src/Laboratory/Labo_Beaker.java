@@ -2,7 +2,6 @@ package Laboratory;
 
 import static A_Main.Names.*;
 import A_Main.Player;
-import A_Main.PlayerInventory;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Liquid;
@@ -48,6 +47,7 @@ public class Labo_Beaker extends Furniture {
                         "You really aren't sure enough about the safety of doing that...", 0);
         
         this.description = "The beaker contains ";
+        this.searchDialog = NOTHING;
         this.useDialog = "That's not it's proper function right now!";
         this.actDialog = "You take the beaker off of the contraption.";
 
@@ -69,7 +69,7 @@ public class Labo_Beaker extends Furniture {
         if (key.equals("drink")) {
             return "You can't do that while it's still on the table!";
         }
-        else if (Player.getInv().size() < PlayerInventory.MAX_SIZE) {
+        else if (! Player.getInv().isFull()) {
             Player.getPos().removeFurniture(this);
             
             switch (mode) {

@@ -1,6 +1,7 @@
 package Gallery;
 
 import A_Main.AudioPlayer;
+import static A_Main.Names.BUCKET_OF_WATER;
 import static A_Main.Names.RUBBER_GLOVES;
 import static A_Main.Names.WEAPON;
 import static A_Main.Names.WORK_BOOTS;
@@ -107,6 +108,11 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
                  || ! pluggedIn) ? 
                     "Attempts to savagely smash the machine yield no progress forward." :
                     this.useDialog;
+        }
+        else if (i.toString().equals(BUCKET_OF_WATER)) {
+            return (pluggedIn) ? 
+                    "Whoa there... do you have a death wish?" : 
+                    DEFAULT_USE;
         }
         else
             return DEFAULT_USE;

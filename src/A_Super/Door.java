@@ -16,8 +16,7 @@ public class Door extends Furniture {
                        + "of this skill. Yet another you yearn for at the moment.";
         this.searchDialog = "You aren't sure what you'd search for on a door.";
         this.description = "It looks like a heavy wooden door.";
-        this.actDialog = null;
-
+        
         this.addUseKeys(ANYTHING);
         this.addActKeys("open|use|walk|go|close", "kick|bash|break|obliterate|destroy", "knock|bang", "unlock|lock", "pick");
         this.addNameKeys(dir + " door", "(?:heavy )?(?:wooden )?door", "(?:door )?lock");

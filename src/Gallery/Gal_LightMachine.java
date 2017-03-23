@@ -44,7 +44,6 @@ abstract public class Gal_LightMachine extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal_LightMachine() {
         super();
-        this.useDialog = null;
         this.isOn = false;
         this.beam = 'c';
         this.mode = "A clear scattered light";

@@ -1,5 +1,7 @@
 package A_Main;
 
+import static A_Main.Names.NO_LETTER_AFTER;
+import static A_Main.Names.NO_LETTER_BEFORE;
 import A_Super.Item;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -15,6 +17,8 @@ import java.io.Serializable;
  */
 public class Inventory implements Iterable<Item>, Serializable {
     protected final ArrayList<Item> CONTENTS; // This inventory's contents.
+    public static final Item NULL_ITEM = // Represents an item wasn't found.
+            new Item("null item", "Hello, I'm a null item.", 0);
     // CONSTRUCTOR ============================================================   
     public Inventory(Item ... items) {
         this.CONTENTS = new ArrayList<>(Arrays.asList(items));
@@ -24,8 +28,46 @@ public class Inventory implements Iterable<Item>, Serializable {
         return CONTENTS.get(index);
     }
     // ========================================================================
+    // Tries to find an item with the name. Returns a null item for a failure.
+    public Item get(String itemName) {
+        if (Patterns.ANY_DIGIT_P.matcher(itemName).matches()) {
+            int i = Integer.parseInt(itemName); // Player used a slot number.
+            if (i <= this.size() && i > 0)
+                return this.CONTENTS.get(i - 1);
+        }
+        else {
+            for (Item i : this.contents()) // First checks for an exact match.
+                if (i.toString().equals(itemName))
+                    return i;
+            
+            for (Item i : this.contents()) // Checks for a close match.
+                if (i.toString().matches(NO_LETTER_BEFORE + itemName + NO_LETTER_AFTER))
+                    return i;
+        }
+        System.err.println("Warning: NULL_ITEM returned at <inventory>.get()");
+        return NULL_ITEM; // Item wasn't found. Always check for this!!
+    }
+    // ========================================================================
     public boolean contains(Item item) {
         return CONTENTS.contains(item);
+    }
+    // ========================================================================
+    public boolean isEmpty() {
+        return CONTENTS.isEmpty();
+    }
+    // ========================================================================
+    // Checks if this inv contains an item who's name matches argument.
+    public boolean containsItemResembling(String item) {
+        if (Patterns.ANY_DIGIT_P.matcher(item).matches()) {
+            // Player used a slot number
+            int i = Integer.parseInt(item);
+            return (i <= CONTENTS.size());
+        }
+        else // Player typed in an item name
+            return CONTENTS
+                    .stream()
+                    .anyMatch(i -> i.toString()
+                    .matches(NO_LETTER_BEFORE + item + NO_LETTER_AFTER));
     }
     // ========================================================================
     public int size() {
@@ -55,17 +97,10 @@ public class Inventory implements Iterable<Item>, Serializable {
     }
     // ========================================================================
     /**
-     * Removes all items from this inventory of the given type.
-     * @param type The type of item to remove.
-     */
-    public void remove(String type) { 
-        this.CONTENTS.removeIf(item -> item.getType().matches(type));
-    }
-    // ========================================================================
-    /**
-     * Removes an item from this inventory and gives to another.
+     * Removes an item from this inventory and gives it to another.
      * @param item The item to give.
      * @param giveToThis The inventory to add the item to.
+     * @return It the add was successful
      */
     public boolean give(Item item, Inventory giveToThis) {
         if (giveToThis.add(item)) {

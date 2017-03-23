@@ -21,7 +21,7 @@ public class Hads_Corpses extends SearchableFurniture {
     // ========================================================================
     @Override public String interact(String key) {
         if (SEARCH_P.matcher(key).matches()) {
-            Player.searchPrompt(this);
+            Player.trySearch(this);
             return NOTHING;
         }
         else

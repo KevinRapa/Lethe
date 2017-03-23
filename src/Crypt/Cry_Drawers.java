@@ -55,7 +55,7 @@ public class Cry_Drawers extends Furniture implements Openable {
 
         if (Player.isNonEmptyString(ans)) {
             GUI.out(this.searchDialog);
-            Player.searchPrompt(this.DRAWERS[Integer.parseInt(ans) - 1]); 
+            Player.trySearch(this.DRAWERS[Integer.parseInt(ans) - 1]); 
         }
         
         return NOTHING;

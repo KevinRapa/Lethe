@@ -32,10 +32,10 @@ public class Help {
         "<#> - Enter a digit.\t\t" +
         "< > - Enter nothing.\t\t\t\t\t"
       + "Compound input -------------\t" +
-        "<(item)> - An optional item.\t" +   
+        "<(item)> - An optional item or item slot.\t\t" +   
         "<?,?,?> - Enter a list of ?, separated by commas.\t\t" +
         "<?/?/?> - Enter any one. "
-      + "<action object> - Enter the name of an action followed by the name of an object.", 
+      + "<'s' item list> - Enter 's' followed by a list of item names or slots.", 
          
         "In this game, you may move in four directions; north, south, east, " +
         "west, up, and down. For your convenience, the shortcuts for the " +
@@ -69,7 +69,7 @@ public class Help {
         "something cannot be searched, this doesn't imply that it doesn't " +
         "contain useful stuff! When trading items with furniture, use the " +
         "commands \"take\" or \"store\" (shortcut are \"t\" and \"s\") followed by " +
-        "the inventory slot the item is in.", 
+        "a list of item slots or names separated by commas or the word 'and'.", 
          
         "The somewhat famous (in the right community) early-eighties text-based " +
         "computer game \"Zork\" was known for its respectably sophisticated " +
@@ -103,7 +103,7 @@ public class Help {
         "they are combinable, they will be exchanged for a newly crafted " +
         "item. Combining is done from the inventory and the syntax is two " +
         "or three item slots separated by commas. As a shortcut, you can " +
-        "enter \"combine\" or even just \"combine <#,#(,#)>\" from the main " +
+        "enter \"combine\" or even just \"combine <item,item(,item)>\" from the main " +
         "prompt. Combining is done all at once. Thus, if a hilt, pommel, " +
         "and blade are combined to make a sword, do not try to combine 2 of " +
         "them and then the 3rd later; combine all 3 at the same time. When " +

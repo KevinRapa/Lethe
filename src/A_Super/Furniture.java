@@ -59,6 +59,7 @@ abstract public class Furniture implements Serializable {
         this.USEKEYS = new ArrayList<>(5);  // Valid items that may be used on this.
         this.ACTKEYS = new ArrayList<>(6);  // Valid actions that may be performed on this.
         
+        this.actDialog = NOTHING;
         this.useDialog = DEFAULT_USE;
         this.searchDialog = NOTHING_HERE;
     }

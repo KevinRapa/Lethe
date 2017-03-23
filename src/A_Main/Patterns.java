@@ -22,6 +22,7 @@ public final class Patterns {
         IT_THEM_P = Pattern.compile("it|them"),
         CHECK_P = Pattern.compile("c|check|examine|look|view|inspect|watch"),
         SEARCH_P = Pattern.compile("search|e|s"),
+        LOOT_ACTION_P = Pattern.compile("loot|l|take all"),
         GEN_FURNITURE_P = Pattern.compile("furniture|furnishings|stuff|things?"),
         TAKE_P = Pattern.compile("t|take|get"),
         STORE_P = Pattern.compile("s|store|put"),
@@ -32,10 +33,11 @@ public final class Patterns {
         DIGIT_OR_BLANK_P = Pattern.compile("\\d{1,4}|"), // Protects from numberFormatException
         INVALID_DIR_P = Pattern.compile("(?:north|south)(?:east|west)"),
         DESTROY_P = Pattern.compile("destroy|break|shatter|obliterate|throw"),
+        LIST_P = Pattern.compile("(?:\\s*,(\\s*and\\s*)?\\s*)|(?:\\s+and\\s+)"), // A list delimited by a comma or 'and', or possibly a comma followed by 'and'.
             
         // Patterns used by TextParser    
         ZORK_P = Pattern.compile("hi|hello|hey|sup|brief|superbrief|verbose|diagnose"),
-        COMBINE_P = Pattern.compile("combine\\s+(?:\\d+\\s*,\\s*)*\\d+"),
+        COMBINE_P = Pattern.compile("combine\\s+.+"),
         EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska"),
         SEARCH_MANNER_P = Pattern.compile("look (?:on|in(?:side)?|under|around)"),
         INSPECT_P = Pattern.compile("look(?! (?:on|in(?:side)?|under|around))|inspect|examine|check"),

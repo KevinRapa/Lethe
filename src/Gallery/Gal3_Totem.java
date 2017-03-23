@@ -29,7 +29,6 @@ public class Gal3_Totem extends Gal_LightMachine {
         this.GAL4_STAT_REF = (Gal4_Statue) stat;
         
         this.searchDialog = "The only place to search is the totem's open third mouth. ";
-        this.actDialog = null;
         this.turnOffDialog = "The lights in the totem's eyes and mouth fade.";
         
         this.addActKeys("turn", "spin", "twist");
