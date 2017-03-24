@@ -11,7 +11,8 @@ abstract public class Button extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Button() {
         super();
-        this.searchable = false;
+
+        this.description = "It's a small button, the pushy kind.";
         this.searchDialog = "There's a sword here! No not really, just a button.";
         this.addActKeys("push", "hit", "activate", "press");
         this.addNameKeys("button"); 

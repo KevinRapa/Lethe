@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import javafx.embed.swing.JFXPanel;
 import static A_Main.Names.SEP;
 import static A_Main.Names.W_DIR;
@@ -29,7 +28,7 @@ public class GUI extends JFXPanel {
     private enum Click {
         NONE(-1), SOFT(0), CLICK(1), VINTAGE(2);
     
-        public final int soundEffectId; // Index. NONE's should never be used.
+        public final int soundEffectId; // Index. NONE's isn't used.
         //----------------------------------------
         Click(int key) { 
             this.soundEffectId = key; 
@@ -37,7 +36,7 @@ public class GUI extends JFXPanel {
         //----------------------------------------
     }
     
-    // <editor-fold defaultstate="collapsed" desc="COMPONENTS AND ATTRIBUTES">
+    // <editor-fold desc="COMPONENTS AND ATTRIBUTES">
     private static boolean big = true;
     private static int key = Click.NONE.soundEffectId;
     private final static String MOVES = "Moves: ", SCORE = "    Score: ";
@@ -45,8 +44,10 @@ public class GUI extends JFXPanel {
     private static Font myFont;
     
     private final static JTextArea 
-        MEN = new JTextArea(), DESC = new JTextArea(), 
-        INV = new JTextArea(), DIAL = new JTextArea();
+        MEN = new JTextArea(),  // Menus are printed here.
+        DESC = new JTextArea(), // Room descriptions are printed here.
+        INV = new JTextArea(),  // Inventories are printed here.
+        DIAL = new JTextArea(); // General text is printed here.
 
     private final static JPanel 
         EAST = new JPanel(new BorderLayout()), 
@@ -56,29 +57,37 @@ public class GUI extends JFXPanel {
         CSOUTH = new JPanel(), SALAMAA = new JPanel(new FlowLayout(FlowLayout.LEFT));          
     
     private final static JScrollPane 
-        SCROLLW = new JScrollPane(DIAL, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+        SCROLLW = new JScrollPane(DIAL, 
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER),
-        SCROLLE = new JScrollPane(INV, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
+        SCROLLE = new JScrollPane(INV, 
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     
     private final static JLabel 
-        ROOM = new JLabel(), 
-        PROMPT = new JLabel(">"),
-        INVLBL = new JLabel();
+        ROOM = new JLabel(),        // Displays player's current room.
+        PROMPT = new JLabel(">"),   // Decorative prompt sigil for retro feel.
+        INVLBL = new JLabel();      // Label displaying score and moves.
     
     private final static JButton 
-        SIZE = new JButton("Small"),
-        MUTE = new JButton("Mute"),
-        KEYS = new JButton("Click"),
-        COLOR = new JButton("Color");
+        SIZE = new JButton("Small"),    // Button changing screen size.
+        MUTE = new JButton("Mute"),     // Button muting ambience.
+        KEYS = new JButton("Click"),    // Button controlling faux key sounds.
+        COLOR = new JButton("Color");   // Button changing font color.
     
     private final static JTextField 
-        INPUT = new JTextField("", 35);
+        INPUT = new JTextField("", 35);     // Player enters commands here.
     
+    // Holds previous input.
     private final static LinkedList<String> UNDO = new LinkedList<>();
+    
+    // Holds player input to be recieved by main thread.
     private final static Input_Holder HOLDER = new Input_Holder();
-    private final static ArrayList<String> FURN_PARSER = new ArrayList<>();
+    
+    // Queue treated as circular to rotate between key sounds.
     private final static LinkedList<Click> KEYSOUND = new LinkedList<>();
+    
+    // Queue treated as curcular to rotate font colors.
     private final static LinkedList<Color> COLORS = new LinkedList<>();
 
     static {
@@ -389,7 +398,6 @@ public class GUI extends JFXPanel {
     }
 /*----------------------------------------------------------------------------*/
     public static void giveFocus() {
-        // Only used by title frame when the game starts.
         INPUT.requestFocus();
     }
 /*----------------------------------------------------------------------------*/
@@ -478,7 +486,10 @@ public class GUI extends JFXPanel {
                 
                 String input = HOLDER.request();
                 
-                if (input.length() > 1 && ! input.equals("save"))
+                if (input.length() > 1 && ! input.equals("save") && ! input.equals("xyzzy"))
+                    // Ignores "save" to discourage rapid mischevious saving.
+                    // Likewise for "xyzzy", which does a lot of work.
+                    // Input of length 1 is insignificant to save.
                     UNDO.push(HOLDER.request());
                 
                 INPUT.setText("");
@@ -493,19 +504,24 @@ public class GUI extends JFXPanel {
          * On some monitors, the frame has been to large.
          * @param push A push of a button.
          */
-        @Override public void actionPerformed(ActionEvent push) { // Resize
-            if (push.getSource().equals(SIZE)) {
+        @Override public void actionPerformed(ActionEvent push) { 
+            Object o = push.getSource();
+            
+            // Resize screen to be a bit smaller
+            if (o.equals(SIZE)) {
                 AudioPlayer.playEffect(10);
                 big = ! big;
                 smallMode(big);
                 SIZE.setText(big ? "Small" : "Big");
             }
-            else if (push.getSource().equals(MUTE)) { // Toggles ambience
+            else if (o.equals(MUTE)) { 
+                // Toggles ambience
                 AudioPlayer.playEffect(10);
                 MUTE.setText(MUTE.getText().equals("Mute") ? "Unmute" : "Mute");
                 AudioPlayer.toggleMute();
             }
-            else if (push.getSource().equals(COLOR)) { // Toggles ambience
+            else if (o.equals(COLOR)) { 
+                // Toggles ambience
                 AudioPlayer.playEffect(10);
                 Color newColor = COLORS.peek();
                 COLORS.offer(COLORS.poll());
@@ -514,12 +530,13 @@ public class GUI extends JFXPanel {
                 DESC.setForeground(newColor);
                 DIAL.setForeground(newColor);
             }
-            else { // Changes key click
+            else { 
+                // Changes key click
                 KEYSOUND.offer(KEYSOUND.poll());
                 key = KEYSOUND.peek().soundEffectId;
                 AudioPlayer.playKeySound(key);
             }
-            giveFocus();
+            giveFocus(); // Returns focus to input so player doesn't have to.
         }
     }
 // *****************************************************************************

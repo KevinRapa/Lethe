@@ -3,54 +3,63 @@ package A_Main;
 import static A_Main.Names.*;
 import static A_Main.Patterns.*; 
 import A_Super.*;
+import Foyer.LootSack;
 
 import java.util.Scanner;           import java.util.ArrayList;
 import java.util.HashMap;           import java.io.IOException;
 import Tunnels.DungeonMonster;      import java.io.Serializable;
 import java.io.ObjectOutputStream;  import java.util.HashSet;
+import java.util.LinkedList;
 /**
  * Represents the player, the focal point of the game.
- * All player actions originate from the is class. The player has access
+ * All player actions originate from this class. The player has access
  * to its own location, and thereby each furniture and item in the location
  * too.
+ * 
+ * The text parser and player attributes class are nested inside this class
+ * because of their close relationship with Player.
  * 
  * @author Kevin Rapa
  */
 public final class Player {
-    private static Room[][][] mapRef;           // Game map reference
-    private static Inventory keys;              // Player inventory (for keys)
-    private static PlayerInventory inv;         // Player inventory
-    private static ArrayList<String> visited;   // Rooms the player has visited so far
-    private static boolean end = false;         // Game ends when this is false
+    private static Room[][][] mapRef;         // Game map reference
+    private static Inventory keys;            // Player inventory (for keys)
+    private static PlayerInventory inv;       // Player inventory
+    private static ArrayList<String> visited; // Rooms the player has visited so far
+    private static boolean notEnd = true;     // Game ends when this is false
     private static int 
-        pos[],      // Integer coordinates of the player in the map
-        moves,      // How many valid moves the player has made
-        score;      // Worth of items in the player's loot sack
+        pos[], // Integer coordinates of the player in the map
+        moves, // How many valid moves the player has made
+        score; // Worth of items in the player's loot sack
+    
     private static String 
-        lastVisited,    // Id of the last room the player was in
-        shoes,          // Name of the shoes the player wears
-        lastItem = "",          // Last item the player interacted with
-        lastFurniture = "";     // Last furniture the player interacted with.
+        lastVisited,        // Id of the last room the player was in
+        shoes,              // Name of the shoes the player wears
+        lastItem = "",      // Last item the player interacted with
+        lastFurniture = ""; // Last furniture the player interacted with.
 
     private static final HashMap<String, Runnable> 
         MAIN_CMDS = new HashMap<>(),    // Maps commands from main prompt
         INV_CMDS = new HashMap<>();     // Maps commands from inventory
+    
     private static final HashMap<String, String> 
         ODD_CMD_KEYS = new HashMap<>(); // Maps random commands
+    
     private static final HashSet<String> 
         MAIN_CMD_SET = new HashSet<>(), // Commands from the main prompt
         INV_CMD_SET = new HashSet<>(),  // Commands from the inventory
         ODD_CMD_SET = new HashSet<>();  // Random commands
     
     private static final String 
-        NOT_VALID_SLOT = "You don't seem to have an item there.",
-        ERRONEOUS_INPUT = "You may have just entered something wrong...";
+        NOT_VALID_SLOT = "Oh, I didn't realize you had an item there!",
+        ERRONEOUS_INPUT = "I think I may have misunderstood you on something...",
+        VERSION = "This is Lethe / Author: Kevin Rapa / Written on Netbeans 8.1 "
+                + "/ Sounds obtained from freesound.org / Last modified: 3/24/2017";
 
-    /*
-        Maps various commands in the game to their actions 
-        Adds the keys to a set which is consulted whenever 
-        the player enters something.
-    */
+    // <editor-fold defaultstate="collapsed" desc="MAPPINGS">
+    // Maps various commands in the game to their actions.
+    // Adds the keys to a set which is consulted whenever 
+    // the player enters something.
     static {
         MAIN_CMDS.put("h", () -> Help.helpSub());
         MAIN_CMDS.put("k", () -> viewKeyRing());
@@ -62,9 +71,15 @@ public final class Player {
         MAIN_CMDS.put("m", () -> Map.displayMap());
         MAIN_CMDS.put("n", () -> writePrompt());
         MAIN_CMDS.put("l", () -> openLootSack());
-        MAIN_CMDS.put("q", () -> {end = true;});
+        MAIN_CMDS.put("q", () -> {notEnd = false;});
+        MAIN_CMDS.put("nw", () -> evaluateAction("go", "northwest"));
+        MAIN_CMDS.put("ne", () -> evaluateAction("go", "northeast"));
+        MAIN_CMDS.put("sw", () -> evaluateAction("go", "southwest"));
+        MAIN_CMDS.put("se", () -> evaluateAction("go", "southeast"));
 
-        MAIN_CMDS.put("quit",      () -> {end = true;});
+        MAIN_CMDS.put("quit",      () -> {notEnd = false;});
+        MAIN_CMDS.put("version",   () -> GUI.out(VERSION));
+        MAIN_CMDS.put("lethe",     () -> GUI.out("Hello, dear."));
         MAIN_CMDS.put("zork",      () -> GUI.out("You must be mistaking me for someone else."));
         MAIN_CMDS.put("keys",      () -> viewKeyRing());
         MAIN_CMDS.put("keyring",   () -> viewKeyRing());
@@ -74,7 +89,7 @@ public final class Player {
         MAIN_CMDS.put("scream",    () -> GUI.out("AHHHHHGGGHHH!!!!!"));
         MAIN_CMDS.put("yell",      () -> GUI.out("AHHHHHGGGHHH!!!!!"));
         MAIN_CMDS.put("smell",     () -> GUI.out("Smells like a brisk autumn night in 1932."));
-        MAIN_CMDS.put("win",       () -> GUI.out("Oh wait, that's it! You win! Congratulations. You may go home now."));
+        MAIN_CMDS.put("win",       () -> GUI.out("Oh wait, that's it! You win! Congratulations! You may go home now."));
         MAIN_CMDS.put("combine",   () -> combineSub());
         MAIN_CMDS.put("jump",      () -> GUI.out("You jump a short height into the air. Well, that was fun."));
         MAIN_CMDS.put("sort",      () -> getInv().sortInventory());
@@ -85,6 +100,9 @@ public final class Player {
         MAIN_CMDS.put("stand",     () -> GUI.out("You stand and do nothing."));
         MAIN_CMDS.put("sit down",  () -> GUI.out("You sit and rest a moment."));
         MAIN_CMDS.put("sit",       () -> GUI.out("You sit and rest a moment."));
+        MAIN_CMDS.put("move",      () -> evaluateAction("move", "self"));
+        MAIN_CMDS.put("walk",      () -> evaluateAction("move", "self"));
+        MAIN_CMDS.put("go",        () -> evaluateAction("move", "self"));
         MAIN_CMDS.put("northwest", () -> evaluateAction("go", "northwest"));
         MAIN_CMDS.put("northeast", () -> evaluateAction("go", "northeast"));
         MAIN_CMDS.put("southwest", () -> evaluateAction("go", "southwest"));
@@ -128,6 +146,7 @@ public final class Player {
         
         ODD_CMD_SET.addAll(ODD_CMD_KEYS.keySet());
     }
+    // </editor-fold>
     
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="ACCESSORS AND OUTPUT">  
@@ -135,10 +154,9 @@ public final class Player {
     // <editor-fold desc="Accessors">
     /**
      * Converts a string of a piece of furniture to its object equivalent.
-     * This should never return null. Furniture is checked for existence
-     * before calling this method.
+     * Furniture is checked for existence before calling this method.
      * @param name The name of a piece of furniture in your location.
-     * @return The furniture objects with the name.
+     * @return The furniture object with the name.
      */
     public static Furniture getFurnRef(String name) {
         for(Furniture furn : getPos().getFurnishings()) {
@@ -198,16 +216,13 @@ public final class Player {
     // </editor-fold>
     
     // <editor-fold desc="Setters">
-    /**
-     * Sends the player to Hades.
-     * A Zork reference.
-     */
+    // Sends the player to Hades. A zork reference.
     public static void commitSuicide() {
         if (! getPosId().equals(Id.HADS)) {
             incrementMoves();
             
-            GUI.out("You succumb to the surreal, yet all too reachable decision. "
-                      + "Could this release you from your hopelessness?"); 
+            GUI.out("You succumb to the surreal, yet all too reachable "
+                  + "decision. Could this release you from your hopelessness?"); 
             GUI.menOut(Menus.ENTER);
             GUI.promptOut();
 
@@ -222,11 +237,11 @@ public final class Player {
     /*------------------------------------------------------------------------*/
     /**
      * 'Teleports' the player to another room.
-     * @param dest destination area.
+     * @param id destination area.
      */
-    public static void setOccupies(String dest) {
+    public static void setOccupies(String id) {
         Player.lastVisited = getPosId();
-        Player.pos = Player.getRoomObj(dest).getCoords();
+        Player.pos = Player.getRoomObj(id).getCoords();
         Map.updateMap();
         
         describeRoom();
@@ -240,7 +255,7 @@ public final class Player {
         Player.lastFurniture = furnName;
     }
     /*------------------------------------------------------------------------*/
-        public static void setLastInteract_Item(String itemName) {
+    public static void setLastInteract_Item(String itemName) {
         Player.lastItem = itemName;
     }
     /*------------------------------------------------------------------------*/
@@ -253,16 +268,11 @@ public final class Player {
     }
     /*------------------------------------------------------------------------*/
     public static void updateScore(int score) {
-        Player.score = score;
-        GUI.updateMovesAndScore(Player.moves, Player.score);
+        GUI.updateMovesAndScore(Player.moves, Player.score = score);
     }
     // </editor-fold>
     
-    /**
-     * Writes fields to a .data file to be read next time a game starts.
-     * @param stream ObjectOutputStream to write the file.
-     * @throws IOException 
-     */
+    // Writes fields to a .data file to be read next time a game starts.
     public static void savePlayerAttributes(ObjectOutputStream stream) 
             throws IOException 
     {
@@ -332,6 +342,8 @@ public final class Player {
                 "A thought briefly flashes in your mind before being\n" +
                 "forgotten - what was your business here, again?");     
         GUI.promptOut();
+        GUI.out(VERSION);     
+        GUI.promptOut();
         GUI.clearDialog();
         
         return mainPrompt();
@@ -353,17 +365,18 @@ public final class Player {
             GUI.toMainMenu();
             ans = GUI.promptOut();
 
-            if (MAIN_CMD_SET.contains(ans)) {// Simple command
+            if (MAIN_CMD_SET.contains(ans)) // Simple command
                 MAIN_CMDS.get(ans).run();
-            }
+            
             else if (isNonEmptyString(ans)) // More complicated command
                 TextParser.processText(ans);
             
-        } while (! end);
+        } while (notEnd);
         
         return endGameCode();
     }  
     // ========================================================================   
+    // Returns true if game is to be erased.
     private static boolean endGameCode() {
         String ans = GUI.askChoice(Menus.SAVE_QUIT, SAVE_QUIT_RESET_P);
         
@@ -400,12 +413,11 @@ public final class Player {
     }
     // ========================================================================  
     /**
-     * The movement algorithm for moving the player.
+     * Moves the player in the specified direction.
      * Two rooms are considered not to have a door between them if the first
      * three characters of their IDs are identical. An exception is made for 
-     * caves and catacombs, which have no doors. Stairs and ladders move the
-     * player up and down, and no sound is played here for them.
-     * 
+     * caves and catacombs, which have no doors. Stairs and climbables move the
+     * player up and down. Nothing else should.
      * @param dir A cardinal direction.
      */
     public static void move(Direction dir) {  
@@ -429,14 +441,14 @@ public final class Player {
             String destId = dest.getID();
             Map.updateMap();
 
-            if (dir == Direction.UP || dir == Direction.DOWN)
-                ; // Do nothing. Let the stairs play the noise.
-            
-            else if (dest.isLocked() && ! visited.contains(destId))
+            if (dir == Direction.UP || dir == Direction.DOWN) {
+                // Do nothing. Let the stairs play the noise.
+            }
+            else if (dest.isLocked() && ! visited.contains(destId)) {
                 AudioPlayer.playEffect(13); // Plays unlock sound.
-            
+            }
             else if (Player.pos[0] < 5  && // If you're not in catacombs or caves.
-                     ! Id.areaName(destId).matches(Id.areaName(lastVisited))) 
+                     ! Id.areaName(destId).equals(Id.areaName(lastVisited))) 
             {
                 if (Player.pos[0] == 4 || CS35_CT34_P.matcher(destId).matches())
                     // Checks if player is in dungeon area- metal door sound.
@@ -444,14 +456,14 @@ public final class Player {
                 else
                     AudioPlayer.playEffect(9); // Wooden door sound. 
             }
-
             else if (Player.pos[0] >= 5  &&
                     ! destId.substring(0,2).matches(lastVisited.substring(0,2)))
-                // Plays wooden door sound in catacombs.
-                AudioPlayer.playEffect(9); 
-            
-            else
-                AudioPlayer.playEffect(0); // Plays footsteps. No door there
+            {
+                AudioPlayer.playEffect(9); // Wood door sound in catacombs.
+            }
+            else {
+                AudioPlayer.playEffect(0); // Footsteps. No door there
+            }
             
             describeRoom();
             GUI.roomOut(dest.triggeredEvent());
@@ -513,13 +525,13 @@ public final class Player {
 //******************************************************************************     
     /**
      * Prints the furniture search dialog and initiates search if searchable.
-     * @param furniture The furniture being searched.
+     * @param furn The furniture being searched.
      */
-    public static void trySearch(Furniture furniture) {
-        GUI.out(furniture.getSearchDialog());
+    public static void trySearch(Furniture furn) {
+        GUI.out(furn.getSearchDialog());
         
-        if (furniture.isSearchable())
-            search(furniture.getInv()); 
+        if (furn.isSearchable())
+            search(furn.getInv()); 
     } 
     // ========================================================================  
     /**
@@ -540,7 +552,8 @@ public final class Player {
                 Player.incrementMoves();
                 
                 while (! furnInv.isEmpty() && ! Player.inv.isFull())
-                    evalTake(furnInv, furnInv.get(0)); // Adds them all to player inventory.
+                    // Adds them all to player inventory.
+                    evalTake(furnInv, furnInv.get(0)); 
                 
                 GUI.out("You ravenously stuff your pockets.");
             }
@@ -557,23 +570,32 @@ public final class Player {
                 String itemList = scan.nextLine();
                 // Evaluates the store or take action given the slot.
                 if (STORE_P.matcher(action).matches()) {
-                    for (Item item : getItemList(itemList, Player.inv)) 
-                        if (! item.equals(Inventory.NULL_ITEM) && inv.contains(item)) {
-                            evalStore(furnInv, item);   
+                    for (Item item : getItemList(itemList, Player.inv)) {
+                        if (! item.equals(Inventory.NULL_ITEM) 
+                                && inv.contains(item)) 
+                        {
+                            evalStore(furnInv, item); // Item exists
                             Player.incrementMoves();
-                        } else
+                        } 
+                        else
                             GUI.out(ERRONEOUS_INPUT);
+                    }
                 }
                 else if (TAKE_P.matcher(action).matches()) {
-                    for (Item item : getItemList(itemList, furnInv)) 
-                        if (! item.equals(Inventory.NULL_ITEM) && furnInv.contains(item)) {
-                            evalTake(furnInv, item);
+                    for (Item item : getItemList(itemList, furnInv)) {
+                        if (! item.equals(Inventory.NULL_ITEM) 
+                                && furnInv.contains(item)) 
+                        {
+                            evalTake(furnInv, item); // Item exists
                             Player.incrementMoves();
-                        } else
+                        } 
+                        else
                             GUI.out(ERRONEOUS_INPUT);
+                    }
                 }
                 else
-                    GUI.out("A thousand pardons... what was that first thing you typed??");
+                    GUI.out("A thousand pardons... what was that "
+                            + "first thing you typed??");
 
                 scan.close();
                 describeRoom();
@@ -582,39 +604,37 @@ public final class Player {
         } while (isNonEmptyString(command));
     }
     // ========================================================================  
-    /**
-     * Takes a list of items and returns a list of item objects that were found
-     * in the inventory.
+    /*
+     * Takes a list of names, returns a list of items found in the inventory.
      * Items that weren't found are replaced by a NULL_ITEM.
-     * Example: "take the book, the parchment, and the pen"
+     * Example 1: "take the book, the parchment, and the pen"
      * Example 2: "take 1, 2, and 3"
      */
     private static Item[] getItemList(String itemList, Inventory inv) {
-        if (Player.isNonEmptyString(itemList)) {
-            // Trims articles off and excess space.
-            String trimmed = ARTICLE_P.matcher(itemList)
-                    .replaceAll("")
-                    .trim()
-                    .replaceAll("\\s{2,}", " ");
+        if (! Player.isNonEmptyString(itemList)) 
+            return new Item[0]; // Player entered nothing.
             
-            if ((trimmed.equals("it") || trimmed.equals("them")) && inv.size() == 1) {
-                // If "it/them" used, and has one item, only option is first item.
-                return new Item[] {inv.get(0)};
-            }
-            
-            String[] itemArray = LIST_P.split(trimmed);
-            Item[] resultArray = new Item[itemArray.length];
-            
-            for (int i = 0; i < itemArray.length; i++) {
-                String itemName = Player.tryIndefRef_Item(itemArray[i].trim());
-                // Inserts a NULL_ITEM if not found.
-                resultArray[i] = inv.get(itemName);
-            }
-            
-            return resultArray;
+        // Trims articles off and excess space.
+        String trimmed = ARTICLE_P.matcher(itemList)
+                .replaceAll("")
+                .trim()
+                .replaceAll("\\s{2,}", " ");
+
+        if (IT_THEM_P.matcher(trimmed).matches() && inv.size() == 1) {
+            // If "it/them" used, and has one item, only option is first item.
+            return new Item[] {inv.get(0)};
         }
-        else 
-            return new Item[0];
+
+        String[] itemArray = LIST_P.split(trimmed);
+        Item[] resultArray = new Item[itemArray.length];
+
+        for (int i = 0; i < itemArray.length; i++) {
+            String itemName = Player.tryIndefRef_Item(itemArray[i].trim());
+            
+            resultArray[i] = inv.get(itemName); // Gets NULL_ITEM if not found.
+        }
+
+        return resultArray; 
     }
     // ========================================================================  
     /**
@@ -658,11 +678,10 @@ public final class Player {
 //****************************************************************************** 
     /**
      * Processes a player's action on furniture.
-     * Player may use 'it' or 'them' to reference the last entered furniture.
      * @param furnName the name of the furniture being acted upon.
      * @param verb the action the player is performing on the furniture.
      */
-    public static void evaluateAction(String verb, String furnName) {
+    private static void evaluateAction(String verb, String furnName) {
         String object = Player.tryIndefRef_Furn(furnName);
         
         // <editor-fold defaultstate="collapsed" desc="MOVE COMMAND">
@@ -672,13 +691,13 @@ public final class Player {
             else if (INVALID_DIR_P.matcher(object).matches())
                 GUI.out("Your humble life as a tradesman knows not how to move " + object + ".");
             else 
-                GUI.out("You aren't sure which way that it.");
+                GUI.out("You aren't even sure which way that is.");
         }
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="COMMAND ON FURNITURE">
         else if (getPos().hasFurniture(object)) {
-            // In this case, a valid furniture exists to be interacted with.
+            // Furniture exists to be interacted with.
             Furniture furn = getFurnRef(object);
             setLastInteract_Furn(object);
 
@@ -694,8 +713,10 @@ public final class Player {
                 Player.incrementMoves();
                 GUI.out(furn.getDescription()); 
             }
-            else if (SEARCH_P.matcher(verb).matches() || ((verb.equals("open") 
-                    || verb.equals("empty")) && furn instanceof Openable)) {       
+            else if (SEARCH_P.matcher(verb).matches() 
+                    || ((verb.equals("open") || verb.equals("empty")) 
+                            && furn instanceof Openable)) 
+            {       
                 trySearch(furn); // Player implied a search
             }
             else {
@@ -720,6 +741,7 @@ public final class Player {
         
         // <editor-fold defaultstate="collapsed" desc="REFLEXIVE COMMANDS">
         else if (object.equals("self") || object.equals("yourself")) {
+            // Player performing action on itself. Mostly superficial.
             if (CHECK_P.matcher(verb).matches()) {
                 Player.incrementMoves();
                 GUI.out("Yes, all your parts are still there, thank goodness."); 
@@ -729,6 +751,7 @@ public final class Player {
                 inventoryPrompt();
             }
             else if (MOVE_P.matcher(verb).matches()) {
+                // Moves player in a random direction
                 Direction[] dirList = 
                 {Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.NORTH};
                 Direction dir = dirList[Math.abs((int)System.currentTimeMillis()) % 4];
@@ -748,29 +771,33 @@ public final class Player {
         // </editor-fold>
         
         else if (SEARCH_P.matcher(verb).matches() || verb.matches("open|empty")) {
+            // Player wants to open an item
             object = Player.tryIndefRef_Item(furnName);
             
-            // Player wants to open an item
             if (object.equals("sack") || object.equals(LOOT_SACK)) {
+                // Loot sack is found in the foyer.
                 openLootSack(); 
                 setLastInteract_Item(LOOT_SACK);
             }
             else if (object.equals(SHOE_BOX)) {
+                // Loot sack is found in Kampe's quarters.
                 getInv().get(SHOE_BOX).useEvent(); 
                 setLastInteract_Item(SHOE_BOX);
             }
             else if (Player.hasItemResembling(object))
-                GUI.out("You don't possess the education level to open the " + object + ".");
+                GUI.out("You fumble with the " + object + 
+                        " but nothing useful is accomplished.");
             else
                 GUI.out("You aren't quite sure what to do about that.");
         }
         else if (verb.equals("speak") || verb.equals("say")) {
             // Player typed something like "<speak> <words>".
-            GUI.out("You speak the words, but they only echo and fade.");
+            GUI.out("\"" + furnName + 
+                    "!\" You speak the words, but they only echo and fade.");
         }
         else if (GEN_FURNITURE_P.matcher(object).matches()) {
             // Player used a very vague term to interact with.
-            GUI.out("Don't be lazy now. Enter in something specific.");
+            GUI.out("Don't be lazy now. Specify please.");
         }
         else  
             // Something invalid was entered in!
@@ -803,10 +830,7 @@ public final class Player {
             findStaircase(Direction.DOWN);
     }
     // ========================================================================  
-    /**
-     * Finds furniture in the room that will move the player up or down.
-     * @param dir Up or down direction.
-     */
+    // Finds furniture in the room that will move the player up or down.
     private static void findStaircase(Direction dir) {
         for (Furniture f : Player.getPos().getFurnishings()) {
             if (f instanceof DoubleStaircase) {
@@ -822,9 +846,10 @@ public final class Player {
                 return;
             }
         }
-        GUI.out("There's nothing here to take you that way.");
+        GUI.out("There's nothing here to take you " + dir + ".");
     }
     // ========================================================================
+    // Searches the loot sack if the player is carrying it.
     private static void openLootSack() {
         if (Player.hasItem(LOOT_SACK))
             Player.getInv().get(LOOT_SACK).useEvent();
@@ -848,7 +873,7 @@ public final class Player {
     }
     // ========================================================================  
     /**
-     * Brings up the main inventory prompt and asks the player to enter an option.
+     * Brings up the inventory prompt and asks the player to enter an option.
      */
     private static void inventoryPrompt() {
         printInv();
@@ -858,7 +883,7 @@ public final class Player {
         do {
             GUI.menOut(Menus.INV_MAIN);
             
-            ans = GUI.promptOut();
+            ans = GUI.promptOut();  // Asks for option 1-5
             
             if (INV_CMD_SET.contains(ans))
                 INV_CMDS.get(ans).run();
@@ -933,10 +958,11 @@ public final class Player {
     // ========================================================================  
     /**
      * Subroutine entered into when an item is used from the player's inventory.
+     * It is generally quicker to use items on objects from the main prompt.
      * @param furniture Furniture the item is being used on.
      * @param item The item being used
      */
-    public static void evalUse(Item item, String furniture) {
+    private static void evalUse(Item item, String furniture) {
         furniture = Player.tryIndefRef_Furn(furniture);
         
         if (getPos().hasFurniture(furniture)) {
@@ -955,7 +981,8 @@ public final class Player {
             }
         }                      
         else if (isNonEmptyString(furniture)) 
-            GUI.out("A sharp squint around the room reveals no " + furniture + " at all."); 
+            GUI.out("A sharp squint around the room reveals no " 
+                    + furniture + " at all."); 
         
         printInv();
     }
@@ -964,61 +991,92 @@ public final class Player {
      * Allow the player to write a note to itself. This can only be done if the
      * player has the notepad and a pen.
      */
-    public static void writePrompt() {
+    private static void writePrompt() {
         if (! (Player.hasItem(PEN) && Player.hasItem(NOTEPAD))) {
-            GUI.out("You will need a pen and notepad in order to write a note to yourself.");
+            GUI.out("You will need a pen and notepad in "
+                    + "order to write a note to yourself.");
+            return;
         }
-        else {
-            GUI.menOut("\nWrite a title for\nyour note, or enter\n"
-                       + "a slot number to\nwrite to an existing\nnote.");
-            
-            String title = GUI.promptOut();
+        
+        GUI.menOut("\nWrite a title for\nyour note, or enter\n"
+                   + "a slot number to\nwrite to an existing\nnote.");
 
-            if (! isNonEmptyString(title)) 
-                ; // Go back to main prompt
-            else if (ANY_DIGIT_P.matcher(title).matches()) {
-                int slot = Integer.parseInt(title);
+        String title = GUI.promptOut();
 
-                if (slot > 0 && slot <= inv.size()) {
-                    Item n = inv.get(slot - 1);
+        if (! isNonEmptyString(title)) 
+            ; // Go back to main prompt
+        else if (ANY_DIGIT_P.matcher(title).matches()) {
+            // Player is appending to existing note.
+            int slot = Integer.parseInt(title);
 
-                    if (n instanceof Note && ! (n instanceof Book)) {
-                        // Player may write on notes but not books.
-                        Item newNote = new Note(n.toString(), n.getDesc() + ' ' + getNoteBody());
-                        Player.inv.remove(n);
-                        Player.inv.contents().add(newNote);
-                        Player.setLastInteract_Item(newNote.toString());
-                        Player.incrementMoves();
-                        printInv();
-                    }
-                    else 
-                        GUI.out("That, sir, is not a note.");
+            if (slot > 0 && slot <= inv.size()) {
+                Item n = inv.get(slot - 1);
+
+                if (n instanceof Note && ! (n instanceof Book)) {
+                    // Player may write on notes but not books.
+                    Item newNote = new Note(n.toString(), 
+                            n.getDesc() + ' ' + getNoteBody());
+                    
+                    Player.inv.remove(n);
+                    Player.inv.contents().add(newNote);
+                    Player.setLastInteract_Item(newNote.toString());
+                    Player.incrementMoves();
+                    printInv();
                 }
-                else GUI.out(NOT_VALID_SLOT);
+                else 
+                    GUI.out("That, sir, is not a note.");
             }
-            else if (! Player.inv.isFull()) {
-                Item newNote = new Note("note - " + title + ':' + ' ', getNoteBody());
-                Player.inv.add(newNote);
-                Player.setLastInteract_Item(newNote.toString());
-                Player.incrementMoves();
-                printInv();
-            }
-            else
-                GUI.out("You're carrying too much stuff to write a new note!");
+            else GUI.out(NOT_VALID_SLOT);
         }
+        else if (! Player.inv.isFull()) {
+            // Player is making a new note.
+            Item newNote = 
+                    new Note("note - " + title + ':' + ' ', getNoteBody());
+            
+            Player.inv.add(newNote);
+            Player.setLastInteract_Item(newNote.toString());
+            Player.incrementMoves();
+            printInv();
+        }
+        else
+            GUI.out("You're carrying too much stuff to write a new note!");
     }
     // ========================================================================
+    /**
+     * Gets string input from player to write to a note.
+     * Since promptOut automatically makes everything lowercase, this has to
+     * undo that.
+     * @return A capitalized string.
+     */
     private static String getNoteBody() {
-        GUI.menOut("Noted. Write down your momento now...");
-        String body = GUI.promptOut();
+        GUI.menOut("Ok. Write down your momento now...");
+        char[] body = GUI.promptOut().toCharArray();
+        StringBuilder builder = new StringBuilder();
+        boolean capitalize = false;
+        
+        for (char c : body) {
+            if (c == '.') {
+                // Capitalize the next lowercase letter.
+                capitalize = true;
+                builder.append(c);
+            }
+            else if (! (capitalize && Character.isLetter(c)))
+                builder.append(c);
+            else {
+                // It's a lowercase letter.
+                capitalize = false;
+                builder.append(Character.toUpperCase(c));
+            }
+        }
+        
         GUI.out("Note has been written.");
-        return body;
+        return builder.toString();
     }
     // ========================================================================
     // <editor-fold desc="COMBINE SUBROUTINES">
     /**
-     * Prompts the player for a list of items, verifies it and moves to evalCombine().
-     * A list is valid if it contains exactly 2 or 3 valid item in the
+     * Prompts the player for an item list, verifies it, moves to evalCombine().
+     * A list is valid if it contains exactly 2 or 3 existing items in the
      * player's inventory.
      */
     private static void combineSub() {
@@ -1026,14 +1084,16 @@ public final class Player {
         GUI.menOut(Menus.INV_COMBINE);
         
         do {
-            combineThese = GUI.promptOut();
+            combineThese = GUI.promptOut(); // Prompts for list of items.
 
             if (isNonEmptyString(combineThese)) {
                 Player.incrementMoves();
                 
+                // Converts the item names into array of Item objects.
                 Item[] itemList = getItemList(combineThese, inv);
         
                 if (validateList(itemList))
+                    // Tries to combine them if the list is valid.
                     evalCombine(itemList);
             }
         } while (isNonEmptyString(combineThese));        
@@ -1041,7 +1101,7 @@ public final class Player {
     // ======================================================================== 
     // Does the same as combineSub() but with a starting string as input.
     // For use by the text parser.
-    public static void combineSub(String input) {
+    private static void combineSub(String input) {
         Item[] itemList = getItemList(input, inv);
         
         if (validateList(itemList))
@@ -1060,31 +1120,27 @@ public final class Player {
                 GUI.out(NOT_VALID_SLOT); 
                 return false;
             }
-        if (list.length == 2 || list.length == 3)
-            // Checks if correct length
-            return true; 
         
-        else {
-            // Prints appropriate message for error.
-            switch (list.length) {
-                case 0:
-                    GUI.out(NOT_VALID_SLOT); 
-                    return false;
-                case 1:
-                    GUI.out("You take a moment to ponder how "
-                            + "to combine an item with itself."); 
-                    return false;
-                default:
-                    GUI.out("You possess only the dexterity "
-                            + "to combine 2 or 3 items.");
-                    return false;
-            }   
+        // Checks if correct length
+        switch (list.length) {
+            case 2: case 3:
+                return true; 
+            case 0:
+                GUI.out(NOT_VALID_SLOT);
+                return false;
+            case 1:
+                GUI.out("You take a moment to ponder how "
+                        + "to combine an item with itself.");
+                return false;
+            default:
+                GUI.out("You possess only the dexterity "
+                        + "to combine 2 or 3 items.");
+                return false;
         }
     }
     // ======================================================================== 
     /**
-     * Receives a valid list of 2 or 3 items for a combine attempt and
-     * verifies that it is a correct combine set.
+     * Tries to combine a list of 2 or 3 items.
      * @param list a list of 2 or 3 items.
      */
     private static void evalCombine(Item[] list) {
@@ -1093,18 +1149,14 @@ public final class Player {
                 GUI.out(Player.inv.combine(list, list[0].forms())); 
                 printInv();
             }
-            else // 2 objects are correct, but 1 is missing.
+            else // 2 objects are correct, but 1 is missing or incorrect.
                 GUI.out("You need something else for this to work."); 
         }
-        else
-            switch (list.length) {
-                case 2: // Player entered 2 items that don't combine.
-                    GUI.out("You push them together as hard as you can,\n" +
+        else if (list.length == 2)
+            GUI.out("You push them together as hard as you can,\n" +
                             "but it does nothing."); 
-                    break;
-                case 3: // Player entered 3 items, some of which may combine.
-                    GUI.out("You are pretty sure all these don't go together."); 
-            } 
+        else // length is 3
+            GUI.out("You are pretty sure all these don't go together."); 
     }
     // ========================================================================  
     /**
@@ -1114,14 +1166,14 @@ public final class Player {
      */
     private static boolean allCombineToSame(Item[] itemList) {
         Item forms = itemList[0].forms();
-        String combinesTo;
-        
-        if (forms == null)
+
+        if (forms == null) // First does not combine to anything.
             return false;
-        else
-            combinesTo = forms.toString();
+
+        String combinesTo = forms.toString();
 
         for (Item i : itemList) {
+            // Checks that they all combine to same as first item.
             if (i.forms() == null || 
                     ! i.forms().toString().equals(combinesTo))
                 return false;
@@ -1139,33 +1191,696 @@ public final class Player {
 //******************************************************************************    
 // <editor-fold defaultstate="collapsed" desc="PLAYER ATTRIBUTES CLASS">  
 //******************************************************************************
+/**
+ * This class holds all the attributes of the player to be serialized out to a file.
+ * When a game starts, if save game data exists, the serialized instance of this
+ * is read in and used as a template to form the player.
+ * 
+ * @author Kevin Rapa
+ */
+private static final class PlayerAttributes implements Serializable {
+    public final Room[][][] MAP;
+    public final int POS[], SCORE, MOVES;
+    public final Inventory KEYS; 
+    public final PlayerInventory INV; 
+    public final ArrayList<String> VISITED; 
+    public final String LSTVISITED, SHOES; 
+
+    public PlayerAttributes() {
+        this.MAP = Player.mapRef;
+        this.POS = Player.pos;
+        this.INV = Player.inv;
+        this.KEYS = Player.keys;
+        this.LSTVISITED = Player.lastVisited;
+        this.SHOES = Player.shoes;
+        this.VISITED = Player.visited;
+        this.SCORE = Player.score;
+        this.MOVES = Player.moves;
+    }
+}
+//******************************************************************************    
+// </editor-fold>  
+//******************************************************************************
+    
+
+//******************************************************************************    
+// <editor-fold defaultstate="collapsed" desc="TEXT PARSER">  
+/**
+* This processes more complex sentences into statements containing verbs,
+* items, and furniture.
+* 
+* The text parser needs access to Player methods, so their relationship is
+* close. This class is only used by player, which is why this is a private
+* nested class.
+* 
+* Sentences are split into commands, and then each is broken down into 
+* key words. The key words are used to create command objects which are
+* queued up and executed in order.
+* 
+* @author Kevin Rapa
+*******************************************************************************/
+private static class TextParser {
+    private final static LinkedList<Command> COMMAND_QUEUE = new LinkedList<>();
+
+    // Items to create when other items are thrown or broken.
+    private static final Item 
+        BROKEN_GLASS = new Item("broken shards", 
+                "The pieces of glass sit uncomfortably in your pocket. "
+              + "Of course, you certainly know what you're doing.", -50),
+        RIPPED_SHREDS = new Note("ripped paper shreds", 
+                "The gory mess of literature now exists crumpled up in your "
+                        + "pocket. This is unintelligible.");
+
+    private static final String
+        DONT_HAVE_IT = "It doesn't look like you're carrying anything resembling that.";
+
+    // List of commands that don't depend on state.
+    private static final Command 
+        DEFAULT_CMD =   new Command("What does that mean?"),
+        EXPLETIVE_CMD = new Command("Mind yourself! You're a guest here!"),
+        SUICIDE_CMD =   new Command(() -> Player.commitSuicide(), "SUICIDE"),
+        GREETING_CMD =  new Command("What do you think this is? Zork?"),
+        AMBIGUOUS_CMD = new Command("You need to specify something to put that in!");
+
+    //**************************************************************************
+    // <editor-fold defaultstate="collapsed" desc="Text parser">
+    //**************************************************************************
     /**
-     * This class holds all the attributes of the player to be serialized out to a file.
-     * When a game starts, if save game data exists, the serialized instance of this
-     * is read in and used as a template to form the player.
-     * 
-     * @author Kevin Rapa
+     * Removes articles 'a', 'an', 'the', and the pronoun 'some' from the input,
+     * and then queues up all the commands chained together by conjunctions.
+     * @param input An input string by the player
      */
-    private static final class PlayerAttributes implements Serializable {
-        public final Room[][][] MAP;
-        public final int POS[], SCORE, MOVES;
-        public final Inventory KEYS; 
-        public final PlayerInventory INV; 
-        public final ArrayList<String> VISITED; 
-        public final String LSTVISITED, SHOES; 
+    public static void processText(String input) {
+        String noArticles = ARTICLE_P.matcher(input).replaceAll("");
+
+        for (Command c : splitCommands(noArticles))
+            COMMAND_QUEUE.offer(c);
+
+        while (! COMMAND_QUEUE.isEmpty())
+            COMMAND_QUEUE.poll().perform();
+    }
     // ========================================================================
-        public PlayerAttributes() {
-            this.MAP = Player.mapRef;
-            this.POS = Player.pos;
-            this.INV = Player.inv;
-            this.KEYS = Player.keys;
-            this.LSTVISITED = Player.lastVisited;
-            this.SHOES = Player.shoes;
-            this.VISITED = Player.visited;
-            this.SCORE = Player.score;
-            this.MOVES = Player.moves;
+    /**
+     * Removes prepositions, which won't effect the meaning in most contexts.
+     * @param input A string of input with articles stripped.
+     * @return The sentence stripped of prepositions.
+     */
+    private static String stripPrepositions(String input) {
+        StringBuilder builder = new StringBuilder();
+
+        for (String word : input.split(" ")) {
+            if (! PREPOS_P.matcher(word).matches())
+                builder.append(word).append(" ");
+        }
+        return builder.toString().trim();
+    }
+    // ========================================================================
+    /**
+     * Splits the sentence using a conjunction as a delimiter into statements,
+     * then populates a list of commands.
+     * This does conflict with listing items using 'and' in combining, since
+     * the text parser believes anything following 'and' is another command,
+     * UNLESS the word and follows a comma.
+     * @param sentence a sentence with the articles removed.
+     * @return a list of commands to execute.
+     */
+    private static Command[] splitCommands(String sentence) {
+        // Splits a chain of commands into individual commands.
+        String[] statements = CONJUNC_P.split(sentence);
+        Command[] commands = new Command[statements.length];
+
+        for (int i = 0; i < commands.length; i++) {   
+            //-----------------------------------------------------------------
+            // First six conditions handle simpler commands.
+            if (EXPLETIVE_P.matcher(sentence).find()) // Zork-inspired
+                commands[i] = EXPLETIVE_CMD;    
+
+            else if (DIRECTION_P.matcher(statements[i]).matches()) {
+                // Sentence resembles a movement command.
+                commands[i] = new Command(Verb.GO_VERB, 
+                        new DirectObj(FIRST_WORD_P
+                                .matcher(statements[i])
+                                .replaceFirst("")));
+            }
+            else if (SUICIDE_P.matcher(statements[i]).matches()) {
+                // Sentence resembles a suicidal command.
+                commands[i] = SUICIDE_CMD;
+            }
+            else if (COMBINE_P.matcher(statements[i]).matches()) {
+                // Sentence resembles 'combine' <list of items>
+                // Using 'and' in the list doesn't work unless after a comma
+                String s = statements[i];
+                commands[i] = new Command(() -> 
+                        Player.combineSub(s.replaceFirst("combine\\s+", "")), "COMBINE");
+            }
+            else if (ZORK_P.matcher(statements[i]).matches()) { 
+                // Player said hello
+                commands[i] = GREETING_CMD;
+            }
+            //-----------------------------------------------------------------
+            // These handle more comlicated input strings.
+            else if (USE_ITEM_CMD_P.matcher(statements[i]).matches()) {
+                    commands[i] = getItemCmd(USE_MANNER_P.split(statements[i]));
+            }
+            else if (STORE_CMD_P.matcher(statements[i]).matches()) {
+                // Command resembles "drop <item>" or "put <item> in <objec>
+                commands[i] = getStoreCmd(STORE_AREA_P.split(
+                        STORE_SPACE_P.matcher(statements[i])
+                                    .replaceAll("")));
+            }
+            else {
+                if (SEARCH_MANNER_P.matcher(statements[i]).find()) {
+                    // Replaces "look (in|on|around|under) with just 'search'"
+                    statements[i] = SEARCH_MANNER_P.matcher(statements[i])
+                            .replaceAll("search");
+                }
+
+                commands[i] = getCmdActionFirst(INSTRUCTIVE_P.
+                        split(stripPrepositions(statements[i]))
+                );
+            }
+            //-----------------------------------------------------------------
+        }
+        return commands;
+    }
+    //**************************************************************************
+    // </editor-fold>
+    //**************************************************************************
+
+
+    //**************************************************************************
+    // <editor-fold defaultstate="collapsed" desc="Command assemblers">
+    //**************************************************************************
+    /**
+     * Assembles a command where the player interacts with furniture with
+     * possibly an item.
+     * If s is size 2, then second string is presumably an item.
+     */
+    private static Command getCmdActionFirst(String[] s) {
+        String actionObject = s[0];
+
+        // Get just the first word
+        Verb verb = new Verb(SPACE_THEN_ALL_P.matcher(actionObject)
+                                            .replaceAll(""));
+
+        // Everything but the first word.
+        String object = FIRST_WORD_P
+                        .matcher(actionObject.trim())
+                        .replaceFirst("");
+
+        DirectObj dirObj = new DirectObj(object);
+
+        switch(s.length) {
+            case 2:
+                return new Command(new Instrument(s[1]), dirObj);
+            case 1:
+                if (verb.VALUE.equals(dirObj.VALUE))
+                    // If they're equal, the player entered a single word.
+                    // This is interpreted arbitrarily as a search.
+                    return new Command(Verb.SEARCH_VERB, dirObj);
+                else
+                    return new Command(verb, dirObj);
+            default:
+                return DEFAULT_CMD;
         }
     }
+    // ========================================================================
+    /**
+     * Assembles a command where the player stores an item.
+     * If the furniture turns out to not be searchable, the item is used
+     * on it instead in order to resolve ambiguity. If s is size 2, then
+     * the second string is presumably the name of furniture.
+     */
+    private static Command getStoreCmd(String[] s) {
+        String object = s[0];
+        Instrument inst;
+        DirectObj obj = null;
+
+        if (DROP_P.matcher(object).matches()) {
+            // Player typed "put <item> down"
+            obj = DirectObj.FLOOR_OBJECT;
+            object = object.replaceAll(" down", "");
+        }
+
+        inst = new Instrument(object);
+
+        switch(s.length) {
+            case 2:
+                return new Command(Verb.PUT_VERB, inst, new DirectObj(s[1]));
+            case 1:
+                // If obj is null, player typed "store <item>", but not where.
+                return (obj == null) ?
+                    AMBIGUOUS_CMD : new Command(Verb.PUT_VERB, inst, obj);
+            default:
+                return DEFAULT_CMD;
+        }
+    }
+    // ========================================================================
+    /**
+     * Assembles a command where the player uses an item, possibly on a
+     * piece of furniture.
+     * If the verb is 'drop', then the store command takes care of the rest.
+     * If s is size 2, then the second string is presumably a furniture name.
+     */
+    private static Command getItemCmd(String[] s) {
+        String verbObject = stripPrepositions(s[0]);
+        Instrument inst;
+
+        // Get just the first word.
+        Verb use = new Verb(SPACE_THEN_ALL_P.matcher(verbObject).replaceFirst(""));
+
+        // Everything but the first word.
+        String item = WORD_SPACE_P.matcher(verbObject).replaceFirst(""); 
+
+        if (use.VALUE.equals("drop") || use.VALUE.equals("remove")) {
+            // If player types "drop <items>" then it's a store command instead!
+            // Sentence looked like <use> <item>, but it's actually closer in
+            // meaning to 'store' <item> 'in floor'. 
+            return new Command(Verb.PUT_VERB, new Instrument(item), 
+                    DirectObj.FLOOR_OBJECT);
+        }
+        else if (INSTRUCTIVE_P.matcher(item).find()) {
+            // Player typed a phrase including "<furniture> with/using <item>
+            String[] furnItem = INSTRUCTIVE_P.split(item);
+
+            return new Command(new Instrument(furnItem[1]), 
+                               new DirectObj(furnItem[0]));
+        }
+        else
+            inst = new Instrument(item);
+
+
+        switch(s.length) {
+            case 1:
+                return new Command(use, inst);
+            case 2:
+                if (! (use.VALUE.equals("throw") || use.VALUE.equals("break") || 
+                       use.VALUE.equals("destroy")))
+                    return new Command(inst, new DirectObj(s[1]));
+                else
+                    return new Command(use, inst);
+            default:
+                return DEFAULT_CMD;
+        }
+    }
+    //**************************************************************************
+    // </editor-fold>
+    //**************************************************************************
+
+
+    //**************************************************************************
+    // <editor-fold defaultstate="collapsed" desc="Command class">
+    //
+    // Keywords from player commands are packaged into Command objects. Different
+    // orders and types of words construct different commands which are
+    // associated with different methods that are run when the execute method
+    // is invoked. Commands are enqueued and then executed in order.
+    //**************************************************************************
+    private static class Command {
+        private final Runnable ACTION;
+        private final String VALUE;
+        // ====================================================================
+        // <editor-fold defaultstate="collapsed" desc="constructors">
+        public Command(Verb v, DirectObj o) {
+            VALUE = "VERB: " + v.toString() + "\tOBJECT: " + o.toString();
+            System.out.println("Creating action -> furniture command: " + VALUE);
+
+            ACTION = (() -> Player.evaluateAction(v.toString(), o.toString()));
+        }
+        // --------------------------------------------------------------------
+        public Command(Instrument i, DirectObj o) {
+            VALUE = "ITEM: " + i.toString() + "\tOBJECT: " + o.toString();
+            System.out.println("Creating item -> furniture command: " + VALUE);
+            ACTION = (() -> execute(i, o));
+        }
+        // --------------------------------------------------------------------
+        public Command(Verb v, Instrument i) {
+            VALUE = "VERB: " + v.toString() + "\tITEM: " + i.toString();
+            System.out.println("Creating use item command: " + VALUE);
+            ACTION = (() -> execute(v, i));
+        }
+        // --------------------------------------------------------------------
+        public Command(Verb v, Instrument i, DirectObj o) {
+            VALUE = "VERB: " + v.toString() + "\tITEM: " + i.toString() + "\tOBJECT: " + o.toString();
+            System.out.println("Creating store item command: " + VALUE);
+            ACTION = (() -> execute(v, i, o));
+        }
+        // --------------------------------------------------------------------
+        public Command(String s) {
+            VALUE = s;
+            System.out.println("Creating print command -> \"" + s + "\".");
+            ACTION = (() -> GUI.out(s));
+        }
+        // --------------------------------------------------------------------
+        public Command(Runnable b, String desc) {
+            VALUE = desc;
+            System.out.println("Creating player method command -> " + VALUE);
+            ACTION = b;
+        }
+        // </editor-fold>
+        // ====================================================================
+
+
+        // ====================================================================
+        // <editor-fold defaultstate="collapsed" desc="execute methods">
+        /**
+         * Uses the item i on the furniture o.
+         */
+        private static void execute(Instrument i, DirectObj o) {
+            String itemName = Player.tryIndefRef_Item(i.toString());
+
+            if (Player.hasItemResembling(itemName)) {
+                Player.setLastInteract_Item(itemName);
+                Player.evalUse(Player.getInv().get(itemName), o.toString());
+            }
+            else
+                GUI.out(DONT_HAVE_IT);
+        }
+        // --------------------------------------------------------------------
+        /**
+         * Uses the item i in the specified way (v).
+         * Long chain of if statements in order to accept a variety of input!
+         * If player isn't carrying the item, checks if it's actually furniture
+         * the player typed. If it is, acts on it instead (Mainly for inspect/
+         * examine commands.
+         */
+        private static void execute(Verb v, Instrument i) {
+            String verb = v.toString(),
+                   instrument = Player.tryIndefRef_Item(i.toString());
+
+            if (Player.hasItemResembling(instrument)) {
+                Player.setLastInteract_Item(instrument);
+                Item item = Player.getInv().get(instrument);
+                String type = item.getType();
+
+                if (verb.equals("use"))
+                    GUI.out(item.useEvent());
+                //-------------------------------------------------------------
+                else if (INSPECT_P.matcher(verb).matches())
+                    GUI.out(item.getDesc());
+                //-------------------------------------------------------------
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: READ">
+                else if (verb.equals("read")) {
+                    if (type.equals(READABLE) 
+                            || item.toString().equals(BOOK_PHYL)) // Phylactery type. Not readable
+                        GUI.out(item.useEvent());
+                    else
+                        GUI.out("That isn't something you can read...");
+                }
+                // </editor-fold>
+
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: WEAR">
+                else if (verb.equals("wear")) {
+                    if (type.equals(SHOES) || type.equals(CLOTHING))
+                        GUI.out(item.useEvent());
+                    else
+                        GUI.out("That isn't something you can wear...");
+                }
+                // </editor-fold>
+
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: THROW">
+                else if (verb.equals("throw")) {
+                    Player.getInv().remove(item);
+                    Furniture floor = Player.getFurnRef("floor");
+
+                    if (floor == null) {
+                        GUI.out("A quick ingenious thought convinces the player to "
+                              + "throw the " + item + ". The item lands in "
+                              + "an unknown location, lost to the aether.");
+                    }
+                    else if (type.equals(BREAKABLE)) {
+                        floor.getInv().add(new Item("destroyed " + item, 
+                                "The " + item + " is now broken and certainly useless.", -50));
+
+                        GUI.out("After some quick thinking, you passionately "
+                              + "launch the " + item + " as an olympic discus "
+                              + "thrower would. The item lands on the floor.");
+                    }
+                    else if (type.equals(LIQUID) || type.equals(INGREDIENT) 
+                            || type.equals(FOCUS)) 
+                    {
+                        if (! item.toString().equals(BUCKET_OF_WATER)) {
+                            floor.getInv().add(BROKEN_GLASS);
+                            GUI.out("A cunning decision is made. The player "
+                                  + "throws the " + item + ". The item lands "
+                                  + "on the floor. A glassy shatter swarms your "
+                                  + "ear and fills you with rue.");
+                        }
+                        else {
+                            floor.getInv().add(item);
+                            GUI.out("Be careful with that. You wouldn't want "
+                                  + "to get the floor all soaked and risk "
+                                  + "dying of a clumsy step.");
+                        }
+                    }
+                    else if (type.equals(PHYLACTERY)) {
+                        floor.getInv().add(item);
+                        GUI.out("You naively launch the " + item + " across the\n"
+                              + "room in hopes of destroying the cursed item. The "
+                              + item + " lands unscathed on the floor.");
+                    }
+                    else {
+                        floor.getInv().add(item);
+                        GUI.out("After some quick thinking, you passionately "
+                              + "launch the " + item + " as an olympic discus "
+                              + "thrower would. The item lands on the floor.");
+                    }
+                }
+                // </editor-fold>
+
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: BREAK">
+                else if (verb.equals("destroy") || verb.equals("break")) {
+                    if (type.equals(BREAKABLE)) {
+                        Player.getInv().remove(item);
+                        Player.getInv().add(new Item("destroyed " + item, 
+                                "The " + item + " is now broken and certainly useless.", -50));
+                        GUI.out("An acute sense of frustration causes you to crush it in your hand.");
+                    }
+                    else if ((type.equals(LIQUID) && ! item.toString().equals(BUCKET_OF_WATER)) 
+                            || type.equals(FOCUS) || type.equals(INGREDIENT)) 
+                    {
+                        Player.getInv().remove(item);
+                        Player.getInv().add(BROKEN_GLASS);
+                        GUI.out("An acute sense of frustration causes you to "
+                              + "crush the feeble glass in your hand.");
+                    }
+                    else if (type.equals(READABLE)) {
+                        Player.getInv().remove(item);
+                        Player.getInv().add(RIPPED_SHREDS);
+                        GUI.out("A cunning idea forms. You rip up the paper "
+                              + "to shreds and stuff it back into your pocket.");
+                    }
+                    else if (type.equals(PHYLACTERY)) {
+                        GUI.out("You try with all your might to destroy the "
+                            + item + ", but fail to leave even a fingerprint.");
+                    }
+                    else {
+                        GUI.out("You lack the strength to do that.");
+                    }
+                }
+                // </editor-fold>
+
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: RIP">
+                else if (verb.equals("rip") || verb.equals("tear")) {
+                    if (type.equals(READABLE)) {
+                        Player.getInv().remove(item);
+                        Player.getInv().add(RIPPED_SHREDS);
+                        GUI.out("A cunning idea forms. You rip up the paper "
+                                + "wantonly and stuff it back into your pocket.");
+                    }
+                    else
+                        GUI.out("That is not something you could rip up.");
+                }
+                // </editor-fold>
+
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: DRINK">
+                else if (verb.equals("drink")) {
+                    if (type.equals(INGREDIENT) || type.equals(LIQUID)) {
+                        if (item.toString().equals(PHASE_DOOR_POTION))
+                            GUI.out(item.useEvent());
+                        else if (item.toString().equals(BUCKET_OF_WATER))
+                            GUI.out("Ah, refreshing!!");
+                        else if (item.toString().equals(ACETONE) || item.toString().matches("molten.*"))
+                            GUI.out("No possible way you're doing something that stupid!");
+                        else
+                            GUI.out("You reluctantly take a small sip. 'Yugh! Bitter and disgusting!'");
+                    }
+                    else
+                        GUI.out("That is not something you can drink...");
+                }
+                // </editor-fold>
+
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: EAT">
+                else if (verb.equals("eat") || verb.equals("consume")) {
+                    if (item.toString().equals(GLOWING_FRUIT)) {
+                        GUI.out("The fruit's glow and tasteful aroma entice you irresistibly. "
+                              + "You bite down and find the fruit as hard as a rock. "
+                              + "A sharp pain comes and you pull the fruit away.");
+                    }
+                    else
+                        GUI.out("The " + item + " seems most inedible...");
+                }
+                // </editor-fold>
+                //-------------------------------------------------------------
+                else
+                    GUI.out("Sorry, that really wasn't specific enough for me.");
+            }
+            else 
+                Player.evaluateAction(verb, i.toString());
+
+            Player.printInv();
+        }
+        // --------------------------------------------------------------------
+        /**
+         * Stores the item list i into the furniture o.
+         * Can be of the form "put *item* down" or "drop *item*" to drop an item.
+         * Drop commands are actually first processed as a use item command.
+         * Verb parameter is always 'put'. It's there to disambiguate it from
+         * execute(Instrument i, DirectObject o) constructor.
+         */
+        private static void execute(Verb v, Instrument i, DirectObj o) {
+            String furniture = Player.tryIndefRef_Furn(o.toString());
+
+            if (Player.getPos().hasFurniture(furniture)) {
+                // Checks that the furniture exists
+                Item[] list = Player.getItemList(i.toString(), Player.getInv());
+                Furniture furn = Player.getFurnRef(furniture);
+                Player.setLastInteract_Furn(furniture);
+                int j;
+
+                for (j = 0; j < list.length; j++) {
+                    // Loops through the list and stores each
+                    if (list[j].equals(Inventory.NULL_ITEM)) {
+                        // Stops if one item doesn't exist, warns player
+                        if (j == 0)
+                            GUI.out("You may have just entered something wrong...");
+                        else
+                            GUI.out("Well, I understood " + list[j-1] + 
+                                    " but that next thing I didn't get.");
+                        break;
+                    }
+
+                    Player.setLastInteract_Item(list[j].toString());
+
+                    if (furn.isSearchable()) {
+                        // Stores the current item in the item list.
+                        Player.evalStore(furn.getInv(), list[j]);
+                        Player.printInv();
+                    }
+                    else if (furn.useKeyMatches(list[j].toString())) {
+                        // Not searchable, but perhaps it's meant to be used 
+                        // by the item still.
+                        // e.g. the Labo distiller used by the florence flask.
+                        GUI.out(furn.useEvent(list[j]));
+                        Player.printInv();
+                        break;
+                    }
+                    else {
+                        GUI.out("You can't store anything in there."); 
+                        break;
+                    }
+                }
+
+                if (furn.isSearchable() && list.length > 1 && j == list.length)
+                    // Only prints if no error was entered.
+                    GUI.out("You store them all.");
+            }
+            else if ((furniture.equals(LOOT_SACK) || furniture.equals("sack")) 
+                    && Player.hasItem(LOOT_SACK)) 
+            {
+                // If the player wants to put something in the loot sack.
+                // This case is essentially the same as above.
+                Item[] list = Player.getItemList(i.toString(), Player.getInv());
+                LootSack sack = (LootSack)Player.getInv().get(LOOT_SACK);
+                int j;
+
+                for (j = 0; j < list.length; j++) {
+                    if (list[j].equals(Inventory.NULL_ITEM)) {
+                        if (j == 0)
+                            GUI.out("You may have just entered something wrong...");
+                        else
+                            GUI.out("Well, I understood " + list[j-1] + 
+                                    " but that next thing I didn't get.");
+                        break;
+                    }
+
+                    Player.evalStore(sack.getInv(), list[j]);
+                    Player.printInv();
+
+                    if (list[j].toString().equals(LOOT_SACK)) {
+                        // Player can put the sack inside the sack, because why not.
+                        GUI.out("You stuff the sack inside itself and pull the string. "
+                              + "All of the sudden, the sack is gone. You stand there, "
+                              + "empty-handed, and confused.");
+                        break;
+                    }
+
+                    if (list.length > 1 && j == list.length);
+                        GUI.out("You store them all in the sack.");
+                }
+            }
+            else
+                GUI.out("There is no " + furniture + " here.");
+        }
+        // </editor-fold>
+        // ====================================================================
+
+        public void perform() {
+            this.ACTION.run();
+        }
+    }
+    //**************************************************************************
+    // </editor-fold> 
+    //**************************************************************************
+
+
+    //**************************************************************************
+    // <editor-fold defaultstate="collapsed" desc="Word classes"> 
+    //
+    // Represent items, actions, and furniture mentioned in player input.
+    // Different word subclasses exist to differentiate Command constructors.
+    //**************************************************************************
+    abstract private static class Word {
+        protected final String VALUE;
+        // -------------------------
+        public Word(String word) {
+            this.VALUE = word;
+        }
+        // -------------------------
+        @Override public String toString() {
+            return VALUE;
+        }
+    }
+    // ========================================================================
+    private static class Verb extends Word {
+        public final static Verb 
+            PUT_VERB = new Verb("put"),         // Default verb for storing
+            GO_VERB = new Verb("go"),           // Default verb for moving
+            SEARCH_VERB = new Verb("search");   // Default verb for searching
+
+        public Verb(String verb) {
+            super(verb);
+        }
+    }
+    // ========================================================================
+    private static class DirectObj extends Word {
+        public final static DirectObj 
+            FLOOR_OBJECT = new DirectObj("floor");  // For drop commands
+
+        public DirectObj(String object) {
+            super(object);
+        }
+    }
+    // ========================================================================
+    private static class Instrument extends Word {
+        public Instrument(String instrument) {
+            super(instrument);
+        }
+    }
+    //**************************************************************************
+    // </editor-fold>
+    //**************************************************************************
+}
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************

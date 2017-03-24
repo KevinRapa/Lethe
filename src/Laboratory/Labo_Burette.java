@@ -14,23 +14,29 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Labo_Burette extends Furniture {
-    // ======================================
+    
+    //-----------------------------------
     private enum Titrant {
-        EMPTY("nothing"), 
-        WINE("wine"), 
-        VINEGAR("vinegar");
-        // ==================================
+        EMPTY("nothing "), // Shouldn't be dispensed ever.
+        WINE("wine "), 
+        VINEGAR("vinegar "),
+        HOLYWATER("holy water "),
+        ACETONE("acetone "),
+        WATER("H2O "),
+        GLUE("glue "),
+        CLEANER("cleaning solution ");
+
         private final String NAME;
-        // ==================================
+
         Titrant(String name) {
             this.NAME = name;
         }
-        // ==================================
         @Override public String toString() {
             return NAME;
         } 
     }
-    // ======================================
+    //-----------------------------------
+    
     private final Item VIAL_REF, TUBE_REF;
     private Titrant mode;
     // ========================================================================
@@ -47,12 +53,13 @@ public class Labo_Burette extends Furniture {
         this.actDialog = "You need a vial or test tube to dispense into!";
 
         this.addNameKeys("(?:glass )?buret(?:te)?", "buret(?:te)? stopcock");
-        this.addUseKeys(BOTTLE_OF_WINE, BOTTLE_OF_VINEGAR, TEST_TUBE, EMPTY_VIAL);
+        this.addUseKeys(BOTTLE_OF_WINE, BOTTLE_OF_VINEGAR, TEST_TUBE, EMPTY_VIAL, 
+                HOLY_WATER, ACETONE, BUCKET_OF_WATER, CLEANING_SOLUTION, GLUE_BOTTLE);
         this.addActKeys("use", VALVEPATTERN, "dispense", "drain", "empty", "titrate");
     }
     // ========================================================================    
     @Override public String getDescription() {
-        return this.description.concat(mode.toString() + " in it.");
+        return this.description.concat(mode.toString() + "in it.");
     }
     // ========================================================================    
     @Override public String getSearchDialog() {
@@ -60,61 +67,54 @@ public class Labo_Burette extends Furniture {
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (Player.hasItem(LAB_COAT)) {
-            if (item.toString().equals(BOTTLE_OF_VINEGAR)) {
-                if (this.mode != Titrant.EMPTY)
-                    return "The burette has liquid in it already!";
-                else
-                    this.mode = Titrant.VINEGAR;
-            }
-            else if (item.toString().equals(BOTTLE_OF_WINE)) {
-                if (this.mode != Titrant.EMPTY)
-                    return "The burette has liquid in it already!";
-                else
-                    this.mode = Titrant.WINE;
-            }
-            return this.interact("use");
+        if (item.toString().equals(TEST_TUBE) 
+                && ! item.toString().equals(EMPTY_VIAL) 
+                    && this.mode == Titrant.EMPTY)
+            return "The burette has liquid in it already!";
+
+        switch(item.toString()) {
+            case BOTTLE_OF_VINEGAR:
+                this.mode = Titrant.VINEGAR;    break;
+            case BOTTLE_OF_WINE:
+                this.mode = Titrant.WINE;       break;
+            case HOLY_WATER:
+                this.mode = Titrant.HOLYWATER;  break;
+            case ACETONE:
+                this.mode = Titrant.ACETONE;    break;
+            case BUCKET_OF_WATER:
+                this.mode = Titrant.WATER;      break;
+            case CLEANING_SOLUTION:
+                this.mode = Titrant.CLEANER;    break;
+            case GLUE_BOTTLE:
+                this.mode = Titrant.GLUE;       break;                      
         }
-        else
-            return "You know, it really wouldn't be safe to fool around with this dangerous "
-                 + "science equipment without first putting on a lab coat. Better find a lab coat first.";
+
+        return this.interact("use");
     }
     // ========================================================================   
     @Override public String interact(String key) {   
-        if (Player.hasItem(LAB_COAT)) {
-            if (key.equals("empty") || key.equals("drain")) {
-                if (this.mode == Titrant.EMPTY)
-                    return "The burette is currently empty.";
-                else {
-                    this.mode = Titrant.EMPTY;
-                    return "You empty everything from the buret.";
-                }
-            }
-            else if (mode != Titrant.EMPTY) {
-                GUI.out("Would you like to titrate the " + mode + " or empty the burette?");
+        if (key.equals("empty") || key.equals("drain")) {
+            this.mode = Titrant.EMPTY;
+            return "The burette is now empty.";
+        }
+        else if (mode != Titrant.EMPTY) {
+            GUI.out("Would you like to titrate the " + mode + "or empty the burette?");
 
-                String ans = GUI.askChoice("\n<1> Empty the burette"
-                                         + "\n<2> Titrate the " + mode
-                                         + "\n< > Back", LABO_BURET_ONE_OR_TWO);
-                
-                if (Player.isNonEmptyString(ans)) {
-                    switch (Integer.parseInt(ans)) {
-                        case 1:
-                            this.mode = Titrant.EMPTY;
-                            return "You empty everything out of the burette.";
-                        default :
-                            return dispenseDialog();
-                    }
+            String ans = GUI.askChoice(Menus.LABO_BURET, LABO_BURET_ONE_OR_TWO);
+
+            if (Player.isNonEmptyString(ans)) {
+                if (ans.equals("1")) {
+                    this.mode = Titrant.EMPTY;
+                    return "You empty everything out of the burette.";
                 }
                 else
-                    return NOTHING;
+                    return dispenseDialog();
             }
             else
-                return "The burette is currently empty.";
+                return NOTHING;
         }
         else
-            return "You know, it really wouldn't be safe to fool around with this dangerous "
-                 + "science equipment without first putting on a lab coat. Better find a lab coat first.";
+            return "The burette is currently empty.";
     }
     // ========================================================================   
     private String dispenseDialog() {
@@ -133,18 +133,15 @@ public class Labo_Burette extends Furniture {
     }
     // ========================================================================  
     private Item dispense() {
-        GUI.out(mode.toString() + " will be dispensed in 5 mL increments. Press enter to start titrating. Press enter to stop titrating.");
+        GUI.out(mode.toString() + "will be dispensed in 5 mL increments. Press "
+                + "enter to start titrating. Press enter to stop titrating.");
         GUI.menOut(Menus.ENTER);
         GUI.promptOut();
         
         int volume = TitrationTask.titrate();
-        
-        switch(this.mode) {
-            case WINE:
-                return new Ingredient("wine " + volume + "mL", "The vial holds a small amount of wine.", 0);
-            default: // Never EMPTY. Ensured in interact()
-                return new Ingredient("vinegar " + volume + "mL", "The vial holds a small amount of vinegar.", 0);
-        }
+
+        return new Ingredient(mode.toString() + volume + "mL", 
+                "The vial holds a small amount of " + mode + ".", 0);
     }
     // ========================================================================  
 

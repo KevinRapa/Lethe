@@ -1,12 +1,11 @@
 package A_Super;
 
 import static A_Main.Names.*;
-import static A_Main.Patterns.LIFT_P;
 
 /**
  * @author Kevin Rapa
  */
-abstract public class Carpet extends Furniture {
+abstract public class Carpet extends Furniture implements Gettable {
     // ========================================================================
     public Carpet () {
         super();
@@ -18,16 +17,18 @@ abstract public class Carpet extends Furniture {
         this.searchDialog = "There's nothing interesting under the carpet.";
 
         this.addUseKeys(ACETONE, ASH, SOIL, "sand|.+ dye", ".+ (?:wine|vinegar)");
-        this.addActKeys(MOVEPATTERN, "admire", "lift|raise", "roll");
+        this.addActKeys(MOVEPATTERN, GETPATTERN, "admire", "lift|raise", "roll");
     }
     // ========================================================================   
     @Override public String interact(String key) {              
-        if (key.matches(MOVEPATTERN) || LIFT_P.matcher(key).matches())
+        if (key.matches(MOVEPATTERN) || key.equals("lift") || key.equals("raise"))
             return this.searchDialog;
         else if (key.equals("roll"))
             return "You're really not intending to take that with you, right?";
-        else
+        else if (key.equals("admire"))
             return this.actDialog;
+        else
+            return getIt("A fooling attempt is made to get the carpet. Carpets are much heavier than they look.");
     }
     // ========================================================================       
 }

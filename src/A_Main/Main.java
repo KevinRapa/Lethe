@@ -105,23 +105,19 @@ public class Main {
         // Rudimentary save system using serialization. Saves files in the same
         // location as Main.jar
         //**********************************************************************
-        Help.constructHelp();
         boolean eraseTrue;
         
         try (ObjectInputStream gameData = 
                 new ObjectInputStream(
                 new FileInputStream(
-                new File(W_DIR, FILE_NAME)))
-            ) 
+                new File(W_DIR, FILE_NAME)))) 
         {
             System.out.println("Data found. Loading game.");
             RoomGraph.assignCoordinates();
             Player.loadAttributes(gameData.readObject());
             eraseTrue = Player.mainPrompt(); // START GAME
         } 
-        catch (java.lang.ClassNotFoundException | 
-               java.io.IOException | 
-               ClassCastException e) 
+        catch (ClassNotFoundException | IOException | ClassCastException e) 
         {
             System.out.println(e.getMessage() + 
                     "\nData missing. Creating new game.");
@@ -151,7 +147,6 @@ public class Main {
     }
 // ============================================================================   
     public static synchronized void saveGame() {
-        
         try (ObjectOutputStream gameData = 
                 new ObjectOutputStream(
                 new FileOutputStream(

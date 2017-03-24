@@ -30,7 +30,7 @@ public class Labo_Condenser extends Furniture implements Moveable {
 
         this.addNameKeys("condenser", "(?:glass )?tube|stopper|switch|drain");
         this.addUseKeys(BEAKER, TEST_TUBE, FLORENCE_FLASK, EMPTY_VIAL, "copper (?:pot|pan)");
-        this.addActKeys("flick", "switch", "turn", "toggle", "rotate");
+        this.addActKeys("flick", "turn", "toggle", "rotate");
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -39,29 +39,19 @@ public class Labo_Condenser extends Furniture implements Moveable {
     }
     // ========================================================================   
     @Override public String interact(String key) { 
-        if (Player.hasItem(LAB_COAT)) {
-            this.flapOpen = ! this.flapOpen; 
-            return this.actDialog.concat(flapOpen ? "open." : "closed.");
-        }
-        else
-            return "You know, it really wouldn't be safe to fool around with this dangerous "
-                 + "science equipment without first putting on a lab coat. Better find a lab coat first.";
+        this.flapOpen = ! this.flapOpen; 
+        return this.actDialog.concat(flapOpen ? "open." : "closed.");
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (Player.hasItem(LAB_COAT)) {
-            if (item.toString().matches("florence flask|test tube|empty vial|copper pot|copper pan")) {
-                return "That type of vessel was not designed for collecting chemicals! Put it down before you poke your eye out.";
-            }
-            else {
-                Player.getInv().remove(item);
-                Player.getPos().addFurniture(BEAKER_REF);
-                return this.useDialog;
-            }
+        if (item.toString().matches("florence flask|test tube|empty vial|copper pot|copper pan")) {
+            return "That type of vessel was not designed for collecting chemicals! Put it down before you poke your eye out.";
         }
-        else
-            return "You know, it really wouldn't be safe to fool around with this dangerous "
-                 + "science equipment without first putting on a lab coat. Better find a lab coat first.";
+        else {
+            Player.getInv().remove(item);
+            Player.getPos().addFurniture(BEAKER_REF);
+            return this.useDialog;
+        }
     }
     // ========================================================================  
     public boolean condense(int chemical) {

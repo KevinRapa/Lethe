@@ -6,13 +6,13 @@ import A_Super.Room;
 /**
  * Player must successfully create a phase door potion to progress in the game.
  * The puzzle involves measuring and distilling various ingredient Items.
- * Player must have a lab coat in order to use the lab equipment!
  * 
  * 1. Use florence flask on distiller
  * 2. Connect hose to gas pipe and turn it on
  * 3. Open condensing tube
  * 3.5. Put bromine into barrel, let it chill for 30 seconds.
  * 4. Titrate and add exactly these 5 ingredients (Use dispensers and burette):
+ *     chilled H2O, 30mL
  *     chilled bromine, 10mL
  *     vinegar, 5mL
  *     aether, 20mL
@@ -22,14 +22,14 @@ import A_Super.Room;
  * 6. Use striker on the bunsen burner
  * 7. Take the beaker.
  *
- * @see Laboratory.Labo_BrnrBk
- * @see Laboratory.Labo_BkGlsswr
- * @see Laboratory.Labo_CoatNt
- * @see Laboratory.Labo_DspnsrNt
+ * @see Laboratory.Labo_BurnerBook
+ * @see Laboratory.Labo_BookGlassware
+ * @see Laboratory.Labo_CoatNote
+ * @see Laboratory.Labo_DispenserNote
  * @see Laboratory.Ingredient
- * @see Laboratory.Labo_Dspensrs
- * @see Laboratory.Labo_Dstllr
- * @see Laboratory.Labo_Cndsr
+ * @see Laboratory.Labo_Dispensers
+ * @see Laboratory.Labo_Distiller
+ * @see Laboratory.Labo_Condenser
  * @see Laboratory.Labo_DryIce
  * @author Kevin Rapa
  */
@@ -46,7 +46,7 @@ public class Labo extends Room {
                 + "is a metal sink next to a large pipe running from floor "
                 + "to ceiling. A tall buret sits on a table in the center. "
                 + "To the south stands both a shelf filled with chemistry "
-                + "tools and a barrel.";
+                + "tools and an unusual foam barrel.";
     }
 // ============================================================================
     @Override public String triggeredEvent() {

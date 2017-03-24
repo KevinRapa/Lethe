@@ -11,12 +11,8 @@ import A_Super.Item;
 import A_Super.Room;
 import Tunnels.DungeonMonster;
 /**
- * The attic contains boxes and cases which display randomly chosen items when
- * searched, however there is a hidden suitcase containing a needed lab coat.
- * 
  * The player is captured in ATT1 after creating the phase door potion.
  * 
- * @see Laboratory.Labo_CoatNote
  * @author Kevin Rapa
  */
 public class Att1 extends Room {

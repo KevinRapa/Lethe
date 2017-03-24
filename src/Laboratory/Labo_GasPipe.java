@@ -35,30 +35,20 @@ public class Labo_GasPipe extends Furniture implements Unmoveable {
     }
     // ========================================================================   
     @Override public String interact(String key) {          
-        if (Player.hasItem(LAB_COAT)) {
-            boolean hoseConnected = Player.getPos().hasFurniture("hose");
-            
-            if (this.toggleGas()) 
-                return hoseConnected ? actDialog.concat(" You start to hear a hissing noise.") :
-                                       actDialog.concat(" You turn the valve and begin to smell gas.");
-            else 
-                return hoseConnected ? actDialog.concat(" The hissing noise stops.") :
-                                       actDialog.concat(" Slowly, the gas odor fades away.");
-        }
-        else
-            return "You know, it really wouldn't be safe to fool around with this dangerous "
-                 + "science equipment without first putting on a lab coat. Better find a lab coat first.";
+        boolean hoseConnected = Player.getPos().hasFurniture("hose");
+
+        if (this.toggleGas()) 
+            return hoseConnected ? actDialog.concat(" You start to hear a hissing noise.") :
+                                   actDialog.concat(" You turn the valve and begin to smell gas.");
+        else 
+            return hoseConnected ? actDialog.concat(" The hissing noise stops.") :
+                                   actDialog.concat(" Slowly, the gas odor fades away.");
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {
-        if (Player.hasItem(LAB_COAT)) {
-            Player.getInv().remove(item);
-            Player.getPos().addFurniture(new Labo_Hose());
-            return this.useDialog;
-        }
-        else
-            return "You know, it really wouldn't be safe to fool around with this dangerous "
-                 + "science equipment without first putting on a lab coat. Better find a lab coat first.";
+        Player.getInv().remove(item);
+        Player.getPos().addFurniture(new Labo_Hose());
+        return this.useDialog;
     }
     // ========================================================================  
     public boolean isOn() {

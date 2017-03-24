@@ -34,7 +34,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
                          + "under it. Above the setup is a curved glass tube connecting it\n"
                          + "to the condenser on the other side of the table.";
 
-        this.addActKeys("use", "distill", "boil");
+        this.addActKeys("use|distill|boil", "strike", "light");
         this.addNameKeys("distillery?", "(?:bunsen )?burner", "(?:flask )?rack", "distillation tube");
         this.addUseKeys(RUBBER_HOSE, FLORENCE_FLASK, STRIKER, HAND_TORCH, 
                         BEAKER, TEST_TUBE, EMPTY_VIAL, COPPER_POT, COPPER_PAN);
@@ -45,49 +45,59 @@ public class Labo_Distiller extends Furniture implements Moveable {
                 "The flask now rests nicely on the rack in between the burner and the distillation tube." :
                 this.description;
     }
-    // ========================================================================     
-    @Override public String useEvent(Item item) {
-        String name = item.toString();
-        
-        if (Player.hasItem(LAB_COAT)) {
-            if (name.equals(RUBBER_HOSE)) {
-                Player.getInv().remove(item);
-                Player.getPos().addFurniture(new Labo_Hose());
-                return "You connect the hose to the bunsen burner nozzle and the other end to the gas pipe.";
-            }
-            else if (name.equals(FLORENCE_FLASK)) {
-                Player.getInv().remove(item);
-                Player.getPos().addFurniture(FLORENCE_FLASK_REF);
-                return "You place the florence flask onto the rack.";
-            }
-            else if (name.matches("beaker|test tube|empty vial|copper pot|copper pan")) {
-                return "That type of vessel was not designed for boiling chemicals! Put it down before you set the room on fire.";
-            }
-            else {
-                if (PIPE_REF.isOn() && Player.getPos().hasFurniture("hose")) {
-                    if (Player.getPos().hasFurniture(FLORENCE_FLASK_REF)) {
-                        AudioPlayer.playEffect(45);
-                        FLORENCE_FLASK_REF.distill();
-                        return NOTHING;
-                    }
-                    else {
-                        AudioPlayer.playEffect(45);
-                        return "You strike the top of the burner. For a minute, the burner burns\n"
-                             + "with an intense flame under open space before dying out.";
-                    }
-                }
-                else if (PIPE_REF.isOn() && ! Player.getPos().hasFurniture("hose")) {
-                    AudioPlayer.playEffect(32);
-                    return "As you squeeze the striker, a big poof of fire ignites and singes your face.\n"
-                         + "The smell of gas fades momentarily and slowly comes back.";
-                }
-                else
-                    return "You strike the burner with no effect.";
-            }
+    // ========================================================================   
+    @Override public String interact(String key) {
+        if (key.equals("strike") || key.equals("light")) {
+            if (Player.hasItem(STRIKER))
+                return useEvent(new Item(STRIKER, "", 0));
+            else
+                return "You have nothing in your possession to get that task done.";
         }
         else
-            return "You know, it really wouldn't be safe to fool around with this dangerous "
-                 + "science equipment without first putting on a lab coat. Better find a lab coat first.";
+            return this.actDialog;
+    }
+    // ========================================================================   
+    @Override public String useEvent(Item item) {
+        String name = item.toString();
+
+        if (name.equals(RUBBER_HOSE)) {
+            Player.getInv().remove(item);
+            Player.getPos().addFurniture(new Labo_Hose());
+            return "You connect the hose to the bunsen burner nozzle and the other end to the gas pipe.";
+        }
+        else if (name.equals(FLORENCE_FLASK)) {
+            Player.getInv().remove(item);
+            Player.getPos().addFurniture(FLORENCE_FLASK_REF);
+            return "You place the florence flask onto the rack.";
+        }
+        else if (name.matches(HAND_TORCH)) {
+            return "An ingenious idea by our clever player, "
+                    + "but the torch's flame is unfortunately too weak for that.";
+        }
+        else if (name.matches("beaker|test tube|empty vial|copper pot|copper pan")) {
+            return "That type of vessel was not designed for boiling chemicals! Put it down before you set the room on fire.";
+        }
+        else {
+            if (PIPE_REF.isOn() && Player.getPos().hasFurniture("hose")) {
+                if (Player.getPos().hasFurniture(FLORENCE_FLASK_REF)) {
+                    AudioPlayer.playEffect(45);
+                    FLORENCE_FLASK_REF.distill();
+                    return NOTHING;
+                }
+                else {
+                    AudioPlayer.playEffect(45);
+                    return "You strike the top of the burner. For a minute, the burner burns\n"
+                         + "with an intense flame under open space before dying out.";
+                }
+            }
+            else if (PIPE_REF.isOn() && ! Player.getPos().hasFurniture("hose")) {
+                AudioPlayer.playEffect(32);
+                return "As you squeeze the striker, a big poof of fire ignites and singes your face.\n"
+                     + "The smell of gas fades momentarily and slowly comes back.";
+            }
+            else
+                return "You strike the burner with no effect.";
+        }
     }
     // ========================================================================     
     @Override public String moveIt() {

@@ -4,7 +4,6 @@ import A_Main.GUI;
 import A_Main.Inventory;
 import A_Main.Names;
 import A_Main.Player;
-import static A_Main.Names.*;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**
@@ -26,11 +25,8 @@ public class Labo_Flask extends SearchableFurniture {
         this.actDialog = "There's no reason to do that now.";
         this.searchDialog = "Here's what you've added.";
         
-        this.addUseKeys("Br \\d{1,2}mL",        "aether \\d{1,2}mL", 
-                        "vinegar \\d{1,2}mL",   "wine \\d{1,2}mL", 
-                        "H2CO3 \\d{1,2}mL",     "HF \\d{1,2}mL",
-                        "C20H14O4 \\d{1,2}mL",  "chilled Br \\d{1,2}mL", 
-                        "NaCl \\d{1,2}mL");
+        // Will accept any ingredient (item with 'mL')
+        this.addUseKeys("(?:chilled )?[\\w\\d]+ \\d{1,2}mL");
         
         this.inv = new Flsk_Inventory();
 
@@ -49,11 +45,12 @@ public class Labo_Flask extends SearchableFurniture {
     }
     // ======================================================================== 
     private int determineProduct() {
-        if (this.inv.size() == 5 && 
+        if (this.inv.size() == 6 && 
                 containsItem("chilled Br 10mL") && 
                 containsItem("vinegar 5mL") && 
                 containsItem("ae 20mL") &&
                 containsItem("wine 15mL") && 
+                containsItem("chilled H2O 30mL") && 
                 containsItem("H2CO3 35mL")) 
         {
             return 1;

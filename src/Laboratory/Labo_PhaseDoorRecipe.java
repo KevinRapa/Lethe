@@ -12,7 +12,8 @@ public class Labo_PhaseDoorRecipe extends Note {
                            "2: 5 mL acetic acid\n" +
                            "\t\t3: 20 mL aether\n" +
                            "\t\t4: 15 mL alcohol\n" +
-                           "\t\t5: 35 mL carbonic acid\n" +
+                           "\t\t5: 35 mL carbonic acid\n"
+                         + "\t\t6: 30 mL of COLD water" +
                            "\t\t\t\t\t\tBoil the mixture in a flask and let it condense.";
     }
 /*----------------------------------------------------------------------------*/

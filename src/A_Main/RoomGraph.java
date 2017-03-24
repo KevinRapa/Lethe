@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class RoomGraph { 
     private static final HashMap<String, String[]> ADJACENTS = new HashMap<>();
     private static final HashMap<String, int[]> COORDINATES = new HashMap<>(); 
+    
 //****************************************************************************** 
 // <editor-fold defaultstate="collapsed" desc="IDS"> 
 // Each element maps to an element in ADJS for ADJACENTS. 
@@ -189,11 +190,7 @@ public class RoomGraph {
 //****************************************************************************** 
 // </editor-fold>
 //****************************************************************************** 
-    
-    
-//****************************************************************************** 
-// <editor-fold defaultstate="collapsed" desc="METHODS"> 
-//****************************************************************************** 
+
     /** 
      * Constructs the two hash maps. 
      */ 
@@ -207,7 +204,8 @@ public class RoomGraph {
     } 
     // ======================================================================== 
     /** 
-     * Used when a saved game is loaded. 
+     * Used when a saved game is loaded.
+     * Rooms already have there adjacency lists, so no need to assemble those.
      */ 
     public static void assignCoordinates() { 
         int index = 0; 
@@ -222,11 +220,7 @@ public class RoomGraph {
      * @return A list of rooms adjacent to the room. 
      */ 
     public static ArrayList<String> getAdj(String ID) { 
-        ArrayList<String> result = new ArrayList<>(); 
-
-        result.addAll(Arrays.asList(ADJACENTS.get(ID))); 
-
-        return result; 
+        return new ArrayList<>(Arrays.asList(ADJACENTS.get(ID))); 
     }
     // ======================================================================== 
     /** 
@@ -237,7 +231,4 @@ public class RoomGraph {
     public static int[] getCoords(String ID) { 
         return COORDINATES.get(ID); 
     } 
-//****************************************************************************** 
-// </editor-fold>
-//****************************************************************************** 
 }

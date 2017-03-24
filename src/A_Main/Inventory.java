@@ -61,7 +61,7 @@ public class Inventory implements Iterable<Item>, Serializable {
         if (Patterns.ANY_DIGIT_P.matcher(item).matches()) {
             // Player used a slot number
             int i = Integer.parseInt(item);
-            return (i <= CONTENTS.size());
+            return (i > 0 && i <= CONTENTS.size());
         }
         else // Player typed in an item name
             return CONTENTS

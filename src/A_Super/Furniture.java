@@ -27,14 +27,21 @@ import java.util.regex.Pattern;
  * @author Kevin Rapa
  */
 abstract public class Furniture implements Serializable {
-    protected static final String NOTHING = "";
     protected Inventory inv;
-    protected String description,   // Printed when inspected.
-                     searchDialog,  // Printed when searched.
-                     actDialog,     // Printed when interacted with.  
-                     useDialog;     // Printed when an item is used on this.
-    protected boolean searchable;   // Items can be traded with searchable furniture.  
-    protected final ArrayList<Pattern> USEKEYS, ACTKEYS, NAMEKEYS; 
+    
+    protected String 
+            description,   // Printed when inspected.
+            searchDialog,  // Printed when searched.
+            actDialog,     // Printed when interacted with.  
+            useDialog;     // Printed when an item is used on this.
+    
+    protected boolean 
+            searchable;   // Items can be traded with searchable furniture.  
+    
+    protected final ArrayList<Pattern> 
+            USEKEYS,    // Valid items that may be used on this.
+            ACTKEYS,    // Valid actions that may be performed on this.
+            NAMEKEYS;   // Valid names of this. Regular expression.
 
     protected static final String 
             HOLDPATTERN = "grab|hold|touch",
@@ -47,7 +54,8 @@ abstract public class Furniture implements Serializable {
             FEELPATTERN = "feel|touch|poke",
             DEFAULT_USE = "What good would that do?",
             NOTHING_HERE = "There's nothing hiding here.",
-            ANYTHING = ".+";
+            ANYTHING = ".+",
+            NOTHING = "";
     // ========================================================================
     /**
      * Constructor for furniture.
@@ -55,11 +63,12 @@ abstract public class Furniture implements Serializable {
      */
     public Furniture () {
         this.searchable = false;
-        this.NAMEKEYS = new ArrayList<>(5); // Valid names of this. Regular expression.
-        this.USEKEYS = new ArrayList<>(5);  // Valid items that may be used on this.
-        this.ACTKEYS = new ArrayList<>(6);  // Valid actions that may be performed on this.
+        this.NAMEKEYS = new ArrayList<>(5); 
+        this.USEKEYS = new ArrayList<>(5);  
+        this.ACTKEYS = new ArrayList<>(6);  
         
-        this.actDialog = NOTHING;
+        this.description = NOTHING;
+        this.actDialog = DEFAULT_USE;
         this.useDialog = DEFAULT_USE;
         this.searchDialog = NOTHING_HERE;
     }

@@ -37,28 +37,23 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
     }
     // ========================================================================   
     @Override public String interact(String key) {   
-        if (Player.hasItem(LAB_COAT)) {
-            if (Player.hasItem(TEST_TUBE)) {
-                if (askToDispense()) {
-                    Player.getInv().remove(TUBE_REF);
-                    Player.getInv().add(dispense());
-                }
-                return NOTHING;
+        if (Player.hasItem(TEST_TUBE)) {
+            if (askToDispense()) {
+                Player.getInv().remove(TUBE_REF);
+                Player.getInv().add(dispense());
             }
-            else if (Player.hasItem(EMPTY_VIAL)) {
-                if (askToDispense()) {
-                    Player.getInv().remove(VIAL_REF);
-                    Player.getInv().add(dispense());
-                }
-                return NOTHING;
-            }
-            else {
-                return this.actDialog;
-            }
+            return NOTHING;
         }
-        else
-            return "You know, it really wouldn't be safe to fool around with this dangerous "
-                 + "science equipment without first putting on a lab coat. Better find a lab coat first.";
+        else if (Player.hasItem(EMPTY_VIAL)) {
+            if (askToDispense()) {
+                Player.getInv().remove(VIAL_REF);
+                Player.getInv().add(dispense());
+            }
+            return NOTHING;
+        }
+        else {
+            return this.actDialog;
+        }
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {

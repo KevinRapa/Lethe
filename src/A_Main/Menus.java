@@ -28,14 +28,14 @@ public final class Menus {
                   + "< >      Back",
 
         INV_COMBINE = "\n"
-                    + "<item list> Combine...\n"
-                    + "< >         Back",
+                    + "<list> Combine...\n"
+                    + "< >    Back",
 
         TRADE_SUB = "\n"
-                  + "<'s' item list>  Store...\n"
-                  + "<'t' item list>  Take...\n"
-                  + "<'loot'>         Loot!!!\n"
-                  + "< >              Back",
+                  + "<'s' list>  Store...\n"
+                  + "<'t' list>  Take...\n"
+                  + "<'loot'>    Loot!!!\n"
+                  + "< >         Back",
 
         SAVE_QUIT = "\n\n"
                   + "<'s'> Save and quit\n"
@@ -70,9 +70,9 @@ public final class Menus {
                   + " < >  Back",
 
         HELP_SUB3 = "\n"
-                  + "<'1'> Doors        <'2'> Rooms\n"
-                  + "<'3'> Furniture    <'4'> Items\n"
-                  + "<'5'> Keys         <'6'> Phylacteries\n"
+                  + "<'1'> Doors      <'2'> Rooms\n"
+                  + "<'3'> Furniture  <'4'> Items\n"
+                  + "<'5'> Keys       <'6'> Phylacteries\n"
                   + " < >  Back",
 
         SAFE_MENU = "\n"
@@ -94,9 +94,9 @@ public final class Menus {
                     + "  < >   Back",
 
         DOUBLE_ST = "\n"
-                  + "There are two flights here.\n"
-                  + "       <'u'> Go up\n"
-                  + "       <'d'> Go down",
+                  + "There are two flights\n"
+                  + "    <'u'> Go up\n"
+                  + "    <'d'> Go down",
 
         SEW_VALVE = "\n"
                   + "<#> Turn valve\n"
@@ -122,6 +122,10 @@ public final class Menus {
             
         OBS_STATS = "\n<#> Look..."
                   + "\n< > Back",
+            
+        LABO_BURET = "\n<1> Empty"
+                   + "\n<2> Titrate"
+                   + "\n< > Back",
             
         LABO_DISP = "\n<#> Dispense"
                   + "\n< > Back",

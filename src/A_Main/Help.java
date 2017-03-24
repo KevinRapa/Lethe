@@ -12,16 +12,16 @@ public class Help {
     private static final HashMap<String, String> 
             HELP = new HashMap<>(), // Maps keys to topics
             TOPIC = new HashMap<>(); // Maps topics to explanations.
-/*----------------------------------------------------------------------------*/     
+     
     private static final String[] HELP_KEYS = 
         {"prompt", "moving", "describing", "checking", "searching", "activating",
          "using", "combining", "inspecting", "notes", "inventory", "key ring", "phylacteries",
          "doors", "rooms", "furniture", "items", "keys", "phylacteries"};
-/*----------------------------------------------------------------------------*/    
+    
     private static final String[] TOPIC_KEYS = 
         {"1c","2c","3c","4c","5c","6c","7c","8c","9c","10c",
          "1p","2p","3p","1a","2a","3a","4a","5a","6a"};
-/*----------------------------------------------------------------------------*/     
+     
     private static final String[] HELP_VALUES = {
         "When prompted for input, the desired type of input will appear in "
       + "angle brackets.\t\t\t\t\t"
@@ -35,7 +35,7 @@ public class Help {
         "<(item)> - An optional item or item slot.\t\t" +   
         "<?,?,?> - Enter a list of ?, separated by commas.\t\t" +
         "<?/?/?> - Enter any one. "
-      + "<'s' item list> - Enter 's' followed by a list of item names or slots.", 
+      + "<'s' list> - Enter 's' followed by a comma-separated list.", 
          
         "In this game, you may move in four directions; north, south, east, " +
         "west, up, and down. For your convenience, the shortcuts for the " +
@@ -52,7 +52,7 @@ public class Help {
         "\"atmosphere\", \"room\", and \"east\". For your convenience, you " +
         "may enter \"map\" or \"m\" so view a modest image of your location " +
         "in order to get a quick feel for the directions you may move " +
-        "to from your current location.", 
+        "to.", 
          
         "You may examine things you enounter by entering an appropriate verb " +
         "(\"examine\", \"look at\", etc.) followed by the thing you wish to examine. " +
@@ -175,11 +175,8 @@ public class Help {
         "phylacteries (of which there are 5). Perhaps you should speak " +
         "with the glass orb in the vestibule for more information on this."
     };
-/* CONSTRUCTOR ---------------------------------------------------------------*/       
-    /**
-     * Puts together the two dictionaries.
-     */
-    public static void constructHelp() {
+    
+    static {
         int index = 0;
         
         for (String helpKey : HELP_KEYS) {
@@ -192,12 +189,6 @@ public class Help {
         }
     }
 /*----------------------------------------------------------------------------*/
-    private static String get_help(String topic) {
-        return HELP.get(topic); 
-    }
-//******************************************************************************
-// <editor-fold desc="SUB-MENUS">
-//******************************************************************************
     /**
      * A structure of nested menus organizing game topics.
      */
@@ -209,7 +200,6 @@ public class Help {
             GUI.menOut(Menus.HELP_MAIN);
             choice = GUI.promptOut();
 
-        /*--------------------------------------------------------------------*/            
             if (choice.equals("1")) {
                 AudioPlayer.playEffect(2);
                 
@@ -220,11 +210,10 @@ public class Help {
 
                     if (CONTROL_CHOICE.matcher(choice).matches()) {
                         AudioPlayer.playEffect(2);
-                        GUI.out(get_help(TOPIC.get(choice)));  
+                        GUI.out(HELP.get(TOPIC.get(choice)));  
                     }
                 } while (! choice.equals("c"));          
             }
-        /*--------------------------------------------------------------------*/          
             else if (choice.equals("2")) {    
                 AudioPlayer.playEffect(2);
                 
@@ -235,12 +224,11 @@ public class Help {
                     
                     if (PLAYER_CHOICE.matcher(choice).matches()) {
                         AudioPlayer.playEffect(2);
-                        GUI.out(get_help(TOPIC.get(choice)));
+                        GUI.out(HELP.get(TOPIC.get(choice)));
                     }
                     
                 } while (! choice.equals("p"));    
             }
-        /*--------------------------------------------------------------------*/      
             else if (choice.equals("3")) {    
                 AudioPlayer.playEffect(2);
                 
@@ -251,7 +239,7 @@ public class Help {
                     
                     if (CASTLE_CHOICE.matcher(choice).matches()) {
                         AudioPlayer.playEffect(2);
-                        GUI.out(get_help(TOPIC.get(choice)));
+                        GUI.out(HELP.get(TOPIC.get(choice)));
                     }
                     
                 } while (! choice.equals("a"));
@@ -262,8 +250,5 @@ public class Help {
         GUI.clearDialog();
         GUI.toMainMenu();
         GUI.clearDialog();
-    }
-//******************************************************************************
-// </editor-fold>
-//******************************************************************************   
+    }  
 }

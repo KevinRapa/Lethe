@@ -2,6 +2,8 @@ package A_Main;
 /**
  * Holds name constants for item types and item names.
  * Item types cannot be enumerations because keys use room Ids as types.
+ * Generally any item used in more than one place is given a constant name
+ * here.
  * 
  * @see A_Super.Key
  * @see A_Main.Id
@@ -44,7 +46,7 @@ public final class Names {
         GLOWING_EMERALD = "glowing emerald",    HAND_DRILL = "hand drill",
         DAMPENING_STAFF = "dampening staff",    BOTTLE_OF_WINE = "bottle of wine",
         BOTTLE_OF_VINEGAR = "bottle of vinegar",POTION_OF_SCIENCE = "potion of science",
-        PHASE_DOOR_POTION = "phase door potion",LAB_COAT = "lab coat",
+        PHASE_DOOR_POTION = "phase door potion",CLEANING_SOLUTION = "cleaning solution",
         AQUAMARINE = "aquamarine",              TROWEL = "trowel",
         SHOVEL = "shovel",                      CROWBAR = "crowbar",
         WARHAMMER = "warhammer",                HAMMER = "hammer",
@@ -72,6 +74,7 @@ public final class Names {
         SHINY_WATCH = "shiny pocket watch",     WOODEN_OAR = "wooden oar",
         SHOE_BOX = "shoebox",                   RUBBER_GLOVES = "rubber gloves",
         WORK_BOOTS = "work boots",              CHARGED_BATTERY = "charged battery",
+        GLUE_BOTTLE = "glue bottle",            
             
         BIBLE = "biblical tome, 'The Book of Genesis'",
         ILIAD = "greek tome, 'The Iliad'",

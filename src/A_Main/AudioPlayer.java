@@ -17,9 +17,9 @@ import static A_Main.Names.W_DIR;
 
 public class AudioPlayer {
     public final static String 
-            TPTH = "ambience" + SEP,
-            EPTH = "effects" + SEP,
-            EXT = ".mp3";
+            TPTH = "ambience" + SEP,    // Filepath for ambience.
+            EPTH = "effects" + SEP,     // Filepath for effects.
+            EXT = ".mp3";               // Audio file extension.
     
     private static String trackName;
     private static boolean muted = false;
@@ -27,8 +27,8 @@ public class AudioPlayer {
     private static MediaPlayer currentPlayer;
     
     /* 
-        Because the faux keyboard key sounds will be played so frequently, it
-        should be more efficient to hold players specifically for the key sounds.
+        Because the faux keyboard key sounds are played so frequently, 
+        media players should be reserved just for the key sounds.
         Each sounds gets three media players which rotate playing every time a
         key is pressed in order to handle the typing speed. The media players
         are indexed by a byte which alternates between 0, 1, and 2 using a
@@ -39,7 +39,7 @@ public class AudioPlayer {
     // Zero. Determines which of two players to play for each sound.
     private static byte playerAlternator = 0x0;  
     
-    // One, three, two. XOR's playerAlternator between 0, 1, and 2
+    // One, three, two. XOR's playerAlternator between 1, 2, and 0
     // 0 ^ 1 = 1
     // 1 ^ 3 = 2
     // 2 ^ 2 = 0
@@ -156,48 +156,46 @@ public class AudioPlayer {
 // <editor-fold defaultstate="collapsed" desc="SOUND EFFECTS"> 
 //******************************************************************************    
     private static final Media[] EFFECTS = {
-        getNewMedia("steps"),           getNewMedia("inventory"),       // 0  1
-        getNewMedia("pageTurn"),        getNewMedia("keys"),            // 2  3
-        getNewMedia("doorKnobJiggle"),  getNewMedia("doorLocking"),     // 4  5
-        getNewMedia("wallThump"),       getNewMedia("gateSlam"),        // 6  7
-        getNewMedia("doorSlam"),        getNewMedia("doorClose"),       // 7  9
-        getNewMedia("basicClick"),      getNewMedia("buttonPush"),      // 10 11
-        getNewMedia("leverPull"),       getNewMedia("doorUnlock"),      // 12 13
-        getNewMedia("woodStairClimb"),  getNewMedia("stoneSteps"),      // 14 15
-        getNewMedia("ladder"),          getNewMedia("dungeonValve"),    // 16 17
-        getNewMedia("rotundaRotate"),   getNewMedia("rotundaRotate2"),  // 18 19
-        getNewMedia("valveTurn"),       getNewMedia("keyClick"),        // 20 21
-        getNewMedia("keyClick2"),       getNewMedia("keyClick3"),       // 22 23
-        getNewMedia("dungeonDoor"),     getNewMedia("monster"),         // 24 25
-        getNewMedia("windowOpening"),   getNewMedia("keyDrop"),         // 26 27
-        getNewMedia("foyGateSwitch"),   getNewMedia("sparkles"),        // 28 29
-        getNewMedia("rocksCrumbling"),  getNewMedia("ladderFalling"),   // 30 31
-        getNewMedia("enchantPop"),      getNewMedia("handDrill"),       // 32 33
-        getNewMedia("digging"),         getNewMedia("metalPing"),       // 34 35
-        getNewMedia("hoseClimb"),       getNewMedia("galleryStatue"),   // 36 37
-        getNewMedia("galleryGears"),    getNewMedia("fireDouse"),       // 38 39
-        getNewMedia("stairFlatten"),    getNewMedia("woodSliding"),     // 40 41
-        getNewMedia("waterScoop"),      getNewMedia("medallionClick"),  // 42 43
-        getNewMedia("totemTurn"),       getNewMedia("bunsenBurner"),    // 44 45
-        getNewMedia("zombieMoan"),      getNewMedia("metalLadder"),     // 46 47
-        getNewMedia("grateMove"),       getNewMedia("teleportZap"),     // 48 49
-        getNewMedia("concreteBlock"),   getNewMedia("concreteShort"),   // 50 51
-        getNewMedia("atticNoise"),      getNewMedia("piano"),           // 52 53
-        getNewMedia("harp"),            getNewMedia("doorKnock")        // 54 55
+        getNewMedia("steps"),           getNewMedia("inventory"),      // 0  1
+        getNewMedia("pageTurn"),        getNewMedia("keys"),           // 2  3
+        getNewMedia("doorKnobJiggle"),  getNewMedia("doorLocking"),    // 4  5
+        getNewMedia("wallThump"),       getNewMedia("gateSlam"),       // 6  7
+        getNewMedia("doorSlam"),        getNewMedia("doorClose"),      // 7  9
+        getNewMedia("basicClick"),      getNewMedia("buttonPush"),     // 10 11
+        getNewMedia("leverPull"),       getNewMedia("doorUnlock"),     // 12 13
+        getNewMedia("woodStairClimb"),  getNewMedia("stoneSteps"),     // 14 15
+        getNewMedia("ladder"),          getNewMedia("dungeonValve"),   // 16 17
+        getNewMedia("rotundaRotate"),   getNewMedia("rotundaRotate2"), // 18 19
+        getNewMedia("valveTurn"),       getNewMedia("keyClick"),       // 20 21
+        getNewMedia("keyClick2"),       getNewMedia("keyClick3"),      // 22 23
+        getNewMedia("dungeonDoor"),     getNewMedia("monster"),        // 24 25
+        getNewMedia("windowOpening"),   getNewMedia("keyDrop"),        // 26 27
+        getNewMedia("foyGateSwitch"),   getNewMedia("sparkles"),       // 28 29
+        getNewMedia("rocksCrumbling"),  getNewMedia("ladderFalling"),  // 30 31
+        getNewMedia("enchantPop"),      getNewMedia("handDrill"),      // 32 33
+        getNewMedia("digging"),         getNewMedia("metalPing"),      // 34 35
+        getNewMedia("hoseClimb"),       getNewMedia("galleryStatue"),  // 36 37
+        getNewMedia("galleryGears"),    getNewMedia("fireDouse"),      // 38 39
+        getNewMedia("stairFlatten"),    getNewMedia("woodSliding"),    // 40 41
+        getNewMedia("waterScoop"),      getNewMedia("medallionClick"), // 42 43
+        getNewMedia("totemTurn"),       getNewMedia("bunsenBurner"),   // 44 45
+        getNewMedia("zombieMoan"),      getNewMedia("metalLadder"),    // 46 47
+        getNewMedia("grateMove"),       getNewMedia("teleportZap"),    // 48 49
+        getNewMedia("concreteBlock"),   getNewMedia("concreteShort"),  // 50 51
+        getNewMedia("atticNoise"),      getNewMedia("piano"),          // 52 53
+        getNewMedia("harp"),            getNewMedia("doorKnock")       // 54 55
     };
     
     static {
-        // Sets up media players for the faux keyboard sounds. 
-        // Each sound gets three
+        // Sets up 3 media players for each faux keyboard sound. 
         for (int sound = 0; sound <= 2; sound++)
-            for (int i = 0; i <= 2; i++)
+            for (int i = 0; i <= 2; i++) 
                 KEY_PLAYERS[sound][i] = new MediaPlayer(EFFECTS[sound + 21]);
         
         // Sets them each to stop once their track ends.
         for (MediaPlayer[] playerList : KEY_PLAYERS)
             for (MediaPlayer mPlayer : playerList)
                 mPlayer.setOnEndOfMedia(() -> mPlayer.stop());
-        
     }
     
     private static Media getNewMedia(String file) {

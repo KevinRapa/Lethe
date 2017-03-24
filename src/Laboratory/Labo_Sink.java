@@ -8,11 +8,12 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Labo_Sink extends Furniture {
-    private final Item VIAL_REF, BEAKER_REF;
+    private final Item VIAL_REF, BEAKER_REF, BUCKET_REF;
     // ========================================================================
-    public Labo_Sink (Item vial, Item beaker) {
+    public Labo_Sink (Item vial, Item beaker, Item bucket) {
         super();
 
+        this.BUCKET_REF = bucket;
         this.VIAL_REF = vial;
         this.BEAKER_REF = beaker; 
         
@@ -22,14 +23,8 @@ public class Labo_Sink extends Furniture {
         this.useDialog = "You pour it down the drain.";
 
         this.addNameKeys("(?:square )?(?:metal )?sink");
-        this.addUseKeys("(?:chilled )?Br \\d{1,2}mL", 
-                        "(?:chilled )?ae \\d{1,2}mL", 
-                        "(?:chilled )?vinegar \\d{1,2}mL",
-                        "(?:chilled )?wine \\d{1,2}mL", 
-                        "(?:chilled )?H2CO3 \\d{1,2}mL", 
-                        "(?:chilled )?HF \\d{1,2}mL",
-                        "(?:chilled )?C20H14O4 \\d{1,2}mL", 
-                        "(?:chilled )?NaCl \\d{1,2}mL",
+        this.addUseKeys("(?:chilled )?[\\w\\d]+ \\d{1,2}mL", 
+                        BUCKET_OF_WATER,
                         SPRUCE_EXTRACT,
                         HOLY_WATER,
                         POTION_OF_SCIENCE,
@@ -44,6 +39,11 @@ public class Labo_Sink extends Furniture {
         
         if (s.equals(BOTTLE_OF_VINEGAR) || s.equals(PHASE_DOOR_POTION) || s.equals(BOTTLE_OF_WINE))
             return "That would be such a waste!";
+        else if (s.equals(BUCKET_OF_WATER)) {
+            Player.getInv().remove(item);
+            Player.getInv().add(BUCKET_REF);
+            return this.useDialog;
+        }
         else {
             Player.getInv().remove(item);
             

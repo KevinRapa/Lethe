@@ -29,12 +29,16 @@ import javax.swing.JFrame; import javax.swing.JLabel;
 
 /**
  * Creates a 3 dimensional array of rooms representing the game map.
- * This class is used only when a new game is started.
+ * Also controls a small secondary window which displays a rudimentary
+ * image of the room the player is in.
  * 
  * @author Kevin Rapa
  */
 public class Map {
-    private final static String PATH = W_DIR + SEP + "img" + SEP;
+    // Room images are located here.
+    private final static String 
+            PATH = W_DIR + SEP + "img" + SEP,
+            EXT = ".jpg";
     
     private static final JLabel MAP_LABEL = new JLabel();
     private static final JPanel MAP_PANEL = new JPanel();
@@ -64,11 +68,10 @@ public class Map {
         }
     }
     //==========================================================================
+    // Disposes map on game's end
     public static void disposeMap() {
-        if (MAP_FRAME != null) {
-            MAP_FRAME.setVisible(false);
-            MAP_FRAME.dispose();
-        }
+        MAP_FRAME.setVisible(false);
+        MAP_FRAME.dispose();
     }
     //==========================================================================
     public static void updateMap() {
@@ -77,15 +80,16 @@ public class Map {
         if (Player.getCurrentFloor() == 6) {
             if (Player.getPosId().equals(Id.MS65) 
                     || Player.getPosId().equals(Id.MS66))
-                icon = new ImageIcon(PATH + "MS.jpg");
+                icon = new ImageIcon(PATH + "MS" + EXT);
             else    
-                icon = new ImageIcon(PATH + "CAVE.jpg");
+                icon = new ImageIcon(PATH + "CAVE" + EXT);
         }
         else {
-            icon = new ImageIcon(PATH + Player.getPosId() + ".jpg");
+            icon = new ImageIcon(PATH + Player.getPosId() + EXT);
             
             if (icon.getImage().getWidth(MAP_LABEL) == -1)
-                icon = new ImageIcon(PATH + "UNKN.jpg");
+                // Room does not have an associated picture.
+                icon = new ImageIcon(PATH + "UNKN" + EXT);
         }
 
         MAP_LABEL.setIcon(icon);
@@ -446,7 +450,7 @@ public class Map {
         Item wowLddr = new BreakableItem(FIXED_LADDER, "The spoke sits in there a bit awkwardly, but it\n"
                               + "seems like a good ladder. It may even support your heft.", 25);   
         Item wow1Spk = new Item(WHEEL_SPOKE, "It's a wooden rod, about a foot long.", wowLddr, 3, 0);
-        Item clngSoln = new Liquid("cleaning solution", "It smells lemony fresh, unlick the rest of this room.", 25);
+        Item clngSoln = new Liquid(CLEANING_SOLUTION, "It smells lemony fresh, unlick the rest of this room.", 25);
         Item rppdBrlp = new Item("ripped burlap", "It must have belonged to the broken cart in the west wing.", 5);
         Item actn = new Liquid(ACETONE, "It's a strong-smelling solvent in a glass jar.", 25);
         //-----------------------------FURNITURE--------------------------------
@@ -513,7 +517,7 @@ public class Map {
         Item shvl = new Weapon(SHOVEL, "A sturdy pointed shovel for the digging of holes.", 30);
         Item hmmr = new Weapon(HAMMER, "It's a small handheld nailing device.", 30);
         Item sd = new Item(SEED, "It's a handful of mysterious gardening wizardry.", 0);
-        Item gl = new Liquid("glue bottle", "It's a glass bottle of sticky glue. It's yellowish tinge clues you that it's the type for wood.", 15);
+        Item gl = new Liquid(GLUE_BOTTLE, "It's a glass bottle of sticky glue. It's yellowish tinge clues you that it's the type for wood.", 15);
         Item closGlv = new Clothing(RUBBER_GLOVES, "A pair of thick rubber gloves.", 
                 "It's difficult, but you manage to fit them on your hands.", 15);
         Item closStrw = new Item("straw", "It's just straw.", 5);
@@ -1242,13 +1246,12 @@ public class Map {
         Item flrcFlsk = new BreakableItem(FLORENCE_FLASK, 
                 "It's a piece of chemistry glassware. "
                 + "Has a bulbous bottom and a thin shaft with an opening at the top.", 25);
-        Item laboCtNt = new Labo_CoatNote("scientist momento");
         Item laboBrnrBk = new Labo_BurnerManual("manual, 'Playing With Fire'");
         Item laboRcp = new Labo_PhaseDoorRecipe("phase door potion recipe");
         Item laboIngNt = new Labo_IngredientsNote("note: missing ingredients");
         Item labDstllrNt = new Labo_DistillerNote("note: contraption");
         //-----------------------------FURNITURE--------------------------------  
-        Furniture iceBrrl = new Labo_DryIce(flrcFlsk);
+        Furniture iceBrrl = new Labo_IceBarrel(flrcFlsk);
         Furniture laboRck = new Labo_Shelf(vial, laboRcp, tstTb, laboIngNt, vial, tstTb, bkr, tstTb, laboBrnrBk, actn);
         Furniture laboGsPipe = new Labo_GasPipe();
         Furniture cndsr = new Labo_Condenser(bkr);
@@ -1258,11 +1261,11 @@ public class Map {
         Furniture laboStpCck = new Labo_StopCock();
         Furniture laboF = new Floor("It's a black and white checkered tile. A predictable floor for a laboratory. "
                 + "A few burn marks taint the floor just at the foot of the counter to the north.", tstTb);
-        Furniture laboSnk = new Labo_Sink(vial, bkr);
+        Furniture laboSnk = new Labo_Sink(vial, bkr, bckt);
         Furniture laboCntrptn = new Labo_Contraption();
         Furniture laboTbl = new Labo_Table();
         Furniture laboDvcs = new Labo_Devices();
-        Furniture laboCntr = new Labo_Counter(strkr, labDstllrNt, scale, rbbrTube, laboCtNt, balance);
+        Furniture laboCntr = new Labo_Counter(strkr, labDstllrNt, scale, rbbrTube, balance);
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE ATTIC"> 
@@ -1302,7 +1305,6 @@ public class Map {
         Furniture attBxs = new Att_Boxes(attcSphn, attcMrrr, attcGlb, attcDll, attcVln, attcAntLmp);
         Furniture attVnts = new Att_Vents();
         Furniture attClng = new Att_Ceiling();
-        Furniture att2CtCs = new Att2_LabCoatCase();
 
         // </editor-fold>        
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE BACK HALL"> 
@@ -2154,7 +2156,7 @@ public class Map {
         obs2.addFurniture(obsW, obs2F, obsWndw, obs2Strs, obsBlcny, obs2BkShlf, obs2Pntng, obs2Rlng, obs2Chr, obs2Tbl, obs2Lmp);
         obs3.addFurniture(obs3Chndlr, obsW, obs3F, obsWndw, obs3Strs, obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps, clng);
         att1.addFurniture(attF, attW, sst2Dr, attCss, attBxs, gal5Cbwbs, attVnts, attClng);
-        att2.addFurniture(attF, attW, att2Dr, attBxs, attCss, gal5Cbwbs, attVnts, att2CtCs, attClng);
+        att2.addFurniture(attF, attW, att2Dr, attBxs, attCss, gal5Cbwbs, attVnts, attClng);
         labo.addFurniture(laboF, att2Dr, wallEx, laboStpCck, laboBrtt, laboGsPipe, laboCntr, iceBrrl, 
                           laboRck, laboDspnsrs, laboDstllr, laboSnk, laboCntrptn, cndsr, laboTbl, laboDvcs, clng); 
 
