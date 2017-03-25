@@ -22,14 +22,6 @@ public class Vest extends Room {
     public Vest(String name, String ID) {
         super(name, ID);
         this.windowOpen = false;
-        description =
-              "You are in a cozy, tall chamber. A shale tile floor and granite "
-            + "walls surround you. In front of you is a small wooden table "
-            + "supporting a ceramic case and an ornate chair facing a large "
-            + "marble fireplace. To your right, a closed barred window lets "
-            + "in a small draft. A large tapestry consumes most of the wall "
-            + "behind you. In a dark corner is a desk with a glass orb on it "
-            + "coated in dust.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

@@ -22,12 +22,6 @@ public class Att1 extends Room {
         super(name, ID);
 
         this.PRIS_CBNT_INV_REF = prisCbntInv;
-        this.description= 
-                "You stand on the north side of the attic. Scattered " +
-                "around are piles of various boxes and suitcases collecting " +
-                "cobwebs. The room extends back southwards. A bit " +
-                "of moonlight shines in through a vent in the ceiling. "
-              + "To your east is a door.";
     }
 // ============================================================================
     @Override public String triggeredEvent() {

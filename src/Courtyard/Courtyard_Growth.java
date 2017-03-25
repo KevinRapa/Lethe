@@ -13,14 +13,14 @@ abstract public class Courtyard_Growth extends Furniture {
     public Courtyard_Growth () {
         super();
 
-        this.addUseKeys("\\w* (?:axe|sword)", SCYTHE, HAND_TORCH, HOE);
+        this.addUseKeys("\\w* (?:ax|sword)", SCYTHE, HAND_TORCH, HOE);
         this.addActKeys("grab|touch|hold", "cut|chop|prune|remove");
     }
     // ========================================================================   
     @Override public String interact(String key) {              
         if (key.matches("grab|touch|hold"))
             return this.actDialog;
-        else if (Player.hasItemResembling("axe|sword|scythe"))
+        else if (Player.hasItemResembling("ax|sword|scythe"))
             return this.cutDialog;
         else
             return "You aren't a gardener!";

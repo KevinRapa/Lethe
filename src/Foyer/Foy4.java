@@ -9,9 +9,6 @@ public class Foy4 extends Room {
 // ============================================================================    
     public Foy4(String name, String ID) {
         super(name, ID);
-        this.description= "You have reached the top landing of the foyer. A\n"
-                        + "door with a carving of a chalice stands before you\n"
-                        + "to the south.";
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {

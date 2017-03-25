@@ -23,7 +23,7 @@ public class Sear_Fissure extends Furniture {
                          + "the escape plan.";
         this.useDialog = "The wall gives way from the swing of the heavy\n"
                        + "warhammer, but the warhammer snaps in half. You\n"
-                       + "begin to think the wood axe is the only tool\n"
+                       + "begin to think the wood ax is the only tool\n"
                        + "you know how to use without it breaking.";
         this.actDialog = "You couldn't manage to do that with your bare hands.";
         

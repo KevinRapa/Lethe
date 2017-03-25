@@ -11,9 +11,6 @@ public class Din2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Din2(String name, String ID) {
         super(name, ID);
-        description= "You can see over the whole dining room from the balcony.\n"
-                   + "Behind you on the west wall hangs a long painting. To the\n"
-                   + "south stands the closed door that you heard swing shut.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {

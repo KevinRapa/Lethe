@@ -10,12 +10,6 @@ public class Foy2 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy2(String name, String ID) {
         super(name, ID);
-        this.description = "You stand surrounded by the foyer's immense staircase.\n"
-                    + "It curves upwards around you against the back wall for\n"
-                    + "two stories. Straight ahead, through an arched way carved\n"
-                    + "through the base of the stairs, %"
-                    + " To your right, a statue\n"
-                    + "occupies an alcove carved into the wall.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

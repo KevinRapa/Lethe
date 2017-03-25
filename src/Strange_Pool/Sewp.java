@@ -26,13 +26,6 @@ public class Sewp extends Dungeon_Tunnel {
         super(name, ID);
         this.RESETABLES = resetables;
         this.PRIS_CBNT_INV = cbntInv;
-        this.description= 
-                "You are on the other side of your cell door in a room\n" +
-                "with a large pool in the center. A vortex of water\n" +
-                "flowing from a tunnel to the north spins in the pool\n" +
-                "and drives a large submerged wheel attached to a driveshaft\n" +
-                "protruding from the ceiling. Several torches light the\n" +
-                "room. To your east is a second metal door.";
     }
 // ============================================================================
     public void resetAllObjects() {

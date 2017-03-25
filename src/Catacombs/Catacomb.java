@@ -37,12 +37,6 @@ public class Catacomb extends Room {
     public Catacomb(String ID) {
         super("in the catacombs", ID);
 
-        this.description = "This area is pitch black. Feeling around, you sense\n"
-                         + "that you are in a rocky tunnel barely larger than you.\n"
-                         + "A low breeze and sporadic droplets of water are all that\n"
-                         + "you hear. You suspect you are in a cave of sorts. If\n"
-                         + "only you had a light...";
-
         StringBuilder builder = new StringBuilder(300);
         
         builder.append("The torch offers a small radius of light to see. You\n")

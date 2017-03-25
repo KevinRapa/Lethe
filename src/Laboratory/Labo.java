@@ -37,16 +37,6 @@ public class Labo extends Room {
 // ============================================================================    
     public Labo(String name, String ID) {
         super(name, ID);
-        this.description= 
-                "You find yourself in a laboratory filled with many "
-                + "alchemical devices. At the far east wall are a " +
-                  "line of chemical dispensers. On a counter to the "
-                + "north is a confusing alchemical contraption with "
-                + "many glass tubes. On the same counter to the left "
-                + "is a metal sink next to a large pipe running from floor "
-                + "to ceiling. A tall buret sits on a table in the center. "
-                + "To the south stands both a shelf filled with chemistry "
-                + "tools and an unusual foam barrel.";
     }
 // ============================================================================
     @Override public String triggeredEvent() {

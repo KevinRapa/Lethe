@@ -35,9 +35,8 @@ public class Esc extends Room {
         TOO_DARK = "It's too dark to see anything at all. "
         + "All you here is a bunch of dangerous sounding machinery.";
 // ============================================================================    
-    public Esc(String name, String ID, String desc) {
+    public Esc(String name, String ID) {
         super(name, ID);
-        this.description = desc;
         this.addFurniture(MACHINERY_REF, FLOOR_REF, ESC_WALL, ESC_CLNG, MONSTER);
     }
 // ============================================================================

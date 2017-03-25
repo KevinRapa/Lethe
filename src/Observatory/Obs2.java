@@ -12,13 +12,6 @@ public class Obs2 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Obs2(String name, String ID) {
         super(name, ID);
-        description= 
-                "This is a wide balcony opposite the large window to the "
-              + "west. At the north end is a second spiral staircase leading "
-              + "to a third floor balcony. A bookshelf stands beside a "
-              + "lounge chair to your right against the wall. A painting "
-              + "hangs on the wall above the lounge chair, and the area is "
-              + "lit by a small lamp resting on an end table.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {

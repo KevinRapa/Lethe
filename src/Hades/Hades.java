@@ -14,14 +14,6 @@ public class Hades extends Room {
 // ============================================================================    
     public Hades(String name, String ID) {
         super(name, ID);
-        this.description= 
-                "You are outside a large gateway, on which is inscribed " +
-              "\"Abandon every hope, all ye who enter here.\" " +
-              "The gate is open; through it you can see a desolation, "
-            + "with a pile of mangled corpses in one corner. Thousands "
-            + "of voices, lamenting some hideous fate, can be heard. " +
-              "The way through the gate is barred by evil spirits, "
-            + "who jeer at your attempts to pass.";
         
         this.END_DIALOG = 
                 "An echoing voice thunders through the crimson skies. It\n" +
@@ -73,7 +65,7 @@ public class Hades extends Room {
                 "except among me, for I have traveled to these lands\n" +
                 "before, and even back. You shall live comfortably for\n" +
                 "all eternity in Tartarus, with\n" +
-                "in constant labor with occassional coffee breaks.\"";
+                "in constant labor with occasional coffee breaks.\"";
         if (score >= 5700)
             return 
                 "\"You have the true spirit of an adventurer, yet you\n" +
@@ -82,7 +74,7 @@ public class Hades extends Room {
                 "You have moderate wealth, impressive to many, but not\n" +
                 "to all. You will be sent to live eternally in the\n" +
                 "flaming river Phlegethon with other aspired adventurers,\n" +
-                "interrupted occassionally with short breaks for leisurely\n" +
+                "interrupted occasionally with short breaks for leisurely\n" +
                 "activities.\"";
         if (score >= 1000)
             return 

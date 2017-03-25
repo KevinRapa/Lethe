@@ -1,9 +1,11 @@
 package A_Super;
 
+import static A_Main.Names.W_DIR;
+import static A_Main.Names.SEP;
 import A_Main.AudioPlayer;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.io.Serializable;
+import java.io.*;
 import A_Main.RoomGraph;
 /**
  * <p>
@@ -45,6 +47,34 @@ public class Room implements Serializable {
     public Room(String name, String ID) {  
         this.NAME = name;
         this.ID = ID;
+        
+        // Gets the room's description from a file.
+        String filename;
+        
+        if (ID.matches("CT.."))
+            filename = "CT";
+        else if (ID.matches("CV.."))
+            filename = "CV";
+        else
+            filename = ID;
+        
+        try (BufferedReader br = new BufferedReader(
+                new FileReader(W_DIR + SEP + "desc" + SEP + filename + ".txt"))
+                ) 
+        {
+            String descLine;
+            StringBuilder descBuilder = new StringBuilder();
+
+            while ((descLine = br.readLine()) != null)
+                descBuilder.append(descLine);
+            
+            this.description = descBuilder.toString();
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            this.description = "";
+        } 
+        
         this.STD_RM_OUT = "You are " + name + ".";
         this.locked = false;
         this.COORDS = RoomGraph.getCoords(this.ID); 

@@ -26,7 +26,7 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
         
         this.searchDialog = "Many foreign chemical can be dispensed from their containers on the wall.";
         this.description = "The series of six opaque dispensers are\n"
-                         + "lined up next to eachother over a sink. At the bottom\n"
+                         + "lined up next to each other over a sink. At the bottom\n"
                          + "of each one is a rotating stopcock.";
         this.actDialog = "You need a vial or test tube to dispense into!";
 

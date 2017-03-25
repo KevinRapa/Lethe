@@ -12,13 +12,6 @@ public class Lib4 extends Room{
     public Lib4(String name, String ID, Furniture tbl) {
         super(name, ID);
         this.REF = (Lib4_Table)tbl;
-        description= "At the top step of the stairs, you gaze into the north end\n" +
-                     "of the second floor. A couch sits in front of a fireplace in\n" +
-                     "the far corner. A glimmering object catches your eye on a table\n"
-                   + "between them. A west bookshelf labeled \"Perdition\" stands against\n" +
-                     "the wall. In the northeast corner is yet\n" +
-                     "another statue. A large globe stands in the room's center.\n" +
-                     "The floor extends south on a small balcony.\n";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {

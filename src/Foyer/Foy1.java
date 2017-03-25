@@ -17,14 +17,6 @@ public class Foy1 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy1(String name, String ID) {
         super(name, ID);   
-        this.description = "The huge dim foyer is sparsely furnished and\n"
-             + "clean. Despite the openness, you feel claustrophobic. A\n"
-             + "red carpet is neatly layed out in the center. To\n"
-             + "your west, % \n"
-             + "To your east, a heavy wooden door leads somewhere else.\n"
-             + "A long wood table sits in the room's center under a huge\n"
-             + "chandelier and next to the front door is a lavender armoire.\n"
-             + "This room extends further north to a curved staircase at the other end.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

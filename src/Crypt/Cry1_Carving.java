@@ -11,7 +11,7 @@ public class Cry1_Carving extends Furniture {
         
         this.description = "Carved into the wall is a mural of sorts. In the center\n"
                          + "is a standing cloaked figure resembling a skeleton. It\n"
-                         + "holds a scythe and stands elevated among many clothingless\n"
+                         + "holds a scythe and stands elevated among many unclothed\n"
                          + "people piled up onto each other crawling towards it. It's\n"
                          + "as if the people wish to embrace the standing cloaked figure.\n"
                          + "Many clouds gather high above the skeleton.";

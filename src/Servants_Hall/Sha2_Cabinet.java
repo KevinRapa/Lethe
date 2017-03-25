@@ -11,7 +11,7 @@ public class Sha2_Cabinet extends LockedContainer {
     public Sha2_Cabinet(Item... items) {
         super(CBNT, items);
         
-        this.description = "It's a large wooden double-doored cabinet. It looks\n"
+        this.description = "It's a large wooden double-door cabinet. It looks\n"
                          + "plain and cheap. It must just house tools for the\n"
                          + "servants.";
         this.actDialog = "The tiny metal key fits perfectly. You turn it and the\n"
@@ -19,7 +19,7 @@ public class Sha2_Cabinet extends LockedContainer {
         this.searchDialog = "The cabinet is locked. Maybe one of the servants\n"
                           + "had a key...";
 
-        this.addNameKeys("(?:large )?(?:wood(?:en)? )?(?:double-doored )?cabinet");
+        this.addNameKeys("(?:large )?(?:wood(?:en)? )?(?:double-door )?cabinet");
     }    
 //*----------------------------------------------------------------------------*/
 }

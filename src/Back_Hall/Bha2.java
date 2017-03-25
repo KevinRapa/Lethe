@@ -19,12 +19,6 @@ public class Bha2 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bha2(String name, String ID) {
         super(name, ID);
-        description= 
-                "You stand at some unknown length in the hallway. It must have been\n"
-               + "maybe fifty paces you took. The floor and walls have degenerated\n"
-               + "and the room has darkened to a deep red hue. There's nothing\n"
-               + "except for some broken pieces of wood and a burnt\n"
-               + "picture frame lying on the floor.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {

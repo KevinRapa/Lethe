@@ -21,11 +21,6 @@ public class Wow3 extends Room {
         this.WOW2LDDR_REF = wow2lddr;
         this.LDDRITEM_REF = Ilddr;
         this.FLR_REF = flrInv;
-        this.description = 
-               "You stand atop the small balcony, claustrophobic, overlooking "
-             + "the large room. A large wood shelf blocks a door to the north. "
-             + "Immediately to your east, there's another door covered in "
-             + "gashes and splinters.";
     }
 /*----------------------------------------------------------------------------*/        
     @Override public String getBarrier(Direction dir) {

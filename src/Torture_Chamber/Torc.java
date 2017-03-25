@@ -16,15 +16,6 @@ public class Torc extends Room {
 // ============================================================================    
     public Torc(String name, String ID) {
         super(name, ID);
-        this.description = 
-               "Many sinister tools fill this room. Center on the east wall "
-             + "is a vertical wheel with many pegs around the edge. Two "
-             + "sawhorses in the northwest corner support a long metal device. "
-             + "Against the south wall cross a pair of wood beams. A large "
-             + "scythe is displayed above it. In the center is a table fit with "
-             + "many leather straps. A couple cages hang from the ceiling, and "
-             + "two torches light the room on either side. A metal door leads "
-             + "east here.";
     }
 // ============================================================================
     @Override public String getDescription() {

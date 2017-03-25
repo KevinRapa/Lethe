@@ -13,15 +13,6 @@ public class Kitc extends Room{
         super(name, ID);
         
         this.TORCH_INV_REF = torchInv;
-        this.description = "You have found the kitchen. This room's musty\n" +
-                           "odor grows stronger near a pantry on the room's north\n" +
-                           "end. A hearth for cooking sits in the room's center\n" +
-                           "with pots hanging over it.  Aside the windows on the\n" +
-                           "east wall is a shelf of wine and a couple open barrels.\n" +
-                           "A counter extends along the west wall, with a metal sink\n"
-                         + "on the end closest to you. Mounted on the\n" +
-                           "south wall is the key rack mentioned earlier by the\n" +
-                           "apparition.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {

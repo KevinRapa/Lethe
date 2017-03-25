@@ -14,7 +14,7 @@ public class Lib3_Statue extends Statue {
         this.leftEye = false;
         this.rightEye = false;
         this.description = "The towering statue reaches a bit over a story tall.\n"
-                         + "On its blocky rectangular base stands a prancing horse.\n"
+                         + "On its boxy rectangular base stands a prancing horse.\n"
                          + "A small square seam on the statue's base piques your interest.";
         this.searchDialog = "A small square seam on the statue's base piques\n"
                           + "your interest.";

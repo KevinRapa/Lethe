@@ -13,7 +13,7 @@ public class Sew15_Gate extends Furniture {
                            "further down into darkness. The iron bars extend down\n" +
                            "into the water where they form a grate of sorts, you\n" +
                            "suppose to prevent things from... escaping\n" +
-                           "unwantingly.";
+                           "unwantedly.";
         this.actDialog = "You can't get the gate open. It's locked.";
         this.searchDialog = "They're just iron bars.";
 

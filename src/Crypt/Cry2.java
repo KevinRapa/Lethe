@@ -10,13 +10,6 @@ public class Cry2 extends Room {
 // ============================================================================    
     public Cry2(String name, String ID) {
         super(name, ID);
-        this.description= "You stand at the north end of the chamber. Arranged in a\n" +
-                          "grid pattern on the east wall are numerous drawers with\n" +
-                          "knobs on each. Protrusions from the walls resembling\n" +
-                          "boney arms hold up burning platters serving as wall lights.\n" +
-                          "Standing against the west wall is a tall stone coffin " +
-                          "with an engraving on the wall framing it. At the north\n" +
-                          "wall is an altar.";
     }
 // ============================================================================
     @Override public String getDescription() {

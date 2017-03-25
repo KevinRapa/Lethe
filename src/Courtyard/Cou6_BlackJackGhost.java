@@ -35,7 +35,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         super();
         this.searchDialog = "The ghost won't appreciate that.";
         this.actDialog = "\"Come back if you want to play again!";
-        this.description = "Leaning nonchalantely against the castle wall is a\n"
+        this.description = "Leaning nonchalantly against the castle wall is a\n"
                          + "ghostly figure shuffling what seem to be cards. The apparition\n"
                          + "is garbed in distinctive clothing- a vest and a full-brimmed hat.";
         this.addActKeys("play");

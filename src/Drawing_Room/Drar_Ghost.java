@@ -35,7 +35,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
         this.useDialog = "It's a ghost- translucent and gaseous, sooo...";
         this.actDialog = "The apparition returns to sipping from the ghostly cup.";
         this.description = "The white apparition resembles a male dressed in\n"
-                         + "robes wearing the hat of a scolar. His face is\n"
+                         + "robes wearing the hat of a scholar. His face is\n"
                          + "disfigured and horribly wrinkly.";
         
         this.addUseKeys(ANYTHING);

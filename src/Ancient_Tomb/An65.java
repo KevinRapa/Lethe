@@ -17,13 +17,6 @@ public class An65 extends Room {
 // ============================================================================    
     public An65(String name, String ID) {
         super(name, ID);
-        this.description= 
-                "You stand uncomfortably on the south end of the room. " +
-                "In the corner stands the dessicated, but alive figure, "
-              + "staring at you blankly and holding still.\n" +
-                "This end is also lit with a few wall torches. A heavy\n" +
-                "stone casket lies in the center of the room, and several\n" +
-                "other wooden caskets lean on the walls.";
     }
 // ============================================================================
     @Override public String triggeredEvent() {

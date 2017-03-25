@@ -11,7 +11,7 @@ public class Tbal_Stairs extends Staircase {
         super(Direction.UP);
 
         this.description = "The straight set of steps leads to a door\n"
-                         + "giving entrace to the solemn building to the\n"
+                         + "giving entrance to the solemn building to the\n"
                          + "north.";
     }
     // ========================================================================   

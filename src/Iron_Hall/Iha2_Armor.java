@@ -20,7 +20,7 @@ public class Iha2_Armor extends SearchableFurniture implements Gettable, Moveabl
         this.inv = new Armor_Inventory(plrm);
         this.description = "It's a suit of armor holding a polearm. Its gauntlet\n"
                          + "is wrapped around it, but awkwardly as if the gauntlet\n"
-                         + "had been pryed opened and then closed repeatedly.";
+                         + "had been pried opened and then closed repeatedly.";
         this.searchDialog = "The suit of armor is holding a polearm, but its\n"
                           + "gauntlet is wrapped around it awkwardly.";
         this.actDialog = "You will probably get hurt trying to do that.";

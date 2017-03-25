@@ -14,12 +14,6 @@ public class Tbal extends Room {
 // ============================================================================    
     public Tbal(String name, String ID) {
         super(name, ID);
-        this.description= 
-                "You are on an outside balcony before a set of " +
-                "stairs leading to a solemn chamber to the north. " +
-                "The chamber is a small building with a simple " +
-                "gabled roof perched on a magnificent pillar extending "
-              + "all the way to the sea far below.";
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {

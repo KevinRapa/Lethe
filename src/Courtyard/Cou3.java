@@ -13,15 +13,6 @@ public class Cou3 extends Room{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou3(String name, String ID) {
         super(name, ID);
-        description= 
-                "You're in the center of an overgrown courtyard, just in\n" +
-                 "front of the main gate. You are surrounded on all sides\n" +
-                 "by the fortress-like castle wall. Before you climbs a\n" +
-                 "great set of crumbling steps to the castle's entrance.\n" +
-                 "There is a fork in the path here. It wraps left and right\n" +
-                 "around to the sides of the steps. Ivy grows rampantly\n" +
-                 "on and over everything and ravens dart through the air\n"
-               + "every now and then.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {

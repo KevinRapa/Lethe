@@ -13,7 +13,7 @@ import A_Super.Direction;
  * @see Ancient_Tomb.Ant_Casket
  * @author Kevin Rapa
  */
-abstract public class Tomb extends Room {
+public class Tomb extends Room {
 // ============================================================================    
     public Tomb(String ID) {
         super("in a small tomb", ID);

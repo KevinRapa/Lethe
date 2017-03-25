@@ -290,7 +290,7 @@ public class GUI extends JFXPanel {
      * @param txt a room description.
      */
     public static void descOut(String txt) {
-        DESC.setText(NEWLINE.matcher(txt).replaceAll(" "));
+        DESC.setText(txt);
     }
 /*----------------------------------------------------------------------------*/    
     /**

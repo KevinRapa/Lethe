@@ -13,7 +13,7 @@ public class Cou8_Nest extends SearchableFurniture implements Gettable {
         super(items);
         
         this.description = "It's a small empty raven's nest perched precariously on\n"
-                         + "a nearby branch. The nest is composed of many mishapen\n"
+                         + "a nearby branch. The nest is composed of many misshapen\n"
                          + "twigs and brambles sticking out every which way. The nest\n"
                          + "contains a few pieces of debris, but no eggs.";
         this.searchDialog = "You look inside the nest.";

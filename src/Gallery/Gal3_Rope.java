@@ -22,7 +22,7 @@ public class Gal3_Rope extends Furniture {
             this.searchDialog = "It's just an ordinary rope.";
             
             this.addActKeys("cut", "pull", "untie");
-            this.addUseKeys("katana", "(?:silver|rusty|broken) sword", "(?:war|battle) axe");
+            this.addUseKeys("katana", "(?:silver|rusty|broken) sword", "(?:war|battle) ax");
             this.addNameKeys("rope");
     }
 /*----------------------------------------------------------------------------*/    
@@ -63,7 +63,7 @@ public class Gal3_Rope extends Furniture {
     private boolean detectItem() {
         // Detects if you have a blade to cut the rope with.
         return Player.getInv().contents().stream().anyMatch(
-                i -> i.toString().matches("katana|.+(?:sword|axe)")
+                i -> i.toString().matches("katana|.+(?:sword|ax)")
         );
     }
 /*----------------------------------------------------------------------------*/

@@ -13,7 +13,7 @@ public class Iha1_Armor extends Furniture implements Moveable {
                          + "gazing out the window.";
         this.actDialog = "You will probably get hurt trying to do that.";
         this.searchDialog = "You find a long polearm, but the gauntlet is\n"
-                          + "gripping it too tightly to be pryed open.";
+                          + "gripping it too tightly to be pried open.";
         this.addActKeys("equip|wear", "pry|open", GETPATTERN);
         this.addNameKeys("(?:suit (?:of )?|plate )?armor", POLEARM, 
                 "(?:armor )?suit|gauntlet|hand");

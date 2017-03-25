@@ -7,7 +7,7 @@ import A_Super.Item;
 import A_Super.Key;
 import A_Super.Furniture;
 /**
- * Pryed using a crowbar to give the player a key.
+ * Pried using a crowbar to give the player a key.
  * 
  * @author Kevin Rapa.
  */

@@ -13,7 +13,7 @@ public class Tmb3_Cndl extends Furniture implements Gettable {
         
         this.description = "The candles stand in the wall niches without any base;\n"
                          + "only a collection of melted wax at the bottoms holds them\n"
-                         + "upright. Puzzlingly, the candles still burn steadily,\n"
+                         + "upright. Perplexingly, the candles still burn steadily,\n"
                          + "not appearing to melt the wax any further.";
         this.useDialog = "The torch is already lit, despite having been in your pocket all this time.";
         this.actDialog = "Ouch! Really hot! Why would you do that to yourself?";

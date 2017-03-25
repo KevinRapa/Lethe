@@ -44,7 +44,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
                           + "hair on your body stands. The zombie takes the "
                           + "brain in a jar from you and manages to stuff it "
                           + "in its small pocket. The figure pulls its hand "
-                          + "out and offers you a small boxey object. The "
+                          + "out and offers you a small boxy object. The "
                           + "figure makes another load moan and holds its hand "
                           + "out. You take the item. The figure "
                           + "makes a final loud moan and remains quiet.";

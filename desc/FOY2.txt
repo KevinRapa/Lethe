@@ -1,0 +1,5 @@
+You stand surrounded by the foyer's immense staircase. 
+It curves upwards around you against the back wall for 
+two stories. Straight ahead, through an arched way 
+carved through the base of the stairs, % To your 
+right, a statue occupies an alcove carved into the wall.

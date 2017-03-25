@@ -11,11 +11,11 @@ public class Gal5_Cabinet extends LockedContainer {
 
         this.actDialog = "The tiny gold key fits perfectly. You turn it and the\n"
                             + "cabinet makes a satisfying *click*.";
-        this.description = "It's a large wooden double-doored cabinet. It is fancily\n"
+        this.description = "It's a large wooden double-door cabinet. It is fancily\n"
                          + "carved and looks as though it holds something valuable.";
         this.searchDialog = "The cabinet is locked. Looks like you'll need a key.";
 
-        this.addNameKeys("(?:large )?(?:wood(?:en)? )?(?:double-doored )?(?:curio )?cabinet");
+        this.addNameKeys("(?:large )?(?:wood(?:en)? )?(?:double-door )?(?:curio )?cabinet");
     }    
 //*----------------------------------------------------------------------------*/
 }

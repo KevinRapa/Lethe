@@ -43,12 +43,6 @@ public class Pris extends Room {
 // ============================================================================    
     public Pris(String name, String ID) {
         super(name, ID);
-        this.description= 
-                "You are in a room with 6 prison cells lining the west and north.\n" +
-                "Metal doors lead both west and east. A large wooden table sits\n" +
-                "In the center of the room. Several scattered standing candelabras "
-              + "give a low level of light, just enough to see an sitting figure "
-              + "in cell 2. Against the north wall is a simple wooden cabinet.";
         this.addFurniture(CELLS);
     }
 // ============================================================================    

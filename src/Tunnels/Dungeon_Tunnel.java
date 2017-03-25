@@ -10,7 +10,7 @@ import A_Super.Room;
  * 
  * @author Kevin Rapa
  */
-abstract public class Dungeon_Tunnel extends Room {
+public class Dungeon_Tunnel extends Room {
     protected final static String 
             WATER_THAT_WAY = "Do you feel like going for a swim?";
     private final static Furniture MONSTER = new DungeonMonsterFurniture();

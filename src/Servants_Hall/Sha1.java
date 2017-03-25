@@ -16,13 +16,7 @@ public class Sha1 extends Room {
 /*----------------------------------------------------------------------------*/
     public Sha1(String name, String ID) {
         super(name, ID);
-        this.description = 
-                "You're on the south end of a short dark hallway.\n" +
-               "To your west is a small door. Some torches on the\n"
-             + "wall dimly light the\n" +
-               "hallway. Looking to the north, there's another door\n" +
-               "on the left side further down the hallway. You can\n"
-             + "hear a soft laughing coming from the west.";
+
         this.DESC_2 = 
                 this.description.replaceFirst("a small door", "an open doorway");
     }

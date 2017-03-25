@@ -12,13 +12,6 @@ public class Lib2 extends Room {
     public Lib2(String name, String ID) {
         super(name, ID);
 
-        description = "You're in the small north end of the library directly under\n" +
-                      "the upstairs floor. In the northwest corner, a couch\n" +
-                      "sits in front of a fireplace. Against the west wall is a\n" +
-                      "bookshelf labeled \"Voyage\". East is a second bookshelf\n" +
-                      "labeled \"Warfare\". Aside the fireplace is a small rack\n" +
-                      "of shoes below a glass pane window. In the northeast\n" +
-                      "corner stands a statue.";
         DESC_MOVED = "You're in the small north end of the library directly under\n" +
                      "the upstairs floor. In the northwest corner, a couch sits\n" +
                      "in front of a fireplace. Against the west wall is the\n" +

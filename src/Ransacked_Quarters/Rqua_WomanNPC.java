@@ -15,7 +15,7 @@ public class Rqua_WomanNPC extends NonPlayerCharacter {
                          + "her face. She keeps her unsettling glare on you and "
                          + "laughs quietly to herself.";
         this.actDialog = "*A deranged laugh* \"We all forget!!!! Why measure oneself "
-                       + "with inpalpable knowledge when we have our wealth???? Eury "
+                       + "with impalpable knowledge when we have our wealth???? Eury "
                        + "does not know my secret!!! All his riches can be mine at my "
                        + "pleasure!!!! Hell treats the wealthy comfortably and the wise "
                        + "with contempt!!!!\"";

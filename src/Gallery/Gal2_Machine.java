@@ -28,7 +28,7 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
         this.moved = false;
         
         this.NOT_MOVED = "The machine rests flush against the wall and hides any existing outlet.";
-        this.useDialog = "Hitting the machine only sends a sharp current of electrity through your body.";
+        this.useDialog = "Hitting the machine only sends a sharp current of electricity through your body.";
         this.searchDialog = "As you touch the front handle, a strong electrical "
                         + "current propels up your arm. You yank your hand back.";
         this.description = 

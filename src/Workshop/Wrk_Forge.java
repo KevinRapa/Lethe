@@ -11,7 +11,7 @@ public class Wrk_Forge extends Furniture implements Gettable, Unmoveable {
         super();
 
         this.description = "The brick forge's heat envelops the room. Though\n"
-                         + "there's no fire in it, the smouldering ashes have only begun\n"
+                         + "there's no fire in it, the smoldering ashes have only begun\n"
                          + "to cool.";
         this.actDialog = "You're smart enough not to put your hand in there.";
         this.useDialog = "You'd much rather work with wood than metal...";
@@ -19,7 +19,7 @@ public class Wrk_Forge extends Furniture implements Gettable, Unmoveable {
         this.addActKeys(GETPATTERN);
         this.addActKeys(FEELPATTERN);
         this.addUseKeys(HAMMER);
-        this.addNameKeys("(?:brick )?forge", "(?:smouldering )?ash(?:es)?");
+        this.addNameKeys("(?:brick )?forge", "(?:smoldering )?ash(?:es)?");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {

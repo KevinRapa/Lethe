@@ -23,7 +23,7 @@ public class LootSack extends Item {
     
     public LootSack() {
         super(Names.LOOT_SACK, "The simple twine sack is crafted with a rounded "
-                + "bottom and a thick pullstring at the top.", null , 0);
+                + "bottom and a rope at the top.", 0);
         this.INV = new SackInventory();
         this.type = Names.LOOT_SACK;
         this.worth = 0;

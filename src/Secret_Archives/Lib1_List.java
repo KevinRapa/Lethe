@@ -16,7 +16,7 @@ public class Lib1_List extends Note {
         super(name);
         
         this.description = 
-            "Four sandstone statues ~~ Egypt ~~ 2200 ante Christum Natum\t\t\t\t\t\t" +
+            "Four sandstone statues ~~ Egypt ~~ 2200 ante Christum natum\t\t\t\t\t\t" +
             "Violin: Stradivarius ~~ 'Italy' ~~ 1715\t\t\t\t\t\t\t" +
             "Perpetual light artifact ~~ 'Namibia' ~~ ???\t\t\t\t\t\t" +
             "Spatial displacement device ~~ <unknown script> ~~ 2616\t\t\t\t\t\t\t" +

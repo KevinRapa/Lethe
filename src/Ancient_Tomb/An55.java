@@ -20,15 +20,6 @@ public class An55 extends Room {
 // ============================================================================    
     public An55(String name, String ID) {
         super(name, ID);
-        this.description= 
-                "You are at the north end of a long chamber with a low " +
-                "arched ceiling a mere foot above your head. This is "
-              + "clearly a tomb- an important one most likely. Your "
-              + "gaze is immediately drawn to something... somebody "
-              + "standing on the far south end. A large stone casket "
-              + "lies in the center of the long chamber. Several other "
-              + "wooden caskets stand up against the walls. A few torches "
-              + "on the walls light the room.";
     }
 // ============================================================================
     @Override public String triggeredEvent() {

@@ -46,7 +46,7 @@ public class Labo_Burette extends Furniture {
         this.mode = Titrant.EMPTY;
         this.VIAL_REF = emptyVial;
         this.TUBE_REF = testTube;
-        this.description = "It's a tall glass tube for dispensing particular quanities of liquids.\n"
+        this.description = "It's a tall glass tube for dispensing particular quantities of liquids.\n"
                          + "On the top is an opening to pour a liquid. On the bottom is a nozzle\n"
                          + "and stopcock for dispensing it. Make sure you have a vial or\n"
                          + "test tube to catch the liquid with. The burette has ";

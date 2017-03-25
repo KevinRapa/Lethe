@@ -13,11 +13,7 @@ public class Jha2 extends Room {
 // ============================================================================    
     public Jha2(String name, String ID, Furniture ln, Furniture ln2) {
         super(name, ID);
-        this.description= "You stand at the south end of the hall near a\n" +
-                          "southern door leading outside. At this end,\n" +
-                          "another jade lion at the east stares at\n" +
-                          "the blank western wall. A lantern hangs in the\n" +
-                          "center of the ceiling.";
+
         this.desc2 = "You stand at the south end of the hall near a\n" +
                      "southern door leading outside. The jade lion at the east\n"
                    + "stares at the newly formed door on the west wall. A lantern\n"

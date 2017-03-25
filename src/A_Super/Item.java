@@ -34,6 +34,7 @@ public class Item implements Serializable, Comparable<Item> {
     public Item(String name, int score) {
         NAME = name;
         FORMS = null;   
+        description = "";
         useID = 2;
         this.score = score;
         THRESHOLD = 0; // Does not combine

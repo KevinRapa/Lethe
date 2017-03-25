@@ -10,7 +10,7 @@ public class Lib1_ImportantNote extends Note {
         this.description = 
                 "Sketched roughly on the paper appears to be a schematic. "
               + "Three parts are drawn separated: a disc, a ring, and a "
-              + "small screw. A few measurments are noted. Written next "
+              + "small screw. A few measurements are noted. Written next "
               + "to the screw is \"1mm\", and written next to the disc is "
               + "\"filters to 700nm\". At the bottom of the sheet reads, "
               + "\"for Daedalus - 712\".";
