@@ -49,20 +49,20 @@ public class Help {
         "continual basis, for this is a text-based game, so there are " +
         "more-or-less no pictures. You may interact with things you read " +
         "in the description, barring some indistinct nouns such as " +
-        "\"atmosphere\", \"room\", and \"east\". For your convenience, you " +
+        "\"atmosphere\", \"the room\", and \"east\". For your convenience, you " +
         "may enter \"map\" or \"m\" so view a modest image of your location " +
-        "in order to get a quick feel for the directions you may move " +
-        "to.", 
+        "in order to get a quick feel for the directions you may move to.", 
          
         "You may examine things you enounter by entering an appropriate verb " +
         "(\"examine\", \"look at\", etc.) followed by the thing you wish to examine. " +
-        "For your convenience, the shortcut for this is \"c\" for \"check\" (e.g. \"c window\"). You " +
+        "For your convenience, the shortcut for this is \"c\" for \"check\" (e.g. \"c the window\"). You " +
         "may find this command useful in order to reveal clues about hidden " +
-        "objects as well as to add color to your imagination.", 
+        "objects as well as to add color to your imagination. You may examine items " +
+        "in your inventory the same way, although the shortcut 'c' doesn't work for this.", 
          
         "You can search by entering an appropriate verb " +
         "(\"search\", \"look in/around\", etc.) followed by the thing you wish " +
-        "to search. You may use the shortcut key \"e\" at your leisure (e.g. \"e table\"). If " +
+        "to search. You may use the shortcut key \"e\" at your leisure (e.g. \"e the table\"). If " +
         "the object can be searched, you will be taken to a sub-prompt for " +
         "exchanging items with the object's contents. Remember that even if " +
         "something cannot be searched, this doesn't imply that it doesn't " +
@@ -71,15 +71,17 @@ public class Help {
         "a list of items (e.g. \"take the pen, notepad, and 4\"). You may also"
       + "inspect things before you pick them up by entering <'c' item>.", 
          
-        "The somewhat famous (in the right community) early-eighties text-based " +
+        "The somewhat famous (in the right community) 1977 text-based " +
         "computer game \"Zork\" was known for its respectably sophisticated " +
-        "text processor. This game attempts to accomplish the same, and thus " +
+        "text parser. This game attempts to accomplish the same, and thus " +
         "allows reasonable sentences to be entered for input in addition to " +
         "the simple commands like \"search desk\" and \"climb stairs\". Communicate " +
         "to this game as if your were casually speaking. For instance, you may " +
-        "type things like \"walk to the north\", \"look inside the cabinet\", and " +
+        "type things like \"go to the north\", \"look inside the cabinet\", and " +
         "even chain commands together like \"walk through the east door and " +
-        "then search the table\". If you previously referenced an object, you " +
+        "then search the table\". TAKE NOTE that the game always thinks 'and' " +
+        "leads to a second command, UNLESS you precede it with a comma " + 
+        "(e.g. \"drop 2, 3, and 6\"). If you previously referenced an object, you " +
         "may use \"it\" or \"them\" instead of the name. For instance \"look through " +
         "the window\" and then \"open it\" is valid. You may interact with items " +
         "in your inventory in the same way as an alternative to entering your " +
@@ -87,26 +89,25 @@ public class Help {
         "are carrying them! And also, be respectful and avoid profanity, for " +
         "you are playing a high-class character in a sophisticated setting.",
          
-        "Of course, you may use items that you are carrying. This is done from " +
-        "the inventory, and most of the time, you will be asked what to use " +
-        "the item on. As an alternative, you may use items directly from the " +
-        "main prompt. For instance, \"break the door with the warhammer\" is " +
-        "valid. When using items this way, you can enter in its name or the " +
+        "You may use items directly from the " +
+        "main prompt. For instance, \"break the door with the warhammer\" or " +
+        "\"drop 1, 4, and 6\". When using items this way, you can enter in its name or the " +
         "slot it's in. Note that you don't need to enter in the WHOLE name. " +
         "For instance, if you are carrying a book called \"guide, \"Not Dying " +
         "for the Unlearned\", you may reference it by the name \"guide\". Be " +
         "careful though, since if you are carrying multiple guides, this may " +
         "not do what you expect.", 
          
-        "Combining is a useful action you may need to do from time to time. " +
-        "This is the act of entering in two or three objects to combine. If " +
-        "they are combinable, they will be exchanged for a newly crafted " +
-        "item. Combining is done from the inventory and the syntax is two " +
-        "or three item slots separated by commas. As a shortcut, you can " +
+        "You can combine 2 or 3 objects into a new object if " +
+        "they are combinable. Combining is done from the inventory. The syntax is two " +
+        "or items or slots separated by commas. As a shortcut, you can " +
         "enter \"combine\" or even just \"combine <item,item(,item)>\" from the main " +
-        "prompt. Combining is done all at once. Thus, if a hilt, pommel, " +
+        "prompt. Be careful, typing \"combine the sword and handle\" from the main prompt doesn't work " +
+        "because the game thinks anything after 'and' is a second command. However, " +
+        "preceding 'and' with a comma would work: \"combine the sword, and handle\", " + 
+        "or \"combine sword, handle\". Combining is done all at once. Thus, if a hilt, pommel, " +
         "and blade are combined to make a sword, do not try to combine 2 of " +
-        "them and then the 3rd later; combine all 3 at the same time. When " +
+        "them and then the 3rd later; combine all 3 at the same time. Though when " +
         "following a recipe, sometimes it requires multiple combine actions " +
         "in order to finish the recipe. In other words, sometimes crafted " +
         "items are ingredients for other crafted items.", 
@@ -116,7 +117,8 @@ public class Help {
         "the main prompt as long as you are carrying the item. You may also " +
         "substitute the item's slot number as alternative to its name, and " +
         "take note that entering in the complete name of the item is not " +
-        "always necessary. Inspecting can be useful for discovering hidden " +
+        "always necessary. Inspecting can also be done during a search if " +
+        "you want to look at an item before picking it up. Inspecting can be useful for discovering hidden " +
         "information about items, and it may clue you into the next course " +
         "of action.", 
          
@@ -126,7 +128,8 @@ public class Help {
         "possess both pen and a notepad to write on, you may write " +
         "momentos to yourself. Enter 'note', 'n', or 'write' at the main prompt " +
         "to do this. Alternatively, you may do this from your inventory " +
-        "by entering in choice '5'.",
+        "by entering in choice '5'. As a quick reminder, you may drop items " +
+        "by entering \"drop <item list>\" from the main prompt.",
         
         "Access your inventory by entering \"i\" from the main prompt. " +
         "Your inventory's contents will be listed. From here, you may " +
@@ -140,11 +143,12 @@ public class Help {
         "will automatically be added to your key ring.", 
          
         "Phylacteries are stored in your inventory. These are important! " +
-        "You cannot store or drop them. That is all.",    
+        "By entering 'l' from the main prompt, you can see how many " + 
+        "phylacteries you are carrying.",    
          
         "Most rooms have at least one door, and thus you may act on them from the\n" +
         "main prompt using the name 'door'. However, you do not need to act on doors\n" +
-        "in general movement. Your character moves through them automatically, if\n" +
+        "in general movement. Your character moves through them automatically if\n" +
         "they are unlocked, unblocked, etc.", 
          
         "The castle is made of rooms separated by doors and walls. A room may " +
@@ -172,8 +176,9 @@ public class Help {
         "In Zork, your primary objective as an explorer was to collect " +
         "treasure. You may do the same here, but seeing as you are in " +
         "a more dire circumstance, you primary job is to collect " +
-        "phylacteries (of which there are 5). Perhaps you should speak " +
-        "with the glass orb in the vestibule for more information on this."
+        "phylacteries (of which there are 5). As a secondary objective, " +
+        "you can raise your score by adding valuable items to the " + 
+        "loot sack (If you can find it!)."
     };
     
     static {
