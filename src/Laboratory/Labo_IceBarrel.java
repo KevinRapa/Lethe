@@ -111,7 +111,8 @@ public class Labo_IceBarrel extends SearchableFurniture
         public void addChilledItem() {
             if (BARREL_INV.contains(CHEMICAL)) {
                 // If chilled ingredients are chilled, they become "Super chilled"
-                String prefix = (CHEMICAL.toString().charAt(0) == 'c') ? 
+                // Super chilled ingredients become "Super super chilled".
+                String prefix = (CHEMICAL.toString().matches("(?:super|chilled).+")) ? 
                         "super " : "chilled "; 
                 
                 BARREL_INV.remove(CHEMICAL);
