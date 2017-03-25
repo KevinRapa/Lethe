@@ -32,7 +32,7 @@ public class Mha2_Door extends Door {
         super(dir);
         this.angel = this.soldier = this.horse = false; // Slots
         this.numMedallions = 1;
-        this.addNameKeys("(?:double )?doors");
+        this.addNameKeys("(?:double )?doors", "(?:door )?(?:sockets?|slots?)");
         this.addUseKeys(STONE_DISK, ANGEL_MEDALLION, HORSE_MEDALLION);
     }
 /*----------------------------------------------------------------------------*/

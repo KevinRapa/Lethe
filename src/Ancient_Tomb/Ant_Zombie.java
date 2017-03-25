@@ -40,11 +40,13 @@ public class Ant_Zombie extends NonPlayerCharacter {
                            "is clothed in simple farming vestments and keeps\n" +
                            "one of its hands in its pocket. 'Is it alive?'\n" +
                            "You wonder to yourself.";
-        this.actDialog =    "You open your mouth to speak. As you do, the figure makes a\n" +
-                            "loud moan. You jump, and every hair on your body stands.\n" +
-                            "The figure reaches into its pocket and offers you a\n" +
-                            "small boxey object. The figure makes another load moan\n"
-                          + "and holds its hand out. You take the item. The figure "
+        this.actDialog =    "The figure makes a loud moan. You jump, and every "
+                          + "hair on your body stands. The zombie takes the "
+                          + "brain in a jar from you and manages to stuff it "
+                          + "in its small pocket. The figure pulls its hand "
+                          + "out and offers you a small boxey object. The "
+                          + "figure makes another load moan and holds its hand "
+                          + "out. You take the item. The figure "
                           + "makes a final loud moan and remains quiet.";
         
         this.useDialog = "The zombie-like body, though horrific, appears passive. "
@@ -117,7 +119,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
         public Zombie_Note(String name, int drawerNum) {
             super(name);
             this.description = "The wrinkled message has been written in what "
-                    + "seems to be blunt charcoal. Only a single digit is "
+                    + "seems to be blunt charcoal. Only a single number is "
                     + "scrawled largely in the center: " + drawerNum+ ".";
         }
     }

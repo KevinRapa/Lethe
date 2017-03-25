@@ -49,7 +49,6 @@ public final class Player {
         ODD_CMD_SET = new HashSet<>();  // Random commands
     
     private static final String 
-        NOT_VALID_SLOT = "Oh, I didn't realize you had an item there!",
         ERRONEOUS_INPUT = "I think I may have misunderstood you on something...",
         VERSION = "This is Lethe / Author: Kevin Rapa / Written on Netbeans 8.1 "
                 + "/ Sounds obtained from freesound.org / Last modified: 3/24/2017",
@@ -509,7 +508,6 @@ public final class Player {
     }
     // ========================================================================  
     private static void viewKeyRing() {
-        Player.incrementMoves();
         AudioPlayer.playEffect(3);
         GUI.invOut("Keys:\n" + Player.keys.toString()); 
     }
@@ -568,7 +566,7 @@ public final class Player {
                 
                 GUI.out("You ravenously stuff your pockets.");
             }
-            else if (Player.isNonEmptyString(command)) {
+            else if (isNonEmptyString(command)) {
                 Scanner scan = new Scanner(command).useDelimiter("\\s+");
                 String action = scan.next(); // Should be take|t|store|s    
                 
@@ -579,27 +577,41 @@ public final class Player {
                 }
                     
                 String itemList = scan.nextLine();
-                // Evaluates the store or take action given the slot.
-                if (STORE_P.matcher(action).matches()) {
-                    for (Item item : getItemList(itemList, Player.inv)) {
-                        if (! item.equals(Inventory.NULL_ITEM) 
-                                && inv.contains(item)) 
-                        {
-                            evalStore(furnInv, item); // Item exists
-                            Player.incrementMoves();
-                        } 
+                
+                if (CHECK_P.matcher(action).matches()) {
+                    Item[] i = getItemList(itemList, furnInv);
+                    Player.incrementMoves();
+                    
+                    if (i.length > 1)
+                        GUI.out("Whoa now, one thing at a time please.");
+                    else if (i.length == 0)
+                        GUI.out("You're going to need to enter something in...");
+                    else if (i[0].equals(Inventory.NULL_ITEM))
+                        GUI.out("I couldn't find that in there...");
+                    else {
+                        if (i[0] instanceof Readable)
+                            AudioPlayer.playEffect(2);
+                        
+                        GUI.out(i[0].getDesc());
+                    }
+                }
+                else if (STORE_P.matcher(action).matches()) {
+                    Player.incrementMoves();
+                    
+                    for (Item i : getItemList(itemList, Player.inv)) {
+                        if (! i.equals(Inventory.NULL_ITEM) && inv.contains(i)) 
+                            evalStore(furnInv, i); // Item exists
                         else
                             GUI.out(ERRONEOUS_INPUT);
                     }
                 }
                 else if (TAKE_P.matcher(action).matches()) {
-                    for (Item item : getItemList(itemList, furnInv)) {
-                        if (! item.equals(Inventory.NULL_ITEM) 
-                                && furnInv.contains(item)) 
-                        {
-                            evalTake(furnInv, item); // Item exists
-                            Player.incrementMoves();
-                        } 
+                    Player.incrementMoves();
+                    
+                    for (Item i : getItemList(itemList, furnInv)) {
+                        if (! i.equals(Inventory.NULL_ITEM) 
+                                && furnInv.contains(i)) 
+                            evalTake(furnInv, i); // Item exists
                         else
                             GUI.out(ERRONEOUS_INPUT);
                     }
@@ -615,7 +627,7 @@ public final class Player {
         } while (isNonEmptyString(command));
     }
     // ========================================================================  
-    /*
+    /**
      * Takes a list of names, returns a list of items found in the inventory.
      * Items that weren't found are replaced by a NULL_ITEM.
      * Example 1: "take the book, the parchment, and the pen"
@@ -637,15 +649,19 @@ public final class Player {
         }
 
         String[] itemArray = LIST_P.split(trimmed);
-        Item[] resultArray = new Item[itemArray.length];
+        ArrayList<Item> resultArray = new ArrayList<>(itemArray.length);
 
-        for (int i = 0; i < itemArray.length; i++) {
-            String itemName = Player.tryIndefRef_Item(itemArray[i].trim());
+        for (String itemName : itemArray) {
+            // Populate the list with items
+            itemName = Player.tryIndefRef_Item(itemName.trim()); // Resolves 'it'
             
-            resultArray[i] = inv.get(itemName); // Gets NULL_ITEM if not found.
+            Item item = inv.get(itemName); // Gets NULL_ITEM if not found.
+            
+            if (! resultArray.contains(item)) // Prevents adding duplicates
+                resultArray.add(item);
         }
 
-        return resultArray; 
+        return resultArray.toArray(new Item[resultArray.size()]); 
     }
     // ========================================================================  
     /**
@@ -784,15 +800,16 @@ public final class Player {
         else if (SEARCH_P.matcher(verb).matches() || verb.matches("open|empty")) {
             // Player wants to open an item
             object = Player.tryIndefRef_Item(furnName);
+            Item i = inv.get(object);
             
-            if (object.equals("sack") || object.equals(LOOT_SACK)) {
+            if (i.toString().equals(LOOT_SACK)) {
                 // Loot sack is found in the foyer.
                 openLootSack(); 
                 setLastInteract_Item(LOOT_SACK);
             }
-            else if (object.equals(SHOE_BOX)) {
+            else if (i.toString().equals(SHOE_BOX)) {
                 // Loot sack is found in Kampe's quarters.
-                getInv().get(SHOE_BOX).useEvent(); 
+                i.useEvent(); 
                 setLastInteract_Item(SHOE_BOX);
             }
             else if (Player.hasItemResembling(object))
@@ -892,7 +909,7 @@ public final class Player {
                 message = "You have amassed a grand fortune which would earn you the respect "
                         + "of all kings, queens, popes, and the like.";
             else if (score >= 4500)
-                message = "Your riches would earn you the respect of most kings.";
+                message = "Your riches would earn you the respect of all kings.";
             else if (score >= 3500)
                 message = "Your taste is luxury is formidible.";
             else if (score >= 2500)
@@ -904,7 +921,7 @@ public final class Player {
                 message = "Your eye for wealth is strong. You will likely have much "
                         + "to pawn off, should you return.";
             else if (score >= 500)
-                message = "Your abide by your manly ethics to work hard and provide "
+                message = "You abide by your manly ethics to work hard and provide "
                         + "for your family. Although, the thought of wealth visits you frequently.";
             else if (score >= 250)
                 message = "You are rich in character, a true fortune to be respected. "
@@ -1083,11 +1100,9 @@ public final class Player {
             ; // Go back to main prompt
         else if (ANY_DIGIT_P.matcher(title).matches()) {
             // Player is appending to existing note.
-            int slot = Integer.parseInt(title);
+            Item n = inv.get(title);
 
-            if (slot > 0 && slot <= inv.size()) {
-                Item n = inv.get(slot - 1);
-
+            if (! n.equals(Inventory.NULL_ITEM)) {
                 if (n instanceof Note && ! (n instanceof Book)) {
                     // Player may write on notes but not books.
                     Item newNote = new Note(n.toString(), 
@@ -1100,9 +1115,9 @@ public final class Player {
                     printInv();
                 }
                 else 
-                    GUI.out("That, sir, is not a note.");
+                    GUI.out("That isn't a note if I've ever seen one.");
             }
-            else GUI.out(NOT_VALID_SLOT);
+            else GUI.out(ERRONEOUS_INPUT);
         }
         else if (! Player.inv.isFull()) {
             // Player is making a new note.
@@ -1193,7 +1208,7 @@ public final class Player {
     private static boolean validateList(Item[] list) {
         for (Item i : list) // Checks for null items
             if (i.equals(Inventory.NULL_ITEM)) {
-                GUI.out(NOT_VALID_SLOT); 
+                GUI.out(ERRONEOUS_INPUT); 
                 return false;
             }
         
@@ -1202,7 +1217,7 @@ public final class Player {
             case 2: case 3:
                 return true; 
             case 0:
-                GUI.out(NOT_VALID_SLOT);
+                GUI.out(ERRONEOUS_INPUT);
                 return false;
             case 1:
                 GUI.out("You take a moment to ponder how "
@@ -1646,6 +1661,7 @@ private static class TextParser {
 
             if (Player.hasItemResembling(instrument)) {
                 Player.setLastInteract_Item(instrument);
+                Player.incrementMoves();
                 Item item = Player.getInv().get(instrument);
                 String type = item.getType();
 
@@ -1822,6 +1838,7 @@ private static class TextParser {
                 Item[] list = Player.getItemList(i.toString(), Player.getInv());
                 Furniture furn = Player.getFurnRef(furniture);
                 Player.setLastInteract_Furn(furniture);
+                Player.incrementMoves();
                 int j;
 
                 for (j = 0; j < list.length; j++) {
@@ -1868,6 +1885,7 @@ private static class TextParser {
                 // This case is essentially the same as above.
                 Item[] list = Player.getItemList(i.toString(), Player.getInv());
                 LootSack sack = (LootSack)Player.getInv().get(LOOT_SACK);
+                Player.incrementMoves();
                 int j;
 
                 for (j = 0; j < list.length; j++) {
@@ -1883,17 +1901,17 @@ private static class TextParser {
                     Player.evalStore(sack.getInv(), list[j]);
                     Player.printInv();
 
-                    if (list[j].toString().equals(LOOT_SACK)) {
+                    if (list[j].toString().equals(LOOT_SACK) && ! sack.isFull()) {
                         // Player can put the sack inside the sack, because why not.
                         GUI.out("You stuff the sack inside itself and pull the string. "
                               + "All of the sudden, the sack is gone. You stand there, "
                               + "empty-handed, and confused.");
                         break;
                     }
-
-                    if (list.length > 1 && j == list.length);
-                        GUI.out("You store them all in the sack.");
                 }
+
+                if (list.length > 1 && j == list.length)
+                       GUI.out("You store them all in the sack.");
             }
             else
                 GUI.out("There is no " + furniture + " here.");

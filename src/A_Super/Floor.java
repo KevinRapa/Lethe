@@ -10,7 +10,7 @@ import A_Main.Player;
  * 
  * @author Kevin Rapa
  */
-public class Floor extends SearchableFurniture {
+public class Floor extends SearchableFurniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Floor(String dsc, Item... items) {
             super(items);

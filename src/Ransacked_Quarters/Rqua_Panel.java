@@ -25,11 +25,11 @@ public class Rqua_Panel extends Furniture {
             this.BED_REF = (Rqua_Bed)bed;
             this.description = "The tile underneath the bed looks loose.";
             this.searchDialog = "You'll have to lift this up first.";
-            this.actDialog = "It's too heavy and awkward to remove with your hands.\n"
+            this.actDialog = "It's too heavy and awkward to remove with your hands. "
                                 + "You'll need to find something to pry this up.";
-            this.useDialog = "The crowbar fits! You successfully remove the tile,\n"
-                           + "revealing a small molded key.\n"
-                           + "You put the molded key into your inventory.";
+            this.useDialog = "The crowbar fits! You successfully remove the tile, "
+                           + "revealing a small molded key which you take. The "
+                           + "woman speaks: \"Now you will know his secret too!!\"";
             this.addNameKeys("tile", "panel");
             this.addActKeys("pry", "move", "lift", "remove");
             this.addUseKeys(CROWBAR);

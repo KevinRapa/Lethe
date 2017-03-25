@@ -134,7 +134,8 @@ public class Map {
         // Found in a box in Kampe's quarters. Player may opt to give it to the
         // prison ghost for a hint.
         Item watch = new Item(SHINY_WATCH, "A beautiful etched pocket watch with a delicate " +
-            "gold chain. It still clicks each second behind the polished crystal face.", 500);
+            "gold chain. It still clicks each second behind the polished crystal face, and you "
+          + "can sense many delicate, expensive parts under it's surface.", 500);
         
         // Found in a vase inside a tomb in catacombs.
         Item ring = new Clothing(DIAMOND_RING, 
@@ -323,7 +324,8 @@ public class Map {
         Item bskt = new Item("wicker basket", "A decorative wicker basket. Probably not very useful for you right now.", 15);
         Item bwlrHat = new Clothing("wool bowler hat", "A short-brimmed durable hat with a domed top.", 
                 "You slip the warm hat on your head.", 30);
-        Item umbr = new Item("umbrella", "A stately black umbrella with a lacquered wood handle.", 
+        Item umbr = new BreakableItem("umbrella", 
+                "A stately black umbrella with a lacquered wood handle.", 
                 "Is it raining out? You somehow must have not noticed.", 30);
         //-----------------------------FURNITURE--------------------------------    
         Furniture foyW = new Wall("A dark wood-paneled wall.");
@@ -355,7 +357,7 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room vest = new Vest("in a vestibule", Id.VEST); 
         //-------------------------------ITEMS----------------------------------
-        Item pen = new Item(PEN, "It's a fancy blue ballpoint pen.", 
+        Item pen = new BreakableItem(PEN, "It's a fancy blue ballpoint pen.", 
                 "You could write momentos to yourself if you had some paper.", 40);
         Item ppr = new Item(NOTEPAD, "This is a stack of many sheets of brown parchment.", 
                 "You could write momentos with this if you had a pen.", 15);
@@ -1843,14 +1845,14 @@ public class Map {
         Item grl = new Item("grail", 
                 "It's treasure. A gold-plated grail studded with rubies. Where is all this from?", 300);
         Item cns = new Item("leather coin bag", 
-                "It's treasure. A handful of golden coins... Not currency you've ever seen though.", 200);
+                "It's treasure. A handful of golden coins... Not currency you've ever seen though.", 300);
         Item crwn = new Clothing("crown", 
                 "It's treasure. It's the crown of a king. Exactly who's crown, you cannot guess.", 
                 "You position the crown on your head. You've never felt so wealthy.", 300);
         Item brclt = new Clothing("bracelet", "It's treasure. A thick jade bracelet, cold and heavy.", 
-                "You put the bracelet on your wrist.", 250);
+                "You put the bracelet on your wrist.", 300);
         Item jdStat = new BreakableItem("jade statue", 
-                "It's treasure. A small statuette made of jade depicting a sitting female.", 250);
+                "It's treasure. A small statuette made of jade depicting a sitting female.", 300);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture vau2Chsts = new Vau_Chsts(cns, dmnd, jdStat);
         Furniture vauF = new Floor("The floors are sandstone blocks and covered in treasure.", brclt, grl, crwn);
@@ -1899,6 +1901,7 @@ public class Map {
         Furniture tow1BlckDr = new AtriumDoor(Direction.WEST);
 
         Furniture tow2DrN = new Tow2_NorthDoor(Direction.NORTH);
+        Furniture tow2F = new Floor("An iron cage-like material forms the floor and railings of the circular balcony.");
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE LICH'S QUARTERS">
@@ -2266,7 +2269,7 @@ public class Map {
         // <editor-fold defaultstate="collapsed" desc="AREA 7: TOWER">
 
         tow1.addFurniture(tow1F, wallEx, towWndw, towBlcny, tow1Pdstl, tow1Dr, tow1BlckDr, towSphr);
-        tow2.addFurniture(genDoor, towWndw, wallEx, towBlcny, eastDoor, towSphr, tow2DrN, clng);
+        tow2.addFurniture(genDoor, towWndw, wallEx, towBlcny, eastDoor, towSphr, tow2DrN, clng, tow2F);
         bls1.addFurniture(bls1Dr, bls1Strs, bls1_Plnts, blsWndw, bls1F, bls1Stat);
         bls2.addFurniture(eastDoor, bls2Strs, blsWndw, bls2F, blsBlcny);
         tbal.addFurniture(genDoor, tbalStrs, bbaSea, tbalPllr, northDoor, tbalDrS, tbalF);

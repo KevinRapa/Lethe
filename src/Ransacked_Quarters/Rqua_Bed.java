@@ -15,7 +15,8 @@ public class Rqua_Bed extends Furniture {
         this.searchDialog = "Nothing here. It's a bad place to hide something,\n"
                           + "as someone has already searched it. A tile beneath\n"
                           + "the bed looks suspicious, though.";
-        this.actDialog = "You move the bed out of the way, exposing a loose tile.";
+        this.actDialog = "You move the bed out of the way, exposing a loose tile. "
+                       + "The woman in the room keeps grinning wildly at you.";
         this.addNameKeys("(?:flimsy )?(?:metal )?(?:bedframe|bed)");
         this.addActKeys(MOVEPATTERN, SITPATTERN);
     }

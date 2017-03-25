@@ -24,12 +24,12 @@ public class Tow1 extends Lich_Room {
         this.TOW_PEDESTAL = pedestal;
         this.description= 
                 "You find yourself standing in an empty\n" +
-                "circular room with a blue and white checkered floor. Looking\n" +
-                "up, the room is a few stories high with a circular balcony\n" +
-                "wrapping around the room one story up. Wide paned windows\n" +
-                "extend along the south and east walls. On the west side\n" +
-                "is a pair of imposing black iron doors. Sitting in the\n" +
-                "center of a room is a pedestal.";
+                "circular room with a blue and white checkered floor. Looking " +
+                "up, the room is a few stories high with a circular balcony " +
+                "wrapping around the room one story up. Wide paned windows " +
+                "extend along the south and east walls. On the west side " +
+                "is a pair of imposing black iron doors. Sitting in the " +
+                "center of a room is a pedestal. ";
     }
 // ============================================================================
     @Override public String getDescription() {

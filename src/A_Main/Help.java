@@ -60,8 +60,7 @@ public class Help {
         "may find this command useful in order to reveal clues about hidden " +
         "objects as well as to add color to your imagination.", 
          
-        "Searching is one of the most useful commands you will use in order " +
-        "to progress. You can search by entering an appropriate verb " +
+        "You can search by entering an appropriate verb " +
         "(\"search\", \"look in/around\", etc.) followed by the thing you wish " +
         "to search. You may use the shortcut key \"e\" at your leisure (e.g. \"e table\"). If " +
         "the object can be searched, you will be taken to a sub-prompt for " +
@@ -69,7 +68,8 @@ public class Help {
         "something cannot be searched, this doesn't imply that it doesn't " +
         "contain useful stuff! When trading items with furniture, use the " +
         "commands \"take\" or \"store\" (shortcut are \"t\" and \"s\") followed by " +
-        "a list of item slots or names separated by commas or the word 'and'.", 
+        "a list of items (e.g. \"take the pen, notepad, and 4\"). You may also"
+      + "inspect things before you pick them up by entering <'c' item>.", 
          
         "The somewhat famous (in the right community) early-eighties text-based " +
         "computer game \"Zork\" was known for its respectably sophisticated " +

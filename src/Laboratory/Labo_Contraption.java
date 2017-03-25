@@ -16,13 +16,13 @@ public class Labo_Contraption extends Furniture implements Moveable {
                          + "The left half has a bunsen burner under a rack for a flask.\n"
                          + "Above it is an inch-wide glass tube bridging over. The\n"
                          + "right half consists of the glass tube emptying out over a\n"
-                         + "drain in the counter. ";
+                         + "drain in the counter. There's a switch connected to a stopcock on the tube.";
         this.actDialog = "You have no idea what to do. Maybe there's something in here to help.";
         this.searchDialog = "This giant thing is alien to you, yet nothing seems\n"
                           + "out of the ordinary.";
         this.useDialog = this.actDialog;
 
-        this.addNameKeys("(?:complicated )?(?:alchemical )?contraption", "glass tubes?");
+        this.addNameKeys("(?:complicated )?(?:alchemical )?contraption");
         this.addActKeys("use");
         this.addUseKeys(BEAKER, FLORENCE_FLASK);
     }

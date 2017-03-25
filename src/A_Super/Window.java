@@ -10,7 +10,7 @@ import A_Main.AudioPlayer;
  * @see Marble_Hall.MhaS_Wndw
  * @author Kevin Rapa
  */
-abstract public class Window extends Furniture {
+abstract public class Window extends Furniture implements Unmoveable {
     protected boolean isOpen;
     protected String descOpen, descClosed, escapeDialog;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

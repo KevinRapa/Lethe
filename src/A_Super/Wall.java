@@ -9,7 +9,7 @@ import static A_Main.Names.WEAPON;
  * 
  * @author Kevin Rapa
  */
-public class Wall extends Furniture {
+public class Wall extends Furniture implements Unmoveable {
 /*----------------------------------------------------------------------------*/    
     public Wall(String dsc) {
         super();

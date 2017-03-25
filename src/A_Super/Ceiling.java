@@ -4,7 +4,7 @@ import static A_Main.Names.*;
 /**
  * @author Kevin Rapa
  */
-public class Ceiling extends Furniture {
+public class Ceiling extends Furniture implements Unmoveable {
     // ========================================================================
     public Ceiling () {
         super();

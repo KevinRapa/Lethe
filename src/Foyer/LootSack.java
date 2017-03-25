@@ -64,6 +64,10 @@ public class LootSack extends Item {
         return result;
     }
     //---------------------------------------------------------------------
+    public boolean isFull() {
+        return ((SackInventory)INV).isFull();
+    }
+    //---------------------------------------------------------------------
     public int getWorth() {
         return worth;
     }
@@ -78,6 +82,10 @@ public class LootSack extends Item {
             this.CONTENTS.add(new Note("notice", 
                     "'Notice to staff: not a common utility sack. For loot ONLY!'"));
             this.CONTENTS.ensureCapacity(MAX_SIZE);
+        }
+        //---------------------------------------------------------------------
+        public boolean isFull() {
+            return this.CONTENTS.size() >= MAX_SIZE;
         }
         //---------------------------------------------------------------------
         @Override public boolean add(Item item) {

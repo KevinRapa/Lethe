@@ -28,7 +28,7 @@ public class Labo_Condenser extends Furniture implements Moveable {
                           + "Though they're alien to you, you note nothing out of the ordinary.";
         this.useDialog = "You place the beaker on top of the drain, under the glass tube.";
 
-        this.addNameKeys("condenser", "(?:glass )?tube|stopper|switch|drain");
+        this.addNameKeys("condenser", "(?:glass )?tubes?|stopper|switch|drain");
         this.addUseKeys(BEAKER, TEST_TUBE, FLORENCE_FLASK, EMPTY_VIAL, "copper (?:pot|pan)");
         this.addActKeys("flick", "turn", "toggle", "rotate");
     }

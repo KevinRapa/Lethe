@@ -48,7 +48,6 @@ public class Drar_Ghost extends NonPlayerCharacter {
         
         else if (this.firstTime) {
             this.converse1();
-            this.firstTime = false;
         }
         else if (! Player.hasItem(GLOWING_EMERALD)) {
             this.converse2();
@@ -62,7 +61,11 @@ public class Drar_Ghost extends NonPlayerCharacter {
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
         if (item.toString().equals(GLOWING_EMERALD)) {
-            this.converse3();
+            if (firstTime)
+                this.converse1();
+            else
+                this.converse3();
+            
             return NOTHING;
         }
         else
@@ -70,8 +73,9 @@ public class Drar_Ghost extends NonPlayerCharacter {
     }
 /*----------------------------------------------------------------------------*/
     @Override protected String converse1() {
+        this.firstTime = false;
         
-        GUI.out("As you open your mouth to speak, the apparition interrupts\n" +
+        GUI.out("Just as you do, the apparition interrupts\n" +
                 "and begins to talk to you....");
         GUI.menOut(Menus.ENTER);
         GUI.promptOut();
