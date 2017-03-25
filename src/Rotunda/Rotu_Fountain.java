@@ -1,7 +1,7 @@
 package Rotunda;
 
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 /**
  * Can be drained by a valve in Look which gives access to a wheel which
  * rotates the Rotunda.
@@ -10,7 +10,7 @@ import A_Super.Heavy;
  * @see Lookout.Look_Valve
  * @author Kevin Rapa
  */
-public class Rotu_Fountain extends Furniture implements Heavy {
+public class Rotu_Fountain extends Furniture implements Unmoveable {
     private boolean drained;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Rotu_Fountain() {       

@@ -1,9 +1,9 @@
 package Lookout;
 
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 
-public class Look_Cliff extends Furniture implements Heavy {
+public class Look_Cliff extends Furniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Look_Cliff() {
         super();

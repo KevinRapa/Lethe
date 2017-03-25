@@ -5,10 +5,10 @@ import A_Main.Inventory;
 import static A_Main.Names.*;
 import A_Super.Item;
 import A_Main.Player;
-import A_Super.Heavy;
 import A_Super.Liquid;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
+import A_Super.Unmoveable;
 /**
  * Used to create molten glass with dye, sand, and potash.
  * Player must go back to the closet to get sand.
@@ -16,7 +16,7 @@ import A_Super.SearchableFurniture;
  * @see Closet.Clos
  * @author Kevin Rapa
  */
-public class Wrk_Kiln extends SearchableFurniture implements Openable, Heavy {
+public class Wrk_Kiln extends SearchableFurniture implements Openable, Unmoveable {
     private final Item REFGLSSR, REFGLSSB, REFGLSSY;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Wrk_Kiln() {

@@ -106,15 +106,97 @@ public class Map {
         // is and the items are added to the respective furniture. 
         //**********************************************************************  
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE PHYLACTERIES">
-
+        
+        // Player must find and destroy these. The player may instead keep
+        // them as loot and then commit suicide to obtain an even higher score.
+        // TOTAL: 8000 points
+        
         Item studBkPhy = new Stud_BookPhylactery(BOOK_PHYL, 1500);
         Item kitcFrtPhy = new Kitc_FrtPhy(GLOWING_FRUIT, 1500);
         Item factumPhy = new Factum(FACTUM, 2000);
-        Item vauChlPhy = new Vau_ChalicePhylactery("glowing chalice", 1500);
+        Item vauChlPhy = new Vau_ChalicePhylactery(GLOWING_CHALICE, 1500);
         Item towScptrPhy = new Tow_ScepterPhylactery(GLOWING_SCEPTER, 1500);
 
         // </editor-fold>
         // ---------------------------------------------------------------------  
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SPECIAL TRESURE">
+        
+        // Finding treasure is a secondary objective. All items have value, but
+        // these have the highest of all non-phylactery items. Player must put
+        // them in the loot sack to raise score. TOTAL: 5500 points
+
+        // Found in a box in the attic.
+        Item attcVln = new BreakableItem(STRADIVARIUS, 
+            "A perfectly symmetrical violin, stately in appearance and still "
+          + "holding a satin shine. Looking closely, you can see inscribed on "
+          + "it, 'Stradivarius'.", "Surely you could never play...", 500);
+        
+        // Found in a box in Kampe's quarters. Player may opt to give it to the
+        // prison ghost for a hint.
+        Item watch = new Item(SHINY_WATCH, "A beautiful etched pocket watch with a delicate " +
+            "gold chain. It still clicks each second behind the polished crystal face.", 500);
+        
+        // Found in a vase inside a tomb in catacombs.
+        Item ring = new Clothing(DIAMOND_RING, 
+            "You have no words. The beauty stuns you. To think such a precious "
+          + "item was buried down there for so long.", 
+            "You slip the beautiful ring on your finger." ,500);
+        
+        // Found in a skeleton in the oubliette pit.
+        Item gldKnf = new Weapon(JEWELED_KNIFE, "The weapon's grand majesty "
+            + "stuns you. Its polished blade curves smoothly down to a sparkling "
+            + "platinum handle set with peridot gems. ", 500);
+        
+        // Found on altar in the chapel
+        Item gldUrn = new Item(GOLDEN_URN, 
+            "The beautiful gold urn is set around the lid with emeralds and sapphires.", 500);
+
+        // Found in the vault in a chest
+        Item dmnd = new BreakableItem(LARGE_DIAMOND, 
+            "It's treasure. A largely cut and undoubtedly valuable sparkling diamond.", 500);
+        
+        // Found on drawing room chess table.
+        Item qn = new Item(JEWELED_QUEEN, "The small delicate queen is carved in "
+            + "ivory and embedded with sapphires around the base. She holds a "
+            + "small sparkling staff with a small diamond set at its tip.", 
+            "Isn't this the strongest piece?", 500);
+        
+        // Found on drawing room chess table.
+        Item kng = new Item(JEWELED_KING, "The small delicate chess piece is carved in ivory. "
+            + "The tiny figure of a king bears a tiny platinum crown holds a "
+            + "scepter. Its base is studded with cleanly-cut garnets.", 
+            "You have no idea how to play that.", 500);
+        
+        // Found by entering "take fork" in COU3
+        Item couFrk = new Item(GOLDEN_FORK, "The magnificent fork of gold "
+                + "has been carved with the finest attention to detail. "
+                + "A large pearl is set into the end of the handle, and many "
+                + "small scapolite gems descorate the rest of it.", 500);
+        
+        // <editor-fold defaultstate="collapsed" desc="Philosopher's stone set">
+        // These items create the philosopher's stone treature.
+        // Each is found by watering a potted plant.
+        Item philSn = new BreakableItem(PHILOSOPHERS_STONE, 
+                "The three pieces have joined into a treasure of nearly unmatched beauty. "
+                + "The silver jeweled base now supports the lapis stone in the center, "
+                + "capped by the sparkling sapphire lotus.", 1000);
+        Item stnBs = new BreakableItem("philosopher's stone base", 
+                "A beautiful square base studded with sapphires. Despite it's "
+                + "majesty, there appears to be something missing, as there's a "
+                + "small metal spoke protruding from the base's center.", philSn, 3, 200);
+        Item stnBdy = new BreakableItem("philosopher's stone body", 
+                "It's a handheld stone pyramid made of lapis lazuli. Each convex "
+                + "side gently curves to a point at the top. The bottom and "
+                + "top each bear a small hole, as if they're missing something.", philSn, 3, 200);
+        Item stnHd = new BreakableItem("philosopher's stone head", 
+                "It's a silver lotus head studded with sapphires. Despite its "
+                + "majesty, there appears to be something missing, as there's a "
+                + "small spoke protruding from its bottom", philSn, 3, 200);
+        
+        // </editor-fold>
+        
+        // </editor-fold>
+        // --------------------------------------------------------------------- 
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE KEYS AND GENERIC FURNITURE">
         Key studKey = new Key("crude molded key", Id.STUD);        
         Key gal1Key = new Key("key with a bearded face on its bow", Id.GAL1);       
@@ -180,27 +262,6 @@ public class Map {
         Item snd = new Item(SAND, "You have a pocket full of sand. It's grainy and uncomfortable.", mxtr, 3, 0);
         Item sl = new Item(SOIL, "It's a soft pile of soil", mxtr, 3, -5);
         Item frt = new Item(FERTILIZER, "It's a handful of mysterious gardening wizardry.", mxtr, 3, 10);
-        // </editor-fold>
-        
-        // <editor-fold defaultstate="collapsed" desc="Philosopher's stone set">
-        // These items create the philosopher's stone treature.
-        Item philSn = new BreakableItem("philosopher's stone", 
-                "The three pieces have joined into a treasure of nearly unmatched beauty. "
-                + "The silver jeweled base now supports the lapis stone in the center, "
-                + "capped by the sparkling sapphire lotus.", 1000);
-        Item stnBs = new BreakableItem("philosopher's stone base", 
-                "A beautiful square base studded with sapphires. Despite it's "
-                + "majesty, there appears to be something missing, as there's a "
-                + "small metal spoke protruding from the base's center.", philSn, 3, 200);
-        Item stnBdy = new BreakableItem("philosopher's stone body", 
-                "It's a handheld stone pyramid made of lapis lazuli. Each convex "
-                + "side gently curves to a point at the top. The bottom and "
-                + "top each bear a small hole, as if they're missing something.", philSn, 3, 200);
-        Item stnHd = new BreakableItem("philosopher's stone head", 
-                "It's a silver lotus head studded with sapphires. Despite its "
-                + "majesty, there appears to be something missing, as there's a "
-                + "small spoke protruding from its bottom", philSn, 3, 200);
-        
         // </editor-fold>
         
         // </editor-fold>
@@ -363,6 +424,7 @@ public class Map {
         Furniture cou3Ivy = new Cou3_Ivy();
         Furniture cou3Gt = new Cou3_Gate();
         Furniture cou3F = new Cou_Floor(sl, grss, clvr, sl, sl);
+        Furniture cou3Frk = new Cou3_Fork(couFrk);
 
         Furniture cou4Gt = new Cou4_Gate();
         Furniture cou4Frst = new Cou4_Forest();
@@ -986,14 +1048,6 @@ public class Map {
                 "You have no idea how to play chess.", 30);
         Item bshp = new Item("bishop", "The small figure resembles... something.", 
                 "You have no idea how to play chess.", 30);
-        Item qn = new Item("jeweled queen", "The small delicate queen is carved in "
-                + "ivory and embedded with sapphires around the base. She holds a "
-                + "small sparkling staff with a small diamond set at its tip.", 
-                "Isn't this the strongest piece?", 250);
-        Item kng = new Item("jeweled king", "The small delicate chess piece is carved in ivory. "
-                + "The tiny figure of a king bears a tiny platinum crown holds a "
-                + "scepter. Its base is studded with cleanly-cut garnets.", 
-                "You have no idea how to play that.", 250);
         Item pwn = new Item("pawn", "The small figure resembles... something.", 
                 "This is the weakest piece right? Hmph. Better not ask a chess player that.", 15);
         Item rdBl = new Item(RED_BALL, "It's just a plain, heavy red ball. Where's the number on this?", 
@@ -1274,10 +1328,6 @@ public class Map {
         Room att1 = new Att1("in the attic", Id.ATT1, prisCbnt.getInv());       
         Room att2 = new Att2("in the attic", Id.ATT2);    
         //-------------------------------ITEMS----------------------------------  
-        Item attcVln = new BreakableItem("expensive violin", 
-                "A perfectly symmetrical violin, stately in appearance and still "
-              + "holding a satin shine. Looking closely, you can see inscribed on "
-              + "it, 'Stradivarius'.", "Surely you could never play...", 500);
         Item attcDll = new Item("doll", "A rag doll in a dress with one eye hanging out. Very creepy.", 15);
         Item attcSphn = new BreakableItem("sousaphone", 
                 "You never even thought these things were real!", 
@@ -1526,8 +1576,6 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room dkch = new Dkch("in Kampe's quarters", Id.DKCH);
         //-------------------------------ITEMS---------------------------------- 
-        Item watch = new Item(SHINY_WATCH, "A beautiful etched pocket watch with a delicate " +
-                "gold chain. It still clicks each second behind the polished crystal face.", 500);
         Item tape = new Item("duck tape", "State-of-the-art fabric tape made from cotton duck cloth. This is strong.", oar, 3, 15);
         Item whip = new Weapon("leather whip", "A stylishly braided leather whip.", 25);
         Item lthrHat = new Clothing("shiny leather hat", "A worn but polished leather stetson-style hat.", "You put it on.", 25);
@@ -1628,20 +1676,12 @@ public class Map {
                 "A small collection of ancient coins. Many archaic markings decorate "
                 + "their surfaces, with holes bored in the centers.", 
                 "Where do you expect to spend these?", 35);
-        Item ring = new Clothing("platinum diamond ring", 
-                "You have no words. The beauty stuns you. To think such a precious "
-                + "item was buried down there for so long.", 
-                "You slip the beautiful ring on your finger." ,500);
         Item nckLc = new Clothing("beaded necklace", 
                 "A lackluster necklace made with wooden beads.", 
                 "You fit the old ceremonial necklace over your head.", 40);
         Item jwl = new BreakableItem(IRIDESCENT_JEWEL, 
                 "The polished glassy pebble feels warm to the touch, "
                 + "and is constantly shifting color among red, black, and green.", 250);
-        Item gldKnf = new Weapon("jewel-encrusted knife", "The weapon's grand majesty "
-                + "stuns you. Its polished blade curves smoothly down to a sparkling "
-                + "platinum handle set with peridot gems. ", 500);
-        
         String medString = "It's an archaic stone key. It has a thick disc-shaped "
                 + "head and a long protruding shaft bearing a few fat teeth. ";
         Item med1 = new BreakableItem(KEY_OF_ANCESTRY, 
@@ -1776,7 +1816,6 @@ public class Map {
         Room cha2 = new Cha2("at the chancel altar", Id.CHA2);
         //-------------------------------ITEMS---------------------------------- 
         Item chaNt = new Cha_Note("malevolent note");
-        Item gldUrn = new Item("gold urn", "The beautiful gold urn is set around the lid with emeralds and sapphires.", 500);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture chaF = new Floor("Faded, dusty boards line the length of the floor from north to south.");
         Furniture chaW = new Wall("The walls are mostly carved wood paneling. "
@@ -1810,8 +1849,6 @@ public class Map {
                 "You position the crown on your head. You've never felt so wealthy.", 300);
         Item brclt = new Clothing("bracelet", "It's treasure. A thick jade bracelet, cold and heavy.", 
                 "You put the bracelet on your wrist.", 250);
-        Item dmnd = new BreakableItem("large diamond", 
-                "It's treasure. A largely cut and undoubtedly valuable sparkling diamond.", 500);
         Item jdStat = new BreakableItem("jade statue", 
                 "It's treasure. A small statuette made of jade depicting a sitting female.", 250);
         //-----------------------------FURNITURE-------------------------------- 
@@ -2058,7 +2095,7 @@ public class Map {
         cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl, coutWlkwy, couRvns);
         cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc, coutWlkwy, couRvns);
         cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou56F, cou6Stat, couCstl, cou6Ghst, couRvns);
-        cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, couCstl, couRvns);
+        cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, cou3Frk, couCstl, couRvns);
         cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl, couRvns);
         cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, 
                 entrStps, entrBlcny, couRvns);

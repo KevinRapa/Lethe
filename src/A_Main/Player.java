@@ -40,9 +40,7 @@ public final class Player {
 
     private static final HashMap<String, Runnable> 
         MAIN_CMDS = new HashMap<>(),    // Maps commands from main prompt
-        INV_CMDS = new HashMap<>();     // Maps commands from inventory
-    
-    private static final HashMap<String, String> 
+        INV_CMDS = new HashMap<>(),     // Maps commands from inventory
         ODD_CMD_KEYS = new HashMap<>(); // Maps random commands
     
     private static final HashSet<String> 
@@ -54,7 +52,12 @@ public final class Player {
         NOT_VALID_SLOT = "Oh, I didn't realize you had an item there!",
         ERRONEOUS_INPUT = "I think I may have misunderstood you on something...",
         VERSION = "This is Lethe / Author: Kevin Rapa / Written on Netbeans 8.1 "
-                + "/ Sounds obtained from freesound.org / Last modified: 3/24/2017";
+                + "/ Sounds obtained from freesound.org / Last modified: 3/24/2017",
+        DENIAL_MSGS[] = {
+            "That is quite an ambitious proposition.", "A valiant attempt.", 
+            "Did you have much to drink before you came?", "A novel concept!",
+            "An ingenious idea from one of your education.",
+            "The player is thwarted in the ridiculous attempt."};
 
     // <editor-fold defaultstate="collapsed" desc="MAPPINGS">
     // Maps various commands in the game to their actions.
@@ -127,22 +130,25 @@ public final class Player {
         
         INV_CMD_SET.addAll(INV_CMDS.keySet());
         //---------------------------------------------------------------------
-        ODD_CMD_KEYS.put("eat", "That is quite an ambitious proposition.");
-        ODD_CMD_KEYS.put("fight", "Did you have much to drink before you came?");
-        ODD_CMD_KEYS.put("speak", "Did you have much to drink before you came?");
-        ODD_CMD_KEYS.put("talk", "Did you have much to drink before you came?");
-        ODD_CMD_KEYS.put("climb", "Let us act like civilized guests whilst we're here.");
-        ODD_CMD_KEYS.put("jump", "Let us act like civilized guests whilst we're here.");
-        ODD_CMD_KEYS.put("smell", "You press your nose up against it and inhale deeply.");
-        ODD_CMD_KEYS.put("find", "You have already found it detective.");
-        ODD_CMD_KEYS.put("count", "You didn't climb all the way up to this precipice to do math.");
-        ODD_CMD_KEYS.put("burn", "Yes... burn it... burn it all down to the ground.");
-        ODD_CMD_KEYS.put("write", "You are sure the owner wouldn't wanting you doing that.");
-        ODD_CMD_KEYS.put("draw", "You are sure the owner wouldn't wanting you doing that.");
-        ODD_CMD_KEYS.put("inflate", "Does this look like some kind of balloon to you?");
-        ODD_CMD_KEYS.put("deflate", "Does this look like some kind of balloon to you?");
-        ODD_CMD_KEYS.put("take", "A futile but worthy attempt.");
-        ODD_CMD_KEYS.put("get", "A futile but worthy attempt.");
+
+        ODD_CMD_KEYS.put("climb",   () -> GUI.out("Let us act like civilized guests whilst we're here."));
+        ODD_CMD_KEYS.put("jump",    () -> GUI.out("Let us act like civilized guests whilst we're here."));
+        ODD_CMD_KEYS.put("smell",   () -> GUI.out("You press your nose up against it and inhale deeply."));
+        ODD_CMD_KEYS.put("find",    () -> GUI.out("You have already found it detective."));
+        ODD_CMD_KEYS.put("count",   () -> GUI.out("You didn't climb all the way up to this precipice to do math."));
+        ODD_CMD_KEYS.put("burn",    () -> GUI.out("Yes... burn it... burn it all down to the ground."));
+        ODD_CMD_KEYS.put("write",   () -> GUI.out("You are sure the owner wouldn't wanting you doing that."));
+        ODD_CMD_KEYS.put("draw",    () -> GUI.out("You are sure the owner wouldn't wanting you doing that."));
+        ODD_CMD_KEYS.put("inflate", () -> GUI.out("Does this look like some kind of balloon to you?"));
+        ODD_CMD_KEYS.put("deflate", () -> GUI.out("Does this look like some kind of balloon to you?"));
+        ODD_CMD_KEYS.put("take",    () -> getRandomDenialMsg());
+        ODD_CMD_KEYS.put("get",     () -> getRandomDenialMsg());
+        ODD_CMD_KEYS.put("eat",     () -> getRandomDenialMsg());
+        ODD_CMD_KEYS.put("fight",   () -> getRandomDenialMsg());
+        ODD_CMD_KEYS.put("speak",   () -> getRandomDenialMsg());
+        ODD_CMD_KEYS.put("talk",    () -> getRandomDenialMsg());
+        ODD_CMD_KEYS.put("lift",    () -> getRandomDenialMsg());
+        ODD_CMD_KEYS.put("pick",    () -> getRandomDenialMsg());
         
         ODD_CMD_SET.addAll(ODD_CMD_KEYS.keySet());
     }
@@ -165,7 +171,12 @@ public final class Player {
         }
         return null;
     }
-    /*------------------------------------------------------------------------*/   
+    /*------------------------------------------------------------------------*/
+    private static void getRandomDenialMsg() {
+        int i = (int)Math.abs(System.currentTimeMillis()) % DENIAL_MSGS.length;
+        GUI.out(Player.DENIAL_MSGS[i]);
+    }
+    /*------------------------------------------------------------------------*/
     public static String getLastVisited() { return lastVisited; }
     /*------------------------------------------------------------------------*/ 
     public static PlayerInventory getInv() { return inv; }
@@ -732,7 +743,7 @@ public final class Player {
                 }
                 else if (ODD_CMD_SET.contains(verb))
                     // Standard output stirngs for wierd input.
-                    GUI.out(ODD_CMD_KEYS.get(verb));
+                    ODD_CMD_KEYS.get(verb).run();
                 else 
                     GUI.out("Doing that to the " + object + " seems unnecessary right now.");
             }
@@ -850,11 +861,76 @@ public final class Player {
     }
     // ========================================================================
     // Searches the loot sack if the player is carrying it.
+    // Also prints score, a message, and the number of phylacteries collected.
+    // Inventories check for phylacteries and treasures based on there value!
     private static void openLootSack() {
-        if (Player.hasItem(LOOT_SACK))
-            Player.getInv().get(LOOT_SACK).useEvent();
+        int pi = inv.countPhylacteries();
+        
+        if (Player.hasItem(LOOT_SACK)) {
+            LootSack s = (LootSack)inv.get(LOOT_SACK);
+            int t = s.countTreasures();
+            int ps = s.countPhylacteries();
+            int p = pi + ps;
+            String message;
+            
+            // Displays player score
+            if (score >= 13500)
+                message = "Your wealth is beyond the dreams of avarice and "
+                        + "will earn you a divine seat in the afterlife.";
+            else if (score >= 11500)
+                message = "Your wealth is legendary and would bring a tear to Plutus' eye.";
+            else if (score >= 10000)
+                message = "Your wealth is nearly insurmountable and would "
+                        + "stun all humans and Gods alike.";
+            else if (score >= 8500)
+                message = "Your wealth is nearly insurmountable and would "
+                        + "stun all men and women alike.";
+            else if (score >= 7000)
+                message = "You have amassed a grand fortune which will certainly, should you "
+                        + "return, grant you any Earthly desire.";
+            else if (score >= 5500)
+                message = "You have amassed a grand fortune which would earn you the respect "
+                        + "of all kings, queens, popes, and the like.";
+            else if (score >= 4500)
+                message = "Your riches would earn you the respect of most kings.";
+            else if (score >= 3500)
+                message = "Your taste is luxury is formidible.";
+            else if (score >= 2500)
+                message = "You're skilled in the hunt for treasure, though "
+                        + "you have so much more room to grow.";
+            else if (score >= 1500)
+                message = "Your riches will earn you the respect of many.";
+            else if (score >= 1000)
+                message = "Your eye for wealth is strong. You will likely have much "
+                        + "to pawn off, should you return.";
+            else if (score >= 500)
+                message = "Your abide by your manly ethics to work hard and provide "
+                        + "for your family. Although, the thought of wealth visits you frequently.";
+            else if (score >= 250)
+                message = "You are rich in character, a true fortune to be respected. "
+                        + "Material possession are secondary, of course.";
+            else if (score >= 0)
+                message = "You have a humble spirit, and long not for possessions. "
+                        + "Your only wish, of course, is only to return home.";
+            else
+                message = "You have eccentric, perplexing tastes. But so long "
+                        + "as hope of returning home lingers, you spirit remains strong.";
+            
+
+            // If the player has looted phylacteries.
+            if (ps > 0)
+                message += " However, you have lost the desire to escape, "
+                        + "and wish only to bask eternally in your riches.";
+            
+            GUI.out("Your score is " + score + ". You have looted " + t + 
+                    " out of 10 legendary treasures and " + p + 
+                    " out of 5 phylacteries so far. " + message);
+            
+            s.useEvent();
+        }
         else 
-            GUI.out("You unfortunately do not have a giant sack of loot right now."); 
+            GUI.out("You have collected " + pi + " out of 5 phylacteries, and "
+                    + "you unfortunately do not have a giant sack of loot right now."); 
     }
 //******************************************************************************    
 // </editor-fold>  

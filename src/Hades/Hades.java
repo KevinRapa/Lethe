@@ -58,14 +58,14 @@ public class Hades extends Room {
     }
 // ============================================================================
     private String calculateScore(int score) {
-        if (score >= 13200)
+        if (score >= 13500)
             return 
                 "\"You are drenched in greed, my son. Undaunted by risk, " +
                 "in pursuit of only the unquenchable thirst for wealth. " +
                 "You are a master adventurer; a true idol among idols, surpassing even me. " +
                 "You shall live comfortably for all eternity in Tartarus, "
               + "in constant labor with frequent coffee breaks.\"";
-        if (score >= 10000)
+        if (score >= 10500)
             return 
                 "\"You are drenched in greed, my son. Undaunted by risk,\n" +
                 "in pursuit of only the unquenchable thirst for wealth.\n" +

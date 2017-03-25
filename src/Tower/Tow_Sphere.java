@@ -1,14 +1,14 @@
 package Tower;
 
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 /**
  * The source of the player's luring to the castle. 
  * It has an enticing glow and sound.
  * 
  * @author Kevin Rapa
  */
-public class Tow_Sphere extends Furniture implements Heavy {
+public class Tow_Sphere extends Furniture implements Unmoveable {
     // ========================================================================
     public Tow_Sphere () {
         super();

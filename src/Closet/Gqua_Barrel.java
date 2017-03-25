@@ -3,13 +3,13 @@ package Closet;
 import static A_Main.Names.HAND_DRILL;
 import static A_Main.Names.WEAPON;
 import A_Super.Furniture;
-import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.Openable;
+import A_Super.Unmoveable;
 /**
  * @author Kevin Rapa
  */
-public class Gqua_Barrel extends Furniture implements Openable, Heavy {
+public class Gqua_Barrel extends Furniture implements Openable, Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Barrel() {
         super();

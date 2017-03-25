@@ -1,12 +1,12 @@
 package Tunnels;
 
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 /**
  * Provides a description of the tunnel for the player.
  * @author Kevin Rapa
  */
-public class Sew_Tunnel extends Furniture implements Heavy {
+public class Sew_Tunnel extends Furniture implements Unmoveable {
     // ========================================================================
     public Sew_Tunnel () {
         super();

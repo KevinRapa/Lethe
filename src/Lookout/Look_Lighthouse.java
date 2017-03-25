@@ -1,9 +1,9 @@
 package Lookout;
 
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 
-public class Look_Lighthouse extends Furniture implements Heavy {
+public class Look_Lighthouse extends Furniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Look_Lighthouse() {
         super();

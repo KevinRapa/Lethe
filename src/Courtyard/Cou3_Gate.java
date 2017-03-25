@@ -3,13 +3,13 @@ package Courtyard;
 import A_Main.Names;
 import A_Super.Furniture;
 import A_Main.AudioPlayer;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 /**
  * The castle's front gate.
  * 
  * @author Kevin Rapa
  */
-public class Cou3_Gate extends Furniture implements Heavy {
+public class Cou3_Gate extends Furniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou3_Gate() {
         super();

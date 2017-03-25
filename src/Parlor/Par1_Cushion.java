@@ -7,7 +7,7 @@ import A_Super.SearchableFurniture;
  * 
  * @see Observatory.Obs1_Statues
  * @see Observatory.Obs1_Slots
- * @author Mantis Toboggan
+ * @author Kevin Rapa
  */
 public class Par1_Cushion extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

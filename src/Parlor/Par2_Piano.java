@@ -3,17 +3,19 @@ package Parlor;
 import static A_Main.Names.STEEL_WIRE;
 import A_Main.AudioPlayer;
 import A_Super.Furniture;
-import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
+import A_Super.Unmoveable;
 /**
  * Wakes up the orb NPC if played.
  * 
  * @see Parlor.Par1_Orb
  * @author Kevin Rapa
  */
-public class Par2_Piano extends SearchableFurniture implements Openable, Heavy {
+public class Par2_Piano extends SearchableFurniture 
+        implements Openable, Unmoveable 
+{
     private final Par1_Orb REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Par2_Piano(Furniture orb, Item... items) {

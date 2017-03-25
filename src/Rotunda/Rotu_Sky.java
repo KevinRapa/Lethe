@@ -1,9 +1,9 @@
 package Rotunda;
 
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 
-public class Rotu_Sky extends Furniture implements Heavy {
+public class Rotu_Sky extends Furniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rotu_Sky() {
         super();

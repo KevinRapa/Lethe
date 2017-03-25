@@ -2,11 +2,11 @@ package Cell;
 
 import static A_Main.Names.METAL_BAR;
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 /**
  * @author Kevin Rapa
  */
-public class Intr_Wheel extends Furniture implements Heavy {
+public class Intr_Wheel extends Furniture implements Unmoveable {
     // ========================================================================
     public Intr_Wheel () {
         super();

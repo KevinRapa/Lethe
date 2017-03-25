@@ -74,7 +74,11 @@ public final class Names {
         SHINY_WATCH = "shiny pocket watch",     WOODEN_OAR = "wooden oar",
         SHOE_BOX = "shoebox",                   RUBBER_GLOVES = "rubber gloves",
         WORK_BOOTS = "work boots",              CHARGED_BATTERY = "charged battery",
-        GLUE_BOTTLE = "glue bottle",            
+        GLUE_BOTTLE = "glue bottle",            STRADIVARIUS = "expensive violin",
+        LARGE_DIAMOND = "large diamond",        GOLDEN_URN = "golden urn",
+        JEWELED_KNIFE = "jewel-encrusted knife",JEWELED_KING = "jeweled king",
+        JEWELED_QUEEN = "jeweled queen",        DIAMOND_RING = "platinum diamond ring",
+        GOLDEN_FORK = "golden fork",            PHILOSOPHERS_STONE = "philosopher's stone",
             
         BIBLE = "biblical tome, 'The Book of Genesis'",
         ILIAD = "greek tome, 'The Iliad'",

@@ -6,7 +6,7 @@ import static A_Main.Names.INGREDIENT;
 import A_Super.Item;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
@@ -16,7 +16,9 @@ import java.util.HashMap;
  * @see Laboratory.Labo for solution
  * @author Kevin Rapa
  */
-public class Labo_IceBarrel extends SearchableFurniture implements Openable, Heavy {
+public class Labo_IceBarrel extends SearchableFurniture 
+        implements Openable, Unmoveable 
+{
     private final Item DRY_ICE_REF;
     // ========================================================================
     public Labo_IceBarrel (Item flask) {

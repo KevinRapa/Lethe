@@ -1,13 +1,13 @@
 package Courtyard;
 
 import A_Main.Player;
-import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
+import A_Super.Unmoveable;
 /**
  * @author Kevin Rapa
  */
-public class Courtyard_Fountain extends SearchableFurniture implements Heavy {
+public class Courtyard_Fountain extends SearchableFurniture implements Unmoveable {
     // ========================================================================
     public Courtyard_Fountain (Item... items) {
         super(items);

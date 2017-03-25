@@ -1,12 +1,12 @@
 package Courtyard;
 
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 /**
  * The front gate of the castle, before it shuts behind the player.
  * @author Kevin Rapa
  */
-public class Cou4_Gate extends Furniture implements Heavy {
+public class Cou4_Gate extends Furniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou4_Gate() {
         super();

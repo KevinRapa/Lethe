@@ -6,7 +6,7 @@ import static A_Main.Names.WEAPON;
 /**
  * @author Kevin Rapa
  */
-abstract public class Column extends Furniture implements Heavy {
+abstract public class Column extends Furniture implements Unmoveable {
     // ========================================================================
     public Column () {
         super();

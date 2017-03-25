@@ -1,10 +1,10 @@
 package Closet;
 
-import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
+import A_Super.Unmoveable;
         
-public class Gqua_Shelf extends SearchableFurniture implements Heavy {
+public class Gqua_Shelf extends SearchableFurniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gqua_Shelf(Item... items) {
         super(items);

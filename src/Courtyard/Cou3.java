@@ -3,8 +3,6 @@ package Courtyard;
 import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Player;
-import A_Super.Furniture;
-import A_Super.Item;
 import A_Super.Room;
 /**
  * First room entered by the player. 
@@ -24,8 +22,6 @@ public class Cou3 extends Room{
                  "around to the sides of the steps. Ivy grows rampantly\n" +
                  "on and over everything and ravens dart through the air\n"
                + "every now and then.";
-        
-        this.addFurniture(new Cou_Fork());
     }
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
@@ -36,41 +32,6 @@ public class Cou3 extends Room{
         }               
         return STD_RM_OUT;
     }
-/*----------------------------------------------------------------------------*/
-/******************************************************************************/
-/*----------------------------------------------------------------------------*/
-    public class Cou_Fork extends Furniture {
-        private final Item FORK;
-        // ====================================================================
-        public Cou_Fork () {
-            super();
-            
-            this.FORK = new Item("golden fork", "The magnificent fork of gold "
-                    + "has been carved with the finest attention to detail. "
-                    + "A large pearl is set into the end of the handle, and many "
-                    + "small scapolite gems descorate the rest of it.", 500);
-
-            this.actDialog = "A clever decision by the player is rewarded with a "
-                    + "breathtaking treasure of artisanal mastery.";
-            this.description = "The fork in the path leads to both the left "
-                    + "and right halves of the courtyard.";
-
-            this.addNameKeys("fork");
-            this.addActKeys(GETPATTERN);
-        }
-        // ====================================================================   
-        @Override public String interact(String key) {  
-            if (Player.getInv().add(FORK)) {
-                Player.getPos().removeFurniture(this);
-                return this.actDialog;
-            }
-            else
-                return NOTHING;
-        }
-        // ====================================================================      
-    }
-/*----------------------------------------------------------------------------*/
-/******************************************************************************/
 /*----------------------------------------------------------------------------*/
 }
 

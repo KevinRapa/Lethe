@@ -7,11 +7,11 @@ import A_Main.Menus;
 import static A_Main.Patterns.VAUE_DOOR_COORDS_P;
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 /**
  * @author Kevin Rapa
  */
-public class Vaue_Door extends Furniture implements Heavy {
+public class Vaue_Door extends Furniture implements Unmoveable {
     // =====================================
     private enum State {
         ON("[o]"), OFF("[ ]");

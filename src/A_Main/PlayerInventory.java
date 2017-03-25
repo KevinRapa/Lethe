@@ -88,6 +88,18 @@ public class PlayerInventory extends Inventory {
         Player.printInv();
     }
     // ========================================================================
+    // Returns the number of phylacteries the player is carrying.
+    public int countPhylacteries() {
+        int result = 0;
+        
+        for (Item i : CONTENTS) {
+            if (i.getScore() == 1500 || i.getScore() == 2000)
+                result++;
+        }
+        
+        return result;
+    }
+    // ========================================================================
     // ************************************************************************
     // ========================================================================
     private static class Inventory_Sorter<Item extends Comparable<Item>> 

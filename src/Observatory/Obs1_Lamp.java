@@ -1,11 +1,11 @@
 package Observatory;
 
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
 /**
  * @author Kevin Rapa
  */
-public class Obs1_Lamp extends Furniture implements Heavy {
+public class Obs1_Lamp extends Furniture implements Unmoveable {
     // ========================================================================
     public Obs1_Lamp () {
         super();

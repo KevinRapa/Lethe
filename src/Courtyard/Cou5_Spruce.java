@@ -7,9 +7,9 @@ import static A_Main.Names.*;
 import A_Super.Climbable;
 import A_Super.Direction;
 import A_Super.Gettable;
-import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
+import A_Super.Unmoveable;
 /**
  * This furniture provides spruce extract, a needed item.
  * 
@@ -17,7 +17,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Cou5_Spruce extends SearchableFurniture 
-        implements Climbable, Gettable, Heavy 
+        implements Climbable, Gettable, Unmoveable 
 {
     private final Item EXTRCT_REF, VIAL_REF;
     private boolean drilled;

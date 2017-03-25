@@ -2,9 +2,9 @@ package Workshop;
 
 import static A_Main.Names.HAMMER;
 import A_Super.Furniture;
-import A_Super.Heavy;
+import A_Super.Unmoveable;
         
-public class Wrk_Anvil extends Furniture implements Heavy {
+public class Wrk_Anvil extends Furniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wrk_Anvil() {
         super();

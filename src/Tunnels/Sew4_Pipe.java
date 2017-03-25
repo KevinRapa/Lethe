@@ -3,9 +3,9 @@ package Tunnels;
 import A_Main.Names;
 import A_Main.Player;
 import A_Super.Furniture;
-import A_Super.Heavy;
 import A_Super.Item;
 import A_Super.Resetable;
+import A_Super.Unmoveable;
 /**
  * The player must find a piece of pipe and use on this in order to properly
  * operate the valves.
@@ -13,7 +13,7 @@ import A_Super.Resetable;
  * @see Tunnels.Sew2_Vlvs
  * @author Kevin Rapa
  */
-public class Sew4_Pipe extends Furniture implements Resetable, Heavy {
+public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
     private boolean hasPipe;
     private final Furniture SEW1_RVR;
     private final Item PIPE_REF;
