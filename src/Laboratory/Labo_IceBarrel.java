@@ -68,12 +68,12 @@ public class Labo_IceBarrel extends SearchableFurniture
         }
     // ========================================================================
         @Override public void remove(Item removeThis) {
+            // If player removes ingredient while cooling, interrupts the thread.
             this.CONTENTS.remove(removeThis);
-            
-            if (THREAD_MAP == null)
-                THREAD_MAP = new HashMap<>();
-            
-            if (THREAD_MAP.containsKey(removeThis.hashCode())) {
+
+            if (THREAD_MAP != null && 
+                        THREAD_MAP.containsKey(removeThis.hashCode())) 
+            {
                 THREAD_MAP.remove(removeThis.hashCode()).interrupt();
                 GUI.out("Your impatience has interrupted the cooling.");
             }
