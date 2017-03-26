@@ -13,7 +13,7 @@ public class Esc1_Ladder extends Furniture implements Climbable {
     public Esc1_Ladder () {
         super();
         
-        this.description = "It's a metal ladder with rudimentary rungs attached\n"
+        this.description = "It's a metal ladder with rudimentary rungs attached "
                          + "directly to the stone wall.";
         this.actDialog = "You climb back up the ladder.";
 

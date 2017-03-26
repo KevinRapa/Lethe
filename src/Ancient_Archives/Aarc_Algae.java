@@ -15,9 +15,9 @@ public class Aarc_Algae extends Aarc_Furniture implements Gettable {
         this.ALGAE_REF = algae;
         
         this.searchable = false;
-        this.description = "You guess that the cistern water had been at a higher\n"
-                         + "level previously, for the walls are slimy a third the\n"
-                         + "way up from algae, and much of the furniture is stained\n"
+        this.description = "You guess that the cistern water had been at a higher "
+                         + "level previously, for the walls are slimy a third the "
+                         + "way up from algae, and much of the furniture is stained "
                          + "green in areas.";
 
         this.addActKeys(GETPATTERN, FEELPATTERN, "lick");

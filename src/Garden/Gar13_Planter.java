@@ -16,8 +16,8 @@ public class Gar13_Planter extends SearchableFurniture implements Unmoveable {
         super(items);
         
         this.SOIL_REF = soil;
-        this.description = "The long planter extends along the length of the\n"
-                         + "garden's western edge. In it are a variety of plants\n"
+        this.description = "The long planter extends along the length of the "
+                         + "garden's western edge. In it are a variety of plants "
                          + "which have seemingly flourished over the years.";
         this.actDialog = "You're a lumberjack, not a gardener!";
         this.searchDialog = "You fan around the plants in the planter.";

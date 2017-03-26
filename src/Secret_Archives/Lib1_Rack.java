@@ -8,10 +8,10 @@ public class Lib1_Rack extends SearchableFurniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Rack(Item... items) {
         super(items);
-        this.description = "The wood rack looks like it's meant to hold scrolls,\n"
-                         + "but an equal assortment of scrolls and papers have\n"
+        this.description = "The wood rack looks like it's meant to hold scrolls, "
+                         + "but an equal assortment of scrolls and papers have "
                          + "been stuffed into its crevices.";
-        this.searchDialog = "You look through its various nooks and crannies.\n"
+        this.searchDialog = "You look through its various nooks and crannies. "
                           + "Here's what you find interesting: ";
         this.addNameKeys("(?:wood(?:en)? )?rack");
     }

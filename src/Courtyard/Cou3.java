@@ -18,7 +18,7 @@ public class Cou3 extends Room{
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID)) {
             AudioPlayer.playEffect(7);
-            GUI.out("As you walk into the front courtyard, the huge gates\n"
+            GUI.out("As you walk into the front courtyard, the huge gates "
                 + "slowly swing shut behind you.");
         }               
         return STD_RM_OUT;

@@ -9,10 +9,10 @@ public class Iha1_Armor extends Furniture implements Moveable {
     public Iha1_Armor() {
         super();
 
-        this.description = "It's plate armor holding a polearm. It stands\n"
+        this.description = "It's plate armor holding a polearm. It stands "
                          + "gazing out the window.";
         this.actDialog = "You will probably get hurt trying to do that.";
-        this.searchDialog = "You find a long polearm, but the gauntlet is\n"
+        this.searchDialog = "You find a long polearm, but the gauntlet is "
                           + "gripping it too tightly to be pried open.";
         this.addActKeys("equip|wear", "pry|open", GETPATTERN);
         this.addNameKeys("(?:suit (?:of )?|plate )?armor", POLEARM, 

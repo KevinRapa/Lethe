@@ -14,7 +14,7 @@ public class Cou2_Bushes extends Courtyard_Growth implements Gettable {
 
         this.BERRY_REF = berry;
         
-        this.description = "They're unkept thorny bushes growing red berries, and probably the only\n"
+        this.description = "They're unkept thorny bushes growing red berries, and probably the only "
                          + "pretty things in this yard.";
         this.searchDialog = "You pick through the bushes and get stuck by a thorn.";
         this.actDialog = "That would probably hurt!";

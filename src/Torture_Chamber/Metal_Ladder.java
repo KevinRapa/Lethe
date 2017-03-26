@@ -35,7 +35,7 @@ public class Metal_Ladder extends Item {
         if (! Player.getPosId().equals(Id.SEW4))
             return this.useDialog;
         else {
-            return "You extend the ladder and lean it up against the tunnel wall.\n"
+            return "You extend the ladder and lean it up against the tunnel wall. "
                  + "It just reaches the top.";
         }
     }
@@ -51,7 +51,7 @@ public class Metal_Ladder extends Item {
             this.LADDER_ITEM = ladderItem;
 
             this.description = "The old metal ladder stands in the center of the room, going nowhere.";
-            this.actDialog = "You climb up the ladder. \"There's really not much\n"
+            this.actDialog = "You climb up the ladder. \"There's really not much "
                            + "need to be up here,\" you think to yourself, and climb down.";
 
             this.addNameKeys("(?:old )?(?:metal )?ladder");
@@ -78,7 +78,7 @@ public class Metal_Ladder extends Item {
             if (! Player.getPosId().equals(Id.SEW4))
                 return this.description;
             else
-                return "The metal ladder stands extended against the tunnel wall.\n"
+                return "The metal ladder stands extended against the tunnel wall. "
                      + "It just reaches the pipe at the top.";
         }
     }

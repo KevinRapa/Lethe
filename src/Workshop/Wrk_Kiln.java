@@ -33,8 +33,8 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Unmoveabl
        
         this.actDialog = "No need to take that. Just add stuff and watch the magic happen.";
         this.searchDialog = "You look in the kiln. It's pretty toasty in there.";
-        this.description = "The kiln resembles a ceramic oven. Its intense heat\n" +
-                           "keeps this room roasting hot. Inside is a small ceramic\n"
+        this.description = "The kiln resembles a ceramic oven. Its intense heat " +
+                           "keeps this room roasting hot. Inside is a small ceramic "
                          + "crucible sitting on a metal rack.";
         
         this.addActKeys(GETPATTERN);
@@ -62,8 +62,8 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Unmoveabl
         
         this.inv.clear();
         
-        return " You let the sand and the dye bake for a bit. In no\n"
-             + "time, the mixture has blended into hot molten glass.\n"
+        return " You let the sand and the dye bake for a bit. In no "
+             + "time, the mixture has blended into hot molten glass. "
              + "Delicious! You take the hot crucible of liquid glass.";
     }
 /*----------------------------------------------------------------------------*/

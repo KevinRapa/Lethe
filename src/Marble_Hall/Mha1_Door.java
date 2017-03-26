@@ -7,7 +7,7 @@ public class Mha1_Door extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Mha1_Door (Direction dir) {
         super(dir);
-        this.description = "The door is painted white and accented in gold. Nailed in\n"
+        this.description = "The door is painted white and accented in gold. Nailed in "
                          + "the center is a gold cross.";
         this.addNameKeys("(?:gold )?cross");
     }

@@ -24,11 +24,11 @@ public class Gal6_Canon extends Gal_LightMachine {
         this.searchDialog = "You search around the futuristic cannon.";
         this.actDialog = "You have no idea how this thing works.";
         this.turnOffDialog = "The lights on the cannon stop blinking.";
-        this.description = "This thing looks complicated. It's black, and... it\n"
-                         + "has some kind of big ball for a body. And it's metal.\n"
-                         + "Yeah, you're sure that's metal. It has a long barrel\n"
-                         + "coming out the front with slots in it and the whole\n"
-                         + "thing is covered in lights and wires. Wait... there's\n"
+        this.description = "This thing looks complicated. It's black, and... it "
+                         + "has some kind of big ball for a body. And it's metal. "
+                         + "Yeah, you're sure that's metal. It has a long barrel "
+                         + "coming out the front with slots in it and the whole "
+                         + "thing is covered in lights and wires. Wait... there's "
                          + "an empty square compartment on top. What is that for?";
         this.STAT = (Gal7_Statue) stat;
         this.addActKeys("fire", "shoot");
@@ -39,7 +39,7 @@ public class Gal6_Canon extends Gal_LightMachine {
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {   
         if (containsItem(CHARGED_BATTERY)) 
-            return "The cannon is blinking and making bleeping noises.\n"
+            return "The cannon is blinking and making bleeping noises. "
                  + "A ray of light shoots out the barrel too. It must be on!";
         else
             return this.description; 
@@ -105,7 +105,7 @@ public class Gal6_Canon extends Gal_LightMachine {
         /*--------------------------------------------------------------------*/
         private void trigger() { 
             determineColor();
-            GUI.out(mode + " shoots out the front of the cannon.\n" + STAT.activate(beam));
+            GUI.out(mode + " shoots out the front of the cannon. " + STAT.activate(beam));
         }   
     }
 /*----------------------------------------------------------------------------*/

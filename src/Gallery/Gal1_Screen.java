@@ -17,12 +17,12 @@ public class Gal1_Screen extends Furniture {
         super();
         this.searchable = false;
         this.REF = (Gal1_Switch)swtch;
-        this.description = "The four-paneled Japanese screen sits in the corner\n"
-                         + "of the room. A panorama is hand-drawn on it. Its\n"
+        this.description = "The four-paneled Japanese screen sits in the corner "
+                         + "of the room. A panorama is hand-drawn on it. Its "
                          + "delicate black lines depict a mountain front landscape.";
-        this.searchDialog = "The light shining through this screen forms an odd\n"
+        this.searchDialog = "The light shining through this screen forms an odd "
                           + "silhouette on its surface.";
-        this.actDialog = "You slide the screen out of the way some, revealing a\n"
+        this.actDialog = "You slide the screen out of the way some, revealing a "
                     + "large black lever mounted to the floor.";  
         this.addActKeys(MOVEPATTERN, GETPATTERN);
         this.addNameKeys("(?:japanese )?screen");

@@ -7,10 +7,10 @@ public class Wow2_Hole extends Furniture {
     public Wow2_Hole() {
         super();
 
-        this.description = "You peek through the hole. The room is next door is\n"
-                         + "ash-filled and burned up completely! What happened\n"
+        this.description = "You peek through the hole. The room is next door is "
+                         + "ash-filled and burned up completely! What happened "
                          + "here?";
-        this.searchDialog = "The hole is but empty space. You have nothing to\n"
+        this.searchDialog = "The hole is but empty space. You have nothing to "
                           + "search.";
         this.addNameKeys("hole");
     }    

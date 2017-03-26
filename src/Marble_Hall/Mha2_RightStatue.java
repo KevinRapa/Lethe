@@ -18,14 +18,14 @@ public class Mha2_RightStatue extends SearchableFurniture {
     public Mha2_RightStatue(Item... items) {
         super(items);
         this.searchable = false;
-        this.description = "The angel poses majestically with an indifferent\n"
-                         + "gaze upwards. It's a mirror-image of the left\n"
+        this.description = "The angel poses majestically with an indifferent "
+                         + "gaze upwards. It's a mirror-image of the left "
                          + "statue, though its hand is empty.";
         this.searchDialog = "There looks to be no compartment on this one.";
-        this.useDialog = "You slide the spear back into the angel's grasp. The\n"
-                       + "divines will be pleased with you. A compartment\n"
+        this.useDialog = "You slide the spear back into the angel's grasp. The "
+                       + "divines will be pleased with you. A compartment "
                        + "reveals itself at the statue's base.";
-        this.actDialog = "Such an impressive work of artistry deserves not to be\n"
+        this.actDialog = "Such an impressive work of artistry deserves not to be "
                             + "tainted by your touch.";
         this.addNameKeys("right (?:statue|one|angel|hand|compartment|palm)");
         this.addActKeys(HOLDPATTERN);
@@ -47,8 +47,8 @@ public class Mha2_RightStatue extends SearchableFurniture {
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
         if (this.searchable) {
-            return "The angel poses majestically with an indifferent\n"
-                 + "gaze upwards. It's a mirror-image of the left\n"
+            return "The angel poses majestically with an indifferent "
+                 + "gaze upwards. It's a mirror-image of the left "
                  + "statue. In its right hand is a silver spear."; 
         }      
         else

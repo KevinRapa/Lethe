@@ -1,6 +1,5 @@
 package A_Main;
 
-import static A_Main.Patterns.*;
 import java.util.LinkedList;
 import javax.swing.*;
 import java.awt.*;
@@ -282,7 +281,7 @@ public class GUI extends JFXPanel {
      */
     public static void out(String txt) {
         if (! txt.equals(""))
-            DIAL.setText(NEWLINE.matcher(txt).replaceAll(" "));
+            DIAL.setText((txt));
     }
 /*----------------------------------------------------------------------------*/    
     /**

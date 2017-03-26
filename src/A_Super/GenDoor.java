@@ -18,8 +18,8 @@ public class GenDoor extends Furniture {
         
         this.description = "There are several doors here. Use <direction 'door'>";
         this.searchDialog = this.description;
-        this.useDialog = "...Do you intend to pick the lock with that? Well,\n"
-                       + "perhaps you could, but then again, you are not learned\n"
+        this.useDialog = "...Do you intend to pick the lock with that? Well, "
+                       + "perhaps you could, but then again, you are not learned "
                        + "of this skill. Yet another you yearn for at the moment.";
         this.actDialog = this.description;
 

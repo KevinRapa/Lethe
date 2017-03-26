@@ -2,6 +2,7 @@ package Prison;
 
 import A_Main.GUI;
 import A_Main.Id;
+import static A_Main.Names.NL;
 import static A_Main.Patterns.ONE_TO_SIX;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -22,10 +23,10 @@ public class Pris_Cells extends Furniture implements Openable, Unmoveable {
     }
     // ======================================================================== 
     @Override public String getDescription() {
-        GUI.out("There are 6 cells in this room. Each one is labeled with\n"
+        GUI.out("There are 6 cells in this room. Each one is labeled with "
               + "a number. Inspect which one?");
         
-        String ans = GUI.askChoice("\n<#> Inspect", ONE_TO_SIX);
+        String ans = GUI.askChoice(NL + "<#> Inspect", ONE_TO_SIX);
         
         return ((Pris)Player.getRoomObj(Id.PRIS))
                 .getCellDescription(Integer.parseInt(ans));

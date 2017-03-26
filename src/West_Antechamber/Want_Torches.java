@@ -7,11 +7,11 @@ public class Want_Torches extends Furniture {
     public Want_Torches() {
         super();
 
-        this.description = "Tall tan obelisks standing in the corners of the room\n"
-                         + "support metal baskets of burning wood chunks. They\n"
+        this.description = "Tall tan obelisks standing in the corners of the room "
+                         + "support metal baskets of burning wood chunks. They "
                          + "are burning quite audibly and furiously.";
-        this.actDialog = "These are large standing torches, and much too heavy\n"
-                       + "for you to just take and carry around. Find one on a\n"
+        this.actDialog = "These are large standing torches, and much too heavy "
+                       + "for you to just take and carry around. Find one on a "
                        + "wall somewhere.";
         
         this.addActKeys(GETPATTERN);

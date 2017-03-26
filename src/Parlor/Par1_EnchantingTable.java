@@ -32,8 +32,8 @@ public class Par1_EnchantingTable extends SearchableFurniture implements Moveabl
         this.actDialog = "You pound your hands on the table.";
         this.useDialog = "You place it on the table.";
         this.searchDialog = "You look on the table.";
-        this.description = "The black pentagonal table bears many carvings of strange\n"
-                         + "runes and writing that seem to glow from the fire. Two\n"
+        this.description = "The black pentagonal table bears many carvings of strange "
+                         + "runes and writing that seem to glow from the fire. Two "
                          + "circular runes decorate either side of the table.";
         
         this.addUseKeys(ANYTHING); // Accepts any item to be put on it.
@@ -56,15 +56,15 @@ public class Par1_EnchantingTable extends SearchableFurniture implements Moveabl
     @Override public String interact(String key) {          
         switch (this.enchant()) {
             case 1:
-                return actDialog.concat(" As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away.\n"
-                                      + "As you turn back, you see that three of the four ingredients have vanished. The bottle, bearing a\n"
+                return actDialog.concat(" As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away. "
+                                      + "As you turn back, you see that three of the four ingredients have vanished. The bottle, bearing a "
                                       + "certain magical aura, sits alone at the table's center.");
             case 2:
-                return actDialog.concat(" As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away,\n"
-                                      + "and as you turn back, you see that the three ingredients have vanished. A delicate pair of\n"
+                return actDialog.concat(" As you do, a loud bang startles you and a bright flash blinds you momentarily. You look away, "
+                                      + "and as you turn back, you see that the three ingredients have vanished. A delicate pair of "
                                       + "slippers shrouded in a fine dark mist take their place.");
             default:
-                return actDialog.concat(" To your disappointment, the table only jostles a small amount\n"
+                return actDialog.concat(" To your disappointment, the table only jostles a small amount "
                                       + "from the force. Perhaps you aren't the wizard you thought you were.");
         }
     }

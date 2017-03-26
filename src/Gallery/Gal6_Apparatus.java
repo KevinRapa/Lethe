@@ -22,11 +22,11 @@ public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
         this.inv = new Apparatus_Inventory();
         
         this.searchDialog = "You look on the platform.";
-        this.description = "The weird apparatus looks like a metal platform\n"
-                         + "with three curved arms projecting out and over its top\n"
-                         + "of itself. Wires run all over the thing, and lights\n"
-                         + "on it go *bleep bleep bleep*. The machine emits\n"
-                         + "some sort of blue light. Next to the apparatus is a label\n"
+        this.description = "The weird apparatus looks like a metal platform "
+                         + "with three curved arms projecting out and over its top "
+                         + "of itself. Wires run all over the thing, and lights "
+                         + "on it go *bleep bleep bleep*. The machine emits "
+                         + "some sort of blue light. Next to the apparatus is a label "
                          + "that reads: \"Plasma induction charger\".";
         
         this.addActKeys(GETPATTERN);

@@ -20,19 +20,19 @@ public class Jha_Lion extends Furniture implements Moveable {
 
         this.hasRuby = false;
         
-        this.description = "It's a menacing jade statue of a lion. A sparkling\n"
-                         + "ruby sits in one of its eye sockets. The other socket\n"
-                         + "is empty. Strange that someone decided to display\n"
-                         + "them way back here where no one can see them.\n";
-        this.DESC2 = "It's a menacing jade statue of a lion. Sparkling\n"
-                   + "rubies sit in both its eye sockets. Strange that\n"
-                   + "someone decided to display them way back here where\n"
+        this.description = "It's a menacing jade statue of a lion. A sparkling "
+                         + "ruby sits in one of its eye sockets. The other socket "
+                         + "is empty. Strange that someone decided to display "
+                         + "them way back here where no one can see them. ";
+        this.DESC2 = "It's a menacing jade statue of a lion. Sparkling "
+                   + "rubies sit in both its eye sockets. Strange that "
+                   + "someone decided to display them way back here where "
                    + "no one can see them.";
         this.actDialog = "These statues are absolutely too big and heavy to take.";
-        this.searchDialog = "There don't seem to be any secret compartments\n"
-                          + "on this statue. Although, one of the rubies sitting\n"
+        this.searchDialog = "There don't seem to be any secret compartments "
+                          + "on this statue. Although, one of the rubies sitting "
                           + "in its eye sockets has gone missing.";
-        this.useDialog = "You place the ruby into the lion's eye socket. The ruby\n"
+        this.useDialog = "You place the ruby into the lion's eye socket. The ruby "
                        + "glints and stays in place.";
 
         this.addActKeys(GETPATTERN);
@@ -45,14 +45,14 @@ public class Jha_Lion extends Furniture implements Moveable {
     }
     // ========================================================================   
     @Override public String getSearchDialog() {
-        return hasRuby ? "There doesn't seem to be any secret compartments\n"
+        return hasRuby ? "There doesn't seem to be any secret compartments "
                        + "on this statue." : this.searchDialog;
     }
     // ========================================================================   
     @Override public String useEvent(Item item) {
         if (! hasRuby) {
             if (item.toString().equals(AQUAMARINE))
-                return "You insert the blue gem into the socket, but it sits\n"
+                return "You insert the blue gem into the socket, but it sits "
                      + "there only momentarily before falling out.";
             else {
                 this.hasRuby = true;

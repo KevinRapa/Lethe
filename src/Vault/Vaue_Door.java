@@ -37,8 +37,8 @@ public class Vaue_Door extends Furniture implements Unmoveable {
     public Vaue_Door () {
         super();
 
-        this.description = "Standing before you is an interesting wall resembling\n"
-                         + "a sliding door. On it is a 4 by 4 grid of buttons. Drawn\n"
+        this.description = "Standing before you is an interesting wall resembling "
+                         + "a sliding door. On it is a 4 by 4 grid of buttons. Drawn "
                          + "on each is a dark circular rune";
         this.searchDialog = "The only curiosity is the grid of buttons on the front.";
         
@@ -64,8 +64,8 @@ public class Vaue_Door extends Furniture implements Unmoveable {
                 Player.getRoomObj(Id.VAU2).unlock();
                 Player.getPos().removeFurniture(this);
                 AudioPlayer.playEffect(37);
-                return "As you push the last button, all the runes become lit.\n"
-                     + "The wall recedes into the floor slowly.\n"
+                return "As you push the last button, all the runes become lit. "
+                     + "The wall recedes into the floor slowly. "
                      + "As the dust settles, a long room filled with treasure is revealed.";
             }
         } while (Player.isNonEmptyString(ans));

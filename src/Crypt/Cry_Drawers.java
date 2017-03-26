@@ -34,11 +34,11 @@ public class Cry_Drawers extends Furniture implements Openable {
 
         DRAWERS[DRAWER_NUM - 1].getInv().add(BRAIN_REF);
         
-        this.description = "The drawers are most likely being used to hold the\n"
-                         + "dead. Who exactly, you don't know. The drawers are\n"
+        this.description = "The drawers are most likely being used to hold the "
+                         + "dead. Who exactly, you don't know. The drawers are "
                          + "each labeled a with a number from 1 to 100.";
         
-        this.searchDialog = "You pull the knob on the drawer. The door swings\n"
+        this.searchDialog = "You pull the knob on the drawer. The door swings "
                           + "open revealing a dessicated corpse inside.";
 
         this.addActKeys("slide", "pull", "remove");

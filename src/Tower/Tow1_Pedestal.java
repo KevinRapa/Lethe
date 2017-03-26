@@ -21,7 +21,7 @@ public class Tow1_Pedestal extends Furniture {
         this.inv = new Pedestal_Inventory(items);
         this.searchable = false;
         
-        this.description = "The pedestal is a solid gray stone platform with two\n"
+        this.description = "The pedestal is a solid gray stone platform with two "
                          + "brass extensions on the top.";
         this.searchDialog = "You try to approach the pedestal, but some sort of repelling force is preventing you.";
         this.useDialog = "You naively wave the staff in an arbitrary pattern. Nothing happens. \"Does this staff even do anything?\" You ask yourself.";

@@ -9,7 +9,7 @@ public class Lqu1_Bed extends Furniture {
     public Lqu1_Bed () {
         super();
 
-        this.description = "On the far side of the room, a sinister body\n"
+        this.description = "On the far side of the room, a sinister body "
                          + "lays on a bed. Perhaps not much longer.";
         this.actDialog = "Really? That's a terrible idea.";
         this.searchDialog = "It's too far away to do that.";

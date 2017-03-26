@@ -8,10 +8,10 @@ public class Vest_Chair extends Furniture implements Moveable {
     public Vest_Chair() {
         super();
 
-        this.description = "An ornate red velvet chair. Being a woodworker by\n" +
+        this.description = "An ornate red velvet chair. Being a woodworker by " +
                            "trade, you have never been keen on upholstery.";
         this.searchDialog = "You look underneath, but find nothing.";
-        this.actDialog = "You sit down in the chair, but not for long,\n" +
+        this.actDialog = "You sit down in the chair, but not for long, " +
                       "for the chair is hard and uncomfortable.";
         this.addNameKeys("chairs?");
         this.addActKeys(SITPATTERN);

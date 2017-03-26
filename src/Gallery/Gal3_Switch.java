@@ -8,8 +8,8 @@ public class Gal3_Switch extends Lever {
         super();
         
         this.description = "It's a small metal switch.";
-        this.actDialog = "To your displeasure, flicking the switch does nothing.\n"
-                    + "'Maybe this pulley mechanism is broken,' you wonder.\n"
+        this.actDialog = "To your displeasure, flicking the switch does nothing. "
+                    + "'Maybe this pulley mechanism is broken,' you wonder. "
                     + "'It wouldn't be the only broken thing in this castle...'";
 
         this.addNameKeys("(?:metal )?switch");

@@ -7,8 +7,8 @@ public class Eow1_Door extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Eow1_Door (Direction dir) {
         super(dir);
-        this.description = "Carved on a metal plaque in its center is a jawless\n"
-                         + "skull. The door is arched, pointed, and many other\n"
+        this.description = "Carved on a metal plaque in its center is a jawless "
+                         + "skull. The door is arched, pointed, and many other "
                          + "metal plates decorate the surface.";
     }
 /*----------------------------------------------------------------------------*/  

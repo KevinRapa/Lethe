@@ -22,17 +22,17 @@ public class Cou1_Floor extends Cou_Floor {
             
             this.HOLE_REF = hole;
             
-            this.description = "The ground is a mixture of grass, weeds, and clover.\n"
+            this.description = "The ground is a mixture of grass, weeds, and clover. "
                              + "It is roughened, as if someone had dug it up recently.";
             
             this.actDialog = "You have nothing to dig the ground with.";
-            this.useDialog = "You dig about a foot-deep hole in the ground. In the hole,\n"
+            this.useDialog = "You dig about a foot-deep hole in the ground. In the hole, "
                            + "you uncover something.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
         if (Player.getPos().hasFurniture("hole"))
-            return "The ground is a mixture of grass, weeds, and clover, interrupted\n"
+            return "The ground is a mixture of grass, weeds, and clover, interrupted "
                  + "by the small hole you dug.";
         else
             return this.description;

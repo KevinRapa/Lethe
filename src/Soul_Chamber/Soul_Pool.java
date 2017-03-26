@@ -24,8 +24,8 @@ public class Soul_Pool extends Furniture {
         this.SPHERE = sphere;
         this.numPhylacteries = 0;
         
-        this.description = "The pool of aether swirls with white... stuff, and\n"
-                         + "gently bubbles infrequently. The blue liquid inside\n"
+        this.description = "The pool of aether swirls with white... stuff, and "
+                         + "gently bubbles infrequently. The blue liquid inside "
                          + "is opaque, but can't be more than a couple feet deep.";
         this.actDialog = "You leap into the pool and die. The end. No, not really.";
         this.searchDialog = "You just find a bunch of aether.";
@@ -53,13 +53,13 @@ public class Soul_Pool extends Furniture {
     // ========================================================================    
     private void killLich() {    
         GUI.menOut(Menus.ENTER);
-        GUI.out("You stand before a pool of glowing aether, the very substance\n"
+        GUI.out("You stand before a pool of glowing aether, the very substance "
               + "which frees the dead of their earthly bodies.");
         GUI.promptOut();
 
-        GUI.out("A short moment passes, and you cast the final phylactery\n"
-              + "the pool. At that moment, the feeling of burden and dread\n"
-              + "leaves you, and you feel comfortably alone. A burst of light\n"
+        GUI.out("A short moment passes, and you cast the final phylactery "
+              + "the pool. At that moment, the feeling of burden and dread "
+              + "leaves you, and you feel comfortably alone. A burst of light "
               + "emerges from the pool and then disperses. The throbbing in your head ceases.");
         GUI.promptOut();
         GUI.toMainMenu();

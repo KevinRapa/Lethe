@@ -17,7 +17,7 @@ public class Foy_Gate extends Door implements Unmoveable {
     public Foy_Gate (boolean open, Direction dir) {
         super(dir);
         
-        this.description = "An arched black iron gate barely taller than you.\n"
+        this.description = "An arched black iron gate barely taller than you. "
                          + "It looks like this kind lifts upward by a hidden pulley or chain.";
         this.DESCOPEN = "With the gate retracted, there is only an open doorway.";
         

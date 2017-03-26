@@ -11,7 +11,7 @@ public class Obs3_Chest extends SearchableFurniture implements Openable, Moveabl
     // ========================================================================
     public Obs3_Chest(Item... items) {
         super(items);
-        this.description = "It's a wooden chest. 'Looks like the kind with\n"
+        this.description = "It's a wooden chest. 'Looks like the kind with "
                          + "treasure in it,' you think to yourself.";
         this.searchDialog = "To your surprise, the chest is unlocked. You open it.";
 

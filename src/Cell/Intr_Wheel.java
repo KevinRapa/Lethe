@@ -12,14 +12,14 @@ public class Intr_Wheel extends Furniture implements Unmoveable {
         super();
         this.searchable = false;
         
-        this.description = "The large horizontal axle spins at about shoulder\n"
-                         + "height in the room. It must be somehow connected to\n"
-                         + "these other gears. Be careful, you wouldn't want to\n"
+        this.description = "The large horizontal axle spins at about shoulder "
+                         + "height in the room. It must be somehow connected to "
+                         + "these other gears. Be careful, you wouldn't want to "
                          + "bump your head on this thing.";
         
         this.actDialog = "You could never muster the strength to stop the wheel.";
         this.useDialog = "You thrust the bar into the wheel attempting to stop it. The bar jolts back along with your body.";
-        this.searchDialog = "You search around the machinery but cannot find anything\n"
+        this.searchDialog = "You search around the machinery but cannot find anything "
                           + "useful.";
 
         this.addUseKeys(METAL_BAR);

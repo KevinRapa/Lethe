@@ -1,5 +1,6 @@
 package A_Main;
 
+import static A_Main.Names.NL;
 import static A_Main.Names.NO_LETTER_AFTER;
 import static A_Main.Names.NO_LETTER_BEFORE;
 import A_Super.Item;
@@ -138,7 +139,7 @@ public class Inventory implements Iterable<Item>, Serializable {
             return builder.toString();
         }
         else
-            return "   nothing.";
+            return "   nothing." + NL;
     }
     // ========================================================================
     @Override public Iterator<Item> iterator() {

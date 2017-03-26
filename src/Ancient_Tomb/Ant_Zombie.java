@@ -34,11 +34,11 @@ public class Ant_Zombie extends NonPlayerCharacter {
         this.FLOOR_INV_REF = floorInv;
         this.pleased = false;
         
-        this.description = "The hideous dessicated figure is eyeless and frail. It just\n" +
-                           "stands there in the corner of the room, pointing\n" +
-                           "its face at you with its mouth hanging open. It\n" +
-                           "is clothed in simple farming vestments and keeps\n" +
-                           "one of its hands in its pocket. 'Is it alive?'\n" +
+        this.description = "The hideous dessicated figure is eyeless and frail. It just " +
+                           "stands there in the corner of the room, pointing " +
+                           "its face at you with its mouth hanging open. It " +
+                           "is clothed in simple farming vestments and keeps " +
+                           "one of its hands in its pocket. 'Is it alive?' " +
                            "You wonder to yourself.";
         this.actDialog =    "The figure makes a loud moan. You jump, and every "
                           + "hair on your body stands. The zombie takes the "
@@ -54,7 +54,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
         
         this.searchDialog = "You aren't nearly sly enough for that.";
         
-        this.CONVERSE_REP2 = "The figure just stands there, staring at you with\n"
+        this.CONVERSE_REP2 = "The figure just stands there, staring at you with "
                            + "its mouth hanging open.";
 
         this.addUseKeys(BRAIN);
@@ -130,12 +130,12 @@ public class Ant_Zombie extends NonPlayerCharacter {
         private Compass(String name) {
             super(name, 100);
             this.useID = 1;
-            this.description = "You can't quite figure out what it is. It's a small\n"
-                             + "metal box with a bit of heft. A polished rock of\n"
-                             + "quartz has been fit into its center indentation, acting\n"
-                             + "as a window of sorts. On the top and bottom of the box\n"
+            this.description = "You can't quite figure out what it is. It's a small "
+                             + "metal box with a bit of heft. A polished rock of "
+                             + "quartz has been fit into its center indentation, acting "
+                             + "as a window of sorts. On the top and bottom of the box "
                              + "are copper plates.";
-            this.useDialog = "You grasp the box firmly with your fingers and palm\n"
+            this.useDialog = "You grasp the box firmly with your fingers and palm "
                            + "covering the plates. In a short while, 3 digits:\t\t[";
         }
         /*--------------------------------------------------------------------*/

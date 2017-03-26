@@ -9,7 +9,7 @@ public class Cou1_Bench extends Furniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Cou1_Bench() {
         super();
-        this.description = "The bench is blanketed in multiflora. Its backrest\n"
+        this.description = "The bench is blanketed in multiflora. Its backrest "
                          + "lies on the ground behind it.";
         this.searchDialog = "You aren't risking getting pricked by those thorns.";
         this.actDialog = this.searchDialog;

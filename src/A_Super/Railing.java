@@ -12,9 +12,9 @@ abstract public class Railing extends Furniture implements Unmoveable {
     public Railing () {
         super();
 
-        this.actDialog = "You lean against the railing and rest a bit. All this\n"
+        this.actDialog = "You lean against the railing and rest a bit. All this "
                        + "walking has nearly bested you.";
-        this.useDialog = "Hopefully you aren't thinking that you can just climb\n"
+        this.useDialog = "Hopefully you aren't thinking that you can just climb "
                        + "down with something that short...";
 
         this.addNameKeys("railing");

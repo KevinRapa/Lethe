@@ -11,8 +11,8 @@ public class Cha_Haze extends Furniture implements Gettable {
     public Cha_Haze () {
         super();
         
-        this.description = "Though the room seems clean, a thin blanket of dust\n"
-                         + "coats everything, and an ambient haze floats in\n"
+        this.description = "Though the room seems clean, a thin blanket of dust "
+                         + "coats everything, and an ambient haze floats in "
                          + "the calm air.";
         this.actDialog = this.useDialog = "You aren't a maid!";
         

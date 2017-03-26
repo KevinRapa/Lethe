@@ -8,12 +8,12 @@ public class Wow2_Door extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Wow2_Door (Direction dir) {
         super(dir);
-        this.description = "To your east, you inspect the door. It's in horrible\n"
-                         + "condition. It's boarded shut, and numerous gashes and\n"
-                         + "splinters cover it. A hole in the door is big enough\n"
+        this.description = "To your east, you inspect the door. It's in horrible "
+                         + "condition. It's boarded shut, and numerous gashes and "
+                         + "splinters cover it. A hole in the door is big enough "
                          + "to see through.";
         this.useDialog = "You've been in there already. Is it really worth expending the energy?";
-        this.actDialog = "Not even someone as burly as yourself could pull these\n"
+        this.actDialog = "Not even someone as burly as yourself could pull these "
                             + "boards off.";
         this.addNameKeys("hole", "(?:wood(?:en)?)?boards?");
         this.addUseKeys(CROWBAR);

@@ -11,8 +11,8 @@ public class Pris_Table extends SearchableFurniture implements Unmoveable {
     public Pris_Table (Item... items) {
         super(items);
         
-        this.description = "It's a heavy wooden dining table sitting in the\n"
-                         + "center of the room. It's exceedingly intricate for\n"
+        this.description = "It's a heavy wooden dining table sitting in the "
+                         + "center of the room. It's exceedingly intricate for "
                          + "a place like this and does not suit this room.";
         this.searchDialog = "You look on the table.";
 

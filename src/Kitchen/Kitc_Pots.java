@@ -20,7 +20,7 @@ public class Kitc_Pots extends SearchableFurniture implements Gettable {
         this.PAN_REF = pan;
         this.POT_REF = pot;
         
-        this.description = "A bunch of old copper pots and pans hang from the\n"
+        this.description = "A bunch of old copper pots and pans hang from the "
                          + "ceiling";
         this.searchDialog = "You inspect the rack of pots.";
         this.actDialog = "That's very loud!";

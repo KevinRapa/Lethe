@@ -11,10 +11,10 @@ public class Drar_Billiards extends SearchableFurniture implements Moveable {
     public Drar_Billiards(Furniture ghst, Item... items) {
         super();
         this.GHOST_REF = (Drar_Ghost)ghst;
-        this.description = "The billiard table is clothed in the typical green,\n"
+        this.description = "The billiard table is clothed in the typical green, "
                          + "though the pockets are missing...";
         this.searchDialog = "You look on the table's surface.";
-        this.actDialog = "What in the... this is a rich people's billiard table\n"
+        this.actDialog = "What in the... this is a rich people's billiard table "
                        + "with no pockets. You can't play this.";
         this.addNameKeys("billiard table", "pool(?: table)?", "billiards");
         this.addActKeys("play", "use");

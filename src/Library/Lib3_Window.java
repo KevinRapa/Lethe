@@ -7,11 +7,11 @@ public class Lib3_Window extends Window {
     public Lib3_Window() {
         super();
         
-        this.descClosed = "Through the small stone window, you can see your\n"
-                        + "village in the great distance. A light fog rolls\n"
+        this.descClosed = "Through the small stone window, you can see your "
+                        + "village in the great distance. A light fog rolls "
                         + "through the air.";
-        this.descOpen = "Through the small stone window, you can see your\n"
-                      + "village in the great distance. A light fog rolls\n"
+        this.descOpen = "Through the small stone window, you can see your "
+                      + "village in the great distance. A light fog rolls "
                       + "through the air. In flows a small breeze.";
     }
 /*----------------------------------------------------------------------------*/    

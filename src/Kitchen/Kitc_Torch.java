@@ -1,7 +1,6 @@
 package Kitchen;
 
 import A_Main.GUI;
-import A_Main.Id;
 import A_Main.Inventory;
 import static A_Main.Names.HAND_TORCH;
 import A_Super.Torch_Holder;
@@ -14,9 +13,9 @@ import A_Main.Player;
  */
 public class Kitc_Torch extends Torch_Holder {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Kitc_Torch() {
-        super();
-        this.useDialog = "You slide the torch into the steel holder, lighting\n"
+    public Kitc_Torch(Item torch) {
+        super(torch);
+        this.useDialog = "You slide the torch into the steel holder, lighting "
                        + "the room.";
         this.inv = new KitcHolderInventory();
     }

@@ -7,7 +7,7 @@ public class Gal2_Staircase extends Staircase {
 /*----------------------------------------------------------------------------*/    
     public Gal2_Staircase(Direction direction) {
         super(direction);
-        this.description = "The dark wooden stairs curve following the edge of\n"
+        this.description = "The dark wooden stairs curve following the edge of "
                          + "the balcony until meeting it on the second floor.";
     }
 /*----------------------------------------------------------------------------*/

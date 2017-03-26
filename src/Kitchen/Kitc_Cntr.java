@@ -9,8 +9,8 @@ public class Kitc_Cntr extends SearchableFurniture implements Openable, Unmoveab
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Kitc_Cntr(Item ... items) {
         super(items);
-        this.description = "The dark oak counters have a nice polished granite\n"
-                         + "surface. Beautiful! There is a storage area underneath\n"
+        this.description = "The dark oak counters have a nice polished granite "
+                         + "surface. Beautiful! There is a storage area underneath "
                          + "the counter.";
         this.searchDialog = "You open the doors under the counter.";
         this.addNameKeys("counters?");

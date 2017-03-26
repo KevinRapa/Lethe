@@ -40,8 +40,8 @@ public class Torc_Sawhorses extends Furniture implements Resetable, Moveable {
     }
     // ======================================================================== 
     @Override public String getDescription() {
-        return this.hasLadder() ? this.description.concat(" They are holding up\n"
-                + "a device resembling two parallel 10-foot long metal poles attached\n"
+        return this.hasLadder() ? this.description.concat(" They are holding up "
+                + "a device resembling two parallel 10-foot long metal poles attached "
                 + "together via many shorter perpendicular metal poles.") :
                 this.description;
     }

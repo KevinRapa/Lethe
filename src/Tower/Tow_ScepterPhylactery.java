@@ -12,8 +12,8 @@ public class Tow_ScepterPhylactery extends Item {
     public Tow_ScepterPhylactery(String name, int score) {
         super(name, score);
         this.type = Names.PHYLACTERY;
-        this.description = "It's a glimmering silver scepter holding a large opal\n"
-                         + "at the top. The handle resembles a snake wrapped around\n"
+        this.description = "It's a glimmering silver scepter holding a large opal "
+                         + "at the top. The handle resembles a snake wrapped around "
                          + "a stick.";
     }
     // ========================================================================

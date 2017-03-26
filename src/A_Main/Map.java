@@ -47,6 +47,7 @@ public class Map {
     static {
         MAP_FRAME.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         MAP_FRAME.getContentPane().add(MAP_PANEL);
+        MAP_FRAME.setFocusableWindowState(false);
         MAP_FRAME.setResizable(false);
         
         MAP_PANEL.setBackground(Color.BLACK);
@@ -62,10 +63,17 @@ public class Map {
         updateMap();
 
         if (! MAP_FRAME.isVisible()) {
+            GUI.out("Enter 'close' to hide the map.");
             AudioPlayer.playEffect(2);
             MAP_FRAME.setVisible(true);
-            GUI.giveFocus();
         }
+        else 
+            MAP_FRAME.toFront();
+        
+    }
+    //==========================================================================
+    public static void hideMap() {
+        MAP_FRAME.setVisible(false);
     }
     //==========================================================================
     // Disposes map on game's end
@@ -272,6 +280,7 @@ public class Map {
         Item bckt = new Item(METAL_BUCKET, "It's an empty metal bucket.", 25); // Used with all fireplaces
         Item vial = new BreakableItem(EMPTY_VIAL, "It's a small glass vial for holding samples", 25);
         Item ram = new Weapon(BATTERING_RAM, "You've restored the old battering ram back to its former glory.", 35);
+        Item torch = new Item(HAND_TORCH, "It's a burning piece of wood. Stay it from your beard!", 0);
 
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST ANTECHAMBER">
         Furniture foy1Gt = new Foy_Gate(false, Direction.WEST);
@@ -388,7 +397,7 @@ public class Map {
         Room cou8 = new Cou8("up in the spruce tree", Id.COU8);
         //-------------------------------ITEMS----------------------------------
         Item krnsPlt = new Obs1_Plate("brass plate, \"Saturn\"", "The small plate bears an engraving: \"Saturn\"");
-        Item soldMed = new BreakableItem(STONE_DISK, "The smooth disk is about four or five inches across.\n"
+        Item soldMed = new BreakableItem(STONE_DISK, "The smooth disk is about four or five inches across. "
                 + "Its craftsmanship is precise, although there's a chip on its edge. "
                 + "On its surface is an embossing of a soldier.", 30);
         Item rck = new Item(ROCK, "It's a chunk of the courtyard fountain. "
@@ -511,7 +520,7 @@ public class Map {
         Room wow2 = new Wow2("in the west outer wall", Id.WOW2);
         //-------------------------------ITEMS----------------------------------
         Item vinegar = new Liquid(BOTTLE_OF_VINEGAR, "A bottle of yellow liquid. Printed on the label is \"C2H4O2\"", 25);
-        Item wowLddr = new BreakableItem(FIXED_LADDER, "The spoke sits in there a bit awkwardly, but it\n"
+        Item wowLddr = new BreakableItem(FIXED_LADDER, "The spoke sits in there a bit awkwardly, but it "
                               + "seems like a good ladder. It may even support your heft.", 25);   
         Item wow1Spk = new Item(WHEEL_SPOKE, "It's a wooden rod, about a foot long.", wowLddr, 3, 0);
         Item clngSoln = new Liquid(CLEANING_SOLUTION, "It smells lemony fresh, unlike the rest of this room.", 25);
@@ -542,7 +551,7 @@ public class Map {
         Item wbalBrg = new Item("broken rod", "It looks like it belonged to a ladder.", -10);
         Item wbalRng = new Item("wooden rod", "It's a wooden rod, about a foot long.", wowLddr, 3, 10);
         //-----------------------------FURNITURE--------------------------------
-        Furniture wbalF = new Floor("A shale tile floor. Many pieces of wood\nlitter it.", 
+        Furniture wbalF = new Floor("A shale tile floor. Many pieces of wood litter it.", 
                                     wbalch, wbalbr, wbalBrg, wbalsp, wbalsp, wbalRng, wbalbr, wbalch, wbalch);
         Furniture wbalBcn = new Wbal_Beacon();
         Furniture wbalFrst = new Wbal_Forest();
@@ -553,7 +562,7 @@ public class Map {
         //-------------------------------ITEMS----------------------------------
         Item squaLddr = new Squa_Ladder("broken ladder", wowLddr, 3);
         Item squaJrnl = new Note("note: ladder", 
-                "Need to get that ladder fixed. Too busy with the cart.\n"
+                "Need to get that ladder fixed. Too busy with the cart. "
                 + "Don't ask mages to fix, they've been busy lately. I'll keep it under my bed for now.");
         Item rags = new Clothing("worn rags", "Some dirty worn rags.", 
                 "You are perfectly content with the clothes you have on now.", 5);
@@ -645,8 +654,8 @@ public class Map {
         Furniture shaF = new Floor("A sandstone tiled floor. Small, loose grains grind against your shoes as you walk.");
         Furniture sha2Dr = new Sha_Door(Direction.WEST);
         Furniture sha1SDr = new Sha_Door(Direction.SOUTH);
-        Furniture sha1Trch = new Torch_Holder();
-        Furniture sha2Trch = new Torch_Holder();
+        Furniture sha1Trch = new Torch_Holder(torch);
+        Furniture sha2Trch = new Torch_Holder(torch);
         Furniture sha1Dr = new Sha1_Door(ram, brRam, genDoor);
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE SCORCHED ROOM">
@@ -830,7 +839,7 @@ public class Map {
         Furniture din1Tpstry = new Din1_Tapestry(din1Crvc);
         Furniture din1Strs = new Din1_Stairs(Direction.UP);
         Furniture din1Crpt = new Din1_Carpet();
-        Furniture din1F = new Floor("The floor is a light gray stone. A large rectangular\n"
+        Furniture din1F = new Floor("The floor is a light gray stone. A large rectangular "
                                   + "lavender carpet covers much of it.");
         Furniture din1W = new Wall("The walls of this room are gray stone with dark wood paneling at the bottom.");
         Furniture din1Dr = new Din1_Door(Direction.WEST);
@@ -925,7 +934,7 @@ public class Map {
         Furniture eow1Dr = new Eow1_Door(Direction.WEST);
         Furniture eow1Rck = new Eow1_Rack(eowSwrd1, eowBtlAx, eowSwrd2, eowSwrd3, eowSwrd2, eowAx);
         Furniture eow1Bskt = new Eow1_Basket(eowPlArm, woodSpr, woodSpr, eowPlArm);
-        Furniture eow1Trch = new Torch_Holder();
+        Furniture eow1Trch = new Torch_Holder(torch);
 
         Furniture eow2Fntn = new Eow2_Fountain();
         Furniture wtr = new Water(wtrBckt);
@@ -933,7 +942,7 @@ public class Map {
         Furniture eow2Strs = new Eow2_Stairs(Direction.UP);
         Furniture eow2Blcny = new Eow2_Balcony();
         Furniture eow2Cbnt = new Eow2_Cabinet(bckt, shaMp, shvl, vinegar);
-        Furniture eow2Trch = new Torch_Holder();
+        Furniture eow2Trch = new Torch_Holder(torch);
 
         Furniture eow4F = new Floor("It's a sandstone tiled floor.");
         Furniture eow4Strs = new Eow2_Stairs(Direction.DOWN);
@@ -1069,7 +1078,7 @@ public class Map {
         Furniture drarPno = new Drar_Piano();
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE KITCHEN"> 
-        Furniture kitcTrch = new Kitc_Torch();
+        Furniture kitcTrch = new Kitc_Torch(torch);
         //-----------------------------THE ROOM---------------------------------
         Room kitc = new Kitc("in the kitchen", Id.KITC, kitcTrch.getInv());
         //-------------------------------ITEMS----------------------------------
@@ -1134,9 +1143,9 @@ public class Map {
         Item obsBk = new Obs2_Book("tome, 'Planets and Myth'");
         Item obs2Nt = new Obs2_Note("journal page, Factum");
         Item obs3Nt = new Note("momento: plate locations", 
-                "It's only been a day since we discovered that artifact from the well, and\n"
-                + "already I don't want to be around it. Perhaps we can hide it in the chandelier up there;\n"
-                + "we need a use for that compartment. I'll determine new areas to store those brass plates,\n"
+                "It's only been a day since we discovered that artifact from the well, and "
+                + "already I don't want to be around it. Perhaps we can hide it in the chandelier up there; "
+                + "we need a use for that compartment. I'll determine new areas to store those brass plates, "
                 + "and keep the locations in the picture frame back there...");
         //-----------------------------FURNITURE--------------------------------
         Furniture obs3Chndlr = new Obs3_Chandelier("chandelier", cndl, cndl, cndl, rby2, cndl, cndl);
@@ -1173,7 +1182,7 @@ public class Map {
         Furniture jhaLntrn = new Jha_Lantern();
         Furniture jha1Pntng = new Jha1_Painting();
         Furniture jhaF = new Floor("The floor is a polished birch stained a rust color. It gives off a pleasant fragrance.");
-        Furniture jhaW = new Wall("These walls look expensive and one-of-a-kind. The lower third is a reddish birch wainscoting\n"
+        Furniture jhaW = new Wall("These walls look expensive and one-of-a-kind. The lower third is a reddish birch wainscoting "
                                 + "and the upper part is solid rock resembling jade or marble.");
         Furniture jhaJd = new Jha_Jade();
         Furniture jha1Ln = new Jha_Lion();
@@ -1381,7 +1390,7 @@ public class Map {
         Furniture bha1F = new Floor("The wood-plank floor bends with the hallway. "
                 + "The planks bend with it without prying up. Could this all be an illusion?");
 
-        Furniture bha2F = new Floor("The floor has changed. Most of the wood planks have been removed\n"
+        Furniture bha2F = new Floor("The floor has changed. Most of the wood planks have been removed "
                 + "revealing a dirt-like ground below... But it's not dirt.", 
                 wbalsp, wbalch, orgMttr, orgMttr, tblLg, wbalsp);
         Furniture bha2W = new Wall("The walls are still intact, though much more of the wallpaper has been ripped off.");
@@ -1426,25 +1435,25 @@ public class Map {
         Furniture sewRvr = new Sew2345_River(sew1Rvr.getInv(), wtrBckt);
         Furniture sewMss = new Sew_Moss();
 
-        Furniture sew0Trch = new Torch_Holder();
+        Furniture sew0Trch = new Torch_Holder(torch);
         Furniture sew0Strs = new Sew0_Stairs();
 
         Furniture sew15Gt = new Sew15_Gate();
-        Furniture sew1Trch = new Torch_Holder();
+        Furniture sew1Trch = new Torch_Holder(torch);
 
         Furniture sew2Vlvs = new Sew2_Valves(); // RESETABLE
-        Furniture sew2Trch = new Torch_Holder();
+        Furniture sew2Trch = new Torch_Holder(torch);
         Furniture sew2BrdgW = new Sew_Bridge(Direction.WEST);
         Furniture sew2Pp = new Sew235_Pipe(2);
 
-        Furniture sew3Trch = new Torch_Holder();
+        Furniture sew3Trch = new Torch_Holder(torch);
         Furniture sew3BrdgN = new Sew_Bridge(Direction.NORTH);
         Furniture sew3BrdgE = new Sew_Bridge(Direction.EAST);
         Furniture sew3Pp = new Sew235_Pipe(3);
 
-        Furniture sew4Trch = new Torch_Holder();
+        Furniture sew4Trch = new Torch_Holder(torch);
 
-        Furniture sew5Trch = new Torch_Holder();
+        Furniture sew5Trch = new Torch_Holder(torch);
         Furniture sew5BrdgE = new Sew_Bridge(Direction.EAST);
         Furniture sew5Pp = new Sew235_Pipe(5);
         Furniture sew5Vlv = new Sew5_Valve(sew2Vlvs, sew4Pp);
@@ -1461,9 +1470,9 @@ public class Map {
         Item oarTl = new Item("broken wood handle", "It appears to be one half of an oar that was split in two.", oar, 3, 5);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture cis2Bt = new Cis2_Boat(oarTl);
-        Furniture cis1Trch = new Torch_Holder();
-        Furniture cis3Trch = new Torch_Holder();
-        Furniture cis4Trch = new Torch_Holder();
+        Furniture cis1Trch = new Torch_Holder(torch);
+        Furniture cis3Trch = new Torch_Holder(torch);
+        Furniture cis4Trch = new Torch_Holder(torch);
         Furniture cis5F = new Floor("The floor here is the same as the rest of the cistern.");
         Furniture cis5Fgr = new Cis5_FigureNPC();
         Furniture cisF = new Dungeon_Floor();
@@ -1481,7 +1490,7 @@ public class Map {
                 + "comprise the small device. It's slightly larger than your palm.", 35);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture torcF = new Dungeon_Floor();
-        Furniture torcTrchs = new Torch_Holder();
+        Furniture torcTrchs = new Torch_Holder(torch);
         Furniture torcSwhrses = new Torc_Sawhorses(torc); // RESETABLE
         Furniture torcRck = new Torc_Rack(thmScrws);
         Furniture torcCgs = new Torc_Cages();
@@ -1522,7 +1531,7 @@ public class Map {
         //-----------------------------FURNITURE-------------------------------- 
         Furniture intrF = new Intr_Floor(); // RESETABLE
         Furniture intrGrt = new Intr_Grate(); // RESETABLE
-        Furniture intrTrch = new Intr_Torch(); // RESETABLE
+        Furniture intrTrch = new Intr_Torch(torch); // RESETABLE
         Furniture intrWhl = new Intr_Wheel();
         Furniture intrGrs = new Intr_Gears();
         Furniture intrDr = new Intr_Door();
@@ -1601,7 +1610,7 @@ public class Map {
         Furniture sewpCl = new Sewp_Ceiling();
         Furniture sewpGrt = new Sewp_Grate();
         Furniture sewpWtr = new Sewp_Water(wtrBckt);
-        Furniture sewpTrch = new Torch_Holder();
+        Furniture sewpTrch = new Torch_Holder(torch);
         Furniture sewpF = new Dungeon_Floor();
         Furniture sewpTnnl = new Sewp_Tunnel();
 
@@ -1735,8 +1744,8 @@ public class Map {
         Furniture antCskt = new Ant_Casket(tmbNt);
         Furniture antW = new Wall("They are carved sandstone.");
         Furniture antCskts = new Ant_Caskets();
-        Furniture ant1Trch = new Torch_Holder();
-        Furniture ant2Trch = new Torch_Holder();
+        Furniture ant1Trch = new Torch_Holder(torch);
+        Furniture ant2Trch = new Torch_Holder(torch);
         Furniture antClng = new Ant_Ceiling();
         // </editor-fold>
         // <editor-fold desc="MYSTICAL CHAMBER FURNITURE" defaultstate="collapsed">

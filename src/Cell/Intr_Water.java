@@ -9,9 +9,9 @@ public class Intr_Water extends Furniture {
     public Intr_Water () {
         super();
         
-        this.description = "The small river of water flows through a dip under the\n"
+        this.description = "The small river of water flows through a dip under the "
                          + "door. The square channel is only a couple feet wide.";
-        this.actDialog = "The river is too small for your frame, and the current\n"
+        this.actDialog = "The river is too small for your frame, and the current "
                        + "looks strong. There must be another way out.";
 
         this.addNameKeys("(?:shallow )?dip", "(?:river of )?water", "(?:square )?channel");

@@ -8,8 +8,8 @@ public class Gar1_Statue extends Statue {
     // ========================================================================
     public Gar1_Statue () {
         super();
-        this.description = "The statue depicts half a female body mounted on\n"
-                         + "a base. Her expressionless face gazes downwards\n"
+        this.description = "The statue depicts half a female body mounted on "
+                         + "a base. Her expressionless face gazes downwards "
                          + "and her arms are cut off at the shoulders.";
     }
     // ========================================================================  

@@ -10,8 +10,8 @@ abstract public class Carpet extends Furniture implements Gettable {
     public Carpet () {
         super();
         
-        this.actDialog = "You take some valuable time to admire the carpet. Yes,\n"
-                       + "what a wonderfully woven piece of artwork. It really\n"
+        this.actDialog = "You take some valuable time to admire the carpet. Yes, "
+                       + "what a wonderfully woven piece of artwork. It really "
                 +        "would be a shame to get this dirty. What a wonderful rug.";
         this.useDialog = "Don't pour that on there! That would most certainly ruin it.";
         this.searchDialog = "There's nothing interesting under the carpet.";

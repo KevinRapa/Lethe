@@ -11,12 +11,12 @@ public class Sha2_Cabinet extends LockedContainer {
     public Sha2_Cabinet(Item... items) {
         super(CBNT, items);
         
-        this.description = "It's a large wooden double-door cabinet. It looks\n"
-                         + "plain and cheap. It must just house tools for the\n"
+        this.description = "It's a large wooden double-door cabinet. It looks "
+                         + "plain and cheap. It must just house tools for the "
                          + "servants.";
-        this.actDialog = "The tiny metal key fits perfectly. You turn it and the\n"
+        this.actDialog = "The tiny metal key fits perfectly. You turn it and the "
                             + "cabinet makes a satisfying *click*";
-        this.searchDialog = "The cabinet is locked. Maybe one of the servants\n"
+        this.searchDialog = "The cabinet is locked. Maybe one of the servants "
                           + "had a key...";
 
         this.addNameKeys("(?:large )?(?:wood(?:en)? )?(?:double-door )?cabinet");

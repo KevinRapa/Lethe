@@ -36,8 +36,8 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         super();
         this.searchDialog = "The ghost won't appreciate that.";
         this.actDialog = "\"Come back if you want to play again!";
-        this.description = "Leaning nonchalantly against the castle wall is a\n"
-                         + "ghostly figure shuffling what seem to be cards. The apparition\n"
+        this.description = "Leaning nonchalantly against the castle wall is a "
+                         + "ghostly figure shuffling what seem to be cards. The apparition "
                          + "is garbed in distinctive clothing- a vest and a full-brimmed hat.";
         this.addActKeys("play");
         this.addNameKeys("ghost", "apparition", "spirit", "ghostly apparition");
@@ -75,19 +75,19 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
 /*----------------------------------------------------------------------------*/
     @Override protected String converse1() {
         GUI.menOut(NL + NL + "<enter> Continue...");
-        GUI.out("You approach the apparition loitering in the courtyard. Before\n"
+        GUI.out("You approach the apparition loitering in the courtyard. Before "
               + "you can accost it, its mouth opens to speak...");
         GUI.promptOut();
         
-        GUI.out("The ghost speaks in a heavy Australian accent. \"Finally!\n"
-              + "Another soul to play. It has been a while since I've\n"
-              + "seen anyone to play cards with. Would you like to play? It's\n"
+        GUI.out("The ghost speaks in a heavy Australian accent. \"Finally! "
+              + "Another soul to play. It has been a while since I've "
+              + "seen anyone to play cards with. Would you like to play? It's "
               + "called blackjack...\"");
         GUI.promptOut();
         
         GUI.menOut("<'yes'>" + NL + "<'no'>");
         
-        return "\"... well not at all! ... Does it look like I need money in\n"
+        return "\"... well not at all! ... Does it look like I need money in "
               + "my state? Come on stranger, yes or no....\"";
     }
 /*----------------------------------------------------------------------------*/
@@ -105,7 +105,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         boolean played = false; // If the player has played at least once.
         
         do {
-            ans = GUI.askChoice("\nPlay him in blackjack?", YES_NO_P);
+            ans = GUI.askChoice(NL + "Play him in blackjack?", YES_NO_P);
             
             if (Player.answeredYes(ans)) {
                 played = true;

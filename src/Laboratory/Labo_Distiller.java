@@ -25,13 +25,13 @@ public class Labo_Distiller extends Furniture implements Moveable {
         this.VIAL_REF = vial;
         this.FLORENCE_FLASK_REF = new Labo_Flask(CONDENSER_REF, TUBE_REF, VIAL_REF);
 
-        this.actDialog = "There doesn't seem to be much to work on with your hands. You\n"
+        this.actDialog = "There doesn't seem to be much to work on with your hands. You "
                        + "will need some tools to interact with this.";
-        this.searchDialog = "The contraption is comprised of many alchemical compnents.\n"
+        this.searchDialog = "The contraption is comprised of many alchemical compnents. "
                           + "Though they're alien to you, you note nothing out of the ordinary.";
-        this.description = "It's one half of a larger alchemical contraption in the room.\n"
-                         + "On the table is a metal flask rack and a bunsen burner\n"
-                         + "under it. Above the setup is a curved glass tube connecting it\n"
+        this.description = "It's one half of a larger alchemical contraption in the room. "
+                         + "On the table is a metal flask rack and a bunsen burner "
+                         + "under it. Above the setup is a curved glass tube connecting it "
                          + "to the condenser on the other side of the table.";
 
         this.addActKeys("use|distill|boil", "strike", "light");
@@ -86,13 +86,13 @@ public class Labo_Distiller extends Furniture implements Moveable {
                 }
                 else {
                     AudioPlayer.playEffect(45);
-                    return "You strike the top of the burner. For a minute, the burner burns\n"
+                    return "You strike the top of the burner. For a minute, the burner burns "
                          + "with an intense flame under open space before dying out.";
                 }
             }
             else if (PIPE_REF.isOn() && ! Player.getPos().hasFurniture("hose")) {
                 AudioPlayer.playEffect(32);
-                return "As you squeeze the striker, a big poof of fire ignites and singes your face.\n"
+                return "As you squeeze the striker, a big poof of fire ignites and singes your face. "
                      + "The smell of gas fades momentarily and slowly comes back.";
             }
             else

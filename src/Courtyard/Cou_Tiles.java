@@ -13,13 +13,13 @@ public class Cou_Tiles extends Furniture implements Gettable {
     public Cou_Tiles () {
         super();
 
-        this.description = "The array of square rock tiles wraps around the\n"
-                         + "perimeter of the fountain. Many of them are\n"
+        this.description = "The array of square rock tiles wraps around the "
+                         + "perimeter of the fountain. Many of them are "
                          + "weathered, uneven, and cracked";
         this.searchDialog = "The tiles are much too heavy to lift with your hands.";
         this.actDialog = this.searchDialog;
-        this.useDialog = "You pry one of the tiles up, but all revealed is only\n"
-                       + "a square dirt indentation in the ground. Tired, you\n"
+        this.useDialog = "You pry one of the tiles up, but all revealed is only "
+                       + "a square dirt indentation in the ground. Tired, you "
                        + "drop the tile back into the hole to avoid tripping.";
 
         this.addNameKeys("(?:tiled )?walkway", "(?:square )?(?:rock )?tiles");

@@ -11,11 +11,11 @@ public class Din1_Tapestry extends WallArt {
     public Din1_Tapestry(Furniture crevice) {
         super();
         this.CRVC_REF = crevice;
-        this.description = "A large, renaissance-era tapestry. A well-dressed male\n" +
-                           "and female sit together on a log in a grove. Between\n" +
-                           "them is a chalice. The chalice bears an unexplainable\n" +
+        this.description = "A large, renaissance-era tapestry. A well-dressed male " +
+                           "and female sit together on a log in a grove. Between " +
+                           "them is a chalice. The chalice bears an unexplainable " +
                            "blue glow.";
-        this.searchDialog = "Lifting the tapestry, you discover a crevice in the\n"
+        this.searchDialog = "Lifting the tapestry, you discover a crevice in the "
                           + "wall behind it.";
         this.actDialog = this.searchDialog;
         this.addNameKeys("(?:large )?tapestry");
@@ -32,7 +32,7 @@ public class Din1_Tapestry extends WallArt {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
         if (key.equals("admire"))
-            return "Yes, what a beautiful piece of artwork. You take a moment\n"
+            return "Yes, what a beautiful piece of artwork. You take a moment "
                  + "to soak in the creative essence. Yes...";
         else 
             return this.getSearchDialog();

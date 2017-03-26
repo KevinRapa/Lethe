@@ -15,7 +15,7 @@ public class Wow2_Ladder extends Staircase {
     public Wow2_Ladder(Direction direction) {
         super(direction);
         this.searchDialog = "The ladder hides nothing.";
-        this.description = "The ladder rests against the upper balcony, but it's\n"
+        this.description = "The ladder rests against the upper balcony, but it's "
                          + "unstable from the debris.";
         this.NAMEKEYS.clear();
         this.addNameKeys("ladder", FIXED_LADDER);

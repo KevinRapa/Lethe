@@ -14,7 +14,7 @@ public class Want_Button extends Button {
         
         this.FOY2_LEVER_REF = (Foy2_Button)foy2Lever;
         
-        this.description = "There's a small black button on the wall next to\n"
+        this.description = "There's a small black button on the wall next to "
                          + "the gate.";
         this.addNameKeys("(?:small )?(?:black )?button");
     }

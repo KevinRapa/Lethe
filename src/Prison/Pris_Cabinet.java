@@ -12,7 +12,7 @@ public class Pris_Cabinet extends SearchableFurniture implements Openable, Movea
     public Pris_Cabinet (Item... items) {
         super(items);
 
-        this.description = "It's an old wood cabinet. The doors look ready to\n"
+        this.description = "It's an old wood cabinet. The doors look ready to "
                          + "fall off their hinges.";
         this.searchDialog = "You open up the cabinet.";
 

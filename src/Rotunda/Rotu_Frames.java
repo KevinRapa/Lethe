@@ -8,10 +8,10 @@ public class Rotu_Frames extends Furniture implements Unmoveable {
     public Rotu_Frames() {
         super();
 
-        this.description = "They are arched, door-shaped, and seem as if they\n"
+        this.description = "They are arched, door-shaped, and seem as if they "
                          + "form the entry of some kind of hidden magical passage.";
-        this.searchDialog = "These frames seem as though they hide something, but\n"
-                          + "after inspecting every inch, you can only confirm\n"
+        this.searchDialog = "These frames seem as though they hide something, but "
+                          + "after inspecting every inch, you can only confirm "
                           + "they are plain carvings.";
         this.actDialog = "You feel as though if you do that, you will get a face-full of rock.";
         

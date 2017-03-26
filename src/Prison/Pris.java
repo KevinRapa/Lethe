@@ -25,14 +25,14 @@ public class Pris extends Room {
                    + "shackled."),
         new Pris_Cll("4", "four", "This cell has nothing in it but a bucket and a "
                    + "few bones. There is a carving on the wall of the cell:"
-                + "           __\n" +
-                  "                        _///\n" +
-                  "                      _///¯\n" +
-                  "               _______///¯ \n" +
-                  "                \\\\\\\\\\\\\\||  \n" +
-                  "                  ¯¯¯¯¯|||    \n" +
-                  "                     |||____ \n" +
-                  "                    |||\\\\\\\\\\\n" +
+                + "           __ " +
+                  "                        _/// " +
+                  "                      _///¯ " +
+                  "               _______///¯  " +
+                  "                \\\\\\\\\\\\\\||   " +
+                  "                  ¯¯¯¯¯|||     " +
+                  "                     |||____  " +
+                  "                    |||\\\\\\\\\\ " +
                   "                     ¯¯¯¯¯¯¯"
         ),
         new Pris_Cll("5", "five", "You see a pair of wall shackles and a metal "

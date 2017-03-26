@@ -10,8 +10,8 @@ public class Cou_Ravens extends Furniture implements Gettable {
     public Cou_Ravens () {
         super();
         
-        this.description = "A few black ravens can be seen flying around inside\n"
-                         + "the courtyard. Occasionally, one is seen flying into\n"
+        this.description = "A few black ravens can be seen flying around inside "
+                         + "the courtyard. Occasionally, one is seen flying into "
                          + "the nearby tree before exiting again not too long after.";
         this.actDialog = "You don't speak raven.";
 

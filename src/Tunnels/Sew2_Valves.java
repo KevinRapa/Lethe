@@ -62,8 +62,8 @@ public class Sew2_Valves extends Furniture implements Resetable {
         MAP.put("v", 4); MAP.put("vi", 5); MAP.put("vii", 6); MAP.put("viii", 7);
         MAP.put("ix", 8);
         
-        this.description = "They're a grid of 9 valves protruding from a console\n"
-                         + "on the wall. Above each is a roman numeral and a small\n"
+        this.description = "They're a grid of 9 valves protruding from a console "
+                         + "on the wall. Above each is a roman numeral and a small "
                          + "gauge. The rusty metal pipe originates from and leads out of the console's top.";
         
         this.searchDialog = "There's nothing here that you can take.";

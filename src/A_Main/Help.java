@@ -26,7 +26,7 @@ public class Help {
         "When prompted for input, the desired type of input will appear in "
       + "angle brackets.\t\t\t\t\t"
       + "Simple types of input ------ "
-      + "<item> - Enter an item name.\n"
+      + "<item> - Enter an item name. "
       + "<object> - Enter an object in the room.\t\t\t" +
         "<'x'> - Enter what's quoted.\t" +
         "<#> - Enter a digit.\t\t" +
@@ -113,14 +113,14 @@ public class Help {
         "items are ingredients for other crafted items.", 
          
         "Items may be examined in the same way furniture are. Inspecting is " +
-        "done from the inventory, however you may type \"examine <item>\" from " +
-        "the main prompt as long as you are carrying the item. You may also " +
-        "substitute the item's slot number as alternative to its name, and " +
-        "take note that entering in the complete name of the item is not " +
-        "always necessary. Inspecting can also be done during a search if " +
-        "you want to look at an item before picking it up. Inspecting can be useful for discovering hidden " +
-        "information about items, and it may clue you into the next course " +
-        "of action.", 
+        "done from the inventory, however you may type \"examine <item>\" "
+      + "or even just the item slot from the main prompt as long as you are "
+      + "carrying the item. You may also substitute the item's slot number as "
+      + "alternative to its name, and take note that entering in the complete "
+      + "name of the item is not always necessary. Inspecting can also be done "
+      + "during a search if you want to look at an item before picking it up. "
+      + "Inspecting can be useful for discovering hidden information about "
+      + "items, and it may clue you into the next course of action.", 
          
         "As you progress, you may find yourself frequently dropping and " +
         "storing items. You may also wish to make notes of interesting " +
@@ -146,9 +146,9 @@ public class Help {
         "By entering 'l' from the main prompt, you can see how many " + 
         "phylacteries you are carrying.",    
          
-        "Most rooms have at least one door, and thus you may act on them from the\n" +
-        "main prompt using the name 'door'. However, you do not need to act on doors\n" +
-        "in general movement. Your character moves through them automatically if\n" +
+        "Most rooms have at least one door, and thus you may act on them from the " +
+        "main prompt using the name 'door'. However, you do not need to act on doors " +
+        "in general movement. Your character moves through them automatically if " +
         "they are unlocked, unblocked, etc.", 
          
         "The castle is made of rooms separated by doors and walls. A room may " +
@@ -158,7 +158,7 @@ public class Help {
         "you wish to see a humble image of where you are, you may enter \"m\" " +
         "or \"map\" from the main prompt.", 
          
-        "'Furniture' or more appropriately 'room objects' are any nouns in the room\n" +
+        "'Furniture' or more appropriately 'room objects' are any nouns in the room " +
         "description. This means you can interact with them from the main prompt.", 
          
         "Items are things that go into your inventory or key ring. You may take "

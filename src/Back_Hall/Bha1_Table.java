@@ -18,8 +18,8 @@ public class Bha1_Table extends SearchableFurniture implements Openable, Moveabl
         this.useDialog = "This table clearly has all four legs intact, you oaf.";
         this.description = "A petite drawered end table.";
         this.searchDialog = "You slide open the drawer and look inside.";
-        this.actDialog = "Jostling the table a little, you find its\n" +
-                         "craftsmanship impressive. The carvings on it are\n" + 
+        this.actDialog = "Jostling the table a little, you find its " +
+                         "craftsmanship impressive. The carvings on it are " + 
                          "equally as such.";
         
         this.addUseKeys("broken table leg");

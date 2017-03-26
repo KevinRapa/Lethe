@@ -23,8 +23,8 @@ public class Esc6_Grate extends Furniture implements Resetable, Gettable {
 
         this.description = "The metal grate blocks access to the above room.";
         this.actDialog = "It's too heavy. You can't open it.";
-        this.useDialog = "You jam the bar in the corner of the grate. The grate pops\n"
-                       + "up a bit, and you force the bar in more. With the rest of\n"
+        this.useDialog = "You jam the bar in the corner of the grate. The grate pops "
+                       + "up a bit, and you force the bar in more. With the rest of "
                        + "your strength, you pop the grate out.";
 
         this.addNameKeys("(?:metal )?grate");

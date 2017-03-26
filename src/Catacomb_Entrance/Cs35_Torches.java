@@ -12,7 +12,7 @@ public class Cs35_Torches extends Furniture {
 
         this.description = "The tall obelisks burn brightly with a blue flame.";
         this.actDialog = "There's no way you are going to touch that fire.";
-        this.useDialog = "Your torch is still lit, despite the fact that you've\n"
+        this.useDialog = "Your torch is still lit, despite the fact that you've "
                        + "been carrying it all this time.";
         
         this.addNameKeys("(?:standing )?torch(?:es)?", "(?:bright )?(?:blue )?flame");

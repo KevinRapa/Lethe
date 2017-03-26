@@ -9,7 +9,7 @@ public class Gal1_Hearth extends Fireplace {
     public Gal1_Hearth(Item bckt) {       
         super(bckt);
 
-        this.descLit = "The small hearth is tiled green and purple like the rest\n"
+        this.descLit = "The small hearth is tiled green and purple like the rest "
                      + "of the room.";
     }
 /*----------------------------------------------------------------------------*/

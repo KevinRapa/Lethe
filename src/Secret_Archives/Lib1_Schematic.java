@@ -13,15 +13,15 @@ public class Lib1_Schematic extends Note {
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Lib1_Schematic(String name) {
         super(name);
-        this.description = "25-4-1652 - \n" +
-                           "gamma schematic\n" +
+        this.description = "25-4-1652 -  " +
+                           "gamma schematic " +
                            "   \t  [d   ][ ]" +
                            " \t\t\t [b g w][ ]" +
                            "\t\t\t[r p dp][S]" +
                            "	    \t\t\t[|]" +
                            "	    \t\t\t[|]" +
-                           "\n" +
-                           "Require a vessel\n" +
+                           "\t" +
+                           "Require a vessel " +
                            "thats holds a charge. -Rhadamanthus";
     }
 /*----------------------------------------------------------------------------*/

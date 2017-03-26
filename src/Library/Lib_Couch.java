@@ -8,10 +8,10 @@ public class Lib_Couch extends SearchableFurniture implements Moveable {
     public Lib_Couch() {
         super();
 
-        this.description = "A red gothic-era couch. It looks way more fancy\n"
+        this.description = "A red gothic-era couch. It looks way more fancy "
                          + "than comfortable. Its frame is a glorious rosewood.";
         this.searchDialog = "You look underneath the couch.";
-        this.actDialog = "You relax on the couch for a moment. You feel like your\n"
+        this.actDialog = "You relax on the couch for a moment. You feel like your "
                     + "IQ has just risen a couple points.";
         this.addNameKeys("(?:red )?(?:gothic-era )?(?:couch|sofa)");
         this.addActKeys(SITPATTERN);

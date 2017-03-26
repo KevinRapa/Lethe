@@ -40,21 +40,24 @@ public class Obs1_Statues extends Furniture {
         new Obs1_Statue("8", "The statue displays a monumental male figure crowned with a radiating halo. He rides in a chariot pulled by four steeds.", 0),
     };
     private final Obs3_Chandelier CHNDLR_REF;
-    private boolean solved = false, locked = true;
+    private boolean solved, locked;
     private final String[] SOLUTION = {"5", "0", "1", "4", "7", "3", "6", "2"};
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Obs1_Statues(Furniture chandlr) {
         super();
 
-        this.actDialog = "As the statue settles in place, a bright\n"
-                       + "array of light forms on the floor. The chandelier\n"
+        this.solved = false;
+        this.locked = true;
+        
+        this.actDialog = "As the statue settles in place, a bright "
+                       + "array of light forms on the floor. The chandelier "
                        + "high up at the third level descends.";
-        this.description = "An array of 9 statues arranged in a circle. In the\n"
-                         + "center stands an additional larger statue looking\n"
+        this.description = "An array of 9 statues arranged in a circle. In the "
+                         + "center stands an additional larger statue looking "
                          + "upwards.";
-        this.searchDialog = "They don't seem to be hiding anything unusual.\n"
-                          + "An inspection of the floor around them reveals\n"
-                          + "fine seams in the floor connecting them in various\n"
+        this.searchDialog = "They don't seem to be hiding anything unusual. "
+                          + "An inspection of the floor around them reveals "
+                          + "fine seams in the floor connecting them in various "
                           + "ways.";
         this.CHNDLR_REF = (Obs3_Chandelier) chandlr;
         this.addNameKeys("statues?", "ring(?: of statues)?", "gods?", "goddess(?:es)?");
@@ -64,7 +67,7 @@ public class Obs1_Statues extends Furniture {
     @Override public String getDescription() {
         String rep = NOTHING, choice;
         
-        GUI.out(this.description + "\n");
+        GUI.out(this.description + " ");
         
         do {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + rep);    
@@ -125,7 +128,7 @@ public class Obs1_Statues extends Furniture {
         }
         else if (this.locked) {
             AudioPlayer.playEffect(6);
-            rep = "The statues aren't budging. Something might be locking\n"
+            rep = "The statues aren't budging. Something might be locking "
                 + "them in place";  
         }
         else {       
@@ -148,11 +151,11 @@ public class Obs1_Statues extends Furniture {
         String i = STATS[8].toString();
         
         return "\t\t\t\t\t     {"+a+"}¯¯\\" +
-               "\t\t        {"+h+"}       {"+b+"}\n" +
+               "\t\t        {"+h+"}       {"+b+"} " +
                "\t\t        /\t\t           "
-             + "{"+g+"}    {"+i+"}    {"+c+"}\n" +
+             + "{"+g+"}    {"+i+"}    {"+c+"} " +
                "\t\t\t    /\t             "
-             + "{"+f+"}       {"+d+"}\n" +
+             + "{"+f+"}       {"+d+"} " +
                "                 \\__{"+e+"}";
     }
 /*----------------------------------------------------------------------------*/

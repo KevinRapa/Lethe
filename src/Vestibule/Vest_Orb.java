@@ -18,13 +18,13 @@ public class Vest_Orb extends NonPlayerCharacter {
              + "\"Is staring at things a hobby of yours? Aren't you "
              + "going to say anything to me?\"";
         this.actDialog = 
-                "You extend your hand out to grab the auspicious orb. A voice\n"
-              + "then speaks before you reach it. \"Hey you! Do not taint my\n"
-              + "window from this prison with your dirty hands. Say something\n"
+                "You extend your hand out to grab the auspicious orb. A voice "
+              + "then speaks before you reach it. \"Hey you! Do not taint my "
+              + "window from this prison with your dirty hands. Say something "
               + "to me damn you!\"";
         this.searchDialog = 
                 "You can't seem to find anything out of the "
-                + "ordinary. Suddenly, a voice speaks-\n"
+                + "ordinary. Suddenly, a voice speaks- "
                 + "\"Is staring at things a hobby of yours? "
                 + "Aren't you going to say anything to me?\"";
 

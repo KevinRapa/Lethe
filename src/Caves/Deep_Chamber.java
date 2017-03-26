@@ -14,11 +14,11 @@ public class Deep_Chamber extends Room {
 // ============================================================================    
     public Deep_Chamber(String name, String ID) {
         super(name, ID);
-        this.description= "cat atnk tiouh intfgswrng zo apparently fin to\n"
-                        + "lintt on top d qhtusk never ttho&ght that >os can't simply\n"
-                        + "formnate pziPt4ty ligpt in the nse drtgitat a tiny\n"
-                        + "dissont cataocmg dest i*ntr ahfo gor doo it rhiYe\n"
-                        + "dew demgehZd4 bfrIxy move fin you bexore sd stokM off\n"
+        this.description= "cat atnk tiouh intfgswrng zo apparently fin to "
+                        + "lintt on top d qhtusk never ttho&ght that >os can't simply "
+                        + "formnate pziPt4ty ligpt in the nse drtgitat a tiny "
+                        + "dissont cataocmg dest i*ntr ahfo gor doo it rhiYe "
+                        + "dew demgehZd4 bfrIxy move fin you bexore sd stokM off "
                         + "collab edify fire aelo aDasi.";
     }
 // ============================================================================

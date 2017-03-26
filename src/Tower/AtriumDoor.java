@@ -10,8 +10,8 @@ public class AtriumDoor extends Door {
     public AtriumDoor (Direction dir) {
         super(dir);
         
-        this.description = "The double doors are symmetrical and decorated with\n"
-                         + "a fine lattice embossing. A carving of a snake curves\n"
+        this.description = "The double doors are symmetrical and decorated with "
+                         + "a fine lattice embossing. A carving of a snake curves "
                          + "around the edge of each door.";
 
         this.addNameKeys("(?:imposing )?(?:black )?(?:iron )?(?:double-?)?doors?");

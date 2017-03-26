@@ -9,9 +9,9 @@ public class Tmb2_Light extends Furniture {
     public Tmb2_Light () {
         super();
         
-        this.description = "The orb is blinding and is the only thing lighting\n"
+        this.description = "The orb is blinding and is the only thing lighting "
                          + "the room. It has no source, nor any vessel to contain it...";
-        this.actDialog = "You attempt to touch the orb, but the orb just dodges\n"
+        this.actDialog = "You attempt to touch the orb, but the orb just dodges "
                        + "it autonomously.";
         this.searchDialog = this.actDialog;
 

@@ -22,9 +22,9 @@ public class Sew5_Valve extends Furniture {
         this.SEW2VLVS = (Sew2_Valves)sew2Vlvs;
         this.SEW4PP = (Sew4_Pipe)sew4Pp;
         
-        this.description = "The metal valve is connected to a console mounted\n"
-                         + "on the wall next to the door. A smaller pipe coming\n"
-                         + "out the top of the console connects to the larger\n"
+        this.description = "The metal valve is connected to a console mounted "
+                         + "on the wall next to the door. A smaller pipe coming "
+                         + "out the top of the console connects to the larger "
                          + "pipe running through the wall above the door.";
         this.actDialog = "With all your strength, you manage to turn the valve.";
 

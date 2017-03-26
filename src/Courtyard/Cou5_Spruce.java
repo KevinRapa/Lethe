@@ -25,12 +25,12 @@ public class Cou5_Spruce extends SearchableFurniture
     public Cou5_Spruce(Item vial, Item extrct, Item ... items) {
         super(items);
         this.searchDialog = "There doesn't seem to be much...";
-        this.useDialog = "Drilling a small hole into the trunk allows a small\n"
+        this.useDialog = "Drilling a small hole into the trunk allows a small "
                        + "sample of sap to ooze out.";
-        this.description = "The ancient tree looms over you and creaks slowly in\n"
-                         + "the breeze. It stands out as the most life-like thing\n"
-                         + "in the courtyard, even more than the birds. The spruce\n"
-                         + "is an evergreen, genus Picea, with stiff sharp needles.\n"
+        this.description = "The ancient tree looms over you and creaks slowly in "
+                         + "the breeze. It stands out as the most life-like thing "
+                         + "in the courtyard, even more than the birds. The spruce "
+                         + "is an evergreen, genus Picea, with stiff sharp needles. "
                          + "The closely-spaced branches make climbing a possibility.";
         this.EXTRCT_REF = extrct;
         this.VIAL_REF = vial;
@@ -84,15 +84,15 @@ public class Cou5_Spruce extends SearchableFurniture
         else if (action.matches(CLIMBPATTERN)) {
             if (Player.getPosId().equals(Id.COU8)) {
                 Player.move(Direction.DOWN);
-                return "You are uncomfortable with the idea of spending any\n"
-                     + "greater time up there on such a windy night. You carefully\n"
+                return "You are uncomfortable with the idea of spending any "
+                     + "greater time up there on such a windy night. You carefully "
                      + "climb back down into the courtyard.";
             } 
             else {
                 Player.move(Direction.UP);
-                return "You carefully climb up the tree. The closely-spaced branches\n"
-                 + "of the spruce make the climb easier than in most trees, however\n"
-                 + "the stiff spruce needles scrape and jab your skin through your\n"
+                return "You carefully climb up the tree. The closely-spaced branches "
+                 + "of the spruce make the climb easier than in most trees, however "
+                 + "the stiff spruce needles scrape and jab your skin through your "
                  + "flannel shirt.";
             }
         }

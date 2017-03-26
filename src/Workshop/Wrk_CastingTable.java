@@ -86,8 +86,8 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
                         color = "yellow";
                         break;
                 }
-                return "You pour the molten glass into the mold. In no time\n"
-                     + "at all, the glass dries into a fresh new " + color + " lens!\n"
+                return "You pour the molten glass into the mold. In no time "
+                     + "at all, the glass dries into a fresh new " + color + " lens! "
                      + "You take the lens. This is what you needed, right?";    
             }
             else {
@@ -106,9 +106,9 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
                         this.BRL_INV.add(YELLOW_DYE_REF);
                         break;
                 }
-                return "You pour the molten glass onto the casting table.\n" +
-                       "As the glass dries, you scratch your head. Didn't\n"
-                     + "the instructions say to use a template? You take the\n"
+                return "You pour the molten glass onto the casting table. " +
+                       "As the glass dries, you scratch your head. Didn't "
+                     + "the instructions say to use a template? You take the "
                      + "solidified glass sheet from the casting table.";
             }
         }        

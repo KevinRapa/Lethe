@@ -7,7 +7,7 @@ public class Din1_Moonlight extends Furniture {
     public Din1_Moonlight() {
         super();
 
-        this.description = "The skies are clear and the full moon is bright\n"
+        this.description = "The skies are clear and the full moon is bright "
                          + "tonight.";
         this.searchDialog = "Don't be ridiculous.";
         this.addNameKeys("moonlight");

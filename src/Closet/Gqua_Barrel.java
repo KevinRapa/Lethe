@@ -14,7 +14,7 @@ public class Gqua_Barrel extends Furniture implements Openable, Unmoveable {
     public Gqua_Barrel() {
         super();
         this.description = "It's a cask. You sure hope there's beer in there.";
-        this.searchDialog = "You can't get it open. You take a whiff from a\n"
+        this.searchDialog = "You can't get it open. You take a whiff from a "
                           + "crack in its surface. Disgusting!!";
         
         this.addUseKeys(ANYTHING);

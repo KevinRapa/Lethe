@@ -11,7 +11,7 @@ public class Rqua_Dresser extends Furniture implements Openable, Moveable {
 
         this.description = "It's a low dresser with a couple opened drawers in it.";
         this.actDialog = "There's no reason to do that...";
-        this.searchDialog = "Seems like a bad place to hide something, as someone\n"
+        this.searchDialog = "Seems like a bad place to hide something, as someone "
                           + "has already searched it.";
         this.addActKeys("close");
         this.addNameKeys("(?:low )?dresser");  

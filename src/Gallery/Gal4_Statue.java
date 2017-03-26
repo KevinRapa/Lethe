@@ -17,8 +17,8 @@ public class Gal4_Statue extends Furniture {
         this.level = 0;
         
         this.actDialog = "What glorious rippling muscles the statue has!";
-        this.description = "The statue now stands surrounded by the second floor\n"
-                         + "balcony. The orb has stopped glowing and one of\n"
+        this.description = "The statue now stands surrounded by the second floor "
+                         + "balcony. The orb has stopped glowing and one of "
                          + "the statue's eyes has started to.";  
         this.searchDialog = "The statue's hand is out of reach";
         
@@ -65,8 +65,8 @@ public class Gal4_Statue extends Furniture {
             default: 
                 Player.getRoomObj(Id.GAL7).addFurniture(STAT_REF);
                 AudioPlayer.playEffect(37);
-                return "The crystal orb's glow brightens to a blinding white\n"
-                    + "light. It hums loudly and rises once again to the\n"
+                return "The crystal orb's glow brightens to a blinding white "
+                    + "light. It hums loudly and rises once again to the "
                     + "third floor level.";
         }
     }
@@ -76,11 +76,11 @@ public class Gal4_Statue extends Furniture {
             case 1:
                 return "The statue stands holding the glowing orb. It hums softly."; 
             case 2:
-                return "The statue stands holding the glowing orb. It's humming\n"
+                return "The statue stands holding the glowing orb. It's humming "
                     + "quite loudly now."; 
             case 3:
-                return "The statue has risen yet again to the highest area of\n"
-                    + "the central chamber across from the third floor loft.\n"
+                return "The statue has risen yet again to the highest area of "
+                    + "the central chamber across from the third floor loft. "
                     + "The statue's plinth is now exceedingly long and unusual.";
             default:
                 return this.description;

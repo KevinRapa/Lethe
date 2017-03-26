@@ -17,8 +17,8 @@ public class Water extends Furniture implements Gettable {
 
         this.description = "Clean, sparkling water.";
         this.searchDialog = "Just clean H2O here.";
-        this.actDialog = "Now is NOT the time for a swim, though it's tempting. You\n"
-                       + "don't even have a change of clothes, and you aren't wearing\n"
+        this.actDialog = "Now is NOT the time for a swim, though it's tempting. You "
+                       + "don't even have a change of clothes, and you aren't wearing "
                        + "servant's garb.";
         this.useDialog = "You dip the bucket in and fill it with water.";
         
@@ -40,7 +40,7 @@ public class Water extends Furniture implements Gettable {
         if (key.equals("swim") || key.equals("jump") || key.equals("dive"))
             return this.actDialog;
         else if (key.equals("drink"))
-            return "You take a sip of water and feel refreshed. Carrying\n"
+            return "You take a sip of water and feel refreshed. Carrying "
                  + "all that stuff around has tired you.";
         else
             return getIt();

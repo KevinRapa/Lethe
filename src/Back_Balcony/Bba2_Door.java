@@ -9,8 +9,8 @@ public class Bba2_Door extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Bba2_Door (Direction dir) {
         super(dir);
-        this.description = "This door looks different from the other doors in\n"
-                         + "the castle. It is carved very artfully. At its center,\n"
+        this.description = "This door looks different from the other doors in "
+                         + "the castle. It is carved very artfully. At its center, "
                          + "a bearded face is carved into the wood.";
     }
 /*----------------------------------------------------------------------------*/

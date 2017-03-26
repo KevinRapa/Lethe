@@ -19,13 +19,13 @@ public class Look_Valve extends Furniture {
     public Look_Valve(Furniture fntn) {
         super();
 
-        this.searchDialog = "There's nothing hidden near the valve. Honestly, you never expected\n"
+        this.searchDialog = "There's nothing hidden near the valve. Honestly, you never expected "
                           + "to find anything.";
-        this.description = "A big rusty valve. There's a small open pipe sticking out\n"
+        this.description = "A big rusty valve. There's a small open pipe sticking out "
                          + "of the wall next to it.";
         this.loosened = false;
-        this.actDialog = "As you turn the valve, you hear rushing water. Immediately,\n"
-                    + "a gush of water flows from the nearby pipe and off of the\n"
+        this.actDialog = "As you turn the valve, you hear rushing water. Immediately, "
+                    + "a gush of water flows from the nearby pipe and off of the "
                     + "balcony.";
         this.FNTN_REF = (Rotu_Fountain) fntn;
         this.addNameKeys("valve", "(?:big )?(?:rusty )?valve");

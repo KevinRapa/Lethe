@@ -25,8 +25,8 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
         this.TUBE_REF = testTube;
         
         this.searchDialog = "Many foreign chemical can be dispensed from their containers on the wall.";
-        this.description = "The series of six opaque dispensers are\n"
-                         + "lined up next to each other over a sink. At the bottom\n"
+        this.description = "The series of six opaque dispensers are "
+                         + "lined up next to each other over a sink. At the bottom "
                          + "of each one is a rotating stopcock.";
         this.actDialog = "You need a vial or test tube to dispense into!";
 
@@ -61,7 +61,7 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
     }
     // ========================================================================  
     private Item dispense() {
-        GUI.out("There are six dispensers on the wall. You cannot see inside them,\n"
+        GUI.out("There are six dispensers on the wall. You cannot see inside them, "
               + "but each bears a label. From left to right, the labels read: \t\t1 - H2CO3   2 - Br "
               + "         3 - Ae      4 - HF          5 - NACL    6 - C20H14O4 \t\t\t\t\tDispense which one?");
         
@@ -92,7 +92,7 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
     private boolean askToDispense() {
         GUI.out("You have something to dispense into. Would you like to dispense liquid?");
 
-        String ans = GUI.askChoice("\nDispense a chemical?", YES_NO_P);
+        String ans = GUI.askChoice(NL + "Dispense a chemical?", YES_NO_P);
         
         return (Player.answeredYes(ans));
     }

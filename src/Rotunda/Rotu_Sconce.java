@@ -7,11 +7,11 @@ public class Rotu_Sconce extends Furniture {
     public Rotu_Sconce() {
         super();
 
-        this.description = "It's a spherical light. It's so bright! And there\n"
+        this.description = "It's a spherical light. It's so bright! And there "
                          + "looks not to be a bulb inside.";
-        this.searchDialog = "You're no wizard, but it's glass filled with\n"
+        this.searchDialog = "You're no wizard, but it's glass filled with "
                           + "some sort of magical gas or aether.";
-        this.actDialog = "Hmm... You really expected that to hurt, but it is quite cool\n"
+        this.actDialog = "Hmm... You really expected that to hurt, but it is quite cool "
                        + "to the touch. The gas is encapsulated, and you cannot obtain any.";
         this.addNameKeys("(?:spherical )?(?:sconces?|lights?)", "(?:magical )?(?:gas|aether)");
         this.addActKeys(GETPATTERN, HOLDPATTERN);

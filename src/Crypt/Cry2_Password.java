@@ -19,8 +19,8 @@ public class Cry2_Password extends Furniture {
         
         this.CRY1_STAT = (Cry1_Statue)stat;
 
-        this.actDialog = "As you speak the phrase before the stone coffin, it\n"
-                       + "slides to the side with a rumble, revealing a metal\n"
+        this.actDialog = "As you speak the phrase before the stone coffin, it "
+                       + "slides to the side with a rumble, revealing a metal "
                        + "door.";
         this.searchDialog = this.description = this.useDialog = 
                 "There is nothing with that name here.";

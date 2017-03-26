@@ -21,8 +21,8 @@ public class Par2_Piano extends SearchableFurniture
     public Par2_Piano(Furniture orb, Item... items) {
         super(items);
         
-        this.description = "The black grand piano sits solemnly on the loft\n"
-                         + "extension. You're surprised anybody here has time\n"
+        this.description = "The black grand piano sits solemnly on the loft "
+                         + "extension. You're surprised anybody here has time "
                          + "for music!";
         
         this.useDialog = "You have little knowledge of musical instruments, much less in instrument repair."; 
@@ -38,16 +38,16 @@ public class Par2_Piano extends SearchableFurniture
         if (! REF.woken()) {
             AudioPlayer.playEffect(53);
             REF.wake();
-            return "You sit at the piano and produce a few notes. Suddenly, you\n"
-                 + "hear a voice from down below. \"Hey! Who is playing my piano?\"\n"
-                 + "The voice is echoey, and you have a hunch it's emanating from the\n"
+            return "You sit at the piano and produce a few notes. Suddenly, you "
+                 + "hear a voice from down below. \"Hey! Who is playing my piano?\" "
+                 + "The voice is echoey, and you have a hunch it's emanating from the "
                  + "orb below.";
             
         }
         else {
             AudioPlayer.playEffect(53);
-            return "You sit down again and play some more notes. \"Stop playing\n"
-                 + "that before you break it!\" The orb yells. \"I'm the only\n"
+            return "You sit down again and play some more notes. \"Stop playing "
+                 + "that before you break it!\" The orb yells. \"I'm the only "
                  + "experienced musician in this castle!\"";
         }
     }

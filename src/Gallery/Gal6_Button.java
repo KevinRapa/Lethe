@@ -52,7 +52,7 @@ public class Gal6_Button extends Button {
             AudioPlayer.playEffect(49);
             Player.setOccupies(roomId);  
 
-            return "'... Huh? What just happened? This isn't the gallery loft.'\n" +
+            return "'... Huh? What just happened? This isn't the gallery loft.' " +
                    "You scratch your head and look around the room.";
         }
         return this.actDialog;

@@ -11,7 +11,7 @@ public class BurningBowl extends Furniture implements Gettable {
     public BurningBowl () {
         super();
 
-        this.searchDialog = "Whatever important item might have been there has\n"
+        this.searchDialog = "Whatever important item might have been there has "
                           + "likely burned away at this point.";
         this.useDialog = this.actDialog = "Jabbing a burning bowl isn't a very good idea.";
 

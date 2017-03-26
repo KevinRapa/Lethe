@@ -39,8 +39,8 @@ public class Labo_Flask extends SearchableFurniture {
         if (this.inv.size() != 0 && CONDENSER_REF.condense(determineProduct())) 
             ((Flsk_Inventory)this.inv).emptyAndAddResidue();
         else if (this.inv.size() == 0)
-            GUI.out("You strike the burner, producing an aggressive flame. The\n"
-                  + "flame heats the empty flask for about a minute, yielding\n"
+            GUI.out("You strike the burner, producing an aggressive flame. The "
+                  + "flame heats the empty flask for about a minute, yielding "
                   + "no interesting results.");
     }
     // ======================================================================== 
@@ -117,7 +117,7 @@ public class Labo_Flask extends SearchableFurniture {
                     return true;
                 }
                 else {
-                    GUI.out("You have no vial or test tube to empty it out into.\n");
+                    GUI.out("You have no vial or test tube to empty it out into. ");
                     return false;
                 }
             }

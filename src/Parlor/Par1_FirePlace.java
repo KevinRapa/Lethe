@@ -25,12 +25,12 @@ public class Par1_FirePlace extends Fireplace {
                 new Liquid(SACRED_FIRE, "The fire burns enigmatically inside "
                          + "the bottle. To your surprise, the fire gives off no heat.", 150);
         
-        this.descLit = "It's a large sandstone fireplace, about your height.\n"
-                     + "Its mantle is supported on both sides by short columns\n"
-                     + "carved into angelic figures. The fire burns aggressively,\n"
+        this.descLit = "It's a large sandstone fireplace, about your height. "
+                     + "Its mantle is supported on both sides by short columns "
+                     + "carved into angelic figures. The fire burns aggressively, "
                      + "but to your amazement, gives off no heat.";
 
-        this.useDialog = "Holding the magical bottle over the fire, some of the flames seep\n"
+        this.useDialog = "Holding the magical bottle over the fire, some of the flames seep "
                        + "inside. You quickly cork the bottle and stare at it, mesmerized.";
         
         this.addUseKeys(GLASS_BOTTLE, ENCHANTED_BOTTLE);
@@ -52,7 +52,7 @@ public class Par1_FirePlace extends Fireplace {
                 Player.getInv().remove(item);
                 Player.getInv().add(BCKT_REF);
                 AudioPlayer.playEffect(39);
-                return "The water steams aggressively upon contact, but fails to\n"
+                return "The water steams aggressively upon contact, but fails to "
                      + "douse the flames.";
             case ENCHANTED_BOTTLE:
                 Player.getInv().remove(item);

@@ -9,8 +9,8 @@ public class Labo_Devices extends Furniture {
     public Labo_Devices () {
         super();
 
-        this.description = "You are overwhelmed with science. You have never been\n"
-                         + "in a laboratory before. All you see are many colors,\n"
+        this.description = "You are overwhelmed with science. You have never been "
+                         + "in a laboratory before. All you see are many colors, "
                          + "valves and pipes.";
         this.actDialog = "You have no idea what to do.";
         this.searchDialog = this.useDialog = this.actDialog;

@@ -10,8 +10,8 @@ public class Ou62_Skeleton extends Skeleton {
     public Ou62_Skeleton (Item... items) {
         super(items);
         
-        this.description = "The clean skeleton is well preserved and not missing\n"
-                         + "a single bone. Whoever sent it down here must have\n"
+        this.description = "The clean skeleton is well preserved and not missing "
+                         + "a single bone. Whoever sent it down here must have "
                          + "forgotten about it.";
     }
     // ========================================================================

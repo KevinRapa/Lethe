@@ -14,8 +14,8 @@ public class Dummy_Furniture extends Furniture {
     public Dummy_Furniture () {
         super();
         
-        this.description = "a5 ojkvjkljelzx sf093knf k4kgjg094ng nvkjrhniog9 9ug\n"
-                         + "fe 0e08 fjkSEJKO f0ej HEWBK9 jfe90 kfjnks FLeosj selg\n"
+        this.description = "a5 ojkvjkljelzx sf093knf k4kgjg094ng nvkjrhniog9 9ug "
+                         + "fe 0e08 fjkSEJKO f0ej HEWBK9 jfe90 kfjnks FLeosj selg "
                          + "wnmf 9f pg e9kf ;smn kfejp0fuesi3 ,n kk34p uofej9 yhfhbe.";
         
         this.addNameKeys(ANYTHING); // Any non-empty string matches this.

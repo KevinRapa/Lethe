@@ -7,7 +7,7 @@ public class Rotu_Rock extends Furniture {
     public Rotu_Rock() {
         super();
 
-        this.description = "It looks like marble. But where could one possibly\n"
+        this.description = "It looks like marble. But where could one possibly "
                          + "accumulate all this marble from?.";
         this.searchDialog = "You are a lumberjack, not a miner.";
         this.addNameKeys("(?:polished )?(?:rock|marble)");

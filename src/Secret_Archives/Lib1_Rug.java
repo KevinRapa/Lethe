@@ -7,9 +7,9 @@ public class Lib1_Rug extends Carpet {
     public Lib1_Rug() {
         super();
 
-        this.description = "A dusty Persian rug. Clearly an antique, but it looks\n"
+        this.description = "A dusty Persian rug. Clearly an antique, but it looks "
                          + "surprisingly new.";
-        this.searchDialog = "To your great curiosity, lifting up the rug\n"
+        this.searchDialog = "To your great curiosity, lifting up the rug "
                           + "reveals a second identical rug underneath.";
         
         this.addNameKeys("(?:dusty )?(?:persian )?(?:rug|carpet)");

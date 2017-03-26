@@ -12,13 +12,13 @@ public class Labo_Contraption extends Furniture implements Moveable {
     public Labo_Contraption () {
         super();
 
-        this.description = "The large contraption seems to be composed of two parts.\n"
-                         + "The left half has a bunsen burner under a rack for a flask.\n"
-                         + "Above it is an inch-wide glass tube bridging over. The\n"
-                         + "right half consists of the glass tube emptying out over a\n"
+        this.description = "The large contraption seems to be composed of two parts. "
+                         + "The left half has a bunsen burner under a rack for a flask. "
+                         + "Above it is an inch-wide glass tube bridging over. The "
+                         + "right half consists of the glass tube emptying out over a "
                          + "drain in the counter. There's a switch connected to a stopcock on the tube.";
         this.actDialog = "You have no idea what to do. Maybe there's something in here to help.";
-        this.searchDialog = "This giant thing is alien to you, yet nothing seems\n"
+        this.searchDialog = "This giant thing is alien to you, yet nothing seems "
                           + "out of the ordinary.";
         this.useDialog = this.actDialog;
 

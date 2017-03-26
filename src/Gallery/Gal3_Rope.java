@@ -13,11 +13,11 @@ public class Gal3_Rope extends Furniture {
             this.cut = false;
             this.REF = (Gal3_Ladder)lddr;
             
-            this.actDialog = "You cut the rope with the katana. The ladder\n"
-                           + "drops down into the room, giving access to\n"
+            this.actDialog = "You cut the rope with the katana. The ladder "
+                           + "drops down into the room, giving access to "
                            + "the loft.";
-            this.description = "The rope is tied to the ladder and hoists it up\n"
-                             + "with a pulley. It feeds into a hole in the wall\n"
+            this.description = "The rope is tied to the ladder and hoists it up "
+                             + "with a pulley. It feeds into a hole in the wall "
                              + "next to you. Above the hole, you see a switch.";
             this.searchDialog = "It's just an ordinary rope.";
             
@@ -55,8 +55,8 @@ public class Gal3_Rope extends Furniture {
         REF.lower();
         this.cut = true;
         
-        return "You cut the rope with the " + item + ".\n"
-             + "The ladder drops down into the room,\n"
+        return "You cut the rope with the " + item + ". "
+             + "The ladder drops down into the room, "
              + "giving access to the loft.";
     }
 /*----------------------------------------------------------------------------*/

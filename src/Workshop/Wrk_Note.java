@@ -10,12 +10,12 @@ public class Wrk_Note extends Note {
     public Wrk_Note(String name) {
         super(name);
         this.description = 
-                "The note appears to be an order of ingredients.\n" +
-                "Oddly, it appears to never have been sent out.\n" +
-                "Among the ingredients are many kinds of\n" +
-                "dyes, potassium salts, aluminum, and steel.\n" +
-                "Written last is 'sand, 3 [unit missing]'\n" +
-                "but it has been crossed out with 'ask \n" +
+                "The note appears to be an order of ingredients. " +
+                "Oddly, it appears to never have been sent out. " +
+                "Among the ingredients are many kinds of " +
+                "dyes, potassium salts, aluminum, and steel. " +
+                "Written last is 'sand, 3 [unit missing]' " +
+                "but it has been crossed out with 'ask  " +
                 "groundskeeper' written after it.";
     }
 /*----------------------------------------------------------------------------*/

@@ -19,9 +19,9 @@ public class Cou6_Statue extends Statue {
         this.useDialog = "You balance the % the best you can on the pair of legs, "
                        + "but can only watch helplessly as it falls back off onto "
                        + "the ground.";
-        this.description = "The statue is just a waist with legs. Part of it\n"
+        this.description = "The statue is just a waist with legs. Part of it "
                          + "lies on the ground. It once depicted a male figure.";
-        this.actDialog = "The statue is rough and weathered- cracked all over\n"
+        this.actDialog = "The statue is rough and weathered- cracked all over "
                        + "from the variable weather it has endured for likely a while.";
         
         this.addUseKeys(STATUE_HEAD, STATUE_TORSO);

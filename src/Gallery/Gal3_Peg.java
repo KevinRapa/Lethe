@@ -8,7 +8,7 @@ public class Gal3_Peg extends Furniture {
     public Gal3_Peg(Furniture gal3Ttm) {
         super();
         this.GAL3_TTM = gal3Ttm;
-        this.description = "The pegs stick out the sides of each segment.\n"
+        this.description = "The pegs stick out the sides of each segment. "
                          + "Interesting- there is a seam between the segments.";
         this.addActKeys("turn", MOVEPATTERN);
         this.addNameKeys("pegs?");

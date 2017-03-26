@@ -8,10 +8,10 @@ public class Drar_Bar extends SearchableFurniture {
     public Drar_Bar(Item... items) {
         super(items);
         
-        this.description = "Behind its solid oak table and chairs, you see a\n"
+        this.description = "Behind its solid oak table and chairs, you see a "
                          + "shelf populated with many kinds of alcohol.";
         this.searchDialog = "You peruse the bar's shelves.";
-        this.actDialog = "A drink sounds like a good idea right about now. All the alcohol\n"
+        this.actDialog = "A drink sounds like a good idea right about now. All the alcohol "
                        + "here must be stale and bitter by now though.";
         
         this.addActKeys(SITPATTERN, "drink");

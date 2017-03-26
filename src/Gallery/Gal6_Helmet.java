@@ -17,16 +17,16 @@ public class Gal6_Helmet extends Furniture {
     public Gal6_Helmet() {
         super();
 
-        this.searchDialog = "Everything on the helmet looks concretely attached\n"
+        this.searchDialog = "Everything on the helmet looks concretely attached "
                           + "to the helmet and not removable.";
-        this.description = "The metal helmet is covered in wires and metal rods.\n"
-                         + "On the inside are three metal contact plates. It would\n"
+        this.description = "The metal helmet is covered in wires and metal rods. "
+                         + "On the inside are three metal contact plates. It would "
                          + "not be a good idea to wear this.";
-        this.actDialog = "AAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHH\n"
-                    + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n"
-                    + "With all your strength, you rip the helmet off your head.\n"
-                    + "It takes you a few moments to catch your breath and recover\n"
-                    + "your sense of direction. You cannot comprehend what just\n"
+        this.actDialog = "AAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHH "
+                    + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "
+                    + "With all your strength, you rip the helmet off your head. "
+                    + "It takes you a few moments to catch your breath and recover "
+                    + "your sense of direction. You cannot comprehend what just "
                     + "happened.";
         
         this.addActKeys(GETPATTERN);

@@ -20,7 +20,7 @@ public class Din1 extends Room{
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID)) {
             AudioPlayer.playEffect(8);
-            GUI.out("As you enter, you hear a door above you\n"
+            GUI.out("As you enter, you hear a door above you "
                   + "swing shut.");
         }    
         return STD_RM_OUT;

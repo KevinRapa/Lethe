@@ -16,8 +16,8 @@ public class Cha2_Altar extends SearchableFurniture implements Gettable, Moveabl
     public Cha2_Altar (Item... items) {
         super(items);
         
-        this.description = "The altar rests atop a small riser in front of the\n"
-                         + "rows of pews. The altar is a tan marble table bearing\n"
+        this.description = "The altar rests atop a small riser in front of the "
+                         + "rows of pews. The altar is a tan marble table bearing "
                          + "a row of lit candles.";
         this.actDialog = "No hitting things! This is a sacred place.";
         this.searchDialog = "You look on the chapel altar.";
@@ -32,7 +32,7 @@ public class Cha2_Altar extends SearchableFurniture implements Gettable, Moveabl
         if (key.matches(JOSTLEPATTERN))
             return this.actDialog;
         else 
-            return getIt("You attempt to blow the flame off one candle before taking it,\n"
+            return getIt("You attempt to blow the flame off one candle before taking it, "
              + "but the flame refuses to die, thwarting your intentions.");
     }
     // ======================================================================== 

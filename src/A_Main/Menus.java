@@ -35,8 +35,8 @@ public final class Menus {
         TRADE_SUB = NL
                   + "<'s' list>  Store..." + NL
                   + "<'t' list>  Take..." + NL
-                  + "<'c' item>  Inspect" + NL
                   + "<'loot'>    Loot!!!" + NL
+                  + "<#>         Inspect" + NL
                   + "< >         Back",
 
         SAVE_QUIT = NL + NL
@@ -82,7 +82,7 @@ public final class Menus {
                   + "<'1'> Turn dial one" + NL
                   + "<'2'> Turn dial two" + NL
                   + "<'3'> Turn dial three" + NL
-                  + " < >  Back\n",
+                  + " < >  Back",
 
         OBS_STAT_MEN = NL
                      + "<'r'#> Rotate statue" + NL

@@ -7,9 +7,9 @@ public class Iha2_Bowl extends BurningBowl {
     public Iha2_Bowl() {
         super();
 
-        this.description = "It's a steel bowl of fire hanging from the ceiling\n"
-                         + "by a chain. It burns steadily, lighting your end of\n"
-                         + "the hallway. A draft from the outside causes it to\n"
+        this.description = "It's a steel bowl of fire hanging from the ceiling "
+                         + "by a chain. It burns steadily, lighting your end of "
+                         + "the hallway. A draft from the outside causes it to "
                          + "swing gently.";
     }
 /*----------------------------------------------------------------------------*/    

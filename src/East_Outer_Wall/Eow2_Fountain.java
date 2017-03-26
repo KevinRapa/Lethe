@@ -14,14 +14,14 @@ public class Eow2_Fountain extends Furniture implements Unmoveable {
     public Eow2_Fountain() {
         super();
 
-        this.description = "The fountain is running smoothly with clear water.\n"
-                         + "In its center is a tall statue of a helmed woman\n"
-                         + "holding a staff and shield. It reminds you of the\n"
-                         + "soldier statue in the ruined courtyard fountain.\n"
+        this.description = "The fountain is running smoothly with clear water. "
+                         + "In its center is a tall statue of a helmed woman "
+                         + "holding a staff and shield. It reminds you of the "
+                         + "soldier statue in the ruined courtyard fountain. "
                          + "Now that you think about it, it's the same fountain.";
         this.searchDialog = "You find a bunch of water, but you can't pocket that.";
-        this.actDialog = "Now is NOT the time for a swim, though it's tempting. You\n"
-                       + "don't even have a change of clothes, and you aren't wearing\n"
+        this.actDialog = "Now is NOT the time for a swim, though it's tempting. You "
+                       + "don't even have a change of clothes, and you aren't wearing "
                        + "servant's garb.";
         this.addActKeys("jump", "swim");
         this.addNameKeys("(?:great )?fountain", "(?:soldier )?statue");

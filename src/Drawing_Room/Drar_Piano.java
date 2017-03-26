@@ -13,8 +13,8 @@ public class Drar_Piano extends Furniture implements Unmoveable {
     public Drar_Piano () {
         super();
         
-        this.description = "The wooden upright piano sits against the wall. The\n"
-                         + "paint has begun to chip, but the piano still appears\n"
+        this.description = "The wooden upright piano sits against the wall. The "
+                         + "paint has begun to chip, but the piano still appears "
                          + "functional. A couple keys on the piano have gone missing.";
         this.actDialog = "Egh... sounds terrible. You're no musician.";
         this.useDialog = "You aren't sure what useful task would get done from that.";

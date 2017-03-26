@@ -7,7 +7,7 @@ public class Eow2_Balcony extends Balcony {
     public Eow2_Balcony() {
         super();
 
-        this.description = "The second-floor balcony follows the north wall to\n"
+        this.description = "The second-floor balcony follows the north wall to "
                          + "the west and ends at a door.";
 
         this.addNameKeys("(?:small )?(?:second[- ]floor )?balcony");

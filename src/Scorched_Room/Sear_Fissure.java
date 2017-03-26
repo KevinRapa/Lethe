@@ -17,13 +17,13 @@ public class Sear_Fissure extends Furniture {
         super();
 
         this.searchDialog = "It's just an empty hole.";
-        this.description = "The north wall has been damaged, and a resulting\n"
-                         + "fissure in it leads outside through the wall into the front\n"
-                         + "courtyard. It looks like this was part of\n"
+        this.description = "The north wall has been damaged, and a resulting "
+                         + "fissure in it leads outside through the wall into the front "
+                         + "courtyard. It looks like this was part of "
                          + "the escape plan.";
-        this.useDialog = "The wall gives way from the swing of the heavy\n"
-                       + "warhammer, but the warhammer snaps in half. You\n"
-                       + "begin to think the wood ax is the only tool\n"
+        this.useDialog = "The wall gives way from the swing of the heavy "
+                       + "warhammer, but the warhammer snaps in half. You "
+                       + "begin to think the wood ax is the only tool "
                        + "you know how to use without it breaking.";
         this.actDialog = "You couldn't manage to do that with your bare hands.";
         
@@ -43,13 +43,13 @@ public class Sear_Fissure extends Furniture {
         else if (! Player.getPos().isAdjacent(Id.COU2)) {
             AudioPlayer.playEffect(35);
             if (item.toString().equals(HAMMER)) {
-                return "You give it a swing, but this hammer is too\n"
-                     + "small to break this wall. They must've been\n"
+                return "You give it a swing, but this hammer is too "
+                     + "small to break this wall. They must've been "
                      + "using something else.";
             }
             else {
-                return "You give the crowbar a swing, but it just\n"
-                     + "rebounds with a loud *THWANG*. They must've\n"
+                return "You give the crowbar a swing, but it just "
+                     + "rebounds with a loud *THWANG*. They must've "
                      + "been hitting with something else";
             }  
         }

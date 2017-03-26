@@ -49,7 +49,7 @@ public class Lqu2_Lever extends Lever {
             super();
             this.searchable = false;
             this.description = "The gate is open!";
-            this.searchDialog = "Did you find yourself at home here? Are wishing\n"
+            this.searchDialog = "Did you find yourself at home here? Are wishing "
                               + "to stay busy?";
             this.useDialog = this.actDialog = this.description;
             

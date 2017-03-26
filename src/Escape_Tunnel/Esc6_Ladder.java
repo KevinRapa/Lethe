@@ -18,7 +18,7 @@ public class Esc6_Ladder extends Furniture implements Resetable, Climbable {
         
         this.GRATE_REF = (Esc6_Grate)sew6Grt;
         
-        this.description = "It's a metal ladder with rudimentary rungs attached\n"
+        this.description = "It's a metal ladder with rudimentary rungs attached "
                          + "directly to the stone wall.";
         this.actDialog = "You climb up the ladder.";
 

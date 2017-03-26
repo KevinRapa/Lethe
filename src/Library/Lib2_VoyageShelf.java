@@ -28,8 +28,8 @@ public class Lib2_VoyageShelf extends SearchableFurniture {
         this.BANISHMENT = bnshmnt;
         
         this.actDialog = "You push against the shelf, but it doesn't budge.";
-        this.description = "The tall bookshelf bears a plaque on the top reading\n"
-                         + "\"Voyage\". At its base on the right, you notice\n"
+        this.description = "The tall bookshelf bears a plaque on the top reading "
+                         + "\"Voyage\". At its base on the right, you notice "
                          + "consistent arched scratches on the floor.";
         this.searchDialog = "You peruse its shelves.";
         this.addNameKeys("voyage", "(?:west|left) (?:(?:book)?shelf|one)");
@@ -48,7 +48,7 @@ public class Lib2_VoyageShelf extends SearchableFurniture {
         {
             lib2.addAdjacent(Id.LIB1);
             AudioPlayer.playEffect(41);       
-            return "You push against the shelf. To your wonder, the shelf slowly\n"
+            return "You push against the shelf. To your wonder, the shelf slowly "
                  + "swivels clockwise on its center axis, revealing a hidden room.";
         }
         else

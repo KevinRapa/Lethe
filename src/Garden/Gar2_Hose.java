@@ -19,13 +19,13 @@ public class Gar2_Hose extends Furniture implements Climbable {
         this.BRKNHOSE_REF = brokenHoseItem;
         this.BRKNHOSE_REF2 = brokenHoseFurn;
         
-        this.description = "The cracked leather hose dangles down into the room\n"
-                         + "below. It's only a short drop from the bottom.\n"
+        this.description = "The cracked leather hose dangles down into the room "
+                         + "below. It's only a short drop from the bottom. "
                          + "Hopefully it will take your weight.";
-        this.actDialog = "Slowly, you climb down the hose. The maintains itself,\n"
-                       + "however only feet from the bottom, the hose splits in half\n"
-                       + "and falls to the floor. Only minimally hurt, you stand\n"
-                       + "back up and peer at the other half, still tied to the\n"
+        this.actDialog = "Slowly, you climb down the hose. The maintains itself, "
+                       + "however only feet from the bottom, the hose splits in half "
+                       + "and falls to the floor. Only minimally hurt, you stand "
+                       + "back up and peer at the other half, still tied to the "
                        + "railing.";
 
         this.addNameKeys("(?:leather )?hose");

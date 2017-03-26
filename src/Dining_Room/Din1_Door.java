@@ -7,8 +7,8 @@ public class Din1_Door extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Din1_Door (Direction dir) {
         super(dir);
-        this.description = "The backside of the door to this room looks as\n"
-                         + "complicated as you imagined. Many plates, hinges,\n"
+        this.description = "The backside of the door to this room looks as "
+                         + "complicated as you imagined. Many plates, hinges, "
                          + "and springs cover its back.";
     }
 /*----------------------------------------------------------------------------*/

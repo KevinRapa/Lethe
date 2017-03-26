@@ -9,7 +9,7 @@ public class Tbal_Pillar extends Column {
     public Tbal_Pillar () {
         super();
 
-        this.description = "The wide column is about 20 feet wide and supports\n"
+        this.description = "The wide column is about 20 feet wide and supports "
                          + "the enormous weight of the chamber to the north.";
 
         this.searchDialog = "You can't reach it from here.";

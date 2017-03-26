@@ -7,7 +7,7 @@ public class Lib_Pillar extends Column {
     public Lib_Pillar() {
         super();
 
-        this.description = "The fat Corinthian pillar stands in the corner of\n"
+        this.description = "The fat Corinthian pillar stands in the corner of "
                          + "where the stairs meet the second floor.";
 
         this.addNameKeys("(?:fat )?(?:corinthian )?(?:pillar|column)");

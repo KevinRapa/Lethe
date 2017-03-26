@@ -12,8 +12,8 @@ public class Gal7_Statue extends Furniture {
         super();
         this.level = 0;
         this.actDialog = "The statue is out of reach";
-        this.description = "The statue now stands high in the central chamber\n"
-                         + "at the thrid floor level. Its orb is cold yet again,\n"
+        this.description = "The statue now stands high in the central chamber "
+                         + "at the thrid floor level. Its orb is cold yet again, "
                          + "but both of its eyes now glow brightly.";    
         this.searchDialog = "The statue's hand is out of reach";
     }
@@ -47,15 +47,15 @@ public class Gal7_Statue extends Furniture {
         this.level++; 
         Player.getRoomObj(Id.GAL5).unlock();
         AudioPlayer.playEffect(38, 0.3);
-        return "The crystal orb in the statue's palm glows with a dark\n"
-             + "hellish glow. Cogwork can be heard behind the walls and\n"
+        return "The crystal orb in the statue's palm glows with a dark "
+             + "hellish glow. Cogwork can be heard behind the walls and "
              + "before long, you hear a clicking sound down below.";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
         if (level == 1)
-                return "The statue stands in the central chamber holding the orb.\n"
-                     + "Its eyes are brightly lit and the orb glows in a surreal\n"
+                return "The statue stands in the central chamber holding the orb. "
+                     + "Its eyes are brightly lit and the orb glows in a surreal "
                      + "dark light while humming loudly."; 
         else 
             return this.description;

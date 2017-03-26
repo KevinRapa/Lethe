@@ -10,7 +10,7 @@ public class Din1_Table extends SearchableFurniture {
     public Din1_Table(Item... items) {
         super(items);
         
-        this.description = "The table must be twenty feet long! A scarlet\n"
+        this.description = "The table must be twenty feet long! A scarlet "
                          + "tablecloth coats its dark polished surface.";
         
         this.actDialog = "You give the table a nudge. It gives only slightly; the table is formidable.";

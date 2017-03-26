@@ -15,15 +15,14 @@ import A_Main.Player;
  * @author Kevin Rapa
  */
 public class Torch_Holder extends SearchableFurniture {
-    protected static final Item 
-            TORCH = new Item(HAND_TORCH, 
-                    "It's a burning piece of wood. Stay it from your beard!", 0);
+    protected final Item TORCH;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Torch_Holder() {
+    public Torch_Holder(Item torch) {
         super();
-        this.inv = new HolderInventory(TORCH);
+        this.TORCH = torch;
+        this.inv = new HolderInventory(torch);
         
-        this.description = "Sitting in a steel holder is a burning wall torch\n"
+        this.description = "Sitting in a steel holder is a burning wall torch "
                          + "giving off an orange glow.";
         this.searchDialog = "You look in the mounted steel holder.";
         this.actDialog = "You slide the torch out of its holder and take it.";
@@ -35,7 +34,7 @@ public class Torch_Holder extends SearchableFurniture {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
-        if (this.containsItem(HAND_TORCH)) {
+        if (this.inv.contains(TORCH)) {
             if (this.inv.give(TORCH, Player.getInv()))
                 return this.actDialog;
             else
@@ -83,8 +82,6 @@ public class Torch_Holder extends SearchableFurniture {
                 return false;
             }
         }
+    /*------------------------------------------------------------------------*/
     }
-/*----------------------------------------------------------------------------*/
-/******************************************************************************/    
-/*----------------------------------------------------------------------------*/
 }

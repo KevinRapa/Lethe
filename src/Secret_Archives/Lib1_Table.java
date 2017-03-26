@@ -8,10 +8,10 @@ public class Lib1_Table extends SearchableFurniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Table(Item... items) {
         super(items);
-        this.description = "The table is ornate, with curved legs, and bears\n"
-                         + "a bizarre stone head emitting light from an unknown\n"
+        this.description = "The table is ornate, with curved legs, and bears "
+                         + "a bizarre stone head emitting light from an unknown "
                          + "source.";
-        this.searchDialog = "You fan through the boring papers scattered around\n"
+        this.searchDialog = "You fan through the boring papers scattered around "
                           + "the artifact. Here's what you find interesting: ";
         this.actDialog = "You give it a kick. A thick woody clunk inundates your ear holes, and you are enticed to hit it again.";
         

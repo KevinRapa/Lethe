@@ -13,9 +13,9 @@ public class Tow2_NorthDoor extends Door {
     public Tow2_NorthDoor (Direction dir) {
         super(dir);
         
-        this.description = "The metal double doors are incised with many curved\n"
-                         + "decorative etchings. Five circular etchings arranged pentagonally\n"
-                         + "weave themselves in with the numerous other etchings.\n"
+        this.description = "The metal double doors are incised with many curved "
+                         + "decorative etchings. Five circular etchings arranged pentagonally "
+                         + "weave themselves in with the numerous other etchings. "
                          + "A stream of blue light fills ";
 
         this.addNameKeys("(?:imposing )?(?:glowing )?(?:metal )?(?:double-?)?doors?", "(?:door )?etchings?");

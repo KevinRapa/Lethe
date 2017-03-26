@@ -11,7 +11,7 @@ public class Kitc_Barrels extends SearchableFurniture
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Kitc_Barrels(Item... items) {
         super(items);
-        this.description = "The two barrels are open and filled with stale\n"
+        this.description = "The two barrels are open and filled with stale "
                          + "barley and rye.";
         this.searchDialog = "You look into the barrels.";
 

@@ -79,6 +79,7 @@ public final class Player {
         MAIN_CMDS.put("sw", () -> evaluateAction("go", "southwest"));
         MAIN_CMDS.put("se", () -> evaluateAction("go", "southeast"));
 
+        MAIN_CMDS.put("close",     () -> Map.hideMap());
         MAIN_CMDS.put("quit",      () -> {notEnd = false;});
         MAIN_CMDS.put("version",   () -> GUI.out(VERSION));
         MAIN_CMDS.put("lethe",     () -> GUI.out("Hello, dear."));
@@ -343,13 +344,13 @@ public final class Player {
         AudioPlayer.playTrack(Id.ENDG);
         
         GUI.menOut(Menus.ENTER);
-        GUI.out("It's about 10:00pm and a warm, humid breeze passes through the trees.\n" +
-                "You have just arrived on foot to your destination, and\n" +
-                "find it even more colossal than what you had\n" +
+        GUI.out("It's about 10:00pm and a warm, humid breeze passes through the trees. " +
+                "You have just arrived on foot to your destination, and " +
+                "find it even more colossal than what you had " +
                 "expected. It also appears curiously more vacant...");
         GUI.promptOut();    
-        GUI.out("You slowly approach until inside the front gateway.\n" +
-                "A thought briefly flashes in your mind before being\n" +
+        GUI.out("You slowly approach until inside the front gateway. " +
+                "A thought briefly flashes in your mind before being " +
                 "forgotten - what was your business here, again?");     
         GUI.promptOut();
         GUI.out(VERSION);     
@@ -509,7 +510,7 @@ public final class Player {
     // ========================================================================  
     private static void viewKeyRing() {
         AudioPlayer.playEffect(3);
-        GUI.invOut("Keys:\n" + Player.keys.toString()); 
+        GUI.invOut("Keys:" + NL + Player.keys.toString()); 
     }
     // ========================================================================  
     /**
@@ -571,14 +572,26 @@ public final class Player {
                 String action = scan.next(); // Should be take|t|store|s    
                 
                 if (! scan.hasNext()) {
-                    // Notifies that a list wasn't entered. Avoiding nested ifs.
-                    GUI.out("Did you... forget to enter something there?");
+                    // If player enters just a digit, means "examine <slot>"
+                    if (ANY_DIGIT_P.matcher(action).matches()) {
+                        Item item = furnInv.get(action);
+                        
+                        if (item.equals(Inventory.NULL_ITEM))
+                            GUI.out("There's nothing there.");
+                        else
+                            GUI.out(item.getDesc());
+                    }
+                    else
+                        // Notifies that a list wasn't entered. Avoiding nested ifs.
+                        GUI.out("Did you... forget to enter something there?");
+                        
                     continue;
                 }
                     
                 String itemList = scan.nextLine();
                 
-                if (CHECK_P.matcher(action).matches()) {
+                if (CHECK_P.matcher(action).matches()) 
+                {
                     Item[] i = getItemList(itemList, furnInv);
                     Player.incrementMoves();
                     
@@ -958,11 +971,11 @@ public final class Player {
 // <editor-fold defaultstate="collapsed" desc="INVENTORY ACTIONS">      
 //******************************************************************************    
     public static void printInv() {
-        GUI.invOut("You are carrying:\n" + Player.inv);
+        GUI.invOut("You are carrying:" + NL + Player.inv);
     }
     // ========================================================================  
     private static void printInv(Inventory furnInv) {
-        GUI.invOut("You find:\n" + furnInv + "\nYou are carrying:\n" + Player.inv);
+        GUI.invOut("You find:" + NL + furnInv + NL + "You are carrying:" + NL + Player.inv);
     }
     // ========================================================================  
     /**
@@ -1244,7 +1257,7 @@ public final class Player {
                 GUI.out("You need something else for this to work."); 
         }
         else if (list.length == 2)
-            GUI.out("You push them together as hard as you can,\n" +
+            GUI.out("You push them together as hard as you can, " +
                             "but it does nothing."); 
         else // length is 3
             GUI.out("You are pretty sure all these don't go together."); 
@@ -1354,7 +1367,8 @@ private static class TextParser {
         EXPLETIVE_CMD = new Command("Mind yourself! You're a guest here!"),
         SUICIDE_CMD =   new Command(() -> Player.commitSuicide(), "SUICIDE"),
         GREETING_CMD =  new Command("What do you think this is? Zork?"),
-        AMBIGUOUS_CMD = new Command("You need to specify something to put that in!");
+        AMBIGUOUS_CMD = new Command("You need to specify something to put that in!"),
+        NO_SLOT_COMMAND = new Command("You don't have anything in your inventory there.");
 
     //**************************************************************************
     // <editor-fold defaultstate="collapsed" desc="Text parser">
@@ -1408,7 +1422,15 @@ private static class TextParser {
             // First six conditions handle simpler commands.
             if (EXPLETIVE_P.matcher(sentence).find()) // Zork-inspired
                 commands[i] = EXPLETIVE_CMD;    
+            else if (ANY_DIGIT_P.matcher(statements[i]).matches()) {
+                // Player typed a digit. Interpreted as "examine <item slot>"
+                Item item = Player.getInv().get(statements[i]);
 
+                if (item.equals(Inventory.NULL_ITEM))
+                    commands[i] = NO_SLOT_COMMAND;
+                else
+                    commands[i] = new Command(() -> GUI.out(item.getDesc()), "INSPECT");
+            }
             else if (DIRECTION_P.matcher(statements[i]).matches()) {
                 // Sentence resembles a movement command.
                 commands[i] = new Command(Verb.GO_VERB, 
@@ -1744,7 +1766,7 @@ private static class TextParser {
                     }
                     else if (type.equals(PHYLACTERY)) {
                         floor.getInv().add(item);
-                        GUI.out("You naively launch the " + item + " across the\n"
+                        GUI.out("You naively launch the " + item + " across the "
                               + "room in hopes of destroying the cursed item. The "
                               + item + " lands unscathed on the floor.");
                     }
@@ -1832,7 +1854,7 @@ private static class TextParser {
                 // </editor-fold>
                 
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: BURN">
-                else if (verb.equals("swing")) {
+                else if (verb.equals("burn")) {
                     if (type.equals(READABLE) || itemName.equals(NOTEPAD)) {
                         if (Player.hasItem(HAND_TORCH)) {
                             Player.getInv().remove(item);

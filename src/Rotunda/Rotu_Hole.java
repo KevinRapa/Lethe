@@ -13,11 +13,11 @@ public class Rotu_Hole extends Furniture {
     public Rotu_Hole() {
         super();
 
-        this.description = "It's a hole carved in the ceiling, about a meter\n"
-                         + "wide. It looks to lead outside to the roof, although\n"
+        this.description = "It's a hole carved in the ceiling, about a meter "
+                         + "wide. It looks to lead outside to the roof, although "
                          + "there's a glass encasing around the space above.";
-        this.actDialog = "The hole is high up in the ceiling. How would you go\n"
-                       + "about that? Especially with your heft. Few ropes could\n"
+        this.actDialog = "The hole is high up in the ceiling. How would you go "
+                       + "about that? Especially with your heft. Few ropes could "
                        + "support such weight.";
         this.searchDialog = "The hole is but empty space. You have nothing to search.";
         

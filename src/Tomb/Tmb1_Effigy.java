@@ -7,8 +7,8 @@ import A_Super.WallArt;
 public class Tmb1_Effigy extends WallArt {
     // ========================================================================
     public Tmb1_Effigy () {
-        this.description = "It is a goat or pig skull tied to some crossing\n"
-                         + "bundles of dried grass. It's held together by a wooden frame.\n"
+        this.description = "It is a goat or pig skull tied to some crossing "
+                         + "bundles of dried grass. It's held together by a wooden frame. "
                          + "You aren't able to tell if this is a memorial or effigy...";
 
         this.addNameKeys("(?:unsettling )?(?:effigy|idol|totem)");

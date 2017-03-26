@@ -21,12 +21,12 @@ public class Sha1_Door extends Door {
         this.BRKNRAM_REF = brRam;
         this.GEN_DR = genDr;
         
-        this.description = "It's a small wooden door; a bit taller than you.\n"
+        this.description = "It's a small wooden door; a bit taller than you. "
                          + "The doorknob on it is missing.";
         this.actDialog = "The doorknob is gone!!";
-        this.useDialog = "You give the door a good bang with the ram. It gives\n"
-                       + "from its hinges and falls to the floor. But the frayed\n"
-                       + "rope you're holding the ram with snaps in half. Good\n"
+        this.useDialog = "You give the door a good bang with the ram. It gives "
+                       + "from its hinges and falls to the floor. But the frayed "
+                       + "rope you're holding the ram with snaps in half. Good "
                        + "thing that worked on the first try.";
     }
 /*----------------------------------------------------------------------------*/

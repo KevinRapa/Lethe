@@ -16,9 +16,9 @@ public class Sewer_River extends SearchableFurniture {
         super(items);
         this.WTR_BCKT = bckt;
         
-        this.description = "The river runs rapidly through a square channel on\n"
-                         + "one side of the tunnel. The water looks cool and clear.\n"
-                         + "Maybe it's being used as a power source here before emptying\n"
+        this.description = "The river runs rapidly through a square channel on "
+                         + "one side of the tunnel. The water looks cool and clear. "
+                         + "Maybe it's being used as a power source here before emptying "
                          + "out into the ocean?";
         this.actDialog = "You aren't getting in there unless you absolutely have to.";
         this.searchDialog = "You crouch down and scan the bottom of the river.";
@@ -46,7 +46,7 @@ public class Sewer_River extends SearchableFurniture {
     // ========================================================================   
     @Override public String interact(String key) {              
         return key.equals("drink") ?
-            "The water looks and smells clean enough. You crouch down and\n"
+            "The water looks and smells clean enough. You crouch down and "
           + "take a swig, feeling refreshed." : this.actDialog;
     } 
     // ========================================================================   

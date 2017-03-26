@@ -17,9 +17,9 @@ public class Ant_Casket extends SearchableFurniture implements Openable {
         this.searchable = false;
         this.searchDialog = "You can't seem to push the lid off. It's sealed with an archaic lock system.";
         this.actDialog = "It's very impolite to hit coffins!";
-        this.description = "The casket lies horizontal in the center of the room.\n"
-                         + "It's unlike the rest of the caskets; made of stone, and\n"
-                         + "covered by a thick lid. There are three keyholes lined\n"
+        this.description = "The casket lies horizontal in the center of the room. "
+                         + "It's unlike the rest of the caskets; made of stone, and "
+                         + "covered by a thick lid. There are three keyholes lined "
                          + "up vertically in the center of the lid.";
         this.numKeys = 0;
         
@@ -38,8 +38,8 @@ public class Ant_Casket extends SearchableFurniture implements Openable {
             this.searchable = true;
             
             AudioPlayer.playEffect(50);
-            return result.concat(" With the last key inserted, you feel the lid jolt a bit.\n"
-                            + "You push the lid with all your might, and it slides off to the side.\n"
+            return result.concat(" With the last key inserted, you feel the lid jolt a bit. "
+                            + "You push the lid with all your might, and it slides off to the side. "
                             + "To your surprise, there is nothing inside except for a leaf of parchment.");
         } 
         else

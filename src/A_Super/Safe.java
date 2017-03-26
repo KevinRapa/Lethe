@@ -98,7 +98,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
                 return "The safe is unlocked!";
         }
         else
-            return "The safe is already open. Perhaps you\n"
+            return "The safe is already open. Perhaps you "
                  + "should search it.";
         
         return this.actDialog;

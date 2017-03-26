@@ -15,7 +15,7 @@ public class Sewp_Grate extends Furniture implements Gettable {
         super();
 
         this.useDialog = "Why would you want to cover that back up?";
-        this.description = "It's an open metal grate with the ladder descending\n"
+        this.description = "It's an open metal grate with the ladder descending "
                          + "into the hole that you escaped out of.";
         this.actDialog = "You've just escaped! No need to back into the dangerous tunnel.";
 

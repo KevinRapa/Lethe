@@ -18,8 +18,8 @@ public class Mha1 extends Room{
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID)) {
-            GUI.out("As soon as you enter, you catch a glimpse of a white\n"
-                  + "figure passing through a door in the middle of the\n"
+            GUI.out("As soon as you enter, you catch a glimpse of a white "
+                  + "figure passing through a door in the middle of the "
                   + "hallway.");
         }    
         return STD_RM_OUT;

@@ -8,7 +8,7 @@ public class Par2_Fireplace extends Furniture {
             super();
 
             this.addNameKeys("fireplace", "hearth");
-            this.description = "The fireplace crackles down below. Who keeps these\n"
+            this.description = "The fireplace crackles down below. Who keeps these "
                              + "things lit?";
             this.searchDialog = "It's much too far away to do that...";
     }

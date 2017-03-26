@@ -9,10 +9,10 @@ public class Lib4_Table extends SearchableFurniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib4_Table(String NAME, Item ... items) {
         super(items);
-        this.description = "The low table sits between the couch and the\n"
+        this.description = "The low table sits between the couch and the "
                          + "fireplace. On its surface is something glinting.";
         this.searchDialog = "You look on the table.";
-        this.actDialog = "The table resists any give from the kick you give it.\n"
+        this.actDialog = "The table resists any give from the kick you give it. "
                        + "It is a solidly built piece of artistry.";
         
         this.addActKeys(JOSTLEPATTERN);

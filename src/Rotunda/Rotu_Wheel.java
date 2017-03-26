@@ -15,12 +15,12 @@ public class Rotu_Wheel extends Furniture {
     public Rotu_Wheel() {
         super();
 
-        this.searchDialog = "Nope, nothing. But there are interesting seams\n"
+        this.searchDialog = "Nope, nothing. But there are interesting seams "
                           + "above and below the wheel.";
-        this.description = "Looking closely at the wheel, you spot a seam\n"
-                         + "separating it from the main structure of the\n"
+        this.description = "Looking closely at the wheel, you spot a seam "
+                         + "separating it from the main structure of the "
                          + "fountain.";
-        this.actDialog = "As you turn the wheel, your balance shifts and you hear a loud\n"
+        this.actDialog = "As you turn the wheel, your balance shifts and you hear a loud "
                        + "rumble. The room appears to have shifted.";
         this.addNameKeys("(?:stone )?wheel");
         this.addActKeys("turn", "rotate", "spin", "twist");

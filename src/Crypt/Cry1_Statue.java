@@ -22,10 +22,10 @@ public class Cry1_Statue extends Statue implements Resetable {
         this.SCYTHE_REF = scythe;
         
         this.useDialog = "You place the scythe into the statue's left hand.";
-        this.description = "The tall statue stands in the center of this side\n"
-                         + "of the room. The statue is cloaked with a skull for\n"
-                         + "a head and stares at you. It holds one of its boney hands up as if it were\n"
-                         + "grasping something, though its palm is empty. With the other\n"
+        this.description = "The tall statue stands in the center of this side "
+                         + "of the room. The statue is cloaked with a skull for "
+                         + "a head and stares at you. It holds one of its boney hands up as if it were "
+                         + "grasping something, though its palm is empty. With the other "
                          + "palm it reaches out openly towards you.";
         
         this.addNameKeys("(?:tall )?(?:stone )?(?:cloaked )?statue", "(?:statue(?:'s)? )?(?:bone?y )?(?:hand|palm)");
@@ -41,7 +41,7 @@ public class Cry1_Statue extends Statue implements Resetable {
             result =  this.description;
         else
             result = this.description.replaceFirst(
-                    "one of its boney hands up as if it were\ngrasping something, though its palm is empty", 
+                    "one of its boney hands up as if it were grasping something, though its palm is empty", 
                     "a scythe in one hand");
         
         if (this.eyesGlowing)
@@ -60,7 +60,7 @@ public class Cry1_Statue extends Statue implements Resetable {
         else {
             if (this.hasScythe) {
                 this.eyesGlowing = true;
-                return "You grasp the statue's right hand and twist. An orange\n"
+                return "You grasp the statue's right hand and twist. An orange "
                      + "light glows deep in the statue's eyes.";
             }
             else {

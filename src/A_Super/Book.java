@@ -48,7 +48,7 @@ public class Book extends Note {
 
             if (page != (PAGE_LIST.length - 1)) {
                 
-                choice = GUI.askChoice("\n\nTurn the page?", YES_NO_P);
+                choice = GUI.askChoice(NL + NL + "Turn the page?", YES_NO_P);
 
                 if (Player.answeredYes(choice)) 
                     page ++;

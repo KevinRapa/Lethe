@@ -7,7 +7,7 @@ public class Gal_Balcony extends Balcony {
     public Gal_Balcony() {
         super();
 
-        this.description = "The balcony wraps around the perimeter of the central\n"
+        this.description = "The balcony wraps around the perimeter of the central "
                          + "chamber.";
     }
 /*----------------------------------------------------------------------------*/

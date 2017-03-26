@@ -195,11 +195,6 @@ CAVES_CAT_P = Pattern.compile("C[TV]\\d{2}"),
 // Removes digits from cave and catacomb IDs so that all map to same track.
 SINGLE_DIGIT_P = Pattern.compile("\\d"),    
         
-        
-// PATTERN USED BY GUI
-NEWLINE = Pattern.compile("\n"),    // All newlines are replaced by spaces
-
-        
 // PATTERNS USED BY HELP
 CONTROL_CHOICE = Pattern.compile("[1-9]c|10c"),
 PLAYER_CHOICE = Pattern.compile("[1-3]p"),

@@ -31,13 +31,13 @@ public class Lib1_Artifact extends Furniture {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {      
-        return "The artifact is a stone head with a hollowed out\n"
-             + "cranium. It's carved crudely. The face is eerily\n"
-             + "expressionless and its eyes are blank. It seems\n"
-             + "ancient. " + this.mode + " shoots out a hole in\n"
-             + "the top, reflecting off the ceiling mirror onto\n"
-             + "the desk. You look around, but the head isn't\n"
-             + "connected to anything. You can't determine the\n"
+        return "The artifact is a stone head with a hollowed out "
+             + "cranium. It's carved crudely. The face is eerily "
+             + "expressionless and its eyes are blank. It seems "
+             + "ancient. " + this.mode + " shoots out a hole in "
+             + "the top, reflecting off the ceiling mirror onto "
+             + "the desk. You look around, but the head isn't "
+             + "connected to anything. You can't determine the "
              + "light's source.";
     }
 /*----------------------------------------------------------------------------*/
@@ -113,7 +113,7 @@ public class Lib1_Artifact extends Furniture {
                 this.beam = 'W'; this.mode = "Barely any light"; 
             }       
         }       
-    GUI.out(mode + " emits from the artifact's mouth.\n");        
+    GUI.out(mode + " emits from the artifact's mouth. ");        
     } 
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

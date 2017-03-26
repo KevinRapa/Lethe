@@ -10,10 +10,10 @@ public class Drar_Couch extends Furniture implements Moveable {
         super();
         this.GHOST_REF = (Drar_Ghost)ghst;
 
-        this.description = "The Victorian-era couch is a bold green color. This\n"
+        this.description = "The Victorian-era couch is a bold green color. This "
                          + "one looks quite comfortable actually.";
         this.searchDialog = "There's nothing hidden on this couch.";
-        this.actDialog = "This is the most comfortable couch you've sat in yet.\n"
+        this.actDialog = "This is the most comfortable couch you've sat in yet. "
                             + "Why haven't you grabbed a drink?";
         this.addActKeys(SITPATTERN);
         this.addNameKeys("(?:(?:bold )?green )?(?:victorian-era )?couch");

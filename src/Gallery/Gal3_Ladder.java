@@ -11,7 +11,7 @@ public class Gal3_Ladder extends Staircase {
     public Gal3_Ladder(Direction direction) {
         super(direction);
 
-        this.description = "The ladder is suspended above the ground in the\n"
+        this.description = "The ladder is suspended above the ground in the "
                          + "hatch, too high to grab hold of.";
         this.lowered = false;
         this.NAMEKEYS.clear();

@@ -22,8 +22,8 @@ public class Factum extends Item {
         super(name, score);
         this.useID = 1;
         this.type = "phylactery";
-        this.description = "You find that you can't describe it very well. It's\n"
-                         + "quite light and keeps folding in on itself- changing\n"
+        this.description = "You find that you can't describe it very well. It's "
+                         + "quite light and keeps folding in on itself- changing "
                          + "shape. You can't recognize the color either. Almost ultraviolet.";
         this.useDialog = "You've just moved. You aren't quite sure how you did that.";
     }

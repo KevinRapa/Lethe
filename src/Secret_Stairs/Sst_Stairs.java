@@ -8,8 +8,8 @@ public class Sst_Stairs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Sst_Stairs (Direction direction) {
         super(direction);
-        this.description = "The rickety U-shaped wooden staircase wraps around\n"
-                         + "the room to a small second-floor landing. It looks\n"
+        this.description = "The rickety U-shaped wooden staircase wraps around "
+                         + "the room to a small second-floor landing. It looks "
                          + "only partially stable.";
         this.addNameKeys("(?:rickety )?(?:wooden )?(?:stair(?:s|case)|steps)");
     }

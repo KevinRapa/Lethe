@@ -9,8 +9,8 @@ public class Tow_Balcony extends Balcony {
     public Tow_Balcony () {
         super();
         
-        this.description = "The long circular balcony wraps around the inner\n"
-                         + "perimeter of the upper tower floor. A black metal\n"
+        this.description = "The long circular balcony wraps around the inner "
+                         + "perimeter of the upper tower floor. A black metal "
                          + "railing guards the balcony's inner edge.";
 
         this.addNameKeys("(?:long )?(?:circular )?balcony", "(?:black )?(?:metal )?railing");

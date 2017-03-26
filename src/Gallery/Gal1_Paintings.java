@@ -7,7 +7,7 @@ public class Gal1_Paintings extends Furniture {
     public Gal1_Paintings() {
         super();
         this.searchable = false;
-        this.description = "You quickly browse around the paintings in the room.\n"
+        this.description = "You quickly browse around the paintings in the room. "
                          + "You find:\t\t\t"
                          + "<> A Tibetan painting\t\t"
                          + "<> An Indian painting\t\t"

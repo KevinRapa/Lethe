@@ -11,7 +11,7 @@ public class Vest_Button extends Button {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Vest_Button(Furniture vesfrplc) {
         super();
-        this.description = "You look closely at the small rock protrusion scorched\n" +
+        this.description = "You look closely at the small rock protrusion scorched " +
                            "from the heat of the fire. It's definitely a button.";
         this.FRPLC_REF = (Vest_Fireplace)vesfrplc;
         this.addNameKeys("(?:small )?(?:rock )?(?:protrusion|button)");

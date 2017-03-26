@@ -54,7 +54,7 @@ public class Mha2_Door extends Door {
         
         if (this.numMedallions == 4) {
             Player.getRoomObj(Id.DIN1).unlock();
-            return rep.concat("\nWith the last medallion in place, the door *clicks* loudly.");
+            return rep.concat(" With the last medallion in place, the door *clicks* loudly.");
         }      
         return rep;
     }
@@ -92,11 +92,11 @@ public class Mha2_Door extends Door {
                 return "All of the door's medallions have been returned. The door is now unlocked.";
                 
             default:
-                return "The double doors here are locked tight. Four round\n"
-                     + "sockets on are built into the door's surface. One already\n"
-                     + "contains a gold disk with an engraving of an angel on it.\n"
-                     + "In the other three sockets you make out a second engraving\n"
-                     + "of an angel, an engraving of a soldier, and an engraving\n"
+                return "The double doors here are locked tight. Four round "
+                     + "sockets on are built into the door's surface. One already "
+                     + "contains a gold disk with an engraving of an angel on it. "
+                     + "In the other three sockets you make out a second engraving "
+                     + "of an angel, an engraving of a soldier, and an engraving "
                      + "of a horse.";
         }
     }

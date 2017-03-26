@@ -10,13 +10,13 @@ public class Sear_Door extends Furniture {
     public Sear_Door () {
         super();
 
-        this.useDialog = "...Do you intend to pick the lock with that? Well,\n"
-                       + "perhaps you could, but then again, you are not learned\n"
+        this.useDialog = "...Do you intend to pick the lock with that? Well, "
+                       + "perhaps you could, but then again, you are not learned "
                        + "of this skill. Yet another you yearn for at the moment.";
-        this.description = "The door is in even worse condition from this side.\n"
-                         + "Whoever it is lying there was hitting it very\n"
+        this.description = "The door is in even worse condition from this side. "
+                         + "Whoever it is lying there was hitting it very "
                          + "forcefully with that crowbar to break it down.";
-        this.actDialog = "There's enough evidence here to suggest you can't go\n"
+        this.actDialog = "There's enough evidence here to suggest you can't go "
                        + "through there.";
         this.addUseKeys(ANYTHING);
         this.addNameKeys("west door", "door");
@@ -28,7 +28,7 @@ public class Sear_Door extends Furniture {
             return "The door is already closed.";
         else if (key.equals("kick")) {
             AudioPlayer.playEffect(40);
-            return "You thrust your boot into the door, but the door is too\n" +
+            return "You thrust your boot into the door, but the door is too " +
                    "well-built to give.";
         }
         else if (key.equals("knock") || key.equals("bang")) {

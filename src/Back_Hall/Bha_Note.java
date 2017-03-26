@@ -20,11 +20,11 @@ public class Bha_Note extends Note {
     // CONSTRUCTOR ============================================================
     public Bha_Note(String name) {
         super(name);
-        this.description = "Wherever you hide this, don't forget where! When the\n"
-                         + "time comes to unbind yourself, you might need some\n"
-                         + "help getting there. (1)Hidden before the sacred fire; (2)Parlor, in plain sight; (3)Under\n"
-                         + "the courtyard; (4)Dining room, behind the blue chalice;\n"
-                         + "(5)Safe with your treasures; (6)High above the Gods; (7)In this room;\n"
+        this.description = "Wherever you hide this, don't forget where! When the "
+                         + "time comes to unbind yourself, you might need some "
+                         + "help getting there. (1)Hidden before the sacred fire; (2)Parlor, in plain sight; (3)Under "
+                         + "the courtyard; (4)Dining room, behind the blue chalice; "
+                         + "(5)Safe with your treasures; (6)High above the Gods; (7)In this room; "
                          + "(8)Beneath the memory of Daedalus.";
     }
     // ========================================================================

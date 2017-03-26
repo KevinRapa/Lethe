@@ -6,7 +6,7 @@ public class Bba_Rlng extends Railing {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bba_Rlng() {
         super();
-        this.description = "A thick granite railing. Past it is a huge, treacherous\n"
+        this.description = "A thick granite railing. Past it is a huge, treacherous "
                          + "drop into the black sea.";
         this.addNameKeys("(?:thick )?(?:stone |granite )?railing");
     }

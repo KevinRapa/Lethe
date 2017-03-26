@@ -12,18 +12,18 @@ public class Sew235_Pipe extends Furniture {
 
         switch(room) {
             case 2:
-                description = "The rusty metal pipe runs out the top of the console\n"
-                            + "on the south wall, along the ceiling to the\n"
-                            + "north side of the room, and along the length of\n"
+                description = "The rusty metal pipe runs out the top of the console "
+                            + "on the south wall, along the ceiling to the "
+                            + "north side of the room, and along the length of "
                             + "the tunnel westward.";
                 break;
             case 3:
-                description = "The metal pipe is bracketed to the ceiling\n"
-                            + "over the river below. It's very rusty from the\n"
+                description = "The metal pipe is bracketed to the ceiling "
+                            + "over the river below. It's very rusty from the "
                             + "apparent years of neglect.";
                 break;
             case 5:
-                description = "The rusty metal pipe runs around the bend along\n"
+                description = "The rusty metal pipe runs around the bend along "
                             + "the ceiling and into the wall above the door to the west.";
                 break;
         }

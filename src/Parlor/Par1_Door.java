@@ -18,7 +18,7 @@ public class Par1_Door extends Door {
 /*----------------------------------------------------------------------------*/    
     public Par1_Door(Item enchbttl, Direction dir) {
         super(dir);
-        this.useDialog = "You throw the fire on the door. The fire\n"
+        this.useDialog = "You throw the fire on the door. The fire "
                        + "then slowly fades away.";
         this.description = "It looks like a heavy wooden door.";
         
@@ -29,8 +29,8 @@ public class Par1_Door extends Door {
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
         if (! Player.getRoomObj(Id.PAR1).isAdjacent(Id.BHA3))
-            return "The door has an odd pale-blue tint to it. As you approach,\n"
-                 + "you feel a coldness. Upon closer inspection, you can see the\n"
+            return "The door has an odd pale-blue tint to it. As you approach, "
+                 + "you feel a coldness. Upon closer inspection, you can see the "
                  + "blue tint pulsing.";
         else
             return this.description;
@@ -41,7 +41,7 @@ public class Par1_Door extends Door {
         
         if (! Player.getRoomObj(Id.PAR1).isAdjacent(Id.BHA3)) {
             Player.getRoomObj(Id.PAR1).addAdjacent(Id.BHA3);
-            rep = "You cast the fire onto the door, to which it clings.\n"
+            rep = "You cast the fire onto the door, to which it clings. "
                 + " The fire begins to fade away along with the barrier.";
         }
         Player.getInv().remove(item);

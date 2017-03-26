@@ -20,11 +20,11 @@ public class Labo_Condenser extends Furniture implements Moveable {
         
         this.BEAKER_REF = new Labo_Beaker(beakerItem);
         
-        this.description = "This half of the contraption consists of a long, curved\n"
-                         + "glass tube on a stand. The glass tube has a switch attached to a stopper inside the tube.\n"
+        this.description = "This half of the contraption consists of a long, curved "
+                         + "glass tube on a stand. The glass tube has a switch attached to a stopper inside the tube. "
                          + "The tube extends from the condenser and ends hanging above a ";
         this.actDialog = "You toggle the switch attached to the stopper. It's now ";
-        this.searchDialog = "The contraption is comprised of many alchemical components.\n"
+        this.searchDialog = "The contraption is comprised of many alchemical components. "
                           + "Though they're alien to you, you note nothing out of the ordinary.";
         this.useDialog = "You place the beaker on top of the drain, under the glass tube.";
 
@@ -55,7 +55,7 @@ public class Labo_Condenser extends Furniture implements Moveable {
     }
     // ========================================================================  
     public boolean condense(int chemical) {
-        String result = "You strike the top of the burner. For a minute, it burns against the flask's bottom,\n"
+        String result = "You strike the top of the burner. For a minute, it burns against the flask's bottom, "
                       + "boiling the insides aggressively. % After a minute, the flame dies out.";
         
         if (this.flapOpen) {
@@ -65,14 +65,14 @@ public class Labo_Condenser extends Furniture implements Moveable {
             }
             else {
                 GUI.out(result.replaceFirst("%", 
-                        "You watch in horror as the chemical condenses into the glass tube and\n"
+                        "You watch in horror as the chemical condenses into the glass tube and "
                       + "flows down the drain under the condenser."));
             }
             return true;
         }
         else {
             GUI.out(result.replaceFirst("%", 
-                    "The liquid evaporates up into the glass tube, but starts dripping back\n"
+                    "The liquid evaporates up into the glass tube, but starts dripping back "
                   + "out into the florence flask. You scratch your head."));
 
             return false; 

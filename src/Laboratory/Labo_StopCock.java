@@ -12,7 +12,7 @@ public class Labo_StopCock extends Furniture {
     public Labo_StopCock () {
         super();
 
-        this.actDialog = "Both the dispensers and the burette have a stopcock.\n"
+        this.actDialog = "Both the dispensers and the burette have a stopcock. "
                        + "State 'burette stopcock' or 'dispenser stopcock'.";
         
         this.description = "They are small turnable switches for operating titrating instruments. " 

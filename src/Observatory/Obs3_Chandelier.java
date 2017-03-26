@@ -12,9 +12,9 @@ public class Obs3_Chandelier extends SearchableFurniture {
     public Obs3_Chandelier(String NAME, Item ... items) {
         super(items);
         this.searchable = false;
-        this.description = "The curved brass chandelier hangs high up from a\n"
-                         + "chain extending through a hole in the ceiling.\n"
-                         + "Secured in its center is a red jewel encompassed\n"
+        this.description = "The curved brass chandelier hangs high up from a "
+                         + "chain extending through a hole in the ceiling. "
+                         + "Secured in its center is a red jewel encompassed "
                          + "by the chandelier's many candles.";
         this.searchDialog = "The chandelier is too high up.";
         this.actDialog = "You would most certainly fall to your death...";
@@ -25,8 +25,8 @@ public class Obs3_Chandelier extends SearchableFurniture {
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
         if (this.searchable) 
-            return "The brass chandelier's chain, having extended from\n" +
-                   "the ceiling, suspends the chandelier now level with the\n" +
+            return "The brass chandelier's chain, having extended from " +
+                   "the ceiling, suspends the chandelier now level with the " +
                    "observatory's top floor. It's just within reach.";
         else
             return this.description;

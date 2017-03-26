@@ -176,8 +176,8 @@ public class DungeonMonster {
     }
     // ========================================================================
     private static void captureDialog() {
-        GUI.out("The hideous creature lassos you with its chain and drags\n"
-              + "you back to the tiny untility room. Your items are taken.\n"
+        GUI.out("The hideous creature lassos you with its chain and drags "
+              + "you back to the tiny untility room. Your items are taken. "
               + "The creature seems too mindless to take your keys though.");
         
         AudioPlayer.playEffect(24);

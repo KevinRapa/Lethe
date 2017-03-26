@@ -8,9 +8,9 @@ public class Jha1_Painting extends WallArt {
     // ========================================================================
     public Jha1_Painting () {
         super();
-        this.description = "The painting depicts two elder males hunched over a desk,\n"
-                         + "curiously observing a flask filled with an amber\n"
-                         + "liquid. The table bears other alchemical instruments\n"
+        this.description = "The painting depicts two elder males hunched over a desk, "
+                         + "curiously observing a flask filled with an amber "
+                         + "liquid. The table bears other alchemical instruments "
                          + "as well. The background is dark.";
 
         this.addNameKeys("painting", "picture");

@@ -28,10 +28,10 @@ public class Gal2_Statue extends SearchableFurniture {
         
         this.REF3 = (Gal4_Statue)stat;
         this.level = 0;
-        this.description = "The grandiose statue stands in the exact center of\n"
-                         + "the circular room. It portrays a male figure. He\n"
-                         + "poises elegantly, with his right arm extended over\n"
-                         + "his head and left hand held low as if bearing an\n"
+        this.description = "The grandiose statue stands in the exact center of "
+                         + "the circular room. It portrays a male figure. He "
+                         + "poises elegantly, with his right arm extended over "
+                         + "his head and left hand held low as if bearing an "
                          + "object, though it's empty.";        
         this.searchDialog = "The statue's hand is empty";
         this.addNameKeys("(?:grandiose )?statue", "(?:statue(?:'s)? )?(?:hand|palm)");
@@ -79,8 +79,8 @@ public class Gal2_Statue extends SearchableFurniture {
                 this.searchable = false;
                 Player.getRoomObj(Id.GAL4).addFurniture(REF3);
                 AudioPlayer.playEffect(37);
-                return "The orb's glow turns a dark purple before fading into\n"
-                     + "ultraviolet. The statue raises on its platform to the\n"
+                return "The orb's glow turns a dark purple before fading into "
+                     + "ultraviolet. The statue raises on its platform to the "
                      + "second floor.";
         } 
     }
@@ -93,10 +93,10 @@ public class Gal2_Statue extends SearchableFurniture {
                 case 1:
                     return "The statue stands holding the glowing orb. It hums softly.";          
                 case 2:
-                    return "The statue stands holding the glowing orb. It's humming quite\n"
+                    return "The statue stands holding the glowing orb. It's humming quite "
                             + "loudly now.";
                 default:
-                    return "The statue has risen up to the next floor. Its tall base\n"
+                    return "The statue has risen up to the next floor. Its tall base "
                             + "is all that's left on this level.";
             }
         }

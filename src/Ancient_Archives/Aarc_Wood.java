@@ -16,8 +16,8 @@ public class Aarc_Wood extends Aarc_Furniture implements Gettable {
         
         this.searchable = false;
         
-        this.description = "Most of the wooden rubble resembles old bookshelves,\n"
-                         + "although you also uncover what appears to be an old\n"
+        this.description = "Most of the wooden rubble resembles old bookshelves, "
+                         + "although you also uncover what appears to be an old "
                          + "drawered desk.";
         this.searchDialog = this.description;
        

@@ -11,7 +11,7 @@ abstract public class Column extends Furniture implements Unmoveable {
     public Column () {
         super();
 
-        this.actDialog = "You aren't very skilled at climbing vertical\n"
+        this.actDialog = "You aren't very skilled at climbing vertical "
                        + "surfaces with your hands.";
         this.searchDialog = "There's nothing interesting on the column.";
         this.useDialog = "What are you trying to do? Bring the whole castle down?";

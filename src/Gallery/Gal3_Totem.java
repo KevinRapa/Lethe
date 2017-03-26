@@ -38,10 +38,10 @@ public class Gal3_Totem extends Gal_LightMachine {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
-        return "The tall wooden totem stands back against the west\n"
-             + "wall facing the central chamber. Its four stacked\n"
-             + "segments are carved to resemble obscure faces.\n" + numBackwards() +
-               "\nOn each side of the segments is a peg sticking out.";
+        return "The tall wooden totem stands back against the west "
+             + "wall facing the central chamber. Its four stacked "
+             + "segments are carved to resemble obscure faces. " + numBackwards() +
+               " On each side of the segments is a peg sticking out.";
     }
 /*----------------------------------------------------------------------------*/ 
     private String numBackwards() {
@@ -170,7 +170,7 @@ public class Gal3_Totem extends Gal_LightMachine {
         /*--------------------------------------------------------------------*/
         private void trigger() {   
             determineColor();
-            GUI.out(mode + " emits from the totem's mouth.\n" + GAL4_STAT_REF.activate(beam)); 
+            GUI.out(mode + " emits from the totem's mouth. " + GAL4_STAT_REF.activate(beam)); 
         }
     }
 /*----------------------------------------------------------------------------*/

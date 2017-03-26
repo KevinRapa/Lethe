@@ -8,7 +8,7 @@ public class Lib1_Documents extends Furniture {
     public Lib1_Documents() {
         super();
 
-        this.description = "Various papers and scrolls litter the surfaces and\n"
+        this.description = "Various papers and scrolls litter the surfaces and "
                          + "shelves of the room.";
         this.actDialog = "It would take at least a year to read all of these!";
         this.searchDialog = "There are simply too many to search them all at once.";

@@ -16,8 +16,8 @@ public class Par1_Harp extends Furniture implements Moveable {
             super();
 
             this.addNameKeys("harp", "renaissance-era harp");
-            this.description = "It's a renaissance-era harp. It looks gold plated,\n"
-                             + "but you're no metallurgist. It sure does look\n"
+            this.description = "It's a renaissance-era harp. It looks gold plated, "
+                             + "but you're no metallurgist. It sure does look "
                              + "tempting to play though.";
             this.REF = (Par1_Orb)orb;
             this.addActKeys("play", "strum");
@@ -27,14 +27,14 @@ public class Par1_Harp extends Furniture implements Moveable {
         if (! REF.woken()) {
             AudioPlayer.playEffect(54);
             REF.wake();
-            return "You slouch next to the harp and give it a jarring strum. Suddenly, you\n"
-                 + "hear a nearby voice. \"Hey! Stop playing that, you'll break something!\"\n"
+            return "You slouch next to the harp and give it a jarring strum. Suddenly, you "
+                 + "hear a nearby voice. \"Hey! Stop playing that, you'll break something!\" "
                  + "The voice is echoey, and you have a hunch it's emanating from the orb.";
         }
         else {
             AudioPlayer.playEffect(54);
-            return "You sit down again and play some more notes. \"Stop playing\n"
-                 + "that before you break it!\" The orb yells. \"I'm the only\n"
+            return "You sit down again and play some more notes. \"Stop playing "
+                 + "that before you break it!\" The orb yells. \"I'm the only "
                  + "experienced musician in this castle!\"";
         }
     }

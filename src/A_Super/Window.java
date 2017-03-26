@@ -18,7 +18,7 @@ abstract public class Window extends Furniture implements Unmoveable {
         super();
         this.isOpen = false;
         this.escapeDialog = "And fall to your death?";
-        this.descOpen = "It's an open stone arched window. In the distance,\n" +
+        this.descOpen = "It's an open stone arched window. In the distance, " +
                         "you see an expanse of sea.";                    
         this.descClosed = "It's a closed stone arched window.";
         this.addActKeys("open|close", "climb|exit|jump|escape");

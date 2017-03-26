@@ -14,8 +14,8 @@ public class Aarc_Books extends Aarc_Furniture implements Gettable {
         
         this.BOOK_REF = book;
         
-        this.description = "Much of the wooden rubble here, once bookshelves,\n"
-                         + "have toppled over leaving piles of books everywhere. The books\n"
+        this.description = "Much of the wooden rubble here, once bookshelves, "
+                         + "have toppled over leaving piles of books everywhere. The books "
                          + "have pretty much all succumbed to water damage.";
         
         this.actDialog = "There are a lot of books here... And the ones you can see are destroyed.";

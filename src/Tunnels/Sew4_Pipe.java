@@ -26,12 +26,12 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
         
         this.hasPipe = false;
         
-        this.description = "The rusty pipe runs along the ceiling around the\n"
+        this.description = "The rusty pipe runs along the ceiling around the "
                          + "bend right above the river. ";
-        this.searchDialog = "The pipe is missing a piece.";
+        this.searchDialog = "The pipe has a gap where a piece is missing.";
         this.useDialog = "The pipe is too high up for you to reach!";
 
-        this.addNameKeys("(?:large )?(?:rusty )?(?:metal )?pip(?:e|ing)");
+        this.addNameKeys("(?:large )?(?:rusty )?(?:metal )?pip(?:e|ing)", "gap");
         this.addUseKeys(Names.PIECE_OF_PIPE);
     }
     // ======================================================================== 

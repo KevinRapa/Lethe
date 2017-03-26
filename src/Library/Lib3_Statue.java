@@ -13,12 +13,12 @@ public class Lib3_Statue extends Statue {
         this.inv = new Inventory(items);
         this.leftEye = false;
         this.rightEye = false;
-        this.description = "The towering statue reaches a bit over a story tall.\n"
-                         + "On its boxy rectangular base stands a prancing horse.\n"
+        this.description = "The towering statue reaches a bit over a story tall. "
+                         + "On its boxy rectangular base stands a prancing horse. "
                          + "A small square seam on the statue's base piques your interest.";
-        this.searchDialog = "A small square seam on the statue's base piques\n"
+        this.searchDialog = "A small square seam on the statue's base piques "
                           + "your interest.";
-        this.actDialog = "Such an impressive work of artistry deserves not to be\n"
+        this.actDialog = "Such an impressive work of artistry deserves not to be "
                        + "tainted by your touch.";
         this.addNameKeys("(?:impressive )?(?:horse )?statue", "horse");
     }
@@ -48,12 +48,12 @@ public class Lib3_Statue extends Statue {
             AudioPlayer.playEffect(44);
             this.searchable = true;
             
-            return "\nBoth of the horse's eyes now glow. You hear a faint\n"
+            return " Both of the horse's eyes now glow. You hear a faint "
                    + "grinding noise.";
     }
 /*----------------------------------------------------------------------------*/
     public String lightRight() {
-        String rep = "You push the button. As soon as you turn around, you\n"
+        String rep = "You push the button. As soon as you turn around, you "
                    + "notice the horse's right eye glowing.";       
         this.rightEye = true;
         
@@ -65,7 +65,7 @@ public class Lib3_Statue extends Statue {
     }
 /*----------------------------------------------------------------------------*/
     public String lightLeft() {
-        String rep = "You push the button. As soon as you turn around, you\n"
+        String rep = "You push the button. As soon as you turn around, you "
                    + "notice the horse's left eye glowing.";       
         this.leftEye = true;
         

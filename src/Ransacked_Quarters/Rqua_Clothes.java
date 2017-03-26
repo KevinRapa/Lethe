@@ -13,7 +13,7 @@ public class Rqua_Clothes extends Furniture {
     public Rqua_Clothes () {
         super();
         
-        this.description = "Wrinkled sheets and clothes lie on the floor, tossed\n"
+        this.description = "Wrinkled sheets and clothes lie on the floor, tossed "
                          + "from the now emptied dresser.";
         this.actDialog = "It is not an appropriate time for dress-up.";
         this.searchDialog = "There isn't anything hidden inside the clothes.";

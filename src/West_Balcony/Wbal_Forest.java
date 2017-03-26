@@ -7,11 +7,11 @@ public class Wbal_Forest extends Furniture{
     public Wbal_Forest() {
         super();
 
-        this.description = "The large expanse of trees extends to the south until\n"
-                         + "terminating at the foothills of a distant mountain.\n"
-                         + "To the east, it wraps around and leads back to your\n"
+        this.description = "The large expanse of trees extends to the south until "
+                         + "terminating at the foothills of a distant mountain. "
+                         + "To the east, it wraps around and leads back to your "
                          + "village.";
-        this.searchDialog = "It's pretty dark and spooky. You can't event get to\n"
+        this.searchDialog = "It's pretty dark and spooky. You can't event get to "
                           + "it from here anyway.";
         this.addNameKeys("(?:dark )?(?:forest|woods)");
     }

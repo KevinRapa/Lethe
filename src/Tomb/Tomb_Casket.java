@@ -12,8 +12,8 @@ abstract public class Tomb_Casket extends SearchableFurniture implements Openabl
     public Tomb_Casket (Item... items) {
         super(items);
         
-        this.description = "The casket is just a decrepit wooden box with a\n"
-                         + "couple hinges on one side. Its ominous, solemn presence\n"
+        this.description = "The casket is just a decrepit wooden box with a "
+                         + "couple hinges on one side. Its ominous, solemn presence "
                          + "in the forgotten chamber gives off a sinister vibe.";
         this.actDialog = "What a morbid thought... are you not cozy enough in this room?";
         

@@ -17,7 +17,7 @@ abstract public class WallArt extends Furniture {
     // ========================================================================   
     @Override public String interact(String key) {              
         if (key.equals("admire"))
-            return "Yes, what a beautiful piece of artwork. You take a moment\n"
+            return "Yes, what a beautiful piece of artwork. You take a moment "
                  + "to soak in the creative essence. Yes...";
         else
             return this.actDialog;

@@ -11,12 +11,12 @@ public class Lib3_Stairs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Lib3_Stairs() {
         super(Direction.UP);
-        this.searchDialog = "You begin the search, but as soon as you touch the\n"
-                          + "stairs, they flatten down to the floor before popping\n"
+        this.searchDialog = "You begin the search, but as soon as you touch the "
+                          + "stairs, they flatten down to the floor before popping "
                           + "back up again.";
         this.actDialog = "You successfully climb the stairs to the second floor.";
-        this.description = "The stairs are a gray stone with salmon-colored\n"
-                         + "marble steps. They lead up to the northern second-\n"
+        this.description = "The stairs are a gray stone with salmon-colored "
+                         + "marble steps. They lead up to the northern second- "
                          + "story area of the library.";
     }
 /*----------------------------------------------------------------------------*/
@@ -28,8 +28,8 @@ public class Lib3_Stairs extends Staircase {
         }
         else {
             AudioPlayer.playEffect(40);
-            return "As soon as your foot touches the bottom step, the staircase\n"
-                 + "flattens against the floor. You remove your foot, and the\n"
+            return "As soon as your foot touches the bottom step, the staircase "
+                 + "flattens against the floor. You remove your foot, and the "
                  + "staircase pops back up again. 'How irritating!' you exclaim.";
         }
     }

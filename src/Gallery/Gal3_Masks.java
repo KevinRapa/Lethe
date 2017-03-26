@@ -6,7 +6,7 @@ public class Gal3_Masks extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Masks() {
         super();
-        this.description = "You quickly browse around the masks in the room.\n"
+        this.description = "You quickly browse around the masks in the room. "
                          + "You find:\t\t\t\t"
                          + "<> A Malian mask\t\t"
                          + "<> A Burkinabe mask\t\t"

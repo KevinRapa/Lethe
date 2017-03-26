@@ -34,7 +34,7 @@ import static A_Main.Names.W_DIR;
 
 public class Main {
     public static final String 
-            START_LOCATION = Id.COU4, // Default COU4
+            START_LOCATION = Id.SHA1, // Default COU4
             FILE_NAME = "save" + SEP + "Game.data";
     
     public static final JFrame 

@@ -34,8 +34,8 @@ public class Drar_Ghost extends NonPlayerCharacter {
         this.searchDialog = "The ghost probably wouldn't appreciate that.";
         this.useDialog = "It's a ghost- translucent and gaseous, sooo...";
         this.actDialog = "The apparition returns to sipping from the ghostly cup.";
-        this.description = "The white apparition resembles a male dressed in\n"
-                         + "robes wearing the hat of a scholar. His face is\n"
+        this.description = "The white apparition resembles a male dressed in "
+                         + "robes wearing the hat of a scholar. His face is "
                          + "disfigured and horribly wrinkly.";
         
         this.addUseKeys(ANYTHING);
@@ -75,25 +75,25 @@ public class Drar_Ghost extends NonPlayerCharacter {
     @Override protected String converse1() {
         this.firstTime = false;
         
-        GUI.out("Just as you do, the apparition interrupts\n" +
+        GUI.out("Just as you do, the apparition interrupts " +
                 "and begins to talk to you....");
         GUI.menOut(Menus.ENTER);
         GUI.promptOut();
         
-        GUI.out("\"You are the first living soul I have seen in 6 centuries.\n" +
-                "Well, excluding my brother Eurynomos, though he is not really\n" +
-                "alive anymore. Do you know of whom I speak of? What is\n" +
+        GUI.out("\"You are the first living soul I have seen in 6 centuries. " +
+                "Well, excluding my brother Eurynomos, though he is not really " +
+                "alive anymore. Do you know of whom I speak of? What is " +
                 "your name even?...\"");
         GUI.promptOut();
         
-        GUI.out("\"Is that so? Not a name I have heard before.\n" +
+        GUI.out("\"Is that so? Not a name I have heard before. " +
                 "Certainly never during my time.\"");
         GUI.promptOut();
         
-        GUI.out("I am Asterion. My family provided great services to this\n" +
-                "kingdom, ever since my parents' overthrow of the corrupt\n" +
-                "king Cronus. We offered freedom and knowledge to the\n" +
-                "people of this land. But enough of me. Tell me, why by\n" +
+        GUI.out("I am Asterion. My family provided great services to this " +
+                "kingdom, ever since my parents' overthrow of the corrupt " +
+                "king Cronus. We offered freedom and knowledge to the " +
+                "people of this land. But enough of me. Tell me, why by " +
                 "the Gods are you here?");
         GUI.promptOut();
         
@@ -146,7 +146,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
               + "to the unlocking mechanism. Please have it....\"");
         GUI.promptOut();
         
-        GUI.out("\"... No I can't just walk in there because I'm a ghost.\n" +
+        GUI.out("\"... No I can't just walk in there because I'm a ghost. " +
                 "Death has rules! We don't live in anarchy here...\"");
         GUI.promptOut();
         
@@ -162,13 +162,13 @@ public class Drar_Ghost extends NonPlayerCharacter {
         GUI.promptOut();
         
         GUI.toMainMenu();
-        GUI.out("\"Please come back when you have the gem.\"\n");
+        GUI.out("\"Please come back when you have the gem.\" ");
 
         return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
     @Override protected String converse2() {
-        GUI.out("\"Do you have the emerald yet? It's so\n" +
+        GUI.out("\"Do you have the emerald yet? It's so " +
                 "important to me. I will to repay you.\"");
         
         return NOTHING;
@@ -177,21 +177,21 @@ public class Drar_Ghost extends NonPlayerCharacter {
     private void converse3() {       
         
         GUI.menOut(Menus.ENTER);
-        GUI.out("\"Oh, you have found it! You have no idea what\n" +
-                "this means to me. Oh, well I suppose you do.\n" +
-                "As promised, I will help you find a way out\n" +
+        GUI.out("\"Oh, you have found it! You have no idea what " +
+                "this means to me. Oh, well I suppose you do. " +
+                "As promised, I will help you find a way out " +
                 "of here....\"");
         Player.getInv().remove(this.EMRLD_REF);
         GUI.promptOut();
         
-        GUI.out("\"There is a rack of keys in the kitchen. I'm not sure\n"
-              + "there's one that will get you out of here, but it will\n" +
-                "open up more doors for you, quite literally. The kitchen\n"
+        GUI.out("\"There is a rack of keys in the kitchen. I'm not sure "
+              + "there's one that will get you out of here, but it will " +
+                "open up more doors for you, quite literally. The kitchen "
               + "is locked, and I have the key.\"");
         GUI.promptOut();
         
-        GUI.out("\"Eurynomos keeps a phylactery of his in the kitchen; a fruit. He split\n"
-              + "\"his soul among 5 objects, you know. One other is a scepter he\n"
+        GUI.out("\"Eurynomos keeps a phylactery of his in the kitchen; a fruit. He split "
+              + "\"his soul among 5 objects, you know. One other is a scepter he "
               + "took from Rhadamanthus. The other three, well I don't rightfully know.\"");
         GUI.promptOut();
         

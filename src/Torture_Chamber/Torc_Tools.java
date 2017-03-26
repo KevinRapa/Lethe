@@ -9,7 +9,7 @@ public class Torc_Tools extends Furniture {
     public Torc_Tools () {
         super();
         
-        this.description = "You are trying your best not to think of what these\n"
+        this.description = "You are trying your best not to think of what these "
                          + "were used for.";
         this.actDialog = "You don't know how to use these, and nor do you want to.";
         this.searchDialog = "You aren't sure which one to search.";

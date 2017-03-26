@@ -11,11 +11,11 @@ public class Drar_Chess extends SearchableFurniture implements Moveable {
     public Drar_Chess(Furniture ghst, Item... items) {
         super(items);
         this.GHOST_REF = (Drar_Ghost)ghst;
-        this.description = "The fancy chess table bears a polished ceramic\n"
-                         + "surface and many detailed pieces. You wish you\n"
+        this.description = "The fancy chess table bears a polished ceramic "
+                         + "surface and many detailed pieces. You wish you "
                          + "knew how to play.";
         this.searchDialog = "You look on the table's surface.";
-        this.actDialog = "'I aren't smart enough to play this' you speak softly\n"
+        this.actDialog = "'I aren't smart enough to play this' you speak softly "
                        + "in soliloquy.";
         this.addActKeys("play");
         this.addNameKeys("(?:fancy )?chess table", "chess");
@@ -23,7 +23,7 @@ public class Drar_Chess extends SearchableFurniture implements Moveable {
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
         if (GHOST_REF.firstTime())
-            return "Ignoring the ghost completely, you search the chess\n"
+            return "Ignoring the ghost completely, you search the chess "
                  + "table's surface.";
         else 
             return this.searchDialog;

@@ -64,7 +64,7 @@ public class Gal4_Radio extends Furniture implements Gettable, Moveable {
         else if (key.equals("listen"))
             return "The radio isn't on for you to do that.";
         else
-            return "The only obtainable thing on this box seems to be the front\n"
+            return "The only obtainable thing on this box seems to be the front "
                  + "screws, but digging them out by hand seems infeasible.";
     }
     // ========================================================================     

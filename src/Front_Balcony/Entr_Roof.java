@@ -6,7 +6,7 @@ public class Entr_Roof extends Ceiling {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Entr_Roof() {
         super();
-        this.description = "The portico is shaded by an elongated mansard roof\n"
+        this.description = "The portico is shaded by an elongated mansard roof "
                          + "extending from the castle's front wall.";
     }
 /*----------------------------------------------------------------------------*/ 

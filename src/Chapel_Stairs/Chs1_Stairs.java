@@ -11,14 +11,14 @@ public class Chs1_Stairs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Chs1_Stairs (Direction direction) {
         super(direction);
-        this.description = "The wide spiral stairs wind many times around the\n"
+        this.description = "The wide spiral stairs wind many times around the "
                          + "tower's wall. A dark red carpet follows them up.";
         this.addNameKeys("(?:circular |spiral )?stair(?:s|case)");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
         if (this.DIR == Direction.DOWN) {
-            return "The spiral stairs run a few stories downward to the first\n"
+            return "The spiral stairs run a few stories downward to the first "
                  + "floor landing.";
         }
         return this.description;

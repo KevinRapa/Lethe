@@ -15,7 +15,7 @@ public class Sew_Bridge extends Furniture implements Unmoveable {
 
         this.DIR = dir;
         
-        this.description = "The small, 11-foot stone bridge crosses over the\n" +
+        this.description = "The small, 11-foot stone bridge crosses over the " +
                            "river to another area.";
         this.searchDialog = "There's nothing on or under the bridge.";
         this.actDialog = NOTHING;

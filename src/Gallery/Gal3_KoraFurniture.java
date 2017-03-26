@@ -10,8 +10,8 @@ public class Gal3_KoraFurniture extends Furniture {
     public Gal3_KoraFurniture() {
         super();
 
-        this.description = "You've never seen anything like this before. You'd\n"
-                         + "call it a guitar, but then again, it looks like a\n"
+        this.description = "You've never seen anything like this before. You'd "
+                         + "call it a guitar, but then again, it looks like a "
                          + "harp too. Beneath it you see a small label: \"Kora\".";
         this.actDialog = "You carefully remove the instrument from its display.";
         this.addNameKeys("(?:stringed )?instrument", "kora");
@@ -34,12 +34,12 @@ public class Gal3_KoraFurniture extends Furniture {
         public Gal3_Inst (String name) {
             super(name, 30);
             this.useID = 1;
-            this.description = "The exotic instrument consists of a half-sphere for\n"
-                             + "a body and a long neck. But it resembles a harp more\n"
+            this.description = "The exotic instrument consists of a half-sphere for "
+                             + "a body and a long neck. But it resembles a harp more "
                              + "than a guitar or cello.";
-            this.useDialog = "You give it a strum. 'Sounds terrible!' you think,\n"
-                           + "although you've never played a kora before. The sound\n"
-                           + "itself is actually quite nice, like that of a\n"
+            this.useDialog = "You give it a strum. 'Sounds terrible!' you think, "
+                           + "although you've never played a kora before. The sound "
+                           + "itself is actually quite nice, like that of a "
                            + "classical guitar.";
         }
     /*------------------------------------------------------------------------*/

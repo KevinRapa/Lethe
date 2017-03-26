@@ -20,7 +20,7 @@ public class Cou_Floor extends Floor implements Gettable {
         this.GRASS_REF = grass;
         this.CLOVER_REF = clover;
         
-        this.actDialog = "You dig a small hole in the ground, but find nothing of interest\n"
+        this.actDialog = "You dig a small hole in the ground, but find nothing of interest "
                        + "and kick the dirt back in the hole.";
         this.useDialog = "You have nothing with which to dig.";
 

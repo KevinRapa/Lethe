@@ -10,8 +10,8 @@ public class OminousDoor extends Door {
     public OminousDoor (Direction direction) {
         super(direction);
         
-        this.description = "This door is carved decoratively all over, but is\n"
-                         + "heavily dilapidated. Much of the rock has crumbled\n"
+        this.description = "This door is carved decoratively all over, but is "
+                         + "heavily dilapidated. Much of the rock has crumbled "
                          + "off.";
     }
     // ======================================================================== 

@@ -13,10 +13,10 @@ public class Foy1_Armoire extends SearchableFurniture implements Openable, Movea
     public Foy1_Armoire (Item... items) {
         super(items);
         
-        this.description = "The clean lavender armoire stands on four stubby legs\n"
-                         + "near the south corner of the foyer. Double doors\n"
+        this.description = "The clean lavender armoire stands on four stubby legs "
+                         + "near the south corner of the foyer. Double doors "
                          + "on its front conceal possibly endless riches hidden inside.";
-        this.actDialog = "The armoire moves a tad from your kick. A light screech\n"
+        this.actDialog = "The armoire moves a tad from your kick. A light screech "
                        + "echos from the feet rubbing against the stone floor.";
         this.searchDialog = "You open up the armoire and look inside.";
         this.useDialog = "Are we feeling bloodthirsty? Or perhaps you didn't realize "

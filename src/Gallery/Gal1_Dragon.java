@@ -23,9 +23,9 @@ public class Gal1_Dragon extends Gal_LightMachine {
         super();
         this.searchDialog = "The only place to search is the dragon's mouth.";
         this.turnOffDialog = "The light in the dragon's mouth shuts off.";
-        this.description = "The room's most prominent piece is this detailed\n"
-                         + "dark green dragon statue. It looks original to east\n"
-                         + "Asia. Its serpent-like body twists around and it stares\n"
+        this.description = "The room's most prominent piece is this detailed "
+                         + "dark green dragon statue. It looks original to east "
+                         + "Asia. Its serpent-like body twists around and it stares "
                          + "menacingly ";
         this.GAL2_STAT_REF = (Gal2_Statue) stat;
         addNameKeys("snake-like dragon(?: statue)?", "(?:dragon|statue)", "(?:dragon's |statue's )?mouth");
@@ -34,13 +34,13 @@ public class Gal1_Dragon extends Gal_LightMachine {
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
         if (this.isOn) 
-            return description.concat("with its two eyes lit. A light from within\n"
+            return description.concat("with its two eyes lit. A light from within "
                                     + "the dragon shines brightly through its mouth.");
         else if (EYES[0] && ! EYES[1]) 
-            return description.concat("at the statue in the central chamber.\n"
+            return description.concat("at the statue in the central chamber. "
                                     + "Its left eye glows brightly from an unknown source.");
         else if (! EYES[0] && EYES[1]) 
-            return description.concat("at the statue in the central chamber.\n"
+            return description.concat("at the statue in the central chamber. "
                                     + "Its right eye glows brightly from an unknown source.");
         else
             return description.concat("with cold eyes at the statue in the central chamber. "

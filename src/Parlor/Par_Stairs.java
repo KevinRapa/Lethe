@@ -7,7 +7,7 @@ public class Par_Stairs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Par_Stairs (Direction direction) {
         super(direction);
-        this.description = "The thin sandstone stairs lead to the balcony above.\n";
+        this.description = "The thin sandstone stairs lead to the balcony above. ";
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

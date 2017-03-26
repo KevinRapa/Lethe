@@ -8,10 +8,10 @@ public class Bba_Cliff extends Furniture{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bba_Cliff() {
         super();
-        this.description = "The cliff has a steep incline. To your discomfort,\n"
+        this.description = "The cliff has a steep incline. To your discomfort, "
                          + "you spot an eerie body in a pocket of rocks on it.";
         this.actDialog = "You haven't reached that point yet. Hang in there!";
-        this.searchDialog = "You aren't jumping down there like that last person\n"
+        this.searchDialog = "You aren't jumping down there like that last person "
                           + "did.";
         
         this.addActKeys("jump", "climb", "vault");

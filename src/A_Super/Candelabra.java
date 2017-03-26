@@ -21,7 +21,7 @@ abstract public class Candelabra extends SearchableFurniture
         
         this.actDialog = "Ow! It burns!";
         this.searchDialog = "The candelbra holds some candles.";
-        this.useDialog = "The torch is already lit, despite having kept it in\n"
+        this.useDialog = "The torch is already lit, despite having kept it in "
                        + "your pocket this whole time.";
 
         this.addNameKeys("candles?", "fire");

@@ -14,21 +14,21 @@ public class Lib1_Plan extends Note {
 /* CONSTRUCTOR ---------------------------------------------------------------*/
     public Lib1_Plan(String name) {
         super(name);
-        this.description = "----- Vessel proposal -----\n" +
-                           "---------------------------\n" +
-                           "\n" +
-                           "  O-Si-O-Si-O-Si-O-Si-O-Si-O\n" +
-                           "     O	       O	 O\n" +
-                           "    O-Si-O-Si-O-Si-O-Si-O-Si-O\n" +
-                           "          O	    O\n" +
-                           "         O-Si-O-Si-O-Si-O-Si-O-Si-O\n" +
-                           "     O	       O	 O\n" +
-                           "    O-Si-O-Si-O-Si-O-Si-O-Si-O\n" +
-                           "          O	    O\n" +
-                           "         O-Si-O-Si-O-Si-O-Si-O-Si-O\n" +
-                           "\t\t\t\tShould function. Orbicular silicate\n" +
-                           "containing a stabilized kryptonic\n" +
-                           "aether. -Rhadamanthus\n";
+        this.description = "----- Vessel proposal ----- " +
+                           "--------------------------- " +
+                           " " +
+                           "  O-Si-O-Si-O-Si-O-Si-O-Si-O " +
+                           "     O	       O	 O " +
+                           "    O-Si-O-Si-O-Si-O-Si-O-Si-O " +
+                           "          O	    O " +
+                           "         O-Si-O-Si-O-Si-O-Si-O-Si-O " +
+                           "     O	       O	 O " +
+                           "    O-Si-O-Si-O-Si-O-Si-O-Si-O " +
+                           "          O	    O " +
+                           "         O-Si-O-Si-O-Si-O-Si-O-Si-O " +
+                           "\t\t\t\tShould function. Orbicular silicate " +
+                           "containing a stabilized kryptonic " +
+                           "aether. -Rhadamanthus ";
     }
 /*----------------------------------------------------------------------------*/
 }

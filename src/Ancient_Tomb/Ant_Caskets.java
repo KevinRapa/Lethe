@@ -11,7 +11,7 @@ public class Ant_Caskets extends Furniture implements Openable {
         super();
         
         this.actDialog = "It's very impolite to hit coffins!";
-        this.description = "The various ramshackle coffins are pieced together\n"
+        this.description = "The various ramshackle coffins are pieced together "
                          + "with many nailed-together wooden planks.";
         this.searchDialog = "You are being watched... best not to do that.";
 

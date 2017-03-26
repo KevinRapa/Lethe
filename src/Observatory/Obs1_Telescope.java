@@ -10,10 +10,10 @@ public class Obs1_Telescope extends SearchableFurniture implements Unmoveable {
     // ========================================================================
     public Obs1_Telescope (Item... items) {
         super(items);
-        this.description = "The large old heavy telescope sits as an antique\n"
-                         + "against the west wall. It looks to be made of mostly\n"
-                         + "aluminum, bronze, and wood. A small eyepiece connects to a\n"
-                         + "foot-wide lens near the top. Many various gears and other\n"
+        this.description = "The large old heavy telescope sits as an antique "
+                         + "against the west wall. It looks to be made of mostly "
+                         + "aluminum, bronze, and wood. A small eyepiece connects to a "
+                         + "foot-wide lens near the top. Many various gears and other "
                          + "parts comprise it as well.";
         this.searchDialog = "You carefully look through its various intricacies.";
         this.actDialog = "You look into the eyepiece and see nothing but black.";

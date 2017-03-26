@@ -15,12 +15,12 @@ public class Wow2_Balcony extends Balcony {
 
         this.STRS_REF = wow2Strs;
         this.LDDR_REF = lddr;
-        this.description = "You can't see much from down here. The balcony\n"
-                         + "is small and crowded. You can see a door up there\n"
-                         + "against the east wall. You also spot what appears\n"
+        this.description = "You can't see much from down here. The balcony "
+                         + "is small and crowded. You can see a door up there "
+                         + "against the east wall. You also spot what appears "
                          + "to be a rope on a rack.";
 
-        this.useDialog = "You lean the ladder against the balcony. It's just\n"
+        this.useDialog = "You lean the ladder against the balcony. It's just "
                        + "tall enough.";
         
         this.addNameKeys("(?:small )?(?:crowded )?balcony", "wall");

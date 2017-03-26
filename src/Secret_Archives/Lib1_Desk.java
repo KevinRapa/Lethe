@@ -12,14 +12,14 @@ public class Lib1_Desk extends SearchableFurniture implements Openable, Moveable
     public Lib1_Desk(Furniture art, Item... items) {
         super(items);
         this.REF = (Lib1_Artifact)art;
-        this.searchDialog = "You fan through the boring papers on the surface.\n"
+        this.searchDialog = "You fan through the boring papers on the surface. "
                           + "Here's what you find interesting: ";
         this.addNameKeys("desk", "unkept desk");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {  
-        return "The desk is unkept and covered in various pieces of paper\n"
-             + "and other knick knacks. The beam from the artifact casts\n"
+        return "The desk is unkept and covered in various pieces of paper "
+             + "and other knick knacks. The beam from the artifact casts "
              + "its surface in " + this.getColor() + " light.";
     }
 /*----------------------------------------------------------------------------*/

@@ -14,13 +14,13 @@ public class Gar2_Hole extends Furniture {
         super();
 
         this.HOSE_REF = hose;
-        this.description = "You peer over the thick granite railing into the\n"
-                         + "hole. To your surprise, it's the rotunda you were\n"
+        this.description = "You peer over the thick granite railing into the "
+                         + "hole. To your surprise, it's the rotunda you were "
                          + "in earlier! It's about a 25 foot drop down.";
         this.actDialog = "The drop is too great. It's about 25 feet down. You'd surely break something.";
         this.searchDialog = this.description;
-        this.useDialog = "You tie the end of the hose to the railing and throw\n"
-                       + "it over the edge. Hopefully it will support your\n"
+        this.useDialog = "You tie the end of the hose to the railing and throw "
+                       + "it over the edge. Hopefully it will support your "
                        + "weight.";
 
         this.addNameKeys("(?:thick )?(?:granite )?railing", "hole");
@@ -30,7 +30,7 @@ public class Gar2_Hole extends Furniture {
     // ======================================================================== 
     @Override public String getDescription() {
         if (Player.getPos().hasFurniture(LEATHER_HOSE))
-            return description.concat(" The leather hose, tied around the railing, extends\n"
+            return description.concat(" The leather hose, tied around the railing, extends "
                                     + "downward and almost touches the floor.");
         else if (Player.getPos().hasFurniture("broken hose"))
             return description.concat(" The broken leather hose is still tied around the railing.");

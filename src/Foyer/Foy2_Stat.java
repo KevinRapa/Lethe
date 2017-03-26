@@ -19,10 +19,10 @@ public class Foy2_Stat extends Statue {
         super();
         this.moved = false;
         this.LVR_REF = foy2Lvr;
-        this.description = "A white marble statue. It depicts a woman holding\n"
-                         + "a vessel of water on her shoulder. At its base,\n"
+        this.description = "A white marble statue. It depicts a woman holding "
+                         + "a vessel of water on her shoulder. At its base, "
                          + "there appears to be some skid markings on the floor.";
-        this.searchDialog = "The statue appears to hide nothing, although there\n"
+        this.searchDialog = "The statue appears to hide nothing, although there "
                           + "streaks on the floor beginning at the statue's base.";
         this.addNameKeys("(?:skid )?markings");
     }
@@ -33,7 +33,7 @@ public class Foy2_Stat extends Statue {
                 Player.getPos().addFurniture(LVR_REF);
                 AudioPlayer.playEffect(41);
                 this.moved = true;
-                return "You push the statue and manage to displace it a bit.\n"
+                return "You push the statue and manage to displace it a bit. "
                      + "In the alcove, behind the statue, you discover a small black button."; 
             }
             else

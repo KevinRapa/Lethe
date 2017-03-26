@@ -14,14 +14,14 @@ public class Vest_Window extends Window {
         this.isOpen = false;
         this.REF = (Vest_Fireplace)ref;
         this.escapeDialog = "You would never be able to fit through those bars, and they're too thick to cut...";
-        this.searchDialog = "The only place to look is on the sill,\n" + 
+        this.searchDialog = "The only place to look is on the sill, " + 
                             "but there's nothing there.";
-        this.descOpen = "It's an open, barred arched window of stone. A strong\n" +
-                        "draft rolls in. From it, you can see the front\n" +
-                        "courtyard surrounded by the rest of the castle\n" +
-                        "and a tall front gate.\n";
-        this.descClosed = "It's a closed, barred stone arched window with a\n" +
-                          "small hole in the glass. A small gust of\n" +
+        this.descOpen = "It's an open, barred arched window of stone. A strong " +
+                        "draft rolls in. From it, you can see the front " +
+                        "courtyard surrounded by the rest of the castle " +
+                        "and a tall front gate. ";
+        this.descClosed = "It's a closed, barred stone arched window with a " +
+                          "small hole in the glass. A small gust of " +
                           "air forces it's way through.";
     }
 /*----------------------------------------------------------------------------*/
@@ -42,7 +42,7 @@ public class Vest_Window extends Window {
 
                 if (REF.isLit()) {
                     this.REF.extinguish();
-                    return "You open the window. A strong gust comes through\n" +
+                    return "You open the window. A strong gust comes through " +
                                           "and extinguishes the fireplace."; 
                 }
                 else

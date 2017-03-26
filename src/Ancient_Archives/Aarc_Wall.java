@@ -8,7 +8,7 @@ public class Aarc_Wall extends Aarc_Furniture {
         super();
         this.searchable = false;
         
-        this.description = "The cobblestone walls are wet and covered in algae\n"
+        this.description = "The cobblestone walls are wet and covered in algae "
                          + "a third the way up.";
 
         this.addNameKeys("(?:cobblestone )?walls?");

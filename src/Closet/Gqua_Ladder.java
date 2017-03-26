@@ -12,7 +12,7 @@ public class Gqua_Ladder extends Staircase {
         super(direction);
         String mode = direction == Direction.DOWN ? "floor" : "ceiling";
         
-        this.description = "It's a sturdy wood ladder nailed to the wall. It\n"
+        this.description = "It's a sturdy wood ladder nailed to the wall. It "
                          + "leads " + DIR + " a small hatch in the " + mode + ".";
         
         this.NAMEKEYS.clear();

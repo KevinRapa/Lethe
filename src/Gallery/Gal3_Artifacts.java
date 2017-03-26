@@ -7,7 +7,7 @@ public class Gal3_Artifacts extends Furniture {
     public Gal3_Artifacts() {
         super();
 
-        this.description = "You quickly browse around the artifacts in the room.\n"
+        this.description = "You quickly browse around the artifacts in the room. "
                          + "You find:\t\t\t"
                          + "<> A Zambian statuette\t\t"
                          + "<> A deformed statue\t\t"

@@ -42,10 +42,10 @@ public class Obs1_Slots extends Furniture {
         
         this.SLOTS.get(0).getInv().contents().add(hlsPlt);
         
-        this.description = "It's an array of 9 brass indentations in the floor at the\n"
+        this.description = "It's an array of 9 brass indentations in the floor at the "
                          + "base of each statue. Each one bears an inscription inside.";
         this.searchDialog = "You inspect the array of slots.";
-        this.useDialog = "There are eight slots here. Perhaps you should search among\n"
+        this.useDialog = "There are eight slots here. Perhaps you should search among "
                  + "them the one in which to place that.";
         this.STATS_REF = (Obs1_Statues)stats;
         
@@ -93,7 +93,7 @@ public class Obs1_Slots extends Furniture {
                 Player.trySearch(slot);
                 
                 if (checkSolved() && ! areSlotsLocked()) {
-                    rep = "A luminescence from an unknown source begins seeping through the seams\n"
+                    rep = "A luminescence from an unknown source begins seeping through the seams "
                         + "in the floor and under each statue. You hear a click. Something has been activated.";
                     lockSlots();
                     choice = NOTHING;
@@ -123,11 +123,11 @@ public class Obs1_Slots extends Furniture {
         String i = SLOTS.get(0).toString();
         
         return "\t\t\t\t\t     {"+a+"}   " +
-               "\t\t        {"+h+"}       {"+b+"}\n" +
+               "\t\t        {"+h+"}       {"+b+"} " +
                "\t\t         \t\t           "
-             + "{"+g+"}    {"+i+"}    {"+c+"}\n" +
+             + "{"+g+"}    {"+i+"}    {"+c+"} " +
                "\t\t\t     \t             "
-             + "{"+f+"}       {"+d+"}\n" +
+             + "{"+f+"}       {"+d+"} " +
                "                    {"+e+"}";
     }
 /*----------------------------------------------------------------------------*/

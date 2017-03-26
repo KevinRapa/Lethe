@@ -16,14 +16,14 @@ public class Gal1_Scroll extends Furniture {
         super();
 
         this.BTTN_REF = bttn;
-        this.description = "The hanging scroll is ink drawn in black on an\n"
-                         + "orange-stained parchment. It depicts a few scraggly\n"
-                         + "trees in front of a mountain range. At the top,\n"
-                         + "something is written in a foreign language. The\n"
+        this.description = "The hanging scroll is ink drawn in black on an "
+                         + "orange-stained parchment. It depicts a few scraggly "
+                         + "trees in front of a mountain range. At the top, "
+                         + "something is written in a foreign language. The "
                          + "light is hitting this piece strangely.";
-        this.searchDialog = "There is something odd about the light hitting this\n"
+        this.searchDialog = "There is something odd about the light hitting this "
                           + "scroll.";
-        this.actDialog = "Upon lifting the scroll from the wall, you discover a\n"
+        this.actDialog = "Upon lifting the scroll from the wall, you discover a "
                     + "hollow containing a dome-shaped button.";
         this.addActKeys(MOVEPATTERN, GETPATTERN);
         this.addNameKeys("(?:hanging )?(?:chinese )?scroll");

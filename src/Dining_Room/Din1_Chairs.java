@@ -8,12 +8,12 @@ public class Din1_Chairs extends Furniture implements Moveable {
     public Din1_Chairs() {
         super();
 
-        this.description = "The chairs are boxy with lavender upholstery. The\n"
-                         + "hickory wood is meticulously carved. 'They can\n"
-                         + "carve a chair worth twice my life, but not one I\n"
+        this.description = "The chairs are boxy with lavender upholstery. The "
+                         + "hickory wood is meticulously carved. 'They can "
+                         + "carve a chair worth twice my life, but not one I "
                          + "could sit in for more than five minutes!'";
         this.searchDialog = "You look underneath, but find nothing.";
-        this.actDialog = "You pick out a chair to sit in and stare out the window\n"
+        this.actDialog = "You pick out a chair to sit in and stare out the window "
                        + "on the east end. For a moment, you feel free of worry.";
         
         this.addActKeys(SITPATTERN);

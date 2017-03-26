@@ -7,7 +7,7 @@ public class Lib1_Light extends Furniture {
     public Lib1_Light() {
         super();
 
-        this.description = "The beam of light is emitting out the top of the\n"
+        this.description = "The beam of light is emitting out the top of the "
                          + "artifact.";
         this.addNameKeys("light", "beam of light");
     }

@@ -59,48 +59,48 @@ public class Hades extends Room {
               + "in constant labor with frequent coffee breaks.\"";
         if (score >= 10500)
             return 
-                "\"You are drenched in greed, my son. Undaunted by risk,\n" +
-                "in pursuit of only the unquenchable thirst for wealth.\n" +
-                "You are a master adventurer; a true idol among idols,\n" +
-                "except among me, for I have traveled to these lands\n" +
-                "before, and even back. You shall live comfortably for\n" +
-                "all eternity in Tartarus, with\n" +
+                "\"You are drenched in greed, my son. Undaunted by risk, " +
+                "in pursuit of only the unquenchable thirst for wealth. " +
+                "You are a master adventurer; a true idol among idols, " +
+                "except among me, for I have traveled to these lands " +
+                "before, and even back. You shall live comfortably for " +
+                "all eternity in Tartarus, with " +
                 "in constant labor with occasional coffee breaks.\"";
         if (score >= 5700)
             return 
-                "\"You have the true spirit of an adventurer, yet you\n" +
-                "also lived as a prisoner, and ultimately strayed from\n" +
-                "your path to freedom to embrace death's cold grasp.\n" +
-                "You have moderate wealth, impressive to many, but not\n" +
-                "to all. You will be sent to live eternally in the\n" +
-                "flaming river Phlegethon with other aspired adventurers,\n" +
-                "interrupted occasionally with short breaks for leisurely\n" +
+                "\"You have the true spirit of an adventurer, yet you " +
+                "also lived as a prisoner, and ultimately strayed from " +
+                "your path to freedom to embrace death's cold grasp. " +
+                "You have moderate wealth, impressive to many, but not " +
+                "to all. You will be sent to live eternally in the " +
+                "flaming river Phlegethon with other aspired adventurers, " +
+                "interrupted occasionally with short breaks for leisurely " +
                 "activities.\"";
         if (score >= 1000)
             return 
-                "\"You have the true spirit of an adventurer, yet you\n" +
-                "also lived as a prisoner, and ultimately strayed from\n" +
-                "your path to freedom to embrace death's cold grasp.\n" +
-                "You have some wealth, impressive to the commonfolk,\n" +
-                "Yet deserve not to live amongst kings. You will be\n" +
-                "sent to live eternally in the flaming river Phlegethon\n" +
-                "with opportunities to earn credits, supposing you wish\n" +
+                "\"You have the true spirit of an adventurer, yet you " +
+                "also lived as a prisoner, and ultimately strayed from " +
+                "your path to freedom to embrace death's cold grasp. " +
+                "You have some wealth, impressive to the commonfolk, " +
+                "Yet deserve not to live amongst kings. You will be " +
+                "sent to live eternally in the flaming river Phlegethon " +
+                "with opportunities to earn credits, supposing you wish " +
                 "to vacation from hellfire a couple times a month.\"";
         if (score >= 0)
             return 
-                "\"Your wealth is sparse, and your accomplishments\n" +
-                "laughable. Though perhaps you have a good spirit\n" +
-                "and the sound ethics of a hard worker, you will\n" +
-                "be forgotten eventually and fade into obscurity.\n" +
-                "You shall be sent to Lethe, where you will spend\n" +
+                "\"Your wealth is sparse, and your accomplishments " +
+                "laughable. Though perhaps you have a good spirit " +
+                "and the sound ethics of a hard worker, you will " +
+                "be forgotten eventually and fade into obscurity. " +
+                "You shall be sent to Lethe, where you will spend " +
                 "forever swimming in a state of dementia.\"";
         else 
             return
-                "\"Your wealth is null, and your accomplishments\n" +
-                "laughable. Though perhaps you have a good spirit\n" +
-                "and the sound ethics of a hard worker, you will\n" +
+                "\"Your wealth is null, and your accomplishments " +
+                "laughable. Though perhaps you have a good spirit " +
+                "and the sound ethics of a hard worker, you will " +
                 "be forgotten and fade into obscurity. You shall " +
-                "be sent Cocytus, where you shall swim in\n" +
+                "be sent Cocytus, where you shall swim in " +
                 "lamentation for all eternity.\"";
     }
 // ============================================================================

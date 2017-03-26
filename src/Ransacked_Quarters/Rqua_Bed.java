@@ -10,10 +10,10 @@ public class Rqua_Bed extends Furniture {
         super();
 
         this.moved = false;
-        this.description = "It's a plain, wooden bedframe. The mattress has been thrown off. A tile beneath\n"
+        this.description = "It's a plain, wooden bedframe. The mattress has been thrown off. A tile beneath "
                           + "the bed looks suspicious.";
-        this.searchDialog = "Nothing here. It's a bad place to hide something,\n"
-                          + "as someone has already searched it. A tile beneath\n"
+        this.searchDialog = "Nothing here. It's a bad place to hide something, "
+                          + "as someone has already searched it. A tile beneath "
                           + "the bed looks suspicious, though.";
         this.actDialog = "You move the bed out of the way, exposing a loose tile. "
                        + "The woman in the room keeps grinning wildly at you.";

@@ -22,12 +22,12 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable, Climba
     public Intr_Grate () {
         super();
         
-        this.description = "The water in the room drains through this grate here.\n"
-                         + "Squinting though it, you spot what you believe to be\n"
+        this.description = "The water in the room drains through this grate here. "
+                         + "Squinting though it, you spot what you believe to be "
                          + "the top rung of a ladder.";
         this.actDialog = "It's too heavy. You can't open it.";
         this.useDialog = "With a lot of strength, you manage to move the grating out of the way.";
-        this.searchDialog = "There's nothing unusual... Though squinting through the grate,\n"
+        this.searchDialog = "There's nothing unusual... Though squinting through the grate, "
                           + "you see what looks like the top rung of a ladder.";
 
         this.addNameKeys("(?:metal )?(?:grate|ladder|drain)", "hole");

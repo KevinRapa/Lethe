@@ -17,8 +17,8 @@ public class DungeonMonsterFurniture extends Furniture {
     public DungeonMonsterFurniture () {
         super();
 
-        this.description = "A disfigured corpse-like creature is roaming the tunnels.\n"
-                         + "It holds a dangling chain wrapped around itself several times\n"
+        this.description = "A disfigured corpse-like creature is roaming the tunnels. "
+                         + "It holds a dangling chain wrapped around itself several times "
                          + "and drags its bare feet as it walks crookedly. ";
         this.actDialog = "It's probably best to stay as far from that thing as possible.";
         this.searchDialog = this.useDialog = this.actDialog;

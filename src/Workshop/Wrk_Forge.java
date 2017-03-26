@@ -10,8 +10,8 @@ public class Wrk_Forge extends Furniture implements Gettable, Unmoveable {
     public Wrk_Forge() {
         super();
 
-        this.description = "The brick forge's heat envelops the room. Though\n"
-                         + "there's no fire in it, the smoldering ashes have only begun\n"
+        this.description = "The brick forge's heat envelops the room. Though "
+                         + "there's no fire in it, the smoldering ashes have only begun "
                          + "to cool.";
         this.actDialog = "You're smart enough not to put your hand in there.";
         this.useDialog = "You'd much rather work with wood than metal...";

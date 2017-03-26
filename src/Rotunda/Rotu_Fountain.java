@@ -17,8 +17,8 @@ public class Rotu_Fountain extends Furniture implements Unmoveable {
         super();
 
         this.drained = false;
-        this.description = "It's rounded and carefully carved from a smooth rock.\n"
-                         + "It looks quite beautiful, except that it's filled\n"
+        this.description = "It's rounded and carefully carved from a smooth rock. "
+                         + "It looks quite beautiful, except that it's filled "
                          + "with opaque brown water.";
         this.actDialog = "Are you really that desperate for a drink? There must be some cleaner water in here somewhere...";
         this.searchDialog = "You can't see anything through the brown water.";
@@ -43,16 +43,16 @@ public class Rotu_Fountain extends Furniture implements Unmoveable {
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {        
         return (this.drained) ?
-           "Looking inside the bowl, you find decaying plant matter\n"
-         + "resting on the bottom. A curious stone wheel wraps around\n"
+           "Looking inside the bowl, you find decaying plant matter "
+         + "resting on the bottom. A curious stone wheel wraps around "
          + "the base of the fountain inside the bowl."
                 : this.searchDialog; 
     }
 /*----------------------------------------------------------------------------*/     
     @Override public String getDescription() {
         return (this.drained) ?
-           "With the fountain drained, you find decaying plant matter\n"
-         + "resting on the bottom. A curious stone wheel wraps around\n"
+           "With the fountain drained, you find decaying plant matter "
+         + "resting on the bottom. A curious stone wheel wraps around "
          + "the base of the fountain inside the bowl." 
                 : this.description; 
     }

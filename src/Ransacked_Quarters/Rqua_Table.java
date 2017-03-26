@@ -10,7 +10,7 @@ public class Rqua_Table extends SearchableFurniture implements Moveable {
 
         this.description = "The plain wood end table lies on its side.";
         this.actDialog = "The table has been fooled around with enough. Best leave it alone...";
-        this.searchDialog = "Nothing here. It's a bad place to hide something,\n"
+        this.searchDialog = "Nothing here. It's a bad place to hide something, "
                           + "as someone has already searched it.";
         
         this.addActKeys(JOSTLEPATTERN);

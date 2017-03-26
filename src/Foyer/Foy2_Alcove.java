@@ -16,9 +16,9 @@ public class Foy2_Alcove extends Furniture{
         super();
         this.STAT_REF = (Foy2_Stat)foy2Stat;
         
-        this.description = "A shallow domed alcove carved into the wall.\n"
+        this.description = "A shallow domed alcove carved into the wall. "
                          + "A statue has been displayed inside of it.";
-        this.searchDialog = "The large statue makes searching difficult. You\n"
+        this.searchDialog = "The large statue makes searching difficult. You "
                           + "can't seem to find anything.";
         
         this.addNameKeys("(?:shallow )?(?:domed )?alcove");
@@ -26,7 +26,7 @@ public class Foy2_Alcove extends Furniture{
 /*----------------------------------------------------------------------------*/    
     @Override public String getDescription() {
         return (! STAT_REF.moved()) ? this.description :         
-           "A shallow domed alcove carved into the wall. Behind\n"
+           "A shallow domed alcove carved into the wall. Behind "
          + "the displaced statue is a small black button.";
     }
 /*----------------------------------------------------------------------------*/

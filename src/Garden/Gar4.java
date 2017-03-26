@@ -16,7 +16,7 @@ public class Gar4 extends Room {
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.SOUTH) {
             AudioPlayer.playEffect(6);
-            return "The door here budges only a little. Something is blocking it\n"
+            return "The door here budges only a little. Something is blocking it "
                  + "from the other side.";
         }
         else

@@ -11,8 +11,8 @@ public class Door extends Furniture {
     public Door (Direction dir) {
         super();
         this.DIR = dir;
-        this.useDialog = "...Do you intend to pick the lock with that? Well,\n"
-                       + "perhaps you could, but then again, you are not learned\n"
+        this.useDialog = "...Do you intend to pick the lock with that? Well, "
+                       + "perhaps you could, but then again, you are not learned "
                        + "of this skill. Yet another you yearn for at the moment.";
         this.searchDialog = "You aren't sure what you'd search for on a door.";
         this.description = "It looks like a heavy wooden door.";
@@ -35,7 +35,7 @@ public class Door extends Furniture {
                 || key.equals("kick") || key.equals("bash")) 
         {
             AudioPlayer.playEffect(40);
-            return "You thrust your boot into the door, but the door is too\n" +
+            return "You thrust your boot into the door, but the door is too " +
                    "well-built to give.";
         }
         else if (key.equals("knock") || key.equals("bang")) {

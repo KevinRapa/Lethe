@@ -21,7 +21,7 @@ public class Drar_Table extends SearchableFurniture implements Moveable {
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
         if (GHOST_REF.firstTime())
-            return "Ignoring the ghost completely, you comb the table's\n"
+            return "Ignoring the ghost completely, you comb the table's "
                  + "surface.";
         
         return this.searchDialog;

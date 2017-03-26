@@ -20,12 +20,12 @@ public class Iha1_Bowl extends Furniture {
             this.addNameKeys("(?:hanging )?(?:steel )?bowl");
             this.FLOOR_REF = iha1F;
             this.WOWKEY_REF = wow2Key;
-            this.description = "It's an unlit steel bowl hanging from the ceiling by a\n"
-                             + "chain. A draft from the outside causes it to swing\n"
+            this.description = "It's an unlit steel bowl hanging from the ceiling by a "
+                             + "chain. A draft from the outside causes it to swing "
                              + "gently. As it rocks, you hear it rattle a little.";
             this.searchDialog = "It's too high up to see if there's anything inside.";
             this.actDialog = "It's too high up to do that with your hands.";
-            this.useDialog = "You give the hanging bowl a jab with the pole.\n"
+            this.useDialog = "You give the hanging bowl a jab with the pole. "
                            + "A small piece of metal falls out onto the floor.";
     }
 /*----------------------------------------------------------------------------*/

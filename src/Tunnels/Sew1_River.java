@@ -18,12 +18,12 @@ public class Sew1_River extends Sewer_River {
 
         this.inv = new Sew1_River_Inventory(pipe);
         
-        this.description = "The river is about 11 feet across and 5 feet deep.\n" +
-                           "It flows through an artificial square trench\n" +
-                           "constructed into the floor. The water looks clear\n" +
-                           "and smells quite clean. You imagine that it was\n" +
-                           "a natural spring at some point before being built\n" +
-                           "around. It flows briskly and terminates here at\n" +
+        this.description = "The river is about 11 feet across and 5 feet deep. " +
+                           "It flows through an artificial square trench " +
+                           "constructed into the floor. The water looks clear " +
+                           "and smells quite clean. You imagine that it was " +
+                           "a natural spring at some point before being built " +
+                           "around. It flows briskly and terminates here at " +
                            "a metal grate.";
     }
     // ========================================================================
@@ -42,8 +42,8 @@ public class Sew1_River extends Sewer_River {
         // ====================================================================
         @Override public void remove(Item item) {
             this.CONTENTS.remove(item);
-            GUI.out("Though your aren't fond of the idea of jumping in, you figure\n"
-                  + "that your weight should be enough to keep you on your feet.\n"
+            GUI.out("Though your aren't fond of the idea of jumping in, you figure "
+                  + "that your weight should be enough to keep you on your feet. "
                   + "you jump in, holding on to the edge, and retrieve the item.");
         }
     }

@@ -10,7 +10,7 @@ public class Lib2_Button extends Button {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib2_Button(Furniture frplc, Furniture stat) {
         super();
-        this.description = "You look closely at the small stone button scorched\n" +
+        this.description = "You look closely at the small stone button scorched " +
                            "from the heat of the fire. It's definitely a button.";
         this.FRPLC_REF = (Lib2_Fireplace) frplc;
         this.STAT_REF = (Lib3_Statue) stat;

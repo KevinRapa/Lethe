@@ -15,25 +15,25 @@ public class Par_MandrakeBook extends Book {
         
         PAGE_LIST[0] = "\"The Care of Mandragora\"";
         
-        PAGE_LIST[1] = "Mandragora, modernized as mandrake, is a genus of root. In stories\n"
-                     + "these are described as sentient creatures remembling roots that are\n"
-                     + "grown, though this is fictional. Mandrakes are delicate and prefer\n"
-                     + "to be grown by themselves in a single pot filled with fertile soil.\n"
-                     + "Any medium pot should suffice though. Mandrakes prefer well-drained soil,\n"
+        PAGE_LIST[1] = "Mandragora, modernized as mandrake, is a genus of root. In stories "
+                     + "these are described as sentient creatures remembling roots that are "
+                     + "grown, though this is fictional. Mandrakes are delicate and prefer "
+                     + "to be grown by themselves in a single pot filled with fertile soil. "
+                     + "Any medium pot should suffice though. Mandrakes prefer well-drained soil, "
                      + "so watering is only necessary every few days.";
         
-        PAGE_LIST[2] = "To begin growing your\n"
-                     + "mandrake, simply mix together some soil, sand, and fertilizer.\n"
-                     + "The sand is important to keep the mixture aerated. Fill a pot with\n"
-                     + "the mixture, leaving about an inch of clearance. Then, rest the juvenile mandragora in the pot just\n"
-                     + "under the surface. From there, all that's needed is some initial\n"
-                     + "watering, and the rain will do the rest. Just make sure to leave it\n"
-                     + "outside. Within a month, your mandragora should be fully mature.\n"
-                     + "Mandragora are known to have a very pleasant taste when cooked.\n"
-                     + "Mandragora are also used in certain alchemical and enchanting recipes,\n"
+        PAGE_LIST[2] = "To begin growing your "
+                     + "mandrake, simply mix together some soil, sand, and fertilizer. "
+                     + "The sand is important to keep the mixture aerated. Fill a pot with "
+                     + "the mixture, leaving about an inch of clearance. Then, rest the juvenile mandragora in the pot just "
+                     + "under the surface. From there, all that's needed is some initial "
+                     + "watering, and the rain will do the rest. Just make sure to leave it "
+                     + "outside. Within a month, your mandragora should be fully mature. "
+                     + "Mandragora are known to have a very pleasant taste when cooked. "
+                     + "Mandragora are also used in certain alchemical and enchanting recipes, "
                      + "but that is beyond the scope of this book.";
         
-        PAGE_LIST[3] = "This page is blank except for a single line- \"-Experiment more\n"
+        PAGE_LIST[3] = "This page is blank except for a single line- \"-Experiment more "
                      + "with holy water. Faster than regular watering.\"";
     }
 // ============================================================================

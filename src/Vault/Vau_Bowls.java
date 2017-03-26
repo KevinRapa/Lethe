@@ -9,8 +9,8 @@ public class Vau_Bowls extends BurningBowl {
     public Vau_Bowls () {
         super();
 
-        this.description = "The steel bowls hang from chains and burn. They hang\n"
-                         + "lowly, as the ceiling itself is quite low too, and you\n"
+        this.description = "The steel bowls hang from chains and burn. They hang "
+                         + "lowly, as the ceiling itself is quite low too, and you "
                          + "must take care avoiding them.";
     }
     // ========================================================================    

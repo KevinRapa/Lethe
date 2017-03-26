@@ -11,9 +11,9 @@ public class Cis_Darkness extends Furniture implements Gettable {
     public Cis_Darkness () {
         super();
 
-        this.description = "The darkness hides the true size of the room, though\n" +
-                           "you suppose it could be as big as 100 feet across and\n" +
-                           "50 feet high, perhaps more. The darkness combined with\n" +
+        this.description = "The darkness hides the true size of the room, though " +
+                           "you suppose it could be as big as 100 feet across and " +
+                           "50 feet high, perhaps more. The darkness combined with " +
                            "the turgid air gives you claustrophobia.";
 
         this.useDialog = "The darkness swallows up the torch light, keeping visibility low.";

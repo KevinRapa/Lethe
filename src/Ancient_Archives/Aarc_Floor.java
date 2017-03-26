@@ -13,13 +13,13 @@ public class Aarc_Floor extends Aarc_Furniture {
     public Aarc_Floor (Item... items) {
         super(items);
         
-        this.description = "The floor is heavily damaged from the sinking of\n"
-                         + "earth under the foundation. The floor bends and sinks\n"
-                         + "in many places, and much of the furniture here has\n"
-                         + "toppled over as a result. You stand on the only intact\n"
+        this.description = "The floor is heavily damaged from the sinking of "
+                         + "earth under the foundation. The floor bends and sinks "
+                         + "in many places, and much of the furniture here has "
+                         + "toppled over as a result. You stand on the only intact "
                          + "portion of the floor near the west door.";
         this.searchDialog = "You pick through the remains on the ground.";
-        this.actDialog = "You dig a small hole in the ground, but find nothing of interest\n"
+        this.actDialog = "You dig a small hole in the ground, but find nothing of interest "
                        + "and kick the dirt back in the hole.";
 
         this.addUseKeys(SHOVEL, TROWEL);

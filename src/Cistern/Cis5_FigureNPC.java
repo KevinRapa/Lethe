@@ -15,9 +15,9 @@ public class Cis5_FigureNPC extends NonPlayerCharacter {
                 + "dressed in a black robe. It holds a tall straight staff "
                 + "topped with a red jewel, and its face is hidden. It stands, "
                 + "silent with its attention to you, but stays passive.";
-        this.actDialog = "\"Death beckons you with its grim implement.\n"
-                       + "Embrace its cold grasp and speak 'It is I, friend,\n"
-                       + "welcome me' before its front door, and you will be\n"
+        this.actDialog = "\"Death beckons you with its grim implement. "
+                       + "Embrace its cold grasp and speak 'It is I, friend, "
+                       + "welcome me' before its front door, and you will be "
                        + "invited into its kingdom.\"";
         this.searchDialog = "How very rude that would be.";
         this.useDialog = "\"I need not possessions!\" the figure screeches.";
