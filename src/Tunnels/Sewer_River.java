@@ -24,7 +24,8 @@ public class Sewer_River extends SearchableFurniture {
         this.searchDialog = "You crouch down and scan the bottom of the river.";
         this.useDialog = "You scoop up some of the water into the bucket.";
 
-        this.addNameKeys("(?:raging )?river(?: of water)?", "(?:flowing )?water", "(?:square )?channel");
+        this.addNameKeys("(?:raging )?river(?: of water)?", "(?:flowing )?water", 
+                "(?:square )?channel");
         this.addActKeys("swim", "jump", "drink");
         this.addUseKeys(METAL_BUCKET);
     }
@@ -39,7 +40,7 @@ public class Sewer_River extends SearchableFurniture {
     // ======================================================================== 
     @Override public String getDescription() {
         return (this.inv.size() != 0) ? 
-                this.description.concat("You can see something lying at the bottom.") :
+                this.description.concat(" You can see something lying at the bottom.") :
                 this.description;
     }
     // ========================================================================   

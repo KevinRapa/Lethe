@@ -1,6 +1,6 @@
 package A_Main;
 
-import A_Super.*;          import static A_Main.Names.*;import java.io.*;
+import A_Super.*;          import static A_Main.Names.*;
 
 import Vestibule.*;        import Closet.*;             import Foyer.*;
 import Back_Balcony.*;     import Rotunda.*;            import Lookout.*; 
@@ -24,8 +24,7 @@ import Vault.*;            import Tower.*;              import Kampe_Quarters.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
 import Soul_Chamber.*;     import Hades.*;
 
-import java.awt.Color;import java.nio.file.Files;   
-     import javax.swing.JPanel;   import javax.swing.ImageIcon;   
+import java.awt.Color;     import javax.swing.JPanel;   import javax.swing.ImageIcon;   
 import javax.swing.JFrame; import javax.swing.JLabel;  
 
 /**
@@ -1297,7 +1296,7 @@ public class Map {
         Item scale = new BreakableItem("scale", 
                 "A machine for the weighing of things, comprised of a metal bed "
                 + "and a base comprised of many small mechanical parts.", 30);
-        Item balance = new Item("balance", 
+        Item balance = new BreakableItem("balance", 
                 "You seem to remember these being called triple-beam balances in middle school.", 
                 "Oh boy! You could weigh just about anything with this!", 30);
         Item flrcFlsk = new BreakableItem(FLORENCE_FLASK, 
@@ -2149,9 +2148,12 @@ public class Map {
         gal6.addFurniture(gal6Cnn, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, 
                 gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl, clng);
         gal7.addFurniture(wWW);
-        mha1.addFurniture(genDoor, mhaChndlr, mhaChr, mha1Plnt, mhaF, mhaW, mhaNWndw1, mhaNDr, mhaNChaDr, clng);
-        mha2.addFurniture(mhaChndlr, mhaChr, mha2Plnt, mhaF, mhaW, mhaNWndw2, mhaMDr, mhaRStat, mhaLStat, mhaStats, clng);
-        mha3.addFurniture(genDoor, mhaChndlr, mhaChr, mha3Plnt, mhaF, mhaW, mhaSWndw, mha3KitcDr, mhaSDr, clng);
+        mha1.addFurniture(genDoor, mhaChndlr, mhaChr, mha1Plnt, mhaF, mhaW, 
+                mhaNWndw1, mhaNDr, mhaNChaDr, clng);
+        mha2.addFurniture(mhaChndlr, mhaChr, mha2Plnt, mhaF, mhaW, mhaNWndw2, 
+                mhaMDr, mhaRStat, mhaLStat, mhaStats, clng);
+        mha3.addFurniture(genDoor, mhaChndlr, mhaChr, mha3Plnt, mhaF, mhaW, 
+                mhaSWndw, mha3KitcDr, mhaSDr, clng);
         lib2.addFurniture(libLF, libW, libCch, lib2ShRck, lib2Stat, lib2Frplc, lib2Bttn, 
                 lib2WrFr, lib2Vyg, libBkShlf, libScncs, lib2Wndw, clng);
         lib3.addFurniture(libLF, libW, westDoor, lib3Strs, libCch, lib3Stat, lib3Crtn, 
@@ -2160,12 +2162,14 @@ public class Map {
                 lib3Pllr, lib4Stat, lib4Glb, lib3Blcny, lib4Tbl, lib4Strs, clng);
         lib5.addFurniture(libUF, libW, lib5Bnshmnt, libScncs, lib3Pllr, lib5Cndlbr, clng);
         eow1.addFurniture(genDoor, wWW, eowF, eow1Dr, eow1Rck, eow1Bskt, eow1Trch, wowWndw, mhaNDr, clng);
-        eow2.addFurniture(wWW, eowF, eow2Fntn, wtr, eow2Rck, wowWndw, eow2Strs, eow2Blcny, eow2Cbnt, eow2Trch);
+        eow2.addFurniture(wWW, eowF, eow2Fntn, wtr, eow2Rck, wowWndw, 
+                eow2Strs, eow2Blcny, eow2Cbnt, eow2Trch);
         eow4.addFurniture(wWW, eow4F, eow4Strs, bbaRlng, westDoor, clng);
         dst1.addFurniture(dst1F, dstW, dst1Strs, dst1Dr, dst1Lntrn, clng);
         lib1.addFurniture(lib1F, lib1W, vesChr, lib1Dsk, lib1Art, lib1Docs, lib1Rg, 
                 lib1Wndw, lib1Rck, lib1Tbl, lib1Lght, lib1Mrrr, lib1Sf, clng);
-        work.addFurniture(wWW, wrkF, eastDoor, wowWndw, wrkBrl, wrkCstTbl, wrkKln, wrkBnch, wrkCbnt, wrkFrg, wrkAnvl, clng);
+        work.addFurniture(wWW, wrkF, eastDoor, wowWndw, wrkBrl, wrkCstTbl, wrkKln, 
+                wrkBnch, wrkCbnt, wrkFrg, wrkAnvl, clng);
         din1.addFurniture(din1Clmns, din1Blcny, din1Tbl, din1Tpstry, din1F, din1W, 
                 din1Wndw, din1Chrs, din1Chndlr, din1Mnlght, din1Strs, din1Crpt, din1Dr);
         din2.addFurniture(din2W, din2F, southDoor, din2Pntng, din2Strs, clng);
@@ -2193,13 +2197,17 @@ public class Map {
         gar2.addFurniture(wallEx, gar2Hl, northDoor, garF, gar2Dm, gar2Clmn, gar24Scnc);
         gar3.addFurniture(lookClff, bbaSea, wallEx, bbaRlng, garF, gar13Plntr, gar3Chst, gal3Fntn, wtr, gar2Dm, gar2Clmn);
         gar4.addFurniture(wallEx, southDoor, gar4Plq, gar4Plntr, garF, gar24Scnc);
-        obs1.addFurniture(obsSlts, obsStats, obsF, obsW, obsWndw, obs1Strs, obs1Tlscp, obs1Lmp, lib4Glb, obs1St, obsBlcny, northDoor);
-        obs2.addFurniture(obsW, obs2F, obsWndw, obs2Strs, obsBlcny, obs2BkShlf, obs2Pntng, obs2Rlng, obs2Chr, obs2Tbl, obs2Lmp);
-        obs3.addFurniture(obs3Chndlr, obsW, obs3F, obsWndw, obs3Strs, obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps, clng);
+        obs1.addFurniture(obsSlts, obsStats, obsF, obsW, obsWndw, obs1Strs, 
+                obs1Tlscp, obs1Lmp, lib4Glb, obs1St, obsBlcny, northDoor);
+        obs2.addFurniture(obsW, obs2F, obsWndw, obs2Strs, obsBlcny, obs2BkShlf, 
+                obs2Pntng, obs2Rlng, obs2Chr, obs2Tbl, obs2Lmp);
+        obs3.addFurniture(obs3Chndlr, obsW, obs3F, obsWndw, obs3Strs, 
+                obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps, clng);
         att1.addFurniture(attF, attW, sst2Dr, attCss, attBxs, gal5Cbwbs, attVnts, attClng);
         att2.addFurniture(attF, attW, att2Dr, attBxs, attCss, gal5Cbwbs, attVnts, attClng);
-        labo.addFurniture(laboF, att2Dr, wallEx, laboStpCck, laboBrtt, laboGsPipe, laboCntr, iceBrrl, 
-                          laboRck, laboDspnsrs, laboDstllr, laboSnk, laboCntrptn, cndsr, laboTbl, laboDvcs, clng); 
+        labo.addFurniture(laboF, att2Dr, wallEx, laboStpCck, laboBrtt, laboGsPipe, 
+                laboCntr, iceBrrl, laboRck, laboDspnsrs, laboDstllr, laboSnk, 
+                          laboCntrptn, cndsr, laboTbl, laboDvcs, clng); 
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="AREA 5: SUB-LEVELS">
@@ -2219,19 +2227,25 @@ public class Map {
         cis4.addFurniture(cis4Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
         cis5.addFurniture(cis2Bt, cis5Fgr, cisClmns, cisDrknss, cisWtr, cis5F);
         oub1.addFurniture(sewDrW, tm1Bwl, oub1F, dngnW, oub1Pt, dungMonst, clng);
-        intr.addFurniture(intrDr, intrWhl, intrGrs, intrF, dngnW, intrGrt, intrWtr, intrTrch, dungMonst, clng);
+        intr.addFurniture(intrDr, intrWhl, intrGrs, intrF, dngnW, intrGrt, 
+                intrWtr, intrTrch, dungMonst, clng);
         esc1.addFurniture(esc1Lddr);
         esc6.addFurniture(esc6Grt, esc6Lddr);
         cas1.addFurniture(casW, casStrs, casF, cs35Trchs, cs35Stat, sewDrE, clng);
-        sewp.addFurniture(genDoor, sewpCl, sewpGrt, sewpWtr, sewpF, dngnW, sewDrE, sewDrW, sewpTrch, sewpTnnl);
+        sewp.addFurniture(genDoor, sewpCl, sewpGrt, sewpWtr, sewpF, dngnW, 
+                sewDrE, sewDrW, sewpTrch, sewpTnnl);
         pris.addFurniture(genDoor, prisClls, prisFgr, dngnW, sewDrS, sewDrW, prisF, 
                 prisCndlbrs, prisTbl, prisCbnt, prisGts, dungMonst, clng);
         torc.addFurniture(genDoor, sewDrE, sewDrW, dngnW, torcF, torcTrchs, torcSwhrses, 
                 torcScythF, torcRck, torcCgs, torcWhl, torcWd, torcTls, dungMonst, clng);
-        cry1.addFurniture(sewDrW, dngnW, cryF, cry1Stat, cryDrwrs, cry1Crvng, cryLghts, dungMonst, cryDummy, clng);
-        cry2.addFurniture(dngnW, cryF, cryDrwrs, cryLghts, cry2Engrvng, cry2Altr, dungMonst, cry2Psswd, cryDummy, clng);
-        aarc.addFurniture(sewDrW, aarcF, aarcW, aarcWd, aarcBks, aarcChndlr, aarcDsk, aarcAlg, aarcShlvs, dungMonst, clng);
-        dkch.addFurniture(sewDrW, dkchF, dngnW, dkchBd, dkchAxl, dkchDsk, squaCndl, dkchClng, dungMonst);
+        cry1.addFurniture(sewDrW, dngnW, cryF, cry1Stat, cryDrwrs, cry1Crvng, 
+                cryLghts, dungMonst, cryDummy, clng);
+        cry2.addFurniture(dngnW, cryF, cryDrwrs, cryLghts, cry2Engrvng, 
+                cry2Altr, dungMonst, cry2Psswd, cryDummy, clng);
+        aarc.addFurniture(sewDrW, aarcF, aarcW, aarcWd, aarcBks, aarcChndlr, 
+                aarcDsk, aarcAlg, aarcShlvs, dungMonst, clng);
+        dkch.addFurniture(sewDrW, dkchF, dngnW, dkchBd, dkchAxl, dkchDsk, 
+                squaCndl, dkchClng, dungMonst);
 
         // </editor-fold>
 

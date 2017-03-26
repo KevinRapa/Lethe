@@ -1340,7 +1340,10 @@ private static class TextParser {
               + "Of course, you certainly know what you're doing.", -50),
         RIPPED_SHREDS = new Note("ripped paper shreds", 
                 "The gory mess of literature now exists crumpled up in your "
-                        + "pocket. This is unintelligible.");
+                        + "pocket. This is unintelligible."),
+        BURNED_REMNANTS = new Item("burned remnants", 
+                "It's just a handful of ashes and burnt paper. "
+                        + "Completely useless... OR IS IT???", -5);
 
     private static final String
         DONT_HAVE_IT = "It doesn't look like you're carrying anything resembling that.";
@@ -1662,7 +1665,9 @@ private static class TextParser {
             if (Player.hasItemResembling(instrument)) {
                 Player.setLastInteract_Item(instrument);
                 Player.incrementMoves();
+                
                 Item item = Player.getInv().get(instrument);
+                String itemName = item.toString();
                 String type = item.getType();
 
                 if (verb.equals("use"))
@@ -1673,14 +1678,26 @@ private static class TextParser {
                 //-------------------------------------------------------------
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: READ">
                 else if (verb.equals("read")) {
-                    if (type.equals(READABLE) 
-                            || item.toString().equals(BOOK_PHYL)) // Phylactery type. Not readable
-                        GUI.out(item.useEvent());
+                    if (type.equals(READABLE) || itemName.equals(BOOK_PHYL)) 
+                        GUI.out(item.useEvent()); // Phylactery type. Not readable
                     else
                         GUI.out("That isn't something you can read...");
                 }
                 // </editor-fold>
 
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: FILL">
+                else if (verb.equals("fill")) {
+                    if (itemName.equals(METAL_BUCKET))
+                        Player.evaluateAction("get", "water");
+                    else if (itemName.equals(BUCKET_OF_WATER))
+                        GUI.out("That particular bucket is already full of water!");
+                    else if (itemName.equals(TEST_TUBE) || itemName.equals(EMPTY_VIAL))
+                        GUI.out("Whoa now, that's scientific equipment. The only way to properly fill that is with a burette.");
+                    else
+                        GUI.out("That isn't something you should be filling with water.");
+                }
+                // </editor-fold>
+                
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: WEAR">
                 else if (verb.equals("wear")) {
                     if (type.equals(SHOES) || type.equals(CLOTHING))
@@ -1711,7 +1728,7 @@ private static class TextParser {
                     else if (type.equals(LIQUID) || type.equals(INGREDIENT) 
                             || type.equals(FOCUS)) 
                     {
-                        if (! item.toString().equals(BUCKET_OF_WATER)) {
+                        if (! itemName.equals(BUCKET_OF_WATER)) {
                             floor.getInv().add(BROKEN_GLASS);
                             GUI.out("A cunning decision is made. The player "
                                   + "throws the " + item + ". The item lands "
@@ -1748,7 +1765,7 @@ private static class TextParser {
                                 "The " + item + " is now broken and certainly useless.", -50));
                         GUI.out("An acute sense of frustration causes you to crush it in your hand.");
                     }
-                    else if ((type.equals(LIQUID) && ! item.toString().equals(BUCKET_OF_WATER)) 
+                    else if ((type.equals(LIQUID) && ! itemName.equals(BUCKET_OF_WATER)) 
                             || type.equals(FOCUS) || type.equals(INGREDIENT)) 
                     {
                         Player.getInv().remove(item);
@@ -1788,11 +1805,11 @@ private static class TextParser {
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: DRINK">
                 else if (verb.equals("drink")) {
                     if (type.equals(INGREDIENT) || type.equals(LIQUID)) {
-                        if (item.toString().equals(PHASE_DOOR_POTION))
+                        if (itemName.equals(PHASE_DOOR_POTION))
                             GUI.out(item.useEvent());
-                        else if (item.toString().equals(BUCKET_OF_WATER))
+                        else if (itemName.equals(BUCKET_OF_WATER))
                             GUI.out("Ah, refreshing!!");
-                        else if (item.toString().equals(ACETONE) || item.toString().matches("molten.*"))
+                        else if (itemName.equals(ACETONE) || itemName.matches("molten.*"))
                             GUI.out("No possible way you're doing something that stupid!");
                         else
                             GUI.out("You reluctantly take a small sip. 'Yugh! Bitter and disgusting!'");
@@ -1804,13 +1821,43 @@ private static class TextParser {
 
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: EAT">
                 else if (verb.equals("eat") || verb.equals("consume")) {
-                    if (item.toString().equals(GLOWING_FRUIT)) {
+                    if (itemName.equals(GLOWING_FRUIT)) {
                         GUI.out("The fruit's glow and tasteful aroma entice you irresistibly. "
                               + "You bite down and find the fruit as hard as a rock. "
                               + "A sharp pain comes and you pull the fruit away.");
                     }
                     else
                         GUI.out("The " + item + " seems most inedible...");
+                }
+                // </editor-fold>
+                
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: BURN">
+                else if (verb.equals("swing")) {
+                    if (type.equals(READABLE) || itemName.equals(NOTEPAD)) {
+                        if (Player.hasItem(HAND_TORCH)) {
+                            Player.getInv().remove(item);
+                            Player.getInv().add(BURNED_REMNANTS);
+                            GUI.out("The disturbed player decides a promising "
+                                    + "course of action and burns it to a crisp.");
+                        }
+                        else
+                            GUI.out("Thank heavens you don't have a hand torch "
+                                    + "to commit such an anarchic act.");
+                    }
+                    else
+                        GUI.out("That isn't something you can burn so easily.");
+                }
+                // </editor-fold>
+                
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: SWING">
+                else if (verb.equals("swing") || verb.equals("wave")) {
+                    if (type.equals(WEAPON))
+                            GUI.out("You be careful with that. Wouldn't want to poke your eye out.");
+                    else if (itemName.equals(HAND_TORCH))
+                        GUI.out("What a spectacular display of pyro acrobatics. "
+                                + "If only someone were here to witness.");
+                    else
+                        GUI.out("Waving that around won't accomplish anything useful.");
                 }
                 // </editor-fold>
                 //-------------------------------------------------------------

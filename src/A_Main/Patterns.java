@@ -87,15 +87,16 @@ SEARCH_MANNER_P = Pattern.compile("look (?:on|in(?:side)?|under|around)"),
 INSPECT_P = Pattern.compile("look(?! (?:on|in(?:side)?|under|around))|inspect|examine|check"),
         
 // SPECIFIC TO ITEM USE COMMANDS
-USE_P = Pattern.compile("use|read|drop|wear|remove|eat|drink|throw|destroy|break|lean|tie|rip|tear"),
+// List of all the things a player can do to an item.
+USE_P = Pattern.compile("use|read|drop|wear|remove|fill|burn|eat|swing|wave|drink|throw|destroy|break|lean|tie|rip|tear"),
 USE_ITEM_CMD_P = Pattern.compile("(?:" + USE_P + "|" + INSPECT_P + ") [a-z0-9: ,'-]+"),
 USE_MANNER_P = Pattern.compile(" (on|against|to|at) "), // Separates item from furniture.
          
 // Once a store command is matched, these words are fine to remove.
 STORE_SPACE_P = Pattern.compile("(?:put|store|pour|dump|give) "),
 
-// These prepositions are removed at some point, as their meanings are mostly unimportant
-PREPOS_P = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|over|of|through|against|from|around|to|at|under(?:neath)?"),
+// These prepositions are removed at some point, as their meanings are mostly unimportant. REMOVED 'OF'
+PREPOS_P = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|over|through|against|from|around|to|at|under(?:neath)?"),
         
 PREPOS_THEN_WORD = Pattern.compile("(?:" + PREPOS_P.toString() + ").+"),
         

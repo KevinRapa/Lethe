@@ -20,9 +20,7 @@ public class Aarc_Algae extends Aarc_Furniture implements Gettable {
                          + "way up from algae, and much of the furniture is stained\n"
                          + "green in areas.";
 
-        this.addActKeys("lick");
-        this.addActKeys(FEELPATTERN);
-        this.addActKeys(GETPATTERN);
+        this.addActKeys(GETPATTERN, FEELPATTERN, "lick");
         this.addNameKeys("algae");
     }
     // ========================================================================

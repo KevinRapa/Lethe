@@ -3,7 +3,7 @@ This holds the current iteration of a large text-based adventure game.
 The final title is "Lethe".
 
 To play, just run Lethe.jar. Make sure to keep the .jar executable 
-together with the ambience, save, effects, and img folders. You may
+together with the ambience, save, desc, effects, and img folders. You may
 move the shortcut wherever you'd like, of course.
 
 This is a text-based game, or interactive fiction, which bridges the
