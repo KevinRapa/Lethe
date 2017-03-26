@@ -95,8 +95,8 @@ USE_MANNER_P = Pattern.compile(" (on|against|to|at) "), // Separates item from f
 // Once a store command is matched, these words are fine to remove.
 STORE_SPACE_P = Pattern.compile("(?:put|store|pour|dump|give) "),
 
-// These prepositions are removed at some point, as their meanings are mostly unimportant. REMOVED 'OF'
-PREPOS_P = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|over|through|against|from|around|to|at|under(?:neath)?"),
+// These prepositions are removed at some point, as their meanings are mostly unimportant.
+PREPOS_P = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|of|over|through|against|from|around|to|at|under(?:neath)?"),
         
 PREPOS_THEN_WORD = Pattern.compile("(?:" + PREPOS_P.toString() + ").+"),
         

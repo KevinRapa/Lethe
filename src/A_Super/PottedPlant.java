@@ -1,11 +1,11 @@
 package A_Super;
 
-import static A_Main.Names.BUCKET_OF_WATER;
-import static A_Main.Names.LIQUID;
-import static A_Main.Names.SOIL;
-import static A_Main.Names.WEAPON;
+import A_Main.AudioPlayer;
+import static A_Main.Names.*;
 import A_Main.Player;
 /**
+ * Potted plants give special items when watered.
+ * 
  * @author Kevin Rapa
  */
 abstract public class PottedPlant extends SearchableFurniture
@@ -28,8 +28,7 @@ abstract public class PottedPlant extends SearchableFurniture
 
         this.addNameKeys("dirt", SOIL, "(?:potted )?plants?");
         this.addUseKeys(ANYTHING);
-        this.addActKeys(GETPATTERN);
-        this.addActKeys("water");
+        this.addActKeys(GETPATTERN, "water", "dig");
         
         this.inv.add(soil); 
         this.inv.add(soil); 
@@ -37,7 +36,7 @@ abstract public class PottedPlant extends SearchableFurniture
     }
     // ========================================================================   
     @Override public String interact(String key) {              
-        if (key.equals("water"))
+        if (key.equals("water")) {
             if (Player.hasItem(BUCKET_OF_WATER)) {
                 if (watered) 
                     return this.actDialog;
@@ -49,6 +48,16 @@ abstract public class PottedPlant extends SearchableFurniture
             }
             else 
                 return "You have nothing to water the plant with.";
+        }
+        else if (key.equals("dig")) {
+            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
+                AudioPlayer.playEffect(34);
+                return "Digging in the plant reveals nothing unusual.";
+            }
+            else
+                return "You have nothing sufficient to dig with, and your "
+                     + "stocky hands are terrible for digging.";
+        }
         else
             return getIt();
     }
@@ -60,6 +69,10 @@ abstract public class PottedPlant extends SearchableFurniture
             return this.useDialog;
         else if (item.getType().equals(WEAPON))
             return "Attacking the plant isn't going to solve any of your problems.";
+        else if (item.toString().equals(SHOVEL) || item.toString().equals(TROWEL)) {
+            AudioPlayer.playEffect(34);
+            return "Digging in the plant reveals nothing unusual.";
+        }
         else if (item.toString().equals(SOIL)) {
             Player.getInv().remove(item);
             return "You return the soil to the plant.";

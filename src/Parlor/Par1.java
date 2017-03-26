@@ -27,7 +27,7 @@ public class Par1 extends Room {
 /*----------------------------------------------------------------------------*/ 
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.NORTH && ! this.isAdjacent(Id.BHA3))
-            return "The door here feels ice cold and the doorknob won't turn\n"
+            return "The door here feels ice cold and the doorknob won't turn "
                  + "despite your strength.";
         else 
             return bumpIntoWall();

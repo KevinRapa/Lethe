@@ -30,7 +30,7 @@ public class Par2 extends Room{
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID)) {
             AudioPlayer.playEffect(8, 0.8);
-            GUI.out("After stepping into the room, the door slams shut behind you.\n"
+            GUI.out("After stepping into the room, the door slams shut behind you. "
                   + "Startled, you spin around and miss a breath. You are alone.");
             Player.getRoomObj(Id.FOY3).lock();
         }    
@@ -39,7 +39,7 @@ public class Par2 extends Room{
 /*----------------------------------------------------------------------------*/ 
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.SOUTH)
-            return "There's nothing but a railing and open space over the lower\n"
+            return "There's nothing but a railing and open space over the lower "
                  + "level parlor.";
                 
         return bumpIntoWall();

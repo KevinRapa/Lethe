@@ -18,7 +18,7 @@ public class Foy3 extends Room {
             case WEST:
                 return "You should be getting out of here..."; // For end game.
             case SOUTH:
-                return "You aren't sure whether to go up or down";
+                return "You aren't sure whether to go up or down.";
             default:
                 return bumpIntoWall();
         }

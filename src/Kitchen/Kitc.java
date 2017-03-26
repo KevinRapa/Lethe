@@ -17,7 +17,7 @@ public class Kitc extends Room{
 /*----------------------------------------------------------------------------*/
     @Override public String getBarrier(Direction dir) {
         if ((dir != Direction.WEST) && TORCH_INV_REF.size() == 0)
-            return "It's too dark to see anything, and you don't want\n"
+            return "It's too dark to see anything, and you don't want "
                  + "to trip and fall.";
         else 
             return bumpIntoWall();
@@ -25,8 +25,8 @@ public class Kitc extends Room{
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
         if (TORCH_INV_REF.size() == 0) {
-            return "This room is pitch black and fetid. All that's visible is an\n" +
-                   "empty mounted holder on the wall next to you and a thin\n" +
+            return "This room is pitch black and fetid. All that's visible is an " +
+                   "empty mounted holder on the wall next to you and a thin " +
                    "slitted window on the east end of the room.";
         }
         return this.description;

@@ -43,7 +43,7 @@ public class Floor extends SearchableFurniture implements Unmoveable {
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String useEvent(Item item) {
-        if (item.toString().equals(FIXED_LADDER)) // Dummy item
+        if (item.toString().equals(FIXED_LADDER))
             return this.useDialog;
         else if (item.toString().equals(MOP))
             return "Yes, let's just make this a game about cleaning some madman's castle.";

@@ -2,7 +2,10 @@ package Iron_Hall;
 
 import A_Super.Direction;
 import A_Super.Room;
-
+/**
+ * Updates description whenever polearm is taken or removed from armor.
+ * @author Kevin Rapa
+ */
 public class Iha2 extends Room{
     private boolean hasPolearm;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    

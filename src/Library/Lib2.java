@@ -11,14 +11,8 @@ public class Lib2 extends Room {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib2(String name, String ID) {
         super(name, ID);
-
-        DESC_MOVED = "You're in the small north end of the library directly under\n" +
-                     "the upstairs floor. In the northwest corner, a couch sits\n" +
-                     "in front of a fireplace. Against the west wall is the\n" +
-                     "displaced bookshelf labeled \"Voyage\". East is a second\n" +
-                     "bookshelf labeled \"Warfare\". Aside the fireplace is a\n" +
-                     "small rack of shoes below a glass pane window.\n" +
-                     "In the northeast corner stands a statue.";
+        
+        DESC_MOVED = this.description.replaceFirst("a bookshelf", "the displaced bookshelf");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {

@@ -16,12 +16,12 @@ public class Hades extends Room {
         super(name, ID);
         
         this.END_DIALOG = 
-                "An echoing voice thunders through the crimson skies. It\n" +
-                "is directed at you. \"Another adventurer comes! Welcome\n" +
-                "to the land of the dead, where you may spend life eternal\n" +
-                "among your intrepid kindred. Judgement awaits, and you \n" +
-                "shall be judged not by your cunning and intellect, but\n" +
-                "by the fruits of them, for only the wealthy live\n" +
+                "An echoing voice thunders through the crimson skies. It " +
+                "is directed at you. \"Another adventurer comes! Welcome " +
+                "to the land of the dead, where you may spend life eternal " +
+                "among your intrepid kindred. Judgement awaits, and you " +
+                "shall be judged not by your cunning and intellect, but " +
+                "by the fruits of them, for only the wealthy live " +
                 "comfortably here...\"";
     }
 // ============================================================================

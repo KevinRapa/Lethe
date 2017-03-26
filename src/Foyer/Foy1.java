@@ -31,9 +31,9 @@ public class Foy1 extends Room{
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
-            GUI.out("As you enter the spacious foyer, you recieve only the\n"
-                  + "greeting of a faint musty odor lingering in the air.\n"
-                  + "You carefully listen for any signs of inhabitants, but\n"
+            GUI.out("As you enter the spacious foyer, you recieve only the "
+                  + "greeting of a faint musty odor lingering in the air. "
+                  + "You carefully listen for any signs of inhabitants, but "
                   + "only hear the wind whistling.");
                     
         return STD_RM_OUT;

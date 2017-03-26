@@ -18,7 +18,7 @@ public class Drar extends Room {
 /*----------------------------------------------------------------------------*/
     @Override public String triggeredEvent() {   
         if (! Player.hasVisited(this.ID)) 
-            GUI.out("From across the room, an apparition stares at you with\n"
+            GUI.out("From across the room, an apparition stares at you with "
                    + "open eyes. You freeze and meet its stare with your own.");
           
         return STD_RM_OUT;
@@ -28,10 +28,10 @@ public class Drar extends Room {
         if (this.hasFurniture("ghost"))
             return this.description;
         else
-            return "You are in a relaxing lounge. A drinking bar furnishes the\n"
-                 + "south of the room. There's a billiard table and chess table near a window\n" +
-                   "on the east wall. A couch and low table sit on the west side.\n" +
-                   "Next to you is a large black piano. This room is unlit save\n" +
+            return "You are in a relaxing lounge. A drinking bar furnishes the "
+                 + "south of the room. There's a billiard table and chess table near a window " +
+                   "on the east wall. A couch and low table sit on the west side. " +
+                   "Next to you is a large black piano. This room is unlit save " +
                    "the bright moonlight shining in.";
     }
 /*----------------------------------------------------------------------------*/

@@ -24,8 +24,8 @@ public class Cis1 extends Dungeon_Tunnel implements Resetable {
     @Override public String triggeredEvent() {
         if (this.hasToxicGas) {
             Player.move(Direction.EAST);
-            GUI.out("You walk into the room passed the door and are greeted by a thick\n"
-                  + "green smog. It burns your eyes and nose. You cannot bear it and\n"
+            GUI.out("You walk into the room passed the door and are greeted by a thick "
+                  + "green smog. It burns your eyes and nose. You cannot bear it and "
                   + "retreat back into the tunnel.");
         }
         

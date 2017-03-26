@@ -27,20 +27,17 @@ public class Wow2 extends Room{
 /*----------------------------------------------------------------------------*/
     @Override public String getDescription() {
         if (this.hasFurniture("ladder"))
-            return "You are on the east side of a large two-story room.\n" +
-                   "Right before you is a crumbled down staircase which\n" +
-                   "once led to a balcony above you. A ladder now rests against the lip of the balcony. There's a boarded\n" +
-                   "up door on the east wall of this room. To your west,\n" +
-                   "plate armor stands against the wall next to a large\n" +
-                   "hearth. Through a window to the south, you can see\n" +
-                   "out the front of the castle.";
+            return this.description.replaceFirst("you\\. There's", 
+                    "you. A ladder now rests against the lip of the balcony. There's a boarded " +
+                   "up door on the east wall of this room. There's");
         
         return this.description;
     }
 /*----------------------------------------------------------------------------*/   
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
-            GUI.out("A comfortable ambient-warmth swarms around you as you enter this lofty two-story chamber.");
+            GUI.out("A comfortable ambient-warmth swarms around you as "
+                    + "you enter this lofty two-story chamber.");
             
         return STD_RM_OUT;
     }

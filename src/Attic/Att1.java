@@ -53,15 +53,15 @@ public class Att1 extends Room {
         GUI.clearDesc();
         GUI.invOut("");
         
-        GUI.out("As you exit the laboratory, you are startled to see a hideous, decrepit\n"
-              + "bald male wearing black robes standing among the shadows in the center of the attic.\n"
+        GUI.out("As you exit the laboratory, you are startled to see a hideous, decrepit "
+              + "bald male wearing black robes standing among the shadows in the center of the attic. "
               + "You freeze, unable to move. Several seconds pass...");
         GUI.promptOut();
         
         GUI.out("   ...");
         GUI.promptOut();
         
-        GUI.out("Several more seconds pass. Before you can realize, you are\n"
+        GUI.out("Several more seconds pass. Before you can realize, you are "
               + "unconscious...");
         GUI.promptOut();
         

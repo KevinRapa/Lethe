@@ -3,6 +3,7 @@ package A_Super;
 import static A_Main.Names.W_DIR;
 import static A_Main.Names.SEP;
 import A_Main.AudioPlayer;
+import A_Main.Id;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.*;
@@ -47,14 +48,18 @@ public class Room implements Serializable {
     public Room(String name, String ID) {  
         this.NAME = name;
         this.ID = ID;
+        this.STD_RM_OUT = "You are " + name + ".";
+        this.locked = false;
+        this.COORDS = RoomGraph.getCoords(this.ID); 
+        this.adjacent = RoomGraph.getAdj(this.ID);
         
         // Gets the room's description from a file.
         String filename;
         
-        if (ID.matches("CT.."))
-            filename = "CT";
-        else if (ID.matches("CV.."))
-            filename = "CV";
+        if (ID.equals(Id.NULL) || ID.matches("CV.."))
+            return; // Caves make their own description. No need for a file.
+        else if (ID.matches("CT.."))
+            filename = "CT"; // All catacombs have one file.
         else
             filename = ID;
         
@@ -72,14 +77,9 @@ public class Room implements Serializable {
             
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
-            this.description = "";
+            this.description = "Did someone eat one of the files?";
         } 
-        
-        this.STD_RM_OUT = "You are " + name + ".";
-        this.locked = false;
-        this.COORDS = RoomGraph.getCoords(this.ID); 
-        this.adjacent = RoomGraph.getAdj(this.ID);
-}
+    }
 //******************************************************************************
 // <editor-fold desc="GETTERS">
 //******************************************************************************     
@@ -109,7 +109,11 @@ public class Room implements Serializable {
         return bumpIntoWall(); 
     }
     // ========================================================================
-    protected String bumpIntoWall() {
+    /**
+     * Notifies player of incorrect direction and plays a sound.
+     * @return Standard dialog that player has moved towards a solid wall.
+     */
+    protected static String bumpIntoWall() {
         AudioPlayer.playEffect(6);
         return WALL_BARRIER;
     }

@@ -1091,8 +1091,8 @@ public final class Player {
             return;
         }
         
-        GUI.menOut("\nWrite a title for\nyour note, or enter\n"
-                   + "a slot number to\nwrite to an existing\nnote.");
+        GUI.menOut(NL + "Write a title for" + NL + "your note, or enter" + NL
+                   + "a slot number to" + NL + "write to an existing" + NL + "note.");
 
         String title = GUI.promptOut();
 

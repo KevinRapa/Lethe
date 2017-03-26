@@ -1,5 +1,6 @@
 package A_Main;
 
+import static A_Main.Names.NL;
 /**
  * Organizes the various menus in the game.
  * 
@@ -7,132 +8,137 @@ package A_Main;
  */
 public final class Menus {
     public static final String
-        INV_MAIN = "\n"
-                 + "<'1'> Inspect item\n"
-                 + "<'2'> Use item\n" + 
-                   "<'3'> Combine items\n"
-                 + "<'4'> Sort inventory\n"
-                 + "<'5'> Write a momento\n"
+        INV_MAIN = NL
+                 + "<'1'> Inspect item" + NL
+                 + "<'2'> Use item" + NL
+                 + "<'3'> Combine items" + NL
+                 + "<'4'> Sort inventory" + NL
+                 + "<'5'> Write a momento" + NL
                  + " < >  Back",
 
-        INV_INSPECT = "\n"
-                    + "<item> Inspect...\n"
+        INV_INSPECT = NL
+                    + "<item> Inspect..." + NL
                     + "< > Back",
 
-        INV_USE = "\n"
-                + "<item> Use...\n"
+        INV_USE = NL
+                + "<item> Use..." + NL 
                 + "< > Back",
 
-        INV_USEON = "\n"
-                  + "<object> Use on...\n"
+        INV_USEON = NL
+                  + "<object> Use on..." + NL
                   + "< >      Back",
 
-        INV_COMBINE = "\n"
-                    + "<list> Combine...\n"
+        INV_COMBINE = NL
+                    + "<list> Combine..." + NL
                     + "< >    Back",
 
-        TRADE_SUB = "\n"
-                  + "<'s' list>  Store...\n"
-                  + "<'t' list>  Take...\n"
-                  + "<'c' item>  Inspect\n"
-                  + "<'loot'>    Loot!!!\n"
+        TRADE_SUB = NL
+                  + "<'s' list>  Store..." + NL
+                  + "<'t' list>  Take..." + NL
+                  + "<'c' item>  Inspect" + NL
+                  + "<'loot'>    Loot!!!" + NL
                   + "< >         Back",
 
-        SAVE_QUIT = "\n\n"
-                  + "<'s'> Save and quit\n"
-                  + "<'q'> Quit\n"
+        SAVE_QUIT = NL + NL
+                  + "<'s'> Save and quit" + NL
+                  + "<'q'> Quit" + NL
                   + "<'r'> Reset game and quit.",
 
-        MAIN_MENU = "      Enter a command or\n\n"
-                  + "    <'w'/'s'/'a'/'d'> Move\n"
-                  + "<'i'>  Inventory  <'k'>  Keys\n"
-                  + "<'h'>  Get help   <'n'>  Note\n"
-                  + "<'m'>  Show Map   <'l'>  Loot\n"
+        MAIN_MENU = "      Enter a command or" + NL + NL
+                  + "    <'w'/'s'/'a'/'d'> Move" + NL
+                  + "<'i'>  Inventory  <'k'>  Keys" + NL
+                  + "<'h'>  Get help   <'n'>  Note" + NL
+                  + "<'m'>  Show Map   <'l'>  Loot" + NL
                   + "<'save'> Save    <'quit'> Quit",
 
-        HELP_MAIN = "\nWhat would you like help on?\n" +
-                    "<'1'> Controls\n"
-                  + "<'2'> Your player\n" +
-                    "<'3'> The castle\n"
+        HELP_MAIN = NL
+                  + "What would you like help on?" + NL
+                  + "<'1'> Controls" + NL
+                  + "<'2'> Your player" + NL 
+                  + "<'3'> The castle" + NL
                   + " < >   Back",
 
-        HELP_SUB1 = "\n"
-                  + "<'1'> The prompt <'2'> Moving\n"
-                  + "<'3'> Describing <'4'> Examining\n"
-                  + "<'5'> Searching  <'6'> Commands\n" 
-                  + "<'7'> Using      <'8'> Combining\n"
-                  + "<'9'> Inspecting <'10'> Notes\n"
+        HELP_SUB1 = NL
+                  + "<'1'> The prompt <'2'> Moving" + NL
+                  + "<'3'> Describing <'4'> Examining" + NL
+                  + "<'5'> Searching  <'6'> Commands" + NL 
+                  + "<'7'> Using      <'8'> Combining" + NL
+                  + "<'9'> Inspecting <'10'> Notes" + NL
                   + " < >  Back",
 
-        HELP_SUB2 = "\n"
-                  + "<'1'> Your inventory\n"
-                  + "<'2'> Your key ring\n" 
-                  + "<'3'> Your phylacteries\n"
+        HELP_SUB2 = NL
+                  + "<'1'> Your inventory" + NL
+                  + "<'2'> Your key ring" + NL 
+                  + "<'3'> Your phylacteries" + NL
                   + " < >  Back",
 
-        HELP_SUB3 = "\n"
-                  + "<'1'> Doors      <'2'> Rooms\n"
-                  + "<'3'> Furniture  <'4'> Items\n"
-                  + "<'5'> Keys       <'6'> Phylacteries\n"
+        HELP_SUB3 = NL
+                  + "<'1'> Doors      <'2'> Rooms" + NL
+                  + "<'3'> Furniture  <'4'> Items" + NL
+                  + "<'5'> Keys       <'6'> Phylacteries" + NL
                   + " < >  Back",
 
-        SAFE_MENU = "\n"
-                  + "<'1'> Turn dial one\n"
-                  + "<'2'> Turn dial two\n"
-                  + "<'3'> Turn dial three\n"
+        SAFE_MENU = NL
+                  + "<'1'> Turn dial one" + NL
+                  + "<'2'> Turn dial two" + NL
+                  + "<'3'> Turn dial three" + NL
                   + " < >  Back\n",
 
-        OBS_STAT_MEN = "\n"
-                     + "<'r'#> Rotate statue\n"
+        OBS_STAT_MEN = NL
+                     + "<'r'#> Rotate statue" + NL
                      + "<'m'#> Move statue",
 
-        OBS_SLOT_EX = "\n"
-                    + "<'a-i'> Look...\n"
+        OBS_SLOT_EX = NL
+                    + "<'a-i'> Look..." + NL
                     + "  < >   Back",
 
-        OBS_SLOT_SE = "\n"
-                    + "<'a-i'> Search...\n"
+        OBS_SLOT_SE = NL
+                    + "<'a-i'> Search..." + NL
                     + "  < >   Back",
 
-        DOUBLE_ST = "\n"
-                  + "There are two flights\n"
-                  + "    <'u'> Go up\n"
+        DOUBLE_ST = NL
+                  + "There are two flights" + NL
+                  + "    <'u'> Go up" + NL
                   + "    <'d'> Go down",
 
-        SEW_VALVE = "\n"
-                  + "<#> Turn valve\n"
+        SEW_VALVE = NL
+                  + "<#> Turn valve" + NL
                   + "< > Back",
 
-        VAEU_DOOR = "\n"
-                  + "<x,y> Push\n"
+        VAEU_DOOR = NL
+                  + "<x,y> Push" + NL
                   + " < >  Back",
 
-        CRY_DRWRS = "\n"
-                  + "<#> Search...\n"
+        CRY_DRWRS = NL
+                  + "<#> Search..." + NL
                   + "< > Back",
 
-        GAL6_BTTN = "\n"
-                  + "<'y'> Push\n"
-                  + "<'n'> Don't push\n"
+        GAL6_BTTN = NL
+                  + "<'y'> Push" + NL
+                  + "<'n'> Don't push" + NL
                   + "< >   Back",
 
-        GAL6_HELM = "\n"
-                  + "<'y'> Wear it\n"
-                  + "<'n'> Don't wear it\n"
+        GAL6_HELM = NL
+                  + "<'y'> Wear it" + NL
+                  + "<'n'> Don't wear it" + NL
                   + "< >   Back",
             
-        OBS_STATS = "\n<#> Look..."
-                  + "\n< > Back",
+        OBS_STATS = NL
+                  + "<#> Look..." + NL
+                  + "< > Back",
             
-        LABO_BURET = "\n<1> Empty"
-                   + "\n<2> Titrate"
-                   + "\n< > Back",
+        LABO_BURET = NL
+                   + "<1> Empty" + NL
+                   + "<2> Titrate" + NL
+                   + "< > Back",
             
-        LABO_DISP = "\n<#> Dispense"
-                  + "\n< > Back",
+        LABO_DISP = NL
+                  + "<#> Dispense" + NL
+                  + "< > Back",
             
-        GAL_TOTEM = "\n<#> Turn head"
-                  + "\n< > Back",
+        GAL_TOTEM = NL
+                  + "<#> Turn head" + NL
+                  + "< > Back",
         
-        ENTER = "\n\nPress enter...";
+        ENTER = NL + NL + "Press enter...";
 }

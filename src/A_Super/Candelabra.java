@@ -26,7 +26,7 @@ abstract public class Candelabra extends SearchableFurniture
 
         this.addNameKeys("candles?", "fire");
         this.addUseKeys(HAND_TORCH, CANDLE);
-        this.addActKeys(GETPATTERN, "touch");
+        this.addActKeys(GETPATTERN, "touch", "light");
         
         this.inv = new Candelabra_Inventory();
         
@@ -65,8 +65,11 @@ abstract public class Candelabra extends SearchableFurniture
                 return this.actDialog;
             }
             else
-                return "You touch it. Thankfully, the candelabra lacks any burning candles and you avoid burning.";
+                return "You touch it. Thankfully, the candelabra lacks any "
+                        + "burning candles, and thus you avoid burning.";
         }
+        else if (key.equals("light"))
+            return "Lighting the candelabra surely will get you no closer to freedom.";
         else
             return getIt();
     }

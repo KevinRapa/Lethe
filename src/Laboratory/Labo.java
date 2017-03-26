@@ -41,7 +41,8 @@ public class Labo extends Room {
 // ============================================================================
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
-            GUI.out("As you enter this room, you feel overwhelmed at the sight of many unknown instruments of alchemy.");
+            GUI.out("As you enter this room, you feel overwhelmed at the sight "
+                    + "of many unknown instruments of alchemy.");
             
         return STD_RM_OUT;
     }

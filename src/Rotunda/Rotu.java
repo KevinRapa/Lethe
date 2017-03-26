@@ -24,7 +24,8 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Rotu extends Room {
-    private char state;
+    public static enum State {EAST_WEST, NORTH_SOUTH}
+    private State state;
     private final Furniture NDOOR, SDOOR, EDOOR, WDOOR; 
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rotu(String name, String ID) {
@@ -37,13 +38,13 @@ public class Rotu extends Room {
         
         this.addFurniture(WDOOR, EDOOR);
         
-        this.state = 'e';
+        this.state = State.EAST_WEST;
     }
 /*----------------------------------------------------------------------------*/
     public void rotate() {
         AudioPlayer.playEffect(18);
         
-        if (this.state == 'e') {
+        if (this.state == State.EAST_WEST) {
             this.addAdjacent(Id.STUD);
             Player.getRoomObj(Id.STUD).addAdjacent(this.ID);
             this.addAdjacent(Id.IHA1); 
@@ -57,7 +58,7 @@ public class Rotu extends Room {
             this.removeFurniture(WDOOR);
             this.addFurniture(NDOOR);
             this.addFurniture(SDOOR);
-            this.state = 'n';
+            this.state = State.NORTH_SOUTH;
         }
         else {
             this.addAdjacent(Id.FOYW);
@@ -73,11 +74,11 @@ public class Rotu extends Room {
             this.removeFurniture(SDOOR);
             this.addFurniture(EDOOR);
             this.addFurniture(WDOOR);
-            this.state = 'e'; 
+            this.state = State.EAST_WEST; 
         }    
     }
 /*----------------------------------------------------------------------------*/        
-    public char getState() {
+    public State getState() {
         return this.state;
     }
 /*----------------------------------------------------------------------------*/   

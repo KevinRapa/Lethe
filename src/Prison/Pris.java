@@ -16,14 +16,14 @@ import A_Super.Room;
 public class Pris extends Room {
 // ============================================================================
     private final Furniture[] CELLS = {
-        new Pris_Cll("1", "one", "You see a pair of wall shackles and a metal\n"
+        new Pris_Cll("1", "one", "You see a pair of wall shackles and a metal "
                    + "bucket on the floor."),
         new Pris_Cll("2", "two", "Sitting in this cell is a spooky blue ghost; "
                 + "a scruffy bald male with a long beard and primitive clothing."),
-        new Pris_Cll("3", "three", "This cell has the remains of a skeleton in it. It\n"
-                   + "lacks anything below the pelvis, and one of its arms is\n"
+        new Pris_Cll("3", "three", "This cell has the remains of a skeleton in it. It "
+                   + "lacks anything below the pelvis, and one of its arms is "
                    + "shackled."),
-        new Pris_Cll("4", "four", "This cell has nothing in it but a bucket and a\n"
+        new Pris_Cll("4", "four", "This cell has nothing in it but a bucket and a "
                    + "few bones. There is a carving on the wall of the cell:"
                 + "           __\n" +
                   "                        _///\n" +
@@ -35,9 +35,9 @@ public class Pris extends Room {
                   "                    |||\\\\\\\\\\\n" +
                   "                     ¯¯¯¯¯¯¯"
         ),
-        new Pris_Cll("5", "five", "You see a pair of wall shackles and a metal\n"
+        new Pris_Cll("5", "five", "You see a pair of wall shackles and a metal "
                    + "bucket on the floor."),
-        new Pris_Cll("6", "six", "The back wall here has caved in somewhat\n"
+        new Pris_Cll("6", "six", "The back wall here has caved in somewhat "
                    + "and the cell has filled with dirt.")
     };
 // ============================================================================    
@@ -56,7 +56,7 @@ public class Pris extends Room {
         public Pris_Cll (String num, String numWord, String desc) {
             super();
             this.searchable = false;
-            this.description = "The cell gate is locked. You walk up to the bars and\n"
+            this.description = "The cell gate is locked. You walk up to the bars and "
                              + "look inside. " + desc;
             this.addNameKeys("(?:gated )?(?:prison )?cell (?:" + num + "|" + numWord + ")");
         }  

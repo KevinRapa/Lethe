@@ -18,11 +18,6 @@ public class My18 extends Room {
 // ============================================================================    
     public My18(String name, String ID) {
         super(name, ID);
-        this.description= 
-                "You found your way to a circlular chamber with a low,\n" +
-                "domed ceiling. There is nothing in this room except\n" +
-                "for a pedestal standing in the center and a hanging\n" +
-                "bowl of fire above it.";
     }
 // ============================================================================
     public void updateDescription() {

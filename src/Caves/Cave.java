@@ -69,13 +69,13 @@ public class Cave extends Room {
         
         descB.append(descL.toString());
         
-        descB.append(" This area is pitch black just like the level above.\n"
-                   + "It's uncomfortably cold, and you hear nothing but\n"
-                   + "drops of water and an awful racket deep within\n"
+        descB.append(" This area is pitch black just like the level above. "
+                   + "It's uncomfortably cold, and you hear nothing but "
+                   + "drops of water and an awful racket deep within "
                    + "the tunnels.");
         
-        descL.append(" The torch lights a short way ahead. This area is much\n"
-                 + "like above, though the walls and floor are plain rock.\n"
+        descL.append(" The torch lights a short way ahead. This area is much "
+                 + "like above, though the walls and floor are plain rock. "
                  + "You can hear an awful noise deep within the tunnels. To the ");
         
         /* 

@@ -16,19 +16,19 @@ public class Endg extends Room {
         super(name, ID);
         
         this.description = 
-            "You step out of the castle's front wall and into the forest. A\n" +
-            "ray of sunlight finds the back of your neck, and you feel warmth.\n" +
-            "At the same time, scattered light penetrates the forest canopy\n" +
-            "and illuminates your path. You continue treading away from\n" +
-            "the castle, but not too quickly, for you almost feel as though\n" +
+            "You step out of the castle's front wall and into the forest. A " +
+            "ray of sunlight finds the back of your neck, and you feel warmth. " +
+            "At the same time, scattered light penetrates the forest canopy " +
+            "and illuminates your path. You continue treading away from " +
+            "the castle, but not too quickly, for you almost feel as though " +
             "you are being accompanied, but you are not afraid.";
         
         this.earlyWinDesc = 
-            "By an magnificant unforeseen display of self\n" +
-            "control, you turn your back to the ghastly\n" +
-            "castle and backtrack along the path you came.\n" +
-            "Your family is surely in worry and anxiously\n" +
-            "awaits your return. Congratulations! You win\n" +
+            "By an magnificant unforeseen display of self " +
+            "control, you turn your back to the ghastly " +
+            "castle and backtrack along the path you came. " +
+            "Your family is surely in worry and anxiously " +
+            "awaits your return. Congratulations! You win " +
             "the game!";
     }
 // ============================================================================

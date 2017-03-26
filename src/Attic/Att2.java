@@ -19,7 +19,7 @@ public class Att2 extends Room {
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(Id.ATT2)) {
             AudioPlayer.playEffect(52);
-            GUI.out("You feel an unnerving presence here. You shutter and look\n"
+            GUI.out("You feel an unnerving presence here. You shutter and look "
                   + "around, but see only darkness.");
         }
         

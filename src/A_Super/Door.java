@@ -18,7 +18,8 @@ public class Door extends Furniture {
         this.description = "It looks like a heavy wooden door.";
         
         this.addUseKeys(ANYTHING);
-        this.addActKeys("open|use|walk|go|close", "kick|bash|break|obliterate|destroy", "knock|bang", "unlock|lock", "pick");
+        this.addActKeys("open|use|walk|go|close", 
+                "kick|bash|break|obliterate|destroy", "knock|bang", "unlock|lock", "pick");
         this.addNameKeys(dir + " door", "(?:heavy )?(?:wooden )?door", "(?:door )?lock");
         
         if (dir == Direction.EAST)

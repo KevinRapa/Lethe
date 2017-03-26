@@ -15,8 +15,9 @@ import A_Main.Player;
  * @author Kevin Rapa
  */
 public class Torch_Holder extends SearchableFurniture {
-    protected static final Item TORCH = 
-            new Item(HAND_TORCH, "It's a burning piece of wood. Stay it from your beard!", 0);
+    protected static final Item 
+            TORCH = new Item(HAND_TORCH, 
+                    "It's a burning piece of wood. Stay it from your beard!", 0);
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Torch_Holder() {
         super();

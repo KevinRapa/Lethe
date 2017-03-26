@@ -39,8 +39,8 @@ public class Vest extends Room {
             Player.getRoomObj(Id.FOY1).lock();
 
             if (! Player.hasVisited(this.ID))
-                GUI.out("You hear a click behind you. As you enter, you hear a\n"
-                      + "whispering voice coming from the corner of the room.\n"
+                GUI.out("You hear a click behind you. As you enter, you hear a "
+                      + "whispering voice coming from the corner of the room. "
                       + "\'Hey! Over here, on the desk.\'");
             else
                 GUI.out("You hear a click behind you.");

@@ -72,8 +72,8 @@ public class Esc extends Room {
         public Esc_Mchnry () {
             super();
 
-            this.description = "All sorts of dangerous exposed machinery operate\n"
-                             + "around you. You better be careful moving. This\n"
+            this.description = "All sorts of dangerous exposed machinery operate "
+                             + "around you. You better be careful moving. This "
                              + "machinery must power some areas of the castle?";
             this.actDialog = "You wouldn't dream of going anywhere near it.";
             this.searchDialog = "You best keep moving and get out of here.";
@@ -96,7 +96,7 @@ public class Esc extends Room {
             super();
             this.searchable = false;
             this.searchDialog = 
-                    "There's nothing here, and you don't feel comfortable\n"
+                    "There's nothing here, and you don't feel comfortable "
                   + "putting anything down where it will drop into oblivion.";
         }
         @Override public String getDescription() {

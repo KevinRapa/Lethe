@@ -40,14 +40,14 @@ public class Wow3 extends Room {
             if (Player.hasVisited(this.ID)) {
                 if (! this.hasFurniture("ladder"))
                     this.addFurniture(new Wow2_Ladder(Direction.DOWN));
-                GUI.out("The ladder creaks with instability. You were more\n"
+                GUI.out("The ladder creaks with instability. You were more "
                       + "careful in scaling the ladder this time.");
             }
             else {
                 Player.getRoomObj(Id.WOW2).removeFurniture(WOW2LDDR_REF);
                 FLR_REF.add(LDDRITEM_REF);
                 AudioPlayer.playEffect(31);
-                GUI.out("You successfully scale the ladder, but you accidentally\n"
+                GUI.out("You successfully scale the ladder, but you accidentally "
                       + "knock it down with your final step, you uncoordinated oaf.");
             }               
         }

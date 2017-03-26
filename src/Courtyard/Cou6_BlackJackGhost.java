@@ -2,6 +2,7 @@ package Courtyard;
 
 import A_Main.GUI;
 import A_Main.Names;
+import static A_Main.Names.NL;
 import A_Main.Player;
 import java.util.HashMap;
 import A_Super.Item;
@@ -73,7 +74,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
     }
 /*----------------------------------------------------------------------------*/
     @Override protected String converse1() {
-        GUI.menOut("\n\n<enter> Continue...");
+        GUI.menOut(NL + NL + "<enter> Continue...");
         GUI.out("You approach the apparition loitering in the courtyard. Before\n"
               + "you can accost it, its mouth opens to speak...");
         GUI.promptOut();
@@ -84,7 +85,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
               + "called blackjack...\"");
         GUI.promptOut();
         
-        GUI.menOut("<'yes'>\n<'no'>");
+        GUI.menOut("<'yes'>" + NL + "<'no'>");
         
         return "\"... well not at all! ... Does it look like I need money in\n"
               + "my state? Come on stranger, yes or no....\"";
@@ -200,9 +201,9 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         String ans;
         
         do {
-            GUI.menOut("Your total is " + score + ".\n" +
-                       "Would you like to hit or stand?\n"
-                     + "<'hit'>\n<'stand'>");
+            GUI.menOut("Your total is " + score + "." + NL
+                     + "Would you like to hit or stand?" + NL
+                     + "<'hit'>" + NL + "<'stand'>");
             ans = GUI.promptOut();
             
             if (ans.equals("hit")) {

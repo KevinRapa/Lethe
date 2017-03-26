@@ -39,9 +39,9 @@ public class Catacomb extends Room {
 
         StringBuilder builder = new StringBuilder(300);
         
-        builder.append("The torch offers a small radius of light to see. You\n")
-               .append("are in a thin rocky tunnel with scattered crevices dug\n")
-               .append("into the walls. These are definitely graves. You shudder,\n")
+        builder.append("The torch offers a small radius of light to see. You ")
+               .append("are in a thin rocky tunnel with scattered crevices dug ")
+               .append("into the walls. These are definitely graves. You shudder, ")
                .append("perhaps from the cold... To your ");
         
         /* 

@@ -32,7 +32,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
 /*----------------------------------------------------------------------------*/
     @Override public String getSearchDialog() {
         if (! this.searchable) {
-            GUI.out("The safe is locked.");
+            GUI.out("The safe has a combination lock.");
             this.openSub();
         }
         if (this.searchable)
@@ -81,13 +81,13 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
         String currentCombo = NOTHING;
         
         for (int dial : this.DIALS)
-            currentCombo = currentCombo.concat(Integer.toString(dial));
+            currentCombo += dial;
                   
         return currentCombo.matches(this.COMBO);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {              
-        if (key.matches("smash|break"))
+        if (key.equals("break") || key.equals("smash"))
             return "Now you WOULD like to do that, wouldn't you?";
         
         else if (! this.searchable) {
@@ -105,10 +105,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        if (item.getType().equals(WEAPON))
-            return useDialog;
-        else
-            return DEFAULT_USE;
+        return (item.getType().equals(WEAPON)) ? useDialog : DEFAULT_USE;
     }
 /*----------------------------------------------------------------------------*/ 
     @Override public String moveIt() {

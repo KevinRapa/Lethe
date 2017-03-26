@@ -2,6 +2,7 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import static A_Main.Names.NL;
 import static A_Main.Patterns.YES_NO_P;
 import A_Main.Player;
 /**
@@ -53,7 +54,7 @@ public class Book extends Note {
                     page ++;
             }
             else {
-                GUI.menOut("\n\n< > Close the book");
+                GUI.menOut(NL + NL + "< > Close the book");
                 GUI.promptOut(); 
                 return;
             }

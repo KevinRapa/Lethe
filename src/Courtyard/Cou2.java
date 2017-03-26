@@ -14,7 +14,7 @@ public class Cou2 extends Room{
 /*----------------------------------------------------------------------------*/    
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.SOUTH)
-            return bumpIntoWall().concat(" About 15 feet up though, you can\n"
+            return bumpIntoWall().concat(" About 15 feet up though, you can "
                                     + "see a fissure in the wall of the castle.");
         else
             return bumpIntoWall();
