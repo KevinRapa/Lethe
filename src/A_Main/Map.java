@@ -1654,33 +1654,37 @@ public class Map {
 
         Room an55 = new An55("in an ancient tomb", Id.AN55);
         Room an65 = new An65("in an ancient tomb", Id.AN65);
+        
+        Furniture c = new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}};
+        Furniture w = new Wall("The walls are wet and rocky.");
 
-        Room ct11 = new Catacomb(Id.CT11); Room ct12 = new Catacomb(Id.CT12);
-        Room ct13 = new Catacomb(Id.CT13); Room ct14 = new Catacomb(Id.CT14);
-        Room ct15 = new Catacomb(Id.CT15); Room ct17 = new Catacomb(Id.CT17);
-        Room ct21 = new Catacomb(Id.CT21); Room ct22 = new Catacomb(Id.CT22);
-        Room ct23 = new Catacomb(Id.CT23); Room ct24 = new Catacomb(Id.CT24);
-        Room ct25 = new Catacomb(Id.CT25); Room ct26 = new Catacomb(Id.CT26);
-        Room ct27 = new Catacomb(Id.CT27); Room ct28 = new Catacomb(Id.CT28);
-        Room ct31 = new Catacomb(Id.CT31); Room ct33 = new Catacomb(Id.CT33);
-        Room ct34 = new Catacomb(Id.CT34); Room ct36 = new Catacomb(Id.CT36);
-        Room ct37 = new Catacomb(Id.CT37); Room ct38 = new Catacomb(Id.CT38);
-        Room ct41 = new Catacomb(Id.CT41); Room ct42 = new Catacomb(Id.CT42);
-        Room ct43 = new Catacomb(Id.CT43); Room ct44 = new Catacomb(Id.CT44);
-        Room ct45 = new Catacomb(Id.CT45); Room ct46 = new Catacomb(Id.CT46);
-        Room ct47 = new Catacomb(Id.CT47); Room ct48 = new Catacomb(Id.CT48);
-        Room ct51 = new Catacomb(Id.CT51); Room ct52 = new Catacomb(Id.CT52);
-        Room ct53 = new Catacomb(Id.CT53); Room ct54 = new Catacomb(Id.CT54);
-        Room ct56 = new Catacomb(Id.CT56); Room ct57 = new Catacomb(Id.CT57);
-        Room ct58 = new Catacomb(Id.CT58); Room ct61 = new Catacomb(Id.CT61);
-        Room ct63 = new Catacomb(Id.CT63); Room ct64 = new Catacomb(Id.CT64);
-        Room ct67 = new Catacomb(Id.CT67); Room ct68 = new Catacomb(Id.CT68);
+        Room // Instantiate all catacomb rooms --------------------------------
+        ct11 = new Catacomb(Id.CT11, w, c), ct12 = new Catacomb(Id.CT12, w, c),
+        ct13 = new Catacomb(Id.CT13, w, c), ct14 = new Catacomb(Id.CT14, w, c),
+        ct15 = new Catacomb(Id.CT15, w, c), ct17 = new Catacomb(Id.CT17, w, c),
+        ct21 = new Catacomb(Id.CT21, w, c), ct22 = new Catacomb(Id.CT22, w, c),
+        ct23 = new Catacomb(Id.CT23, w, c), ct24 = new Catacomb(Id.CT24, w, c),
+        ct25 = new Catacomb(Id.CT25, w, c), ct26 = new Catacomb(Id.CT26, w, c),
+        ct27 = new Catacomb(Id.CT27, w, c), ct28 = new Catacomb(Id.CT28, w, c),
+        ct31 = new Catacomb(Id.CT31, w, c), ct33 = new Catacomb(Id.CT33, w, c),
+        ct34 = new Catacomb(Id.CT34, w, c), ct36 = new Catacomb(Id.CT36, w, c),
+        ct37 = new Catacomb(Id.CT37, w, c), ct38 = new Catacomb(Id.CT38, w, c),
+        ct41 = new Catacomb(Id.CT41, w, c), ct42 = new Catacomb(Id.CT42, w, c),
+        ct43 = new Catacomb(Id.CT43, w, c), ct44 = new Catacomb(Id.CT44, w, c),
+        ct45 = new Catacomb(Id.CT45, w, c), ct46 = new Catacomb(Id.CT46, w, c),
+        ct47 = new Catacomb(Id.CT47, w, c), ct48 = new Catacomb(Id.CT48, w, c),
+        ct51 = new Catacomb(Id.CT51, w, c), ct52 = new Catacomb(Id.CT52, w, c),
+        ct53 = new Catacomb(Id.CT53, w, c), ct54 = new Catacomb(Id.CT54, w, c),
+        ct56 = new Catacomb(Id.CT56, w, c), ct57 = new Catacomb(Id.CT57, w, c),
+        ct58 = new Catacomb(Id.CT58, w, c), ct61 = new Catacomb(Id.CT61, w, c),
+        ct63 = new Catacomb(Id.CT63, w, c), ct64 = new Catacomb(Id.CT64, w, c),
+        ct67 = new Catacomb(Id.CT67, w, c), ct68 = new Catacomb(Id.CT68, w, c);
 
-        Room[] list = {ct11, ct12, ct13, ct14, ct15, ct17, ct21, ct22, ct23,
-                       ct24, ct25, ct26, ct27, ct28, ct31, ct33, ct34, ct36,
-                       ct37, ct38, ct41, ct42, ct43, ct44, ct45, ct46, ct47, 
-                       ct48, ct51, ct52, ct53, ct54, ct56, ct57, ct58, ct61, 
-                       ct63, ct64, ct67, ct68};
+        Room[] list = {
+            ct11, ct12, ct13, ct14, ct15, ct17, ct21, ct22, ct23, ct24, ct25, 
+            ct26, ct27, ct28, ct31, ct33, ct34, ct36, ct37, ct38, ct41, ct42, 
+            ct43, ct44, ct45, ct46, ct47, ct48, ct51, ct52, ct53, ct54, ct56, 
+            ct57, ct58, ct61, ct63, ct64, ct67, ct68};
 
         //-------------------------------ITEMS----------------------------------
         Item coin = new Item("stone coins", 
@@ -1766,33 +1770,37 @@ public class Map {
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE CAVES"> 
         //-----------------------------THE ROOMS--------------------------------
-        Room cv34 = new CV34("at an ancient well", Id.CV34);
+        Furniture cw = new Wall("The wall is damp, plain rock.");
+        Furniture cc = new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}};
+        
+        Room cv34 = new CV34("at an ancient well", Id.CV34, cw, cc);
         Room ms65 = new Deep_Chamber("aykl xvldml fwe", Id.MS65);
         Room ms66 = new Deep_Chamber("d5 rl x:!e ifxJ", Id.MS66);
 
-        Room cv18 = new Cave(Id.CV18); Room cv11 = new Cave(Id.CV11);
-        Room cv12 = new Cave(Id.CV12); Room cv13 = new Cave(Id.CV13);
-        Room cv14 = new Cave(Id.CV14); Room cv15 = new Cave(Id.CV15);
-        Room cv16 = new Cave(Id.CV16); Room cv17 = new Cave(Id.CV17);
-        Room cv21 = new Cave(Id.CV21); Room cv22 = new Cave(Id.CV22);
-        Room cv23 = new Cave(Id.CV23); Room cv24 = new Cave(Id.CV24);
-        Room cv25 = new Cave(Id.CV25); Room cv26 = new Cave(Id.CV26);
-        Room cv27 = new Cave(Id.CV27); Room cv28 = new Cave(Id.CV28);
-        Room cv31 = new Cave(Id.CV31); Room cv32 = new Cave(Id.CV32);
-        Room cv33 = new Cave(Id.CV33); Room cv35 = new Cave(Id.CV35);
-        Room cv36 = new Cave(Id.CV36); Room cv37 = new Cave(Id.CV37);
-        Room cv38 = new Cave(Id.CV38); Room cv41 = new Cave(Id.CV41);
-        Room cv42 = new Cave(Id.CV42); Room cv43 = new Cave(Id.CV43);
-        Room cv44 = new Cave(Id.CV44); Room cv45 = new Cave(Id.CV45);
-        Room cv46 = new Cave(Id.CV46); Room cv47 = new Cave(Id.CV47);
-        Room cv48 = new Cave(Id.CV48); Room cv51 = new Cave(Id.CV51);
-        Room cv52 = new Cave(Id.CV52); Room cv53 = new Cave(Id.CV53);
-        Room cv54 = new Cave(Id.CV54); Room cv55 = new Cave(Id.CV55);
-        Room cv56 = new Cave(Id.CV56); Room cv57 = new Cave(Id.CV57);
-        Room cv58 = new Cave(Id.CV58); Room cv61 = new Cave(Id.CV61);
-        Room cv62 = new Cave(Id.CV62); Room cv63 = new Cave(Id.CV63);
-        Room cv67 = new Cave(Id.CV67); Room cv68 = new Cave(Id.CV68);
-        Room cv64 = new Cave(Id.CV64);
+        Room // Instantiate all caves ------------------------------------
+        cv18 = new Cave(Id.CV18, cw, cc), cv11 = new Cave(Id.CV11, cw, cc),
+        cv12 = new Cave(Id.CV12, cw, cc), cv13 = new Cave(Id.CV13, cw, cc),
+        cv14 = new Cave(Id.CV14, cw, cc), cv15 = new Cave(Id.CV15, cw, cc),
+        cv16 = new Cave(Id.CV16, cw, cc), cv17 = new Cave(Id.CV17, cw, cc),
+        cv21 = new Cave(Id.CV21, cw, cc), cv22 = new Cave(Id.CV22, cw, cc),
+        cv23 = new Cave(Id.CV23, cw, cc), cv24 = new Cave(Id.CV24, cw, cc),
+        cv25 = new Cave(Id.CV25, cw, cc), cv26 = new Cave(Id.CV26, cw, cc),
+        cv27 = new Cave(Id.CV27, cw, cc), cv28 = new Cave(Id.CV28, cw, cc),
+        cv31 = new Cave(Id.CV31, cw, cc), cv32 = new Cave(Id.CV32, cw, cc),
+        cv33 = new Cave(Id.CV33, cw, cc), cv35 = new Cave(Id.CV35, cw, cc),
+        cv36 = new Cave(Id.CV36, cw, cc), cv37 = new Cave(Id.CV37, cw, cc),
+        cv38 = new Cave(Id.CV38, cw, cc), cv41 = new Cave(Id.CV41, cw, cc),
+        cv42 = new Cave(Id.CV42, cw, cc), cv43 = new Cave(Id.CV43, cw, cc),
+        cv44 = new Cave(Id.CV44, cw, cc), cv45 = new Cave(Id.CV45, cw, cc),
+        cv46 = new Cave(Id.CV46, cw, cc), cv47 = new Cave(Id.CV47, cw, cc),
+        cv48 = new Cave(Id.CV48, cw, cc), cv51 = new Cave(Id.CV51, cw, cc),
+        cv52 = new Cave(Id.CV52, cw, cc), cv53 = new Cave(Id.CV53, cw, cc),
+        cv54 = new Cave(Id.CV54, cw, cc), cv55 = new Cave(Id.CV55, cw, cc),
+        cv56 = new Cave(Id.CV56, cw, cc), cv57 = new Cave(Id.CV57, cw, cc),
+        cv58 = new Cave(Id.CV58, cw, cc), cv61 = new Cave(Id.CV61, cw, cc),
+        cv62 = new Cave(Id.CV62, cw, cc), cv63 = new Cave(Id.CV63, cw, cc),
+        cv67 = new Cave(Id.CV67, cw, cc), cv68 = new Cave(Id.CV68, cw, cc),
+        cv64 = new Cave(Id.CV64, cw, cc);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture cv18Strs = new My18_Stairs(Direction.UP);
         Furniture omnDr = new OminousDoor(Direction.EAST);

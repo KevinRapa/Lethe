@@ -3,13 +3,11 @@ package Catacombs;
 import A_Main.Player;
 import static A_Main.Names.HAND_TORCH;
 import static A_Main.Names.ROCK;
-import A_Super.Ceiling;
 import A_Super.Direction;
 import A_Super.Floor;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Room;
-import A_Super.Wall;
 import java.util.ArrayList;
 import java.util.Random;
 /**
@@ -21,20 +19,17 @@ import java.util.Random;
  */
 public class Catacomb extends Room {
     protected String descLit;
-    private static final Furniture 
-        CAT_CEILING = new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}},
-        CAT_WALL = new Wall("The walls are wet and rocky."),
-        CAT_FLOOR = new Floor("It's a damp, rocky, dirty floor.");
-    
-    private static final Item
-        DIRT = new Item("dirt", "It's a damp, cold pile of rocky dirt", -50),
-        BONE = new Item("bone", "It's a bone... not much else to say.", -50),
-        RCK = new Item(ROCK, "It's a normal hunk of rock that was mixed with the dirt.", -50); 
+
+    private static final Item[] ITEM_LIST = {
+        new Item("dirt", "It's a damp, cold pile of rocky dirt", -50), 
+        new Item("bone", "It's a bone... not much else to say.", -50), 
+        new Item(ROCK, "It's a normal hunk of rock that was mixed with the dirt.", -50)
+    };
     
     protected static final Random GENERATOR = new Random();
     protected static int[] jewelCoords;
 // ============================================================================    
-    public Catacomb(String ID) {
+    public Catacomb(String ID, Furniture wall, Furniture ceiling) {
         super("in the catacombs", ID);
 
         StringBuilder builder = new StringBuilder(300);
@@ -52,7 +47,7 @@ public class Catacomb extends Room {
         int X = COORDS[2], Y = COORDS[1]; // X and Y coordinates of this room.
 
         // List of X and Y coordinates of the adjacent catacomb rooms.
-        ArrayList<int[]> adjCatacombCoords = new ArrayList<>();
+        ArrayList<int[]> adjCatacombCoords = new ArrayList<>(3);
         
         // The X and Y coordinates of a non-catacomb room adjacent to this.
         int[] adjOtherCoords = null;
@@ -81,7 +76,7 @@ public class Catacomb extends Room {
             else if (j[1] == X + 1)
                 dirs.add("east");
         }
-        
+
         // Appends the correct directions to descLit.
         switch (dirs.size()) {
             case 1:
@@ -124,19 +119,20 @@ public class Catacomb extends Room {
             
             builder.append(", erected unevenly into the tunnel wall is an ancient door.");
         }
-        
+
         this.descLit = builder.toString();
         
         // Puts a crevice furniture objects in here and adds items to it randomly.
-        Furniture ctGrv = new Ct_Grave();
-        Item[] itemList = {DIRT, BONE, RCK};
+        Furniture catGrv = new Ct_Grave();
+        Furniture catF = new Floor("It's a damp, rocky, dirty floor.");
         
         int numTimes = GENERATOR.nextInt(5) + 3;
         
         for (int start = 1; start <= numTimes; start++) 
-            ctGrv.getInv().add(itemList[GENERATOR.nextInt(3)]);
+            catGrv.getInv().add(ITEM_LIST[GENERATOR.nextInt(3)]);
 
-        this.addFurniture(ctGrv, CAT_FLOOR, CAT_WALL, CAT_CEILING);
+        // Important that catGrv is FIRST ITEM ADDED, iridescent jewel needs to be added to it.
+        this.addFurniture(catGrv, catF, wall, ceiling);
         
         if (door != null)
             this.addFurniture(door);
@@ -144,14 +140,11 @@ public class Catacomb extends Room {
     }
 // ============================================================================
     @Override public String getDescription() {
-        if (Player.hasItem(HAND_TORCH))
-            return this.descLit;
-        else
-            return this.description;
+        return Player.hasItem(HAND_TORCH) ? this.descLit : this.description;
     }
 // ============================================================================
     @Override public String triggeredEvent() {
-        return (Player.hasItem(HAND_TORCH)) ? STD_RM_OUT : "???";
+        return Player.hasItem(HAND_TORCH) ? STD_RM_OUT : "???";
     }
 // ============================================================================
 }

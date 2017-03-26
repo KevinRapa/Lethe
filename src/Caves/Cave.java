@@ -1,10 +1,9 @@
 package Caves;
 
-import A_Main.Player; import A_Super.Floor; 
-import A_Super.Wall;  import A_Super.Room;
-
+import A_Main.Player; 
+import A_Super.Floor; 
+import A_Super.Room;
 import static A_Main.Names.HAND_TORCH;
-import A_Super.Ceiling;
 import A_Super.Furniture;
 import static java.lang.Math.*;
 import java.io.File;
@@ -25,14 +24,7 @@ import static A_Main.Names.W_DIR;
  */
 public class Cave extends Room {
     protected String descLit;
-    
-    protected static final Furniture 
-        CV_FLOOR = new Floor("The floor is cold hard rock and uninteresting."),
-        CV_WALL = new Wall("The wall is damp, plain rock."),
-        CV_CEILING = new Ceiling() {{this.description = "It's a dripping, rocky ceiling.";}};
-
     protected final int DISTANCE; // Distance this room is from MS65
-    
     protected static final Random GENERATOR = new Random();
     
     protected static final File DISTORTION = new File(W_DIR, 
@@ -40,15 +32,15 @@ public class Cave extends Room {
     
     protected static Clip clip;
 // ============================================================================    
-    public Cave(String ID) {
+    public Cave(String ID, Furniture wall, Furniture ceiling) {
         super("in a cave network", ID);
         int X = COORDS[2], Y = COORDS[1]; // X and Y coordinates of this room.
 
         this.DISTANCE = (int)round(sqrt(  // Calculates DISTANCE from MS65.
                 pow(abs(5 - X), 2) +      // Pythagorean theorem
                         pow(abs(6 - Y), 2)));
-        StringBuilder descB = new StringBuilder(300),
-                      descL = new StringBuilder(150);
+        StringBuilder descB = new StringBuilder(240),
+                      descL = new StringBuilder(300);
         
         switch (DISTANCE) {
             case 7: case 6: case 5:
@@ -151,7 +143,7 @@ public class Cave extends Room {
         this.descLit = descL.toString();
         this.description = descB.toString();
         
-        this.addFurniture(CV_FLOOR, CV_WALL, CV_CEILING);
+        this.addFurniture(new Floor("The floor is cold hard rock and uninteresting."), wall, ceiling);
     }
 // ============================================================================
     @Override public String getDescription() {

@@ -1,4 +1,7 @@
 package Caves;
+
+import A_Super.Furniture;
+
 /**
  * Contains a well which is related to story.
  * Connects to catacombs.
@@ -8,8 +11,8 @@ package Caves;
  */
 public class CV34 extends Cave {
 // ============================================================================    
-    public CV34(String name, String ID) {
-        super(ID);
+    public CV34(String name, String ID, Furniture wall, Furniture ceiling) {
+        super(ID, wall, ceiling);
         this.description = "You've found your way to an open area... There's something "
                          + "in the center. It feels stone, round and empty "
                          + "in the center.";
