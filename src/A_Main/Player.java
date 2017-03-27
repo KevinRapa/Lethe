@@ -550,7 +550,7 @@ public final class Player {
      */
     public static void search(Inventory furnInv) {
         String command; 
-        
+
         do {
             printInv(furnInv);
             GUI.menOut(Menus.TRADE_SUB);
@@ -569,7 +569,7 @@ public final class Player {
             }
             else if (isNonEmptyString(command)) {
                 Scanner scan = new Scanner(command).useDelimiter("\\s+");
-                String action = scan.next(); // Should be take|t|store|s    
+                String action = scan.next(); 
                 
                 if (! scan.hasNext()) {
                     // If player enters just a digit, means "examine <slot>"
@@ -581,8 +581,7 @@ public final class Player {
                         else
                             GUI.out(item.getDesc());
                     }
-                    else
-                        // Notifies that a list wasn't entered. Avoiding nested ifs.
+                    else // Notifies that a list wasn't entered.
                         GUI.out("Did you... forget to enter something there?");
                         
                     continue;
@@ -608,27 +607,10 @@ public final class Player {
                         GUI.out(i[0].getDesc());
                     }
                 }
-                else if (STORE_P.matcher(action).matches()) {
-                    Player.incrementMoves();
-                    
-                    for (Item i : getItemList(itemList, Player.inv)) {
-                        if (! i.equals(Inventory.NULL_ITEM) && inv.contains(i)) 
-                            evalStore(furnInv, i); // Item exists
-                        else
-                            GUI.out(ERRONEOUS_INPUT);
-                    }
-                }
-                else if (TAKE_P.matcher(action).matches()) {
-                    Player.incrementMoves();
-                    
-                    for (Item i : getItemList(itemList, furnInv)) {
-                        if (! i.equals(Inventory.NULL_ITEM) 
-                                && furnInv.contains(i)) 
-                            evalTake(furnInv, i); // Item exists
-                        else
-                            GUI.out(ERRONEOUS_INPUT);
-                    }
-                }
+                else if (STORE_P.matcher(action).matches()) 
+                    tradeAll(Player.inv, itemList, false);
+                else if (TAKE_P.matcher(action).matches()) 
+                    tradeAll(furnInv, itemList, true);
                 else
                     GUI.out("A thousand pardons... what was that "
                             + "first thing you typed??");
@@ -639,7 +621,21 @@ public final class Player {
             printInv();
         } while (isNonEmptyString(command));
     }
-    // ========================================================================  
+    // ========================================================================
+    // Performs a take or store operation on every item in the list with the inventory.
+    private static void tradeAll(Inventory inv, String list, boolean take) {
+        Player.incrementMoves();
+                    
+        for (Item i : getItemList(list, inv))
+            if (! i.equals(Inventory.NULL_ITEM) && inv.contains(i))
+                if (take)
+                    evalTake(inv, i); // Item exists
+                else
+                    evalStore(inv, i);
+            else
+                GUI.out(ERRONEOUS_INPUT);
+    }
+    // ========================================================================
     /**
      * Takes a list of names, returns a list of items found in the inventory.
      * Items that weren't found are replaced by a NULL_ITEM.
@@ -854,19 +850,14 @@ public final class Player {
     private static void parseMovement(String dir) {
         if (NORTH_P.matcher(dir).find())
             Player.move(Direction.NORTH);
-        
         else if (SOUTH_P.matcher(dir).find())
             Player.move(Direction.SOUTH);
-        
         else if (EAST_P.matcher(dir).find())
             Player.move(Direction.EAST);
-        
         else if (WEST_P.matcher(dir).find())
             Player.move(Direction.WEST);
-        
         else if (UP_P.matcher(dir).find()) 
             findStaircase(Direction.UP);
-        
         else 
             findStaircase(Direction.DOWN);
     }
@@ -1582,21 +1573,21 @@ private static class TextParser {
             return new Command(new Instrument(furnItem[1]), 
                                new DirectObj(furnItem[0]));
         }
-        else
+        else {
             inst = new Instrument(item);
 
-
-        switch(s.length) {
-            case 1:
-                return new Command(use, inst);
-            case 2:
-                if (! (use.VALUE.equals("throw") || use.VALUE.equals("break") || 
-                       use.VALUE.equals("destroy")))
-                    return new Command(inst, new DirectObj(s[1]));
-                else
+            switch(s.length) {
+                case 1:
                     return new Command(use, inst);
-            default:
-                return DEFAULT_CMD;
+                case 2:
+                    if (! (use.VALUE.equals("throw") || use.VALUE.equals("break") || 
+                           use.VALUE.equals("destroy")))
+                        return new Command(inst, new DirectObj(s[1]));
+                    else
+                        return new Command(use, inst);
+                default:
+                    return DEFAULT_CMD;
+            }
         }
     }
     //**************************************************************************
@@ -1689,7 +1680,7 @@ private static class TextParser {
                 Player.incrementMoves();
                 
                 Item item = Player.getInv().get(instrument);
-                String itemName = item.toString();
+                String name = item.toString();
                 String type = item.getType();
 
                 if (verb.equals("use"))
@@ -1700,7 +1691,7 @@ private static class TextParser {
                 //-------------------------------------------------------------
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: READ">
                 else if (verb.equals("read")) {
-                    if (type.equals(READABLE) || itemName.equals(BOOK_PHYL)) 
+                    if (type.equals(READABLE) || name.equals(BOOK_PHYL)) 
                         GUI.out(item.useEvent()); // Phylactery type. Not readable
                     else
                         GUI.out("That isn't something you can read...");
@@ -1709,11 +1700,11 @@ private static class TextParser {
 
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: FILL">
                 else if (verb.equals("fill")) {
-                    if (itemName.equals(METAL_BUCKET))
+                    if (name.equals(METAL_BUCKET))
                         Player.evaluateAction("get", "water");
-                    else if (itemName.equals(BUCKET_OF_WATER))
+                    else if (name.equals(BUCKET_OF_WATER))
                         GUI.out("That particular bucket is already full of water!");
-                    else if (itemName.equals(TEST_TUBE) || itemName.equals(EMPTY_VIAL))
+                    else if (name.equals(TEST_TUBE) || name.equals(EMPTY_VIAL))
                         GUI.out("Whoa now, that's scientific equipment. The only way to properly fill that is with a burette.");
                     else
                         GUI.out("That isn't something you should be filling with water.");
@@ -1750,7 +1741,7 @@ private static class TextParser {
                     else if (type.equals(LIQUID) || type.equals(INGREDIENT) 
                             || type.equals(FOCUS)) 
                     {
-                        if (! itemName.equals(BUCKET_OF_WATER)) {
+                        if (! name.equals(BUCKET_OF_WATER)) {
                             floor.getInv().add(BROKEN_GLASS);
                             GUI.out("A cunning decision is made. The player "
                                   + "throws the " + item + ". The item lands "
@@ -1787,7 +1778,7 @@ private static class TextParser {
                                 "The " + item + " is now broken and certainly useless.", -50));
                         GUI.out("An acute sense of frustration causes you to crush it in your hand.");
                     }
-                    else if ((type.equals(LIQUID) && ! itemName.equals(BUCKET_OF_WATER)) 
+                    else if ((type.equals(LIQUID) && ! name.equals(BUCKET_OF_WATER)) 
                             || type.equals(FOCUS) || type.equals(INGREDIENT)) 
                     {
                         Player.getInv().remove(item);
@@ -1827,11 +1818,11 @@ private static class TextParser {
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: DRINK">
                 else if (verb.equals("drink")) {
                     if (type.equals(INGREDIENT) || type.equals(LIQUID)) {
-                        if (itemName.equals(PHASE_DOOR_POTION))
+                        if (name.equals(PHASE_DOOR_POTION))
                             GUI.out(item.useEvent());
-                        else if (itemName.equals(BUCKET_OF_WATER))
+                        else if (name.equals(BUCKET_OF_WATER))
                             GUI.out("Ah, refreshing!!");
-                        else if (itemName.equals(ACETONE) || itemName.matches("molten.*"))
+                        else if (name.equals(ACETONE) || name.matches("molten.*"))
                             GUI.out("No possible way you're doing something that stupid!");
                         else
                             GUI.out("You reluctantly take a small sip. 'Yugh! Bitter and disgusting!'");
@@ -1843,7 +1834,7 @@ private static class TextParser {
 
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: EAT">
                 else if (verb.equals("eat") || verb.equals("consume")) {
-                    if (itemName.equals(GLOWING_FRUIT)) {
+                    if (name.equals(GLOWING_FRUIT)) {
                         GUI.out("The fruit's glow and tasteful aroma entice you irresistibly. "
                               + "You bite down and find the fruit as hard as a rock. "
                               + "A sharp pain comes and you pull the fruit away.");
@@ -1855,7 +1846,7 @@ private static class TextParser {
                 
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: BURN">
                 else if (verb.equals("burn")) {
-                    if (type.equals(READABLE) || itemName.equals(NOTEPAD)) {
+                    if (type.equals(READABLE) || name.equals(NOTEPAD)) {
                         if (Player.hasItem(HAND_TORCH)) {
                             Player.getInv().remove(item);
                             Player.getInv().add(BURNED_REMNANTS);
@@ -1875,7 +1866,7 @@ private static class TextParser {
                 else if (verb.equals("swing") || verb.equals("wave")) {
                     if (type.equals(WEAPON))
                             GUI.out("You be careful with that. Wouldn't want to poke your eye out.");
-                    else if (itemName.equals(HAND_TORCH))
+                    else if (name.equals(HAND_TORCH))
                         GUI.out("What a spectacular display of pyro acrobatics. "
                                 + "If only someone were here to witness.");
                     else
@@ -1912,15 +1903,7 @@ private static class TextParser {
 
                 for (j = 0; j < list.length; j++) {
                     // Loops through the list and stores each
-                    if (list[j].equals(Inventory.NULL_ITEM)) {
-                        // Stops if one item doesn't exist, warns player
-                        if (j == 0)
-                            GUI.out("You may have just entered something wrong...");
-                        else
-                            GUI.out("Well, I understood " + list[j-1] + 
-                                    " but that next thing I didn't get.");
-                        break;
-                    }
+                    if (isNullItem(list, j)) break;
 
                     Player.setLastInteract_Item(list[j].toString());
 
@@ -1958,14 +1941,7 @@ private static class TextParser {
                 int j;
 
                 for (j = 0; j < list.length; j++) {
-                    if (list[j].equals(Inventory.NULL_ITEM)) {
-                        if (j == 0)
-                            GUI.out("You may have just entered something wrong...");
-                        else
-                            GUI.out("Well, I understood " + list[j-1] + 
-                                    " but that next thing I didn't get.");
-                        break;
-                    }
+                    if (isNullItem(list, j)) break;
 
                     Player.evalStore(sack.getInv(), list[j]);
                     Player.printInv();
@@ -1986,6 +1962,18 @@ private static class TextParser {
                 GUI.out("There is no " + furniture + " here.");
         }
         // </editor-fold>
+        // ====================================================================
+        private static boolean isNullItem(Item[] list, int j) {
+            if (list[j].equals(Inventory.NULL_ITEM)) {
+                if (j == 0)
+                    GUI.out("You may have just entered something wrong...");
+                else
+                    GUI.out("Well, I understood " + list[j-1] + 
+                            " but that next thing I didn't get.");
+                return true;
+            }
+            return false;
+        }
         // ====================================================================
 
         public void perform() {

@@ -1529,13 +1529,17 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room intr = new Intr("in a noisy chamber", Id.INTR);      
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture intrF = new Intr_Floor(); // RESETABLE
+        Item mtlBt = new Item("metal bit", "It's a small scrap of metal. You have no idea what it's for.", 0);
+        Item scrw = new Item("screw", "A degraded piece of metal resembling a screw. The threads have worn away and bits of metal rub off on your hand.", 0);
+        Item sgyWdChnk = new Item("soggy wood chunk", "It's a rotted, wet chunk of wood.", 0);
+        //-----------------------------FURNITURE-------------------------------- 
+        Furniture intrF = new Dungeon_Floor(sgyWdChnk, scrw, scrw, mtlBt); 
         Furniture intrGrt = new Intr_Grate(); // RESETABLE
         Furniture intrTrch = new Intr_Torch(torch); // RESETABLE
         Furniture intrWhl = new Intr_Wheel();
         Furniture intrGrs = new Intr_Gears();
         Furniture intrDr = new Intr_Door();
-        Furniture intrWtr = new Intr_Water();
+        Furniture intrWtr = new Intr_Water(); // RESETABLE
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE SUB-TUNNELS">
@@ -1602,7 +1606,7 @@ public class Map {
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE STRANGE POOL">
-        Furniture[] resetables = {intrF, intrGrt, intrTrch, sew2Vlvs, torcSwhrses,
+        Furniture[] resetables = {intrWtr, intrGrt, intrTrch, sew2Vlvs, torcSwhrses,
                 torcScythF, cry1Stat, esc6Grt, sew4Pp, esc6Lddr};
         //-----------------------------THE ROOM---------------------------------
         Room sewp = new Sewp("next to a pool of water", Id.SEWP, prisCbnt.getInv(), resetables);        
