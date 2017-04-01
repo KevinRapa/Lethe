@@ -20,15 +20,15 @@ public class Inventory implements Iterable<Item>, Serializable {
     protected final ArrayList<Item> CONTENTS; // This inventory's contents.
     public static final Item NULL_ITEM = // Represents an item wasn't found.
             new Item("null item", "Hello, I'm a null item.", 0);
-    // CONSTRUCTOR ============================================================   
+    // CONSTRUCTOR ------------------------------------------------------------ 
     public Inventory(Item ... items) {
         this.CONTENTS = new ArrayList<>(Arrays.asList(items));
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Item get(int index) {
         return CONTENTS.get(index);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     // Tries to find an item with the name. Returns a null item for a failure.
     public Item get(String itemName) {
         if (Patterns.ANY_DIGIT_P.matcher(itemName).matches()) {
@@ -48,15 +48,15 @@ public class Inventory implements Iterable<Item>, Serializable {
         System.err.println("Warning: NULL_ITEM returned at <inventory>.get()");
         return NULL_ITEM; // Item wasn't found. Always check for this!!
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public boolean contains(Item item) {
         return CONTENTS.contains(item);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public boolean isEmpty() {
         return CONTENTS.isEmpty();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     // Checks if this inv contains an item who's name matches argument.
     public boolean containsItemResembling(String item) {
         if (Patterns.ANY_DIGIT_P.matcher(item).matches()) {
@@ -70,19 +70,19 @@ public class Inventory implements Iterable<Item>, Serializable {
                     .anyMatch(i -> i.toString()
                     .matches(NO_LETTER_BEFORE + item + NO_LETTER_AFTER));
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public int size() {
         return CONTENTS.size();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public void clear() {
         this.CONTENTS.clear();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public ArrayList<Item> contents() {
         return this.CONTENTS;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Adds an item to the inventory.
      * @param item An item to add to this inventory's contents.
@@ -92,11 +92,11 @@ public class Inventory implements Iterable<Item>, Serializable {
         this.CONTENTS.add(item);
         return true; // Some inventories have restrictions.
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public void remove(Item removeThis) {  
         this.CONTENTS.remove(removeThis);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Removes an item from this inventory and gives it to another.
      * @param item The item to give.
@@ -110,7 +110,7 @@ public class Inventory implements Iterable<Item>, Serializable {
         }
         return false;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Displays a formatted string representation of this for the player.
      * The items in this are accompanied with a number which the player uses
@@ -141,9 +141,9 @@ public class Inventory implements Iterable<Item>, Serializable {
         else
             return "   nothing." + NL;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public Iterator<Item> iterator() {
         return this.CONTENTS.iterator();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }

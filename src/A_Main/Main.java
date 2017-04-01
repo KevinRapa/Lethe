@@ -31,6 +31,7 @@ import javax.swing.JFrame;          import javax.swing.JLabel;
 
 import static A_Main.Names.SEP;
 import static A_Main.Names.W_DIR;
+import javafx.application.Platform;
 
 public class Main {
     public static final String 
@@ -143,7 +144,7 @@ public class Main {
         GAME_FRAME.setVisible(false);
         GAME_FRAME.dispose();
         Map.disposeMap();
-        System.exit(0);
+        Platform.exit();
     }
 // ============================================================================   
     public static synchronized void saveGame() {

@@ -11,6 +11,7 @@ import static A_Main.Names.SEP;
 import static A_Main.Names.W_DIR;
 import java.util.Random;
 import java.util.regex.Pattern;
+import javafx.application.Platform;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.JTextComponent;
@@ -95,10 +96,10 @@ public class GUI extends JFXPanel {
         
         COLORS.add(Color.GRAY);  
         COLORS.add(Color.LIGHT_GRAY);
-        COLORS.add(Color.GREEN);  
+        COLORS.add(new Color(27, 203, 22));  
         COLORS.add(new Color(196, 11, 15)); 
-        COLORS.add(new Color(141, 28, 179));
-        COLORS.add(new Color(150, 84, 13));
+        COLORS.add(new Color(141, 28, 154));
+        COLORS.add(new Color(122, 84, 13));
     }
     // </editor-fold>
     
@@ -128,7 +129,6 @@ public class GUI extends JFXPanel {
         }
 
         Color myColor = COLORS.getLast();
-        
         SCROLLW.setBackground(Color.DARK_GRAY);
         SCROLLW.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
 
@@ -235,8 +235,6 @@ public class GUI extends JFXPanel {
      * @param big If the frame is entering big mode.
      */
     private void smallMode(boolean big) {
-        Main.GAME_FRAME.setVisible(false);
-        
         this.removeAll();
         
         if (big) {
@@ -261,7 +259,6 @@ public class GUI extends JFXPanel {
         this.addComponents(big);
         
         Main.GAME_FRAME.pack();
-        Main.GAME_FRAME.setVisible(true);
     }
 // *****************************************************************************
 // </editor-fold> CONFIGURES AND ADDS ALL COMPONENTS
@@ -445,7 +442,7 @@ public class GUI extends JFXPanel {
             int keyCode = e.getKeyCode();
             
             // For playing the key sound
-            if (keyCode != BACKSPACE)
+            if (keyCode != BACKSPACE && keyCode != ENTER)
                 AudioPlayer.playKeySound(key);
             if (keyCode == ENTER)
                 undoPosition = 0;
@@ -506,31 +503,29 @@ public class GUI extends JFXPanel {
         @Override public void actionPerformed(ActionEvent push) { 
             Object o = push.getSource();
             
-            // Resize screen to be a bit smaller
-            if (o.equals(SIZE)) {
+            
+            if (o.equals(SIZE)) { // Resize screen to be a bit smaller
                 AudioPlayer.playEffect(10);
                 big = ! big;
                 smallMode(big);
                 SIZE.setText(big ? "Small" : "Big");
             }
-            else if (o.equals(MUTE)) { 
-                // Toggles ambience
+            else if (o.equals(MUTE)) { // Toggles ambience
                 AudioPlayer.playEffect(10);
-                MUTE.setText(MUTE.getText().equals("Mute") ? "Unmute" : "Mute");
+                MUTE.setText(MUTE.getText().equals("Mute") ? "Mute all" : 
+                        MUTE.getText().equals("Mute all") ? "Unmute" : "Mute");
                 AudioPlayer.toggleMute();
             }
-            else if (o.equals(COLOR)) { 
-                // Toggles ambience
+            else if (o.equals(COLOR)) { // Toggles text color
                 AudioPlayer.playEffect(10);
                 Color newColor = COLORS.peek();
-                COLORS.offer(COLORS.poll());
                 MEN.setForeground(newColor);
                 INV.setForeground(newColor);
                 DESC.setForeground(newColor);
                 DIAL.setForeground(newColor);
+                COLORS.offer(COLORS.poll());
             }
-            else { 
-                // Changes key click
+            else { // Changes key click noise
                 KEYSOUND.offer(KEYSOUND.poll());
                 key = KEYSOUND.peek().soundEffectId;
                 AudioPlayer.playKeySound(key);

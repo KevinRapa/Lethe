@@ -182,6 +182,14 @@ public class Map {
                 + "A large pearl is set into the end of the handle, and many "
                 + "small scapolite gems descorate the rest of it.", 500);
         
+        // Obtained by collecting all phylacteries and other treasures, 
+        // commiting suicide, and returning using the Factum.
+        Item typhos = new Item(TYPHOS, "The small golden trophy is protected in "
+                + "a red, glowing aura. It depicts a wicked creature- winged, "
+                + "with sharp teeth and an many snake-like tendrils where its "
+                + "legs would be. This trophy identifies you as the wealthiest, "
+                + "most cunning adventurer, though it was not your intention.", 5000);
+        
         // <editor-fold defaultstate="collapsed" desc="Philosopher's stone set">
         // These items create the philosopher's stone treature.
         // Each is found by watering a potted plant.
@@ -269,7 +277,7 @@ public class Map {
         Item pot = new BreakableItem("clay pot", "It's a medium-sized clay pot for holding plants.", mndrkPt, 2, 25);
         Item mxtr = new Item(FERTILIZED_SOIL, "It's a fertile mixture of soil, sand, and fertilizer", mndrkPt, 2, 15);
         Item snd = new Item(SAND, "You have a pocket full of sand. It's grainy and uncomfortable.", mxtr, 3, 0);
-        Item sl = new Item(SOIL, "It's a soft pile of soil", mxtr, 3, -5);
+        Item sl = new Item(SOIL, "It's a soft pile of soil", mxtr, 3, -25);
         Item frt = new Item(FERTILIZER, "It's a handful of mysterious gardening wizardry.", mxtr, 3, 10);
         // </editor-fold>
         
@@ -402,8 +410,8 @@ public class Map {
                 + "On its surface is an embossing of a soldier.", 30);
         Item rck = new Item(ROCK, "It's a chunk of the courtyard fountain. "
                 + "Plain except for a braided carving across one edge.", 0);
-        Item grss = new Item(GRASS, "It's some dark-green grass that you pulled from the ground.", -5);
-        Item clvr = new Item("clover", "It's some clover you pulled from the ground.", -5);
+        Item grss = new Item(GRASS, "It's some dark-green grass that you pulled from the ground.", -25);
+        Item clvr = new Item("clover", "It's some clover you pulled from the ground.", -25);
         Item trs = new Item(STATUE_TORSO, "It's a stone torso, once attached to the courtyard statue.", 40);
         Item hd = new Item(STATUE_HEAD, "It's a stone head with a chiseled male face. "
                 + "It stares at you blankly as you hold it in your palms.", 40);
@@ -546,9 +554,9 @@ public class Map {
         Room wbal = new Wbal("on the west balcony", Id.WBAL);   
         //-------------------------------ITEMS----------------------------------
         Item wbalch = new Item("rotted wooden chunk", "It's a rotted chunk of wood.", -50);
-        Item wbalsp = new Item("wood splinter", "It's a splinter of wood.", -15);
-        Item wbalbr = new Item("branch", "A plain branch from a tree. Nothing too interesting.", -10);
-        Item wbalBrg = new Item("broken rod", "It looks like it belonged to a ladder.", -10);
+        Item wbalsp = new Item("wood splinter", "It's a splinter of wood.", -25);
+        Item wbalbr = new Item("branch", "A plain branch from a tree. Nothing too interesting.", -25);
+        Item wbalBrg = new Item("broken rod", "It looks like it belonged to a ladder.", -25);
         Item wbalRng = new Item("wooden rod", "It's a wooden rod, about a foot long.", wowLddr, 3, 10);
         //-----------------------------FURNITURE--------------------------------
         Furniture wbalF = new Floor("A shale tile floor. Many pieces of wood litter it.", 
@@ -663,7 +671,7 @@ public class Map {
         Room cous = new Cous("in a scorched room", Id.COUS);
         //-------------------------------ITEMS----------------------------------
         Item wrhmmr = new Item(WARHAMMER, "It's an old medieval warhammer. The head looks extremely worn and dull.", 35);
-        Item ash = new Item(ASH, "You're pretty sure there are people mixed in with this...", -15);
+        Item ash = new Item(ASH, "You're pretty sure there are people mixed in with this...", -30);
         Item wd = new Item("charred wood", "It's a piece of burnt wood", -25);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture searFssr = new Sear_Fissure();
@@ -1085,9 +1093,9 @@ public class Map {
         Item rtnFrt = new Item("rotten fruit", "Was this an apple? Or ... plum once?", 
                 "Whatever you expect him to do with that, he isn't going to.", -50);
         Item petFrt = new Item("petrified vegetable", "Looks like a rock ... in the shape of a carrot.", 
-                "Whatever you expect him to do with that, he isn't going to.", -10);
-        Item brly = new Item("barley", "It doesn't smell so great. Even grain doesn't keep this long.", 0);
-        Item rye = new Item("rye", "It doesn't smell so great. Even grain doesn't keep this long.", 0);
+                "Whatever you expect him to do with that, he isn't going to.", -50);
+        Item brly = new Item("barley", "It doesn't smell so great. Even grain doesn't keep this long.", -50);
+        Item rye = new Item("rye", "It doesn't smell so great. Even grain doesn't keep this long.", -50);
         Item cpprPt = new Weapon(COPPER_POT, "It's small and crudely fashioned. It was definitely hammered into shape.", 30);
         Item cpprPn = new Weapon(COPPER_PAN, "It's an old copper pan, crudely fashioned and hammered into shape.", 30);
         //-----------------------------FURNITURE--------------------------------
@@ -1375,7 +1383,7 @@ public class Map {
         Room bha3 = new Room("in a demonic hallway", Id.BHA3);
         //-------------------------------ITEMS----------------------------------   
         Item tblLg = new Weapon("broken table leg", "A short wooden post about 3 feet long. "
-                + "It looks like it belonged to a table.", -10);
+                + "It looks like it belonged to a table.", -25);
         Item orgMttr = new Item("organic matter", "An unknown gray substance. "
                 + "It has a non-solid texture and feels organic. Its color appears "
                 + "to shift ever so slightly, giving it an oily appearance.", 10);
@@ -1625,10 +1633,10 @@ public class Map {
         //-------------------------------ITEMS----------------------------------
         Item algBk = new Item("algae covered book", 
                 "The book is wet and slimy. Its pages have nearly fused.", 
-                "This is completely unreadable.", -20);
+                "This is completely unreadable.", -30);
         Item rndBk = new Item("ruined book", 
                 "This book is damp, moldy, and covered in dirt.", 
-                "Whatever knowledge this book held is now lost.", -20);
+                "Whatever knowledge this book held is now lost.", -30);
         Item stnBlck = new BreakableItem(STONE_BLOCK, 
                 "This is a remnant of the collapsed floor in the ancient archives.", 10);
         Item slmyAlg = new Item("slimy algae", "Ugh... why are you holding this?", -35);
@@ -1982,7 +1990,7 @@ public class Map {
             progressing.
         */
         //-----------------------------THE ROOM---------------------------------
-        Room hads = new Hades("at the Entrance to Hades", Id.HADS);
+        Room hads = new Hades("at the Entrance to Hades", Id.HADS, typhos);
         //-------------------------------ITEMS----------------------------------
         Item leg = new Item("mangled leg", "It's a disembodied rotting leg, dirty, and awful smelling.", -1000);
         Item torso = new Item("mangled torso", "It's a disembodied rotting torso, dirty, and awful smelling.", -1000);

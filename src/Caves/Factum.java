@@ -60,7 +60,9 @@ public class Factum extends Item {
                 Player.setOccupies(roomId);
                 break;
         }
-        return this.useDialog;
+        return (Player.getPosId().equals(Id.HADS)) ? 
+                "The player is dissatisfied with their fate and makes a daring "
+                + "escape, foiling the devil itself in an instant." : this.useDialog;
     }
     // =========================================================================
 }

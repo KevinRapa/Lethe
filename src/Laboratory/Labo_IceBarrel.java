@@ -60,8 +60,7 @@ public class Labo_IceBarrel extends SearchableFurniture
                 // Chills the chemical for a bit, seals off barrel.
                 GUI.out("Better give it some time to chill before taking it out.");
                 Chill_Thread t = new Chill_Thread(item, this.CONTENTS);
-                int hashCode = item.hashCode();
-                THREAD_MAP.put(hashCode, t);
+                THREAD_MAP.put(item.hashCode(), t);
                 t.start();
             }
             return true;

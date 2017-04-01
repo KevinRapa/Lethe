@@ -161,7 +161,7 @@ CHEMICAL_P = Pattern.compile("[\\w\\d]+ \\d{1,2}mL"),
 // LIB4 and LIB5: bad if player teleports to these without leather shoes.
 // ESC: bad if player teleports to these without a torch.
 // INTR: bad if player teleports here without it being reset by monster.        
-NO_TELEPORT_P = Pattern.compile("LIB[45]|ESC\\d|INTR"),
+NO_TELEPORT_P = Pattern.compile("LIB[45]|ESC\\d|INTR|HADS"),
         
 // Represents a dye item in the lens-making puzzle.
 DYES_P = Pattern.compile("(?:red|blue|yellow) dye"),

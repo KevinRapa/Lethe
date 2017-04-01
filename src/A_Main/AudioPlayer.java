@@ -22,7 +22,9 @@ public class AudioPlayer {
             EXT = ".mp3";               // Audio file extension.
     
     private static String trackName;
-    private static boolean muted = false;
+    private static boolean 
+            trackMuted = false,
+            effectsMuted = false;
     private static Media currentMusic;
     private static MediaPlayer currentPlayer;
     
@@ -236,7 +238,7 @@ public class AudioPlayer {
                 currentPlayer = new MediaPlayer(currentMusic);
                 currentPlayer.setCycleCount(MediaPlayer.INDEFINITE);
                 
-                if (muted)
+                if (trackMuted)
                     currentPlayer.setVolume(0.0);
                 
                 currentPlayer.play();
@@ -255,13 +257,15 @@ public class AudioPlayer {
      * @param ID An integer corresponding to a sound effect.
      */
     public static void playEffect(int ID) {
-        try {
-            MediaPlayer p = new MediaPlayer(EFFECTS[ID]);
-            p.setOnEndOfMedia(() -> p.dispose());
-            p.play();
-        }
-        catch (MediaException e) {
-            System.out.println(e.getMessage());
+        if (! effectsMuted) {
+            try {
+                MediaPlayer p = new MediaPlayer(EFFECTS[ID]);
+                p.setOnEndOfMedia(() -> p.dispose());
+                p.play();
+            }
+            catch (MediaException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 // ============================================================================
@@ -272,14 +276,16 @@ public class AudioPlayer {
      * @param volume Volume at which to adjust the effect.
      */
     public static void playEffect(int ID, double volume) {
-        try {
-            MediaPlayer p = new MediaPlayer(EFFECTS[ID]);
-            p.setVolume(volume);
-            p.setOnEndOfMedia(() -> p.dispose());
-            p.play();
-        }
-        catch (MediaException e) {
-            System.out.println(e.getMessage());
+        if (! effectsMuted) {
+            try {
+                MediaPlayer p = new MediaPlayer(EFFECTS[ID]);
+                p.setVolume(volume);
+                p.setOnEndOfMedia(() -> p.dispose());
+                p.play();
+            }
+            catch (MediaException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 // ============================================================================
@@ -319,9 +325,14 @@ public class AudioPlayer {
     }
 // ============================================================================
     public static void toggleMute() {
-        muted = ! muted;
+        if (! trackMuted && ! effectsMuted)
+            trackMuted = true;
+        else if (trackMuted && ! effectsMuted)
+            effectsMuted = true;
+        else if (trackMuted && effectsMuted)
+            trackMuted = effectsMuted = false;
 
-        currentPlayer.setVolume(muted ? 0.0 : 1.0);
+        currentPlayer.setVolume(trackMuted ? 0.0 : 1.0);
     }
 //******************************************************************************    
 // </editor-fold>

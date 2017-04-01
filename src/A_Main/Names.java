@@ -80,6 +80,7 @@ public final class Names {
         JEWELED_KNIFE = "jewel-encrusted knife",JEWELED_KING = "jeweled king",
         JEWELED_QUEEN = "jeweled queen",        DIAMOND_RING = "platinum diamond ring",
         GOLDEN_FORK = "golden fork",            PHILOSOPHERS_STONE = "philosopher's stone",
+        TYPHOS = "typhos",
             
         BIBLE = "biblical tome, 'The Book of Genesis'",
         ILIAD = "greek tome, 'The Iliad'",

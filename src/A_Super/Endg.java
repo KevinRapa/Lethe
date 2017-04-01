@@ -46,7 +46,10 @@ public class Endg extends Room {
         int s = Player.getScore();
         GUI.promptOut();
         
-        if (s >= 7000)
+        if (s >= 12000)
+            GUI.out("You possess the wealth, cunning, and power to overcome "
+                  + "any holy or unholy force that dare challenge you.");
+        else if (s >= 7000)
             GUI.out("You have amassed a grand fortune which will certainly, should you "
                   + "return, grant you any Earthly desire.");
         else if (s >= 5500)

@@ -236,11 +236,15 @@ public final class Player {
                   + "decision. Could this release you from your hopelessness?"); 
             GUI.menOut(Menus.ENTER);
             GUI.promptOut();
-
+            
+            Item i = Player.getInv().get(LOOT_SACK);
             inv.clear();
+            if (! i.equals(Inventory.NULL_ITEM))
+                inv.add(i);
+            
             keys.clear();
-            setOccupies(Id.HADS);
             printInv();
+            setOccupies(Id.HADS);
         }
         else
             GUI.out("You can't do even that.");
@@ -895,7 +899,10 @@ public final class Player {
             String message;
             
             // Displays player score
-            if (score >= 13500)
+            if (score >= 18500)
+                message = "You possess the wealth, cunning, and power to overcome "
+                        + "any holy or unholy force that dare challenge you.";
+            else if (score >= 13500)
                 message = "Your wealth is beyond the dreams of avarice and "
                         + "will earn you a divine seat in the afterlife.";
             else if (score >= 11500)
@@ -943,8 +950,8 @@ public final class Player {
                 message += " However, you have lost the desire to escape, "
                         + "and wish only to bask eternally in your riches.";
             
-            GUI.out("Your score is " + score + ". You have looted " + t + 
-                    " out of 10 legendary treasures and " + p + 
+            GUI.out("Your score is " + score + ". You have discovered " + t + 
+                    " out of 11 legendary treasures and " + p + 
                     " out of 5 phylacteries so far. " + message);
             
             s.useEvent();

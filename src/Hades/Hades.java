@@ -4,6 +4,7 @@ import A_Main.GUI;
 import A_Main.Menus;
 import A_Main.Player;
 import A_Super.Direction;
+import A_Super.Item;
 import A_Super.Room;
 
 /**
@@ -11,10 +12,12 @@ import A_Super.Room;
  */
 public class Hades extends Room {
     private final String END_DIALOG;
+    private final Item TYPHOS;
 // ============================================================================    
-    public Hades(String name, String ID) {
+    public Hades(String name, String ID, Item typhos) {
         super(name, ID);
         
+        this.TYPHOS = typhos;
         this.END_DIALOG = 
                 "An echoing voice thunders through the crimson skies. It " +
                 "is directed at you. \"Another adventurer comes! Welcome " +
@@ -33,30 +36,36 @@ public class Hades extends Room {
     }
 // ============================================================================
     @Override public String triggeredEvent() {
-        GUI.roomOut(STD_RM_OUT);
-        
-        GUI.clearDialog();
-        GUI.descOut(END_DIALOG);
-        GUI.menOut(Menus.ENTER);
-        GUI.promptOut();
-        
-        GUI.descOut(calculateScore(Player.getScore()));
-        GUI.promptOut();
-        
-        GUI.toMainMenu();
-        Player.describeRoom();
+        if (! Player.hasVisited(ID)) {
+            GUI.roomOut(STD_RM_OUT);
+            GUI.clearDialog();
+            GUI.descOut(END_DIALOG);
+            GUI.menOut(Menus.ENTER);
+            GUI.promptOut();
+
+            GUI.descOut(calculateScore(Player.getScore()));
+            GUI.promptOut();
+
+            GUI.toMainMenu();
+            Player.describeRoom();
+        }
         
         return STD_RM_OUT;
     }
 // ============================================================================
     private String calculateScore(int score) {
-        if (score >= 13500)
+        if (score >= 13500) {
+            Player.getInv().add(TYPHOS);
+            Player.printInv();
             return 
                 "\"You are drenched in greed, my son. Undaunted by risk, " +
                 "in pursuit of only the unquenchable thirst for wealth. " +
-                "You are a master adventurer; a true idol among idols, surpassing even me. " +
-                "You shall live comfortably for all eternity in Tartarus, "
-              + "in constant labor with frequent coffee breaks.\"";
+                "You are a master adventurer; a true idol among idols, "
+              + "surpassing even me. You shall live comfortably for all "
+              + "eternity in Tartarus, in constant labor with frequent "
+              + "coffee breaks. As a gift of honor, I present to you "
+              + "Typhos, recognizing you among all the condemned as supreme.\"";
+        }
         if (score >= 10500)
             return 
                 "\"You are drenched in greed, my son. Undaunted by risk, " +
@@ -64,8 +73,8 @@ public class Hades extends Room {
                 "You are a master adventurer; a true idol among idols, " +
                 "except among me, for I have traveled to these lands " +
                 "before, and even back. You shall live comfortably for " +
-                "all eternity in Tartarus, with " +
-                "in constant labor with occasional coffee breaks.\"";
+                "all eternity in Tartarus, in constant labor with "
+              + "occasional coffee breaks.\"";
         if (score >= 5700)
             return 
                 "\"You have the true spirit of an adventurer, yet you " +

@@ -22,8 +22,8 @@ public class LootSack extends Item {
     private int worth;
     
     public LootSack() {
-        super(Names.LOOT_SACK, "The simple twine sack is crafted with a rounded "
-                + "bottom and a rope at the top.", 0);
+        super(Names.LOOT_SACK, "An elegent black velvet sack with a rope "
+                + "wrapped around the top. A reddish aura coats its surface.", 0);
         this.INV = new SackInventory();
         this.type = Names.LOOT_SACK;
         this.worth = 0;
@@ -75,7 +75,7 @@ public class LootSack extends Item {
     // ************************************************************************
     // ========================================================================
     private class SackInventory extends Inventory {
-        private final int MAX_SIZE = 15;
+        private final int MAX_SIZE = 16;
         
         public SackInventory() {
             super();
