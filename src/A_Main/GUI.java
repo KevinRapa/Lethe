@@ -430,9 +430,9 @@ public class GUI extends JFXPanel {
     /**
      * Allows player to go to last keyboard input with arrow keys.
      */
-    private class Text_Field_Key_Listener implements KeyListener {
-        private int undoPosition = 0;
-        private final int 
+    private static class Text_Field_Key_Listener implements KeyListener {
+        private static int undoPosition = 0;
+        private static final int 
                 BACKSPACE = KeyEvent.VK_BACK_SPACE,
                 UP = KeyEvent.VK_UP,
                 DOWN = KeyEvent.VK_DOWN,
@@ -465,7 +465,7 @@ public class GUI extends JFXPanel {
         @Override public void keyReleased(KeyEvent e) {}
     }
 /*----------------------------------------------------------------------------*/
-    private class Text_Field_Listener implements ActionListener {
+    private static class Text_Field_Listener implements ActionListener {
         /**
          * Waits for text to entered by the player and stores it, then notifies
          * the game to receive the input.
@@ -506,15 +506,14 @@ public class GUI extends JFXPanel {
             
             if (o.equals(SIZE)) { // Resize screen to be a bit smaller
                 AudioPlayer.playEffect(10);
-                big = ! big;
-                smallMode(big);
+                smallMode(big = ! big);
                 SIZE.setText(big ? "Small" : "Big");
             }
             else if (o.equals(MUTE)) { // Toggles ambience
-                AudioPlayer.playEffect(10);
                 MUTE.setText(MUTE.getText().equals("Mute") ? "Mute all" : 
                         MUTE.getText().equals("Mute all") ? "Unmute" : "Mute");
                 AudioPlayer.toggleMute();
+                AudioPlayer.playEffect(10);
             }
             else if (o.equals(COLOR)) { // Toggles text color
                 AudioPlayer.playEffect(10);
