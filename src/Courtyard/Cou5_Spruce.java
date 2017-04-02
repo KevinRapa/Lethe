@@ -1,7 +1,6 @@
 package Courtyard;
 
 import A_Main.AudioPlayer;
-import A_Main.Id;
 import A_Main.Player;
 import static A_Main.Names.*;
 import A_Super.Climbable;
@@ -20,18 +19,28 @@ public class Cou5_Spruce extends SearchableFurniture
         implements Climbable, Gettable, Unmoveable 
 {
     private final Item EXTRCT_REF, VIAL_REF;
+    protected Direction dir;  
     private boolean drilled;
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
     public Cou5_Spruce(Item vial, Item extrct, Item ... items) {
         super(items);
+
         this.searchDialog = "There doesn't seem to be much...";
         this.useDialog = "Drilling a small hole into the trunk allows a small "
                        + "sample of sap to ooze out.";
-        this.description = "The ancient tree looms over you and creaks slowly in "
-                         + "the breeze. It stands out as the most life-like thing "
-                         + "in the courtyard, even more than the birds. The spruce "
-                         + "is an evergreen, genus Picea, with stiff sharp needles. "
-                         + "The closely-spaced branches make climbing a possibility.";
+        this.actDialog = 
+                "You carefully climb up the tree. The closely-spaced branches "
+                 + "of the spruce make the climb easier than in most trees, however "
+                 + "the stiff spruce needles scrape and jab your skin through your "
+                 + "flannel shirt.";
+        this.description = 
+                "The ancient tree looms over you and creaks slowly in "
+                 + "the breeze. It stands out as the most life-like thing "
+                 + "in the courtyard, even more than the birds. The spruce "
+                 + "is an evergreen, genus Picea, with stiff sharp needles. "
+                 + "The closely-spaced branches make climbing a possibility.";
+        
+        this.dir = Direction.UP;
         this.EXTRCT_REF = extrct;
         this.VIAL_REF = vial;
         this.drilled = false;
@@ -82,19 +91,8 @@ public class Cou5_Spruce extends SearchableFurniture
                 return "You have nothing to drill into it with.";
         }
         else if (action.matches(CLIMBPATTERN)) {
-            if (Player.getPosId().equals(Id.COU8)) {
-                Player.move(Direction.DOWN);
-                return "You are uncomfortable with the idea of spending any "
-                     + "greater time up there on such a windy night. You carefully "
-                     + "climb back down into the courtyard.";
-            } 
-            else {
-                Player.move(Direction.UP);
-                return "You carefully climb up the tree. The closely-spaced branches "
-                 + "of the spruce make the climb easier than in most trees, however "
-                 + "the stiff spruce needles scrape and jab your skin through your "
-                 + "flannel shirt.";
-            }
+            Player.move(dir);
+            return this.actDialog;
         }
         else if (action.equals("swing"))
             return "You're much too old for that.";
@@ -113,6 +111,10 @@ public class Cou5_Spruce extends SearchableFurniture
                 return "You have nothing to collect the sap in.";
         else
             return "What exactly do you mean by that?";
+    }
+/*----------------------------------------------------------------------------*/
+    @Override public Direction getDir() {
+        return dir;
     }
 /*----------------------------------------------------------------------------*/
 }

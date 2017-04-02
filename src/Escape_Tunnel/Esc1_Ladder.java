@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Climbable;
+import A_Super.Direction;
 import A_Super.Furniture;
 /**
  * @author Kevin Rapa
@@ -25,6 +26,10 @@ public class Esc1_Ladder extends Furniture implements Climbable {
         AudioPlayer.playEffect(47);
         Player.setOccupies(Id.INTR);
         return this.actDialog;
+    }
+    // ========================================================================     
+    @Override public Direction getDir() {
+       return Direction.UP;
     }
     // ========================================================================     
 }

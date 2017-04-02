@@ -8,7 +8,7 @@ import A_Super.Room;
  * Connects to Rotu
  * 
  * @see Rotunda.Rotu_Fountain
- * @see Lookout.Look_Valve
+ * @see Cellar.Look_Valve
  * @see Rotunda.Rotu
  * @author Kevin Rapa
  */

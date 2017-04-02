@@ -57,7 +57,8 @@ public class LootSack extends Item {
         int result = 0;
         
         for (Item i : this.INV) {
-            if (i.getScore() == 500 || i.getScore() == 1000)
+            int j = i.getScore();
+            if (j == 500 || j == 1000 || j == 5000)
                 result++;
         }
         
@@ -75,7 +76,7 @@ public class LootSack extends Item {
     // ************************************************************************
     // ========================================================================
     private class SackInventory extends Inventory {
-        private final int MAX_SIZE = 16;
+        private final int MAX_SIZE = 20;
         
         public SackInventory() {
             super();

@@ -47,12 +47,12 @@ public class Obs1_Statues extends Furniture {
         super();
 
         this.solved = false;
-        this.locked = true;
+        this.locked = false;
         
         this.actDialog = "As the statue settles in place, a bright "
                        + "array of light forms on the floor. The chandelier "
                        + "high up at the third level descends.";
-        this.description = "An array of 9 statues arranged in a circle. In the "
+        this.description = "An array of statues arranged in a circle. In the "
                          + "center stands an additional larger statue looking "
                          + "upwards.";
         this.searchDialog = "They don't seem to be hiding anything unusual. "

@@ -50,7 +50,7 @@ public class Door extends Furniture {
         }
         else {
             Player.move(DIR);
-            return this.actDialog;
+            return NOTHING;
         }
     } 
 /*----------------------------------------------------------------------------*/

@@ -42,8 +42,8 @@ public class Obs1_Slots extends Furniture {
         
         this.SLOTS.get(0).getInv().contents().add(hlsPlt);
         
-        this.description = "It's an array of 9 brass indentations in the floor at the "
-                         + "base of each statue. Each one bears an inscription inside.";
+        this.description = "It's an array of brass indentations on the floor."
+                         + "Each one bears an inscription.";
         this.searchDialog = "You inspect the array of slots.";
         this.useDialog = "There are eight slots here. Perhaps you should search among "
                  + "them the one in which to place that.";
@@ -64,8 +64,7 @@ public class Obs1_Slots extends Furniture {
         String choice;
         
         do {
-            GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
-                    "\t\t\t\t\t\tLook at which slot? "); 
+            GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description); 
 
             choice = GUI.askChoice(Menus.OBS_SLOT_EX, OBS_SLOTS_A_TO_I);
            
@@ -83,8 +82,7 @@ public class Obs1_Slots extends Furniture {
         String rep = "", choice;
         
         do {
-            GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description + 
-                    "\t\t\t\t\t\tSearch which slot? "); 
+            GUI.out(this.getArray() + "\t\t\t\t\t\t" + this.description); 
 
             choice = GUI.askChoice(Menus.OBS_SLOT_SE, OBS_SLOTS_A_TO_I);
            

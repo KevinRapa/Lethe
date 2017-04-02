@@ -1,7 +1,7 @@
 You have made your way into the west end of a 
 large bedroom. On the far eastern side, you can 
 see a % body laying on a bed. On your side of the 
-room, a mirror and wardrobe furnish the north wall. 
-A wood chest and tall display cabinet stand against 
-the south wall. A large lavender carpet lies on the 
-floor.
+room, a mirror furnishes the north wall and a tall 
+display cabinet stands against the south wall. Next 
+to the mirror is a lever. A large lavender carpet 
+lies on the floor. 

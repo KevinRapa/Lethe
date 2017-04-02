@@ -11,7 +11,7 @@ import static A_Main.Names.SEP;
 import static A_Main.Names.W_DIR;
 import java.util.Random;
 import java.util.regex.Pattern;
-import javafx.application.Platform;
+import javax.swing.border.BevelBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.JTextComponent;
@@ -37,43 +37,46 @@ public class GUI extends JFXPanel {
     }
     
     // <editor-fold desc="COMPONENTS AND ATTRIBUTES">
-    private static boolean big = true;
     private static int key = Click.NONE.soundEffectId;
-    private final static String MOVES = "Moves: ", SCORE = "    Score: ";
     
     private static Font myFont;
     
     private final static JTextArea 
-        MEN = new JTextArea(),  // Menus are printed here.
-        DESC = new JTextArea(), // Room descriptions are printed here.
-        INV = new JTextArea(),  // Inventories are printed here.
-        DIAL = new JTextArea(); // General text is printed here.
+        MEN_TXT = new JTextArea(),  // Menus are printed here.
+        DESC_TXT = new JTextArea(), // Room descriptions are printed here.
+        INV_TXT = new JTextArea(),  // Inventories are printed here.
+        DIAL_TXT = new JTextArea(); // General text is printed here.
 
     private final static JPanel 
         EAST = new JPanel(new BorderLayout()), 
-        CNORTH = new JPanel(new BorderLayout()),
-        WEST = new JPanel(new BorderLayout()),
-        CENTER = new JPanel(), CCENTER = new JPanel(), 
-        CSOUTH = new JPanel(), SALAMAA = new JPanel(new FlowLayout(FlowLayout.LEFT));          
+        WEST = new JPanel(),        
+        WNORTH = new JPanel(new BorderLayout()), //Holds room label and desc
+        WNSOUTH = new JPanel(),
+        WSOUTH = new JPanel(new BorderLayout()), // Holds menu, input and buttons.
+        INPUT_PANEL = new JPanel(),
+        MEN_PANEL = new JPanel(),
+        BTTN_PANEL = new JPanel();          
     
     private final static JScrollPane 
-        SCROLLW = new JScrollPane(DIAL, 
+        SCROLLS = new JScrollPane(DIAL_TXT, 
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER),
-        SCROLLE = new JScrollPane(INV, 
+        SCROLLN = new JScrollPane(INV_TXT, 
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     
     private final static JLabel 
-        ROOM = new JLabel(),        // Displays player's current room.
-        PROMPT = new JLabel(">"),   // Decorative prompt sigil for retro feel.
-        INVLBL = new JLabel();      // Label displaying score and moves.
+        PROMPT_LBL = new JLabel(">"),   // Decorative prompt sigil for retro feel.
+        ROOM_LBL = new JLabel(),        // Displays player's current room.
+        MOVE_LBL = new JLabel(),
+        SCORE_LBL = new JLabel();
     
     private final static JButton 
-        SIZE = new JButton("Small"),    // Button changing screen size.
-        MUTE = new JButton("Mute"),     // Button muting ambience.
+        SWAP = new JButton("Swap"),     // Swaps dialog and inventory.
+        COLOR2 = new JButton("Color 2"),// Changes label colors
+        MUTE = new JButton("Mute"),
         KEYS = new JButton("Click"),    // Button controlling faux key sounds.
-        COLOR = new JButton("Color");   // Button changing font color.
+        COLOR1 = new JButton("Color 1");// Button changing dialog colors.
     
     private final static JTextField 
         INPUT = new JTextField("", 35);     // Player enters commands here.
@@ -88,18 +91,29 @@ public class GUI extends JFXPanel {
     private final static LinkedList<Click> KEYSOUND = new LinkedList<>();
     
     // Queue treated as curcular to rotate font colors.
-    private final static LinkedList<Color> COLORS = new LinkedList<>();
+    private final static LinkedList<Color> 
+            COLORS_DIAL = new LinkedList<>(),
+            COLORS_LABEL = new LinkedList<>();
 
     static {
+        Color lightBrown = new Color(122, 84, 13);
+        Color darkRed = new Color(196, 11, 15);
+        
         KEYSOUND.add(Click.NONE); KEYSOUND.add(Click.SOFT); 
         KEYSOUND.add(Click.CLICK); KEYSOUND.add(Click.VINTAGE); 
         
-        COLORS.add(Color.GRAY);  
-        COLORS.add(Color.LIGHT_GRAY);
-        COLORS.add(new Color(27, 203, 22));  
-        COLORS.add(new Color(196, 11, 15)); 
-        COLORS.add(new Color(141, 28, 154));
-        COLORS.add(new Color(122, 84, 13));
+        COLORS_DIAL.add(Color.GRAY);  
+        COLORS_DIAL.add(Color.LIGHT_GRAY);
+        COLORS_DIAL.add(new Color(27, 203, 22));  
+        COLORS_DIAL.add(darkRed); 
+        COLORS_DIAL.add(new Color(141, 28, 154));
+        COLORS_DIAL.add(lightBrown);
+        
+        COLORS_LABEL.add(Color.LIGHT_GRAY);
+        COLORS_LABEL.add(lightBrown);
+        COLORS_LABEL.add(Color.ORANGE);
+        COLORS_LABEL.add(darkRed);
+        COLORS_LABEL.add(Color.GRAY);
     }
     // </editor-fold>
     
@@ -128,80 +142,9 @@ public class GUI extends JFXPanel {
             labelFont = new Font("Monospaced", Font.BOLD, 16);
         }
 
-        Color myColor = COLORS.getLast();
-        SCROLLW.setBackground(Color.DARK_GRAY);
-        SCROLLW.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
-
-        SALAMAA.setBackground(Color.DARK_GRAY);
-        SALAMAA.setPreferredSize(new Dimension(390, 47));
+        Color myColor = COLORS_DIAL.getLast();
         
-        JButton[] buttons = {SIZE, MUTE, KEYS, COLOR};
-        for (JButton b : buttons) {
-            b.setBackground(Color.DARK_GRAY);
-            b.setFocusPainted(false);
-            b.setForeground(Color.BLACK);
-            b.setPreferredSize(new Dimension(69, 35));
-            b.setBorder(BorderFactory.createRaisedBevelBorder());
-            b.setFont(labelFont.deriveFont(Font.BOLD, 17.0f));
-            b.addActionListener(new Button_Listener());
-            SALAMAA.add(b);
-        }
-
-        WEST.add(SALAMAA, BorderLayout.NORTH);
-        WEST.add(SCROLLW, BorderLayout.SOUTH);
-        
-        CENTER.setLayout(new BorderLayout());
-        CNORTH.setBackground(Color.DARK_GRAY);
-        ROOM.setFont(labelFont.deriveFont(Font.BOLD, 22.0f));
-        ROOM.setForeground(Color.BLACK);
-        CNORTH.add(DESC, BorderLayout.NORTH);
-        CNORTH.add(ROOM, BorderLayout.SOUTH);
-        CCENTER.setBackground(Color.BLACK);
-        MEN.setEditable(false);
-        MEN.setFont(myFont);
-        MEN.setBackground(Color.BLACK);
-        MEN.setForeground(myColor);
-        CCENTER.add(MEN);
-        CSOUTH.setBackground(Color.BLACK);
-        INPUT.addActionListener(new Text_Field_Listener());
-        INPUT.addKeyListener(new Text_Field_Key_Listener());
-        INPUT.setFont(myFont);
-        INPUT.setCaret(new RetroCaret());
-        INPUT.getCaret().setBlinkRate(450);
-        INPUT.setBorder(BorderFactory.createEmptyBorder());
-        INPUT.setBackground(Color.BLACK);
-        INPUT.setForeground(Color.LIGHT_GRAY);
-        INPUT.setCaretColor(Color.GRAY);
-        PROMPT.setBackground(Color.BLACK);
-        PROMPT.setOpaque(true);
-        PROMPT.setHorizontalAlignment(JLabel.RIGHT);
-        PROMPT.setPreferredSize(new Dimension(25, 25));
-        PROMPT.setFont(myFont.deriveFont(22.0f));
-        PROMPT.setForeground(Color.LIGHT_GRAY);
-        
-        CSOUTH.add(PROMPT);
-        CSOUTH.add(INPUT);
-        CENTER.add(CNORTH, BorderLayout.NORTH);
-        CENTER.add(CCENTER, BorderLayout.CENTER);
-        CENTER.add(CSOUTH, BorderLayout.SOUTH);
-            
-        SCROLLE.setBackground(Color.DARK_GRAY);
-        SCROLLE.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
-        INVLBL.setFont(labelFont.deriveFont(Font.BOLD, 22.0f));
-        INVLBL.setForeground(Color.BLACK);
-        EAST.add(INVLBL, BorderLayout.NORTH);
-        EAST.add(SCROLLE, BorderLayout.SOUTH);
-        
-        JLabel[] labels = {ROOM, INVLBL};
-        for (JLabel l : labels) {
-            l.setOpaque(true);      
-            l.setBackground(Color.DARK_GRAY);
-            l.setHorizontalAlignment(JLabel.CENTER);
-            l.setPreferredSize(new Dimension(390, 45));
-            l.setBorder(BorderFactory.createEmptyBorder());
-        }
-        
-        JTextArea[] textAreas = {DIAL, DESC, INV};
+        JTextArea[] textAreas = {DIAL_TXT, DESC_TXT, INV_TXT};
         for (JTextArea t : textAreas) {
             t.setMargin(new Insets(0,6,0,6));
             t.setEditable(false);       t.setLineWrap(true);
@@ -209,56 +152,93 @@ public class GUI extends JFXPanel {
             t.setForeground(myColor);   t.setFont(myFont);
         }
         
-        INPUT.setPreferredSize(new Dimension(400, 40));
-        WEST.setPreferredSize(new Dimension(300, 600));
-        SCROLLW.setPreferredSize(new Dimension(290, 555));
-        CENTER.setPreferredSize(new Dimension(400, 600));
-        DESC.setPreferredSize(new Dimension(390, 350));
-        EAST.setPreferredSize(new Dimension(300, 600));
-        SCROLLE.setPreferredSize(new Dimension(290, 555));
-
-        this.addComponents(true);
+        BTTN_PANEL.setPreferredSize(new Dimension(400, 60));
+        Button_Listener l = new Button_Listener();
+        JButton[] buttons = {SWAP, MUTE, KEYS, COLOR1, COLOR2};
+        for (JButton b : buttons) {
+            b.setBackground(Color.BLACK);
+            b.setFocusPainted(false);
+            b.setForeground(COLORS_LABEL.getLast());
+            b.setPreferredSize(new Dimension(74, 35));
+            b.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.BLACK));
+            b.setFont(labelFont.deriveFont(Font.BOLD, 17.0f));
+            b.addActionListener(l);
+            BTTN_PANEL.add(b);
+        }
+        
+        JLabel[] labels = {ROOM_LBL, MOVE_LBL, SCORE_LBL};
+        for (JLabel label : labels) { 
+            label.setForeground(COLORS_LABEL.getLast());
+            label.setHorizontalAlignment(JLabel.CENTER);
+            label.setBorder(BorderFactory.createEmptyBorder());
+        }
+        
+        Component[] cmps = {MEN_TXT, MEN_PANEL, INPUT, BTTN_PANEL, INPUT_PANEL};
+        for (Component c : cmps)
+            c.setBackground(Color.BLACK);
+        
+        // WEST
+        WEST.setBackground(Color.BLACK);
+        WEST.setPreferredSize(new Dimension(400, 645));
+        WNORTH.setPreferredSize(new Dimension(400, 385));
+        DESC_TXT.setPreferredSize(new Dimension(400, 336));
+        WNSOUTH.setBackground(Color.BLACK);
+        WNSOUTH.setPreferredSize(new Dimension(400, 50));
+        SCORE_LBL.setPreferredSize(new Dimension(80, 50));
+        SCORE_LBL.setFont(labelFont.deriveFont(Font.BOLD, 18.0f));
+        MOVE_LBL.setPreferredSize(new Dimension(80, 50));
+        MOVE_LBL.setFont(labelFont.deriveFont(Font.BOLD, 18.0f));
+        ROOM_LBL.setPreferredSize(new Dimension(225, 50));
+        ROOM_LBL.setFont(labelFont.deriveFont(Font.BOLD, 22.0f));
+        WNSOUTH.add(MOVE_LBL);
+        WNSOUTH.add(ROOM_LBL);
+        WNSOUTH.add(SCORE_LBL);
+        WNORTH.add(WNSOUTH, BorderLayout.SOUTH);
+        WNORTH.add(DESC_TXT, BorderLayout.NORTH);
+        WSOUTH.setPreferredSize(new Dimension(400, 265));
+        MEN_TXT.setEditable(false);
+        MEN_TXT.setFont(myFont);
+        MEN_TXT.setForeground(myColor);
+        MEN_PANEL.setPreferredSize(new Dimension(390, 170));
+        MEN_PANEL.add(MEN_TXT);
+        INPUT.addActionListener(new Text_Field_Listener());
+        INPUT.addKeyListener(new Text_Field_Key_Listener());
+        INPUT.setFont(myFont);
+        INPUT.setCaret(new RetroCaret());
+        INPUT.getCaret().setBlinkRate(450);
+        INPUT.setBorder(BorderFactory.createEmptyBorder());
+        INPUT.setForeground(Color.LIGHT_GRAY);
+        INPUT.setCaretColor(Color.GRAY);
+        PROMPT_LBL.setHorizontalAlignment(JLabel.RIGHT);
+        PROMPT_LBL.setPreferredSize(new Dimension(25, 25));
+        PROMPT_LBL.setFont(myFont.deriveFont(22.0f));
+        PROMPT_LBL.setForeground(COLORS_LABEL.getLast());
+        INPUT_PANEL.setPreferredSize(new Dimension(400, 25));
+        INPUT_PANEL.add(PROMPT_LBL);
+        INPUT_PANEL.add(INPUT);
+        WSOUTH.add(MEN_PANEL, BorderLayout.NORTH);
+        WSOUTH.add(INPUT_PANEL, BorderLayout.CENTER);
+        WSOUTH.add(BTTN_PANEL, BorderLayout.SOUTH);
+        WEST.add(WNORTH, BorderLayout.NORTH);
+        WEST.add(WSOUTH, BorderLayout.SOUTH);
+        
+        // EAST
+        EAST.setPreferredSize(new Dimension(300, 645));
+        SCROLLN.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
+        SCROLLN.setPreferredSize(new Dimension(300, 343));
+        SCROLLS.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
+        SCROLLS.setPreferredSize(new Dimension(300, 305));
+        EAST.add(SCROLLN, BorderLayout.NORTH);
+        EAST.add(SCROLLS, BorderLayout.SOUTH);
+        
+        this.addComponents();
     }
 /*----------------------------------------------------------------------------*/     
-    private void addComponents(boolean big) {
-        this.setPreferredSize(new Dimension (1000, big ? 600: 510));
+    private void addComponents() {
+        this.setPreferredSize(new Dimension (700, 645));
         this.setLayout(new BorderLayout());
-        this.add(WEST, BorderLayout.WEST);
-        this.add(CENTER, BorderLayout.CENTER);
-        this.add(EAST, BorderLayout.EAST);
-    }
-/*----------------------------------------------------------------------------*/
-    /**
-     * Resizes the frame and components when the upper-right resize button
-     * is pressed.
-     * 
-     * @param big If the frame is entering big mode.
-     */
-    private void smallMode(boolean big) {
-        this.removeAll();
-        
-        if (big) {
-            WEST.setPreferredSize(new Dimension(300, 600));
-            SCROLLW.setPreferredSize(new Dimension(290, 555));
-            CENTER.setPreferredSize(new Dimension(400, 600));
-            DESC.setPreferredSize(new Dimension(390, 350));
-            EAST.setPreferredSize(new Dimension(300, 600));
-            SCROLLE.setPreferredSize(new Dimension(290, 555));
-            DESC.setFont(myFont);
-        }
-        else {
-            WEST.setPreferredSize(new Dimension(300, 510));
-            SCROLLW.setPreferredSize(new Dimension(290, 465));
-            CENTER.setPreferredSize(new Dimension(400, 510));
-            DESC.setPreferredSize(new Dimension(390, 260));
-            EAST.setPreferredSize(new Dimension(300, 510));
-            SCROLLE.setPreferredSize(new Dimension(290, 465));
-            DESC.setFont(myFont.deriveFont(myFont.getSize() - 3.0f));
-        }
-
-        this.addComponents(big);
-        
-        Main.GAME_FRAME.pack();
+        add(WEST, BorderLayout.WEST);
+        add(EAST, BorderLayout.EAST);
     }
 // *****************************************************************************
 // </editor-fold> CONFIGURES AND ADDS ALL COMPONENTS
@@ -278,7 +258,7 @@ public class GUI extends JFXPanel {
      */
     public static void out(String txt) {
         if (! txt.equals(""))
-            DIAL.setText((txt));
+            DIAL_TXT.setText((txt));
     }
 /*----------------------------------------------------------------------------*/    
     /**
@@ -286,7 +266,7 @@ public class GUI extends JFXPanel {
      * @param txt a room description.
      */
     public static void descOut(String txt) {
-        DESC.setText(txt);
+        DESC_TXT.setText(txt);
     }
 /*----------------------------------------------------------------------------*/    
     /**
@@ -296,7 +276,7 @@ public class GUI extends JFXPanel {
      */
     public static void roomOut(String txt) {
         if (! txt.equals(""))
-            ROOM.setText(txt);
+            ROOM_LBL.setText(txt);
     }
 /*----------------------------------------------------------------------------*/    
     /**
@@ -304,7 +284,7 @@ public class GUI extends JFXPanel {
      * @param txt menu text
      */
     public static void menOut(String txt) {
-        MEN.setText(txt);
+        MEN_TXT.setText(txt);
     }
 /*----------------------------------------------------------------------------*/    
     /**
@@ -313,7 +293,7 @@ public class GUI extends JFXPanel {
      * @see Inventory#toString() 
      */
     public static void invOut(String txt) {
-        INV.setText(txt);
+        INV_TXT.setText(txt);
     }
 // *****************************************************************************
 // </editor-fold> COLLECT ALL GAME OUTPUT
@@ -373,24 +353,26 @@ public class GUI extends JFXPanel {
      * Prints the main menu of controls.
      */
     public static void toMainMenu() {
-        MEN.setText(Menus.MAIN_MENU);
+        MEN_TXT.setText(Menus.MAIN_MENU);
     }
 /*----------------------------------------------------------------------------*/
     public static void clearDesc() {
-        DESC.setText("");
+        DESC_TXT.setText("");
     }
 /*----------------------------------------------------------------------------*/
     public static void clearDialog() {
-        DIAL.setText("");
-        DIAL.setCaretPosition(0);
+        DIAL_TXT.setText("");
+        DIAL_TXT.setCaretPosition(0);
     }
 /*----------------------------------------------------------------------------*/
     public static void updateMovesAndScore(int moves, int score) {
-        INVLBL.setText(MOVES + moves + SCORE + score);
+        MOVE_LBL.setText("<html>Moves<br>" + moves + "</html>");
+        SCORE_LBL.setText("<html>Score<br>" + score + "</html>");
     }
 /*----------------------------------------------------------------------------*/
     public static void resetScroll() {
-        SCROLLW.getVerticalScrollBar().setValue(0);
+        SCROLLN.getVerticalScrollBar().setValue(0);
+        SCROLLS.getVerticalScrollBar().setValue(0);
     }
 /*----------------------------------------------------------------------------*/
     public static void giveFocus() {
@@ -402,9 +384,11 @@ public class GUI extends JFXPanel {
      */
     public static void randomizeColors() {
         Random rand = new Random();
-        Component[] compList = 
-        {ROOM, INVLBL, DIAL, DESC, INV, SIZE, MUTE, CCENTER,
-            KEYS, COLOR, PROMPT, MEN, SALAMAA, CSOUTH, INPUT};
+        Component[] compList = {
+            ROOM_LBL, DIAL_TXT, DESC_TXT, INV_TXT, SWAP, COLOR2, 
+            MUTE, WNSOUTH, MEN_PANEL, KEYS, COLOR1, PROMPT_LBL, 
+            MEN_TXT, WSOUTH, INPUT, MOVE_LBL, SCORE_LBL
+        };
         
         for (Component c : compList) {
             int r = rand.nextInt(255);
@@ -495,19 +479,24 @@ public class GUI extends JFXPanel {
     }
 /*----------------------------------------------------------------------------*/
     private class Button_Listener implements ActionListener {
-        /**
-         * Resizes the game panel, toggles the ambience, and changes key sound. 
-         * On some monitors, the frame has been to large.
-         * @param push A push of a button.
-         */
+        private boolean swapped = false;
+        
         @Override public void actionPerformed(ActionEvent push) { 
             Object o = push.getSource();
             
             
-            if (o.equals(SIZE)) { // Resize screen to be a bit smaller
+            if (o.equals(COLOR2)) { // Resize screen to be a bit smaller
                 AudioPlayer.playEffect(10);
-                smallMode(big = ! big);
-                SIZE.setText(big ? "Small" : "Big");
+                Color newColor = COLORS_LABEL.peek();
+                SWAP.setForeground(newColor);
+                MUTE.setForeground(newColor); 
+                KEYS.setForeground(newColor);
+                COLOR1.setForeground(newColor); 
+                COLOR2.setForeground(newColor);
+                ROOM_LBL.setForeground(newColor);
+                MOVE_LBL.setForeground(newColor);
+                SCORE_LBL.setForeground(newColor);
+                COLORS_LABEL.offer(COLORS_LABEL.poll());
             }
             else if (o.equals(MUTE)) { // Toggles ambience
                 MUTE.setText(MUTE.getText().equals("Mute") ? "Mute all" : 
@@ -515,14 +504,30 @@ public class GUI extends JFXPanel {
                 AudioPlayer.toggleMute();
                 AudioPlayer.playEffect(10);
             }
-            else if (o.equals(COLOR)) { // Toggles text color
+            else if (o.equals(COLOR1)) { // Toggles text color
                 AudioPlayer.playEffect(10);
-                Color newColor = COLORS.peek();
-                MEN.setForeground(newColor);
-                INV.setForeground(newColor);
-                DESC.setForeground(newColor);
-                DIAL.setForeground(newColor);
-                COLORS.offer(COLORS.poll());
+                Color newColor = COLORS_DIAL.peek();
+                MEN_TXT.setForeground(newColor);
+                INV_TXT.setForeground(newColor);
+                DESC_TXT.setForeground(newColor);
+                DIAL_TXT.setForeground(newColor);
+                COLORS_DIAL.offer(COLORS_DIAL.poll());
+            }
+            else if (o.equals(SWAP)) {
+                AudioPlayer.playEffect(10);
+                swapped = ! swapped;
+                
+                GUI.this.setVisible(false);
+                
+                if (swapped) {
+                    EAST.add(SCROLLS, BorderLayout.NORTH);
+                    EAST.add(SCROLLN, BorderLayout.SOUTH);
+                } else {
+                    EAST.add(SCROLLN, BorderLayout.NORTH);
+                    EAST.add(SCROLLS, BorderLayout.SOUTH);
+                }
+                
+                GUI.this.setVisible(true);
             }
             else { // Changes key click noise
                 KEYSOUND.offer(KEYSOUND.poll());

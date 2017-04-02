@@ -6,4 +6,6 @@ package A_Super;
  * @see A_Main.Player#findStaircase(A_Super.Direction) 
  * @author Kevin Rapa
  */
-public interface Climbable {}
+public interface Climbable {
+    public Direction getDir();
+}

@@ -30,7 +30,7 @@ public class Catacomb extends Room {
     protected static int[] jewelCoords;
 // ============================================================================    
     public Catacomb(String ID, Furniture wall, Furniture ceiling) {
-        super("in the catacombs", ID);
+        super("Catacombs", ID);
 
         StringBuilder builder = new StringBuilder(300);
         

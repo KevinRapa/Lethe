@@ -24,6 +24,8 @@ public final class Id {
         LOOK = "LOOK",  IHA1 = "IHA1",  IHA2 = "IHA2",  WOW1 = "WOW1", 
         WOW2 = "WOW2",  WBAL = "WBAL",  SQUA = "SQUA",  CLOS = "CLOS",
         WOW3 = "WOW3",  SHAR = "SHAR",  SHA1 = "SHA1",  SHA2 = "SHA2",
+        CEL1 = "CEL1",  CEL2 = "CEL2",  CEL3 = "CEL3",  CEL4 = "CEL4",
+        CEL5 = "CEL5",  CEL6 = "CEL6",
             
         CBNT = "CBNT", //SHA2 csbinet key.  
             

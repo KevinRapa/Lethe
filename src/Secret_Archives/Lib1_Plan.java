@@ -16,17 +16,15 @@ public class Lib1_Plan extends Note {
         super(name);
         this.description = "----- Vessel proposal ----- " +
                            "--------------------------- " +
-                           " " +
                            "  O-Si-O-Si-O-Si-O-Si-O-Si-O " +
-                           "     O	       O	 O " +
+                           "     O	      O	        O " +
                            "    O-Si-O-Si-O-Si-O-Si-O-Si-O " +
-                           "          O	    O " +
+                           "          O	   O " +
                            "         O-Si-O-Si-O-Si-O-Si-O-Si-O " +
-                           "     O	       O	 O " +
+                           "     O	      O	        O " +
                            "    O-Si-O-Si-O-Si-O-Si-O-Si-O " +
-                           "          O	    O " +
-                           "         O-Si-O-Si-O-Si-O-Si-O-Si-O " +
-                           "\t\t\t\tShould function. Orbicular silicate " +
+                
+                           "\t\t\t\tOrbicular silicate " +
                            "containing a stabilized kryptonic " +
                            "aether. -Rhadamanthus ";
     }

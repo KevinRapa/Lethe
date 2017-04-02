@@ -4,7 +4,9 @@ import A_Main.GUI;
 import A_Main.Id;
 import A_Main.Main;
 import A_Main.Menus;
+import static A_Main.Names.LOOT_SACK;
 import A_Main.Player;
+import Foyer.LootSack;
 
 /**
  * @author Kevin Rapa
@@ -24,7 +26,7 @@ public class Endg extends Room {
             "you are being accompanied, but you are not afraid.";
         
         this.earlyWinDesc = 
-            "By an magnificant unforeseen display of self " +
+            "By an magnificent and unforeseen display of self " +
             "control, you turn your back to the ghastly " +
             "castle and backtrack along the path you came. " +
             "Your family is surely in worry and anxiously " +
@@ -44,9 +46,19 @@ public class Endg extends Room {
         GUI.menOut(Menus.ENTER);
         GUI.invOut("");
         int s = Player.getScore();
+        int p = Player.getInv().countPhylacteries();
         GUI.promptOut();
         
-        if (s >= 12000)
+        if (Player.hasItem(LOOT_SACK)) {
+            LootSack sack = (LootSack)Player.getInv().get(LOOT_SACK);
+            p += sack.countPhylacteries();
+        }
+            
+        if (p > 0)
+            GUI.out("");
+        else if (s == 12500)
+            GUI.out("");
+        else if (s >= 10000)
             GUI.out("You possess the wealth, cunning, and power to overcome "
                   + "any holy or unholy force that dare challenge you.");
         else if (s >= 7000)

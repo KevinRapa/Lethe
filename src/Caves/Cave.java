@@ -33,7 +33,7 @@ public class Cave extends Room {
     protected static Clip clip;
 // ============================================================================    
     public Cave(String ID, Furniture wall, Furniture ceiling) {
-        super("in a cave network", ID);
+        super("Cave network", ID);
         int X = COORDS[2], Y = COORDS[1]; // X and Y coordinates of this room.
 
         this.DISTANCE = (int)round(sqrt(  // Calculates DISTANCE from MS65.

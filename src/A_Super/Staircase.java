@@ -27,7 +27,7 @@ abstract public class Staircase extends Furniture implements Unmoveable {
         AudioPlayer.playEffect(15);
     }
 /*----------------------------------------------------------------------------*/
-    public Direction getDirection() {
+    public Direction getDir() {
         return DIR;
     }
 /*----------------------------------------------------------------------------*/

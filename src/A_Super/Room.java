@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.*;
 import A_Main.RoomGraph;
+import java.util.HashSet;
 /**
  * <p>
  * Represents one element in the game map array. 
@@ -41,14 +42,14 @@ public class Room implements Serializable {
     protected final int[] COORDS;               // Index coordinates of this room.
     protected boolean locked;                   // You cannot move into a locked room.
     protected String description;               // Description of the room.
-    protected ArrayList<String> adjacent;       // Rooms one could move to from this.
+    protected HashSet<String> adjacent;         // Rooms one could move to from this.
     protected ArrayList<Furniture> furnishings; // Holds furniture.
     protected static final String WALL_BARRIER = "There is a wall that way.";
     // CONSTRUCTOR ============================================================
     public Room(String name, String ID) {  
         this.NAME = name;
         this.ID = ID;
-        this.STD_RM_OUT = "You are " + name + ".";
+        this.STD_RM_OUT = name;
         this.locked = false;
         this.COORDS = RoomGraph.getCoords(this.ID); 
         this.adjacent = RoomGraph.getAdj(this.ID);

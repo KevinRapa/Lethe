@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Climbable;
+import A_Super.Direction;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -41,6 +42,10 @@ public class Gar2_Hose extends Furniture implements Climbable {
         Player.getInv().add(BRKNHOSE_REF);
         
         return this.actDialog;
+    }
+    // ========================================================================   
+    @Override public Direction getDir() {
+       return Direction.DOWN;
     }
     // ========================================================================     
 }

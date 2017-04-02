@@ -12,7 +12,7 @@ import java.util.Comparator;
  * @author Kevin Rapa
  */
 public class PlayerInventory extends Inventory {
-    private static final int MAX_SIZE = 15;
+    private static final int MAX_SIZE = 10;
     // ========================================================================
     public PlayerInventory(Item ... items) {
         super(items);

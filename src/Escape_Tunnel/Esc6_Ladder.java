@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Climbable;
+import A_Super.Direction;
 import A_Super.Furniture;
 import A_Super.Resetable;
 /**
@@ -50,6 +51,10 @@ public class Esc6_Ladder extends Furniture implements Resetable, Climbable {
         Player.getRoomObj(Id.SEWP).lock();
     }
     // ========================================================================  
+    @Override public Direction getDir() {
+       return Direction.UP;
+    }
+    // ========================================================================     
 }
 
 

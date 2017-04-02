@@ -2,8 +2,8 @@ package A_Main;
 
 import static A_Main.Id.*;
 import java.util.HashMap; 
-import java.util.ArrayList; 
 import java.util.Arrays; 
+import java.util.HashSet;
 /**************************************************************************** 
  * This class is used by each room when it is instantiated, and allows the 
  * room to fetch its own coordinates and adjacent rooms by passing its  
@@ -34,8 +34,9 @@ public class RoomGraph {
         // FLOOR 3 ROOM ID'S -------------------------------------------------- 
         OBS3, ATT1, LABO, FOY4, GAL6, GAL7, SST2, ATT2, BLS1, TOW1, CHS3, CHA1, 
         CHA2, 
-        // FLOOR 4 ROOM ID'S -------------------------------------------------- 
-        SOUL, TBAL, BLS2, TOW2, LQU1, LQU2, 
+        // FLOOR 4 ROOM ID'S --------------------------------------------------
+        // CEL rooms are actually under the Rotunda. They're here to save space
+        SOUL, TBAL, BLS2, TOW2, LQU1, LQU2, CEL1, CEL2, CEL3, CEL4, CEL5, CEL6,
         // BASEMENT ROOM ID'S ------------------------------------------------- 
         CAS1, CRY2, VAU1, CIS2, CIS1, SEW5, PRIS, TORC, CRY1, VAU2, CIS4, AARC, 
         SEW4, SEW3, SEW2, SEW1, VAUE, CIS3, OUB1, INTR, SEWP, DKCH, SEW0, ESC1, 
@@ -95,6 +96,8 @@ public class RoomGraph {
         // FLOOR 4 ROOM ADJS -------------------------------------------------- 
         {TBAL},                 {SOUL,TOW2},            {TOW2,BLS1}, 
         {TBAL,BLS2,LQU1},       {TOW2},                 {LQU1}, 
+        {CEL2},                 {CEL1, CEL4},           {CEL4, CEL5},
+        {CEL3, CEL2},           {CEL3},                 {},
         // BASEMENT ROOM ADJS ------------------------------------------------- 
         {CS35},                 {CRY1},                 {VAU2}, 
         {CIS3,CIS1},            {CIS2,SEW5},            {SEW4,CIS1,PRIS}, 
@@ -166,7 +169,8 @@ public class RoomGraph {
         {1,2,2}, {1,2,3}, {1,2,4}, {1,2,5}, {1,2,6}, {1,2,7}, {1,3,2}, {1,3,3}, 
         {1,3,4}, {1,3,5}, {1,3,8}, {1,4,8}, {1,5,8}, 
     // 4TH FLOOR COORDINATES -------------------------------------------------- 
-        {0,1,5}, {0,2,5}, {0,3,4}, {0,3,5}, {0,3,6}, {0,3,7}, 
+        {0,1,5}, {0,2,5}, {0,3,4}, {0,3,5}, {0,3,6}, {0,3,7}, {0,3,1}, {0,3,2},
+        {0,2,1}, {0,2,2}, {0,1,1}, {0,1,3},
     // BASEMENT COORDINATES --------------------------------------------------- 
         {4,3,5}, {4,3,6}, {4,3,8}, {4,4,1}, {4,4,2}, {4,4,3}, {4,4,4}, {4,4,5}, 
         {4,4,6}, {4,4,8}, {4,6,1}, {4,5,2}, {4,5,3}, {4,5,4}, {4,5,5}, {4,5,6}, 
@@ -219,8 +223,8 @@ public class RoomGraph {
      * @param ID A room  
      * @return A list of rooms adjacent to the room. 
      */ 
-    public static ArrayList<String> getAdj(String ID) { 
-        return new ArrayList<>(Arrays.asList(ADJACENTS.get(ID))); 
+    public static HashSet<String> getAdj(String ID) { 
+        return new HashSet<>(Arrays.asList(ADJACENTS.get(ID))); 
     }
     // ======================================================================== 
     /** 

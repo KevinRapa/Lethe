@@ -582,8 +582,13 @@ public final class Player {
                         
                         if (item.equals(Inventory.NULL_ITEM))
                             GUI.out("There's nothing there.");
-                        else
+                        else if (item instanceof Key)
+                            GUI.out("It's a small key.");
+                        else {
                             GUI.out(item.getDesc());
+                            GUI.menOut(Menus.ENTER);
+                            GUI.promptOut();
+                        }
                     }
                     else // Notifies that a list wasn't entered.
                         GUI.out("Did you... forget to enter something there?");
@@ -687,10 +692,8 @@ public final class Player {
             // Matches a non-cave/catacomb room ID, which keys use as types.
             addToKeyRing(take, furnInv);
             AudioPlayer.playEffect(3);
-            GUI.out("You put the " + take + " into your key ring.");
         }
         else {
-            GUI.out("You take the " + take);
             Player.setLastInteract_Item(take.toString());
             furnInv.give(take, Player.inv);                 
         }   
@@ -702,7 +705,6 @@ public final class Player {
      * @param store The item being stored.
      */
     public static void evalStore(Inventory furnInv, Item store) {
-        GUI.out("You store the " + store);
         Player.inv.give(store , furnInv); 
 
         if (store.toString().equals(Player.shoes))
@@ -873,11 +875,11 @@ public final class Player {
                 GUI.out(f.interact(dir.toString()));
                 return;
             }
-            if (f instanceof Staircase && ((Staircase)f).getDirection() == dir) {
+            if (f instanceof Staircase && ((Staircase)f).getDir() == dir) {
                 GUI.out(f.interact("climb"));
                 return;
             }
-            if (f instanceof Climbable) {
+            if (f instanceof Climbable && ((Climbable)f).getDir() == dir) {
                 GUI.out(f.interact("climb"));
                 return;
             }
@@ -899,10 +901,10 @@ public final class Player {
             String message;
             
             // Displays player score
-            if (score >= 18500)
+            if (score >= 19000)
                 message = "You possess the wealth, cunning, and power to overcome "
                         + "any holy or unholy force that dare challenge you.";
-            else if (score >= 13500)
+            else if (score >= 14000)
                 message = "Your wealth is beyond the dreams of avarice and "
                         + "will earn you a divine seat in the afterlife.";
             else if (score >= 11500)
@@ -951,7 +953,7 @@ public final class Player {
                         + "and wish only to bask eternally in your riches.";
             
             GUI.out("Your score is " + score + ". You have discovered " + t + 
-                    " out of 11 legendary treasures and " + p + 
+                    " out of 15 legendary treasures and " + p + 
                     " out of 5 phylacteries so far. " + message);
             
             s.useEvent();
@@ -973,7 +975,8 @@ public final class Player {
     }
     // ========================================================================  
     private static void printInv(Inventory furnInv) {
-        GUI.invOut("You find:" + NL + furnInv + NL + "You are carrying:" + NL + Player.inv);
+        GUI.invOut("You are carrying:" + NL + Player.inv);
+        GUI.out("You find:" + NL + furnInv);
     }
     // ========================================================================  
     /**

@@ -116,7 +116,7 @@ public class AudioPlayer {
         putAllTracks(deepCave,          MS65, MS66);
         putAllTracks(tombs,             TM16, TM66, TM32, AN65, AN55, VAUE);
         putAllTracks(sewerTunnels,      SEW0, SEW1, SEW2, SEW3, SEW4, SEW5);
-        putAllTracks(cistern,           CIS1, CIS2, CIS3, CIS4, CIS5);
+        putAllTracks(cistern,           CIS1, CIS2, CIS3, CIS4, CIS5, CEL6);
         putAllTracks(aeolianHarp,       OUB1, OU62, AARC);
         putAllTracks(prisonCustom,      PRIS, TORC);
         putAllTracks(sewerCogwork,      INTR, ESC1, ESC2, ESC3, ESC4, ESC5, 
@@ -125,6 +125,7 @@ public class AudioPlayer {
         putAllTracks(titleTrack,        BLS1, BLS2, TOW1, TOW2, LQU1, LQU2, 
                                         SOUL, ENDG);
         putAllTracks(antechamberCustom, FOYW, VAUE, VAU1, VAU2); 
+        putAllTracks(rotundaCustom, ROTU, CEL1, CEL2, CEL3, CEL4, CEL5);
         
         put(HADS, new Media(hadesTrack.toURI().toString()));
         put(GAL1, new Media(gal1wCustom.toURI().toString()));         
@@ -135,8 +136,7 @@ public class AudioPlayer {
         put(DST1, new Media(dungeonStairs.toURI().toString()));    
         put(STUD, new Media(fireplace.toURI().toString()));              
         put(TBAL, new Media(tbalCustom.toURI().toString()));    
-        put(WORK, new Media(workshopCustom.toURI().toString()));         
-        put(ROTU, new Media(rotundaCustom.toURI().toString()));    
+        put(WORK, new Media(workshopCustom.toURI().toString()));     
         put(WBAL, new Media(westBalconyCustom.toURI().toString()));     
         put(COUS, new Media(deepSpace.toURI().toString()));    
         put(SEWP, new Media(sewpCustom.toURI().toString()));           
