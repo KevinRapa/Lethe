@@ -45,7 +45,7 @@ public class LootSack extends Item {
         int result = 0;
         
         for (Item i : this.INV) {
-            if (i.getScore() == 1500 || i.getScore() == 2000)
+            if (i.getScore() == 2000 || i.getScore() == 3000)
                 result++;
         }
         
@@ -58,7 +58,7 @@ public class LootSack extends Item {
         
         for (Item i : this.INV) {
             int j = i.getScore();
-            if (j == 500 || j == 1000 || j == 5000)
+            if (j == 500 || j == 1000 || j == 1500)
                 result++;
         }
         

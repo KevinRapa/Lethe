@@ -92,10 +92,9 @@ public class PlayerInventory extends Inventory {
     public int countPhylacteries() {
         int result = 0;
         
-        for (Item i : CONTENTS) {
-            if (i.getScore() == 1500 || i.getScore() == 2000)
+        for (Item i : CONTENTS) 
+            if (i.getScore() == 2000 || i.getScore() == 3000)
                 result++;
-        }
         
         return result;
     }

@@ -118,21 +118,21 @@ public class Map {
         
         // The player may instead keep them as loot and have a different message
         // at the end of the game.
-        // TOTAL: 8000 points
+        // TOTAL: 11000 points
         
-        Item studBkPhy = new Stud_BookPhylactery(BOOK_PHYL, 1500);
-        Item kitcFrtPhy = new Kitc_FrtPhy(GLOWING_FRUIT, 1500);
-        Item factumPhy = new Factum(FACTUM, 2000);
-        Item vauChlPhy = new Vau_ChalicePhylactery(GLOWING_CHALICE, 1500);
-        Item towScptrPhy = new Tow_ScepterPhylactery(GLOWING_SCEPTER, 1500);
+        Item studBkPhy = new Stud_BookPhylactery(BOOK_PHYL, 2000);
+        Item kitcFrtPhy = new Kitc_FrtPhy(GLOWING_FRUIT, 2000);
+        Item factumPhy = new Factum(FACTUM, 3000);
+        Item vauChlPhy = new Vau_ChalicePhylactery(GLOWING_CHALICE, 2000);
+        Item towScptrPhy = new Tow_ScepterPhylactery(GLOWING_SCEPTER, 2000);
 
         // </editor-fold>
         // ---------------------------------------------------------------------  
-        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SPECIAL TRESURE">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SPECIAL TREASURE">
         
         // Finding treasure is a secondary objective. All items have value, but
         // these have the highest of all non-phylactery items. Player must put
-        // them in the loot sack to raise score. TOTAL: 15 treasures, 12500 points
+        // them in the loot sack to raise score. TOTAL: 15 treasures, 9000 points
 
         // Found in a box in the attic.
         Item attcVln = new BreakableItem(STRADIVARIUS, 
@@ -208,13 +208,13 @@ public class Map {
               + "brown hair and pale, perfect skin, as well as a slight grin. "
               + "Interesting, as you note that she also lacks eyebrows.", 500);
         
-        // Obtained by collecting all phylacteries and other treasures, 
+        // Obtained by obtaining a high enough score, 
         // commiting suicide, and returning using the Factum.
         Item typhos = new Item(TYPHOS, "The small golden trophy is protected in "
                 + "a red, glowing aura. It depicts a wicked creature- winged, "
                 + "with sharp teeth and an many snake-like tendrils where its "
                 + "legs would be. This trophy identifies you as the wealthiest, "
-                + "most cunning adventurer, though it was not your intention.", 5000);
+                + "most cunning adventurer, though it was not your intention.", 1500);
         
         // <editor-fold defaultstate="collapsed" desc="Philosopher's stone set">
         // These items create the philosopher's stone treature.

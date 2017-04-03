@@ -45,56 +45,78 @@ public class Endg extends Room {
         GUI.clearDialog();
         GUI.menOut(Menus.ENTER);
         GUI.invOut("");
-        int s = Player.getScore();
+        int score = Player.getScore();
+        int t = 0;
         int p = Player.getInv().countPhylacteries();
         GUI.promptOut();
         
         if (Player.hasItem(LOOT_SACK)) {
             LootSack sack = (LootSack)Player.getInv().get(LOOT_SACK);
             p += sack.countPhylacteries();
+            t += sack.countTreasures();
         }
-            
-        if (p > 0)
-            GUI.out("");
-        else if (s == 12500)
-            GUI.out("");
-        else if (s >= 10000)
-            GUI.out("You possess the wealth, cunning, and power to overcome "
-                  + "any holy or unholy force that dare challenge you.");
-        else if (s >= 7000)
-            GUI.out("You have amassed a grand fortune which will certainly, should you "
-                  + "return, grant you any Earthly desire.");
-        else if (s >= 5500)
-            GUI.out("You have amassed a grand fortune which would earn you the respect "
-                  + "of all kings, queens, popes, and the like.");
-        else if (s >= 4500)
-            GUI.out("Your riches would earn you the respect of all kings.");
-        else if (s >= 3500)
-            GUI.out("Your taste is luxury is formidible.");
-        else if (s >= 2500)
-            GUI.out("You're skilled in the hunt for treasure, though "
-                  + "you have so much more room to grow.");
-        else if (s >= 1500)
-            GUI.out("Your riches will earn you the respect of many.");
-        else if (s >= 1000)
-            GUI.out("Your eye for wealth is strong. You will likely have much "
-                  + "to pawn off, should you return.");
-        else if (s >= 500)
-            GUI.out("You abide by your manly ethics to work hard and provide "
-                  + "for your family. Although, the thought of wealth visits you frequently.");
-        else if (s >= 250)
-            GUI.out("You are rich in character, a true fortune to be respected. "
-                  + "Material possession are secondary, of course.");
-        else if (s >= 0)
-            GUI.out("You have a humble spirit, and long not for possessions. "
-                  + "Your only wish, of course, is only to return home.");
+        
+        String message;
+        
+        if (score >= 19000)
+            message = "Your wealth transcends all understanding that "
+                    + "exists.";
+        else if (score >= 15000)
+            message = "You possess the wealth, cunning, and power to overcome "
+                    + "any holy or unholy force that dare challenge you.";
+        else if (score >= 13000)
+            message = "Your wealth is beyond the dreams of avarice and "
+                    + "will earn you a divine seat in the afterlife.";
+        else if (score >= 11000)
+            message = "Your wealth is legendary and would bring a tear to Plutus' eye.";
+        else if (score >= 9000)
+            message = "Your wealth is nearly insurmountable and would "
+                    + "stun any man, woman, and God alike.";
+        else if (score >= 7750)
+            message = "Your wealth is nearly insurmountable and would "
+                    + "stun all men and women alike.";
+        else if (score >= 6500)
+            message = "You have amassed a grand fortune which will certainly "
+                    + "grant you any Earthly desire.";
+        else if (score >= 5250)
+            message = "You have amassed a grand fortune which instills fear in "
+                    + "all kings and queens.";
+        else if (score >= 4000)
+            message = "Your riches would earn you the respect of many kings.";
+        else if (score >= 2750)
+            message = "You are a top contender in the hunt for treasure.";
+        else if (score >= 1500)
+            message = "You're skilled in the hunt for treasure, though "
+                    + "you have such a long way to go.";
+        else if (score >= 750)
+            message = "Your eye for wealth is strong. You will likely have much "
+                    + "to pawn off, should you return.";
+        else if (score >= 500)
+            message = "You abide by your manly ethics to work hard and provide "
+                    + "for your family. Although, the thought of wealth visits you frequently.";
+        else if (score >= 250)
+            message = "You are rich in character, a true fortune to be respected. "
+                    + "Material possessions are secondary, of course.";
+        else if (score >= 0)
+            message = "You have a humble spirit, and long not for possessions.";
         else
-            GUI.out("You have eccentric, perplexing tastes. But so long "
-                  + "as hope of returning home lingers, you spirit remains strong.");
-
+            message = "You have eccentric, perplexing tastes.";
+        
+        if (p > 0)
+            message += " Watch yourself, for you hold the soul of a powerful mage, "
+                    + "and it may warp you the same way it did him.";
+        
+        GUI.out("Your score is " + score + ". You have discovered " + t + 
+                " out of 15 legendary treasures and " + p + 
+                " out of 5 phylacteries. " + message);
+        
+        GUI.out(message);
         GUI.promptOut();
+        
+        
+        
         Main.exitGame();
-        return null;
+        return "";
     }
 // ============================================================================
 }
