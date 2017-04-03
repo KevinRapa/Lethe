@@ -1,201 +1,201 @@
 All sounds processed using Audacity
-All effects found from Freesound.org -- I did not create any of them.
+All effects found from Freesound.org 
+  -- I did not create any of them.
 
-Key ring noise
-	https://www.freesound.org/people/rwm28/sounds/48189/
-	keys.wav -- rwm28
+Key jingling
+  https://www.freesound.org/people/rwm28/sounds/48189/
+  keys.wav -- rwm28
 
 Page turn
-	https://www.freesound.org/people/SmartWentCody/sounds/179007/
-	Book Page Turning.wav -- SmartWentCody
+  https://www.freesound.org/people/SmartWentCody/sounds/179007/
+  Book Page Turning.wav -- SmartWentCody
 
 Footsteps and inventory noise
-	https://www.freesound.org/people/LittleRobotSoundFactory/
-	LittleRobotSoundFactory
+  https://www.freesound.org/people/LittleRobotSoundFactory/
+  LittleRobotSoundFactory
 
-Cave drips
-	https://www.freesound.org/people/everythingsounds/sounds/199515/
-	Cave Drips -- everythingsounds
+Cave water droplets
+  https://www.freesound.org/people/everythingsounds/sounds/199515/
+  Cave Drips -- everythingsounds
 
-Metal swinging
-	https://www.freesound.org/people/eguaus/sounds/322588/
-	Columpio -- equaus
+Squeaky metal swinging
+  https://www.freesound.org/people/eguaus/sounds/322588/
+  Columpio -- equaus
 
-Static noise -- Gallery third floor west
-	https://www.freesound.org/people/dotY21/sounds/335206/
-	Static Crush -- dotY21
+Static noise -- Gallery loft
+  https://www.freesound.org/people/dotY21/sounds/335206/
+  Static Crush -- dotY21
 
 Latch noise -- Vesibule
-	https://www.freesound.org/people/mhtaylor67/sounds/126041/
-	Gate latch -- mhtaylor67
+  https://www.freesound.org/people/mhtaylor67/sounds/126041/
+  Gate latch -- mhtaylor67
 
 Locked door
-	https://www.freesound.org/people/Benagain/sounds/321087/
-	Door Locked -- Benagain
+  https://www.freesound.org/people/Benagain/sounds/321087/
+  Door Locked -- Benagain
 
 Wall Thump
-	https://www.freesound.org/people/Reitanna/sounds/332670/
-	low thump.wav -- Reitanna
+  https://www.freesound.org/people/Reitanna/sounds/332670/
+  low thump.wav -- Reitanna
 
 Gate slam
-	https://www.freesound.org/people/Hybrid_V/sounds/320737/
-	Creepy Dungeon Door Slam -- Hybrid_V
+  https://www.freesound.org/people/Hybrid_V/sounds/320737/
+  Creepy Dungeon Door Slam -- Hybrid_V
 
-door closing
-	https://www.freesound.org/people/Checkseven/sounds/245823/
-	Door Close -- Checkseven
+Door closing
+  https://www.freesound.org/people/Checkseven/sounds/245823/
+  Door Close -- Checkseven
 	
 basic Click
-	https://www.freesound.org/people/KorgMS2000B/sounds/54405/
-	KorgMS2000B -- Button Click.wav
+  https://www.freesound.org/people/KorgMS2000B/sounds/54405/
+  KorgMS2000B -- Button Click.wav
 
-button press
-	https://www.freesound.org/people/GreekIrish/sounds/254713/
-	Projector Button Push.wav -- GreekIrish
+Button press
+  https://www.freesound.org/people/GreekIrish/sounds/254713/
+  Projector Button Push.wav -- GreekIrish
 
-lever pull
-	https://www.freesound.org/people/BMacZero/sounds/94120/
-	Mechanical1.wav -- BMacZero
+Lever pull
+  https://www.freesound.org/people/BMacZero/sounds/94120/
+  Mechanical1.wav -- BMacZero
 
-unlocking door
-	https://www.freesound.org/people/qubodup/sounds/160215/
-	Unlocking Door Lock -- qubodup
+Unlocking door
+  https://www.freesound.org/people/qubodup/sounds/160215/
+  Unlocking Door Lock -- qubodup
 
 Black smith -- Workshop
-	https://www.freesound.org/people/thefilmbakery/sounds/137836/
- 	Blacksmith Workshop.WAV -- thefilmbakery
+  https://www.freesound.org/people/thefilmbakery/sounds/137836/
+  Blacksmith Workshop.WAV -- thefilmbakery
 
+Wooden steps
+  https://www.freesound.org/people/thearxx08/sounds/265306/
+  climbing the ladder.mp3 -- thearxx08
 
-wooden stairs
-	https://www.freesound.org/people/thearxx08/sounds/265306/
-	climbing the ladder.mp3 -- thearxx08
+Stone steps
+  https://www.freesound.org/people/Erdie/sounds/41579/
+  steps-on-stone01.ogg -- Erdie
 
-stone steps
-	https://www.freesound.org/people/Erdie/sounds/41579/
-	steps-on-stone01.ogg -- Erdie
+Climbing ladder
+  https://www.freesound.org/people/MalMan35/sounds/344196/
+  ladder.wav -- MalMan35
 
-ladder
-	https://www.freesound.org/people/MalMan35/sounds/344196/
-	ladder.wav -- MalMan35
-
-sonar -- back hall
-	https://www.freesound.org/people/tiagusilva37/sounds/324107/
-	Sonar.wav -- tiagusilva37
+Sonar
+  https://www.freesound.org/people/tiagusilva37/sounds/324107/
+  Sonar.wav -- tiagusilva37
 
 Clank
-	https://www.freesound.org/people/ignotus/sounds/20327/
-	clunk.flac -- ignotus
+  https://www.freesound.org/people/ignotus/sounds/20327/
+  clunk.flac -- ignotus
 
-Valve
-	https://www.freesound.org/people/FreqMan/sounds/31379/
-	FreqMan -- valve 2.wav
+Valve turn
+  https://www.freesound.org/people/FreqMan/sounds/31379/
+  FreqMan -- valve 2.wav
 
 Rushing water
-	https://www.freesound.org/people/jc144940/sounds/178734/
-	Rushing River Water.aif -- jc144940
+  https://www.freesound.org/people/jc144940/sounds/178734/
+  Rushing River Water.aif -- jc144940
 
 window opening
-	https://www.freesound.org/people/Taira%20Komori/sounds/212013/
-	small_window_C.mp3 -- Taira Komori
+  https://www.freesound.org/people/Taira%20Komori/sounds/212013/
+  small_window_C.mp3 -- Taira Komori
 
-key dropping
-	https://www.freesound.org/people/VSokorelos/sounds/346168/
-	Coin Drop.wav -- VSokorelos
+Key dropping on floor
+  https://www.freesound.org/people/VSokorelos/sounds/346168/
+  Coin Drop.wav -- VSokorelos
 
-Foyer gate switch
-	https://www.freesound.org/people/viaaico2013/sounds/263532/
-	viaaico2013 -- irongate2.WAV
+Foyer gate moving
+  https://www.freesound.org/people/viaaico2013/sounds/263532/
+  viaaico2013 -- irongate2.WAV
 
 Sparkles
-	https://www.freesound.org/people/tec%20studios/sounds/360835/
-	Fantasy SFX 006.wav -- tec studios
+  https://www.freesound.org/people/tec%20studios/sounds/360835/
+  Fantasy SFX 006.wav -- tec studios
 	
 Rocks Crumbling
-	https://www.freesound.org/people/adamgryu/sounds/336023/
-	Rocks.wav -- adamgryu
+  https://www.freesound.org/people/adamgryu/sounds/336023/
+  Rocks.wav -- adamgryu
 
 Wood falling
-	https://www.freesound.org/people/RutgerMuller/sounds/103997/
-	RutgerMuller -- Wood Hit in Hall.aif
+  https://www.freesound.org/people/RutgerMuller/sounds/103997/
+  RutgerMuller -- Wood Hit in Hall.aif
 
 Enchanting Table pop
-	https://www.freesound.org/people/OtisJames/sounds/249613/
-	OtisJames -- explosionsfx.wav
+  https://www.freesound.org/people/OtisJames/sounds/249613/
+  OtisJames -- explosionsfx.wav
 
-Hand Drill
-	https://www.freesound.org/people/Benboncan/sounds/58497/
-	Benboncan -- Hand Powered Pillar Drill.wav
+Drilling hole
+  https://www.freesound.org/people/Benboncan/sounds/58497/
+  Benboncan -- Hand Powered Pillar Drill.wav
 
-Digging
-	https://www.freesound.org/people/Robinhood76/sounds/79560/
-	Robinhood76 -- 01259 wet sand digging 1.wav
+Digging noise
+  https://www.freesound.org/people/Robinhood76/sounds/79560/
+  Robinhood76 -- 01259 wet sand digging 1.wav
 
 Metal ping
-	https://www.freesound.org/people/timgormly/sounds/170964/
-	Metal Ping1.aif -- timgormly
+  https://www.freesound.org/people/timgormly/sounds/170964/
+  Metal Ping1.aif -- timgormly
 
 Hose climb
-	https://www.freesound.org/people/Adam_N/sounds/330249/
-	Rubber squeeze 6.wav -- Adam_N
+  https://www.freesound.org/people/Adam_N/sounds/330249/
+  Rubber squeeze 6.wav -- Adam_N
 
 Hose snap
-	https://www.freesound.org/people/alienistcog/sounds/124981/
-	leather-belt-snap.aif -- alienistcog
+  https://www.freesound.org/people/alienistcog/sounds/124981/
+  leather-belt-snap.aif -- alienistcog
 
-Gallery statue rumbling
-	https://www.freesound.org/people/martian/sounds/216605/
-	heavy metal trolley rolling rumbling -- martian
+Rumbling (Gallery statue)
+  https://www.freesound.org/people/martian/sounds/216605/
+  heavy metal trolley rolling rumbling -- martian
 
-Fire dousing
-	https://www.freesound.org/people/Suprasummun/sounds/188880/
-	Cold Water in a Hot Frying Pan.wav -- Suprasummun
+Fire extinguish
+  https://www.freesound.org/people/Suprasummun/sounds/188880/
+  Cold Water in a Hot Frying Pan.wav -- Suprasummun
 
-Library stairs flattening
-	https://www.freesound.org/people/bennstir/sounds/80929/
-	Door slam 2.wav -- bennstir
+Bang (Kicking the door)
+  https://www.freesound.org/people/bennstir/sounds/80929/
+  Door slam 2.wav -- bennstir
 
 Wood sliding
-	https://www.freesound.org/people/Evil-Dog/sounds/265338/
-	Sliding Wooden Door.wav -- Evil-Dog
+  https://www.freesound.org/people/Evil-Dog/sounds/265338/
+  Sliding Wooden Door.wav -- Evil-Dog
 
-Filling bucket
-	https://www.freesound.org/people/qubodup/sounds/210424/
-	Scooping Water -- qubodup
+Filling bucket with water
+  https://www.freesound.org/people/qubodup/sounds/210424/
+  Scooping Water -- qubodup
 
-medallion placing noise
-	https://www.freesound.org/people/hanneswannerberger/sounds/275630/
-	hanneswannerberger -- Close switch/hatch on tape machine
+Click noise (Medallion placing noise)
+  https://www.freesound.org/people/hanneswannerberger/sounds/275630/
+  hanneswannerberger -- Close switch/hatch on tape machine
 
-bunsen burner
-	https://www.freesound.org/people/MWLANDI/sounds/85839/
-	MWLANDI -- Gas Stove Turn Off 4.aif
+Bunsen burner
+  https://www.freesound.org/people/MWLANDI/sounds/85839/
+  MWLANDI -- Gas Stove Turn Off 4.aif
 
 Zombie moan
-	https://www.freesound.org/people/missozzy/sounds/169836/
-	Zombie 19 -- missozzy
+  https://www.freesound.org/people/missozzy/sounds/169836/
+  Zombie 19 -- missozzy
 
-Metal ladder climb
-	https://www.freesound.org/people/DasDeer/sounds/161809/
-	Ladder.WAV -- DasDeer
+Climbing a metal ladder
+  https://www.freesound.org/people/DasDeer/sounds/161809/
+  Ladder.WAV -- DasDeer
 
-Grate move
-	https://www.freesound.org/people/acclivity/sounds/20347/
-	ManholeRemove3.wav -- acclivity
+Metal grate moving
+  https://www.freesound.org/people/acclivity/sounds/20347/
+  ManholeRemove3.wav -- acclivity
 
-Teleporter zap
-	https://www.freesound.org/people/fons/sounds/62363/
-	fons -- zap 2.wav
+Electronic zap
+  https://www.freesound.org/people/fons/sounds/62363/
+  fons -- zap 2.wav
 
-Concrete block
-	https://www.freesound.org/people/FreqMan/sounds/25846/
-	concrete blocks moving2.wav -- FreqMan
-	https://www.freesound.org/people/FreqMan/sounds/25847/
-	concrete blocks moving3.wav -- FreqMan
+Concrete block slide
+  https://www.freesound.org/people/FreqMan/sounds/25846/
+  concrete blocks moving2.wav -- FreqMan
+  https://www.freesound.org/people/FreqMan/sounds/25847/
+  concrete blocks moving3.wav -- FreqMan
 	
-Piano
-	https://www.freesound.org/people/ecfike/sounds/183500/
-	Piano Cord.wav -- ecfike
+Piano keys
+  https://www.freesound.org/people/ecfike/sounds/183500/
+  Piano Cord.wav -- ecfike
 
-Harp
-	https://www.freesound.org/people/adriann/sounds/149187/
-	Harp Strum.wav -- adriann
+Harp playing
+  https://www.freesound.org/people/adriann/sounds/149187/
+  Harp Strum.wav -- adriann
