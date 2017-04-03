@@ -1,148 +1,143 @@
+AMBIENT SOUNDTRACK SOURCES
 All tracks processed using Audacity
 All tracks found from Freesound.org -- I did not create any of them.
 
-Title theme, top of castle
-	https://www.freesound.org/people/ShadyDave/sounds/325647/
-	ShadyDave -- expressions of the mind (Piano loop)
+Title theme -- Top balcony
+  https://www.freesound.org/people/ShadyDave/sounds/325647/
+  ShadyDave -- expressions of the mind (Piano loop)
 
 Wind with creaking -- Courtyard
-	https://www.freesound.org/people/spoonbender/sounds/244942/
-	 Wind Through Trees 3b -- spoonbender
+  https://www.freesound.org/people/spoonbender/sounds/244942/
+  Wind Through Trees 3b -- spoonbender
 
-Creepy choir -- Attic, Side hallway
-	https://www.freesound.org/people/jobro/sounds/46712/
-	Dramatic choir 1.wav -- jobro
+Creepy choir -- Attic, side hallway
+  https://www.freesound.org/people/jobro/sounds/46712/
+  Dramatic choir 1.wav -- jobro
 
 Creepy choir -- Antechamber
-	https://www.freesound.org/people/veedgo/sounds/101880/
-	harmonic_choir.wav -- veedgo
+  https://www.freesound.org/people/veedgo/sounds/101880/
+  harmonic_choir.wav -- veedgo
 
 Creepy choir -- Rotunda
-	https://www.freesound.org/people/BrainClaim/sounds/273804/
-	Dark Choir Singing -- BrainClaim
+  https://www.freesound.org/people/BrainClaim/sounds/273804/
+  Dark Choir Singing -- BrainClaim
 
-Holy choir -- Gallery
-	https://www.freesound.org/people/InSintesi/sounds/348352/
-	Supernova Choir 1.wav -- InSintesi
+Holy choir -- Gallery, marble hall
+  https://www.freesound.org/people/InSintesi/sounds/348352/
+  Supernova Choir 1.wav -- InSintesi
 
 Fire -- Study
-	https://www.freesound.org/people/dobroide/sounds/120644/
-	20110503_fireplace.00.wav -- dobroide
+  https://www.freesound.org/people/dobroide/sounds/120644/
+  20110503_fireplace.00.wav -- dobroide
 
-Fire -- West Balcony
-	https://www.freesound.org/people/juskiddink/sounds/215658/
-	Fireplace.wav -- juskiddink
+Beacon -- West balcony
+  https://www.freesound.org/people/juskiddink/sounds/215658/
+  Fireplace.wav -- juskiddink
 
-Fire -- West Wing
-	https://www.freesound.org/people/silencyo/sounds/81801/
-	silencyo -- Silencyo_CC_Fire in Fireplace_Close Up_Reverberant2.aif
+Fire -- West wing
+  https://www.freesound.org/people/silencyo/sounds/81801/
+  silencyo -- Silencyo_CC_Fire in Fireplace_Close Up_Reverberant2.aif
 
 Heavy wind -- Courtyard, Top balcony
-	https://www.freesound.org/people/RogerBoyX69/sounds/338721/
-	Inside a Tornado.wav -- RogerBoyX69
+  https://www.freesound.org/people/RogerBoyX69/sounds/338721/
+  Inside a Tornado.wav -- RogerBoyX69
 
 Spooky wind whistling -- Foyer, Vestibule
-	https://www.freesound.org/people/klankbeeld/sounds/212443/
-	howling wind inside 01 131230_01.wav -- klankbeeld
+  https://www.freesound.org/people/klankbeeld/sounds/212443/
+  howling wind inside 01 131230_01.wav -- klankbeeld
 
-Crashing Waves -- Back balcony
-	https://www.freesound.org/people/juskiddink/sounds/78419/
-	Waves crashing on stone jetty..wav -- juskiddink
+Crashing waves -- Back balcony
+  https://www.freesound.org/people/juskiddink/sounds/78419/
+  Waves crashing on stone jetty..wav -- juskiddink
 
 African drums -- Gallery second floor west
-	https://www.freesound.org/people/JarredGibb/sounds/263889/
-	Rattle Drum -- JarredGibb
+  https://www.freesound.org/people/JarredGibb/sounds/263889/
+  Rattle Drum -- JarredGibb
 
-Koto -- Gallery first floor west
-	https://www.freesound.org/people/ERH/sounds/48929/
-	abs o6 87 koto.wav -- ERH
+Exotic instrument -- Gallery first floor west
+  https://www.freesound.org/people/ERH/sounds/48929/
+  abs o6 87 koto.wav -- ERH
 
-Iron hall wind noise
-	https://www.freesound.org/people/omnisounddesign/sounds/335703/
-	Interior Wind Noise_Zoom H6.wav -- omnisounddesign
+Wind noise -- Side hallway
+  https://www.freesound.org/people/omnisounddesign/sounds/335703/
+  Interior Wind Noise_Zoom H6.wav -- omnisounddesign
 
-Deep whirring -- Dungeon staircase
-	https://www.freesound.org/people/AniCator/sounds/100482/
-	sci-fi - ambient 03.wav -- AniCator
+Whirring -- Dungeon staircase
+  https://www.freesound.org/people/AniCator/sounds/100482/
+  sci-fi - ambient 03.wav -- AniCator
 
 Whirring -- West wing
-	https://www.freesound.org/people/Karma-Ron/sounds/182047/
-	karma-ron - fx background drone spaceship (requested).wav -- Karma-Ron	
+  https://www.freesound.org/people/Karma-Ron/sounds/182047/
+  karma-ron - fx background drone spaceship (requested).wav -- Karma-Ron	
 
-Creepy organ -- Chapel
-	https://www.freesound.org/people/Setuniman/sounds/155710/
-	Setuniman -- creeping background 0M_14Tm2
+Organ melody -- Chapel
+  https://www.freesound.org/people/Setuniman/sounds/155710/
+  Setuniman -- creeping background 0M_14Tm2
 
-Harp piece -- Parlor, Jade Hall, Garden
-	https://www.freesound.org/people/cormi/sounds/169035/
-	HArp4_D.wav -- cormi
+Harp piece -- Parlor, Jade hall, garden
+  https://www.freesound.org/people/cormi/sounds/169035/
+  HArp4_D.wav -- cormi
 
-Haunting piano -- Dining room , Drawing room 
-	https://www.freesound.org/people/EKVelika/sounds/168863/
-	Piano C Minor Major haunting chord -- EKVelika
+Piano melody -- Dining room, drawing room 
+  https://www.freesound.org/people/EKVelika/sounds/168863/
+  Piano C Minor Major haunting chord -- EKVelika
 
-Aeolian Wind harp -- Oubliette, Ancient archives
-	https://www.freesound.org/people/felix.blume/sounds/147370/
-	Aeolian wind harp sounding in Elqui Valley of Chile. (Contact Microphone recording) -- felix.blume
+Aeolian Wind harp -- Oubliette, ancient archives
+  https://www.freesound.org/people/felix.blume/sounds/147370/
+  Aeolian wind harp sounding in Elqui Valley of Chile. (Contact Microphone recording) -- felix.blume
 
 Furnace -- Workshop
-	https://www.freesound.org/people/iankath/sounds/173991/
-	Furnace.WAV -- iankath
+  https://www.freesound.org/people/iankath/sounds/173991/
+  Furnace.WAV -- iankath
 
-piano melody -- library
-	https://www.freesound.org/people/waveplay/sounds/219288/
-	Temperament -- waveplay
+piano melody -- Library
+  https://www.freesound.org/people/waveplay/sounds/219288/
+  Temperament -- waveplay
 
-Droning -- back hall
-	https://www.freesound.org/people/plagasul/sounds/4096/
-	rarexport-05.wav -- plagasul
+Droning -- Back hall
+  https://www.freesound.org/people/plagasul/sounds/4096/
+  rarexport-05.wav -- plagasul
 
 Laboratory:
-	Bubbling
-		https://www.freesound.org/people/MattJ99/sounds/66786/
-		MattJ99 -- bubbling01.wav
-	pneumatic valves
-		https://www.freesound.org/people/holger.schwetter/sounds/73607/
-		magnetic_valves.wav -- holger.schwetter
-	humming
-		https://www.freesound.org/people/heatfuse/sounds/13302/
-		heatfuse -- 1.wav
+  Bubbling
+    https://www.freesound.org/people/MattJ99/sounds/66786/
+    MattJ99 -- bubbling01.wav
+  pneumatic valves
+    https://www.freesound.org/people/holger.schwetter/sounds/73607/
+    magnetic_valves.wav -- holger.schwetter
+  humming
+    https://www.freesound.org/people/heatfuse/sounds/13302/
+    heatfuse -- 1.wav
 
-Caves
-	Cave Loop
-		https://www.freesound.org/people/mensageirocs/sounds/232609/
-		mensageirocs -- Cave loop
-	Distortion
-		https://www.freesound.org/people/E1ectr0n1cF4n/sounds/350965/
-		E1ectr0n1cF4n -- very intense hell.mp3
+Caves:
+  Cave Loop
+    https://www.freesound.org/people/mensageirocs/sounds/232609/
+    mensageirocs -- Cave loop
+  Distortion
+    https://www.freesound.org/people/E1ectr0n1cF4n/sounds/350965/
+    E1ectr0n1cF4n -- very intense hell.mp3
+	
+Water drops -- Tombs
+  https://www.freesound.org/people/German1990/sounds/251446/
+  German1990 -- DROPS WATER:
 
-Tomb	
-	Water drops
-	https://www.freesound.org/people/German1990/sounds/251446/
-	German1990 -- DROPS WATER:
+Sewers:
+  Cogwork
+    https://www.freesound.org/people/Timbre/sounds/77738/
+    Cinematic Ticking Clock (heavy gears).wav -- Timbre
 
-Sewers
-	Cogwork
-	https://www.freesound.org/people/Timbre/sounds/77738/
-	Cinematic Ticking Clock (heavy gears).wav -- Timbre
+  Torture chamber & crypt
+    Number 2 -- Bluehand
+    https://www.freesound.org/people/Bluehand/sounds/188167/
 
-Torture chamber & crypt
-	Number 2 -- Bluehand
-	https://www.freesound.org/people/Bluehand/sounds/188167/
+Monster:
+  walking
+    https://www.freesound.org/people/NoiseCollector/sounds/55139/
+    zombiewalkgrass.wav -- NoiseCollector
+  chain
+    https://www.freesound.org/people/richardemoore/sounds/362859/
+    richardemoore -- ChainWrapping.wav
 
-
-Monster
-	walking
-		https://www.freesound.org/people/NoiseCollector/sounds/55139/
-		zombiewalkgrass.wav -- NoiseCollector
-	chain
-		https://www.freesound.org/people/richardemoore/sounds/362859/
-		richardemoore -- ChainWrapping.wav
-
-Hades
-	HellCenterOfTheEarth.wav	tc630
-	https://www.freesound.org/people/tc630/sounds/47834/
-
-
-
-
+Eternal suffering and pain -- Hades
+  HellCenterOfTheEarth.wav -- tc630
+  https://www.freesound.org/people/tc630/sounds/47834/
