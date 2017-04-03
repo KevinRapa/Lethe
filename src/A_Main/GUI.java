@@ -48,20 +48,20 @@ public class GUI extends JFXPanel {
         DIAL_TXT = new JTextArea(); // General text is printed here.
 
     private final static JPanel 
-        EAST = new JPanel(new BorderLayout()), 
-        WEST = new JPanel(),        
-        WNORTH = new JPanel(new BorderLayout()), //Holds room label and desc
-        WNSOUTH = new JPanel(),
+        EAST = new JPanel(new BorderLayout()),   // Holds inventory and dialog.
+        WEST = new JPanel(),                     // Left half of the GUI.
+        WNORTH = new JPanel(new BorderLayout()), // Holds room label and desc.
+        WNSOUTH = new JPanel(),                  // Holds room name, score, moves.
         WSOUTH = new JPanel(new BorderLayout()), // Holds menu, input and buttons.
-        INPUT_PANEL = new JPanel(),
-        MEN_PANEL = new JPanel(),
-        BTTN_PANEL = new JPanel();          
+        INPUT_PANEL = new JPanel(),              // Holds the input and prompt sigil.
+        MEN_PANEL = new JPanel(),                // Holds menu so it may resize freely.
+        BTTN_PANEL = new JPanel();               // Holds just the five option buttons.
     
     private final static JScrollPane 
-        SCROLLS = new JScrollPane(DIAL_TXT, 
+        SCROLLS = new JScrollPane(DIAL_TXT,      // Holds all general event dialog.
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER),
-        SCROLLN = new JScrollPane(INV_TXT, 
+        SCROLLN = new JScrollPane(INV_TXT,       // Where player inventory is printed.
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     
