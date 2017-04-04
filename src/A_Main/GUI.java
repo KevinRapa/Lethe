@@ -1,5 +1,7 @@
 package A_Main;
 
+import static A_Main.Names.SEP;
+import static A_Main.Names.W_DIR;
 import java.util.LinkedList;
 import javax.swing.*;
 import java.awt.*;
@@ -7,8 +9,7 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import javafx.embed.swing.JFXPanel;
-import static A_Main.Names.SEP;
-import static A_Main.Names.W_DIR;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.regex.Pattern;
 import javax.swing.border.BevelBorder;
@@ -28,16 +29,16 @@ public class GUI extends JFXPanel {
     private enum Click {
         NONE(-1), SOFT(0), CLICK(1), VINTAGE(2);
     
-        public final int soundEffectId; // Index. NONE's isn't used.
+        public final int effectID; // Index. NONE's isn't used.
         //----------------------------------------
         Click(int key) { 
-            this.soundEffectId = key; 
+            this.effectID = key; 
         }
         //----------------------------------------
     }
     
     // <editor-fold desc="COMPONENTS AND ATTRIBUTES">
-    private static int key = Click.NONE.soundEffectId;
+    private static int keySound = Click.NONE.effectID;
     
     private static Font myFont;
     
@@ -68,18 +69,18 @@ public class GUI extends JFXPanel {
     private final static JLabel 
         PROMPT_LBL = new JLabel(">"),   // Decorative prompt sigil for retro feel.
         ROOM_LBL = new JLabel(),        // Displays player's current room.
-        MOVE_LBL = new JLabel(),
-        SCORE_LBL = new JLabel();
+        MOVE_LBL = new JLabel(),        // Displays number of moves.
+        SCORE_LBL = new JLabel();       // Displays current score.
     
     private final static JButton 
         SWAP = new JButton("Swap"),     // Swaps dialog and inventory.
         COLOR2 = new JButton("Color 2"),// Changes label colors
-        MUTE = new JButton("Mute"),
+        MUTE = new JButton("Mute"),     // Mute button
         KEYS = new JButton("Click"),    // Button controlling faux key sounds.
         COLOR1 = new JButton("Color 1");// Button changing dialog colors.
     
     private final static JTextField 
-        INPUT = new JTextField("", 35);     // Player enters commands here.
+        INPUT = new JTextField("", 35); // Player enters commands here.
     
     // Holds previous input.
     private final static LinkedList<String> UNDO = new LinkedList<>();
@@ -92,28 +93,20 @@ public class GUI extends JFXPanel {
     
     // Queue treated as curcular to rotate font colors.
     private final static LinkedList<Color> 
-            COLORS_DIAL = new LinkedList<>(),
-            COLORS_LABEL = new LinkedList<>();
+        COLORS_DIAL = new LinkedList<>(),
+        COLORS_LABEL = new LinkedList<>();
 
     static {
         Color lightBrown = new Color(122, 84, 13);
         Color darkRed = new Color(196, 11, 15);
         
-        KEYSOUND.add(Click.NONE); KEYSOUND.add(Click.SOFT); 
-        KEYSOUND.add(Click.CLICK); KEYSOUND.add(Click.VINTAGE); 
+        KEYSOUND.addAll(Arrays.asList(Click.NONE,Click.SOFT,Click.CLICK, Click.VINTAGE));
         
-        COLORS_DIAL.add(Color.GRAY);  
-        COLORS_DIAL.add(Color.LIGHT_GRAY);
-        COLORS_DIAL.add(new Color(27, 203, 22));  
-        COLORS_DIAL.add(darkRed); 
-        COLORS_DIAL.add(new Color(141, 28, 154));
-        COLORS_DIAL.add(lightBrown);
+        COLORS_DIAL.addAll(Arrays.asList(Color.GRAY, Color.LIGHT_GRAY, 
+                new Color(27, 203, 22), darkRed, new Color(141, 28, 154), lightBrown));  
         
-        COLORS_LABEL.add(Color.LIGHT_GRAY);
-        COLORS_LABEL.add(lightBrown);
-        COLORS_LABEL.add(Color.ORANGE);
-        COLORS_LABEL.add(darkRed);
-        COLORS_LABEL.add(Color.GRAY);
+        COLORS_LABEL.addAll(
+                Arrays.asList(Color.LIGHT_GRAY, lightBrown, Color.ORANGE, darkRed, Color.GRAY));
     }
     // </editor-fold>
     
@@ -178,8 +171,6 @@ public class GUI extends JFXPanel {
             c.setBackground(Color.BLACK);
         
         // WEST
-        WEST.setBackground(Color.BLACK);
-        WEST.setPreferredSize(new Dimension(400, 645));
         WNORTH.setPreferredSize(new Dimension(400, 385));
         DESC_TXT.setPreferredSize(new Dimension(400, 336));
         WNSOUTH.setBackground(Color.BLACK);
@@ -205,24 +196,26 @@ public class GUI extends JFXPanel {
         INPUT.addKeyListener(new Text_Field_Key_Listener());
         INPUT.setFont(myFont);
         INPUT.setCaret(new RetroCaret());
-        INPUT.getCaret().setBlinkRate(450);
         INPUT.setBorder(BorderFactory.createEmptyBorder());
         INPUT.setForeground(Color.LIGHT_GRAY);
         INPUT.setCaretColor(Color.GRAY);
         PROMPT_LBL.setHorizontalAlignment(JLabel.RIGHT);
         PROMPT_LBL.setPreferredSize(new Dimension(25, 25));
         PROMPT_LBL.setFont(myFont.deriveFont(22.0f));
-        PROMPT_LBL.setForeground(COLORS_LABEL.getLast());
+        PROMPT_LBL.setForeground(Color.LIGHT_GRAY);
         INPUT_PANEL.setPreferredSize(new Dimension(400, 25));
         INPUT_PANEL.add(PROMPT_LBL);
         INPUT_PANEL.add(INPUT);
         WSOUTH.add(MEN_PANEL, BorderLayout.NORTH);
         WSOUTH.add(INPUT_PANEL, BorderLayout.CENTER);
         WSOUTH.add(BTTN_PANEL, BorderLayout.SOUTH);
+        WEST.setBackground(Color.BLACK);
+        WEST.setPreferredSize(new Dimension(400, 645));
         WEST.add(WNORTH, BorderLayout.NORTH);
         WEST.add(WSOUTH, BorderLayout.SOUTH);
         
         // EAST
+        INV_TXT.setFont(myFont.deriveFont(19.0f));
         EAST.setPreferredSize(new Dimension(300, 645));
         SCROLLN.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
         SCROLLN.setPreferredSize(new Dimension(300, 343));
@@ -403,6 +396,31 @@ public class GUI extends JFXPanel {
             c.setForeground(new Color(r,g,b));
         }
     }
+/*----------------------------------------------------------------------------*/
+    public static void displayCredits() {
+        invOut("AMBIENT TRACK SOURCES (All from freesound.org): "
+            + "AniCator, Bluehand, BrainClaim, cormi, EKVelika, ERH, dobroide, "
+            + "E1ectr0n1cF4n, felix.blume, German1990, heatfuse, holger.schwetter, "
+            + "iankath, InSintesi, JarredGibb, jobro, juskiddink, karma-ron, "
+            + "klankbeeld, MattJ99, mensageirocs, NoiseCollector, omnisounddesign, "
+            + "plagasul, richardemoore, RogerBoyX69, Setuniman, ShadyDave, silencyo, "
+            + "spoonbender, tc630, Timbre, veedgo, waveplay");
+        
+        out("SOUND EFFECT SOURCES (All from freesound.org): Erdie, "
+            + "everythingsounds, Evil-Dog, fons, FreqMan, GreekIrish, "
+            + "hanneswannerberger, Hybrid_V, ignotus, jc144940, KorgMS2000B, "
+            + "LittleRobotSoundFactory, MalMan35, martian, mhtaylor67, "
+            + "missozzy, MWLANDI, OtisJames, qubodup, Reitanna, "
+            + "Robinhood76, RutgerMuller, rwm28, SmartWentCody, "
+            + "Suprasummun, Taira Komori, tec studios, thefilmbakery, "
+            + "tiagusilva37, timgormly, thearxx08, viaaico2013, VSokorelos");
+        
+        
+        menOut(Menus.CREDITS);
+        GUI.promptOut();
+        clearDialog();
+        Player.printInv();
+    }
 // *****************************************************************************       
 // </editor-fold>  
 // *****************************************************************************           
@@ -416,24 +434,23 @@ public class GUI extends JFXPanel {
      */
     private static class Text_Field_Key_Listener implements KeyListener {
         private static int undoPosition = 0;
+        private static final JScrollBar 
+                SB = SCROLLS.getVerticalScrollBar(),
+                SN = SCROLLN.getVerticalScrollBar();
         private static final int 
                 BACKSPACE = KeyEvent.VK_BACK_SPACE,
                 UP = KeyEvent.VK_UP,
                 DOWN = KeyEvent.VK_DOWN,
-                ENTER = KeyEvent.VK_ENTER;
+                ENTER = KeyEvent.VK_ENTER,
+                LEFT = KeyEvent.VK_LEFT,
+                RIGHT = KeyEvent.VK_RIGHT;
         /*------------------------------------------------------*/
         @Override public void keyPressed(KeyEvent e) {
-            int keyCode = e.getKeyCode();
-            
-            // For playing the key sound
-            if (keyCode != BACKSPACE && keyCode != ENTER)
-                AudioPlayer.playKeySound(key);
-            if (keyCode == ENTER)
-                undoPosition = 0;
-
-            // For fetching last command or clearing prompt.
-            switch(keyCode) {
-                case UP:
+            switch(e.getKeyCode()) {
+                case ENTER:
+                    undoPosition = 0;
+                    break;
+                case UP: // Arrow key controls
                     if (undoPosition < UNDO.size())
                         INPUT.setText(UNDO.get(undoPosition++));
                     break;
@@ -441,6 +458,22 @@ public class GUI extends JFXPanel {
                     INPUT.setText(""); 
                     undoPosition = 0;
                     break;  
+                case LEFT:  // Player uses left and right arrows to scroll
+                    if (SB.isVisible())
+                        SB.setValue(SB.getValue() + 15);
+                    if (SN.isVisible())
+                        SN.setValue(SN.getValue() + 15);
+                    break;
+                case RIGHT:
+                    if (SB.isVisible())
+                        SB.setValue(SB.getValue() - 15);
+                    if (SN.isVisible())
+                        SN.setValue(SN.getValue() - 15);
+                    break;
+                case BACKSPACE:
+                    break;
+                default:
+                    AudioPlayer.playKeySound(GUI.keySound);
             }   
         }
         /*------------------------------------------------------*/
@@ -461,7 +494,7 @@ public class GUI extends JFXPanel {
             synchronized (HOLDER) {
                 HOLDER.recieve(INPUT.getText().toLowerCase().trim());
 
-                if (UNDO.size() == 10)
+                if (UNDO.size() == 15)
                     UNDO.removeLast();
                 
                 String input = HOLDER.request();
@@ -480,22 +513,19 @@ public class GUI extends JFXPanel {
 /*----------------------------------------------------------------------------*/
     private class Button_Listener implements ActionListener {
         private boolean swapped = false;
+        private final Component[] COMP_LIST_1 =
+            {SWAP, MUTE, KEYS, COLOR1, COLOR2, ROOM_LBL, MOVE_LBL, SCORE_LBL};
         
         @Override public void actionPerformed(ActionEvent push) { 
             Object o = push.getSource();
-            
-            
-            if (o.equals(COLOR2)) { // Resize screen to be a bit smaller
+
+            if (o.equals(COLOR2)) { // Change font color of labels and buttons
                 AudioPlayer.playEffect(10);
                 Color newColor = COLORS_LABEL.peek();
-                SWAP.setForeground(newColor);
-                MUTE.setForeground(newColor); 
-                KEYS.setForeground(newColor);
-                COLOR1.setForeground(newColor); 
-                COLOR2.setForeground(newColor);
-                ROOM_LBL.setForeground(newColor);
-                MOVE_LBL.setForeground(newColor);
-                SCORE_LBL.setForeground(newColor);
+                
+                for (Component c : COMP_LIST_1)
+                    c.setForeground(newColor);
+
                 COLORS_LABEL.offer(COLORS_LABEL.poll());
             }
             else if (o.equals(MUTE)) { // Toggles ambience
@@ -504,7 +534,7 @@ public class GUI extends JFXPanel {
                 AudioPlayer.toggleMute();
                 AudioPlayer.playEffect(10);
             }
-            else if (o.equals(COLOR1)) { // Toggles text color
+            else if (o.equals(COLOR1)) { // Toggles font color of text areas
                 AudioPlayer.playEffect(10);
                 Color newColor = COLORS_DIAL.peek();
                 MEN_TXT.setForeground(newColor);
@@ -516,7 +546,6 @@ public class GUI extends JFXPanel {
             else if (o.equals(SWAP)) {
                 AudioPlayer.playEffect(10);
                 swapped = ! swapped;
-                
                 GUI.this.setVisible(false);
                 
                 if (swapped) {
@@ -526,13 +555,12 @@ public class GUI extends JFXPanel {
                     EAST.add(SCROLLN, BorderLayout.NORTH);
                     EAST.add(SCROLLS, BorderLayout.SOUTH);
                 }
-                
                 GUI.this.setVisible(true);
             }
             else { // Changes key click noise
                 KEYSOUND.offer(KEYSOUND.poll());
-                key = KEYSOUND.peek().soundEffectId;
-                AudioPlayer.playKeySound(key);
+                GUI.keySound = KEYSOUND.peek().effectID;
+                AudioPlayer.playKeySound(GUI.keySound);
             }
             giveFocus(); // Returns focus to input so player doesn't have to.
         }
@@ -549,6 +577,11 @@ public class GUI extends JFXPanel {
      * A simple block caret emulating the command prompt/terminal caret.
      */
     private class RetroCaret extends DefaultCaret {
+        public RetroCaret() {
+            super();
+            this.setBlinkRate(450);
+        }
+        
         @Override protected synchronized void damage(Rectangle rectangle) {
             if (rectangle != null) {
                 this.x = rectangle.x;

@@ -27,6 +27,10 @@ import java.util.regex.Pattern;
  * @author Kevin Rapa
  */
 abstract public class Furniture implements Serializable {
+    private final Inventory 
+            // All non-searchable furniture have this as an inventory.
+            NONE = new Inventory(); // Helps prevent NULL pointers. 
+    
     protected Inventory inv;
     
     protected String 
@@ -63,6 +67,7 @@ abstract public class Furniture implements Serializable {
      */
     public Furniture () {
         this.searchable = false;
+        this.inv = NONE;
         this.NAMEKEYS = new ArrayList<>(5); 
         this.USEKEYS = new ArrayList<>(5);  
         this.ACTKEYS = new ArrayList<>(6);  

@@ -1,6 +1,7 @@
 package A_Main;
 
 import java.util.HashMap;
+import java.util.regex.Pattern;
 import static A_Main.Patterns.*;
 /**
  * This class comprises the help section of the game.
@@ -8,7 +9,7 @@ import static A_Main.Patterns.*;
  * help topics.
  * @author Kevin Rapa
  */
-public class Help {
+public final class Help {
     private static final HashMap<String, String> 
             HELP = new HashMap<>(), // Maps keys to topics
             TOPIC = new HashMap<>(); // Maps topics to explanations.
@@ -16,26 +17,24 @@ public class Help {
     private static final String[] HELP_KEYS = 
         {"prompt", "moving", "describing", "checking", "searching", "activating",
          "using", "combining", "inspecting", "notes", "inventory", "key ring", "phylacteries",
-         "doors", "rooms", "furniture", "items", "keys", "phylacteries"};
+         "loot", "doors", "rooms", "furniture", "items", "keys", "phylacteries"};
     
     private static final String[] TOPIC_KEYS = 
         {"1c","2c","3c","4c","5c","6c","7c","8c","9c","10c",
-         "1p","2p","3p","1a","2a","3a","4a","5a","6a"};
+         "1p","2p","3p","4p","1a","2a","3a","4a","5a","6a"};
      
     private static final String[] HELP_VALUES = {
-        "When prompted for input, the desired type of input will appear in "
-      + "angle brackets.\t\t\t\t\t"
-      + "Simple types of input ------ "
-      + "<item> - Enter an item name. "
-      + "<object> - Enter an object in the room.\t\t\t" +
-        "<'x'> - Enter what's quoted.\t" +
-        "<#> - Enter a digit.\t\t" +
-        "< > - Enter nothing.\t\t\t\t\t"
-      + "Compound input -------------\t" +
-        "<(item)> - An optional item or item slot.\t\t" +   
-        "<?,?,?> - Enter a list of ?, separated by commas.\t\t" +
-        "<?/?/?> - Enter any one. "
-      + "<'s' list> - Enter 's' followed by a comma-separated list.", 
+        "When prompted for input, the format may appear in "
+      + "angle brackets.            "
+      + "<item> - Enter an item name.                    "
+      + "<left> - Press the left arrow (Use left and right for scrolling.          " +
+        "<'x'> - Enter what's quoted.                   " +
+        "<#> - Enter a digit.       " +
+        "< > - Enter nothing.       " +
+        "<(item)> - An optional item or item slot.        " +   
+        "<?,?,?> - Enter a comma-separated list.     " +
+        "<?/?/?> - Enter a choice of ?.                     "
+      + "<'s' list> - Enter 's' followed by <?,?,?>.", 
          
         "In this game, you may move in four directions; north, south, east, " +
         "west, up, and down. For your convenience, the shortcuts for the " +
@@ -145,6 +144,13 @@ public class Help {
         "Phylacteries are stored in your inventory. These are important! " +
         "By entering 'l' from the main prompt, you can see how many " + 
         "phylacteries you are carrying.",    
+        
+        "Whoever owns this castle must be quite powerful and wealthy, and " +
+        "of course such hardship that you are being put through should " +
+        "not go without compensation! If you have a loot sack, access it " +
+        "by entering 'l' or 'loot' at the main prompt. Items you add to " +
+        "it will increase or decrease your wealth. The loot sack also " +
+        "offers valuable storage space in addition to your inventory too.",
          
         "Most rooms have at least one door, and thus you may act on them from the " +
         "main prompt using the name 'door'. However, you do not need to act on doors " +
@@ -206,54 +212,34 @@ public class Help {
             choice = GUI.promptOut();
 
             if (choice.equals("1")) {
-                AudioPlayer.playEffect(2);
-                
-                do {
-                    GUI.menOut(Menus.HELP_SUB1);
-
-                    choice = GUI.promptOut().concat("c");
-
-                    if (CONTROL_CHOICE.matcher(choice).matches()) {
-                        AudioPlayer.playEffect(2);
-                        GUI.out(HELP.get(TOPIC.get(choice)));  
-                    }
-                } while (! choice.equals("c"));          
+                innerLoop(Menus.HELP_SUB1, CONTROL_CHOICE, "c");          
             }
-            else if (choice.equals("2")) {    
-                AudioPlayer.playEffect(2);
-                
-                do {
-                    GUI.menOut(Menus.HELP_SUB2);
-
-                    choice = GUI.promptOut().concat("p");
-                    
-                    if (PLAYER_CHOICE.matcher(choice).matches()) {
-                        AudioPlayer.playEffect(2);
-                        GUI.out(HELP.get(TOPIC.get(choice)));
-                    }
-                    
-                } while (! choice.equals("p"));    
+            else if (choice.equals("2")) {  
+                innerLoop(Menus.HELP_SUB2, PLAYER_CHOICE, "p");  
             }
-            else if (choice.equals("3")) {    
-                AudioPlayer.playEffect(2);
-                
-                do {
-                    GUI.menOut(Menus.HELP_SUB3);
-
-                    choice = GUI.promptOut().concat("a");
-                    
-                    if (CASTLE_CHOICE.matcher(choice).matches()) {
-                        AudioPlayer.playEffect(2);
-                        GUI.out(HELP.get(TOPIC.get(choice)));
-                    }
-                    
-                } while (! choice.equals("a"));
+            else if (choice.equals("3")) {   
+                innerLoop(Menus.HELP_SUB3, CASTLE_CHOICE, "a");
             }
-        /*--------------------------------------------------------------------*/      
         } while (! choice.equals(""));   
         
         GUI.clearDialog();
         GUI.toMainMenu();
         GUI.clearDialog();
-    }  
+    }
+    /*------------------------------------------------------------------------*/
+    private static void innerLoop(String menu, Pattern p, String code) {
+        String choice;
+        AudioPlayer.playEffect(2);
+        do {
+            GUI.menOut(menu);
+
+            choice = GUI.promptOut().concat(code);
+
+            if (p.matcher(choice).matches()) {
+                AudioPlayer.playEffect(2);
+                GUI.out(HELP.get(TOPIC.get(choice)));
+            }
+        } while (! choice.equals(code));
+    }
+    /*------------------------------------------------------------------------*/
 }

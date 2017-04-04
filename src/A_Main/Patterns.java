@@ -197,7 +197,7 @@ SINGLE_DIGIT_P = Pattern.compile("\\d"),
         
 // PATTERNS USED BY HELP
 CONTROL_CHOICE = Pattern.compile("[1-9]c|10c"),
-PLAYER_CHOICE = Pattern.compile("[1-3]p"),
+PLAYER_CHOICE = Pattern.compile("[1-4]p"),
 CASTLE_CHOICE = Pattern.compile("[1-6]a");
 
 // </editor-fold>

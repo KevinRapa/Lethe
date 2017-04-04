@@ -1,10 +1,9 @@
-You're in the castle dining hall. The room is 
-illuminated solely from the bright moonlight. 
+This room is illuminated solely from the 
+bright moonlight shining through a great 
+window on the opposite end. 
 You stand on its west side staring through a 
 row of columns under its second floor balcony. 
-You wonder at the room's grandeur. On its east 
-end, a massive window spans the wall's width 
-and both stories of the room. Twenty chairs 
+You wonder at the room's grandeur. Twenty chairs 
 sit around a long table on a carpet in the 
 room's center below a white gold chandelier. 
 On the north wall hangs a large tapestry. 

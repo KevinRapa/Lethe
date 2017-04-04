@@ -447,6 +447,8 @@ public class Map {
         Item fthr = new Item(RAVEN_FEATHER, "It's elegant- jet-black and long. A smooth "
                 + "glean runs across it as you tilt it to the light.", 20);
         Item strng = new Item("string", "A delicate piece of white twine. You're sure the bird didn't need that...", 10);
+        Item ham = new Item(COOKED_HAM, "A succulent glazed ham, still hot!", 300);
+        Item leaflet = new Small_Leaflet("small leaflet");
         //-----------------------------FURNITURE--------------------------------
         Furniture couCstl = new Cou_Castle();
         Furniture couW = new Wall("The castle walls are several stories tall and made of rough granite blocks.");
@@ -472,6 +474,7 @@ public class Map {
         Furniture cou4Gt = new Cou4_Gate();
         Furniture cou4Frst = new Cou4_Forest();
         Furniture cou4Trl = new Cou4_Trail();
+        Furniture cou4Mlbx = new Cou4_Mailbox(leaflet, ham);
 
         Furniture cou5Fntn = new Cou5_Fountain(rck, soldMed, rck);
         Furniture cou5Sprc = new Cou5_Spruce(vial, sprcExtrct, pnCn, pnCn, pnCn);
@@ -807,7 +810,7 @@ public class Map {
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE GALLERY">
         //-----------------------------THE ROOM---------------------------------    
         Room gal1 = new Gal1("First floor gallery", Id.GAL1);
-        Room gal2 = new Room("Gallery central chamber", Id.GAL2);      
+        Room gal2 = new Room("Central chamber", Id.GAL2);      
         Room gal3 = new Room("Second floor gallery", Id.GAL3);
         Room gal4 = new Room("Second floor balcony", Id.GAL4);
         Room gal6 = new Gal6("Gallery loft", Id.GAL6);
@@ -2210,7 +2213,7 @@ public class Map {
         cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc, coutWlkwy, couRvns);
         cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou56F, cou6Stat, couCstl, cou6Ghst, couRvns);
         cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, cou3Frk, couCstl, couRvns);
-        cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Trl, couCstl, couRvns);
+        cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Mlbx, cou4Trl, couCstl, couRvns);
         cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, 
                 entrStps, entrBlcny, couRvns);
         cou8.addFurniture(cou8Nest, cou8Sprc, couW);

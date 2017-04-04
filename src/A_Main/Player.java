@@ -81,6 +81,7 @@ public final class Player {
 
         MAIN_CMDS.put("close",     () -> Map.hideMap());
         MAIN_CMDS.put("quit",      () -> {notEnd = false;});
+        MAIN_CMDS.put("credits",   () -> GUI.displayCredits());
         MAIN_CMDS.put("version",   () -> GUI.out(VERSION));
         MAIN_CMDS.put("lethe",     () -> GUI.out("Hello, dear."));
         MAIN_CMDS.put("zork",      () -> GUI.out("You must be mistaking me for someone else."));
@@ -515,7 +516,7 @@ public final class Player {
     // ========================================================================  
     private static void viewKeyRing() {
         AudioPlayer.playEffect(3);
-        GUI.invOut("Keys:" + NL + Player.keys.toString()); 
+        GUI.out("Keys:" + NL + Player.keys.toString()); 
     }
     // ========================================================================  
     /**
@@ -585,11 +586,8 @@ public final class Player {
                             GUI.out("There's nothing there.");
                         else if (item instanceof Key)
                             GUI.out("It's a small key.");
-                        else {
+                        else 
                             GUI.out(item.getDesc());
-                            GUI.menOut(Menus.ENTER);
-                            GUI.promptOut();
-                        }
                     }
                     else // Notifies that a list wasn't entered.
                         GUI.out("Did you... forget to enter something there?");
@@ -617,10 +615,22 @@ public final class Player {
                         GUI.out(i[0].getDesc());
                     }
                 }
-                else if (STORE_P.matcher(action).matches()) 
-                    tradeAll(Player.inv, itemList, false);
-                else if (TAKE_P.matcher(action).matches()) 
-                    tradeAll(furnInv, itemList, true);
+                else if (STORE_P.matcher(action).matches()) {
+                    Player.incrementMoves();
+                    for (Item i : getItemList(itemList, Player.inv))
+                        if (! i.equals(Inventory.NULL_ITEM) && Player.inv.contains(i))
+                            evalStore(furnInv, i);
+                        else
+                            GUI.out(ERRONEOUS_INPUT);
+                }
+                else if (TAKE_P.matcher(action).matches()) {
+                    Player.incrementMoves();
+                    for (Item i : getItemList(itemList, furnInv))
+                        if (! i.equals(Inventory.NULL_ITEM) && furnInv.contains(i))
+                            evalTake(furnInv, i);
+                        else
+                            GUI.out(ERRONEOUS_INPUT);
+                }
                 else
                     GUI.out("A thousand pardons... what was that "
                             + "first thing you typed??");
@@ -630,20 +640,6 @@ public final class Player {
             }
             printInv();
         } while (isNonEmptyString(command));
-    }
-    // ========================================================================
-    // Performs a take or store operation on every item in the list with the inventory.
-    private static void tradeAll(Inventory inv, String list, boolean take) {
-        Player.incrementMoves();
-                    
-        for (Item i : getItemList(list, inv))
-            if (! i.equals(Inventory.NULL_ITEM) && inv.contains(i))
-                if (take)
-                    evalTake(inv, i); // Item exists
-                else
-                    evalStore(inv, i);
-            else
-                GUI.out(ERRONEOUS_INPUT);
     }
     // ========================================================================
     /**
@@ -977,8 +973,7 @@ public final class Player {
     }
     // ========================================================================  
     private static void printInv(Inventory furnInv) {
-        GUI.invOut("You are carrying:" + NL + Player.inv);
-        GUI.out("You find:" + NL + furnInv);
+        GUI.invOut("You are carrying:" + NL + Player.inv + NL + "You find:" + NL + furnInv);
     }
     // ========================================================================  
     /**
@@ -1850,6 +1845,10 @@ private static class TextParser {
                         GUI.out("The fruit's glow and tasteful aroma entice you irresistibly. "
                               + "You bite down and find the fruit as hard as a rock. "
                               + "A sharp pain comes and you pull the fruit away.");
+                    }
+                    else if (name.equals(COOKED_HAM)) {
+                        Player.getInv().remove(item);
+                        GUI.out("Delicious!");
                     }
                     else
                         GUI.out("The " + item + " seems most inedible...");

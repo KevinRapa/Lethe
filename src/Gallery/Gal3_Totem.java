@@ -91,7 +91,7 @@ public class Gal3_Totem extends Gal_LightMachine {
             }            
         } while (Player.isNonEmptyString(action));
         
-        return this.actDialog;
+        return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
     private String check() {

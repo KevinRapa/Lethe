@@ -1,11 +1,9 @@
-As your head rises above the hatch in the 
-floor, you are stunned to see this room filled 
+You are stunned to see this room filled 
 with technology that you have never encountered 
-before. Many futuristic electronics are displayed 
-on the floor. In the center of the room, a 
-machine resembling an electronic cannon points 
-into the central chamber. In a south corner, a 
-bizarre helmet sits on a table. On the floor 
-at the north end of the room stands a metal 
-machine. On a table against the west wall is 
-some kind of unknown apparatus.
+before. In the center a machine resembling an 
+electronic cannon points into the central 
+chamber. A bizarre helmet sits on a table in 
+a corner. On the floor at the north end of 
+the room stands a metal machine. On a table 
+against the west wall is some kind of 
+unknown apparatus.

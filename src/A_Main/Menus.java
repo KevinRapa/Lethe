@@ -18,11 +18,11 @@ public final class Menus {
 
         INV_INSPECT = NL
                     + "<item> Inspect..." + NL
-                    + "< > Back",
+                    + "< >    Back",
 
         INV_USE = NL
                 + "<item> Use..." + NL 
-                + "< > Back",
+                + "< >    Back",
 
         INV_USEON = NL
                   + "<object> Use on..." + NL
@@ -33,16 +33,16 @@ public final class Menus {
                     + "< >    Back",
 
         TRADE_SUB = NL
-                  + "<'s' list>  Store..." + NL
-                  + "<'t' list>  Take..." + NL
+                  + "<'s' list>  Store" + NL
+                  + "<'t' list>  Take" + NL
                   + "<'loot'>    Loot!!!" + NL
                   + "<#>         Inspect" + NL
                   + "< >         Back",
 
         SAVE_QUIT = NL + NL
-                  + "<'s'> Save and quit" + NL
                   + "<'q'> Quit" + NL
-                  + "<'r'> Reset game and quit.",
+                  + "<'s'> Save and quit" + NL
+                  + "<'r'> Reset and quit.",
 
         MAIN_MENU = "      Enter a command or" + NL + NL
                   + "    <'w'/'s'/'a'/'d'> Move" + NL
@@ -52,7 +52,7 @@ public final class Menus {
                   + "<'save'> Save    <'quit'> Quit",
 
         HELP_MAIN = NL
-                  + "What would you like help on?" + NL
+                  + "     Topics:" + NL
                   + "<'1'> Controls" + NL
                   + "<'2'> Your player" + NL 
                   + "<'3'> The castle" + NL
@@ -67,15 +67,19 @@ public final class Menus {
                   + " < >  Back",
 
         HELP_SUB2 = NL
-                  + "<'1'> Your inventory" + NL
-                  + "<'2'> Your key ring" + NL 
-                  + "<'3'> Your phylacteries" + NL
+                  + "<'1'> Inventory" + NL
+                  + "<'2'> Key ring" + NL 
+                  + "<'3'> Phylacteries" + NL
+                  + "<'4'> Loot" + NL
                   + " < >  Back",
 
         HELP_SUB3 = NL
-                  + "<'1'> Doors      <'2'> Rooms" + NL
-                  + "<'3'> Furniture  <'4'> Items" + NL
-                  + "<'5'> Keys       <'6'> Phylacteries" + NL
+                  + "<'1'> Doors"  + NL
+                  + "<'2'> Rooms" + NL
+                  + "<'3'> Furniture"  + NL
+                  + "<'4'> Items" + NL
+                  + "<'5'> Keys"  + NL
+                  + "<'6'> Phylacteries" + NL
                   + " < >  Back",
 
         SAFE_MENU = NL
@@ -114,14 +118,12 @@ public final class Menus {
                   + "< > Back",
 
         GAL6_BTTN = NL
-                  + "<'y'> Push" + NL
-                  + "<'n'> Don't push" + NL
-                  + "< >   Back",
+                  + "<'y'/'n'> Push?" + NL
+                  + "< >       Back",
 
         GAL6_HELM = NL
-                  + "<'y'> Wear it" + NL
-                  + "<'n'> Don't wear it" + NL
-                  + "< >   Back",
+                  + "<'y'/'n'> Wear it?" + NL
+                  + "< >       Back",
             
         OBS_STATS = NL
                   + "<#> Look..." + NL
@@ -140,5 +142,18 @@ public final class Menus {
                   + "<#> Turn head" + NL
                   + "< > Back",
         
-        ENTER = NL + NL + "Press enter...";
+        ENTER = NL + NL + "Press enter...",
+            
+        BOOK = NL + NL + 
+            "<'y'/'n'> Turn the page?" + NL +
+            "<right>   Scroll up" + NL +
+            "<left>    Scroll down", 
+               
+            
+        CREDITS = "This game was written in " + NL
+                + "Java on NetBeans 8.1. All " + NL
+                + "sounds were processed using " + NL
+                + "audacity. Detailed credits " + NL
+                + "can be found in the credits " + NL
+                + "folder near the main .jar.";
 }

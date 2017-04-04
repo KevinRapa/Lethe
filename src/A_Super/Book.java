@@ -2,6 +2,7 @@ package A_Super;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import A_Main.Menus;
 import static A_Main.Names.NL;
 import static A_Main.Patterns.YES_NO_P;
 import A_Main.Player;
@@ -48,7 +49,7 @@ public class Book extends Note {
 
             if (page != (PAGE_LIST.length - 1)) {
                 
-                choice = GUI.askChoice(NL + NL + "Turn the page?", YES_NO_P);
+                choice = GUI.askChoice(Menus.BOOK, YES_NO_P);
 
                 if (Player.answeredYes(choice)) 
                     page ++;

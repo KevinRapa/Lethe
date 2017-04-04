@@ -1,12 +1,12 @@
-A balcony behind the castle extends to 
-your east. A stone railing lining the edge 
+This is a balcony behind the castle extending 
+east. A stone railing lining the edge 
 sprouts columns which hold a roof over your 
 head. The balcony is bare except for a sconce 
-lighting it dimly and a stone bench to your 
-left. Far below, there is an immense drop to 
-the the sea where waves crash against the 
-cliff. The sea extends northwards and to 
-the west indefinitely, but to the east, you 
+lighting it dimly and a stone bench. Far 
+below, an immense drop meets 
+the sea where waves crash against the 
+cliff. The ocean extends north and 
+the west indefinitely, but east, you 
 can see the village you left from behind a 
 shoreline. Behind you on the wall is a 
 small black button.

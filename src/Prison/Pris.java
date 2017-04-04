@@ -25,7 +25,7 @@ public class Pris extends Room {
                    + "shackled."),
         new Pris_Cll("4", "four", "This cell has nothing in it but a bucket and a "
                    + "few bones. There is a carving on the wall of the cell:"
-                + "           __ " +
+                + "                     __ " +
                   "                        _/// " +
                   "                      _///¯ " +
                   "               _______///¯  " +
@@ -56,8 +56,7 @@ public class Pris extends Room {
         public Pris_Cll (String num, String numWord, String desc) {
             super();
             this.searchable = false;
-            this.description = "The cell gate is locked. You walk up to the bars and "
-                             + "look inside. " + desc;
+            this.description = "The cell gate is locked. " + desc;
             this.addNameKeys("(?:gated )?(?:prison )?cell (?:" + num + "|" + numWord + ")");
         }  
         // ====================================================================

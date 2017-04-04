@@ -4,8 +4,8 @@ enough to see. A water wheel spins on an
 axle spanning the length of the room. To 
 the east is a metal door with a small window 
 to see through. Under the door is a shallow 
-dip through which a river of water runs. The 
-river flows through the room and under the 
-water wheel before depositing down a grate 
-in the far southwest corner. Various other 
-gears can be seen spinning in the room.
+dip through which water runs. It flows 
+through the room and under the 
+wheel before depositing down a grate 
+in the southwest corner. Various other 
+gears can be seen spinning here.

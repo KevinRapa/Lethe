@@ -83,7 +83,7 @@ public final class Names {
         TYPHOS = "typhos",                      MONKEY_WRENCH = "monkey wrench",
         BRONZE_TABLET = "bronze tablet",        COAL = "coal",
         ASTROLABE = "gilded astrolabe",         MONA_LISA = "mona lisa",
-        JET_SKULL = "jet skull",
+        JET_SKULL = "jet skull",                COOKED_HAM = "cooked ham",
             
         BIBLE = "biblical tome, 'The Book of Genesis'",
         ILIAD = "greek tome, 'The Iliad'",
