@@ -29,7 +29,7 @@ public class Kitc_Pots extends SearchableFurniture implements Gettable {
         this.addUseKeys(COPPER_POT, COPPER_PAN);
         this.addActKeys(GETPATTERN);
         this.addActKeys(JOSTLEPATTERN, "rattle");
-        this.addNameKeys("(?:old )?(?:copper )?(?:pots?|pans?)", "pots and pans");
+        this.addNameKeys("(?:old )?(?:copper )?(?:pots?|pans?)", "pots and pans", "(?:pot|pan) rack");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {              
