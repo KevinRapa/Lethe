@@ -1,11 +1,7 @@
-You wake up in a noisy chamber. A torch on 
-the north wall lights the room just dimly 
-enough to see. A water wheel spins on an 
-axle spanning the length of the room. To 
-the east is a metal door with a small window 
-to see through. Under the door is a shallow 
-dip through which water runs. It flows 
-through the room and under the 
-wheel before depositing down a grate 
-in the southwest corner. Various other 
-gears can be seen spinning here.
+You wake up in this dimly-lit, noisy chamber 
+filled with spinning gears and a large spinning 
+water wheel on an axle in the center. A torch on 
+the north wall lights the room just enough to see. 
+An windowed east metal door offers a view outside. 
+Under the door, a shallow stream flows under the 
+wheel and down a grate in a corner.
