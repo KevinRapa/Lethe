@@ -1,7 +1,7 @@
-You have made it to a small, irregularly-shaped chamber. 
-There is a bit of space to move around in, but not much. 
-It is lit by a hanging iron bowl of fire hanging from 
-the ceiling. Several vases sit scattered around the 
-edges of the room. Leaning against the north wall 
-is a standing casket. Hanging on the west wall 
-is an unsettling.. effigy or idol.
+You have made it to a small, irregularly-shaped 
+chamber lit by a hanging bowl of fire. There is 
+a bit of space to move around in, but not much. 
+Several vases sit scattered around the edges of 
+the room. Leaning against the north wall is a 
+standing casket, and on the west wall hangs an 
+unsettling effigy.
