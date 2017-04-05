@@ -20,7 +20,7 @@ public class Torc extends Room {
 // ============================================================================
     @Override public String getDescription() {
         if (! Player.getPos().hasFurniture(SCYTHE))
-            return this.description.replaceFirst(" A large.+above it.", "");
+            return this.description.replaceFirst(" below a large scythe", "");
         else
             return this.description;
     }
