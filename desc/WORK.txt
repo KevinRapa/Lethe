@@ -1,8 +1,8 @@
 You've found your way into a smithy, dry and hot, 
 which has been converted into a generic workshop. 
 In the northeast corner is the forge accompanied 
-by an anvil. Closer by is a kiln against the wall. 
-At the south, a workbench against the wall sits 
-below a row of cabinets in front of a window. 
-Next to the workbench, closer to you, is a 
-casting table and a small wooden barrel.
+by an anvil. Closer by is a kiln giving off a 
+generous amount of heat. Some storage arranged 
+on the south wall includes a workbench, 
+row of cabinets, and a wood barrel. Beside a 
+southern window is also a metal casting table.
