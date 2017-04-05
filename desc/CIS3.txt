@@ -1,7 +1,5 @@
-You are halfway down the walkway 
-inside the large cistern. To your 
-west is the large putrid body of 
-water and many columns. To the east 
-is a metal door. The walkway still 
-continues south. Several torches on 
-the wall light this area.
+You are halfway down the north-south walkway 
+inside the large cistern. The putrid body of 
+water is west here. East is a metal door. 
+Several torches on the wall here provide only 
+enough light to see a short distance.
