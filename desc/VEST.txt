@@ -1,7 +1,8 @@
-You are in a cozy, tall chamber. A shale tile floor and 
-granite walls surround you. In front of you is a small 
-wooden table supporting a ceramic case and an ornate 
-chair facing a large marble fireplace. To your right, 
-a closed barred window lets in a small draft. A large 
-tapestry consumes most of the wall behind you. In a 
-dark corner is a desk with a glass orb on it coated in dust.
+You find yourself trapped by tall granite walls in 
+this small chamber aside the foyer. An ornate chair 
+and small wooden table on the shale floor are before 
+a large marble fireplace. There is a ceramic case on 
+the table. To south, a closed barred window lets in 
+a small draft. A tapestry consumes most of the east 
+wall, and in a dark corner is a dusty glass orb 
+on a tenuous wooden desk.
