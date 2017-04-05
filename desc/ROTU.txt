@@ -1,10 +1,9 @@
-You are in a symmetrical dome-shaped chamber. 
-Everything is ornately carved from polished rock. 
-There's a fountain in the center. At each diagonal 
-below a spherical sconce is a glaring statue. 
-Various hanging potted plants decorate the room. 
-Straight up, there's a hole in the ceiling giving 
-view to the sky. Only a single other door on the 
-opposite side offers a way further. At the 
-perpendicular ends are arched frames carved 
-into the wall. This room smells quite awful.
+You are in a fetid domed chamber of carved, 
+polished rock. Glaring statues and spherical 
+lights protrude from the walls at each diagonal 
+and surround a central fountain. Low-hanging 
+potted plants decorate the room also. A hole 
+bored through the ceiling's apex reveals the 
+night sky. Decorative arches are carved into 
+the wall in each direction, but only your 
+side and the opposite have doors.
