@@ -1,6 +1,6 @@
 You are on a square balcony at the front west 
 corner of the castle. Littered all over the floor 
-are pieces of wood and debris. In the center stands 
-a tall beacon. To the west, the ocean follows a 
-long cliff to a distant lighthouse. To your south, 
-you look upon the dark forest you walked through to get here.
+are pieces of wood and other debris surrounding a tall 
+lit beacon in the center. To the west, the ocean follows 
+a long cliff to a distant lighthouse. The south gives the 
+view of the dark forest you walked through to get here.
