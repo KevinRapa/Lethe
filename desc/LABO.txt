@@ -1,9 +1,8 @@
-You find yourself in a laboratory filled with many 
-alchemical devices. At the far east wall are a line 
-of chemical dispensers. On a counter to the north is 
-a confusing alchemical contraption with many glass 
-tubes. On the same counter to the left is a metal 
-sink next to a large pipe running from floor to 
-ceiling. A tall buret sits on a table in the center. 
-To the south stands both a shelf filled with chemistry 
-tools and an unusual foam barrel.
+You find yourself in a lab filled with many 
+alchemical devices. On the far east wall is a line 
+of chemical dispensers. On a north counter is 
+a perplexing contraption of many glass tubes, 
+a metal sink, and a large pipe running from floor 
+to ceiling. A tall buret sits on a table in the 
+center. To the south stands a tool-filled shelf 
+and a foam barrel with smoke billowing out.
