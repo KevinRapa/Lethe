@@ -19,7 +19,7 @@ public class Wbal_Beacon extends Furniture implements Unmoveable {
         
         this.addUseKeys(FIXED_LADDER);
         this.addActKeys(GETPATTERN, "extinguish");
-        this.addNameKeys("(?:ten foot (?:high )?)?(?:stone )?(?:obelisk|beacon)");
+        this.addNameKeys("(?:ten foot (?:high )?)?(?:tall )?(?:stone )?(?:obelisk|beacon)");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
