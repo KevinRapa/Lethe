@@ -1,5 +1,7 @@
 package A_Super;
 
+import A_Main.Main;
+
 /**
  * Similar to Moveable, but returns a different dialog.
  * @author Kevin Rapa
@@ -16,7 +18,7 @@ public interface Unmoveable extends Moveable {
     
     // Randomely displays one of the messages.
     @Override default String moveIt() {
-        int i = (int)Math.abs(System.currentTimeMillis()) % MESSAGES.length;
+        int i = Main.getRandomUnder(MESSAGES.length);
         return MESSAGES[i];
     }
 }

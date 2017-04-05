@@ -13,7 +13,10 @@ public class Wrk_Anvil extends Furniture implements Unmoveable {
                          + "It looks heavily used.";
         this.searchDialog = "There's nothing to search for on an anvil.";
         this.actDialog = "There's a plethora of weapons downstairs. No need for that.";
-        this.addActKeys(HAMMER, "use");
+        this.useDialog = this.actDialog;
+        
+        this.addUseKeys(HAMMER);
+        this.addActKeys(HAMMER, "hit|bang|use");
         this.addNameKeys("anvil");
     }
 /*----------------------------------------------------------------------------*/

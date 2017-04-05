@@ -208,12 +208,12 @@ public class Map {
               + "brown hair and pale, perfect skin, as well as a slight grin. "
               + "Interesting, as you note that she also lacks eyebrows.", 500);
         
-        // Obtained by obtaining a high enough score, 
-        // commiting suicide, and returning using the Factum.
+        // Obtained by committing suicide, finding it in a pile of bodies, 
+        // and returning using the Factum.
         Item typhos = new Item(TYPHOS, "The small golden trophy is protected in "
                 + "a red, glowing aura. It depicts a wicked creature- winged, "
                 + "with sharp teeth and an many snake-like tendrils where its "
-                + "legs would be. This trophy identifies you as the wealthiest, "
+                + "legs would be. This trophy identifies you as a wealthy, "
                 + "most cunning adventurer, though it was not your intention.", 1500);
         
         // <editor-fold defaultstate="collapsed" desc="Philosopher's stone set">
@@ -534,7 +534,7 @@ public class Map {
         Room cel6 = new Cel6("Suspended platform", Id.CEL6);
         //-------------------------------ITEMS----------------------------------
         Item hmmr = new Weapon(HAMMER, "It's a small hand-held nailing device.", 30);
-        Item greasyRag = new Item("A small white cloth stained black with grease.", -20);
+        Item greasyRag = new Item("greasy rag", "A small white cloth stained black with grease.", -20);
         Item wrench = new Weapon(MONKEY_WRENCH, "A hefty tool for the turning of many things.", 15);
         Item loopedRope = new Item(LOOPED_ROPE, 
                 "It's a short rope tied into a noose. It's pretty frayed in the center.", ram, 3, 25);
@@ -1803,7 +1803,7 @@ public class Map {
                 medString + "The number '8' is engraved on its head.", 35);
         
         // <editor-fold desc="Randomly calculate jewel location" defaultstate="collapsed">
-            int index = (int)Math.abs(System.currentTimeMillis() % list.length); // generate random index into catacomb list
+            int index = Main.getRandomUnder(list.length);                       // generate random index into catacomb list
             list[index].getFurnishings().get(0).getInv().add(jwl);               // add the jewel to that room.
             int y = Math.abs(list[index].getCoords()[1] - 7);                    // get y-coord of that room.
             String result = (list[index].getCoords()[2] + ", " + y + ", " + -2); // make the message that appears on the casket note.
@@ -2082,7 +2082,7 @@ public class Map {
         Item hand = new Item("mangled hand", "It's a disembodied rotting hand, dirty, and awful smelling.", -1000);
         Item arm = new Item("mangled arm", "It's a disembodied rotting arm, dirty, and awful smelling.", -1000);
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture hadsCrpses = new Hads_Corpses(leg, torso, hand, leg, arm, torso, hand);
+        Furniture hadsCrpses = new Hads_Corpses(leg, torso, hand, leg, typhos ,arm, torso, hand);
         Furniture hadsSprts = new Hads_Spirits();
         Furniture hadsVcs = new Hads_Voices();
         Furniture hadsGtwy = new Hads_Gateway();

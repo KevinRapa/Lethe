@@ -3,10 +3,8 @@ package Gallery;
 import A_Main.AudioPlayer;
 import A_Super.Button;
 import A_Main.Player;
-import java.util.Random;
 import A_Main.GUI;
 import A_Main.Menus;
-import static A_Main.Patterns.NO_TELEPORT_P;
 import static A_Main.Patterns.YES_NO_P;
 /**
  * Teleports the player to a previously visited room when pressed.
@@ -28,8 +26,7 @@ public class Gal6_Button extends Button {
     }
 /*----------------------------------------------------------------------------*/    
     @Override public String event(String key) {
-        int index;
-        String choice, roomId;
+        String choice;
 
         GUI.out("Are you really sure you want to press the button?");
         
@@ -37,20 +34,7 @@ public class Gal6_Button extends Button {
 
         if (Player.answeredYes(choice)) {
             AudioPlayer.playEffect(11);
-            Random generator = new Random();
-
-            index = generator.nextInt(Player.getVisitedRooms().size());
-            roomId = Player.getVisitedRooms().get(index);
-
-            while (NO_TELEPORT_P.matcher(roomId).matches() || 
-                        roomId.equals(Player.getPosId())) 
-            {
-                index = generator.nextInt(Player.getVisitedRooms().size());
-                roomId = Player.getVisitedRooms().get(index);
-            }
-
-            AudioPlayer.playEffect(49);
-            Player.setOccupies(roomId);  
+            Player.teleport();
 
             return "'... Huh? What just happened? This isn't the gallery loft.' " +
                    "You scratch your head and look around the room.";

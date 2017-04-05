@@ -13,6 +13,8 @@ public class Cou8_Spruce extends Cou5_Spruce {
         
         this.dir = Direction.DOWN;
         
+        this.actDialog = "You climb back down.";
+        
         this.description = 
                 "You are sheltered inside the spruce canopy, about "
                 + "15 feet above the ground. The only thing of interest "

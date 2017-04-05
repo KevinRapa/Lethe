@@ -29,10 +29,9 @@ public class Cou5_Spruce extends SearchableFurniture
         this.useDialog = "Drilling a small hole into the trunk allows a small "
                        + "sample of sap to ooze out.";
         this.actDialog = 
-                "You carefully climb up the tree. The closely-spaced branches "
-                 + "of the spruce make the climb easier than in most trees, however "
-                 + "the stiff spruce needles scrape and jab your skin through your "
-                 + "flannel shirt.";
+                "The closely-spaced branches of the spruce make the climb "
+                + "easier than in most trees, however the stiff spruce needles "
+                + "scrape and jab your skin through your flannel shirt.";
         this.description = 
                 "The ancient tree looms over you and creaks slowly in "
                  + "the breeze. It stands out as the most life-like thing "

@@ -20,7 +20,7 @@ public class Cel_Ladder extends Furniture implements Climbable {
         
         this.description = "It's a metal ladder with rudimentary rungs attached "
                          + "directly to the stone wall.";
-        this.actDialog = "You climb up the long ladder to the surface.";
+        this.actDialog = "You climb " + dir + " the long ladder.";
 
         this.addNameKeys("(?:metal )?ladder", "rungs?");
         this.addActKeys("use", dir.toString(), CLIMBPATTERN);

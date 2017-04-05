@@ -54,19 +54,16 @@ public class Hades extends Room {
     }
 // ============================================================================
     private String calculateScore(int score) {
-        if (score >= 13500) {
-            Player.getInv().add(TYPHOS);
-            Player.printInv();
+        if (score >= 15000) {
             return 
                 "\"You are drenched in greed, my son. Undaunted by risk, " +
                 "in pursuit of only the unquenchable thirst for wealth. " +
                 "You are a master adventurer; a true idol among idols, "
               + "surpassing even me. You shall live comfortably for all "
               + "eternity in Tartarus, in constant labor with frequent "
-              + "coffee breaks. As a gift of honor, I present to you "
-              + "Typhos, recognizing you among all the condemned as supreme.\"";
+              + "coffee breaks.\"";
         }
-        if (score >= 10500)
+        if (score >= 13500)
             return 
                 "\"You are drenched in greed, my son. Undaunted by risk, " +
                 "in pursuit of only the unquenchable thirst for wealth. " +
@@ -75,7 +72,7 @@ public class Hades extends Room {
                 "before, and even back. You shall live comfortably for " +
                 "all eternity in Tartarus, in constant labor with "
               + "occasional coffee breaks.\"";
-        if (score >= 5700)
+        if (score >= 10000)
             return 
                 "\"You have the true spirit of an adventurer, yet you " +
                 "also lived as a prisoner, and ultimately strayed from " +
@@ -85,7 +82,7 @@ public class Hades extends Room {
                 "flaming river Phlegethon with other aspired adventurers, " +
                 "interrupted occasionally with short breaks for leisurely " +
                 "activities.\"";
-        if (score >= 1000)
+        if (score >= 5000)
             return 
                 "\"You have the true spirit of an adventurer, yet you " +
                 "also lived as a prisoner, and ultimately strayed from " +

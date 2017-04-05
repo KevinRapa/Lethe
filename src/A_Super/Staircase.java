@@ -6,7 +6,9 @@ import A_Main.Player;
  * Defines generic attributes and methods for a staircase.
  * @author Kevin Rapa
  */        
-abstract public class Staircase extends Furniture implements Unmoveable {
+abstract public class Staircase extends Furniture 
+        implements Unmoveable, Climbable 
+{
     protected final Direction DIR; // If it is an up or down staircase.
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Staircase(Direction direction) {
@@ -27,7 +29,7 @@ abstract public class Staircase extends Furniture implements Unmoveable {
         AudioPlayer.playEffect(15);
     }
 /*----------------------------------------------------------------------------*/
-    public Direction getDir() {
+    @Override public Direction getDir() {
         return DIR;
     }
 /*----------------------------------------------------------------------------*/

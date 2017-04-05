@@ -73,8 +73,8 @@ public class Rotu_Fountain extends Furniture implements Unmoveable {
         
         if (! drained && valvesTurned == 3) {
             drain();
-            return "As you turn the valve, you hear rushing water. Immediately, "
-                 + "a gush of water can be heard flowing through the nearby pipe.";
+            return "As you turn the valve, a gush of water can "
+                    + "be heard flowing through the nearby pipe.";
         }
         else
             return NOTHING;

@@ -49,31 +49,36 @@ public final class Player {
         ODD_CMD_SET = new HashSet<>();  // Random commands
     
     private static final String 
-        ERRONEOUS_INPUT = "I think I may have misunderstood you on something...",
         VERSION = "This is Lethe / Author: Kevin Rapa / Written on Netbeans 8.1 "
                 + "/ Sounds obtained from freesound.org, processed in Audacity ",
+        ERROR_MSGS[] = {
+            "I might have misunderstood you on something...", "I beg your pardon?",
+            "Is that how kids are saying it nowadays?" , "Bless you!",
+            "Might want to look that over again.", "Is that slang for something?"
+        },    
         DENIAL_MSGS[] = {
             "That is quite an ambitious proposition.", "A valiant attempt.", 
             "Did you have much to drink before you came?", "A novel concept!",
             "An ingenious idea from one of your education.",
-            "The player is thwarted in the ridiculous attempt."};
-
+            "The player is thwarted in the ridiculous attempt."
+        };
+    
     // <editor-fold defaultstate="collapsed" desc="MAPPINGS">
-    // Maps various commands in the game to their actions.
-    // Adds the keys to a set which is consulted whenever 
-    // the player enters something.
     static {
-        MAIN_CMDS.put("h", () -> Help.helpSub());
-        MAIN_CMDS.put("k", () -> viewKeyRing());
-        MAIN_CMDS.put("i", () -> inventoryPrompt());
-        MAIN_CMDS.put("w", () -> move(Direction.NORTH));
-        MAIN_CMDS.put("s", () -> move(Direction.SOUTH));
-        MAIN_CMDS.put("a", () -> move(Direction.WEST));
-        MAIN_CMDS.put("d", () -> move(Direction.EAST));
-        MAIN_CMDS.put("m", () -> Map.displayMap());
-        MAIN_CMDS.put("n", () -> writePrompt());
-        MAIN_CMDS.put("l", () -> openLootSack());
-        MAIN_CMDS.put("q", () -> {notEnd = false;});
+        // Maps various commands in the game to their actions.
+        // Adds the keys to a set which is consulted whenever 
+        // the player enters something.
+        MAIN_CMDS.put("h",  () -> Help.helpSub());
+        MAIN_CMDS.put("k",  () -> viewKeyRing());
+        MAIN_CMDS.put("i",  () -> inventoryPrompt());
+        MAIN_CMDS.put("w",  () -> move(Direction.NORTH));
+        MAIN_CMDS.put("s",  () -> move(Direction.SOUTH));
+        MAIN_CMDS.put("a",  () -> move(Direction.WEST));
+        MAIN_CMDS.put("d",  () -> move(Direction.EAST));
+        MAIN_CMDS.put("m",  () -> Map.displayMap());
+        MAIN_CMDS.put("n",  () -> writePrompt());
+        MAIN_CMDS.put("l",  () -> openLootSack());
+        MAIN_CMDS.put("q",  () -> {notEnd = false;});
         MAIN_CMDS.put("nw", () -> evaluateAction("go", "northwest"));
         MAIN_CMDS.put("ne", () -> evaluateAction("go", "northeast"));
         MAIN_CMDS.put("sw", () -> evaluateAction("go", "southwest"));
@@ -143,14 +148,14 @@ public final class Player {
         ODD_CMD_KEYS.put("draw",    () -> GUI.out("You are sure the owner wouldn't wanting you doing that."));
         ODD_CMD_KEYS.put("inflate", () -> GUI.out("Does this look like some kind of balloon to you?"));
         ODD_CMD_KEYS.put("deflate", () -> GUI.out("Does this look like some kind of balloon to you?"));
-        ODD_CMD_KEYS.put("take",    () -> getRandomDenialMsg());
-        ODD_CMD_KEYS.put("get",     () -> getRandomDenialMsg());
-        ODD_CMD_KEYS.put("eat",     () -> getRandomDenialMsg());
-        ODD_CMD_KEYS.put("fight",   () -> getRandomDenialMsg());
-        ODD_CMD_KEYS.put("speak",   () -> getRandomDenialMsg());
-        ODD_CMD_KEYS.put("talk",    () -> getRandomDenialMsg());
-        ODD_CMD_KEYS.put("lift",    () -> getRandomDenialMsg());
-        ODD_CMD_KEYS.put("pick",    () -> getRandomDenialMsg());
+        ODD_CMD_KEYS.put("take",    () -> randomDenialMsg());
+        ODD_CMD_KEYS.put("get",     () -> randomDenialMsg());
+        ODD_CMD_KEYS.put("eat",     () -> randomDenialMsg());
+        ODD_CMD_KEYS.put("fight",   () -> randomDenialMsg());
+        ODD_CMD_KEYS.put("speak",   () -> randomDenialMsg());
+        ODD_CMD_KEYS.put("talk",    () -> randomDenialMsg());
+        ODD_CMD_KEYS.put("lift",    () -> randomDenialMsg());
+        ODD_CMD_KEYS.put("pick",    () -> randomDenialMsg());
         
         ODD_CMD_SET.addAll(ODD_CMD_KEYS.keySet());
     }
@@ -174,8 +179,13 @@ public final class Player {
         return null;
     }
     /*------------------------------------------------------------------------*/
-    private static void getRandomDenialMsg() {
-        int i = (int)Math.abs(System.currentTimeMillis()) % DENIAL_MSGS.length;
+    private static void randomDenialMsg() {
+        int i = Main.getRandomUnder(ERROR_MSGS.length);
+        GUI.out(Player.ERROR_MSGS[i]);
+    }
+    /*------------------------------------------------------------------------*/
+    private static void randomErrorMessage() {
+        int i = Main.getRandomUnder(DENIAL_MSGS.length);
         GUI.out(Player.DENIAL_MSGS[i]);
     }
     /*------------------------------------------------------------------------*/
@@ -194,21 +204,19 @@ public final class Player {
         return mapRef[c[0]][c[1]][c[2]];
     }
     /*------------------------------------------------------------------------*/
-    public static ArrayList<String> getVisitedRooms() { return visited; }
-    /*------------------------------------------------------------------------*/
     public static String getShoes() { return Player.shoes; }
     /*------------------------------------------------------------------------*/
     public static int getCurrentFloor() { return pos[0]; }
     /*------------------------------------------------------------------------*/
     public static int getScore() { return score; }
     /*------------------------------------------------------------------------*/
-    // If the argument equals "it/them" returns the last referenced furniture.
     public static String tryIndefRef_Furn(String indef) {
+        // If the argument equals "it/them" returns last referenced furniture.
         return (IT_THEM_P.matcher(indef).matches()) ? lastFurniture : indef;
     }
     /*------------------------------------------------------------------------*/
-    // If the argument equals "it/them" returns the last referenced item.
     public static String tryIndefRef_Item(String indef) {
+        // If the argument equals "it/them" returns the last referenced item.
         return (IT_THEM_P.matcher(indef).matches()) ? Player.lastItem : indef;
     }
     /*------------------------------------------------------------------------*/
@@ -229,8 +237,8 @@ public final class Player {
     // </editor-fold>
     
     // <editor-fold desc="Setters">
-    // Sends the player to Hades. A zork reference.
     public static void commitSuicide() {
+        // Sends the player to Hades. A zork reference.
         if (! getPosId().equals(Id.HADS)) {
             incrementMoves();
             
@@ -239,12 +247,11 @@ public final class Player {
             GUI.menOut(Menus.ENTER);
             GUI.promptOut();
             
-            Item i = Player.getInv().get(LOOT_SACK);
-            inv.clear();
+            Item i = getInv().get(LOOT_SACK);
+            Player.inv.clear();
             if (! i.equals(Inventory.NULL_ITEM))
                 inv.add(i);
             
-            keys.clear();
             printInv();
             setOccupies(Id.HADS);
         }
@@ -253,19 +260,35 @@ public final class Player {
     }
     /*------------------------------------------------------------------------*/
     /**
-     * 'Teleports' the player to another room.
+     * 'Teleports' the player to another room from a choice.
      * @param id destination area.
      */
     public static void setOccupies(String id) {
         Player.lastVisited = getPosId();
-        Player.pos = Player.getRoomObj(id).getCoords();
+        Player.pos = getRoomObj(id).getCoords();
         Map.updateMap();
-        
         describeRoom();
         GUI.roomOut(Player.getPos().triggeredEvent());
         
         if (! Player.hasVisited(getPosId())) 
             Player.visited.add(getPosId()); 
+    }
+    /*------------------------------------------------------------------------*/
+    /**
+     * Teleports the player to a room at random.
+     * Avoids illegal rooms (Rooms that could potentially trap the player).
+     */
+    public static void teleport() {
+        int index;
+        String roomId;
+
+        do {
+            index = Main.getRandomUnder(visited.size());
+            roomId = visited.get(index);
+        } while (NO_TELEPORT_P.matcher(roomId).matches() || 
+               roomId.equals(getPosId()));
+        
+        setOccupies(roomId);
     }
     /*------------------------------------------------------------------------*/
     public static void setLastInteract_Furn(String furnName) {
@@ -371,12 +394,12 @@ public final class Player {
      * @return at end of game, if the player wishes to erase save data.
      */
     public static boolean mainPrompt() {
+        String ans;
+        
         AudioPlayer.playTrack(getPosId());
         printInv();
         GUI.roomOut(getPos().triggeredEvent());
         describeRoom();
-        
-        String ans;
 
         do {
             GUI.toMainMenu();
@@ -393,8 +416,8 @@ public final class Player {
         return endGameCode();
     }  
     // ========================================================================   
-    // Returns true if game is to be erased.
     private static boolean endGameCode() {
+        // Returns true if game is to be erased.
         String ans = GUI.askChoice(Menus.SAVE_QUIT, SAVE_QUIT_RESET_P);
         
         if (ans.equals("s")) {
@@ -478,9 +501,8 @@ public final class Player {
             {
                 AudioPlayer.playEffect(9); // Wood door sound in catacombs.
             }
-            else {
+            else
                 AudioPlayer.playEffect(0); // Footsteps. No door there
-            }
             
             describeRoom();
             GUI.roomOut(dest.triggeredEvent());
@@ -505,15 +527,6 @@ public final class Player {
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="KEYS">      
 //******************************************************************************    
-    /**
-     * Adds a key to your key ring.
-     * @param key A key to add to your key ring.
-     * @param furniture The furniture from which to take the key.
-     */
-    private static void addToKeyRing(Item key, Inventory furnInv) {
-        furnInv.give(key, Player.keys);
-    }
-    // ========================================================================  
     private static void viewKeyRing() {
         AudioPlayer.playEffect(3);
         GUI.out("Keys:" + NL + Player.keys.toString()); 
@@ -621,7 +634,7 @@ public final class Player {
                         if (! i.equals(Inventory.NULL_ITEM) && Player.inv.contains(i))
                             evalStore(furnInv, i);
                         else
-                            GUI.out(ERRONEOUS_INPUT);
+                            randomErrorMessage();
                 }
                 else if (TAKE_P.matcher(action).matches()) {
                     Player.incrementMoves();
@@ -629,7 +642,7 @@ public final class Player {
                         if (! i.equals(Inventory.NULL_ITEM) && furnInv.contains(i))
                             evalTake(furnInv, i);
                         else
-                            GUI.out(ERRONEOUS_INPUT);
+                            randomErrorMessage();
                 }
                 else
                     GUI.out("A thousand pardons... what was that "
@@ -687,7 +700,7 @@ public final class Player {
     private static void evalTake(Inventory furnInv, Item take) {
         if (KEY_P.matcher(take.getType()).matches()) {
             // Matches a non-cave/catacomb room ID, which keys use as types.
-            addToKeyRing(take, furnInv);
+            furnInv.give(take, Player.keys);
             AudioPlayer.playEffect(3);
         }
         else {
@@ -793,7 +806,7 @@ public final class Player {
                 // Moves player in a random direction
                 Direction[] dirList = 
                 {Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.NORTH};
-                Direction dir = dirList[Math.abs((int)System.currentTimeMillis()) % 4];
+                Direction dir = dirList[Main.getRandomUnder(4)];
                 move(dir);
                 GUI.out("Alrighty, how does " + dir + " sound?");
             }
@@ -865,15 +878,11 @@ public final class Player {
             findStaircase(Direction.DOWN);
     }
     // ========================================================================  
-    // Finds furniture in the room that will move the player up or down.
     private static void findStaircase(Direction dir) {
-        for (Furniture f : Player.getPos().getFurnishings()) {
+        // Finds furniture in the room that will move the player up or down.
+        for (Furniture f : getPos().getFurnishings()) {
             if (f instanceof DoubleStaircase) {
                 GUI.out(f.interact(dir.toString()));
-                return;
-            }
-            if (f instanceof Staircase && ((Staircase)f).getDir() == dir) {
-                GUI.out(f.interact("climb"));
                 return;
             }
             if (f instanceof Climbable && ((Climbable)f).getDir() == dir) {
@@ -884,10 +893,10 @@ public final class Player {
         GUI.out("There's nothing here to take you " + dir + ".");
     }
     // ========================================================================
-    // Searches the loot sack if the player is carrying it.
-    // Also prints score, a message, and the number of phylacteries collected.
-    // Inventories check for phylacteries and treasures based on there value!
     private static void openLootSack() {
+        // Searches the loot sack if the player is carrying it.
+        // Prints score, a message, and the number of phylacteries collected.
+        // Inventories check for phylacteries and treasures based on value!
         int pi = inv.countPhylacteries();
         
         if (Player.hasItem(LOOT_SACK)) {
@@ -973,7 +982,8 @@ public final class Player {
     }
     // ========================================================================  
     private static void printInv(Inventory furnInv) {
-        GUI.invOut("You are carrying:" + NL + Player.inv + NL + "You find:" + NL + furnInv);
+        GUI.invOut("You are carrying:" + NL + Player.inv + NL 
+                + "You find:" + NL + furnInv);
     }
     // ========================================================================  
     /**
@@ -993,7 +1003,7 @@ public final class Player {
                 INV_CMDS.get(ans).run();
             
             else if (isNonEmptyString(ans))
-                GUI.out(ERRONEOUS_INPUT);
+                randomErrorMessage();
             
         } while (isNonEmptyString(ans));
         
@@ -1014,7 +1024,7 @@ public final class Player {
                 Item item = Player.inv.get(ans);
 
                 if (item.equals(Inventory.NULL_ITEM)) {
-                    GUI.out(ERRONEOUS_INPUT);
+                    randomErrorMessage();
                     continue;
                 }
 
@@ -1044,7 +1054,7 @@ public final class Player {
 
                 if (item.equals(Inventory.NULL_ITEM)) {
                     // No item found. Notifies player, repeats loop.
-                    GUI.out(ERRONEOUS_INPUT);
+                    randomErrorMessage();
                     continue;
                 }
 
@@ -1113,7 +1123,7 @@ public final class Player {
             // Player is appending to existing note.
             Item n = inv.get(title);
 
-            if (! n.equals(Inventory.NULL_ITEM)) {
+            if (! n.equals(Inventory.NULL_ITEM))
                 if (n instanceof Note && ! (n instanceof Book)) {
                     // Player may write on notes but not books.
                     Item newNote = new Note(n.toString(), 
@@ -1127,8 +1137,8 @@ public final class Player {
                 }
                 else 
                     GUI.out("That isn't a note if I've ever seen one.");
-            }
-            else GUI.out(ERRONEOUS_INPUT);
+            else 
+                randomErrorMessage();
         }
         else if (! Player.inv.isFull()) {
             // Player is making a new note.
@@ -1156,19 +1166,19 @@ public final class Player {
         StringBuilder builder = new StringBuilder();
         boolean capitalize = false;
         
+        if (body.length == 0)
+            return "";
+        else if (Character.isLetter(body[0]))
+            body[0] = Character.toUpperCase(body[0]);
+        
         for (char c : body) {
-            if (c == '.') {
-                // Capitalize the next lowercase letter.
-                capitalize = true;
-                builder.append(c);
+            if (c == '.') 
+                capitalize = true; // Capitalize the next lowercase letter.
+            else if (capitalize && Character.isLetter(c)) {
+                capitalize = false; // It's a lowercase letter.
+                c = Character.toUpperCase(c);
             }
-            else if (! (capitalize && Character.isLetter(c)))
-                builder.append(c);
-            else {
-                // It's a lowercase letter.
-                capitalize = false;
-                builder.append(Character.toUpperCase(c));
-            }
+            builder.append(c);
         }
         
         GUI.out("Note has been written.");
@@ -1201,9 +1211,9 @@ public final class Player {
         } while (isNonEmptyString(combineThese));        
     }
     // ======================================================================== 
-    // Does the same as combineSub() but with a starting string as input.
-    // For use by the text parser.
     private static void combineSub(String input) {
+        // Does the same as combineSub() but with a starting string as input.
+        // For use by the text parser.
         Item[] itemList = getItemList(input, inv);
         
         if (validateList(itemList))
@@ -1219,7 +1229,7 @@ public final class Player {
     private static boolean validateList(Item[] list) {
         for (Item i : list) // Checks for null items
             if (i.equals(Inventory.NULL_ITEM)) {
-                GUI.out(ERRONEOUS_INPUT); 
+                randomErrorMessage();
                 return false;
             }
         
@@ -1228,7 +1238,7 @@ public final class Player {
             case 2: case 3:
                 return true; 
             case 0:
-                GUI.out(ERRONEOUS_INPUT);
+                randomErrorMessage();
                 return false;
             case 1:
                 GUI.out("You take a moment to ponder how "
@@ -1361,7 +1371,7 @@ private static class TextParser {
 
     // List of commands that don't depend on state.
     private static final Command 
-        DEFAULT_CMD =   new Command("What does that mean?"),
+        DEFAULT_CMD =   new Command(() -> Player.randomErrorMessage(), "ERROR"),
         EXPLETIVE_CMD = new Command("Mind yourself! You're a guest here!"),
         SUICIDE_CMD =   new Command(() -> Player.commitSuicide(), "SUICIDE"),
         GREETING_CMD =  new Command("What do you think this is? Zork?"),

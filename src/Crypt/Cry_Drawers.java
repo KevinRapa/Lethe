@@ -1,6 +1,7 @@
 package Crypt;
 
 import A_Main.GUI;
+import A_Main.Main;
 import A_Main.Menus;
 import static A_Main.Names.BRAIN;
 import A_Main.Player;
@@ -27,7 +28,7 @@ public class Cry_Drawers extends Furniture implements Openable {
         super();
         this.searchable = false;
         
-        this.DRAWER_NUM = (Math.abs((int)System.currentTimeMillis() % 99)) + 1;
+        this.DRAWER_NUM = Main.getRandomUnder(99) + 1;
         
         for (int i = 0; i < 100; i++) 
             this.DRAWERS[i] = new Drwr();

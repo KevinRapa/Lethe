@@ -160,5 +160,15 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
+// ============================================================================
+    /**
+     * Returns a 'random enough' number for various purposes.
+     * Generally used as an index number.
+     * @param max Number will be from 0 to max - 1.
+     * @return random number.
+     */
+    public static int getRandomUnder(int max) {
+        return (int)Math.abs(System.currentTimeMillis()) % max;
+    }
 // ============================================================================     
 }

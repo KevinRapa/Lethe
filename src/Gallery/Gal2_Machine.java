@@ -3,10 +3,7 @@ package Gallery;
 import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Inventory;
-import static A_Main.Names.BUCKET_OF_WATER;
-import static A_Main.Names.RUBBER_GLOVES;
-import static A_Main.Names.WEAPON;
-import static A_Main.Names.WORK_BOOTS;
+import static A_Main.Names.*;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.Openable;
@@ -40,7 +37,7 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
                        + "A plugged-in outlet reveals itself behind the machine.";
         
         this.addUseKeys(ANYTHING);
-        this.addActKeys(MOVEPATTERN, HOLDPATTERN,"(?:un)?plug");
+        this.addActKeys(MOVEPATTERN, HOLDPATTERN,"(?:un)?plug", "turn", "fix|repair");
         this.addNameKeys("(black )?(?:metal )?(?:box|machine|handle)");
     }
 /*----------------------------------------------------------------------------*/
@@ -80,6 +77,10 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
             }
             else
                 return this.NOT_MOVED;
+        case "fix": case "repair":
+            return "You are by no means a mechanic.";
+        case "turn":
+            return "There is no visible off switch on this thing.";
         default:
             if (moved)
                 return "You have already moved the machine as far as you can.";
@@ -107,13 +108,17 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
     }
 /*----------------------------------------------------------------------------*/  
     @Override public String useEvent(Item i) {
-        if (i.getType().equals(WEAPON)) {
+        String name = i.toString();
+        
+        if (name.equals(HAND_DRILL) || name.equals(SCREWDRIVER))
+            return "So you're a mechanic now?";
+        else if (i.getType().equals(WEAPON)) {
             return (Player.hasItem(WORK_BOOTS) || Player.hasItem(RUBBER_GLOVES) 
                  || ! pluggedIn) ? 
                     "Attempts to savagely smash the machine yield no progress forward." :
                     this.useDialog;
         }
-        else if (i.toString().equals(BUCKET_OF_WATER)) {
+        else if (name.equals(BUCKET_OF_WATER)) {
             return (pluggedIn) ? 
                     "Whoa there... do you have a death wish?" : 
                     DEFAULT_USE;

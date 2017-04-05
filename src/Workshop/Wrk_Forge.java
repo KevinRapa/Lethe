@@ -16,8 +16,7 @@ public class Wrk_Forge extends Furniture implements Gettable, Unmoveable {
         this.actDialog = "You're smart enough not to put your hand in there.";
         this.useDialog = "You'd much rather work with wood than metal...";
         
-        this.addActKeys(GETPATTERN);
-        this.addActKeys(FEELPATTERN);
+        this.addActKeys(GETPATTERN, FEELPATTERN);
         this.addUseKeys(HAMMER);
         this.addNameKeys("(?:brick )?forge", "(?:smoldering )?ash(?:es)?");
     }

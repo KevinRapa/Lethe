@@ -2,10 +2,8 @@ package Caves;
 
 import A_Main.AudioPlayer;
 import A_Main.Id;
-import static A_Main.Patterns.NO_TELEPORT_P;
 import A_Main.Player;
 import A_Super.Item;
-import java.util.Random;
 /**
  * This item teleports the player to a room in the castle that the player has
  * visited.
@@ -16,7 +14,6 @@ import java.util.Random;
  * @author Kevin Rapa
  */
 public class Factum extends Item {
-    private transient Random generator;
     // =========================================================================
     public Factum(String name, int score) {
         super(name, score);
@@ -44,21 +41,7 @@ public class Factum extends Item {
             case Id.VAUE:
                 Player.setOccupies(Id.CHA2); break;
             default:
-                int index;
-                String roomId;
-                generator = new Random();
-                
-                index = generator.nextInt(Player.getVisitedRooms().size());
-                roomId = Player.getVisitedRooms().get(index);
-                
-                while (NO_TELEPORT_P.matcher(roomId).matches() || 
-                       roomId.equals(Player.getPosId())) 
-                {
-                    index = generator.nextInt(Player.getVisitedRooms().size());
-                    roomId = Player.getVisitedRooms().get(index);
-                }
-                Player.setOccupies(roomId);
-                break;
+                Player.teleport(); break;
         }
         return (Player.getPosId().equals(Id.HADS)) ? 
                 "The player is dissatisfied with their fate and makes a daring "

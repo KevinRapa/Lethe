@@ -22,6 +22,7 @@ public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
         this.inv = new Apparatus_Inventory();
         
         this.searchDialog = "You look on the platform.";
+        this.actDialog = "The device appears to be powered by some invisible source and lacks an off switch.";
         this.description = "The weird apparatus looks like a metal platform "
                          + "with three curved arms projecting out and over its top "
                          + "of itself. Wires run all over the thing, and lights "
@@ -29,11 +30,15 @@ public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
                          + "some sort of blue light. Next to the apparatus is a label "
                          + "that reads: \"Plasma induction charger\".";
         
-        this.addActKeys(GETPATTERN);
+        this.addActKeys(GETPATTERN, "turn", "repair|fix");
         this.addNameKeys("(?:unknown )?apparatus", "(?:plasma induction )?charger");
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {
+        if (key.equals("turn"))
+            return this.actDialog;
+        else if (key.equals("repair") || key.equals("fix"))
+            return "I don't think that device is broken.";
         return getIt("This device is too big and heavy to put in your pockets.");
     }
 // ============================================================================    
