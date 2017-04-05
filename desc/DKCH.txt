@@ -1,7 +1,5 @@
-You have entered a small sleeping chamber no 
-more than 7 or 8 feet wide. The ceiling arches 
-to the floor on one side, and a shaft spins near 
-the ceiling at the north end. A rudimentary bed 
-is on the room's south side, and a plain desk and 
-chair sit at the east. There is a lit candle on 
-the desk.
+This is nothing more than a small sleeping chamber no 
+wider than 7 or 8 feet. The ceiling arches to the floor 
+on one side, and a shaft near the ceiling spins above a 
+desk to the east. There is a lit candle on the desk. 
+A rudimentary bed is immediately south.
