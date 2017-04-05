@@ -1,6 +1,5 @@
-You have reached the end of the 
-walkway which only leads back north 
-at this point. To your east is another 
-metal door. To the west is the putrid 
-body of water and many stone columns. 
-Several torches on the wall light this area.
+You have reached the end of the walkway which 
+leads only back north at this point. East is 
+a second metal door. West is the putrid body 
+of water and many stone columns. A few torches 
+on the wall light this area a small amount.
