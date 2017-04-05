@@ -1,8 +1,7 @@
 You are on the other side of your cell 
-door in a room with a large pool in the 
-center. A vortex of water flowing from a 
-tunnel to the north spins in the pool and 
-drives a large submerged wheel attached to 
-a driveshaft protruding from the ceiling. 
-Several torches light the room. To your 
-east is a second metal door.
+door in a torch-lit room with a large pool 
+in the center. Water flowing from a tunnel 
+to the north spirals aggressively in the 
+pool and drives a large shaft protruding 
+from the ceiling. To your east is a second 
+metal door.
