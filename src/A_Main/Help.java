@@ -27,6 +27,7 @@ public final class Help {
         "When prompted for input, the format may appear in "
       + "angle brackets.            "
       + "<item> - Enter an item name.                    " +
+        "<left> - Hit left arrow key (Arrow keys are used for scrolling).        " +
         "<'x'> - Enter what's quoted.                   " +
         "<#> - Enter a digit.       " +
         "< > - Enter nothing.       " +

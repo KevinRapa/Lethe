@@ -453,8 +453,8 @@ public class GUI extends JFXPanel {
                 UP = KeyEvent.VK_UP,
                 DOWN = KeyEvent.VK_DOWN,
                 ENTER = KeyEvent.VK_ENTER,
-                OPEN_BRACKET = KeyEvent.VK_OPEN_BRACKET,
-                CLOSE_BRACKET = KeyEvent.VK_CLOSE_BRACKET;
+                LEFT = KeyEvent.VK_LEFT,
+                RIGHT = KeyEvent.VK_RIGHT;
         /*------------------------------------------------------*/
         @Override public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
@@ -469,13 +469,13 @@ public class GUI extends JFXPanel {
                     INPUT.setText(""); 
                     undoPosition = 0;
                     break;  
-                case OPEN_BRACKET:  // Player uses brackets to scroll
+                case LEFT:  // Player uses left and right arrows to scroll
                     if (SB.isVisible())
                         SB.setValue(SB.getValue() + 15);
                     if (SN.isVisible())
                         SN.setValue(SN.getValue() + 15);
                     break;
-                case CLOSE_BRACKET:
+                case RIGHT:
                     if (SB.isVisible())
                         SB.setValue(SB.getValue() - 15);
                     if (SN.isVisible())

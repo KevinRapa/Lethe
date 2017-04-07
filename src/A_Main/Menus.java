@@ -33,12 +33,12 @@ public final class Menus {
                     + "< >    Back",
 
         TRADE_SUB = NL
-                  + "<'s' list>  Store" + NL
-                  + "<'t' list>  Take" + NL
-                  + "<'loot'>    Loot!!!" + NL
-                  + "<'['/']'>   Scroll" + NL
-                  + "<#>         Inspect" + NL
-                  + "< >         Back",
+                  + "<left/right> Scroll" + NL
+                  + "<'s' list>   Store" + NL
+                  + "<'t' list>   Take" + NL
+                  + "<'loot'>     Loot!!!" + NL
+                  + "<#>          Inspect" + NL
+                  + "< >          Back",
 
         SAVE_QUIT = NL + NL
                   + "<'q'> Quit" + NL
@@ -146,8 +146,8 @@ public final class Menus {
         ENTER = NL + NL + "Press enter...",
             
         BOOK = NL + NL + 
-            "<'y'/'n'> Turn the page?" + NL +
-            "<'['/']'> Scroll", 
+            "<'y'/'n'>    Turn the page?" + NL +
+            "<left/right> Scroll", 
                
             
         CREDITS = "This game was written in " + NL
