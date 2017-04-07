@@ -14,12 +14,13 @@ import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import static A_Main.Names.SEP;
 import static A_Main.Names.W_DIR;
+import javax.swing.JButton;
 
 public class AudioPlayer {
     public final static String 
-            TPTH = "ambience" + SEP,    // Filepath for ambience.
-            EPTH = "effects" + SEP,     // Filepath for effects.
-            EXT = ".mp3";               // Audio file extension.
+            TPTH = "data" + SEP + "ambience" + SEP,    // Filepath for ambience.
+            EPTH = "data" + SEP + "effects" + SEP,     // Filepath for effects.
+            EXT = ".mp3";                              // Audio file extension.
     
     private static String trackName;
     private static boolean 
@@ -324,14 +325,23 @@ public class AudioPlayer {
             }
     }
 // ============================================================================
-    public static void toggleMute() {
-        if (! trackMuted && ! effectsMuted)
+    public static void toggleMute(JButton b) {
+        if (! trackMuted && ! effectsMuted) {
             trackMuted = true;
-        else if (trackMuted && ! effectsMuted)
+            b.setText("Mute II");
+        }
+        else if (trackMuted && ! effectsMuted) {
             effectsMuted = true;
-        else if (trackMuted && effectsMuted)
-            trackMuted = effectsMuted = false;
-
+            b.setText("Mute III");
+        }
+        else if (trackMuted && effectsMuted) {
+            trackMuted = false;
+            b.setText("Unmute");
+        }
+        else {
+            effectsMuted = false;
+            b.setText("Mute");
+        }
         currentPlayer.setVolume(trackMuted ? 0.0 : 1.0);
     }
 //******************************************************************************    

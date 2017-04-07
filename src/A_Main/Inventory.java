@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.io.Serializable;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 /**
  * Maintains a list of items.
  * Both the player (keys) and furniture have these.
@@ -29,23 +31,40 @@ public class Inventory implements Iterable<Item>, Serializable {
         return CONTENTS.get(index);
     }
     //-------------------------------------------------------------------------
-    // Tries to find an item with the name. Returns a null item for a failure.
-    public Item get(String itemName) {
-        if (Patterns.ANY_DIGIT_P.matcher(itemName).matches()) {
-            int i = Integer.parseInt(itemName); // Player used a slot number.
+    /**
+     * Returns an item in the inventory with as close a name as possible to
+     * itemName.
+     * Exact matches are searched for first. If nothing is found, looks for
+     * something containing the word in itemName.
+     * If passed an digit, the inventory at that index is returned.
+     * @param name The name of an item to search for.
+     * @return Matching item. Returns a NULL_ITEM if nothing is found.
+     */
+    public Item get(String name) {
+        if (Patterns.ANY_DIGIT_P.matcher(name).matches()) {
+            int i = Integer.parseInt(name); // Player used a slot number.
             if (i <= this.size() && i > 0)
                 return this.CONTENTS.get(i - 1);
         }
         else {
             for (Item i : this.contents()) // First checks for an exact match.
-                if (i.toString().equals(itemName))
+                if (i.toString().equals(name))
                     return i;
             
-            for (Item i : this.contents()) // Checks for a close match.
-                if (i.toString().matches(NO_LETTER_BEFORE + itemName + NO_LETTER_AFTER))
-                    return i;
+            // If player types anything that evaluates to an invalid regex,
+            // this prevent crashing.
+            try {
+                Pattern p = Pattern.compile(NO_LETTER_BEFORE + name + NO_LETTER_AFTER);
+                for (Item i : this.contents()) // Checks for a close match.
+                    if (p.matcher(i.toString()).matches())
+                        return i;
+            }
+            catch (PatternSyntaxException e) {
+                System.err.println("Player is trying to break regex compiler with: \"" + name + "\".");
+                return NULL_ITEM;
+            }
         }
-        System.err.println("Warning: NULL_ITEM returned at <inventory>.get()");
+        System.err.println("NULL_ITEM returned at <inventory>.get()");
         return NULL_ITEM; // Item wasn't found. Always check for this!!
     }
     //-------------------------------------------------------------------------
@@ -58,17 +77,26 @@ public class Inventory implements Iterable<Item>, Serializable {
     }
     //-------------------------------------------------------------------------
     // Checks if this inv contains an item who's name matches argument.
-    public boolean containsItemResembling(String item) {
-        if (Patterns.ANY_DIGIT_P.matcher(item).matches()) {
+    public boolean containsItemResembling(String name) {
+        if (Patterns.ANY_DIGIT_P.matcher(name).matches()) {
             // Player used a slot number
-            int i = Integer.parseInt(item);
+            int i = Integer.parseInt(name);
             return (i > 0 && i <= CONTENTS.size());
         }
-        else // Player typed in an item name
-            return CONTENTS
-                    .stream()
-                    .anyMatch(i -> i.toString()
-                    .matches(NO_LETTER_BEFORE + item + NO_LETTER_AFTER));
+        else {
+            // Player typed in an item name.
+            // If player types anything that evaluates to an invalid regex,
+            // this prevent crashing.
+            try {
+                Pattern p = Pattern.compile(NO_LETTER_BEFORE + name + NO_LETTER_AFTER);
+                return CONTENTS.stream().anyMatch(i -> 
+                        p.matcher(i.toString()).matches());
+            }
+            catch (PatternSyntaxException e) {
+                System.err.println("Player is trying to break regex compiler with: \"" + name + "\".");
+                return false;
+            }
+        }
     }
     //-------------------------------------------------------------------------
     public int size() {

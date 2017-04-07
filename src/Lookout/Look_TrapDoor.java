@@ -53,13 +53,13 @@ public class Look_TrapDoor extends Door implements Climbable {
                 return "The trap door is closed. There's nothing to take you there.";
         }
         else if (key.equals("close")) {
-            if (open)
-                return "The trap door is closed already!";
-            else {
+            if (open) {
                 this.open = false;
                 this.NAMEKEYS.remove(LADDER_NAME);
                 return "You close the trap door.";
             }
+            else
+                return "The trap door is closed already!";
         }
         else
             return super.interact(key);

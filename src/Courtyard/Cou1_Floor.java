@@ -52,8 +52,14 @@ public class Cou1_Floor extends Cou_Floor {
 /*----------------------------------------------------------------------------*/ 
     @Override public String interact(String key) {        
         if (key.equals("dig") || key.equals(SHOVEL)) {
-            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL))
-                return this.useEvent(new Item(SHOVEL, 0));
+            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
+                Item i = Player.getInv().get(SHOVEL);
+                
+                if (i.equals(Inventory.NULL_ITEM))
+                    i = Player.getInv().get(TROWEL);
+                
+                return useEvent(i);
+            }
             else
                 return super.useDialog;
         }

@@ -32,7 +32,7 @@ public class Gal6_Canon extends Gal_LightMachine {
                          + "an empty square compartment on top. What is that for?";
         this.STAT = (Gal7_Statue) stat;
         this.addActKeys("fire", "shoot");
-        this.addNameKeys("(?:electr(?:on)?ic )?cannon");
+        this.addNameKeys("(?:electr(?:on)?ic )?cann?on");
         this.addUseKeys(CHARGED_BATTERY, DEAD_BATTERY);
         this.inv = new Cnn_Inv();       
     }

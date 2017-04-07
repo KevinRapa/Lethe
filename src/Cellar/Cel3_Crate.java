@@ -46,10 +46,14 @@ public class Cel3_Crate extends SearchableFurniture
     }
     // ========================================================================   
     @Override public String interact(String key) {              
-        if (key.equals("pry"))
-            return Player.hasItem(CROWBAR) ? 
-                    this.useEvent(new Item(CROWBAR, 0)) :
-                    this.actDialog;
+        if (key.equals("pry")) {
+            if (Player.hasItem(CROWBAR)) {
+                Item crowbar = Player.getInv().get(CROWBAR);
+                return this.useEvent(crowbar);
+            } 
+            else  
+                return this.actDialog;
+        }
         else if (key.equals("open"))
             return "Yes, that would be good to do, but you do not even have the "
                     + "strength to do that by hand.";

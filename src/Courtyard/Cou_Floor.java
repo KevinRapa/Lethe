@@ -32,7 +32,12 @@ public class Cou_Floor extends Floor implements Gettable {
     @Override public String interact(String key) {
         if (key.equals("dig") || key.equals(SHOVEL)) {
             if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
-                return this.useEvent(new Item(SHOVEL, 0)); // Dummy item
+                Item i = Player.getInv().get(SHOVEL);
+                
+                if (i.equals(Inventory.NULL_ITEM))
+                    i = Player.getInv().get(TROWEL);
+                
+                return useEvent(i);
             }
             else
                 return this.useDialog;

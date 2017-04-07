@@ -28,7 +28,7 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
         this.descUnlit = "It's a smoldering, unlit fireplace.";
         this.useDialog = "You douse the flames with the water.";
         
-        this.addActKeys("warm", "use", GETPATTERN, "relax");
+        this.addActKeys("warm", "douse|extinguish", "use", GETPATTERN, "relax");
         this.addNameKeys("fireplace", "hearth", "fire");
         this.addUseKeys(BUCKET_OF_WATER);
     }    
@@ -56,7 +56,15 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
     }
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {  
-        if (key.matches(GETPATTERN))
+        if (key.equals("extinguish") || key.equals("douse")) {
+            if (Player.hasItem(BUCKET_OF_WATER)) {
+                Item bucket = Player.getInv().get(BUCKET_OF_WATER);
+                return this.useEvent(bucket);
+            }
+            else
+                return "You have nothing to douse the flames with.";
+        }
+        else if (key.matches(GETPATTERN))
             return this.getIt();
         else
             return this.isLit() ? 

@@ -28,15 +28,15 @@ import java.awt.Dimension;          import java.awt.Toolkit;
 import java.awt.event.KeyEvent;     import java.awt.event.KeyListener; 
 import java.io.*;                   import javax.swing.ImageIcon; 
 import javax.swing.JFrame;          import javax.swing.JLabel;
+import javafx.application.Platform;
 
 import static A_Main.Names.SEP;
 import static A_Main.Names.W_DIR;
-import javafx.application.Platform;
 
 public class Main {
     public static final String 
             START_LOCATION = Id.COU4, // Default COU4
-            FILE_NAME = "save" + SEP + "Game.data";
+            FILE_NAME =  "data" + SEP + "save" + SEP + "Game.data";
     
     public static final JFrame 
             GAME_FRAME = new JFrame("Lethe"),
@@ -48,8 +48,9 @@ public class Main {
 
     // <editor-fold defaultstate="collapsed" desc="Static block sets up title screen">
     static {
-        TITLE_LABEL.setIcon(new ImageIcon("img" + SEP + "Title.jpg"));
-
+        TITLE_LABEL.setIcon(new ImageIcon(
+                W_DIR + SEP + "data" + SEP + "img" + SEP + "Title.jpg")
+        );
         TITLE_LABEL.addKeyListener(new KeyListener() {
             // To progress to game frame from title frame with "Press any key"
             @Override public void keyTyped(KeyEvent e) {}
@@ -74,7 +75,7 @@ public class Main {
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="MAKE THE FRAME">
         //**********************************************************************
-        GUI panel = new GUI(); // Make false if window is too large.
+        GUI panel = new GUI();
                 
         GAME_FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -91,6 +92,7 @@ public class Main {
         TITLE_FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         TITLE_FRAME.setLocation(width > 1000 ? (width - 1000)/2 : 0, 100);
         TITLE_FRAME.pack();
+        TITLE_FRAME.setResizable(false);
         TITLE_FRAME.setVisible(true);
         
         TITLE_LABEL.setFocusable(true);
@@ -116,6 +118,7 @@ public class Main {
             System.out.println("Data found. Loading game.");
             RoomGraph.assignCoordinates();
             Player.loadAttributes(gameData.readObject());
+            gameData.close();
             eraseTrue = Player.mainPrompt(); // START GAME
         } 
         catch (ClassNotFoundException | IOException | ClassCastException e) 

@@ -1,6 +1,7 @@
 package Garden;
 
 import A_Main.AudioPlayer;
+import A_Main.Inventory;
 import static A_Main.Names.*;
 import A_Main.Player;
 import A_Super.Item;
@@ -47,8 +48,14 @@ public class Gar13_Planter extends SearchableFurniture implements Unmoveable {
             return this.actDialog;
         }
         else {
-            if (Player.hasItem(TROWEL) || Player.hasItem(SHOVEL))
-                return useEvent(new Item(SHOVEL, 0)); // Dummy item
+            if (Player.hasItem(TROWEL) || Player.hasItem(SHOVEL)) {
+                Item i = Player.getInv().get(SHOVEL);
+                
+                if (i.equals(Inventory.NULL_ITEM))
+                    i = Player.getInv().get(TROWEL);
+                
+                return useEvent(i);
+            }
             else
                 return "You have nothing to dig with.";
         }

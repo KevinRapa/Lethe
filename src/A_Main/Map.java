@@ -38,7 +38,7 @@ import javax.swing.JFrame; import javax.swing.JLabel;
 public class Map {
     // Room images are located here.
     private final static String 
-            PATH = W_DIR + SEP + "img" + SEP,
+            PATH = W_DIR + SEP + "data" + SEP + "img" + SEP,
             EXT = ".jpg";
     
     private static final JLabel MAP_LABEL = new JLabel();
@@ -181,7 +181,7 @@ public class Map {
         Item couFrk = new Item(GOLDEN_FORK, "The magnificent fork of gold "
                 + "has been carved with the finest attention to detail. "
                 + "A large pearl is set into the end of the handle, and many "
-                + "small scapolite gems descorate the rest of it.", 500);
+                + "small scapolite gems decorate the rest of it.", 500);
         
         // Found on an altar in the crypt
         Item jetSkull = new BreakableItem(JET_SKULL, "This is a polished black "
@@ -627,9 +627,9 @@ public class Map {
         Furniture wow1NDr = new Sha_Door(Direction.NORTH);
         Furniture wow1Shlvs = new Wow1_Shelves(vial, vinegar, clngSoln, actn);
         // </editor-fold>
-        // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST BALCONY">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE BEACON">
         //-----------------------------THE ROOM---------------------------------
-        Room wbal = new Wbal("West balcony", Id.WBAL);   
+        Room wbal = new Wbal("Beacon", Id.WBAL);   
         //-------------------------------ITEMS----------------------------------
         Item wbalch = new Item("rotted wooden chunk", "It's a rotted chunk of wood.", -50);
         Item wbalsp = new Item("wood splinter", "It's a splinter of wood.", -25);
@@ -698,7 +698,7 @@ public class Map {
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST OUTER WALL BALCONY">
         //-----------------------------THE ROOM---------------------------------
-        Room wow3 = new Wow3("Beacon", Id.WOW3, wow2Lddr, wow2F.getInv(), wowLddr);
+        Room wow3 = new Wow3("Balcony", Id.WOW3, wow2Lddr, wow2F.getInv(), wowLddr);
         //-------------------------------ITEMS----------------------------------
         Item wowRope = new Item("rope", "It's a short, coiled rope.", ram, 3, 25);
         //-----------------------------FURNITURE--------------------------------
@@ -879,6 +879,7 @@ public class Map {
         Furniture gal2W = new Wall("The wall here is an ornate white-paneled wood.");
         Furniture gal2Strcs = new Gal2_Staircase(Direction.UP);
         
+        Furniture gal4Glss = new Gal4_Glass();
         Furniture gal4Cs = new Gal4_Case(monaLisa);
         Furniture gal4Lck = new Gal4_Padlock(gal4Cs);
         Furniture gal4Dr = new Gal4_Door(Direction.NORTH);
@@ -997,7 +998,7 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room eow1 = new Room("East outer wall", Id.EOW1);
         Room eow2 = new Room("East outer wall", Id.EOW2);
-        Room eow4 = new Eow4("East outer wall balcony", Id.EOW4);
+        Room eow4 = new Eow4("Balcony", Id.EOW4);
         //-------------------------------ITEMS----------------------------------
         Item wtrBckt = new Liquid(BUCKET_OF_WATER, "It's a metal bucket filled with water.", 25);
         Item eowSwrd1 = new Weapon("silver sword", "The sword is finely polished and tapers evenly "
@@ -2263,8 +2264,8 @@ public class Map {
         gal3.addFurniture(gal3Ttm, gal3Peg, gal3Hl, gal3Sgmnt, gal3Htch, gal3Lddr, 
                 gal3Rp, gal3Swtch, gal3InstFurn, gal3Msk, gal3Msk2, gal3Msk3, gal3Msks, 
                 gal3Hrth, gal3F, gal3W, gal3Art, gal3Art2, gal3Art3, gal3Arts, clng);
-        gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Dr, gal2Clmns, 
-                gal4Lck, gal4Cs, gal4Lft, gal4Rdo, gal4F, gal4Crpt, gal4Lvr);
+        gal4.addFurniture(gal4Strcs, galBalc, rotuSky, gal2W, galDm, gal4Lck,  gal2Clmns, 
+                gal4Dr, gal4Glss, gal4Cs, gal4Lft, gal4Rdo, gal4F, gal4Crpt, gal4Lvr);
         gal6.addFurniture(gal6Cnn, gal6Lddr, gal6Mchn, gal6Hlmt, gal6Bttn, gal6App, 
                 gal6F, gal6W, gal6Htch, gal6Tech, gal6Elec, gal6Tbl, clng);
         gal7.addFurniture(wWW);

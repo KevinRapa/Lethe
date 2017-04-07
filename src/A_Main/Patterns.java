@@ -22,7 +22,7 @@ NORTH_P = Pattern.compile("north|forward"),
 SOUTH_P = Pattern.compile("south|back(?:wards?)?"),
 EAST_P = Pattern.compile("east|right"),
 WEST_P = Pattern.compile("west|left"),
-UP_P = Pattern.compile("up(?:wards?)?"),
+UP_P = Pattern.compile("up(?:wards?|stairs)?"),
         
 // Indefinite reference (e.g. "Examine the pen and then throw IT")
 IT_THEM_P = Pattern.compile("it|them"),
@@ -70,7 +70,7 @@ LIST_P = Pattern.compile("(?:\\s*,(\\s*and\\s*)?\\s*)|(?:\\s+and\\s+)"),
         
 // These five are the most specific cases and are checked first.
 EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska"),
-DIRECTION_P = Pattern.compile("(?:(move|walk|go|run|climb|) ?)(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?)?)"),
+DIRECTION_P = Pattern.compile("(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?|stairs)?) *(?:$|(?:the )?stairs)"),
 SUICIDE_P = Pattern.compile("(?:commit )?suicide|(?:kill|hang) (?:your)?self(?: (?:with|using).+)?"),
 COMBINE_P = Pattern.compile("combine\\s+.+"), // Anything beginning with 'combine' is a combine command       
 ZORK_P = Pattern.compile("hi|hello|hey|sup|brief|superbrief|verbose|diagnose"),
@@ -88,15 +88,14 @@ INSPECT_P = Pattern.compile("look(?! (?:on|in(?:side)?|under|around))|inspect|ex
         
 // SPECIFIC TO ITEM USE COMMANDS
 // List of all the things a player can do to an item.
-USE_P = Pattern.compile("use|read|drop|wear|remove|fill|burn|eat|swing|wave|drink|throw|destroy|break|lean|tie|rip|tear"),
-USE_ITEM_CMD_P = Pattern.compile("(?:" + USE_P + "|" + INSPECT_P + ") [a-z0-9: ,'-]+"),
+USE_ITEM_CMD_P = Pattern.compile("(?:use|read|drop|wear|remove|fill|burn|eat|swing|wave|drink|throw|destroy|break|lean|tie|rip|tear) [a-z0-9: ,'-]+"),
 USE_MANNER_P = Pattern.compile(" (on|against|to|at) "), // Separates item from furniture.
          
 // Once a store command is matched, these words are fine to remove.
 STORE_SPACE_P = Pattern.compile("(?:put|store|pour|dump|give) "),
 
 // These prepositions are removed at some point, as their meanings are mostly unimportant.
-PREPOS_P = Pattern.compile("up|down|(?:in|on)(?:to)?|out|off|of|over|through|against|from|around|to|at|under(?:neath)?"),
+PREPOS_P = Pattern.compile("up|down|inside|(?:in|on)(?:to)?|out|off|of|over|through|against|from|around|to|at|under(?:neath)?"),
         
 PREPOS_THEN_WORD = Pattern.compile("(?:" + PREPOS_P.toString() + ").+"),
         
@@ -114,7 +113,7 @@ SPACE_THEN_ALL_P = Pattern.compile("\\s.+"),
 
 // Implies a search, if sentence resembles "put <item> DOWN"
 // Sentences resembling "go down" or "move down" have been checked at this point        
-DROP_P = Pattern.compile(".+ down"),
+DROP_P = Pattern.compile("down"),
 
 // Splits an item from the object it's used on (e.g. cut rope WITH the sword)
 INSTRUCTIVE_P = Pattern.compile(" with | using "),  
@@ -126,7 +125,7 @@ CONJUNC_P = Pattern.compile(" (?<!, ?)and(?: then| also)? | then(?: also)? "),
 
 // In a store command, this pattern splits items from the furniture they are
 // to be stored in.
-STORE_AREA_P = Pattern.compile(" (?:(?:in|on)(?:to)?|under(?:neath)?|(?:next )?to|beside|over) "),
+STORE_AREA_P = Pattern.compile(" (?:inside|(?:in|on)(?:to)?|under(?:neath)?|(?:next )?to|beside|over) "),
 
 // Used to get just the first word in s sentence, but NOT with punctuation.
 FIRST_WORD_P = Pattern.compile("[a-z]+\\s"),

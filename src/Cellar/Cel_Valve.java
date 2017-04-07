@@ -34,7 +34,7 @@ public class Cel_Valve extends Furniture implements Unmoveable {
                 + "center is a metal bolt.";
         this.actDialog = "You tighten back up the valve. ";
         
-        this.addNameKeys("(?:big )?(?:rusty )?valve");
+        this.addNameKeys("(?:big )?(?:rusty )?valve", "(?:metal )?bolt");
         this.addUseKeys(HAMMER, MONKEY_WRENCH);
         this.addActKeys(VALVEPATTERN);
     }

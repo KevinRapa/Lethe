@@ -54,6 +54,7 @@ public class Kitc_Torch extends Torch_Holder {
             if (item.toString().equals(HAND_TORCH) && this.size() == 0) {
                 this.CONTENTS.add(item);
                 Player.describeRoom();
+                GUI.roomOut("Kitchen");
                 return true;
             }
             GUI.out("The " + item + " doesn't fit in.");

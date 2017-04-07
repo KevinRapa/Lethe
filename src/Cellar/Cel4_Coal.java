@@ -1,6 +1,7 @@
 package Cellar;
 
 import A_Main.AudioPlayer;
+import A_Main.Inventory;
 import A_Main.Names;
 import static A_Main.Names.*;
 import A_Main.Player;
@@ -34,8 +35,14 @@ public class Cel4_Coal extends Furniture implements Gettable, Unmoveable {
             return Player.hasItem(Names.HAND_TORCH) ? 
                     this.useDialog : this.actDialog;
         else if (key.equals(SHOVEL) || key.equals("dig")) {
-            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL))
-                return useEvent(new Item(SHOVEL, 0));
+            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
+                Item i = Player.getInv().get(SHOVEL);
+                
+                if (i.equals(Inventory.NULL_ITEM))
+                    i = Player.getInv().get(TROWEL);
+                
+                return useEvent(i);
+            }
             else
                 return "You have nothing to dig the coal with. Of course, you "
                         + "could simple take one.";

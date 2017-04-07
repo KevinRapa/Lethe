@@ -1,6 +1,7 @@
 package A_Super;
 
 import A_Main.AudioPlayer;
+import A_Main.Inventory;
 import static A_Main.Names.*;
 import A_Main.Player;
 
@@ -27,16 +28,24 @@ public class Floor extends SearchableFurniture implements Unmoveable {
         if (key.equals("clean"))
             return "Oh yes, you're sure the owner of this castle would love that.";
         else if (key.equals(MOP) || key.equals("sweep")) {
-            if (Player.hasItem(MOP))
-                return this.useEvent(new Item(MOP, 0)); // Dummy item
+            if (Player.hasItem(MOP)) {
+                Item mop = Player.getInv().get(MOP);
+                return this.useEvent(mop);
+            }
             else
                 return "You have nothing mop the floor with. "
                      + "Do you really want to do that anyway? "
                      + "One less thing you need is a slippery floor.";
         }
         else {
-            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL))
-                return this.useEvent(new Item(SHOVEL, 0));
+            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
+                Item i = Player.getInv().get(SHOVEL);
+                
+                if (i.equals(Inventory.NULL_ITEM))
+                    i = Player.getInv().get(TROWEL);
+                
+                return useEvent(i);
+            }
             else
                 return "You have nothing with which to dig.";
         }

@@ -44,8 +44,10 @@ public class Cel5_Furnace extends SearchableFurniture
     // ========================================================================   
     @Override public String interact(String key) {              
         if (key.equals("light")) {
-            if (Player.hasItem(HAND_TORCH))
-                return this.useEvent(new Item(HAND_TORCH, 0));
+            if (Player.hasItem(HAND_TORCH)) {
+                Item torch = Player.getInv().get(HAND_TORCH);
+                return this.useEvent(torch);
+            }
             else
                 return "You have nothing to light the furnace with.";
         }

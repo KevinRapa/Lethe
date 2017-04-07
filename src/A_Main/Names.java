@@ -82,7 +82,7 @@ public final class Names {
         GOLDEN_FORK = "golden fork",            PHILOSOPHERS_STONE = "philosopher's stone",
         TYPHOS = "typhos",                      MONKEY_WRENCH = "monkey wrench",
         BRONZE_TABLET = "bronze tablet",        COAL = "coal",
-        ASTROLABE = "gilded astrolabe",         MONA_LISA = "mona lisa",
+        ASTROLABE = "gilded astrolabe",         MONA_LISA = "mona Lisa",
         JET_SKULL = "jet skull",                COOKED_HAM = "cooked ham",
             
         BIBLE = "biblical tome, 'The Book of Genesis'",
@@ -94,7 +94,7 @@ public final class Names {
         // Used together in PlayerInventory.get and Player.hasItemResembling    
         NO_LETTER_BEFORE = ".*(?<![a-z])(?i:",  NO_LETTER_AFTER = ")(?![a-z]).*",    
     // PLATFORM DEPENDENT PROERTIES ===========================================
-        W_DIR = System.getProperty("user.dir"),     // Current working directory.
+        W_DIR = System.getProperty("user.dir"), // Current working directory.
         SEP = System.getProperty("file.separator"),
         NL = System.getProperty("line.separator");
 }

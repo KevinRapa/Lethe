@@ -33,7 +33,8 @@ public class Gal2_Statue extends SearchableFurniture {
                          + "poises elegantly, with his right arm extended over "
                          + "his head and left hand held low as if bearing an "
                          + "object, though it's empty.";        
-        this.searchDialog = "The statue's hand is empty";
+        this.searchDialog = "The statue's hand is empty.";
+        this.useDialog = "You set the orb in the statue's palm. ";
         this.addNameKeys("(?:grandiose )?statue", "(?:statue(?:'s)? )?(?:hand|palm)");
         this.addUseKeys(CRYSTAL_ORB);
     }
@@ -143,7 +144,10 @@ public class Gal2_Statue extends SearchableFurniture {
                 this.CONTENTS.add(item);
                 
                 if (GAL1_DRGN.isOn())
-                    GUI.out(activate(GAL1_DRGN.getBeam()));
+                    GUI.out(Gal2_Statue.this.useDialog 
+                            + activate(GAL1_DRGN.getBeam()));
+                else
+                    GUI.out(Gal2_Statue.this.useDialog);
                 
                 return true;
             }

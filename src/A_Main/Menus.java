@@ -36,6 +36,7 @@ public final class Menus {
                   + "<'s' list>  Store" + NL
                   + "<'t' list>  Take" + NL
                   + "<'loot'>    Loot!!!" + NL
+                  + "<'['/']'>   Scroll" + NL
                   + "<#>         Inspect" + NL
                   + "< >         Back",
 
@@ -45,11 +46,11 @@ public final class Menus {
                   + "<'r'> Reset and quit.",
 
         MAIN_MENU = "      Enter a command or" + NL + NL
-                  + "    <'w'/'s'/'a'/'d'> Move" + NL
+                  + "   <'w'/'s'/'a'/'d'>  Move" + NL
                   + "<'i'>  Inventory  <'k'>  Keys" + NL
                   + "<'h'>  Get help   <'n'>  Note" + NL
                   + "<'m'>  Show Map   <'l'>  Loot" + NL
-                  + "<'save'> Save    <'quit'> Quit",
+                  + "<'save'> Save   <'quit'> Quit",
 
         HELP_MAIN = NL
                   + "     Topics:" + NL
@@ -146,8 +147,7 @@ public final class Menus {
             
         BOOK = NL + NL + 
             "<'y'/'n'> Turn the page?" + NL +
-            "<right>   Scroll up" + NL +
-            "<left>    Scroll down", 
+            "<'['/']'> Scroll", 
                
             
         CREDITS = "This game was written in " + NL

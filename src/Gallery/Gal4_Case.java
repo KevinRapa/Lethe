@@ -24,13 +24,13 @@ public class Gal4_Case extends SearchableFurniture
               + "brown hair and pale, perfect skin, as well as a slight grin. "
               + "Interesting, as you note that she also lacks eyebrows.";
         
-        this.actDialog = "You jam every key you can into the lock, but nothing fits.";
+        this.actDialog = "You jam every key you can into the padlock, but nothing fits.";
         this.searchDialog = "The case is locked shut, and you cannot pry it open.";
         this.useDialog = "The glass front is clearly designed to keep dimwits like you out.";
 
         this.addNameKeys("(?:mounted )?(?:metal )?case", "painting");
         this.addUseKeys(ANYTHING);
-        this.addActKeys("break", "unlock", "loot", "destroy");
+        this.addActKeys("break|destroy", "unlock", "loot", "unscrew");
     }
     // ======================================================================== 
     @Override public String getDescription() {
@@ -47,6 +47,8 @@ public class Gal4_Case extends SearchableFurniture
             return "This case is strong.";
         else if (key.equals("unlock"))
             return searchable ? this.actDialog : "The lock is broken already!";
+        else if (key.equals("unscrew"))
+            return "There aren't even any screws on this.";
         else
             return "You would like to do that, wouldn't you.";
     }

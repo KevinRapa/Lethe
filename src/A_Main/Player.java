@@ -78,7 +78,6 @@ public final class Player {
         MAIN_CMDS.put("m",  () -> Map.displayMap());
         MAIN_CMDS.put("n",  () -> writePrompt());
         MAIN_CMDS.put("l",  () -> openLootSack());
-        MAIN_CMDS.put("q",  () -> {notEnd = false;});
         MAIN_CMDS.put("nw", () -> evaluateAction("go", "northwest"));
         MAIN_CMDS.put("ne", () -> evaluateAction("go", "northeast"));
         MAIN_CMDS.put("sw", () -> evaluateAction("go", "southwest"));
@@ -106,6 +105,7 @@ public final class Player {
         MAIN_CMDS.put("map",       () -> Map.displayMap());
         MAIN_CMDS.put("note",      () -> writePrompt());
         MAIN_CMDS.put("write",     () -> writePrompt());
+        MAIN_CMDS.put("write note",() -> writePrompt());
         MAIN_CMDS.put("wait",      () -> GUI.out("You stand and do nothing."));
         MAIN_CMDS.put("stand",     () -> GUI.out("You stand and do nothing."));
         MAIN_CMDS.put("sit down",  () -> GUI.out("You sit and rest a moment."));
@@ -180,13 +180,13 @@ public final class Player {
     }
     /*------------------------------------------------------------------------*/
     private static void randomDenialMsg() {
-        int i = Main.getRandomUnder(ERROR_MSGS.length);
-        GUI.out(Player.ERROR_MSGS[i]);
+        int i = Main.getRandomUnder(DENIAL_MSGS.length);
+        GUI.out(Player.DENIAL_MSGS[i]);
     }
     /*------------------------------------------------------------------------*/
     private static void randomErrorMessage() {
-        int i = Main.getRandomUnder(DENIAL_MSGS.length);
-        GUI.out(Player.DENIAL_MSGS[i]);
+        int i = Main.getRandomUnder(ERROR_MSGS.length);
+        GUI.out(Player.ERROR_MSGS[i]);
     }
     /*------------------------------------------------------------------------*/
     public static String getLastVisited() { return lastVisited; }
@@ -220,6 +220,12 @@ public final class Player {
         return (IT_THEM_P.matcher(indef).matches()) ? Player.lastItem : indef;
     }
     /*------------------------------------------------------------------------*/
+    /**
+     * Checks if an item in the player's inventory has the exact name of itemName.
+     * Ignores case.
+     * @param itemName The name of an item.
+     * @return If the player's inventory contains an item with the exact name.
+     */
     public static boolean hasItem(String itemName) {
         return Player.inv.contents().stream().
                 anyMatch(i -> i.toString().equalsIgnoreCase(itemName));
@@ -631,7 +637,7 @@ public final class Player {
                 else if (STORE_P.matcher(action).matches()) {
                     Player.incrementMoves();
                     for (Item i : getItemList(itemList, Player.inv))
-                        if (! i.equals(Inventory.NULL_ITEM) && Player.inv.contains(i))
+                        if (Player.inv.contains(i))
                             evalStore(furnInv, i);
                         else
                             randomErrorMessage();
@@ -639,7 +645,7 @@ public final class Player {
                 else if (TAKE_P.matcher(action).matches()) {
                     Player.incrementMoves();
                     for (Item i : getItemList(itemList, furnInv))
-                        if (! i.equals(Inventory.NULL_ITEM) && furnInv.contains(i))
+                        if (furnInv.contains(i))
                             evalTake(furnInv, i);
                         else
                             randomErrorMessage();
@@ -730,6 +736,8 @@ public final class Player {
 //****************************************************************************** 
     /**
      * Processes a player's action on furniture.
+     * For processing actions on items, see execute() in Command class below.
+     * @see A_Main.Player.TextParser.Command#execute(Verb, Instrument) 
      * @param furnName the name of the furniture being acted upon.
      * @param verb the action the player is performing on the furniture.
      */
@@ -738,7 +746,7 @@ public final class Player {
         
         // <editor-fold defaultstate="collapsed" desc="MOVE COMMAND">
         if (WALK_P.matcher(verb).matches()) {
-            if (DIRECTION_P.matcher(object).matches())
+            if (DIRECTION_P.matcher(object).find())
                 parseMovement(object);
             else if (INVALID_DIR_P.matcher(object).matches())
                 GUI.out("Your humble life as a tradesman knows not how to move " + object + ".");
@@ -791,6 +799,14 @@ public final class Player {
         }   
         // </editor-fold>
         
+        else if (CHECK_P.matcher(verb).matches() && Player.hasItemResembling(furnName)) {
+            // The furniture isn't here, but maybe the player was regarding an
+            // item in the inventory.
+            Item item = getInv().get(furnName);
+            setLastInteract_Item(furnName);
+            GUI.out(item.getDesc());
+        }
+        
         // <editor-fold defaultstate="collapsed" desc="REFLEXIVE COMMANDS">
         else if (object.equals("self") || object.equals("yourself")) {
             // Player performing action on itself. Mostly superficial.
@@ -814,16 +830,16 @@ public final class Player {
                 Player.incrementMoves();
                 GUI.out("Indeed, how romantic!");
             }
-            else if (DESTROY_P.matcher(verb).matches()) {
+            else if (DESTROY_P.matcher(verb).matches())
                 Player.commitSuicide();
-            }
             else
                 GUI.out("Your binary isn't designed to do that.");
         }
         // </editor-fold>
         
+        // <editor-fold defaultstate="collapsed" desc="SEARCH COMMANDS">
         else if (SEARCH_P.matcher(verb).matches() || verb.matches("open|empty")) {
-            // Player wants to open an item
+            // Player wants to open an item or search the furniture
             object = Player.tryIndefRef_Item(furnName);
             Item i = inv.get(object);
             
@@ -841,8 +857,10 @@ public final class Player {
                 GUI.out("You fumble with the " + object + 
                         " but nothing useful is accomplished.");
             else
-                GUI.out("You aren't quite sure what to do about that.");
+                GUI.out("I don't think there's any " + object + " here.");
         }
+        // </editor-fold>
+        
         else if (verb.equals("speak") || verb.equals("say")) {
             // Player typed something like "<speak> <words>".
             GUI.out("\"" + furnName + 
@@ -1135,6 +1153,11 @@ public final class Player {
                     Player.incrementMoves();
                     printInv();
                 }
+                else if (n.toString().equals(NOTEPAD)) 
+                    GUI.out("Such an indecisive player. Maybe come back "
+                            + "and write a title next time?");
+                else if (n.toString().equals(PEN))
+                    GUI.out("That would be quite impressive...");
                 else 
                     GUI.out("That isn't a note if I've ever seen one.");
             else 
@@ -1364,7 +1387,7 @@ private static class TextParser {
                         + "pocket. This is unintelligible."),
         BURNED_REMNANTS = new Item("burned remnants", 
                 "It's just a handful of ashes and burnt paper. "
-                        + "Completely useless... OR IS IT???", -5);
+                        + "Completely useless... OR IS IT???", -25);
 
     private static final String
         DONT_HAVE_IT = "It doesn't look like you're carrying anything resembling that.";
@@ -1376,7 +1399,7 @@ private static class TextParser {
         SUICIDE_CMD =   new Command(() -> Player.commitSuicide(), "SUICIDE"),
         GREETING_CMD =  new Command("What do you think this is? Zork?"),
         AMBIGUOUS_CMD = new Command("You need to specify something to put that in!"),
-        NO_SLOT_COMMAND = new Command("You don't have anything in your inventory there.");
+        NO_SLOT_CMD =   new Command("You don't have anything in your inventory there.");
 
     //**************************************************************************
     // <editor-fold defaultstate="collapsed" desc="Text parser">
@@ -1434,17 +1457,15 @@ private static class TextParser {
                 // Player typed a digit. Interpreted as "examine <item slot>"
                 Item item = Player.getInv().get(statements[i]);
 
-                if (item.equals(Inventory.NULL_ITEM))
-                    commands[i] = NO_SLOT_COMMAND;
-                else
-                    commands[i] = new Command(() -> GUI.out(item.getDesc()), "INSPECT");
+                commands[i] = (item.equals(Inventory.NULL_ITEM)) ?
+                        NO_SLOT_CMD : 
+                        new Command(() -> GUI.out(item.getDesc()), "INSPECT");
             }
-            else if (DIRECTION_P.matcher(statements[i]).matches()) {
+            else if (DIRECTION_P.matcher(statements[i]).find()) {
                 // Sentence resembles a movement command.
-                commands[i] = new Command(Verb.GO_VERB, 
-                        new DirectObj(FIRST_WORD_P
-                                .matcher(statements[i])
-                                .replaceFirst("")));
+                DirectObj o = new DirectObj(FIRST_WORD_P
+                        .matcher(statements[i]).replaceFirst(""));
+                commands[i] = new Command(Verb.GO_VERB, o);
             }
             else if (SUICIDE_P.matcher(statements[i]).matches()) {
                 // Sentence resembles a suicidal command.
@@ -1464,7 +1485,7 @@ private static class TextParser {
             //-----------------------------------------------------------------
             // These handle more comlicated input strings.
             else if (USE_ITEM_CMD_P.matcher(statements[i]).matches()) {
-                    commands[i] = getItemCmd(USE_MANNER_P.split(statements[i]));
+                commands[i] = getItemCmd(USE_MANNER_P.split(statements[i]));
             }
             else if (STORE_CMD_P.matcher(statements[i]).matches()) {
                 // Command resembles "drop <item>" or "put <item> in <objec>
@@ -1540,10 +1561,10 @@ private static class TextParser {
         Instrument inst;
         DirectObj obj = null;
 
-        if (DROP_P.matcher(object).matches()) {
+        if (DROP_P.matcher(object).find()) {
             // Player typed "put <item> down"
             obj = DirectObj.FLOOR_OBJECT;
-            object = object.replaceAll(" down", "");
+            object = object.replaceAll(" ?down ?", "");
         }
 
         inst = new Instrument(object);
@@ -1597,11 +1618,9 @@ private static class TextParser {
                 case 1:
                     return new Command(use, inst);
                 case 2:
-                    if (! (use.VALUE.equals("throw") || use.VALUE.equals("break") || 
-                           use.VALUE.equals("destroy")))
-                        return new Command(inst, new DirectObj(s[1]));
-                    else
-                        return new Command(use, inst);
+                    return DESTROY_P.matcher(use.VALUE).matches() ?
+                        new Command(use, inst) :   
+                        new Command(inst, new DirectObj(s[1]));
                 default:
                     return DEFAULT_CMD;
             }
@@ -1627,38 +1646,31 @@ private static class TextParser {
         // <editor-fold defaultstate="collapsed" desc="constructors">
         public Command(Verb v, DirectObj o) {
             VALUE = "VERB: " + v.toString() + "\tOBJECT: " + o.toString();
-            System.out.println("Creating action -> furniture command: " + VALUE);
-
             ACTION = (() -> Player.evaluateAction(v.toString(), o.toString()));
         }
         // --------------------------------------------------------------------
         public Command(Instrument i, DirectObj o) {
             VALUE = "ITEM: " + i.toString() + "\tOBJECT: " + o.toString();
-            System.out.println("Creating item -> furniture command: " + VALUE);
             ACTION = (() -> execute(i, o));
         }
         // --------------------------------------------------------------------
         public Command(Verb v, Instrument i) {
             VALUE = "VERB: " + v.toString() + "\tITEM: " + i.toString();
-            System.out.println("Creating use item command: " + VALUE);
             ACTION = (() -> execute(v, i));
         }
         // --------------------------------------------------------------------
         public Command(Verb v, Instrument i, DirectObj o) {
             VALUE = "VERB: " + v.toString() + "\tITEM: " + i.toString() + "\tOBJECT: " + o.toString();
-            System.out.println("Creating store item command: " + VALUE);
             ACTION = (() -> execute(v, i, o));
         }
         // --------------------------------------------------------------------
         public Command(String s) {
-            VALUE = s;
-            System.out.println("Creating print command -> \"" + s + "\".");
+            VALUE = "Print command -> \"" + s + "\".";
             ACTION = (() -> GUI.out(s));
         }
         // --------------------------------------------------------------------
         public Command(Runnable b, String desc) {
-            VALUE = desc;
-            System.out.println("Creating player method command -> " + VALUE);
+            VALUE = "Player method command -> " + desc;
             ACTION = b;
         }
         // </editor-fold>
@@ -1702,9 +1714,6 @@ private static class TextParser {
 
                 if (verb.equals("use"))
                     GUI.out(item.useEvent());
-                //-------------------------------------------------------------
-                else if (INSPECT_P.matcher(verb).matches())
-                    GUI.out(item.getDesc());
                 //-------------------------------------------------------------
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: READ">
                 else if (verb.equals("read")) {
@@ -1965,6 +1974,7 @@ private static class TextParser {
                     if (isNullItem(list, j)) break;
 
                     Player.evalStore(sack.getInv(), list[j]);
+                    Player.setLastInteract_Item(LOOT_SACK);
                     Player.printInv();
 
                     if (list[j].toString().equals(LOOT_SACK) && ! sack.isFull()) {
@@ -1987,7 +1997,7 @@ private static class TextParser {
         private static boolean isNullItem(Item[] list, int j) {
             if (list[j].equals(Inventory.NULL_ITEM)) {
                 if (j == 0)
-                    GUI.out("You may have just entered something wrong...");
+                    GUI.out("I don't think you're carrying that.");
                 else
                     GUI.out("Well, I understood " + list[j-1] + 
                             " but that next thing I didn't get.");
@@ -1998,6 +2008,7 @@ private static class TextParser {
         // ====================================================================
 
         public void perform() {
+            System.out.println(VALUE);
             this.ACTION.run();
         }
     }
@@ -2052,7 +2063,7 @@ private static class TextParser {
     //**************************************************************************
     // </editor-fold>
     //**************************************************************************
-}
+    }
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************

@@ -32,13 +32,14 @@ public class Bha2 extends Room {
                   + "The hallway paradoxically continues to extend onward and warp "
                   + "downwards past a nearby horizon. After a short while, you stop and look behind you, "
                   + "seeing the door you just entered still only several feet away.");
+            return Player.getPos().toString();
         }
-        else
+        else {
             GUI.out("You pace lightly down the hallway almost effortlessly. You "
                   + "break free from your state of vertigo. Before long, "
                   + "you feel as though you have reached the room's center.");
-        
-        return STD_RM_OUT;  
+            return STD_RM_OUT;  
+        }
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -26,8 +26,7 @@ public final class Help {
     private static final String[] HELP_VALUES = {
         "When prompted for input, the format may appear in "
       + "angle brackets.            "
-      + "<item> - Enter an item name.                    "
-      + "<left> - Press the left arrow (Use left and right for scrolling.          " +
+      + "<item> - Enter an item name.                    " +
         "<'x'> - Enter what's quoted.                   " +
         "<#> - Enter a digit.       " +
         "< > - Enter nothing.       " +

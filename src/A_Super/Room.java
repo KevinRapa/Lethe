@@ -37,14 +37,17 @@ import java.util.HashSet;
  * @author Kevin Rapa
  */
 public class Room implements Serializable { 
-    protected final String NAME, ID,            // The name and unique ID of the room.
-                           STD_RM_OUT;          // Prints where you are.
+    protected static final String 
+            PATH = W_DIR + SEP + "data" + SEP + "desc" + SEP,
+            WALL_BARRIER = "There is a wall that way.";
+    protected final String 
+            NAME, ID,                           // The name and unique ID of the room.
+            STD_RM_OUT;                         // Prints where you are.
     protected final int[] COORDS;               // Index coordinates of this room.
     protected boolean locked;                   // You cannot move into a locked room.
     protected String description;               // Description of the room.
     protected HashSet<String> adjacent;         // Rooms one could move to from this.
     protected ArrayList<Furniture> furnishings; // Holds furniture.
-    protected static final String WALL_BARRIER = "There is a wall that way.";
     // CONSTRUCTOR ============================================================
     public Room(String name, String ID) {  
         this.NAME = name;
@@ -53,7 +56,6 @@ public class Room implements Serializable {
         this.locked = false;
         this.COORDS = RoomGraph.getCoords(this.ID); 
         this.adjacent = RoomGraph.getAdj(this.ID);
-        
         // Gets the room's description from a file.
         String filename;
         
@@ -65,7 +67,7 @@ public class Room implements Serializable {
             filename = ID;
         
         try (BufferedReader br = new BufferedReader(
-                new FileReader(W_DIR + SEP + "desc" + SEP + filename + ".txt"))
+                new FileReader(PATH + filename + ".txt"))
                 ) 
         {
             String descLine;
@@ -75,9 +77,8 @@ public class Room implements Serializable {
                 descBuilder.append(descLine);
             
             this.description = descBuilder.toString();
-            
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+        } 
+        catch (IOException ex) {
             this.description = "Did someone eat one of the files?";
         } 
     }

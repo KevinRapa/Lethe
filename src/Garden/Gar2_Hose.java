@@ -40,6 +40,7 @@ public class Gar2_Hose extends Furniture implements Climbable {
         Player.getRoomObj(Id.GAR2).addFurniture(BRKNHOSE_REF2);
         Player.getRoomObj(Id.FOY3).unlock();
         Player.getInv().add(BRKNHOSE_REF);
+        Player.printInv();
         
         return this.actDialog;
     }

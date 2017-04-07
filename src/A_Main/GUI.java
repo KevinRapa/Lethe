@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.regex.Pattern;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.JTextComponent;
@@ -54,9 +55,9 @@ public class GUI extends JFXPanel {
         WNORTH = new JPanel(new BorderLayout()), // Holds room label and desc.
         WNSOUTH = new JPanel(),                  // Holds room name, score, moves.
         WSOUTH = new JPanel(new BorderLayout()), // Holds menu, input and buttons.
-        INPUT_PANEL = new JPanel(),              // Holds the input and prompt sigil.
-        MEN_PANEL = new JPanel(),                // Holds menu so it may resize freely.
-        BTTN_PANEL = new JPanel();               // Holds just the five option buttons.
+        INPUT_PNL = new JPanel(),                // Holds the input and prompt sigil.
+        MEN_PNL = new JPanel(),                  // Holds menu so it may resize freely.
+        BTN_PNL = new JPanel();                  // Holds just the five option buttons.
     
     private final static JScrollPane 
         SCROLLS = new JScrollPane(DIAL_TXT,      // Holds all general event dialog.
@@ -67,20 +68,20 @@ public class GUI extends JFXPanel {
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     
     private final static JLabel 
-        PROMPT_LBL = new JLabel(">"),   // Decorative prompt sigil for retro feel.
-        ROOM_LBL = new JLabel(),        // Displays player's current room.
-        MOVE_LBL = new JLabel(),        // Displays number of moves.
-        SCORE_LBL = new JLabel();       // Displays current score.
+        PROMPT_LBL = new JLabel(">"),    // Decorative prompt sigil.
+        ROOM_LBL = new JLabel(),         // Displays player's current room.
+        MOVE_LBL = new JLabel(),         // Displays number of moves.
+        SCORE_LBL = new JLabel();        // Displays current score.
     
     private final static JButton 
-        SWAP = new JButton("Swap"),     // Swaps dialog and inventory.
-        COLOR2 = new JButton("Color 2"),// Changes label colors
-        MUTE = new JButton("Mute"),     // Mute button
-        KEYS = new JButton("Click"),    // Button controlling faux key sounds.
-        COLOR1 = new JButton("Color 1");// Button changing dialog colors.
+        SWAP = new JButton("Swap"),      // Swaps dialog and inventory.
+        COLOR2 = new JButton("Color II"),// Changes label colors
+        MUTE = new JButton("Mute"),      // Mute button
+        KEYS = new JButton("Click"),     // Button controlling faux key sounds.
+        COLOR1 = new JButton("Color I"); // Button changing dialog colors.
     
     private final static JTextField 
-        INPUT = new JTextField("", 35); // Player enters commands here.
+        INPUT = new JTextField(35);  // Player enters commands here.
     
     // Holds previous input.
     private final static LinkedList<String> UNDO = new LinkedList<>();
@@ -100,13 +101,15 @@ public class GUI extends JFXPanel {
         Color lightBrown = new Color(122, 84, 13);
         Color darkRed = new Color(196, 11, 15);
         
-        KEYSOUND.addAll(Arrays.asList(Click.NONE,Click.SOFT,Click.CLICK, Click.VINTAGE));
-        
+        KEYSOUND.addAll(Arrays.asList(
+                Click.NONE, Click.SOFT, Click.CLICK, Click.VINTAGE)
+        );
         COLORS_DIAL.addAll(Arrays.asList(Color.GRAY, Color.LIGHT_GRAY, 
-                new Color(27, 203, 22), darkRed, new Color(141, 28, 154), lightBrown));  
-        
-        COLORS_LABEL.addAll(
-                Arrays.asList(Color.LIGHT_GRAY, lightBrown, Color.ORANGE, darkRed, Color.GRAY));
+                new Color(27, 203, 22), darkRed, 
+                new Color(141, 28, 154), lightBrown)
+        );  
+        COLORS_LABEL.addAll(Arrays.asList(Color.LIGHT_GRAY, lightBrown, 
+                        Color.ORANGE, darkRed, Color.GRAY));
     }
     // </editor-fold>
     
@@ -116,19 +119,26 @@ public class GUI extends JFXPanel {
     public GUI() {
         Font labelFont;
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        String p = "data" + SEP + "img" + SEP;
+        FocusListener focusListener = new FocusListener() {
+            // Serves to keep focus on the text field.
+            @Override public void focusGained(FocusEvent e) {
+                INPUT.requestFocus();
+            }
+            @Override public void focusLost(FocusEvent e) {}
+        };
         
         try {
-            myFont = Font
-                    .createFont(Font.TRUETYPE_FONT, new File(W_DIR, "img" + SEP + "fixedSys.ttf"))
-                    .deriveFont(20.0f);
+            myFont = Font.createFont(Font.TRUETYPE_FONT, 
+                        new File(W_DIR, p + "fixedSys.ttf")).deriveFont(20.0f);
 
             ge.registerFont(myFont);
         } catch (IOException | FontFormatException e) {
             myFont = new Font("Monospaced", Font.BOLD, 16);
         }
         try {
-            labelFont = Font
-                    .createFont(Font.TRUETYPE_FONT, new File(W_DIR, "img" + SEP + "MagicMedieval.ttf"));
+            labelFont = Font.createFont(Font.TRUETYPE_FONT, 
+                        new File(W_DIR, p + "MagicMedieval.ttf"));
 
             ge.registerFont(labelFont);
         } catch (IOException | FontFormatException e) {
@@ -136,16 +146,16 @@ public class GUI extends JFXPanel {
         }
 
         Color myColor = COLORS_DIAL.getLast();
-        
         JTextArea[] textAreas = {DIAL_TXT, DESC_TXT, INV_TXT};
+        Insets defInsets = new Insets(2,6,0,6);
         for (JTextArea t : textAreas) {
-            t.setMargin(new Insets(0,6,0,6));
+            t.addFocusListener(focusListener);
+            t.setMargin(defInsets);
             t.setEditable(false);       t.setLineWrap(true);
             t.setWrapStyleWord(true);   t.setBackground(Color.BLACK);
             t.setForeground(myColor);   t.setFont(myFont);
         }
         
-        BTTN_PANEL.setPreferredSize(new Dimension(400, 60));
         Button_Listener l = new Button_Listener();
         JButton[] buttons = {SWAP, MUTE, KEYS, COLOR1, COLOR2};
         for (JButton b : buttons) {
@@ -156,7 +166,7 @@ public class GUI extends JFXPanel {
             b.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.BLACK));
             b.setFont(labelFont.deriveFont(Font.BOLD, 17.0f));
             b.addActionListener(l);
-            BTTN_PANEL.add(b);
+            BTN_PNL.add(b);
         }
         
         JLabel[] labels = {ROOM_LBL, MOVE_LBL, SCORE_LBL};
@@ -166,14 +176,14 @@ public class GUI extends JFXPanel {
             label.setBorder(BorderFactory.createEmptyBorder());
         }
         
-        Component[] cmps = {MEN_TXT, MEN_PANEL, INPUT, BTTN_PANEL, INPUT_PANEL};
+        Component[] cmps =
+            {MEN_TXT, MEN_PNL, INPUT, BTN_PNL, INPUT_PNL, WNSOUTH, WEST};
         for (Component c : cmps)
             c.setBackground(Color.BLACK);
         
         // WEST
         WNORTH.setPreferredSize(new Dimension(400, 385));
-        DESC_TXT.setPreferredSize(new Dimension(400, 336));
-        WNSOUTH.setBackground(Color.BLACK);
+        DESC_TXT.setPreferredSize(new Dimension(400, 335));
         WNSOUTH.setPreferredSize(new Dimension(400, 50));
         SCORE_LBL.setPreferredSize(new Dimension(80, 50));
         SCORE_LBL.setFont(labelFont.deriveFont(Font.BOLD, 18.0f));
@@ -190,8 +200,9 @@ public class GUI extends JFXPanel {
         MEN_TXT.setEditable(false);
         MEN_TXT.setFont(myFont);
         MEN_TXT.setForeground(myColor);
-        MEN_PANEL.setPreferredSize(new Dimension(390, 170));
-        MEN_PANEL.add(MEN_TXT);
+        MEN_TXT.addFocusListener(focusListener);
+        MEN_PNL.setPreferredSize(new Dimension(390, 170));
+        MEN_PNL.add(MEN_TXT);
         INPUT.addActionListener(new Text_Field_Listener());
         INPUT.addKeyListener(new Text_Field_Key_Listener());
         INPUT.setFont(myFont);
@@ -203,13 +214,13 @@ public class GUI extends JFXPanel {
         PROMPT_LBL.setPreferredSize(new Dimension(25, 25));
         PROMPT_LBL.setFont(myFont.deriveFont(22.0f));
         PROMPT_LBL.setForeground(Color.LIGHT_GRAY);
-        INPUT_PANEL.setPreferredSize(new Dimension(400, 25));
-        INPUT_PANEL.add(PROMPT_LBL);
-        INPUT_PANEL.add(INPUT);
-        WSOUTH.add(MEN_PANEL, BorderLayout.NORTH);
-        WSOUTH.add(INPUT_PANEL, BorderLayout.CENTER);
-        WSOUTH.add(BTTN_PANEL, BorderLayout.SOUTH);
-        WEST.setBackground(Color.BLACK);
+        INPUT_PNL.setPreferredSize(new Dimension(400, 25));
+        INPUT_PNL.add(PROMPT_LBL);
+        INPUT_PNL.add(INPUT);
+        BTN_PNL.setPreferredSize(new Dimension(400, 60));
+        WSOUTH.add(MEN_PNL, BorderLayout.NORTH);
+        WSOUTH.add(INPUT_PNL, BorderLayout.CENTER);
+        WSOUTH.add(BTN_PNL, BorderLayout.SOUTH);
         WEST.setPreferredSize(new Dimension(400, 645));
         WEST.add(WNORTH, BorderLayout.NORTH);
         WEST.add(WSOUTH, BorderLayout.SOUTH);
@@ -379,7 +390,7 @@ public class GUI extends JFXPanel {
         Random rand = new Random();
         Component[] compList = {
             ROOM_LBL, DIAL_TXT, DESC_TXT, INV_TXT, SWAP, COLOR2, 
-            MUTE, WNSOUTH, MEN_PANEL, KEYS, COLOR1, PROMPT_LBL, 
+            MUTE, WNSOUTH, MEN_PNL, KEYS, COLOR1, PROMPT_LBL, 
             MEN_TXT, WSOUTH, INPUT, MOVE_LBL, SCORE_LBL
         };
         
@@ -442,8 +453,8 @@ public class GUI extends JFXPanel {
                 UP = KeyEvent.VK_UP,
                 DOWN = KeyEvent.VK_DOWN,
                 ENTER = KeyEvent.VK_ENTER,
-                LEFT = KeyEvent.VK_LEFT,
-                RIGHT = KeyEvent.VK_RIGHT;
+                OPEN_BRACKET = KeyEvent.VK_OPEN_BRACKET,
+                CLOSE_BRACKET = KeyEvent.VK_CLOSE_BRACKET;
         /*------------------------------------------------------*/
         @Override public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
@@ -458,13 +469,13 @@ public class GUI extends JFXPanel {
                     INPUT.setText(""); 
                     undoPosition = 0;
                     break;  
-                case LEFT:  // Player uses left and right arrows to scroll
+                case OPEN_BRACKET:  // Player uses brackets to scroll
                     if (SB.isVisible())
                         SB.setValue(SB.getValue() + 15);
                     if (SN.isVisible())
                         SN.setValue(SN.getValue() + 15);
                     break;
-                case RIGHT:
+                case CLOSE_BRACKET:
                     if (SB.isVisible())
                         SB.setValue(SB.getValue() - 15);
                     if (SN.isVisible())
@@ -529,9 +540,7 @@ public class GUI extends JFXPanel {
                 COLORS_LABEL.offer(COLORS_LABEL.poll());
             }
             else if (o.equals(MUTE)) { // Toggles ambience
-                MUTE.setText(MUTE.getText().equals("Mute") ? "Mute all" : 
-                        MUTE.getText().equals("Mute all") ? "Unmute" : "Mute");
-                AudioPlayer.toggleMute();
+                AudioPlayer.toggleMute((JButton)o);
                 AudioPlayer.playEffect(10);
             }
             else if (o.equals(COLOR1)) { // Toggles font color of text areas
