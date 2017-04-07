@@ -108,47 +108,38 @@ public class Main {
         // Rudimentary save system using serialization. Saves files in the same
         // location as Main.jar
         //**********************************************************************
-        boolean eraseTrue;
+        boolean newGame = false;
         
-        try (ObjectInputStream gameData = 
-                new ObjectInputStream(
-                new FileInputStream(
-                new File(W_DIR, FILE_NAME)))) 
+        try (ObjectInputStream gameData = new ObjectInputStream(
+                new FileInputStream(new File(W_DIR, FILE_NAME)))) 
         {
             System.out.println("Data found. Loading game.");
             RoomGraph.assignCoordinates();
             Player.loadAttributes(gameData.readObject());
-            gameData.close();
-            eraseTrue = Player.mainPrompt(); // START GAME
         } 
-        catch (ClassNotFoundException | IOException | ClassCastException e) 
-        {
-            System.out.println(e.getMessage() + 
-                    "\nData missing. Creating new game.");
-            
+        catch (Exception e) {
+            System.err.println(e.getMessage() + "\nCreating new game.");
             RoomGraph.constructRoomGraph();
             Player.setNewAttributes(RoomGraph.getCoords(START_LOCATION));
-            eraseTrue = Player.startDialog(); // START GAME
+            newGame = true;
+        }
+        finally {
+            boolean eraseTrue = Player.startDialog(newGame); // START GAME
+            
+            if(eraseTrue)
+                new File(W_DIR, FILE_NAME).delete();
+                
+            AudioPlayer.stopTrack();
+            AudioPlayer.disposeKeyPlayers();
+            GAME_FRAME.setVisible(false);
+            GAME_FRAME.dispose();
+            Map.disposeMap();
+            Platform.exit();
         }
         //**********************************************************************
         // </editor-fold>  
         //**********************************************************************
-
-        // End the game
-        if (eraseTrue)
-            new File(W_DIR, FILE_NAME).delete();
-        
-        exitGame();
     } 
-// ============================================================================   
-    public static void exitGame() {
-        AudioPlayer.stopTrack();
-        AudioPlayer.disposeKeyPlayers();
-        GAME_FRAME.setVisible(false);
-        GAME_FRAME.dispose();
-        Map.disposeMap();
-        Platform.exit();
-    }
 // ============================================================================   
     public static synchronized void saveGame() {
         try (ObjectOutputStream gameData = 

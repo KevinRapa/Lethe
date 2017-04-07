@@ -373,24 +373,27 @@ public final class Player {
     // ========================================================================  
     /**
      * This dialog prints at the start of a new game.
+     * @param newGame Dialog skips if false.
      * @return at end of game, if the player wishes to erase save data.
      */
-    public static boolean startDialog() {
-        AudioPlayer.playTrack(Id.ENDG);
-        
-        GUI.menOut(Menus.ENTER);
-        GUI.out("It's about 10:00pm and a warm, humid breeze passes through the trees. " +
-                "You have just arrived on foot to your destination, and " +
-                "find it even more colossal than what you had " +
-                "expected. It also appears curiously more vacant...");
-        GUI.promptOut();    
-        GUI.out("You slowly approach until inside the front gateway. " +
-                "A thought briefly flashes in your mind before being " +
-                "forgotten - what was your business here, again?");     
-        GUI.promptOut();
-        GUI.out(VERSION);     
-        GUI.promptOut();
-        GUI.clearDialog();
+    public static boolean startDialog(boolean newGame) {
+        if (newGame) {
+            AudioPlayer.playTrack(Id.ENDG);
+
+            GUI.menOut(Menus.ENTER);
+            GUI.out("It's about 10:00pm and a warm, humid breeze passes through the trees. " +
+                    "You have just arrived on foot to your destination, and " +
+                    "find it even more colossal than what you had " +
+                    "expected. It also appears curiously more vacant...");
+            GUI.promptOut();    
+            GUI.out("You slowly approach until inside the front gateway. " +
+                    "A thought briefly flashes in your mind before being " +
+                    "forgotten - what was your business here, again?");     
+            GUI.promptOut();
+            GUI.out(VERSION);     
+            GUI.promptOut();
+            GUI.clearDialog();
+        }
         
         return mainPrompt();
     }

@@ -1,12 +1,9 @@
 package A_Super;
 
-import A_Main.GUI;
-import A_Main.Id;
-import A_Main.Main;
-import A_Main.Menus;
-import static A_Main.Names.LOOT_SACK;
-import A_Main.Player;
+import A_Main.*;
 import Foyer.LootSack;
+import java.io.File;
+import javafx.application.Platform;
 
 /**
  * @author Kevin Rapa
@@ -50,8 +47,8 @@ public class Endg extends Room {
         int p = Player.getInv().countPhylacteries();
         GUI.promptOut();
         
-        if (Player.hasItem(LOOT_SACK)) {
-            LootSack sack = (LootSack)Player.getInv().get(LOOT_SACK);
+        if (Player.hasItem(Names.LOOT_SACK)) {
+            LootSack sack = (LootSack)Player.getInv().get(Names.LOOT_SACK);
             p += sack.countPhylacteries();
             t += sack.countTreasures();
         }
@@ -112,10 +109,17 @@ public class Endg extends Room {
         
         GUI.out(message);
         GUI.promptOut();
+
+        // Exits the game after player types enter.
+        new File(Names.W_DIR, Main.FILE_NAME).delete();
+        AudioPlayer.stopTrack();
+        AudioPlayer.disposeKeyPlayers();
+        Main.GAME_FRAME.setVisible(false);
+        Main.GAME_FRAME.dispose();
+        Map.disposeMap();
+        Platform.exit();
+        System.exit(0);
         
-        
-        
-        Main.exitGame();
         return "";
     }
 // ============================================================================
