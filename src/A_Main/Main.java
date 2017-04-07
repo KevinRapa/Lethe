@@ -129,29 +129,32 @@ public class Main {
             if(eraseTrue)
                 new File(W_DIR, FILE_NAME).delete();
                 
-            AudioPlayer.stopTrack();
-            AudioPlayer.disposeKeyPlayers();
-            GAME_FRAME.setVisible(false);
-            GAME_FRAME.dispose();
-            Map.disposeMap();
-            Platform.exit();
+            endGameProcedure();
         }
         //**********************************************************************
         // </editor-fold>  
         //**********************************************************************
     } 
+// ============================================================================  
+    public static void endGameProcedure() {
+        AudioPlayer.stopTrack();
+        AudioPlayer.disposeKeyPlayers();
+        GAME_FRAME.setVisible(false);
+        GAME_FRAME.dispose();
+        Map.disposeMap();
+        Platform.exit();
+    }
 // ============================================================================   
     public static synchronized void saveGame() {
-        try (ObjectOutputStream gameData = 
-                new ObjectOutputStream(
-                new FileOutputStream(
-                new File(W_DIR, FILE_NAME)))
-            ) 
+        try (ObjectOutputStream gameData = new ObjectOutputStream(
+                new FileOutputStream(new File(W_DIR, FILE_NAME)))) 
         {
             Player.savePlayerAttributes(gameData); 
         } 
-        catch (java.io.IOException e) {
-            System.out.println(e.getMessage());
+        catch (IOException e) {
+            GUI.out("Hmph... Something went wrong in saving... "
+                    + "Does this make any sense to you? -> " + e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 // ============================================================================

@@ -3,7 +3,6 @@ package A_Super;
 import A_Main.*;
 import Foyer.LootSack;
 import java.io.File;
-import javafx.application.Platform;
 
 /**
  * @author Kevin Rapa
@@ -112,12 +111,7 @@ public class Endg extends Room {
 
         // Exits the game after player types enter.
         new File(Names.W_DIR, Main.FILE_NAME).delete();
-        AudioPlayer.stopTrack();
-        AudioPlayer.disposeKeyPlayers();
-        Main.GAME_FRAME.setVisible(false);
-        Main.GAME_FRAME.dispose();
-        Map.disposeMap();
-        Platform.exit();
+        Main.endGameProcedure();
         System.exit(0);
         
         return "";
