@@ -1,7 +1,6 @@
 package Foyer;
 
 import A_Main.AudioPlayer;
-import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Statue;

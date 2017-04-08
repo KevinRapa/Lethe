@@ -3,7 +3,6 @@ package Escape_Tunnel;
 import A_Main.AudioPlayer;
 import static A_Main.Names.METAL_BAR;
 import A_Main.Player;
-import A_Super.Climbable;
 import A_Super.Furniture;
 import A_Super.Gettable;
 import A_Super.Item;

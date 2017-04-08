@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.regex.Pattern;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.EtchedBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.JTextComponent;

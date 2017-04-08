@@ -29,7 +29,7 @@ public class Mha2_RightStatue extends SearchableFurniture {
                             + "tainted by your touch.";
         this.addNameKeys("right (?:statue|one|angel|hand|compartment|palm)");
         this.addActKeys(HOLDPATTERN);
-        this.addUseKeys(".+");
+        this.addUseKeys(ANYTHING);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

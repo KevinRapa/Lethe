@@ -2,7 +2,6 @@ package A_Super;
 
 import A_Main.*;
 import Foyer.LootSack;
-import java.io.File;
 
 /**
  * @author Kevin Rapa

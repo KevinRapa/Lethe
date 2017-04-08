@@ -21,7 +21,7 @@ public class Mha2_LeftStatue extends SearchableFurniture {
         
         this.addNameKeys("left (?:statue|one|angel|hand|palm)", "(?:left )?(?:open )?compartment");
         this.addActKeys(HOLDPATTERN);
-        this.addUseKeys(".+");
+        this.addUseKeys(ANYTHING);
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {

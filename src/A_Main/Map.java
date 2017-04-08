@@ -98,7 +98,7 @@ public class Map {
             
             if (icon.getImage().getWidth(MAP_LABEL) == -1)
                 // Room does not have an associated picture.
-                icon = new ImageIcon(PATH + "UNKN" + EXT);
+                icon = new ImageIcon(PATH + Id.UNKN + EXT);
         }
 
         MAP_LABEL.setIcon(icon);
