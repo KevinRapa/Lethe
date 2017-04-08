@@ -32,6 +32,8 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Unmoveabl
                 "It's a crucible of molten yellow glass. Be careful!", -5);
        
         this.actDialog = "No need to take that. Just add stuff and watch the magic happen.";
+        this.useDialog = " You let the sand and the dye bake for a bit. In no time, the "
+                        + "mixture has blended into hot molten glass. Delicious!";
         this.searchDialog = "You look in the kiln. It's pretty toasty in there.";
         this.description = "The kiln resembles a ceramic oven. Its intense heat " +
                            "keeps this room roasting hot. Inside is a small ceramic "
@@ -43,28 +45,23 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Unmoveabl
     }
 /*----------------------------------------------------------------------------*/
     @Override public String useEvent(Item item) {
-        // Cannot use Player.getInv().give() here because the molten glass
-        // Can be added to player inventory before removing the item.
-        // Must remove the item FIRST.
-        Player.getInv().remove(item);
-        this.inv.add(item);
-        
+        Player.getInv().give(item, this.inv);
+
         return NOTHING;
     }
 /*----------------------------------------------------------------------------*/
     private String makeGlass() {
-        if (this.containsItem(RED_DYE)) 
-            Player.getInv().add(REFGLSSR);
-        else if (this.containsItem(BLUE_DYE)) 
-            Player.getInv().add(REFGLSSB);
-        else 
-            Player.getInv().add(REFGLSSY);
-        
-        this.inv.clear();
-        
-        return " You let the sand and the dye bake for a bit. In no "
-             + "time, the mixture has blended into hot molten glass. "
-             + "Delicious! You take the hot crucible of liquid glass.";
+        if (this.containsItem(RED_DYE)) {
+            this.inv.clear();
+            this.inv.add(REFGLSSR);
+        } else if (this.containsItem(BLUE_DYE)) {
+            this.inv.clear();
+            this.inv.add(REFGLSSB);
+        } else {
+            this.inv.clear();
+            this.inv.add(REFGLSSY);
+        }
+        return this.useDialog;
     }
 /*----------------------------------------------------------------------------*/
     private boolean hasDye() {
@@ -86,9 +83,14 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Unmoveabl
         @Override public boolean add(Item item) { 
             String n = item.toString();
             
-            if (! (n.equals(RED_DYE) || n.equals(BLUE_DYE) || n.equals(YELLOW_DYE)
-                || n.equals(SAND)    || n.equals(POTASH))
-                ) 
+            if (n.equals(MOLTEN_RED_GLASS) || n.equals(MOLTEN_BLUE_GLASS) 
+                    || n.equals(MOLTEN_YELLOW_GLASS)) 
+            {
+                this.CONTENTS.add(item);
+                return true;
+            }
+            else if (! (n.equals(RED_DYE) || n.equals(BLUE_DYE) || n.equals(YELLOW_DYE)
+                || n.equals(SAND)    || n.equals(POTASH))) 
             {
                 if (n.equals(MOLTEN_RED_GLASS) || n.equals(MOLTEN_BLUE_GLASS) || n.equals(MOLTEN_YELLOW_GLASS))
                     GUI.out("Is it... really not hot enough for you??");

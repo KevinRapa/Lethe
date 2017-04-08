@@ -29,7 +29,7 @@ public class Cis1 extends Dungeon_Tunnel implements Resetable {
                   + "retreat back into the tunnel.");
         }
         
-        return "You are " + Player.getPos() + ".";
+        return Player.getPos().toString();
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {

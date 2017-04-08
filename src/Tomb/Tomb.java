@@ -16,7 +16,7 @@ import A_Super.Direction;
 public class Tomb extends Room {
 // ============================================================================    
     public Tomb(String ID) {
-        super("in a small tomb", ID);
+        super("Small tomb", ID);
     }
 // ============================================================================
     @Override public String getBarrier(Direction dir) {

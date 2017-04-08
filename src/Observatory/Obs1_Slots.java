@@ -42,7 +42,7 @@ public class Obs1_Slots extends Furniture {
         
         this.SLOTS.get(0).getInv().contents().add(hlsPlt);
         
-        this.description = "It's an array of brass indentations on the floor."
+        this.description = "It's an array of brass indentations on the floor. "
                          + "Each one bears an inscription.";
         this.searchDialog = "You inspect the array of slots.";
         this.useDialog = "There are eight slots here. Perhaps you should search among "

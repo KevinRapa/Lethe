@@ -59,7 +59,7 @@ public class Esc extends Room {
             GUI.out(REFUSE_TO_MOVE);
             Player.setOccupies(Id.ESC1);
         }
-        return "You are " + Player.getPos() + ".";
+        return Player.getPos().toString();
     }
 // ============================================================================
     private static boolean playerHasTorch() {

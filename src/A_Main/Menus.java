@@ -136,8 +136,7 @@ public final class Menus {
                    + "< > Back",
             
         LABO_DISP = NL
-                  + "<#> Dispense" + NL
-                  + "< > Back",
+                  + "<#> Dispense",
             
         GAL_TOTEM = NL
                   + "<#> Turn head" + NL

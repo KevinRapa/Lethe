@@ -941,7 +941,8 @@ public final class Player {
                 message = "Your wealth is legendary and would bring a tear to Plutus' eye.";
             else if (score >= 9000)
                 message = "Your wealth is nearly insurmountable and would "
-                        + "stun any man, woman, and God alike.";
+                        + "stun all men, women, and Godsup"
+                        + " alike.";
             else if (score >= 7750)
                 message = "Your wealth is nearly insurmountable and would "
                         + "stun all men and women alike.";

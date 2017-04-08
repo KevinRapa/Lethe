@@ -24,7 +24,7 @@ public final class Names {
         METAL_BUCKET = "metal bucket",          EMPTY_VIAL = "empty vial",
         GLASS_BOTTLE = "glass bottle",          TEST_TUBE = "test tube",
         SACRED_FIRE = "sacred fire",            HAND_TORCH = "hand torch",
-        BUCKET_OF_WATER = "filled bucket",      METAL_BAR = "metal bar",
+        BUCKET_OF_WATER = "water bucket",       METAL_BAR = "metal bar",
         POLEARM = "polearm",                    METAL_LADDER = "metal ladder",
         DEAD_BATTERY = "battery thing",         RED_FOCUS = "red focus",
         BLUE_FOCUS = "blue focus",              YELLOW_FOCUS = "yellow focus",
@@ -84,6 +84,8 @@ public final class Names {
         BRONZE_TABLET = "bronze tablet",        COAL = "coal",
         ASTROLABE = "gilded astrolabe",         MONA_LISA = "mona Lisa",
         JET_SKULL = "jet skull",                COOKED_HAM = "cooked ham",
+        GLASS_SHEET = "glass sheet",            BLUE_LENS = "blue lens",
+        YELLOW_LENS = "yellow lens",            RED_LENS = "red lens",
             
         BIBLE = "biblical tome, 'The Book of Genesis'",
         ILIAD = "greek tome, 'The Iliad'",

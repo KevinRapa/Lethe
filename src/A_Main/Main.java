@@ -34,11 +34,11 @@ import static A_Main.Names.SEP;
 import static A_Main.Names.W_DIR;
 
 public class Main {
-    public static final String 
+    private static final String 
             START_LOCATION = Id.COU4, // Default COU4
             FILE_NAME =  "data" + SEP + "save" + SEP + "Game.data";
     
-    public static final JFrame 
+    private static final JFrame 
             GAME_FRAME = new JFrame("Lethe"),
             TITLE_FRAME = new JFrame("Lethe");
     
@@ -105,10 +105,9 @@ public class Main {
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="READ IN SAVE FILE OR START NEW GAME">
         //
-        // Rudimentary save system using serialization. Saves files in the same
-        // location as Main.jar
+        // Rudimentary save system using serialization.
         //**********************************************************************
-        boolean newGame = false;
+        boolean isNewGame = false;
         
         try (ObjectInputStream gameData = new ObjectInputStream(
                 new FileInputStream(new File(W_DIR, FILE_NAME)))) 
@@ -121,13 +120,13 @@ public class Main {
             System.err.println(e.getMessage() + "\nCreating new game.");
             RoomGraph.constructRoomGraph();
             Player.setNewAttributes(RoomGraph.getCoords(START_LOCATION));
-            newGame = true;
+            isNewGame = true;
         }
         finally {
-            boolean eraseTrue = Player.startDialog(newGame); // START GAME
+            boolean eraseTrue = Player.startDialog(isNewGame); // START GAME
             
-            if(eraseTrue)
-                new File(W_DIR, FILE_NAME).delete();
+            if (eraseTrue)
+                eraseGame();
                 
             endGameProcedure();
         }
@@ -143,6 +142,13 @@ public class Main {
         GAME_FRAME.dispose();
         Map.disposeMap();
         Platform.exit();
+    }
+// ============================================================================   
+    public static void eraseGame() {
+        if (new File(W_DIR, FILE_NAME).delete())
+            System.out.println("Data erased.");
+        else
+            System.err.println("Data to erase not found.");
     }
 // ============================================================================   
     public static synchronized void saveGame() {

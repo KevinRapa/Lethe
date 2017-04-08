@@ -25,7 +25,7 @@ public class Dungeon_Tunnel extends Room {
             DungeonMonster.startMovement();
             
         DungeonMonster.checkForPlayer();
-        return "You are " + Player.getPos() + ".";
+        return Player.getPos().toString();
     }
 // ============================================================================
 }

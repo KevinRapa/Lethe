@@ -52,7 +52,7 @@ public class Cis2_Boat extends SearchableFurniture {
         
         AudioPlayer.playEffect(42);
         GUI.menOut(Menus.ENTER);
-        GUI.descOut(this.actDialog);
+        GUI.descOut(this.useDialog);
         GUI.clearDialog();
         GUI.promptOut();
         Player.describeRoom();

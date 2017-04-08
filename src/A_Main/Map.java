@@ -281,7 +281,8 @@ public class Map {
         
         Item lquaStf = new BreakableItem(DAMPENING_STAFF, 
                   "The smooth oak branch now holds the onyx ball inside its wooden "
-                + "cradle at the end. You sense power coming from it, but it isn't clear.", 250);
+                + "cradle at the end. You sense power coming from it, "
+                          + "but appears otherwise mundane.", 250);
         Item stffHndl = new BreakableItem("dampening staff handle", 
                   "It's a long and smooth branch of oak with a cradle at the tip, "
                 + "but whatever the cradle was holding is now gone.", lquaStf, 2, 100);
@@ -984,7 +985,7 @@ public class Map {
         Item wrkNt = new Wrk_Note("ingredient order");
         Item ptsh = new Item(POTASH, "Good old potassium-rich potash salts!", 5);
         //-----------------------------FURNITURE--------------------------------
-        Furniture wrkF = new Floor("A sandstone tiled floor, blackened and dirty from ash.");
+        Furniture wrkF = new Floor("A sandstone tiled floor, blackened and dirty from ash.", snd);
         Furniture wrkBrl = new Wrk_Barrel(rdDy, rdDy, blDy, blDy, yllwDy, yllwDy);
         Furniture wrkCbnt = new Wrk_Cbnt(hmmr, gl, ptsh, ptsh);
         Furniture wrkCstTbl = new Wrk_CastingTable(wrkBrl.getInv(), closScks.getInv(), 
@@ -1369,7 +1370,7 @@ public class Map {
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE SECRET STAIRS"> 
         //-----------------------------THE ROOM---------------------------------
         Room sst1 = new Room("Secret stairwell", Id.SST1);
-        Room sst2 = new Room("on a small landing", Id.SST2);  
+        Room sst2 = new Room("Small landing", Id.SST2);  
         //-----------------------------FURNITURE--------------------------------  
         Furniture sst1Strs = new Sst_Stairs(Direction.UP);
         Furniture sst2Strs = new Sst_Stairs(Direction.DOWN);

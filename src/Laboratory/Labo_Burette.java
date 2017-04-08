@@ -134,7 +134,7 @@ public class Labo_Burette extends Furniture {
     // ========================================================================  
     private Item dispense() {
         GUI.out(mode.toString() + "will be dispensed in 5 mL increments. Press "
-                + "enter to start titrating. Press enter to stop titrating.");
+                + "enter to start titrating and then a second time to stop titrating.");
         GUI.menOut(Menus.ENTER);
         GUI.promptOut();
         

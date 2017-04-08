@@ -30,12 +30,12 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
         this.BRL_INV = brl;     this.SCK_INV = sck;     this.CBNT_INV = cbnt; 
         
         // Lens to give player
-        this.SHEET_REF = new BreakableItem("glass sheet", 
+        this.SHEET_REF = new BreakableItem(GLASS_SHEET, 
                 "Wait... this isn't right. Weren't you supposed to make a lens?", 0);
-        this.BLUE_LENS_REF = new BreakableItem("blue lens", 
+        this.BLUE_LENS_REF = new BreakableItem(BLUE_LENS, 
                 "You made a blue lens. Good job, but was this the right color?",
                 "Wait... was this the color you were supposed to make?", 20);
-        this.YELLOW_LENS_REF = new BreakableItem("yellow lens", 
+        this.YELLOW_LENS_REF = new BreakableItem(YELLOW_LENS, 
                 "You made a yellow lens. Good job, but was this the right color?", 
                 "Wait... was this the color you were supposed to make?", 20);
         this.RED_LENS_REF = rdLns; 
@@ -68,18 +68,18 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
                 
                 switch (name) {
                     case MOLTEN_RED_GLASS:
-                        Player.getInv().add(RED_LENS_REF); // Give player red lens.
+                        this.inv.add(RED_LENS_REF); // Give player red lens.
                         color = "red";
                         break;
                     case MOLTEN_BLUE_GLASS:
-                        Player.getInv().add(BLUE_LENS_REF); // Give player blue lens.
+                        this.inv.add(BLUE_LENS_REF); // Give player blue lens.
                         this.SCK_INV.add(SAND_REF); // Restock sand.
                         this.BRL_INV.add(BLUE_DYE_REF); // Restock dye.
                         this.CBNT_INV.add(POTASH_REF); // Restock potash.
                         color = "blue";
                         break;
                     default:
-                        Player.getInv().add(YELLOW_LENS_REF); // Give player yellow lens.
+                        this.inv.add(YELLOW_LENS_REF); // Give player yellow lens.
                         this.SCK_INV.add(SAND_REF); // Restock sand.
                         this.BRL_INV.add(YELLOW_DYE_REF); // Restock dye.
                         this.CBNT_INV.add(POTASH_REF); // Restock potash.
@@ -87,11 +87,11 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
                         break;
                 }
                 return "You pour the molten glass into the mold. In no time "
-                     + "at all, the glass dries into a fresh new " + color + " lens! "
-                     + "You take the lens. This is what you needed, right?";    
+                     + "at all, the glass dries into a fresh new " + color + 
+                        " lens! This is what you needed, right?";    
             }
             else {
-                Player.getInv().add(SHEET_REF);
+                this.inv.add(SHEET_REF);
                 this.SCK_INV.add(SAND_REF);
                 this.CBNT_INV.add(POTASH_REF);
                 
@@ -108,8 +108,7 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
                 }
                 return "You pour the molten glass onto the casting table. " +
                        "As the glass dries, you scratch your head. Didn't "
-                     + "the instructions say to use a template? You take the "
-                     + "solidified glass sheet from the casting table.";
+                     + "the instructions say to use a template?";
             }
         }        
     }
@@ -132,7 +131,13 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
         @Override public boolean add(Item item) { 
             String n = item.toString();
             
-            if (!(n.equals(MOLTEN_RED_GLASS) || n.equals(MOLTEN_BLUE_GLASS) || 
+            if (n.equals(RED_LENS) || n.equals(YELLOW_LENS) || 
+                    n.equals(BLUE_LENS) || n.equals(GLASS_SHEET)) 
+            {
+                this.CONTENTS.add(item);
+                return true;
+            }
+            else if (!(n.equals(MOLTEN_RED_GLASS) || n.equals(MOLTEN_BLUE_GLASS) || 
                   n.equals(MOLTEN_YELLOW_GLASS) || n.equals(LENS_TEMPLATE))) 
             {
                 if (item.getType().equals(LIQUID))
@@ -142,8 +147,7 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
                 
                 return false;
             }
-            else if (n.equals(LENS_TEMPLATE))
-            {
+            else if (n.equals(LENS_TEMPLATE)) {
                 this.CONTENTS.add(item);
                 GUI.out("You fit the lens template onto the table.");
                 return true;

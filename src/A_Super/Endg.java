@@ -110,7 +110,7 @@ public class Endg extends Room {
         GUI.promptOut();
 
         // Exits the game after player types enter.
-        new File(Names.W_DIR, Main.FILE_NAME).delete();
+        Main.eraseGame();
         Main.endGameProcedure();
         System.exit(0);
         

@@ -28,7 +28,7 @@ public class Cave extends Room {
     protected static final Random GENERATOR = new Random();
     
     protected static final File DISTORTION = new File(W_DIR, 
-            "ambience" + SEP + "caveDistortion.wav");
+            "data" + SEP + "ambience" + SEP + "caveDistortion.wav");
     
     protected static Clip clip;
 // ============================================================================    
