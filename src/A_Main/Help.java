@@ -40,7 +40,7 @@ public final class Help {
       + "You may also use the up arrow key to browse previous input and the "
       + "down arrow key to clear the input panel. ", 
          
-        "In this game, you may move in four directions; north, south, east, " +
+        "In this game, you may move in six directions; north, south, east, " +
         "west, up, and down. For your convenience, the shortcuts for the " +
         "first four of these are 'w', 's', 'd', and 'a'. After all, you may " +
         "find yourself fatigued after typing words for such a long time. " +
@@ -48,7 +48,7 @@ public final class Help {
         "my job is not to impose on your freedom.", 
          
         "Whenever you enter an area, the description for it is automatically " +
-        "displayed in the center panel. You will find this useful on a " +
+        "displayed. You will find this useful on a " +
         "continual basis, for this is a text-based game, so there are " +
         "more-or-less no pictures. You may interact with things you read " +
         "in the description, barring some indistinct nouns such as " +
@@ -58,11 +58,11 @@ public final class Help {
          
         "You may examine things you enounter by entering an appropriate verb " +
         "(\"examine\", \"look at\", etc.) followed by the thing you wish to examine. " +
-        "For your convenience, the shortcut for this is \"c\" for \"check\" (e.g. \"c the window\"). You " +
+        "The shortcut for this is \"c\" for \"check\" (e.g. \"c the window\"). You " +
         "may find this command useful in order to reveal clues about hidden " +
         "objects as well as to add color to your imagination. You may examine items " +
         "in your inventory the same way, but remember that furniture in the room will be " +
-        "prioritized first, so if there is both a sack in your inventory and in the room, " +
+        "prioritized first, so if there is both a sack in both the inventory and room, " +
         "the game will think you mean the sack in the room!", 
          
         "You can search by entering an appropriate verb " +
@@ -73,29 +73,30 @@ public final class Help {
         "something cannot be searched, this doesn't imply that it doesn't " +
         "contain useful stuff! When trading items with furniture, use the " +
         "commands \"take\" or \"store\" (shortcut are \"t\" and \"s\") followed by " +
-        "a list of items (e.g. \"take the pen, notepad, and 4\"). You may also"
-      + "inspect things before you pick them up by entering the item's slot number.", 
+        "a list of items (e.g. \"take the pen, notepad, and 4\"). Enter \"loot\" to " + 
+        "take as many things as possible. You may also inspect things before you pick " +
+        "them up by entering the item's slot number.", 
          
         "The somewhat famous (in the right community) 1977 text-based " +
         "computer game \"Zork\" was known for its respectably sophisticated " +
         "text parser. This game attempts to accomplish the same, and thus " +
         "allows reasonable sentences to be entered for input in addition to " +
-        "the simple commands like \"search desk\" and \"climb stairs\". Communicate " +
-        "to this game as if your were casually speaking. For instance, you may " +
+        "the simple commands like \"search desk\" and \"climb stairs\". You may " +
         "type things like \"go to the north\", \"look inside the cabinet\", and " +
         "even chain commands together like \"walk through the east door and " +
-        "then search the table\". TAKE NOTE that the game always thinks 'and' " +
+        "then search the table\". Take note that the game always thinks 'and' " +
         "leads to a second command, UNLESS you precede it with a comma " + 
-        "(e.g. \"drop 2, 3, and 6\"). If you previously referenced an object, you " +
-        "may use \"it\" or \"them\" instead of the name. For instance \"look through " +
-        "the window\" and then \"open it\" is valid. You may interact with items " +
+        "(e.g. \"drop 2, 3, and 6\"). If you previously referenced an object or item, you " +
+        "may use \"it\" or \"them\" instead of the name. For instance \"open the window " +
+        "and then climb through it\" is valid. You may interact with items " +
         "in your inventory in the same way as an alternative to entering your " +
-        "inventory. Just remember, you can interact with items only if your " +
-        "are carrying them! And also, be respectful and avoid profanity, for " +
-        "you are playing a high-class character in a sophisticated setting.",
+        "inventory. Just remember, you can interact with items only if you're " +
+        "carrying them. A couple other things- entering just the name of furniture " +
+        "and nothing else implies a search. Also, be respectful and avoid profanity, " +
+        "for you are playing a high-class character in a sophisticated setting.",
          
         "You may use items directly from the " +
-        "main prompt. For instance, \"break the door with the warhammer\" or " +
+        "main prompt. For instance, \"break the door with the axe\" or " +
         "\"drop 1, 4, and 6\". When using items this way, you can enter in its name or the " +
         "slot it's in. Note that you don't need to enter in the WHOLE name. " +
         "For instance, if you are carrying a book called \"guide, \"Not Dying " +
