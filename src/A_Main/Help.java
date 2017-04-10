@@ -61,7 +61,9 @@ public final class Help {
         "For your convenience, the shortcut for this is \"c\" for \"check\" (e.g. \"c the window\"). You " +
         "may find this command useful in order to reveal clues about hidden " +
         "objects as well as to add color to your imagination. You may examine items " +
-        "in your inventory the same way, although the shortcut 'c' doesn't work for this.", 
+        "in your inventory the same way, but remember that furniture in the room will be " +
+        "prioritized first, so if there is both a sack in your inventory and in the room, " +
+        "the game will think you mean the sack in the room!", 
          
         "You can search by entering an appropriate verb " +
         "(\"search\", \"look in/around\", etc.) followed by the thing you wish " +
@@ -72,7 +74,7 @@ public final class Help {
         "contain useful stuff! When trading items with furniture, use the " +
         "commands \"take\" or \"store\" (shortcut are \"t\" and \"s\") followed by " +
         "a list of items (e.g. \"take the pen, notepad, and 4\"). You may also"
-      + "inspect things before you pick them up by entering <'c' item>.", 
+      + "inspect things before you pick them up by entering the item's slot number.", 
          
         "The somewhat famous (in the right community) 1977 text-based " +
         "computer game \"Zork\" was known for its respectably sophisticated " +
@@ -98,8 +100,8 @@ public final class Help {
         "slot it's in. Note that you don't need to enter in the WHOLE name. " +
         "For instance, if you are carrying a book called \"guide, \"Not Dying " +
         "for the Unlearned\", you may reference it by the name \"guide\". Be " +
-        "careful though, since if you are carrying multiple guides, this may " +
-        "not do what you expect.", 
+        "careful though, since if you are carrying multiple guides, the first " +
+        "one will be prioritized.", 
          
         "You can combine 2 or 3 objects into a new object if " +
         "they are combinable. Combining is done from the inventory. The syntax is two " +
@@ -129,16 +131,17 @@ public final class Help {
         "storing items. You may also wish to make notes of interesting " +
         "things you find and would like to remember for later. If you " +
         "possess both pen and a notepad to write on, you may write " +
-        "momentos to yourself. Enter 'note', 'n', or 'write' at the main prompt " +
+        "momentos to yourself. Enter 'n' at the main prompt " +
         "to do this. Alternatively, you may do this from your inventory " +
         "by entering in choice '5'. As a quick reminder, you may drop items " +
-        "by entering \"drop <item list>\" from the main prompt.",
+        "by entering \"drop list\" from the main prompt.",
         
         "Access your inventory by entering \"i\" from the main prompt. " +
         "Your inventory's contents will be listed. From here, you may " +
         "inspect, use, and combine items. You may also sort your " +
         "inventory by entering \"sort\" from the inventory or from the " +
-        "main prompt.", 
+        "main prompt. Keep in mind that for anything you can do from the " +
+        "inventory, you can also accomplish directly from the main prompt.", 
          
         "Access your key ring by entering 'k' from the main prompt. " +
         "The keys you are carrying will be listed. You cannot drop keys; " +
@@ -152,14 +155,14 @@ public final class Help {
         "Whoever owns this castle must be quite powerful and wealthy, and " +
         "of course such hardship that you are being put through should " +
         "not go without compensation! If you have a loot sack, access it " +
-        "by entering 'l' or 'loot' at the main prompt. Items you add to " +
+        "by entering 'l' at the main prompt. Items you add to " +
         "it will increase or decrease your wealth. The loot sack also " +
         "offers valuable storage space in addition to your inventory too.",
          
         "Most rooms have at least one door, and thus you may act on them from the " +
         "main prompt using the name 'door'. However, you do not need to act on doors " +
         "in general movement. Your character moves through them automatically if " +
-        "they are unlocked, unblocked, etc.", 
+        "they are unlocked, unblocked, etc., by simply moving.", 
          
         "The castle is made of rooms separated by doors and walls. A room may " +
         "be one, two, or even more areas large! Inside and outside the room are " +
@@ -174,13 +177,14 @@ public final class Help {
         "Items are things that go into your inventory or key ring. You may take "
       + "them or store them in searches (excluding keys and phylacteries for "
       + "storing). You may use, combine, and inspect them from either your "
-      + "inventory or the main prompt.", 
+      + "inventory or the main prompt. There are a couple items which have "
+      + "inventories themselves, for which case you may type 'open <item>' to search them.", 
          
         "Keys get added to your keyring automatically upon picking up, and you " +
         "may not rid yourself of them. Key are used to enter locked rooms and " +
         "unlock things like cabinets and chests. Take note that a key is not " +
         "necessarily needed to enter a locked room! In this game, you needn't " +
-        "attempt to unlock the door to a room if you have a key. This is done " +
+        "attempt to unlock a door if you have a key. This is done " +
         "automatically for you.", 
          
         "In Zork, your primary objective as an explorer was to collect " +
