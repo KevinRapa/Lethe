@@ -27,14 +27,18 @@ public final class Help {
         "When prompted for input, the format may appear in "
       + "angle brackets.            "
       + "<item> - Enter an item name.                    " +
-        "<left> - Hit left arrow key (Arrow keys are used for scrolling).        " +
+        "<left> - Left arrow key.   " +
         "<'x'> - Enter what's quoted.                   " +
         "<#> - Enter a digit.       " +
         "< > - Enter nothing.       " +
-        "<(item)> - An optional item or item slot.        " +   
-        "<?,?,?> - Enter a comma-separated list.     " +
-        "<?/?/?> - Enter a choice of ?.                     "
-      + "<'s' list> - Enter 's' followed by <?,?,?>.", 
+        "<(?)> - An optional item or item slot.        " +   
+        "<?/?/?> - A choice of ?.   "
+      + "<'s' list> - 's' followed by a comma separated list.             "
+      + "             There also hot keys which you may find useful. Press "
+      + "shift to swap the inventory and dialog panels. The left and right "
+      + "arrow keys can be used to scroll up and down if scroll bars appear. "
+      + "You may also use the up arrow key to browse previous input and the "
+      + "down arrow key to clear the input panel. ", 
          
         "In this game, you may move in four directions; north, south, east, " +
         "west, up, and down. For your convenience, the shortcuts for the " +

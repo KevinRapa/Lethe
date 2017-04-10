@@ -1,7 +1,7 @@
 You're in the center of an overgrown courtyard, 
 just in front of the main gate, surrounded 
 on all sides by the fortress-like castle wall. 
-A great set of crumbling steps climbs before you
+A great set of crumbling steps climbs before you 
 to the castle's entrance. There is a fork in the 
 path here. It wraps left and right around to the 
 sides of the steps. Ivy grows rampantly on and 

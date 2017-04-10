@@ -33,12 +33,11 @@ public final class Menus {
                     + "< >    Back",
 
         TRADE_SUB = NL
-                  + "<left/right> Scroll" + NL
-                  + "<'s' list>   Store" + NL
-                  + "<'t' list>   Take" + NL
-                  + "<'loot'>     Loot!!!" + NL
-                  + "<#>          Inspect" + NL
-                  + "< >          Back",
+                  + "<left/right>  Scroll" + NL
+                  + "<'s' list>    Store" + NL
+                  + "<'t' list>    Take" + NL
+                  + "<'loot'>      Loot!!!" + NL
+                  + "< > Back  <#> Inspect",
 
         SAVE_QUIT = NL + NL
                   + "<'q'> Quit" + NL
@@ -149,10 +148,11 @@ public final class Menus {
             "<left/right> Scroll", 
                
             
-        CREDITS = "This game was written in " + NL
-                + "Java on NetBeans 8.1. All " + NL
-                + "sounds were processed using " + NL
-                + "audacity. Detailed credits " + NL
-                + "can be found in the credits " + NL
-                + "folder near the main .jar.";
+        CREDITS = "This game was written in Java on " + NL
+                + "NetBeans 8.1. All sounds were " + NL
+                + "processed using audacity. Fonts are " + NL
+                + "Magic Medieval (Dave Howell) and " + NL
+                + "FixedSys Excelsior (Darien " + NL
+                + "Valentine). Details can be found " + NL
+                + "in the credits folder.";
 }

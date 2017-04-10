@@ -453,7 +453,8 @@ public class GUI extends JFXPanel {
                 DOWN = KeyEvent.VK_DOWN,
                 ENTER = KeyEvent.VK_ENTER,
                 LEFT = KeyEvent.VK_LEFT,
-                RIGHT = KeyEvent.VK_RIGHT;
+                RIGHT = KeyEvent.VK_RIGHT,
+                SHIFT = KeyEvent.VK_SHIFT;
         /*------------------------------------------------------*/
         @Override public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
@@ -489,7 +490,10 @@ public class GUI extends JFXPanel {
         /*------------------------------------------------------*/
         @Override public void keyTyped(KeyEvent e) {}
         /*------------------------------------------------------*/
-        @Override public void keyReleased(KeyEvent e) {}
+        @Override public void keyReleased(KeyEvent e) {
+            if (e.getKeyCode() == SHIFT)
+                SWAP.doClick();
+        }
     }
 /*----------------------------------------------------------------------------*/
     private static class Text_Field_Listener implements ActionListener {
@@ -555,7 +559,7 @@ public class GUI extends JFXPanel {
                 AudioPlayer.playEffect(10);
                 swapped = ! swapped;
                 GUI.this.setVisible(false);
-                
+
                 if (swapped) {
                     EAST.add(SCROLLS, BorderLayout.NORTH);
                     EAST.add(SCROLLN, BorderLayout.SOUTH);
