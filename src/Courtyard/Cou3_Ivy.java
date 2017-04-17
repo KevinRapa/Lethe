@@ -1,7 +1,5 @@
 package Courtyard;
 
-import A_Main.Player;
-
 /**
  * @author Kevin Rapa
  */
@@ -19,14 +17,10 @@ public class Cou3_Ivy extends Courtyard_Growth {
     }
     // ========================================================================   
     @Override public String interact(String key) {              
-        if (key.matches("grab|touch|hold"))
-            return this.actDialog;
-        else if (key.matches(CLIMBPATTERN))
+        if (key.matches(CLIMBPATTERN))
             return "You are too heavy. This will never support you!";
-        else if (Player.hasItemResembling("ax|sword|scythe"))
-            return this.cutDialog;
         else
-            return "You have nothing to cut it up with.";
+            return super.interact(key);
     }
     // ========================================================================   
 }

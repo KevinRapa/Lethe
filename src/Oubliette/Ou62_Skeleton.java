@@ -16,7 +16,7 @@ public class Ou62_Skeleton extends Skeleton {
     }
     // ========================================================================
     @Override public String getDescription() {
-        if (inv.contents().isEmpty())
+        if (this.inv.isEmpty())
             return this.description;
         else
             return this.description.concat(" It appears to be holding something.");

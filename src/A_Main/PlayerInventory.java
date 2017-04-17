@@ -88,6 +88,11 @@ public class PlayerInventory extends Inventory {
         Player.printInv();
     }
     // ========================================================================
+    public boolean containsItemWithExactName(String itemName) {
+        return this.CONTENTS.stream()
+                .anyMatch(i -> i.toString().equalsIgnoreCase(itemName));
+    }
+    // ========================================================================
     // Returns the number of phylacteries the player is carrying.
     public int countPhylacteries() {
         int result = 0;
@@ -106,7 +111,7 @@ public class PlayerInventory extends Inventory {
     {
         private static final Inventory_Sorter SORTER = new Inventory_Sorter();
         // --------------------------------------------------------------------
-        private Inventory_Sorter() { /* Singleton class. */ }
+        private Inventory_Sorter() {} // Singleton class.
         // --------------------------------------------------------------------
         public static Inventory_Sorter getSorter() {
             return SORTER;

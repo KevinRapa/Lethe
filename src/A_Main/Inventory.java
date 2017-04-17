@@ -47,7 +47,7 @@ public class Inventory implements Iterable<Item>, Serializable {
                 return this.CONTENTS.get(i - 1);
         }
         else {
-            for (Item i : this.contents()) // First checks for an exact match.
+            for (Item i : this) // First checks for an exact match.
                 if (i.toString().equals(name))
                     return i;
             
@@ -55,7 +55,7 @@ public class Inventory implements Iterable<Item>, Serializable {
             // this prevent crashing.
             try {
                 Pattern p = Pattern.compile(NO_LETTER_BEFORE + name + NO_LETTER_AFTER);
-                for (Item i : this.contents()) // Checks for a close match.
+                for (Item i : this) // Checks for a close match.
                     if (p.matcher(i.toString()).matches())
                         return i;
             }
@@ -64,7 +64,6 @@ public class Inventory implements Iterable<Item>, Serializable {
                 return NULL_ITEM;
             }
         }
-        System.err.println("NULL_ITEM returned at <inventory>.get()");
         return NULL_ITEM; // Item wasn't found. Always check for this!!
     }
     //-------------------------------------------------------------------------
@@ -76,29 +75,6 @@ public class Inventory implements Iterable<Item>, Serializable {
         return CONTENTS.isEmpty();
     }
     //-------------------------------------------------------------------------
-    // Checks if this inv contains an item who's name matches argument.
-    public boolean containsItemResembling(String name) {
-        if (Patterns.ANY_DIGIT_P.matcher(name).matches()) {
-            // Player used a slot number
-            int i = Integer.parseInt(name);
-            return (i > 0 && i <= CONTENTS.size());
-        }
-        else {
-            // Player typed in an item name.
-            // If player types anything that evaluates to an invalid regex,
-            // this prevent crashing.
-            try {
-                Pattern p = Pattern.compile(NO_LETTER_BEFORE + name + NO_LETTER_AFTER);
-                return CONTENTS.stream().anyMatch(i -> 
-                        p.matcher(i.toString()).matches());
-            }
-            catch (PatternSyntaxException e) {
-                System.err.println("Player is trying to break regex compiler with: \"" + name + "\".");
-                return false;
-            }
-        }
-    }
-    //-------------------------------------------------------------------------
     public int size() {
         return CONTENTS.size();
     }
@@ -107,18 +83,24 @@ public class Inventory implements Iterable<Item>, Serializable {
         this.CONTENTS.clear();
     }
     //-------------------------------------------------------------------------
-    public ArrayList<Item> contents() {
-        return this.CONTENTS;
-    }
-    //-------------------------------------------------------------------------
     /**
      * Adds an item to the inventory.
+     * To be overridden for specific kinds of inventories.
      * @param item An item to add to this inventory's contents.
      * @return If the add was successful. 
      */
     public boolean add(Item item) {
         this.CONTENTS.add(item);
-        return true; // Some inventories have restrictions.
+        return true;
+    }
+    //-------------------------------------------------------------------------
+    /**
+     * Always adds the item.
+     * Not to be overridden.
+     * @param item An item to add into this.
+     */
+    public final void forceAdd(Item item) {
+        this.CONTENTS.add(item);
     }
     //-------------------------------------------------------------------------
     public void remove(Item removeThis) {  
@@ -151,19 +133,17 @@ public class Inventory implements Iterable<Item>, Serializable {
             int slot = 1;
             
             for (Item i : this.CONTENTS) {
-                String name = i.toString();
-                String capitalized = name
-                        .substring(0,1)
-                        .toUpperCase()
-                        .concat(name.substring(1));
+                char[] chars = i.toString().toCharArray();
+                chars[0] = Character.toUpperCase(chars[0]);
                 
                 builder.append('<')
                        .append(slot++)
                        .append('>')
                        .append(' ')
-                       .append(capitalized)
+                       .append(chars)
                        .append('\n');
             }
+            
             return builder.toString();
         }
         else

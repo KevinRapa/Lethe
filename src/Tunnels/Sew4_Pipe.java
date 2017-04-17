@@ -68,7 +68,7 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
     @Override public void reset() {
         if (this.hasPipe) {
             this.hasPipe = false;
-            this.SEW1_RVR.getInv().contents().add(PIPE_REF);
+            this.SEW1_RVR.getInv().forceAdd(PIPE_REF); // Prevents dialog.
         }
     }
     // ========================================================================

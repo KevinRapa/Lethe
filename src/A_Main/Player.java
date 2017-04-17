@@ -227,18 +227,7 @@ public final class Player {
      * @return If the player's inventory contains an item with the exact name.
      */
     public static boolean hasItem(String itemName) {
-        return Player.inv.contents().stream().
-                anyMatch(i -> i.toString().equalsIgnoreCase(itemName));
-    }
-    /*------------------------------------------------------------------------*/
-    /**
-     * Checks if the player has an item who's name contains the given word.
-     * @param itemName A word the player types in to refer to an item in his 
-     * or her inventory.
-     * @return if the player has an item who's name resembles item.
-     */
-    public static boolean hasItemResembling(String itemName) {
-        return Player.inv.containsItemResembling(itemName);
+        return Player.inv.containsItemWithExactName(itemName);
     }
     // </editor-fold>
     
@@ -746,6 +735,7 @@ public final class Player {
      */
     private static void evaluateAction(String verb, String furnName) {
         String object = Player.tryIndefRef_Furn(furnName);
+        Item item = getInv().get(tryIndefRef_Item(furnName));
         
         // <editor-fold defaultstate="collapsed" desc="MOVE COMMAND">
         if (WALK_P.matcher(verb).matches()) {
@@ -802,10 +792,11 @@ public final class Player {
         }   
         // </editor-fold>
         
-        else if (CHECK_P.matcher(verb).matches() && Player.hasItemResembling(furnName)) {
-            // The furniture isn't here, but maybe the player was regarding an
-            // item in the inventory.
-            Item item = getInv().get(furnName);
+        else if (CHECK_P.matcher(verb).matches() && 
+                ! item.equals(Inventory.NULL_ITEM)) 
+        {
+            /* The furniture isn't here, but maybe the player meant an
+             * item in the inventory. */
             setLastInteract_Item(furnName);
             GUI.out(item.getDesc());
         }
@@ -842,21 +833,18 @@ public final class Player {
         
         // <editor-fold defaultstate="collapsed" desc="SEARCH COMMANDS">
         else if (SEARCH_P.matcher(verb).matches() || verb.matches("open|empty")) {
-            // Player wants to open an item or search the furniture
-            object = Player.tryIndefRef_Item(furnName);
-            Item i = inv.get(object);
-            
-            if (i.toString().equals(LOOT_SACK)) {
+            // Player wants to open an item.
+            if (item.toString().equals(LOOT_SACK)) {
                 // Loot sack is found in the foyer.
                 openLootSack(); 
                 setLastInteract_Item(LOOT_SACK);
             }
-            else if (i.toString().equals(SHOE_BOX)) {
+            else if (item.toString().equals(SHOE_BOX)) {
                 // Loot sack is found in Kampe's quarters.
-                i.useEvent(); 
+                item.useEvent(); 
                 setLastInteract_Item(SHOE_BOX);
             }
-            else if (Player.hasItemResembling(object))
+            else if (! item.equals(Inventory.NULL_ITEM))
                 GUI.out("You fumble with the " + object + 
                         " but nothing useful is accomplished.");
             else
@@ -1152,7 +1140,7 @@ public final class Player {
                             n.getDesc() + ' ' + getNoteBody());
                     
                     Player.inv.remove(n);
-                    Player.inv.contents().add(newNote);
+                    Player.inv.add(newNote);
                     Player.setLastInteract_Item(newNote.toString());
                     Player.incrementMoves();
                     printInv();
@@ -1688,10 +1676,11 @@ private static class TextParser {
          */
         private static void execute(Instrument i, DirectObj o) {
             String itemName = Player.tryIndefRef_Item(i.toString());
-
-            if (Player.hasItemResembling(itemName)) {
+            Item item = Player.getInv().get(itemName);
+            
+            if (! item.equals(Inventory.NULL_ITEM)) {
                 Player.setLastInteract_Item(itemName);
-                Player.evalUse(Player.getInv().get(itemName), o.toString());
+                Player.evalUse(item, o.toString());
             }
             else
                 GUI.out(DONT_HAVE_IT);
@@ -1706,13 +1695,14 @@ private static class TextParser {
          */
         private static void execute(Verb v, Instrument i) {
             String verb = v.toString(),
-                   instrument = Player.tryIndefRef_Item(i.toString());
+                instrument = Player.tryIndefRef_Item(i.toString());
 
-            if (Player.hasItemResembling(instrument)) {
+            Item item = Player.getInv().get(instrument);
+            
+            if (! item.equals(Inventory.NULL_ITEM)) {
                 Player.setLastInteract_Item(instrument);
                 Player.incrementMoves();
-                
-                Item item = Player.getInv().get(instrument);
+
                 String name = item.toString();
                 String type = item.getType();
 

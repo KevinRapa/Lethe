@@ -1,7 +1,6 @@
 package Courtyard;
 
 import static A_Main.Names.*;
-import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 /**
@@ -20,10 +19,8 @@ abstract public class Courtyard_Growth extends Furniture {
     @Override public String interact(String key) {              
         if (key.matches("grab|touch|hold"))
             return this.actDialog;
-        else if (Player.hasItemResembling("ax|sword|scythe"))
-            return this.cutDialog;
         else
-            return "You aren't a gardener!";
+            return "With your hands???";
     }
     // ========================================================================     
     @Override public String useEvent(Item item) {

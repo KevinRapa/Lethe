@@ -32,7 +32,7 @@ public class Item implements Serializable, Comparable<Item> {
 // simplicity of items, multiple constructers for items are defined.
 //******************************************************************************             
     public Item(String name, int score) {
-        NAME = name;
+        NAME = (name.length() == 0) ? "NO NAME" : name; 
         FORMS = null;   
         description = "";
         useID = 2;
@@ -56,7 +56,7 @@ public class Item implements Serializable, Comparable<Item> {
         useDialog = USE_DEFAULT;
         useID = 2;
         this.score = score;
-        NAME = name; 
+        NAME = (name.length() == 0) ? "NO NAME" : name; 
         FORMS = forms;  
         THRESHOLD = thresh;
     }

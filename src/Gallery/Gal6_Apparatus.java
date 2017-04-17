@@ -63,7 +63,7 @@ public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
         }
      // ========================================================================
         @Override public void remove(Item removeThis) {
-            this.contents().remove(removeThis);
+            this.CONTENTS.remove(removeThis);
             
             if (removeThis.toString().equals(DEAD_BATTERY) && chargeThread != null)
                 chargeThread.interrupt();

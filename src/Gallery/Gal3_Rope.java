@@ -1,5 +1,6 @@
 package Gallery;
 
+import A_Main.Inventory;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
@@ -62,9 +63,8 @@ public class Gal3_Rope extends Furniture {
 /*----------------------------------------------------------------------------*/
     private boolean detectItem() {
         // Detects if you have a blade to cut the rope with.
-        return Player.getInv().contents().stream().anyMatch(
-                i -> i.toString().matches("katana|.+(?:sword|ax)")
-        );
+        Item item = Player.getInv().get("katana|.+(?:sword|ax)");
+        return (! item.equals(Inventory.NULL_ITEM));
     }
 /*----------------------------------------------------------------------------*/
 }

@@ -40,7 +40,7 @@ public class Sewp extends Dungeon_Tunnel {
             if (! i.toString().equals(HAND_TORCH) && ! i.toString().equals(METAL_BAR))
                 this.PRIS_CBNT_INV.add(i);
         
-        Player.getInv().contents().clear();
+        Player.getInv().clear();
         Player.setShoes("");
         
         Player.printInv();

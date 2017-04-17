@@ -40,7 +40,7 @@ public class Obs1_Slots extends Furniture {
         MAP.put('e', 5); MAP.put('f', 6); MAP.put('g', 7); MAP.put('h', 8); 
         MAP.put('d', 4); 
         
-        this.SLOTS.get(0).getInv().contents().add(hlsPlt);
+        this.SLOTS.get(0).getInv().forceAdd(hlsPlt);
         
         this.description = "It's an array of brass indentations on the floor. "
                          + "Each one bears an inscription.";

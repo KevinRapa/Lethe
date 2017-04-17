@@ -34,7 +34,7 @@ public class Kitc_Pots extends SearchableFurniture implements Gettable {
 /*----------------------------------------------------------------------------*/
     @Override public String interact(String key) {              
         if (key.matches(JOSTLEPATTERN) || key.equals("rattle")) {
-            if (this.inv.contents().isEmpty())
+            if (this.inv.isEmpty())
                 return "You jostle the rack and mildly amuse yourself.";
             else 
                 return this.actDialog;
@@ -49,7 +49,7 @@ public class Kitc_Pots extends SearchableFurniture implements Gettable {
     }
 /*----------------------------------------------------------------------------*/
     @Override public String getIt() {
-        if (! this.inv.contents().isEmpty()) {
+        if (! this.inv.isEmpty()) {
             if (this.inv.contains(POT_REF) && Player.getInv().add(POT_REF)) {
                 this.inv.remove(POT_REF);
                 return "You take a pot off.";

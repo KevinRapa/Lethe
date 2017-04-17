@@ -87,7 +87,7 @@ public class Labo_Flask extends SearchableFurniture {
             if (item.getType().equals(Names.INGREDIENT)) {
                 GUI.out("You pour it in.");
                 this.CONTENTS.add(item);
-                Player.getInv().contents().add(TUBE_REF);
+                Player.getInv().forceAdd(TUBE_REF);
                 return true;
             }
             GUI.out("That's not an ingredient!");
@@ -105,14 +105,14 @@ public class Labo_Flask extends SearchableFurniture {
                 if (giveToThis.contains(TUBE_REF)) {
                     this.remove(item);
                     giveToThis.remove(TUBE_REF);
-                    giveToThis.contents().add(item);
+                    giveToThis.forceAdd(item);
                     GUI.out("You pour it back out.");
                     return true;
                 }
                 else if (giveToThis.contains(VIAL_REF)) {
                     this.remove(item);
                     giveToThis.remove(VIAL_REF);
-                    giveToThis.contents().add(item);
+                    giveToThis.forceAdd(item);
                     GUI.out("You pour it back out.");
                     return true;
                 }

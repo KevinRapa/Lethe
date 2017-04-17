@@ -36,7 +36,7 @@ public class FactumDummy extends SearchableFurniture implements Gettable {
     }
     // ========================================================================   
     @Override public String interact(String key) {
-        Player.getInv().contents().add(FACTUM_REF); // Forces itself in.
+        Player.getInv().forceAdd(FACTUM_REF); // Forces itself in.
         Player.printInv();
         Player.getPos().removeFurniture(this);
         Player.getRoomObj(Id.EOW1).unlock();
