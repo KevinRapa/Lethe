@@ -15,5 +15,5 @@ public class Eow1_Basket extends SearchableFurniture implements Openable, Moveab
         
         this.addNameKeys("(?:tall )?(?:wicker )?basket");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

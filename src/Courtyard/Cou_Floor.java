@@ -12,7 +12,7 @@ import A_Super.Item;
  */
 public class Cou_Floor extends Floor implements Gettable {
     private final Item SOIL_REF, GRASS_REF, CLOVER_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cou_Floor (Item soil, Item grass, Item clover, Item... items) {
         super("The ground is a mixture of grass, weeds, and clover.", items);
 
@@ -28,7 +28,7 @@ public class Cou_Floor extends Floor implements Gettable {
         this.addUseKeys(SHOVEL, TROWEL, HOE);
         this.addActKeys(GETPATTERN, "dig", SHOVEL);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {
         if (key.equals("dig") || key.equals(SHOVEL)) {
             if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
@@ -45,7 +45,7 @@ public class Cou_Floor extends Floor implements Gettable {
         else
             return getIt();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String getIt() {
         Inventory i = Player.getInv();
         
@@ -54,7 +54,7 @@ public class Cou_Floor extends Floor implements Gettable {
         else
             return "You have full pockets.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.toString().equals(HOE))
             return "You aren't a gardener!";
@@ -63,7 +63,7 @@ public class Cou_Floor extends Floor implements Gettable {
             return this.actDialog;
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

@@ -11,5 +11,5 @@ public class Par2_Bowl extends BurningBowl {
                          + "by a chain. A draft from the outside causes it to "
                          + "swing gently.";
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

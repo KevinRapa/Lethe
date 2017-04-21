@@ -22,7 +22,7 @@ public class Wow3 extends Room {
         this.LDDRITEM_REF = Ilddr;
         this.FLR_REF = flrInv;
     }
-/*----------------------------------------------------------------------------*/        
+//-----------------------------------------------------------------------------        
     @Override public String getBarrier(Direction dir) {
         switch (dir) {
             case NORTH:
@@ -34,7 +34,7 @@ public class Wow3 extends Room {
                 return bumpIntoWall();
         }
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
     @Override public String triggeredEvent() {
         if (Player.getLastVisited().equals(Id.WOW2)) {
             if (Player.hasVisited(this.ID)) {
@@ -54,5 +54,5 @@ public class Wow3 extends Room {
         
         return STD_RM_OUT;
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

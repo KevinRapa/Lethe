@@ -6,7 +6,7 @@ import A_Super.Staircase;
  * @author Kevin Rapa
  */
 public class My18_Stairs extends Staircase {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public My18_Stairs (Direction direction) {
         super(direction);
         this.description = "The sandstone spiral staircase wraps around the central "
@@ -15,7 +15,7 @@ public class My18_Stairs extends Staircase {
 
         this.addNameKeys("(?:sandstone )?spiral stair(?:s|case)");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

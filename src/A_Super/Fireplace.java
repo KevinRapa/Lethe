@@ -32,7 +32,7 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
         this.addNameKeys("fireplace", "hearth", "fire");
         this.addUseKeys(BUCKET_OF_WATER);
     }    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {  
         if (isLit) {
             AudioPlayer.playEffect(39, 0.3);
@@ -41,20 +41,20 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
         else
             return this.searchDialogUnlit;
     }
-/*----------------------------------------------------------------------------*/     
+//-----------------------------------------------------------------------------     
     @Override public String getDescription() {
         return this.isLit() ? this.descLit : this.descUnlit;
     }   
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public boolean isLit() {
         return this.isLit;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public void extinguish() {
         AudioPlayer.playEffect(39, 0.3);
         this.isLit = false;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {  
         if (key.equals("extinguish") || key.equals("douse")) {
             if (Player.hasItem(BUCKET_OF_WATER)) {
@@ -71,7 +71,7 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
                     "You warm your hands for a second, but you are still cold." :
                     "There's not much you can do to an unlit fireplace."; 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item water) {
         String rep = this.useDialog;
         
@@ -86,5 +86,5 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
         
         return rep;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -17,5 +17,5 @@ public class Foy2_Staircase extends Staircase {
         this.searchDialog = "In searching the stairs, you find it as clean and "
                           + "bare as the rest of this room.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

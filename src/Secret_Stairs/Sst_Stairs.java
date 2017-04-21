@@ -13,18 +13,18 @@ public class Sst_Stairs extends Staircase {
                          + "only partially stable.";
         this.addNameKeys("(?:rickety )?(?:wooden )?(?:stair(?:s|case)|steps)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.DIR == Direction.DOWN) {
             return "The rickety wooden stairs lead back down to the second floor.";
         }
         return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected void playEffect() {
         AudioPlayer.playEffect(14);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 
 

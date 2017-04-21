@@ -29,7 +29,7 @@ public class Cou1_Floor extends Cou_Floor {
             this.useDialog = "You dig about a foot-deep hole in the ground. In the hole, "
                            + "you uncover something.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (Player.getPos().hasFurniture("hole"))
             return "The ground is a mixture of grass, weeds, and clover, interrupted "
@@ -37,7 +37,7 @@ public class Cou1_Floor extends Cou_Floor {
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.toString().equals(HOE))
             return super.useEvent(item);
@@ -49,7 +49,7 @@ public class Cou1_Floor extends Cou_Floor {
             return this.useDialog;
         }
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String interact(String key) {        
         if (key.equals("dig") || key.equals(SHOVEL)) {
             if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
@@ -66,5 +66,5 @@ public class Cou1_Floor extends Cou_Floor {
         else
             return super.getIt();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

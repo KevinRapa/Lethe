@@ -13,7 +13,7 @@ import A_Main.Player;
 abstract public class Candelabra extends SearchableFurniture 
         implements Gettable, Moveable {
     private final Item CANDLE_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Candelabra (Item candle) {
         super();
         
@@ -33,14 +33,14 @@ abstract public class Candelabra extends SearchableFurniture
         for (int i = 1; i <= 5; i++)
             this.inv.add(candle);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         if (this.inv.contains(CANDLE_REF))
             return this.description;
         else
             return "The candelabra holds no more candles.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String useEvent(Item item) {
         if (item.equals(CANDLE_REF)) {
             Player.getInv().remove(item);
@@ -50,14 +50,14 @@ abstract public class Candelabra extends SearchableFurniture
         else
             return this.useDialog;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         if (this.inv.contains(CANDLE_REF))
             return this.searchDialog;
         else
             return "The candelabra holds no more candles.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("touch")) {
             if (this.inv.contains(CANDLE_REF)) {
@@ -73,7 +73,7 @@ abstract public class Candelabra extends SearchableFurniture
         else
             return getIt();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String getIt() {
         if (this.inv.contains(CANDLE_REF))
             if (this.inv.give(CANDLE_REF, Player.getInv()))
@@ -83,14 +83,14 @@ abstract public class Candelabra extends SearchableFurniture
         else
             return "The candelabra holds no more candles.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     // ************************************************************************
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     private class Candelabra_Inventory extends Inventory {
         public Candelabra_Inventory() {
             super();
         }
-        // ====================================================================
+        //---------------------------------------------------------------------
         @Override public boolean add(Item item) {
             if (item.equals(CANDLE_REF)) {
                 this.CONTENTS.add(item);
@@ -102,9 +102,9 @@ abstract public class Candelabra extends SearchableFurniture
             }
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     // ************************************************************************
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

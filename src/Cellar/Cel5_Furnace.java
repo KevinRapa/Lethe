@@ -15,7 +15,7 @@ public class Cel5_Furnace extends SearchableFurniture
         implements Unmoveable, Gettable, Openable 
 {
     private boolean lit;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel5_Furnace () {
         super();
         
@@ -30,18 +30,18 @@ public class Cel5_Furnace extends SearchableFurniture
         this.addUseKeys(HAND_TORCH, COAL, METAL_BUCKET, BUCKET_OF_WATER);
         this.addActKeys("light", GETPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return lit ? this.description.replaceFirst("un", "") : this.description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         this.searchable = ! this.lit;
         
         return searchable ? this.searchDialog : 
                 "Best not do that while the furnace is lit.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("light")) {
             if (Player.hasItem(HAND_TORCH)) {
@@ -54,7 +54,7 @@ public class Cel5_Furnace extends SearchableFurniture
         else
             return getIt();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         String name = item.toString();
         
@@ -86,7 +86,7 @@ public class Cel5_Furnace extends SearchableFurniture
                     + "realizes at this moment that the bucket was empty this "
                     + "whole time.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

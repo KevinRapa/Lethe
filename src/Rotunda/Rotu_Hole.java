@@ -24,5 +24,5 @@ public class Rotu_Hole extends Furniture {
         this.addActKeys(CLIMBPATTERN, "jump");
         this.addNameKeys("hole(?: ceiling)?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

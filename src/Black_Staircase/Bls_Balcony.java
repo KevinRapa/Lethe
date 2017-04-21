@@ -5,7 +5,7 @@ import A_Super.Balcony;
  * @author Kevin Rapa
  */
 public class Bls_Balcony extends Balcony {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Bls_Balcony () {
         super();
 
@@ -14,7 +14,7 @@ public class Bls_Balcony extends Balcony {
         
         this.addNameKeys("(?:iron )?(?:balcony|railing)");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

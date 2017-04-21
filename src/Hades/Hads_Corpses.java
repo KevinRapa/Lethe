@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Hads_Corpses extends SearchableFurniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Hads_Corpses (Item... items) {
         super(items);
         
@@ -18,7 +18,7 @@ public class Hads_Corpses extends SearchableFurniture {
         
         this.addNameKeys("(?:pile of )?(?:mangled )?(?:corpses?|bodies)");
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (SEARCH_P.matcher(key).matches()) {
             Player.trySearch(this);
@@ -27,7 +27,7 @@ public class Hads_Corpses extends SearchableFurniture {
         else
             return this.actDialog;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

@@ -10,6 +10,6 @@ public class Gal3_Mask3 extends WallArt {
                          + "but it bears two horns as well. Below, there is a "
                          + "small label: \"Mossi\".";
         this.addNameKeys("burkinabe mask");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

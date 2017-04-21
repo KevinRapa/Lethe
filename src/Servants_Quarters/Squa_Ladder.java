@@ -12,5 +12,5 @@ public class Squa_Ladder extends Item {
         this.description = "A fifteen foot folding ladder. Two of its rungs "
                          + "are missing.";
     }    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

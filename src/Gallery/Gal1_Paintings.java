@@ -18,6 +18,6 @@ public class Gal1_Paintings extends Furniture {
         this.addActKeys(GETPATTERN);
         this.addActKeys("move", "lift", "slide");
         this.addNameKeys("painting", "paintings");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

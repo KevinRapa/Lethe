@@ -15,7 +15,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
     private final Labo_Condenser CONDENSER_REF;
     private final Item TUBE_REF, VIAL_REF;
     private final Labo_Flask FLORENCE_FLASK_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Distiller (Furniture pipe, Furniture condenser, Item tstTube, Item vial) {
         super();
 
@@ -39,13 +39,13 @@ public class Labo_Distiller extends Furniture implements Moveable {
         this.addUseKeys(RUBBER_HOSE, FLORENCE_FLASK, STRIKER, HAND_TORCH, 
                         BEAKER, TEST_TUBE, EMPTY_VIAL, COPPER_POT, COPPER_PAN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return Player.getPos().hasFurniture(FLORENCE_FLASK) ?
                 "The flask now rests nicely on the rack in between the burner and the distillation tube." :
                 this.description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {
         if (key.equals("strike") || key.equals("light")) {
             if (Player.hasItem(STRIKER))
@@ -56,7 +56,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
         else
             return this.actDialog;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String useEvent(Item item) {
         String name = item.toString();
 
@@ -99,11 +99,11 @@ public class Labo_Distiller extends Furniture implements Moveable {
                 return "You strike the burner with no effect.";
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String moveIt() {
         return "The contraption looks pretty fragile. You think it best to leave it where it is.";
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

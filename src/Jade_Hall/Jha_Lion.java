@@ -14,7 +14,7 @@ import A_Super.Moveable;
 public class Jha_Lion extends Furniture implements Moveable {
     private boolean hasRuby;
     private final String DESC2;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Jha_Lion () {
         super();
 
@@ -39,16 +39,16 @@ public class Jha_Lion extends Furniture implements Moveable {
         this.addNameKeys("(?:jade )?(?:lion )?statue", "(?:jade )?lion", "(?:lion'?s? )?eye");
         this.addUseKeys(RUBY, AQUAMARINE);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return hasRuby ? this.DESC2 : this.description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return hasRuby ? "There doesn't seem to be any secret compartments "
                        + "on this statue." : this.searchDialog;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String useEvent(Item item) {
         if (! hasRuby) {
             if (item.toString().equals(AQUAMARINE))
@@ -64,11 +64,11 @@ public class Jha_Lion extends Furniture implements Moveable {
         else
             return "There's no place to fit the " + item + ".";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     public boolean hasRuby() {
         return this.hasRuby;
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

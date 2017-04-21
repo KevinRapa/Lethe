@@ -14,5 +14,5 @@ public class Lib_BookShelf extends Furniture {
         this.addNameKeys("(?:book)?shel(?:f|ves)");
         this.addActKeys(MOVEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

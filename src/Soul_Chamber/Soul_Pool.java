@@ -16,7 +16,7 @@ public class Soul_Pool extends Furniture {
     private final Room[] LICH_RMS;
     private final Furniture SPHERE;
     private int numPhylacteries;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Soul_Pool (Furniture sphere, Room ... lichRms) {
         super();
         
@@ -34,7 +34,7 @@ public class Soul_Pool extends Furniture {
         this.addUseKeys(ANYTHING);
         this.addActKeys("swim");
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         Player.getInv().remove(item);
         
@@ -50,7 +50,7 @@ public class Soul_Pool extends Furniture {
         return "You toss the " + item + " into the glowing pool. The water bubbles "
              + "and a luminenscent gas escapes from the pool's surface.";
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     private void killLich() {    
         GUI.menOut(Menus.ENTER);
         GUI.out("You stand before a pool of glowing aether, the very substance "
@@ -78,7 +78,7 @@ public class Soul_Pool extends Furniture {
         Player.getRoomObj(Id.IHA2).removeAdjacent(Id.WOW2);
         Player.getRoomObj(Id.FOY1).removeAdjacent(Id.VEST);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

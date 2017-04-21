@@ -15,5 +15,5 @@ public class Cou4_Trail extends Furniture {
         this.addActKeys("walk", "travel", "run", "use");
         this.addNameKeys("(?:long )?(?:dark )?(?:winding )?trail");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

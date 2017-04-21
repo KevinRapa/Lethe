@@ -17,6 +17,6 @@ public class Cou_Castle extends Furniture implements Unmoveable {
         this.searchDialog = "Maybe you should go inside to do that.";
         this.addNameKeys("(?:monstrous )?castle", "portico");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

@@ -53,6 +53,6 @@ public class Labo_GlasswareBook extends Book {
                         "titrate, or else you will have no idea how much liquid you dispensed from " +
                         "buret! The device to toggle liquid flow is called as stopcock.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }
 

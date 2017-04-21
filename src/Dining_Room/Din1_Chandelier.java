@@ -16,5 +16,5 @@ public class Din1_Chandelier extends Furniture {
         this.addActKeys("hang", "swing");
         this.addNameKeys("chandelier|light");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

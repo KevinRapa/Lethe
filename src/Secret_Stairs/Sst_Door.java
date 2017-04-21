@@ -10,5 +10,5 @@ public class Sst_Door extends Door {
         this.description = "This door is weathered and merely just vertical wood "
                          + "slats accompanied by a plain black iron doorknob.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -38,7 +38,7 @@ public class Cel_Valve extends Furniture implements Unmoveable {
         this.addUseKeys(HAMMER, MONKEY_WRENCH);
         this.addActKeys(VALVEPATTERN);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String interact(String key) {
         open = ! open; 
         
@@ -48,7 +48,7 @@ public class Cel_Valve extends Furniture implements Unmoveable {
                 "You loosen the valve. " + FNTN_REF.loosen(1) :
                 actDialog + FNTN_REF.loosen(-1); 
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
         @Override public String useEvent(Item item) {
         if (item.toString().equals(MONKEY_WRENCH)) {
             AudioPlayer.playEffect(17);
@@ -59,5 +59,5 @@ public class Cel_Valve extends Furniture implements Unmoveable {
         else
             return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

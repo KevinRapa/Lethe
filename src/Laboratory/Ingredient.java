@@ -11,10 +11,10 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Ingredient extends Item {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Ingredient(String name, String desc, int score) {
         super(name, desc, score);
         this.type = Names.INGREDIENT;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }

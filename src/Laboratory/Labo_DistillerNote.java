@@ -10,5 +10,5 @@ public class Labo_DistillerNote extends Note {
                          + "I'm finding it too difficult to open up the distillation "
                          + "tube. Also, where did the flask for that distiller go?";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

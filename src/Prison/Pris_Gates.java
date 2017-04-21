@@ -6,7 +6,7 @@ import A_Super.Openable;
  * @author Kevin Rapa
  */
 public class Pris_Gates extends Furniture implements Openable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Pris_Gates () {
         super();
 
@@ -15,7 +15,7 @@ public class Pris_Gates extends Furniture implements Openable {
 
         this.addNameKeys("(?:iron )?gates?");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

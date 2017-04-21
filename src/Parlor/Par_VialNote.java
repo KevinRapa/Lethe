@@ -11,6 +11,6 @@ public class Par_VialNote extends Note {
                 "To all staff, please keep all utility chemicals in designated "
                 + "containers. DO NOT keep resupplying any needed glass vials "
                 + "from here! Let Daedalus create more for you if needed.";
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

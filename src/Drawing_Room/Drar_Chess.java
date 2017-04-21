@@ -20,7 +20,7 @@ public class Drar_Chess extends SearchableFurniture implements Moveable {
         this.addActKeys("play");
         this.addNameKeys("(?:fancy )?chess table", "chess");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         if (GHOST_REF.firstTime())
             return "Ignoring the ghost completely, you search the chess "
@@ -28,12 +28,12 @@ public class Drar_Chess extends SearchableFurniture implements Moveable {
         else 
             return this.searchDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (GHOST_REF.firstTime())
             return "Now is not the time for that. There's a ghost in here!";
         else 
             return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -15,7 +15,7 @@ public class Dst1_Stairs extends Staircase {
         this.actDialog = "The sense of dread is overwhelming. "
                     + "You can't bring yourself to climb down them.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {  
         if (Player.hasVisited(Id.SEW0)) {
             // Sets the room that the player is in.
@@ -29,5 +29,5 @@ public class Dst1_Stairs extends Staircase {
         else
             return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

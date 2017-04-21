@@ -17,7 +17,7 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
     private boolean hasPipe;
     private final Furniture SEW1_RVR;
     private final Item PIPE_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sew4_Pipe (Furniture sew1Rvr, Item pipe) {
         super();
         
@@ -34,18 +34,18 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
         this.addNameKeys("(?:large )?(?:rusty )?(?:metal )?pip(?:e|ing)", "gap");
         this.addUseKeys(Names.PIECE_OF_PIPE);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.hasPipe ? 
                 this.description.concat("This section of piping has a short 2-foot section missing.") : 
                 this.description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return this.hasPipe ? "The pipe isn't hiding anything unusual." :
                 this.searchDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (Player.getPos().hasFurniture(Names.METAL_LADDER)) {
             Player.getInv().remove(item);
@@ -57,11 +57,11 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
             
         return this.useDialog;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public boolean isMissingPipe() {
         return (! this.hasPipe);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Puts pipe back in Sew1 river and sets hasPipe to false.
      */
@@ -71,7 +71,7 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
             this.SEW1_RVR.getInv().forceAdd(PIPE_REF); // Prevents dialog.
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

@@ -20,6 +20,6 @@ public class Kitc_Hearth extends SearchableFurniture implements Unmoveable {
         this.addActKeys("cook");
         this.addUseKeys(HAND_TORCH);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

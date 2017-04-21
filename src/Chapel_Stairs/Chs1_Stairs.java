@@ -15,7 +15,7 @@ public class Chs1_Stairs extends Staircase {
                          + "tower's wall. A dark red carpet follows them up.";
         this.addNameKeys("(?:circular |spiral )?stair(?:s|case)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.DIR == Direction.DOWN) {
             return "The spiral stairs run a few stories downward to the first "
@@ -23,7 +23,7 @@ public class Chs1_Stairs extends Staircase {
         }
         return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
         playEffect();
         
@@ -34,6 +34,6 @@ public class Chs1_Stairs extends Staircase {
         
         return "You climb " + DIR + " the stairs.";
     }
-/*----------------------------------------------------------------------------*/
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 }

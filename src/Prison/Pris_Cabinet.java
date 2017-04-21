@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Pris_Cabinet extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Pris_Cabinet (Item... items) {
         super(items);
 
@@ -18,7 +18,7 @@ public class Pris_Cabinet extends SearchableFurniture implements Openable, Movea
 
         this.addNameKeys("(?:old )?(?:wooden )?cabinet");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

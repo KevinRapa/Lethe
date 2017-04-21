@@ -12,6 +12,6 @@ public class Gal3_Artifact3 extends Statue {
                          + "hair. Next to it, a small label reads: \"Nok\".";
         
         this.addNameKeys("trinket", "nigerian trinket");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

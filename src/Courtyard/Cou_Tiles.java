@@ -9,7 +9,7 @@ import A_Super.Gettable;
  * @author Kevin Rapa
  */
 public class Cou_Tiles extends Furniture implements Gettable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cou_Tiles () {
         super();
 
@@ -26,14 +26,14 @@ public class Cou_Tiles extends Furniture implements Gettable {
         this.addUseKeys(SHOVEL, CROWBAR, HOE);
         this.addActKeys("lift", MOVEPATTERN, GETPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.matches(GETPATTERN))
             return getIt();
         else
             return this.actDialog;
     }
-    // ========================================================================        
+    //-------------------------------------------------------------------------        
 }
 
 

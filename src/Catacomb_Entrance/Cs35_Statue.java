@@ -5,7 +5,7 @@ import A_Super.Statue;
  * @author Kevin Rapa
  */
 public class Cs35_Statue extends Statue {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cs35_Statue () {
         super();
         this.description = "The three robed males tower over you. Each bears in " +
@@ -19,7 +19,7 @@ public class Cs35_Statue extends Statue {
 
         this.addNameKeys("males?", "male statues?");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

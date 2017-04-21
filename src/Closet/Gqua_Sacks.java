@@ -28,12 +28,12 @@ public class Gqua_Sacks extends SearchableFurniture implements Openable, Moveabl
         this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:large )?(?:white )?(?:cloth )?sacks?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON) || item.toString().equals(HAND_DRILL))
             return "Don't be so reckless!";
         else
             return DEFAULT_USE;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

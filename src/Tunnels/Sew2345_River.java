@@ -11,7 +11,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Sew2345_River extends Sewer_River {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sew2345_River (Inventory sew1RvrInv, Item wtr) {
         super(wtr);
         
@@ -25,7 +25,7 @@ public class Sew2345_River extends Sewer_River {
                            "around. The river flows down the tunnel " +
                            "eastwards with quite a strong current. ";
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private class River_Inventory extends Inventory {
         private final Inventory SEW1_RIVER_INV;
         // --------------------------------------------------------------------

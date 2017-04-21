@@ -16,5 +16,5 @@ public class Lib_Couch extends SearchableFurniture implements Moveable {
         this.addNameKeys("(?:red )?(?:gothic-era )?(?:couch|sofa)");
         this.addActKeys(SITPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -7,7 +7,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Lqu2_Bed extends SearchableFurniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Lqu2_Bed (Item ... items) {
         super(items);
 
@@ -20,7 +20,7 @@ public class Lqu2_Bed extends SearchableFurniture implements Moveable {
 
         this.addNameKeys("(?:lifeless )?(?:innocent )?(?:body|lich)", "bed");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

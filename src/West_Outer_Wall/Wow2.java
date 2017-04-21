@@ -15,7 +15,7 @@ public class Wow2 extends Room{
     public Wow2(String name, String ID) {
         super(name, ID);
     }  
-/*----------------------------------------------------------------------------*/        
+//-----------------------------------------------------------------------------        
     @Override public String getBarrier(Direction dir) { 
         AudioPlayer.playEffect(6);
         
@@ -24,7 +24,7 @@ public class Wow2 extends Room{
         else 
             return WALL_BARRIER;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.hasFurniture("ladder"))
             return this.description.replaceFirst("you\\. There's", 
@@ -33,7 +33,7 @@ public class Wow2 extends Room{
         
         return this.description;
     }
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("A comfortable ambient-warmth swarms around you as "

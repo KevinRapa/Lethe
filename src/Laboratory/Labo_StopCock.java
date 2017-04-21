@@ -8,7 +8,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Labo_StopCock extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_StopCock () {
         super();
 
@@ -23,7 +23,7 @@ public class Labo_StopCock extends Furniture {
         this.addNameKeys("stopcocks?");
         this.addActKeys("use", VALVEPATTERN, "dispense", "drain");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

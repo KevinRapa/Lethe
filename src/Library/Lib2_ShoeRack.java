@@ -13,7 +13,7 @@ public class Lib2_ShoeRack extends SearchableFurniture implements Moveable {
         this.searchDialog = "You browse the shoe collection.";
         this.addNameKeys("shoe rack", "rack", "rack of shoes");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         String rep = this.description;
         
@@ -26,5 +26,5 @@ public class Lib2_ShoeRack extends SearchableFurniture implements Moveable {
         }       
         return rep;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -8,7 +8,7 @@ import Foyer.Foy2_Button;
  */
 public class Want_Button extends Button {
     private final Foy2_Button FOY2_LEVER_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Want_Button (Furniture foy2Lever) {
         super();
         
@@ -18,11 +18,11 @@ public class Want_Button extends Button {
                          + "the gate.";
         this.addNameKeys("(?:small )?(?:black )?button");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override protected String event(String key) {
         return this.FOY2_LEVER_REF.event(null);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

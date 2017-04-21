@@ -8,13 +8,13 @@ import A_Super.Direction;
  * @author Kevin Rapa
  */
 public class Cou3_Steps extends Staircase {
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     public Cou3_Steps(Direction direction) {
         super(direction);
         this.description = "The long set of crumbling steps climb to a front "
                          + "balcony before the castle's great front doors.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         // Moves the player diagonally and up.
         switch(this.DIR) {
@@ -28,5 +28,5 @@ public class Cou3_Steps extends Staircase {
         
         return "You climb " + DIR + " the crumbling steps.";  
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

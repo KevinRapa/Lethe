@@ -9,5 +9,5 @@ public class Lib2_Statue extends Statue {
         this.description = "It's a Greek statue depicting a diplomatic male. "
                          + "Below, a small engraving reads \"Odysseus\".";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

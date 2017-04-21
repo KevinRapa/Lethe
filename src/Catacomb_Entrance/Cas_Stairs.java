@@ -6,7 +6,7 @@ import A_Super.Staircase;
  * @author Kevin Rapa
  */
 public class Cas_Stairs extends Staircase {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cas_Stairs (Direction dir) {
         super(dir);
         
@@ -14,7 +14,7 @@ public class Cas_Stairs extends Staircase {
 
         this.addNameKeys("curved (?:staircases?|stairs|steps)");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

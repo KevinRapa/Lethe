@@ -29,7 +29,7 @@ public class Sha1_Door extends Door {
                        + "rope you're holding the ram with snaps in half. Good "
                        + "thing that worked on the first try.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.equals(RAM_REF)) {
             AudioPlayer.playEffect(40);
@@ -56,7 +56,7 @@ public class Sha1_Door extends Door {
         else
             return DEFAULT_USE;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.matches("open|use|walk|go|close"))
             return this.actDialog;
@@ -64,6 +64,6 @@ public class Sha1_Door extends Door {
             return super.interact(key);
         }
     } 
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

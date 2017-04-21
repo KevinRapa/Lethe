@@ -6,7 +6,7 @@ import A_Super.Direction;
  * @author Kevin Rapa
  */
 public class OminousDoor extends Door {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public OminousDoor (Direction direction) {
         super(direction);
         
@@ -14,7 +14,7 @@ public class OminousDoor extends Door {
                          + "heavily dilapidated. Much of the rock has crumbled "
                          + "off.";
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

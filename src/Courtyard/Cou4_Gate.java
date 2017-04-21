@@ -16,12 +16,12 @@ public class Cou4_Gate extends Furniture implements Unmoveable {
         this.addActKeys("open", "use", "knock", "close", "shut");
         this.addNameKeys("(?:monstrous )?(?:two-story )?(?:solid )?(?:oak )?(?:main |front )?gate");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {              
         if (key.matches("close|shut"))
             return "It's way too big to close by hand!";
         else
             return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

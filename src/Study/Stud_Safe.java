@@ -15,5 +15,5 @@ public class Stud_Safe extends Safe {
         super(combo, items);
         this.description = "It's a black metal safe hidden in the wall!";
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

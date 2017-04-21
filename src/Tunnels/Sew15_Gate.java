@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Sew15_Gate extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sew15_Gate () {
         super();
 
@@ -20,14 +20,14 @@ public class Sew15_Gate extends Furniture {
         this.addNameKeys("(?:iron )?(?:barred )?(?:gate|grate)");
         this.addActKeys("open", "close");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("open"))
             return this.actDialog;
         else
             return "The gate is already closed...";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

@@ -6,7 +6,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Sew235_Pipe extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sew235_Pipe (int room) {
         super();
 
@@ -34,7 +34,7 @@ public class Sew235_Pipe extends Furniture {
         this.addNameKeys("(?:large )?(?:rusty )?(?:metal )?pip(?:e|ing)");
         this.addUseKeys(PIECE_OF_PIPE);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

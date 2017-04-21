@@ -17,5 +17,5 @@ public class Bba_Note extends Note {
                            "that small room. Look in the ceramic case on the end " +
                            "table. I have no idea what it opens.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

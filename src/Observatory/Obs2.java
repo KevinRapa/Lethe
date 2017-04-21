@@ -13,12 +13,12 @@ public class Obs2 extends Room {
     public Obs2(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.WEST)
             return "The balcony railing is that way.";
         else
             return bumpIntoWall();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

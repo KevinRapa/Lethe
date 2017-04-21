@@ -13,7 +13,7 @@ import A_Super.Statue;
 public class Cry1_Statue extends Statue implements Resetable {
     private boolean hasScythe, eyesGlowing;
     private final Furniture SCYTHE_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cry1_Statue (Furniture scythe) {
         super();
         
@@ -33,7 +33,7 @@ public class Cry1_Statue extends Statue implements Resetable {
         this.addActKeys("shake", "embrace", "greet", "hold", "grasp", 
                         "push", "pull", "move", "turn", "twist");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         String result;
         
@@ -49,11 +49,11 @@ public class Cry1_Statue extends Statue implements Resetable {
         else
             return result;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return this.getDescription();
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) { 
         if (key.matches(MOVEPATTERN) || key.matches("touch|feel"))
             return super.interact(key);
@@ -68,13 +68,13 @@ public class Cry1_Statue extends Statue implements Resetable {
             }
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         Player.getInv().remove(item);
         this.hasScythe = true;
         return this.useDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public void reset() {
         if (this.hasScythe) {
             Player.getRoomObj(Id.TORC).addFurniture(SCYTHE_REF);
@@ -82,11 +82,11 @@ public class Cry1_Statue extends Statue implements Resetable {
         }
         this.eyesGlowing = false;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     public boolean isSolved() {
         return this.eyesGlowing; 
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

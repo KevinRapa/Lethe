@@ -16,7 +16,9 @@ public class Small_Leaflet extends Note {
               + "exist, this one was a big source of inspiration. Credits "
               + "to all sources of the ambient tracks and sound " +
                 "effects can be accessed by entering \"credits\" at the " +
-                "main prompt. Enter \"version\" for other information.";
+                "main prompt. Enter \"version\" for other information. Lastly, "
+              + "it wouldn't hurt to glance at \"Controls -> The prompt\" section "
+              + "of \"Get help\" for some useful information on input types and hotkeys.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

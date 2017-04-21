@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Cry1_Carving extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cry1_Carving () {
         super();
         
@@ -21,7 +21,7 @@ public class Cry1_Carving extends Furniture {
         this.addActKeys("admire");
         this.addNameKeys("(?:wall )?(?:carving|engraving)", "(?:death )?depiction", "art", "mural(?: of sorts)?");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

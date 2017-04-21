@@ -11,6 +11,6 @@ public class Gal3_Artifact1 extends Statue {
                          + "center. It resembles a ravenous humanoid with lifeless "
                          + "eyes. Next to it, a small label reads: \"Yombe\".";
         this.addNameKeys("statuette", "zambian statuette");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

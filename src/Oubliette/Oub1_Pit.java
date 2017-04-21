@@ -11,7 +11,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Oub1_Pit extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Oub1_Pit () {
         super();
 
@@ -26,7 +26,7 @@ public class Oub1_Pit extends Furniture {
         this.addActKeys("jump", CLIMBPATTERN);
         this.addUseKeys(METAL_LADDER, FIXED_LADDER);
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
 }
 
 

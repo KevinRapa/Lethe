@@ -9,7 +9,7 @@ public class Iha1 extends Room {
     public Iha1(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.NORTH) {
             AudioPlayer.playEffect(6);
@@ -18,5 +18,5 @@ public class Iha1 extends Room {
         else
             return bumpIntoWall(); 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

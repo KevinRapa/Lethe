@@ -22,7 +22,7 @@ public class Par1_Harp extends Furniture implements Moveable {
             this.REF = (Par1_Orb)orb;
             this.addActKeys("play", "strum");
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String interact(String key) {              
         if (! REF.woken()) {
             AudioPlayer.playEffect(54);
@@ -38,5 +38,5 @@ public class Par1_Harp extends Furniture implements Moveable {
                  + "experienced musician in this castle!\"";
         }
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

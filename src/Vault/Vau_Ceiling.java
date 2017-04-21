@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Vau_Ceiling extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Vau_Ceiling () {
         super();
 
@@ -15,7 +15,7 @@ public class Vau_Ceiling extends Furniture {
 
         this.addNameKeys("(?:low )?(?:arched )?ceiling");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

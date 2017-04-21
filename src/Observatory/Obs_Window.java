@@ -3,7 +3,7 @@ package Observatory;
 import A_Super.StaticWndw;
 
 public class Obs_Window extends StaticWndw {
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public Obs_Window() {
         super();
         this.escapeDialog = "You could probably use your weight to break through... but aren't too keen on the idea.";
@@ -12,6 +12,6 @@ public class Obs_Window extends StaticWndw {
                          + "see a lighthouse at the cliff's edge overlooking the sea.";
         this.addNameKeys("(?:three story )?(?:paned )?window");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

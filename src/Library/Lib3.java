@@ -11,7 +11,7 @@ public class Lib3 extends Room{
     public Lib3(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.SOUTH) {
             AudioPlayer.playEffect(6);
@@ -20,7 +20,7 @@ public class Lib3 extends Room{
         else
             return bumpIntoWall();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("As you step foot into this room, you feel your IQ rise a few points.");

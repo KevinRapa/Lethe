@@ -12,7 +12,7 @@ import static A_Main.Names.WEAPON;
  * @author Kevin Rapa
  */
 public class GenDoor extends Furniture {
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public GenDoor () {
         super();
         
@@ -27,7 +27,7 @@ public class GenDoor extends Furniture {
         this.addNameKeys("door");
         this.addActKeys(ANYTHING);
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON)) 
             return "The door is build too solidly and breaking it down is futile.";
@@ -35,7 +35,7 @@ public class GenDoor extends Furniture {
             return this.useDialog;
         
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
 }
 
 

@@ -10,7 +10,7 @@ public class Shoes extends Clothing {
         super(name, desc, use, score);
         this.type = Names.SHOES;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent() {
         if (! Player.getShoes().equals(NAME)) {
             Player.setShoes(NAME);
@@ -21,5 +21,5 @@ public class Shoes extends Clothing {
         }
         return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

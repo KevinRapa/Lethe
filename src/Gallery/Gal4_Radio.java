@@ -17,7 +17,7 @@ public class Gal4_Radio extends Furniture implements Gettable, Moveable {
     private final String DESC_2;
     private final Item SCREW_REF;
     private int screwsLeft;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gal4_Radio (Item screw) {
         super();
         
@@ -53,11 +53,11 @@ public class Gal4_Radio extends Furniture implements Gettable, Moveable {
         this.addUseKeys(ANYTHING);
         this.addActKeys(GETPATTERN, "break", "unscrew", "listen");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return (screwsLeft > 0) ? this.description : this.DESC_2;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("break"))
             return this.actDialog;
@@ -67,7 +67,7 @@ public class Gal4_Radio extends Furniture implements Gettable, Moveable {
             return "The only obtainable thing on this box seems to be the front "
                  + "screws, but digging them out by hand seems infeasible.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON))
             return actDialog;
@@ -86,7 +86,7 @@ public class Gal4_Radio extends Furniture implements Gettable, Moveable {
         else
             return "You can't imagine what useful thing you could get done with that.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

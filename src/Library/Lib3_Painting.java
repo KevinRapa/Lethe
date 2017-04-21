@@ -5,7 +5,7 @@ import A_Super.WallArt;
  * @author Kevin Rapa
  */
 public class Lib3_Painting extends WallArt {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Lib3_Painting () {
         super();
 
@@ -19,7 +19,7 @@ public class Lib3_Painting extends WallArt {
 
         this.addNameKeys("(?:huge |large )?(?:painting|portrait)");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

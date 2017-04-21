@@ -34,11 +34,11 @@ import A_Super.Room;
  * @author Kevin Rapa
  */
 public class Labo extends Room {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Labo(String name, String ID) {
         super(name, ID);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("As you enter this room, you feel overwhelmed at the sight "

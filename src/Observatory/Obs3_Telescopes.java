@@ -6,7 +6,7 @@ import A_Super.Moveable;
  * @author Kevin Rapa
  */
 public class Obs3_Telescopes extends Furniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Obs3_Telescopes () {
         super();
 
@@ -21,7 +21,7 @@ public class Obs3_Telescopes extends Furniture implements Moveable {
         this.addNameKeys("telescopes?");
         this.addActKeys("use", "look", "gaze", "view");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

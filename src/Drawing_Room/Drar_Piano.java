@@ -9,7 +9,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Drar_Piano extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Drar_Piano () {
         super();
         
@@ -23,19 +23,19 @@ public class Drar_Piano extends Furniture implements Unmoveable {
         this.addUseKeys(ANYTHING);
         this.addActKeys("play", "press", SITPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         AudioPlayer.playEffect(53);
         return this.actDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON))
             return "Now why would you want to destroy such a beautiful instrument?";
         else
             return this.useDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

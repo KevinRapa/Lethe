@@ -10,7 +10,7 @@ import A_Super.Gettable;
  * @author Kevin Rapa
  */
 public class Sewp_Grate extends Furniture implements Gettable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sewp_Grate () {
         super();
 
@@ -24,14 +24,14 @@ public class Sewp_Grate extends Furniture implements Gettable {
         this.addActKeys(GETPATTERN);
         this.addActKeys(CLIMBPATTERN, GETPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String interact(String key) {
         if (key.matches(CLIMBPATTERN))
             return this.actDialog;
         else
             return getIt();
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

@@ -6,7 +6,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Cel2_Shaft extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel2_Shaft () {
         super();
         
@@ -17,7 +17,7 @@ public class Cel2_Shaft extends Furniture implements Unmoveable {
         
         this.addNameKeys("(?:smooth )?(?:wide )?(?:wooden )?shaft");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

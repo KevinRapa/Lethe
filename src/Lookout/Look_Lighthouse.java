@@ -18,5 +18,5 @@ public class Look_Lighthouse extends Furniture implements Unmoveable {
         this.addActKeys("walk", "swim", "go");
         this.addNameKeys("(?:classic )?(?:red and white )?(?:striped )?lighthouse");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -11,5 +11,5 @@ public class Gal4_Door extends Door {
                          + "lead somewhere important! They appear composed of "
                          + "many mechanical parts.";
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
 }

@@ -23,7 +23,7 @@ public class Cry_Drawers extends Furniture implements Openable {
             BRAIN_REF = new Liquid(BRAIN, "The preserved brain in the glass jar "
                                 + "is not something you're used to holding.", 10);
     public final int DRAWER_NUM;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cry_Drawers () {
         super();
         this.searchable = false;
@@ -45,11 +45,11 @@ public class Cry_Drawers extends Furniture implements Openable {
         this.addActKeys("slide", "pull", "remove");
         this.addNameKeys("drawers?", "knobs?", "numerous drawers");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String interact(String key) {
         return this.getSearchDialog();
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         GUI.out("The drawers are labeled from 1 to 100. Search which drawer?");
         String ans = GUI.askChoice(Menus.CRY_DRWRS, ONE_TO_HUNDRED_P);
@@ -61,18 +61,18 @@ public class Cry_Drawers extends Furniture implements Openable {
         
         return NOTHING;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     // ************************************************************************
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     private class Drwr extends SearchableFurniture {
         public Drwr() {
             super();
             this.searchDialog = NOTHING;
         }
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     // ************************************************************************
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

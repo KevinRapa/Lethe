@@ -16,7 +16,7 @@ import A_Super.Resetable;
 public class Esc6_Grate extends Furniture implements Resetable, Gettable {
     private final String MOVED_GRATE = "You've already moved the grate!";
     private boolean opened;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Esc6_Grate () {
         super();
 
@@ -31,15 +31,15 @@ public class Esc6_Grate extends Furniture implements Resetable, Gettable {
         this.addActKeys("lift", "move", "pry");
         this.addActKeys(GETPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return opened ? "The grate has been moved." : description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return opened ? "The ladder goes up about 30 feet." : searchDialog;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {  
         if (key.equals("lift") || key.equals("move")) 
             return opened ? MOVED_GRATE : this.actDialog;
@@ -50,7 +50,7 @@ public class Esc6_Grate extends Furniture implements Resetable, Gettable {
         else
             return getIt();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (! opened) {
             AudioPlayer.playEffect(48);
@@ -60,15 +60,15 @@ public class Esc6_Grate extends Furniture implements Resetable, Gettable {
         else
             return MOVED_GRATE;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public void reset() {
         this.opened = false;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     public boolean isMoved() {
         return this.opened;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

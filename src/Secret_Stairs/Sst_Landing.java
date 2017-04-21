@@ -5,7 +5,7 @@ import A_Super.Balcony;
  * @author Kevin Rapa
  */
 public class Sst_Landing extends Balcony {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sst_Landing () {
         super();
 
@@ -15,7 +15,7 @@ public class Sst_Landing extends Balcony {
 
         this.addNameKeys("(?:small )?(?:landing|balcony)");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

@@ -11,5 +11,5 @@ public class Lib1_Mirror extends Furniture {
                          + "the light reflects onto the desk. Ingenuous.";
         this.addNameKeys("mirror", "ceiling mirror");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

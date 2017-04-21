@@ -16,5 +16,5 @@ public class Stud_Couch extends SearchableFurniture implements Moveable {
         this.addActKeys(SITPATTERN);
         this.addNameKeys("couch", "sofa");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

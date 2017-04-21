@@ -5,7 +5,7 @@ import A_Super.Balcony;
  * @author Kevin Rapa
  */
 public class Tow_Balcony extends Balcony {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tow_Balcony () {
         super();
         
@@ -15,7 +15,7 @@ public class Tow_Balcony extends Balcony {
 
         this.addNameKeys("(?:long )?(?:circular )?balcony", "(?:black )?(?:metal )?railing");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

@@ -7,7 +7,7 @@ import static A_Main.Names.WEAPON;
  * @author Kevin Rapa
  */
 public class BurningBowl extends Furniture implements Gettable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public BurningBowl () {
         super();
 
@@ -21,7 +21,7 @@ public class BurningBowl extends Furniture implements Gettable {
         this.addUseKeys(ANYTHING);
         this.addActKeys(GETPATTERN, JOSTLEPATTERN, "jab", "poke");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON))
             return this.useDialog;
@@ -30,14 +30,14 @@ public class BurningBowl extends Furniture implements Gettable {
         else
             return "What good would that serve?";
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     @Override public String interact(String key) {
         if (key.equals("jab") || key.equals("poke") || key.matches(JOSTLEPATTERN))
             return this.actDialog;
         else 
             return getIt();
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

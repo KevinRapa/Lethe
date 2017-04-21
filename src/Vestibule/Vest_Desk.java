@@ -20,5 +20,5 @@ public class Vest_Desk extends SearchableFurniture implements Openable, Moveable
         this.addNameKeys("(?:tenuous |dusty )?(?:wooden )?desk");
         this.addActKeys(JOSTLEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -17,12 +17,12 @@ public class Bba_Cliff extends Furniture{
         this.addActKeys("jump", "climb", "vault");
         this.addNameKeys("cliff", "drop");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("jump"))
             return this.actDialog;
         else
             return "You're too heavy for that, and the cliff is too vertical. Good idea though.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

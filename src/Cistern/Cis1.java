@@ -15,12 +15,12 @@ import Tunnels.Dungeon_Tunnel;
  */
 public class Cis1 extends Dungeon_Tunnel implements Resetable {
     private boolean hasToxicGas;
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Cis1(String name, String ID) {
         super(name, ID);
         this.hasToxicGas = true;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (this.hasToxicGas) {
             Player.move(Direction.EAST);
@@ -31,20 +31,20 @@ public class Cis1 extends Dungeon_Tunnel implements Resetable {
         
         return Player.getPos().toString();
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.NORTH)
             return WATER_THAT_WAY;
         else
             return bumpIntoWall();
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     public void turnOffGas() {
         this.hasToxicGas = false;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public void reset() {
         this.hasToxicGas = true;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

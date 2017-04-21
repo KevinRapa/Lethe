@@ -12,22 +12,22 @@ public class BreakableItem extends Item {
         super(name, score);
         this.type = BREAKABLE;
     }   
-    // ========================================================================       
+    //-------------------------------------------------------------------------       
     public BreakableItem(String name, String desc, int score) {
         super(name, desc, score);
         this.type = BREAKABLE;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public BreakableItem(String name, String desc, String use, int score) {
         super(name, desc, use, score);
         this.type = BREAKABLE;
     }    
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public BreakableItem(String name, Item forms, int thresh, int score) {
         super(name, forms, thresh, score);
         this.type = BREAKABLE;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public BreakableItem(String name, String desc, Item forms, int thresh, int score) {
         super(name, desc, forms, thresh, score);
         this.type = BREAKABLE;

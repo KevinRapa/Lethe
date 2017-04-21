@@ -13,7 +13,7 @@ import A_Super.Unmoveable;
 public class Gal4_Case extends SearchableFurniture 
         implements Openable, Unmoveable
 {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gal4_Case (Item... items) {
         super(items);
         this.searchable = false;
@@ -28,20 +28,20 @@ public class Gal4_Case extends SearchableFurniture
         this.searchDialog = "The case is locked shut, and you cannot pry it open.";
         this.useDialog = "The glass front is clearly designed to keep dimwits like you out.";
 
-        this.addNameKeys("(?:mounted )?(?:metal )?case", "painting");
+        this.addNameKeys("(?:mounted )?(?:protected )?(?:metal )?case", "painting");
         this.addUseKeys(ANYTHING);
         this.addActKeys("break|destroy", "unlock", "loot", "unscrew");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.containsItem(MONA_LISA) ? 
                 this.description : "The mounted case is empty.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return searchable ? "You open the case." : this.searchDialog;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("break") || key.equals("destroy"))
             return "This case is strong.";
@@ -52,7 +52,7 @@ public class Gal4_Case extends SearchableFurniture
         else
             return "You would like to do that, wouldn't you.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.toString().equals(WEAPON)) {
             AudioPlayer.playEffect(35);
@@ -63,11 +63,11 @@ public class Gal4_Case extends SearchableFurniture
         else
             return DEFAULT_USE;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     public void unlock() {
         this.searchable = true;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

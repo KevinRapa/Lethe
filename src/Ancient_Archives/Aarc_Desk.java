@@ -5,7 +5,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Aarc_Desk extends Aarc_Furniture {
-// ========================================================================
+//-------------------------------------------------------------------------
     public Aarc_Desk (Item... items) {
         super(items);
 
@@ -20,7 +20,7 @@ public class Aarc_Desk extends Aarc_Furniture {
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:old )?(?:wooden )?(?:drawered )?desk", "drawers?");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

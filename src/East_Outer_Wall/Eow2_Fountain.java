@@ -26,5 +26,5 @@ public class Eow2_Fountain extends Furniture implements Unmoveable {
         this.addActKeys("jump", "swim");
         this.addNameKeys("(?:great )?fountain", "(?:soldier )?statue");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

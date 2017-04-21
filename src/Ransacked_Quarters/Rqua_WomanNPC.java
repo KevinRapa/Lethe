@@ -5,7 +5,7 @@ import A_Super.NonPlayerCharacter;
  * @author Kevin Rapa
  */
 public class Rqua_WomanNPC extends NonPlayerCharacter {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Rqua_WomanNPC () {
         super();
         this.searchable = false;
@@ -23,7 +23,7 @@ public class Rqua_WomanNPC extends NonPlayerCharacter {
 
         this.addNameKeys("(?:elderly )?(?:laughing )?(?:robed )?(?:woman|lady)", "her");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (this.firstTime) {
             this.firstTime = false;
@@ -32,11 +32,11 @@ public class Rqua_WomanNPC extends NonPlayerCharacter {
         else
             return converse2();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override protected String converse1() {
         return actDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override protected String converse2() {
         return "Hell treats the wealthy comfortably and the wise with contempt!!!\"";
     }

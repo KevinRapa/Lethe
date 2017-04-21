@@ -6,7 +6,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Torc_Wheel extends SearchableFurniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Torc_Wheel () {
         super();
         
@@ -22,7 +22,7 @@ public class Torc_Wheel extends SearchableFurniture implements Unmoveable {
         this.addNameKeys("(?:large )?(?:vertical )?(?:wooden )?wheel", "pegs?");
         this.addActKeys("rotate", "spin", "turn");
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
 }
 
 

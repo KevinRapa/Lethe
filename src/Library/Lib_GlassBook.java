@@ -40,7 +40,7 @@ public class Lib_GlassBook extends Book {
                        "is still art, despite you being idiot at " +
                        "blowing glass. It's ok!";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 
 

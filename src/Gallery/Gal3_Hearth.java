@@ -10,5 +10,5 @@ public class Gal3_Hearth extends Fireplace {
 
         this.descLit = "The small hearth is made of a yellow plaster.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

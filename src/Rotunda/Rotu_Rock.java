@@ -12,5 +12,5 @@ public class Rotu_Rock extends Furniture {
         this.searchDialog = "You are a lumberjack, not a miner.";
         this.addNameKeys("(?:polished )?(?:rock|marble)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

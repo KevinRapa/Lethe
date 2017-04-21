@@ -6,7 +6,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Sewp_Tunnel extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sewp_Tunnel () {
         super();
 
@@ -16,7 +16,7 @@ public class Sewp_Tunnel extends Furniture implements Unmoveable {
         
         this.addNameKeys("(?:large )?(?:open )?tunnel");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

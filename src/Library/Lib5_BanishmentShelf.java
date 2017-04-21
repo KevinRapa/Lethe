@@ -14,6 +14,6 @@ public class Lib5_BanishmentShelf extends SearchableFurniture {
         this.addNameKeys("banishment", "(?:south )?(?:book)?shelf");
         this.addActKeys(MOVEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

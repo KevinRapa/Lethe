@@ -18,12 +18,12 @@ public class Iha1_Armor extends Furniture implements Moveable {
         this.addNameKeys("(?:suit (?:of )?|plate )?armor", POLEARM, 
                 "(?:armor )?suit|gauntlet|hand");
     }    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("equip") || key.equals("wear"))
             return this.actDialog;
         else
             return "The suit's grip is too firm to do that.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

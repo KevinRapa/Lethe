@@ -23,5 +23,5 @@ public class Cou1_Hole extends SearchableFurniture {
         this.addUseKeys(SHOVEL, TROWEL);
         this.addActKeys("dig");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

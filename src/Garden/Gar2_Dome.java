@@ -7,7 +7,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Gar2_Dome extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar2_Dome () {
         super();
 
@@ -22,7 +22,7 @@ public class Gar2_Dome extends Furniture implements Unmoveable {
         this.addActKeys("shatter");
         this.addNameKeys("(?:paneled )?(?:glass )?dome");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

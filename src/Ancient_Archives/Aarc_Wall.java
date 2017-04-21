@@ -3,7 +3,7 @@ package Ancient_Archives;
  * @author Kevin Rapa
  */
 public class Aarc_Wall extends Aarc_Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Aarc_Wall () {
         super();
         this.searchable = false;
@@ -13,7 +13,7 @@ public class Aarc_Wall extends Aarc_Furniture {
 
         this.addNameKeys("(?:cobblestone )?walls?");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

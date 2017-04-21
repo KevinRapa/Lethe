@@ -8,7 +8,7 @@ import A_Super.Item;
  */
 public class Aarc_Books extends Aarc_Furniture implements Gettable {
     private final Item BOOK_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Aarc_Books (Item book, Item... items) {
         super(items);
         
@@ -25,21 +25,21 @@ public class Aarc_Books extends Aarc_Furniture implements Gettable {
         this.addActKeys(GETPATTERN);
         this.addActKeys("read");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {
         if (key.equals("read"))
             return this.actDialog;
         else
             return getIt();
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getIt() {
         if (Player.getInv().add(BOOK_REF))
             return "You take one of the books, not giving much thought about it.";
         else
             return NOTHING;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

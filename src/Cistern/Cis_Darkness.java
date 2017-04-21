@@ -7,7 +7,7 @@ import A_Super.Gettable;
  * @author Kevin Rapa
  */
 public class Cis_Darkness extends Furniture implements Gettable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cis_Darkness () {
         super();
 
@@ -22,11 +22,11 @@ public class Cis_Darkness extends Furniture implements Gettable {
         this.addUseKeys(HAND_TORCH);
         this.addNameKeys("darkness|dark void|void|blackness|ceiling");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String interact(String key) {
         return getIt();
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

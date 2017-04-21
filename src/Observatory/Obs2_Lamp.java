@@ -6,7 +6,7 @@ import A_Super.Moveable;
  * @author Kevin Rapa
  */
 public class Obs2_Lamp extends Furniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Obs2_Lamp () {
         super();
 
@@ -15,7 +15,7 @@ public class Obs2_Lamp extends Furniture implements Moveable {
                          + "comfortably.";
         this.addNameKeys("(?:electric )?(?:table )?(?:lamp|light)");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

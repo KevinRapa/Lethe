@@ -14,11 +14,11 @@ import A_Super.Room;
  * @author Kevin Rapa
  */
 public class An65 extends Room {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public An65(String name, String ID) {
         super(name, ID);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("You step closer to the zombie-like figure. It remains still, "
@@ -26,5 +26,5 @@ public class An65 extends Room {
             
         return STD_RM_OUT;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

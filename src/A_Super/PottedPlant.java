@@ -12,7 +12,7 @@ abstract public class PottedPlant extends SearchableFurniture
         implements Gettable, Moveable {
     protected final Item SOIL_REF, GIFT;
     protected boolean watered;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public PottedPlant (Item soil, Item gift) {
         super();
         
@@ -34,7 +34,7 @@ abstract public class PottedPlant extends SearchableFurniture
         this.inv.add(soil); 
         this.inv.add(soil);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("water")) {
             if (Player.hasItem(BUCKET_OF_WATER)) {
@@ -61,7 +61,7 @@ abstract public class PottedPlant extends SearchableFurniture
         else
             return getIt();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.toString().equals(BUCKET_OF_WATER))
             return this.interact("water");
@@ -80,14 +80,14 @@ abstract public class PottedPlant extends SearchableFurniture
         else
             return DEFAULT_USE;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public String getIt() {
         if (Player.getInv().add(SOIL_REF))
             return "You scoop up some of the dirt.";
         else
             return "You already have some dirt.";
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

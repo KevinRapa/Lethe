@@ -12,7 +12,7 @@ import A_Super.Unmoveable;
  */
 public class Gar13_Planter extends SearchableFurniture implements Unmoveable {
     private final Item SOIL_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar13_Planter (Item soil, Item... items) {
         super(items);
         
@@ -29,7 +29,7 @@ public class Gar13_Planter extends SearchableFurniture implements Unmoveable {
         this.addActKeys(GETPATTERN);
         this.addActKeys("garden", "plant", "dig", "shovel");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.toString().matches("trowel|shovel")) {
             AudioPlayer.playEffect(34);
@@ -42,7 +42,7 @@ public class Gar13_Planter extends SearchableFurniture implements Unmoveable {
         else 
             return this.actDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String interact(String key) {
         if (key.equals("garden") || key.equals("plant")) {
             return this.actDialog;
@@ -60,7 +60,7 @@ public class Gar13_Planter extends SearchableFurniture implements Unmoveable {
                 return "You have nothing to dig with.";
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

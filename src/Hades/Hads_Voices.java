@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Hads_Voices extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Hads_Voices () {
         super();
         
@@ -14,7 +14,7 @@ public class Hads_Voices extends Furniture {
         
         this.addNameKeys("(?:thousands of )?(?:lamenting )?voices?");
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
 }
 
 

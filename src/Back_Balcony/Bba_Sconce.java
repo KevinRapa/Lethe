@@ -12,5 +12,5 @@ public class Bba_Sconce extends Furniture {
         this.addActKeys(HOLDPATTERN);
         this.addNameKeys("(?:copper )?(?:metal )?(?:sconce|light)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

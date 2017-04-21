@@ -32,7 +32,7 @@ public class Torch_Holder extends SearchableFurniture {
         this.addNameKeys("(?:wall )?torch(?:es)?", "(?:steel )?holders?");
         this.addUseKeys(HAND_TORCH);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (this.inv.contains(TORCH)) {
             if (this.inv.give(TORCH, Player.getInv()))
@@ -43,7 +43,7 @@ public class Torch_Holder extends SearchableFurniture {
         else
             return "The holder is empty you bumbling oaf.";
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
     @Override public String useEvent(Item item) {
         if (this.inv.contains(TORCH))
             return "The holder already bears a torch you bumbling oaf.";
@@ -52,26 +52,26 @@ public class Torch_Holder extends SearchableFurniture {
             return this.useDialog;
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! this.containsItem(HAND_TORCH))
             return "The mounted steel holder is empty.";
         else    
             return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         return this.getDescription();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private class HolderInventory extends Inventory {  
     // CONSTRUCTOR -------------------------------------------------------------      
         public HolderInventory(Item ... items) {
             super(items);
         }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
         @Override public boolean add(Item item) { 
             if (item.toString().equals(HAND_TORCH) && this.size() == 0) {
                 this.CONTENTS.add(item);
@@ -82,6 +82,6 @@ public class Torch_Holder extends SearchableFurniture {
                 return false;
             }
         }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     }
 }

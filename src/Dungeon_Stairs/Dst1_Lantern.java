@@ -13,5 +13,5 @@ public class Dst1_Lantern extends Furniture {
         this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:hanging )?(?:oil )?(?:lantern|light)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

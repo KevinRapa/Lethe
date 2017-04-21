@@ -1738,7 +1738,6 @@ public class Map {
         Furniture aarcShlvs = new Aarc_Shelves(slmyAlg, wbalch, wbalch);
 
         // </editor-fold>
-
         // Catacombs and caves
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE CATACOMBS"> 
         // ROOMS --------------------------------------------------------------
@@ -2077,7 +2076,7 @@ public class Map {
             progressing.
         */
         //-----------------------------THE ROOM---------------------------------
-        Room hads = new Hades("Entrance to Hades", Id.HADS, typhos);
+        Room hads = new Hades("Entrance to Hades", Id.HADS);
         //-------------------------------ITEMS----------------------------------
         Item leg = new Item("mangled leg", "It's a disembodied rotting leg, dirty, and awful smelling.", -1000);
         Item torso = new Item("mangled torso", "It's a disembodied rotting torso, dirty, and awful smelling.", -1000);
@@ -2191,7 +2190,7 @@ public class Map {
         //**********************************************************************
         // </editor-fold> 
         //********************************************************************** 
-
+        
 
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="PUT FURNITURE IN ROOMS">

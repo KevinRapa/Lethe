@@ -6,7 +6,7 @@ import A_Super.Item;
 
 public class Cou3_Fork extends Furniture {
     private final Item FORK;
-    // ====================================================================
+    //---------------------------------------------------------------------
     public Cou3_Fork (Item fork) {
         super();
 
@@ -20,7 +20,7 @@ public class Cou3_Fork extends Furniture {
         this.addNameKeys("fork");
         this.addActKeys(GETPATTERN);
     }
-    // ====================================================================   
+    //---------------------------------------------------------------------   
     @Override public String interact(String key) {  
         if (Player.getInv().add(FORK)) {
             Player.getPos().removeFurniture(this);
@@ -29,6 +29,6 @@ public class Cou3_Fork extends Furniture {
         else
             return NOTHING;
     }
-    // ====================================================================      
+    //---------------------------------------------------------------------      
 }
 

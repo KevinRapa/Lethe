@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 abstract public class Tomb_Casket extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tomb_Casket (Item... items) {
         super(items);
         
@@ -20,7 +20,7 @@ abstract public class Tomb_Casket extends SearchableFurniture implements Openabl
         this.addActKeys(SITPATTERN, "go");
         this.addNameKeys("(?:decrepit )?(?:standing )?(?:wooden )?(?:casket|box|tomb|coffin)");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

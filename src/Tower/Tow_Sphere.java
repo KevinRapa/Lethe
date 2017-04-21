@@ -9,7 +9,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Tow_Sphere extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tow_Sphere () {
         super();
 
@@ -22,7 +22,7 @@ public class Tow_Sphere extends Furniture implements Unmoveable {
 
         this.addNameKeys("(?:hovering )?(?:glowing |pulsing )?(?:yellow )?(?:sphere|ball)(?: of (?:yellow )?light)?");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

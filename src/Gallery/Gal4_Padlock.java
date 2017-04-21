@@ -11,7 +11,7 @@ import Cellar.Cel5_Lock;
  */
 public class Gal4_Padlock extends Cel5_Lock {
     private final Gal4_Case CASE;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gal4_Padlock (Furniture casing) {
         super();
         
@@ -21,7 +21,7 @@ public class Gal4_Padlock extends Cel5_Lock {
         this.useDialog = "A nice hard smack, combined with your insatiable thirst for "
                 + "good art, is enough to defeat the lock.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON)) {
             AudioPlayer.playEffect(35);
@@ -32,7 +32,7 @@ public class Gal4_Padlock extends Cel5_Lock {
         else
             return super.useEvent(item);
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

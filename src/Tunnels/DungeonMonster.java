@@ -24,7 +24,7 @@ import java.util.TimerTask;
  * @author Kevin Rapa
  */
 public class DungeonMonster {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static enum Volume {
         NONE(0.0), // Not supposed to play.
         VERY_SOFT(0.02),
@@ -43,7 +43,7 @@ public class DungeonMonster {
             return this.VOL;
         }
     } 
-    // ==========================================
+    //---------------------------------------
     private static String position = Id.SEW0;
     private static final LinkedList<String> ROOM_QUEUE = new LinkedList<String>() {{
         String[] ROOM_LIST = {Id.SEW0, Id.SEW1, Id.SEW2, Id.SEW3, Id.SEW4, Id.SEW5,
@@ -52,12 +52,12 @@ public class DungeonMonster {
         addAll(Arrays.asList(ROOM_LIST));
     }};
     private static Timer timer;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public final static void startMovement() {
         timer = new Timer(true);
         timer.schedule(new Creature_Task(), 5000, 5000);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static void move() {
         String temp = Id.areaName(position);
         position = ROOM_QUEUE.peek();
@@ -73,7 +73,7 @@ public class DungeonMonster {
         if (vol != Volume.NONE)
             AudioPlayer.playEffect(25, vol.getVol());
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static Volume determineVolume() {
         String monstId = Id.areaName(position),
                plyrId = Id.areaName(Player.getPosId());
@@ -114,7 +114,7 @@ public class DungeonMonster {
             }
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static double determineProximity() {
         int[] plyrCrd = Player.getPos().getCoords();
         int[] thisCrd = Player.getRoomObj(position).getCoords();
@@ -124,7 +124,7 @@ public class DungeonMonster {
                     pow(abs(thisCrd[1] - plyrCrd[1]), 2)
         );
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public static synchronized void checkForPlayer() {
         if (Id.areaName(Player.getPosId()).matches(Id.areaName(position)) 
                 && (determineProximity() == 1.0))
@@ -133,7 +133,7 @@ public class DungeonMonster {
         if (position.equals(Player.getPosId()))
             capturePlayer();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static void warnPlayer() {
         String result = "That creature is very close! It's directly ";
         int[] plyrCrd = Player.getPos().getCoords();
@@ -149,7 +149,7 @@ public class DungeonMonster {
             GUI.out(result + Direction.WEST + "!");
         
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public static void capturePlayer() {
         timer.cancel();
         
@@ -159,11 +159,11 @@ public class DungeonMonster {
         
         startMovement();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public static boolean isInactive() {
         return timer == null;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Turns the monster around when player climbs the stairs in SEW0.
      * Allows player to escape the creature if cornered in SEW0.
@@ -174,7 +174,7 @@ public class DungeonMonster {
         
         ROOM_QUEUE.offer(ROOM_QUEUE.poll());
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static void captureDialog() {
         GUI.out("The hideous creature lassos you with its chain and drags "
               + "you back to the tiny untility room. Your items are taken. "
@@ -182,13 +182,13 @@ public class DungeonMonster {
         
         AudioPlayer.playEffect(24);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public static String getPos() {
         return position;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     // ************************************************************************
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Every fixed interval of time, moves the monster, plays a sound, and
      * checks for player.
@@ -204,9 +204,9 @@ public class DungeonMonster {
             }
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     // ************************************************************************
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

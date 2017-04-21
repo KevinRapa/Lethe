@@ -4,7 +4,7 @@ package Courtyard;
  * @author Kevin Rapa
  */
 public class Cou3_Ivy extends Courtyard_Growth {
-    // ========================================================================       
+    //-------------------------------------------------------------------------       
     public Cou3_Ivy() {
         super();
 
@@ -15,12 +15,12 @@ public class Cou3_Ivy extends Courtyard_Growth {
         this.addActKeys(CLIMBPATTERN);
         this.addNameKeys("(?:european )?ivy", "hedera helix");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.matches(CLIMBPATTERN))
             return "You are too heavy. This will never support you!";
         else
             return super.interact(key);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }

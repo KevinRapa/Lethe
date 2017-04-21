@@ -11,5 +11,5 @@ public class Kitc_FrtPhy extends Item {
         this.description = "This red, clean, shiny apple looks perfect! Huh... "
                          + "It has almost a glow to it.";
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
 }  

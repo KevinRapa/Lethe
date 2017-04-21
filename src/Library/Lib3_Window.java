@@ -14,5 +14,5 @@ public class Lib3_Window extends Window {
                       + "village in the great distance. A light fog rolls "
                       + "through the air. In flows a small breeze.";
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

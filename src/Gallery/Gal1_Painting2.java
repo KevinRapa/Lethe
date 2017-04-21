@@ -12,6 +12,6 @@ public class Gal1_Painting2 extends WallArt {
                          + "to be burning. The rest of this painting illustrates the "
                          + "elements water and fire decoratively.";
         this.addNameKeys("tibetan painting");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

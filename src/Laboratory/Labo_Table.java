@@ -6,7 +6,7 @@ import A_Super.Moveable;
  * @author Kevin Rapa
  */
 public class Labo_Table extends Furniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Table () {
         super();
 
@@ -17,7 +17,7 @@ public class Labo_Table extends Furniture implements Moveable {
         this.addNameKeys("(?:small )?(?:black )?table");
         this.addActKeys("kick|nudge|jostle");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

@@ -39,7 +39,7 @@ public class Labo_Burette extends Furniture {
     
     private final Item VIAL_REF, TUBE_REF;
     private Titrant mode;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Burette (Item emptyVial, Item testTube) {
         super();
 
@@ -57,15 +57,15 @@ public class Labo_Burette extends Furniture {
                 HOLY_WATER, ACETONE, BUCKET_OF_WATER, CLEANING_SOLUTION, GLUE_BOTTLE);
         this.addActKeys("use", VALVEPATTERN, "dispense", "drain", "empty", "titrate");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     @Override public String getDescription() {
         return this.description.concat(mode.toString() + "in it.");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     @Override public String getSearchDialog() {
         return this.interact("use");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.toString().equals(TEST_TUBE) 
                 && ! item.toString().equals(EMPTY_VIAL) 
@@ -91,7 +91,7 @@ public class Labo_Burette extends Furniture {
 
         return this.interact("use");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {   
         if (key.equals("empty") || key.equals("drain")) {
             this.mode = Titrant.EMPTY;
@@ -116,7 +116,7 @@ public class Labo_Burette extends Furniture {
         else
             return "The burette is currently empty.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     private String dispenseDialog() {
         if (Player.hasItem(TEST_TUBE)) {
             Player.getInv().remove(TUBE_REF);
@@ -131,7 +131,7 @@ public class Labo_Burette extends Furniture {
         else 
             return this.actDialog;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private Item dispense() {
         GUI.out(mode.toString() + "will be dispensed in 5 mL increments. Press "
                 + "enter to start titrating and then a second time to stop titrating.");
@@ -143,7 +143,7 @@ public class Labo_Burette extends Furniture {
         return new Ingredient(mode.toString() + volume + "mL", 
                 "The vial holds a small amount of " + mode + ".", 0);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 
 }
 

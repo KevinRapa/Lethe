@@ -19,12 +19,12 @@ public class Wow2_Door extends Door {
         this.addUseKeys(CROWBAR);
         this.addActKeys("pry", "remove");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("pry") || key.equals("remove"))
             return this.actDialog;
         else
             return super.interact(key);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

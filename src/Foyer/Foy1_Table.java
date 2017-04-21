@@ -21,5 +21,5 @@ public class Foy1_Table extends SearchableFurniture implements Moveable {
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:long )?(?:mahogany |wood(?:en)? )?table");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

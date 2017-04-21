@@ -17,12 +17,12 @@ public class Gal3_Masks extends Furniture {
         this.addActKeys("move", "lift", "slide", "wear");
         this.addNameKeys("masks?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("wear"))
             return "What point would wearing them serve?";
         else
             return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

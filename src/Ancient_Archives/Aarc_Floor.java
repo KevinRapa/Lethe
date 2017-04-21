@@ -9,7 +9,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Aarc_Floor extends Aarc_Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Aarc_Floor (Item... items) {
         super(items);
         
@@ -26,12 +26,12 @@ public class Aarc_Floor extends Aarc_Furniture {
         this.addNameKeys("floor", "ground", "sinkhole", SOIL, 
                 "(?:slightly raised )?(?:stone )?platform");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String useEvent(Item item) {
         AudioPlayer.playEffect(34);
         return this.actDialog;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

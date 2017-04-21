@@ -13,7 +13,7 @@ import static A_Main.Patterns.*;
  */
 public class DungeonMonsterFurniture extends Furniture {
     private final String CANT_SEE_IT = "You can't hear or see it from here. The creature attention is apparently drawn from your position.";
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public DungeonMonsterFurniture () {
         super();
 
@@ -28,14 +28,14 @@ public class DungeonMonsterFurniture extends Furniture {
         this.addUseKeys(ANYTHING);
         this.addActKeys(".{2,}");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String interact(String key) {
-        if (key.equals("listen"))
+        if (key.equals("listen") || CHECK_P.matcher(key).matches())
             return this.getDescription();
         else
             return this.actDialog;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         String result;
         
@@ -76,7 +76,7 @@ public class DungeonMonsterFurniture extends Furniture {
         
         return this.description.concat("\t\t\t\t\t\t\t" + result);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

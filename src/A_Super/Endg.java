@@ -8,7 +8,7 @@ import Foyer.LootSack;
  */
 public class Endg extends Room {
     private final String earlyWinDesc;
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Endg(String name, String ID) {
         super(name, ID);
         
@@ -28,14 +28,14 @@ public class Endg extends Room {
             "awaits your return. Congratulations! You win " +
             "the game!";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (Player.getRoomObj(Id.COU4).isLocked())
             return this.earlyWinDesc;
         else
             return this.description;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         GUI.clearDialog();
         GUI.menOut(Menus.ENTER);
@@ -115,5 +115,5 @@ public class Endg extends Room {
         
         return "";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

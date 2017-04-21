@@ -11,7 +11,7 @@ public class Eow2_Stairs extends Staircase {
                          + "above. It's a wonder why these didn't crumble like "
                          + "those in the west outer wall.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.DIR == Direction.DOWN)
             return "The curved sandstone stairs lead down to the first floor. "
@@ -20,5 +20,5 @@ public class Eow2_Stairs extends Staircase {
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

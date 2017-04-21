@@ -6,7 +6,7 @@ import A_Super.Staircase;
  * @author Kevin Rapa
  */
 public class Bls_Staircase extends Staircase {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Bls_Staircase (Direction dir) {
         super(dir);
         
@@ -16,7 +16,7 @@ public class Bls_Staircase extends Staircase {
 
         this.addNameKeys("(?:long )?(?:curved )?(?:suspended )?(?:black )?(?:iron )?(?:stair(?:s|case)|steps)");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

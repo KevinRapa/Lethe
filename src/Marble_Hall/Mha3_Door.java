@@ -12,6 +12,6 @@ public class Mha3_Door extends Door {
                          + "it hasn't been opened in a very long time. The door "
                          + "to the south is large and heavy.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

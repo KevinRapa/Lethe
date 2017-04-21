@@ -13,7 +13,7 @@ import A_Super.SearchableFurniture;
  */
 public class FactumDummy extends SearchableFurniture implements Gettable {
     private final Item FACTUM_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public FactumDummy (Item factum) {
         super(factum);
         
@@ -26,15 +26,15 @@ public class FactumDummy extends SearchableFurniture implements Gettable {
         this.addNameKeys(ANYTHING);
         this.addActKeys(ANYTHING);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return Cave.distortDescription(5, this.description);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return Cave.distortDescription(1, this.searchDialog);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {
         Player.getInv().forceAdd(FACTUM_REF); // Forces itself in.
         Player.printInv();
@@ -42,7 +42,7 @@ public class FactumDummy extends SearchableFurniture implements Gettable {
         Player.getRoomObj(Id.EOW1).unlock();
         return Cave.distortDescription(3, this.actDialog);
     }
-    // ========================================================================         
+    //-------------------------------------------------------------------------         
 }
 
 

@@ -5,7 +5,7 @@ import A_Super.Balcony;
  * @author Kevin Rapa
  */
 public class Entr_Balcony extends Balcony {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Entr_Balcony () {
         super();
         
@@ -15,7 +15,7 @@ public class Entr_Balcony extends Balcony {
 
         this.addNameKeys("long balcony");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

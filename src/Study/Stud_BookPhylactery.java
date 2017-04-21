@@ -69,5 +69,5 @@ public class Stud_BookPhylactery extends Book {
                        "the skill at which the procedure is done, and the " +
                        "object which you are bound to.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

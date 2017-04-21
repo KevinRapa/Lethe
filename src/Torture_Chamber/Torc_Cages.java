@@ -7,7 +7,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Torc_Cages extends SearchableFurniture implements Openable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Torc_Cages (Item... items) {
         super(items);
         
@@ -20,7 +20,7 @@ public class Torc_Cages extends SearchableFurniture implements Openable {
         this.addActKeys("go", "climb", SITPATTERN);
         this.addNameKeys("(?:small )?(?:hanging )?(?:thick-barred )?cages?");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

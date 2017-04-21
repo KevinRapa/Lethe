@@ -149,5 +149,5 @@ public class Lib_DantesInfernoBook extends Book {
                        "Onward he moved, I close his steps pursued." +
                        "... Wait. You didn't come to this castle just to read, did you?";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

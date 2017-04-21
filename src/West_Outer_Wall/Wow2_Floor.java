@@ -10,7 +10,7 @@ import A_Super.Item;
 public class Wow2_Floor extends Floor {
     private final Furniture STRS_REF;
     private final Item LDDR_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Wow2_Floor (Furniture wow2Strs, Item lddr, Item... items) {
         super("A sandstone tiled floor.", items);
         
@@ -18,14 +18,14 @@ public class Wow2_Floor extends Floor {
         this.LDDR_REF = lddr;
         this.useDialog = "You stand the ladder on the floor leaning against the balcony.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         Player.getPos().addFurniture(STRS_REF); // Add the ladder to WOW2.
         Player.getInv().remove(LDDR_REF); // Remove the ladder from player inventory.
 
         return this.useDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

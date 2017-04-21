@@ -14,6 +14,6 @@ public class Gal3_Artifacts extends Furniture {
                          + "<> A Nigerian trinket";
         this.searchDialog = "You aren't sure which one to search first.";
         this.addNameKeys("artifacts?", "statues?");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

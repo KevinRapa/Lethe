@@ -20,11 +20,11 @@ public class Gal6_Button extends Button {
         this.description = "It's a bright red button! Very tempting...";
         this.actDialog = "That was a smart decision.";
     }
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
     @Override public String interact(String key) {
         return this.event(key);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String event(String key) {
         String choice;
 
@@ -41,5 +41,5 @@ public class Gal6_Button extends Button {
         }
         return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

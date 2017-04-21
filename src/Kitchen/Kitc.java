@@ -14,7 +14,7 @@ public class Kitc extends Room{
         
         this.TORCH_INV_REF = torchInv;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if ((dir != Direction.WEST) && TORCH_INV_REF.size() == 0)
             return "It's too dark to see anything, and you don't want "
@@ -22,7 +22,7 @@ public class Kitc extends Room{
         else 
             return bumpIntoWall();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (TORCH_INV_REF.size() == 0) {
             return "This room is pitch black and fetid. All that's visible is an " +
@@ -31,7 +31,7 @@ public class Kitc extends Room{
         }
         return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("As you step in, a fetid stench immediately infiltrates your senses. "
@@ -39,5 +39,5 @@ public class Kitc extends Room{
             
         return TORCH_INV_REF.size() != 0 ? STD_RM_OUT : "Pitch black room.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

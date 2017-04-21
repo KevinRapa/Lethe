@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Labo_Devices extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Devices () {
         super();
 
@@ -19,7 +19,7 @@ public class Labo_Devices extends Furniture {
         this.addUseKeys(ANYTHING);
         this.addActKeys(ANYTHING);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

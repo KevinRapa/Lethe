@@ -15,5 +15,5 @@ public class Kitc_Cntr extends SearchableFurniture implements Openable, Unmoveab
         this.searchDialog = "You open the doors under the counter.";
         this.addNameKeys("counters?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -33,7 +33,7 @@ public class Par2_Piano extends SearchableFurniture
         this.addUseKeys(STEEL_WIRE);
         this.addActKeys("play", "press");
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String interact(String key) {              
         if (! REF.woken()) {
             AudioPlayer.playEffect(53);
@@ -51,5 +51,5 @@ public class Par2_Piano extends SearchableFurniture
                  + "experienced musician in this castle!\"";
         }
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

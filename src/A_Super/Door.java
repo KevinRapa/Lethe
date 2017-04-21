@@ -27,7 +27,7 @@ public class Door extends Furniture {
         else if (dir == Direction.WEST)
             this.addNameKeys("left door");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String interact(String key) {
         if (key.equals("close"))
             return "The door is already closed.";
@@ -53,7 +53,7 @@ public class Door extends Furniture {
             return NOTHING;
         }
     } 
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON)) 
             return "The door is build too solidly and breaking it down is futile.";
@@ -61,5 +61,5 @@ public class Door extends Furniture {
             return this.useDialog;
         
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

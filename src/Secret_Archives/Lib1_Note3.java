@@ -17,5 +17,5 @@ public class Lib1_Note3 extends Note {
                          + "Instead of luminescent green, the liquid was "
                          + "gray and viscous. From cooling perhaps?";
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

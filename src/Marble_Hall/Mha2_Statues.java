@@ -32,7 +32,7 @@ public class Mha2_Statues extends Furniture {
         this.addActKeys(HOLDPATTERN);
         this.addUseKeys(ANYTHING);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (REF.isSearchable()) {
             return "The pair af statues are mirror images of each other. "
@@ -42,5 +42,5 @@ public class Mha2_Statues extends Furniture {
         }      
         return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -19,7 +19,7 @@ public class Lib3_Stairs extends Staircase {
                          + "marble steps. They lead up to the northern second- "
                          + "story area of the library.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
         if (Player.getShoes().equals(LEATHER_SHOES)) {
             this.playEffect();
@@ -33,9 +33,9 @@ public class Lib3_Stairs extends Staircase {
                  + "staircase pops back up again. 'How irritating!' you exclaim.";
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public void playEffect() {
         AudioPlayer.playEffect(14);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

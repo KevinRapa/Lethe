@@ -11,5 +11,5 @@ public class Din1_Door extends Door {
                          + "complicated as you imagined. Many plates, hinges, "
                          + "and springs cover its back.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

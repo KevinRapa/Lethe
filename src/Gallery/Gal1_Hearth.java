@@ -12,5 +12,5 @@ public class Gal1_Hearth extends Fireplace {
         this.descLit = "The small hearth is tiled green and purple like the rest "
                      + "of the room.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

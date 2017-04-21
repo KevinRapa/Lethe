@@ -5,7 +5,7 @@ import A_Super.Column;
  * @author Kevin Rapa
  */
 public class Gar2_Columns extends Column {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar2_Columns () {
         super();
 
@@ -14,7 +14,7 @@ public class Gar2_Columns extends Column {
 
         this.addNameKeys("(?:stone |corinthian )?(?:column|pillar)s?");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

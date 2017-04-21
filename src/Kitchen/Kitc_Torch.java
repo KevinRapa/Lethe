@@ -19,7 +19,7 @@ public class Kitc_Torch extends Torch_Holder {
                        + "the room.";
         this.inv = new KitcHolderInventory();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (this.inv.contains(TORCH)) {
             if (this.inv.give(TORCH, Player.getInv())) {
@@ -32,7 +32,7 @@ public class Kitc_Torch extends Torch_Holder {
         else
             return "The holder is empty you bumbling oaf.";
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
     @Override public String useEvent(Item item) {
         if (this.inv.contains(TORCH))
             return "The holder already bears a torch you bumbling oaf.";
@@ -41,15 +41,15 @@ public class Kitc_Torch extends Torch_Holder {
             return this.useDialog;
         }
     }    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private class KitcHolderInventory extends Inventory {  
     // CONSTRUCTOR -------------------------------------------------------------      
         public KitcHolderInventory() {
             super();
         }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
         @Override public boolean add(Item item) { 
             if (item.toString().equals(HAND_TORCH) && this.size() == 0) {
                 this.CONTENTS.add(item);
@@ -60,14 +60,14 @@ public class Kitc_Torch extends Torch_Holder {
             GUI.out("The " + item + " doesn't fit in.");
             return false;
         }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
         @Override public void remove(Item removeThis) {      
             this.CONTENTS.remove(removeThis);
             Player.describeRoom();
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

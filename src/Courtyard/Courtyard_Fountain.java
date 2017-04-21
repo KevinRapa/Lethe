@@ -8,7 +8,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Courtyard_Fountain extends SearchableFurniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Courtyard_Fountain (Item... items) {
         super(items);
         
@@ -20,7 +20,7 @@ public class Courtyard_Fountain extends SearchableFurniture implements Unmoveabl
         this.addUseKeys("bucket of water", "\\w* coins?");
         this.addActKeys("swim", "drink");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.toString().matches("\\w* coins?")) {
             Player.getInv().give(item, this.inv);
@@ -29,7 +29,7 @@ public class Courtyard_Fountain extends SearchableFurniture implements Unmoveabl
         else
             return this.useDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

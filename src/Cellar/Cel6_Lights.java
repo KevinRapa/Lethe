@@ -6,7 +6,7 @@ import A_Super.Furniture;
  */
 public class Cel6_Lights extends Furniture {
 
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel6_Lights () {
         super();
         
@@ -19,7 +19,7 @@ public class Cel6_Lights extends Furniture {
         this.addNameKeys("lights?");
         this.addActKeys(GETPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

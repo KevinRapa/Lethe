@@ -17,7 +17,7 @@ public class Dst1 extends Room{
     public Dst1(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * Turns the monster around when player climbs the stairs in SEW0.
      * Allows player to escape the creature if cornered in SEW0.
@@ -30,5 +30,5 @@ public class Dst1 extends Room{
         
         return STD_RM_OUT;
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

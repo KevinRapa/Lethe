@@ -11,7 +11,7 @@ public class Cou2 extends Room{
     public Cou2(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.SOUTH)
             return bumpIntoWall().concat(" About 15 feet up though, you can "
@@ -20,5 +20,5 @@ public class Cou2 extends Room{
             return bumpIntoWall();
         
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

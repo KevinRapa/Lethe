@@ -15,7 +15,7 @@ import A_Super.Direction;
  */
 public class Par1_Door extends Door {
     private final Item ENCHNTBTTL_REF;
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     public Par1_Door(Item enchbttl, Direction dir) {
         super(dir);
         this.useDialog = "You throw the fire on the door. The fire "
@@ -26,7 +26,7 @@ public class Par1_Door extends Door {
         this.addNameKeys("barrier");
         this.addUseKeys(SACRED_FIRE);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! Player.getRoomObj(Id.PAR1).isAdjacent(Id.BHA3))
             return "The door has an odd pale-blue tint to it. As you approach, "
@@ -35,7 +35,7 @@ public class Par1_Door extends Door {
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String useEvent(Item item) {
         String rep = this.useDialog;
         
@@ -49,6 +49,6 @@ public class Par1_Door extends Door {
         
         return rep;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }
 

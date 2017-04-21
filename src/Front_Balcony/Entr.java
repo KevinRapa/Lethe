@@ -13,12 +13,12 @@ public class Entr extends Room {
     public Entr(String name, String ID) {
         super(name, ID);
     }  
-/*----------------------------------------------------------------------------*/        
+//-----------------------------------------------------------------------------        
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.EAST || dir == Direction.WEST)
             return "There's just a railing that way.";
         
         return "There's a wall in the way.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

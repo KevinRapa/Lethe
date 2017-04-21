@@ -24,23 +24,23 @@ abstract public class Window extends Furniture implements Unmoveable {
         this.addActKeys("open|close", "climb|exit|jump|escape");
         this.addNameKeys("window");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return this.isOpen ? this.descOpen : this.descClosed;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public boolean isOpen() {
         return this.isOpen;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     protected void open() {
         this.isOpen = true;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     protected void close() {
         this.isOpen = false;
     }    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("open") || key.equals("close")) {
             if (this.isOpen && key.equals("close")) {
@@ -60,5 +60,5 @@ abstract public class Window extends Furniture implements Unmoveable {
         else
             return this.escapeDialog;
     } 
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

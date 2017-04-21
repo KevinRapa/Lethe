@@ -6,7 +6,7 @@ import A_Super.Gettable;
  * @author Kevin Rapa
  */
 public class Gar24_Sconce extends Furniture implements Gettable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar24_Sconce () {
         super();
 
@@ -16,14 +16,14 @@ public class Gar24_Sconce extends Furniture implements Gettable {
         this.addNameKeys("(?:black )?(?:iron )?(?:sconce|light)", "fire");
         this.addActKeys(GETPATTERN, HOLDPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String interact(String key) {
         if (key.matches(HOLDPATTERN))
             return this.actDialog;
         else
             return getIt();
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

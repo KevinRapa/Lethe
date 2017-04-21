@@ -16,13 +16,13 @@ public class Lib1_Desk extends SearchableFurniture implements Openable, Moveable
                           + "Here's what you find interesting: ";
         this.addNameKeys("desk", "unkept desk");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {  
         return "The desk is unkept and covered in various pieces of paper "
              + "and other knick knacks. The beam from the artifact casts "
              + "its surface in " + this.getColor() + " light.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private String getColor() {
         switch (REF.getBeam()) {
             case 'r': return "a red";
@@ -43,6 +43,6 @@ public class Lib1_Desk extends SearchableFurniture implements Openable, Moveable
             default:  return "a faint";
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

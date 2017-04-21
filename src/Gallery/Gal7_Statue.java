@@ -17,11 +17,11 @@ public class Gal7_Statue extends Furniture {
                          + "but both of its eyes now glow brightly.";    
         this.searchDialog = "The statue's hand is out of reach";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public int getLevel() {
         return this.level;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * Hits the orb in the statue's hand with light.
      * @param color the color of the beam.
@@ -42,7 +42,7 @@ public class Gal7_Statue extends Furniture {
         else
             return "The beam of light shines into the central chamber.";
     }     
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private String raise() {
         this.level++; 
         Player.getRoomObj(Id.GAL5).unlock();
@@ -51,7 +51,7 @@ public class Gal7_Statue extends Furniture {
              + "hellish glow. Cogwork can be heard behind the walls and "
              + "before long, you hear a clicking sound down below.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (level == 1)
                 return "The statue stands in the central chamber holding the orb. "
@@ -60,7 +60,7 @@ public class Gal7_Statue extends Furniture {
         else 
             return this.description;
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }
 
 

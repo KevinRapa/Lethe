@@ -9,12 +9,12 @@ public class Lib2 extends Room {
     public Lib2(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         AudioPlayer.playEffect(6);
         
         return (dir == Direction.WEST || dir == Direction.EAST) ?
             "There's a bookshelf in the way." : WALL_BARRIER;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

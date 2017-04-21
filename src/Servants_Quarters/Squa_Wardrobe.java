@@ -15,5 +15,5 @@ public class Squa_Wardrobe extends SearchableFurniture implements Openable, Move
         this.searchDialog = "You open the wardrobe.";
         this.addNameKeys("(?:plain )?(?:wooden )?wardrobe");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

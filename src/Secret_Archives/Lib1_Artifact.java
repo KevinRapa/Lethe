@@ -29,7 +29,7 @@ public class Lib1_Artifact extends Furniture {
         this.addNameKeys("(?:strange )?artifact", "(?:stone )?head");
         this.addUseKeys(RED_FOCUS, BLUE_FOCUS, YELLOW_FOCUS, DARK_FOCUS);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getDescription() {      
         return "The artifact is a stone head with a hollowed out "
              + "cranium. It's carved crudely. The face is eerily "
@@ -40,7 +40,7 @@ public class Lib1_Artifact extends Furniture {
              + "connected to anything. You can't determine the "
              + "light's source.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public void triggerEvent() {
         boolean red = false; boolean blue = false; 
         boolean yellow = false; boolean dark = false;      
@@ -59,7 +59,7 @@ public class Lib1_Artifact extends Furniture {
         }        
         this.determineColor(red, blue, yellow, dark);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private void determineColor(boolean red, boolean blue, boolean yellow, boolean dark) {
         if (! dark) {        
             if (red && ! blue && ! yellow) {
@@ -115,25 +115,25 @@ public class Lib1_Artifact extends Furniture {
         }       
     GUI.out(mode + " emits from the artifact's mouth. ");        
     } 
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         this.useDialog = "You place the " + item + " in the hole.";
         Player.getInv().give(item, this.inv);
         
         return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public char getBeam() {
         return this.beam;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private class Art_Inv extends Inventory {
         public Art_Inv(Item ... items) {
             super(items);
         }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
         @Override public boolean add(Item item) {
             if (item.getType().equals(Names.FOCUS)) {
                 this.CONTENTS.add(item);
@@ -143,14 +143,14 @@ public class Lib1_Artifact extends Furniture {
             GUI.out("The " + item + " doesn't fit in.");
             return false;
         }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
         @Override public void remove(Item removeThis) {  
             this.CONTENTS.remove(removeThis);
             triggerEvent();
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

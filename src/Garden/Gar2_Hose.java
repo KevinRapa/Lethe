@@ -13,7 +13,7 @@ import A_Super.Item;
 public class Gar2_Hose extends Furniture implements Climbable {
     private final Item BRKNHOSE_REF;
     private final Furniture BRKNHOSE_REF2;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar2_Hose (Furniture brokenHoseFurn, Item brokenHoseItem) {
         super();
 
@@ -32,7 +32,7 @@ public class Gar2_Hose extends Furniture implements Climbable {
         this.addNameKeys("(?:leather )?hose");
         this.addActKeys(CLIMBPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         Player.setOccupies(Id.ROTU);
         AudioPlayer.playEffect(36);
@@ -44,11 +44,11 @@ public class Gar2_Hose extends Furniture implements Climbable {
         
         return this.actDialog;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public Direction getDir() {
        return Direction.DOWN;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

@@ -18,7 +18,7 @@ import A_Super.Unmoveable;
  */
 public class My18_Pedestal extends Furniture implements Unmoveable {
     private boolean hasStone;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public My18_Pedestal () {
         super();
 
@@ -31,12 +31,12 @@ public class My18_Pedestal extends Furniture implements Unmoveable {
         this.addNameKeys("(?:sandstone )?pedestal");
         this.addUseKeys(ANYTHING);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.hasStone ? "The iridescent stone sits flush into the indentation." : 
                                this.description;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.toString().equals(IRIDESCENT_JEWEL)) {
             this.hasStone = true;
@@ -53,7 +53,7 @@ public class My18_Pedestal extends Furniture implements Unmoveable {
         else 
             return this.useDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

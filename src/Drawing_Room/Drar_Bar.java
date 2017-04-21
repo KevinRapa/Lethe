@@ -17,5 +17,5 @@ public class Drar_Bar extends SearchableFurniture {
         this.addActKeys(SITPATTERN, "drink");
         this.addNameKeys("bar|shelf|alcohol|wine|beer|liquor");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -4,7 +4,6 @@ import A_Main.GUI;
 import A_Main.Menus;
 import A_Main.Player;
 import A_Super.Direction;
-import A_Super.Item;
 import A_Super.Room;
 
 /**
@@ -12,12 +11,10 @@ import A_Super.Room;
  */
 public class Hades extends Room {
     private final String END_DIALOG;
-    private final Item TYPHOS;
-// ============================================================================    
-    public Hades(String name, String ID, Item typhos) {
+//-----------------------------------------------------------------------------    
+    public Hades(String name, String ID) {
         super(name, ID);
         
-        this.TYPHOS = typhos;
         this.END_DIALOG = 
                 "An echoing voice thunders through the crimson skies. It " +
                 "is directed at you. \"Another adventurer comes! Welcome " +
@@ -27,14 +24,14 @@ public class Hades extends Room {
                 "by the fruits of them, for only the wealthy live " +
                 "comfortably here...\"";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.EAST)
             return "Some invisible force prevents you from passing through the gate.";
         else
             return bumpIntoWall();
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID)) {
             GUI.roomOut(STD_RM_OUT);
@@ -52,7 +49,7 @@ public class Hades extends Room {
         
         return STD_RM_OUT;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     private String calculateScore(int score) {
         if (score >= 15000) {
             return 
@@ -109,5 +106,5 @@ public class Hades extends Room {
                 "be sent Cocytus, where you shall swim in " +
                 "lamentation for all eternity.\"";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

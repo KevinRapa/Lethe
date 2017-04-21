@@ -31,7 +31,7 @@ public class Cave extends Room {
             "data" + SEP + "ambience" + SEP + "caveDistortion.wav");
     
     protected static Clip clip;
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Cave(String ID, Furniture wall, Furniture ceiling) {
         super("Cave network", ID);
         int X = COORDS[2], Y = COORDS[1]; // X and Y coordinates of this room.
@@ -68,7 +68,8 @@ public class Cave extends Room {
         
         descL.append(" The torch lights a short way ahead. This area is much "
                  + "like above, though the walls and floor are plain rock. "
-                 + "You can hear an awful noise deep within the tunnels. To the ");
+                 + "You can hear an awful noise deep within the tunnels. "
+                 + "                                         To the ");
         
         /* 
            Builds the lit description of the room. Here, the constructor figures
@@ -98,13 +99,13 @@ public class Cave extends Room {
         // Figures out the directions in which there are more catacombs.
         for (int[] j : adjCaveCoords) {
             if (j[0] == Y - 1)
-                dirs.add("north");
+                dirs.add("NORTH");
             else if (j[0] == Y + 1)
-                dirs.add("south");
+                dirs.add("SOUTH");
             else if (j[1] == X - 1)
-                dirs.add("west");
+                dirs.add("WEST");
             else if (j[1] == X + 1)
-                dirs.add("east");
+                dirs.add("EAST");
         }
 
         // Appends the correct directions to descLit.
@@ -145,14 +146,14 @@ public class Cave extends Room {
         
         this.addFurniture(new Floor("The floor is cold hard rock and uninteresting."), wall, ceiling);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
-        if (Player.hasItem(HAND_TORCH))
+        if (!Player.hasItem(HAND_TORCH))
             return distortDescription(DISTANCE, descLit);
         else
             return distortDescription(DISTANCE, description);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     /**
      * Plays hellish music at volume respective to player's distance from MS65.
      * @return distorted room name.
@@ -179,7 +180,7 @@ public class Cave extends Room {
         return Player.hasItem(HAND_TORCH) ? 
                 distortDescription(DISTANCE, STD_RM_OUT) : "???";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     /**
      * Scrambles the string to a degree based on DISTANCE.
      * @param degree the degree to which distort the description.
@@ -201,16 +202,16 @@ public class Cave extends Room {
 
         return new String(charArray);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     protected static void swapChars(char[] array, int i, int j) {
         char temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     public static void stopClip() {
         if (clip != null)
             clip.stop();
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

@@ -5,7 +5,7 @@ import A_Super.StaticWndw;
  * @author Kevin Rapa
  */
 public class Bha3_Window extends StaticWndw {
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public Bha3_Window() {
         super();
         
@@ -14,5 +14,5 @@ public class Bha3_Window extends StaticWndw {
                          + "You puzzle at the fact, thinking you were much farther "
                          + "from the castle at this point.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

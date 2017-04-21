@@ -16,6 +16,6 @@ public class Mha3_Window extends Window {
                       + "You can see the south end of the courtyard. The ruined "
                       + "fountain with the soldier statue sits in the center.";
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }
 

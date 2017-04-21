@@ -7,7 +7,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Intr_Wheel extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Intr_Wheel () {
         super();
         this.searchable = false;
@@ -27,7 +27,7 @@ public class Intr_Wheel extends Furniture implements Unmoveable {
         this.addActKeys(GETPATTERN);
         this.addActKeys("stop");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

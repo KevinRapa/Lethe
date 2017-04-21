@@ -7,7 +7,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Cry2_Altar extends SearchableFurniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cry2_Altar (Item... items) {
         super(items);
         this.description = "The altar is on a stone table. The altar consists "
@@ -21,7 +21,7 @@ public class Cry2_Altar extends SearchableFurniture implements Unmoveable {
                          "candles?", "flora", "effigy", "surface");
         this.addActKeys("worship", "kneel", "sacrifice", "pray");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

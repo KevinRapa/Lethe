@@ -7,7 +7,7 @@ import static A_Main.Names.WEAPON;
  * @author Kevin Rapa
  */
 abstract public class Column extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Column () {
         super();
 
@@ -19,7 +19,7 @@ abstract public class Column extends Furniture implements Unmoveable {
         this.addUseKeys(ANYTHING);
         this.addActKeys(CLIMBPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON))
             return this.useDialog;
@@ -28,7 +28,7 @@ abstract public class Column extends Furniture implements Unmoveable {
         else
             return DEFAULT_USE;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

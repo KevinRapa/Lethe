@@ -10,5 +10,5 @@ public class Bba_Rlng extends Railing {
                          + "drop into the black sea.";
         this.addNameKeys("(?:thick )?(?:stone |granite )?railing");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

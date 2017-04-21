@@ -13,5 +13,5 @@ public class Rotu_Sky extends Furniture implements Unmoveable {
         this.searchDialog = "Don't be silly.";
         this.addNameKeys("(?:dark )?sky");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

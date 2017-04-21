@@ -14,7 +14,7 @@ public class Cou3 extends Room{
     public Cou3(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID)) {
             AudioPlayer.playEffect(7);
@@ -23,6 +23,6 @@ public class Cou3 extends Room{
         }               
         return STD_RM_OUT;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

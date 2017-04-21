@@ -12,7 +12,7 @@ import A_Main.Player;
  */
 abstract public class LockedContainer extends SearchableFurniture implements Openable, Moveable {
     private final String KEY;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public LockedContainer(String key, Item ... items) {
         super(items);
         
@@ -21,7 +21,7 @@ abstract public class LockedContainer extends SearchableFurniture implements Ope
 
         this.addActKeys("unlock");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         if (Player.hasKey(KEY) && ! this.searchable)
             return this.unlock();
@@ -30,7 +30,7 @@ abstract public class LockedContainer extends SearchableFurniture implements Ope
         else
             return denyEntry();
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {            
         if (Player.hasKey(KEY) && ! this.searchable)
             return this.unlock();
@@ -39,18 +39,18 @@ abstract public class LockedContainer extends SearchableFurniture implements Ope
         else 
             return denyEntry();
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     private String unlock() {
         this.searchable = true; 
         AudioPlayer.playEffect(13);
         return this.actDialog;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     private String denyEntry() {
         AudioPlayer.playEffect(4);
         return this.searchDialog;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

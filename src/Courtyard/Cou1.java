@@ -15,7 +15,7 @@ public class Cou1 extends Room{
     public Cou1(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.EAST) {
             AudioPlayer.playEffect(6);
@@ -26,5 +26,5 @@ public class Cou1 extends Room{
         else 
             return bumpIntoWall();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

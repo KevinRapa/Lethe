@@ -17,6 +17,6 @@ public class Gal_Dome extends Furniture {
         this.addUseKeys(STONE_BLOCK, RED_BALL, CUE_BALL, ROCK);
         this.addActKeys("shatter");
         this.addNameKeys("(?:glass )?dome");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

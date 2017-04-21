@@ -15,7 +15,7 @@ import A_Super.Unmoveable;
 public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
     private final Gar4_Plaque PLQ_REF;
     private final Item PLT_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar4_Planter (Furniture plaque, Item plate, Item... items) {
         super(items);
         this.PLQ_REF = (Gar4_Plaque)plaque;
@@ -30,7 +30,7 @@ public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
         this.addActKeys(GETPATTERN);
         this.addActKeys("dig", "plant", "garden", "shovel");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {      
         if (key.equals("garden") || key.equals("plant")) {
            return "You aren't a gardener!";
@@ -55,17 +55,17 @@ public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
                 return "You have nothing to dig with, and your stocky hands are terrible for digging.";
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         return this.interact("dig");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String getSearchDialog() {
         this.searchable = this.PLQ_REF.isMoved();
     
         return searchable ? "You look in the planter" : this.searchDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

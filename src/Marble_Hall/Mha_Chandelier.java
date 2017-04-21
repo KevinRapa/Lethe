@@ -17,6 +17,6 @@ public class Mha_Chandelier extends Furniture {
         this.addActKeys("hang", "swing");
         this.addNameKeys("(?:silver )?(?:chandelier|light)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

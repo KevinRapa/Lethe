@@ -7,7 +7,7 @@ import A_Super.Furniture;
  */
 public class Gar4_Plaque extends Furniture {
     private boolean isMoved;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar4_Plaque () {
         super();
         this.isMoved = false;
@@ -19,14 +19,14 @@ public class Gar4_Plaque extends Furniture {
         this.addNameKeys("(?:small )?plaque");
         this.addActKeys(MOVEPATTERN, "lift", "read");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         String result = this.isMoved ? 
                 "You have already moved the plaque." : this.searchDialog;
         this.isMoved = true;
         return result;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("read"))
             return this.description;
@@ -40,11 +40,11 @@ public class Gar4_Plaque extends Furniture {
                 return "You have already moved the plaque.";
         }
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     public boolean isMoved() {
         return this.isMoved;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

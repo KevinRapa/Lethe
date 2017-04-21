@@ -15,7 +15,7 @@ public class Rqua_Panel extends Furniture {
     private boolean lifted;
     private final Key STUDKEY_REF;
     private final Rqua_Bed BED_REF;
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     public Rqua_Panel(Key studKey, Furniture bed) {
             super();
             
@@ -34,7 +34,7 @@ public class Rqua_Panel extends Furniture {
             this.addActKeys("pry", "move", "lift", "remove");
             this.addUseKeys(CROWBAR);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         String rep = "You have already removed the tile.";
         
@@ -49,7 +49,7 @@ public class Rqua_Panel extends Furniture {
         
         return rep;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
         if (BED_REF.isMoved() && ! this.lifted)
             return this.actDialog;
@@ -58,6 +58,6 @@ public class Rqua_Panel extends Furniture {
         
         return "You will try that, but there is a bed in the way.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

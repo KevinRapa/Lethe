@@ -38,11 +38,11 @@ public class Gal2_Statue extends SearchableFurniture {
         this.addNameKeys("(?:grandiose )?statue", "(?:statue(?:'s)? )?(?:hand|palm)");
         this.addUseKeys(CRYSTAL_ORB);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public int getState() {
         return this.level;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public String activate(char color) {
         if (containsItem(CRYSTAL_ORB) && level != 3) {
             
@@ -69,7 +69,7 @@ public class Gal2_Statue extends SearchableFurniture {
         
         return "The orb sits comfortably in the statue's palm.";
     }    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private String raise() {
         switch (level++) { 
             case 0:
@@ -85,7 +85,7 @@ public class Gal2_Statue extends SearchableFurniture {
                      + "second floor.";
         } 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.containsItem(CRYSTAL_ORB)) {   
             switch (this.level) {
@@ -103,7 +103,7 @@ public class Gal2_Statue extends SearchableFurniture {
         }
         return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         String rep = this.searchDialog;
         
@@ -115,30 +115,30 @@ public class Gal2_Statue extends SearchableFurniture {
         }                
         return rep; 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         Player.getInv().give(item, this.inv);
         return NOTHING;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public void addDragonRef(Furniture dragon) {
         ((Stat_Inv)this.inv).GAL1_DRGN = (Gal1_Dragon)dragon;
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     public void reset() {
         if (this.level <= 2)
             this.level = 0;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private class Stat_Inv extends Inventory { 
         public Gal1_Dragon GAL1_DRGN;  
 
         public Stat_Inv(Item ... items) {
             super(items);
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public boolean add(Item item) {
             if (item.toString().equals(CRYSTAL_ORB)) {
                 this.CONTENTS.add(item);
@@ -156,7 +156,7 @@ public class Gal2_Statue extends SearchableFurniture {
                 return false;
             }
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public void remove(Item removeThis) {  
             this.CONTENTS.remove(removeThis);
             
@@ -164,7 +164,7 @@ public class Gal2_Statue extends SearchableFurniture {
                 GUI.out(activate(GAL1_DRGN.getBeam()));
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

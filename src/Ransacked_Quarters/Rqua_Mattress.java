@@ -16,6 +16,6 @@ public class Rqua_Mattress extends Furniture implements Moveable{
         this.addNameKeys("mattress", "debris-covered mattress");
         this.addActKeys(SITPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

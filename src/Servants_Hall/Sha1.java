@@ -13,26 +13,26 @@ import A_Super.Room;
  */
 public class Sha1 extends Room {
     private final String DESC_2;
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public Sha1(String name, String ID) {
         super(name, ID);
 
-        this.DESC_2 = 
-                this.description.replaceFirst("a small door", "an open doorway");
+        this.DESC_2 = this.description != null ?
+                this.description.replaceFirst("a small door", "an open doorway") : null;
     }
-/*----------------------------------------------------------------------------*/        
+//-----------------------------------------------------------------------------        
     @Override public String getBarrier(Direction dir) {   
         if (dir == Direction.WEST)
             return "This door's knob is missing.";
         else 
             return bumpIntoWall();
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String getDescription() {
         if (! this.hasFurniture("west door"))
             return this.DESC_2;
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

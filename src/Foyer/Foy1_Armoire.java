@@ -9,7 +9,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Foy1_Armoire extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Foy1_Armoire (Item... items) {
         super(items);
         
@@ -26,14 +26,14 @@ public class Foy1_Armoire extends SearchableFurniture implements Openable, Movea
         this.addUseKeys(ANYTHING);
         this.addActKeys(JOSTLEPATTERN);
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON))
             return this.actDialog;
         else
             return DEFAULT_USE;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

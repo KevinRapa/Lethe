@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Labo_Shelf extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Shelf (Item... items) {
         super(items);
         
@@ -17,7 +17,7 @@ public class Labo_Shelf extends SearchableFurniture implements Openable, Moveabl
 
         this.addNameKeys("(?:metal )?shelf");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

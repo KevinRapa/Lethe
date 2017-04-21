@@ -63,7 +63,7 @@ public class Obs1_Statues extends Furniture {
         this.addNameKeys("statues?", "ring(?: of statues)?", "gods?", "goddess(?:es)?");
         this.addActKeys(MOVEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         String rep = NOTHING, choice;
         
@@ -80,7 +80,7 @@ public class Obs1_Statues extends Furniture {
         
         return NOTHING;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         String choice, action, slot, rep = NOTHING;
         int statNum;
@@ -138,7 +138,7 @@ public class Obs1_Statues extends Furniture {
         
         return rep;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private String getArray() {
         String a = STATS[0].toString();
         String b = STATS[1].toString();
@@ -158,7 +158,7 @@ public class Obs1_Statues extends Furniture {
              + "{"+f+"}       {"+d+"} " +
                "                 \\__{"+e+"}";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private void moveStat(String stat) {
         AudioPlayer.playEffect(44);
         int i = this.getIndex(stat);
@@ -168,7 +168,7 @@ public class Obs1_Statues extends Furniture {
         else
             this.moveThese(1, 3, 5, 7);    
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private void rotateStat(String stat) {
         AudioPlayer.playEffect(44);
         switch (getIndex(stat)) {
@@ -182,7 +182,7 @@ public class Obs1_Statues extends Furniture {
                 this.switchThese(6, 7);
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public int getIndex(String stat) {
         int current = 0;
 
@@ -194,14 +194,14 @@ public class Obs1_Statues extends Furniture {
              
         return -1;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     // Swaps two adjacent statues that are connected.
     private void switchThese(int first, int second) {
         Furniture temp = this.STATS[first];
         this.STATS[first] = this.STATS[second];
         this.STATS[second] = temp;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     // Moves every other statue starting from first to the right.
     private void moveThese(int first, int second, int third, int fourth) {
         Furniture temp = this.STATS[first];
@@ -210,7 +210,7 @@ public class Obs1_Statues extends Furniture {
         this.STATS[third] = this.STATS[second];
         this.STATS[second] = temp; 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     // Rotates every statue one to the right
     private void spinArray() {
         AudioPlayer.playEffect(44);
@@ -222,7 +222,7 @@ public class Obs1_Statues extends Furniture {
         }
         this.STATS[1] = temp; 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private boolean checkSolved() {
         for (int index = 0; index < 8; index++) {
             if (! STATS[index].toString().matches(SOLUTION[index]))
@@ -231,11 +231,11 @@ public class Obs1_Statues extends Furniture {
         
         return true;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public void unlock() {
         this.locked = false;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private Furniture getStatRef(String name) {
         for (Furniture s : this.STATS)
             if (s.toString().equals(name))
@@ -243,5 +243,5 @@ public class Obs1_Statues extends Furniture {
         
         return null; // Shouldn't happen because name must be a number from 0 to 8
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -18,6 +18,6 @@ public class Par_BottleRecipe extends Note {
                          + "The exact quantity of fire salts is up for debate. "
                          + "As for all mandragora, take care in growing them.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }
 

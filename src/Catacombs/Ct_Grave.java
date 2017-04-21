@@ -9,7 +9,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Ct_Grave extends SearchableFurniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Ct_Grave (Item... items) {
         super(items);
         
@@ -20,7 +20,7 @@ public class Ct_Grave extends SearchableFurniture {
 
         this.addNameKeys("(?:scattered )?(?:crevices?|graves?|holes?)");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

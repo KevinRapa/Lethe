@@ -19,16 +19,16 @@ public class Sear_Wood extends Furniture implements Gettable {
         this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:bits of )?(?:burnt )?wood");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         return getIt();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getIt() {
         if (Player.getInv().add(WOOD_REF))
             return "You take a chunk of wood.";
         else
             return NOTHING;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -15,5 +15,5 @@ public class Lib1_Rack extends SearchableFurniture implements Unmoveable {
                           + "Here's what you find interesting: ";
         this.addNameKeys("(?:wood(?:en)? )?rack");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

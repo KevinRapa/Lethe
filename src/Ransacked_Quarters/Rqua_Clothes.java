@@ -9,7 +9,7 @@ import A_Super.Item;
 public class Rqua_Clothes extends Furniture {
     private final Item LINENS = 
             new Item("wrinkled sheet", "A carelessly thrown about bed linen that you found in the servant's wing.", 0);
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Rqua_Clothes () {
         super();
         
@@ -22,7 +22,7 @@ public class Rqua_Clothes extends Furniture {
         this.addActKeys(GETPATTERN);
         this.addActKeys("wear");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("wear"))
             return this.actDialog;
@@ -31,7 +31,7 @@ public class Rqua_Clothes extends Furniture {
         else
             return "You already carry enough useless sundries.";
     }
-    // ========================================================================       
+    //-------------------------------------------------------------------------       
 }
 
 

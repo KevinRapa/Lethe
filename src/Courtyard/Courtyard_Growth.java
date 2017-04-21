@@ -8,21 +8,21 @@ import A_Super.Item;
  */
 abstract public class Courtyard_Growth extends Furniture {
     protected String cutDialog;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Courtyard_Growth () {
         super();
 
         this.addUseKeys("\\w* (?:ax|sword)", SCYTHE, HAND_TORCH, HOE);
         this.addActKeys("grab|touch|hold", "cut|chop|prune|remove");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.matches("grab|touch|hold"))
             return this.actDialog;
         else
             return "With your hands???";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         String i = item.toString();
         
@@ -33,7 +33,7 @@ abstract public class Courtyard_Growth extends Furniture {
         else 
             return this.cutDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

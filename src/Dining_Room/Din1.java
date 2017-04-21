@@ -16,7 +16,7 @@ public class Din1 extends Room{
     public Din1(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID)) {
             AudioPlayer.playEffect(8);
@@ -25,6 +25,6 @@ public class Din1 extends Room{
         }    
         return STD_RM_OUT;
     }
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
 }
 

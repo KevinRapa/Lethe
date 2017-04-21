@@ -28,7 +28,7 @@ public class Catacomb extends Room {
     
     protected static final Random GENERATOR = new Random();
     protected static int[] jewelCoords;
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Catacomb(String ID, Furniture wall, Furniture ceiling) {
         super("Catacombs", ID);
 
@@ -37,7 +37,8 @@ public class Catacomb extends Room {
         builder.append("The torch offers a small radius of light to see. You ")
                .append("are in a thin rocky tunnel with scattered crevices dug ")
                .append("into the walls. These are definitely graves. You shudder, ")
-               .append("perhaps from the cold... To your ");
+               .append("perhaps from the cold...                              ")
+               .append("                                       To your ");
         
         /* 
            Builds the lit description of the room. Here, the constructor figures
@@ -68,13 +69,13 @@ public class Catacomb extends Room {
         // Figures out the directions in which there are more catacombs.
         for (int[] j : adjCatacombCoords) {
             if (j[0] == Y - 1)
-                dirs.add("north");
+                dirs.add("NORTH");
             else if (j[0] == Y + 1)
-                dirs.add("south");
+                dirs.add("SOUTH");
             else if (j[1] == X - 1)
-                dirs.add("west");
+                dirs.add("WEST");
             else if (j[1] == X + 1)
-                dirs.add("east");
+                dirs.add("EAST");
         }
 
         // Appends the correct directions to descLit.
@@ -101,19 +102,19 @@ public class Catacomb extends Room {
         
         if (adjOtherCoords != null) {
             if (adjOtherCoords[0] == Y - 1) {
-                builder.append("To the north");
+                builder.append("To the NORTH");
                 door = new Ct_Door(Direction.NORTH);
             }
             else if (adjOtherCoords[0] == Y + 1){
-                builder.append("To the south");
+                builder.append("To the SOUTH");
                 door = new Ct_Door(Direction.SOUTH);
             }
             else if (adjOtherCoords[1] == X - 1) {
-                builder.append("To the west");
+                builder.append("To the WEST");
                 door = new Ct_Door(Direction.WEST);
             }
             else {
-                builder.append("To the east");
+                builder.append("To the EAST");
                 door = new Ct_Door(Direction.EAST);
             }
             
@@ -138,13 +139,13 @@ public class Catacomb extends Room {
             this.addFurniture(door);
         
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return Player.hasItem(HAND_TORCH) ? this.descLit : this.description;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         return Player.hasItem(HAND_TORCH) ? STD_RM_OUT : "???";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

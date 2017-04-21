@@ -22,7 +22,7 @@ import java.util.HashMap;
  * @author Kevin Rapa
  */
 public class Sew2_Valves extends Furniture implements Resetable {
-    // =======================================
+    //----------------------------------------
     private enum State {
         // Represents an on and off state and
         // an appropriate character image of
@@ -31,7 +31,7 @@ public class Sew2_Valves extends Furniture implements Resetable {
         
         private final String DIAL;
         private final int STATE;
-        // ===================================
+        //------------------------------------
         State(String dial, int state) {
             this.DIAL = dial;
             this.STATE = state;
@@ -43,7 +43,7 @@ public class Sew2_Valves extends Furniture implements Resetable {
             return this.STATE;
         }
     }
-    // =======================================
+    //----------------------------------------
     
     private final State[] VLVS = {State.OFF, State.OFF, State.OFF,
                                   State.OFF, State.OFF, State.OFF,
@@ -54,7 +54,7 @@ public class Sew2_Valves extends Furniture implements Resetable {
     private final int[] SOLUTION = {0, 0, 1, 
                                     1, 1, 0, 
                                     0, 1, 1};
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sew2_Valves () {
         super();
 
@@ -71,7 +71,7 @@ public class Sew2_Valves extends Furniture implements Resetable {
         this.addNameKeys("(?:metal )?valves?", "console", "grid of valves", "(?:roman )?(?:numerals|numbers)");
         this.addActKeys(VALVEPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {    
         String ans;
         
@@ -88,7 +88,7 @@ public class Sew2_Valves extends Furniture implements Resetable {
         
         return this.actDialog;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private String printValves() {        
         String result = "       I     II   III\t\t" +
                         "      " + VLVS[0] + VLVS[1] + VLVS[2] + "\t" +
@@ -99,7 +99,7 @@ public class Sew2_Valves extends Furniture implements Resetable {
         
         return result;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private void turnValve(int v) {
         AudioPlayer.playEffect(17);
         
@@ -111,7 +111,7 @@ public class Sew2_Valves extends Furniture implements Resetable {
                 VLVS[v] = State.ON;
         }
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private void turnValve(String v) {
         AudioPlayer.playEffect(17);
         int valveNum = MAP.get(v);
@@ -124,7 +124,7 @@ public class Sew2_Valves extends Furniture implements Resetable {
                 VLVS[valveNum] = State.ON;
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public boolean solved() {
         for (int v = 0; v < 9; v++) {
             if (this.SOLUTION[v] != this.VLVS[v].state())
@@ -132,12 +132,12 @@ public class Sew2_Valves extends Furniture implements Resetable {
         }
         return true;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public void reset() {
         for (int i = 0; i < this.VLVS.length; i++)
             this.VLVS[i] = State.OFF;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     
 }
 

@@ -11,5 +11,5 @@ public class Foy3_Stairs extends DoubleStaircase {
         this.searchDialog = "In searching the stairs, you find it as clean and "
                           + "bare as the rest of this room.";  
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
 }

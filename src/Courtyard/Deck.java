@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class Deck {
     private final Stack<Card> DECK = new Stack<>(); // The stack of cards.
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Constructs a deck of cards.
      */
@@ -22,7 +22,7 @@ public class Deck {
                 this.DECK.push(new Card(rank + " of " + suit));
             }
     }  
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Shuffles the deck of cards.
      * Removes all the cards off the stack randomly into the array, then 
@@ -43,7 +43,7 @@ public class Deck {
         for (Card card : temp)
             this.DECK.push(card);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Removes a card from the top of this deck.
      * @return A card object.
@@ -51,5 +51,5 @@ public class Deck {
     public Card draw() {
         return this.DECK.pop();
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }

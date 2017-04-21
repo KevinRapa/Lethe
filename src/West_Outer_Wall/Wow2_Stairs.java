@@ -14,6 +14,6 @@ public class Wow2_Stairs extends Furniture {
         this.addNameKeys("staircase", "stairs", "steps");
         this.addActKeys(CLIMBPATTERN, "walk", "use");
     }
-/*----------------------------------------------------------------------------*/        
+//-----------------------------------------------------------------------------        
 }
 

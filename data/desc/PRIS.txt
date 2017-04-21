@@ -1,5 +1,5 @@
 You are in a room with 6 prison cells lining 
-the west and north. Metal doors lead both west 
+the east and north. Metal doors lead both west 
 and east. A large wooden table sits In the 
 center of the room. Several scattered standing 
 candelabras give a low level of light, just 

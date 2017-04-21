@@ -31,7 +31,7 @@ public class Gal1_Dragon extends Gal_LightMachine {
         addNameKeys("snake-like dragon(?: statue)?", "(?:dragon|statue)", "(?:dragon's |statue's )?mouth");
         this.inv = new Drgn_Inv(yellowFocus);    
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getDescription() {
         if (this.isOn) 
             return description.concat("with its two eyes lit. A light from within "
@@ -47,7 +47,7 @@ public class Gal1_Dragon extends Gal_LightMachine {
                     + "Careful inspection reveals two wires coming out the back. One leads "
                     + "behind the screen, the other behind the scroll.");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     public String switchEye(int i) {
         // 0 is left, 1 is right
         EYES[i] = ! EYES[i];
@@ -63,25 +63,25 @@ public class Gal1_Dragon extends Gal_LightMachine {
         else
             return rep;
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override protected String turnOn() {
         this.determineColor();
         this.isOn = true;       
         return mode + " emits from the dragon's mouth. " + GAL2_STAT_REF.activate(beam);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected void resetStatue() {
         this.GAL2_STAT_REF.reset();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     private class Drgn_Inv extends Inventory {   
         public Drgn_Inv(Item yellowFocus) {
             super();
             this.CONTENTS.add(yellowFocus);
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public boolean add(Item item) { 
             if (item.getType().equals(Names.FOCUS)) {
                 AudioPlayer.playEffect(43);
@@ -99,21 +99,21 @@ public class Gal1_Dragon extends Gal_LightMachine {
                 return false;
             }
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public void remove(Item removeThis) {
             this.CONTENTS.remove(removeThis);
             
             if (Gal1_Dragon.this.isOn)
                 this.trigger();
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         private void trigger() {
             determineColor();
             GUI.out(mode + " emits from the dragon's mouth. " + GAL2_STAT_REF.activate(beam));
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }
 

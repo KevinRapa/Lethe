@@ -27,7 +27,7 @@ public class Ant_Casket extends SearchableFurniture implements Openable {
         this.addNameKeys("(?:stone )?(?:casket|coffin)", "keyholes?", "holes?", "lid");
         this.addUseKeys(KEY_OF_ANCESTRY, KEY_OF_INTELLECT, KEY_OF_CONTINUITY);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         String result = "You insert the key into one of its holes and turn it.";
         AudioPlayer.playEffect(51);
@@ -45,7 +45,7 @@ public class Ant_Casket extends SearchableFurniture implements Openable {
         else
             return result;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {    
         switch (this.numKeys) {
             case 1: 
@@ -58,14 +58,14 @@ public class Ant_Casket extends SearchableFurniture implements Openable {
                 return this.description;
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         if (this.searchable)
             return "You look inside the coffin.";
         else
             return this.searchDialog;
     } 
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 
 

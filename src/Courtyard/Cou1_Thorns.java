@@ -14,5 +14,5 @@ public class Cou1_Thorns extends Courtyard_Growth {
         this.actDialog = "That would probably hurt!";
         this.addNameKeys("thorns?", "(?:matted (?:up )?)?(?:multiflora rose|thorns)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

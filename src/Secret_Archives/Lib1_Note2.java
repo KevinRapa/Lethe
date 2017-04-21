@@ -17,6 +17,6 @@ public class Lib1_Note2 extends Note {
                 "one has a logical thought on it, but it does " +
                 "not seem to exist for water. A bright green " +
                 "or yellow light emanates from its bottom.";
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

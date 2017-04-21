@@ -15,22 +15,22 @@ public class Labo_Beaker extends Furniture {
         EMPTY("nothing."), 
         GEN_POTION("A mystery liquid."), 
         PHASE_DOOR("the phase door potion.");
-        // ==================================
+        //-----------------------------------
         private final String NAME;
-        // ==================================
+        //-----------------------------------
         Potion(String name) {
             this.NAME = name;
         }
-        // ==================================
+        //-----------------------------------
         @Override public String toString() {
             return NAME;
         } 
-        // ==================================
+        //-----------------------------------
     }
 
     private Potion mode;
     private final Item BEAKER_REF, PHASE_POTION, GENERIC_POTION;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Beaker (Item beakerItem) {
         super();
         
@@ -56,15 +56,15 @@ public class Labo_Beaker extends Furniture {
         this.addActKeys(GETPATTERN);
         this.addActKeys("drink");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.description.concat(mode.toString());
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return this.getDescription();
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("drink")) {
             return "You can't do that while it's still on the table!";
@@ -89,7 +89,7 @@ public class Labo_Beaker extends Furniture {
         else
             return "You are already carrying too much!";
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     public void setMode(int mode) {
         if (this.mode != Potion.EMPTY) {
             this.mode = Potion.GEN_POTION;
@@ -103,7 +103,7 @@ public class Labo_Beaker extends Furniture {
                     this.mode = Potion.PHASE_DOOR;
             }
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

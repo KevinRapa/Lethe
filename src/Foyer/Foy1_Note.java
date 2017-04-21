@@ -12,6 +12,6 @@ public class Foy1_Note extends Note {
                 + "misshapen and scribbled in meandering lines across the "
                 + "page. You can make out a bit. The letter appears to be "
                 + "expressing thanks and mentions refreshments nearby...";
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

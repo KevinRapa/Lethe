@@ -13,7 +13,7 @@ public class Sew0_Stairs extends Staircase {
                          + "The stairs sit right at the tunnel's end and lead "
                          + "upwards.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 
 

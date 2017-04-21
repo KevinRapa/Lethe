@@ -26,11 +26,11 @@ public class Gal3_Rope extends Furniture {
             this.addUseKeys("katana", "(?:silver|rusty|broken) sword", "(?:war|battle) ax");
             this.addNameKeys("rope");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getDescription() {
         return this.cut ? "The rope is now cut." : this.description;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String interact(String key) { 
         if (! this.cut) {
             if (key.equals("cut")) {
@@ -51,7 +51,7 @@ public class Gal3_Rope extends Furniture {
         else
             return "The rope is cut already.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         REF.lower();
         this.cut = true;
@@ -60,11 +60,11 @@ public class Gal3_Rope extends Furniture {
              + "The ladder drops down into the room, "
              + "giving access to the loft.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private boolean detectItem() {
         // Detects if you have a blade to cut the rope with.
         Item item = Player.getInv().get("katana|.+(?:sword|ax)");
         return (! item.equals(Inventory.NULL_ITEM));
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -11,7 +11,7 @@ import A_Super.NonPlayerCharacter;
  */
 public class Pris_Ghost extends NonPlayerCharacter {
     private boolean pleased;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Pris_Ghost () {
         super();
 
@@ -27,7 +27,7 @@ public class Pris_Ghost extends NonPlayerCharacter {
 
         this.addNameKeys("(?:spooky )?(?:sitting )?(?:blue )?(?:ghost|figure|person|apparition)", "him");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public String useEvent(Item item) {
         if (item.toString().equals(SHINY_WATCH)) {
             Player.getInv().remove(item);
@@ -42,7 +42,7 @@ public class Pris_Ghost extends NonPlayerCharacter {
         else
             return "\"I appreciate the continued gifts, but I'm fine. Thank you.\"";
     }    
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public String interact(String key) {   
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
@@ -62,7 +62,7 @@ public class Pris_Ghost extends NonPlayerCharacter {
                 "the stench of hell is the strongest.\"";
         }    
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override protected String converse1() {
         firstTime = false;
         
@@ -104,7 +104,7 @@ public class Pris_Ghost extends NonPlayerCharacter {
                "know the word's meaning any longer. All I know of myself " + 
                "is my name, Hypnos.\"";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override protected String converse2() {
         this.pleased = true;
         
@@ -130,7 +130,7 @@ public class Pris_Ghost extends NonPlayerCharacter {
                "into Kampe's quarters. Ghosts do not work that way! Now " +
                "thank you, my friend.\"";
     }
-    // ========================================================================                 
+    //-------------------------------------------------------------------------                 
 }
 
 

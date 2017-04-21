@@ -16,7 +16,7 @@ public class Gal1 extends Room{
     public Gal1(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getDescription() {
         if (! this.hasFurniture("katana")) {
             return "You find yourself in a small, one-story room adjoining a " +
@@ -31,5 +31,5 @@ public class Gal1 extends Room{
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
 }

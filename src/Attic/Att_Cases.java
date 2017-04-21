@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Att_Cases extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Att_Cases (Item ... items) {
         super(items);
         
@@ -19,7 +19,7 @@ public class Att_Cases extends SearchableFurniture implements Openable, Moveable
         this.addNameKeys("(?:suit)?cases?", "piles");
         this.addActKeys(GETPATTERN);
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

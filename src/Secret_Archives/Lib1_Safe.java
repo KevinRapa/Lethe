@@ -11,5 +11,5 @@ public class Lib1_Safe extends Safe {
                          + "carved on its surface. It says... \"u wrote "
                          + "the code in your notes. remember?\"";
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

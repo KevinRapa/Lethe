@@ -5,7 +5,7 @@ import A_Super.StaticWndw;
  * @author Kevin Rapa
  */
 public class Chs_Windows extends StaticWndw {
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public Chs_Windows(String NAME) {
         super();
         this.escapeDialog = "You could probably use your weight to break through... but aren't too keen on the idea.";
@@ -16,5 +16,5 @@ public class Chs_Windows extends StaticWndw {
                          + "hues against the inner tower wall.";
         this.addNameKeys("stained glass windows?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

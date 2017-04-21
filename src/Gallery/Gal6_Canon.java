@@ -36,7 +36,7 @@ public class Gal6_Canon extends Gal_LightMachine {
         this.addUseKeys(CHARGED_BATTERY, DEAD_BATTERY);
         this.inv = new Cnn_Inv();       
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getDescription() {   
         if (containsItem(CHARGED_BATTERY)) 
             return "The cannon is blinking and making bleeping noises. "
@@ -44,25 +44,25 @@ public class Gal6_Canon extends Gal_LightMachine {
         else
             return this.description; 
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override protected String turnOn() {
         this.determineColor();
         this.isOn = true;       
         return "The lights on the cannon light up and start bleeping. " + mode +
                " emits from the barrel. " + STAT.activate(beam);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected void resetStatue() {
         // Do nothing. Once Gal 7 statue raises a level, it can't go back down.
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/     
+//-----------------------------------------------------------------------------     
     private class Cnn_Inv extends Inventory{
         public Cnn_Inv() {
             super();
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public boolean add(Item item) {   
             if (item.getType().equals(Names.FOCUS)) {
                 AudioPlayer.playEffect(43);
@@ -92,7 +92,7 @@ public class Gal6_Canon extends Gal_LightMachine {
                 return false;
             }
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public void remove(Item item) {
             this.CONTENTS.remove(item);
             
@@ -102,13 +102,13 @@ public class Gal6_Canon extends Gal_LightMachine {
             else if (Gal6_Canon.this.isOn) 
                 this.trigger();
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         private void trigger() { 
             determineColor();
             GUI.out(mode + " shoots out the front of the cannon. " + STAT.activate(beam));
         }   
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/         
+//-----------------------------------------------------------------------------         
 }

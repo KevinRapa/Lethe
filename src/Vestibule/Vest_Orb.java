@@ -7,7 +7,7 @@ import A_Super.NonPlayerCharacter;
  * @author Kevin Rapa
  */
 public class Vest_Orb extends NonPlayerCharacter {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Vest_Orb () {
         super();
         
@@ -31,7 +31,7 @@ public class Vest_Orb extends NonPlayerCharacter {
         this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:dusty )?(?:glass )?orb");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String interact(String key) {       
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
@@ -42,7 +42,7 @@ public class Vest_Orb extends NonPlayerCharacter {
         else
             return converse2();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override protected String converse1() {
         GUI.menOut(Menus.ENTER);
         GUI.out("You open your mouth and utter a \"hullo\".");
@@ -93,15 +93,15 @@ public class Vest_Orb extends NonPlayerCharacter {
                 "around if you can figure out that door... I feel " +
                 "tired though. I'm sure you can find something to help you out.\"";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override protected String converse2() {
         return "I'm sure you can find something to help you out.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String moveIt() {
         return "\"I am not a mere household decoration!\" The orb speaks. \"Be respectful and talk to me!\"";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

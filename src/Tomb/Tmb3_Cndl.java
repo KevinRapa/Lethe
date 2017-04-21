@@ -7,7 +7,7 @@ import A_Super.Gettable;
  * @author Kevin Rapa
  */
 public class Tmb3_Cndl extends Furniture implements Gettable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tmb3_Cndl () {
         super();
         
@@ -23,14 +23,14 @@ public class Tmb3_Cndl extends Furniture implements Gettable {
         this.addActKeys(FEELPATTERN);
         this.addNameKeys("(?:standing )?(?:wax )?candles?");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String interact(String key) {
         if (key.matches(FEELPATTERN))
             return this.actDialog;
         else
             return getIt("The candles are melted to the surface. You can't pick any up.");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

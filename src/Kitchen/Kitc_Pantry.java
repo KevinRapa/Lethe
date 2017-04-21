@@ -14,5 +14,5 @@ public class Kitc_Pantry extends SearchableFurniture implements Openable, Moveab
         
         this.addNameKeys("(?:tall )?pantry");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

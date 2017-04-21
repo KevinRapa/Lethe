@@ -15,7 +15,7 @@ public class Mha1 extends Room{
     public Mha1(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID)) {
             GUI.out("As soon as you enter, you catch a glimpse of a white "
@@ -24,5 +24,5 @@ public class Mha1 extends Room{
         }    
         return STD_RM_OUT;
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
 }

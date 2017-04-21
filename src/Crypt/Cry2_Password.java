@@ -13,7 +13,7 @@ import A_Super.Furniture;
  */
 public class Cry2_Password extends Furniture {
     private final Cry1_Statue CRY1_STAT;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cry2_Password (Furniture stat) {
         super();
         
@@ -29,7 +29,7 @@ public class Cry2_Password extends Furniture {
         this.addUseKeys(ANYTHING);
         this.addActKeys("talk", "speak", "say", "announce", "whisper", "it");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {    
         if (this.CRY1_STAT.isSolved() && ! Player.getPos().isAdjacent(Id.CAS1)) {
             Player.getPos().addAdjacent(Id.CAS1);
@@ -40,7 +40,7 @@ public class Cry2_Password extends Furniture {
         else
             return "You speak before the coffin with no effect.";
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
 }
 
 

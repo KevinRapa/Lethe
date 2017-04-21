@@ -15,13 +15,13 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Pris_Cells extends Furniture implements Openable, Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Pris_Cells () {
         super();
         
         this.addNameKeys("(?:gated )?(?:prison )?cells?");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         GUI.out("There are 6 cells in this room. Each one is labeled with "
               + "a number. Inspect which one?");
@@ -31,11 +31,11 @@ public class Pris_Cells extends Furniture implements Openable, Unmoveable {
         return ((Pris)Player.getRoomObj(Id.PRIS))
                 .getCellDescription(Integer.parseInt(ans));
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return this.getDescription();
     }
-    // ========================================================================       
+    //-------------------------------------------------------------------------       
 }
 
 

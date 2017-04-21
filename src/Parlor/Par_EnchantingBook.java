@@ -49,6 +49,6 @@ public class Par_EnchantingBook extends Book {
                      + "uneccessary for a proper bind. This is the only plague of the science "
                      + "to date, for true enchanters do not yearn for superfluous effects.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }
 

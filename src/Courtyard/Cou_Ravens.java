@@ -6,7 +6,7 @@ import A_Super.Gettable;
  * @author Kevin Rapa
  */
 public class Cou_Ravens extends Furniture implements Gettable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cou_Ravens () {
         super();
         
@@ -18,7 +18,7 @@ public class Cou_Ravens extends Furniture implements Gettable {
         this.addNameKeys("ravens?");
         this.addActKeys("catch", "speak|talk|converse|chat|greet|listen");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("catch"))
             return "You lack the reflexes to do so.";
@@ -27,7 +27,7 @@ public class Cou_Ravens extends Furniture implements Gettable {
         else
             return this.actDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

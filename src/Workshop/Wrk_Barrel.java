@@ -14,5 +14,5 @@ public class Wrk_Barrel extends SearchableFurniture implements Openable, Moveabl
         this.searchDialog = "You open the lid and peer inside.";
         this.addNameKeys("(?:wood(?:en)? )?barrel");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -6,7 +6,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Cs35_Torches extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cs35_Torches () {
         super();
 
@@ -20,14 +20,14 @@ public class Cs35_Torches extends Furniture {
         this.addActKeys("touch");
         this.addUseKeys(HAND_TORCH);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public String interact(String key) {
         if (key.equals("touch"))
             return this.actDialog;
         else
             return "It's a standing torch. It's too large and heavy to pick up.";
     }
-    // ========================================================================         
+    //-------------------------------------------------------------------------         
 }
 
 

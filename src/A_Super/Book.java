@@ -22,17 +22,17 @@ public class Book extends Note {
         this.useDialog = "You close the book.";
         this.PAGE_LIST = new String[num];
     }   
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDesc() {
         this.Read();
         GUI.clearDialog();
         return this.useDialog; 
     }          
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent() {
         return this.getDesc();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * Repeatedly asks player to flip through pages in the book until 'no'
      * or a blank string is entered. Closes the book at end of pages.
@@ -61,5 +61,5 @@ public class Book extends Note {
             }
         } while (Player.answeredYes(choice));      
     }
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
 }

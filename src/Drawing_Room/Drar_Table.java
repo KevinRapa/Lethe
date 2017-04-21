@@ -18,7 +18,7 @@ public class Drar_Table extends SearchableFurniture implements Moveable {
         this.addUseKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:low )?(?:coffee )?table");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         if (GHOST_REF.firstTime())
             return "Ignoring the ghost completely, you comb the table's "
@@ -26,5 +26,5 @@ public class Drar_Table extends SearchableFurniture implements Moveable {
         
         return this.searchDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

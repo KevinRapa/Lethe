@@ -12,9 +12,9 @@ public class Stud_Fireplace extends Fireplace {
                      + "ornate wood. 'Magnificent!' you think to yourself. Its "
                      + "glow tones the room in a warm sepia.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

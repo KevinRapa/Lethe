@@ -14,5 +14,5 @@ public class Gal5_Display extends SearchableFurniture implements Openable, Movea
                           + "case.";
         this.addNameKeys("(?:hinged )?(?:glass )?(?:display|case)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

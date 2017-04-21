@@ -13,5 +13,5 @@ public class Wow2_Armor extends Furniture {
         this.addNameKeys("(?:suit (?:of )?|plate )?armor", "(?:armor )?suit|gauntlet|hand");
         this.addActKeys("wear", "equip");
     }    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -18,12 +18,12 @@ import A_Main.Player;
  */
 public class Tow1 extends Lich_Room {
     private final Furniture TOW_PEDESTAL;
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Tow1(String name, String ID, Furniture pedestal) {
         super(name, ID);
         this.TOW_PEDESTAL = pedestal;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         String result = this.description.concat(TOW_PEDESTAL.getDescription());
         
@@ -33,7 +33,7 @@ public class Tow1 extends Lich_Room {
         else
             return result;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("As you enter the room, your head begins to throb slightly.");

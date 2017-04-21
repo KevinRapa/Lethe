@@ -12,5 +12,5 @@ public class Par2_Fireplace extends Furniture {
                              + "things lit?";
             this.searchDialog = "It's much too far away to do that...";
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

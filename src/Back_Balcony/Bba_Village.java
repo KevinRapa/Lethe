@@ -14,5 +14,5 @@ public class Bba_Village extends Furniture {
         this.addActKeys("visit", "return", "go");
         this.addNameKeys("village", "town");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

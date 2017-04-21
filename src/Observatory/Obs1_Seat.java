@@ -7,7 +7,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Obs1_Seat extends SearchableFurniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Obs1_Seat (Item... items) {
         super(items);
         this.description = "The Victorian-era red leather seat curves slightly to "
@@ -19,7 +19,7 @@ public class Obs1_Seat extends SearchableFurniture implements Moveable {
         this.addNameKeys("(?:victorian-era )?(?:stiff )?(?:red )?(?:leather )?seat");
         this.addActKeys(SITPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

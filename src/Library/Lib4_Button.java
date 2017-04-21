@@ -15,11 +15,11 @@ public class Lib4_Button extends Button {
         this.FRPLC_REF = (Lib2_Fireplace) frplc;
         this.STAT_REF = (Lib3_Statue) stat;
     }
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
     @Override public String interact(String key) {
         return this.event(key);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String event(String key) {
         if (FRPLC_REF.isLit()) {
             AudioPlayer.playEffect(39, 0.3);
@@ -30,5 +30,5 @@ public class Lib4_Button extends Button {
             return STAT_REF.lightRight();
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

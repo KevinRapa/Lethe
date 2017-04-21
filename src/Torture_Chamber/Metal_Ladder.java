@@ -18,7 +18,7 @@ import A_Super.Item;
  */
 public class Metal_Ladder extends Item {
     private final Metal_Ladder_Furniture LADDER_FURNITURE;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Metal_Ladder(String name) {
         super(name, 
               "It's an old extendable metal ladder. It must rise maybe 20 feet total...",
@@ -26,7 +26,7 @@ public class Metal_Ladder extends Item {
 
         this.LADDER_FURNITURE = new Metal_Ladder_Furniture(this);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public String useEvent() {
         Player.getInv().remove(this);
         Player.getPos().addFurniture(LADDER_FURNITURE);
@@ -39,12 +39,12 @@ public class Metal_Ladder extends Item {
                  + "It just reaches the top.";
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     // ************************************************************************
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private class Metal_Ladder_Furniture extends Furniture {
         private final Item LADDER_ITEM;
-        // ========================================================================
+        //-------------------------------------------------------------------------
         public Metal_Ladder_Furniture (Item ladderItem) {
             super();
             
@@ -57,7 +57,7 @@ public class Metal_Ladder extends Item {
             this.addNameKeys("(?:old )?(?:metal )?ladder");
             this.addActKeys(CLIMBPATTERN, GETPATTERN, "use");
         }
-        // ====================================================================  
+        //---------------------------------------------------------------------  
         @Override public String interact(String key) {     
             if (key.matches(CLIMBPATTERN) || key.equals("use")) {
                 AudioPlayer.playEffect(47);
@@ -73,7 +73,7 @@ public class Metal_Ladder extends Item {
             else
                 return NOTHING;
         }
-        // ====================================================================    
+        //---------------------------------------------------------------------    
         @Override public String getDescription() {
             if (! Player.getPosId().equals(Id.SEW4))
                 return this.description;
@@ -82,7 +82,7 @@ public class Metal_Ladder extends Item {
                      + "It just reaches the pipe at the top.";
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     // ************************************************************************
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }

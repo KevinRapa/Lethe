@@ -73,5 +73,5 @@ public class Lib_OdysseyBook extends Book {
                        "against us.\" " +
                        "... Wait. You didn't come to this castle just to read, did you?";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

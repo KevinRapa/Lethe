@@ -16,7 +16,7 @@ public class Cou1_Bench extends Furniture implements Unmoveable {
         this.addActKeys(SITPATTERN, JOSTLEPATTERN, MOVEPATTERN);
         this.addNameKeys("(?:ruined )?(?:stone )?bench");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.matches(SITPATTERN))
             return this.actDialog;
@@ -25,5 +25,5 @@ public class Cou1_Bench extends Furniture implements Unmoveable {
         else
             return "It's solid stone and heavy. You can't move it.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

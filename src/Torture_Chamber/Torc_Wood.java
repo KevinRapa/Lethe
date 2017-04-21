@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Torc_Wood extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Torc_Wood () {
         super();
 
@@ -16,7 +16,7 @@ public class Torc_Wood extends Furniture {
 
         this.addNameKeys("(?:square )?(?:wooden )?beams?", "drain");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

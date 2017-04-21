@@ -15,6 +15,6 @@ public class Gal1_Sculptures extends Furniture {
                          + "\t\t\t<> Some armor ";
         this.searchDialog = "You aren't sure which one to search first.";
         this.addNameKeys("sculptures?");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

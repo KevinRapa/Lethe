@@ -9,7 +9,7 @@ import A_Super.Item;
  */
 public class Gar2_Hole extends Furniture {
     private final Furniture HOSE_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar2_Hole (Furniture hose) {
         super();
 
@@ -27,7 +27,7 @@ public class Gar2_Hole extends Furniture {
         this.addUseKeys(LEATHER_HOSE);
         this.addActKeys("jump", CLIMBPATTERN, "vault");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         if (Player.getPos().hasFurniture(LEATHER_HOSE))
             return description.concat(" The leather hose, tied around the railing, extends "
@@ -37,18 +37,18 @@ public class Gar2_Hole extends Furniture {
         else
             return description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return this.getDescription();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         Player.getPos().addFurniture(HOSE_REF); //Player must be in GAR2
         Player.getInv().remove(item);
         
         return this.useDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

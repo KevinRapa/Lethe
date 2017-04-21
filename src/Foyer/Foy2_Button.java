@@ -22,7 +22,7 @@ public class Foy2_Button extends Button {
         this.SOUTH_GATE_REF = (Foy_Gate)foy2_Gt;
         this.addNameKeys("(?:small )?(?:black )?button");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     // Public in order to allow access from FOYW and FOYB.
     @Override public String event(String key) {
         Room bba1 = Player.getRoomObj(Id.FOYB);
@@ -51,5 +51,5 @@ public class Foy2_Button extends Button {
         
         return this.actDialog;
     } 
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

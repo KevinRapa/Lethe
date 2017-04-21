@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Obs2_Railing extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Obs2_Railing () {
         super();
 
@@ -16,7 +16,7 @@ public class Obs2_Railing extends Furniture {
         this.addNameKeys("(?:balcony )?railing");
         this.addActKeys("lean");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

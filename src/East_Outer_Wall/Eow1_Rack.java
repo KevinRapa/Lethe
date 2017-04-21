@@ -14,5 +14,5 @@ public class Eow1_Rack extends SearchableFurniture implements Moveable {
         this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:plain )?(?:weapon )?rack", "weapons?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

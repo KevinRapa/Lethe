@@ -12,7 +12,7 @@ import A_Super.Item;
 public class Cel5_Grate extends Furniture implements Gettable {
     private final Furniture CEL5_LDDR;
     private boolean moved;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel5_Grate (Furniture cel5Lddr) {
         super();
         
@@ -33,7 +33,7 @@ public class Cel5_Grate extends Furniture implements Gettable {
         this.addUseKeys(ANYTHING);
         this.addActKeys(MOVEPATTERN, GETPATTERN, "open");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         if (! moved) {
             return Player.getPos().hasFurniture("padlock") ? 
@@ -43,17 +43,17 @@ public class Cel5_Grate extends Furniture implements Gettable {
         else
             return "The metal grate has been moved out of the way.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return Player.getPos().hasFurniture("padlock") ?
                 this.searchDialog : NOTHING_HERE;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         return Player.getPos().hasFurniture("padlock") ? 
                 actDialog : getIt();
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getIt() {
         moved = ! moved;
         AudioPlayer.playEffect(48);
@@ -67,7 +67,7 @@ public class Cel5_Grate extends Furniture implements Gettable {
             return "The player confusingly decides to place the grate back over the hole.";
         }
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String useEvent(Item item) {
         if (item.getType().equals(Names.WEAPON)) {
             AudioPlayer.playEffect(35);
@@ -76,7 +76,7 @@ public class Cel5_Grate extends Furniture implements Gettable {
         else
             return DEFAULT_USE;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

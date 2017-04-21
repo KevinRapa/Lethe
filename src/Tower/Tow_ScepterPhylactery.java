@@ -8,7 +8,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Tow_ScepterPhylactery extends Item {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tow_ScepterPhylactery(String name, int score) {
         super(name, score);
         this.type = Names.PHYLACTERY;
@@ -16,5 +16,5 @@ public class Tow_ScepterPhylactery extends Item {
                          + "at the top. The handle resembles a snake wrapped around "
                          + "a stick.";
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }

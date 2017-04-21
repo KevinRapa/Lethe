@@ -18,5 +18,5 @@ public class Aarc_Note extends Note {
                          + "this thing are over. In a little while, I will journey "
                          + "back down to unbind myself from it.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

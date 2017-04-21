@@ -18,5 +18,5 @@ public class Want_Statue extends Statue {
                        + "that somehow, the other statues may be watching you.";
         this.addNameKeys("statues");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

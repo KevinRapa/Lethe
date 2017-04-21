@@ -6,7 +6,7 @@ import A_Super.Door;
  * @author Kevin Rapa
  */
 public class Cs35_Door extends Door {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cs35_Door (Direction direction) {
         super(direction);
         
@@ -15,7 +15,7 @@ public class Cs35_Door extends Door {
 
         this.addNameKeys("(?:round )?(?:iron |metal )?door");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

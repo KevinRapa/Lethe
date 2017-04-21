@@ -94,7 +94,7 @@ public class AudioPlayer {
     
     private static final HashMap<String, Media> TRACKS = 
             new HashMap<String, Media>() {
-        // ====================================================================
+        //---------------------------------------------------------------------
         {
         putAllTracks(nightAmbience,     COU1, COU2, COU3, COU4, COU5, COU6, 
                                         COU7, COU8);
@@ -128,26 +128,28 @@ public class AudioPlayer {
         putAllTracks(antechamberCustom, FOYW, VAUE, VAU1, VAU2); 
         putAllTracks(rotundaCustom, ROTU, CEL1, CEL2, CEL3, CEL4, CEL5);
         
-        put(HADS, new Media(hadesTrack.toURI().toString()));
-        put(GAL1, new Media(gal1wCustom.toURI().toString()));         
-        put(GAL3, new Media(gal2wCustom.toURI().toString()));     
-        put(GAL6, new Media(gal3wCustom.toURI().toString()));             
-        put(LABO, new Media(labCustom.toURI().toString()));    
-        put(KITC, new Media(kitchenCustom.toURI().toString()));          
-        put(DST1, new Media(dungeonStairs.toURI().toString()));    
-        put(STUD, new Media(fireplace.toURI().toString()));              
-        put(TBAL, new Media(tbalCustom.toURI().toString()));    
-        put(WORK, new Media(workshopCustom.toURI().toString()));     
-        put(WBAL, new Media(westBalconyCustom.toURI().toString()));     
-        put(COUS, new Media(deepSpace.toURI().toString()));    
-        put(SEWP, new Media(sewpCustom.toURI().toString()));           
+        securePut(HADS, hadesTrack);        securePut(GAL1, gal1wCustom);         
+        securePut(GAL3, gal2wCustom);       securePut(GAL6, gal3wCustom);             
+        securePut(LABO, labCustom);         securePut(KITC, kitchenCustom);          
+        securePut(DST1, dungeonStairs);     securePut(STUD, fireplace);              
+        securePut(TBAL, tbalCustom);        securePut(WORK, workshopCustom);     
+        securePut(WBAL, westBalconyCustom); securePut(COUS, deepSpace);    
+        securePut(SEWP, sewpCustom);           
         }
-        // ====================================================================
+        //---------------------------------------------------------------------
+        private void securePut(String id, File f) {
+            put(id, f.exists() ? new Media(f.toURI().toString()) : null);
+        }
+        //---------------------------------------------------------------------
         private void putAllTracks(File track, String ... ids) {
-            for (String id : ids) 
-                put(id, new Media(track.toURI().toString()));
+            if (! track.exists())
+                for (String id : ids) 
+                    put(id, null);
+            else         
+                for (String id : ids) 
+                    put(id, new Media(track.toURI().toString()));
         }
-        // ====================================================================
+        //---------------------------------------------------------------------
     };
     
 //******************************************************************************    
@@ -191,18 +193,28 @@ public class AudioPlayer {
     
     static {
         // Sets up 3 media players for each faux keyboard sound. 
-        for (int sound = 0; sound <= 2; sound++)
-            for (int i = 0; i <= 2; i++) 
-                KEY_PLAYERS[sound][i] = new MediaPlayer(EFFECTS[sound + 21]);
-        
+        for (int sound = 0; sound <= 2; sound++) {
+            for (int i = 0; i <= 2; i++) {
+                try {
+                    KEY_PLAYERS[sound][i] = new MediaPlayer(EFFECTS[sound + 21]);
+                }
+                catch (NullPointerException e) {
+                    System.err.println(e.getMessage());
+                    KEY_PLAYERS[sound][i] = null;
+                }
+            }
+        }
         // Sets them each to stop once their track ends.
-        for (MediaPlayer[] playerList : KEY_PLAYERS)
+        for (MediaPlayer[] playerList : KEY_PLAYERS) {
             for (MediaPlayer mPlayer : playerList)
-                mPlayer.setOnEndOfMedia(() -> mPlayer.stop());
+                if (mPlayer != null)
+                    mPlayer.setOnEndOfMedia(() -> mPlayer.stop());
+        }
     }
     
     private static Media getNewMedia(String file) {
-        return new Media(new File(W_DIR, EPTH + file + EXT).toURI().toString());
+        File f = new File(W_DIR, EPTH + file + EXT);
+        return f.exists() ? new Media(f.toURI().toString()) : null;
     }
     
 //******************************************************************************    
@@ -229,7 +241,9 @@ public class AudioPlayer {
         Media newMedia = TRACKS.get(ID);
         
         // Switches music only if new area has different associated soundtrack.
-        if (trackName == null || ! trackName.equals(newMedia.getSource())) 
+        if (trackName == null || 
+                (newMedia != null && ! trackName.equals(newMedia.getSource()))
+            ) 
         {
             if (currentMusic != null)
                 stopTrack();
@@ -246,12 +260,14 @@ public class AudioPlayer {
 
                 trackName = newMedia.getSource(); 
             }
-            catch (MediaException e) {
-                System.out.println(e.getMessage());
+            catch (MediaException | NullPointerException e) {
+                GUI.out("Hm... What happened to the sound? This is all I got -> " 
+                        + e.getMessage());
+                System.err.println(e.getMessage());
             }
         }
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     /**
      * Plays sound effects when certain events happen at a specified volume.
      * 
@@ -264,12 +280,12 @@ public class AudioPlayer {
                 p.setOnEndOfMedia(() -> p.dispose());
                 p.play();
             }
-            catch (MediaException e) {
-                System.out.println(e.getMessage());
+            catch (MediaException | NullPointerException e) {
+                displayIoError(e.getMessage());
             }
         }
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     /**
      * Plays sound effects when certain events happen.
      * 
@@ -284,12 +300,12 @@ public class AudioPlayer {
                 p.setOnEndOfMedia(() -> p.dispose());
                 p.play();
             }
-            catch (MediaException e) {
-                System.out.println(e.getMessage());
+            catch (MediaException | NullPointerException e) {
+                displayIoError(e.getMessage());
             }
         }
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     /**
      * Specifically for the faux key sounds. 
      * Better handles the sounds being played in quick succession.
@@ -303,17 +319,17 @@ public class AudioPlayer {
             (KEY_PLAYERS[ID][playerAlternator]).play();
             playerAlternator ^= XOR_MASKS[playerAlternator];
         }
-        catch (MediaException e) {
-            System.out.println(e.getMessage());
+        catch (MediaException | NullPointerException e) {
+            displayIoError(e.getMessage());
         }
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     public static void stopTrack() {
         currentPlayer.stop();
         currentPlayer.dispose();
         trackName = null;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     /**
      * Disposes key sound players when the game ends.
      */
@@ -324,25 +340,33 @@ public class AudioPlayer {
                 mPlayer.dispose();
             }
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     public static void toggleMute(JButton b) {
         if (! trackMuted && ! effectsMuted) {
             trackMuted = true;
             b.setText("Mute II");
+            GUI.out("Muted all ambience.");
         }
         else if (trackMuted && ! effectsMuted) {
             effectsMuted = true;
             b.setText("Mute III");
+            GUI.out("Muted everything.");
         }
         else if (trackMuted && effectsMuted) {
             trackMuted = false;
             b.setText("Unmute");
+            GUI.out("Muted all sound effects.");
         }
         else {
             effectsMuted = false;
             b.setText("Mute");
+            GUI.out("Unmuted.");
         }
         currentPlayer.setVolume(trackMuted ? 0.0 : 1.0);
+    }
+//-----------------------------------------------------------------------------
+    private static void displayIoError(String ex) {
+        GUI.out("Huh? What happened to the sound? This is all I got -> " + ex);
     }
 //******************************************************************************    
 // </editor-fold>

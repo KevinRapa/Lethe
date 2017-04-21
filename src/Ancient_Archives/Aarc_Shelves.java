@@ -5,7 +5,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Aarc_Shelves extends Aarc_Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Aarc_Shelves (Item... items) {
         super(items);
         
@@ -15,7 +15,7 @@ public class Aarc_Shelves extends Aarc_Furniture {
 
         this.addNameKeys("(?:old )?(?:broken )?(?:fallen )?(?:book)?shel(?:f|ves)");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

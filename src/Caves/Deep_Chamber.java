@@ -11,7 +11,7 @@ import A_Super.Direction;
  * @author Kevin Rapa
  */
 public class Deep_Chamber extends Room {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Deep_Chamber(String name, String ID) {
         super(name, ID);
         this.description= "cat atnk tiouh intfgswrng zo apparently fin to "
@@ -21,19 +21,19 @@ public class Deep_Chamber extends Room {
                         + "dew demgehZd4 bfrIxy move fin you bexore sd stokM off "
                         + "collab edify fire aelo aDasi.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         return Cave.distortDescription(2, bumpIntoWall());
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return Cave.distortDescription(1, this.description);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         Cave.stopClip();
         
         return Cave.distortDescription(1, NAME);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

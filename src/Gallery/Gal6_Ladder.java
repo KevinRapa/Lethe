@@ -13,10 +13,10 @@ public class Gal6_Ladder extends Staircase {
         this.NAMEKEYS.clear();
         this.addNameKeys("(?:wood(?:en)? )?ladder");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected void playEffect() {
         // For overriding. Some stairs aren't wooden.
         AudioPlayer.playEffect(16);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

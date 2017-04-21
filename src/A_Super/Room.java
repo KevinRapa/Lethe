@@ -79,7 +79,8 @@ public class Room implements Serializable {
             this.description = descBuilder.toString();
         } 
         catch (IOException ex) {
-            this.description = "Did someone eat one of the files?";
+            System.err.println(ex.getMessage());
+            this.description = "";
         } 
     }
 //******************************************************************************
@@ -88,19 +89,19 @@ public class Room implements Serializable {
     @Override public String toString() {
         return this.NAME; 
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public String getID() {
         return this.ID; 
     } 
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     public int[] getCoords() {
         return this.COORDS;
     } 
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public String getDescription() {
         return this.description; 
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * If the player fails a movement attempt, this returns the reason.
      * Overridden if the room contains other barrier types (e.g. railing)
@@ -110,7 +111,7 @@ public class Room implements Serializable {
     public String getBarrier(Direction dir) {
         return bumpIntoWall(); 
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Notifies player of incorrect direction and plays a sound.
      * @return Standard dialog that player has moved towards a solid wall.
@@ -119,7 +120,7 @@ public class Room implements Serializable {
         AudioPlayer.playEffect(6);
         return WALL_BARRIER;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public ArrayList<Furniture> getFurnishings() {
         return this.furnishings;
     }
@@ -134,11 +135,11 @@ public class Room implements Serializable {
     public final void lock() {
         this.locked = true;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public final void unlock() {
         this.locked = false; 
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Adds a room adjacent to this one.
      * @param roomID A room to be added to adjacent.
@@ -146,7 +147,7 @@ public class Room implements Serializable {
     public final void addAdjacent(String roomID) {
         this.adjacent.add(roomID);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Removes a room from this.adjacent.
      * @param roomID A room to remove from adjacent.
@@ -154,11 +155,11 @@ public class Room implements Serializable {
     public final void removeAdjacent(String roomID) {
         this.adjacent.remove(roomID);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public final void removeFurniture(Furniture removeThis) {
         this.furnishings.remove(removeThis);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public final void addFurniture(Furniture ... furnishings) {
         if (this.furnishings == null)
             this.furnishings = new ArrayList<>(furnishings.length);
@@ -180,11 +181,11 @@ public class Room implements Serializable {
     public String triggeredEvent() {
         return STD_RM_OUT;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public boolean isLocked() {
         return this.locked; 
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Checks if a room is accessible from this one, used in movement.
      * By 'accessible', is the destination separated by this room by either
@@ -195,7 +196,7 @@ public class Room implements Serializable {
     public boolean isAdjacent(String destination) {
         return this.adjacent.contains(destination); 
     } 
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Checks this room for a piece of furniture with the name.
      * @param name The name of a piece of furniture.
@@ -205,7 +206,7 @@ public class Room implements Serializable {
         return this.furnishings.stream()
                 .anyMatch(i -> (i.nameKeyMatches(name)));
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public boolean hasFurniture(Furniture furn) {
         return this.furnishings.contains(furn);
     }

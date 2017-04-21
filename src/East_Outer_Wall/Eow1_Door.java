@@ -11,5 +11,5 @@ public class Eow1_Door extends Door {
                          + "skull. The door is arched, pointed, and many other "
                          + "metal plates decorate the surface.";
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
 }

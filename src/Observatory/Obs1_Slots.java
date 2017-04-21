@@ -52,14 +52,14 @@ public class Obs1_Slots extends Furniture {
         this.addUseKeys(ANYTHING);
         this.addNameKeys("(?:brass )?(?:slots?|indentations?)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.getType().equals(PLATE))
             return this.useDialog;
         else
             return "That doesn't belong there.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         String choice;
         
@@ -73,11 +73,11 @@ public class Obs1_Slots extends Furniture {
 
         } while (Player.isNonEmptyString(choice));
         
-        GUI.descOut(Player.getPos().getDescription());
+        Player.describeRoom();
         
         return NOTHING;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         String rep = "", choice;
         
@@ -107,7 +107,7 @@ public class Obs1_Slots extends Furniture {
         
         return rep;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private String getArray() {
         
         String a = SLOTS.get(1).toString();
@@ -128,7 +128,7 @@ public class Obs1_Slots extends Furniture {
              + "{"+f+"}       {"+d+"} " +
                "                    {"+e+"}";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public int getIndex(String stat) {
         int current = 0;
 
@@ -140,7 +140,7 @@ public class Obs1_Slots extends Furniture {
              
         return current;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public boolean checkSolved() {
         boolean isSolved = true;
         
@@ -153,7 +153,7 @@ public class Obs1_Slots extends Furniture {
         
         return isSolved;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private void lockSlots() {
         AudioPlayer.playEffect(43);
         
@@ -161,9 +161,9 @@ public class Obs1_Slots extends Furniture {
             s.lock();
         });
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private boolean areSlotsLocked() {
         return (! this.SLOTS.get(0).isSearchable());
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

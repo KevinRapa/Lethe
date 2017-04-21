@@ -36,14 +36,14 @@ public class Gal3_Totem extends Gal_LightMachine {
         this.addNameKeys("totem", "wood totem", "wooden totem");
         this.inv = new Ttm_Inv();       
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getDescription() {
         return "The tall wooden totem stands back against the west "
              + "wall facing the central chamber. Its four stacked "
              + "segments are carved to resemble obscure faces. " + numBackwards() +
                " On each side of the segments is a peg sticking out.";
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     private String numBackwards() {
         int numBackwards = 0;
         
@@ -63,22 +63,22 @@ public class Gal3_Totem extends Gal_LightMachine {
                 return "All of them face back towards the wall.";
         }
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getSearchDialog() {
         if (! this.searchable)
             return this.searchDialog.concat("That head is now facing towards the wall.");
         else
             return this.searchDialog;
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String interact(String key) {  
         String action, result = NOTHING;
         
         do {
-            String four = HEADS[3]  ?        "-[-_-]-  4" :      "-[   ]-  4";
-            String three = HEADS[2] ?   "\t   -[*o*]-  3" : "\t   -[   ]-  3";
-            String two = HEADS[1]   ?   "\t   -[-_-]-  2" : "\t   -[   ]-  2";
-            String one = HEADS[0]   ?   "\t   -[-_-]-  1" : "\t   -[   ]-  1";
+            String four = HEADS[3]  ?        "~[-_-]~  4" :      "~[   ]~  4";
+            String three = HEADS[2] ?   "\t   ~[*o*]~  3" : "\t   ~[   ]~  3";
+            String two = HEADS[1]   ?   "\t   ~[=_=]~  2" : "\t   ~[   ]~  2";
+            String one = HEADS[0]   ?   "\t   ~[-_-]~  1" : "\t   ~[   ]~  1";
         
             GUI.out("           " + four + "       \t" + three + "\t\t" + 
                        two + "\t\t" + one + "\t\t\t\t\t\t" + result);
@@ -93,7 +93,7 @@ public class Gal3_Totem extends Gal_LightMachine {
         
         return NOTHING;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private String check() {
        if (HEADS[0] && HEADS[1] && HEADS[2] && HEADS[3]) 
            return this.turnOn();
@@ -102,7 +102,7 @@ public class Gal3_Totem extends Gal_LightMachine {
        else
            return NOTHING;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private void turnHead(int head) {
         AudioPlayer.playEffect(44);
         switch(head) {
@@ -126,25 +126,25 @@ public class Gal3_Totem extends Gal_LightMachine {
         }
         this.searchable = this.HEADS[2];
     }
-/*----------------------------------------------------------------------------*/     
+//-----------------------------------------------------------------------------     
     @Override protected String turnOn() {
         this.determineColor();
         this.isOn = true;       
         return "The totem's eyes begin to glow. " + this.mode +
                " emits from the totem's third mouth. " + GAL4_STAT_REF.activate(this.beam);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected void resetStatue() {
         this.GAL4_STAT_REF.reset();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/     
+//-----------------------------------------------------------------------------     
     private class Ttm_Inv extends Inventory {   
         public Ttm_Inv() {
             super();
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public boolean add(Item item) { 
             if (item.getType().equals(Names.FOCUS)) {
                 AudioPlayer.playEffect(43);
@@ -160,20 +160,20 @@ public class Gal3_Totem extends Gal_LightMachine {
             GUI.out("That doesn't look like it fits there.");
             return false;
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public void remove(Item removeThis) {
             this.CONTENTS.remove(removeThis);
             
             if (Gal3_Totem.this.isOn) 
                 this.trigger();
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         private void trigger() {   
             determineColor();
             GUI.out(mode + " emits from the totem's mouth. " + GAL4_STAT_REF.activate(beam)); 
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/    
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

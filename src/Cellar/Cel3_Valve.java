@@ -10,7 +10,7 @@ import A_Super.Item;
  */
 public class Cel3_Valve extends Cel_Valve {
     private final Item WRENCH_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel3_Valve (Furniture fntn, Item wrench) {
         super(fntn);
         
@@ -18,7 +18,7 @@ public class Cel3_Valve extends Cel_Valve {
         
         this.addActKeys("loosen");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {    
         if (key.equals("loosen")) {
             if (Player.getInv().contains(WRENCH_REF))
@@ -31,7 +31,7 @@ public class Cel3_Valve extends Cel_Valve {
                 "Applying all the brawn you can muster fails to "
                 + "budge the valve. It's stuck.";
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public String useEvent(Item item) {
         if (item.toString().equals(MONKEY_WRENCH)) {
             if (! loosened) {
@@ -45,7 +45,7 @@ public class Cel3_Valve extends Cel_Valve {
         else
             return this.useDialog;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

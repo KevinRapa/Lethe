@@ -6,7 +6,7 @@ import A_Super.Door;
  * @author Kevin Rapa
  */
 public class AtriumDoor extends Door {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public AtriumDoor (Direction dir) {
         super(dir);
         
@@ -16,7 +16,7 @@ public class AtriumDoor extends Door {
 
         this.addNameKeys("(?:imposing )?(?:black )?(?:iron )?(?:double-?)?doors?");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

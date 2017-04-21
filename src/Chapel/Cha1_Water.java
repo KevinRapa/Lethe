@@ -25,7 +25,7 @@ public class Cha1_Water extends Furniture implements Gettable {
         this.addNameKeys("water", HOLY_WATER, "clear water");
         this.addUseKeys(METAL_BUCKET, EMPTY_VIAL, GLASS_BOTTLE);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.toString().matches(EMPTY_VIAL)) {
             Player.getInv().remove(item);
@@ -37,7 +37,7 @@ public class Cha1_Water extends Furniture implements Gettable {
         else
             return "The bottle is small enough to fit in, but the bottle is too wide to submerge the neck.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) { 
         if (key.equals("swim"))
             return "How in the world are you going to fit in there??";
@@ -46,7 +46,7 @@ public class Cha1_Water extends Furniture implements Gettable {
         else
             return getIt();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getIt() {
         if (Player.hasItem(EMPTY_VIAL)) {
             Item i = null; // Vial must be in inventory at this point.
@@ -64,5 +64,5 @@ public class Cha1_Water extends Furniture implements Gettable {
         else
             return "You have nothing suitable in which to hold the holy water.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

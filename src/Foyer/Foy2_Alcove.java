@@ -11,7 +11,7 @@ import A_Super.Furniture;
  */
 public class Foy2_Alcove extends Furniture{
     private final Foy2_Stat STAT_REF;
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public Foy2_Alcove(Furniture foy2Stat) {
         super();
         this.STAT_REF = (Foy2_Stat)foy2Stat;
@@ -23,16 +23,16 @@ public class Foy2_Alcove extends Furniture{
         
         this.addNameKeys("(?:shallow )?(?:domed )?alcove");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getDescription() {
         return (! STAT_REF.moved()) ? this.description :         
            "A shallow domed alcove carved into the wall. Behind "
          + "the displaced statue is a small black button.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         return (! STAT_REF.moved()) ? this.searchDialog :
             "With the statue moved, you see a small black button in the back.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

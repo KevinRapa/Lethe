@@ -11,5 +11,5 @@ public class Labo_IngredientsNote extends Note {
                            "for now. As for alcohol, I'm not sure I'm keen to " +
                            "use anything below 15.5%... - Rhadamanthus";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

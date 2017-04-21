@@ -9,7 +9,7 @@ import A_Super.Item;
  */
 public class Labo_Sink extends Furniture {
     private final Item VIAL_REF, BEAKER_REF, BUCKET_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Sink (Item vial, Item beaker, Item bucket) {
         super();
 
@@ -33,7 +33,7 @@ public class Labo_Sink extends Furniture {
                         BOTTLE_OF_VINEGAR);
         this.addActKeys("use", "wash");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         String s = item.toString();
         
@@ -56,7 +56,7 @@ public class Labo_Sink extends Furniture {
             return this.useDialog;
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

@@ -11,5 +11,5 @@ public class Kitc_Rack extends SearchableFurniture {
         this.searchDialog = "You look among the hooks.";
         this.addNameKeys("(?:key )?(?:rack|hooks?)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

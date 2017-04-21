@@ -21,7 +21,7 @@ public class Lib4_Stairs extends Staircase {
         this.addNameKeys("staircase", "stairs", "steps");
         this.addActKeys("use", CLIMBPATTERN, "walk");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
         if (Player.getShoes().equals(LEATHER_SHOES)) {
             Player.setOccupies(Id.LIB3);
@@ -35,9 +35,9 @@ public class Lib4_Stairs extends Staircase {
                  + "first floor.";
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public void playEffect() {
         AudioPlayer.playEffect(14);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

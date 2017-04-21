@@ -28,10 +28,10 @@ import java.awt.Dimension;          import java.awt.Toolkit;
 import java.awt.event.KeyEvent;     import java.awt.event.KeyListener; 
 import java.io.*;                   import javax.swing.ImageIcon; 
 import javax.swing.JFrame;          import javax.swing.JLabel;
-import javafx.application.Platform;
+import javafx.application.Platform; import java.nio.file.Files;
+import java.nio.file.Paths;
 
-import static A_Main.Names.SEP;
-import static A_Main.Names.W_DIR;
+import static A_Main.Names.SEP;     import static A_Main.Names.W_DIR;
 
 public class Main {
     private static final String 
@@ -66,10 +66,10 @@ public class Main {
         TITLE_PANEL.add(TITLE_LABEL);
     }
     // </editor-fold>
-// ============================================================================
+//-----------------------------------------------------------------------------
     /**
      * Loads a game if there is one or starts a new game.
-     * @param args Unused.
+     * @param args Optional room id. Will start player in that area.
      */
     public static void main(String[] args) {
         //**********************************************************************
@@ -96,7 +96,6 @@ public class Main {
         TITLE_FRAME.setVisible(true);
         
         TITLE_LABEL.setFocusable(true);
-        
         //**********************************************************************
         // </editor-fold>
         //**********************************************************************
@@ -108,6 +107,8 @@ public class Main {
         // Rudimentary save system using serialization.
         //**********************************************************************
         boolean isNewGame = false;
+        String start = args.length > 0 ? args[0] : null;
+        int[] test = null;
         
         try (ObjectInputStream gameData = new ObjectInputStream(
                 new FileInputStream(new File(W_DIR, FILE_NAME)))) 
@@ -119,7 +120,15 @@ public class Main {
         catch (Exception e) {
             System.err.println(e.getMessage() + "\nCreating new game.");
             RoomGraph.constructRoomGraph();
-            Player.setNewAttributes(RoomGraph.getCoords(START_LOCATION));
+            
+            if (start != null && (start.equals(Id.NULL) || start.equals(Id.GAL7) 
+                        || (test = RoomGraph.getCoords(start)) == null))
+                    System.err.println("Not a valid starting location.");
+                
+            Player.setNewAttributes(
+                    RoomGraph.getCoords(test == null ? START_LOCATION : start)
+            );
+            
             isNewGame = true;
         }
         finally {
@@ -134,7 +143,7 @@ public class Main {
         // </editor-fold>  
         //**********************************************************************
     } 
-// ============================================================================  
+//-----------------------------------------------------------------------------  
     public static void endGameProcedure() {
         AudioPlayer.stopTrack();
         AudioPlayer.disposeKeyPlayers();
@@ -143,27 +152,38 @@ public class Main {
         Map.disposeMap();
         Platform.exit();
     }
-// ============================================================================   
+//-----------------------------------------------------------------------------   
     public static void eraseGame() {
         if (new File(W_DIR, FILE_NAME).delete())
             System.out.println("Data erased.");
         else
             System.err.println("Data to erase not found.");
     }
-// ============================================================================   
+//-----------------------------------------------------------------------------   
     public static synchronized void saveGame() {
         try (ObjectOutputStream gameData = new ObjectOutputStream(
                 new FileOutputStream(new File(W_DIR, FILE_NAME)))) 
         {
             Player.savePlayerAttributes(gameData); 
+            GUI.out("Game saved");
         } 
+        catch (FileNotFoundException e) {
+            try {
+                Files.createDirectory(Paths.get(W_DIR + SEP + "data" + SEP + "save"));
+                GUI.out("Save directory not found. Creating a new one. Try again.");
+            } catch (IOException ex) {
+                GUI.out("Couldn't EVEN remake the directory. "
+                    + "This is all I got for you -> " + e.getMessage());
+                System.err.println(ex.getMessage());
+            }
+        }
         catch (IOException e) {
             GUI.out("Hmph... Something went wrong in saving... "
-                    + "Does this make any sense to you? -> " + e.getMessage());
+                    + "This is all I got for you -> " + e.getMessage());
             System.err.println(e.getMessage());
         }
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     /**
      * Returns a 'random enough' number for various purposes.
      * Generally used as an index number.
@@ -171,7 +191,7 @@ public class Main {
      * @return random number.
      */
     public static int getRandomUnder(int max) {
-        return (int)Math.abs(System.currentTimeMillis()) % max;
+        return Math.abs((int)System.currentTimeMillis()) % max;
     }
-// ============================================================================     
+//-----------------------------------------------------------------------------     
 }

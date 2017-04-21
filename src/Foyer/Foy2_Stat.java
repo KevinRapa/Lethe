@@ -25,7 +25,7 @@ public class Foy2_Stat extends Statue {
                           + "streaks on the floor beginning at the statue's base.";
         this.addNameKeys("(?:skid )?markings");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.matches(MOVEPATTERN)) {
             if (! this.moved) {
@@ -41,9 +41,9 @@ public class Foy2_Stat extends Statue {
         else
             return super.interact(key);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public boolean moved() {
         return this.moved;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

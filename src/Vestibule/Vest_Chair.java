@@ -16,5 +16,5 @@ public class Vest_Chair extends Furniture implements Moveable {
         this.addNameKeys("chairs?");
         this.addActKeys(SITPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

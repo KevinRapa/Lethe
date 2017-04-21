@@ -10,5 +10,5 @@ public class Vest_Dr extends Door {
         this.description = "A heavy wooden door. There seems to be a lot "
                          + "more mechanical works to this door than is typical of a door.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

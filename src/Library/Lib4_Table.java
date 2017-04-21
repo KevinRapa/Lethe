@@ -18,7 +18,7 @@ public class Lib4_Table extends SearchableFurniture implements Moveable {
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:low )?table", "(?:glimmering )?object");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! this.containsItem(CRYSTAL_ORB)) {
             return "The low table sits between the couch and the fireplace.";
@@ -26,5 +26,5 @@ public class Lib4_Table extends SearchableFurniture implements Moveable {
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

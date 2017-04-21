@@ -26,12 +26,12 @@ public class Wow2_Balcony extends Balcony {
         this.addNameKeys("(?:small )?(?:crowded )?balcony", "wall");
         this.addUseKeys(FIXED_LADDER);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         Player.getPos().addFurniture(STRS_REF); // Add the ladder to WOW2.
         Player.getInv().remove(LDDR_REF); // Remove the ladder from player inventory.
 
         return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

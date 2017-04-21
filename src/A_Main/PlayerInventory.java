@@ -13,15 +13,15 @@ import java.util.Comparator;
  */
 public class PlayerInventory extends Inventory {
     private static final int MAX_SIZE = 10;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public PlayerInventory(Item ... items) {
         super(items);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public boolean isFull() {
         return CONTENTS.size() >= MAX_SIZE;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Adds an item to the inventory, unless the inventory is full.
      * @param item An item to add to this inventory's contents.
@@ -49,14 +49,14 @@ public class PlayerInventory extends Inventory {
             return false;
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public void remove(Item removeThis) {
         super.remove(removeThis);
         
         if (removeThis.getType().equals(LOOT_SACK))
             Player.updateScore(0);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Removes all items from this inventory of the given type.
      * @param type The type of item to remove.
@@ -64,7 +64,7 @@ public class PlayerInventory extends Inventory {
     public void remove(String type) { 
         this.CONTENTS.removeIf(item -> item.getType().matches(type));
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Removes combined items from this inventory and adds the object formed to this.
      * @param itemList A list of combinable items to be removed.
@@ -81,18 +81,18 @@ public class PlayerInventory extends Inventory {
         
         return "You created: " + gift + ".";
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public void sortInventory() {
         Player.incrementMoves();
         this.CONTENTS.sort(Inventory_Sorter.getSorter());
         Player.printInv();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public boolean containsItemWithExactName(String itemName) {
         return this.CONTENTS.stream()
                 .anyMatch(i -> i.toString().equalsIgnoreCase(itemName));
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     // Returns the number of phylacteries the player is carrying.
     public int countPhylacteries() {
         int result = 0;
@@ -103,9 +103,9 @@ public class PlayerInventory extends Inventory {
         
         return result;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     // ************************************************************************
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static class Inventory_Sorter<Item extends Comparable<Item>> 
             implements Comparator<Item> 
     {
@@ -121,7 +121,7 @@ public class PlayerInventory extends Inventory {
             return item1.compareTo(item2);
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     // ************************************************************************
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }

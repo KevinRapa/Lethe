@@ -40,7 +40,7 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
         this.addActKeys(MOVEPATTERN, HOLDPATTERN,"(?:un)?plug", "turn", "fix|repair");
         this.addNameKeys("(black )?(?:metal )?(?:box|machine|handle)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         String result = this.description;
         
@@ -53,7 +53,7 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
               + "jump between two metal rods protruding from the top." : 
                 "The lights and electrical arcs have stopped.");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         switch (key) {
             
@@ -92,7 +92,7 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
             }
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         this.searchable = 
                 Player.hasItem(WORK_BOOTS)
@@ -106,7 +106,7 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
                     "With the provided insulation, you succeed in opening the machine door." :
                     this.searchDialog;
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
     @Override public String useEvent(Item i) {
         String name = i.toString();
         
@@ -126,9 +126,9 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
         else
             return DEFAULT_USE;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private class Machine_Inventory extends Inventory {
         public Machine_Inventory(Item ... items) {
             super(items);
@@ -149,7 +149,7 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
             }
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

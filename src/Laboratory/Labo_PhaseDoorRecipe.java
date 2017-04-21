@@ -16,5 +16,5 @@ public class Labo_PhaseDoorRecipe extends Note {
                          + "\t\t6: 30 mL of COLD water" +
                            "\t\t\t\t\t\tBoil the mixture in a flask and let it condense.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

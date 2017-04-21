@@ -15,5 +15,5 @@ public class Foy1_Stairs extends Furniture {
         this.addActKeys(CLIMBPATTERN, "use", "walk");
         this.addNameKeys("(?:winding )?(?:stone )?(?:staircase|stairs|steps)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -80,6 +80,6 @@ public class Obs2_Book extends Book {
                        "anything, as Phaethon was seeking a method to prove his " +
                        "relation to the sun. His Roman name is Sol Invictus.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }
 

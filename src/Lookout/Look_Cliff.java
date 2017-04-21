@@ -16,5 +16,5 @@ public class Look_Cliff extends Furniture implements Unmoveable {
         this.addActKeys("jump", CLIMBPATTERN);
         this.addNameKeys("(?:winding )?cliff");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -14,6 +14,6 @@ public class Lib1_ImportantNote extends Note {
               + "to the screw is \"1mm\", and written next to the disc is "
               + "\"filters to 700nm\". At the bottom of the sheet reads, "
               + "\"for Daedalus - 712\".";
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

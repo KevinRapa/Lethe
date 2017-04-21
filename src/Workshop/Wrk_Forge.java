@@ -20,12 +20,12 @@ public class Wrk_Forge extends Furniture implements Gettable, Unmoveable {
         this.addUseKeys(HAMMER);
         this.addNameKeys("(?:brick )?forge", "(?:smoldering )?ash(?:es)?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.matches(FEELPATTERN))
             return this.actDialog;
         else
             return getIt();
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

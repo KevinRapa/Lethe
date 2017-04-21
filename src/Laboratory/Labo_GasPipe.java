@@ -11,7 +11,7 @@ import A_Super.Unmoveable;
  */
 public class Labo_GasPipe extends Furniture implements Unmoveable {
     private boolean gasIsOn;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_GasPipe () {
         super();
 
@@ -26,14 +26,14 @@ public class Labo_GasPipe extends Furniture implements Unmoveable {
         this.addUseKeys(RUBBER_HOSE);
         this.addActKeys("turn", "rotate", "twist", "spin");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         if (Player.getPos().hasFurniture("hose"))
             return "The metal pipe runs from the floor to ceiling. In the middle is a valve and nozzle connected to a rubber tube.";
         else
             return this.description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {          
         boolean hoseConnected = Player.getPos().hasFurniture("hose");
 
@@ -44,23 +44,23 @@ public class Labo_GasPipe extends Furniture implements Unmoveable {
             return hoseConnected ? actDialog.concat(" The hissing noise stops.") :
                                    actDialog.concat(" Slowly, the gas odor fades away.");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         Player.getInv().remove(item);
         Player.getPos().addFurniture(new Labo_Hose());
         return this.useDialog;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     public boolean isOn() {
         return this.gasIsOn;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     private boolean toggleGas() {
         AudioPlayer.playEffect(17);
         this.gasIsOn = ! gasIsOn;
         return gasIsOn;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

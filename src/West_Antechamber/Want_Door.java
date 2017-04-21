@@ -11,5 +11,5 @@ public class Want_Door extends Door {
                          + "It's carved very artfully. At its center, a cobra's  "
                          + "head is carved into the wood.";
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
 }

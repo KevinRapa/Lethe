@@ -25,11 +25,11 @@ public class Gal4_Statue extends Furniture {
         this.addNameKeys("(?:grandiose )?statue");
         this.addActKeys("admire");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public int getState() {
         return this.level;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * Hits the orb in the statue's hand with light.
      * @param color the color of the beam.
@@ -55,7 +55,7 @@ public class Gal4_Statue extends Furniture {
         else 
             return "The beam of light shines into the central chamber.";
     }     
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private String raise() {
         switch (level++) {
             case 0: 
@@ -70,7 +70,7 @@ public class Gal4_Statue extends Furniture {
                     + "third floor level.";
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         switch(this.level) {
             case 1:
@@ -86,11 +86,11 @@ public class Gal4_Statue extends Furniture {
                 return this.description;
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public void reset() {
         if (this.level <= 2)
             this.level = 0;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

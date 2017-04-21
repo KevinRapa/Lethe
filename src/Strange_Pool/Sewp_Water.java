@@ -6,7 +6,7 @@ import East_Outer_Wall.Water;
  * @author Kevin Rapa
  */
 public class Sewp_Water extends Water {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sewp_Water (Item bckt) {
         super(bckt);
 
@@ -19,7 +19,7 @@ public class Sewp_Water extends Water {
         this.addNameKeys("(?:large )?pool", "(?:vortex of )?water", "driveshaft", 
                 "(?:submerged )?(?:water )?wheel");
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
 }
 
 

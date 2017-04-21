@@ -7,7 +7,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Cv_Well extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cv_Well () {
         super();
 
@@ -19,19 +19,19 @@ public class Cv_Well extends Furniture {
         this.addNameKeys("(?:ancient )?well");
         this.addActKeys("jump", CLIMBPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return Cave.distortDescription(4, description);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return this.getDescription();
     }
-    // ========================================================================       
+    //-------------------------------------------------------------------------       
     @Override public String interact(String key) {
         return Cave.distortDescription(4, actDialog);
     }
-    // ========================================================================       
+    //-------------------------------------------------------------------------       
 }
 
 

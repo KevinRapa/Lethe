@@ -13,6 +13,6 @@ public class Lib_Sconces extends Furniture {
         this.addNameKeys("(?:electric )?(?:copper )?(?:metal )?(?:sconces?|lights?)");
         this.addActKeys(HOLDPATTERN, FEELPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

@@ -12,5 +12,5 @@ public class Vest_Tpstr extends WallArt {
                            "curiously frail and famished.";
         this.addNameKeys("(?:large )?(?:medieval-era )?tapestry");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

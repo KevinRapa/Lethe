@@ -17,20 +17,20 @@ abstract public class Staircase extends Furniture
         this.addActKeys(CLIMBPATTERN, "use", "walk", "go");
         this.addNameKeys("stair(?:s|case)|steps?", "banister", "railing");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
         playEffect();
         Player.move(DIR);
         return "You climb " + DIR + " the stairs.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     protected void playEffect() {
         // For overriding. Some stairs aren't stone.
         AudioPlayer.playEffect(15);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public Direction getDir() {
         return DIR;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

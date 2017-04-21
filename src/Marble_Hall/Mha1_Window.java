@@ -14,5 +14,5 @@ public class Mha1_Window extends Window {
                       + "headless statue stands in the center.";
         this.addNameKeys("tall window");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

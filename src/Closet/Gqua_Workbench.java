@@ -22,5 +22,5 @@ public class Gqua_Workbench extends SearchableFurniture implements Openable, Mov
         this.addNameKeys("(?:poplar |wood(?:en)? )?(?:table|workbench)");
         this.addActKeys(JOSTLEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

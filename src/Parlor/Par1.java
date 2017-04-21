@@ -17,14 +17,14 @@ public class Par1 extends Room {
     public Par1(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String getDescription() {
         if (! this.isAdjacent(Id.BHA3))
             return this.description;
         else
             return this.description.replaceFirst(", but something about it appears off", ".");
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.NORTH && ! this.isAdjacent(Id.BHA3))
             return "The door here feels ice cold and the doorknob won't turn "
@@ -32,5 +32,5 @@ public class Par1 extends Room {
         else 
             return bumpIntoWall();
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

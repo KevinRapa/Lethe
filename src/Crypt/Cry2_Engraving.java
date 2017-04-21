@@ -8,7 +8,7 @@ import A_Super.Moveable;
  * @author Kevin Rapa
  */
 public class Cry2_Engraving extends Furniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cry2_Engraving () {
         super();
         this.description = "The tall coffin resembles a large stone box. The box "
@@ -25,7 +25,7 @@ public class Cry2_Engraving extends Furniture implements Moveable {
                 "(?:(?:artfully )?decorated)?lid");
         this.addActKeys("open");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         if (Player.getPos().isAdjacent(Id.CAS1)) {
             return "The engraving frames a metal door in the center of it. The stone "
@@ -33,14 +33,14 @@ public class Cry2_Engraving extends Furniture implements Moveable {
         }
         return this.description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String moveIt() {
         if (Player.getPos().isAdjacent(Id.CAS1))
             return "There really is no reason. The coffin has already been moved.";
         else
             return "As hard as you try, you cannot manage to budge it even a small distance.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

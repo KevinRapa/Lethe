@@ -11,5 +11,5 @@ public class Rotu_Plants extends PottedPlant {
         this.description = "The plants don't seem to be in good shape. They "
                          + "droop and some are crowded with weeds.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

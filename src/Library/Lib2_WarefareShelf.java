@@ -14,5 +14,5 @@ public class Lib2_WarefareShelf extends SearchableFurniture {
         this.addNameKeys("warfare", "(?:east|right) (?:(?:book)?shelf|one)");
         this.addActKeys(MOVEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

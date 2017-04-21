@@ -27,12 +27,12 @@ public class Cou6_Statue extends Statue {
         this.addUseKeys(STATUE_HEAD, STATUE_TORSO);
         this.addNameKeys("crumbling statue", "(?:pair of )?legs", "waist");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         Player.getInv().give(item, COU_FLOOR_REF);
         
         return this.useDialog.replaceFirst("%w"
                 + "", item.toString());
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

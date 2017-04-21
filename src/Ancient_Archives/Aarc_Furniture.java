@@ -12,31 +12,31 @@ import A_Super.SearchableFurniture;
  */
 public class Aarc_Furniture extends SearchableFurniture {
     private final String TOO_DARK = "The room is pitch black. You cannot see a thing.";
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Aarc_Furniture (Item... items) {
         super(items);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return checkForTorch(this.description);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return checkForTorch(this.searchDialog);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         return checkForTorch(this.actDialog);
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         return checkForTorch(this.useDialog);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     private String checkForTorch(String dialog) {
         return Player.hasItem(HAND_TORCH) ? dialog : TOO_DARK;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

@@ -10,7 +10,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Dummy_Furniture extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Dummy_Furniture () {
         super();
         
@@ -22,23 +22,23 @@ public class Dummy_Furniture extends Furniture {
         this.addUseKeys(ANYTHING);
         this.addActKeys(ANYTHING);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return Cave.distortDescription(1, this.description);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return this.getDescription();
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         return this.getDescription();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         return this.getDescription();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

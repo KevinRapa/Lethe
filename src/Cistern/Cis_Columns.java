@@ -5,7 +5,7 @@ import A_Super.Column;
  * @author Kevin Rapa
  */
 public class Cis_Columns extends Column {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cis_Columns () {
         super();
 
@@ -18,7 +18,7 @@ public class Cis_Columns extends Column {
 
         this.addNameKeys("(?:fat )?(?:tiled )?(?:protruding )?(?:stone )?(?:columns?|pillars?)", "ceiling");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

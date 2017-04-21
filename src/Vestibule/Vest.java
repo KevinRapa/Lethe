@@ -23,14 +23,14 @@ public class Vest extends Room {
         super(name, ID);
         this.windowOpen = false;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! this.windowOpen)
             return this.description;
         else
             return this.description.replaceFirst("a closed", "an open");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String triggeredEvent() {  
         // The check is in case player teleported here.
         if (Player.getLastVisited().equals(Id.FOY1)) {
@@ -47,9 +47,9 @@ public class Vest extends Room {
         }
         return STD_RM_OUT;
     }            
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public void switchWindow() {
         this.windowOpen = ! this.windowOpen;
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

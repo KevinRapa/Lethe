@@ -11,7 +11,7 @@ import A_Super.Item;
  */
 public class Cis_Water extends Furniture implements Gettable {
     protected final Item WTR_BCKT;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cis_Water (Item wtr) {
         super();
         
@@ -28,7 +28,7 @@ public class Cis_Water extends Furniture implements Gettable {
         this.addActKeys("swim", "jump", "drink");
         this.addUseKeys(METAL_BUCKET);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String useEvent(Item item) {
         AudioPlayer.playEffect(42);
         Player.getInv().remove(item);
@@ -36,21 +36,21 @@ public class Cis_Water extends Furniture implements Gettable {
         
         return this.useDialog;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("swim") || key.equals("jump") || key.equals("dive"))
             return this.actDialog;
         else
             return getIt();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public String getIt() {
         if (Player.hasItem(METAL_BUCKET))
             return this.useEvent(Player.getInv().get(METAL_BUCKET));
         else
             return "You'll need an empty bucket...";
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

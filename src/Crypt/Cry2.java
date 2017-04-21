@@ -7,11 +7,11 @@ import A_Super.Room;
  * @author Kevin Rapa
  */
 public class Cry2 extends Room {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Cry2(String name, String ID) {
         super(name, ID);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (Player.getPos().isAdjacent(Id.CAS1)) {
             return this.description.replaceFirst(
@@ -21,5 +21,5 @@ public class Cry2 extends Room {
         }
         return this.description;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

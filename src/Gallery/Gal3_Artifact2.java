@@ -12,6 +12,6 @@ public class Gal3_Artifact2 extends Statue {
                          + "out are two shoulders and a deformed face with no "
                          + "features apart from a couple ears.";
         this.addNameKeys("statue", "deformed statue");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

@@ -20,7 +20,7 @@ public class Bha2 extends Room {
     public Bha2(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.getShoes().equals(SHROUDED_SHOES)) {
             if (Player.getLastVisited().equals(Id.BHA1))
@@ -41,5 +41,5 @@ public class Bha2 extends Room {
             return STD_RM_OUT;  
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

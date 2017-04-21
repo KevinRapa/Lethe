@@ -23,13 +23,13 @@ import Tunnels.Dungeon_Tunnel;
 public class Sewp extends Dungeon_Tunnel {
     private final Furniture[] RESETABLES;
     private final Inventory PRIS_CBNT_INV;
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Sewp(String name, String ID, Inventory cbntInv, Furniture ... resetables) {
         super(name, ID);
         this.RESETABLES = resetables;
         this.PRIS_CBNT_INV = cbntInv;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     public void resetAllObjects() {
         for (Furniture r : this.RESETABLES)
             ((Resetable)r).reset();
@@ -45,7 +45,7 @@ public class Sewp extends Dungeon_Tunnel {
         
         Player.printInv();
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("You climb up the ladder into the room outside your cell. "

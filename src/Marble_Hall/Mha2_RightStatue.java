@@ -31,7 +31,7 @@ public class Mha2_RightStatue extends SearchableFurniture {
         this.addActKeys(HOLDPATTERN);
         this.addUseKeys(ANYTHING);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.toString().equals(SILVER_SPEAR)) {
             this.searchable = true;
@@ -44,7 +44,7 @@ public class Mha2_RightStatue extends SearchableFurniture {
         else
             return "It doesn't seem like that belongs there.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.searchable) {
             return "The angel poses majestically with an indifferent "
@@ -54,12 +54,12 @@ public class Mha2_RightStatue extends SearchableFurniture {
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
      @Override public String getSearchDialog() {
         if (this.searchable)
             return "You look into the compartment inside the statue's base.";
         else
             return this.searchDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

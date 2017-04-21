@@ -24,7 +24,7 @@ public class Vest_Window extends Window {
                           "small hole in the glass. A small gust of " +
                           "air forces it's way through.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         Vest vest = (Vest)Player.getPos(); // Player must be in vesibule.
         
@@ -54,5 +54,5 @@ public class Vest_Window extends Window {
         else
             return this.escapeDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

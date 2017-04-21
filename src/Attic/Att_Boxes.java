@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Att_Boxes extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Att_Boxes(Item ... items) {
         super(items);
         
@@ -20,12 +20,12 @@ public class Att_Boxes extends SearchableFurniture implements Openable, Moveable
         this.addActKeys("fold", GETPATTERN);
         this.addNameKeys("(?:cardboard )?box(?:es)?", "pile");
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
     @Override public String interact(String key) {
         if (key.equals("fold"))
             return this.actDialog;
         else
             return "The boxes are too large and heavy to simply put in your pocket.";
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }

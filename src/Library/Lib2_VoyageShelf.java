@@ -35,7 +35,7 @@ public class Lib2_VoyageShelf extends SearchableFurniture {
         this.addNameKeys("voyage", "(?:west|left) (?:(?:book)?shelf|one)");
         this.addActKeys(MOVEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) { 
         Room lib2 = Player.getRoomObj(Id.LIB2);
         
@@ -54,5 +54,5 @@ public class Lib2_VoyageShelf extends SearchableFurniture {
         else
             return this.actDialog;          
     }
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
 }

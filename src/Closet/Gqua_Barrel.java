@@ -20,12 +20,12 @@ public class Gqua_Barrel extends Furniture implements Openable, Unmoveable {
         this.addUseKeys(ANYTHING);
         this.addNameKeys("barrel", "cask");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON) || item.toString().equals(HAND_DRILL))
             return "Whatever nasty liquid is in there, you definitely don't want it seeping out all over the place.";
         else
             return DEFAULT_USE;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

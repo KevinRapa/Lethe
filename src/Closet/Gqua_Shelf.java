@@ -16,12 +16,12 @@ public class Gqua_Shelf extends SearchableFurniture implements Unmoveable {
         this.addNameKeys("(?:big )?(?:hefty )?(?:wooden )?(?:shelf|shelving unit)");
         this.addActKeys(JOSTLEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.matches(JOSTLEPATTERN))
             return "You give it a kick. 'Wow, how sturdy! Truly a mark of artisan craftsmanship.'";
         else
             return DEFAULT_USE;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

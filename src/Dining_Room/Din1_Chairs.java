@@ -19,5 +19,5 @@ public class Din1_Chairs extends Furniture implements Moveable {
         this.addActKeys(SITPATTERN);
         this.addNameKeys("chairs?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

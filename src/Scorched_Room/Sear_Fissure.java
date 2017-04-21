@@ -12,7 +12,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Sear_Fissure extends Furniture {
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     public Sear_Fissure() {
         super();
 
@@ -31,7 +31,7 @@ public class Sear_Fissure extends Furniture {
         this.addNameKeys("fissure", "wall", "(?:empty )?hole");
         this.addUseKeys(WARHAMMER, CROWBAR, HAMMER);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.toString().equals(WARHAMMER)) {            
             Player.getPos().addAdjacent(Id.COU2);
@@ -55,11 +55,11 @@ public class Sear_Fissure extends Furniture {
         }
         return "The fissure has been destroyed already!";
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String getDescription() {
         return (Player.getPos().isAdjacent(Id.COU2)) ?
             "The hole leads outside. It's big enough to fit through." :
             this.description; 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -9,5 +9,5 @@ public class Bba_Columns extends Column {
         this.description = "The granite columns are wide and bulging.";
         this.addNameKeys("(?:granite )?(?:columns?|pillars?)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

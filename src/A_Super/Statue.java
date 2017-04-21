@@ -8,7 +8,7 @@ import A_Main.AudioPlayer;
  */
 abstract public class Statue extends Furniture {
     protected String moveDialog;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Statue() {
         super();
         
@@ -22,7 +22,7 @@ abstract public class Statue extends Furniture {
         this.addActKeys("speak|talk|converse|chat|greet|listen");
         this.addActKeys(MOVEPATTERN, FEELPATTERN, "admire");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.matches(MOVEPATTERN)) {
             AudioPlayer.playEffect(41);
@@ -40,7 +40,7 @@ abstract public class Statue extends Furniture {
                  + "be you the owner? Hello?\" You redundantly make your inquiry, "
                  + "but the statue stands motionless, nonchalant, and with a mark of disinterest.";
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

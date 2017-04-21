@@ -16,12 +16,12 @@ public class Sear_Skeleton extends Skeleton {
         this.description = "The scorched body lies against the boarded up door.";
         this.addNameKeys("(?:scorched )?body");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.containsItem(CROWBAR))
             return this.description.concat(" There's a crowbar in its hand.");
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

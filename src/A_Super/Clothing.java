@@ -8,10 +8,10 @@ import A_Main.Names;
  * @author Kevin Rapa
  */
 public class Clothing extends Item {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Clothing(String name, String desc, String use, int score) {
         super(name, desc, use, score);
         this.type = Names.CLOTHING;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }

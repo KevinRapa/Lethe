@@ -17,13 +17,13 @@ import Tunnels.DungeonMonster;
  */
 public class Att1 extends Room {
     private final Inventory PRIS_CBNT_INV_REF;
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Att1(String name, String ID, Inventory prisCbntInv) {
         super(name, ID);
 
         this.PRIS_CBNT_INV_REF = prisCbntInv;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (Player.hasItem(PHASE_DOOR_POTION) && ! Player.hasVisited(Id.INTR)) {
             Inventory inv = Player.getInv();
@@ -47,7 +47,7 @@ public class Att1 extends Room {
         }
         return STD_RM_OUT;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     private void dialog() {
         GUI.menOut(Menus.ENTER);
         GUI.clearDesc();
@@ -68,5 +68,5 @@ public class Att1 extends Room {
         GUI.out("   ... ... ...");
         GUI.promptOut();
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

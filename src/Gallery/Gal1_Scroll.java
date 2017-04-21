@@ -28,7 +28,7 @@ public class Gal1_Scroll extends Furniture {
         this.addActKeys(MOVEPATTERN, GETPATTERN);
         this.addNameKeys("(?:hanging )?(?:chinese )?scroll");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
         @Override public String interact(String key) {     
             if (! Player.getPos().hasFurniture(BTTN_REF)) {
                 Player.getPos().addFurniture(BTTN_REF);
@@ -37,5 +37,5 @@ public class Gal1_Scroll extends Furniture {
             else 
                 return "You have already moved it!";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

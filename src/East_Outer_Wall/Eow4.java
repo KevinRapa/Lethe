@@ -13,12 +13,12 @@ public class Eow4 extends Room {
     public Eow4(String name, String ID) {
         super(name, ID);
     }  
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.SOUTH)
             return "The balcony railing is that way.";
         else 
             return bumpIntoWall(); 
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

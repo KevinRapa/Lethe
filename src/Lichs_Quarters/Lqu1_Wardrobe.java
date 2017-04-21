@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Lqu1_Wardrobe extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Lqu1_Wardrobe (Item... items) {
         super(items);
         
@@ -17,7 +17,7 @@ public class Lqu1_Wardrobe extends SearchableFurniture implements Openable, Move
 
         this.addNameKeys("(?:tall )?(?:blue )?(?:wooden )?wardrobe");
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
 }
 
 

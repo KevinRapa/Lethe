@@ -5,7 +5,7 @@ import A_Super.StaticWndw;
  * @author Kevin Rapa
  */
 public class Bls_Windows extends StaticWndw {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Bls_Windows () {
         super();
 
@@ -18,7 +18,7 @@ public class Bls_Windows extends StaticWndw {
 
         this.addNameKeys("ceiling|walls?|windows?|glass|moon|day");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

@@ -12,7 +12,7 @@ public class Din1_Stairs extends Staircase {
         this.searchDialog = "In searching the stairs, you find it as clean "
                           + "as the rest of this room.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.DIR == Direction.DOWN)
             return "The stone staircase leads straight down to the first floor. "
@@ -20,5 +20,5 @@ public class Din1_Stairs extends Staircase {
         
         return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -23,7 +23,7 @@ public class Floor extends SearchableFurniture implements Unmoveable {
             this.addUseKeys(FIXED_LADDER, SHOVEL, TROWEL, MOP, "sweep");
             this.addNameKeys("floor", "ground", "walkway");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
         if (key.equals("clean"))
             return "Oh yes, you're sure the owner of this castle would love that.";
@@ -50,7 +50,7 @@ public class Floor extends SearchableFurniture implements Unmoveable {
                 return "You have nothing with which to dig.";
         }
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String useEvent(Item item) {
         if (item.toString().equals(FIXED_LADDER))
             return this.useDialog;
@@ -61,5 +61,5 @@ public class Floor extends SearchableFurniture implements Unmoveable {
             return this.actDialog;
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

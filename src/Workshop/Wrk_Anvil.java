@@ -19,5 +19,5 @@ public class Wrk_Anvil extends Furniture implements Unmoveable {
         this.addActKeys(HAMMER, "hit|bang|use");
         this.addNameKeys("anvil");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

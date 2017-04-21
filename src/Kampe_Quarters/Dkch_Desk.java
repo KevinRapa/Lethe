@@ -7,7 +7,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Dkch_Desk extends SearchableFurniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Dkch_Desk (Item... items) {
         super(items);
         
@@ -18,7 +18,7 @@ public class Dkch_Desk extends SearchableFurniture implements Moveable {
 
         this.addNameKeys("(?:plain )?(?:wooden )?(?:desk|chair|table)");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

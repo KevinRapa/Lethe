@@ -12,7 +12,7 @@ import A_Super.Resetable;
  */
 public class Esc6_Ladder extends Furniture implements Resetable, Climbable {
     private final Esc6_Grate GRATE_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Esc6_Ladder (Furniture sew6Grt) {
         super();
         this.searchable = false;
@@ -26,14 +26,14 @@ public class Esc6_Ladder extends Furniture implements Resetable, Climbable {
         this.addNameKeys("(?:metal )?ladder", "rungs?");
         this.addActKeys("use", CLIMBPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getDescription() {
         if (this.GRATE_REF.isMoved())
             return this.description;
         else
             return this.description.concat(" The way up is blocked by a grate.");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {    
         if (this.GRATE_REF.isMoved()) {
             Player.getRoomObj(Id.INTR).lock();
@@ -45,16 +45,16 @@ public class Esc6_Ladder extends Furniture implements Resetable, Climbable {
         else
             return "Your way up is blocked by a grate.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public void reset() {
         Player.getRoomObj(Id.INTR).unlock();
         Player.getRoomObj(Id.SEWP).lock();
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public Direction getDir() {
        return Direction.UP;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

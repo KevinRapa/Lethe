@@ -14,5 +14,5 @@ public class Lib4_PerditionShelf extends SearchableFurniture {
         this.addNameKeys("perdition", "(?:west )?(?:book)?shelf");
         this.addActKeys(MOVEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

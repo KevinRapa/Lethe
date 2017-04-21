@@ -40,18 +40,18 @@ public class Item implements Serializable, Comparable<Item> {
         THRESHOLD = 0; // Does not combine
         useDialog = USE_DEFAULT;
     }   
-    // ========================================================================       
+    //-------------------------------------------------------------------------       
     public Item(String name, String desc, int score) {
         this(name, score);
         description = desc;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Item(String name, String desc, String use, int score) {
         this(name, desc, score);
         useDialog = use;
         useID = 1;
     }    
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Item(String name, Item forms, int thresh, int score) {
         useDialog = USE_DEFAULT;
         useID = 2;
@@ -60,7 +60,7 @@ public class Item implements Serializable, Comparable<Item> {
         FORMS = forms;  
         THRESHOLD = thresh;
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Item(String name, String desc, Item forms, int thresh, int score) {
         this(name, forms, thresh, score);
         description = desc;
@@ -76,7 +76,7 @@ public class Item implements Serializable, Comparable<Item> {
     @Override public String toString() {               
         return this.NAME; 
     }        
-/*----------------------------------------------------------------------------*/        
+//-----------------------------------------------------------------------------        
     /**
      * Returns what type of item this is.
      * Items can have difference types that determine how they are used.
@@ -87,27 +87,27 @@ public class Item implements Serializable, Comparable<Item> {
     public String getType() {
         return this.type; 
     }    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public String getDesc() {
         return this.description; 
     }    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public Item forms() {
         return this.FORMS; 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public int getUseID() {
         return this.useID; 
     }      
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public int getThreshold() {
         return this.THRESHOLD; 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public int getScore() {
         return this.score;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * This method is called when an item with useID 1 is used by the player.
      * @return A string that prints when this item is used.
@@ -115,7 +115,7 @@ public class Item implements Serializable, Comparable<Item> {
     public String useEvent() {
         return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public int compareTo(Item item) {
         return this.toString().compareTo(item.toString());
     } 

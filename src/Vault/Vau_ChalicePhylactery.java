@@ -16,5 +16,5 @@ public class Vau_ChalicePhylactery extends Item {
         
         this.description = "The enigmatic, jewel-encrusted chalice glows a light blue and emits a deep hum.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

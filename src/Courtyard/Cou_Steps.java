@@ -15,5 +15,5 @@ public class Cou_Steps extends Furniture {
         this.addActKeys(CLIMBPATTERN, "use");
         this.addNameKeys("(?:crumbling )?(?:staircase|steps|stairs)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

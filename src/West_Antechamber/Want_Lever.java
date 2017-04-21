@@ -18,7 +18,7 @@ public class Want_Lever extends Lever {
                        + "here a prolonged rumble past the wall to your west.";
         this.addNameKeys("lever", "(?:black )?(?:iron )?lever");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String event(String key) {
         Rotu ref = (Rotu)Player.getRoomObj(Id.ROTU);
         
@@ -31,5 +31,5 @@ public class Want_Lever extends Lever {
             return this.actDialog;
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

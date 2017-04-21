@@ -13,7 +13,7 @@ public class Lib4 extends Room{
         super(name, ID);
         this.REF = tbl;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.WEST) {
             AudioPlayer.playEffect(6);
@@ -22,12 +22,12 @@ public class Lib4 extends Room{
         else
             return bumpIntoWall();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return (! REF.containsItem(CRYSTAL_ORB)) ?
             this.description.replaceFirst(" A glimmering.+them\\.", "") :
                 this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

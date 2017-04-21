@@ -15,7 +15,7 @@ public class Par_ShoeRecipe extends Note {
                          + "feathers are generally cheap, aether can be hard to "
                          + "come by. Still, I would suggest this enchant for a novice.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }
 
 

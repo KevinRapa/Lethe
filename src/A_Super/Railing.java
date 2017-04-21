@@ -8,7 +8,7 @@ import static A_Main.Names.LEATHER_HOSE;
  * @author Kevin Rapa
  */
 abstract public class Railing extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Railing () {
         super();
 
@@ -21,7 +21,7 @@ abstract public class Railing extends Furniture implements Unmoveable {
         this.addUseKeys(LOOPED_ROPE, LEATHER_HOSE, RUBBER_HOSE);
         this.addActKeys(HOLDPATTERN, "lean", "vault|jump|climb");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("lean"))
             return this.actDialog;
@@ -30,7 +30,7 @@ abstract public class Railing extends Furniture implements Unmoveable {
         else
             return "You grab the railing. There's no fear of falling over, right?";
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

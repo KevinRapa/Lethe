@@ -13,15 +13,15 @@ import A_Super.Room;
  * @author Kevin Rapa
  */
 public class Aarc extends Room {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Aarc(String name, String ID) {
         super(name, ID);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return Player.hasItem(HAND_TORCH) ? this.description :
                 "You are in a pitch black room. You can't sense a thing but the "
               + "smell of wilt and a wet floor.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

@@ -15,7 +15,7 @@ import Cistern.Cis1;
 public class Sew5_Valve extends Furniture {
     private final Sew4_Pipe SEW4PP;
     private final Sew2_Valves SEW2VLVS;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sew5_Valve (Furniture sew2Vlvs, Furniture sew4Pp) {
         super();
         
@@ -31,7 +31,7 @@ public class Sew5_Valve extends Furniture {
         this.addNameKeys("(?:metal )?valve", "console", "smaller pipe");
         this.addActKeys(VALVEPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {       
         AudioPlayer.playEffect(17);
         
@@ -40,7 +40,7 @@ public class Sew5_Valve extends Furniture {
         }
         return this.actDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

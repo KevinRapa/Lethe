@@ -18,19 +18,19 @@ public class Drar_Couch extends Furniture implements Moveable {
         this.addActKeys(SITPATTERN);
         this.addNameKeys("(?:(?:bold )?green )?(?:victorian-era )?couch");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         if (GHOST_REF.firstTime())
             return "You do realize that there's a ghost in here, right?";
         
         return this.searchDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (GHOST_REF.firstTime())
             return "You do realize that there's a ghost in here, right?";
         
         return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

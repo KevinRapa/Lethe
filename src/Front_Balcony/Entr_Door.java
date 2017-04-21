@@ -14,5 +14,5 @@ public class Entr_Door extends Door {
                          + "appropriate for doors of this magnitude.";
         this.addNameKeys("front doors?");
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

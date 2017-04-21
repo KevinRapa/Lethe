@@ -12,7 +12,7 @@ import A_Super.SearchableFurniture;
  */
 public class Cha2_Altar extends SearchableFurniture implements Gettable, Moveable {
     private final String URN_DESC = " In the center sits a decorated stone and gold urn.";
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cha2_Altar (Item... items) {
         super(items);
         
@@ -27,7 +27,7 @@ public class Cha2_Altar extends SearchableFurniture implements Gettable, Moveabl
         this.addNameKeys("(?:tan )?(?:marble )?altar", "(?:lit )?candles?");
         this.addUseKeys(FACTUM);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String interact(String key) {
         if (key.matches(JOSTLEPATTERN))
             return this.actDialog;
@@ -35,21 +35,21 @@ public class Cha2_Altar extends SearchableFurniture implements Gettable, Moveabl
             return getIt("You attempt to blow the flame off one candle before taking it, "
              + "but the flame refuses to die, thwarting your intentions.");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.containsItem("gold urn") ? this.description.concat(URN_DESC) :
                 this.description;
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
     @Override public String useEvent(Item item) {
         Player.setOccupies(Id.VAUE);
         return this.useDialog;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String moveIt() {
         return "Are you crazy? This altar must weigh over a ton!";
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

@@ -5,7 +5,7 @@ import A_Super.StaticWndw;
  * @author Kevin Rapa
  */
 public class Soul_Window extends StaticWndw {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Soul_Window () {
         super();
         
@@ -16,7 +16,7 @@ public class Soul_Window extends StaticWndw {
 
         this.addNameKeys("stained-?glass window");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

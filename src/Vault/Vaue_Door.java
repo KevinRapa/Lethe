@@ -12,7 +12,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Vaue_Door extends Furniture implements Unmoveable {
-    // =====================================
+    //--------------------------------------
     private enum State {
         ON("[o]"), OFF("[ ]");
         
@@ -25,7 +25,7 @@ public class Vaue_Door extends Furniture implements Unmoveable {
             return this.STATE;
         }
     }
-    // =====================================
+    //--------------------------------------
     
     private final State[][] BUTTONS = {
         {State.ON,State.ON,State.OFF,State.ON},
@@ -33,7 +33,7 @@ public class Vaue_Door extends Furniture implements Unmoveable {
         {State.ON,State.ON,State.ON,State.OFF},
         {State.OFF,State.ON,State.OFF,State.OFF}
     };
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Vaue_Door () {
         super();
 
@@ -45,7 +45,7 @@ public class Vaue_Door extends Furniture implements Unmoveable {
         this.addNameKeys("buttons?", "(?:sliding )?door", "(?:interesting |curious )?wall");
         this.addActKeys("push", "activate", "solve", "open");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {            
         String ans;
         
@@ -72,7 +72,7 @@ public class Vaue_Door extends Furniture implements Unmoveable {
         
         return this.actDialog;
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
     private String printButtons() {
         int row = 4;
         StringBuilder b = new StringBuilder("\t\t\t\t\t");
@@ -89,7 +89,7 @@ public class Vaue_Door extends Furniture implements Unmoveable {
         
         return b.toString();
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
     private void switchButtons(int x, int y) {
         flip(x, y);
         flip(x + 1, y);
@@ -99,7 +99,7 @@ public class Vaue_Door extends Furniture implements Unmoveable {
         
         AudioPlayer.playEffect(43);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private void flip(int x, int y) {
         try {
             switch (BUTTONS[y][x]) {
@@ -113,7 +113,7 @@ public class Vaue_Door extends Furniture implements Unmoveable {
         }
         catch (ArrayIndexOutOfBoundsException e) {}
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private boolean solved() {
         for (State[] i : this.BUTTONS)
             for (State j : i)
@@ -122,7 +122,7 @@ public class Vaue_Door extends Furniture implements Unmoveable {
         
         return true;    
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

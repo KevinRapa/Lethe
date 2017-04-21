@@ -14,7 +14,7 @@ import A_Super.Unmoveable;
  */
 public class Cel4_Coal extends Furniture implements Gettable, Unmoveable {
     private final Item COAL_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel4_Coal (Item coal) {
         super();
         
@@ -29,7 +29,7 @@ public class Cel4_Coal extends Furniture implements Gettable, Unmoveable {
         this.addUseKeys(SHOVEL, TROWEL, HAND_TORCH);
         this.addActKeys(GETPATTERN, "burn", SHOVEL, "dig");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("burn"))
             return Player.hasItem(Names.HAND_TORCH) ? 
@@ -50,7 +50,7 @@ public class Cel4_Coal extends Furniture implements Gettable, Unmoveable {
         else
             return getIt();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.toString().equals(SHOVEL) 
                 || item.toString().equals(TROWEL)) {
@@ -60,12 +60,12 @@ public class Cel4_Coal extends Furniture implements Gettable, Unmoveable {
         else
             return this.useDialog;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getIt() {
         return (Player.getInv().add(COAL_REF)) ?
              "You take a piece of coal." : NOTHING;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

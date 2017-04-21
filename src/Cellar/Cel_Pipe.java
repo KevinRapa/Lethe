@@ -9,7 +9,7 @@ import A_Super.Unmoveable;
  */
 public class Cel_Pipe extends Furniture implements Unmoveable {
 
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel_Pipe () {
         super();
         
@@ -22,16 +22,16 @@ public class Cel_Pipe extends Furniture implements Unmoveable {
         this.addUseKeys(ANYTHING);
         this.addActKeys("bust", "break");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         return this.actDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         return (item.getType().equals(WEAPON)) ? 
                 this.actDialog : DEFAULT_USE;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

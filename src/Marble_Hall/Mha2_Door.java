@@ -35,7 +35,7 @@ public class Mha2_Door extends Door {
         this.addNameKeys("(?:double )?doors", "(?:door )?(?:sockets?|slots?)");
         this.addUseKeys(STONE_DISK, ANGEL_MEDALLION, HORSE_MEDALLION);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         String rep = "You press the " + item + " into its socket.";
         AudioPlayer.playEffect(43);
@@ -58,7 +58,7 @@ public class Mha2_Door extends Door {
         }      
         return rep;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {    
         switch (this.numMedallions) {
             case 2: 
@@ -100,12 +100,12 @@ public class Mha2_Door extends Door {
                      + "of a horse.";
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         if (this.numMedallions != 1)
             return "You can't seem to dig the medallions out by hand.";
         
         return "You can't seem to dig the disk out by hand.";
     } 
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

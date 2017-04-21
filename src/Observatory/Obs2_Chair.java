@@ -6,7 +6,7 @@ import A_Super.Moveable;
  * @author Kevin Rapa
  */
 public class Obs2_Chair extends Furniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Obs2_Chair () {
         super();
 
@@ -19,7 +19,7 @@ public class Obs2_Chair extends Furniture implements Moveable {
         this.addNameKeys("(?:tall )?(?:lavender )?(?:lounge )?chair");
         this.addActKeys(SITPATTERN);
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

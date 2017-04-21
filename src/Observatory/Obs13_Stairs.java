@@ -13,7 +13,7 @@ public class Obs13_Stairs extends Staircase {
                          + "wide balcony on the second floor.";
         this.addNameKeys("spiral stair(?:s|case)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.DIR == Direction.DOWN) {
             return "The spiral staircase sits in a round alcove carved "
@@ -22,10 +22,10 @@ public class Obs13_Stairs extends Staircase {
         }
         return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected void playEffect() {
         AudioPlayer.playEffect(14);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

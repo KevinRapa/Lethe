@@ -15,12 +15,12 @@ public class Gqua_Skeleton extends Skeleton {
         super(items);
         this.description = "The body lies face down on the floor.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.containsItem(CROWBAR)) 
             return this.description.concat(" There's a crowbar in its hand.");
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

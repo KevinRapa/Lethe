@@ -23,12 +23,12 @@ public class Mha2_LeftStatue extends SearchableFurniture {
         this.addActKeys(HOLDPATTERN);
         this.addUseKeys(ANYTHING);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON))
             return this.useDialog;
         else
             return "It doesn't seem like that belongs there.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

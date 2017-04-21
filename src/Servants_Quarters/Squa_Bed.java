@@ -15,5 +15,5 @@ public class Squa_Bed extends SearchableFurniture implements Moveable {
         this.addNameKeys("bed", "plain bed", "single bed");
         this.addActKeys(SITPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

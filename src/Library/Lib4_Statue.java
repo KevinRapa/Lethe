@@ -9,5 +9,5 @@ public class Lib4_Statue extends Statue {
         this.description = "It's a statue depicting some kind of horned demon. "
                          + "Below, a small engraving reads \"Lucifer\".";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

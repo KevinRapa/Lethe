@@ -27,7 +27,7 @@ public class Gal1_Screen extends Furniture {
         this.addActKeys(MOVEPATTERN, GETPATTERN);
         this.addNameKeys("(?:japanese )?screen");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
         if (! Player.getPos().hasFurniture(REF)) {
             AudioPlayer.playEffect(41);
@@ -36,5 +36,5 @@ public class Gal1_Screen extends Furniture {
         }            
         return "You have already moved the screen.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

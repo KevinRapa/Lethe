@@ -16,5 +16,5 @@ public class Rqua_Table extends SearchableFurniture implements Moveable {
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:plain )?(?:wood(?:en)? )?(?:end )?table");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

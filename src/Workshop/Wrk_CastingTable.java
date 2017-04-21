@@ -52,7 +52,7 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
         this.addUseKeys(LENS_TEMPLATE, MOLTEN_RED_GLASS, MOLTEN_YELLOW_GLASS, MOLTEN_BLUE_GLASS);
         this.addNameKeys("(?:tall )?(?:metal )?(?:casting )?table");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         String name = item.toString();
         
@@ -112,22 +112,22 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
             }
         }        
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.containsItem(LENS_TEMPLATE))
             return "The tall metal casting table has a template fitted to it.";
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private class TableInventory extends Inventory {  
     // CONSTRUCTOR -------------------------------------------------------------      
         public TableInventory() {
             super();
         }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
         @Override public boolean add(Item item) { 
             String n = item.toString();
             
@@ -158,7 +158,7 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
             }
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

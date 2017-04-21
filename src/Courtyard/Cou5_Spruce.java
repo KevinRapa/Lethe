@@ -48,7 +48,7 @@ public class Cou5_Spruce extends SearchableFurniture
         this.addNameKeys("(?:spruce |hole )?tree", "spruce", "(?:hole )?trunk", "branch(?:es)?");
         this.addUseKeys(HAND_DRILL, EMPTY_VIAL);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.toString().equals(HAND_DRILL)) {
             if (drilled) {
@@ -79,7 +79,7 @@ public class Cou5_Spruce extends SearchableFurniture
                 return "You have nothing to put in the vial.";
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String action) {
         if (action.equals("drill")) {
             if (Player.hasItem(HAND_DRILL)) {
@@ -99,7 +99,7 @@ public class Cou5_Spruce extends SearchableFurniture
         else
             return getIt();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getIt() {
         if (drilled)
             if (Player.getInv().contains(VIAL_REF)) {
@@ -112,9 +112,9 @@ public class Cou5_Spruce extends SearchableFurniture
         else
             return "What exactly do you mean by that?";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public Direction getDir() {
         return dir;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

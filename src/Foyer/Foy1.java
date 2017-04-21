@@ -18,17 +18,17 @@ public class Foy1 extends Room{
     public Foy1(String name, String ID) {
         super(name, ID);   
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return this.description.replaceFirst("%", descMode());
     }   
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private String descMode() {       
         return Player.getPos().isAdjacent(Id.FOYW) ? 
                 "an opened gate leads into another room." :
                 "a closed gate blocks your way into another room.";                                               
     }    
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("As you enter the spacious foyer, you recieve only the "
@@ -38,7 +38,7 @@ public class Foy1 extends Room{
                     
         return STD_RM_OUT;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         switch (dir) {
             case WEST:
@@ -50,6 +50,6 @@ public class Foy1 extends Room{
                 return bumpIntoWall();
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

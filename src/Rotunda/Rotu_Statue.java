@@ -14,5 +14,5 @@ public class Rotu_Statue extends Statue {
                        + "that somehow, the other statues may be watching you.";
         this.addNameKeys("(?:cloaked )?(?:glaring )?statues?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

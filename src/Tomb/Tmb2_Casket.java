@@ -5,7 +5,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Tmb2_Casket extends Tomb_Casket {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tmb2_Casket (Item... items) {
         super(items);
         this.searchDialog = "You slowly swing open the casket lid. A faint, musty " +
@@ -19,7 +19,7 @@ public class Tmb2_Casket extends Tomb_Casket {
                             "It wears the hat of a scholar or academic and holds its " +
                             "hands cupped at the waist. You look in its hands.";
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

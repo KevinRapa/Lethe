@@ -10,7 +10,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Esc1_Ladder extends Furniture implements Climbable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Esc1_Ladder () {
         super();
         
@@ -21,17 +21,17 @@ public class Esc1_Ladder extends Furniture implements Climbable {
         this.addNameKeys("(?:metal )?ladder", "rungs?");
         this.addActKeys("use", CLIMBPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {      
         AudioPlayer.playEffect(47);
         Player.setOccupies(Id.INTR);
         return this.actDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public Direction getDir() {
        return Direction.UP;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

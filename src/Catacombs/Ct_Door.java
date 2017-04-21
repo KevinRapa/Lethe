@@ -13,5 +13,5 @@ public class Ct_Door extends Door {
                          + "nailed together and a rusty handle.";
         this.addNameKeys("(?:ancient |old |ramshackle )?(?:wooden )?(?:boarded )?door");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

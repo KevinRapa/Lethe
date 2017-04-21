@@ -13,5 +13,5 @@ public class Eow2_Cabinet extends SearchableFurniture implements Openable, Movea
         this.searchDialog = "You open the cabinet.";
         this.addNameKeys("(?:tall )?(?:pine |wood(?:en)? )?(?:utility )?cabinet");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

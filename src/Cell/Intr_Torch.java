@@ -10,12 +10,12 @@ public class Intr_Torch extends Torch_Holder implements Resetable {
     public Intr_Torch(Item torch) {
         super(torch);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public void reset() {
         if (! this.inv.contains(TORCH))
             this.inv.add(TORCH);
     }   
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

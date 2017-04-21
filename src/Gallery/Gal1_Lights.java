@@ -13,5 +13,5 @@ public class Gal1_Lights extends Furniture{
         this.addActKeys(HOLDPATTERN);
         this.addNameKeys("(?:electric )?lights?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

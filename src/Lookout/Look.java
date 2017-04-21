@@ -17,7 +17,7 @@ public class Look extends Room {
     public Look(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         switch (dir) {
             case WEST:
@@ -29,5 +29,5 @@ public class Look extends Room {
                 return bumpIntoWall();
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

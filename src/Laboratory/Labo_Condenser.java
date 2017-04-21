@@ -13,7 +13,7 @@ import A_Super.Moveable;
 public class Labo_Condenser extends Furniture implements Moveable {
     private boolean flapOpen;
     private final Labo_Beaker BEAKER_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Condenser (Item beakerItem) {
         super();
         this.flapOpen = false;
@@ -32,17 +32,17 @@ public class Labo_Condenser extends Furniture implements Moveable {
         this.addUseKeys(BEAKER, TEST_TUBE, FLORENCE_FLASK, EMPTY_VIAL, "copper (?:pot|pan)");
         this.addActKeys("flick", "turn", "toggle", "rotate");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.description.concat(Player.getPos().hasFurniture(BEAKER) ? 
                 "beaker." : "drain on the table.");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) { 
         this.flapOpen = ! this.flapOpen; 
         return this.actDialog.concat(flapOpen ? "open." : "closed.");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.toString().matches("florence flask|test tube|empty vial|copper pot|copper pan")) {
             return "That type of vessel was not designed for collecting chemicals! Put it down before you poke your eye out.";
@@ -53,7 +53,7 @@ public class Labo_Condenser extends Furniture implements Moveable {
             return this.useDialog;
         }
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     public boolean condense(int chemical) {
         String result = "You strike the top of the burner. For a minute, it burns against the flask's bottom, "
                       + "boiling the insides aggressively. % After a minute, the flame dies out.";
@@ -78,11 +78,11 @@ public class Labo_Condenser extends Furniture implements Moveable {
             return false; 
         }
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public String moveIt() {
         return "The contraption looks pretty fragile. You think it best to leave it where it is.";
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

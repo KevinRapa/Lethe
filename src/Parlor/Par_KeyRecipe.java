@@ -18,6 +18,6 @@ public class Par_KeyRecipe extends Note {
                          + "creature. This is a dangerous recipe due to its "
                          + "approach to lichery.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }
 

@@ -22,7 +22,7 @@ public class Lib3_Statue extends Statue {
                        + "tainted by your touch.";
         this.addNameKeys("(?:impressive )?(?:horse )?statue", "horse");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! this.leftEye && ! this.rightEye)
             return this.description;
@@ -34,7 +34,7 @@ public class Lib3_Statue extends Statue {
             return this.description.concat(" Both of its eyes glow eerily.")
                     .replaceAll(" small square seam", "n open compartment");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
      @Override public String getSearchDialog() {
         String rep = this.searchDialog;
         
@@ -43,15 +43,16 @@ public class Lib3_Statue extends Statue {
         
         return rep;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private String makeSearchable() {
             AudioPlayer.playEffect(44);
+            this.addNameKeys("compartment");
             this.searchable = true;
             
             return " Both of the horse's eyes now glow. You hear a faint "
                    + "grinding noise.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public String lightRight() {
         String rep = "You push the button. As soon as you turn around, you "
                    + "notice the horse's right eye glowing.";       
@@ -63,7 +64,7 @@ public class Lib3_Statue extends Statue {
         
         return rep;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public String lightLeft() {
         String rep = "You push the button. As soon as you turn around, you "
                    + "notice the horse's left eye glowing.";       
@@ -74,5 +75,5 @@ public class Lib3_Statue extends Statue {
         }
         return rep;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

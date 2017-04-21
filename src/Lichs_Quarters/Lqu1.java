@@ -11,22 +11,22 @@ import A_Super.Direction;
  * @author Kevin Rapa
  */
 public class Lqu1 extends Lich_Room {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Lqu1(String name, String ID) {
         super(name, ID);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.EAST)
             return "You shouldn't get to close to that thing over there...";
         else
             return bumpIntoWall();
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         String modifier = this.lichDead ? "lifeless" : "breathing";
         
         return this.description.replaceFirst("%", modifier);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

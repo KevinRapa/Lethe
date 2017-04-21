@@ -20,7 +20,7 @@ public class Din1_Tapestry extends WallArt {
         this.actDialog = this.searchDialog;
         this.addNameKeys("(?:large )?tapestry");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         if (! Player.getRoomObj(Id.DIN1).hasFurniture("crevice")) {
             Player.getRoomObj(Id.DIN1).addFurniture(CRVC_REF);
@@ -29,7 +29,7 @@ public class Din1_Tapestry extends WallArt {
         else 
             return "Yes, the hole in the wall is still there";  
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("admire"))
             return "Yes, what a beautiful piece of artwork. You take a moment "
@@ -37,6 +37,6 @@ public class Din1_Tapestry extends WallArt {
         else 
             return this.getSearchDialog();
     } 
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

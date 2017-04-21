@@ -19,5 +19,5 @@ public class Lib4_Globe extends Furniture implements Moveable {
         this.addNameKeys("globe", "large globe");
         this.addActKeys("spin", "rotate", "turn");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

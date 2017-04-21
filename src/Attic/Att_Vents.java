@@ -5,7 +5,7 @@ import A_Super.StaticWndw;
  * @author Kevin Rapa
  */
 public class Att_Vents extends StaticWndw {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Att_Vents () {
         super();
         
@@ -18,7 +18,7 @@ public class Att_Vents extends StaticWndw {
 
         this.addNameKeys("vents?", "moonlight");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

@@ -7,7 +7,7 @@ import A_Super.Direction;
  */
 public class Cou8_Spruce extends Cou5_Spruce {
 
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cou8_Spruce (Item vial, Item extrct, Item ... items) {
         super(vial, extrct, items);
         
@@ -20,7 +20,7 @@ public class Cou8_Spruce extends Cou5_Spruce {
                 + "15 feet above the ground. The only thing of interest "
                 + "is a medium-sized raven's nest out on a nearby branch.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

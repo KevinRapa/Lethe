@@ -16,11 +16,11 @@ public class Vest_Button extends Button {
         this.FRPLC_REF = (Vest_Fireplace)vesfrplc;
         this.addNameKeys("(?:small )?(?:rock )?(?:protrusion|button)");
     }
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
     @Override public String interact(String key) {
         return this.event(key);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String event(String key) {
         if (FRPLC_REF.isLit()) {
             AudioPlayer.playEffect(39, 0.3);
@@ -33,5 +33,5 @@ public class Vest_Button extends Button {
             return "You push the button and hear a click behind you.";
         }             
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -13,5 +13,5 @@ public class Cou2_Fountain extends Courtyard_Fountain {
                          + "a statue of a male figure used to stand in the center";
         this.addNameKeys("(?:toppled over )?centerpiece", "(?:male )?statue");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

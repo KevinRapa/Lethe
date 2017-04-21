@@ -12,6 +12,6 @@ public class Din2_Painting extends WallArt {
                            "stare. 'Why would anyone hang this in their house?' You " +
                            "ask yourself.";
         this.addNameKeys("(?:long |wide )?painting");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

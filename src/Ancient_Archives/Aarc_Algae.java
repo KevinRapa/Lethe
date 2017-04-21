@@ -8,7 +8,7 @@ import A_Super.Item;
  */
 public class Aarc_Algae extends Aarc_Furniture implements Gettable {
     private final Item ALGAE_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Aarc_Algae (Item algae) {
         super();
         
@@ -23,7 +23,7 @@ public class Aarc_Algae extends Aarc_Furniture implements Gettable {
         this.addActKeys(GETPATTERN, FEELPATTERN, "lick");
         this.addNameKeys("algae");
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("read"))
             return this.actDialog;
@@ -32,14 +32,14 @@ public class Aarc_Algae extends Aarc_Furniture implements Gettable {
         else
             return getIt();
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getIt() {
         if (Player.getInv().add(ALGAE_REF))
             return "You scrape off some of the algae. Yuck.";
         else
             return NOTHING;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

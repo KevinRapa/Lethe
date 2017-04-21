@@ -17,16 +17,16 @@ public class Gal3_Ladder extends Staircase {
         this.NAMEKEYS.clear();
         this.addNameKeys("ladder");
     }
-/*----------------------------------------------------------------------------*/     
+//-----------------------------------------------------------------------------     
     @Override public String getDescription() {
         return (! this.lowered) ? this.description :
             "With the rope cut, the ladder now gives way to the gallery loft.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public void lower() {
         this.lowered = true;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
         if (this.lowered) {
             Player.move(this.DIR);
@@ -37,9 +37,9 @@ public class Gal3_Ladder extends Staircase {
         else
             return "The ladder is too high up to climb.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected void playEffect() {
         AudioPlayer.playEffect(16);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

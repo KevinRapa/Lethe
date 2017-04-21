@@ -14,18 +14,18 @@ import Lichs_Quarters.Lich_Room;
  * @author Kevin Rapa
  */
 public class Tow2 extends Lich_Room {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Tow2(String name, String ID) {
         super(name, ID);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! this.lichDead)
             return description.concat(" You see a magnificent glowing sphere of light hovering in the highest area of the tower. ");
         else
             return description;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("The throbbing in your head becomes quite uncomfortable.");
@@ -35,5 +35,5 @@ public class Tow2 extends Lich_Room {
         
         return STD_RM_OUT;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

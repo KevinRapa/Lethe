@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Torc_Tools extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Torc_Tools () {
         super();
         
@@ -17,7 +17,7 @@ public class Torc_Tools extends Furniture {
         this.addNameKeys("(?:sinister )?(?:tools?|instruments?|apparatus(?:es)?)");
         this.addActKeys("use", "play");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

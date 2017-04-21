@@ -9,7 +9,7 @@ public class Lib5 extends Room{
     public Lib5(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
        switch (dir) {
             case SOUTH:
@@ -21,5 +21,5 @@ public class Lib5 extends Room{
                 return bumpIntoWall();
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

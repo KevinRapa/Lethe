@@ -5,7 +5,7 @@ import A_Super.Ceiling;
  * @author Kevin Rapa
  */
 public class Att_Ceiling extends Ceiling {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Att_Ceiling () {
         super();
         
@@ -14,7 +14,7 @@ public class Att_Ceiling extends Ceiling {
 
         this.addNameKeys("(?:gray )?(?:wooden )?slats", "gabled roof", "sloped ceiling");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

@@ -19,14 +19,14 @@ public class Par2 extends Room{
     public Par2(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! this.isAdjacent(Id.JHA1))
             return this.description.concat(" However, there is something odd about this door.");
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID)) {
             AudioPlayer.playEffect(8, 0.8);
@@ -36,7 +36,7 @@ public class Par2 extends Room{
         }    
         return STD_RM_OUT;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.SOUTH)
             return "There's nothing but a railing and open space over the lower "
@@ -44,5 +44,5 @@ public class Par2 extends Room{
                 
         return bumpIntoWall();
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

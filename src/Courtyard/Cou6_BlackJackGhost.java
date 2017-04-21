@@ -42,7 +42,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         this.addActKeys("play");
         this.addNameKeys("ghost", "apparition", "spirit", "ghostly apparition");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * Initiates dialog with the ghost player. 
      * The ghost talks to you, then asks you if you would like to play blackjack.
@@ -72,7 +72,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
 
         return rep;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected String converse1() {
         GUI.menOut(NL + NL + "<enter> Continue...");
         GUI.out("You approach the apparition loitering in the courtyard. Before "
@@ -90,11 +90,11 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         return "\"... well not at all! ... Does it look like I need money in "
               + "my state? Come on stranger, yes or no....\"";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected String converse2() {
         return "Back to play?";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * Asks the player if he/she would like to play a game of blackjack.
      * After each game, if the player wants to play again, the cards are
@@ -121,7 +121,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         
         return played;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     /**
      * The main algorithm for the blackjack game.
      * Game outcomes are mapped to by integers which display after each game.
@@ -189,7 +189,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         
         GUI.out(RES.get(val));
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     /**
      * This method lets you hit as many times as you want, or stand.
      * If you bust, your turn is over and the loop ends.
@@ -220,7 +220,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         
         return score;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     /**
      * The ghost hits as many times as possible until busting or over 17.
      * @param ghostScore The ghost's current score.
@@ -235,20 +235,20 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
         }
         return ghostScore;
     }
-/*----------------------------------------------------------------------------*/     
+//-----------------------------------------------------------------------------     
     private int evalHit(int val, int score) {
         if (val == 1)
             return (score + 11 <= 21) ? 11 : 1;
         else
             return val;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     private boolean bust(int score) {
         return score > 21;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     private boolean blackJack(int score) {
         return score == 21;
     }
-/*----------------------------------------------------------------------------*/  
+//-----------------------------------------------------------------------------  
 }

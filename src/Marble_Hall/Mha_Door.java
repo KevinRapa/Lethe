@@ -9,6 +9,6 @@ public class Mha_Door extends Door {
         super(dir);
         this.description = "A white regal door accented with gold lining.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

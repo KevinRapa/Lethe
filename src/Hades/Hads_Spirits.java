@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Hads_Spirits extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Hads_Spirits () {
         super();;
         
@@ -14,7 +14,7 @@ public class Hads_Spirits extends Furniture {
 
         this.addNameKeys("(?:evil )?(?:jeering )?spirits");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

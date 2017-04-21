@@ -10,5 +10,5 @@ public class Entr_Statues extends Statue {
                          + "These are in much better condition than the ones in "
                          + "the courtyard.";
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

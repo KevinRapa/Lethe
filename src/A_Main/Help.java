@@ -34,7 +34,7 @@ public final class Help {
         "<(?)> - An optional item or item slot.        " +   
         "<?/?/?> - A choice of ?.   "
       + "<'s' list> - 's' followed by a comma separated list.             "
-      + "             There also hot keys which you may find useful. Press "
+      + "             Hot keys which you may find useful: Press "
       + "shift to swap the inventory and dialog panels. The left and right "
       + "arrow keys can be used to scroll up and down if scroll bars appear. "
       + "You may also use the up arrow key to browse previous input and the "
@@ -58,7 +58,8 @@ public final class Help {
          
         "You may examine things you enounter by entering an appropriate verb " +
         "(\"examine\", \"look at\", etc.) followed by the thing you wish to examine. " +
-        "The shortcut for this is \"c\" for \"check\" (e.g. \"c the window\"). You " +
+        "The shortcut for this is \"c\" for \"check\" (e.g. \"c the window\"). An "
+      + "even shortercut for this is to just enter the name of it and nothing else! You " +
         "may find this command useful in order to reveal clues about hidden " +
         "objects as well as to add color to your imagination. You may examine items " +
         "in your inventory the same way, but remember that furniture in the room will be " +
@@ -92,7 +93,7 @@ public final class Help {
         "in your inventory in the same way as an alternative to entering your " +
         "inventory. Just remember, you can interact with items only if you're " +
         "carrying them. A couple other things- entering just the name of furniture " +
-        "and nothing else implies a search. Also, be respectful and avoid profanity, " +
+        "and nothing else implies examining. Also, be respectful and avoid profanity, " +
         "for you are playing a high-class character in a sophisticated setting.",
          
         "You may use items directly from the " +
@@ -208,7 +209,7 @@ public final class Help {
             TOPIC.put(topicKey, HELP_KEYS[index++]); 
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * A structure of nested menus organizing game topics.
      */
@@ -235,7 +236,7 @@ public final class Help {
         GUI.toMainMenu();
         GUI.clearDialog();
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     private static void innerLoop(String menu, Pattern p, String code) {
         String choice;
         AudioPlayer.playEffect(2);
@@ -250,5 +251,5 @@ public final class Help {
             }
         } while (! choice.equals(code));
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
 }

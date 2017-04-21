@@ -14,5 +14,5 @@ public class Lib3_CreationShelf extends SearchableFurniture {
         this.addNameKeys("creation", "(?:south )?(?:book)?shelf");
         this.addActKeys(MOVEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

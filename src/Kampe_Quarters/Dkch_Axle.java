@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Dkch_Axle extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Dkch_Axle () {
         super();
 
@@ -14,7 +14,7 @@ public class Dkch_Axle extends Furniture {
 
         this.addNameKeys("(?:wooden )?(?:spinning )?(?:axle|shaft|driveshaft)");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

@@ -11,5 +11,5 @@ public class Mha_Plant extends PottedPlant {
         this.description = "The potted plant is in okay shape, but could afford a bit more care. "
                 + "It sits in a fancy white vase.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

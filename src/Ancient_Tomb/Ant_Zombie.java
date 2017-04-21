@@ -19,7 +19,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
     private final String CONVERSE_REP2;
     private final Inventory FLOOR_INV_REF;  // Zombie drops note if player inv is full.
     private boolean pleased;  // pleased once player gives brain to zombie.
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     /*
         drawerNum is passed is from the Cry_Drawers, which randomly puts the
         jarred brain in one of them. This parameter is which drawer that is
@@ -61,7 +61,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
         this.addNameKeys("(?:frail )?(?:eyeless )?(?:dessicated )?(?:corpse|figure|zombie)", 
                 "zombie-like (?:figure|body)", "him");
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.toString().equals(BRAIN)) {
             Player.getInv().remove(item);
@@ -72,7 +72,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
         else
             return super.useEvent(item);
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     @Override public String interact(String key) { 
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
@@ -86,18 +86,18 @@ public class Ant_Zombie extends NonPlayerCharacter {
             return converse3();
         }
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     @Override protected String converse1() {
         // Player inv can't be full because the zombie just took the brain from the player.
         AudioPlayer.playEffect(46);
         Player.getInv().add(QUARTZ_DEVICE);
         return actDialog;
     }
-    /*------------------------------------------------------------------------*/   
+    //-------------------------------------------------------------------------   
     @Override protected String converse2() {
         return CONVERSE_REP2;
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     private String converse3() {
         String result = "The figure looks at you with a hollow stare. "
                 + "It slowly lifts its arm up and hands out a piece of paper.";
@@ -112,9 +112,9 @@ public class Ant_Zombie extends NonPlayerCharacter {
                     + "its hand higher and points vaguely upwards.");
         }
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     /**************************************************************************/
-    /*------------------------------------------------------------------------*/   
+    //-------------------------------------------------------------------------   
     private static class Zombie_Note extends Note {
         public Zombie_Note(String name, int drawerNum) {
             super(name);
@@ -123,9 +123,9 @@ public class Ant_Zombie extends NonPlayerCharacter {
                     + "scrawled largely in the center: " + drawerNum+ ".";
         }
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     /**************************************************************************/
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     private static class Compass extends Item {
         private Compass(String name) {
             super(name, 100);
@@ -138,7 +138,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
             this.useDialog = "You grasp the box firmly with your fingers and palm "
                            + "covering the plates. In a short while, 3 digits:\t\t[";
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         /**
          * Displays the player's coordinates in the GUI output window.
          * The coordinates are Cartesian, with the 1st floor being z = 0 and

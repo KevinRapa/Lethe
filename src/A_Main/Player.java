@@ -117,14 +117,11 @@ public final class Player {
         MAIN_CMDS.put("northeast", () -> evaluateAction("go", "northeast"));
         MAIN_CMDS.put("southwest", () -> evaluateAction("go", "southwest"));
         MAIN_CMDS.put("southeast", () -> evaluateAction("go", "southeast"));
+        MAIN_CMDS.put("save",      () -> Main.saveGame());
         
         MAIN_CMDS.put("xyzzy",     () -> {
             GUI.out("A hollow clown says surprise."); 
             GUI.randomizeColors();
-        });
-        MAIN_CMDS.put("save",      () -> { 
-            Main.saveGame(); 
-            GUI.out("Game saved"); 
         });
         
         MAIN_CMD_SET.addAll(MAIN_CMDS.keySet());
@@ -178,48 +175,48 @@ public final class Player {
         }
         return null;
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     private static void randomDenialMsg() {
         int i = Main.getRandomUnder(DENIAL_MSGS.length);
         GUI.out(Player.DENIAL_MSGS[i]);
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     private static void randomErrorMessage() {
         int i = Main.getRandomUnder(ERROR_MSGS.length);
         GUI.out(Player.ERROR_MSGS[i]);
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static String getLastVisited() { return lastVisited; }
-    /*------------------------------------------------------------------------*/ 
+    //------------------------------------------------------------------------- 
     public static PlayerInventory getInv() { return inv; }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static Inventory getKeys() { return keys; }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static Room getPos() { return mapRef[pos[0]][pos[1]][pos[2]]; }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static String getPosId() { return getPos().getID(); }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static Room getRoomObj(String ID) {
         int[] c = RoomGraph.getCoords(ID);
         return mapRef[c[0]][c[1]][c[2]];
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static String getShoes() { return Player.shoes; }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static int getCurrentFloor() { return pos[0]; }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static int getScore() { return score; }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static String tryIndefRef_Furn(String indef) {
         // If the argument equals "it/them" returns last referenced furniture.
         return (IT_THEM_P.matcher(indef).matches()) ? lastFurniture : indef;
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static String tryIndefRef_Item(String indef) {
         // If the argument equals "it/them" returns the last referenced item.
         return (IT_THEM_P.matcher(indef).matches()) ? Player.lastItem : indef;
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     /**
      * Checks if an item in the player's inventory has the exact name of itemName.
      * Ignores case.
@@ -253,7 +250,7 @@ public final class Player {
         else
             GUI.out("You can't do even that.");
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     /**
      * 'Teleports' the player to another room from a choice.
      * @param id destination area.
@@ -268,7 +265,7 @@ public final class Player {
         if (! Player.hasVisited(getPosId())) 
             Player.visited.add(getPosId()); 
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     /**
      * Teleports the player to a room at random.
      * Avoids illegal rooms (Rooms that could potentially trap the player).
@@ -285,23 +282,23 @@ public final class Player {
         
         setOccupies(roomId);
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static void setLastInteract_Furn(String furnName) {
         Player.lastFurniture = furnName;
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static void setLastInteract_Item(String itemName) {
         Player.lastItem = itemName;
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static void setShoes(String shoes) {
         Player.shoes = shoes;
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static void incrementMoves() {
         GUI.updateMovesAndScore(++Player.moves, Player.score);
     }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     public static void updateScore(int score) {
         GUI.updateMovesAndScore(Player.moves, Player.score = score);
     }
@@ -343,7 +340,7 @@ public final class Player {
         if (pos[0] == 4 && pos[2] < 7) // Starts monster if player is in the 
             DungeonMonster.startMovement(); // tunnel area.
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Creates new attributes that the player starts a new game with.
      * @param coords Coordinates the player begins the game at.
@@ -359,7 +356,7 @@ public final class Player {
         Player.shoes = "";
         GUI.updateMovesAndScore(0, 0);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * This dialog prints at the start of a new game.
      * @param newGame Dialog skips if false.
@@ -386,7 +383,7 @@ public final class Player {
         
         return mainPrompt();
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     /**
      * The main prompt for controlling the player's moves.
      * @return at end of game, if the player wishes to erase save data.
@@ -413,7 +410,7 @@ public final class Player {
         
         return endGameCode();
     }  
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     private static boolean endGameCode() {
         // Returns true if game is to be erased.
         String ans = GUI.askChoice(Menus.SAVE_QUIT, SAVE_QUIT_RESET_P);
@@ -425,11 +422,11 @@ public final class Player {
         else 
             return ans.equals("r");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     public static boolean isNonEmptyString(String playerInput) {
         return (! playerInput.equals(""));
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     public static boolean answeredYes(String playerChoice) {
         return playerChoice.equals("yes") || playerChoice.equals("y");
     }
@@ -449,7 +446,7 @@ public final class Player {
     public static boolean hasVisited(String roomID) {
         return Player.visited.contains(roomID);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Moves the player in the specified direction.
      * Two rooms are considered not to have a door between them if the first
@@ -509,13 +506,17 @@ public final class Player {
                 visited.add(destId);  
         }
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Plays a room's music and displays its description.
      */
     public static void describeRoom() {
         AudioPlayer.playTrack(getPosId());
-        GUI.descOut(getPos().getDescription());
+        String desc = getPos().getDescription();
+        
+        GUI.descOut(! desc.equals("") ? desc : 
+                "Immediately, a pair of rather large flies dart into "
+              + "your eyes, blinding you momentarily. You cannot see a thing.");
     }
 //******************************************************************************
 // </editor-fold>
@@ -529,7 +530,7 @@ public final class Player {
         AudioPlayer.playEffect(3);
         GUI.out("Keys:" + NL + Player.keys.toString()); 
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Used to check if the player may enter a particular locked room.
      * @param keyID The ID of a key, corresponding to a room ID.
@@ -560,7 +561,7 @@ public final class Player {
         if (furn.isSearchable())
             search(furn.getInv()); 
     } 
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Subroutine for exchanging itemList between player and furniture inventories.
      * @param furnInv The furniture being searched.
@@ -652,7 +653,7 @@ public final class Player {
             printInv();
         } while (isNonEmptyString(command));
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Takes a list of names, returns a list of items found in the inventory.
      * Items that weren't found are replaced by a NULL_ITEM.
@@ -689,7 +690,7 @@ public final class Player {
 
         return resultArray.toArray(new Item[resultArray.size()]); 
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Evaluates the player's take action.
      * @param furniture The furniture from which to take an item.
@@ -706,7 +707,7 @@ public final class Player {
             furnInv.give(take, Player.inv);                 
         }   
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Evaluates the player's store action.
      * @param furnInv The inventory in which the item is being stored.
@@ -867,7 +868,7 @@ public final class Player {
                   + "we perhaps being lazy and attempting to pick up items that "
                   + "aren't mentioned in the room description?"); 
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Moves the player according to an input string.
      * @param dir String resembling a direction the player wants to move in.
@@ -886,7 +887,7 @@ public final class Player {
         else 
             findStaircase(Direction.DOWN);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private static void findStaircase(Direction dir) {
         // Finds furniture in the room that will move the player up or down.
         for (Furniture f : getPos().getFurnishings()) {
@@ -901,7 +902,7 @@ public final class Player {
         }
         GUI.out("There's nothing here to take you " + dir + ".");
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static void openLootSack() {
         // Searches the loot sack if the player is carrying it.
         // Prints score, a message, and the number of phylacteries collected.
@@ -990,12 +991,12 @@ public final class Player {
     public static void printInv() {
         GUI.invOut("You are carrying:" + NL + Player.inv);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private static void printInv(Inventory furnInv) {
         GUI.invOut("You are carrying:" + NL + Player.inv + NL 
                 + "You find:" + NL + furnInv);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Brings up the inventory prompt and asks the player to enter an option.
      */
@@ -1019,7 +1020,7 @@ public final class Player {
         
         GUI.clearDialog();
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private static void inspectPrompt() {
         String ans;            
         
@@ -1046,7 +1047,7 @@ public final class Player {
         
         GUI.clearDialog();
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     /**
      * Prompts player for an item to use and then performs appropriate
      * action.
@@ -1079,7 +1080,7 @@ public final class Player {
             }
         } while (isNonEmptyString(ans));
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Subroutine entered into when an item is used from the player's inventory.
      * It is generally quicker to use items on objects from the main prompt.
@@ -1110,7 +1111,7 @@ public final class Player {
         
         printInv();
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     /**
      * Allow the player to write a note to itself. This can only be done if the
      * player has the notepad and a pen.
@@ -1168,7 +1169,7 @@ public final class Player {
         else
             GUI.out("You're carrying too much stuff to write a new note!");
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Gets string input from player to write to a note.
      * Since promptOut automatically makes everything lowercase, this has to
@@ -1199,7 +1200,7 @@ public final class Player {
         GUI.out("Note has been written.");
         return builder.toString();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     // <editor-fold desc="COMBINE SUBROUTINES">
     /**
      * Prompts the player for an item list, verifies it, moves to evalCombine().
@@ -1225,7 +1226,7 @@ public final class Player {
             }
         } while (isNonEmptyString(combineThese));        
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     private static void combineSub(String input) {
         // Does the same as combineSub() but with a starting string as input.
         // For use by the text parser.
@@ -1234,7 +1235,7 @@ public final class Player {
         if (validateList(itemList))
             evalCombine(itemList);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     /**
      * Validates the correctness of a list of items to combine generated by the
      * player, prints an error message if false.
@@ -1265,7 +1266,7 @@ public final class Player {
                 return false;
         }
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     /**
      * Tries to combine a list of 2 or 3 items.
      * @param list a list of 2 or 3 items.
@@ -1274,6 +1275,7 @@ public final class Player {
         if (allCombineToSame(list)) { 
             if (list[0].getThreshold() == list.length) {
                 GUI.out(Player.inv.combine(list, list[0].forms())); 
+                setLastInteract_Item(list[0].forms().toString());
                 printInv();
             }
             else // 2 objects are correct, but 1 is missing or incorrect.
@@ -1285,7 +1287,7 @@ public final class Player {
         else // length is 3
             GUI.out("You are pretty sure all these don't go together."); 
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Checks that all the items in the list combine into the same object.
      * @param itemList A list of items
@@ -1308,7 +1310,7 @@ public final class Player {
         return true;
     }   
     // </editor-fold>
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     
 //******************************************************************************    
 // </editor-fold>  
@@ -1410,7 +1412,7 @@ private static class TextParser {
         while (! COMMAND_QUEUE.isEmpty())
             COMMAND_QUEUE.poll().perform();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Removes prepositions, which won't effect the meaning in most contexts.
      * @param input A string of input with articles stripped.
@@ -1425,7 +1427,7 @@ private static class TextParser {
         }
         return builder.toString().trim();
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Splits the sentence using a conjunction as a delimiter into statements,
      * then populates a list of commands.
@@ -1533,15 +1535,15 @@ private static class TextParser {
             case 1:
                 if (verb.VALUE.equals(dirObj.VALUE))
                     // If they're equal, the player entered a single word.
-                    // This is interpreted arbitrarily as a search.
-                    return new Command(Verb.SEARCH_VERB, dirObj);
+                    // This is interpreted arbitrarily as examining.
+                    return new Command(Verb.EXAMINE_VERB, dirObj);
                 else
                     return new Command(verb, dirObj);
             default:
                 return DEFAULT_CMD;
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Assembles a command where the player stores an item.
      * If the furniture turns out to not be searchable, the item is used
@@ -1572,7 +1574,7 @@ private static class TextParser {
                 return DEFAULT_CMD;
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Assembles a command where the player uses an item, possibly on a
      * piece of furniture.
@@ -1634,7 +1636,7 @@ private static class TextParser {
     private static class Command {
         private final Runnable ACTION;
         private final String VALUE;
-        // ====================================================================
+        //---------------------------------------------------------------------
         // <editor-fold defaultstate="collapsed" desc="constructors">
         public Command(Verb v, DirectObj o) {
             VALUE = "VERB: " + v.toString() + "\tOBJECT: " + o.toString();
@@ -1666,10 +1668,10 @@ private static class TextParser {
             ACTION = b;
         }
         // </editor-fold>
-        // ====================================================================
+        //---------------------------------------------------------------------
 
 
-        // ====================================================================
+        //---------------------------------------------------------------------
         // <editor-fold defaultstate="collapsed" desc="execute methods">
         /**
          * Uses the item i on the furniture o.
@@ -1746,7 +1748,7 @@ private static class TextParser {
                     Furniture floor = Player.getFurnRef("floor");
 
                     if (floor == null) {
-                        GUI.out("A quick ingenious thought convinces the player to "
+                        GUI.out("A quick, ingenious decision is made to "
                               + "throw the " + item + ". The item lands in "
                               + "an unknown location, lost to the aether.");
                     }
@@ -1764,7 +1766,7 @@ private static class TextParser {
                         if (! name.equals(BUCKET_OF_WATER)) {
                             floor.getInv().add(BROKEN_GLASS);
                             GUI.out("A cunning decision is made. The player "
-                                  + "throws the " + item + ". The item lands "
+                                  + "throws the " + item + ", landing it "
                                   + "on the floor. A glassy shatter swarms your "
                                   + "ear and fills you with rue.");
                         }
@@ -1987,7 +1989,7 @@ private static class TextParser {
                 GUI.out("There is no " + furniture + " here.");
         }
         // </editor-fold>
-        // ====================================================================
+        //---------------------------------------------------------------------
         private static boolean isNullItem(Item[] list, int j) {
             if (list[j].equals(Inventory.NULL_ITEM)) {
                 if (j == 0)
@@ -1999,7 +2001,7 @@ private static class TextParser {
             }
             return false;
         }
-        // ====================================================================
+        //---------------------------------------------------------------------
 
         public void perform() {
             System.out.println(VALUE);
@@ -2028,9 +2030,10 @@ private static class TextParser {
             return VALUE;
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static class Verb extends Word {
         public final static Verb 
+            EXAMINE_VERB = new Verb("examine"), // Default verb for examining
             PUT_VERB = new Verb("put"),         // Default verb for storing
             GO_VERB = new Verb("go"),           // Default verb for moving
             SEARCH_VERB = new Verb("search");   // Default verb for searching
@@ -2039,7 +2042,7 @@ private static class TextParser {
             super(verb);
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static class DirectObj extends Word {
         public final static DirectObj 
             FLOOR_OBJECT = new DirectObj("floor");  // For drop commands
@@ -2048,7 +2051,7 @@ private static class TextParser {
             super(object);
         }
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     private static class Instrument extends Word {
         public Instrument(String instrument) {
             super(instrument);

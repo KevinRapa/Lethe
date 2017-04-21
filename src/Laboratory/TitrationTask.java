@@ -11,14 +11,14 @@ import java.util.TimerTask;
  */
 public class TitrationTask extends TimerTask {
     private static int volume = 0;
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public void run() {
         volume += 5;
         GUI.out("Amount dispensed: " + volume + "mL.");
         if (volume == 50)
             this.cancel();
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     public static int titrate() {
         Timer timer = new Timer(true);
         TitrationTask task = new TitrationTask();
@@ -34,5 +34,5 @@ public class TitrationTask extends TimerTask {
         
         return result;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }

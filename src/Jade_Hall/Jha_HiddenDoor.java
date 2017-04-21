@@ -6,7 +6,7 @@ import A_Super.Direction;
  * @author Kevin Rapa
  */
 public class Jha_HiddenDoor extends Door {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Jha_HiddenDoor (Direction dir) {
         super(dir);
         this.description = "The newly formed arched door has a blue-tint to it "
@@ -15,7 +15,7 @@ public class Jha_HiddenDoor extends Door {
 
         this.addNameKeys("(?:mysterious |secret |hidden )door");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

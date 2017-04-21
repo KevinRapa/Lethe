@@ -18,11 +18,11 @@ public class Bba_Bench extends SearchableFurniture implements Moveable {
         this.addActKeys(SITPATTERN);
         this.addNameKeys("(?:stone )?bench");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return this.containsItem("note from a visitor") ? 
                 this.description + "A note is laying on its surface." : 
                 this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

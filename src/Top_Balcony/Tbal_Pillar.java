@@ -5,7 +5,7 @@ import A_Super.Column;
  * @author Kevin Rapa
  */
 public class Tbal_Pillar extends Column {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tbal_Pillar () {
         super();
 
@@ -16,7 +16,7 @@ public class Tbal_Pillar extends Column {
 
         this.addNameKeys("(?:magnificent )?(?:wide )?(?:pillar|column)");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

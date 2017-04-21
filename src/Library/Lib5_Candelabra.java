@@ -12,6 +12,6 @@ public class Lib5_Candelabra extends Candelabra {
                          + "holding 5 candles.";
         this.addNameKeys("(?:intricate )?(?:iron )?(?:standing )?candelabra");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

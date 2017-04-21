@@ -7,7 +7,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Dkch_Bed extends SearchableFurniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Dkch_Bed (Item... items) {
         super(items);
         
@@ -18,7 +18,7 @@ public class Dkch_Bed extends SearchableFurniture implements Moveable {
         this.addNameKeys("(?:cheap )?(?:spring )?bed", "(?:plain )?(?:dirty )?mattress");
         this.addActKeys(SITPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

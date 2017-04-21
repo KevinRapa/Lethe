@@ -11,7 +11,7 @@ import A_Super.Item;
  */
 public class Cobweb extends Furniture implements Gettable {
     private final Item COBWEB;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cobweb () {
         super();
 
@@ -27,25 +27,25 @@ public class Cobweb extends Furniture implements Gettable {
         this.addUseKeys(ANYTHING);
         this.addActKeys(GETPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         return this.getIt();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String getIt() {
         if (Player.getInv().add(COBWEB))
             return this.actDialog;
         else
             return "You already have all the cobweb you will ever need.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON))
             return useDialog;
         else
             return DEFAULT_USE;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

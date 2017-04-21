@@ -4,7 +4,7 @@ package A_Super;
  * @author Kevin Rapa
  */
 abstract public class WallArt extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public WallArt () {
         super();
 
@@ -14,7 +14,7 @@ abstract public class WallArt extends Furniture {
         this.addActKeys(GETPATTERN);
         this.addActKeys("move", "lift", "slide", "admire");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("admire"))
             return "Yes, what a beautiful piece of artwork. You take a moment "
@@ -22,7 +22,7 @@ abstract public class WallArt extends Furniture {
         else
             return this.actDialog;
     }
-    // ========================================================================        
+    //-------------------------------------------------------------------------        
 }
 
 

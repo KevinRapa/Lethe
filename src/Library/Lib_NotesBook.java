@@ -38,6 +38,6 @@ public class Lib_NotesBook extends Book {
                        "mind easing from the removal of the weight " +
                        "of remembering.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }
 

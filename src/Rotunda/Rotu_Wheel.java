@@ -25,10 +25,10 @@ public class Rotu_Wheel extends Furniture {
         this.addNameKeys("(?:stone )?wheel");
         this.addActKeys("turn", "rotate", "spin", "twist");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String interact(String key) {
         ((Rotu)Player.getRoomObj(Id.ROTU)).rotate();
         return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

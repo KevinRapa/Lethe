@@ -10,7 +10,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Lqu1_Chest extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Lqu1_Chest () {
         super();
         
@@ -19,7 +19,7 @@ public class Lqu1_Chest extends SearchableFurniture implements Openable, Moveabl
 
         this.addNameKeys("(?:dark )?(?:hickory |wooden )?chest");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

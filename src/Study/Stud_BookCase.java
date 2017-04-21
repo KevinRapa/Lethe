@@ -14,5 +14,5 @@ public class Stud_BookCase extends SearchableFurniture implements Moveable {
         this.searchDialog = "You peruse its shelves.";
         this.addNameKeys("(?:small )?(?:square )?(?:bookcase|bookshelf|shelf)", "books", "(?:stone )?(?:head )?sculpture");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

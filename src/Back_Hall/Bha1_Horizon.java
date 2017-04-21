@@ -14,5 +14,5 @@ public class Bha1_Horizon extends Furniture {
         this.searchDialog = "A horizon is too abstract a concept to search.";
         this.addNameKeys("horizon");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

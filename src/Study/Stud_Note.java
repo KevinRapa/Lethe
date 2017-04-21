@@ -17,6 +17,6 @@ public class Stud_Note extends Note {
                  + "Rhadamanthus keeps the book in the safe, behind the "
                  + "portrait. He said the code had something to do with "
                  + "circles.";
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

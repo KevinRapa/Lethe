@@ -11,7 +11,7 @@ import A_Super.Weapon;
 public class Intr_Water extends SearchableFurniture implements Resetable {
     private final Item METAL_BAR_REF = 
             new Weapon(Names.METAL_BAR, "A sturdy metal bar about 2 feet long. Possibly broken off from the gears.", 0);
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Intr_Water () {
         super();
         
@@ -25,14 +25,14 @@ public class Intr_Water extends SearchableFurniture implements Resetable {
         this.addNameKeys("(?:shallow )?dip", "(?:river of )?water", "(?:square )?channel");
         this.addActKeys("drink", "jump", "swim", "escape");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("drink"))
             return "You take a sip. The water is cool and tastes a little strange, but you haven't much of a care for now.";
         else
             return this.actDialog;
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     @Override public void reset() {
         if (! this.inv.contains(METAL_BAR_REF))
             this.inv.add(METAL_BAR_REF);

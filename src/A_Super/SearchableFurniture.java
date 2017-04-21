@@ -8,13 +8,13 @@ import A_Main.Inventory;
  * @author Kevin Rapa
  */
 abstract public class SearchableFurniture extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public SearchableFurniture (Item... items) {
         super();
         this.inv = new Inventory(items);
         this.searchable = true;
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

@@ -14,12 +14,12 @@ public class Dungeon_Tunnel extends Room {
     protected final static String 
             WATER_THAT_WAY = "Do you feel like going for a swim?";
     private final static Furniture MONSTER = new DungeonMonsterFurniture();
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Dungeon_Tunnel(String name, String ID) {
         super(name, ID);
         this.addFurniture(MONSTER);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (DungeonMonster.isInactive())
             DungeonMonster.startMovement();
@@ -27,5 +27,5 @@ public class Dungeon_Tunnel extends Room {
         DungeonMonster.checkForPlayer();
         return Player.getPos().toString();
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

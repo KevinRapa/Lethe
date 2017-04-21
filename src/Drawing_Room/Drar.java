@@ -15,7 +15,7 @@ public class Drar extends Room {
     public Drar(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {   
         if (! Player.hasVisited(this.ID)) 
             GUI.out("From across the room, an apparition stares at you with "
@@ -23,7 +23,7 @@ public class Drar extends Room {
           
         return STD_RM_OUT;
     }
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
     @Override public String getDescription() {
         if (this.hasFurniture("ghost"))
             return this.description;
@@ -34,5 +34,5 @@ public class Drar extends Room {
                    "Next to you is a large black piano. This room is unlit save " +
                    "the bright moonlight shining in.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

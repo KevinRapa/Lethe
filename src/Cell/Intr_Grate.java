@@ -19,7 +19,7 @@ import A_Super.Resetable;
 public class Intr_Grate extends Furniture implements Resetable, Gettable, Climbable {
     private boolean opened;
     private final String MOVED_GRATE = "You've already moved the grate!";
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Intr_Grate () {
         super();
         
@@ -36,17 +36,17 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable, Climba
         this.addActKeys(GETPATTERN);
         this.addUseKeys(METAL_BAR);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.opened ?
                 "The open hole in the floor reveals a simple ladder leading downwards." : this.description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return this.opened ? "The ladder goes down a ways; you estimate about 30 feet." : 
                 this.searchDialog;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {  
         if (key.matches(MOVEPATTERN) || key.equals("open") || key.equals("lift")) 
             return opened ? 
@@ -62,7 +62,7 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable, Climba
         else
             return getIt();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (! opened) {
             AudioPlayer.playEffect(48);
@@ -72,21 +72,21 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable, Climba
         else
             return MOVED_GRATE;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public void reset() {
         this.opened = false;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     private String transport() {
         AudioPlayer.playEffect(47);
         Player.setOccupies(Id.ESC1);
         return "You climb down the ladder a ways into a small noisy tunnel.";
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public Direction getDir() {
         return Direction.DOWN;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

@@ -23,7 +23,7 @@ public class Gal1_KatanaFurniture extends Furniture {
         this.addActKeys("wield");
         this.addNameKeys("(?:black )?(?:katana|sword)");
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String interact(String key) { 
         
         if (Player.getInv().add(
@@ -37,6 +37,6 @@ public class Gal1_KatanaFurniture extends Furniture {
         else
             return NOTHING;
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     
 }

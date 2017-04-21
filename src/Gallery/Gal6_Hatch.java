@@ -13,7 +13,7 @@ public class Gal6_Hatch extends Furniture {
         this.addActKeys("open", "close", "jump");
         this.addNameKeys("hatch");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("open"))
             return this.actDialog;
@@ -22,5 +22,5 @@ public class Gal6_Hatch extends Furniture {
         else
             return "If you do that, you won't be able to leave!";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

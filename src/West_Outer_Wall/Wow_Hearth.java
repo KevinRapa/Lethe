@@ -11,5 +11,5 @@ public class Wow_Hearth extends Fireplace {
         this.descLit = "A large arched hearth. Hung in front of the hearth is "
                 + "a rack of towels and rags.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

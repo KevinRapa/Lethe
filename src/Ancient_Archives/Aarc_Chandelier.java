@@ -5,7 +5,7 @@ import static A_Main.Names.HAND_TORCH;
  * @author Kevin Rapa
  */
 public class Aarc_Chandelier extends Aarc_Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Aarc_Chandelier () {
         super();
         this.searchable = false;
@@ -20,14 +20,14 @@ public class Aarc_Chandelier extends Aarc_Furniture {
         this.addUseKeys(HAND_TORCH);
         this.addActKeys("light", "swing", "hang");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public String interact(String key) {
         if (key.equals("light"))
             return this.actDialog;
         else
             return "That's a very immature thing to do.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

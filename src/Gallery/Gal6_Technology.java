@@ -15,5 +15,5 @@ public class Gal6_Technology extends Furniture {
         this.addUseKeys(ANYTHING);
         this.addNameKeys("(?:cool )?technology");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

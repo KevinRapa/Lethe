@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Jha_Lantern extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Jha_Lantern () {
         super();
 
@@ -16,7 +16,7 @@ public class Jha_Lantern extends Furniture {
 
         this.addNameKeys("(?:hanging )?lanterns?");
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

@@ -16,7 +16,7 @@ import A_Super.Weapon;
 public class Torc_ScytheFurniture extends Furniture implements Resetable {
     private final Item SCYTHE = new Weapon(Names.SCYTHE, 
             "It's a large black scythe. The edge is quite sharp.", 80);;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Torc_ScytheFurniture () {
         super();
 
@@ -28,7 +28,7 @@ public class Torc_ScytheFurniture extends Furniture implements Resetable {
         this.addNameKeys("(?:large )?scythe");
         this.addActKeys(GETPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {
         if (Player.getInv().add(SCYTHE)) {
             Player.getPos().removeFurniture(this);
@@ -37,7 +37,7 @@ public class Torc_ScytheFurniture extends Furniture implements Resetable {
         else
             return NOTHING;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     /**
      * Replaces scythe if player has it.
      */
@@ -47,7 +47,7 @@ public class Torc_ScytheFurniture extends Furniture implements Resetable {
             Player.getRoomObj(Id.TORC).addFurniture(this);
         }
     }
-     // ========================================================================     
+     //-------------------------------------------------------------------------     
 }
 
 

@@ -30,7 +30,7 @@ public class Rotu_Fountain extends Furniture implements Unmoveable {
         this.addActKeys("drink", "swim", "drain", "empty");
         this.addNameKeys("(?:round )?(?:marble )?fountain");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
     if (key.equals("drink"))
         return (this.drained) ? 
@@ -45,7 +45,7 @@ public class Rotu_Fountain extends Furniture implements Unmoveable {
             "The disgusting water has already been drained." :
             "You have nothing useful with which to empty it.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {        
         return (this.drained) ?
            "Looking inside the bowl, you find decaying plant matter "
@@ -53,7 +53,7 @@ public class Rotu_Fountain extends Furniture implements Unmoveable {
          + "the base of the fountain inside the bowl."
                 : this.searchDialog; 
     }
-/*----------------------------------------------------------------------------*/     
+//-----------------------------------------------------------------------------     
     @Override public String getDescription() {
         return (this.drained) ?
            "With the fountain drained, you find decaying plant matter "
@@ -61,13 +61,13 @@ public class Rotu_Fountain extends Furniture implements Unmoveable {
          + "the base of the fountain inside the bowl." 
                 : this.description; 
     }
-/*----------------------------------------------------------------------------*/     
+//-----------------------------------------------------------------------------     
     public void drain() {
         this.drained = true;   
         AudioPlayer.playEffect(20);
         Player.getRoomObj(Id.ROTU).addFurniture(new Rotu_Wheel());
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public String loosen(int amount) {
         this.valvesTurned += amount;
         
@@ -79,9 +79,9 @@ public class Rotu_Fountain extends Furniture implements Unmoveable {
         else
             return NOTHING;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public boolean isDrained() {
         return this.drained;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

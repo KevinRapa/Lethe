@@ -74,10 +74,10 @@ public class GUI extends JFXPanel {
     
     private final static JButton 
         SWAP = new JButton("Swap"),      // Swaps dialog and inventory.
-        COLOR2 = new JButton("Color II"),// Changes label colors
+        COLOR2 = new JButton("Color 2"),// Changes label colors
         MUTE = new JButton("Mute"),      // Mute button
         KEYS = new JButton("Click"),     // Button controlling faux key sounds.
-        COLOR1 = new JButton("Color I"); // Button changing dialog colors.
+        COLOR1 = new JButton("Color 1"); // Button changing dialog colors.
     
     private final static JTextField 
         INPUT = new JTextField(35);  // Player enters commands here.
@@ -99,16 +99,17 @@ public class GUI extends JFXPanel {
     static {
         Color lightBrown = new Color(122, 84, 13);
         Color darkRed = new Color(196, 11, 15);
+        Color forestGreen = new Color(51, 141, 29);
+        Color teal = new Color(52, 182, 156);
         
         KEYSOUND.addAll(Arrays.asList(
                 Click.NONE, Click.SOFT, Click.CLICK, Click.VINTAGE)
         );
         COLORS_DIAL.addAll(Arrays.asList(Color.GRAY, Color.LIGHT_GRAY, 
-                new Color(27, 203, 22), darkRed, 
-                new Color(141, 28, 154), lightBrown)
+                forestGreen, teal, darkRed, new Color(141, 28, 154), lightBrown)
         );  
         COLORS_LABEL.addAll(Arrays.asList(Color.LIGHT_GRAY, lightBrown, 
-                        Color.ORANGE, darkRed, Color.GRAY));
+                new Color(218, 177, 16), teal, forestGreen, darkRed, Color.GRAY));
     }
     // </editor-fold>
     
@@ -236,7 +237,7 @@ public class GUI extends JFXPanel {
         
         this.addComponents();
     }
-/*----------------------------------------------------------------------------*/     
+//-----------------------------------------------------------------------------     
     private void addComponents() {
         this.setPreferredSize(new Dimension (700, 645));
         this.setLayout(new BorderLayout());
@@ -263,7 +264,7 @@ public class GUI extends JFXPanel {
         if (! txt.equals(""))
             DIAL_TXT.setText((txt));
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     /**
      * Collects all room descriptions.
      * @param txt a room description.
@@ -271,7 +272,7 @@ public class GUI extends JFXPanel {
     public static void descOut(String txt) {
         DESC_TXT.setText(txt);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     /**
      * Collects <code>triggeredEvent</code> return text.
      * For triggered events that move the player, <code>null</code> is sent.
@@ -281,7 +282,7 @@ public class GUI extends JFXPanel {
         if (! txt.equals(""))
             ROOM_LBL.setText(txt);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     /**
      * Collects all menu text; text which prompts player for input.
      * @param txt menu text
@@ -289,7 +290,7 @@ public class GUI extends JFXPanel {
     public static void menOut(String txt) {
         MEN_TXT.setText(txt);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     /**
      * Displays all <code>toString</code> calls on inventories.
      * @param txt inventory toString method return text.
@@ -322,7 +323,7 @@ public class GUI extends JFXPanel {
         }
         return HOLDER.request();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public static String askChoice(String menu, Pattern pattern) {
         String answer;
         
@@ -336,7 +337,7 @@ public class GUI extends JFXPanel {
         }
         return answer;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * Holds player input.
      * @see Text_Field_Listener#actionPerformed 
@@ -351,37 +352,37 @@ public class GUI extends JFXPanel {
             return playerInput;
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * Prints the main menu of controls.
      */
     public static void toMainMenu() {
         MEN_TXT.setText(Menus.MAIN_MENU);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public static void clearDesc() {
         DESC_TXT.setText("");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public static void clearDialog() {
         DIAL_TXT.setText("");
         DIAL_TXT.setCaretPosition(0);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public static void updateMovesAndScore(int moves, int score) {
         MOVE_LBL.setText("<html>Moves<br>" + moves + "</html>");
         SCORE_LBL.setText("<html>Score<br>" + score + "</html>");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public static void resetScroll() {
         SCROLLN.getVerticalScrollBar().setValue(0);
         SCROLLS.getVerticalScrollBar().setValue(0);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public static void giveFocus() {
         INPUT.requestFocus();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     /**
      * For the easter egg command 'XYZZY'.
      */
@@ -406,7 +407,7 @@ public class GUI extends JFXPanel {
             c.setForeground(new Color(r,g,b));
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public static void displayCredits() {
         invOut("AMBIENT TRACK SOURCES (All from freesound.org): "
             + "AniCator, Bluehand, BrainClaim, cormi, EKVelika, ERH, dobroide, "
@@ -455,7 +456,7 @@ public class GUI extends JFXPanel {
                 LEFT = KeyEvent.VK_LEFT,
                 RIGHT = KeyEvent.VK_RIGHT,
                 SHIFT = KeyEvent.VK_SHIFT;
-        /*------------------------------------------------------*/
+        //--------------------------------------------------------
         @Override public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
                 case ENTER:
@@ -487,15 +488,15 @@ public class GUI extends JFXPanel {
                     AudioPlayer.playKeySound(GUI.keySound);
             }   
         }
-        /*------------------------------------------------------*/
+        //--------------------------------------------------------
         @Override public void keyTyped(KeyEvent e) {}
-        /*------------------------------------------------------*/
+        //--------------------------------------------------------
         @Override public void keyReleased(KeyEvent e) {
             if (e.getKeyCode() == SHIFT)
                 SWAP.doClick();
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private static class Text_Field_Listener implements ActionListener {
         /**
          * Waits for text to entered by the player and stores it, then notifies
@@ -524,7 +525,7 @@ public class GUI extends JFXPanel {
             }
         } 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private class Button_Listener implements ActionListener {
         private boolean swapped = false;
         private final Component[] COMP_LIST_1 =

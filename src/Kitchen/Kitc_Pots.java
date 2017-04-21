@@ -31,7 +31,7 @@ public class Kitc_Pots extends SearchableFurniture implements Gettable {
         this.addActKeys(JOSTLEPATTERN, "rattle");
         this.addNameKeys("(?:old )?(?:copper )?(?:pots?|pans?)", "pots and pans", "(?:pot|pan) rack");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {              
         if (key.matches(JOSTLEPATTERN) || key.equals("rattle")) {
             if (this.inv.isEmpty())
@@ -42,12 +42,12 @@ public class Kitc_Pots extends SearchableFurniture implements Gettable {
         else
             return getIt();
     }
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
     @Override public String useEvent(Item item) {
         Player.getInv().give(item, this.inv);
         return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getIt() {
         if (! this.inv.isEmpty()) {
             if (this.inv.contains(POT_REF) && Player.getInv().add(POT_REF)) {
@@ -71,7 +71,7 @@ public class Kitc_Pots extends SearchableFurniture implements Gettable {
         public PotRack_Inventory(Item ... items) {
             super(items);
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public boolean add(Item item) {
             if (item.toString().equals(COPPER_POT) || item.toString().equals(COPPER_PAN)) {
                 this.CONTENTS.add(item);

@@ -19,5 +19,5 @@ public class Lib2_Fireplace extends Fireplace {
         this.searchDialogUnlit = "You can't see much but ash. There looks to be a "
                                + "small button in the back though.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

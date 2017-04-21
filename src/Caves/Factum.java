@@ -14,7 +14,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Factum extends Item {
-    // =========================================================================
+    //-------------------------------------------------------------------------=
     public Factum(String name, int score) {
         super(name, score);
         this.useID = 1;
@@ -24,7 +24,7 @@ public class Factum extends Item {
                          + "shape. You can't recognize the color either. Almost ultraviolet.";
         this.useDialog = "You've just moved. You aren't quite sure how you did that.";
     }
-    // =========================================================================
+    //-------------------------------------------------------------------------=
     /**
      * Displays the player's coordinates in the GUI output window.
      * The coordinates are Cartesian, with the 1st floor being z = 0 and
@@ -47,7 +47,7 @@ public class Factum extends Item {
                 "The player is dissatisfied with their fate and makes a daring "
                 + "escape, foiling the devil itself in an instant." : this.useDialog;
     }
-    // =========================================================================
+    //-------------------------------------------------------------------------=
 }
 
 

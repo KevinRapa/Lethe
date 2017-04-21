@@ -13,5 +13,5 @@ public class Gal4_Loft extends Furniture{
         this.searchDialog = "The loft is way up there!";
         this.addNameKeys("loft");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

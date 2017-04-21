@@ -87,5 +87,5 @@ public class Lib_GenesisBook extends Book {
                        "And there was evening and there was morning, the sixth day. " +
                        "... Wait. You didn't come to this castle just to read, did you?";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

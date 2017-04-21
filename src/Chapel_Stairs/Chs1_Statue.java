@@ -14,6 +14,6 @@ public class Chs1_Statue extends Statue {
         this.actDialog = "That's not a very Christian thing to do...";
         this.addNameKeys("female statue");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

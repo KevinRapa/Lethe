@@ -15,5 +15,5 @@ public class Wow3_Shelf extends SearchableFurniture {
         this.addNameKeys("(?:large )?(?:wood )?shelf");
         this.addActKeys("move", "push", "pull");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

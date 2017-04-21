@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Lqu1_Mirror extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Lqu1_Mirror () {
         super();
         
@@ -17,7 +17,7 @@ public class Lqu1_Mirror extends Furniture {
 
         this.addNameKeys("(?:standing )?mirror");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

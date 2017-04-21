@@ -13,5 +13,5 @@ public class Bba_Shoreline extends Furniture{
         this.addActKeys("get", "go", "walk", "fly", "jump");
         this.addNameKeys("shore ?(?:line)?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

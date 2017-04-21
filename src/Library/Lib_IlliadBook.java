@@ -80,5 +80,5 @@ public class Lib_IlliadBook extends Book {
                        "plague from us.\"" +
                        "... Wait. You didn't come to this castle just to read, did you?";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -7,7 +7,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Obs1_Telescope extends SearchableFurniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Obs1_Telescope (Item... items) {
         super(items);
         this.description = "The large old heavy telescope sits as an antique "
@@ -21,7 +21,7 @@ public class Obs1_Telescope extends SearchableFurniture implements Unmoveable {
         this.addNameKeys("(?:large )?(?:old )?(?:heavy )?(?:antique )?telescope");
         this.addActKeys("use", "look", "gaze", "view");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

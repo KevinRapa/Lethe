@@ -9,7 +9,7 @@ import A_Super.Unmoveable;
  */
 public class Sew_Bridge extends Furniture implements Unmoveable {
     private final Direction DIR; 
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sew_Bridge (Direction dir) {
         super();
 
@@ -24,12 +24,12 @@ public class Sew_Bridge extends Furniture implements Unmoveable {
                   dir + " (?:under (?:the )?)?(?:small )?(?:stone )?bridge");
         this.addActKeys("cross", "go|walk|run");
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public String interact(String key) {
         Player.move(DIR);
         return this.actDialog;  
     } 
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

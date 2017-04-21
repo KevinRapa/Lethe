@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Dkch_Ceiling extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Dkch_Ceiling () {
         super();
 
@@ -14,7 +14,7 @@ public class Dkch_Ceiling extends Furniture {
 
         this.addNameKeys("(?:arched )?ceiling");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

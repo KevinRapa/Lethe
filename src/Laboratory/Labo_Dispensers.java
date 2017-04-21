@@ -17,7 +17,7 @@ import static A_Main.Patterns.ONE_TO_SIX;
  */
 public class Labo_Dispensers extends Furniture implements Unmoveable {
     private final Item VIAL_REF, TUBE_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Dispensers (Item emptyVial, Item testTube) {
         super();
 
@@ -35,7 +35,7 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
         this.addUseKeys(EMPTY_VIAL, TEST_TUBE);
         this.addActKeys("use", VALVEPATTERN, GETPATTERN, "dispense|drain|empty|titrate");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {   
         if (Player.hasItem(TEST_TUBE)) {
             if (askToDispense()) {
@@ -55,11 +55,11 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
             return this.actDialog;
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         return this.interact("use");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private Item dispense() {
         GUI.out("There are six dispensers on the wall. You cannot see inside them, "
               + "but each bears a label. From left to right, the labels read: \t\t1 - H2CO3   2 - Br "
@@ -88,7 +88,7 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
                 return new Ingredient("C20H14O4 " + volume + "mL", "The vial holds a funny pink liquid.", 0);
         }
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private boolean askToDispense() {
         GUI.out("You have something to dispense into. Would you like to dispense liquid?");
 
@@ -96,9 +96,9 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
         
         return (Player.answeredYes(ans));
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     // ************************************************************************
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

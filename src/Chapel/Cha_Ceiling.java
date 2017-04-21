@@ -5,7 +5,7 @@ import A_Super.Ceiling;
  * @author Kevin Rapa
  */
 public class Cha_Ceiling extends Ceiling {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cha_Ceiling () {
         super();
 
@@ -13,7 +13,7 @@ public class Cha_Ceiling extends Ceiling {
 
         this.addNameKeys("(?:high )?(?:arched )?ceiling");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

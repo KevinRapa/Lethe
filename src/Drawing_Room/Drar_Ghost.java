@@ -41,7 +41,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
         this.addUseKeys(ANYTHING);
         this.addNameKeys("ghost", "(?:white )?(?:apparition|ghost)", "him");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
@@ -58,7 +58,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
         }
         return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.toString().equals(GLOWING_EMERALD)) {
             if (firstTime)
@@ -71,7 +71,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
         else
             return "\"No no, that's not it. It's green and should be glowing, as souls do.\"";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected String converse1() {
         this.firstTime = false;
         
@@ -166,14 +166,14 @@ public class Drar_Ghost extends NonPlayerCharacter {
 
         return NOTHING;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected String converse2() {
         GUI.out("\"Do you have the emerald yet? It's so " +
                 "important to me. I will to repay you.\"");
         
         return NOTHING;
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     private void converse3() {       
         
         GUI.menOut(Menus.ENTER);
@@ -207,5 +207,5 @@ public class Drar_Ghost extends NonPlayerCharacter {
         Player.getRoomObj(Id.DRAR).removeFurniture(this);  
         Player.describeRoom();
     }
-/*----------------------------------------------------------------------------*/       
+//-----------------------------------------------------------------------------       
 }

@@ -18,5 +18,5 @@ public class Want_Torches extends Furniture {
         this.addNameKeys("(?:standing )?torch(?:es)?", "(?:metal )?baskets", 
                 "(?:burning )?(?:wood(?:en)? )?chunks");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

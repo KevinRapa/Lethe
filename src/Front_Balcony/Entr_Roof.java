@@ -9,5 +9,5 @@ public class Entr_Roof extends Ceiling {
         this.description = "The portico is shaded by an elongated mansard roof "
                          + "extending from the castle's front wall.";
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

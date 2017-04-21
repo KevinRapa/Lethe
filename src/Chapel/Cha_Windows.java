@@ -5,7 +5,7 @@ import A_Super.StaticWndw;
  * @author Kevin Rapa
  */
 public class Cha_Windows extends StaticWndw {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cha_Windows () {
         super();
 
@@ -15,7 +15,7 @@ public class Cha_Windows extends StaticWndw {
 
         this.addNameKeys("stained glass windows?");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

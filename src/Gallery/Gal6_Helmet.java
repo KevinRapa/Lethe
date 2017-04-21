@@ -33,7 +33,7 @@ public class Gal6_Helmet extends Furniture {
         this.addActKeys("wear", "put");
         this.addNameKeys("(?:bizarre|cool )?helmet");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         String choice; 
         String r;
@@ -57,5 +57,5 @@ public class Gal6_Helmet extends Furniture {
 
         return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

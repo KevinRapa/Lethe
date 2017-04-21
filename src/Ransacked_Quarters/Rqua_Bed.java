@@ -20,7 +20,7 @@ public class Rqua_Bed extends Furniture {
         this.addNameKeys("(?:flimsy )?(?:metal )?(?:bedframe|bed)");
         this.addActKeys(MOVEPATTERN, SITPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {  
         if (key.matches(MOVEPATTERN)) {
             if (! this.moved) {
@@ -33,9 +33,9 @@ public class Rqua_Bed extends Furniture {
         else
             return "This bed looks most uncomfortable.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public boolean isMoved() {
         return this.moved;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

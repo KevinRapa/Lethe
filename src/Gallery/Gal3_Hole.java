@@ -12,6 +12,6 @@ public class Gal3_Hole extends Furniture {
         this.searchDialog = "You peek into the hole, and see only the rope fade into "
                           + "the dark.";
         this.addNameKeys("hole");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

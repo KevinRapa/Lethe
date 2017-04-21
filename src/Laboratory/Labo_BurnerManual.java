@@ -38,6 +38,6 @@ public class Labo_BurnerManual extends Book {
                        "lighting of bunsen burners is a skill achieved through " +
                        "experience and safety only. It is up to you to practice.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }
 

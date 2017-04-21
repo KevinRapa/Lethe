@@ -13,6 +13,6 @@ public class Par_WeaponRecipe extends Note {
                          + "Though a safe recipe, only hands of a trained enchanter "
                          + "can perform this enchant. -Aeria";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }
 

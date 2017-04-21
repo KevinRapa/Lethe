@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Lqu1_Bed extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Lqu1_Bed () {
         super();
 
@@ -17,7 +17,7 @@ public class Lqu1_Bed extends Furniture {
         this.addNameKeys("body", "bed", "lich");
         this.addActKeys(SITPATTERN);
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

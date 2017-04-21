@@ -3,7 +3,7 @@ package West_Outer_Wall;
 import A_Super.StaticWndw;
 
 public class Wow_Window extends StaticWndw {
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     public Wow_Window() {
         super();
         this.description = "Through the window, you can see out the front of the "
@@ -12,6 +12,6 @@ public class Wow_Window extends StaticWndw {
                          + "downward and winds to the west along the foothills of "
                          + "a distant mountain.";
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }
 

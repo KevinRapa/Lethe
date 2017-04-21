@@ -8,7 +8,7 @@ import A_Super.Moveable;
  * @author Kevin Rapa
  */
 public class Labo_Contraption extends Furniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Contraption () {
         super();
 
@@ -26,11 +26,11 @@ public class Labo_Contraption extends Furniture implements Moveable {
         this.addActKeys("use");
         this.addUseKeys(BEAKER, FLORENCE_FLASK);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String moveIt() {
         return "The contraption looks pretty fragile. You think it best to leave it where it is.";
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

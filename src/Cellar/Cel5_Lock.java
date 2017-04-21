@@ -10,7 +10,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Cel5_Lock extends Furniture implements Gettable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel5_Lock () {
         super();
 
@@ -25,7 +25,7 @@ public class Cel5_Lock extends Furniture implements Gettable {
         this.addUseKeys(ANYTHING);
         this.addActKeys("pick", "unlock|lock", GETPATTERN, "break|destroy|hit|bang");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("unlock"))
             return this.actDialog;
@@ -39,7 +39,7 @@ public class Cel5_Lock extends Furniture implements Gettable {
         else
             return "That would be too painful and ineffective to do by hand.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON)) {
             AudioPlayer.playEffect(35);
@@ -51,7 +51,7 @@ public class Cel5_Lock extends Furniture implements Gettable {
             return "Do you intend to pick the lock with that? Prepare for "
                  + "disappointment, for our protagonist is not skilled in the trade.";
     }
-    // ========================================================================         
+    //-------------------------------------------------------------------------         
 }
 
 

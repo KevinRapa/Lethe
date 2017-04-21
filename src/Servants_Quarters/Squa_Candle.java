@@ -14,7 +14,7 @@ public class Squa_Candle extends Furniture implements Gettable {
         this.addNameKeys("(?:lit )?(?:wax )?candle");
         this.addActKeys(GETPATTERN, HOLDPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.matches(HOLDPATTERN)) {
             AudioPlayer.playEffect(39, 0.3);
@@ -25,5 +25,5 @@ public class Squa_Candle extends Furniture implements Gettable {
              + "part of some elaborate prank, the flame refuses to die and thwarts "
              + "your intention.");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

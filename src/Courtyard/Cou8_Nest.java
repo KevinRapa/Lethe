@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  */
 public class Cou8_Nest extends SearchableFurniture implements Gettable {
 
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cou8_Nest (Item... items) {
         super(items);
         
@@ -22,13 +22,13 @@ public class Cou8_Nest extends SearchableFurniture implements Gettable {
         this.addNameKeys("(?:raven's )?nest", "(?:raven|bird's) nest");
         this.addActKeys(SITPATTERN, GETPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String interact(String key) {
         return (key.matches(GETPATTERN)) ? 
                 getIt("That belongs to a raven. You don't have it in your conscience to take that.") 
                 : actDialog;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

@@ -7,7 +7,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Pris_Table extends SearchableFurniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Pris_Table (Item... items) {
         super(items);
         
@@ -18,7 +18,7 @@ public class Pris_Table extends SearchableFurniture implements Unmoveable {
 
         this.addNameKeys("(?:heavy )?(?:wooden )?(?:dining )?table");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

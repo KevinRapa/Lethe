@@ -26,5 +26,5 @@ public class Bha1_Table extends SearchableFurniture implements Openable, Moveabl
         this.addNameKeys("(?:drawered )?(?:end )?table");
         this.addActKeys(JOSTLEPATTERN);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

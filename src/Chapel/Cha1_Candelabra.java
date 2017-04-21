@@ -6,7 +6,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Cha1_Candelabra extends Candelabra {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cha1_Candelabra (Item candle) {
         super(candle);
         
@@ -14,7 +14,7 @@ public class Cha1_Candelabra extends Candelabra {
 
         this.addNameKeys("(?:silver )?(?:standing )?(?:lit )?candelabras?");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

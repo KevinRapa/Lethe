@@ -11,7 +11,7 @@ import A_Super.Unmoveable;
 public class Cou4_Mailbox extends SearchableFurniture 
         implements Openable, Gettable, Unmoveable
 {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cou4_Mailbox (Item... items) {
         super(items);
         
@@ -24,14 +24,14 @@ public class Cou4_Mailbox extends SearchableFurniture
         this.addNameKeys("(?:small )?(?:mail)?box");
         this.addActKeys(GETPATTERN, "lock", "unlock");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public String interact(String key) {  
         if (key.equals("lock") || key.equals("unlock"))
             return this.actDialog;
         else
             return getIt();
     }
-    // ========================================================================        
+    //-------------------------------------------------------------------------        
 }
 
 

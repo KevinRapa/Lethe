@@ -36,6 +36,6 @@ public class Par_MandrakeBook extends Book {
         PAGE_LIST[3] = "This page is blank except for a single line- \"-Experiment more "
                      + "with holy water. Faster than regular watering.\"";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }
 

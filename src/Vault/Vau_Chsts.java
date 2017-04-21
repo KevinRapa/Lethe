@@ -7,7 +7,7 @@ import A_Super.Openable;
 import A_Super.SearchableFurniture;
 
 public class Vau_Chsts extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Vau_Chsts(Item ... items) {
         super(items);
         
@@ -16,12 +16,12 @@ public class Vau_Chsts extends SearchableFurniture implements Openable, Moveable
 
         this.addNameKeys("(?:wooden )?chests?");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public String moveIt() {
         AudioPlayer.playEffect(44);
         return "You move the chest over a bit... Nope, just more treasure underneath.";
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

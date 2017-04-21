@@ -7,7 +7,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Cel4_Bed extends SearchableFurniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel4_Bed (Item... items) {
         super(items);
         
@@ -17,10 +17,10 @@ public class Cel4_Bed extends SearchableFurniture implements Moveable {
         this.actDialog = "It's really not the time for sleeping now.";;
         this.searchDialog = "You crouch down and look under the bed.";
 
-        this.addNameKeys("(?:rudimentary )?bed");
+        this.addNameKeys("(?:rudimentary | simple )?bed");
         this.addActKeys(SITPATTERN);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

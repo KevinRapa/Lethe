@@ -6,7 +6,7 @@ import A_Super.Furniture;
  */
 public class Cel_Lantern extends Furniture {
 
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel_Lantern () {
         super();
         
@@ -19,7 +19,7 @@ public class Cel_Lantern extends Furniture {
         this.addNameKeys("(?:small )?(?:octogonal )?(?:hanging )?(?:lantern|lamp)");
         this.addActKeys(GETPATTERN);
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

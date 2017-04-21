@@ -40,7 +40,7 @@ public class Rotu extends Room {
         
         this.state = State.EAST_WEST;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public void rotate() {
         AudioPlayer.playEffect(18);
         
@@ -77,11 +77,11 @@ public class Rotu extends Room {
             this.state = State.EAST_WEST; 
         }    
     }
-/*----------------------------------------------------------------------------*/        
+//-----------------------------------------------------------------------------        
     public State getState() {
         return this.state;
     }
-/*----------------------------------------------------------------------------*/   
+//-----------------------------------------------------------------------------   
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("\"What a foul stench of decay!\" You think to yourself as you enter this domed chamber.");

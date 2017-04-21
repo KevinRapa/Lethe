@@ -13,5 +13,5 @@ public class Bha1_Plant extends PottedPlant {
         this.description = "The plant doesn't seem to be in good shape. Though "
                          + "drooping a bit, it's still alive.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

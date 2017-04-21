@@ -6,7 +6,7 @@ import A_Super.PottedPlant;
  * @author Kevin Rapa
  */
 public class Bls1_Plants extends PottedPlant {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Bls1_Plants (Item soil, Item gift) {
         super(soil, gift);
 
@@ -15,7 +15,7 @@ public class Bls1_Plants extends PottedPlant {
 
         this.addNameKeys("plants?", "trees?", "bush(?:es)?");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

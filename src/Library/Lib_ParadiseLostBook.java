@@ -121,5 +121,5 @@ public class Lib_ParadiseLostBook extends Book {
                        "And shook his throne. What though the field be lost? " +
                        "... Wait. You didn't come to this castle just to read, did you?";    
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

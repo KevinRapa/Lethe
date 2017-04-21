@@ -13,16 +13,16 @@ import A_Super.Room;
  * @author Kevin Rapa
  */
 public class Torc extends Room {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Torc(String name, String ID) {
         super(name, ID);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! Player.getPos().hasFurniture(SCYTHE))
             return this.description.replaceFirst(" below a large scythe", "");
         else
             return this.description;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

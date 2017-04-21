@@ -6,7 +6,7 @@ import static A_Main.Names.*;
  */
 public class Ceiling extends Furniture implements Unmoveable {
     private final static String DESC = "There's nothing too exciting about the ceiling here.";
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Ceiling () {
         super();
 
@@ -19,12 +19,12 @@ public class Ceiling extends Furniture implements Unmoveable {
         this.addUseKeys(POLEARM, "wooden spear", "silver spear");
         this.addActKeys(FEELPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     public Ceiling(String desc) {
         this();
         this.description = desc;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

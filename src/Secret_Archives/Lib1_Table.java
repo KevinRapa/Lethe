@@ -18,5 +18,5 @@ public class Lib1_Table extends SearchableFurniture implements Unmoveable {
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:ornate )?table");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

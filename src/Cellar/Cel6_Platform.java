@@ -6,7 +6,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Cel6_Platform extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel6_Platform () {
         super();
         
@@ -20,14 +20,14 @@ public class Cel6_Platform extends Furniture implements Unmoveable {
         this.addActKeys("break|destroy", "jump");
         this.addNameKeys("(?:metal )?(?:iron )?(?:bars|railing|platform)");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {
         if (key.equals("jump"))
             return "What an adventurous way to commit suicide...";
         else
             return this.actDialog;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

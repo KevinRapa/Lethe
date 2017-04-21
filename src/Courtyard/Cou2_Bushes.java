@@ -22,19 +22,19 @@ public class Cou2_Bushes extends Courtyard_Growth implements Gettable {
         this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:unkept )?(?:thorny )?bush(?:es)?", "(?:bright )?(?:red )?berr(?:ies|y)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.matches(GETPATTERN))
             return getIt();
         else
             return super.interact(key);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getIt() {
         if (Player.getInv().add(BERRY_REF))
             return "You pick a bright red berry off the bush.";
         else 
             return NOTHING;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

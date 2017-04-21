@@ -15,13 +15,13 @@ abstract public class StaticWndw extends Furniture implements Unmoveable {
         this.addActKeys("open|close", "exit|climb|jump|escape");
         this.addNameKeys("(?:barred )?window");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("open") || key.equals("close"))
             return this.actDialog;
         else
             return this.escapeDialog;
     } 
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

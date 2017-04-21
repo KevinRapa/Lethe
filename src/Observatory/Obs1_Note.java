@@ -10,5 +10,5 @@ public class Obs1_Note extends Note {
                          + "then the eith, then the fi<illegible> was in the "
                          + "chandeleer... cant remember how.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

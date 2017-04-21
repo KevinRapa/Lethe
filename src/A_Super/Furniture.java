@@ -60,7 +60,7 @@ abstract public class Furniture implements Serializable {
             NOTHING_HERE = "There's nothing hiding here.",
             ANYTHING = ".+",
             NOTHING = "";
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Constructor for furniture.
      * Many attributes are overwritten in furniture sub-classes.
@@ -77,7 +77,7 @@ abstract public class Furniture implements Serializable {
         this.useDialog = DEFAULT_USE;
         this.searchDialog = NOTHING_HERE;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     /**
      * Used to check if this piece contains a certain item.
      * Removes titles from books.
@@ -97,20 +97,20 @@ abstract public class Furniture implements Serializable {
     public String getDescription() {
         return this.description; 
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     public String getSearchDialog() {
         return this.searchDialog; 
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     public boolean isSearchable() {
         // Item's can be traded with searchable furniture.
         return this.searchable;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     public Inventory getInv() {
         return this.inv;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String toString() {
         return this.NAMEKEYS.get(0).toString();
     }
@@ -131,7 +131,7 @@ abstract public class Furniture implements Serializable {
     public String interact(String key) {              
         return this.actDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     /**
      * This method is invoked when an item is used on this piece.
      * @param item The object reference to the item used on this.
@@ -140,22 +140,22 @@ abstract public class Furniture implements Serializable {
     public String useEvent(Item item) {
         return this.useDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     public boolean actKeyMatches(String verb) {
         return this.ACTKEYS.stream()
                 .anyMatch(i -> i.matcher(verb).matches());
     }    
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     public boolean useKeyMatches(String itemName) {
         return this.USEKEYS.stream()
                 .anyMatch(i -> i.matcher(itemName).matches());
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     public boolean nameKeyMatches(String furnitureName) {
         return this.NAMEKEYS.stream()
                 .anyMatch(i -> i.matcher(furnitureName).matches());
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     /**
      * Adds a list of use keys to this furniture.
      * @param keys A list of use keys.
@@ -164,7 +164,7 @@ abstract public class Furniture implements Serializable {
         for (String key : keys)
             this.USEKEYS.add(Pattern.compile(key));
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     /**
      * Adds a list of name keys to this furniture.
      * @param keys A list of name keys.
@@ -173,7 +173,7 @@ abstract public class Furniture implements Serializable {
         for (String key : keys)
             this.NAMEKEYS.add(Pattern.compile(key));
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     /**
      * Adds a list of action keys to this furniture.
      * @param keys A list of action keys.

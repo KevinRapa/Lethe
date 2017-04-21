@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Obs3_Chest extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Obs3_Chest(Item... items) {
         super(items);
         this.description = "It's a wooden chest. 'Looks like the kind with "
@@ -17,7 +17,7 @@ public class Obs3_Chest extends SearchableFurniture implements Openable, Moveabl
 
         this.addNameKeys("(?:wooden )?chest");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

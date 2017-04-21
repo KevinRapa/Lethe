@@ -7,7 +7,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Torc_Rack extends SearchableFurniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Torc_Rack (Item... items) {
         super(items);
         
@@ -25,7 +25,7 @@ public class Torc_Rack extends SearchableFurniture implements Moveable {
         this.addNameKeys("(?:plain )?(?:wooden )?(?:table|rack)");
         this.addActKeys(SITPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

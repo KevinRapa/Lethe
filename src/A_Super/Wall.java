@@ -10,7 +10,7 @@ import static A_Main.Names.WEAPON;
  * @author Kevin Rapa
  */
 public class Wall extends Furniture implements Unmoveable {
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     public Wall(String dsc) {
         super();
         this.description = dsc;
@@ -21,7 +21,7 @@ public class Wall extends Furniture implements Unmoveable {
         this.addUseKeys(ANYTHING);
         this.addNameKeys("walls?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON)) {
             AudioPlayer.playEffect(35);
@@ -32,12 +32,12 @@ public class Wall extends Furniture implements Unmoveable {
         else
             return DEFAULT_USE;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("break"))
             return this.actDialog;
         else
             return "Suction cups would be pretty convenient right about now...";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

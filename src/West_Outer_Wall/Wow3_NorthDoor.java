@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Wow3_NorthDoor extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Wow3_NorthDoor () {
         super();
 
@@ -15,7 +15,7 @@ public class Wow3_NorthDoor extends Furniture {
         this.addNameKeys("north door");
         this.addActKeys("open", "use");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

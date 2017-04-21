@@ -15,5 +15,5 @@ public class Gal6_Table extends Furniture {
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:ordinary )?table");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

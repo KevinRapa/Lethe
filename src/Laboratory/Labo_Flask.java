@@ -13,7 +13,7 @@ import A_Super.SearchableFurniture;
 public class Labo_Flask extends SearchableFurniture {
     private final Labo_Condenser CONDENSER_REF;
     private final Item TUBE_REF, VIAL_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_Flask (Labo_Condenser condenser, Item tstTb, Item vial) {
         super();
         
@@ -34,7 +34,7 @@ public class Labo_Flask extends SearchableFurniture {
         this.addNameKeys("(?:florence |bulbous )?flask");
         this.addActKeys(GETPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     public void distill() {
         if (this.inv.size() != 0 && CONDENSER_REF.condense(determineProduct())) 
             ((Flsk_Inventory)this.inv).emptyAndAddResidue();
@@ -43,7 +43,7 @@ public class Labo_Flask extends SearchableFurniture {
                   + "flame heats the empty flask for about a minute, yielding "
                   + "no interesting results.");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     private int determineProduct() {
         if (this.inv.size() == 6 && 
                 containsItem("chilled Br 10mL") && 
@@ -58,7 +58,7 @@ public class Labo_Flask extends SearchableFurniture {
         else
             return 0;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         switch (this.inv.size()) {
             case 0:
@@ -69,20 +69,20 @@ public class Labo_Flask extends SearchableFurniture {
                 return "The glass flask contains a solution of... stuff.";
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         Player.getInv().give(item, this.inv);
         return NOTHING;
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     // ************************************************************************
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     private class Flsk_Inventory extends Inventory {
-        // ==========================================
+        //-------------------------------------------
         public Flsk_Inventory() {
             super();
         }
-        // ==========================================
+        //-------------------------------------------
         @Override public boolean add(Item item) {
             if (item.getType().equals(Names.INGREDIENT)) {
                 GUI.out("You pour it in.");
@@ -93,7 +93,7 @@ public class Labo_Flask extends SearchableFurniture {
             GUI.out("That's not an ingredient!");
             return false;
         }
-        // ==========================================
+        //-------------------------------------------
         @Override public boolean give(Item item, Inventory giveToThis) {
             if (item.toString().equals("gray residue")) {
                 this.remove(item);
@@ -126,14 +126,14 @@ public class Labo_Flask extends SearchableFurniture {
                 return false;
             }
         }
-        // ==========================================
+        //-------------------------------------------
         public void emptyAndAddResidue() {
             this.CONTENTS.clear();
             this.CONTENTS.add(new Item("gray residue", "It smells awful! Just a product of distillation you suppose.", -50));
         }
-        // ==========================================
+        //-------------------------------------------
     }    
-    // ========================================================================          
+    //-------------------------------------------------------------------------          
 }
 
 

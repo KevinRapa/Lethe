@@ -10,7 +10,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class CV34 extends Cave {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public CV34(String name, String ID, Furniture wall, Furniture ceiling) {
         super(ID, wall, ceiling);
         this.description = "You've found your way to an open area... There's something "
@@ -20,5 +20,5 @@ public class CV34 extends Cave {
                                     + "the rest of the cave. A round well stands "
                                     + "in the center. Why would this be down here?");
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

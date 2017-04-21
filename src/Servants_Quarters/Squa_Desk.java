@@ -18,5 +18,5 @@ public class Squa_Desk extends SearchableFurniture implements Openable, Moveable
         this.addNameKeys("(?:plain )?(?:wooden )?desk");
         this.addActKeys(JOSTLEPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -24,7 +24,7 @@ public class Stud_Portrait extends WallArt {
                        + "appropriately revealing a safe.";
         this.addNameKeys("portrait", "picture", "painting");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {  
         if (key.equals("admire"))
             return "Yes, what a beautiful piece of artwork. You take a moment "
@@ -37,6 +37,6 @@ public class Stud_Portrait extends WallArt {
             return "You have already discovered the safe.";
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

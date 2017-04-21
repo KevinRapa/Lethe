@@ -10,7 +10,7 @@ import A_Super.Moveable;
  * @author Kevin Rapa
  */
 public class Gal4_Glass extends Furniture implements Gettable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gal4_Glass () {
         super();
         
@@ -23,7 +23,7 @@ public class Gal4_Glass extends Furniture implements Gettable, Moveable {
         this.addUseKeys(ANYTHING);
         this.addActKeys("shatter", "break|destroy", JOSTLEPATTERN, GETPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {     
         if (key.matches(GETPATTERN))
             return getIt();
@@ -32,14 +32,14 @@ public class Gal4_Glass extends Furniture implements Gettable, Moveable {
             return this.actDialog;
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON))
             return this.interact("break");
         else
             return DEFAULT_USE;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

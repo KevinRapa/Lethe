@@ -17,7 +17,7 @@ public class Par1_Orb extends NonPlayerCharacter {
         this.addActKeys("rub", "feel", "touch");
         this.addNameKeys("(?:small )?(?:glass )?orb");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.matches(ATTACK_PATTERN))
             return ATTACK_DIALOG;
@@ -35,7 +35,7 @@ public class Par1_Orb extends NonPlayerCharacter {
         else
             return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected String converse1() {
         
         GUI.out("\"You should ask permission before playing with things that "
@@ -95,18 +95,18 @@ public class Par1_Orb extends NonPlayerCharacter {
         return "\"Now, if you don't mind, I would like to get back to writing "
              + "this twelve-hundred part symphony.\"";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override protected String converse2() { 
         return "\"Egh... uhh... I'm not sure... on the shelf over there??? "
               + "Ah! That's what this needs, more bassoons!\"";
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     public boolean woken() {
         return this.woken;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     public void wake() {
         this.woken = true;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
 }

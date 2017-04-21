@@ -9,7 +9,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Tow2_NorthDoor extends Door {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tow2_NorthDoor (Direction dir) {
         super(dir);
         
@@ -20,7 +20,7 @@ public class Tow2_NorthDoor extends Door {
 
         this.addNameKeys("(?:imposing )?(?:glowing )?(?:metal )?(?:double-?)?doors?", "(?:door )?etchings?");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         int numPhylacteries = 0;
         
@@ -37,7 +37,7 @@ public class Tow2_NorthDoor extends Door {
                 return this.description.concat(numPhylacteries + " of the circular etchings.");
         }
     }
-    // ========================================================================      
+    //-------------------------------------------------------------------------      
 }
 
 

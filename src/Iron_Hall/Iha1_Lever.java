@@ -8,7 +8,7 @@ import Rotunda.Rotu;
  * @author Kevin Rapa
  */
 public class Iha1_Lever extends Lever {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Iha1_Lever () {
         super();
         
@@ -17,12 +17,12 @@ public class Iha1_Lever extends Lever {
         
         this.addNameKeys("(?:big )?(?:iron )?lever");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override protected String event(String key) {
         ((Rotu)Player.getRoomObj(Id.ROTU)).rotate();
         return "you hear a loud rumble.";
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

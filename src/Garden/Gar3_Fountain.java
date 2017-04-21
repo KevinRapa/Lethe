@@ -6,7 +6,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Gar3_Fountain extends SearchableFurniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar3_Fountain (Item... items) {
         super(items);
         
@@ -19,7 +19,7 @@ public class Gar3_Fountain extends SearchableFurniture {
         this.addNameKeys("(?:low )?fountain");
         this.addActKeys("drink");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

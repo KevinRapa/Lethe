@@ -10,6 +10,6 @@ public class Gal3_Mask2 extends WallArt {
                          + "It has no mouth, but a long slender nose. Below, you "
                          + "see a small label: \"Bambara\".";
         this.addNameKeys("malian mask");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

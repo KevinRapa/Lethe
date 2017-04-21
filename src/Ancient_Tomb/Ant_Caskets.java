@@ -6,7 +6,7 @@ import A_Super.Openable;
  * @author Kevin Rapa
  */
 public class Ant_Caskets extends Furniture implements Openable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Ant_Caskets() {
         super();
         
@@ -18,7 +18,7 @@ public class Ant_Caskets extends Furniture implements Openable {
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("caskets", "wooden caskets");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

@@ -7,7 +7,7 @@ import A_Super.Key;
 import A_Super.Furniture;
 
 public class Iha1_Bowl extends Furniture {
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private final Furniture FLOOR_REF;
     private final Key WOWKEY_REF;
     private boolean jabbed;
@@ -28,7 +28,7 @@ public class Iha1_Bowl extends Furniture {
             this.useDialog = "You give the hanging bowl a jab with the pole. "
                            + "A small piece of metal falls out onto the floor.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (! this.jabbed) {
             FLOOR_REF.getInv().add(WOWKEY_REF); 
@@ -39,5 +39,5 @@ public class Iha1_Bowl extends Furniture {
         else 
             return "You jab the bowl, but nothing falls out.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

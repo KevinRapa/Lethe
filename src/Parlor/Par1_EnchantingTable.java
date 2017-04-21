@@ -40,7 +40,7 @@ public class Par1_EnchantingTable extends SearchableFurniture implements Moveabl
         this.addNameKeys("enchanting table", "table");
         this.addActKeys("pound", "hit", "activate", "enchant");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.getType().equals("phylactery"))
             return "You probably shouldn't get rid of that.";
@@ -52,7 +52,7 @@ public class Par1_EnchantingTable extends SearchableFurniture implements Moveabl
         
         return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {          
         switch (this.enchant()) {
             case 1:
@@ -68,7 +68,7 @@ public class Par1_EnchantingTable extends SearchableFurniture implements Moveabl
                                       + "from the force. Perhaps you aren't the wizard you thought you were.");
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private int enchant() {
         
         if (inv.size() == 4 && containsItem(FIRE_SALTS) && 
@@ -97,5 +97,5 @@ public class Par1_EnchantingTable extends SearchableFurniture implements Moveabl
             AudioPlayer.playEffect(40);
             return 0;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

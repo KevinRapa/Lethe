@@ -7,7 +7,7 @@ package A_Main;
  */
 public final class Id {
     public static final String  
-    // ========================================================================
+    //-------------------------------------------------------------------------
         NULL = "NULL", UNKN = "UNKN",  
             
         // <editor-fold defaultstate="collapsed" desc="AREA 1: Castle front">
@@ -117,7 +117,7 @@ public final class Id {
         
         // </editor-fold>
     
-    // ========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Returns the general area the player is in as opposed to the specific cell.
      * e.g., SEW (sewer) instead of a specific cell in the sewers.
@@ -127,5 +127,5 @@ public final class Id {
     public static String areaName(String id) {
         return id.substring(0, 3);
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }

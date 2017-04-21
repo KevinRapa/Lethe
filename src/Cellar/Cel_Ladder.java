@@ -11,7 +11,7 @@ import A_Super.Furniture;
 public class Cel_Ladder extends Furniture implements Climbable {
     private final String DEST;
     private final Direction DIR;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel_Ladder (String ID, Direction dir) {
         super();
         
@@ -25,17 +25,17 @@ public class Cel_Ladder extends Furniture implements Climbable {
         this.addNameKeys("(?:metal )?ladder", "rungs?");
         this.addActKeys("use", dir.toString(), CLIMBPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {      
         AudioPlayer.playEffect(47);
         Player.setOccupies(DEST);
         return this.actDialog;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public Direction getDir() {
         return DIR;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

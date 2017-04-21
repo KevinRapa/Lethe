@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Sewp_Ceiling extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sewp_Ceiling () {
         super();
 
@@ -13,7 +13,7 @@ public class Sewp_Ceiling extends Furniture {
 
         this.addNameKeys("ceiling");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

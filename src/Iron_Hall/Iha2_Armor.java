@@ -29,17 +29,17 @@ public class Iha2_Armor extends SearchableFurniture implements Gettable, Moveabl
         this.addNameKeys("(?:suit (?:of )?|plate )?armor", POLEARM, 
                 "(?:armor )?suit|gauntlet|hand");
     }    
-//*----------------------------------------------------------------------------*/
+///-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return this.containsItem(POLEARM) ? 
                 this.description : "It's a suit of armor. It's gauntlets are empty.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         return this.searchable ? 
                 "You look in the armor's gauntlet." : this.searchDialog; 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("equip") || key.equals("wear"))
             return this.actDialog;
@@ -55,7 +55,7 @@ public class Iha2_Armor extends SearchableFurniture implements Gettable, Moveabl
         else
             return getIt();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getIt() {
         if (! this.containsItem(POLEARM))
             return "The suit of armor isn't holding a polearm anymore.";
@@ -69,14 +69,14 @@ public class Iha2_Armor extends SearchableFurniture implements Gettable, Moveabl
         else
             return this.searchDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private class Armor_Inventory extends Inventory {
         public Armor_Inventory(Item ... items) {
             super(items);
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public boolean add(Item item) {
             if (this.size() == 0 && item.toString().equals(POLEARM)) {
                 this.CONTENTS.add(item);
@@ -87,14 +87,14 @@ public class Iha2_Armor extends SearchableFurniture implements Gettable, Moveabl
             GUI.out("The " + item + " doesn't fit in.");
             return false;
         }
-        /*--------------------------------------------------------------------*/
+        //---------------------------------------------------------------------
         @Override public void remove(Item removeThis) {  
             // Item must be a polearm.
             this.CONTENTS.remove(removeThis);
             ((Iha2)Player.getPos()).removePolearm();
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 /******************************************************************************/
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

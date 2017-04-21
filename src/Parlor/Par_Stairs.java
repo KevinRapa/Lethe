@@ -9,7 +9,7 @@ public class Par_Stairs extends Staircase {
         super(direction);
         this.description = "The thin sandstone stairs lead to the balcony above. ";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.DIR == Direction.DOWN) {
             return "The thin sandstone stairs lead down to the first floor.";
@@ -17,5 +17,5 @@ public class Par_Stairs extends Staircase {
         
         return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

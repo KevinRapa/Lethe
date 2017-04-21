@@ -11,7 +11,7 @@ import A_Super.SearchableFurniture;
  */
 public class Sewer_River extends SearchableFurniture {
     protected final Item WTR_BCKT;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sewer_River (Item bckt, Item... items) {
         super(items);
         this.WTR_BCKT = bckt;
@@ -29,7 +29,7 @@ public class Sewer_River extends SearchableFurniture {
         this.addActKeys("swim", "jump", "drink");
         this.addUseKeys(METAL_BUCKET);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String useEvent(Item item) {
         AudioPlayer.playEffect(42);
         Player.getInv().remove(item);
@@ -37,19 +37,19 @@ public class Sewer_River extends SearchableFurniture {
         
         return this.useDialog;
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return (this.inv.size() != 0) ? 
                 this.description.concat(" You can see something lying at the bottom.") :
                 this.description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         return key.equals("drink") ?
             "The water looks and smells clean enough. You crouch down and "
           + "take a swig, feeling refreshed." : this.actDialog;
     } 
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
 }
 
 

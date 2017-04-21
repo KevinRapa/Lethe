@@ -15,5 +15,5 @@ public class Kitc_Shelf extends SearchableFurniture implements Unmoveable{
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("shelf of wine", "wine(?: shelf| rack)?", "shelf");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

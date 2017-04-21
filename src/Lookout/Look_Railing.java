@@ -10,6 +10,6 @@ public class Look_Railing extends Railing {
         this.description = "A wide, sturdy granite railing.";
         this.addNameKeys("(?:wide )?(?:sturdy )?(?:granite )?(?:balcony )?railing", "balcony");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

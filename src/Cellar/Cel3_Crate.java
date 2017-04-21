@@ -13,7 +13,7 @@ import A_Super.SearchableFurniture;
 public class Cel3_Crate extends SearchableFurniture 
         implements Gettable, Moveable 
 {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cel3_Crate (Item... items) {
         super(items);
         
@@ -32,19 +32,19 @@ public class Cel3_Crate extends SearchableFurniture
         this.addUseKeys(ANYTHING);
         this.addActKeys("pry", "open", "break", GETPATTERN, JOSTLEPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.searchable ? 
                 "The wooden crate has been opened by the astute player." :
                 this.description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         return this.searchable ? 
                 this.searchDialog : 
                 "The wooden crate is sealed shut and offers no view inside.";
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("pry")) {
             if (Player.hasItem(CROWBAR)) {
@@ -67,7 +67,7 @@ public class Cel3_Crate extends SearchableFurniture
                     + "does not destroy the crate only makes it stronger.";
         }
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         String name = item.toString();
         
@@ -112,7 +112,7 @@ public class Cel3_Crate extends SearchableFurniture
         else
             return DEFAULT_USE;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

@@ -17,7 +17,7 @@ public class Gal3_KoraFurniture extends Furniture {
         this.addNameKeys("(?:stringed )?instrument", "kora");
         this.addActKeys(GETPATTERN, "hold", "play", "strum");
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String interact(String key) { 
         if (key.matches("strum|play"))
             return "You would try, but it's up on the wall right now.";     
@@ -29,7 +29,7 @@ public class Gal3_KoraFurniture extends Furniture {
             else
                 return NOTHING;
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     private class Gal3_Inst extends Item {
         public Gal3_Inst (String name) {
             super(name, 30);
@@ -42,6 +42,6 @@ public class Gal3_KoraFurniture extends Furniture {
                            + "itself is actually quite nice, like that of a "
                            + "classical guitar.";
         }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
     }
 }

@@ -5,7 +5,7 @@ import A_Super.Balcony;
  * @author Kevin Rapa
  */
 public class Obs_Balcony extends Balcony {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Obs_Balcony () {
         super();
 
@@ -16,7 +16,7 @@ public class Obs_Balcony extends Balcony {
 
         this.addNameKeys("balcony", "balconies");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

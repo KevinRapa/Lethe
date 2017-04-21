@@ -19,5 +19,5 @@ public class Stud_Desk extends SearchableFurniture implements Openable, Moveable
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("desk", "fancy desk");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

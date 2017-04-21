@@ -24,7 +24,7 @@ public class Cou3_Gate extends Furniture implements Unmoveable {
         this.addActKeys("open", "use", "knock", "close", "shut");
         this.addNameKeys("(?:monstrous )?(?:two-story )?(?:solid )?(?:oak )?(?:main |front )?gate");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("open") || key.equals("use"))
             return this.actDialog;
@@ -35,5 +35,5 @@ public class Cou3_Gate extends Furniture implements Unmoveable {
         else
             return "Why would you do that? The PROBLEM is that it's closed!";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

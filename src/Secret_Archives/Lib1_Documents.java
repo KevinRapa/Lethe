@@ -18,5 +18,5 @@ public class Lib1_Documents extends Furniture {
         this.addNameKeys("documents?", "scrolls?", "papers?");
         this.addActKeys("read");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

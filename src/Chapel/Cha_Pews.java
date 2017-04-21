@@ -7,7 +7,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Cha_Pews extends SearchableFurniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cha_Pews (Item... items) {
         super(items);
         this.description = "Ten rows of uncomfortable pews fill the chapel nave. "
@@ -18,7 +18,7 @@ public class Cha_Pews extends SearchableFurniture implements Moveable {
         this.addNameKeys("(?:uncomfortable )?(?:wood(?:en)? )?pews?");
         this.addActKeys(SITPATTERN);
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

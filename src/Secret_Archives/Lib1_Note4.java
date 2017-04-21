@@ -17,6 +17,6 @@ public class Lib1_Note4 extends Note {
                            "move with it on occasion. We will leave it " +
                            "in the deep chamber for now, but I intend to "
                          + "figure out its purpose!";
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

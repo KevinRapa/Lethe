@@ -12,6 +12,6 @@ public class Gal1_Painting1 extends WallArt {
                          + "deities playing musical instruments. One of them "
                          + "riding in a chariot resembles an elephant.";
         this.addNameKeys("indian painting");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

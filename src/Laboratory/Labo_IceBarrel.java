@@ -20,7 +20,7 @@ public class Labo_IceBarrel extends SearchableFurniture
         implements Openable, Unmoveable 
 {
     private final Item DRY_ICE_REF;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Labo_IceBarrel (Item flask) {
         super();
 
@@ -33,9 +33,9 @@ public class Labo_IceBarrel extends SearchableFurniture
 
         this.addNameKeys("(?:unusual )?(?:wooden |foam )?barrel");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     // ************************************************************************
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     /**
      * Chills any chemical if left alone for 25 seconds.
      * Uses a hash map to keep track of any active threads. A new thread is
@@ -49,7 +49,7 @@ public class Labo_IceBarrel extends SearchableFurniture
         public Ice_Inventory(Item ... items) {
             super(items);
         }
-    // ========================================================================
+    //-------------------------------------------------------------------------
         @Override public boolean add(Item item) {
             this.CONTENTS.add(item);
             
@@ -65,7 +65,7 @@ public class Labo_IceBarrel extends SearchableFurniture
             }
             return true;
         }
-    // ========================================================================
+    //-------------------------------------------------------------------------
         @Override public void remove(Item removeThis) {
             // If player removes ingredient while cooling, interrupts the thread.
             this.CONTENTS.remove(removeThis);
@@ -78,23 +78,23 @@ public class Labo_IceBarrel extends SearchableFurniture
             }
         }
     }    
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     // ************************************************************************
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     /**
      * Converts chemical into chilled chemicals in 25 seconds.
      */
     private class Chill_Thread extends Thread {
         private final Item CHEMICAL;
         private final ArrayList<Item> BARREL_INV;
-    // ========================================================================
+    //-------------------------------------------------------------------------
         public Chill_Thread(Item item, ArrayList<Item> inv) {
             super();
             this.setDaemon(true);
             this.CHEMICAL = item;
             this.BARREL_INV = inv;
         }
-    // ========================================================================
+    //-------------------------------------------------------------------------
         @Override public void run() {     
             try {
                 synchronized (this) {
@@ -106,7 +106,7 @@ public class Labo_IceBarrel extends SearchableFurniture
                 System.out.println(ex.getMessage());
             }
         }
-    // ========================================================================
+    //-------------------------------------------------------------------------
         public void addChilledItem() {
             if (BARREL_INV.contains(CHEMICAL)) {
                 // If chilled ingredients are chilled, they become "Super chilled"
@@ -121,9 +121,9 @@ public class Labo_IceBarrel extends SearchableFurniture
             }
         }
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     // ************************************************************************
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

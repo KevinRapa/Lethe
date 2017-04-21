@@ -19,11 +19,11 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Intr extends Room {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Intr(String name, String ID, Furniture ... furniture) {
         super(name, ID);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(this.ID))
             GUI.out("An unknown amount of time passes. You awake with your head "
@@ -33,5 +33,5 @@ public class Intr extends Room {
         
         return STD_RM_OUT;
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

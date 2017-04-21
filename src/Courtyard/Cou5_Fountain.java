@@ -19,7 +19,7 @@ public class Cou5_Fountain extends Courtyard_Fountain implements Gettable {
         this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:slender |helmed )?(?:female )?statue", "staff|shield|soldier");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("drink") || key.equals("swim"))
             return this.actDialog;
@@ -27,5 +27,5 @@ public class Cou5_Fountain extends Courtyard_Fountain implements Gettable {
             return getIt("Well... It's made of stone and attached to the fountain, so "
              + "you're going to have to live without that.");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

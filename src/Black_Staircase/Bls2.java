@@ -10,15 +10,15 @@ import A_Super.Direction;
  * @author Kevin Rapa
  */
 public class Bls2 extends Room {
-// ============================================================================    
+//-----------------------------------------------------------------------------    
     public Bls2(String name, String ID) {
         super(name, ID);
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         return "The iron railing on the balcony is that way.";
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID))
             GUI.out("The throbbing in your head intensifies.");

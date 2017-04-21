@@ -7,7 +7,7 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Sew_Tunnel extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Sew_Tunnel () {
         super();
 
@@ -20,7 +20,7 @@ public class Sew_Tunnel extends Furniture implements Unmoveable {
 
         this.addNameKeys("(?:warm )?(?:humid )?(?:underground )?tunnel", "(?:tunnel )?ceiling");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

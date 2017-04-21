@@ -11,6 +11,6 @@ public class Gal1_Painting3 extends WallArt {
                          + "in mostly a blue-green with trees accented in orange. "
                          + "The black outlining is prominent.";
         this.addNameKeys("korean painting");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

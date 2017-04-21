@@ -12,5 +12,5 @@ public class Iha2_Bowl extends BurningBowl {
                          + "the hallway. A draft from the outside causes it to "
                          + "swing gently.";
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

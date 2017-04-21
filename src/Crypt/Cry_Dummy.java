@@ -9,7 +9,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Cry_Dummy extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cry_Dummy () {
         super();
 
@@ -21,7 +21,7 @@ public class Cry_Dummy extends Furniture {
         this.addUseKeys(ANYTHING);
         this.addActKeys("talk", "speak", "say", "announce", "whisper");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

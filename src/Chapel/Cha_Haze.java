@@ -7,7 +7,7 @@ import A_Super.Gettable;
  * @author Kevin Rapa
  */
 public class Cha_Haze extends Furniture implements Gettable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cha_Haze () {
         super();
         
@@ -21,14 +21,14 @@ public class Cha_Haze extends Furniture implements Gettable {
         this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:dusty )?haze", "dust");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String interact(String key) {
         if (key.equals("clean") || key.equals("sweep"))
             return this.actDialog;
         else
             return this.getIt();
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

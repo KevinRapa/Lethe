@@ -15,5 +15,5 @@ public class Gqua_Stool extends Furniture implements Moveable {
         this.addNameKeys("(?:puny |tiny )?(?:three-legged )?stool");
         this.addActKeys(SITPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

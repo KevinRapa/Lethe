@@ -19,7 +19,7 @@ public class Stud extends Room {
     public Stud(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.SOUTH) {
             AudioPlayer.playEffect(6);
@@ -28,5 +28,5 @@ public class Stud extends Room {
         else
             return bumpIntoWall(); 
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

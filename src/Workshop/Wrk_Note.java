@@ -18,5 +18,5 @@ public class Wrk_Note extends Note {
                 "but it has been crossed out with 'ask  " +
                 "groundskeeper' written after it.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

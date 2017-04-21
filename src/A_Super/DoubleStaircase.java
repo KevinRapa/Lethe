@@ -13,11 +13,11 @@ import static A_Super.Direction.UP;
  * @author Kevin Rapa
  */
 abstract public class DoubleStaircase extends Staircase {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public DoubleStaircase () {
         super(Direction.DOWN); //Direction is UNUSED in Double stairs
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {
         if (key.equals(UP.toString()) || key.equals(DOWN.toString())) {
             boolean isUp = key.equals(UP.toString());
@@ -40,7 +40,7 @@ abstract public class DoubleStaircase extends Staircase {
         else
             return NOTHING;
     }
-    // ========================================================================         
+    //-------------------------------------------------------------------------         
 }
 
 

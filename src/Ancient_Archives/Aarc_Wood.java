@@ -8,7 +8,7 @@ import A_Super.Item;
  */
 public class Aarc_Wood extends Aarc_Furniture implements Gettable {
     private final Item WOOD_PIECE;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Aarc_Wood (Item wood) {
         super();
         
@@ -24,18 +24,18 @@ public class Aarc_Wood extends Aarc_Furniture implements Gettable {
         this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:piles of )?wood(?:en)?(?: rubble)?", "(?:wood(?:en)? )?piles?");
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
     @Override public String interact(String key) {
         return getIt();
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getIt() {
         if (Player.getInv().add(WOOD_PIECE))
             return "You take one of the books, not giving much thought about it.";
         else
             return NOTHING;
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

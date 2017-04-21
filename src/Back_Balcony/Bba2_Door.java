@@ -13,5 +13,5 @@ public class Bba2_Door extends Door {
                          + "the castle. It is carved very artfully. At its center, "
                          + "a bearded face is carved into the wood.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

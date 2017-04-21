@@ -27,7 +27,7 @@ public class Water extends Furniture implements Gettable {
         this.addNameKeys("water", "clear water", "H20");
         this.addUseKeys(METAL_BUCKET);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         AudioPlayer.playEffect(42);
         Player.getInv().remove(item);
@@ -35,7 +35,7 @@ public class Water extends Furniture implements Gettable {
         
         return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) { 
         if (key.equals("swim") || key.equals("jump") || key.equals("dive"))
             return this.actDialog;
@@ -45,12 +45,12 @@ public class Water extends Furniture implements Gettable {
         else
             return getIt();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getIt() {
         if (Player.hasItem(METAL_BUCKET))
             return this.useEvent(Player.getInv().get(METAL_BUCKET));
         else
             return "You'll need an empty bucket...";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

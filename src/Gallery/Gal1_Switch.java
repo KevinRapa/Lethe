@@ -19,9 +19,9 @@ public class Gal1_Switch extends Lever {
         this.DRAGON_REF = (Gal1_Dragon)stat; 
         this.addNameKeys("(?:large )?(?:black )?lever");
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
     @Override public String event(String key) {
         return this.actDialog.concat(DRAGON_REF.switchEye(1));
     }   
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

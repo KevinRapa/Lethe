@@ -206,7 +206,7 @@ public class RoomGraph {
 
         assignCoordinates(); 
     } 
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     /** 
      * Used when a saved game is loaded.
      * Rooms already have there adjacency lists, so no need to assemble those.
@@ -217,7 +217,7 @@ public class RoomGraph {
         for (String key : IDS)
             COORDINATES.put(key, COORDS[index++]); 
     } 
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     /** 
      * For any room, this returns which rooms are accessible from it. 
      * @param ID A room  
@@ -226,7 +226,7 @@ public class RoomGraph {
     public static HashSet<String> getAdj(String ID) { 
         return new HashSet<>(Arrays.asList(ADJACENTS.get(ID))); 
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     /** 
      * For any room, this returns its coordinates in the castle array. 
      * @param ID A room ID

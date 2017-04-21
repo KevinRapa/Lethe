@@ -20,19 +20,18 @@ public class Par1_Cushion extends SearchableFurniture {
         this.addNameKeys("(?:lavender )?(?:tasseled )?cushion");
         this.addActKeys(SITPATTERN, MOVEPATTERN, "lift");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.matches(SITPATTERN))
             return this.actDialog;
         else {
             if (this.containsItem("brass plate, \"Mars\""))
-                return "You lift up the cushion and affirm that there is in fact "
-                     + "a hard, shiny brass plate underneath. You place the cushion back "
-                     + "down.";
+                return "You lift up the cushion and assert that there is in fact "
+                     + "a hard, shiny brass plate underneath. \"Aha,\" you affirm, "
+                     + "and place the cushion back down. Perhaps a search is in order.";
             else
-                return "You lift the cushion and then put it back down again. Seems "
-                     + "productive.";
+                return "You lift the cushion and then put it back down again.";
         }
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

@@ -15,6 +15,6 @@ public class Rqua_Dresser extends Furniture implements Openable, Moveable {
                           + "has already searched it.";
         this.addActKeys("close");
         this.addNameKeys("(?:low )?dresser");  
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

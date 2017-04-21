@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Tmb2_Light extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tmb2_Light () {
         super();
         
@@ -19,7 +19,7 @@ public class Tmb2_Light extends Furniture {
         this.addActKeys(GETPATTERN);
         this.addActKeys(FEELPATTERN);
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

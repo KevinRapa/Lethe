@@ -12,5 +12,5 @@ public class Din1_Moonlight extends Furniture {
         this.searchDialog = "Don't be ridiculous.";
         this.addNameKeys("moonlight");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

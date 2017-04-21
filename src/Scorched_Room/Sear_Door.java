@@ -22,7 +22,7 @@ public class Sear_Door extends Furniture {
         this.addNameKeys("west door", "door");
         this.addActKeys("open|use|walk|go|close|kick", "knock|bang", "unlock|lock");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("close"))
             return "The door is already closed.";
@@ -40,12 +40,12 @@ public class Sear_Door extends Furniture {
         else 
             return this.actDialog;
     } 
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON)) 
             return "The door is build too solidly and breaking it down is futile.";
         else
             return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

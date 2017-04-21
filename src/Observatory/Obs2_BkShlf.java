@@ -9,7 +9,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Obs2_BkShlf extends SearchableFurniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Obs2_BkShlf (Item... items) {
         super(items);
         
@@ -18,7 +18,7 @@ public class Obs2_BkShlf extends SearchableFurniture {
 
         this.addNameKeys("(?:tall )?(?:brown )?(?:shelf|bookshelf)", "books");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

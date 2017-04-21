@@ -10,6 +10,6 @@ public class Gal3_Mask1 extends WallArt {
                          + "a slender nose almost reaching its chin. It has no "
                          + "mouth and only two tiny eye holes.";
         this.addNameKeys("gabonese mask");
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     }
 }

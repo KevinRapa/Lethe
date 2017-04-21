@@ -22,7 +22,7 @@ public class Obs3_Chandelier extends SearchableFurniture {
         this.addActKeys("swing", "hang");
         this.addNameKeys("(?:curved )?(?:brass )?(?:chandelier|light)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.searchable) 
             return "The brass chandelier's chain, having extended from " +
@@ -31,16 +31,16 @@ public class Obs3_Chandelier extends SearchableFurniture {
         else
             return this.description;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         if (this.searchable)
             return "The chandelier is just within reach.";
         else
             return this.searchDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     public void lower() {
         this.searchable = true;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

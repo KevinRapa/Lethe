@@ -13,7 +13,7 @@ import A_Super.SearchableFurniture;
  */
 public class Cis2_Boat extends SearchableFurniture {
 
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cis2_Boat (Item... items) {
         super(items);
         
@@ -29,7 +29,7 @@ public class Cis2_Boat extends SearchableFurniture {
         this.addUseKeys(WOODEN_OAR);
         this.addActKeys("ride|paddle|launch", "climb|enter|go", "leave");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("leave"))
             return "You aren't even in the canoe.";
@@ -38,11 +38,11 @@ public class Cis2_Boat extends SearchableFurniture {
         else
             return "You really have nothing proper to paddle with.";
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
         return this.transport();
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     // Transports the player between areas of the cistern.
     private String transport() {
         if (Player.getPosId().equals(Id.CIS2))
@@ -59,7 +59,7 @@ public class Cis2_Boat extends SearchableFurniture {
         
         return NOTHING;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

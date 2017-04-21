@@ -7,7 +7,7 @@ import A_Super.Gettable;
  * @author Kevin Rapa
  */
 public class Intr_Gears extends Furniture implements Gettable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Intr_Gears () {
         super();
 
@@ -23,14 +23,14 @@ public class Intr_Gears extends Furniture implements Gettable {
         this.addActKeys("touch|feel|stop");
         this.addUseKeys(METAL_BAR);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     @Override public String interact(String key) {
         if (key.matches("touch|feel|stop"))
             return this.actDialog;
         else
             return getIt();
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

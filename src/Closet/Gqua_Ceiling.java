@@ -12,5 +12,5 @@ public class Gqua_Ceiling extends Ceiling {
         this.addNameKeys("(?:low )?(?:arched )?(?:cobblestone )?ceiling", 
                          "(?:parallel )?(?:wooden )?truss(?:es)?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

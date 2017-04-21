@@ -3,7 +3,7 @@ package A_Super;
  * @author Kevin Rapa
  */
 public class Balcony extends Furniture implements Unmoveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Balcony () {
         super();
 
@@ -13,7 +13,7 @@ public class Balcony extends Furniture implements Unmoveable {
         this.addNameKeys("(?:balcony )?railing", "balcony");
         this.addActKeys("lean", "jump", "vault", HOLDPATTERN);
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("lean"))
             return this.actDialog;
@@ -22,7 +22,7 @@ public class Balcony extends Furniture implements Unmoveable {
         else 
             return "You grab the balcony railing, but surely you'd never fall over by accident.";
     }
-    // ========================================================================         
+    //-------------------------------------------------------------------------         
 }
 
 

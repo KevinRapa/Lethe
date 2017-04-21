@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Tmb_Vases extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tmb_Vases (Item... items) {
         super(items);
 
@@ -20,7 +20,7 @@ public class Tmb_Vases extends SearchableFurniture implements Openable, Moveable
 
         this.addNameKeys("(?:clay )?(?:vases?|jars?)");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
 }
 
 

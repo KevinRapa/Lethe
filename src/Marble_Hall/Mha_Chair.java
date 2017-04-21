@@ -17,5 +17,5 @@ public class Mha_Chair extends Furniture implements Moveable {
         this.addNameKeys("(?:rosewood )?chairs?");
         this.addActKeys(SITPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

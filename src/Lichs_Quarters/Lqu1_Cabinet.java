@@ -11,7 +11,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Lqu1_Cabinet extends SearchableFurniture implements Openable, Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Lqu1_Cabinet (Item... items) {
         super(items);
         
@@ -23,7 +23,7 @@ public class Lqu1_Cabinet extends SearchableFurniture implements Openable, Movea
         this.addNameKeys("(?:tall )?(?:standing )?(?:glass )?(?:display )?(?:cabinet|case)", 
                 "(?:tall )?(?:standing )?(?:glass )?display");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

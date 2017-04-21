@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Gar2_BrokenHose extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar2_BrokenHose () {
         super();
 
@@ -16,7 +16,7 @@ public class Gar2_BrokenHose extends Furniture {
         this.addNameKeys("(?:broken )?(?:leather )?hose");
         this.addActKeys("untie", CLIMBPATTERN);
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

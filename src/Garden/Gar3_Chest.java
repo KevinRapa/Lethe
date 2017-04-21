@@ -7,7 +7,7 @@ import A_Super.LockedContainer;
  * @author Kevin Rapa
  */
 public class Gar3_Chest extends LockedContainer {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Gar3_Chest(Item... items) {
         super(GCHS, items);
         
@@ -17,7 +17,7 @@ public class Gar3_Chest extends LockedContainer {
 
         this.addNameKeys("(?:wooden )?(?:utility )?chest");
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
 }
 
 

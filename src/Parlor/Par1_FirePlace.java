@@ -35,7 +35,7 @@ public class Par1_FirePlace extends Fireplace {
         
         this.addUseKeys(GLASS_BOTTLE, ENCHANTED_BOTTLE);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getIt() {
         if (Player.getInv().contains(ENCHT_BTTL_REF)) {
             Player.getInv().remove(ENCHT_BTTL_REF);
@@ -45,7 +45,7 @@ public class Par1_FirePlace extends Fireplace {
         else
             return super.getIt();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         switch (item.toString()) {
             case BUCKET_OF_WATER:
@@ -62,5 +62,5 @@ public class Par1_FirePlace extends Fireplace {
                 return "You manage to do nothing but burn your hand. What were you thinking?";
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

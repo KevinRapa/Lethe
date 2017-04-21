@@ -11,7 +11,7 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Din1_Crevice extends SearchableFurniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Din1_Crevice (Item... items) {
         super(items);
 
@@ -20,7 +20,7 @@ public class Din1_Crevice extends SearchableFurniture {
 
         this.addNameKeys("(?:small )?(?:indentation|crevice|hole(?: in the wall)?)");
     }
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 

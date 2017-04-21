@@ -10,5 +10,5 @@ public class Cha_Note extends Note {
                          + "for it is not the heavens who granted me this gift, but the contrary. "
                          + "The Factum shall be my key, and this false altar, the door to my soul.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

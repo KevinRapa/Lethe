@@ -14,5 +14,5 @@ public class Vest_Case extends SearchableFurniture implements Openable, Moveable
         this.searchDialog = "You open the case and look inside.";
         this.addNameKeys("(?:white and blue |white |blue )?(?:ceramic )?case");
     }
-// ============================================================================
+//-----------------------------------------------------------------------------
 }

@@ -39,17 +39,24 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Unmoveabl
                            "keeps this room roasting hot. Inside is a small ceramic "
                          + "crucible sitting on a metal rack.";
         
-        this.addActKeys(GETPATTERN);
+        this.addActKeys(GETPATTERN, "climb", "jump");
         this.addUseKeys(RED_DYE, YELLOW_DYE, BLUE_DYE, SAND, POTASH);
         this.addNameKeys("(?:ceramic )?(?:oven|kiln|crucible)", "(?:metal )?rack");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
+    @Override public String interact(String key) {
+        if (key.equals("climb") || key.equals("jump"))
+            return "Are you not warm enough?";
+        else
+            return this.actDialog;
+    }
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         Player.getInv().give(item, this.inv);
 
         return NOTHING;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private String makeGlass() {
         if (this.containsItem(RED_DYE)) {
             this.inv.clear();
@@ -63,23 +70,23 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Unmoveabl
         }
         return this.useDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private boolean hasDye() {
         return (containsItem(RED_DYE) || containsItem(BLUE_DYE) || containsItem(YELLOW_DYE));
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private boolean check() {
         return hasDye() && containsItem(POTASH) && containsItem(SAND);
     }
-/*----------------------------------------------------------------------------*/
-/******************************************************************************/
-/*----------------------------------------------------------------------------*/
+//*****************************************************************************
+//-----------------------------------------------------------------------------
+//*****************************************************************************
     private class KilnInventory extends Inventory {  
     // CONSTRUCTOR -------------------------------------------------------------      
         public KilnInventory() {
             super();
         }
-    /*------------------------------------------------------------------------*/
+    //-------------------------------------------------------------------------
         @Override public boolean add(Item item) { 
             String n = item.toString();
             
@@ -122,7 +129,5 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Unmoveabl
             return false;
         }
     }
-/*----------------------------------------------------------------------------*/
-/******************************************************************************/
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

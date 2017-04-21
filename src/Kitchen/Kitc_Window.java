@@ -11,5 +11,5 @@ public class Kitc_Window extends StaticWndw {
                            "can see only the distant landscape of shoreline, trees, " +
                            "and mountains on the horizon.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

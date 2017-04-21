@@ -5,7 +5,7 @@ import A_Super.WallArt;
  * @author Kevin Rapa
  */
 public class Jha1_Painting extends WallArt {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Jha1_Painting () {
         super();
         this.description = "The painting depicts two elder males hunched over a desk, "
@@ -15,7 +15,7 @@ public class Jha1_Painting extends WallArt {
 
         this.addNameKeys("painting", "picture");
     }
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
 }
 
 

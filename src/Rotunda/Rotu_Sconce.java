@@ -16,6 +16,6 @@ public class Rotu_Sconce extends Furniture {
         this.addNameKeys("(?:spherical )?(?:sconces?|lights?)", "(?:magical )?(?:gas|aether)");
         this.addActKeys(GETPATTERN, HOLDPATTERN);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }
 

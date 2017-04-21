@@ -5,7 +5,7 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Cry_Lights extends Furniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Cry_Lights () {
         super();
 
@@ -18,7 +18,7 @@ public class Cry_Lights extends Furniture {
                 "torch(?:es)?", "protrusions?");
         this.addActKeys(GETPATTERN);
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

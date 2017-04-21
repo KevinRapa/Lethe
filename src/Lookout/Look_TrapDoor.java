@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class Look_TrapDoor extends Door implements Climbable {
     private boolean open;
     private final Pattern LADDER_NAME;
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Look_TrapDoor () {
         super(Direction.DOWN);
         
@@ -27,12 +27,12 @@ public class Look_TrapDoor extends Door implements Climbable {
         this.addNameKeys("(?:wooden )?trap door");
         this.addActKeys(CLIMBPATTERN);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.description.replaceFirst("%", open ? 
                 "open, revealing a metal ladder leading down" : "closed");
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.matches("open|use|walk|go")) {
             if (open)
@@ -64,11 +64,11 @@ public class Look_TrapDoor extends Door implements Climbable {
         else
             return super.interact(key);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public Direction getDir() {
        return Direction.DOWN;
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

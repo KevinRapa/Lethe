@@ -29,7 +29,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
         this.addActKeys("use|spin|twist", "smash|break");
         this.addNameKeys("(?:combination )?safe", "strongbox");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
         if (! this.searchable) {
             GUI.out("The safe has a combination lock.");
@@ -40,7 +40,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
             
         return this.searchDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private void openSub() {
         boolean successful;
         String action;
@@ -66,7 +66,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
             } 
         } while (Player.isNonEmptyString(action));
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private boolean turnDial(int i) {
         AudioPlayer.playEffect(10);
         if (this.DIALS[i] == 9)
@@ -76,7 +76,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
         
         return this.check();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     private boolean check() {
         String currentCombo = NOTHING;
         
@@ -85,7 +85,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
                   
         return currentCombo.matches(this.COMBO);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {              
         if (key.equals("break") || key.equals("smash"))
             return "Now you WOULD like to do that, wouldn't you?";
@@ -103,13 +103,13 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
         
         return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         return (item.getType().equals(WEAPON)) ? useDialog : DEFAULT_USE;
     }
-/*----------------------------------------------------------------------------*/ 
+//----------------------------------------------------------------------------- 
     @Override public String moveIt() {
         return "It budges only a small amount before you're out of breath. This is much too heavy.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

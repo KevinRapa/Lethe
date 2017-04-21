@@ -18,5 +18,5 @@ public class Rotu_Frames extends Furniture implements Unmoveable {
         this.addActKeys("go|walk|run");
         this.addNameKeys("(?:arched )?frames?", "carvings?");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

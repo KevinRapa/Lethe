@@ -20,7 +20,7 @@ public class Bba1 extends Room {
     public Bba1(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         switch (dir) {
             case NORTH:
@@ -32,5 +32,5 @@ public class Bba1 extends Room {
                 return bumpIntoWall();
         }
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

@@ -18,5 +18,5 @@ public class Vest_EndTable extends Furniture implements Moveable {
         this.addNameKeys("(?:wood(?:en)? )?(?:end )?table");
         this.addActKeys(JOSTLEPATTERN);
     }
-/*----------------------------------------------------------------------------*/    
+//-----------------------------------------------------------------------------    
 }

@@ -14,12 +14,12 @@ public class Wbal extends Room{
     public Wbal(String name, String ID) {
         super(name, ID);
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.WEST || dir == Direction.SOUTH)
             return "There's a couple hundred foot drop right there.";
         else
             return bumpIntoWall();
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

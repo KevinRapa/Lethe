@@ -18,5 +18,5 @@ public class Foy_Chandelier extends Furniture {
         this.addActKeys("swing", "hang");
         this.addNameKeys("(?:huge )?(?:iron )?(?:chandelier|light)");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

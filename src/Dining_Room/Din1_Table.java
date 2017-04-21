@@ -20,7 +20,7 @@ public class Din1_Table extends SearchableFurniture {
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:long )?table");
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {              
         if (key.matches(MOVEPATTERN)) {
             AudioPlayer.playEffect(41);
@@ -29,5 +29,5 @@ public class Din1_Table extends SearchableFurniture {
         else
             return this.actDialog;
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

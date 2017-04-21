@@ -15,5 +15,5 @@ public class Din1_Window extends StaticWndw{
                            "forest coats the hills that roll far out into the distance " +
                            "before graduating into a mountain range on the horizon.";
     }
-/*----------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------
 }

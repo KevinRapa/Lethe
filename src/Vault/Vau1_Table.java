@@ -8,7 +8,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Vau1_Table extends SearchableFurniture implements Moveable {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Vau1_Table (Item... items) {
         super(items);
         
@@ -18,13 +18,13 @@ public class Vau1_Table extends SearchableFurniture implements Moveable {
 
         this.addNameKeys("(?:clean )?(?:marble )?table");
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.containsItem(GLOWING_CHALICE) ? 
                 this.description.concat(", and a glowing chalice rests on its surface.") :
                 this.description.concat(".");
     }
-    // ========================================================================     
+    //-------------------------------------------------------------------------     
 }
 
 

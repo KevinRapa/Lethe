@@ -14,7 +14,7 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Tow1_Pedestal extends SearchableFurniture {
-    // ========================================================================
+    //-------------------------------------------------------------------------
     public Tow1_Pedestal (Item... items) {
         super();
         
@@ -30,21 +30,21 @@ public class Tow1_Pedestal extends SearchableFurniture {
                 "(?:silver )?(?:glowing )?(?:object|scepter)", "(?:brass )?extensions?");
         this.addUseKeys(DAMPENING_STAFF);
     }
-    // ======================================================================== 
+    //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.containsItem(GLOWING_SCEPTER) ?
             this.description.concat(" The extensions support a silver glowing object.") :
             this.description;
     }
-    // ========================================================================   
+    //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
         this.searchable = Player.hasItem(DAMPENING_STAFF);
         
         return this.searchable ? "You approach the pedestal" : this.searchDialog;
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     // ************************************************************************
-    // ========================================================================  
+    //-------------------------------------------------------------------------  
     private class Pedestal_Inventory extends Inventory {
         public Pedestal_Inventory(Item... items) {
             super(items);
@@ -57,9 +57,9 @@ public class Tow1_Pedestal extends SearchableFurniture {
             return true;
         }
     }
-    // ========================================================================    
+    //-------------------------------------------------------------------------    
     // ************************************************************************
-    // ========================================================================
+    //-------------------------------------------------------------------------
 }
 
 
