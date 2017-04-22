@@ -98,5 +98,6 @@ public final class Names {
     // PLATFORM DEPENDENT PROERTIES ===========================================
         W_DIR = System.getProperty("user.dir"), // Current working directory.
         SEP = System.getProperty("file.separator"),
-        NL = System.getProperty("line.separator");
+        NL = System.getProperty("line.separator"),
+        DATA = "data"; // Name of the folder holding data.
 }

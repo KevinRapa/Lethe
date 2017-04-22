@@ -1,11 +1,13 @@
 package Caves;
 
+import static A_Main.Names.DATA;
+import static A_Main.Names.HAND_TORCH;
+import static java.lang.Math.*;
+
 import A_Main.Player; 
 import A_Super.Floor; 
 import A_Super.Room;
-import static A_Main.Names.HAND_TORCH;
 import A_Super.Furniture;
-import static java.lang.Math.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class Cave extends Room {
     protected static final Random GENERATOR = new Random();
     
     protected static final File DISTORTION = new File(W_DIR, 
-            "data" + SEP + "ambience" + SEP + "caveDistortion.wav");
+            DATA + SEP + "ambience" + SEP + "caveDistortion.wav");
     
     protected static Clip clip;
 //-----------------------------------------------------------------------------    

@@ -19,7 +19,7 @@ public class Card extends Item {
         MAP.put("te", 10);  MAP.put("ja", 10);  MAP.put("qu", 10);
         MAP.put("ki", 10); 
     }
-    //=========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Constructs a card.
      * The card's type is used in removing them all from your inventory
@@ -32,7 +32,7 @@ public class Card extends Item {
         this.description = "A ghostly and eerily solid playing card. It feels cool to the touch.";
         this.VALUE = this.determineValue(name.substring(0,2));
     }
-    //=========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Determines the value of each card using the hash map.
      * For aces, the value is one, however if the value 11 is advantageous
@@ -44,12 +44,12 @@ public class Card extends Item {
     private int determineValue(String name) {
         return MAP.get(name);
     }
-    //=========================================================================
+    //-------------------------------------------------------------------------
     /**
      * @return This card's value.
      */
     public int getVal() {
         return this.VALUE;
     }
-    //=========================================================================
+    //-------------------------------------------------------------------------
 }

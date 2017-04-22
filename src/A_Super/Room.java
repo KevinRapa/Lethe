@@ -2,6 +2,7 @@ package A_Super;
 
 import static A_Main.Names.W_DIR;
 import static A_Main.Names.SEP;
+import static A_Main.Names.DATA;
 import A_Main.AudioPlayer;
 import A_Main.Id;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ import java.util.HashSet;
  */
 public class Room implements Serializable { 
     protected static final String 
-            PATH = W_DIR + SEP + "data" + SEP + "desc" + SEP,
+            PATH = W_DIR + SEP + DATA + SEP + "desc" + SEP,
             WALL_BARRIER = "There is a wall that way.";
     protected final String 
             NAME, ID,                           // The name and unique ID of the room.

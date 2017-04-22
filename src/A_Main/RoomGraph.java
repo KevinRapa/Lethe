@@ -1,9 +1,8 @@
 package A_Main; 
 
 import static A_Main.Id.*;
-import java.util.HashMap; 
-import java.util.Arrays; 
-import java.util.HashSet;
+
+import java.util.HashMap; import java.util.Arrays; import java.util.HashSet;
 /**************************************************************************** 
  * This class is used by each room when it is instantiated, and allows the 
  * room to fetch its own coordinates and adjacent rooms by passing its  

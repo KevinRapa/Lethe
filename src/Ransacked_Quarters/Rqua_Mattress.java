@@ -3,7 +3,7 @@ package Ransacked_Quarters;
 import A_Super.Furniture;
 import A_Super.Moveable;
         
-public class Rqua_Mattress extends Furniture implements Moveable{
+public class Rqua_Mattress extends Furniture implements Moveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Rqua_Mattress () {
         super();
@@ -14,7 +14,15 @@ public class Rqua_Mattress extends Furniture implements Moveable{
                           + "as someone has already searched it.";
         this.actDialog = "It's really not the time for sleeping now.";
         this.addNameKeys("mattress", "debris-covered mattress");
-        this.addActKeys(SITPATTERN);
+        this.addActKeys(SITPATTERN, "lift");
+    }
+//-----------------------------------------------------------------------------
+    @Override public String interact(String key) {
+        return key.equals("lift") ? moveIt() : this.actDialog; 
+    }
+//-----------------------------------------------------------------------------
+    @Override public String moveIt() {
+        return "Lifting the mattress reveals nothing useful.";
     }
 //-----------------------------------------------------------------------------
 }

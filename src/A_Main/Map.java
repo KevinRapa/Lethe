@@ -1,6 +1,5 @@
 package A_Main;
 
-import Cellar.Cel_Valve;
 import A_Super.*;          import static A_Main.Names.*;
 
 import Vestibule.*;        import Closet.*;             import Foyer.*;
@@ -38,7 +37,7 @@ import javax.swing.JFrame; import javax.swing.JLabel;
 public class Map {
     // Room images are located here.
     private final static String 
-            PATH = W_DIR + SEP + "data" + SEP + "img" + SEP,
+            PATH = W_DIR + SEP + DATA + SEP + "img" + SEP,
             EXT = ".jpg";
     
     private static final JLabel MAP_LABEL = new JLabel();
@@ -55,7 +54,7 @@ public class Map {
         MAP_PANEL.add(MAP_LABEL);
     }
     
-    //==========================================================================
+    //-------------------------------------------------------------------------
     /**
      * Displays a map for when the player enters 'm'.
      * Displays current floor.
@@ -72,29 +71,29 @@ public class Map {
             MAP_FRAME.toFront();
         
     }
-    //==========================================================================
+    //-------------------------------------------------------------------------
     public static void hideMap() {
         MAP_FRAME.setVisible(false);
     }
-    //==========================================================================
+    //-------------------------------------------------------------------------
     // Disposes map on game's end
     public static void disposeMap() {
         MAP_FRAME.setVisible(false);
         MAP_FRAME.dispose();
     }
-    //==========================================================================
+    //-------------------------------------------------------------------------
     public static void updateMap() {
         ImageIcon icon;
+        String id = Player.getPosId();
 
         if (Player.getCurrentFloor() == 6) {
-            if (Player.getPosId().equals(Id.MS65) 
-                    || Player.getPosId().equals(Id.MS66))
+            if (id.equals(Id.MS65) || id.equals(Id.MS66))
                 icon = new ImageIcon(PATH + "MS" + EXT);
             else    
                 icon = new ImageIcon(PATH + "CAVE" + EXT);
         }
         else {
-            icon = new ImageIcon(PATH + Player.getPosId() + EXT);
+            icon = new ImageIcon(PATH + id + EXT);
             
             if (icon.getImage().getWidth(MAP_LABEL) == -1)
                 // Room does not have an associated picture.
@@ -104,7 +103,7 @@ public class Map {
         MAP_LABEL.setIcon(icon);
         MAP_FRAME.pack();
     }
-    //==========================================================================
+    //-------------------------------------------------------------------------
     public static Room[][][] createMap() {
 
         //**********************************************************************
@@ -1584,7 +1583,7 @@ public class Map {
         Furniture torcTrchs = new Torch_Holder(torch);
         Furniture torcSwhrses = new Torc_Sawhorses(torc); // RESETABLE
         Furniture torcRck = new Torc_Rack(thmScrws);
-        Furniture torcCgs = new Torc_Cages();
+        Furniture torcCgs = new Torc_Cages(ou62Key);
         Furniture torcWhl = new Torc_Wheel();
         Furniture torcWd = new Torc_Wood();
         Furniture torcTls = new Torc_Tools();
@@ -1676,7 +1675,7 @@ public class Map {
         Furniture prisClls = new Pris_Cells();
         Furniture prisF = new Dungeon_Floor();
         Furniture prisCndlbrs = new Pris_Candelabra(cndl);
-        Furniture prisTbl = new Pris_Table(ou62Key, oarHd);
+        Furniture prisTbl = new Pris_Table(oarHd);
         Furniture prisGts = new Pris_Gates();
         Furniture prisFgr = new Pris_Ghost();
 
@@ -2434,5 +2433,5 @@ public class Map {
 
         return newMap;
     }
-    //==========================================================================
+    //-------------------------------------------------------------------------
 }

@@ -14,7 +14,9 @@ public class Cel2_Shaft extends Furniture implements Unmoveable {
                 "The smooth shaft is about two and a half feet wide and runs "
                 + "through two holes barely wider than itself in the floor and "
                 + "ceiling. It's still, and appears too heavy to move by hand.";
+        this.actDialog = "Climb to where, exactly?";
         
+        this.addActKeys("climb");
         this.addNameKeys("(?:smooth )?(?:wide )?(?:wooden )?shaft");
     }
     //------------------------------------------------------------------------- 

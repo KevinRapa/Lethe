@@ -128,7 +128,7 @@ public class Inventory implements Iterable<Item>, Serializable {
      * @return A string representation of this inventory's contents.
      */
     @Override public String toString() {
-        if (! this.CONTENTS.isEmpty()) {
+        if (! isEmpty()) {
             StringBuilder builder = new StringBuilder(30);
             int slot = 1;
             

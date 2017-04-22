@@ -1,21 +1,25 @@
 package A_Main;
 
+import static A_Main.Names.DATA;
 import static A_Main.Names.SEP;
 import static A_Main.Names.W_DIR;
-import java.util.LinkedList;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+
 import java.io.File;
 import java.io.IOException;
-import javafx.embed.swing.JFXPanel;
-import java.util.Arrays;
+import java.util.LinkedList;
+
+import java.util.Arrays; 
 import java.util.Random;
 import java.util.regex.Pattern;
+
+import java.awt.*;
+import java.awt.event.*;
+import javafx.embed.swing.JFXPanel;
+
+import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.JTextComponent;
+import javax.swing.text.*;
+
 /******************************************************************************
  * This class is responsible for the game interface.
  * All graphical components are set up here.
@@ -74,7 +78,7 @@ public class GUI extends JFXPanel {
     
     private final static JButton 
         SWAP = new JButton("Swap"),      // Swaps dialog and inventory.
-        COLOR2 = new JButton("Color 2"),// Changes label colors
+        COLOR2 = new JButton("Color 2"), // Changes label colors
         MUTE = new JButton("Mute"),      // Mute button
         KEYS = new JButton("Click"),     // Button controlling faux key sounds.
         COLOR1 = new JButton("Color 1"); // Button changing dialog colors.
@@ -119,7 +123,7 @@ public class GUI extends JFXPanel {
     public GUI() {
         Font labelFont;
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        String p = "data" + SEP + "img" + SEP;
+        String p = DATA + SEP + "img" + SEP;
         FocusListener focusListener = new FocusListener() {
             // Serves to keep focus on the text field.
             @Override public void focusGained(FocusEvent e) {

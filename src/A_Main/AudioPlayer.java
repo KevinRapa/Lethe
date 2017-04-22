@@ -5,22 +5,25 @@ package A_Main;
  * 
  * @author Kevin Rapa
  */
+import static A_Main.Names.SEP;
+import static A_Main.Names.W_DIR;
+import static A_Main.Names.DATA;
 import static A_Main.Id.*;
 import static A_Main.Patterns.*;
-import java.util.HashMap;
-import java.io.File;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
-import static A_Main.Names.SEP;
-import static A_Main.Names.W_DIR;
 import javax.swing.JButton;
+
+import java.util.HashMap;
+import java.io.File;
 
 public class AudioPlayer {
     public final static String 
-            TPTH = "data" + SEP + "ambience" + SEP,    // Filepath for ambience.
-            EPTH = "data" + SEP + "effects" + SEP,     // Filepath for effects.
-            EXT = ".mp3";                              // Audio file extension.
+            TPTH = DATA + SEP + "ambience" + SEP, // Filepath for ambience.
+            EPTH = DATA + SEP + "effects" + SEP,  // Filepath for effects.
+            EXT = ".mp3";                         // Audio file extension.
     
     private static String trackName;
     private static boolean 

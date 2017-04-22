@@ -34,13 +34,10 @@ public class DungeonMonster {
         MEDIUM_LOUD(0.3),
         LOUD(0.5);
 
-        private final double VOL;
+        public final double VOL;
         
         Volume(double vol) {
             this.VOL = vol;
-        }
-        public double getVol() {
-            return this.VOL;
         }
     } 
     //---------------------------------------
@@ -71,7 +68,7 @@ public class DungeonMonster {
         Volume vol = determineVolume();
         
         if (vol != Volume.NONE)
-            AudioPlayer.playEffect(25, vol.getVol());
+            AudioPlayer.playEffect(25, vol.VOL);
     }
     //-------------------------------------------------------------------------
     private static Volume determineVolume() {

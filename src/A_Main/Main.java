@@ -12,31 +12,34 @@ package A_Main;
  * secondary objective, the player may collect loot and add it to a loot sack
  * found in the foyer.
  * </p> <p>
- * To play, just run this project. Unless testing, make sure <code>start</code>
- * under the main method is set to Id.COU4.
- * You may start from any room in the game, however the default start
- * is in <code>Id.COU4</code>. Find the method <code>setOccupies</code> at the
- * bottom of this class to change this, and refer to the castle array for the
- * room object references.
+ * To play, just run this project. Unless testing, make sure 
+ * <code>START_LOCATION</code> under the main method is set to Id.COU4.
  * </p>
  * 
  * @author Kevin Rapa
  * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
  */
-import java.awt.Color;              import javax.swing.JPanel;
+
+import java.awt.Color;              import java.awt.event.KeyListener; 
 import java.awt.Dimension;          import java.awt.Toolkit;
-import java.awt.event.KeyEvent;     import java.awt.event.KeyListener; 
-import java.io.*;                   import javax.swing.ImageIcon; 
-import javax.swing.JFrame;          import javax.swing.JLabel;
-import javafx.application.Platform; import java.nio.file.Files;
+import java.awt.event.KeyEvent;     
+
+import javax.swing.JPanel;          import javax.swing.ImageIcon; 
+import javax.swing.JLabel;          import javax.swing.JFrame;  
+
+import java.io.*;                   import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static A_Main.Names.SEP;     import static A_Main.Names.W_DIR;
+import javafx.application.Platform; 
+
+import static A_Main.Names.SEP;     
+import static A_Main.Names.DATA;
+import static A_Main.Names.W_DIR;
 
 public class Main {
     private static final String 
             START_LOCATION = Id.COU4, // Default COU4
-            FILE_NAME =  "data" + SEP + "save" + SEP + "Game.data";
+            FILE_NAME =  DATA + SEP + "save" + SEP + "Game.data";
     
     private static final JFrame 
             GAME_FRAME = new JFrame("Lethe"),
@@ -49,7 +52,7 @@ public class Main {
     // <editor-fold defaultstate="collapsed" desc="Static block sets up title screen">
     static {
         TITLE_LABEL.setIcon(new ImageIcon(
-                W_DIR + SEP + "data" + SEP + "img" + SEP + "Title.jpg")
+                W_DIR + SEP + DATA + SEP + "img" + SEP + "Title.jpg")
         );
         TITLE_LABEL.addKeyListener(new KeyListener() {
             // To progress to game frame from title frame with "Press any key"
