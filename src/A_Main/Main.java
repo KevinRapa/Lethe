@@ -20,7 +20,7 @@ package A_Main;
  * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
  */
 
-import java.awt.Color;              import java.awt.event.KeyListener; 
+import java.awt.event.KeyListener; 
 import java.awt.Dimension;          import java.awt.Toolkit;
 import java.awt.event.KeyEvent;     
 
@@ -35,11 +35,13 @@ import javafx.application.Platform;
 import static A_Main.Names.SEP;     
 import static A_Main.Names.DATA;
 import static A_Main.Names.W_DIR;
+import java.awt.Color;
 
 public class Main {
     private static final String 
-            START_LOCATION = Id.COU4, // Default COU4
-            FILE_NAME =  DATA + SEP + "save" + SEP + "Game.data";
+            START_LOCATION = Id.GAL1, // Default COU4
+            SAVE_PATH = DATA + SEP + "save" + SEP + "Game.data",
+            TITLE_PATH = W_DIR + SEP + DATA + SEP + "img" + SEP + "Title.gif";
     
     private static final JFrame 
             GAME_FRAME = new JFrame("Lethe"),
@@ -51,9 +53,10 @@ public class Main {
 
     // <editor-fold defaultstate="collapsed" desc="Static block sets up title screen">
     static {
-        TITLE_LABEL.setIcon(new ImageIcon(
-                W_DIR + SEP + DATA + SEP + "img" + SEP + "Title.jpg")
-        );
+        TITLE_PANEL.setPreferredSize(new Dimension(824,478));
+        TITLE_PANEL.setBackground(Color.BLACK);
+        TITLE_LABEL.setIcon(new ImageIcon(TITLE_PATH));
+        
         TITLE_LABEL.addKeyListener(new KeyListener() {
             // To progress to game frame from title frame with "Press any key"
             @Override public void keyTyped(KeyEvent e) {}
@@ -65,7 +68,7 @@ public class Main {
                 GUI.giveFocus();
             }  
         });
-        TITLE_PANEL.setBackground(Color.BLACK);
+        
         TITLE_PANEL.add(TITLE_LABEL);
     }
     // </editor-fold>
@@ -109,12 +112,11 @@ public class Main {
         //
         // Rudimentary save system using serialization.
         //**********************************************************************
-        boolean isNewGame = false;
         String start = args.length > 0 ? args[0] : null;
         int[] test = null;
         
         try (ObjectInputStream gameData = new ObjectInputStream(
-                new FileInputStream(new File(W_DIR, FILE_NAME)))) 
+                new FileInputStream(new File(W_DIR, SAVE_PATH)))) 
         {
             System.out.println("Data found. Loading game.");
             RoomGraph.assignCoordinates();
@@ -125,17 +127,19 @@ public class Main {
             RoomGraph.constructRoomGraph();
             
             if (start != null && (start.equals(Id.NULL) || start.equals(Id.GAL7) 
-                        || (test = RoomGraph.getCoords(start)) == null))
-                    System.err.println("Not a valid starting location.");
+                    || (test = RoomGraph.getCoords(start)) == null))
+            {
+                System.err.println("Not a valid starting location.");
+            }
                 
             Player.setNewAttributes(
                     RoomGraph.getCoords(test == null ? START_LOCATION : start)
             );
             
-            isNewGame = true;
+            startDialog();
         }
         finally {
-            boolean eraseTrue = Player.startDialog(isNewGame); // START GAME
+            boolean eraseTrue = Player.mainPrompt(); // START GAME
             
             if (eraseTrue)
                 eraseGame();
@@ -146,6 +150,27 @@ public class Main {
         // </editor-fold>  
         //**********************************************************************
     } 
+//-----------------------------------------------------------------------------
+    private static void startDialog() {
+        AudioPlayer.playTrack(Id.ENDG);
+
+        GUI.menOut(Menus.ENTER);
+        GUI.out("Beneath the starry welkin, you stand, having trekked on "
+              + "foot to your destination through the forest. The looming "
+              + "stone colossus appears curiously vacant, yet inviting.");
+        GUI.promptOut();    
+
+        GUI.out("You slowly approach, fighting the humid storm winds, "
+              + "until inside the front gateway. A transient thought "
+              + "drifts through your mind - what was your business "
+              + "here, again?");     
+        GUI.promptOut();
+
+        GUI.out(Menus.VERSION);     
+        GUI.promptOut();
+
+        GUI.clearDialog();
+    }
 //-----------------------------------------------------------------------------  
     public static void endGameProcedure() {
         AudioPlayer.stopTrack();
@@ -157,7 +182,7 @@ public class Main {
     }
 //-----------------------------------------------------------------------------   
     public static void eraseGame() {
-        if (new File(W_DIR, FILE_NAME).delete())
+        if (new File(W_DIR, SAVE_PATH).delete())
             System.out.println("Data erased.");
         else
             System.err.println("Data to erase not found.");
@@ -165,15 +190,15 @@ public class Main {
 //-----------------------------------------------------------------------------   
     public static synchronized void saveGame() {
         try (ObjectOutputStream gameData = new ObjectOutputStream(
-                new FileOutputStream(new File(W_DIR, FILE_NAME)))) 
+                new FileOutputStream(new File(W_DIR, SAVE_PATH)))) 
         {
             Player.savePlayerAttributes(gameData); 
             GUI.out("Game saved");
         } 
         catch (FileNotFoundException e) {
             try {
-                Files.createDirectory(Paths.get(W_DIR + SEP + "data" + SEP + "save"));
-                GUI.out("Save directory not found. Creating a new one. Try again.");
+                Files.createDirectory(Paths.get(W_DIR + SEP + DATA + SEP + "save"));
+                GUI.out("Save directory not found. Now creating a new one... Try again.");
             } catch (IOException ex) {
                 GUI.out("Couldn't EVEN remake the directory. "
                     + "This is all I got for you -> " + e.getMessage());

@@ -153,6 +153,11 @@ public final class Menus {
                 + "processed using audacity. Fonts are " + NL
                 + "Magic Medieval (Dave Howell) and " + NL
                 + "FixedSys Excelsior (Darien " + NL
-                + "Valentine). Details can be found " + NL
-                + "in the credits folder.";
+                + "Valentine). Title screen designed " + NL
+                + "by Stephen Reed. Details can be " + NL
+                + "found in the credits folder.",
+            
+        VERSION = "This is Lethe / Author: Kevin Rapa / Written on Netbeans 8.1 "
+                + "/ Sounds obtained from freesound.org, processed in Audacity "
+                + "/ Title screen by Stephen Reed.";
 }

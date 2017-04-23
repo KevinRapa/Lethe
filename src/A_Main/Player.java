@@ -49,8 +49,6 @@ public final class Player {
         ODD_CMD_SET = new HashSet<>();  // Random commands
     
     private static final String 
-        VERSION = "This is Lethe / Author: Kevin Rapa / Written on Netbeans 8.1 "
-                + "/ Sounds obtained from freesound.org, processed in Audacity ",
         ERROR_MSGS[] = {
             "I might have misunderstood you on something...", "I beg your pardon?",
             "Is that how kids are saying it nowadays?" , "Bless you!",
@@ -86,7 +84,7 @@ public final class Player {
         MAIN_CMDS.put("close",     () -> Map.hideMap());
         MAIN_CMDS.put("quit",      () -> {notEnd = false;});
         MAIN_CMDS.put("credits",   () -> GUI.displayCredits());
-        MAIN_CMDS.put("version",   () -> GUI.out(VERSION));
+        MAIN_CMDS.put("version",   () -> GUI.out(Menus.VERSION));
         MAIN_CMDS.put("lethe",     () -> GUI.out("Hello, dear."));
         MAIN_CMDS.put("zork",      () -> GUI.out("You must be mistaking me for someone else."));
         MAIN_CMDS.put("keys",      () -> viewKeyRing());
@@ -356,33 +354,6 @@ public final class Player {
         Player.shoes = "";
         GUI.updateMovesAndScore(0, 0);
     }
-    //-------------------------------------------------------------------------  
-    /**
-     * This dialog prints at the start of a new game.
-     * @param newGame Dialog skips if false.
-     * @return at end of game, if the player wishes to erase save data.
-     */
-    public static boolean startDialog(boolean newGame) {
-        if (newGame) {
-            AudioPlayer.playTrack(Id.ENDG);
-
-            GUI.menOut(Menus.ENTER);
-            GUI.out("It's about 10:00pm and a warm, humid breeze passes through the trees. " +
-                    "You have just arrived on foot to your destination, and " +
-                    "find it even more colossal than what you had " +
-                    "expected. It also appears curiously more vacant...");
-            GUI.promptOut();    
-            GUI.out("You slowly approach until inside the front gateway. " +
-                    "A thought briefly flashes in your mind before being " +
-                    "forgotten - what was your business here, again?");     
-            GUI.promptOut();
-            GUI.out(VERSION);     
-            GUI.promptOut();
-            GUI.clearDialog();
-        }
-        
-        return mainPrompt();
-    }
     //-------------------------------------------------------------------------   
     /**
      * The main prompt for controlling the player's moves.
@@ -408,12 +379,7 @@ public final class Player {
             
         } while (notEnd);
         
-        return endGameCode();
-    }  
-    //-------------------------------------------------------------------------   
-    private static boolean endGameCode() {
-        // Returns true if game is to be erased.
-        String ans = GUI.askChoice(Menus.SAVE_QUIT, SAVE_QUIT_RESET_P);
+        ans = GUI.askChoice(Menus.SAVE_QUIT, SAVE_QUIT_RESET_P);
         
         if (ans.equals("s")) {
             Main.saveGame();
@@ -421,7 +387,7 @@ public final class Player {
         }
         else 
             return ans.equals("r");
-    }
+    }  
     //------------------------------------------------------------------------- 
     public static boolean isNonEmptyString(String playerInput) {
         return (! playerInput.equals(""));

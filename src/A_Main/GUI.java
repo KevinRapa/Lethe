@@ -313,6 +313,7 @@ public class GUI extends JFXPanel {
 // *****************************************************************************           
     /**
      * Used for any request of player input.
+     * Main thread is here most of the time.
      * @return Commands input by the player.
      * @see Text_Field_Listener#actionPerformed
      */
