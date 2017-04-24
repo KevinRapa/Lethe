@@ -55,13 +55,13 @@ public class Inventory implements Iterable<Item>, Serializable {
             // this prevent crashing.
             try {
                 Pattern p = Pattern.compile(NO_LETTER_BEFORE + name + NO_LETTER_AFTER);
+                
                 for (Item i : this) // Checks for a close match.
                     if (p.matcher(i.toString()).matches())
                         return i;
             }
             catch (PatternSyntaxException e) {
                 System.err.println("Player is trying to break regex compiler with: \"" + name + "\".");
-                return NULL_ITEM;
             }
         }
         return NULL_ITEM; // Item wasn't found. Always check for this!!
