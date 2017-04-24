@@ -28,8 +28,8 @@ public class Vau2 extends Room {
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return this.Vau1_Tbl.containsItem(GLOWING_CHALICE) ?
-                this.description.concat(" Standing on a table at the far end is a glowing object.") :
-                this.description;
+                super.getDescription().concat(" Standing on a table at the far end is a glowing object.") :
+                super.getDescription();
     }
 //-----------------------------------------------------------------------------    
 }

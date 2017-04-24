@@ -86,7 +86,7 @@ public class Sew2_Valves extends Furniture implements Resetable {
             
         } while (Player.isNonEmptyString(ans));
         
-        return this.actDialog;
+        return NOTHING;
     }
     //-------------------------------------------------------------------------  
     private String printValves() {        

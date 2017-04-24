@@ -14,12 +14,12 @@ public class Cry2 extends Room {
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (Player.getPos().isAdjacent(Id.CAS1)) {
-            return this.description.replaceFirst(
+            return super.getDescription().replaceFirst(
                     "Standing against the west wall is a tall stone coffin with an engraving on the wall framing it.", 
                     "To the west is a metal door framed by an engraving. The stone coffin stands next to it."
             );
         }
-        return this.description;
+        return super.getDescription();
     }
 //-----------------------------------------------------------------------------
 }

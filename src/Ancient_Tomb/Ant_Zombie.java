@@ -3,6 +3,7 @@ package Ancient_Tomb;
 import A_Main.AudioPlayer;
 import A_Main.Inventory;
 import static A_Main.Names.BRAIN;
+import static A_Main.Names.COMPASS;
 import A_Main.Player;
 import A_Super.Item;
 import A_Super.NonPlayerCharacter;
@@ -29,7 +30,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
     public Ant_Zombie (Inventory floorInv, int drawerNum) {
         super();
         
-        this.QUARTZ_DEVICE = new Compass("quartz device");
+        this.QUARTZ_DEVICE = new Compass();
         this.ZOMBIE_NOTE = new Zombie_Note("message", drawerNum);
         this.FLOOR_INV_REF = floorInv;
         this.pleased = false;
@@ -127,14 +128,14 @@ public class Ant_Zombie extends NonPlayerCharacter {
     /**************************************************************************/
     //-------------------------------------------------------------------------
     private static class Compass extends Item {
-        private Compass(String name) {
-            super(name, 100);
+        private Compass() {
+            super(COMPASS, 100);
             this.useID = 1;
             this.description = "You can't quite figure out what it is. It's a small "
                              + "metal box with a bit of heft. A polished rock of "
                              + "quartz has been fit into its center indentation, acting "
                              + "as a window of sorts. On the top and bottom of the box "
-                             + "are copper plates.";
+                             + "are copper plates. The item appears meant to be squeezed.";
             this.useDialog = "You grasp the box firmly with your fingers and palm "
                            + "covering the plates. In a short while, 3 digits:\t\t[";
         }
@@ -151,7 +152,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
             int y = Math.abs(c[1] - 7);
 
             return this.useDialog.concat(c[2] + ", " + y + ", " + z + 
-                                         "]\t\tmaterialize in the quartz window.");
+                                         "]\t\tmaterializes in the quartz window.");
         }
     }
 }

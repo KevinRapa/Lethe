@@ -84,7 +84,7 @@ public class PlayerInventory extends Inventory {
     //-------------------------------------------------------------------------
     public void sortInventory() {
         Player.incrementMoves();
-        this.CONTENTS.sort(Inventory_Sorter.getSorter());
+        this.CONTENTS.sort(Inventory_Sorter.SORTER);
         Player.printInv();
     }
     //-------------------------------------------------------------------------
@@ -106,18 +106,15 @@ public class PlayerInventory extends Inventory {
     //*************************************************************************
     //-------------------------------------------------------------------------
     //*************************************************************************
-    private static class Inventory_Sorter<Item extends Comparable<Item>> 
-            implements Comparator<Item> 
+    private static class Inventory_Sorter<T extends Comparable<T>> 
+            implements Comparator<T> 
     {
-        private static final Inventory_Sorter SORTER = new Inventory_Sorter();
+        private static final Inventory_Sorter<Item> 
+                SORTER = new Inventory_Sorter<>();
         // --------------------------------------------------------------------
         private Inventory_Sorter() {} // Singleton class.
         // --------------------------------------------------------------------
-        public static Inventory_Sorter getSorter() {
-            return SORTER;
-        }
-        // --------------------------------------------------------------------
-        @Override public int compare(Item item1, Item item2) {
+        @Override public int compare(T item1, T item2) {
             return item1.compareTo(item2);
         }
     }

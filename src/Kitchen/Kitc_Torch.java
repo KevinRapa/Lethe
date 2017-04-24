@@ -64,6 +64,7 @@ public class Kitc_Torch extends Torch_Holder {
         @Override public void remove(Item removeThis) {      
             this.CONTENTS.remove(removeThis);
             Player.describeRoom();
+            GUI.roomOut("Pitch black room");
         }
     }
 //-----------------------------------------------------------------------------

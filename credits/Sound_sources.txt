@@ -2,7 +2,12 @@ AMBIENT SOUNDTRACK SOURCES
 All tracks processed using Audacity
 All tracks found from Freesound.org -- I did not create any of them.
 
-Title theme -- Top balcony
+
+Droning -- Back hall, title track
+  https://www.freesound.org/people/plagasul/sounds/4096/
+  rarexport-05.wav -- plagasul
+
+Piano -- Top balcony
   https://www.freesound.org/people/ShadyDave/sounds/325647/
   ShadyDave -- expressions of the mind (Piano loop)
 
@@ -93,10 +98,6 @@ Furnace -- Workshop
 piano melody -- Library
   https://www.freesound.org/people/waveplay/sounds/219288/
   Temperament -- waveplay
-
-Droning -- Back hall
-  https://www.freesound.org/people/plagasul/sounds/4096/
-  rarexport-05.wav -- plagasul
 
 Laboratory:
   Bubbling

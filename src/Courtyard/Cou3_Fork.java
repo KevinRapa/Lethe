@@ -18,7 +18,7 @@ public class Cou3_Fork extends Furniture {
                 + "and right halves of the courtyard.";
 
         this.addNameKeys("fork");
-        this.addActKeys(GETPATTERN);
+        this.addActKeys(GETPATTERN, "pick");
     }
     //---------------------------------------------------------------------   
     @Override public String interact(String key) {  

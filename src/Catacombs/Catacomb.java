@@ -141,7 +141,8 @@ public class Catacomb extends Room {
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
-        return Player.hasItem(HAND_TORCH) ? this.descLit : this.description;
+        return Player.hasItem(HAND_TORCH) ? 
+                this.descLit : super.getDescription();
     }
 //-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {

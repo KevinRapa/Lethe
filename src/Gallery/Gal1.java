@@ -18,18 +18,11 @@ public class Gal1 extends Room{
     }
 //-----------------------------------------------------------------------------    
     @Override public String getDescription() {
-        if (! this.hasFurniture("katana")) {
-            return "You find yourself in a small, one-story room adjoining a " +
-                   "larger, round room. The room is brightly lit " +
-                   "with electric lights and the walls are tiled green and " +
-                   "purple. This area is filled with paintings and sculptures " +
-                   "of Asian origin. An armor suit stands against the north " +
-                   "wall and a screen stands in the corner of the room. "
-                 + "One sculpture dwarfs the rest though; a snake-like " +
-                   "dragon, displayed against the west wall.";
-        }
+        if (! this.hasFurniture("katana")) 
+            return super.getDescription()
+                    .replaceFirst("katana displayed over a ", "");
         else
-            return this.description;
+            return super.getDescription();
     }
 //-----------------------------------------------------------------------------  
 }

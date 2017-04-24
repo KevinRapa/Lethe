@@ -17,8 +17,8 @@ public class Sha1 extends Room {
     public Sha1(String name, String ID) {
         super(name, ID);
 
-        this.DESC_2 = this.description != null ?
-                this.description.replaceFirst("a small door", "an open doorway") : null;
+        this.DESC_2 = super.getDescription() != null ?
+                super.getDescription().replaceFirst("a small door", "an open doorway") : null;
     }
 //-----------------------------------------------------------------------------        
     @Override public String getBarrier(Direction dir) {   
@@ -32,7 +32,7 @@ public class Sha1 extends Room {
         if (! this.hasFurniture("west door"))
             return this.DESC_2;
         else
-            return this.description;
+            return super.getDescription();
     }
 //----------------------------------------------------------------------------- 
 }

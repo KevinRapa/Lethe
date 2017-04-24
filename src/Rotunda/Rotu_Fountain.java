@@ -28,7 +28,7 @@ public class Rotu_Fountain extends Furniture implements Unmoveable {
         this.actDialog = "Are you really that desperate for a drink? There must be some cleaner water in here somewhere...";
         this.searchDialog = "You can't see anything through the brown water.";
         this.addActKeys("drink", "swim", "drain", "empty");
-        this.addNameKeys("(?:round )?(?:marble )?fountain");
+        this.addNameKeys("(?:round )?(?:marble )?fountain", "water");
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {

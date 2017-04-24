@@ -25,8 +25,8 @@ public class Lib4 extends Room{
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return (! REF.containsItem(CRYSTAL_ORB)) ?
-            this.description.replaceFirst(" A glimmering.+them\\.", "") :
-                this.description;
+            super.getDescription().replaceFirst(" A glimmering.+them\\.", "") :
+            super.getDescription();
     }
 //-----------------------------------------------------------------------------
 }

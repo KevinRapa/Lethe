@@ -25,7 +25,7 @@ import static A_Main.Names.W_DIR;
  * @author Kevin Rapa
  */
 public class Cave extends Room {
-    protected String descLit;
+    protected String descLit, descUnlit;
     protected final int DISTANCE; // Distance this room is from MS65
     protected static final Random GENERATOR = new Random();
     
@@ -82,20 +82,14 @@ public class Cave extends Room {
         // List of X and Y coordinates of the adjacent cave rooms.
         ArrayList<int[]> adjCaveCoords = new ArrayList<>();
         
-        // The X and Y coordinates of a non-cave room adjacent to this.
-        int[] adjOtherCoords = null;
-        
         // Holds directions to append to descLit.
         ArrayList<String> dirs = new ArrayList<>(4);
         
         for (String i : this.adjacent) {
             int[] coords = {i.charAt(2) - '0', 
                             i.charAt(3) - '0'};
-            
-            if (i.matches("CV\\d{2}")) // Is cave.
-                adjCaveCoords.add(coords);
-            else                       // Isn't cave.
-                adjOtherCoords = coords;
+
+            adjCaveCoords.add(coords);
         }
         
         // Figures out the directions in which there are more catacombs.
@@ -127,24 +121,9 @@ public class Cave extends Room {
         }
         
         descL.append(", the tunnel veers into darkness. ");
-        
-        // Appends additional information if a non-catacomb room is adjacent.
-        // Adds a door to room.
-        if (adjOtherCoords != null && adjOtherCoords[0] != 5) {
-            if (adjOtherCoords[0] == Y - 1)
-                descL.append("To the north");
-            else if (adjOtherCoords[0] == Y + 1)
-                descL.append("To the south");
-            else if (adjOtherCoords[1] == X - 1)
-                descL.append("To the west");
-            else 
-                descL.append("To the east");
-
-            descL.append(", erected unevenly into the tunnel wall is an ancient door.");
-        }
 
         this.descLit = descL.toString();
-        this.description = descB.toString();
+        this.descUnlit = descB.toString();
         
         this.addFurniture(new Floor("The floor is cold hard rock and uninteresting."), wall, ceiling);
     }
@@ -153,7 +132,7 @@ public class Cave extends Room {
         if (!Player.hasItem(HAND_TORCH))
             return distortDescription(DISTANCE, descLit);
         else
-            return distortDescription(DISTANCE, description);
+            return distortDescription(DISTANCE, descUnlit);
     }
 //-----------------------------------------------------------------------------
     /**

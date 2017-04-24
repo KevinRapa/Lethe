@@ -21,9 +21,9 @@ public class Sew4 extends Dungeon_Tunnel {
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (SEW4_PP.isMissingPipe())
-            return this.description.concat(" The pipe has a gap where a piece is missing...");
+            return super.getDescription().concat(" The pipe has a gap where a piece is missing...");
         else
-            return this.description;
+            return super.getDescription();
     }
 //-----------------------------------------------------------------------------
 }

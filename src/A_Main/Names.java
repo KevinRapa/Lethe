@@ -86,6 +86,7 @@ public final class Names {
         JET_SKULL = "jet skull",                COOKED_HAM = "cooked ham",
         GLASS_SHEET = "glass sheet",            BLUE_LENS = "blue lens",
         YELLOW_LENS = "yellow lens",            RED_LENS = "red lens",
+        COMPASS = "quartz device",
             
         BIBLE = "biblical tome, 'The Book of Genesis'",
         ILIAD = "greek tome, 'The Iliad'",

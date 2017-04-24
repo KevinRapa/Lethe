@@ -20,9 +20,9 @@ public class Par1 extends Room {
 //----------------------------------------------------------------------------- 
     @Override public String getDescription() {
         if (! this.isAdjacent(Id.BHA3))
-            return this.description;
+            return super.getDescription();
         else
-            return this.description.replaceFirst(", but something about it appears off", ".");
+            return super.getDescription().replaceFirst(", but something about it appears off", ".");
     }
 //----------------------------------------------------------------------------- 
     @Override public String getBarrier(Direction dir) {

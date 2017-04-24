@@ -21,9 +21,11 @@ public class Tow2 extends Lich_Room {
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! this.lichDead)
-            return description.concat(" You see a magnificent glowing sphere of light hovering in the highest area of the tower. ");
+            return super.getDescription()
+                    .concat(" You see a magnificent glowing sphere of "
+                            + "light hovering in the highest area of the tower. ");
         else
-            return description;
+            return super.getDescription();
     }
 //-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {

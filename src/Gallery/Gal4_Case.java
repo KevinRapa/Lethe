@@ -46,7 +46,7 @@ public class Gal4_Case extends SearchableFurniture
         if (key.equals("break") || key.equals("destroy"))
             return "This case is strong.";
         else if (key.equals("unlock"))
-            return searchable ? this.actDialog : "The lock is broken already!";
+            return searchable ? "The lock is broken already!" : this.actDialog;
         else if (key.equals("unscrew"))
             return "There aren't even any screws on this.";
         else
@@ -54,7 +54,7 @@ public class Gal4_Case extends SearchableFurniture
     }
     //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
-        if (item.toString().equals(WEAPON)) {
+        if (item.getType().equals(WEAPON)) {
             AudioPlayer.playEffect(35);
             return this.useDialog;
         }

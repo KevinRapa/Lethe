@@ -14,12 +14,6 @@ public class Deep_Chamber extends Room {
 //-----------------------------------------------------------------------------    
     public Deep_Chamber(String name, String ID) {
         super(name, ID);
-        this.description= "cat atnk tiouh intfgswrng zo apparently fin to "
-                        + "lintt on top d qhtusk never ttho&ght that >os can't simply "
-                        + "formnate pziPt4ty ligpt in the nse drtgitat a tiny "
-                        + "dissont cataocmg dest i*ntr ahfo gor doo it rhiYe "
-                        + "dew demgehZd4 bfrIxy move fin you bexore sd stokM off "
-                        + "collab edify fire aelo aDasi.";
     }
 //-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
@@ -27,7 +21,7 @@ public class Deep_Chamber extends Room {
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
-        return Cave.distortDescription(1, this.description);
+        return Cave.distortDescription(1, super.getDescription());
     }
 //-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {

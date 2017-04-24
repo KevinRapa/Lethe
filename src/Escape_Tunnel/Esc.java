@@ -49,7 +49,7 @@ public class Esc extends Room {
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (playerHasTorch())
-            return MACHINERY_DESC + this.description;
+            return MACHINERY_DESC + super.getDescription();
         else
             return TOO_DARK;
     }

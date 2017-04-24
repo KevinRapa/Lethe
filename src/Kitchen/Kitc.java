@@ -24,12 +24,12 @@ public class Kitc extends Room{
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
-        if (TORCH_INV_REF.size() == 0) {
+        if (TORCH_INV_REF.size() == 0) 
             return "This room is pitch black and fetid. All that's visible is an " +
                    "empty mounted holder on the wall next to you and a thin " +
                    "slitted window on the east end of the room.";
-        }
-        return this.description;
+        else
+            return super.getDescription();
     }
 //-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
@@ -37,7 +37,7 @@ public class Kitc extends Room{
             GUI.out("As you step in, a fetid stench immediately infiltrates your senses. "
                   + "You gag a few times before attuning your yourself to the wretched odor.");
             
-        return TORCH_INV_REF.size() != 0 ? STD_RM_OUT : "Pitch black room.";
+        return TORCH_INV_REF.size() != 0 ? STD_RM_OUT : "Pitch black room";
     }
 //-----------------------------------------------------------------------------
 }

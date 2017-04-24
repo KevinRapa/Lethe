@@ -20,12 +20,14 @@ package A_Main;
  * @see <a href="https://github.com/KevinRapa/Lethe.git">GitHub Repository</a>
  */
 
-import java.awt.event.KeyListener; 
+import java.awt.event.KeyListener;  import java.awt.Color;
 import java.awt.Dimension;          import java.awt.Toolkit;
 import java.awt.event.KeyEvent;     
 
 import javax.swing.JPanel;          import javax.swing.ImageIcon; 
 import javax.swing.JLabel;          import javax.swing.JFrame;  
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import java.io.*;                   import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -35,11 +37,10 @@ import javafx.application.Platform;
 import static A_Main.Names.SEP;     
 import static A_Main.Names.DATA;
 import static A_Main.Names.W_DIR;
-import java.awt.Color;
 
 public class Main {
     private static final String 
-            START_LOCATION = Id.GAL1, // Default COU4
+            START_LOCATION = Id.CV11, // Default COU4
             SAVE_PATH = DATA + SEP + "save" + SEP + "Game.data",
             TITLE_PATH = W_DIR + SEP + DATA + SEP + "img" + SEP + "Title.gif";
     
@@ -53,6 +54,14 @@ public class Main {
 
     // <editor-fold defaultstate="collapsed" desc="Static block sets up title screen">
     static {
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+        } catch (ClassNotFoundException | InstantiationException | 
+                IllegalAccessException | UnsupportedLookAndFeelException ex) 
+        {
+            System.err.println(ex.getMessage());
+        }
+
         TITLE_PANEL.setPreferredSize(new Dimension(824,478));
         TITLE_PANEL.setBackground(Color.BLACK);
         TITLE_LABEL.setIcon(new ImageIcon(TITLE_PATH));
@@ -152,7 +161,7 @@ public class Main {
     } 
 //-----------------------------------------------------------------------------
     private static void startDialog() {
-        AudioPlayer.playTrack(Id.ENDG);
+        AudioPlayer.playTrack(Id.TITL);
 
         GUI.menOut(Menus.ENTER);
         GUI.out("Beneath the starry welkin, you stand, having trekked on "
@@ -160,10 +169,11 @@ public class Main {
               + "stone colossus appears curiously vacant, yet inviting.");
         GUI.promptOut();    
 
-        GUI.out("You slowly approach, fighting the humid storm winds, "
+        GUI.out("You slowly approach, fighting the humid summer gales, "
               + "until inside the front gateway. A transient thought "
               + "drifts through your mind - what was your business "
-              + "here, again?");     
+              + "here, again? You ponder a moment, but can't quite " +
+                "remember.");     
         GUI.promptOut();
 
         GUI.out(Menus.VERSION);     

@@ -8,7 +8,7 @@ package A_Main;
 public final class Id {
     public static final String  
     //-------------------------------------------------------------------------
-        NULL = "NULL", UNKN = "UNKN",  
+        NULL = "NULL", UNKN = "UNKN", TITL = "TITL", 
             
         // <editor-fold defaultstate="collapsed" desc="AREA 1: Castle front">
             

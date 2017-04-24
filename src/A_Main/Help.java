@@ -123,7 +123,7 @@ public final class Help {
         "done from the inventory, however you may type \"examine <item>\" "
       + "or even just the item slot from the main prompt as long as you are "
       + "carrying the item. You may also substitute the item's slot number as "
-      + "alternative to its name, and take note that entering in the complete "
+      + "an alternative to its name. Take note that entering in the complete "
       + "name of the item is not always necessary. Inspecting can also be done "
       + "during a search if you want to look at an item before picking it up. "
       + "Inspecting can be useful for discovering hidden information about "

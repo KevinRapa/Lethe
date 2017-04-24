@@ -35,7 +35,7 @@ public class Jha2 extends Room {
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
         return this.hasFurniture("mysterious door") ? 
-                this.desc2 : this.description;
+                this.desc2 : super.getDescription();
     }
 //-----------------------------------------------------------------------------
 }

@@ -47,7 +47,7 @@ public class Obs1_Statues extends Furniture {
         super();
 
         this.solved = false;
-        this.locked = false;
+        this.locked = true;
         
         this.actDialog = "As the statue settles in place, a bright "
                        + "array of light forms on the floor. The chandelier "
@@ -59,9 +59,11 @@ public class Obs1_Statues extends Furniture {
                           + "An inspection of the floor around them reveals "
                           + "fine seams in the floor connecting them in various "
                           + "ways.";
+        
         this.CHNDLR_REF = (Obs3_Chandelier) chandlr;
+        
         this.addNameKeys("statues?", "ring(?: of statues)?", "gods?", "goddess(?:es)?");
-        this.addActKeys(MOVEPATTERN);
+        this.addActKeys(MOVEPATTERN, "turn|spin", "admire");
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
@@ -86,7 +88,10 @@ public class Obs1_Statues extends Furniture {
         int statNum;
         Scanner collectToken;
 
-        if (! this.locked && ! this.solved) {
+        if (key.equals("admire")) {
+            return "What otherworldly beauty!";
+        }
+        else if (! this.locked && ! this.solved) {
             do {          
                 GUI.out(this.getArray());
                 GUI.menOut(Menus.OBS_STAT_MEN);
@@ -128,8 +133,8 @@ public class Obs1_Statues extends Furniture {
         }
         else if (this.locked) {
             AudioPlayer.playEffect(6);
-            rep = "The statues aren't budging. Something might be locking "
-                + "them in place";  
+            rep = "The statues budge only a slight amount. Something might "
+                    + "be locking them in place";  
         }
         else {       
             AudioPlayer.playEffect(6);

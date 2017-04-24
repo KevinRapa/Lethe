@@ -26,9 +26,9 @@ public class Vest extends Room {
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! this.windowOpen)
-            return this.description;
+            return super.getDescription();
         else
-            return this.description.replaceFirst("a closed", "an open");
+            return super.getDescription().replaceFirst("a closed", "an open");
     }
 //-----------------------------------------------------------------------------    
     @Override public String triggeredEvent() {  

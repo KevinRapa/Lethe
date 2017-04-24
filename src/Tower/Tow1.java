@@ -25,7 +25,7 @@ public class Tow1 extends Lich_Room {
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
-        String result = this.description.concat(TOW_PEDESTAL.getDescription());
+        String result = super.getDescription().concat(TOW_PEDESTAL.getDescription());
         
         if (! this.lichDead)
             return TOW1_SPHERE_P.matcher(result)

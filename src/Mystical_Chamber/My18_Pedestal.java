@@ -43,7 +43,7 @@ public class My18_Pedestal extends Furniture implements Unmoveable {
             AudioPlayer.playEffect(37);
             Player.getPos().addFurniture(new My18_Stairs(Direction.DOWN));
             Player.getInv().remove(item);
-            ((My18)Player.getPos()).updateDescription();
+            ((My18)Player.getPos()).updateDesc();
 
             return "The stone fits perfectly into the indentation. Immediately, the "
                  + "ground begins to shake lightly. You step back. The seams in the floor "

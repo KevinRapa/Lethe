@@ -22,9 +22,10 @@ public class Par2 extends Room{
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (! this.isAdjacent(Id.JHA1))
-            return this.description.concat(" However, there is something odd about this door.");
+            return super.getDescription()
+                    .concat(" However, there is something odd about this door.");
         else
-            return this.description;
+            return super.getDescription();
     }
 //-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {

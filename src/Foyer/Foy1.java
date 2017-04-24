@@ -20,7 +20,7 @@ public class Foy1 extends Room{
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
-        return this.description.replaceFirst("%", descMode());
+        return super.getDescription().replaceFirst("%", descMode());
     }   
 //-----------------------------------------------------------------------------
     private String descMode() {       

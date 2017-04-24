@@ -26,13 +26,11 @@ public class Drar extends Room {
 //-----------------------------------------------------------------------------   
     @Override public String getDescription() {
         if (this.hasFurniture("ghost"))
-            return this.description;
+            return super.getDescription();
         else
-            return "You are in a relaxing lounge. A drinking bar furnishes the "
-                 + "south of the room. There's a billiard table and chess table near a window " +
-                   "on the east wall. A couch and low table sit on the west side. " +
-                   "Next to you is a large black piano. This room is unlit save " +
-                   "the bright moonlight shining in.";
+            return super.getDescription().replaceFirst(
+                    "The moment.*end of the room.", 
+                    "You are in a relaxing lounge. A drinking bar furnishes the south of the room.");
     }
 //-----------------------------------------------------------------------------
 }

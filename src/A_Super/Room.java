@@ -46,7 +46,7 @@ public class Room implements Serializable {
             STD_RM_OUT;                         // Prints where you are.
     protected final int[] COORDS;               // Index coordinates of this room.
     protected boolean locked;                   // You cannot move into a locked room.
-    protected String description;               // Description of the room.
+    private transient String description;       // Description of the room.
     protected HashSet<String> adjacent;         // Rooms one could move to from this.
     protected ArrayList<Furniture> furnishings; // Holds furniture.
     // CONSTRUCTOR ============================================================
@@ -60,29 +60,14 @@ public class Room implements Serializable {
         // Gets the room's description from a file.
         String filename;
         
-        if (ID.equals(Id.NULL) || ID.matches("CV.."))
+        if (ID.equals(Id.NULL) || this instanceof Caves.Cave)
             return; // Caves make their own description. No need for a file.
-        else if (ID.matches("CT.."))
+        else if (this instanceof Catacombs.Catacomb)
             filename = "CT"; // All catacombs have one file.
         else
             filename = ID;
         
-        try (BufferedReader br = new BufferedReader(
-                new FileReader(PATH + filename + ".txt"))
-                ) 
-        {
-            String descLine;
-            StringBuilder descBuilder = new StringBuilder();
-
-            while ((descLine = br.readLine()) != null)
-                descBuilder.append(descLine);
-            
-            this.description = descBuilder.toString();
-        } 
-        catch (IOException ex) {
-            System.err.println(ex.getMessage());
-            this.description = "";
-        } 
+        this.description = readDescription(filename);
     }
 //******************************************************************************
 // <editor-fold desc="GETTERS">
@@ -100,7 +85,35 @@ public class Room implements Serializable {
     } 
     //-------------------------------------------------------------------------
     public String getDescription() {
-        return this.description; 
+        if (this.description == null) {
+            this.description = Room.readDescription(this.ID);
+        } 
+        return this.description;
+    }
+    //-------------------------------------------------------------------------
+    /**
+     * Reads the room's description from a file. 
+     * Descriptions are not serialized.
+     * @param filename Name of the file containing this room's description.
+     * @return The room's description.
+     */
+    private static String readDescription(String filename) {
+        try (BufferedReader br = new BufferedReader(
+                new FileReader(PATH + filename + ".txt"))
+                ) 
+        {
+            String descLine;
+            StringBuilder descBuilder = new StringBuilder();
+
+            while ((descLine = br.readLine()) != null)
+                descBuilder.append(descLine);
+            
+            return descBuilder.toString();
+        } 
+        catch (IOException ex) {
+            System.err.println(ex.getMessage());
+            return "";
+        } 
     }
     //-------------------------------------------------------------------------
     /**

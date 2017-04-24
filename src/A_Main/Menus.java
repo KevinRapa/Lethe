@@ -159,5 +159,5 @@ public final class Menus {
             
         VERSION = "This is Lethe / Author: Kevin Rapa / Written on Netbeans 8.1 "
                 + "/ Sounds obtained from freesound.org, processed in Audacity "
-                + "/ Title screen by Stephen Reed.";
+                + "/ Title screen by Stephen Reed. Enter 'credits' for more info.";
 }

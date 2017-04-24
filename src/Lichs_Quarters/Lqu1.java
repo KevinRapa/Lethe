@@ -26,7 +26,7 @@ public class Lqu1 extends Lich_Room {
     @Override public String getDescription() {
         String modifier = this.lichDead ? "lifeless" : "breathing";
         
-        return this.description.replaceFirst("%", modifier);
+        return super.getDescription().replaceFirst("%", modifier);
     }
 //-----------------------------------------------------------------------------
 }

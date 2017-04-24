@@ -27,7 +27,7 @@ public class Cis2_Boat extends SearchableFurniture {
 
         this.addNameKeys("(?:slender )?(?:wooden )?(?:canoe|boat)");
         this.addUseKeys(WOODEN_OAR);
-        this.addActKeys("ride|paddle|launch", "climb|enter|go", "leave");
+        this.addActKeys("ride|paddle|launch|get", "climb|enter|go", "leave");
     }
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              

@@ -32,7 +32,13 @@ public class LootSack extends Item {
     @Override public String useEvent() {
         AudioPlayer.playEffect(1);
         Player.search(INV);
-        return this.useDialog;
+        
+        if (Player.hasItem(Names.LOOT_SACK))
+            return "";
+        else
+            return "You stuff the sack inside itself and pull the string. "
+                  + "All of the sudden, the sack is gone. You stand there, "
+                  + "empty-handed, and confused.";
     }
     //---------------------------------------------------------------------
     // For use by text parser only.

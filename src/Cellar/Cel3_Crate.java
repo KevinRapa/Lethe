@@ -6,12 +6,13 @@ import A_Main.Player;
 import A_Super.Gettable;
 import A_Super.Item;
 import A_Super.Moveable;
+import A_Super.Openable;
 import A_Super.SearchableFurniture;
 /**
  * @author Kevin Rapa
  */
 public class Cel3_Crate extends SearchableFurniture 
-        implements Gettable, Moveable 
+        implements Gettable, Moveable, Openable 
 {
     //-------------------------------------------------------------------------
     public Cel3_Crate (Item... items) {
@@ -30,7 +31,7 @@ public class Cel3_Crate extends SearchableFurniture
 
         this.addNameKeys("(?:large )?(?:wooden )?crate", "nails?", "screws?");
         this.addUseKeys(ANYTHING);
-        this.addActKeys("pry", "open", "break", GETPATTERN, JOSTLEPATTERN);
+        this.addActKeys("pry", "break", GETPATTERN, JOSTLEPATTERN);
     }
     //------------------------------------------------------------------------- 
     @Override public String getDescription() {
@@ -47,18 +48,21 @@ public class Cel3_Crate extends SearchableFurniture
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("pry")) {
-            if (Player.hasItem(CROWBAR)) {
+            if (searchable)
+                return "The crate is apparently open already.";
+            else if (Player.hasItem(CROWBAR)) {
                 Item crowbar = Player.getInv().get(CROWBAR);
                 return this.useEvent(crowbar);
             } 
             else  
                 return this.actDialog;
         }
-        else if (key.equals("open"))
-            return "Yes, that would be good to do, but you do not even have the "
-                    + "strength to do that by hand.";
-        else if (key.equals("break"))
-            return "Doing that by hand would be quite painful and regretable.";
+        else if (key.equals("break")) {
+            if (searchable)
+                return "The crate is apparently open already.";
+            else
+                return "Doing that by hand would be quite painful and regretable.";
+        }
         else if (key.equals(GETPATTERN))
             return getIt();
         else {

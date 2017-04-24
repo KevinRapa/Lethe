@@ -940,7 +940,7 @@ public final class Player {
                     " out of 15 legendary treasures and " + p + 
                     " out of 5 phylacteries. " + message);
             
-            s.useEvent();
+            GUI.out(s.useEvent());
         }
         else 
             GUI.out("You have collected " + pi + " out of 5 phylacteries, and "
@@ -1865,6 +1865,25 @@ private static class TextParser {
                         GUI.out("Waving that around won't accomplish anything useful.");
                 }
                 // </editor-fold>
+                
+                // <editor-fold defaultstate="collapsed" desc="VERB TYPE: HOLD">
+                else if (verb.equals("hold") || verb.equals("squeeze")) {
+                    if (name.equals(COMPASS))
+                        GUI.out(item.useEvent());
+                    else if (verb.equals("squeeze") && (
+                            (type.equals(LIQUID) && ! name.equals(BUCKET_OF_WATER)) 
+                            || type.equals(FOCUS) || type.equals(INGREDIENT)
+                            )) 
+                    {
+                        Player.inv.remove(item);
+                        Player.inv.add(BROKEN_GLASS);
+                        GUI.out("The player loses control of emotion and crushes "
+                                + "the delicate glass.");
+                    }
+                    else
+                        GUI.out("Holding the " + name + " accomplishes nothing interesting.");
+                }
+                // </editor-fold>
                 //-------------------------------------------------------------
                 else
                     GUI.out("Sorry, that really wasn't specific enough for me.");
@@ -1902,14 +1921,14 @@ private static class TextParser {
                     if (furn.isSearchable()) {
                         // Stores the current item in the item list.
                         Player.evalStore(furn.getInv(), list[j]);
-                        Player.printInv();
+                        printInv();
                     }
                     else if (furn.useKeyMatches(list[j].toString())) {
                         // Not searchable, but perhaps it's meant to be used 
                         // by the item still.
                         // e.g. the Labo distiller used by the florence flask.
                         GUI.out(furn.useEvent(list[j]));
-                        Player.printInv();
+                        printInv();
                         break;
                     }
                     else {
@@ -1935,17 +1954,16 @@ private static class TextParser {
                 for (j = 0; j < list.length; j++) {
                     if (isNullItem(list, j)) break;
 
+                    if (list[j].toString().equals(LOOT_SACK) && ! sack.isFull()) {
+                        // Player can put the sack inside the sack, because why not.
+                        GUI.out("Whoa there, be careful not to stuff the sack "
+                                + "inside itself. I won't make it that easy.");
+                        break;
+                    }
+                    
                     Player.evalStore(sack.getInv(), list[j]);
                     Player.setLastInteract_Item(LOOT_SACK);
                     Player.printInv();
-
-                    if (list[j].toString().equals(LOOT_SACK) && ! sack.isFull()) {
-                        // Player can put the sack inside the sack, because why not.
-                        GUI.out("You stuff the sack inside itself and pull the string. "
-                              + "All of the sudden, the sack is gone. You stand there, "
-                              + "empty-handed, and confused.");
-                        break;
-                    }
                 }
 
                 if (list.length > 1 && j == list.length)

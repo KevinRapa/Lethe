@@ -11,15 +11,7 @@ public class Endg extends Room {
 //-----------------------------------------------------------------------------    
     public Endg(String name, String ID) {
         super(name, ID);
-        
-        this.description = 
-            "You step out of the castle's front wall and into the forest. A " +
-            "ray of sunlight finds the back of your neck, and you feel warmth. " +
-            "At the same time, scattered light penetrates the forest canopy " +
-            "and illuminates your path. You continue treading away from " +
-            "the castle, but not too quickly, for you almost feel as though " +
-            "you are being accompanied, but you are not afraid.";
-        
+
         this.earlyWinDesc = 
             "By an magnificent and unforeseen display of self " +
             "control, you turn your back to the ghastly " +
@@ -33,7 +25,7 @@ public class Endg extends Room {
         if (Player.getRoomObj(Id.COU4).isLocked())
             return this.earlyWinDesc;
         else
-            return this.description;
+            return super.getDescription();
     }
 //-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
