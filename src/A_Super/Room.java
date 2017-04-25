@@ -4,6 +4,7 @@ import static A_Main.Names.W_DIR;
 import static A_Main.Names.SEP;
 import static A_Main.Names.DATA;
 import A_Main.AudioPlayer;
+import A_Main.GUI;
 import A_Main.Id;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,15 +41,16 @@ import java.util.HashSet;
 public class Room implements Serializable { 
     protected static final String 
             PATH = W_DIR + SEP + DATA + SEP + "desc" + SEP,
-            WALL_BARRIER = "There is a wall that way.";
+            WALL_BARRIER = "There is a wall that way.",
+            EXT = ".txt";
     protected final String 
-            NAME, ID,                           // The name and unique ID of the room.
-            STD_RM_OUT;                         // Prints where you are.
-    protected final int[] COORDS;               // Index coordinates of this room.
-    protected boolean locked;                   // You cannot move into a locked room.
-    private transient String description;       // Description of the room.
-    protected HashSet<String> adjacent;         // Rooms one could move to from this.
-    protected ArrayList<Furniture> furnishings; // Holds furniture.
+            NAME, ID,                     // The name and unique ID of the room.
+            STD_RM_OUT;                   // Prints where you are.
+    protected final int[] COORDS;         // Index coordinates of this room.
+    protected boolean locked;             // You cannot move into a locked room.
+    private transient String description; // Description of the room.
+    protected HashSet<String> adjacent;   // Rooms one could move to from this.
+    protected ArrayList<Furniture> furn;  // Holds furniture.
     // CONSTRUCTOR ============================================================
     public Room(String name, String ID) {  
         this.NAME = name;
@@ -58,16 +60,6 @@ public class Room implements Serializable {
         this.COORDS = RoomGraph.getCoords(this.ID); 
         this.adjacent = RoomGraph.getAdj(this.ID);
         // Gets the room's description from a file.
-        String filename;
-        
-        if (ID.equals(Id.NULL) || this instanceof Caves.Cave)
-            return; // Caves make their own description. No need for a file.
-        else if (this instanceof Catacombs.Catacomb)
-            filename = "CT"; // All catacombs have one file.
-        else
-            filename = ID;
-        
-        this.description = readDescription(filename);
     }
 //******************************************************************************
 // <editor-fold desc="GETTERS">
@@ -85,9 +77,12 @@ public class Room implements Serializable {
     } 
     //-------------------------------------------------------------------------
     public String getDescription() {
-        if (this.description == null) {
-            this.description = Room.readDescription(this.ID);
-        } 
+        if (this.description == null) 
+            if (this instanceof Catacombs.Catacomb)
+                this.description = readDescription("CT" + EXT);
+            else
+                this.description = readDescription(this.ID + EXT);
+        
         return this.description;
     }
     //-------------------------------------------------------------------------
@@ -99,7 +94,7 @@ public class Room implements Serializable {
      */
     private static String readDescription(String filename) {
         try (BufferedReader br = new BufferedReader(
-                new FileReader(PATH + filename + ".txt"))
+                new FileReader(PATH + filename))
                 ) 
         {
             String descLine;
@@ -112,6 +107,7 @@ public class Room implements Serializable {
         } 
         catch (IOException ex) {
             System.err.println(ex.getMessage());
+            GUI.out("Could not find room description: " + ex.getMessage());
             return "";
         } 
     }
@@ -136,7 +132,7 @@ public class Room implements Serializable {
     }
     //-------------------------------------------------------------------------
     public ArrayList<Furniture> getFurnishings() {
-        return this.furnishings;
+        return this.furn;
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -171,14 +167,14 @@ public class Room implements Serializable {
     }
     //-------------------------------------------------------------------------
     public final void removeFurniture(Furniture removeThis) {
-        this.furnishings.remove(removeThis);
+        this.furn.remove(removeThis);
     }
     //-------------------------------------------------------------------------
     public final void addFurniture(Furniture ... furnishings) {
-        if (this.furnishings == null)
-            this.furnishings = new ArrayList<>(furnishings.length);
+        if (this.furn == null)
+            this.furn = new ArrayList<>(furnishings.length);
             
-        this.furnishings.addAll(Arrays.asList(furnishings));
+        this.furn.addAll(Arrays.asList(furnishings));
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -217,12 +213,11 @@ public class Room implements Serializable {
      * @return If your location contains furniture with that name.
      */
     public boolean hasFurniture(String name) {   
-        return this.furnishings.stream()
-                .anyMatch(i -> (i.nameKeyMatches(name)));
+        return this.furn.stream().anyMatch(i -> (i.nameKeyMatches(name)));
     }
     //-------------------------------------------------------------------------
     public boolean hasFurniture(Furniture furn) {
-        return this.furnishings.contains(furn);
+        return this.furn.contains(furn);
     }
 //******************************************************************************    
 // </editor-fold>  

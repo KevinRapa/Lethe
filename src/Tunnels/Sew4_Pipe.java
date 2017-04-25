@@ -28,7 +28,7 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
         
         this.description = "The rusty pipe runs along the ceiling around the "
                          + "bend right above the river. ";
-        this.searchDialog = "The pipe has a gap where a piece is missing.";
+        this.searchDialog = "The pipe has a gap where a piece has fallen.";
         this.useDialog = "The pipe is too high up for you to reach!";
 
         this.addNameKeys("(?:large )?(?:rusty )?(?:metal )?pip(?:e|ing)", "gap");
@@ -37,8 +37,8 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
     //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         return this.hasPipe ? 
-                this.description.concat("This section of piping has a short 2-foot section missing.") : 
-                this.description;
+                this.description :
+                this.description.concat("This section of piping has a short 2-foot section missing.");
     }
     //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
@@ -54,8 +54,8 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
             return "With all your strength, you shove the piping between the "
                     + "break in the piping. It's a good fit, but may not hold long...";
         }
-            
-        return this.useDialog;
+        else
+            return this.useDialog;
     }
     //-------------------------------------------------------------------------
     public boolean isMissingPipe() {

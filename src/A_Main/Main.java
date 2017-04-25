@@ -40,9 +40,9 @@ import static A_Main.Names.W_DIR;
 
 public class Main {
     private static final String 
-            START_LOCATION = Id.CV11, // Default COU4
+            START_LOCATION = Id.COU4, // Default COU4
             SAVE_PATH = DATA + SEP + "save" + SEP + "Game.data",
-            TITLE_PATH = W_DIR + SEP + DATA + SEP + "img" + SEP + "Title.gif";
+            TITLE_PATH = W_DIR + SEP + DATA + SEP + "img" + SEP;
     
     private static final JFrame 
             GAME_FRAME = new JFrame("Lethe"),
@@ -64,8 +64,31 @@ public class Main {
 
         TITLE_PANEL.setPreferredSize(new Dimension(824,478));
         TITLE_PANEL.setBackground(Color.BLACK);
-        TITLE_LABEL.setIcon(new ImageIcon(TITLE_PATH));
         
+        ImageIcon icon = new ImageIcon(TITLE_PATH + "Title.gif");
+        
+        if (icon.getImage().getWidth(TITLE_LABEL) == -1) {
+            // Gif isn't working? Load regular picture.
+            icon = new ImageIcon(TITLE_PATH + "AuxTitle.jpg");
+            
+            if (icon.getImage().getWidth(TITLE_LABEL) != -1) {
+                TITLE_LABEL.setIcon(icon);
+            }
+            else {
+                // Regular picture isn't working either? Do plain text.
+                TITLE_LABEL.setOpaque(true);
+                TITLE_LABEL.setBackground(Color.BLACK);
+                TITLE_LABEL.setForeground(Color.WHITE);
+                TITLE_LABEL.setFont(TITLE_LABEL.getFont().deriveFont(22.0f));
+                TITLE_LABEL.setText(
+                    "<html><br><br><br>This is Lethe<br><br>Well, there's "
+                  + "SUPPOSED to<br>be a better image here..."
+                  + "<br><br><i>Press any key...</i></html>");
+            }
+        }
+        else {
+            TITLE_LABEL.setIcon(icon);
+        }
         TITLE_LABEL.addKeyListener(new KeyListener() {
             // To progress to game frame from title frame with "Press any key"
             @Override public void keyTyped(KeyEvent e) {}
@@ -118,11 +141,8 @@ public class Main {
         
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="READ IN SAVE FILE OR START NEW GAME">
-        //
-        // Rudimentary save system using serialization.
         //**********************************************************************
-        String start = args.length > 0 ? args[0] : null;
-        int[] test = null;
+        int[] startCoords = null;
         
         try (ObjectInputStream gameData = new ObjectInputStream(
                 new FileInputStream(new File(W_DIR, SAVE_PATH)))) 
@@ -135,24 +155,21 @@ public class Main {
             System.err.println(e.getMessage() + "\nCreating new game.");
             RoomGraph.constructRoomGraph();
             
-            if (start != null && (start.equals(Id.NULL) || start.equals(Id.GAL7) 
-                    || (test = RoomGraph.getCoords(start)) == null))
+            if (args.length > 0 && (args[0].equals(Id.NULL)
+                    || (startCoords = RoomGraph.getCoords(args[0])) == null))
             {
                 System.err.println("Not a valid starting location.");
             }
-                
-            Player.setNewAttributes(
-                    RoomGraph.getCoords(test == null ? START_LOCATION : start)
-            );
+            
+            if (startCoords == null)
+                startCoords = RoomGraph.getCoords(START_LOCATION);
+            
+            Player.setNewAttributes(startCoords);
             
             startDialog();
         }
         finally {
-            boolean eraseTrue = Player.mainPrompt(); // START GAME
-            
-            if (eraseTrue)
-                eraseGame();
-                
+            Player.mainPrompt(); // START GAME
             endGameProcedure();
         }
         //**********************************************************************

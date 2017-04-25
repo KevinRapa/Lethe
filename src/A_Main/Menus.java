@@ -40,10 +40,10 @@ public final class Menus {
                   + "< > Back  <#> Inspect",
 
         SAVE_QUIT = NL + NL
-                  + "<'q'> Quit" + NL
                   + "<'s'> Save and quit" + NL
-                  + "<'r'> Reset and quit.",
-
+                  + "<'r'> Reset and quit." + NL
+                  + " < >  Quit",
+                          
         MAIN_MENU = "      Enter a command or" + NL + NL
                   + "   <'w'/'s'/'a'/'d'>  Move" + NL
                   + "<'i'>  Inventory  <'k'>  Keys" + NL

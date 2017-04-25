@@ -50,7 +50,7 @@ CHECK_P = Pattern.compile("c|check|examine|look|view|inspect|watch"),
 // between CT34 and CS35. This patterns finds the boundary.
 CS35_CT34_P = Pattern.compile("CS35|CT34"),
 
-SAVE_QUIT_RESET_P = Pattern.compile("[sqr]"),   // Used when player quits game
+SAVE_QUIT_RESET_P = Pattern.compile("[sr]|"),   // Used when player quits game
         
 // Protects from numberFormatException by restricting to 4 digits at most.
 // Matches empty strings also. Used in a menu that prompts for a digit.        

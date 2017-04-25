@@ -431,7 +431,6 @@ public class GUI extends JFXPanel {
             + "Suprasummun, Taira Komori, tec studios, thefilmbakery, "
             + "tiagusilva37, timgormly, thearxx08, viaaico2013, VSokorelos");
         
-        
         menOut(Menus.CREDITS);
         GUI.promptOut();
         clearDialog();

@@ -129,7 +129,7 @@ public class Cave extends Room {
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
-        if (!Player.hasItem(HAND_TORCH))
+        if (Player.hasItem(HAND_TORCH))
             return distortDescription(DISTANCE, descLit);
         else
             return distortDescription(DISTANCE, descUnlit);

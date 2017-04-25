@@ -357,9 +357,8 @@ public final class Player {
     //-------------------------------------------------------------------------   
     /**
      * The main prompt for controlling the player's moves.
-     * @return at end of game, if the player wishes to erase save data.
      */
-    public static boolean mainPrompt() {
+    public static void mainPrompt() {
         String ans;
         
         AudioPlayer.playTrack(getPosId());
@@ -381,12 +380,10 @@ public final class Player {
         
         ans = GUI.askChoice(Menus.SAVE_QUIT, SAVE_QUIT_RESET_P);
         
-        if (ans.equals("s")) {
+        if (ans.equals("s")) 
             Main.saveGame();
-            return false;
-        }
-        else 
-            return ans.equals("r");
+        else if (ans.equals("r")) 
+            Main.eraseGame();
     }  
     //------------------------------------------------------------------------- 
     public static boolean isNonEmptyString(String playerInput) {

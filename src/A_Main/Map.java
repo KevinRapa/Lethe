@@ -2338,7 +2338,7 @@ public class Map {
         sew1.addFurniture(sew1Rvr, sewF, dngnW, sewTnnl, sew15Gt, sew1Trch, sewMss);
         sew2.addFurniture(sewRvr, sewF, dngnW, sewTnnl, sew2Trch, sewMss, sew2BrdgW, sew2Pp, sew2Vlvs);
         sew3.addFurniture(sewRvr, sewF, sewDrN, dngnW, sewTnnl, sew3Trch, sewMss, sew3BrdgE, sew3BrdgN, sew3Pp);
-        sew4.addFurniture(sewRvr, sewF, dngnW, sewTnnl, sew4Trch, sewMss, sew4Pp);
+        sew4.addFurniture(sewRvr, sewF, sew4Pp, dngnW, sewTnnl, sew4Trch, sewMss);
         sew5.addFurniture(genDoor, sewRvr, sewF, sewDrW, sewDrE, dngnW, sewTnnl, 
                 sew15Gt, sew5Trch, sewMss, sew5BrdgE, sew5Pp, sew5Vlv);
         cis1.addFurniture(cis1Trch, dngnW, sewDrE, cisF, cisWtr, cisClmns, cisDrknss);
