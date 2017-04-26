@@ -106,8 +106,7 @@ public class Room implements Serializable {
             return descBuilder.toString();
         } 
         catch (IOException ex) {
-            System.err.println(ex.getMessage());
-            GUI.out("Could not find room description: " + ex.getMessage());
+            System.err.println("Could not find room description: " + ex.getMessage());
             return "";
         } 
     }

@@ -159,7 +159,7 @@ public class GUI extends JFXPanel {
             t.setWrapStyleWord(true);   t.setBackground(Color.BLACK);
             t.setForeground(myColor);   t.setFont(myFont);
         }
-        
+
         Button_Listener l = new Button_Listener();
         JButton[] buttons = {SWAP, MUTE, KEYS, COLOR1, COLOR2};
         for (JButton b : buttons) {
@@ -179,7 +179,7 @@ public class GUI extends JFXPanel {
             label.setHorizontalAlignment(JLabel.CENTER);
             label.setBorder(BorderFactory.createEmptyBorder());
         }
-        
+
         Component[] cmps =
             {MEN_TXT, MEN_PNL, INPUT, BTN_PNL, INPUT_PNL, WNSOUTH, WEST};
         for (Component c : cmps)
@@ -195,6 +195,11 @@ public class GUI extends JFXPanel {
         MOVE_LBL.setFont(labelFont.deriveFont(Font.BOLD, 18.0f));
         ROOM_LBL.setPreferredSize(new Dimension(225, 50));
         ROOM_LBL.setFont(labelFont.deriveFont(Font.BOLD, 22.0f));
+
+        if (! ROOM_LBL.getFont().getFontName().equals("MagicMedieval")) { 
+            // Make font smaller if it didn't load correctly.
+            ROOM_LBL.setFont(ROOM_LBL.getFont().deriveFont(18.0f));
+        }
         WNSOUTH.add(MOVE_LBL);
         WNSOUTH.add(ROOM_LBL);
         WNSOUTH.add(SCORE_LBL);

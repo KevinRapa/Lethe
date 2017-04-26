@@ -23,8 +23,8 @@ public class Pris extends Room {
         new Pris_Cll("3", "three", "This cell has the remains of a skeleton in it. It "
                    + "lacks anything below the pelvis, and one of its arms is "
                    + "shackled."),
-        new Pris_Cll("4", "four", "This cell has nothing in it but a bucket and a "
-                   + "few bones. There is a carving on the wall of the cell:"
+        new Pris_Cll("4", "four", "Nothing but a bucket and a "
+                   + "few bones. There is a carving on the wall:"
                 + "                     __ " +
                   "                        _/// " +
                   "                      _///¯ " +

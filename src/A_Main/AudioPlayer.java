@@ -265,8 +265,6 @@ public class AudioPlayer {
                 trackName = newMedia.getSource(); 
             }
             catch (MediaException | NullPointerException e) {
-                GUI.out("Hm... What happened to the sound? This is all I got -> " 
-                        + e.getMessage());
                 System.err.println(e.getMessage());
             }
         }
@@ -285,7 +283,7 @@ public class AudioPlayer {
                 p.play();
             }
             catch (MediaException | NullPointerException e) {
-                displayIoError(e.getMessage());
+                System.err.println(e.getMessage());
             }
         }
     }
@@ -305,7 +303,7 @@ public class AudioPlayer {
                 p.play();
             }
             catch (MediaException | NullPointerException e) {
-                displayIoError(e.getMessage());
+                System.err.println(e.getMessage());
             }
         }
     }
@@ -324,7 +322,7 @@ public class AudioPlayer {
             playerAlternator ^= XOR_MASKS[playerAlternator];
         }
         catch (MediaException | NullPointerException e) {
-            displayIoError(e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 //-----------------------------------------------------------------------------
@@ -367,10 +365,6 @@ public class AudioPlayer {
             GUI.out("Unmuted.");
         }
         currentPlayer.setVolume(trackMuted ? 0.0 : 1.0);
-    }
-//-----------------------------------------------------------------------------
-    private static void displayIoError(String ex) {
-        GUI.out("Huh? What happened to the sound? This is all I got -> " + ex);
     }
 //******************************************************************************    
 // </editor-fold>
