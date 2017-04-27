@@ -8,8 +8,7 @@ import static A_Main.Names.NL;
  */
 public final class Menus {
     public static final String
-        INV_MAIN = NL
-                 + "<'1'> Inspect item" + NL
+        INV_MAIN = "<'1'> Inspect item" + NL
                  + "<'2'> Use item" + NL
                  + "<'3'> Combine items" + NL
                  + "<'4'> Sort inventory" + NL
@@ -32,8 +31,7 @@ public final class Menus {
                     + "<list> Combine..." + NL
                     + "< >    Back",
 
-        TRADE_SUB = NL
-                  + "<left/right>  Scroll" + NL
+        TRADE_SUB = "<left/right>  Scroll" + NL
                   + "<'s' list>    Store" + NL
                   + "<'t' list>    Take" + NL
                   + "<'loot'>      Loot!!!" + NL
@@ -44,42 +42,36 @@ public final class Menus {
                   + "<'r'> Reset and quit." + NL
                   + " < >  Quit",
                           
-        MAIN_MENU = "      Enter a command or" + NL + NL
+        MAIN_MENU = "      Enter a command or" + NL 
                   + "   <'w'/'s'/'a'/'d'>  Move" + NL
                   + "<'i'>  Inventory  <'k'>  Keys" + NL
                   + "<'h'>  Get help   <'n'>  Note" + NL
                   + "<'m'>  Show Map   <'l'>  Loot" + NL
                   + "<'save'> Save   <'quit'> Quit",
 
-        HELP_MAIN = NL
-                  + "     Topics:" + NL
+        HELP_MAIN = "     Topics:" + NL
                   + "<'1'> Controls" + NL
                   + "<'2'> Your player" + NL 
                   + "<'3'> The castle" + NL
                   + " < >   Back",
 
-        HELP_SUB1 = NL
-                  + "<'1'> The prompt <'2'> Moving" + NL
+        HELP_SUB1 = "<'1'> The prompt <'2'> Moving" + NL
                   + "<'3'> Describing <'4'> Examining" + NL
                   + "<'5'> Searching  <'6'> Commands" + NL 
                   + "<'7'> Using      <'8'> Combining" + NL
                   + "<'9'> Inspecting <'10'> Notes" + NL
                   + " < >  Back",
 
-        HELP_SUB2 = NL
-                  + "<'1'> Inventory" + NL
+        HELP_SUB2 = "<'1'> Inventory" + NL
                   + "<'2'> Key ring" + NL 
                   + "<'3'> Phylacteries" + NL
                   + "<'4'> Loot" + NL
                   + " < >  Back",
 
-        HELP_SUB3 = NL
-                  + "<'1'> Doors"  + NL
-                  + "<'2'> Rooms" + NL
-                  + "<'3'> Furniture"  + NL
-                  + "<'4'> Items" + NL
-                  + "<'5'> Keys"  + NL
-                  + "<'6'> Phylacteries" + NL
+        HELP_SUB3 = NL +
+                    "<'1'> Doors     <'2'> Rooms" + NL
+                  + "<'3'> Furniture <'4'> Items " + NL
+                  + "<'5'> Keys      <'6'> Phylacteries" + NL
                   + " < >  Back",
 
         SAFE_MENU = NL
@@ -148,14 +140,12 @@ public final class Menus {
             "<left/right> Scroll", 
                
             
-        CREDITS = "This game was written in Java on " + NL
-                + "NetBeans 8.1. All sounds were " + NL
-                + "processed using audacity. Fonts are " + NL
-                + "Magic Medieval (Dave Howell) and " + NL
-                + "FixedSys Excelsior (Darien " + NL
+        CREDITS = "Written in Java on NetBeans 8.1. All " + NL
+                + "sounds were processed using audacity. " + NL
+                + "Fonts are Magic Medieval (Dave " + NL
+                + "Howell) and FixedSys Excelsior (Darien " + NL
                 + "Valentine). Title screen designed " + NL
-                + "by Stephen Reed. Details can be " + NL
-                + "found in the credits folder.",
+                + "by Stephen Reed.",
             
         VERSION = "This is Lethe / Author: Kevin Rapa / Written on Netbeans 8.1 "
                 + "/ Sounds obtained from freesound.org, processed in Audacity "

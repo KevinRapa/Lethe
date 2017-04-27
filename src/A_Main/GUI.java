@@ -56,7 +56,7 @@ public class GUI extends JFXPanel {
         EAST = new JPanel(new BorderLayout()),   // Holds inventory and dialog.
         WEST = new JPanel(),                     // Left half of the GUI.
         WNORTH = new JPanel(new BorderLayout()), // Holds room label and desc.
-        WNSOUTH = new JPanel(),                  // Holds room name, score, moves.
+        WNNORTH = new JPanel(),                  // Holds room name, score, moves.
         WSOUTH = new JPanel(new BorderLayout()), // Holds menu, input and buttons.
         INPUT_PNL = new JPanel(),                // Holds the input and prompt sigil.
         MEN_PNL = new JPanel(),                  // Holds menu so it may resize freely.
@@ -71,10 +71,11 @@ public class GUI extends JFXPanel {
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     
     private final static JLabel 
-        PROMPT_LBL = new JLabel(">"),    // Decorative prompt sigil.
-        ROOM_LBL = new JLabel(),         // Displays player's current room.
-        MOVE_LBL = new JLabel(),         // Displays number of moves.
-        SCORE_LBL = new JLabel();        // Displays current score.
+        PROMPT_LBL = new JLabel(">"), // Decorative prompt sigil.
+        ROOM_LBL = new JLabel(),      // Displays player's current room.
+        MOVE_LBL = new JLabel(),      // Displays number of moves.
+        SCORE_LBL = new JLabel(),     // Displays current score.
+        TITLE_LBL = new JLabel("-    L  e  t  h  e    -"); 
     
     private final static JButton 
         SWAP = new JButton("Swap"),      // Swaps dialog and inventory.
@@ -150,9 +151,8 @@ public class GUI extends JFXPanel {
         }
 
         Color myColor = COLORS_DIAL.getLast();
-        JTextArea[] textAreas = {DIAL_TXT, DESC_TXT, INV_TXT};
         Insets defInsets = new Insets(2,6,0,6);
-        for (JTextArea t : textAreas) {
+        for (JTextArea t : new JTextArea[] {DIAL_TXT, DESC_TXT, INV_TXT}) {
             t.addFocusListener(focusListener);
             t.setMargin(defInsets);
             t.setEditable(false);       t.setLineWrap(true);
@@ -161,57 +161,59 @@ public class GUI extends JFXPanel {
         }
 
         Button_Listener l = new Button_Listener();
-        JButton[] buttons = {SWAP, MUTE, KEYS, COLOR1, COLOR2};
-        for (JButton b : buttons) {
+        Dimension buttonDim = new Dimension(74, 35);
+        Font buttonFont = labelFont.deriveFont(Font.BOLD, 17.0f);
+        for (JButton b : new JButton[] {SWAP, MUTE, KEYS, COLOR1, COLOR2}) {
             b.setBackground(Color.BLACK);
             b.setFocusPainted(false);
             b.setForeground(COLORS_LABEL.getLast());
-            b.setPreferredSize(new Dimension(74, 35));
+            b.setPreferredSize(buttonDim);
             b.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.BLACK));
-            b.setFont(labelFont.deriveFont(Font.BOLD, 17.0f));
+            b.setFont(buttonFont);
             b.addActionListener(l);
             BTN_PNL.add(b);
         }
-        
-        JLabel[] labels = {ROOM_LBL, MOVE_LBL, SCORE_LBL};
-        for (JLabel label : labels) { 
+
+        for (JLabel label : new JLabel[] {ROOM_LBL, MOVE_LBL, SCORE_LBL, TITLE_LBL}) { 
             label.setForeground(COLORS_LABEL.getLast());
             label.setHorizontalAlignment(JLabel.CENTER);
             label.setBorder(BorderFactory.createEmptyBorder());
         }
 
-        Component[] cmps =
-            {MEN_TXT, MEN_PNL, INPUT, BTN_PNL, INPUT_PNL, WNSOUTH, WEST,WNORTH};
-        for (Component c : cmps)
+        for (Component c : new Component[] {
+            MEN_TXT, MEN_PNL, INPUT, BTN_PNL, INPUT_PNL, WNNORTH, WEST,WNORTH
+        })
             c.setBackground(Color.BLACK);
         
         // WEST
-        WNORTH.setPreferredSize(new Dimension(400, 385));
-        WNSOUTH.setPreferredSize(new Dimension(400, 50));
+        WNORTH.setPreferredSize(new Dimension(400, 360));
+        WNNORTH.setPreferredSize(new Dimension(400, 50));
         SCORE_LBL.setPreferredSize(new Dimension(80, 50));
         SCORE_LBL.setFont(labelFont.deriveFont(Font.BOLD, 18.0f));
         MOVE_LBL.setPreferredSize(new Dimension(80, 50));
         MOVE_LBL.setFont(labelFont.deriveFont(Font.BOLD, 18.0f));
         ROOM_LBL.setPreferredSize(new Dimension(225, 50));
         ROOM_LBL.setFont(labelFont.deriveFont(Font.BOLD, 22.0f));
+        TITLE_LBL.setPreferredSize(new Dimension(225, 50));
+        TITLE_LBL.setFont(labelFont.deriveFont(Font.BOLD, 24.0f));
 
         if (! ROOM_LBL.getFont().getFontName().equals("MagicMedieval")) { 
             // Make font smaller if it didn't load correctly.
             ROOM_LBL.setFont(ROOM_LBL.getFont().deriveFont(18.0f));
         }
-        
-        DESC_TXT.setMargin(new Insets(2,6,14,6));
-        WNSOUTH.add(MOVE_LBL);
-        WNSOUTH.add(ROOM_LBL);
-        WNSOUTH.add(SCORE_LBL);
-        WNORTH.add(WNSOUTH, BorderLayout.NORTH);
+
+        WNORTH.add(TITLE_LBL, BorderLayout.NORTH);
         WNORTH.add(DESC_TXT, BorderLayout.SOUTH);
-        WSOUTH.setPreferredSize(new Dimension(400, 265));
+        WSOUTH.setPreferredSize(new Dimension(400, 290));
         MEN_TXT.setEditable(false);
         MEN_TXT.setFont(myFont);
         MEN_TXT.setForeground(myColor);
         MEN_TXT.addFocusListener(focusListener);
-        MEN_PNL.setPreferredSize(new Dimension(390, 170));
+        MEN_PNL.setPreferredSize(new Dimension(390, 195));
+        WNNORTH.add(MOVE_LBL);
+        WNNORTH.add(ROOM_LBL);
+        WNNORTH.add(SCORE_LBL);
+        MEN_PNL.add(WNNORTH);
         MEN_PNL.add(MEN_TXT);
         INPUT.addActionListener(new Text_Field_Listener());
         INPUT.addKeyListener(new Text_Field_Key_Listener());
@@ -236,7 +238,11 @@ public class GUI extends JFXPanel {
         WEST.add(WSOUTH, BorderLayout.SOUTH);
         
         // EAST
-        INV_TXT.setFont(myFont.deriveFont(19.0f));
+        if (INV_TXT.getFont().getFontName().equals("Monospaced.bold"))
+            INV_TXT.setFont(INV_TXT.getFont().deriveFont(16.0f));
+        else
+            INV_TXT.setFont(myFont.deriveFont(19.0f));
+        
         EAST.setPreferredSize(new Dimension(300, 645));
         SCROLLN.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
         SCROLLN.setPreferredSize(new Dimension(300, 343));
@@ -401,8 +407,8 @@ public class GUI extends JFXPanel {
         Random rand = new Random();
         Component[] compList = {
             ROOM_LBL, DIAL_TXT, DESC_TXT, INV_TXT, SWAP, COLOR2, 
-            MUTE, WNSOUTH, MEN_PNL, KEYS, COLOR1, PROMPT_LBL, 
-            MEN_TXT, WSOUTH, INPUT, MOVE_LBL, SCORE_LBL
+            MUTE, WNNORTH, MEN_PNL, KEYS, COLOR1, PROMPT_LBL, 
+            MEN_TXT, WSOUTH, INPUT, MOVE_LBL, SCORE_LBL, WNORTH
         };
         
         for (Component c : compList) {
@@ -539,7 +545,8 @@ public class GUI extends JFXPanel {
     private class Button_Listener implements ActionListener {
         private boolean swapped = false;
         private final Component[] COMP_LIST_1 =
-            {SWAP, MUTE, KEYS, COLOR1, COLOR2, ROOM_LBL, MOVE_LBL, SCORE_LBL};
+            {SWAP, MUTE, KEYS, COLOR1, COLOR2, 
+                ROOM_LBL, MOVE_LBL, SCORE_LBL, TITLE_LBL};
         
         @Override public void actionPerformed(ActionEvent push) { 
             Object o = push.getSource();
