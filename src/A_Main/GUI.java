@@ -181,13 +181,12 @@ public class GUI extends JFXPanel {
         }
 
         Component[] cmps =
-            {MEN_TXT, MEN_PNL, INPUT, BTN_PNL, INPUT_PNL, WNSOUTH, WEST};
+            {MEN_TXT, MEN_PNL, INPUT, BTN_PNL, INPUT_PNL, WNSOUTH, WEST,WNORTH};
         for (Component c : cmps)
             c.setBackground(Color.BLACK);
         
         // WEST
         WNORTH.setPreferredSize(new Dimension(400, 385));
-        DESC_TXT.setPreferredSize(new Dimension(400, 335));
         WNSOUTH.setPreferredSize(new Dimension(400, 50));
         SCORE_LBL.setPreferredSize(new Dimension(80, 50));
         SCORE_LBL.setFont(labelFont.deriveFont(Font.BOLD, 18.0f));
@@ -200,11 +199,13 @@ public class GUI extends JFXPanel {
             // Make font smaller if it didn't load correctly.
             ROOM_LBL.setFont(ROOM_LBL.getFont().deriveFont(18.0f));
         }
+        
+        DESC_TXT.setMargin(new Insets(2,6,14,6));
         WNSOUTH.add(MOVE_LBL);
         WNSOUTH.add(ROOM_LBL);
         WNSOUTH.add(SCORE_LBL);
-        WNORTH.add(WNSOUTH, BorderLayout.SOUTH);
-        WNORTH.add(DESC_TXT, BorderLayout.NORTH);
+        WNORTH.add(WNSOUTH, BorderLayout.NORTH);
+        WNORTH.add(DESC_TXT, BorderLayout.SOUTH);
         WSOUTH.setPreferredSize(new Dimension(400, 265));
         MEN_TXT.setEditable(false);
         MEN_TXT.setFont(myFont);
