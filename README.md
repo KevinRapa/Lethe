@@ -1,6 +1,9 @@
 # Lethe
 This holds the current iteration of a large text-based adventure game.
-The final title is "Lethe".
+The final title is <i>Lethe</i>.
+
+Downloadable .zip file is here:
+<a href="https://mega.nz/#!nUYjxQhZ!Horm-bZVJ214lLnx7y_nIBpXurSoptKj1eVQuHBjKHA"><br>Lethe_at_mega.nz</a>
 
 To play, just run Lethe.jar. Make sure to keep the .jar executable 
 together with the data folder You may move the shortcut wherever you'd like, of course.
@@ -10,7 +13,7 @@ This application requires a screen resolution of at least 1024 x 768 to play pro
 
 This is a text-based game, or interactive fiction, which bridges the
 gap between videogames and books. This game is heavily inspired by
-the early 80's late 70's computer game "Zork" and plays similarly,
+the early 80's late 70's computer game <i>Zork</i> and plays similarly,
 though it's an entirely different game and most similarities are
 allusions. The game is played by entering in commands in the field at
 the screen bottom, though shortcuts are provided. For more info, 
