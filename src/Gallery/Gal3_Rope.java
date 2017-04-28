@@ -37,6 +37,7 @@ public class Gal3_Rope extends Furniture {
                 if (detectItem()) {
                     REF.lower();
                     this.cut = true;
+                    Player.describeRoom();
                     return this.actDialog;
                 }           
                 else
@@ -65,6 +66,10 @@ public class Gal3_Rope extends Furniture {
         // Detects if you have a blade to cut the rope with.
         Item item = Player.getInv().get("katana|.+(?:sword|ax)");
         return (! item.equals(Inventory.NULL_ITEM));
+    }
+//-----------------------------------------------------------------------------
+    public boolean isCut() {
+        return this.cut;
     }
 //-----------------------------------------------------------------------------
 }

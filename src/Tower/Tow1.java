@@ -29,7 +29,7 @@ public class Tow1 extends Lich_Room {
         
         if (! this.lichDead)
             return TOW1_SPHERE_P.matcher(result)
-                    .replaceFirst(" You see a magnificent glowing sphere of light hovering in the highest area of the tower. ");
+                    .replaceFirst(" You see a magnificent sphere of light hovering in the apex. ");
         else
             return result;
     }

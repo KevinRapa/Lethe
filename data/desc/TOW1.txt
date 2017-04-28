@@ -1,7 +1,6 @@
-You find yourself in a circular tower 
-with a blue and white checkered floor. 
-The room is a few stories high with an upper balcony 
-wrapping around the perimeter. Wide-paned 
-windows extend along the southern half. 
-West side is a pair of imposing black iron doors. 
-Sitting in the center of a room is a pedestal. 
+This is a circular tower, a few stories 
+high with an upper balcony wrapping around 
+the perimeter. Wide-paned windows extend 
+along the southern half. West side is a 
+pair of imposing black iron doors. Sitting 
+in the center of a room is a pedestal. 

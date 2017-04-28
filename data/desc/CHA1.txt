@@ -1,10 +1,9 @@
 You are on the north end of a 
-dark, hazy chapel extending  
+dark, hazy chapel extending 
 south. Moonlight shines in through 
 the stained glass windows above and 
-pierces the haze faintly. This room 
-seems fairly clean, though long 
-abandoned. Rows of pews line either 
+pierces the haze faintly. Rows of 
+pews line either 
 side of the room. Lit candelabras 
 stand in each northern corner. A 
 small cylix on an end-table to your west 

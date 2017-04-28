@@ -181,19 +181,19 @@ public class Main {
         AudioPlayer.playTrack(Id.TITL);
 
         GUI.menOut(Menus.ENTER);
-        GUI.out("Beneath the starry welkin, you stand, having trekked on "
+        GUI.descOut("Beneath the starry welkin, you stand, having trekked on "
               + "foot to your destination through the forest. The looming "
               + "stone colossus appears curiously vacant, yet inviting.");
         GUI.promptOut();    
 
-        GUI.out("You slowly approach, fighting the humid summer gales, "
+        GUI.descOut("You slowly approach, fighting the humid summer gales, "
               + "until inside the front gateway. A transient thought "
               + "drifts through your mind - what was your business "
               + "here, again? You ponder a moment, but can't quite " +
                 "remember.");     
         GUI.promptOut();
 
-        GUI.out(Menus.VERSION);     
+        GUI.descOut(Menus.VERSION);     
         GUI.promptOut();
 
         GUI.clearDialog();

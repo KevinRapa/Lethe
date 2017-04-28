@@ -29,7 +29,7 @@ public class Drar extends Room {
             return super.getDescription();
         else
             return super.getDescription().replaceFirst(
-                    "The moment.*end of the room.", 
+                    "A ghostly white.+recognize on it.", 
                     "You are in a relaxing lounge. A drinking bar furnishes the south of the room.");
     }
 //-----------------------------------------------------------------------------

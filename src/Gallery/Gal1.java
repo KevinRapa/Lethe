@@ -20,7 +20,10 @@ public class Gal1 extends Room{
     @Override public String getDescription() {
         if (! this.hasFurniture("katana")) 
             return super.getDescription()
-                    .replaceFirst("katana displayed over a ", "");
+                    .replaceFirst("A katana is displayed " +
+                                "over a hearth on the south wall and an armor suit " +
+                                "against the north wall", 
+                            "A hearth rests against the south wall and an armor suit is north");
         else
             return super.getDescription();
     }

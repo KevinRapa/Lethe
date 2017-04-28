@@ -808,10 +808,12 @@ public class Map {
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE GALLERY">
+        Furniture gal3Lddr = new Gal3_Ladder(Direction.UP);
+        Furniture gal3Rp = new Gal3_Rope(gal3Lddr);
         //-----------------------------THE ROOM---------------------------------    
         Room gal1 = new Gal1("First floor gallery", Id.GAL1);
         Room gal2 = new Room("Central chamber", Id.GAL2);      
-        Room gal3 = new Room("Second floor gallery", Id.GAL3);
+        Room gal3 = new Gal3("Second floor gallery", Id.GAL3, gal3Rp);
         Room gal4 = new Room("Second floor balcony", Id.GAL4);
         Room gal6 = new Gal6("Gallery loft", Id.GAL6);
         Room gal7 = new Room("Gallery loft", Id.GAL7);
@@ -854,8 +856,6 @@ public class Map {
         Furniture gal3Ttm = new Gal3_Totem(gal4Stat);
         Furniture gal3Peg = new Gal3_Peg(gal3Ttm);
         Furniture gal3Sgmnt = new Gal3_Segment(gal3Ttm);
-        Furniture gal3Lddr = new Gal3_Ladder(Direction.UP);
-        Furniture gal3Rp = new Gal3_Rope(gal3Lddr);
         Furniture gal3Swtch = new Gal3_Switch();
         Furniture gal3InstFurn = new Gal3_KoraFurniture();
         Furniture gal3Msk = new Gal3_Mask1();
