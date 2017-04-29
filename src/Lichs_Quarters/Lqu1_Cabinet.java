@@ -16,7 +16,7 @@ public class Lqu1_Cabinet extends SearchableFurniture implements Openable, Movea
         super(items);
         
         this.description = "It's a standing glass cabinet for displaying "
-                         + "weaponry, staffs, brooms, bedposts; long objects.";
+                         + "weaponry, staffs, brooms, bedposts, and other long objects.";
 
         this.searchDialog = "You open the cabinet and look inside.";
 
