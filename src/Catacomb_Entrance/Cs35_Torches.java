@@ -25,7 +25,7 @@ public class Cs35_Torches extends Furniture {
         if (key.equals("touch"))
             return this.actDialog;
         else
-            return "It's a standing torch. It's too large and heavy to pick up.";
+            return "It's a standing torch. Too large and heavy to pick up.";
     }
     //-------------------------------------------------------------------------         
 }
