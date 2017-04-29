@@ -67,7 +67,7 @@ public class Labo_Dispensers extends Furniture implements Unmoveable {
         
         String ans = GUI.askChoice(Menus.LABO_DISP, ONE_TO_SIX);
         
-        GUI.out("Liquid will be dispensed in 5 mL increments. Press enter to start titrating. Press enter to stop titrating.");
+        GUI.out("Liquid will be dispensed in 5 mL increments. Press enter to start titrating, then again after a period to stop titrating.");
         GUI.menOut(Menus.ENTER);
         GUI.promptOut();
         
