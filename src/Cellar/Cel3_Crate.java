@@ -99,7 +99,7 @@ public class Cel3_Crate extends SearchableFurniture
         else if (name.equals(BOTTLE_OF_VINEGAR))
             return "How ingenious, attempting to dissolve the crate with acid. Unbeknownst "
                     + "to the player, acetic acid is weak and could not dissolve even a "
-                    + "marshmallow.";
+                    + "marshmallow. Actually, perhaps it could, but this game contains no marshmallows.";
         else if (name.equals(GLUE_BOTTLE))
             return "Gluing the crate together? Isn't that the opposite of what we're "
                     + "trying to accomplish here?";
