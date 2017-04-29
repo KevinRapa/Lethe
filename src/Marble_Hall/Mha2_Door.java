@@ -20,7 +20,7 @@ import A_Super.Item;
  * 
  * @see Marble_Hall.Mha2_RightStatue
  * @see Library.Lib3_Statue
- * @see Courtyard.Cou5_Fntn
+ * @see Courtyard.Cou5_Fountain
  * @see Dining_Room.Din1
  * @author Kevin Rapa
  */
@@ -30,6 +30,7 @@ public class Mha2_Door extends Door {
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Mha2_Door (Room din, Direction dir) {
         super(dir);
+        
         this.angel = this.soldier = this.horse = false; // Slots
         this.numMedallions = 1;
         this.addNameKeys("(?:double )?doors", "(?:door )?(?:sockets?|slots?)");
@@ -37,26 +38,34 @@ public class Mha2_Door extends Door {
     }
 //-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
-        String rep = "You press the " + item + " into its socket.";
-        AudioPlayer.playEffect(43);
+        String name = item.toString();
         
-        switch (item.toString()) {
-            case STONE_DISK:
-                this.soldier = true; break;
-            case ANGEL_MEDALLION:
-                this.angel = true;   break;
-            case HORSE_MEDALLION:
-                this.horse = true;   break;
+        if (name.equals(STONE_DISK) || name.equals(ANGEL_MEDALLION) || name.equals(HORSE_MEDALLION)) {
+            String rep = "You press the " + item + " into its socket.";
+            AudioPlayer.playEffect(43);
+
+            switch (item.toString()) {
+                case STONE_DISK:
+                    this.soldier = true; break;
+                case ANGEL_MEDALLION:
+                    this.angel = true;   break;
+                case HORSE_MEDALLION:
+                    this.horse = true;   break;
+            }
+
+            Player.getInv().remove(item);
+            this.numMedallions ++;
+
+            if (this.numMedallions == 4) {
+                Player.getRoomObj(Id.DIN1).unlock();
+                return rep.concat(" With the last medallion in place, the door *clicks* loudly.");
+            }      
+            return rep;
         }
-        
-        Player.getInv().remove(item);
-        this.numMedallions ++;
-        
-        if (this.numMedallions == 4) {
-            Player.getRoomObj(Id.DIN1).unlock();
-            return rep.concat(" With the last medallion in place, the door *clicks* loudly.");
-        }      
-        return rep;
+        else if (name.equals(CROWBAR))
+            return "The medallion is wedged in tightly and can't be pried out.";
+        else
+            return super.useEvent(item);
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {    
