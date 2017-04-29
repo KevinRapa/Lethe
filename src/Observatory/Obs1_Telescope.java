@@ -12,7 +12,7 @@ public class Obs1_Telescope extends SearchableFurniture implements Unmoveable {
         super(items);
         this.description = "The large old heavy telescope sits as an antique "
                          + "against the west wall. It looks to be made of mostly "
-                         + "aluminum, bronze, and wood. A small eyepiece connects to a "
+                         + "aluminum, bronze, and wood. A small eyepiece connects to a 1 "
                          + "foot-wide lens near the top. Many various gears and other "
                          + "parts comprise it as well.";
         this.searchDialog = "You carefully look through its various intricacies.";
