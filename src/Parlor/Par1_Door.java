@@ -41,7 +41,7 @@ public class Par1_Door extends Door {
         
         if (! Player.getRoomObj(Id.PAR1).isAdjacent(Id.BHA3)) {
             Player.getRoomObj(Id.PAR1).addAdjacent(Id.BHA3);
-            rep = "You cast the fire onto the door, to which it clings. "
+            rep = "You cast the fire onto the door, to which it clings."
                 + " The fire begins to fade away along with the barrier.";
         }
         Player.getInv().remove(item);
