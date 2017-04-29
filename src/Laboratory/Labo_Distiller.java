@@ -27,7 +27,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
 
         this.actDialog = "There doesn't seem to be much to work on with your hands. You "
                        + "will need some tools to interact with this.";
-        this.searchDialog = "The contraption is comprised of many alchemical compnents. "
+        this.searchDialog = "The contraption is comprised of many alchemical components. "
                           + "Though they're alien to you, you note nothing out of the ordinary.";
         this.description = "It's one half of a larger alchemical contraption in the room. "
                          + "On the table is a metal flask rack and a bunsen burner "
@@ -86,7 +86,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
                 }
                 else {
                     AudioPlayer.playEffect(45);
-                    return "You strike the top of the burner. For a minute, the burner burns "
+                    return "You strike the top of the burner. For a minute, it burns "
                          + "with an intense flame under open space before dying out.";
                 }
             }
