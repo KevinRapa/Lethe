@@ -35,7 +35,7 @@ public class Cha1_Water extends Furniture implements Gettable {
         else if (item.toString().equals(METAL_BUCKET))
             return "The bucket is too large to dip into the cylix.";
         else
-            return "The bottle is small enough to fit in, but the bottle is too wide to submerge the neck.";
+            return "The bottle is small enough to fit in, but too wide to submerge the neck.";
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) { 
