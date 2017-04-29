@@ -12,7 +12,7 @@ public class Ceiling extends Furniture implements Unmoveable {
 
         this.description = DESC;
         this.actDialog = "It's too high up to do that. Also, why?";
-        this.searchDialog = "Why would there be anything hidden in the ceiling?";
+        this.searchDialog = "There exists no evidence of something being hidden there.";
         this.useDialog = "You poke the ceiling with the long object.";
 
         this.addNameKeys("ceiling", "roof");

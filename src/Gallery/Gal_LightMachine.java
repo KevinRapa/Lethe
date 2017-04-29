@@ -3,6 +3,7 @@ package Gallery;
 import static A_Main.Names.*;
 import A_Main.Player;
 import A_Super.Item;
+import A_Super.MachineColor;
 import A_Super.SearchableFurniture;
 import java.util.HashMap;
 /**
@@ -19,64 +20,61 @@ import java.util.HashMap;
  */
 abstract public class Gal_LightMachine extends SearchableFurniture {
     protected boolean isOn;
-    protected char beam;
-    protected String mode, turnOffDialog;    
-    protected static final HashMap<String, String> COLOR_MAP = new HashMap<>();
+    protected MachineColor beam;
+    protected String turnOffDialog;
+    
+    protected static final HashMap<Integer, MachineColor> 
+            COLOR_MAP = new HashMap<>();
 
     static {
-        COLOR_MAP.put("0000", "c A clear scattered light");                
-        COLOR_MAP.put("0001", "y A yellow beam");
-        COLOR_MAP.put("0010", "b A blue beam");
-        COLOR_MAP.put("0011", "g A green beam");            
-        COLOR_MAP.put("0100", "r A red beam");
-        COLOR_MAP.put("0101", "o An orange beam");
-        COLOR_MAP.put("0110", "p A purple beam");
-        COLOR_MAP.put("0111", "w A white beam");
-        COLOR_MAP.put("1000", "W Barely any light");
-        COLOR_MAP.put("1001", "Y A dark yellow beam");
-        COLOR_MAP.put("1010", "B A dark blue beam");
-        COLOR_MAP.put("1011", "G A dark green beam");
-        COLOR_MAP.put("1100", "R A dark red beam");
-        COLOR_MAP.put("1101", "O A dark orange beam");
-        COLOR_MAP.put("1110", "P A dark purple beam");
-        COLOR_MAP.put("1111", "D A dark beam");
+        COLOR_MAP.put(0b0000, MachineColor.CLEAR);                
+        COLOR_MAP.put(0b0001, MachineColor.YELLOW);
+        COLOR_MAP.put(0b0010, MachineColor.BLUE);
+        COLOR_MAP.put(0b0011, MachineColor.GREEN);            
+        COLOR_MAP.put(0b0100, MachineColor.RED);
+        COLOR_MAP.put(0b0101, MachineColor.ORANGE);
+        COLOR_MAP.put(0b0110, MachineColor.PURPLE);
+        COLOR_MAP.put(0b0111, MachineColor.WHITE);
+        COLOR_MAP.put(0b1000, MachineColor.NONE);
+        COLOR_MAP.put(0b1001, MachineColor.DARK_YELLOW);
+        COLOR_MAP.put(0b1010, MachineColor.DARK_BLUE);
+        COLOR_MAP.put(0b1011, MachineColor.DARK_GREEN);
+        COLOR_MAP.put(0b1100, MachineColor.DARK_RED);
+        COLOR_MAP.put(0b1101, MachineColor.DARK_ORANGE);
+        COLOR_MAP.put(0b1110, MachineColor.DARK_PURPLE);
+        COLOR_MAP.put(0b1111, MachineColor.DARK);
     }
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal_LightMachine() {
         super();
         this.isOn = false;
-        this.beam = 'c';
-        this.mode = "A clear scattered light";
+        this.beam = MachineColor.CLEAR;
         this.addUseKeys(RED_FOCUS, BLUE_FOCUS, YELLOW_FOCUS, DARK_FOCUS);
     }
 //-----------------------------------------------------------------------------
-    public void determineColor() {
-                    // drk  rd  bl yllw
-        char[] data = {'0','0','0','0'};
+    protected void determineColor() {
+        int color = 0b0000;
         
         for (Item i : this.inv) {
-            if (i.getType().matches(FOCUS))
-                switch (i.toString().charAt(0)) {
-                    case 'r':
-                        data[1] = '1'; break;
-                    case 'b':
-                        data[2] = '1'; break;
-                    case 'y':
-                        data[3] = '1'; break;
-                    case 'd':
-                        data[0] = '1';
-                }
+            switch (i.toString()) {
+                case RED_FOCUS:
+                    color |= 0b0100; break;
+                case BLUE_FOCUS:
+                    color |= 0b0010; break;
+                case YELLOW_FOCUS:
+                    color |= 0b0001; break;
+                case DARK_FOCUS:
+                    color |= 0b1000;
+            }
         } 
-        String result = COLOR_MAP.get(String.valueOf(data));
-        beam = result.charAt(0);
-        mode = result.substring(2);
+        this.beam = COLOR_MAP.get(color);
     }
 //----------------------------------------------------------------------------- 
     public boolean isOn() {
         return isOn;
     }
 //-----------------------------------------------------------------------------
-    public char getBeam() {
+    public MachineColor getBeam() {
         return beam;
     }
 //-----------------------------------------------------------------------------

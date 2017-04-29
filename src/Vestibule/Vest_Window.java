@@ -13,7 +13,8 @@ public class Vest_Window extends Window {
         super();
         this.isOpen = false;
         this.REF = (Vest_Fireplace)ref;
-        this.escapeDialog = "You would never be able to fit through those bars, and they're too thick to cut...";
+        this.escapeDialog = "You would never be able to fit through those "
+                          + "bars, and they're too thick to cut...";
         this.searchDialog = "The only place to look is on the sill, " + 
                             "but there's nothing there.";
         this.descOpen = "It's an open, barred arched window of stone. A strong " +
@@ -22,7 +23,7 @@ public class Vest_Window extends Window {
                         "and a tall front gate. ";
         this.descClosed = "It's a closed, barred stone arched window with a " +
                           "small hole in the glass. A small gust of " +
-                          "air forces it's way through.";
+                          "air forces its way through.";
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {

@@ -25,9 +25,11 @@ public class Soul_Pool extends Furniture {
         this.numPhylacteries = 0;
         
         this.description = "The pool of aether swirls with white... stuff, and "
-                         + "gently bubbles infrequently. The blue liquid inside "
+                         + "gently bubbles. The blue liquid inside "
                          + "is opaque, but can't be more than a couple feet deep.";
-        this.actDialog = "You leap into the pool and die. The end. No, not really.";
+        this.actDialog = "You leap into the pool and die. The end. Oh, the tragedy, "
+                       + "having made it this far only to make such a stupid decision. "
+                       + "That's how it would have been if you'd have actually jumped.";
         this.searchDialog = "You just find a bunch of aether.";
 
         this.addNameKeys("pool", "pool of aether", "aether pool");

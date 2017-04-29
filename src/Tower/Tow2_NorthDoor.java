@@ -1,10 +1,8 @@
 package Tower;
 
-import A_Main.Names;
 import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Door;
-import A_Super.Item;
 /**
  * @author Kevin Rapa
  */
@@ -22,19 +20,15 @@ public class Tow2_NorthDoor extends Door {
     }
     //------------------------------------------------------------------------- 
     @Override public String getDescription() {
-        int numPhylacteries = 0;
+        int numPhyl = Player.getInv().countPhylacteries();
         
-        for (Item i : Player.getInv())
-            if (i.getType().equals(Names.PHYLACTERY))
-                numPhylacteries++;
-        
-        switch (numPhylacteries) {
+        switch (numPhyl) {
             case 0:
                 return this.description.concat("none of the circular etchings.");
             case 5:
                 return this.description.concat("all of the circular etchings.");
             default:
-                return this.description.concat(numPhylacteries + " of the circular etchings.");
+                return this.description.concat(numPhyl + " of the circular etchings.");
         }
     }
     //-------------------------------------------------------------------------      

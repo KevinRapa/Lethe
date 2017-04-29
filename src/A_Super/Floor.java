@@ -17,7 +17,7 @@ public class Floor extends SearchableFurniture implements Unmoveable {
             super(items);
             this.description = dsc;
             this.searchDialog = "You crouch down and scan the ground.";
-            this.actDialog = "You jam the spade into the floor. Your body jolts and you stagger back. Why would you think to do that?";
+            this.actDialog = "You jam the spade into the floor. Your body jolts and you stagger back. The floor is undefeated.";
             this.useDialog = "There's no reason to stand the ladder up in here.";
             this.addActKeys("dig", SHOVEL, MOP, "clean");
             this.addUseKeys(FIXED_LADDER, SHOVEL, TROWEL, MOP, "sweep");

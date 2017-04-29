@@ -8,6 +8,7 @@ import static A_Main.Names.CRYSTAL_ORB;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
+import A_Super.MachineColor;
 import A_Super.SearchableFurniture;
 /**
  * Part of the light puzzle.
@@ -43,12 +44,12 @@ public class Gal2_Statue extends SearchableFurniture {
         return this.level;
     }
 //-----------------------------------------------------------------------------
-    public String activate(char color) {
+    public String activate(MachineColor color) {
         if (containsItem(CRYSTAL_ORB) && level != 3) {
             
-            if ((color == 'r' && this.level == 0) || 
-                (color == 'p' && this.level == 1) || 
-                (color == 'P' && this.level == 2)) {
+            if ((color == MachineColor.RED && this.level == 0) || 
+                (color == MachineColor.PURPLE && this.level == 1) || 
+                (color == MachineColor.DARK_PURPLE && this.level == 2)) {
                 return this.raise(); 
             }             
             else if (this.level == 0) {

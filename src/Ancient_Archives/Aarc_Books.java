@@ -22,8 +22,7 @@ public class Aarc_Books extends Aarc_Furniture implements Gettable {
         this.searchDialog = "You pick through the piles of books.";
 
         this.addNameKeys("books?");
-        this.addActKeys(GETPATTERN);
-        this.addActKeys("read");
+        this.addActKeys(GETPATTERN, "read");
     }
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) {

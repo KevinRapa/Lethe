@@ -21,7 +21,7 @@ abstract public class PottedPlant extends SearchableFurniture
         this.SOIL_REF = soil;
         
         this.actDialog = "You pour a bit of the water on the plant. "
-                + "The plant trembles some and a bit of life springs back to it. ";
+                + "The plant trembles some and a bit of life springs back into it. ";
         this.searchDialog = "You fan through the soil.";
         this.useDialog = "Pouring that on the plant is definitely not going to "
                        + "be good for it, you monster.";

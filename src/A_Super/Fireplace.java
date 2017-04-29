@@ -29,7 +29,7 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
         this.useDialog = "You douse the flames with the water.";
         
         this.addActKeys("warm", "douse|extinguish", "use", GETPATTERN, "relax");
-        this.addNameKeys("fireplace", "hearth", "fire");
+        this.addNameKeys("fireplace", "hearth", "fire|flames?");
         this.addUseKeys(BUCKET_OF_WATER);
     }    
 //-----------------------------------------------------------------------------

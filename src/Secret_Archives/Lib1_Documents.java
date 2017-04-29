@@ -16,7 +16,7 @@ public class Lib1_Documents extends Furniture {
         
         this.addUseKeys(HAND_TORCH);
         this.addNameKeys("documents?", "scrolls?", "papers?");
-        this.addActKeys("read");
+        this.addActKeys("read", GETPATTERN);
     }
 //-----------------------------------------------------------------------------
 }

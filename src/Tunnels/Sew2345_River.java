@@ -21,7 +21,7 @@ public class Sew2345_River extends Sewer_River {
                            "It flows through an artificial square channel " +
                            "constructed into the floor. The water looks clear " +
                            "and smells quite clean. You imagine that it was " +
-                           "a natural spring at some point before being built " +
+                           "a natural stream at some point before being built " +
                            "around. The river flows down the tunnel " +
                            "eastwards with quite a strong current. ";
     }

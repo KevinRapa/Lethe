@@ -22,7 +22,7 @@ public class Lib1_Schematic extends Note {
                            "	    \t\t\t[|]" +
                            "\t" +
                            "Require a vessel " +
-                           "thats holds a charge. -Rhadamanthus";
+                           "that holds a charge. -Rhadamanthus";
     }
 //-----------------------------------------------------------------------------
 }

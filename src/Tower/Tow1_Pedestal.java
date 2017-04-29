@@ -24,7 +24,7 @@ public class Tow1_Pedestal extends SearchableFurniture {
         this.description = "It's a solid gray stone platform with two "
                          + "brass extensions on the top.";
         this.searchDialog = "You try to approach the pedestal, but some sort of repelling force is preventing you.";
-        this.useDialog = "You naively wave the staff in an arbitrary pattern. Nothing happens. \"Does this staff even do anything?\" You ask yourself.";
+        this.useDialog = "You naively wave the staff in an arbitrary pattern. Nothing happens.";
 
         this.addNameKeys("(?:solid )?(?:gray )?(?:stone )?(?:pedestal|platform)", 
                 "(?:silver )?(?:glowing )?(?:object|scepter)", "(?:brass )?extensions?");

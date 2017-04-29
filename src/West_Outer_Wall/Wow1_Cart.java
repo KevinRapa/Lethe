@@ -8,10 +8,10 @@ public class Wow1_Cart extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wow1_Cart(Item... items) {
         super(items);
-        this.description = "It's a large, wooden cart with a wheel sitting off of "
+        this.description = "It's a large wooden cart with a wheel sitting off of "
                          + "its axle on the floor.";
         this.useDialog = "The spoke is probably of more use to you off of the wheel.";
-        this.searchDialog = "It looks like everything's been removed from this cart. ";
+        this.searchDialog = "It looks like most of everything has been removed.";
         this.actDialog = "What are you trying to do? The cart is clearly broken.";
         
         this.addUseKeys(WHEEL_SPOKE);

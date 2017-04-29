@@ -11,8 +11,8 @@ public class Tow_Windows extends Window {
 
         this.descOpen = this.descClosed = "From the wide paned windows, you can "
                 + "see far over and beyond the castle. The forest is much bigger "
-                + "than you imagined, and you now come to realize that the amount "
-                + "of effort to trek here would had been far more than the amount "
+                + "than you imagined, and the amount "
+                + "of effort to trek here was far more than the amount "
                 + "you would ever naturally commit.";
 
         this.addNameKeys("(?:wide )?(?:paned )?windows?");

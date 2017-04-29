@@ -16,7 +16,7 @@ public class Wood_Chunk extends Item {
                          + "see small fibers inside each. "
                          + "There's an inscription on the side. It says:  "
                          + "-Bashmaster Batterworks- "
-                         + "    -Quality battering rams since 1288-";
+                         + "-Quality battering rams since 1288-";
     }
 //-----------------------------------------------------------------------------            
 }

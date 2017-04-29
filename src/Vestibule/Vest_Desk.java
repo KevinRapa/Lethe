@@ -9,7 +9,7 @@ public class Vest_Desk extends SearchableFurniture implements Openable, Moveable
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Vest_Desk(Item... items) {
         super(items);
-        this.description = "A tenuous wooden desk, resting flush against a " +
+        this.description = "A tenuous wooden desk, resting flush against " +
                            "a dark corner. It collects dust from a lack of use. " +
                            "On it rests a strange, neglected glass orb. " +
                            "A single drawer is visible under its surface.";

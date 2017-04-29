@@ -8,8 +8,8 @@ public class Wow_Hearth extends Fireplace {
     public Wow_Hearth(Item bckt) {       
         super(bckt);
 
-        this.descLit = "A large arched hearth. Hung in front of the hearth is "
-                + "a rack of towels and rags.";
+        this.descLit = "A large arched hearth made of clay brick. The hearth "
+                     + "was undoubtedly designed for drying linens.";
     }
 //-----------------------------------------------------------------------------
 }

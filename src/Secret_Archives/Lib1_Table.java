@@ -13,7 +13,8 @@ public class Lib1_Table extends SearchableFurniture implements Unmoveable {
                          + "source.";
         this.searchDialog = "You fan through the boring papers scattered around "
                           + "the artifact. Here's what you find interesting: ";
-        this.actDialog = "You give it a kick. A thick woody clunk inundates your ear holes, and you are enticed to hit it again.";
+        this.actDialog = "You give it a kick. A thick woody clunk inundates "
+                + "your ear holes, and you are enticed to hit it again.";
         
         this.addActKeys(JOSTLEPATTERN);
         this.addNameKeys("(?:ornate )?table");

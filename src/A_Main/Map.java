@@ -584,7 +584,7 @@ public class Map {
         Furniture lookRlng = new Look_Railing();
         Furniture lookF = new Floor("Just a wet shale floor.");
         // </editor-fold> 
-        // <editor-fold defaultstate="collapsed" desc="INITIALIZE IRON HALL">
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE SIDE HALL">
         //-----------------------------THE ROOM---------------------------------
         Room iha1 = new Iha1("North side hall", Id.IHA1);
         Room iha2 = new Iha2("South side hall", Id.IHA2);

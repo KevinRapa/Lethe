@@ -1,5 +1,6 @@
 package Tunnels;
 
+import A_Main.AudioPlayer;
 import A_Main.Names;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -38,7 +39,7 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
     @Override public String getDescription() {
         return this.hasPipe ? 
                 this.description :
-                this.description.concat("This section of piping has a short 2-foot section missing.");
+                this.description.concat("The piping here has a short 2-foot section missing.");
     }
     //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
@@ -49,10 +50,11 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
     @Override public String useEvent(Item item) {
         if (Player.getPos().hasFurniture(Names.METAL_LADDER)) {
             Player.getInv().remove(item);
+            AudioPlayer.playEffect(51);
             this.hasPipe = true;
             Player.describeRoom();
             return "With all your strength, you shove the piping between the "
-                    + "break in the piping. It's a good fit, but may not hold long...";
+                 + "break in the piping. It's a good fit, but may not hold long...";
         }
         else
             return this.useDialog;

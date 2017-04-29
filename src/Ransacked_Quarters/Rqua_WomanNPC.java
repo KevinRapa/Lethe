@@ -14,7 +14,7 @@ public class Rqua_WomanNPC extends NonPlayerCharacter {
                          + "garbed in black robes which cover all her body save "
                          + "her face. She keeps her unsettling glare on you and "
                          + "laughs quietly to herself.";
-        this.actDialog = "*A deranged laugh* \"We all forget!!!! Why measure oneself "
+        this.actDialog = "*A deranged laugh* \"We all forget, so why measure oneself "
                        + "with impalpable knowledge when we have our wealth???? Eury "
                        + "does not know my secret!!! All his riches can be mine at my "
                        + "pleasure!!!! Hell treats the wealthy comfortably and the wise "

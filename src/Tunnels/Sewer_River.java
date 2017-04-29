@@ -18,8 +18,8 @@ public class Sewer_River extends SearchableFurniture {
         
         this.description = "The river runs rapidly through a square channel on "
                          + "one side of the tunnel. The water looks cool and clear. "
-                         + "Maybe it's being used as a power source here before emptying "
-                         + "out into the ocean?";
+                         + "This is possibly being used as a power source before "
+                         + "reaching the ocean.";
         this.actDialog = "You aren't getting in there unless you absolutely have to.";
         this.searchDialog = "You crouch down and scan the bottom of the river.";
         this.useDialog = "You scoop up some of the water into the bucket.";

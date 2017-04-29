@@ -15,7 +15,7 @@ public class Sha2_Cabinet extends LockedContainer {
                          + "plain and cheap. It must just house tools for the "
                          + "servants.";
         this.actDialog = "The tiny metal key fits perfectly. You turn it and the "
-                            + "cabinet makes a satisfying *click*";
+                            + "cabinet makes a satisfying *click*.";
         this.searchDialog = "The cabinet is locked. Maybe one of the servants "
                           + "had a key...";
 

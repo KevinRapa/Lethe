@@ -4,8 +4,6 @@ import static A_Main.Names.W_DIR;
 import static A_Main.Names.SEP;
 import static A_Main.Names.DATA;
 import A_Main.AudioPlayer;
-import A_Main.GUI;
-import A_Main.Id;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.*;

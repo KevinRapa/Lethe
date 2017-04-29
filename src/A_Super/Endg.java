@@ -93,11 +93,10 @@ public class Endg extends Room {
             message += " Watch yourself, for you hold the soul of a powerful mage, "
                     + "and it may warp you the same way it did him.";
         
-        GUI.out("Your score is " + score + ". You have discovered " + t + 
-                " out of 15 legendary treasures and " + p + 
-                " out of 5 phylacteries. " + message);
+        GUI.descOut("Evaluation: Your score is " + score + ". You have "
+                  + "discovered " + t + " out of 15 legendary treasures and " 
+                  + p + " out of 5 phylacteries. " + message);
         
-        GUI.out(message);
         GUI.promptOut();
 
         // Exits the game after player types enter.

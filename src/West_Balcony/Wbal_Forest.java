@@ -11,7 +11,7 @@ public class Wbal_Forest extends Furniture{
                          + "terminating at the foothills of a distant mountain. "
                          + "To the east, it wraps around and leads back to your "
                          + "village.";
-        this.searchDialog = "It's pretty dark and spooky. You can't event get to "
+        this.searchDialog = "It's pretty dark and spooky. You can't even get to "
                           + "it from here anyway.";
         this.addNameKeys("(?:dark )?(?:forest|woods)");
     }

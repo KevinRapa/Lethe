@@ -10,9 +10,8 @@ public class Tbal_Stairs extends Staircase {
     public Tbal_Stairs () {
         super(Direction.UP);
 
-        this.description = "The straight set of steps leads to a door "
-                         + "giving entrance to the solemn building to the "
-                         + "north.";
+        this.description = "The straight set of steps leads to a door giving "
+                + "entrance to the solemn building to the north.";
     }
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) { 

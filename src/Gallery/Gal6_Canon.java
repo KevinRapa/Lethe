@@ -48,7 +48,7 @@ public class Gal6_Canon extends Gal_LightMachine {
     @Override protected String turnOn() {
         this.determineColor();
         this.isOn = true;       
-        return "The lights on the cannon light up and start bleeping. " + mode +
+        return "The lights on the cannon light up and start bleeping. " + beam +
                " emits from the barrel. " + STAT.activate(beam);
     }
 //-----------------------------------------------------------------------------
@@ -105,7 +105,7 @@ public class Gal6_Canon extends Gal_LightMachine {
         //---------------------------------------------------------------------
         private void trigger() { 
             determineColor();
-            GUI.out(mode + " shoots out the front of the cannon. " + STAT.activate(beam));
+            GUI.out(beam + " shoots out the front of the cannon. " + STAT.activate(beam));
         }   
     }
 //-----------------------------------------------------------------------------

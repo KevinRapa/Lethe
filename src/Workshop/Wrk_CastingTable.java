@@ -31,13 +31,11 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
         
         // Lens to give player
         this.SHEET_REF = new BreakableItem(GLASS_SHEET, 
-                "Wait... this isn't right. Weren't you supposed to make a lens?", 0);
+                "Wait... this isn't right. Weren't you trying to make a lens?", 0);
         this.BLUE_LENS_REF = new BreakableItem(BLUE_LENS, 
-                "You made a blue lens. Good job, but was this the right color?",
-                "Wait... was this the color you were supposed to make?", 20);
+                "You made a clear blue lens.", 20);
         this.YELLOW_LENS_REF = new BreakableItem(YELLOW_LENS, 
-                "You made a yellow lens. Good job, but was this the right color?", 
-                "Wait... was this the color you were supposed to make?", 20);
+                "You made a clear yellow lens.", 20);
         this.RED_LENS_REF = rdLns; 
         
         // Dyes to restock
@@ -46,8 +44,8 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
         // Sand and potash to restock
         this.POTASH_REF = ptsh;     this.SAND_REF = snd; 
 
-        this.searchDialog = "There's nothing... no drawers or anything here. Just a plain metal table.";
-        this.description = "It's a tall metal casting table for casting metal.";
+        this.searchDialog = "You search the plain metal table.";
+        this.description = "It's a tall metal casting table for shaping solids from molten liquids.";
         
         this.addUseKeys(LENS_TEMPLATE, MOLTEN_RED_GLASS, MOLTEN_YELLOW_GLASS, MOLTEN_BLUE_GLASS);
         this.addNameKeys("(?:tall )?(?:metal )?(?:casting )?table");
@@ -107,8 +105,8 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
                         break;
                 }
                 return "You pour the molten glass onto the casting table. " +
-                       "As the glass dries, you scratch your head. Didn't "
-                     + "the instructions say to use a template?";
+                       "As the glass dries, you scratch your head. The square "
+                        + "table has curiously yielded a non-round sheet of glass.";
             }
         }        
     }

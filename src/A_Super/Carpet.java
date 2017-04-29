@@ -12,8 +12,8 @@ abstract public class Carpet extends Furniture implements Gettable {
         
         this.actDialog = "You take some valuable time to admire the carpet. Yes, "
                        + "what a wonderfully woven piece of artwork. It really "
-                +        "would be a shame to get this dirty. What a wonderful rug.";
-        this.useDialog = "Don't pour that on there! That would most certainly ruin it.";
+                +        "would be a shame to get this dirty. What a fantastic rug.";
+        this.useDialog = "That would most certainly ruin it.";
         this.searchDialog = "There's nothing interesting under the carpet.";
 
         this.addUseKeys(ACETONE, ASH, SOIL, "sand|.+ dye", ".+ (?:wine|vinegar)");
@@ -28,7 +28,7 @@ abstract public class Carpet extends Furniture implements Gettable {
         else if (key.equals("admire"))
             return this.actDialog;
         else
-            return getIt("A fooling attempt is made to get the carpet. Carpets are much heavier than they look.");
+            return getIt("A foolish attempt is made. Carpets are much heavier than they look.");
     }
     //-------------------------------------------------------------------------       
 }

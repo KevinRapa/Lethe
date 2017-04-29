@@ -130,8 +130,8 @@ public class Gal3_Totem extends Gal_LightMachine {
     @Override protected String turnOn() {
         this.determineColor();
         this.isOn = true;       
-        return "The totem's eyes begin to glow. " + this.mode +
-               " emits from the totem's third mouth. " + GAL4_STAT_REF.activate(this.beam);
+        return "The totem's eyes begin to glow. " + beam +
+               " emits from the totem's third mouth. " + GAL4_STAT_REF.activate(beam);
     }
 //-----------------------------------------------------------------------------
     @Override protected void resetStatue() {
@@ -170,7 +170,7 @@ public class Gal3_Totem extends Gal_LightMachine {
         //---------------------------------------------------------------------
         private void trigger() {   
             determineColor();
-            GUI.out(mode + " emits from the totem's mouth. " + GAL4_STAT_REF.activate(beam)); 
+            GUI.out(beam + " emits from the totem's mouth. " + GAL4_STAT_REF.activate(beam)); 
         }
     }
 //-----------------------------------------------------------------------------

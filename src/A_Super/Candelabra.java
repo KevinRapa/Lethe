@@ -20,8 +20,8 @@ abstract public class Candelabra extends SearchableFurniture
         this.CANDLE_REF = candle;
         
         this.actDialog = "Ow! It burns!";
-        this.searchDialog = "The candelbra holds some candles.";
-        this.useDialog = "The torch is already lit, despite having kept it in "
+        this.searchDialog = "The candelabra holds some candles.";
+        this.useDialog = "The torch is already lit, despite having been kept in "
                        + "your pocket this whole time.";
 
         this.addNameKeys("candles?", "fire");
@@ -69,7 +69,7 @@ abstract public class Candelabra extends SearchableFurniture
                         + "burning candles, and thus you avoid burning.";
         }
         else if (key.equals("light"))
-            return "Lighting the candelabra surely will get you no closer to freedom.";
+            return "Lighting the candelabra gets you no closer to freedom.";
         else
             return getIt();
     }
@@ -77,7 +77,7 @@ abstract public class Candelabra extends SearchableFurniture
     @Override public String getIt() {
         if (this.inv.contains(CANDLE_REF))
             if (this.inv.give(CANDLE_REF, Player.getInv()))
-                return "You take a candle off the candelabra.";
+                return "You take a candle from the candelabra.";
             else
                 return NOTHING;
         else

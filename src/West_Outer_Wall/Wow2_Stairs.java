@@ -1,8 +1,9 @@
 package West_Outer_Wall;
 
-import A_Super.Furniture;
+import A_Super.Item;
+import A_Super.SearchableFurniture;
 
-public class Wow2_Stairs extends Furniture {
+public class Wow2_Stairs extends SearchableFurniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Wow2_Stairs() {
         super();
@@ -13,6 +14,9 @@ public class Wow2_Stairs extends Furniture {
         this.actDialog = "Don't be ridiculous. The stairs are crumbled down.";
         this.addNameKeys("staircase", "stairs", "steps");
         this.addActKeys(CLIMBPATTERN, "walk", "use");
+        
+        Item rock = new Item("rubble", "It's a chunk of the stairs, probably.", -15);
+        this.inv.add(rock); this.inv.add(rock); this.inv.add(rock);
     }
 //-----------------------------------------------------------------------------        
 }

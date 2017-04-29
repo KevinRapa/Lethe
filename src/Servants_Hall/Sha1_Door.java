@@ -60,9 +60,8 @@ public class Sha1_Door extends Door {
     @Override public String interact(String key) {
         if (key.matches("open|use|walk|go|close"))
             return this.actDialog;
-        else {
+        else
             return super.interact(key);
-        }
     } 
 //-----------------------------------------------------------------------------
 }

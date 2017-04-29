@@ -12,7 +12,8 @@ import static A_Main.Patterns.*;
  * @author Kevin Rapa
  */
 public class DungeonMonsterFurniture extends Furniture {
-    private final String CANT_SEE_IT = "You can't hear or see it from here. The creature attention is apparently drawn from your position.";
+    private final String CANT_SEE_IT = "You can't hear or see it from here. The "
+            + "creature's attention is apparently drawn from your position.";
     //-------------------------------------------------------------------------
     public DungeonMonsterFurniture () {
         super();

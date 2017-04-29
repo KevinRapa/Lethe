@@ -29,7 +29,7 @@ public class Rqua_Panel extends Furniture {
                                 + "You'll need to find something to pry this up.";
             this.useDialog = "The crowbar fits! You successfully remove the tile, "
                            + "revealing a small molded key which you take. The "
-                           + "woman speaks: \"Now you will know his secret too!!\"";
+                           + "woman speaks: \"Now you will know his secret!!\"";
             this.addNameKeys("tile", "panel");
             this.addActKeys("pry", "move", "lift", "remove");
             this.addUseKeys(CROWBAR);

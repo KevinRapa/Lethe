@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
+import A_Super.MachineColor;
 
 public class Gal4_Statue extends Furniture {
     private int level;
@@ -35,11 +36,11 @@ public class Gal4_Statue extends Furniture {
      * @param color the color of the beam.
      * @return returns a string of what happens.
      */
-    public String activate(char color) {
+    public String activate(MachineColor color) {
         if (Player.getRoomObj(Id.GAL4).hasFurniture(this)) {
-            if ((color == 'b' && this.level == 0) || 
-                (color == 'g' && this.level == 1) || 
-                (color == 'w' && this.level == 2)) {
+            if ((color == MachineColor.BLUE && this.level == 0) || 
+                (color == MachineColor.GREEN && this.level == 1) || 
+                (color == MachineColor.WHITE && this.level == 2)) {
                 return this.raise(); 
             }          
             else if (this.level == 0) {

@@ -19,12 +19,11 @@ public class Sear_Fissure extends Furniture {
         this.searchDialog = "It's just an empty hole.";
         this.description = "The north wall has been damaged, and a resulting "
                          + "fissure in it leads outside through the wall into the front "
-                         + "courtyard. It looks like this was part of "
-                         + "the escape plan.";
+                         + "courtyard. Seems this was part of an escape plan.";
         this.useDialog = "The wall gives way from the swing of the heavy "
-                       + "warhammer, but the warhammer snaps in half. You "
+                       + "warhammer, which snaps in half. You "
                        + "begin to think the wood ax is the only tool "
-                       + "you know how to use without it breaking.";
+                       + "you know how to use without breaking.";
         this.actDialog = "You couldn't manage to do that with your bare hands.";
         
         this.addActKeys("break");
@@ -50,7 +49,7 @@ public class Sear_Fissure extends Furniture {
             else {
                 return "You give the crowbar a swing, but it just "
                      + "rebounds with a loud *THWANG*. They must've "
-                     + "been hitting with something else";
+                     + "been hitting this with something else";
             }  
         }
         return "The fissure has been destroyed already!";

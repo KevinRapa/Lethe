@@ -67,7 +67,7 @@ public class Gal1_Dragon extends Gal_LightMachine {
     @Override protected String turnOn() {
         this.determineColor();
         this.isOn = true;       
-        return mode + " emits from the dragon's mouth. " + GAL2_STAT_REF.activate(beam);
+        return beam + " emits from the dragon's mouth. " + GAL2_STAT_REF.activate(beam);
     }
 //-----------------------------------------------------------------------------
     @Override protected void resetStatue() {
@@ -109,7 +109,7 @@ public class Gal1_Dragon extends Gal_LightMachine {
         //---------------------------------------------------------------------
         private void trigger() {
             determineColor();
-            GUI.out(mode + " emits from the dragon's mouth. " + GAL2_STAT_REF.activate(beam));
+            GUI.out(beam + " emits from the dragon's mouth. " + GAL2_STAT_REF.activate(beam));
         }
     }
 //-----------------------------------------------------------------------------

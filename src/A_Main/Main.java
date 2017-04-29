@@ -1,7 +1,7 @@
 package A_Main;
 /**<p>
  * This is a text-based adventure game called <del>Salamaa</del> <ins>Lethe</ins>
- * being written as a personal project.
+ * written as a personal project.
  * </p> <p>
  * All super classes are in package A_Super. Packages are organized by room.
  * A room class is named by its ID and is four characters long (i.e. Cou4, Torc).
@@ -40,7 +40,7 @@ import static A_Main.Names.W_DIR;
 
 public class Main {
     private static final String 
-            START_LOCATION = Id.COU4, // Default COU4
+            START_LOCATION = Id.GAL1, // Default COU4
             SAVE_PATH = DATA + SEP + "save" + SEP + "Game.data",
             TITLE_PATH = W_DIR + SEP + DATA + SEP + "img" + SEP;
     

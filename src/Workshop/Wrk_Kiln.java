@@ -25,18 +25,18 @@ public class Wrk_Kiln extends SearchableFurniture implements Openable, Unmoveabl
         this.inv = new KilnInventory();
         
         this.REFGLSSR = new Liquid(MOLTEN_RED_GLASS, 
-                "It's a crucible of molten red glass. Be careful!", -5);
+                "It's a crucible of molten red glass.", -15);
         this.REFGLSSB = new Liquid(MOLTEN_BLUE_GLASS, 
-                "It's a crucible of molten blue glass. Be careful!", -5);
+                "It's a crucible of molten blue glass.", -15);
         this.REFGLSSY = new Liquid(MOLTEN_YELLOW_GLASS, 
-                "It's a crucible of molten yellow glass. Be careful!", -5);
+                "It's a crucible of molten yellow glass.", -15);
        
-        this.actDialog = "No need to take that. Just add stuff and watch the magic happen.";
+        this.actDialog = "A search would be a good action to try instead.";
         this.useDialog = " You let the sand and the dye bake for a bit. In no time, the "
                         + "mixture has blended into hot molten glass. Delicious!";
-        this.searchDialog = "You look in the kiln. It's pretty toasty in there.";
+        this.searchDialog = "You look into the scorching hot kiln.";
         this.description = "The kiln resembles a ceramic oven. Its intense heat " +
-                           "keeps this room roasting hot. Inside is a small ceramic "
+                           "keeps this room roasting. Inside is a small ceramic "
                          + "crucible sitting on a metal rack.";
         
         this.addActKeys(GETPATTERN, "climb", "jump");
