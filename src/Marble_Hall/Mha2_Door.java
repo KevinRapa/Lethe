@@ -93,7 +93,7 @@ public class Mha2_Door extends Door {
                 
             default:
                 return "The double doors here are locked tight. Four round "
-                     + "sockets on are built into the door's surface. One already "
+                     + "sockets are built into the door's surface. One already "
                      + "contains a gold disk with an engraving of an angel on it. "
                      + "In the other three sockets you make out a second engraving "
                      + "of an angel, an engraving of a soldier, and an engraving "
