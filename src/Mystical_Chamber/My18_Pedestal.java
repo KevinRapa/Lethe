@@ -47,7 +47,7 @@ public class My18_Pedestal extends Furniture implements Unmoveable {
 
             return "The stone fits perfectly into the indentation. Immediately, the "
                  + "ground begins to shake lightly. You step back. The seams in the floor "
-                 + "begin to cascase downward forming a spiral staircase descending "
+                 + "begin to cascade downward forming a spiral staircase descending "
                  + "downwards into darkness.";
         }
         else 
