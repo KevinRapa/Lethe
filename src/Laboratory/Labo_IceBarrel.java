@@ -28,7 +28,7 @@ public class Labo_IceBarrel extends SearchableFurniture
         this.inv = new Ice_Inventory(DRY_ICE_REF, DRY_ICE_REF, flask, DRY_ICE_REF, DRY_ICE_REF);
         
         this.description = "The wooden barrel is wrapped in some kind of foam "
-                + "functioning as insulation. There's some writing on the lid: \"25 seconds, no less.\"";
+                + "functioning as insulation. There's some writing on the lid: \"25 seconds.\"";
         this.searchDialog = "The barrel is filled with dry ice.";
 
         this.addNameKeys("(?:unusual )?(?:wooden |foam )?barrel");
