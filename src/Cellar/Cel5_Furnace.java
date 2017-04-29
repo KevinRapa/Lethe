@@ -22,7 +22,7 @@ public class Cel5_Furnace extends SearchableFurniture
         this.lit = false;
         this.description = "A ramshackle tin furnace. It is unlit. A tin pipe "
                 + "feeds out the top and into the ceiling.";
-        this.actDialog = "";
+        this.actDialog = "You have nothing to light the furnace with.";
         this.searchDialog = "You open up the furnace.";
         this.useDialog = "You stick the torch in and light it ablaze. The warmth is quite comforting to you.";
 
@@ -49,7 +49,7 @@ public class Cel5_Furnace extends SearchableFurniture
                 return this.useEvent(torch);
             }
             else
-                return "You have nothing to light the furnace with.";
+                return this.actDialog;
         }
         else
             return getIt();
