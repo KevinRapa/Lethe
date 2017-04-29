@@ -44,7 +44,7 @@ public class Labo_Condenser extends Furniture implements Moveable {
     }
     //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
-        if (item.toString().matches("florence flask|test tube|empty vial|copper pot|copper pan")) {
+        if (!  item.toString().equals(BEAKER)) {
             return "That type of vessel was not designed for collecting chemicals! Put it down before you poke your eye out.";
         }
         else {
