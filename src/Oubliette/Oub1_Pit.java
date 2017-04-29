@@ -16,7 +16,7 @@ public class Oub1_Pit extends Furniture {
         super();
 
         this.description = "You peer over the 8-foot wide pit. The pit empties "
-                         + "into blackness. You cannot see the bottom. Though for "
+                         + "into blackness. You cannot see the bottom. For "
                          + "a transient moment, a small glint catches your eye "
                          + "from an unknown distance down.";
         this.actDialog = "Probably nothing good will come of that.";
