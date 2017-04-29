@@ -18,7 +18,7 @@ public class Intr_Door extends Sew_Door {
                          + "of water in the pool spins a water wheel attached to a "
                          + "driveshaft going into the ceiling. You can see a door "
                          + "on the far opposite side and a small black grate in the "
-                         + "room's corner. You can't see the source of the discomforting "
+                         + "room's corner. You can't locate the source of the discomforting "
                          + "noise though.";
 
         this.addActKeys("pry");
