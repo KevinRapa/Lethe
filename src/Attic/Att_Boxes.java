@@ -14,7 +14,8 @@ public class Att_Boxes extends SearchableFurniture implements Openable, Moveable
         
         this.description = "There are plenty of old cardboard boxes scattered "
                          + "around the room. They seem to be filled with various curios and science equipment.";
-        this.searchDialog = "You pick a few boxes randomly and look inside.";
+        this.searchDialog = "In an excited manner reminiscent of a small child " + 
+            "in a toy store, you rummage joyfully through the myterious boxes.";
         this.actDialog = "You really aren't very good at folding.";
         
         this.addActKeys("fold", GETPATTERN);
