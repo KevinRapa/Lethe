@@ -8,7 +8,7 @@ public class Din1_Carpet extends Carpet {
         super();
 
         this.description = "The clean lavender carpet lies under the table and "
-                         + "chairs, and covers most of the cold stone floor.";
+                         + "chairs, covering most of the cold stone floor.";
         this.searchDialog = "To your great curiosity, lifting up the carpet "
                           + "reveals a second identical carpet underneath.";
         

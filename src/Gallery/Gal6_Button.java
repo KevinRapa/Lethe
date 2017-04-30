@@ -36,7 +36,7 @@ public class Gal6_Button extends Button {
             AudioPlayer.playEffect(11);
             Player.teleport();
 
-            return "'... Huh? What just happened? This isn't the gallery loft.' " +
+            return "'... Huh? What just happened? " +
                    "You scratch your head and look around the room.";
         }
         return this.actDialog;

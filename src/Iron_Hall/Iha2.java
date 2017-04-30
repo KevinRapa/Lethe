@@ -26,7 +26,7 @@ public class Iha2 extends Room{
         if (this.hasPolearm)
             return super.getDescription();
         else
-            return super.getDescription().replaceAll(" It hold a polearm in its gauntlet.", "");
+            return super.getDescription().replaceAll(" It holds a polearm in its gauntlet.", "");
     }
 //-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {

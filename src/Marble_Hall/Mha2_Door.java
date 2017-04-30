@@ -25,42 +25,55 @@ import A_Super.Item;
  * @author Kevin Rapa
  */
 public class Mha2_Door extends Door {
-    private int numMedallions;
-    private boolean angel, soldier, horse;
+    private byte 
+        numEmpty, 
+        angSolHrs; // Each bit represents a medallion. '1' means it was returned. 
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Mha2_Door (Room din, Direction dir) {
         super(dir);
         
-        this.angel = this.soldier = this.horse = false; // Slots
-        this.numMedallions = 1;
+        this.angSolHrs = 0;
+        this.numEmpty = 3;
+        
+        this.description = 
+                "The double doors here are locked tight. Four round "
+                 + "sockets are built into the door's surface. One already "
+                 + "contains a gold disk with an engraving of an angel on it. "
+                 + "In the other three sockets you make out a second engraving "
+                 + "of an angel, an engraving of a soldier, and an engraving "
+                 + "of a horse.";
+        
         this.addNameKeys("(?:double )?doors", "(?:door )?(?:sockets?|slots?)");
         this.addUseKeys(STONE_DISK, ANGEL_MEDALLION, HORSE_MEDALLION);
     }
 //-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
-        String name = item.toString();
+        String name = item.toString(), res;
         
-        if (name.equals(STONE_DISK) || name.equals(ANGEL_MEDALLION) || name.equals(HORSE_MEDALLION)) {
-            String rep = "You press the " + item + " into its socket.";
+        if (name.equals(STONE_DISK) || name.equals(ANGEL_MEDALLION) 
+                || name.equals(HORSE_MEDALLION)) 
+        {
+            res = "You press the " + name + " into its socket.";
             AudioPlayer.playEffect(43);
 
-            switch (item.toString()) {
+            switch (name) {
                 case STONE_DISK:
-                    this.soldier = true; break;
+                    angSolHrs |= 0b010; break;
                 case ANGEL_MEDALLION:
-                    this.angel = true;   break;
+                    angSolHrs |= 0b100; break;
                 case HORSE_MEDALLION:
-                    this.horse = true;   break;
+                    angSolHrs |= 0b001; break;
             }
 
             Player.getInv().remove(item);
-            this.numMedallions ++;
+            this.numEmpty--;
 
-            if (this.numMedallions == 4) {
+            if (this.numEmpty == 0) {
                 Player.getRoomObj(Id.DIN1).unlock();
-                return rep.concat(" With the last medallion in place, the door *clicks* loudly.");
+                return res + " With the last medallion in place, the door *clicks* loudly.";
             }      
-            return rep;
+            
+            return res;
         }
         else if (name.equals(CROWBAR))
             return "The medallion is wedged in tightly and can't be pried out.";
@@ -69,52 +82,38 @@ public class Mha2_Door extends Door {
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {    
-        switch (this.numMedallions) {
-            case 2: 
-            case 3:
-                String rep;
-                
-                if (this.numMedallions == 3)
-                    rep = "The doors remain locked. 1 socket remains empty.";
-                else
-                    rep = "The doors remain locked. " + (4 - numMedallions) + " of the sockets remain empty; ";
-                
-                if (angel && ! soldier && ! horse)
-                    return rep.concat("the sockets with the soldier and horse engravings.");
-                
-                else if (! angel && soldier && ! horse)
-                    return rep.concat("the sockets with the angel and horse engravings.");
-                
-                else if (! angel && ! soldier && horse)
-                    return rep.concat("the sockets with the angel and soldier engravings.");
-                
-                else if (angel && soldier && ! horse)
-                    return rep.concat("the socket with the horse engraving.");
-                
-                else if (angel && ! soldier && horse)
-                    return rep.concat("the socket with the soldier engraving.");
-                
-                else if (! angel && soldier && horse)
-                    return rep.concat("the socket with the angel engraving."); 
-                
-            case 4:
-                return "All of the door's medallions have been returned. The door is now unlocked.";
-                
+        String res = "The doors remain locked. ";
+        
+        switch (this.numEmpty) {
+            case 1: 
+                switch (angSolHrs) {
+                    case 0b110:
+                        return res + "The socket with the horse engraving remains empty.";
+                    case 0b101:
+                        return res + "The socket with the soldier engraving remains empty.";
+                    case 0b011:
+                        return res + "The socket with the angel engraving remains empty.";
+                }
+            case 2:
+                switch (angSolHrs) {
+                    case 0b100:
+                        return res + "The sockets with the soldier and horse engravings remain empty.";
+                    case 0b010:
+                        return res + "The sockets with the angel and horse engravings remain empty.";
+                    case 0b001:
+                        return res + "The sockets with the angel and soldier engravings remain empty.";
+                }  
+            case 0:
+                return "All of the door's medallions have been returned. The door is unlocked.";
             default:
-                return "The double doors here are locked tight. Four round "
-                     + "sockets are built into the door's surface. One already "
-                     + "contains a gold disk with an engraving of an angel on it. "
-                     + "In the other three sockets you make out a second engraving "
-                     + "of an angel, an engraving of a soldier, and an engraving "
-                     + "of a horse.";
+                return this.description;
         }
     }
 //-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
-        if (this.numMedallions != 1)
-            return "You can't seem to dig the medallions out by hand.";
-        
-        return "You can't seem to dig the disk out by hand.";
+        return (this.numEmpty == 3) ?
+             "You can't seem to dig the disk out by hand." :
+             "You can't seem to dig the medallions out by hand.";
     } 
 //-----------------------------------------------------------------------------
 }

@@ -13,8 +13,7 @@ public class Din1_Tapestry extends WallArt {
         this.CRVC_REF = crevice;
         this.description = "A large, renaissance-era tapestry. A well-dressed male " +
                            "and female sit together on a log in a grove. Between " +
-                           "them is a chalice. The chalice bears an unexplainable " +
-                           "blue glow.";
+                           "them is a chalice bearing an unexplainable blue glow.";
         this.searchDialog = "Lifting the tapestry, you discover a crevice in the "
                           + "wall behind it.";
         this.actDialog = this.searchDialog;

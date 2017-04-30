@@ -10,10 +10,9 @@ public class Cry2_Altar extends SearchableFurniture implements Unmoveable {
     //-------------------------------------------------------------------------
     public Cry2_Altar (Item... items) {
         super(items);
-        this.description = "The altar is on a stone table. The altar consists "
-                         + "of many lit candles and dried flora. A few pieces of "
-                         + "jewelry are distributed about the surface. At the "
-                         + "center of the table is an effigy made of skull and bone.";
+        this.description = "The altar is essentially a stone table adorned with "
+                         + "many lit candles and dried flora. A few pieces of "
+                         + "jewelry are distributed about the surface.";
         this.actDialog = "You really aren't part of whatever religion this is for.";
         this.searchDialog = "You look on the altar.";
 

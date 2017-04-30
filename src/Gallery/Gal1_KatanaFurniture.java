@@ -1,9 +1,8 @@
 package Gallery;
 
-import A_Main.Id;
 import A_Super.Furniture;
-import A_Super.Item;
 import A_Main.Player;
+import A_Super.Weapon;
 /**
  * A sword which can be taken off the wall.
  * When this is taken, this removes itself from the room and adds itself to
@@ -16,22 +15,22 @@ public class Gal1_KatanaFurniture extends Furniture {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal1_KatanaFurniture() {
         super();
-        this.searchable = false;
+
         this.description = "The black katana looks exceptionally sharp.";
         this.actDialog = "You take the katana off its display.";
-        this.addActKeys(GETPATTERN);
-        this.addActKeys("wield");
+        
+        this.addActKeys(GETPATTERN, "wield");
         this.addNameKeys("(?:black )?(?:katana|sword)");
     }
 //----------------------------------------------------------------------------- 
     @Override public String interact(String key) { 
         
         if (Player.getInv().add(
-            new Item("katana", "An expensive-looking icon of Japanese culture with not a detail spared. "
+            new Weapon("katana", "An expensive-looking icon of Japanese culture with not a detail spared. "
                     + "The long, slender blade gently curves to a braided handle.", 80))
            ) 
         {
-            Player.getRoomObj(Id.GAL1).removeFurniture(this);
+            Player.getPos().removeFurniture(this);
             return this.actDialog;
         }
         else

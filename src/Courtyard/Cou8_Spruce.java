@@ -19,6 +19,8 @@ public class Cou8_Spruce extends Cou5_Spruce {
                 "You are sheltered inside the spruce canopy, about "
                 + "15 feet above the ground. The only thing of interest "
                 + "is a medium-sized raven's nest out on a nearby branch.";
+        
+        this.addNameKeys("(?:spruce )?needles?");
     }
     //-------------------------------------------------------------------------   
 }

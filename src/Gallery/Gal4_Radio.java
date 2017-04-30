@@ -38,11 +38,11 @@ public class Gal4_Radio extends Furniture implements Gettable, Moveable {
               + "small lever sticks out from the right side of the box.";
 
         this.actDialog = "Nothing useful has ever been accomplished through senseless "
-                       + "violence. Lets keep out wits and figure out a more rational "
+                       + "violence. Lets keep our wits and figure out a more rational "
                        + "course of action.";
         
         this.searchDialog = "There is nothing interesting hidden on the box, nor "
-                          + "are any of the odd mechanical parts inside of peculiarity.";
+                          + "are any of the odd mechanical parts inside of interest.";
         
         this.useDialog = "The screwdriver fits into one of the screws on the "
                        + "tall radio. You twist and with little-effort, the "

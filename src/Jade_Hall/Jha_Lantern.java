@@ -11,8 +11,8 @@ public class Jha_Lantern extends Furniture {
 
         this.description = "The paper lantern hanging from the ceiling flickers "
                          + "and lights the room dimly.";
-        this.searchDialog = "You can't reach it. Probably for the best. You aren't "
-                          + "too fond of fire.";
+        this.searchDialog = "You can't reach it. Probably for the best. It is "
+                          + "no doubt flammable to a deadly degree.";
 
         this.addNameKeys("(?:hanging )?lanterns?");
     }

@@ -10,7 +10,9 @@ import A_Main.Player;
  *
  * @author Kevin Rapa
  */
-abstract public class LockedContainer extends SearchableFurniture implements Openable, Moveable {
+abstract public class LockedContainer extends SearchableFurniture 
+        implements Openable, Moveable 
+{
     private final String KEY;
     //-------------------------------------------------------------------------
     public LockedContainer(String key, Item ... items) {

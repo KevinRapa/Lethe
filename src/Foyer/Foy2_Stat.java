@@ -21,7 +21,7 @@ public class Foy2_Stat extends Statue {
         this.description = "A white marble statue. It depicts a woman holding "
                          + "a vessel of water on her shoulder. At its base, "
                          + "there appears to be some skid markings on the floor.";
-        this.searchDialog = "The statue appears to hide nothing, although there "
+        this.searchDialog = "The statue appears to hide nothing, although, you can see "
                           + "streaks on the floor beginning at the statue's base.";
         this.addNameKeys("(?:skid )?markings");
     }

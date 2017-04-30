@@ -40,7 +40,7 @@ import static A_Main.Names.W_DIR;
 
 public class Main {
     private static final String 
-            START_LOCATION = Id.GAL1, // Default COU4
+            START_LOCATION = Id.COU4, // Default COU4
             SAVE_PATH = DATA + SEP + "save" + SEP + "Game.data",
             TITLE_PATH = W_DIR + SEP + DATA + SEP + "img" + SEP;
     

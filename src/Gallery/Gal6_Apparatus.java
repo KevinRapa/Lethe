@@ -24,7 +24,7 @@ public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
         this.searchDialog = "You look on the platform.";
         this.actDialog = "The device appears to be powered by some invisible source and lacks an off switch.";
         this.description = "The weird apparatus looks like a metal platform "
-                         + "with three curved arms projecting out and over its top "
+                         + "with three curved arms projecting out and over the top "
                          + "of itself. Wires run all over the thing, and lights "
                          + "on it go *bleep bleep bleep*. The machine emits "
                          + "some sort of blue light. Next to the apparatus is a label "

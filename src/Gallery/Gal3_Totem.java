@@ -12,6 +12,8 @@ import static A_Main.Patterns.GAL_TOTEM_ONE_TO_FOUR;
 import A_Main.Player;
 /**
  * One of four components of the light machine puzzle in the gallery.
+ * Uses bit operations to spin heads just for the heck of it. Used to be
+ * an array of booleans.
  * 
  * @see Gallery.Gal_LightMachine
  * @see Gallery.Gal1_Drgn
@@ -21,7 +23,7 @@ import A_Main.Player;
  */
 public class Gal3_Totem extends Gal_LightMachine {
     private final Gal4_Statue GAL4_STAT_REF;
-    private final boolean[] HEADS = {false, false, false, false};    
+    private byte heads = 0b0000; // Each bit represents 1 head. A '1' means the head is forward.
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Totem(Furniture stat) {
         super();
@@ -45,12 +47,17 @@ public class Gal3_Totem extends Gal_LightMachine {
     }
 //----------------------------------------------------------------------------- 
     private String numBackwards() {
-        int numBackwards = 0;
+        byte temp = heads, numBackward = 4;
         
-        for (boolean i : HEADS)
-            if (! i) numBackwards++;
+        while (temp != 0b0000) {
+            // Counts the number of 1 bits in HEADS.
+            if ((temp & 0b0001) == 0b0001)
+                numBackward--;
+            
+            temp >>= 1; 
+        }
         
-        switch(numBackwards) {
+        switch(numBackward) {
             case 0:
                 return "All of them face forward. From the third shines a light.";
             case 1:
@@ -72,16 +79,16 @@ public class Gal3_Totem extends Gal_LightMachine {
     }
 //-----------------------------------------------------------------------------    
     @Override public String interact(String key) {  
-        String action, result = NOTHING;
+        String action, result = NOTHING, h1, h2, h3, h4;
         
         do {
-            String four = HEADS[3]  ?        "~[-_-]~  4" :      "~[   ]~  4";
-            String three = HEADS[2] ?   "\t   ~[*o*]~  3" : "\t   ~[   ]~  3";
-            String two = HEADS[1]   ?   "\t   ~[=_=]~  2" : "\t   ~[   ]~  2";
-            String one = HEADS[0]   ?   "\t   ~[-_-]~  1" : "\t   ~[   ]~  1";
+            h1 = (heads & 0b0001) == 1 ?      "~[-_-]~  4" :      "~[   ]~  4";
+            h2 = (heads & 0b0010) == 2 ? "\t   ~[\"o\"]~  3" : "\t   ~[   ]~  3";
+            h3 = (heads & 0b0100) == 4 ? "\t   ~[=_=]~  2" : "\t   ~[   ]~  2";
+            h4 = (heads & 0b1000) == 8 ? "\t   ~[-_-]~  1" : "\t   ~[   ]~  1";
         
-            GUI.out("           " + four + "       \t" + three + "\t\t" + 
-                       two + "\t\t" + one + "\t\t\t\t\t\t" + result);
+            GUI.out("           " + h1 + "       \t" + h2 + "\t\t" + 
+                       h3 + "\t\t" + h4 + "\t\t\t\t\t\t" + result);
         
             action = GUI.askChoice(Menus.GAL_TOTEM, GAL_TOTEM_ONE_TO_FOUR);
         
@@ -95,7 +102,7 @@ public class Gal3_Totem extends Gal_LightMachine {
     }
 //-----------------------------------------------------------------------------
     private String check() {
-       if (HEADS[0] && HEADS[1] && HEADS[2] && HEADS[3]) 
+       if (heads == 0b1111) 
            return this.turnOn();
        else if (this.isOn)
            return this.turnOff();
@@ -107,24 +114,19 @@ public class Gal3_Totem extends Gal_LightMachine {
         AudioPlayer.playEffect(44);
         switch(head) {
             case 1:
-                HEADS[0] = ! HEADS[0];
-                HEADS[3] = ! HEADS[3];
+                heads ^= 0b1010; // Switch 1 and 3
                 break;
             case 2:
-                HEADS[1] = ! HEADS[1];
-                HEADS[2] = ! HEADS[2];
-                HEADS[3] = ! HEADS[3];
+                heads ^= 0b0111; // Switch 2, 3, and 4
                 break;
             case 3:
-                HEADS[0] = ! HEADS[0];
-                HEADS[2] = ! HEADS[2];
-                HEADS[3] = ! HEADS[3];
+                heads ^= 0b1011; // Switch 1, 3, and 4
                 break;
             default:
-                HEADS[2] = ! HEADS[2];
-                HEADS[3] = ! HEADS[3];
+                heads ^= 0b0011; // Switch 3 and 4
         }
-        this.searchable = this.HEADS[2];
+        
+        this.searchable = (heads & 0b0010) == 0b0010;
     }
 //-----------------------------------------------------------------------------     
     @Override protected String turnOn() {

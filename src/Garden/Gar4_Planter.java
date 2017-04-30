@@ -22,7 +22,7 @@ public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
         this.PLT_REF = plate;
         this.description = "This planter contains no plants, just a bed of soil.";
         this.actDialog = "You dig around the plaque, but find nothing in the soil.";
-        this.searchDialog = "The soil surface is bare and doesn't seem to hide anything.";
+        this.searchDialog = "The soil's surface is bare and hides nothing.";
         this.useDialog = this.actDialog;
 
         this.addNameKeys("planter", "(?:bed of )?(?:soil|dirt)", "bed|dirt", SOIL);

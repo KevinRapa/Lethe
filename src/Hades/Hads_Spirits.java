@@ -7,7 +7,7 @@ import A_Super.Furniture;
 public class Hads_Spirits extends Furniture {
     //-------------------------------------------------------------------------
     public Hads_Spirits () {
-        super();;
+        super();
         
         this.description = actDialog = searchDialog = "You can't do even that.";
         this.addActKeys(ANYTHING);

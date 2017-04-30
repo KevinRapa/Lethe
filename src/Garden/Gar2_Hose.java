@@ -23,7 +23,7 @@ public class Gar2_Hose extends Furniture implements Climbable {
         this.description = "The cracked leather hose dangles down into the room "
                          + "below. It's only a short drop from the bottom. "
                          + "Hopefully it will take your weight.";
-        this.actDialog = "Slowly, you climb down the hose. The maintains itself, "
+        this.actDialog = "Slowly, you climb down the hose. The hose maintains itself, "
                        + "however only feet from the bottom, the hose splits in half "
                        + "and falls to the floor. Only minimally hurt, you stand "
                        + "back up and peer at the other half, still tied to the "

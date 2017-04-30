@@ -29,17 +29,14 @@ public class Gal7_Statue extends Furniture {
      * @return returns a string of what happens.
      */
     public String activate(MachineColor color) {
-        if (Player.getRoomObj(Id.GAL7).hasFurniture(this)) {
-            if (level == 0) {
-                if (color == MachineColor.DARK) {
+        if (Player.getRoomObj(Id.GAL7).hasFurniture(this)) 
+            if (level == 0) 
+                if (color == MachineColor.DARK)
                     return this.raise(); 
-                }              
                 else
                     return "The beam of light shines into the orb with no effect.";
-            }
             else
                 return "The beam of light shines at the orb, but the orb continues to glow hellishly.";
-        }
         else
             return "The beam of light shines into the central chamber.";
     }     

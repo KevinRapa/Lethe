@@ -49,7 +49,7 @@ public class Gal2_Machine extends SearchableFurniture implements Openable {
                 "flush against the wall.");
         
         return result.replaceFirst("&", pluggedIn ? 
-                "Many lights blink on its surface, and electrical arcs "
+                "Many lights blink on its surface and electrical arcs "
               + "jump between two metal rods protruding from the top." : 
                 "The lights and electrical arcs have stopped.");
     }

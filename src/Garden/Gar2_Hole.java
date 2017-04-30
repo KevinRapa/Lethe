@@ -14,11 +14,11 @@ public class Gar2_Hole extends Furniture {
         super();
 
         this.HOSE_REF = hose;
-        this.description = "You peer over the thick granite railing into the "
-                         + "hole. To your surprise, it's the rotunda you were "
-                         + "in earlier! It's about a 25 foot drop down.";
+        this.searchDialog = this.description = 
+                "You peer over the thick granite railing into the "
+              + "hole. To your surprise, it's the rotunda you were "
+              + "in earlier! It's about a 25 foot drop down.";
         this.actDialog = "The drop is too great. It's about 25 feet down. You'd surely break something.";
-        this.searchDialog = this.description;
         this.useDialog = "You tie the end of the hose to the railing and throw "
                        + "it over the edge. Hopefully it will support your "
                        + "weight.";

@@ -15,7 +15,7 @@ public class Gar2_Dome extends Furniture implements Unmoveable {
                          + "dripping into the room below. Still, why have a hole "
                          + "there in the first place?";
         this.useDialog = 
-        this.actDialog = "If you do that, the glass will probably rain "
+        this.actDialog = "If you do that, the glass will probably "
                        + "rain down on you as a deadly shower of glass.";
 
         this.addUseKeys(STONE_BLOCK, RED_BALL, CUE_BALL, ROCK);

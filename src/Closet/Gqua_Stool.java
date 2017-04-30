@@ -10,8 +10,8 @@ public class Gqua_Stool extends Furniture implements Moveable {
     public Gqua_Stool() {
         super();
         this.description = "It's a puny three-legged stool.";
-        this.actDialog = "You sit in the tiny stool. You feel even more "
-                       + "insecure about your weight.";
+        this.actDialog = "You sit in the tiny stool, feeling even more "
+                       + "insecure about your mass.";
         this.addNameKeys("(?:puny |tiny )?(?:three-legged )?stool");
         this.addActKeys(SITPATTERN);
     }

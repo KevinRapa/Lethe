@@ -19,7 +19,7 @@ public class Gal4_Statue extends Furniture {
         
         this.actDialog = "What glorious rippling muscles the statue has!";
         this.description = "The statue now stands surrounded by the second floor "
-                         + "balcony. The orb has stopped glowing and one of "
+                         + "balcony. The orb has stopped glowing, but one of "
                          + "the statue's eyes has started to.";  
         this.searchDialog = "The statue's hand is out of reach";
         
