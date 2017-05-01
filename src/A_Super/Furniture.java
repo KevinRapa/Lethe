@@ -56,7 +56,7 @@ abstract public class Furniture implements Serializable {
             VALVEPATTERN = "turn|rotate|spin|twist|open|close",
             MOVEPATTERN = "move|slide|displace|push|pull|spin|rotate",
             FEELPATTERN = "feel|touch|poke",
-            DEFAULT_USE = "What an interesting but far-fetched proposition!",
+            DEFAULT_USE = "An interesting but far-fetched proposition.",
             NOTHING_HERE = "There's nothing hiding here.",
             ANYTHING = ".+",
             NOTHING = "";
