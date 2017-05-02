@@ -5,6 +5,7 @@ import A_Super.Door;
 import A_Super.Item;
 import A_Main.Player;
 import static A_Main.Names.SACRED_FIRE;
+import static A_Main.Names.WEAPON;
 import A_Super.Direction;
 /**
  * Has a magical ice ward over it. 
@@ -37,17 +38,23 @@ public class Par1_Door extends Door {
     }
 //----------------------------------------------------------------------------- 
     @Override public String useEvent(Item item) {
-        String rep = this.useDialog;
-        
-        if (! Player.getRoomObj(Id.PAR1).isAdjacent(Id.BHA3)) {
-            Player.getRoomObj(Id.PAR1).addAdjacent(Id.BHA3);
-            rep = "You cast the fire onto the door, to which it clings."
-                + " The fire begins to fade away along with the barrier.";
+        if (item.toString().equals(SACRED_FIRE)) {
+            String rep = this.useDialog;
+
+            if (! Player.getRoomObj(Id.PAR1).isAdjacent(Id.BHA3)) {
+                Player.getRoomObj(Id.PAR1).addAdjacent(Id.BHA3);
+                rep = "You cast the fire onto the door, to which it clings."
+                    + " The fire begins to fade away along with the barrier.";
+            }
+            Player.getInv().remove(item);
+            Player.getInv().add(ENCHNTBTTL_REF);
+
+            return rep;
         }
-        Player.getInv().remove(item);
-        Player.getInv().add(ENCHNTBTTL_REF);
-        
-        return rep;
+        else if (item.getType().equals(WEAPON)) 
+            return "The door is build too solidly and breaking it down is futile.";
+        else
+            return super.useDialog;
     }
 //----------------------------------------------------------------------------- 
 }

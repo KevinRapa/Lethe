@@ -30,8 +30,7 @@ public class Cry1_Statue extends Statue implements Resetable {
         
         this.addNameKeys("(?:tall )?(?:stone )?(?:cloaked )?statue", "(?:statue(?:'s)? )?(?:bone?y )?(?:hand|palm)");
         this.addUseKeys(Names.SCYTHE);
-        this.addActKeys("shake", "embrace", "greet", "hold", "grasp", 
-                        "push", "pull", "move", "turn", "twist");
+        this.addActKeys("shake|embrace|greet|hold|grasp|push|pull|move|turn|twist");
     }
     //------------------------------------------------------------------------- 
     @Override public String getDescription() {
@@ -55,18 +54,17 @@ public class Cry1_Statue extends Statue implements Resetable {
     }
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) { 
-        if (key.matches(MOVEPATTERN) || key.matches("touch|feel"))
-            return super.interact(key);
-        else {
+        if (key.matches("shake|embrace|greet|hold|grasp|push|pull|move|turn|twist")) {
             if (this.hasScythe) {
                 this.eyesGlowing = true;
                 return "You grasp the statue's right hand and twist. An orange "
                      + "light glows deep in the statue's eyes.";
             }
-            else {
+            else 
                 return "You grasp the statue's right hand and twist. Nothing happens.";
-            }
         }
+        else 
+            return super.interact(key);
     }
     //-------------------------------------------------------------------------     
     @Override public String useEvent(Item item) {
