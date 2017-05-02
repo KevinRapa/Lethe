@@ -23,6 +23,7 @@ import Torture_Chamber.*;  import Crypt.*;              import Ancient_Archives.
 import Vault.*;            import Tower.*;              import Kampe_Quarters.*;
 import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
 import Soul_Chamber.*;     import Hades.*;              import Cellar.*;
+import Forest.*;
 
 import java.awt.Color;     import javax.swing.JPanel;   import javax.swing.ImageIcon;   
 import javax.swing.JFrame; import javax.swing.JLabel;  
@@ -423,7 +424,7 @@ public class Map {
         Room cou1 = new Cou1("Northwest courtyard", Id.COU1);
         Room cou2 = new Cou2("Southwest courtyard", Id.COU2);
         Room cou3 = new Cou3("Castle courtyard", Id.COU3);
-        Room cou4 = new Room("Front gate", Id.COU4);
+        Room cou4 = new Cou4("Front gate", Id.COU4);
         Room cou5 = new Room("Southeast courtyard", Id.COU5);
         Room cou6 = new Cou6("Northeast courtyard", Id.COU6);
         Room cou8 = new Cou8("Spruce tree", Id.COU8);
@@ -497,6 +498,25 @@ public class Map {
         Furniture entrStats = new Entr_Statues();
         Furniture entrDr = new Entr_Door(Direction.NORTH);
         Furniture entrStps = new Cou3_Steps(Direction.DOWN);
+        // </editor-fold>
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE FOREST">
+        //-----------------------------THE ROOM---------------------------------
+        Room for1 = new For1(Id.FOR1);
+        Room for2 = new For2(Id.FOR2);
+        Room for3 = new For3(Id.FOR3);
+        Room for4 = new Forest(Id.FOR4);
+        Room for5 = new For5(Id.FOR5);
+        //-------------------------------ITEMS----------------------------------
+        Item untrRck = new Item("uninteresting rock", "It's a very uninteresting rock.", -50);
+        Item untrBrch = new Item("uninteresting branch", "It's a very uninteresting branch.", -50);
+        //-----------------------------FURNITURE--------------------------------
+        Furniture forTrs = new For_Trees();
+        Furniture forThckt = new For_Thicket();
+        Furniture forFrst = new For_Forest();
+        Furniture forF = new Cou_Floor(sl, grss, clvr, sl, untrRck, untrBrch, untrRck);
+        
+        Furniture for2Elk = new For2_Elk();
+        
         // </editor-fold>
 
         // </editor-fold>
@@ -2124,9 +2144,9 @@ public class Map {
              {____,____,____,____,____,____,____,____,____,____}, //1
              {____,____,obs3,att1,labo,foy4,gal6,gal7,____,____}, //2
              {____,____,sst2,att2,bls1,tow1,____,____,chs3,____}, //3
-             {____,____,____,____,____,____,____,____,cha1,____}, //4
-             {____,____,____,____,____,____,____,____,cha2,____}, //5
-             {____,____,____,____,____,____,____,____,____,____}},//6
+             {____,for1,____,____,____,____,____,____,cha1,____}, //4
+             {____,for2,for3,for4,____,____,____,____,cha2,____}, //5
+             {____,____,____,for5,____,____,____,____,____,____}},//6
 
             // </editor-fold>   
             // <editor-fold defaultstate="collapsed" desc="FLOOR 2 [2]">
@@ -2197,6 +2217,10 @@ public class Map {
 
         // <editor-fold defaultstate="collapsed" desc="AREA 1: CASTLE FRONT">
 
+        for1.addFurniture(forTrs, rotuSky, forThckt, forFrst, cou4Trl, forF);
+        for2.addFurniture(forTrs, for2Elk, rotuSky, forThckt, forFrst, cou4Trl, forF);
+        for3.addFurniture(forTrs, rotuSky, forThckt, forFrst, cou4Trl, forF);
+        for4.addFurniture(forTrs, rotuSky, forThckt, forFrst, cou4Trl, forF);
         foy1.addFurniture(foyFrntDr, genDoor, foy1Gt, foy1Armr, foyF, foyW, 
                 foy1Chnd, eastDoor, foy1Tbl, foy1Crpt, foy1Strs, clng);
         foy2.addFurniture(foy2Gt, foy2Stat, foy2Alc, foyF, foyW, foy2Strcs, clng);

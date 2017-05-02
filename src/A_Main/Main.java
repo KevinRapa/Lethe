@@ -34,8 +34,7 @@ import java.nio.file.Paths;
 
 import javafx.application.Platform; 
 
-import static A_Main.Names.SEP;     
-import static A_Main.Names.DATA;
+import static A_Main.Names.SEP;     import static A_Main.Names.DATA;
 import static A_Main.Names.W_DIR;
 
 public class Main {

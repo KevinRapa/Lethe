@@ -7,28 +7,27 @@ import Foyer.LootSack;
  * @author Kevin Rapa
  */
 public class Endg extends Room {
-    private final String earlyWinDesc;
 //-----------------------------------------------------------------------------    
     public Endg(String name, String ID) {
         super(name, ID);
-
-        this.earlyWinDesc = 
-            "By an magnificent and unforeseen display of self " +
-            "control, you turn your back to the ghastly " +
-            "castle and backtrack along the path you came. " +
-            "Your family is surely in worry and anxiously " +
-            "awaits your return. Congratulations! You win " +
-            "the game!";
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
-        if (Player.getRoomObj(Id.COU4).isLocked())
-            return this.earlyWinDesc;
+        if (! Player.hasVisited(Id.COU3) && 
+                ! Player.getLastVisited().equals(Id.FOR1)) 
+            return "";
         else
             return super.getDescription();
     }
 //-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
+        if (! Player.hasVisited(Id.COU3)) {
+            // If player is disobedient at the game's start.
+            Player.setOccupies(Id.FOR1);
+            return "";
+        }
+        
+        AudioPlayer.playTrack(Id.SOUL);
         GUI.clearDialog();
         GUI.menOut(Menus.ENTER);
         GUI.invOut("");

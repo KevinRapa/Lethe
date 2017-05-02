@@ -227,13 +227,12 @@ public final class Player {
     // </editor-fold>
     
     // <editor-fold desc="Setters">
-    public static void commitSuicide() {
+    public static void commitSuicide(String message) {
         // Sends the player to Hades. A zork reference.
         if (! getPosId().equals(Id.HADS)) {
             incrementMoves();
             
-            GUI.out("You succumb to the surreal, yet all too reachable "
-                  + "decision. Could this release you from your hopelessness?"); 
+            GUI.descOut(message); 
             GUI.menOut(Menus.ENTER);
             GUI.promptOut();
             
@@ -789,7 +788,8 @@ public final class Player {
                 GUI.out("Indeed, how romantic!");
             }
             else if (DESTROY_P.matcher(verb).matches())
-                Player.commitSuicide();
+                Player.commitSuicide("In a spectacular fashion, "
+                        + "you spontaneously explode all over the room.");
             else
                 GUI.out("Your binary isn't designed to do that.");
         }
@@ -1353,7 +1353,7 @@ private static class TextParser {
     private static final Command 
         DEFAULT_CMD =   new Command(() -> Player.randomErrorMessage(), "ERROR"),
         EXPLETIVE_CMD = new Command("Mind yourself! You're a guest here!"),
-        SUICIDE_CMD =   new Command(() -> Player.commitSuicide(), "SUICIDE"),
+        SUICIDE_CMD =   new Command(() -> Player.commitSuicide("You succumb to the ultimate decision."), "SUICIDE"),
         GREETING_CMD =  new Command("What do you think this is? Zork?"),
         AMBIGUOUS_CMD = new Command("You need to specify something to put that in!"),
         NO_SLOT_CMD =   new Command("You don't have anything in your inventory there.");

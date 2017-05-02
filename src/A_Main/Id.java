@@ -16,6 +16,8 @@ public final class Id {
         FOY1 = "FOY1",  FOY2 = "FOY2",  FOY3 = "FOY3",  FOY4 = "FOY4",
         COU1 = "COU1",  COU2 = "COU2",  COU3 = "COU3",  COU4 = "COU4", 
         COU5 = "COU5",  COU6 = "COU6",  COU7 = "COU7",  COU8 = "COU8",
+        FOR1 = "FOR1",  FOR2 = "FOR2",  FOR3 = "FOR3",  FOR4 = "FOR4",
+        FOR5 = "FOR5",
             
         // </editor-fold>    
         // <editor-fold defaultstate="collapsed" desc="AREA 2: West wing">

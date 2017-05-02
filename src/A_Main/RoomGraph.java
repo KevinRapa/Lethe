@@ -26,7 +26,8 @@ public class RoomGraph {
         COU1, COU2, COU3, COU4, COU5, COU6, COU7, VEST, FOY1, FOY2, FOYW, FOYB, 
         FOYC, GAL1, GAL2, LIB1, LIB2, LIB3, BHA1, BHA2, BHA3, OBS1, STUD, PAR1, 
         LOOK, ROTU, MHA1, CHS1, SQUA, SHA2, IHA1, MHA2, DIN1, SHAR, SHA1, IHA2, 
-        MHA3, KITC, WBAL, WOW1, WOW2, COUS, DST1, EOW1, EOW2, COU8,
+        MHA3, KITC, WBAL, WOW1, WOW2, COUS, DST1, EOW1, EOW2, COU8, FOR1, FOR2,
+        FOR3, FOR4, FOR5,
         // FLOOR 2 ROOM ID'S -------------------------------------------------- 
         GAL5, LIB4, OBS2, JHA1, PAR2, FOY3, GAL3, GAL4, LIB5, SST1, JHA2, GAR1, 
         GAR2, DIN2, GAR3, GAR4, DRAR, WOW3, CLOS, WORK, EOW4, 
@@ -77,7 +78,8 @@ public class RoomGraph {
         {KITC,EOW1,MHA2},       {MHA3},                 {WOW1}, 
         {WBAL,WOW2,SHA1},       {IHA2,WOW1,WOW3},       {CLOS}, 
         {EOW1,SEW0},            {EOW2,DST1,MHA3},       {EOW1,EOW4},
-        {COU5},
+        {COU5},                 {FOR2},                 {FOR1, FOR3}, 
+        {FOR2, FOR4},           {FOR3, FOR5},           {FOR4},
         // FLOOR 2 ROOM ADJS -------------------------------------------------- 
         {GAL4},                 {LIB5},                 {OBS1,OBS3}, 
         {JHA2,PAR2},            {PAR1,FOY3,JHA1},       {PAR2,FOY2,FOY4}, 
@@ -159,7 +161,8 @@ public class RoomGraph {
         {3,1,8}, {3,2,8}, {3,1,2}, {3,1,3}, {3,1,4}, {3,2,2}, {3,2,3}, {3,2,4}, 
         {3,3,2}, {3,3,3}, {3,3,7}, {3,3,8}, {3,4,1}, {3,4,2}, {3,4,3}, {3,4,7}, 
         {3,4,8}, {3,5,1}, {3,5,2}, {3,5,3}, {3,5,7}, {3,5,8}, {3,6,1}, {3,6,2}, 
-        {3,6,3}, {3,6,4}, {3,6,6}, {3,6,7}, {3,6,8}, {2,5,6},
+        {3,6,3}, {3,6,4}, {3,6,6}, {3,6,7}, {3,6,8}, {2,5,6}, {1,4,1}, {1,5,1},
+        {1,5,2}, {1,5,3}, {1,6,3},
     // 2ND FLOOR COORDINATES -------------------------------------------------- 
         {2,1,7}, {2,1,8}, {2,2,2}, {2,2,3}, {2,2,4}, {2,2,5}, {2,2,6}, {2,2,7}, 
         {2,2,8}, {2,3,2}, {2,3,3}, {2,4,2}, {2,4,3}, {2,4,8}, {2,5,2}, {2,5,3}, 

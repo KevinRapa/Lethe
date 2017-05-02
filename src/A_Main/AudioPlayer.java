@@ -100,8 +100,8 @@ public class AudioPlayer {
             new HashMap<String, Media>() {
         //---------------------------------------------------------------------
         {
-        putAllTracks(nightAmbience,  COU1, COU2, COU3, COU4, COU5, COU6, 
-                                     COU7, COU8);
+        putAllTracks(nightAmbience,  COU1, COU2, COU3, COU4, COU5, COU6, ENDG,
+                                     COU7, COU8, FOR1, FOR2, FOR3, FOR4, FOR5);
         putAllTracks(spookyInterior, FOY1, FOY2, FOY3, FOY4, VEST);
         putAllTracks(wavesCrashing,  FOYB, LOOK, FOYC);
         putAllTracks(ironHallCustom, IHA1, IHA2);
@@ -128,7 +128,7 @@ public class AudioPlayer {
                                      ESC6, DKCH);
         putAllTracks(torcCustom,     TORC, CRY1, CRY2, CAS1, CS35);
         putAllTracks(endTrack,       BLS1, BLS2, TOW1, TOW2, LQU1, LQU2, 
-                                     SOUL, ENDG);
+                                     SOUL);
         putAllTracks(antechamber,    FOYW, VAUE, VAU1, VAU2); 
         putAllTracks(rotundaCustom,  ROTU, CEL1, CEL2, CEL3, CEL4, CEL5);
         
