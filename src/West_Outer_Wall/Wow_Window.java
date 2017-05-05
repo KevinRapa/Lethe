@@ -1,8 +1,8 @@
 package West_Outer_Wall;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 
-public class Wow_Window extends StaticWndw {
+public class Wow_Window extends StaticWindow {
 //-----------------------------------------------------------------------------    
     public Wow_Window() {
         super();

@@ -1,8 +1,8 @@
 package Foyer;
 
-import A_Super.Furniture;
+import A_Super.Chandelier;
 
-public class Foy_Chandelier extends Furniture {
+public class Foy_Chandelier extends Chandelier {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Foy_Chandelier() {
         super();
@@ -12,10 +12,7 @@ public class Foy_Chandelier extends Furniture {
                          + "least thirty. You are stunned by its majesty. At the "
                          + "same time, you ponder who has the time to maintain "
                          + "so many candles.";
-        this.searchDialog = "You are pretty sure you can't jump that high.";
-        this.actDialog = "You will get hurt doing that.";
         
-        this.addActKeys("swing", "hang");
         this.addNameKeys("(?:huge )?(?:iron )?(?:chandelier|light)");
     }
 //-----------------------------------------------------------------------------

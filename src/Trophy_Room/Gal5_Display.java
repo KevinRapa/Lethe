@@ -5,7 +5,9 @@ import A_Super.Moveable;
 import A_Super.Openable;
 import A_Super.SearchableFurniture;
 
-public class Gal5_Display extends SearchableFurniture implements Openable, Moveable {
+public class Gal5_Display extends SearchableFurniture 
+        implements Openable, Moveable 
+{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal5_Display(Item... items) {
         super(items);

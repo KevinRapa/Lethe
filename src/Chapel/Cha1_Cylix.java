@@ -21,12 +21,12 @@ public class Cha1_Cylix extends Furniture implements Moveable {
         this.addNameKeys("(?:wide )?(?:brass )?(?:cylix|bowl)");
         this.addUseKeys(EMPTY_VIAL, METAL_BUCKET, GLASS_BOTTLE);
     }
-/* -------------------------------------------------------------------------- */
+//-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("drink"))
             return "You can't imagine that holy water is very palatable.";
         else
             return this.actDialog;
     }
-/* -------------------------------------------------------------------------- */
+//-----------------------------------------------------------------------------
 }

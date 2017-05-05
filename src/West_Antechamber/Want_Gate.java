@@ -18,10 +18,19 @@ public class Want_Gate extends Door {
     }
 //-----------------------------------------------------------------------------  
     @Override public String interact(String key) {
+        boolean open = Player.getPos().isAdjacent(Id.FOY1) || Player.getPos().isAdjacent(Id.FOY2);
+        
         if (key.equals("close"))
-            return "Now why would you try to do that?";
-        else
+            if (open)
+                return "That would only impede your progress.";
+            else
+                return "The gate is closed already!";
+        else if (open)
+            return "It's just empty space. Maybe you should go through it?";
+        else if (key.equals("open") || key.equals("lift"))
             return this.actDialog;
+        else
+            return super.interact(key);
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {

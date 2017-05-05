@@ -1,10 +1,10 @@
 package Chapel_Stairs;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 /**
  * @author Kevin Rapa
  */
-public class Chs_Windows extends StaticWndw {
+public class Chs_Windows extends StaticWindow {
 //-----------------------------------------------------------------------------
     public Chs_Windows(String NAME) {
         super();

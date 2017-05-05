@@ -21,7 +21,7 @@ public class Sew_Door extends Door {
         if (item.toString().equals(HAND_TORCH)) 
             return "Could you possibly burn down a metal door?";
         else
-            return this.useDialog;
+            return super.useEvent(item);
         
     }
 //-----------------------------------------------------------------------------

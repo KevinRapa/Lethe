@@ -1,10 +1,10 @@
 package Black_Staircase;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 /**
  * @author Kevin Rapa
  */
-public class Bls_Windows extends StaticWndw {
+public class Bls_Windows extends StaticWindow {
     //-------------------------------------------------------------------------
     public Bls_Windows () {
         super();

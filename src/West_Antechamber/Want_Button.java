@@ -20,7 +20,7 @@ public class Want_Button extends Button {
     }
     //-------------------------------------------------------------------------     
     @Override protected String event(String key) {
-        return this.FOY2_LEVER_REF.event(null);
+        return this.FOY2_LEVER_REF.event("");
     }
     //-------------------------------------------------------------------------  
 }

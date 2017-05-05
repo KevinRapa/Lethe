@@ -699,9 +699,10 @@ public final class Player {
     private static void evaluateAction(String verb, String furnName) {
         String object = Player.tryIndefRef_Furn(furnName);
         Item item = getInv().get(tryIndefRef_Item(furnName));
+        boolean furnExists = getPos().hasFurniture(object);
         
         // <editor-fold defaultstate="collapsed" desc="MOVE COMMAND">
-        if (WALK_P.matcher(verb).matches()) {
+        if (WALK_P.matcher(verb).matches() && ! furnExists) {
             if (DIRECTION_P.matcher(object).find())
                 parseMovement(object);
             else if (INVALID_DIR_P.matcher(object).matches())
@@ -712,7 +713,7 @@ public final class Player {
         // </editor-fold>
         
         // <editor-fold defaultstate="collapsed" desc="COMMAND ON FURNITURE">
-        else if (getPos().hasFurniture(object)) {
+        else if (furnExists) {
             // Furniture exists to be interacted with.
             Furniture furn = getFurnRef(object);
             setLastInteract_Furn(object);

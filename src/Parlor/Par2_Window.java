@@ -1,8 +1,8 @@
 package Parlor;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 
-public class Par2_Window extends StaticWndw {
+public class Par2_Window extends StaticWindow {
 //-----------------------------------------------------------------------------    
     public Par2_Window() {
         super();

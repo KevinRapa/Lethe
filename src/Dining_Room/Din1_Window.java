@@ -1,8 +1,8 @@
 package Dining_Room;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 
-public class Din1_Window extends StaticWndw{
+public class Din1_Window extends StaticWindow{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Din1_Window() {
         super();

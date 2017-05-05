@@ -5,15 +5,19 @@ import A_Main.Id;
 import static A_Main.Names.AQUAMARINE;
 import static A_Main.Names.RUBY;
 import A_Main.Player;
-import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Moveable;
+import A_Super.Statue;
 /**
  * @author Kevin Rapa
  */
-public class Jha_Lion extends Furniture implements Moveable {
+public class Jha_Lion extends Statue implements Moveable {
     private boolean hasRuby;
-    private final String DESC2;
+    private static final String DESC2 =
+            "It's a menacing jade statue of a lion. Sparkling "
+           + "rubies sit in both its eye sockets. Strange that "
+           + "someone decided to display them way back here where "
+           + "no one can see them.";
     //-------------------------------------------------------------------------
     public Jha_Lion () {
         super();
@@ -24,24 +28,18 @@ public class Jha_Lion extends Furniture implements Moveable {
                          + "ruby sits in one of its eye sockets. The other socket "
                          + "is empty. Strange that someone decided to display "
                          + "them way back here where no one can see them. ";
-        this.DESC2 = "It's a menacing jade statue of a lion. Sparkling "
-                   + "rubies sit in both its eye sockets. Strange that "
-                   + "someone decided to display them way back here where "
-                   + "no one can see them.";
-        this.actDialog = "These statues are absolutely too big and heavy to take.";
         this.searchDialog = "There don't seem to be any secret compartments "
                           + "on this statue. Although, one of the rubies sitting "
                           + "in its eye sockets has gone missing.";
         this.useDialog = "You place the ruby into the lion's eye socket. The ruby "
                        + "glints and stays in place.";
 
-        this.addActKeys(GETPATTERN);
         this.addNameKeys("(?:jade )?(?:lion )?statue", "(?:jade )?lion", "(?:lion'?s? )?eye");
         this.addUseKeys(RUBY, AQUAMARINE);
     }
     //------------------------------------------------------------------------- 
     @Override public String getDescription() {
-        return hasRuby ? this.DESC2 : this.description;
+        return hasRuby ? DESC2 : this.description;
     }
     //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
@@ -58,15 +56,12 @@ public class Jha_Lion extends Furniture implements Moveable {
                 this.hasRuby = true;
                 AudioPlayer.playEffect(43);
                 Player.getInv().remove(item);
-                return this.useDialog + ((Jha2)Player.getRoomObj(Id.JHA2)).lionCheck();
+                return this.useDialog 
+                        + ((Jha2)Player.getRoomObj(Id.JHA2)).lionCheck();
             }
         }
         else
             return "There's no place to fit the " + item + ".";
-    }
-    //-------------------------------------------------------------------------     
-    public boolean hasRuby() {
-        return this.hasRuby;
     }
     //-------------------------------------------------------------------------    
 }

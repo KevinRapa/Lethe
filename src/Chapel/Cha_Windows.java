@@ -1,10 +1,10 @@
 package Chapel;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 /**
  * @author Kevin Rapa
  */
-public class Cha_Windows extends StaticWndw {
+public class Cha_Windows extends StaticWindow {
     //-------------------------------------------------------------------------
     public Cha_Windows () {
         super();

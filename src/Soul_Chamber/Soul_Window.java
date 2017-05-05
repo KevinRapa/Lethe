@@ -1,10 +1,10 @@
 package Soul_Chamber;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 /**
  * @author Kevin Rapa
  */
-public class Soul_Window extends StaticWndw {
+public class Soul_Window extends StaticWindow {
     //-------------------------------------------------------------------------
     public Soul_Window () {
         super();

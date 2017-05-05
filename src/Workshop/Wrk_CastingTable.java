@@ -16,9 +16,12 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
-    private final Inventory BRL_INV, SCK_INV, CBNT_INV;
-    private final Item SHEET_REF, RED_LENS_REF, BLUE_LENS_REF, YELLOW_LENS_REF, 
-                       SAND_REF, RED_DYE_REF, BLUE_DYE_REF, YELLOW_DYE_REF, POTASH_REF;
+    private final Inventory 
+            BRL_INV, SCK_INV, CBNT_INV;
+    
+    private final Item 
+            SHEET_REF, RED_LENS_REF, BLUE_LENS_REF, YELLOW_LENS_REF, 
+            SAND_REF, RED_DYE_REF, BLUE_DYE_REF, YELLOW_DYE_REF, POTASH_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Wrk_CastingTable(Inventory brl, Inventory sck, Item rdLns, Item snd, 
                         Item rdDy, Item blDy, Item yllwDy, Item ptsh, Inventory cbnt) {

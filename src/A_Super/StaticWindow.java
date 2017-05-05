@@ -4,10 +4,10 @@ package A_Super;
  * 
  * @author Kevin Rapa
  */
-abstract public class StaticWndw extends Furniture implements Unmoveable {
+abstract public class StaticWindow extends Furniture implements Unmoveable {
     protected String escapeDialog;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public StaticWndw() {
+    public StaticWindow() {
         super();
         this.escapeDialog = "And fall to your death? You are a man of morals. "
                           + "Stave off the morbid thoughts!";

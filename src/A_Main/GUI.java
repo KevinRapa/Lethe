@@ -199,6 +199,7 @@ public class GUI extends JFXPanel {
         TITLE_TXT.setEditable(false);
         TITLE_TXT.setMargin(new Insets(10, 0, 0, 0));
         TITLE_TXT.setFont(labelFont.deriveFont(Font.BOLD, 22.0f));
+        TITLE_TXT.addFocusListener(focusListener);
 
         if (! ROOM_LBL.getFont().getFontName().equals("MagicMedieval")) { 
             // Make font smaller if it didn't load correctly.

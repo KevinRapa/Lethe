@@ -10,7 +10,9 @@ import A_Super.SearchableFurniture;
  * @see Observatory.Obs1_Statues
  * @author Kevin Rapa
  */
-public class Bha1_Table extends SearchableFurniture implements Openable, Moveable {
+public class Bha1_Table extends SearchableFurniture 
+        implements Openable, Moveable 
+{
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Bha1_Table(Item ... items) {
         super(items);

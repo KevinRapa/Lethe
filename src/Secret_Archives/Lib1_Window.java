@@ -1,8 +1,8 @@
 package Secret_Archives;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 
-public class Lib1_Window extends StaticWndw {
+public class Lib1_Window extends StaticWindow {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Lib1_Window() {
         super();

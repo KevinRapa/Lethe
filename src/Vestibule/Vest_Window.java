@@ -29,7 +29,7 @@ public class Vest_Window extends Window {
     @Override public String interact(String key) {
         Vest vest = (Vest)Player.getPos(); // Player must be in vesibule.
         
-        if (key.matches("open|close")) {
+        if (key.equals("open") || key.equals("close")) {
             if (this.isOpen && key.equals("close")) {
                 this.close(); 
                 vest.switchWindow();

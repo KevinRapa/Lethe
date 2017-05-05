@@ -1,8 +1,8 @@
 package Observatory;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 
-public class Obs_Window extends StaticWndw {
+public class Obs_Window extends StaticWindow {
 //-----------------------------------------------------------------------------
     public Obs_Window() {
         super();

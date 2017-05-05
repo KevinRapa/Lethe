@@ -4,6 +4,7 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import static A_Main.Names.*;
 import A_Main.Player;
+import A_Super.Direction;
 import A_Super.Item;
 import A_Super.Furniture;
 /**
@@ -26,7 +27,7 @@ public class Sear_Fissure extends Furniture {
                        + "you know how to use without breaking.";
         this.actDialog = "You couldn't manage to do that with your bare hands.";
         
-        this.addActKeys("break");
+        this.addActKeys("break", JOSTLEPATTERN, "climb|go|walk");
         this.addNameKeys("fissure", "wall", "(?:empty )?hole");
         this.addUseKeys(WARHAMMER, CROWBAR, HAMMER);
     }
@@ -35,7 +36,7 @@ public class Sear_Fissure extends Furniture {
         if (item.toString().equals(WARHAMMER)) {            
             Player.getPos().addAdjacent(Id.COU2);
             Player.getInv().remove(item);
-            Player.getInv().add(new Item("broken warhammer", "It's snapped in half.", "Well, it's useless now.", -30));
+            Player.getInv().add(new Item(BROKEN_WARHAMMER, "It's snapped in half.", "Well, it's useless now.", -30));
             AudioPlayer.playEffect(30);
             return this.useDialog;
         }
@@ -59,6 +60,17 @@ public class Sear_Fissure extends Furniture {
         return (Player.getPos().isAdjacent(Id.COU2)) ?
             "The hole leads outside. It's big enough to fit through." :
             this.description; 
+    }
+//-----------------------------------------------------------------------------
+    @Override public String interact(String key) {
+        if (key.equals("break"))
+            return this.actDialog;
+        else if (key.matches(JOSTLEPATTERN))
+            return "That's sufficiently infeasible to do without a tool.";
+        else {
+            Player.move(Direction.NORTH);
+            return NOTHING;
+        }
     }
 //-----------------------------------------------------------------------------
 }

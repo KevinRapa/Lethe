@@ -1,10 +1,10 @@
 package Attic;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 /**
  * @author Kevin Rapa
  */
-public class Att_Vents extends StaticWndw {
+public class Att_Vents extends StaticWindow {
     //-------------------------------------------------------------------------
     public Att_Vents () {
         super();

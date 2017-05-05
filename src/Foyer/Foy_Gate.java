@@ -46,7 +46,17 @@ public class Foy_Gate extends Door implements Unmoveable {
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        return this.isOpen ? this.DIALOPEN : this.actDialog;
+        if (key.equals("close"))
+            if (isOpen)
+                return "That would only impede your progress.";
+            else
+                return "The gate is closed already!";
+        else if (this.isOpen)
+            return this.DIALOPEN;
+        else if (key.equals("open") || key.equals("lift"))
+            return this.actDialog;
+        else
+            return super.interact(key);
     }
 //-----------------------------------------------------------------------------
 }

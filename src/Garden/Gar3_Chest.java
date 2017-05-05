@@ -14,7 +14,8 @@ public class Gar3_Chest extends LockedContainer {
         super(GCHS, items);
         
         this.actDialog = "It takes a small bit of force, but the rusty key manages to open the chest.";
-        this.description = "It's a wooden chest for the holding of gardening implements and other nonsense.";
+        this.description = "It's a wooden chest for the holding of gardening implements and "
+                + "other nonsense. This one has a rather large keyhole.";
         this.searchDialog = "To your dismay, the chest has been locked previously.";
         this.useDialog = "An ingenious idea. The player manages to break the lock using the drill "
                        + "with a swift jab into the keyhole.";

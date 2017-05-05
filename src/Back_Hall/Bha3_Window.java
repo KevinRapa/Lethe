@@ -1,10 +1,10 @@
 package Back_Hall;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 /**
  * @author Kevin Rapa
  */
-public class Bha3_Window extends StaticWndw {
+public class Bha3_Window extends StaticWindow {
 //-----------------------------------------------------------------------------
     public Bha3_Window() {
         super();

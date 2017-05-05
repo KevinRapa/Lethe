@@ -1286,7 +1286,10 @@ public class Map {
         Furniture obs3F = new Floor("The balconies are laid with polished brightly stained wood.");
 
         // </editor-fold>
-        // <editor-fold defaultstate="collapsed" desc="INITIALIZE JADE HALL"> 
+        // <editor-fold defaultstate="collapsed" desc="INITIALIZE JADE HALL">
+        //-----------------------------THE ROOM---------------------------------
+        Room jha1 = new Room("Jade hallway", Id.JHA1);
+        Room jha2 = new Jha2("Jade hallway", Id.JHA2); // Adds hidden door to room
         //-----------------------------FURNITURE--------------------------------  
         Furniture jhaLntrn = new Jha_Lantern();
         Furniture jha1Pntng = new Jha1_Painting();
@@ -1296,10 +1299,6 @@ public class Map {
         Furniture jhaJd = new Jha_Jade();
         Furniture jha1Ln = new Jha_Lion();
         Furniture jha2Ln = new Jha_Lion();
-        //-----------------------------THE ROOM---------------------------------
-        Room jha1 = new Room("Jade hallway", Id.JHA1);
-        Room jha2 = new Jha2("Jade hallway", Id.JHA2, jha1Ln, jha2Ln); // Adds hidden door to room
-
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE GARDENS"> 
         //-----------------------------THE ROOM---------------------------------

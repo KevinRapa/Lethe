@@ -1,8 +1,8 @@
 package Iron_Hall;
 
-import A_Super.StaticWndw;
+import A_Super.StaticWindow;
 
-public class Iha_Window extends StaticWndw {
+public class Iha_Window extends StaticWindow {
 //-----------------------------------------------------------------------------
     public Iha_Window() {
         super();
