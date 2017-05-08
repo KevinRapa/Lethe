@@ -16,6 +16,14 @@ public class Intr_Torch extends Torch_Holder implements Resetable {
             this.inv.add(TORCH);
     }   
     //------------------------------------------------------------------------- 
+    @Override public String interact(String key) {
+        if (key.equals("pull"))
+            return "Nope, nothing. Of all the torches you wanted "
+                    + "to be a disguised lever, this was the one.";
+        else
+            return super.interact(key);
+    }
+    //-------------------------------------------------------------------------
 }
 
 

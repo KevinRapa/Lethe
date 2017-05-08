@@ -21,7 +21,9 @@ public class Kitc_Torch extends Torch_Holder {
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        if (this.inv.contains(TORCH)) {
+        if (key.equals("pull"))
+            return super.interact(key);
+        else if (this.inv.contains(TORCH)) {
             if (this.inv.give(TORCH, Player.getInv())) {
                 Player.describeRoom();
                 return this.actDialog;

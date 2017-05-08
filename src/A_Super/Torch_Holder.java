@@ -28,13 +28,15 @@ public class Torch_Holder extends SearchableFurniture {
         this.actDialog = "You slide the torch out of its holder and take it.";
         this.useDialog = "You slide the torch into the steel holder.";
         
-        this.addActKeys(GETPATTERN);
+        this.addActKeys(GETPATTERN, "pull");
         this.addNameKeys("(?:wall )?torch(?:es)?", "(?:steel )?holders?");
         this.addUseKeys(HAND_TORCH);
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        if (this.inv.contains(TORCH)) {
+        if (key.equals("pull"))
+            return "If you expected the torch holder to be a disguised lever, be thoroughly disappointed.";
+        else if (this.inv.contains(TORCH)) {
             if (this.inv.give(TORCH, Player.getInv()))
                 return this.actDialog;
             else

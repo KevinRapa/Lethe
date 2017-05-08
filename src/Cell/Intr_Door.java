@@ -21,13 +21,17 @@ public class Intr_Door extends Sew_Door {
                          + "room's corner. You can't locate the source of the discomforting "
                          + "noise though.";
 
-        this.addActKeys("pry");
+        this.addActKeys("pry", "cut");
         this.addNameKeys("(?:small )?window", "(?:metal )?bars?");
     }
     //-------------------------------------------------------------------------
     @Override public String interact(String key) {
-        return (key.equals("pry")) ? 
-                "The bars are too thick to pry." : super.interact(key);
+        if (key.equals("pry"))
+            return "The bars are too thick to pry."; 
+        else if (key.equals("cut"))
+            return "Cut the bars with... what though?";
+        else
+            return super.interact(key);
     }
     //-------------------------------------------------------------------------
     @Override public String useEvent(Item item) {

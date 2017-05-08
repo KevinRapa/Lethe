@@ -23,7 +23,7 @@ public class Labo_Sink extends Furniture {
         this.useDialog = "You pour it down the drain.";
 
         this.addNameKeys("(?:square )?(?:metal )?sink");
-        this.addUseKeys("(?:chilled )?[\\w\\d]+ \\d{1,2}mL", 
+        this.addUseKeys("(?:super )*(?:chilled )?[\\w\\d]+ \\d{1,2}mL", 
                         BUCKET_OF_WATER,
                         SPRUCE_EXTRACT,
                         HOLY_WATER,
