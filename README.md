@@ -5,7 +5,7 @@ The final title is <i>Lethe</i>.
 Downloadable .zip file is here:
 <a href="https://mega.nz/#!jBhzmZ5C!foa6OZXuWj3VyIhpnUg2cTFCCwM-YYtZ-7rXin1igZw"><br>Lethe_at_mega.nz</a>
 
-<a href="https://www.youtube.com/watch?v=eakoveN4eI0"><br>A humble trailer made by a friend</a>
+<a href="https://www.youtube.com/watch?v=eakoveN4eI0">A humble trailer made by a friend</a>
 
 To play, just run Lethe.jar.
 Make sure to keep the .jar executable together with the data folder. 
