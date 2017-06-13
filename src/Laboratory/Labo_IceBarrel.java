@@ -10,7 +10,8 @@ import A_Super.Unmoveable;
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
- * Used to cool down ingredients.
+ * This is furniture found in the laboratory.
+ * Used to cool down ingredients in the alchemy puzzle.
  * Multi-threaded. Runs a thread call Chill_Thread.
  * 
  * @see Laboratory.Labo for solution
