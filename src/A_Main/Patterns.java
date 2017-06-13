@@ -69,7 +69,7 @@ LIST_P = Pattern.compile("(?:\\s*,(\\s*and\\s*)?\\s*)|(?:\\s+and\\s+)"),
 // <editor-fold desc="PATTERNS USED BY TEXT PARSER">   
         
 // These five are the most specific cases and are checked first.
-EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska"),
+EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska"), // Hey, it had to be done. The last 3 are Finnish for fun.
 DIRECTION_P = Pattern.compile("(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?|stairs)?) *(?:$|(?:the )?stairs)"),
 SUICIDE_P = Pattern.compile("(?:commit )?suicide|(?:kill|hang) (?:your)?self(?: (?:with|using).+)?"),
 COMBINE_P = Pattern.compile("combine\\s+.+"), // Anything beginning with 'combine' is a combine command       
