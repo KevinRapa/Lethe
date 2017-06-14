@@ -23,9 +23,9 @@ the screen bottom, though shortcuts are provided. For more info,
 just go to "help" by entering 'h' or 'help' at the main prompt.
 
 Examples of multi-threading (From the laboratory alchemy puzzle):
-    <a href="github.com/KevinRapa/Lethe/src/Laboratory/Labo_Dispensers.java">Chemical dispensers</a>
-    <a href="github.com/KevinRapa/Lethe/src/Laboratory/TitrationTask.java">Timer task used by the dispensers</a>
-    <a href="github.com/KevinRapa/Lethe/src/Laboratory/Labo_IceBarrel.java">Dry ice barrel which chills ingredients</a>
+    <a href="https://github.com/KevinRapa/Lethe/blob/master/src/Laboratory/Labo_Dispensers.java">Chemical dispensers</a><p>
+    <a href="https://github.com/KevinRapa/Lethe/blob/master/src/Laboratory/TitrationTask.java">Timer task used by the dispensers</a><p>
+    <a href="https://github.com/KevinRapa/Lethe/blob/master/src/Laboratory/Labo_IceBarrel.java">Dry ice barrel which chills ingredients</a><p>
     
 <a href="github.com/KevinRapa/Lethe/src/A_main/AudioPlayer.java">Audio player</a>
 <a href="github.com/KevinRapa/Lethe/src/A_main/GUI.java">GUI controller</a>
