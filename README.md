@@ -7,10 +7,9 @@ Downloadable .zip file is here:
 <a href="https://www.youtube.com/watch?v=eakoveN4eI0">A humble trailer made by a friend</a><br>
 
 To play, just run Lethe.jar.
-Make sure to keep the .jar executable together with the data folder. 
-You may move the shortcut wherever you'd like, of course.
+Make sure to keep the .jar executable together with the data folder.
 
-Make sure you have the latest version of Java before running.
+Make sure you have the latest version of Java before running, <a href="https://www.java.com/en/">available here</a>.
 This application requires a screen resolution of at least 1024 x 768 to play properly.
 
 This is a text-based game, or interactive fiction, which bridges the
