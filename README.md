@@ -22,4 +22,12 @@ allusions. The game is played by entering in commands in the field at
 the screen bottom, though shortcuts are provided. For more info, 
 just go to "help" by entering 'h' or 'help' at the main prompt.
 
+Examples of multi-threading (From the laboratory alchemy puzzle):
+    <a href="github.com/KevinRapa/Lethe/src/Laboratory/Labo_Dispensers.java">Chemical dispensers</a>
+    <a href="github.com/KevinRapa/Lethe/src/Laboratory/TitrationTask.java">Timer task used by the dispensers</a>
+    <a href="github.com/KevinRapa/Lethe/src/Laboratory/Labo_IceBarrel.java">Dry ice barrel which chills ingredients</a>
+    
+<a href="github.com/KevinRapa/Lethe/src/A_main/AudioPlayer.java">Audio player</a>
+<a href="github.com/KevinRapa/Lethe/src/A_main/GUI.java">GUI controller</a>
 
+  
