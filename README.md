@@ -28,6 +28,7 @@ Examples of multi-threading (From the laboratory alchemy puzzle):
     </ul>
     
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/AudioPlayer.java">Audio player</a><br>
-<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/GUI.java">GUI controller</a>
+<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/GUI.java">GUI controller</a><br>
+<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/Player.java">Text parser (at line 1320)</a>
 
   
