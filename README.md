@@ -29,7 +29,7 @@ Examples of multi-threading (From the laboratory alchemy puzzle):
     <li><a href="https://github.com/KevinRapa/Lethe/blob/master/src/Laboratory/Labo_IceBarrel.java">Dry ice barrel which chills ingredients</a></li>
     </ul>
     
-<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/AudioPlayer.java">Audio player</a><p>
+<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/AudioPlayer.java">Audio player</a><br>
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/GUI.java">GUI controller</a>
 
   
