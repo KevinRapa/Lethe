@@ -67,6 +67,7 @@ LIST_P = Pattern.compile("(?:\\s*,(\\s*and\\s*)?\\s*)|(?:\\s+and\\s+)"),
 // <editor-fold desc="PATTERNS USED BY TEXT PARSER">   
         
 // These five are the most specific cases and are checked first.
+        
 EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska"),
 DIRECTION_P = Pattern.compile("(?>go|walk|move|run) (?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?|stairs)?)"),
 SUICIDE_P = Pattern.compile("(?:commit )?suicide|(?:kill|hang) (?:your)?self(?: (?:with|using).+)?"),
