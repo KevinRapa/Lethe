@@ -43,7 +43,7 @@ public class Cel3_Valve extends Cel_Valve {
                 return "Let's not go crazy here. The bolt is plenty loose.";
         }
         else
-            return this.useDialog;
+            return super.useEvent(item);
     }
     //-------------------------------------------------------------------------  
 }

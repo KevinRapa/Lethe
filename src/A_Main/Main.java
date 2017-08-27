@@ -125,6 +125,7 @@ public class Main {
         GAME_FRAME.toBack();
         GAME_FRAME.pack();
 
+        // Sets up the title frame.
         TITLE_FRAME.getContentPane().add(TITLE_PANEL);
         TITLE_FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         TITLE_FRAME.setLocation(width > 1000 ? (width - 1000)/2 : 0, 100);
@@ -146,30 +147,32 @@ public class Main {
         try (ObjectInputStream gameData = new ObjectInputStream(
                 new FileInputStream(new File(W_DIR, SAVE_PATH)))) 
         {
+            // Reads game data to load a game.
             System.out.println("Data found. Loading game.");
             RoomGraph.assignCoordinates();
             Player.loadAttributes(gameData.readObject());
         } 
         catch (Exception e) {
             System.err.println(e.getMessage() + "\nCreating new game.");
-            RoomGraph.constructRoomGraph();
+            RoomGraph.constructRoomGraph(); // Sets up game map.
             
             if (args.length > 0 && (args[0].equals(Id.NULL)
                     || (startCoords = RoomGraph.getCoords(args[0])) == null))
             {
+                // If player wants to start in an invalid room.
                 System.err.println("Not a valid starting location.");
             }
             
             if (startCoords == null)
                 startCoords = RoomGraph.getCoords(START_LOCATION);
             
-            Player.setNewAttributes(startCoords);
+            Player.setNewAttributes(startCoords); // Sets up character.
             
             startDialog();
         }
         finally {
             Player.mainPrompt(); // START GAME
-            endGameProcedure();
+            endGameProcedure();  // ENDS GAME
         }
         //**********************************************************************
         // </editor-fold>  
@@ -177,6 +180,7 @@ public class Main {
     } 
 //-----------------------------------------------------------------------------
     private static void startDialog() {
+        // Short dialog that starts at the beginning of the game.
         AudioPlayer.playTrack(Id.TITL);
 
         GUI.menOut(Menus.ENTER);
@@ -199,12 +203,12 @@ public class Main {
     }
 //-----------------------------------------------------------------------------  
     public static void endGameProcedure() {
-        AudioPlayer.stopTrack();
-        AudioPlayer.disposeKeyPlayers();
-        GAME_FRAME.setVisible(false);
-        GAME_FRAME.dispose();
-        Map.disposeMap();
-        Platform.exit();
+        AudioPlayer.stopTrack();            // Stops what's playing
+        AudioPlayer.disposeKeyPlayers();    // Frees media players
+        GAME_FRAME.setVisible(false);       // Makes frame disappear
+        GAME_FRAME.dispose();               // Frees the JFrame
+        Map.disposeMap();                   // Frees the game map
+        Platform.exit();                    // Exits JavaFX
     }
 //-----------------------------------------------------------------------------   
     public static void eraseGame() {
@@ -218,6 +222,7 @@ public class Main {
         try (ObjectOutputStream gameData = new ObjectOutputStream(
                 new FileOutputStream(new File(W_DIR, SAVE_PATH)))) 
         {
+            // Successfully saves the game.
             Player.savePlayerAttributes(gameData); 
             GUI.out("Game saved");
         } 

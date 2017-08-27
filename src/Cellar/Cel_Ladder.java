@@ -23,7 +23,7 @@ public class Cel_Ladder extends Furniture implements Climbable {
         this.actDialog = "You climb " + dir + " the long ladder.";
 
         this.addNameKeys("(?:metal )?ladder", "rungs?");
-        this.addActKeys("use", dir.toString(), CLIMBPATTERN);
+        this.addActKeys("use", CLIMBPATTERN);
     }
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) {      

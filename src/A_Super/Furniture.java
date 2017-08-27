@@ -1,8 +1,11 @@
 package A_Super;
 
 import A_Main.Inventory;
+import A_Main.Patterns;
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.regex.Pattern;
 /**
  * In this game, the better term for furniture is "room object" because other
@@ -60,6 +63,19 @@ abstract public class Furniture implements Serializable {
             NOTHING_HERE = "There's nothing hiding here.",
             ANYTHING = ".+",
             NOTHING = "";
+    
+    public static final HashSet<String> ALL_ACTION_KEYS = new HashSet<>();
+    
+    static {
+        String[] actions = {
+            "use", "read", "drop", "fill", "wave", "throw", "tie", "rip", 
+            "tear", "squeeze", "search", "examine", "check", "look at", 
+        };
+        
+        for (String a : actions)
+            ALL_ACTION_KEYS.add(a);
+    }
+    
     //-------------------------------------------------------------------------
     /**
      * Constructor for furniture.
@@ -179,8 +195,17 @@ abstract public class Furniture implements Serializable {
      * @param keys A list of action keys.
      */
     public final void addActKeys(String ... keys) {
-        for (String key : keys)
+        for (String key : keys) {
             this.ACTKEYS.add(Pattern.compile(key));
+            
+            if (key.contains("|")) {
+                String[] separated = Patterns.BAR.split(key);
+                Furniture.ALL_ACTION_KEYS.addAll(Arrays.asList(separated));
+            }
+            else if (! Patterns.NON_LETTER.matcher(key).find()) {
+                Furniture.ALL_ACTION_KEYS.add(key);
+            }
+        }
     }
 //******************************************************************************        
 // </editor-fold>

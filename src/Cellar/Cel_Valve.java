@@ -25,12 +25,10 @@ public class Cel_Valve extends Furniture implements Unmoveable {
         this.loosened = false;
         this.open = false;
         
-        this.useDialog = "What crazy ideas are going through your head right now?";
-        this.searchDialog = 
-                "There's nothing hidden near the valve. Honestly, "
+        this.useDialog = "No progress is gained from hitting the valve.";
+        this.searchDialog = "There's nothing hidden near the valve. Honestly, "
                 + "you never expected to find anything.";
-        this.description = 
-                "It's a big rusty valve mounted to the wall. In the "
+        this.description = "It's a big rusty valve mounted to the wall. In the "
                 + "center is a metal bolt.";
         this.actDialog = "You tighten back up the valve. ";
         
@@ -56,8 +54,10 @@ public class Cel_Valve extends Furniture implements Unmoveable {
             return "You can loosen the bolt a little, though it does not "
                 + "seem too necessary at the moment.";
         }
-        else
+        else {
+            AudioPlayer.playEffect(35);
             return this.useDialog;
+        }
     }
 //-----------------------------------------------------------------------------
 }

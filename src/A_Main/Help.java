@@ -35,7 +35,7 @@ public final class Help {
         "<?/?/?> - A choice of ?.   "
       + "<'s' list> - 's' followed by a comma separated list.             "
       + "             Hot keys which you may find useful: Press "
-      + "shift to swap the inventory and dialog panels. The left and right "
+      + "'control' to swap the inventory and dialog panels. The left and right "
       + "arrow keys can be used to scroll up and down if scroll bars appear. "
       + "You may also use the up arrow key to browse previous input and the "
       + "down arrow key to clear the input panel. ", 

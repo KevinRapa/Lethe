@@ -87,6 +87,7 @@ public final class Names {
         GLASS_SHEET = "glass sheet",            BLUE_LENS = "blue lens",
         YELLOW_LENS = "yellow lens",            RED_LENS = "red lens",
         COMPASS = "quartz device",              BROKEN_WARHAMMER = "broken warhammer",
+        RIPPED_SHREDS = "ripped paper shreds",
             
         BIBLE = "biblical tome, 'The Book of Genesis'",
         ILIAD = "greek tome, 'The Iliad'",

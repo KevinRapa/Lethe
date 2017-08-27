@@ -15,7 +15,7 @@ public static final Pattern
 // <editor-fold desc="PATTERNS USED BY PLAYER">  
         
 // USED IN MOVE <DIRECTION> COMMANDS        
-WALK_P = Pattern.compile("go|walk|run"),
+
 // Used to identify the direction the player wants to move.
 // "down" is not present since it's the last checkd condition.        
 NORTH_P = Pattern.compile("north|forward"),
@@ -23,6 +23,7 @@ SOUTH_P = Pattern.compile("south|back(?:wards?)?"),
 EAST_P = Pattern.compile("east|right"),
 WEST_P = Pattern.compile("west|left"),
 UP_P = Pattern.compile("up(?:wards?|stairs)?"),
+DOWN_P = Pattern.compile("down(?:wards?|stairs)?"),
         
 // Indefinite reference (e.g. "Examine the pen and then throw IT")
 IT_THEM_P = Pattern.compile("it|them"),
@@ -55,9 +56,6 @@ SAVE_QUIT_RESET_P = Pattern.compile("[sr]|"),   // Used when player quits game
 // Protects from numberFormatException by restricting to 4 digits at most.
 // Matches empty strings also. Used in a menu that prompts for a digit.        
 DIGIT_OR_BLANK_P = Pattern.compile("\\d{1,4}|"), 
-        
-// Matches an ordinal direction. Works in Zork, doesn't work here!!
-INVALID_DIR_P = Pattern.compile("(?:north|south)(?:east|west)"),
 
 // A list delimited by a comma or 'and', or possibly a comma followed by 'and'.
 LIST_P = Pattern.compile("(?:\\s*,(\\s*and\\s*)?\\s*)|(?:\\s+and\\s+)"),
@@ -70,10 +68,9 @@ LIST_P = Pattern.compile("(?:\\s*,(\\s*and\\s*)?\\s*)|(?:\\s+and\\s+)"),
         
 // These five are the most specific cases and are checked first.
 EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska"),
-DIRECTION_P = Pattern.compile("(?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?|stairs)?) *(?:$|(?:the )?stairs)"),
+DIRECTION_P = Pattern.compile("(?>go|walk|move|run) (?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?|stairs)?)"),
 SUICIDE_P = Pattern.compile("(?:commit )?suicide|(?:kill|hang) (?:your)?self(?: (?:with|using).+)?"),
-COMBINE_P = Pattern.compile("combine\\s+.+"), // Anything beginning with 'combine' is a combine command       
-ZORK_P = Pattern.compile("hi|hello|hey|sup|brief|superbrief|verbose|diagnose"),
+COMBINE_P = Pattern.compile("combine\\s+.+"), // Anything beginning with 'combine' is a combine command
        
 // Matching to this likely means the player is trying to store something.        
 STORE_CMD_P = Pattern.compile("(?:put|store|pour|dump|give) [a-z0-9: ,'-]+"), 
@@ -93,11 +90,6 @@ USE_MANNER_P = Pattern.compile(" (on|against|to|at) "), // Separates item from f
          
 // Once a store command is matched, these words are fine to remove.
 STORE_SPACE_P = Pattern.compile("(?:put|store|pour|dump|give) "),
-
-// These prepositions are removed at some point, as their meanings are mostly unimportant.
-PREPOS_P = Pattern.compile("up|down|inside|(?:in|on)(?:to)?|out|off|of|over|through|against|from|around|to|at|under(?:neath)?"),
-        
-PREPOS_THEN_WORD = Pattern.compile("(?:" + PREPOS_P.toString() + ").+"),
         
 // Protects from numberFormatException by restricting to 4 digits at most.        
 ANY_DIGIT_P = Pattern.compile("\\d{1,4}"), 
@@ -165,7 +157,9 @@ NO_TELEPORT_P = Pattern.compile("LIB[45]|ESC\\d|INTR|HADS|FOR\\d|ENDG"),
         
 // Represents a dye item in the lens-making puzzle.
 DYES_P = Pattern.compile("(?:red|blue|yellow) dye"),
-
+        
+BAR = Pattern.compile("\\|"),
+NON_LETTER = Pattern.compile("[^a-z]"),
         
 // </editor-fold>
 //*****************************************************************************

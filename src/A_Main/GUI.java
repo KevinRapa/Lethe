@@ -282,7 +282,7 @@ public class GUI extends JFXPanel {
 // *****************************************************************************       
     /**
      * Collects all text not collected by the other collectors.
-     * Complicated events may send <code>null</code>.
+     * Complicated events may send an empty string which won't display.
      * @param txt dialog text.
      */
     public static void out(String txt) {
@@ -300,7 +300,7 @@ public class GUI extends JFXPanel {
 //-----------------------------------------------------------------------------    
     /**
      * Collects <code>triggeredEvent</code> return text.
-     * For triggered events that move the player, <code>null</code> is sent.
+     * For triggered events that move the player, empty string is sent.
      * @param txt <code>triggeredEvent</code> room text
      */
     public static void roomOut(String txt) {
@@ -480,7 +480,7 @@ public class GUI extends JFXPanel {
                 ENTER = KeyEvent.VK_ENTER,
                 LEFT = KeyEvent.VK_LEFT,
                 RIGHT = KeyEvent.VK_RIGHT,
-                SHIFT = KeyEvent.VK_SHIFT;
+                CTRL = KeyEvent.VK_CONTROL;
         //--------------------------------------------------------
         @Override public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
@@ -517,7 +517,7 @@ public class GUI extends JFXPanel {
         @Override public void keyTyped(KeyEvent e) {}
         //--------------------------------------------------------
         @Override public void keyReleased(KeyEvent e) {
-            if (e.getKeyCode() == SHIFT)
+            if (e.getKeyCode() == CTRL)
                 SWAP.doClick();
         }
     }
