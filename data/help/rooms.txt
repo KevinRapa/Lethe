@@ -1,0 +1,1 @@
+The castle is made of rooms separated by doors and walls. A room may be one, two, or even more areas large! Inside and outside the room are 'objects', which are any nouns in the room's description. In everyday life, we call these objects 'furniture' or 'stuff'. If you wish to see a humble image of where you are, you may enter "m" or "map" from the main prompt.

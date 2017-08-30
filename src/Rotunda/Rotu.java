@@ -86,6 +86,6 @@ public class Rotu extends Room {
         if (! Player.hasVisited(ID))
             GUI.out("\"What a foul stench of decay!\" You think to yourself as you enter this domed chamber.");
             
-        return STD_RM_OUT;
+        return NAME;
     }
 }

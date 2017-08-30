@@ -44,6 +44,6 @@ public class Labo extends Room {
             GUI.out("As you enter this room, you feel overwhelmed at the sight "
                     + "of many unknown instruments of alchemy.");
             
-        return STD_RM_OUT;
+        return NAME;
     }
 }

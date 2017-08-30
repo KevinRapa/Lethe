@@ -1,6 +1,7 @@
 package Mystical_Chamber;
 
 import A_Main.AudioPlayer;
+import A_Main.Id;
 import static A_Main.Names.IRIDESCENT_JEWEL;
 import A_Main.Player;
 import A_Super.Direction;
@@ -41,7 +42,7 @@ public class My18_Pedestal extends Furniture implements Unmoveable {
         if (item.toString().equals(IRIDESCENT_JEWEL)) {
             this.hasStone = true;
             AudioPlayer.playEffect(37);
-            Player.getPos().addFurniture(new My18_Stairs(Direction.DOWN));
+            Player.getPos().addFurniture(new My18_Stairs(Direction.DOWN, Id.CV18));
             Player.getInv().remove(item);
             ((My18)Player.getPos()).updateDesc();
 

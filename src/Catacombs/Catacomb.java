@@ -56,7 +56,7 @@ public class Catacomb extends Room {
         // Holds directions to append to descLit.
         ArrayList<String> dirs = new ArrayList<>(4);
 
-        for (String i : this.adjacent) {
+        for (String i : this.adj) {
             int[] coords = {i.charAt(2) - '0', 
                             i.charAt(3) - '0'};
 
@@ -146,7 +146,7 @@ public class Catacomb extends Room {
     }
 //-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
-        return Player.hasItem(HAND_TORCH) ? STD_RM_OUT : "???";
+        return Player.hasItem(HAND_TORCH) ? NAME : "???";
     }
 //-----------------------------------------------------------------------------
 }

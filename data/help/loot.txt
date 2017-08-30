@@ -1,0 +1,1 @@
+Whoever owns this castle must be quite powerful and wealthy, and of course such hardship that you are being put through should not go without compensation! If you have a loot sack, access it by entering 'l' at the main prompt. Items you add to it will increase or decrease your wealth. The loot sack also offers valuable storage space in addition to your inventory too.

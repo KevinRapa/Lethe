@@ -36,7 +36,7 @@ public class Foy1 extends Room{
                   + "You carefully listen for any signs of inhabitants, but "
                   + "only hear the wind whistling.");
                     
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {

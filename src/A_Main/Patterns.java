@@ -86,7 +86,7 @@ INSPECT_P = Pattern.compile("look(?! (?:on|in(?:side)?|under|around))|inspect|ex
         
 // SPECIFIC TO ITEM USE COMMANDS
 // List of all the things a player can do to an item.
-USE_ITEM_CMD_P = Pattern.compile("(?:use|read|drop|wear|remove|fill|burn|eat|swing|wave|drink|throw|destroy|break|lean|tie|rip|tear|hold|squeeze) [a-z0-9: ,'-]+"),
+USE_ITEM_CMD_P = Pattern.compile("(?>use|read|drop|wear|remove|fill|burn|eat|swing|wave|drink|throw|destroy|break|lean|tie|rip|tear|hold|squeeze) [a-z0-9: ,'-]+"),
 USE_MANNER_P = Pattern.compile(" (on|against|to|at) "), // Separates item from furniture.
          
 // Once a store command is matched, these words are fine to remove.

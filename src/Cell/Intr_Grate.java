@@ -3,6 +3,7 @@ package Cell;
 import A_Main.AudioPlayer;
 import A_Main.Id;
 import static A_Main.Names.METAL_BAR;
+import A_Main.Patterns;
 import A_Main.Player;
 import A_Super.Climbable;
 import A_Super.Direction;
@@ -16,7 +17,9 @@ import A_Super.Resetable;
  * 
  * @author Kevin Rapa
  */
-public class Intr_Grate extends Furniture implements Resetable, Gettable, Climbable {
+public class Intr_Grate extends Furniture 
+        implements Resetable, Gettable, Climbable 
+{
     private boolean opened;
     private final String MOVED_GRATE = "You've already moved the grate!";
     //-------------------------------------------------------------------------
@@ -56,9 +59,20 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable, Climba
             return Player.hasItem(METAL_BAR) ? 
                     this.useEvent(null) : "You have nothing good to pry with.";
         
-        else if (key.equals("jump") || key.matches(CLIMBPATTERN))
-            return opened ? 
-                    transport() : "You aren't going anywhere with that grate closed.";
+        else if (key.equals("jump") || key.matches(CLIMBPATTERN)) {
+            if (opened) {
+                AudioPlayer.playEffect(47);
+                Player.setOccupies(Id.ESC1);
+                return "You climb down the ladder a ways into a small noisy tunnel.";
+            }
+            else {
+                return "You aren't going anywhere with that grate closed.";
+            }
+        }
+        else if (Patterns.KEY_P.matcher(key).matches()) {
+            Player.setOccupies(key);
+            return "You climb down the ladder a ways into a small noisy tunnel.";
+        }
         else
             return getIt();
     }
@@ -75,12 +89,6 @@ public class Intr_Grate extends Furniture implements Resetable, Gettable, Climba
     //-------------------------------------------------------------------------     
     @Override public void reset() {
         this.opened = false;
-    }
-    //-------------------------------------------------------------------------     
-    private String transport() {
-        AudioPlayer.playEffect(47);
-        Player.setOccupies(Id.ESC1);
-        return "You climb down the ladder a ways into a small noisy tunnel.";
     }
     //------------------------------------------------------------------------- 
     @Override public Direction getDir() {

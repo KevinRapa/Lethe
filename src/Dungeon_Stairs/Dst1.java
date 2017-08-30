@@ -28,7 +28,7 @@ public class Dst1 extends Room{
                 Player.getLastVisited().equals(Id.SEW0))
             DungeonMonster.turnMonsterAround();
         
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------    
 }

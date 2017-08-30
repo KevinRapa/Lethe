@@ -38,7 +38,7 @@ public class Bha2 extends Room {
             GUI.out("You pace lightly down the hallway almost effortlessly. You "
                   + "break free from your state of vertigo. Before long, "
                   + "you feel as though you have reached the room's center.");
-            return STD_RM_OUT;  
+            return NAME;  
         }
     }
 //-----------------------------------------------------------------------------

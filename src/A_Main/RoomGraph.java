@@ -1,6 +1,7 @@
 package A_Main; 
 
 import static A_Main.Id.*;
+import java.util.ArrayList;
 
 import java.util.HashMap; import java.util.Arrays; import java.util.HashSet;
 /**************************************************************************** 
@@ -225,8 +226,15 @@ public class RoomGraph {
      * @param ID A room  
      * @return A list of rooms adjacent to the room. 
      */ 
-    public static HashSet<String> getAdj(String ID) { 
-        return new HashSet<>(Arrays.asList(ADJACENTS.get(ID))); 
+    public static ArrayList<String> getAdj(String ID) { 
+        ArrayList<String> result = new ArrayList(5);
+        
+        for (String s : ADJACENTS.get(ID))
+            result.add(s);
+        
+        result.trimToSize();
+        
+        return result; 
     }
     //------------------------------------------------------------------------- 
     /** 

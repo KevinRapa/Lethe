@@ -1,7 +1,5 @@
 package Chapel_Stairs;
 
-import A_Main.Id;
-import A_Main.Player;
 import A_Super.Direction;
 import A_Super.Staircase;
 /**
@@ -9,8 +7,8 @@ import A_Super.Staircase;
  */
 public class Chs1_Stairs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Chs1_Stairs (Direction direction) {
-        super(direction);
+    public Chs1_Stairs (Direction direction, String dest) {
+        super(direction, dest, 15);
         this.description = "The wide spiral stairs wind many times around the "
                          + "tower's wall. A dark red carpet follows them up.";
         this.addNameKeys("(?:circular |spiral )?stair(?:s|case)");
@@ -23,17 +21,5 @@ public class Chs1_Stairs extends Staircase {
         }
         return this.description;
     }
-//-----------------------------------------------------------------------------
-    @Override public String interact(String key) {     
-        playEffect();
-        
-        if (DIR == Direction.UP)
-            Player.setOccupies(Id.CHS3);
-        else
-            Player.setOccupies(Id.CHS1);
-        
-        return "You climb " + DIR + " the stairs.";
-    }
-//-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 }

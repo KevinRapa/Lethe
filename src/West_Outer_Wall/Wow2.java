@@ -39,6 +39,6 @@ public class Wow2 extends Room{
             GUI.out("A comfortable ambient-warmth swarms around you as "
                     + "you enter this lofty two-story chamber.");
         
-        return STD_RM_OUT;
+        return NAME;
     }
 }

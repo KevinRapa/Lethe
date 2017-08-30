@@ -6,8 +6,10 @@ import A_Super.*;
 import Foyer.LootSack;
 
 import java.util.Scanner;           import java.util.ArrayList;
-import java.util.HashMap;           import java.io.IOException;
-import Tunnels.DungeonMonster;      import java.io.Serializable;
+import java.util.HashMap;           import java.io.*;
+import Tunnels.DungeonMonster;
+
+import java.io.Serializable;
 import java.io.ObjectOutputStream;  import java.util.HashSet;
 import java.util.LinkedList;
 /**
@@ -162,7 +164,7 @@ public final class Player {
         MAIN_CMDS.put("swim",   () -> GUI.out("You are not the greatest swimmer."));
         MAIN_CMDS.put("relax",  () -> GUI.out("You can hardly relax standing up."));
         MAIN_CMDS.put("sleep",  () -> GUI.out("You decide to rest your eyes standing for a brief period. An unknown amount of time passes."));
-        
+
         MAIN_CMDS.put("xyzzy",     () -> {
             GUI.out("A hollow clown says surprise."); 
             GUI.randomizeColors();
@@ -465,7 +467,7 @@ public final class Player {
             GUI.out("Your humble life as a tradesman knows not how to move " + dir + ".");
         }
         else if (! getPos().isAdjacent(dest.getID())) {
-            // There's a non-door barrier in the way
+            // There's a non-door barrier in the way.
             GUI.out(getPos().getBarrier(dir));
         }  
         else if (dest.isLocked() && ! hasKey(dest.getID())) {
@@ -481,14 +483,11 @@ public final class Player {
             String destId = dest.getID();
             Map.updateMap();
 
-            if (dir == Direction.UP || dir == Direction.DOWN) {
-                // Do nothing. Let the stairs play the noise.
-            }
-            else if (dest.isLocked() && ! visited.contains(destId)) {
+            if (dest.isLocked() && ! hasVisited(destId)) {
                 AudioPlayer.playEffect(13); // Plays unlock sound.
             }
             else if (Player.pos[0] < 5  && // If you're not in catacombs or caves.
-                     ! Id.areaName(destId).equals(Id.areaName(lastVisited))) 
+                     ! destId.startsWith(lastVisited.substring(0,3)))
             {
                 if (Player.pos[0] == 4 || CS35_CT34_P.matcher(destId).matches())
                     // Checks if player is in dungeon area- metal door sound.
@@ -497,7 +496,7 @@ public final class Player {
                     AudioPlayer.playEffect(9); // Wooden door sound. 
             }
             else if (Player.pos[0] >= 5  &&
-                    ! destId.substring(0,2).matches(lastVisited.substring(0,2)))
+                    ! destId.startsWith(lastVisited.substring(0,2)))
             {
                 AudioPlayer.playEffect(9); // Wood door sound in catacombs.
             }
@@ -510,6 +509,20 @@ public final class Player {
             if (! hasVisited(destId)) 
                 visited.add(destId);  
         }
+    }
+    private static void findStaircase(Direction dir) {
+        for (Furniture f : getPos().getFurnishings()) {
+            if (f instanceof DoubleStaircase) {
+                GUI.out(f.interact(dir.toString()));
+                return;
+            }
+            if (f instanceof Climbable && ((Climbable)f).getDir() == dir) {
+                GUI.out(f.interact("climb"));
+                return;
+            }
+        }
+            
+        GUI.out("There's nothing here to take you " + dir + ".");
     }
     //-------------------------------------------------------------------------  
     /**
@@ -863,21 +876,6 @@ public final class Player {
             GUI.out("There is no " + object + " here that you can see. Or are "
                   + "we perhaps being lazy and attempting to pick up items that "
                   + "aren't mentioned in the room description?"); 
-    }
-    //-------------------------------------------------------------------------  
-    private static void findStaircase(Direction dir) {
-        // Finds furniture in the room that will move the player up or down.
-        for (Furniture f : getPos().getFurnishings()) {
-            if (f instanceof DoubleStaircase) {
-                GUI.out(f.interact(dir.toString()));
-                return;
-            }
-            if (f instanceof Climbable && ((Climbable)f).getDir() == dir) {
-                GUI.out(f.interact("climb"));
-                return;
-            }
-        }
-        GUI.out("There's nothing here to take you " + dir + ".");
     }
     //-------------------------------------------------------------------------
     private static void openLootSack() {

@@ -1,0 +1,1 @@
+'Furniture' or more appropriately 'room objects' are any nouns in the room description. This means you can interact with them from the main prompt.

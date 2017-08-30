@@ -31,7 +31,7 @@ public class Intr extends Room {
                     + "some effort, and then take notice of a rattling noise. "
                     + "There's something, some kind of creature, wandering the halls outside...");
         
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------
 }

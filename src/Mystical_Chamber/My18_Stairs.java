@@ -7,8 +7,8 @@ import A_Super.Staircase;
  */
 public class My18_Stairs extends Staircase {
     //-------------------------------------------------------------------------
-    public My18_Stairs (Direction direction) {
-        super(direction);
+    public My18_Stairs(Direction direction, String dest) {
+        super(direction, dest, 15);
         this.description = "The sandstone spiral staircase wraps around the central "
                          + "pillar " + (direction == Direction.DOWN ? "down into "
                          + "a dark void." : "up into the round chamber.");

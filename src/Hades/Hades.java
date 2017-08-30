@@ -34,7 +34,7 @@ public class Hades extends Room {
 //-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (! Player.hasVisited(ID)) {
-            GUI.roomOut(STD_RM_OUT);
+            GUI.roomOut(NAME);
             GUI.clearDialog();
             GUI.descOut(END_DIALOG);
             GUI.menOut(Menus.ENTER);
@@ -47,7 +47,7 @@ public class Hades extends Room {
             Player.describeRoom();
         }
         
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------
     private String calculateScore(int score) {

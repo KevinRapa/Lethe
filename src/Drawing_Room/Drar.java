@@ -21,7 +21,7 @@ public class Drar extends Room {
             GUI.out("From across the room, an apparition stares at you with "
                    + "open eyes. You freeze and meet its stare with your own.");
           
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------   
     @Override public String getDescription() {

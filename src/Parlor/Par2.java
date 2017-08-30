@@ -35,7 +35,7 @@ public class Par2 extends Room{
                   + "Startled, you spin around and miss a breath. You are alone.");
             Player.getRoomObj(Id.FOY3).lock();
         }    
-        return STD_RM_OUT;
+        return NAME;
     }
 //----------------------------------------------------------------------------- 
     @Override public String getBarrier(Direction dir) {

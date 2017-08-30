@@ -29,7 +29,7 @@ public class An55 extends Room {
                   + "You freeze and stare. The figure stands perfectly still, "
                   + "his mouth gaping and eyeless face pointed right at you.");
             
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------
 }

@@ -480,7 +480,7 @@ public class GUI extends JFXPanel {
                 ENTER = KeyEvent.VK_ENTER,
                 LEFT = KeyEvent.VK_LEFT,
                 RIGHT = KeyEvent.VK_RIGHT,
-                CTRL = KeyEvent.VK_CONTROL;
+                ALT = KeyEvent.VK_ALT;
         //--------------------------------------------------------
         @Override public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
@@ -517,7 +517,7 @@ public class GUI extends JFXPanel {
         @Override public void keyTyped(KeyEvent e) {}
         //--------------------------------------------------------
         @Override public void keyReleased(KeyEvent e) {
-            if (e.getKeyCode() == CTRL)
+            if (e.getKeyCode() == ALT)
                 SWAP.doClick();
         }
     }
@@ -553,9 +553,10 @@ public class GUI extends JFXPanel {
 //-----------------------------------------------------------------------------
     private class Button_Listener implements ActionListener {
         private boolean swapped = false;
-        private final Component[] COMP_LIST_1 =
-            {SWAP, MUTE, KEYS, COLOR1, COLOR2, 
-                ROOM_LBL, MOVE_LBL, SCORE_LBL, TITLE_TXT};
+        private final Component[] COMP_LIST_1 = {
+            SWAP, MUTE, KEYS, COLOR1, COLOR2, ROOM_LBL, MOVE_LBL, 
+            SCORE_LBL, TITLE_TXT
+        };
         
         @Override public void actionPerformed(ActionEvent push) { 
             Object o = push.getSource();

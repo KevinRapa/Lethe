@@ -22,7 +22,7 @@ public class Mha1 extends Room{
                   + "figure passing through a door in the middle of the "
                   + "hallway.");
         }    
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------  
 }

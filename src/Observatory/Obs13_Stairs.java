@@ -1,13 +1,12 @@
 package Observatory;
 
-import A_Main.AudioPlayer;
 import A_Super.Direction;
 import A_Super.Staircase;
 
 public class Obs13_Stairs extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Obs13_Stairs (Direction direction) {
-        super(direction);
+    public Obs13_Stairs (Direction direction, String dest) {
+        super(direction, dest, 14);
         this.description = "The spiral staircase sits in a round alcove carved "
                          + "into the wall to the southeast and leads up to a long, "
                          + "wide balcony on the second floor.";
@@ -16,15 +15,11 @@ public class Obs13_Stairs extends Staircase {
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
         if (this.DIR == Direction.DOWN) {
-            return "The spiral staircase sits in a round alcove carved "
-                 + "into the wall to the southeast and leads down to the first "
-                 + "floor.";
+            return "The straight set of wood steps lack supports and extend "
+                    + "from the north wall. They lead down to the low-eastern "
+                    + "balcony.";
         }
         return this.description;
-    }
-//-----------------------------------------------------------------------------
-    @Override protected void playEffect() {
-        AudioPlayer.playEffect(14);
     }
 //-----------------------------------------------------------------------------
 }

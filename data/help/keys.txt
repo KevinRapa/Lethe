@@ -1,0 +1,1 @@
+Keys get added to your keyring automatically upon picking up, and you may not rid yourself of them. Key are used to enter locked rooms and unlock things like cabinets and chests. Take note that a key is not necessarily needed to enter a locked room! In this game, you needn't attempt to unlock a door if you have a key. This is done automatically for you.

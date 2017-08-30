@@ -37,7 +37,7 @@ public class Kitc extends Room{
             GUI.out("As you step in, a fetid stench immediately infiltrates your senses. "
                   + "You gag a few times before attuning your yourself to the wretched odor.");
             
-        return TORCH_INV_REF.size() != 0 ? STD_RM_OUT : "Pitch black room";
+        return TORCH_INV_REF.size() != 0 ? NAME : "Pitch black room";
     }
 //-----------------------------------------------------------------------------
 }

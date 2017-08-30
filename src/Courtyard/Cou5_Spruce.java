@@ -1,6 +1,7 @@
 package Courtyard;
 
 import A_Main.AudioPlayer;
+import A_Main.Id;
 import A_Main.Player;
 import static A_Main.Names.*;
 import A_Super.Climbable;
@@ -91,7 +92,14 @@ public class Cou5_Spruce extends SearchableFurniture
                 return "You have nothing to drill into it with.";
         }
         else if (action.matches(CLIMBPATTERN)) {
-            Player.move(dir);
+            switch (this.dir) {
+                case UP:
+                    Player.setOccupies(Id.COU8);
+                    break;
+                default:
+                    Player.setOccupies(Id.COU5);
+
+            }
             return this.actDialog;
         }
         else if (action.equals("swing"))

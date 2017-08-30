@@ -38,7 +38,7 @@ public class My18 extends Room {
         if (Player.getLastVisited().equals(Id.CV18))
             Cave.stopClip();
         
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------
 }

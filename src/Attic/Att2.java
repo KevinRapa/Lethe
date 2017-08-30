@@ -23,7 +23,7 @@ public class Att2 extends Room {
                   + "around, but see only darkness.");
         }
         
-        return this.STD_RM_OUT;
+        return this.NAME;
     }
 //-----------------------------------------------------------------------------
 }

@@ -53,6 +53,6 @@ public class Sewp extends Dungeon_Tunnel {
                   + "a larger area which you believe to be the source of the "
                   + "unsettling noise.");
             
-        return STD_RM_OUT;
+        return NAME;
     }
 }           

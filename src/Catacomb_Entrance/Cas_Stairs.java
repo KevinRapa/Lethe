@@ -7,8 +7,8 @@ import A_Super.Staircase;
  */
 public class Cas_Stairs extends Staircase {
     //-------------------------------------------------------------------------
-    public Cas_Stairs (Direction dir) {
-        super(dir);
+    public Cas_Stairs (Direction dir, String dest) {
+        super(dir, dest, 15);
         
         this.description = "The two curved stone staircases both lead " + dir + ".";
 

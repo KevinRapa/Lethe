@@ -23,6 +23,6 @@ public class Bls2 extends Room {
         if (! Player.hasVisited(ID))
             GUI.out("The throbbing in your head intensifies.");
             
-        return STD_RM_OUT;
+        return NAME;
     }
 }

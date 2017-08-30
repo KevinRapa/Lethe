@@ -1,0 +1,1 @@
+Access your inventory by entering "i" from the main prompt. Your inventory's contents will be listed. From here, you may inspect, use, and combine items. You may also sort your inventory by entering "sort" from the inventory or from the main prompt. Keep in mind that for anything you can do from the inventory, you can also accomplish directly from the main prompt.

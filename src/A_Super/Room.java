@@ -1,14 +1,13 @@
 package A_Super;
 
-import static A_Main.Names.W_DIR;
-import static A_Main.Names.SEP;
+import static A_Main.Names.W_DIR;   import static A_Main.Names.SEP;
 import static A_Main.Names.DATA;
-import A_Main.AudioPlayer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.io.*;
-import A_Main.RoomGraph;
-import java.util.HashSet;
+
+import A_Main.AudioPlayer;      import A_Main.RoomGraph;
+import java.util.ArrayList;     import java.util.Arrays;
+import java.io.BufferedReader;  import java.io.FileReader;
+import java.io.IOException;     import java.io.Serializable;
+
 /**
  * <p>
  * Represents one element in the game map array. 
@@ -41,22 +40,19 @@ public class Room implements Serializable {
             PATH = W_DIR + SEP + DATA + SEP + "desc" + SEP,
             WALL_BARRIER = "There is a wall that way.",
             EXT = ".txt";
-    protected final String 
-            NAME, ID,                     // The name and unique ID of the room.
-            STD_RM_OUT;                   // Prints where you are.
-    protected final int[] COORDS;         // Index coordinates of this room.
-    protected boolean locked;             // You cannot move into a locked room.
-    private transient String description; // Description of the room.
-    protected HashSet<String> adjacent;   // Rooms one could move to from this.
-    protected ArrayList<Furniture> furn;  // Holds furniture.
+    protected final String NAME, ID;     // The name and unique ID of the room.
+    protected final int[] COORDS;        // Index coordinates of this room.
+    protected boolean locked;            // You cannot move into a locked room.
+    private transient String desc;       // Description of the room.
+    protected ArrayList<String> adj;     // Rooms one could move to from this.
+    protected ArrayList<Furniture> furn; // Holds furniture.
     // CONSTRUCTOR ============================================================
     public Room(String name, String ID) {  
-        this.NAME = name;
         this.ID = ID;
-        this.STD_RM_OUT = name;
+        this.NAME = name;
         this.locked = false;
         this.COORDS = RoomGraph.getCoords(this.ID); 
-        this.adjacent = RoomGraph.getAdj(this.ID);
+        this.adj = RoomGraph.getAdj(this.ID);
         // Gets the room's description from a file.
     }
 //******************************************************************************
@@ -75,13 +71,13 @@ public class Room implements Serializable {
     } 
     //-------------------------------------------------------------------------
     public String getDescription() {
-        if (this.description == null) 
+        if (this.desc == null) {
             if (this instanceof Catacombs.Catacomb)
-                this.description = readDescription("CT" + EXT);
+                this.desc = readDescription("CT" + EXT);
             else
-                this.description = readDescription(this.ID + EXT);
-        
-        return this.description;
+                this.desc = readDescription(this.ID + EXT);
+        }
+        return this.desc;
     }
     //-------------------------------------------------------------------------
     /**
@@ -152,7 +148,8 @@ public class Room implements Serializable {
      * @param roomID A room to be added to adjacent.
      */
     public final void addAdjacent(String roomID) {
-        this.adjacent.add(roomID);
+        if (! this.adj.contains(roomID))
+            this.adj.add(roomID);
     }
     //-------------------------------------------------------------------------
     /**
@@ -160,7 +157,7 @@ public class Room implements Serializable {
      * @param roomID A room to remove from adjacent.
      */
     public final void removeAdjacent(String roomID) {
-        this.adjacent.remove(roomID);
+        this.adj.remove(roomID);
     }
     //-------------------------------------------------------------------------
     public final void removeFurniture(Furniture removeThis) {
@@ -172,6 +169,7 @@ public class Room implements Serializable {
             this.furn = new ArrayList<>(furnishings.length);
             
         this.furn.addAll(Arrays.asList(furnishings));
+        this.furn.trimToSize();
     }
 //******************************************************************************    
 // </editor-fold>  
@@ -186,7 +184,7 @@ public class Room implements Serializable {
      * @return A string default that says which room you are in.
      */
     public String triggeredEvent() {
-        return STD_RM_OUT;
+        return NAME;
     }
     //-------------------------------------------------------------------------
     public boolean isLocked() {
@@ -201,7 +199,7 @@ public class Room implements Serializable {
      * @return If room is adjacent to this one.
      */
     public boolean isAdjacent(String destination) {
-        return this.adjacent.contains(destination); 
+        return this.adj.contains(destination);
     } 
     //-------------------------------------------------------------------------
     /**

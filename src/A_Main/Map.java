@@ -25,7 +25,9 @@ import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
 import Soul_Chamber.*;     import Hades.*;              import Cellar.*;
 import Forest.*;
 
-import java.awt.Color;     import javax.swing.JPanel;   import javax.swing.ImageIcon;   
+import java.awt.Color;
+
+import javax.swing.JPanel;   import javax.swing.ImageIcon;   
 import javax.swing.JFrame; import javax.swing.JLabel;  
 
 /**
@@ -384,14 +386,14 @@ public class Map {
 
         Furniture foy2Stat = new Foy2_Stat(foy2Bttn);
         Furniture foy2Alc = new Foy2_Alcove(foy2Stat);
-        Furniture foy2Strcs = new Foy2_Staircase(Direction.UP);
+        Furniture foy2Strcs = new Foy2_Staircase(Direction.UP, Id.FOY3);
 
         Furniture foy3Strs = new Foy3_Stairs();
         Furniture foy3F = new Floor("The floor is a salmon-colored tile run with a red carpet, "
                 + "which continues along the staircase.");
         Furniture foy34Crpt = new Foy34_Carpet();
 
-        Furniture foy4Strs = new Foy2_Staircase(Direction.DOWN);
+        Furniture foy4Strs = new Foy2_Staircase(Direction.DOWN, Id.FOY3);
         Furniture foy4F = new Floor("The floor is a salmon-colored tile run with a red carpet, "
                 + "which continues along the staircase.");
         Furniture foy4Dr = new Foy4_Door(Direction.SOUTH);
@@ -466,7 +468,7 @@ public class Map {
         Furniture cou2Bshs = new Cou2_Bushes(brrs);
         Furniture cou2F = new Cou_Floor(sl, grss, clvr, sl, sl, sl);
 
-        Furniture cou3Stps = new Cou3_Steps(Direction.UP);
+        Furniture cou3Stps = new Cou3_Steps(Direction.UP, Id.COU7);
         Furniture cou3Ivy = new Cou3_Ivy();
         Furniture cou3Gt = new Cou3_Gate();
         Furniture cou3F = new Cou_Floor(sl, grss, clvr, sl, sl);
@@ -497,7 +499,7 @@ public class Map {
         Furniture entrRf = new Entr_Roof();
         Furniture entrStats = new Entr_Statues();
         Furniture entrDr = new Entr_Door(Direction.NORTH);
-        Furniture entrStps = new Cou3_Steps(Direction.DOWN);
+        Furniture entrStps = new Cou3_Steps(Direction.DOWN, Id.COU3);
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE FOREST">
         //-----------------------------THE ROOM---------------------------------
@@ -705,7 +707,7 @@ public class Map {
         Item scrw5 = new Item("5mm screw", "Just a small screw.", 15);
         //-----------------------------FURNITURE--------------------------------
         Furniture closDr = new Wow2_Door(Direction.WEST);
-        Furniture closLddr = new Gqua_Ladder(Direction.DOWN);
+        Furniture closLddr = new Gqua_Ladder(Direction.DOWN, Id.COUS);
         Furniture closClng = new Gqua_Ceiling();
         Furniture closF = new Floor("It's a cold, hard, cobblestone floor", closStrw);
         Furniture closScks = new Gqua_Sacks(sd, sd, sd, frt, frt, frt, snd, snd, snd, snd, snd);
@@ -776,7 +778,7 @@ public class Map {
         Furniture searAsh = new Sear_Ash(ash);
         Furniture searWood = new Sear_Wood(wd);
         Furniture searSkltn = new Sear_Skeleton(closCrwbr);
-        Furniture searLddr = new Gqua_Ladder(Direction.UP);
+        Furniture searLddr = new Gqua_Ladder(Direction.UP, Id.CLOS);
         Furniture searF = new Floor("It's a cold, hard, cobblestone floor", ash, wd, ash, wrhmmr, wd, ash);
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE STUDY">
@@ -828,7 +830,7 @@ public class Map {
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE GALLERY">
-        Furniture gal3Lddr = new Gal3_Ladder(Direction.UP);
+        Furniture gal3Lddr = new Gal3_Ladder();
         Furniture gal3Rp = new Gal3_Rope(gal3Lddr);
         //-----------------------------THE ROOM---------------------------------    
         Room gal1 = new Gal1("First floor gallery", Id.GAL1);
@@ -897,14 +899,14 @@ public class Map {
         Furniture galBalc = new Gal_Balcony();
         Furniture gal2F = new Floor("This room's floor is magnificent. It's solid marble and resembles a giant compass.");
         Furniture gal2W = new Wall("The wall here is an ornate white-paneled wood.");
-        Furniture gal2Strcs = new Gal2_Staircase(Direction.UP);
+        Furniture gal2Strcs = new Gal2_Staircase(Direction.UP, Id.GAL4);
         
         Furniture gal4Glss = new Gal4_Glass();
         Furniture gal4Cs = new Gal4_Case(monaLisa);
         Furniture gal4Lck = new Gal4_Padlock(gal4Cs);
         Furniture gal4Dr = new Gal4_Door(Direction.NORTH);
         Furniture gal4Lft = new Gal4_Loft();
-        Furniture gal4Strcs = new Gal2_Staircase(Direction.DOWN);
+        Furniture gal4Strcs = new Gal2_Staircase(Direction.DOWN, Id.GAL2);
         Furniture gal4Rdo = new Gal4_Radio(scrw1);
         Furniture gal4F = new Floor("The floor here is checkered gray and tan in a smooth rock. Running along the floor around the balcony is a royal blue carpet-runner.");
         Furniture gal4Crpt = new Gal4_Carpet();
@@ -912,7 +914,7 @@ public class Map {
 
         Furniture gal6Htch = new Gal6_Hatch();
         Furniture gal6Cnn = new Gal6_Canon(gal7Stat);
-        Furniture gal6Lddr = new Gal6_Ladder(Direction.DOWN);
+        Furniture gal6Lddr = new Gal6_Ladder();
         Furniture gal6Hlmt = new Gal6_Helmet();
         Furniture gal6Mchn = new Gal6_Machine();
         Furniture gal6Bttn = new Gal6_Button();
@@ -946,7 +948,7 @@ public class Map {
         Furniture din1Mnlght = new Din1_Moonlight();
         Furniture din1Crvc = new Din1_Crevice(aphrdtPlt);
         Furniture din1Tpstry = new Din1_Tapestry(din1Crvc);
-        Furniture din1Strs = new Din1_Stairs(Direction.UP);
+        Furniture din1Strs = new Din1_Stairs(Direction.UP, Id.DIN2);
         Furniture din1Crpt = new Din1_Carpet();
         Furniture din1F = new Floor("The floor is a light gray stone. A large rectangular "
                                   + "lavender carpet covers much of it.");
@@ -956,7 +958,7 @@ public class Map {
         Furniture din2F = new Floor("The floor is laid with square light-gray tiles.");
         Furniture din2W = new Wall("The walls up here are smooth rock paneled on the lower half with vertical wooden slats.");
         Furniture din2Pntng = new Din2_Painting();
-        Furniture din2Strs = new Din1_Stairs(Direction.DOWN);
+        Furniture din2Strs = new Din1_Stairs(Direction.DOWN, Id.DIN1);
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE MARBLE HALL">
         //-----------------------------THE ROOM---------------------------------
@@ -1048,13 +1050,13 @@ public class Map {
         Furniture eow2Fntn = new Eow2_Fountain();
         Furniture wtr = new Water(wtrBckt);
         Furniture eow2Rck = new Eow1_Rack(eowSwrd1, eowSwrd2, eowSSpr, woodSpr, eowBtlAx);
-        Furniture eow2Strs = new Eow2_Stairs(Direction.UP);
+        Furniture eow2Strs = new Eow2_Stairs(Direction.UP, Id.EOW4);
         Furniture eow2Blcny = new Eow2_Balcony();
         Furniture eow2Cbnt = new Eow2_Cabinet(bckt, shaMp, shvl, vinegar);
         Furniture eow2Trch = new Torch_Holder(torch);
 
         Furniture eow4F = new Floor("It's a sandstone tiled floor.");
-        Furniture eow4Strs = new Eow2_Stairs(Direction.DOWN);
+        Furniture eow4Strs = new Eow2_Stairs(Direction.DOWN, Id.EOW2);
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE LIBRARY">
         Furniture lib4Tbl = new Lib4_Table("table", fnnyOrb);
@@ -1105,7 +1107,7 @@ public class Map {
         Furniture lib2Wndw = new Lib2_Window();
 
         Furniture lib3Pllr = new Lib_Pillar();
-        Furniture lib3Strs = new Lib3_Stairs();
+        Furniture lib3Strs = new Lib_Stairs(Direction.UP, Id.LIB4);
         Furniture lib3Crtn = new Lib3_CreationShelf(ody, bkGlsswr);
         Furniture lib3Blcny = new Lib_Balcony();
         Furniture lib3Wndw = new Lib3_Window();
@@ -1116,7 +1118,7 @@ public class Map {
         Furniture lib4Prdtn = new Lib4_PerditionShelf(ili, bkNts);
         Furniture lib4Glb = new Lib4_Globe();
         Furniture lib4Stat = new Lib4_Statue();
-        Furniture lib4Strs = new Lib4_Stairs();
+        Furniture lib4Strs = new Lib_Stairs(Direction.DOWN, Id.LIB3);
 
         Furniture lib5Bnshmnt = new Lib5_BanishmentShelf(bbl);
         Furniture lib5Cndlbr = new Lib5_Candelabra(cndl);
@@ -1218,7 +1220,7 @@ public class Map {
         Room dst1 = new Dst1("Eerie chamber", Id.DST1);
         //-----------------------------FURNITURE--------------------------------
         Furniture dst1Dr = new Eow1_Door(Direction.EAST);
-        Furniture dst1Strs = new Dst1_Stairs(Direction.DOWN);
+        Furniture dst1Strs = new Dst1_Stairs();
         Furniture dstW = new Wall("The walls in here are a mossy cobblestone.");
         Furniture dst1F = new Floor("The stone floor is mossy and dank from the humidity.");
         Furniture dst1Lntrn = new Dst1_Lantern();
@@ -1265,7 +1267,7 @@ public class Map {
         Furniture obsW = new Wall("The walls are mahogany wood paneled, "
                 + "with each panel bearing a large round cavity displaying a painted constellation.");
         Furniture obsWndw = new Obs_Window();
-        Furniture obs1Strs = new Obs13_Stairs(Direction.UP);
+        Furniture obs1Strs = new Obs13_Stairs(Direction.UP, Id.OBS2);
         Furniture obs1Tlscp = new Obs1_Telescope(gr, mchnPc, glssLns);
         Furniture obs1Lmp = new Obs1_Lamp();
         Furniture obs1St = new Obs1_Seat(obs1Nt);
@@ -1280,7 +1282,7 @@ public class Map {
         Furniture obs2Lmp = new Obs2_Lamp();
         Furniture obs2F = new Floor("The balconies are laid with polished brightly stained wood.");
 
-        Furniture obs3Strs = new Obs13_Stairs(Direction.DOWN);
+        Furniture obs3Strs = new Obs13_Stairs(Direction.DOWN, Id.OBS2);
         Furniture obs3Chst = new Obs3_Chest(psdnPlt);
         Furniture obs3Tlscps = new Obs3_Telescopes();
         Furniture obs3F = new Floor("The balconies are laid with polished brightly stained wood.");
@@ -1368,7 +1370,7 @@ public class Map {
         Furniture par1FrPlc = new Par1_FirePlace(bckt, enchntdBttl);
         Furniture par1Dr = new Par1_Door(enchntdBttl, Direction.NORTH);
         Furniture par1EnchntTbl = new Par1_EnchantingTable(enchntdBttl, bttl, chs1Key, parLchNt);
-        Furniture par1Strs = new Par_Stairs(Direction.UP);
+        Furniture par1Strs = new Par_Stairs(Direction.UP, Id.PAR2);
         Furniture par1Pllrs = new Par1_Pillars();
         Furniture par1Hrp = new Par1_Harp(par1Orb);
         Furniture par1Shlf = new Wow3_Shelf(hndDrll, athr, parBkEncht, frSlts);
@@ -1377,7 +1379,7 @@ public class Map {
         Furniture par2F = new Floor("It's a sandstone tiled floor, much like that in the west wing. "
                 + "The floor here does appear noticeably cleaner and more refined, however.");
         Furniture par2Wndw = new Par2_Window();
-        Furniture par2Strs = new Par_Stairs(Direction.DOWN);
+        Furniture par2Strs = new Par_Stairs(Direction.DOWN, Id.PAR1);
         Furniture par2Bwl = new Par2_Bowl();
         Furniture par2Frplc = new Par2_Fireplace();
         Furniture par2Pno = new Par2_Piano(par1Orb, stlWr);
@@ -1390,8 +1392,8 @@ public class Map {
         Room sst1 = new Room("Secret stairwell", Id.SST1);
         Room sst2 = new Room("Small landing", Id.SST2);  
         //-----------------------------FURNITURE--------------------------------  
-        Furniture sst1Strs = new Sst_Stairs(Direction.UP);
-        Furniture sst2Strs = new Sst_Stairs(Direction.DOWN);
+        Furniture sst1Strs = new Sst_Stairs(Direction.UP, Id.SST2);
+        Furniture sst2Strs = new Sst_Stairs(Direction.DOWN, Id.SST1);
         Furniture sstLndng = new Sst_Landing();
         Furniture sst1F = new Floor("The flooring in here is rudimentary. Just gray weathered planks of wood.");
         Furniture sst2F = new Floor("The flooring in here is rudimentary. Just gray weathered planks of wood.");
@@ -1673,7 +1675,7 @@ public class Map {
         Room cas1 = new Cas1("Catacombs access", Id.CAS1);      
         //-----------------------------FURNITURE-------------------------------- 
         Furniture casW = new Wall("The walls are large granite blocks reflecting a flickering bluish hue from the flame.");
-        Furniture casStrs = new Cas_Stairs(Direction.DOWN);
+        Furniture casStrs = new Cas_Stairs(Direction.DOWN, Id.CS35);
         Furniture casF = new Floor("The floor is comprised of many large blocks, illuminated blue from the fire.");
 
         // </editor-fold>
@@ -1879,7 +1881,7 @@ public class Map {
         Furniture cs35F = new Floor("The floor is comprised of many large blocks, illuminated blue from the fire.");
         Furniture cs35Trchs = new Cs35_Torches();
         Furniture cs35Stat = new Cs35_Statue();
-        Furniture cs35Strs = new Cas_Stairs(Direction.UP);
+        Furniture cs35Strs = new Cas_Stairs(Direction.UP, Id.CAS1);
         // </editor-fold>
 
         // </editor-fold>
@@ -1917,7 +1919,7 @@ public class Map {
         cv67 = new Cave(Id.CV67, cw, cc), cv68 = new Cave(Id.CV68, cw, cc),
         cv64 = new Cave(Id.CV64, cw, cc);
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture cv18Strs = new My18_Stairs(Direction.UP);
+        Furniture cv18Strs = new My18_Stairs(Direction.UP, Id.MY18);
         Furniture omnDr = new OminousDoor(Direction.EAST);
         Furniture dmmyFurniture = new Dummy_Furniture();
         Furniture factum = new FactumDummy(factumPhy);
@@ -1936,11 +1938,11 @@ public class Map {
         Furniture chsWndws = new Chs_Windows("windows");
         Furniture chsW = new Wall("The walls are clean, paneled in white and orange with gold leaf accents.");
 
-        Furniture chs1Strs = new Chs1_Stairs(Direction.UP);
+        Furniture chs1Strs = new Chs1_Stairs(Direction.UP, Id.CHS3);
         Furniture chs1F = new Floor("The dark red carpet covers the whole floor. It's a bit dusty from neglect.");
         Furniture chs1Stat = new Chs1_Statue();
 
-        Furniture chs3Strs = new Chs1_Stairs(Direction.DOWN);
+        Furniture chs3Strs = new Chs1_Stairs(Direction.DOWN, Id.CHS1);
         Furniture chs3F = new Floor("The dark red carpet covers the whole floor. It's a bit dusty from neglect.");
 
         // </editor-fold>
@@ -2010,11 +2012,11 @@ public class Map {
 
         Furniture bls1Stat = new Bls1_Statue();
         Furniture bls1Dr = new AtriumDoor(Direction.EAST);
-        Furniture bls1Strs = new Bls_Staircase(Direction.UP);
+        Furniture bls1Strs = new Bls_Staircase(Direction.UP, Id.BLS2);
         Furniture bls1_Plnts = new Bls1_Plants(sl, onyxFrag3);
         Furniture bls1F = new Floor("The floor is a gray mosaic formed from many tiny pieces of glossy ceramic.");
 
-        Furniture bls2Strs = new Bls_Staircase(Direction.DOWN);
+        Furniture bls2Strs = new Bls_Staircase(Direction.DOWN, Id.BLS1);
         Furniture bls2F = new Floor("The floor is iron lattice.");
 
         // </editor-fold>

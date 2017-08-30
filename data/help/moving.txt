@@ -1,0 +1,1 @@
+In this game, you may move in six directions; north, south, east, west, up, and down. For your convenience, the shortcuts for the first four of these are 'w', 's', 'd', and 'a'. After all, you may find yourself fatigued after typing words for such a long time. Your job right now is to explore, not write an essay! Of course, my job is not to impose on your freedom.

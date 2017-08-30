@@ -45,7 +45,7 @@ public class Vest extends Room {
             else
                 GUI.out("You hear a click behind you.");
         }
-        return STD_RM_OUT;
+        return NAME;
     }            
 //-----------------------------------------------------------------------------
     public void switchWindow() {

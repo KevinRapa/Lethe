@@ -1,15 +1,14 @@
 package Gallery;
 
-import A_Main.AudioPlayer;
-import A_Main.Player;
+import A_Main.Id;
 import A_Super.Staircase;
 import A_Super.Direction;
 
 public class Gal3_Ladder extends Staircase {
     private boolean lowered;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Gal3_Ladder(Direction direction) {
-        super(direction);
+    public Gal3_Ladder() {
+        super(Direction.UP, Id.GAL6, 16);
 
         this.description = "The ladder is suspended above the ground in the "
                          + "hatch, too high to grab hold of.";
@@ -28,18 +27,10 @@ public class Gal3_Ladder extends Staircase {
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
-        if (this.lowered) {
-            Player.move(this.DIR);
-            playEffect();
-            
-            return "You climb the ladder.";   
-        }
+        if (this.lowered)
+            return super.interact(key);
         else
             return "The ladder is too high up to climb.";
-    }
-//-----------------------------------------------------------------------------
-    @Override protected void playEffect() {
-        AudioPlayer.playEffect(16);
     }
 //-----------------------------------------------------------------------------
 }

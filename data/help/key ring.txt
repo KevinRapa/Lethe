@@ -1,0 +1,1 @@
+Access your key ring by entering 'k' from the main prompt. The keys you are carrying will be listed. You cannot drop keys; you just have them forever! If you take a key from a search, it will automatically be added to your key ring.

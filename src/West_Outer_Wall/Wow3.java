@@ -52,7 +52,7 @@ public class Wow3 extends Room {
             }               
         }
         
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------    
 }

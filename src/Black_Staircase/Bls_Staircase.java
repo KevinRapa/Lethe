@@ -7,8 +7,8 @@ import A_Super.Staircase;
  */
 public class Bls_Staircase extends Staircase {
     //-------------------------------------------------------------------------
-    public Bls_Staircase (Direction dir) {
-        super(dir);
+    public Bls_Staircase (Direction dir, String dest) {
+        super(dir, dest, 15);
         
         this.description = "The long curved staircase wraps around in a half circle "
                          + "and connects the atrium floor to its second story balcony. "

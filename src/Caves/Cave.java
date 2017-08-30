@@ -85,7 +85,7 @@ public class Cave extends Room {
         // Holds directions to append to descLit.
         ArrayList<String> dirs = new ArrayList<>(4);
         
-        for (String i : this.adjacent) {
+        for (String i : this.adj) {
             int[] coords = {i.charAt(2) - '0', 
                             i.charAt(3) - '0'};
 
@@ -159,7 +159,7 @@ public class Cave extends Room {
         }
 
         return Player.hasItem(HAND_TORCH) ? 
-                distortDescription(DISTANCE, STD_RM_OUT) : "???";
+                distortDescription(DISTANCE, NAME) : "???";
     }
 //-----------------------------------------------------------------------------
     /**

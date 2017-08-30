@@ -10,23 +10,22 @@ abstract public class Staircase extends Furniture
         implements Unmoveable, Climbable 
 {
     protected final Direction DIR; // If it is an up or down staircase.
+    protected final int SOUND;
+    protected final String DEST;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Staircase(Direction direction) {
+    public Staircase(Direction direction, String dest, int sound) {
         super();
         this.DIR = direction;
+        this.SOUND = sound;
+        this.DEST = dest;
         this.addActKeys(CLIMBPATTERN, "use", "walk", "go");
         this.addNameKeys("stair(?:s|case)|steps?", "banister", "railing");
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
-        playEffect();
-        Player.move(DIR);
+        Player.setOccupies(DEST);
+        AudioPlayer.playEffect(SOUND);
         return "You climb " + DIR + " the stairs.";
-    }
-//-----------------------------------------------------------------------------
-    protected void playEffect() {
-        // For overriding. Some stairs aren't stone.
-        AudioPlayer.playEffect(15);
     }
 //-----------------------------------------------------------------------------
     @Override public Direction getDir() {

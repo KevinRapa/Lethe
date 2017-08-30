@@ -25,7 +25,7 @@ public class Lib3 extends Room{
         if (! Player.hasVisited(ID))
             GUI.out("As you step foot into this room, you feel your IQ rise a few points.");
             
-        return STD_RM_OUT;
+        return NAME;
     }
 }
 

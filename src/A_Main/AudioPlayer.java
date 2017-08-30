@@ -49,7 +49,7 @@ public class AudioPlayer {
     // 0 ^ 1 = 1
     // 1 ^ 3 = 2
     // 2 ^ 2 = 0
-    private static final byte[] XOR_MASKS = {0x1, 0x3, 0x2};    
+    private static final byte[] XOR_MASKS = {1, 3, 2};    
 //******************************************************************************
 // <editor-fold defaultstate="collapsed" desc="AMBIENCE AND MUSIC"> 
 //******************************************************************************    
@@ -165,34 +165,34 @@ public class AudioPlayer {
 // <editor-fold defaultstate="collapsed" desc="SOUND EFFECTS"> 
 //******************************************************************************    
     private static final Media[] EFFECTS = {
-        getNewMedia("steps"),          getNewMedia("inventory"),      // 0  1
-        getNewMedia("pageTurn"),       getNewMedia("keys"),           // 2  3
-        getNewMedia("doorKnobJiggle"), getNewMedia("doorLocking"),    // 4  5
-        getNewMedia("wallThump"),      getNewMedia("gateSlam"),       // 6  7
-        getNewMedia("doorSlam"),       getNewMedia("doorClose"),      // 7  9
-        getNewMedia("basicClick"),     getNewMedia("buttonPush"),     // 10 11
-        getNewMedia("leverPull"),      getNewMedia("doorUnlock"),     // 12 13
-        getNewMedia("woodStairClimb"), getNewMedia("stoneSteps"),     // 14 15
-        getNewMedia("ladder"),         getNewMedia("dungeonValve"),   // 16 17
-        getNewMedia("rotundaRotate"),  getNewMedia("rotundaRotate2"), // 18 19
-        getNewMedia("valveTurn"),      getNewMedia("keyClick"),       // 20 21
-        getNewMedia("keyClick2"),      getNewMedia("keyClick3"),      // 22 23
-        getNewMedia("dungeonDoor"),    getNewMedia("monster"),        // 24 25
-        getNewMedia("windowOpening"),  getNewMedia("keyDrop"),        // 26 27
-        getNewMedia("foyGateSwitch"),  getNewMedia("sparkles"),       // 28 29
-        getNewMedia("rocksCrumbling"), getNewMedia("ladderFalling"),  // 30 31
-        getNewMedia("enchantPop"),     getNewMedia("handDrill"),      // 32 33
-        getNewMedia("digging"),        getNewMedia("metalPing"),      // 34 35
-        getNewMedia("hoseClimb"),      getNewMedia("galleryStatue"),  // 36 37
-        getNewMedia("galleryGears"),   getNewMedia("fireDouse"),      // 38 39
-        getNewMedia("stairFlatten"),   getNewMedia("woodSliding"),    // 40 41
-        getNewMedia("waterScoop"),     getNewMedia("medallionClick"), // 42 43
-        getNewMedia("totemTurn"),      getNewMedia("bunsenBurner"),   // 44 45
-        getNewMedia("zombieMoan"),     getNewMedia("metalLadder"),    // 46 47
-        getNewMedia("grateMove"),      getNewMedia("teleportZap"),    // 48 49
-        getNewMedia("concreteBlock"),  getNewMedia("concreteShort"),  // 50 51
-        getNewMedia("atticNoise"),     getNewMedia("piano"),          // 52 53
-        getNewMedia("harp"),           getNewMedia("doorKnock")       // 54 55
+        getMedia("steps"),          getMedia("inventory"),      // 0  1
+        getMedia("pageTurn"),       getMedia("keys"),           // 2  3
+        getMedia("doorKnobJiggle"), getMedia("doorLocking"),    // 4  5
+        getMedia("wallThump"),      getMedia("gateSlam"),       // 6  7
+        getMedia("doorSlam"),       getMedia("doorClose"),      // 7  9
+        getMedia("basicClick"),     getMedia("buttonPush"),     // 10 11
+        getMedia("leverPull"),      getMedia("doorUnlock"),     // 12 13
+        getMedia("woodStairClimb"), getMedia("stoneSteps"),     // 14 15
+        getMedia("ladder"),         getMedia("dungeonValve"),   // 16 17
+        getMedia("rotundaRotate"),  getMedia("rotundaRotate2"), // 18 19
+        getMedia("valveTurn"),      getMedia("keyClick"),       // 20 21
+        getMedia("keyClick2"),      getMedia("keyClick3"),      // 22 23
+        getMedia("dungeonDoor"),    getMedia("monster"),        // 24 25
+        getMedia("windowOpening"),  getMedia("keyDrop"),        // 26 27
+        getMedia("foyGateSwitch"),  getMedia("sparkles"),       // 28 29
+        getMedia("rocksCrumbling"), getMedia("ladderFalling"),  // 30 31
+        getMedia("enchantPop"),     getMedia("handDrill"),      // 32 33
+        getMedia("digging"),        getMedia("metalPing"),      // 34 35
+        getMedia("hoseClimb"),      getMedia("galleryStatue"),  // 36 37
+        getMedia("galleryGears"),   getMedia("fireDouse"),      // 38 39
+        getMedia("stairFlatten"),   getMedia("woodSliding"),    // 40 41
+        getMedia("waterScoop"),     getMedia("medallionClick"), // 42 43
+        getMedia("totemTurn"),      getMedia("bunsenBurner"),   // 44 45
+        getMedia("zombieMoan"),     getMedia("metalLadder"),    // 46 47
+        getMedia("grateMove"),      getMedia("teleportZap"),    // 48 49
+        getMedia("concreteBlock"),  getMedia("concreteShort"),  // 50 51
+        getMedia("atticNoise"),     getMedia("piano"),          // 52 53
+        getMedia("harp"),           getMedia("doorKnock")       // 54 55
     };
     
     static {
@@ -216,7 +216,7 @@ public class AudioPlayer {
         }
     }
     
-    private static Media getNewMedia(String file) {
+    private static Media getMedia(String file) {
         File f = new File(W_DIR, EPTH + file + EXT);
         return f.exists() ? new Media(f.toURI().toString()) : null;
     }

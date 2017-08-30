@@ -35,7 +35,7 @@ public class Tow2 extends Lich_Room {
         if (this.lichDead) 
             GUI.out("The glowing sphere of light has disappeared...");
         
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------
 }

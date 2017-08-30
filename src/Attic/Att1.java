@@ -45,7 +45,7 @@ public class Att1 extends Room {
             Player.printInv();
             return "";
         }
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------
     private void dialog() {

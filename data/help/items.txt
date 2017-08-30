@@ -1,0 +1,1 @@
+Items are things that go into your inventory or key ring. You may take them or store them in searches (excluding keys and phylacteries for storing). You may use, combine, and inspect them from either your inventory or the main prompt. There are a couple items which have inventories themselves, for which case you may type 'open <item>' to search them.

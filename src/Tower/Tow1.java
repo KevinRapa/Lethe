@@ -38,6 +38,6 @@ public class Tow1 extends Lich_Room {
         if (! Player.hasVisited(ID))
             GUI.out("As you enter the room, your head begins to throb slightly.");
             
-        return STD_RM_OUT;
+        return NAME;
     }
 }

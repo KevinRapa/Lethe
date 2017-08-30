@@ -36,7 +36,7 @@ abstract public class Candelabra extends SearchableFurniture
     //------------------------------------------------------------------------- 
     @Override public String getDescription() {
         if (this.inv.contains(CANDLE_REF))
-            return this.description;
+            return super.getDescription();
         else
             return "The candelabra holds no more candles.";
     }

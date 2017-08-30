@@ -1,12 +1,13 @@
 package A_Super;
 
+import A_Main.GUI;
 import A_Main.Inventory;
-import A_Main.Patterns;
+import A_Main.Names;
+import java.io.*;
 import java.util.ArrayList;
-import java.io.Serializable;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.regex.Pattern;
+
 /**
  * In this game, the better term for furniture is "room object" because other
  * objects such as floors, walls, doors, buttons, etc. are treated as furniture.
@@ -30,20 +31,14 @@ import java.util.regex.Pattern;
  * @author Kevin Rapa
  */
 abstract public class Furniture implements Serializable {
-    private final Inventory 
-            // All non-searchable furniture have this as an inventory.
-            NONE = new Inventory(); // Helps prevent NULL pointers. 
-    
     protected Inventory inv;
+    protected boolean searchable; // Can trade items with searchable furniture.  
     
     protected String 
             description,   // Printed when inspected.
             searchDialog,  // Printed when searched.
             actDialog,     // Printed when interacted with.  
             useDialog;     // Printed when an item is used on this.
-    
-    protected boolean 
-            searchable;   // Items can be traded with searchable furniture.  
     
     protected final ArrayList<Pattern> 
             USEKEYS,    // Valid items that may be used on this.
@@ -67,13 +62,15 @@ abstract public class Furniture implements Serializable {
     public static final HashSet<String> ALL_ACTION_KEYS = new HashSet<>();
     
     static {
-        String[] actions = {
-            "use", "read", "drop", "fill", "wave", "throw", "tie", "rip", 
-            "tear", "squeeze", "search", "examine", "check", "look at", 
-        };
-        
-        for (String a : actions)
-            ALL_ACTION_KEYS.add(a);
+        try(ObjectInputStream ois = new ObjectInputStream(
+                new FileInputStream(new File(Names.W_DIR, "data" + Names.SEP + "verbs.data")))) 
+        {
+            for (String s : (String[])ois.readObject())
+                ALL_ACTION_KEYS.add(s);
+                
+        } catch (IOException | ClassNotFoundException ex) {
+            GUI.out(ex.getMessage() + " Could not finds verbs to add.");
+        }
     }
     
     //-------------------------------------------------------------------------
@@ -83,7 +80,7 @@ abstract public class Furniture implements Serializable {
      */
     public Furniture () {
         this.searchable = false;
-        this.inv = NONE;
+        this.inv = null;
         this.NAMEKEYS = new ArrayList<>(5); 
         this.USEKEYS = new ArrayList<>(5);  
         this.ACTKEYS = new ArrayList<>(6);  
@@ -101,6 +98,9 @@ abstract public class Furniture implements Serializable {
      * @return If this piece contains an item with the name.
      */
     public boolean containsItem(String name) {
+        if (this.inv == null)
+            return false;
+        
         for (Item i : this.inv)
             if (i.toString().equals(name)) 
                 return true; 
@@ -124,6 +124,12 @@ abstract public class Furniture implements Serializable {
     }
     //-------------------------------------------------------------------------     
     public Inventory getInv() {
+        if (this.inv == null) {
+            // To be safe. This shouldn't be called if this isn't searchable.
+            GUI.out("Hm... that furniture shouldn't be searchable.");
+            return new Inventory();
+        }
+        
         return this.inv;
     }
     //-------------------------------------------------------------------------     
@@ -179,6 +185,8 @@ abstract public class Furniture implements Serializable {
     public final void addUseKeys(String ... keys) {
         for (String key : keys)
             this.USEKEYS.add(Pattern.compile(key));
+        
+        this.USEKEYS.trimToSize();
     }
     //-------------------------------------------------------------------------     
     /**
@@ -188,6 +196,8 @@ abstract public class Furniture implements Serializable {
     public final void addNameKeys(String ... keys) {
         for (String key : keys)
             this.NAMEKEYS.add(Pattern.compile(key));
+        
+        this.NAMEKEYS.trimToSize();
     }
     //-------------------------------------------------------------------------     
     /**
@@ -197,15 +207,9 @@ abstract public class Furniture implements Serializable {
     public final void addActKeys(String ... keys) {
         for (String key : keys) {
             this.ACTKEYS.add(Pattern.compile(key));
-            
-            if (key.contains("|")) {
-                String[] separated = Patterns.BAR.split(key);
-                Furniture.ALL_ACTION_KEYS.addAll(Arrays.asList(separated));
-            }
-            else if (! Patterns.NON_LETTER.matcher(key).find()) {
-                Furniture.ALL_ACTION_KEYS.add(key);
-            }
         }
+        
+        this.ACTKEYS.trimToSize();
     }
 //******************************************************************************        
 // </editor-fold>

@@ -24,7 +24,7 @@ public class An65 extends Room {
             GUI.out("You step closer to the zombie-like figure. It remains still, "
                   + "swaying slightly with its attention drawn to you.");
             
-        return STD_RM_OUT;
+        return NAME;
     }
 //-----------------------------------------------------------------------------
 }

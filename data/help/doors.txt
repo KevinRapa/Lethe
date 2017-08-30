@@ -1,0 +1,1 @@
+Most rooms have at least one door, and thus you may act on them from the main prompt using the name 'door'. However, you do not need to act on doors in general movement. Your character moves through them automatically if they are unlocked, unblocked, etc., by simply moving.
