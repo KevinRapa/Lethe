@@ -39,7 +39,7 @@ import static A_Main.Names.W_DIR;
 
 public class Main {
     private static final String 
-            START_LOCATION = Id.CT14, // Default COU4
+            START_LOCATION = Id.COU4, // Default COU4
             SAVE_PATH = DATA + SEP + "save" + SEP + "Game.data",
             TITLE_PATH = W_DIR + SEP + DATA + SEP + "img" + SEP;
     
@@ -131,8 +131,6 @@ public class Main {
         TITLE_FRAME.setLocation(width > 1000 ? (width - 1000)/2 : 0, 100);
         TITLE_FRAME.pack();
         TITLE_FRAME.setResizable(false);
-        TITLE_FRAME.setVisible(true);
-        
         TITLE_LABEL.setFocusable(true);
         //**********************************************************************
         // </editor-fold>
@@ -151,8 +149,10 @@ public class Main {
             System.out.println("Data found. Loading game.");
             RoomGraph.assignCoordinates();
             Player.loadAttributes(gameData.readObject());
+            TITLE_FRAME.setVisible(true);
         } 
         catch (Exception e) {
+            // Creates a new game if one isn't found.
             System.err.println(e.getMessage() + "\nCreating new game.");
             RoomGraph.constructRoomGraph(); // Sets up game map.
             
@@ -163,11 +163,20 @@ public class Main {
                 System.err.println("Not a valid starting location.");
             }
             
+            // If a start location wasn't given in the terminal (The default).
             if (startCoords == null)
                 startCoords = RoomGraph.getCoords(START_LOCATION);
             
-            Player.setNewAttributes(startCoords); // Sets up character.
+            try {
+                Map.createMap(); // Creates all the game objects.
+            }
+            catch(IOException ex) {
+                System.err.println(ex.getMessage());
+                
+            }
             
+            Player.setNewAttributes(startCoords); // Sets up character.
+            TITLE_FRAME.setVisible(true);
             startDialog();
         }
         finally {
@@ -224,6 +233,7 @@ public class Main {
         {
             // Successfully saves the game.
             Player.savePlayerAttributes(gameData); 
+            Player.saveRoomChanges();
             GUI.out("Game saved");
         } 
         catch (FileNotFoundException e) {

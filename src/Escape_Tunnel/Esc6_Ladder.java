@@ -11,13 +11,13 @@ import A_Super.Resetable;
  * @author Kevin Rapa
  */
 public class Esc6_Ladder extends Furniture implements Resetable, Climbable {
-    private final Esc6_Grate GRATE_REF;
+    private final int GRATE_ID;
     //-------------------------------------------------------------------------
     public Esc6_Ladder (Furniture sew6Grt) {
         super();
         this.searchable = false;
         
-        this.GRATE_REF = (Esc6_Grate)sew6Grt;
+        this.GRATE_ID = sew6Grt.getID();
         
         this.description = "It's a metal ladder with rudimentary rungs attached "
                          + "directly to the stone wall.";
@@ -28,16 +28,20 @@ public class Esc6_Ladder extends Furniture implements Resetable, Climbable {
     }
     //-------------------------------------------------------------------------   
     @Override public String getDescription() {
-        if (this.GRATE_REF.isMoved())
+        Esc6_Grate g = (Esc6_Grate)Player.getRoomObj(Id.ESC6).getFurnRef(GRATE_ID);
+                
+        if (g.isMoved())
             return this.description;
         else
             return this.description.concat(" The way up is blocked by a grate.");
     }
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) {    
-        if (this.GRATE_REF.isMoved()) {
-            Player.getRoomObj(Id.INTR).lock();
-            Player.getRoomObj(Id.SEWP).unlock();
+        Esc6_Grate g = (Esc6_Grate)Player.getRoomObj(Id.ESC6).getFurnRef(GRATE_ID);
+        
+        if (g.isMoved()) {
+            Player.getRoomObj(Id.INTR).setLocked(true);
+            Player.getRoomObj(Id.SEWP).setLocked(false);
             Player.setOccupies(Id.SEWP);
             AudioPlayer.playEffect(47);
             return this.actDialog;
@@ -47,8 +51,8 @@ public class Esc6_Ladder extends Furniture implements Resetable, Climbable {
     }
     //-------------------------------------------------------------------------     
     @Override public void reset() {
-        Player.getRoomObj(Id.INTR).unlock();
-        Player.getRoomObj(Id.SEWP).lock();
+        Player.getRoomObj(Id.INTR).setLocked(false);
+        Player.getRoomObj(Id.SEWP).setLocked(true);
     }
     //-------------------------------------------------------------------------  
     @Override public Direction getDir() {

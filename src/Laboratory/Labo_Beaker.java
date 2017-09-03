@@ -70,7 +70,7 @@ public class Labo_Beaker extends Furniture {
             return "You can't do that while it's still on the table!";
         }
         else if (! Player.getInv().isFull()) {
-            Player.getPos().removeFurniture(this);
+            Player.getPos().removeFurniture(this.getID());
             
             switch (mode) {
                 case EMPTY:

@@ -1,5 +1,7 @@
 package Gallery;
 
+import A_Main.Id;
+import A_Main.Player;
 import A_Super.Button;
 import A_Super.Furniture;
 /**
@@ -10,16 +12,17 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Gal1_Button extends Button {
-    private final Gal1_Dragon REF;
+    private final int DRAGON_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal1_Button(Furniture stat) {
         super();
         this.actDialog = "You press the button. ";
-        this.REF = (Gal1_Dragon)stat; 
+        this.DRAGON_ID = stat.getID(); 
     }
 //-----------------------------------------------------------------------------    
     @Override public String event(String key) {
-        return this.actDialog.concat(REF.switchEye(0));
+        Gal1_Dragon d = (Gal1_Dragon)Player.getRoomObj(Id.GAL1).getFurnRef(DRAGON_ID);
+        return this.actDialog.concat(d.switchEye(0));
     }   
 //-----------------------------------------------------------------------------
 }

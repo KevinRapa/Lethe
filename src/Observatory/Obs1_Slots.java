@@ -68,10 +68,10 @@ public class Obs1_Slots extends Furniture {
 
             choice = GUI.askChoice(Menus.OBS_SLOT_EX, OBS_SLOTS_A_TO_I);
            
-            if (Player.isNonEmptyString(choice))
+            if (! choice.isEmpty())
                 GUI.descOut(SLOTS.get(MAP.get(choice.charAt(0))).getDescription());
 
-        } while (Player.isNonEmptyString(choice));
+        } while (! choice.isEmpty());
         
         Player.describeRoom();
         
@@ -86,7 +86,7 @@ public class Obs1_Slots extends Furniture {
 
             choice = GUI.askChoice(Menus.OBS_SLOT_SE, OBS_SLOTS_A_TO_I);
            
-            if (Player.isNonEmptyString(choice)) {
+            if (! choice.isEmpty()) {
                 Furniture slot = SLOTS.get(MAP.get(choice.charAt(0)));
                 Player.trySearch(slot);
                 
@@ -103,7 +103,7 @@ public class Obs1_Slots extends Furniture {
             }
             Player.printInv();
 
-        } while (Player.isNonEmptyString(choice));
+        } while (! choice.isEmpty());
         
         return rep;
     }

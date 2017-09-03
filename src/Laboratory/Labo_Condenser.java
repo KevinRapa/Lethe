@@ -59,7 +59,7 @@ public class Labo_Condenser extends Furniture implements Moveable {
                       + "boiling the insides aggressively. % After a minute, the flame dies out.";
         
         if (this.flapOpen) {
-            if (Player.getPos().hasFurniture(BEAKER_REF)) {
+            if (Player.getPos().hasFurniture(BEAKER_REF.getID())) {
                 this.BEAKER_REF.setMode(chemical);
                 GUI.out(result.replaceFirst("%", "The chemical condenses into the beaker on the other side."));
             }

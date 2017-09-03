@@ -33,7 +33,7 @@ public class Par2 extends Room{
             AudioPlayer.playEffect(8, 0.8);
             GUI.out("After stepping into the room, the door slams shut behind you. "
                   + "Startled, you spin around and miss a breath. You are alone.");
-            Player.getRoomObj(Id.FOY3).lock();
+            Player.getRoomObj(Id.FOY3).setLocked(true);
         }    
         return NAME;
     }

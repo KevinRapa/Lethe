@@ -3,6 +3,7 @@ package Observatory;
 import A_Main.AudioPlayer;
 import A_Super.Furniture;
 import A_Main.GUI;
+import A_Main.Id;
 import A_Main.Menus;
 import static A_Main.Patterns.OBS_STATS_ONE_TO_EIGHT;
 import A_Main.Player;
@@ -39,7 +40,7 @@ public class Obs1_Statues extends Furniture {
         new Obs1_Statue("7", "This statue depicts a glorious bearded male striding forward holding a lightning bolt. You cannot contain your tears.", 8),
         new Obs1_Statue("8", "The statue displays a monumental male figure crowned with a radiating halo. He rides in a chariot pulled by four steeds.", 0),
     };
-    private final Obs3_Chandelier CHNDLR_REF;
+    private final int CHNDLR_ID;
     private boolean solved, locked;
     private final String[] SOLUTION = {"5", "0", "1", "4", "7", "3", "6", "2"};
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
@@ -60,7 +61,7 @@ public class Obs1_Statues extends Furniture {
                           + "fine seams in the floor connecting them in various "
                           + "ways.";
         
-        this.CHNDLR_REF = (Obs3_Chandelier) chandlr;
+        this.CHNDLR_ID = chandlr.getID();
         
         this.addNameKeys("statues?", "ring(?: of statues)?", "gods?", "goddess(?:es)?");
         this.addActKeys(MOVEPATTERN, "turn|spin", "admire");
@@ -75,10 +76,10 @@ public class Obs1_Statues extends Furniture {
             GUI.out(this.getArray() + "\t\t\t\t\t\t" + rep);    
             choice = GUI.askChoice(Menus.OBS_STATS, OBS_STATS_ONE_TO_EIGHT);
             
-            if (Player.isNonEmptyString(choice))
+            if (! choice.isEmpty())
                 rep = getStatRef(choice).getDescription();
             
-        } while (Player.isNonEmptyString(choice));
+        } while (! choice.isEmpty());
         
         return NOTHING;
     }
@@ -117,17 +118,18 @@ public class Obs1_Statues extends Furniture {
                         GUI.out("That's not a valid choice.");           
                 }
                 catch (java.util.NoSuchElementException | java.lang.NumberFormatException e) {
-                    if (Player.isNonEmptyString(choice))
+                    if (! choice.isEmpty())
                         GUI.out("Type an action and a statue number."); 
                 } 
 
                 if (this.checkSolved()) {
+                    ((Obs3_Chandelier)Player.getRoomObj(Id.OBS3)
+                            .getFurnRef(CHNDLR_ID)).lower();
                     rep = this.actDialog;
                     this.solved = true;
-                    this.CHNDLR_REF.lower();
                     choice = NOTHING;
                 }
-            } while (Player.isNonEmptyString(choice));
+            } while (! choice.isEmpty());
 
             collectToken.close();
         }

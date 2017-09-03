@@ -20,12 +20,14 @@ import A_Super.Room;
  * @author Kevin Rapa
  */
 public class Torc_Sawhorses extends Furniture implements Resetable, Moveable {
-    private final Item METAL_LADDER = new Metal_Ladder(Names.METAL_LADDER);
-    private final Furniture TORC_LDDR = new Torc_Lddr();;
+    private final Item METAL_LADDER;
+    private final Furniture TORC_LDDR;
     //-------------------------------------------------------------------------
     public Torc_Sawhorses (Room torc, Item... items) {
         super();
         
+        this.METAL_LADDER = new Metal_Ladder(Names.METAL_LADDER);
+        this.TORC_LDDR = new Torc_Lddr();
         this.inv = new Sawhorse_Inventory(METAL_LADDER);
         this.searchable = true;
         
@@ -79,7 +81,7 @@ public class Torc_Sawhorses extends Furniture implements Resetable, Moveable {
         @Override public void remove(Item removeThis) {      
             this.CONTENTS.remove(removeThis);
             if (removeThis.equals(METAL_LADDER)) 
-                Player.getRoomObj(Id.TORC).removeFurniture(TORC_LDDR);
+                Player.getRoomObj(Id.TORC).removeFurniture(TORC_LDDR.getID());
         }
         //---------------------------------------------------------------------  
         @Override public boolean add(Item item) {
@@ -109,7 +111,7 @@ public class Torc_Sawhorses extends Furniture implements Resetable, Moveable {
         //--------------------------------------------------------------------- 
         @Override public String interact(String key) {  
             if (Torc_Sawhorses.this.getInv().give(METAL_LADDER, Player.getInv())) {
-                Player.getPos().removeFurniture(this);
+                Player.getPos().removeFurniture(this.getID());
                 return this.actDialog;
             }
             else

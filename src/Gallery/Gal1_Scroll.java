@@ -30,7 +30,7 @@ public class Gal1_Scroll extends Furniture {
     }
 //-----------------------------------------------------------------------------
         @Override public String interact(String key) {     
-            if (! Player.getPos().hasFurniture(BTTN_REF)) {
+            if (! Player.getPos().hasFurniture(BTTN_REF.getID())) {
                 Player.getPos().addFurniture(BTTN_REF);
                 return this.actDialog;
             }      

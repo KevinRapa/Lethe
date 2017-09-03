@@ -44,7 +44,7 @@ public class Cel5_Lock extends Furniture implements Gettable {
         if (item.getType().equals(WEAPON)) {
             AudioPlayer.playEffect(35);
             AudioPlayer.playEffect(31, 0.1);
-            Player.getPos().removeFurniture(this);
+            Player.getPos().removeFurniture(this.getID());
             return this.useDialog.replaceFirst("%", item.toString());
         }
         else

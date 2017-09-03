@@ -29,7 +29,7 @@ public class Gal7_Statue extends Furniture {
      * @return returns a string of what happens.
      */
     public String activate(MachineColor color) {
-        if (Player.getRoomObj(Id.GAL7).hasFurniture(this)) 
+        if (Player.getRoomObj(Id.GAL7).hasFurniture(this.getID())) 
             if (level == 0) 
                 if (color == MachineColor.DARK)
                     return this.raise(); 
@@ -43,7 +43,7 @@ public class Gal7_Statue extends Furniture {
 //-----------------------------------------------------------------------------
     private String raise() {
         this.level++; 
-        Player.getRoomObj(Id.GAL5).unlock();
+        Player.getRoomObj(Id.GAL5).setLocked(false);
         AudioPlayer.playEffect(38, 0.3);
         return "The crystal orb in the statue's palm glows with a dark "
              + "hellish glow. Cogwork can be heard behind the walls and "

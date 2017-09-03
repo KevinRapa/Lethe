@@ -14,11 +14,11 @@ public class Gar2_Hose extends Furniture implements Climbable {
     private final Item BRKNHOSE_REF;
     private final Furniture BRKNHOSE_REF2;
     //-------------------------------------------------------------------------
-    public Gar2_Hose (Furniture brokenHoseFurn, Item brokenHoseItem) {
+    public Gar2_Hose (Item brokenHoseItem) {
         super();
 
         this.BRKNHOSE_REF = brokenHoseItem;
-        this.BRKNHOSE_REF2 = brokenHoseFurn;
+        this.BRKNHOSE_REF2 = new Gar2_BrokenHose();
         
         this.description = "The cracked leather hose dangles down into the room "
                          + "below. It's only a short drop from the bottom. "
@@ -36,9 +36,9 @@ public class Gar2_Hose extends Furniture implements Climbable {
     @Override public String interact(String key) {              
         Player.setOccupies(Id.ROTU);
         AudioPlayer.playEffect(36);
-        Player.getRoomObj(Id.GAR2).removeFurniture(this);
+        Player.getRoomObj(Id.GAR2).removeFurniture(this.getID());
         Player.getRoomObj(Id.GAR2).addFurniture(BRKNHOSE_REF2);
-        Player.getRoomObj(Id.FOY3).unlock();
+        Player.getRoomObj(Id.FOY3).setLocked(false);
         Player.getInv().add(BRKNHOSE_REF);
         Player.printInv();
         

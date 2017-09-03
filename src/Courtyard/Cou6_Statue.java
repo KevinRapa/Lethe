@@ -4,18 +4,19 @@ import A_Main.Inventory;
 import static A_Main.Names.STATUE_HEAD;
 import static A_Main.Names.STATUE_TORSO;
 import A_Main.Player;
+import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Statue;
 /**
  * @author Kevin Rapa
  */
 public class Cou6_Statue extends Statue {
-    private final Inventory COU_FLOOR_REF;
+    private final int COU_FLOOR_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Cou6_Statue(Inventory couF) {
+    public Cou6_Statue(Furniture couF) {
         super();
         
-        this.COU_FLOOR_REF = couF;
+        this.COU_FLOOR_ID = couF.getID();
         this.useDialog = "You balance the % the best you can on the pair of legs, "
                        + "but can only watch helplessly as it falls back off onto "
                        + "the ground.";
@@ -29,10 +30,11 @@ public class Cou6_Statue extends Statue {
     }
 //-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
-        Player.getInv().give(item, COU_FLOOR_REF);
+        Inventory i = Player.getPos().getFurnRef(COU_FLOOR_ID).getInv();
         
-        return this.useDialog.replaceFirst("%w"
-                + "", item.toString());
+        Player.getInv().give(item, i);
+        
+        return this.useDialog.replaceFirst("%", item.toString());
     }
 //-----------------------------------------------------------------------------
 }

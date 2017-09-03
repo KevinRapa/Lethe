@@ -1,11 +1,13 @@
 package Workshop;
 
 import A_Main.GUI;
+import A_Main.Id;
 import A_Main.Inventory;
 import static A_Main.Names.*;
 import A_Super.Item;
 import A_Main.Player;
 import A_Super.BreakableItem;
+import A_Super.Furniture;
 import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 /**
@@ -16,21 +18,21 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
-    private final Inventory 
-            BRL_INV, SCK_INV, CBNT_INV;
+    private final int BRL_ID, SCK_ID, CBNT_ID;
     
-    private final Item 
-            SHEET_REF, RED_LENS_REF, BLUE_LENS_REF, YELLOW_LENS_REF, 
+    private final Item SHEET_REF, RED_LENS_REF, BLUE_LENS_REF, YELLOW_LENS_REF, 
             SAND_REF, RED_DYE_REF, BLUE_DYE_REF, YELLOW_DYE_REF, POTASH_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
-    public Wrk_CastingTable(Inventory brl, Inventory sck, Item rdLns, Item snd, 
-                        Item rdDy, Item blDy, Item yllwDy, Item ptsh, Inventory cbnt) {
+    public Wrk_CastingTable(Furniture brl, Furniture sck, Item rdLns, Item snd, 
+                        Item rdDy, Item blDy, Item yllwDy, Item ptsh, Furniture cbnt) {
         super();
         
         this.inv = new TableInventory();
         
         // Inventory references to restock
-        this.BRL_INV = brl;     this.SCK_INV = sck;     this.CBNT_INV = cbnt; 
+        this.BRL_ID = brl.getID();     
+        this.SCK_ID = sck.getID();     
+        this.CBNT_ID = cbnt.getID(); 
         
         // Lens to give player
         this.SHEET_REF = new BreakableItem(GLASS_SHEET, 
@@ -42,10 +44,13 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
         this.RED_LENS_REF = rdLns; 
         
         // Dyes to restock
-        this.RED_DYE_REF = rdDy;    this.BLUE_DYE_REF = blDy;  this.YELLOW_DYE_REF = yllwDy; 
+        this.RED_DYE_REF = rdDy;   
+        this.BLUE_DYE_REF = blDy;  
+        this.YELLOW_DYE_REF = yllwDy; 
         
         // Sand and potash to restock
-        this.POTASH_REF = ptsh;     this.SAND_REF = snd; 
+        this.POTASH_REF = ptsh;     
+        this.SAND_REF = snd; 
 
         this.searchDialog = "You search the plain metal table.";
         this.description = "It's a tall metal casting table for shaping solids from molten liquids.";
@@ -64,6 +69,10 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
         else {
             Player.getInv().remove(item);
             
+            Inventory sackInv = Player.getRoomObj(Id.CLOS).getFurnRef(SCK_ID).getInv();
+            Inventory cbntInv = Player.getRoomObj(Id.WORK).getFurnRef(CBNT_ID).getInv();
+            Inventory brlInv = Player.getRoomObj(Id.WORK).getFurnRef(BRL_ID).getInv();
+            
             if (this.containsItem(LENS_TEMPLATE)) {   
                 String color;
                 
@@ -74,16 +83,16 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
                         break;
                     case MOLTEN_BLUE_GLASS:
                         this.inv.add(BLUE_LENS_REF); // Give player blue lens.
-                        this.SCK_INV.add(SAND_REF); // Restock sand.
-                        this.BRL_INV.add(BLUE_DYE_REF); // Restock dye.
-                        this.CBNT_INV.add(POTASH_REF); // Restock potash.
+                        sackInv.add(SAND_REF); // Restock sand.
+                        brlInv.add(BLUE_DYE_REF); // Restock dye.
+                        cbntInv.add(POTASH_REF); // Restock potash.
                         color = "blue";
                         break;
                     default:
                         this.inv.add(YELLOW_LENS_REF); // Give player yellow lens.
-                        this.SCK_INV.add(SAND_REF); // Restock sand.
-                        this.BRL_INV.add(YELLOW_DYE_REF); // Restock dye.
-                        this.CBNT_INV.add(POTASH_REF); // Restock potash.
+                        sackInv.add(SAND_REF); // Restock sand.
+                        brlInv.add(YELLOW_DYE_REF); // Restock dye.
+                        cbntInv.add(POTASH_REF); // Restock potash.
                         color = "yellow";
                         break;
                 }
@@ -93,18 +102,18 @@ public class Wrk_CastingTable extends SearchableFurniture implements Moveable {
             }
             else {
                 this.inv.add(SHEET_REF);
-                this.SCK_INV.add(SAND_REF);
-                this.CBNT_INV.add(POTASH_REF);
+                sackInv.add(SAND_REF);
+                cbntInv.add(POTASH_REF);
                 
                 switch (name) {
                     case MOLTEN_RED_GLASS:
-                        this.BRL_INV.add(RED_DYE_REF);
+                        brlInv.add(RED_DYE_REF);
                         break;
                     case MOLTEN_BLUE_GLASS:
-                        this.BRL_INV.add(BLUE_DYE_REF);
+                        brlInv.add(BLUE_DYE_REF);
                         break;
                     default:
-                        this.BRL_INV.add(YELLOW_DYE_REF);
+                        brlInv.add(YELLOW_DYE_REF);
                         break;
                 }
                 return "You pour the molten glass onto the casting table. " +

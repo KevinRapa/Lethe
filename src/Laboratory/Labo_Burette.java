@@ -102,7 +102,7 @@ public class Labo_Burette extends Furniture {
 
             String ans = GUI.askChoice(Menus.LABO_BURET, LABO_BURET_ONE_OR_TWO);
 
-            if (Player.isNonEmptyString(ans)) {
+            if (! ans.isEmpty()) {
                 if (ans.equals("1")) {
                     this.mode = Titrant.EMPTY;
                     return "You empty everything out of the burette.";

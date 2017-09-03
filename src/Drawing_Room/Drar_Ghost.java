@@ -6,10 +6,10 @@ import A_Super.Item;
 import A_Super.Key;
 import A_Main.GUI;
 import A_Main.Id;
-import A_Main.Inventory;
 import A_Main.Menus;
 import static A_Main.Names.GLOWING_EMERALD;
 import A_Main.Player;
+import A_Super.Furniture;
 /**
  * NPC which assigns a task to the player in exchange for a couple items.
  * Requests that player find an emerald from the trophy room.
@@ -23,14 +23,14 @@ import A_Main.Player;
 public class Drar_Ghost extends NonPlayerCharacter {
     private final Item DRKFCS_REF, EMRLD_REF;
     private final Key KITCKEY_REF;
-    private final Inventory BAR_INV_REF;
+    private final int BAR_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Drar_Ghost(Item drkFcs, Key kitcKey, Item glwEm, Inventory bar) {
+    public Drar_Ghost(Item drkFcs, Key kitcKey, Item glwEm, Furniture bar) {
         super();
         this.DRKFCS_REF = drkFcs;
         this.KITCKEY_REF = kitcKey;
         this.EMRLD_REF = glwEm;
-        this.BAR_INV_REF = bar;
+        this.BAR_ID = bar.getID();
         this.searchDialog = "The ghost probably wouldn't appreciate that.";
         this.useDialog = "It's a ghost- translucent and gaseous, sooo...";
         this.actDialog = "The apparition returns to sipping from the ghostly cup.";
@@ -155,7 +155,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
             GUI.out("The apparition hands you a dark tinted lens...");
         }
         else {
-            this.BAR_INV_REF.add(this.DRKFCS_REF);
+            Player.getPos().getFurnRef(BAR_ID).getInv().add(this.DRKFCS_REF);
             GUI.out("... \"Huh, you sure like to carry around lots. "
                     + "I'll leave it here on the bar.\"");
         }
@@ -196,7 +196,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
         GUI.promptOut();
         
         GUI.out("The apparition drops a key into your palm...");
-        Player.getKeys().add(KITCKEY_REF);
+        Player.addKey(KITCKEY_REF);
         AudioPlayer.playEffect(3);
         Player.printInv();
         GUI.promptOut();
@@ -204,7 +204,7 @@ public class Drar_Ghost extends NonPlayerCharacter {
         GUI.out("\"Goodbye, my friend...\"");
         GUI.promptOut();
         GUI.toMainMenu();
-        Player.getRoomObj(Id.DRAR).removeFurniture(this);  
+        Player.getRoomObj(Id.DRAR).removeFurniture(this.getID());  
         Player.describeRoom();
     }
 //-----------------------------------------------------------------------------       

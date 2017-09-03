@@ -38,8 +38,8 @@ public class FactumDummy extends SearchableFurniture implements Gettable {
     @Override public String interact(String key) {
         Player.getInv().forceAdd(FACTUM_REF); // Forces itself in.
         Player.printInv();
-        Player.getPos().removeFurniture(this);
-        Player.getRoomObj(Id.EOW1).unlock();
+        Player.getPos().removeFurniture(this.getID());
+        Player.getRoomObj(Id.EOW1).setLocked(false);
         return Cave.distortDescription(3, this.actDialog);
     }
     //-------------------------------------------------------------------------         

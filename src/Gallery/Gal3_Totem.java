@@ -3,6 +3,7 @@ package Gallery;
 import A_Main.AudioPlayer;
 import A_Super.Item;
 import A_Main.GUI;
+import A_Main.Id;
 import A_Super.Furniture;
 import A_Main.Inventory;
 import A_Main.Menus;
@@ -22,13 +23,13 @@ import A_Main.Player;
  * @author Kevin Rapa
  */
 public class Gal3_Totem extends Gal_LightMachine {
-    private final Gal4_Statue GAL4_STAT_REF;
+    private final int GAL4_STAT_ID;
     private byte heads = 0b0000; // Each bit represents 1 head. A '1' means the head is forward.
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Totem(Furniture stat) {
         super();
         this.searchable = false;
-        this.GAL4_STAT_REF = (Gal4_Statue) stat;
+        this.GAL4_STAT_ID = stat.getID();
         
         this.searchDialog = "The only place to search is the totem's open third mouth. ";
         this.turnOffDialog = "The lights in the totem's eyes and mouth fade.";
@@ -92,11 +93,11 @@ public class Gal3_Totem extends Gal_LightMachine {
         
             action = GUI.askChoice(Menus.GAL_TOTEM, GAL_TOTEM_ONE_TO_FOUR);
         
-            if (Player.isNonEmptyString(action)) {
+            if (! action.isEmpty()) {
                 this.turnHead(Integer.parseInt(action));
                 result = this.check();
             }            
-        } while (Player.isNonEmptyString(action));
+        } while (! action.isEmpty());
         
         return NOTHING;
     }
@@ -131,13 +132,14 @@ public class Gal3_Totem extends Gal_LightMachine {
 //-----------------------------------------------------------------------------     
     @Override protected String turnOn() {
         this.determineColor();
+        Gal4_Statue s = (Gal4_Statue)Player.getRoomObj(Id.GAL4).getFurnRef(GAL4_STAT_ID);
         this.isOn = true;       
         return "The totem's eyes begin to glow. " + beam +
-               " emits from the totem's third mouth. " + GAL4_STAT_REF.activate(beam);
+               " emits from the totem's third mouth. " + s.activate(beam);
     }
 //-----------------------------------------------------------------------------
     @Override protected void resetStatue() {
-        this.GAL4_STAT_REF.reset();
+        ((Gal4_Statue)Player.getRoomObj(Id.GAL4).getFurnRef(GAL4_STAT_ID)).reset();
     }
 //-----------------------------------------------------------------------------
 /******************************************************************************/    
@@ -172,7 +174,8 @@ public class Gal3_Totem extends Gal_LightMachine {
         //---------------------------------------------------------------------
         private void trigger() {   
             determineColor();
-            GUI.out(beam + " emits from the totem's mouth. " + GAL4_STAT_REF.activate(beam)); 
+            Gal4_Statue s = (Gal4_Statue)Player.getRoomObj(Id.GAL4).getFurnRef(GAL4_STAT_ID);
+            GUI.out(beam + " emits from the totem's mouth. " + s.activate(beam)); 
         }
     }
 //-----------------------------------------------------------------------------

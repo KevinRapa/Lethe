@@ -123,7 +123,7 @@ public class Gal2_Statue extends SearchableFurniture {
     }
 //-----------------------------------------------------------------------------
     public void addDragonRef(Furniture dragon) {
-        ((Stat_Inv)this.inv).GAL1_DRGN = (Gal1_Dragon)dragon;
+        ((Stat_Inv)this.inv).DRGN_ID = dragon.getID();
     }
 //-----------------------------------------------------------------------------    
     public void reset() {
@@ -134,7 +134,7 @@ public class Gal2_Statue extends SearchableFurniture {
 /******************************************************************************/    
 //-----------------------------------------------------------------------------
     private class Stat_Inv extends Inventory { 
-        public Gal1_Dragon GAL1_DRGN;  
+        public int DRGN_ID;  
 
         public Stat_Inv(Item ... items) {
             super(items);
@@ -142,11 +142,14 @@ public class Gal2_Statue extends SearchableFurniture {
         //---------------------------------------------------------------------
         @Override public boolean add(Item item) {
             if (item.toString().equals(CRYSTAL_ORB)) {
+                Gal1_Dragon drgn = (Gal1_Dragon)Player.getRoomObj(Id.GAL1)
+                        .getFurnRef(DRGN_ID);
+                
                 this.CONTENTS.add(item);
                 
-                if (GAL1_DRGN.isOn())
+                if (drgn.isOn())
                     GUI.out(Gal2_Statue.this.useDialog 
-                            + activate(GAL1_DRGN.getBeam()));
+                            + activate(drgn.getBeam()));
                 else
                     GUI.out(Gal2_Statue.this.useDialog);
                 
@@ -159,10 +162,12 @@ public class Gal2_Statue extends SearchableFurniture {
         }
         //---------------------------------------------------------------------
         @Override public void remove(Item removeThis) {  
-            this.CONTENTS.remove(removeThis);
+            super.remove(removeThis);
+            Gal1_Dragon drgn = (Gal1_Dragon)Player.getRoomObj(Id.GAL1)
+                        .getFurnRef(DRGN_ID);
             
-            if (GAL1_DRGN.isOn())
-                GUI.out(activate(GAL1_DRGN.getBeam()));
+            if (drgn.isOn())
+                GUI.out(activate(drgn.getBeam()));
         }
     }
 //-----------------------------------------------------------------------------

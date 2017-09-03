@@ -14,7 +14,7 @@ public class Cis3 extends Dungeon_Tunnel {
 //-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.WEST)
-            return WATER_THAT_WAY;
+            return WATER_THERE;
         else
             return bumpIntoWall();
     }

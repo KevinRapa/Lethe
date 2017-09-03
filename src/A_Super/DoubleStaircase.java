@@ -28,7 +28,7 @@ abstract public class DoubleStaircase extends Staircase {
         else {
             String ans = GUI.askChoice(Menus.DOUBLE_ST, UP_DOWN_P);
 
-            if (Player.isNonEmptyString(ans)) {
+            if (! ans.isEmpty()) {
                 Direction dir = (ans.equals("up") || ans.equals("u")) ? 
                         Direction.UP : Direction.DOWN; // Z coordinate modifier.
 

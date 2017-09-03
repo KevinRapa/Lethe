@@ -11,12 +11,14 @@ import A_Super.Lever;
  * @author Kevin Rapa
  */
 public class Lqu2_Lever extends Lever {
-    private final Furniture COU_GATE_REF;
+    private final int GATE_ID;
+    private final Furniture OPEN_GATE;
     //-------------------------------------------------------------------------
     public Lqu2_Lever (Furniture cou3Gt) {
         super();
         
-        this.COU_GATE_REF = cou3Gt;
+        this.GATE_ID = cou3Gt.getID();
+        this.OPEN_GATE = new Cou3_OpenedGate();
         
         this.description = "A plain lever on the wall.";
         this.actDialog = "With the last of your energy, you pull the lever. You hear a gate open.";
@@ -35,9 +37,9 @@ public class Lqu2_Lever extends Lever {
     } 
     //-------------------------------------------------------------------------   
     @Override protected String event(String key) {
-        Player.getRoomObj(Id.COU4).unlock();
-        Player.getRoomObj(Id.COU3).removeFurniture(COU_GATE_REF);
-        Player.getRoomObj(Id.COU3).addFurniture(new Cou3_OpenedGate());
+        Player.getRoomObj(Id.COU4).setLocked(false);
+        Player.getRoomObj(Id.COU3).removeFurniture(GATE_ID);
+        Player.getRoomObj(Id.COU3).addFurniture(OPEN_GATE);
         AudioPlayer.playEffect(7, 0.25);
         return this.actDialog;
     }

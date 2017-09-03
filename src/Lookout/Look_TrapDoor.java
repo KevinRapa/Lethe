@@ -24,7 +24,7 @@ public class Look_TrapDoor extends Door implements Climbable {
         this.actDialog = "You descend down the ladder for about 20 feet.";
 
         this.NAMEKEYS.clear();
-        this.addNameKeys("(?:wooden )?trap door");
+        this.addNameKeys("(?:wooden )?trap ?door");
         this.addActKeys(CLIMBPATTERN);
     }
     //------------------------------------------------------------------------- 

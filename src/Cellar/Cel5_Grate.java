@@ -1,11 +1,10 @@
 package Cellar;
 
-import A_Main.AudioPlayer;
-import A_Main.Names;
-import A_Main.Player;
-import A_Super.Furniture;
-import A_Super.Gettable;
-import A_Super.Item;
+import A_Main.AudioPlayer;  import A_Main.Id;
+import A_Main.Names;        import A_Main.Player;
+import A_Super.Direction;   import A_Super.Furniture;
+import A_Super.Gettable;    import A_Super.Item;
+
 /**
  * @author Kevin Rapa
  */
@@ -13,11 +12,11 @@ public class Cel5_Grate extends Furniture implements Gettable {
     private final Furniture CEL5_LDDR;
     private boolean moved;
     //-------------------------------------------------------------------------
-    public Cel5_Grate (Furniture cel5Lddr) {
+    public Cel5_Grate() {
         super();
         
         this.moved = false;
-        this.CEL5_LDDR = cel5Lddr;
+        this.CEL5_LDDR = new Cel_Ladder(Id.CEL6, Direction.DOWN);
         
         this.description = 
                 "The thick grate is about two and a half feet across "
@@ -63,7 +62,7 @@ public class Cel5_Grate extends Furniture implements Gettable {
             return "You pull the grate out of the way, yielding entrance into the hole.";
         }
         else {
-            Player.getPos().removeFurniture(CEL5_LDDR);
+            Player.getPos().removeFurniture(CEL5_LDDR.getID());
             return "The player confusingly decides to place the grate back over the hole.";
         }
     }

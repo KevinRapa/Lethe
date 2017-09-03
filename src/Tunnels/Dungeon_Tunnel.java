@@ -11,8 +11,7 @@ import A_Super.Room;
  * @author Kevin Rapa
  */
 public class Dungeon_Tunnel extends Room {
-    protected final static String 
-            WATER_THAT_WAY = "Do you feel like going for a swim?";
+    protected final static String WATER_THERE = "Do you feel like going for a swim?";
     private final static Furniture MONSTER = new DungeonMonsterFurniture();
 //-----------------------------------------------------------------------------    
     public Dungeon_Tunnel(String name, String ID) {

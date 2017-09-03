@@ -11,13 +11,13 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Labo_Flask extends SearchableFurniture {
-    private final Labo_Condenser CONDENSER_REF;
+    private final int CNDNSR_ID;
     private final Item TUBE_REF, VIAL_REF;
     //-------------------------------------------------------------------------
-    public Labo_Flask (Labo_Condenser condenser, Item tstTb, Item vial) {
+    public Labo_Flask (int condenser, Item tstTb, Item vial) {
         super();
         
-        this.CONDENSER_REF = condenser;
+        this.CNDNSR_ID = condenser;
         this.TUBE_REF = tstTb;
         this.VIAL_REF = vial;
         
@@ -36,7 +36,9 @@ public class Labo_Flask extends SearchableFurniture {
     }
     //------------------------------------------------------------------------- 
     public void distill() {
-        if (this.inv.size() != 0 && CONDENSER_REF.condense(determineProduct())) 
+        Labo_Condenser c = (Labo_Condenser)Player.getPos().getFurnRef(CNDNSR_ID);
+        
+        if (this.inv.size() != 0 && c.condense(determineProduct())) 
             ((Flsk_Inventory)this.inv).emptyAndAddResidue();
         else if (this.inv.size() == 0)
             GUI.out("You strike the burner, producing an aggressive flame. The "

@@ -2,7 +2,6 @@ package Strange_Pool;
 
 import A_Main.GUI;
 import A_Main.Id;
-import A_Main.Inventory;
 import static A_Main.Names.HAND_TORCH;
 import static A_Main.Names.METAL_BAR;
 import A_Main.Player;
@@ -21,24 +20,32 @@ import Tunnels.Dungeon_Tunnel;
  * @author Kevin Rapa
  */
 public class Sewp extends Dungeon_Tunnel {
-    private final Furniture[] RESETABLES;
-    private final Inventory PRIS_CBNT_INV;
+    private final int[] RESETABLES;
+    private final String[] IDS;
+    private final int PRIS_CBNT_ID;
 //-----------------------------------------------------------------------------    
-    public Sewp(String name, String ID, Inventory cbntInv, Furniture ... resetables) {
+    public Sewp(String name, String ID, Furniture cbntInv, int[] resetables, 
+            String[] ids) 
+    {
         super(name, ID);
         this.RESETABLES = resetables;
-        this.PRIS_CBNT_INV = cbntInv;
+        this.IDS = ids;
+        this.PRIS_CBNT_ID = cbntInv.getID();
     }
 //-----------------------------------------------------------------------------
     public void resetAllObjects() {
-        for (Furniture r : this.RESETABLES)
-            ((Resetable)r).reset();
+        for (int i = 0; i < RESETABLES.length; i++) {
+            ((Resetable)Player.getRoomObj(IDS[i])
+                    .getFurnRef(RESETABLES[i])).reset();
+        }
         
         ((Cis1)Player.getRoomObj(Id.CIS1)).reset();
         
-        for (Item i : Player.getInv()) 
-            if (! i.toString().equals(HAND_TORCH) && ! i.toString().equals(METAL_BAR))
-                this.PRIS_CBNT_INV.add(i);
+        for (Item i : Player.getInv()) {
+            if (! i.toString().equals(HAND_TORCH) && ! i.toString().equals(METAL_BAR)) {
+                Player.getRoomObj(Id.PRIS).getFurnRef(PRIS_CBNT_ID).getInv().add(i);
+            }
+        }
         
         Player.getInv().clear();
         Player.setShoes("");

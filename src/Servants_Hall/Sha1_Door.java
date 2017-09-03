@@ -13,13 +13,13 @@ import A_Super.Door;
 
 public class Sha1_Door extends Door {
     private final Item RAM_REF, BRKNRAM_REF;
-    private final Furniture GEN_DR;
+    private final int GEN_DR_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Sha1_Door(Item ram, Item brRam, Furniture genDr) {
         super(Direction.WEST);
         this.RAM_REF = ram;
         this.BRKNRAM_REF = brRam;
-        this.GEN_DR = genDr;
+        this.GEN_DR_ID = genDr.getID();
         
         this.description = "It's a small wooden door; a bit taller than you. "
                          + "The doorknob on it is missing.";
@@ -34,8 +34,8 @@ public class Sha1_Door extends Door {
         if (item.equals(RAM_REF)) {
             AudioPlayer.playEffect(40);
             Player.getRoomObj(Id.SHA1).addAdjacent(Id.SHAR); // Make SHAR accessible.
-            Player.getRoomObj(Id.SHA1).removeFurniture(this); // Remove this door from the room.
-            Player.getRoomObj(Id.SHA1).removeFurniture(GEN_DR);
+            Player.getRoomObj(Id.SHA1).removeFurniture(this.getID()); // Remove this door from the room.
+            Player.getRoomObj(Id.SHA1).removeFurniture(GEN_DR_ID);
             Player.getInv().remove(RAM_REF); // Take ram from player.
             Player.getInv().add(BRKNRAM_REF); // Add broken ram to player.
             return this.useDialog;        

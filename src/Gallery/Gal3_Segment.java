@@ -1,13 +1,15 @@
 package Gallery;
 
+import A_Main.Id;
+import A_Main.Player;
 import A_Super.Furniture;
 
 public class Gal3_Segment extends Furniture{
-    private final Furniture REF;
+    private final int GAL3_TTM_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal3_Segment(Furniture gal3Ttm) {
         super();
-        this.REF = gal3Ttm;
+        this.GAL3_TTM_ID = gal3Ttm.getID();
         this.searchDialog = "The segments aren't hiding any items. You "
                           + "notice a seam between each.";
         this.description = "The faces on each segment are surreal and spooky. "
@@ -17,7 +19,7 @@ public class Gal3_Segment extends Furniture{
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        return REF.interact(key);
+        return Player.getRoomObj(Id.GAL3).getFurnRef(GAL3_TTM_ID).interact(key);
     }
 //-----------------------------------------------------------------------------
 }

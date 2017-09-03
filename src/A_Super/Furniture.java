@@ -31,8 +31,11 @@ import java.util.regex.Pattern;
  * @author Kevin Rapa
  */
 abstract public class Furniture implements Serializable {
+    private static int count = 0;
+    
     protected Inventory inv;
     protected boolean searchable; // Can trade items with searchable furniture.  
+    protected final int ID;
     
     protected String 
             description,   // Printed when inspected.
@@ -69,7 +72,9 @@ abstract public class Furniture implements Serializable {
                 ALL_ACTION_KEYS.add(s);
                 
         } catch (IOException | ClassNotFoundException ex) {
-            GUI.out(ex.getMessage() + " Could not finds verbs to add.");
+            System.err.println(ex.getMessage() + " Could not finds verbs to add.");
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
         }
     }
     
@@ -81,6 +86,8 @@ abstract public class Furniture implements Serializable {
     public Furniture () {
         this.searchable = false;
         this.inv = null;
+        this.ID = count++;
+        
         this.NAMEKEYS = new ArrayList<>(5); 
         this.USEKEYS = new ArrayList<>(5);  
         this.ACTKEYS = new ArrayList<>(6);  
@@ -118,6 +125,10 @@ abstract public class Furniture implements Serializable {
         return this.searchDialog; 
     }
     //-------------------------------------------------------------------------  
+    public int getID() {
+        return this.ID;
+    }
+    //-------------------------------------------------------------------------
     public boolean isSearchable() {
         // Item's can be traded with searchable furniture.
         return this.searchable;
@@ -172,10 +183,28 @@ abstract public class Furniture implements Serializable {
         return this.USEKEYS.stream()
                 .anyMatch(i -> i.matcher(itemName).matches());
     }
-    //-------------------------------------------------------------------------     
-    public boolean nameKeyMatches(String furnitureName) {
-        return this.NAMEKEYS.stream()
-                .anyMatch(i -> i.matcher(furnitureName).matches());
+    //------------------------------------------------------------------------- 
+    /**
+     * Checks if any pattern in this furniture's list matches the string.
+     * If a match is found, moves it to the front of the list, assuming the
+     * same pattern will be used again in the future.
+     * @param furnName A string the player typed.
+     * @return If a matching pattern is found.
+     */
+    public boolean nameKeyMatches(String furnName) {
+        for (int i = 0; i < NAMEKEYS.size(); i++) {
+            Pattern p = NAMEKEYS.get(i);
+            
+            if (p.matcher(furnName).matches()) {
+                if (i > 0) {
+                    NAMEKEYS.set(i, NAMEKEYS.get(0));
+                    NAMEKEYS.set(0, p);
+                }
+                return true;
+            }
+        }
+        
+        return false;
     }
     //------------------------------------------------------------------------- 
     /**

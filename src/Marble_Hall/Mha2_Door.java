@@ -4,7 +4,6 @@ import A_Main.AudioPlayer;
 import A_Main.Id;
 import static A_Main.Names.*;
 import A_Super.Door;
-import A_Super.Room;
 import A_Super.Direction;
 import A_Main.Player;
 import A_Super.Item;
@@ -29,7 +28,7 @@ public class Mha2_Door extends Door {
         numEmpty, 
         angSolHrs; // Each bit represents a medallion. '1' means it was returned. 
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
-    public Mha2_Door (Room din, Direction dir) {
+    public Mha2_Door (Direction dir) {
         super(dir);
         
         this.angSolHrs = 0;
@@ -69,7 +68,7 @@ public class Mha2_Door extends Door {
             this.numEmpty--;
 
             if (this.numEmpty == 0) {
-                Player.getRoomObj(Id.DIN1).unlock();
+                Player.getRoomObj(Id.DIN1).setLocked(false);
                 return res + " With the last medallion in place, the door *clicks* loudly.";
             }      
             

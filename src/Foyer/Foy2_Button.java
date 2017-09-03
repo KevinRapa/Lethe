@@ -13,13 +13,13 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */        
 public class Foy2_Button extends Button {
-    private final Foy_Gate NORTH_GATE_REF, SOUTH_GATE_REF;
+    private final int N_GATE_ID, S_GATE_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Foy2_Button(Furniture foy_Gt, Furniture foy2_Gt) {
         super();
         this.actDialog = "The two gates in the foyer switch positions.";
-        this.NORTH_GATE_REF = (Foy_Gate)foy_Gt; 
-        this.SOUTH_GATE_REF = (Foy_Gate)foy2_Gt;
+        this.N_GATE_ID = foy2_Gt.getID();
+        this.S_GATE_ID = foy_Gt.getID();
         this.addNameKeys("(?:small )?(?:black )?button");
     }
 //-----------------------------------------------------------------------------    
@@ -44,8 +44,10 @@ public class Foy2_Button extends Button {
             foy2.addAdjacent(Id.FOYB);
             bba1.addAdjacent(Id.FOY2);
         }
-        NORTH_GATE_REF.swtch(); // Opens or closes gate.
-        SOUTH_GATE_REF.swtch(); // Opens or closes gate.
+        
+        // Opens or closes gate.
+        ((Foy_Gate)Player.getRoomObj(Id.FOY2).getFurnRef(N_GATE_ID)).swtch();
+        ((Foy_Gate)Player.getRoomObj(Id.FOY1).getFurnRef(S_GATE_ID)).swtch();
 
         AudioPlayer.playEffect(28);
         

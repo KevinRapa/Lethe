@@ -54,7 +54,7 @@ public class Cry_Drawers extends Furniture implements Openable {
         GUI.out("The drawers are labeled from 1 to 100. Search which drawer?");
         String ans = GUI.askChoice(Menus.CRY_DRWRS, ONE_TO_HUNDRED_P);
 
-        if (Player.isNonEmptyString(ans)) {
+        if (! ans.isEmpty()) {
             GUI.out(this.searchDialog);
             Player.search(this.DRAWERS[Integer.parseInt(ans) - 1]); 
         }

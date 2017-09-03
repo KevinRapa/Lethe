@@ -10,12 +10,12 @@ import Cellar.Cel5_Lock;
  * @author Kevin Rapa
  */
 public class Gal4_Padlock extends Cel5_Lock {
-    private final Gal4_Case CASE;
+    private final int CASE_ID;
     //-------------------------------------------------------------------------
     public Gal4_Padlock (Furniture casing) {
         super();
         
-        this.CASE = (Gal4_Case)casing;
+        this.CASE_ID = casing.getID();
         
         this.description = "The padlock is sealing the door of the mounted case.";
         this.useDialog = "A nice hard smack, combined with your insatiable thirst for "
@@ -25,8 +25,8 @@ public class Gal4_Padlock extends Cel5_Lock {
     @Override public String useEvent(Item item) {
         if (item.getType().equals(WEAPON)) {
             AudioPlayer.playEffect(35);
-            Player.getPos().removeFurniture(this);
-            CASE.unlock();
+            Player.getPos().removeFurniture(this.getID());
+            ((Gal4_Case)Player.getPos().getFurnRef(CASE_ID)).unlock();
             return this.useDialog;
         }
         else

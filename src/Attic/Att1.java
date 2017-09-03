@@ -7,39 +7,44 @@ import A_Main.Inventory;
 import A_Main.Menus;
 import static A_Main.Names.PHASE_DOOR_POTION;
 import A_Main.Player;
+import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Room;
 import Tunnels.DungeonMonster;
+
 /**
  * The player is captured in ATT1 after creating the phase door potion.
  * 
  * @author Kevin Rapa
  */
 public class Att1 extends Room {
-    private final Inventory PRIS_CBNT_INV_REF;
+    private final int PRIS_CBNT_ID;
 //-----------------------------------------------------------------------------    
-    public Att1(String name, String ID, Inventory prisCbntInv) {
+    public Att1(String name, String ID, Furniture prisCbnt) {
         super(name, ID);
 
-        this.PRIS_CBNT_INV_REF = prisCbntInv;
+        this.PRIS_CBNT_ID = prisCbnt.getID();
     }
 //-----------------------------------------------------------------------------
     @Override public String triggeredEvent() {
         if (Player.hasItem(PHASE_DOOR_POTION) && ! Player.hasVisited(Id.INTR)) {
             Inventory inv = Player.getInv();
+            Inventory cbntInv = Player.getRoomObj(Id.PRIS)
+                    .getFurnRef(PRIS_CBNT_ID).getInv();
             
             this.dialog();
             
             for (Item i : inv) 
-                if (! i.toString().equals(PHASE_DOOR_POTION))
-                    this.PRIS_CBNT_INV_REF.add(i);
+                if (! i.toString().equals(PHASE_DOOR_POTION)) {
+                   cbntInv.add(i);
+                }
             
             inv.clear();
             Player.updateScore(0);
             Player.setShoes("");
             
             Player.setOccupies(Id.INTR);
-            Player.getRoomObj(Id.EOW1).lock();
+            Player.getRoomObj(Id.EOW1).setLocked(true);
             DungeonMonster.startMovement();
             AudioPlayer.playEffect(8, 0.8);
             Player.printInv();

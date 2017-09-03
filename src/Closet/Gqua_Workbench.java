@@ -19,7 +19,7 @@ public class Gqua_Workbench extends SearchableFurniture implements Openable, Mov
         this.searchDialog = "You look through its various drawers and nooks.";
         this.actDialog = "The workbench stands firmly in place, letting off only a thick-sounding *thud*.";
         
-        this.addNameKeys("(?:poplar |wood(?:en)? )?(?:table|workbench)");
+        this.addNameKeys("(?:poplar |wood(?:en)? )?(?:table|work ?bench)");
         this.addActKeys(JOSTLEPATTERN);
     }
 //-----------------------------------------------------------------------------

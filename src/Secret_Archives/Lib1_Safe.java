@@ -5,7 +5,7 @@ import A_Super.Safe;
 
 public class Lib1_Safe extends Safe {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Lib1_Safe(String combo, Item... items) {
+    public Lib1_Safe(int combo, Item... items) {
         super(combo, items);
         this.description = 
                 "The heavy, black, combination safe sits on the floor "

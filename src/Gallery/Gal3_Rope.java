@@ -7,12 +7,12 @@ import A_Main.Player;
 
 public class Gal3_Rope extends Furniture {
     private boolean cut;
-    private final Gal3_Ladder REF;
+    private final int LDDR_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Gal3_Rope(Furniture lddr) {
             super();
             this.cut = false;
-            this.REF = (Gal3_Ladder)lddr;
+            this.LDDR_ID = lddr.getID();
             
             this.actDialog = "You cut the rope. The ladder drops down into "
                     + "the room, giving access to the loft.";
@@ -34,7 +34,7 @@ public class Gal3_Rope extends Furniture {
         if (! this.cut) {
             if (key.equals("cut")) {
                 if (detectItem()) {
-                    REF.lower();
+                    ((Gal3_Ladder)Player.getPos().getFurnRef(LDDR_ID)).lower();
                     this.cut = true;
                     Player.describeRoom();
                     return this.actDialog;
@@ -53,7 +53,7 @@ public class Gal3_Rope extends Furniture {
     }
 //-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
-        REF.lower();
+        ((Gal3_Ladder)Player.getPos().getFurnRef(LDDR_ID)).lower();
         this.cut = true;
         
         return "You cut the rope with the " + item + ". "

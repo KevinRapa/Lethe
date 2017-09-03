@@ -16,10 +16,12 @@ import A_Super.Unmoveable;
 public class Rotu_Fountain extends Furniture implements Unmoveable {
     private boolean drained;
     private int valvesTurned;
+    private final Furniture ROTU_WHEEL;
 /* CONSTRUCTOR ---------------------------------------------------------------*/        
     public Rotu_Fountain() {       
         super();
         
+        this.ROTU_WHEEL = new Rotu_Wheel();
         this.valvesTurned = 0;
         this.drained = false;
         this.description = "It's rounded and carefully carved from a smooth rock. "
@@ -65,12 +67,12 @@ public class Rotu_Fountain extends Furniture implements Unmoveable {
     public void drain() {
         this.drained = true;   
         AudioPlayer.playEffect(20);
-        Player.getRoomObj(Id.ROTU).addFurniture(new Rotu_Wheel());
+        Player.getRoomObj(Id.ROTU).addFurniture(ROTU_WHEEL);
     }
 //-----------------------------------------------------------------------------
     public String loosen(int amount) {
         this.valvesTurned += amount;
-        
+
         if (! drained && valvesTurned == 3) {
             drain();
             return "As you turn it, a gush of water can "

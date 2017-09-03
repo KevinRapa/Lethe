@@ -85,7 +85,7 @@ public class Cave extends Room {
         // Holds directions to append to descLit.
         ArrayList<String> dirs = new ArrayList<>(4);
         
-        for (String i : this.adj) {
+        for (String i : this.ADJ) {
             int[] coords = {i.charAt(2) - '0', 
                             i.charAt(3) - '0'};
 

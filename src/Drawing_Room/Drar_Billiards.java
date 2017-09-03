@@ -1,16 +1,17 @@
 package Drawing_Room;
 
+import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 
 public class Drar_Billiards extends SearchableFurniture implements Moveable {
-    private final Drar_Ghost GHOST_REF;
+    private final int GHOST_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Drar_Billiards(Furniture ghst, Item... items) {
         super();
-        this.GHOST_REF = (Drar_Ghost)ghst;
+        this.GHOST_ID = ghst.getID();
         this.description = "The billiard table is clothed in the typical green, "
                          + "though the pockets are missing...";
         this.searchDialog = "You look on the table's surface.";
@@ -21,14 +22,18 @@ public class Drar_Billiards extends SearchableFurniture implements Moveable {
     }
 //-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
-        if (GHOST_REF.firstTime())
+        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+        
+        if (g.firstTime())
             return "Ignoring the ghost completely, you look on the billiard table's surface.";
         else 
             return this.searchDialog;
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        if (GHOST_REF.firstTime())
+        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+         
+        if (g.firstTime())
             return "Now is not the time for that. There's a ghost in here!";
         else
             return this.actDialog;

@@ -8,7 +8,7 @@ import A_Super.WallArt;
 public class Stud_Portrait extends WallArt {
     private final Furniture SAFE_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Stud_Portrait (Furniture safe) {
+    public Stud_Portrait(Furniture safe) {
         super();
         this.SAFE_REF = safe;
         this.description = "The portrait depicts a bald male with round glasses, "

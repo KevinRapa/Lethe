@@ -69,12 +69,12 @@ LIST_P = Pattern.compile("(?:\\s*,(\\s*and\\s*)?\\s*)|(?:\\s+and\\s+)"),
 // These five are the most specific cases and are checked first.
         
 EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|dick|damn|bitch|vittu|perkele|paska"),
-DIRECTION_P = Pattern.compile("(?>go|walk|move|run) (?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?|stairs)?)"),
+DIRECTION_P = Pattern.compile("(?:in|out)(?:side)?|(?>go|walk|move|run) (?:north|forward|south|east|right|west|left|(?:down|back|up)(?:wards?|stairs)?|(?:in|out)(?:side)?)"),
 SUICIDE_P = Pattern.compile("(?:commit )?suicide|(?:kill|hang) (?:your)?self(?: (?:with|using).+)?"),
 COMBINE_P = Pattern.compile("combine\\s+.+"), // Anything beginning with 'combine' is a combine command
        
 // Matching to this likely means the player is trying to store something.        
-STORE_CMD_P = Pattern.compile("(?:put|store|pour|dump|give) [a-z0-9: ,'-]+"), 
+STORE_CMD_P = Pattern.compile("(?>put|store|pour|dump|give) [a-z0-9: ,'-]+"), 
         
 // Looking normally implies examining, unless followed by these prepositions.
 SEARCH_MANNER_P = Pattern.compile("look (?:on|in(?:side)?|under|around)"),
@@ -103,6 +103,8 @@ ARTICLE_P = Pattern.compile("\\bthe |\\.|\\ban? |\\bsome "),
 WORD_SPACE_P = Pattern.compile("\\w+ "), 
 // Used to remove everything but the first word in a sentence.        
 SPACE_THEN_ALL_P = Pattern.compile("\\s.+"),
+// Used in stripping prepositions.
+ONE_PLUS_SPC = Pattern.compile(" +"),
 
 // Implies a search, if sentence resembles "put <item> DOWN"
 // Sentences resembling "go down" or "move down" have been checked at this point        

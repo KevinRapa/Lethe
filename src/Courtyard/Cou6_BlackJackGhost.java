@@ -115,7 +115,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
             }
             Player.printInv();
             
-        } while (! (ans.equals("no") || ans.equals("n") || ans.equals("")));
+        } while (! (ans.equals("no") || ans.equals("n") || ans.isEmpty()));
         
         GUI.clearDialog();
         

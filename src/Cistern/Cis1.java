@@ -34,7 +34,7 @@ public class Cis1 extends Dungeon_Tunnel implements Resetable {
 //-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.NORTH)
-            return WATER_THAT_WAY;
+            return WATER_THERE;
         else
             return bumpIntoWall();
     }

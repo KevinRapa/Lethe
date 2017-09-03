@@ -13,7 +13,7 @@ public class Cis2 extends Dungeon_Tunnel {
     }
 //-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
-        return WATER_THAT_WAY;
+        return WATER_THERE;
     }
 //-----------------------------------------------------------------------------
 }

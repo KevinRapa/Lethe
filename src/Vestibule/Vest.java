@@ -36,7 +36,7 @@ public class Vest extends Room {
         if (Player.getLastVisited().equals(Id.FOY1)) {
             // Locks the door to the foyer.
             AudioPlayer.playEffect(5);
-            Player.getRoomObj(Id.FOY1).lock();
+            Player.getRoomObj(Id.FOY1).setLocked(true);
 
             if (! Player.hasVisited(this.ID))
                 GUI.out("You hear a click behind you. As you enter, you hear a "

@@ -14,7 +14,7 @@ import A_Super.Furniture;
 public class Rqua_Panel extends Furniture {
     private boolean lifted;
     private final Key STUDKEY_REF;
-    private final Rqua_Bed BED_REF;
+    private final int BED_ID;
 //-----------------------------------------------------------------------------    
     public Rqua_Panel(Key studKey, Furniture bed) {
             super();
@@ -22,7 +22,7 @@ public class Rqua_Panel extends Furniture {
             this.lifted = false;
             
             this.STUDKEY_REF = studKey;
-            this.BED_REF = (Rqua_Bed)bed;
+            this.BED_ID = bed.getID();
             this.description = "The tile underneath the bed looks loose.";
             this.searchDialog = "You'll have to lift this up first.";
             this.actDialog = "It's too heavy and awkward to remove with your hands. "
@@ -37,24 +37,27 @@ public class Rqua_Panel extends Furniture {
 //-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
         String rep = "You have already removed the tile.";
+        Rqua_Bed b = (Rqua_Bed)Player.getPos().getFurnRef(BED_ID);
         
-        if (! this.lifted && BED_REF.isMoved()) {
+        if (! this.lifted && b.isMoved()) {
             rep = this.useDialog;
             this.lifted = true;
-            Player.getKeys().add(STUDKEY_REF);
+            Player.addKey(STUDKEY_REF);
             AudioPlayer.playEffect(3);
         }
-        else if (! BED_REF.isMoved())
+        else if (! b.isMoved())
             rep = "You fully intend to do that, but there is a bed in the way.";
         
         return rep;
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
-        if (BED_REF.isMoved() && ! this.lifted)
-            return this.actDialog;
-        else if (BED_REF.isMoved() && this.lifted)
-            return "You have already lifted the tile.";
+        Rqua_Bed b = (Rqua_Bed)Player.getPos().getFurnRef(BED_ID);
+        
+        if (b.isMoved()) {
+            return this.lifted ? 
+                    "You have already lifted the tile." : this.actDialog;
+        }
         
         return "You will try that, but there is a bed in the way.";
     }

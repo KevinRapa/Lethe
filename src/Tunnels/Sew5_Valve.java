@@ -13,14 +13,13 @@ import Cistern.Cis1;
  * @author Kevin Rapa
  */
 public class Sew5_Valve extends Furniture {
-    private final Sew4_Pipe SEW4PP;
-    private final Sew2_Valves SEW2VLVS;
+    private final int SEW4PP, SEW2VLVS;
     //-------------------------------------------------------------------------
     public Sew5_Valve (Furniture sew2Vlvs, Furniture sew4Pp) {
         super();
         
-        this.SEW2VLVS = (Sew2_Valves)sew2Vlvs;
-        this.SEW4PP = (Sew4_Pipe)sew4Pp;
+        this.SEW2VLVS = sew2Vlvs.getID();
+        this.SEW4PP = sew4Pp.getID();
         
         this.description = "The metal valve is connected to a console mounted "
                          + "on the wall next to the door. A smaller pipe coming "
@@ -34,8 +33,10 @@ public class Sew5_Valve extends Furniture {
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) {       
         AudioPlayer.playEffect(17);
+        Sew2_Valves v = (Sew2_Valves)Player.getRoomObj(Id.SEW2).getFurnRef(SEW2VLVS);
+        Sew4_Pipe p = (Sew4_Pipe)Player.getRoomObj(Id.SEW4).getFurnRef(SEW4PP);
         
-        if (! SEW4PP.isMissingPipe() && SEW2VLVS.solved()) {
+        if (! p.isMissingPipe() && v.solved()) {
             ((Cis1)Player.getRoomObj(Id.CIS1)).turnOffGas();
         }
         return this.actDialog;

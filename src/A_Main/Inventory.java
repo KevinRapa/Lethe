@@ -68,7 +68,13 @@ public class Inventory implements Iterable<Item>, Serializable {
     }
     //-------------------------------------------------------------------------
     public boolean contains(Item item) {
-        return CONTENTS.contains(item);
+        String name = item.toString();
+        
+        for (Item i : this.CONTENTS)
+            if (i.toString().equals(name))
+                return true;
+        
+        return false;
     }
     //-------------------------------------------------------------------------
     public boolean isEmpty() {
@@ -104,7 +110,16 @@ public class Inventory implements Iterable<Item>, Serializable {
     }
     //-------------------------------------------------------------------------
     public void remove(Item removeThis) {  
-        this.CONTENTS.remove(removeThis);
+        String name = removeThis.toString();
+        Iterator<Item> iter = this.CONTENTS.iterator();
+        
+        while (iter.hasNext()) {
+            if (iter.next().toString().equals(name)) {
+                iter.remove();
+                return;
+            }
+        }
+        System.err.println("Item " + removeThis + " not found.");
     }
     //-------------------------------------------------------------------------
     /**

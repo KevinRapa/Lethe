@@ -19,6 +19,7 @@ import A_Super.Unmoveable;
  */
 public class My18_Pedestal extends Furniture implements Unmoveable {
     private boolean hasStone;
+    private final Furniture STAIRS;
     //-------------------------------------------------------------------------
     public My18_Pedestal () {
         super();
@@ -27,7 +28,7 @@ public class My18_Pedestal extends Furniture implements Unmoveable {
         this.description = "The pedestal has a globular indentation in the center.";
         this.searchDialog = "There's nothing interesting about the pedestal.";
         this.useDialog = "That doesn't fit in the indentation.";
-
+        this.STAIRS = new My18_Stairs(Direction.DOWN, Id.CV18);
         
         this.addNameKeys("(?:sandstone )?pedestal");
         this.addUseKeys(ANYTHING);
@@ -42,7 +43,7 @@ public class My18_Pedestal extends Furniture implements Unmoveable {
         if (item.toString().equals(IRIDESCENT_JEWEL)) {
             this.hasStone = true;
             AudioPlayer.playEffect(37);
-            Player.getPos().addFurniture(new My18_Stairs(Direction.DOWN, Id.CV18));
+            Player.getPos().addFurniture(STAIRS);
             Player.getInv().remove(item);
             ((My18)Player.getPos()).updateDesc();
 

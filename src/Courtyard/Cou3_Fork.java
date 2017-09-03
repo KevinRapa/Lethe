@@ -23,7 +23,7 @@ public class Cou3_Fork extends Furniture {
     //---------------------------------------------------------------------   
     @Override public String interact(String key) {  
         if (Player.getInv().add(FORK)) {
-            Player.getPos().removeFurniture(this);
+            Player.getPos().removeFurniture(this.getID());
             return this.actDialog;
         }
         else

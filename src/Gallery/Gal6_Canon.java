@@ -2,11 +2,13 @@ package Gallery;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import A_Main.Id;
 import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
 import A_Main.Names;
 import static A_Main.Names.*;
+import A_Main.Player;
 /**
  * One of four components of the light machine puzzle in the gallery.
  * 
@@ -17,7 +19,7 @@ import static A_Main.Names.*;
  * @author Kevin Rapa
  */
 public class Gal6_Canon extends Gal_LightMachine {
-    private final Gal7_Statue STAT;   
+    private final int STAT;   
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_Canon(Furniture stat) {
         super();
@@ -30,7 +32,7 @@ public class Gal6_Canon extends Gal_LightMachine {
                          + "coming out the front with slots in it and the whole "
                          + "thing is covered in lights and wires. Wait... there's "
                          + "an empty square compartment on top. What is that for?";
-        this.STAT = (Gal7_Statue) stat;
+        this.STAT = stat.getID();
         this.addActKeys("fire", "shoot");
         this.addNameKeys("(?:electr(?:on)?ic )?cann?on");
         this.addUseKeys(CHARGED_BATTERY, DEAD_BATTERY);
@@ -47,9 +49,10 @@ public class Gal6_Canon extends Gal_LightMachine {
 //-----------------------------------------------------------------------------    
     @Override protected String turnOn() {
         this.determineColor();
+        Gal7_Statue s = (Gal7_Statue)Player.getRoomObj(Id.GAL7).getFurnRef(STAT);
         this.isOn = true;       
         return "The lights on the cannon light up and start bleeping. " + beam +
-               " emits from the barrel. " + STAT.activate(beam);
+               " emits from the barrel. " + s.activate(beam);
     }
 //-----------------------------------------------------------------------------
     @Override protected void resetStatue() {
@@ -105,7 +108,8 @@ public class Gal6_Canon extends Gal_LightMachine {
         //---------------------------------------------------------------------
         private void trigger() { 
             determineColor();
-            GUI.out(beam + " shoots out the front of the cannon. " + STAT.activate(beam));
+            Gal7_Statue s = (Gal7_Statue)Player.getRoomObj(Id.GAL7).getFurnRef(STAT);
+            GUI.out(beam + " shoots out the front of the cannon. " + s.activate(beam));
         }   
     }
 //-----------------------------------------------------------------------------

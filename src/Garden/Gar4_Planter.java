@@ -1,6 +1,7 @@
 package Garden;
 
 import A_Main.AudioPlayer;
+import A_Main.Id;
 import static A_Main.Names.SHOVEL;
 import static A_Main.Names.SOIL;
 import static A_Main.Names.TROWEL;
@@ -13,12 +14,12 @@ import A_Super.Unmoveable;
  * @author Kevin Rapa
  */
 public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
-    private final Gar4_Plaque PLQ_REF;
+    private final int PLQ_ID;
     private final Item PLT_REF;
     //-------------------------------------------------------------------------
     public Gar4_Planter (Furniture plaque, Item plate, Item... items) {
         super(items);
-        this.PLQ_REF = (Gar4_Plaque)plaque;
+        this.PLQ_ID = plaque.getID();
         this.PLT_REF = plate;
         this.description = "This planter contains no plants, just a bed of soil.";
         this.actDialog = "You dig around the plaque, but find nothing in the soil.";
@@ -36,23 +37,31 @@ public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
            return "You aren't a gardener!";
         }
         else {
-            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) 
-                if (PLQ_REF.isMoved())
-                    if (inv.contains(PLT_REF))
+            if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
+                Gar4_Plaque p = (Gar4_Plaque)Player.getRoomObj(Id.GAL4).getFurnRef(PLQ_ID);
+                
+                if (p.isMoved()) {
+                    if (inv.contains(PLT_REF)) {
                         if(inv.give(PLT_REF, Player.getInv())) {
                             AudioPlayer.playEffect(34);
                             return "You dig under where the plaque was to find a shiny plate!";
                         }
-                        else
+                        else {
                             return "You find a shiny plate under the dirt, but you are carrying too much stuff!";
-                    else 
+                        }
+                    }
+                    else {
                         return "You have already dug under the plaque";
+                    }
+                }
                 else {
                     AudioPlayer.playEffect(34);
                     return this.actDialog;
                 }
-            else 
+            }
+            else {
                 return "You have nothing to dig with, and your stocky hands are terrible for digging.";
+            }
         }
     }
     //-------------------------------------------------------------------------     
@@ -61,7 +70,9 @@ public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
     }
     //-------------------------------------------------------------------------     
     @Override public String getSearchDialog() {
-        this.searchable = this.PLQ_REF.isMoved();
+        Gar4_Plaque p = (Gar4_Plaque)Player.getRoomObj(Id.GAL4).getFurnRef(PLQ_ID);
+        
+        this.searchable = p.isMoved();
     
         return searchable ? "You look in the planter" : this.searchDialog;
     }

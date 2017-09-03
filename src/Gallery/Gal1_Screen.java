@@ -11,12 +11,12 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */       
 public class Gal1_Screen extends Furniture {
-    private final Gal1_Switch REF;
+    private final Furniture REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal1_Screen (Furniture swtch) {
         super();
         this.searchable = false;
-        this.REF = (Gal1_Switch)swtch;
+        this.REF = swtch;
         this.description = "The four-paneled Japanese screen sits in the corner "
                          + "of the room. A panorama is hand-drawn on it. Its "
                          + "delicate black lines depict a mountain front landscape.";
@@ -29,7 +29,7 @@ public class Gal1_Screen extends Furniture {
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {     
-        if (! Player.getPos().hasFurniture(REF)) {
+        if (! Player.getPos().hasFurniture(REF.getID())) {
             AudioPlayer.playEffect(41);
             Player.getPos().addFurniture(REF);
             return this.actDialog;

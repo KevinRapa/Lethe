@@ -26,12 +26,14 @@ import Soul_Chamber.*;     import Hades.*;              import Cellar.*;
 import Forest.*;
 
 import java.awt.Color;
+import java.io.*;
 
-import javax.swing.JPanel;   import javax.swing.ImageIcon;   
-import javax.swing.JFrame; import javax.swing.JLabel;  
+import javax.swing.JPanel;  import javax.swing.ImageIcon;   
+import javax.swing.JFrame;  import javax.swing.JLabel;  
 
 /**
- * Creates a 3 dimensional array of rooms representing the game map.
+ * Creates all rooms, furniture, and items in the game, then serializes each
+ * to a file to be read in as it is needed.
  * Also controls a small secondary window which displays a rudimentary
  * image of the room the player is in.
  * 
@@ -70,21 +72,24 @@ public class Map {
             AudioPlayer.playEffect(2);
             MAP_FRAME.setVisible(true);
         }
-        else 
+        else {
             MAP_FRAME.toFront();
-        
+        }
     }
     //-------------------------------------------------------------------------
     public static void hideMap() {
         MAP_FRAME.setVisible(false);
     }
     //-------------------------------------------------------------------------
-    // Disposes map on game's end
     public static void disposeMap() {
+        // Disposes map on game's end
         MAP_FRAME.setVisible(false);
         MAP_FRAME.dispose();
     }
     //-------------------------------------------------------------------------
+    /**
+     * Displays a new image in the map frame depending on the player's position.
+     */
     public static void updateMap() {
         ImageIcon icon;
         String id = Player.getPosId();
@@ -107,8 +112,7 @@ public class Map {
         MAP_FRAME.pack();
     }
     //-------------------------------------------------------------------------
-    public static Room[][][] createMap() {
-
+    public static void createMap() throws IOException {
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE ROOMS, FURNITURE, ITEMS">
         //
@@ -481,9 +485,10 @@ public class Map {
 
         Furniture cou5Fntn = new Cou5_Fountain(rck, soldMed, rck);
         Furniture cou5Sprc = new Cou5_Spruce(vial, sprcExtrct, pnCn, pnCn, pnCn);
-        Furniture cou56F = new Cou_Floor(sl, grss, clvr, trs, sl, hd, sl);
+        Furniture cou5F = new Cou_Floor(sl, grss, clvr, hd, sl);
 
-        Furniture cou6Stat = new Cou6_Statue(cou56F.getInv());
+        Furniture cou6F = new Cou_Floor(sl, grss, clvr, sl, clvr, trs);
+        Furniture cou6Stat = new Cou6_Statue(cou6F);
         Furniture cou6Ghst = new Cou6_BlackJackGhost();
         
         Furniture cou8Sprc = new Cou8_Spruce(vial, sprcExtrct, pnCn, pnCn, pnCn);
@@ -584,9 +589,8 @@ public class Map {
         Furniture cel4Bd = new Cel4_Bed();
         
         Furniture cel5Frnc = new Cel5_Furnace();
-        Furniture cel5Lddr = new Cel_Ladder(Id.CEL6, Direction.DOWN);
         Furniture cel5Lck = new Cel5_Lock();
-        Furniture cel5Grt = new Cel5_Grate(cel5Lddr);
+        Furniture cel5Grt = new Cel5_Grate();
         
         Furniture cel6Pltfrm = new Cel6_Platform();
         Furniture cel6Lddr = new Cel_Ladder(Id.CEL5, Direction.UP);
@@ -793,7 +797,7 @@ public class Map {
               + "fruit (A pome perhaps), a thick tome, and a scepter. In the middle, however, is "
               + "just a scribble. A shapeless mass of ink that does not resemble anything at all.");
         //-----------------------------FURNITURE-------------------------------- 
-        Furniture studSafe = new Stud_Safe("367", studBkPhy, gal1Key);
+        Furniture studSafe = new Stud_Safe(367, studBkPhy, gal1Key);
         Furniture studF = new Floor("The floor is a weathered dark hickory that creaks slowly as you walk. How nice!");
         Furniture studPrtrt = new Stud_Portrait(studSafe);
         Furniture studFire = new Stud_Fireplace(bckt);
@@ -985,7 +989,7 @@ public class Map {
         Furniture mhaSDr = new Mha_Door(Direction.SOUTH);
         Furniture mhaWDr = new Mha_Door(Direction.WEST);
         Furniture mha3KitcDr = new Mha3_Door(Direction.EAST);
-        Furniture mhaMDr = new Mha2_Door(din1, Direction.EAST);
+        Furniture mhaMDr = new Mha2_Door(Direction.EAST);
         Furniture mha1Plnt = new Mha_Plant(sl, stnHd);
         Furniture mha2Plnt = new Mha_Plant(sl, onyxFrag2);
         Furniture mha3Plnt = new Mha_Plant(sl, stnBs);
@@ -1009,8 +1013,8 @@ public class Map {
         Furniture wrkF = new Floor("A sandstone tiled floor, blackened and dirty from ash.", snd);
         Furniture wrkBrl = new Wrk_Barrel(rdDy, rdDy, blDy, blDy, yllwDy, yllwDy);
         Furniture wrkCbnt = new Wrk_Cbnt(hmmr, gl, ptsh, ptsh);
-        Furniture wrkCstTbl = new Wrk_CastingTable(wrkBrl.getInv(), closScks.getInv(), 
-                redLns, snd, rdDy, blDy, yllwDy, ptsh, wrkCbnt.getInv());
+        Furniture wrkCstTbl = new Wrk_CastingTable(wrkBrl, closScks, 
+                redLns, snd, rdDy, blDy, yllwDy, ptsh, wrkCbnt);
         Furniture wrkKln = new Wrk_Kiln();
         Furniture wrkBnch = new Gqua_Workbench(stncl, wrkNt);        
         Furniture wrkAnvl = new Wrk_Anvil();
@@ -1092,7 +1096,7 @@ public class Map {
         //-----------------------------FURNITURE--------------------------------
         Furniture libLF = new Floor("The floor is a rough, dark blue stone.");
         Furniture libUF = new Floor("The floor is a rough, dark blue stone.");
-        Furniture libW = new Wall("A classy mahogany paneled wall. Mahogany, having the highest IQ of any wood");
+        Furniture libW = new Wall("A classy mahogany paneled wall. Mahogany, having the highest IQ of any wood.");
         Furniture libCch = new Lib_Couch();
         Furniture libBkShlf = new Lib_BookShelf();
         Furniture libScncs = new Lib_Sconces();
@@ -1148,15 +1152,14 @@ public class Map {
         Furniture lib1W = new Wall("The walls are just horizontal wood slats, separated "
                 + "slightly as to see the underlying structural rock.");
         Furniture lib1Art = new Lib1_Artifact(blFcs);
-        Furniture lib1Dsk = new Lib1_Desk(lib1Art, lib1Schmtc, ppr, pen, 
-                lib1Lst, lib1ImpNt);
+        Furniture lib1Dsk = new Lib1_Desk(lib1Art, lib1Schmtc, ppr, pen, lib1Lst, lib1ImpNt);
         Furniture lib1Rg = new Lib1_Rug();
         Furniture lib1Rck = new Lib1_Rack(lib1Nt2, lib1Nt4, lib1Nt3);
         Furniture lib1Tbl = new Lib1_Table(lib1Pln);
         Furniture lib1Lght = new Lib1_Light();
         Furniture lib1Mrrr = new Lib1_Mirror();
         Furniture lib1Wndw = new Lib1_Window();
-        Furniture lib1Sf = new Lib1_Safe("712", eow3Key, brkLns, brssRng);
+        Furniture lib1Sf = new Lib1_Safe(712, eow3Key, brkLns, brssRng);
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE DRAWING ROOM">
         //-----------------------------THE ROOM---------------------------------
@@ -1178,7 +1181,7 @@ public class Map {
                 "You'd rather break a window with this and jump out rather than play this witchcraft.", 30);
         //-----------------------------FURNITURE--------------------------------
         Furniture drarBr = new Drar_Bar(wine, wine, wine);
-        Furniture drarGhst = new Drar_Ghost(drkFcs, kitcKey, emrld, drarBr.getInv());
+        Furniture drarGhst = new Drar_Ghost(drkFcs, kitcKey, emrld, drarBr);
         Furniture drarF = new Floor("The room is carpeted in lavender with tenuous gold lines curving intricately along the edges.");
         Furniture drarW = new Wall("This is the first time you've seen wallpaper in here. It's striped vertical in purple and lavender.");
         Furniture drarWndw = new Lib3_Window();
@@ -1191,7 +1194,7 @@ public class Map {
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE KITCHEN"> 
         Furniture kitcTrch = new Kitc_Torch(torch);
         //-----------------------------THE ROOM---------------------------------
-        Room kitc = new Kitc("Kitchen", Id.KITC, kitcTrch.getInv());
+        Room kitc = new Kitc("Kitchen", Id.KITC, kitcTrch);
         //-------------------------------ITEMS----------------------------------
         Item rtnFrt = new Item("rotten fruit", "Was this an apple? Or ... plum once?", 
                 "Whatever you expect him to do with that, he isn't going to.", -50);
@@ -1319,8 +1322,7 @@ public class Map {
         //-----------------------------FURNITURE-------------------------------- 
         Furniture gar13Plntr = new Gar13_Planter(sl, mndrkBlb, sl);
         Furniture gar1Stat = new Gar1_Statue();
-        Furniture gar2BrknHose = new Gar2_BrokenHose();
-        Furniture gar2Hs = new Gar2_Hose(gar2BrknHose, brknHose);
+        Furniture gar2Hs = new Gar2_Hose(brknHose);
         Furniture gar2Hl = new Gar2_Hole(gar2Hs);
         Furniture garF = new Floor("The floor out here is made of large shale slabs. "
                 + "It's a miracle this castle's architecture can hold this area up.");
@@ -1446,7 +1448,7 @@ public class Map {
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE ATTIC"> 
         Furniture prisCbnt = new Pris_Cabinet();
         //-----------------------------THE ROOM---------------------------------
-        Room att1 = new Att1("Attic", Id.ATT1, prisCbnt.getInv());       
+        Room att1 = new Att1("Attic", Id.ATT1, prisCbnt);       
         Room att2 = new Att2("Attic", Id.ATT2);    
         //-------------------------------ITEMS----------------------------------  
         Item attcDll = new Item("doll", "A rag doll in a dress with one eye hanging out. Very creepy.", 15);
@@ -1525,7 +1527,6 @@ public class Map {
         
         Item oar = new Item(WOODEN_OAR, "The two halves have been taped together.", "You will need to be in a boat to use this.", 10);
         
-
         // Dungeon
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE TUNNELS">
         Item pipePc = new Weapon(PIECE_OF_PIPE, "It's a piece of rough metal piping, about 2 feet long. It's covered in rust and slime.", 15);
@@ -1542,7 +1543,7 @@ public class Map {
         Furniture sewF = new Dungeon_Floor();
 
         Furniture sewTnnl = new Sew_Tunnel();
-        Furniture sewRvr = new Sew2345_River(sew1Rvr.getInv(), wtrBckt);
+        Furniture sewRvr = new Sew2345_River(sew1Rvr, wtrBckt);
         Furniture sewMss = new Sew_Moss();
 
         Furniture sew0Trch = new Torch_Holder(torch);
@@ -1720,10 +1721,13 @@ public class Map {
 
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE STRANGE POOL">
-        Furniture[] resetables = {intrWtr, intrGrt, intrTrch, sew2Vlvs, torcSwhrses,
-                torcScythF, cry1Stat, esc6Grt, sew4Pp, esc6Lddr};
+        int[] resetables = {intrWtr.getID(), intrGrt.getID(), intrTrch.getID(), 
+            sew2Vlvs.getID(), torcSwhrses.getID(), torcScythF.getID(), 
+            cry1Stat.getID(), esc6Grt.getID(), sew4Pp.getID(), esc6Lddr.getID()};
+        String[] ids = {Id.INTR, Id.INTR, Id.INTR, Id.SEW2, Id.TORC, Id.TORC, 
+            Id.CRY1, Id.ESC6, Id.SEW4, Id.ESC6};
         //-----------------------------THE ROOM---------------------------------
-        Room sewp = new Sewp("Pool of water", Id.SEWP, prisCbnt.getInv(), resetables);        
+        Room sewp = new Sewp("Pool of water", Id.SEWP, prisCbnt, resetables, ids);        
         //-----------------------------FURNITURE--------------------------------  
         Furniture sewpCl = new Sewp_Ceiling();
         Furniture sewpGrt = new Sewp_Grate();
@@ -1861,7 +1865,7 @@ public class Map {
         // </editor-fold>
         // <editor-fold desc="ANCIENT TOMB FURNITURE" defaultstate="collapsed">
         Furniture antF = new Floor("The floor in here is dusty sandstone.");
-        Furniture antNPC = new Ant_Zombie(antF.getInv(), ((Cry_Drawers)cryDrwrs).DRAWER_NUM);
+        Furniture antNPC = new Ant_Zombie(antF, ((Cry_Drawers)cryDrwrs).DRAWER_NUM);
         Furniture antCskt = new Ant_Casket(tmbNt);
         Furniture antW = new Wall("They are carved sandstone.");
         Furniture antCskts = new Ant_Caskets();
@@ -1877,7 +1881,7 @@ public class Map {
         // <editor-fold desc="CATACOMB AND CAVE FURNITURE" defaultstate="collapsed">
         Furniture cs35Dr = new Cs35_Door(Direction.WEST);
         Furniture ct34Dr = new Cs35_Door(Direction.EAST);
-        ct34.removeFurniture(ct34.getFurnishings().get(0)); // Removes old door from catacombs.
+        ct34.removeFurniture(ct34.getFurnishings().get(0).getID()); // Removes old door from catacombs.
         Furniture cs35F = new Floor("The floor is comprised of many large blocks, illuminated blue from the fire.");
         Furniture cs35Trchs = new Cs35_Torches();
         Furniture cs35Stat = new Cs35_Statue();
@@ -2119,100 +2123,6 @@ public class Map {
 
 
         //**********************************************************************
-        // <editor-fold defaultstate="collapsed" desc="CREATE CASTLE ARRAY">
-        //
-        // The castle map is a 3D array composed of seven 8 x 10 2D arrays. 
-        // The map behaves as a graph in that each room has an ID. That ID is
-        // mapped to an array of other ID's which represent adjacent rooms.
-        // Though this implementation uses up more space than it needs to due 
-        // to the numerous 'NULL' elements, it provides a good visualization.
-        //*********************************************************************/
-
-        Room ____ = new Room(Id.NULL, Id.NULL); // Represents unreachable space.
-
-        Room[][][] newMap = {                        
-            // <editor-fold defaultstate="collapsed" desc="FLOOR 4 [0]">    
-            //  0    1    2    3    4    5    6    7    8    9
-            {{____,____,____,____,____,____,____,____,____,____}, //0
-             {____,cel5,____,cel6,____,soul,____,____,hads,____}, //1
-             {____,cel3,cel4,____,____,tbal,____,____,____,____}, //2
-             {____,cel1,cel2,____,bls2,tow2,lqu1,lqu2,____,____}, //3
-             {____,____,____,____,____,____,____,____,____,____}},//4
-            // </editor-fold>    
-            // <editor-fold defaultstate="collapsed" desc="FLOOR 3 [1]">
-            //  0    1    2    3    4    5    6    7    8    9  
-            {{____,____,____,____,____,____,____,____,____,____}, //0
-             {____,____,____,____,____,____,____,____,____,____}, //1
-             {____,____,obs3,att1,labo,foy4,gal6,gal7,____,____}, //2
-             {____,____,sst2,att2,bls1,tow1,____,____,chs3,____}, //3
-             {____,for1,____,____,____,____,____,____,cha1,____}, //4
-             {____,for2,for3,for4,____,____,____,____,cha2,____}, //5
-             {____,____,____,for5,____,____,____,____,____,____}},//6
-
-            // </editor-fold>   
-            // <editor-fold defaultstate="collapsed" desc="FLOOR 2 [2]">
-            //  0    1    2    3    4    5    6    7    8    9  
-            {{____,____,____,____,____,____,____,____,____,____}, //0
-             {____,____,____,____,____,____,____,gal5,lib4,____}, //1
-             {____,____,obs2,jha1,par2,foy3,gal3,gal4,lib5,____}, //2
-             {____,____,sst1,jha2,____,____,____,____,____,____}, //3
-             {____,____,gar1,gar2,____,____,____,____,din2,____}, //4
-             {____,____,gar3,gar4,____,____,cou8,____,drar,____}, //5
-             {____,____,____,wow3,clos,____,____,work,eow4,____}, //6
-             {____,____,____,____,____,____,____,____,____,____}},//7
-            // </editor-fold>   
-            // <editor-fold defaultstate="collapsed" desc="FLOOR 1 [3]">
-            //  0    1    2    3    4    5    6    7    8    9  
-            {{____,____,____,____,____,____,____,____,____,____}, //0
-             {____,____,bha1,bha2,bha3,foyb,foyc,lib1,lib2,____}, //1
-             {____,____,obs1,stud,par1,foy2,gal1,gal2,lib3,____}, //2
-             {____,____,look,rotu,foyw,foy1,vest,mha1,chs1,____}, //3
-             {____,squa,sha2,iha1,cou1,cou7,cou6,mha2,din1,____}, //4
-             {____,shar,sha1,iha2,cou2,cou3,cou5,mha3,kitc,____}, //5
-             {____,wbal,wow1,wow2,cous,cou4,dst1,eow1,eow2,____}, //6
-             {____,____,____,____,____,endg,____,____,____,____}},//7
-            // </editor-fold>   
-            // <editor-fold defaultstate="collapsed" desc="TUNNELS [4]">
-            //  0    1    2    3    4    5    6    7    8    9  
-            {{____,____,____,____,____,____,____,____,____,____}, //0
-             {____,esc3,esc4,esc5,____,____,____,____,cis5,____}, //1
-             {____,esc2,esc1,esc6,____,____,____,____,____,____}, //2
-             {____,____,____,____,____,cas1,cry2,____,vau1,____}, //3
-             {____,cis2,cis1,sew5,pris,torc,cry1,____,vau2,____}, //4
-             {____,cis3,aarc,sew4,sew3,sew2,sew1,____,vaue,____}, //5
-             {____,cis4,oub1,intr,sewp,dkch,sew0,____,____,____}, //6    
-             {____,____,____,____,____,____,____,____,____,____}},//7
-            // </editor-fold>   
-            // <editor-fold defaultstate="collapsed" desc="CATACOMBS [5]">
-            //  0    1    2    3    4    5    6    7    8    9  
-            {{____,____,____,____,____,____,____,____,____,____}, //0
-             {____,ct11,ct12,ct13,ct14,ct15,tm16,ct17,my18,____}, //1
-             {____,ct21,ct22,ct23,ct24,ct25,ct26,ct27,ct28,____}, //2
-             {____,ct31,tm32,ct33,ct34,cs35,ct36,ct37,ct38,____}, //3
-             {____,ct41,ct42,ct43,ct44,ct45,ct46,ct47,ct48,____}, //4
-             {____,ct51,ct52,ct53,ct54,an55,ct56,ct57,ct58,____}, //5
-             {____,ct61,ou62,ct63,ct64,an65,tm66,ct67,ct68,____}, //6
-             {____,____,____,____,____,____,____,____,____,____}},//7 
-            // </editor-fold>   
-            // <editor-fold defaultstate="collapsed" desc="CAVES [6]">
-            //  0    1    2    3    4    5    6    7    8    9  
-            {{____,____,____,____,____,____,____,____,____,____}, //0
-             {____,cv11,cv12,cv13,cv14,cv15,cv16,cv17,cv18,____}, //1
-             {____,cv21,cv22,cv23,cv24,cv25,cv26,cv27,cv28,____}, //2
-             {____,cv31,cv32,cv33,cv34,cv35,cv36,cv37,cv38,____}, //3
-             {____,cv41,cv42,cv43,cv44,cv45,cv46,cv47,cv48,____}, //4
-             {____,cv51,cv52,cv53,cv54,cv55,cv56,cv57,cv58,____}, //5
-             {____,cv61,cv62,cv63,cv64,ms65,ms66,cv67,cv68,____}, //6
-             {____,____,____,____,____,____,____,____,____,____}} //7
-            // </editor-fold>   
-        };
-
-        //**********************************************************************
-        // </editor-fold> 
-        //********************************************************************** 
-        
-
-        //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="PUT FURNITURE IN ROOMS">
         //*********************************************************************/  
 
@@ -2235,8 +2145,8 @@ public class Map {
                 bbaClff, bbaShrln, bbaSea, bba2Dr);
         cou1.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou1F, couCstl, couRvns);
         cou2.addFurniture(couW, cou2F, cou2Bshs, cou2Fntn, couCstl, coutWlkwy, couRvns);
-        cou5.addFurniture(couW, cou56F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc, coutWlkwy, couRvns);
-        cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou56F, cou6Stat, couCstl, cou6Ghst, couRvns);
+        cou5.addFurniture(couW, cou5F, cou2Bshs, cou5Fntn, couCstl, cou5Sprc, coutWlkwy, couRvns);
+        cou6.addFurniture(couStps, cou1Bnch, cou1Thrns, couW, cou6F, cou6Stat, couCstl, cou6Ghst, couRvns);
         cou3.addFurniture(cou3F, couW, cou3Stps, cou3Gt, cou3Ivy, cou3Frk, couCstl, couRvns);
         cou4.addFurniture(cou3F, couW, cou4Gt, cou4Frst, cou4Mlbx, cou4Trl, couCstl, couRvns);
         cou7.addFurniture(couCstl, entrF, entrDr, entrStats, entrClmns, bbaRlng, entrRf, 
@@ -2448,15 +2358,61 @@ public class Map {
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="LOCK ROOMS">
         //********************************************************************** 
-        rotu.lock(); stud.lock(); gal5.lock(); gal1.lock(); par2.lock();
-        clos.lock(); din1.lock(); kitc.lock(); ou62.lock(); chs1.lock();
-        work.lock(); tow1.lock(); sewp.lock(); dkch.lock(); wow2.lock();
-        vau2.lock(); cou4.lock();
+        rotu.setLocked(true); stud.setLocked(true); gal5.setLocked(true); 
+        gal1.setLocked(true); par2.setLocked(true); clos.setLocked(true); 
+        din1.setLocked(true); kitc.setLocked(true); ou62.setLocked(true); 
+        chs1.setLocked(true); work.setLocked(true); tow1.setLocked(true); 
+        sewp.setLocked(true); dkch.setLocked(true); wow2.setLocked(true);
+        vau2.setLocked(true); cou4.setLocked(true);
         //**********************************************************************
         // </editor-fold> 
         //********************************************************************** 
+        
 
-        return newMap;
+        //**********************************************************************
+        // <editor-fold defaultstate="collapsed" desc="WRITE ROOMS TO FILES">
+        // This is done so rooms don't remain in main memory when you haven't
+        // visited them yet in the current game instance.
+        //********************************************************************** 
+        Room[] allRooms = {                        
+            cel5,cel6,soul,hads,cel3,cel4,tbal,cel1,cel2,bls2,tow2,lqu1,lqu2,
+            obs3,att1,labo,foy4,gal6,gal7,sst2,att2,bls1,tow1,chs3,for1,for2,
+            for3,for4,cha2,for5,gal5,lib4,obs2,jha1,par2,foy3,gal3,gal4,lib5,
+            sst1,jha2,gar1,gar2,din2,gar3,gar4,cou8,drar,wow3,clos,work,eow4,
+            bha1,bha2,bha3,foyb,foyc,lib1,lib2,obs1,stud,par1,foy2,gal1,gal2,
+            lib3,look,rotu,foyw,foy1,vest,mha1,chs1,squa,sha2,iha1,cou1,cou7,
+            cou6,mha2,din1,shar,sha1,iha2,cou2,cou3,cou5,mha3,kitc,wbal,wow1,
+            wow2,cous,cou4,dst1,eow1,eow2,endg,esc3,esc4,esc5,cis5,esc2,esc1,
+            esc6,cas1,cry2,vau1,cis2,cis1,sew5,pris,torc,cry1,vau2,cis3,aarc,
+            sew4,sew3,sew2,sew1,vaue,cis4,oub1,intr,sewp,dkch,sew0,ct11,ct12,
+            ct13,ct14,ct15,tm16,ct17,my18,ct21,ct22,ct23,ct24,ct25,ct26,ct27,
+            ct28,ct31,tm32,ct33,ct34,cs35,ct36,ct37,ct38,ct41,ct42,ct43,ct44,
+            ct45,ct46,ct47,ct48,ct51,ct52,ct53,ct54,an55,ct56,ct57,ct58,ct61,
+            ou62,ct63,ct64,an65,tm66,ct67,ct68,cv11,cv12,cv13,cv14,cv15,cv16,
+            cv17,cv18,cv21,cv22,cv23,cv24,cv25,cv26,cv27,cv28,cv31,cv32,cv33,
+            cv34,cv35,cv36,cv37,cv38,cv41,cv42,cv43,cv44,cv45,cv46,cv47,cv48,
+            cv51,cv52,cv53,cv54,cv55,cv56,cv57,cv58,cv61,cv62,cv63,cv64,ms65,
+            ms66,cv67,cv68, new Room(Id.NULL, Id.NULL)
+        };
+        
+        String base = "data" + SEP + "rooms" + SEP;
+        
+        for (Room room : allRooms) {
+            int[] i = room.getCoords();
+            String path = base + "lvl_" + i[0] + SEP + "row_" + i[1] + SEP + room.getID() + ".data";
+            File f = new File(path);
+            
+            if (f.exists())
+                f.delete();
+            
+            try (ObjectOutputStream oos = new ObjectOutputStream(
+                    new FileOutputStream(f))) 
+            {
+                oos.writeObject(room);
+            }
+        }
+        //**********************************************************************
+        // </editor-fold> 
+        //********************************************************************** 
     }
-    //-------------------------------------------------------------------------
 }

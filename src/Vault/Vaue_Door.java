@@ -54,21 +54,21 @@ public class Vaue_Door extends Furniture implements Unmoveable {
 
             ans = GUI.askChoice(Menus.VAEU_DOOR, VAUE_DOOR_COORDS_P);
             
-            if (Player.isNonEmptyString(ans)) {
+            if (! ans.isEmpty()) {
                 String[] crds = ans.split("\\s*,\\s*");
                 this.switchButtons(Integer.parseInt(crds[0]) - 1, 
                         4 - Integer.parseInt(crds[1]));
             }
             
             if (solved()) {
-                Player.getRoomObj(Id.VAU2).unlock();
-                Player.getPos().removeFurniture(this);
+                Player.getRoomObj(Id.VAU2).setLocked(false);
+                Player.getPos().removeFurniture(this.getID());
                 AudioPlayer.playEffect(37);
                 return "As you push the last button, all the runes become lit. "
                      + "The wall recedes into the floor slowly. "
                      + "As the dust settles, a long room filled with treasure is revealed.";
             }
-        } while (Player.isNonEmptyString(ans));
+        } while (! ans.isEmpty());
         
         return this.actDialog;
     }

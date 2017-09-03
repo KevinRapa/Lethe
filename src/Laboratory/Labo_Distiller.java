@@ -11,19 +11,19 @@ import A_Super.Moveable;
  * @author Kevin Rapa
  */
 public class Labo_Distiller extends Furniture implements Moveable {
-    private final Labo_GasPipe PIPE_REF;
-    private final Labo_Condenser CONDENSER_REF;
+    private final int PIPE_ID;
     private final Item TUBE_REF, VIAL_REF;
+    private final Furniture HOSE_REF;
     private final Labo_Flask FLORENCE_FLASK_REF;
     //-------------------------------------------------------------------------
-    public Labo_Distiller (Furniture pipe, Furniture condenser, Item tstTube, Item vial) {
+    public Labo_Distiller (Furniture pipe, Furniture cndnsr, Item tstTube, Item vial) {
         super();
 
-        this.PIPE_REF = (Labo_GasPipe)pipe;
-        this.CONDENSER_REF = (Labo_Condenser)condenser;
+        this.PIPE_ID = pipe.getID();
         this.TUBE_REF = tstTube;
         this.VIAL_REF = vial;
-        this.FLORENCE_FLASK_REF = new Labo_Flask(CONDENSER_REF, TUBE_REF, VIAL_REF);
+        this.FLORENCE_FLASK_REF = new Labo_Flask(cndnsr.getID(), TUBE_REF, VIAL_REF);
+        this.HOSE_REF = new Labo_Hose();
 
         this.actDialog = "There doesn't seem to be much to work on with your hands. You "
                        + "will need some tools to interact with this.";
@@ -62,7 +62,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
 
         if (name.equals(RUBBER_HOSE)) {
             Player.getInv().remove(item);
-            Player.getPos().addFurniture(new Labo_Hose());
+            Player.getPos().addFurniture(HOSE_REF);
             return "You connect the hose to the bunsen burner nozzle and the other end to the gas pipe.";
         }
         else if (name.equals(FLORENCE_FLASK)) {
@@ -78,8 +78,10 @@ public class Labo_Distiller extends Furniture implements Moveable {
             return "That type of vessel was not designed for boiling chemicals! Put it down before you set the room on fire.";
         }
         else {
-            if (PIPE_REF.isOn() && Player.getPos().hasFurniture("hose")) {
-                if (Player.getPos().hasFurniture(FLORENCE_FLASK_REF)) {
+            Labo_GasPipe p = (Labo_GasPipe)Player.getPos().getFurnRef(PIPE_ID);
+                    
+            if (p.isOn() && Player.getPos().hasFurniture("hose")) {
+                if (Player.getPos().hasFurniture(FLORENCE_FLASK_REF.getID())) {
                     AudioPlayer.playEffect(45);
                     FLORENCE_FLASK_REF.distill();
                     return NOTHING;
@@ -90,7 +92,7 @@ public class Labo_Distiller extends Furniture implements Moveable {
                          + "with an intense flame under open space before dying out.";
                 }
             }
-            else if (PIPE_REF.isOn() && ! Player.getPos().hasFurniture("hose")) {
+            else if (p.isOn() && ! Player.getPos().hasFurniture("hose")) {
                 AudioPlayer.playEffect(32);
                 return "As you squeeze the striker, a big poof of fire ignites and singes your face. "
                      + "The smell of gas fades momentarily and slowly comes back.";

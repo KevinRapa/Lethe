@@ -60,7 +60,7 @@ public final class Help {
             else if (choice.equals("3")) {   
                 innerLoop(Menus.HELP_SUB3, CASTLE_CHOICE, "a");
             }
-        } while (! choice.equals(""));   
+        } while (choice.isEmpty());   
         
         GUI.clearDialog();
         GUI.toMainMenu();

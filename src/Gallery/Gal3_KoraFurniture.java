@@ -23,7 +23,7 @@ public class Gal3_KoraFurniture extends Furniture {
             return "You would try, but it's up on the wall right now.";     
         else
             if (Player.getInv().add(new Gal3_Inst("kora"))) {
-                Player.getRoomObj(Id.GAL3).removeFurniture(this);
+                Player.getRoomObj(Id.GAL3).removeFurniture(this.getID());
                 return this.actDialog;
             }
             else

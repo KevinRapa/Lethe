@@ -286,7 +286,7 @@ public class GUI extends JFXPanel {
      * @param txt dialog text.
      */
     public static void out(String txt) {
-        if (! txt.equals(""))
+        if (! txt.isEmpty())
             DIAL_TXT.setText((txt));
     }
 //-----------------------------------------------------------------------------    
@@ -304,7 +304,7 @@ public class GUI extends JFXPanel {
      * @param txt <code>triggeredEvent</code> room text
      */
     public static void roomOut(String txt) {
-        if (! txt.equals(""))
+        if (! txt.isEmpty())
             ROOM_LBL.setText(txt);
     }
 //-----------------------------------------------------------------------------    

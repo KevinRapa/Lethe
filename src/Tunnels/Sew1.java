@@ -19,7 +19,7 @@ public class Sew1 extends Dungeon_Tunnel {
     @Override public String getBarrier(Direction dir) {
         switch (dir) {
             case NORTH:
-                return WATER_THAT_WAY;
+                return WATER_THERE;
             case EAST:
                 return "You can't get the gate open. It's locked.";
             default:

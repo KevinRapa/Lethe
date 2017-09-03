@@ -42,12 +42,19 @@ public final class Menus {
                   + "<'r'> Reset and quit." + NL
                   + " < >  Quit",
                           
-        MAIN_MENU = "      Enter a command or" + NL 
+        MAIN_MENU = "     Enter a command or:" + NL 
                   + "   <'w'/'s'/'a'/'d'>  Move" + NL
                   + "<'i'>  Inventory  <'k'>  Keys" + NL
                   + "<'h'>  Get help   <'n'>  Note" + NL
                   + "<'m'>  Show Map   <'l'>  Loot" + NL
-                  + "<'save'> Save   <'quit'> Quit",
+                  + "<'save'> Save   <'quit'> Quit" + NL
+                  + "     <'options'> Options",
+            
+        OPTIONS = NL + "<'1'> Movement scheme:  " + NL +
+                       "      %" + NL +
+                       "<'2'> Default action on " + NL +
+                       "      furniture: &" + NL +
+                       " < >  Back ",
 
         HELP_MAIN = "     Topics:" + NL
                   + "<'1'> Controls" + NL

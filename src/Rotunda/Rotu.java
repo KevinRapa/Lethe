@@ -54,8 +54,8 @@ public class Rotu extends Room {
             this.removeAdjacent(Id.LOOK);
             Player.getRoomObj(Id.LOOK).removeAdjacent(this.ID);
             
-            this.removeFurniture(EDOOR);
-            this.removeFurniture(WDOOR);
+            this.removeFurniture(EDOOR.getID());
+            this.removeFurniture(WDOOR.getID());
             this.addFurniture(NDOOR);
             this.addFurniture(SDOOR);
             this.state = State.NORTH_SOUTH;
@@ -70,8 +70,8 @@ public class Rotu extends Room {
             this.removeAdjacent(Id.IHA1);
             Player.getRoomObj(Id.IHA1).removeAdjacent(this.ID);
             
-            this.removeFurniture(NDOOR);
-            this.removeFurniture(SDOOR);
+            this.removeFurniture(NDOOR.getID());
+            this.removeFurniture(SDOOR.getID());
             this.addFurniture(EDOOR);
             this.addFurniture(WDOOR);
             this.state = State.EAST_WEST; 

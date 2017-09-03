@@ -1,6 +1,7 @@
 package Tunnels;
 
 import A_Main.AudioPlayer;
+import A_Main.Id;
 import A_Main.Names;
 import A_Main.Player;
 import A_Super.Furniture;
@@ -16,13 +17,13 @@ import A_Super.Unmoveable;
  */
 public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
     private boolean hasPipe;
-    private final Furniture SEW1_RVR;
+    private final int SEW1_RVR;
     private final Item PIPE_REF;
     //-------------------------------------------------------------------------
     public Sew4_Pipe (Furniture sew1Rvr, Item pipe) {
         super();
         
-        this.SEW1_RVR = sew1Rvr;
+        this.SEW1_RVR = sew1Rvr.getID();
         this.PIPE_REF = pipe;
         
         this.hasPipe = false;
@@ -70,7 +71,8 @@ public class Sew4_Pipe extends Furniture implements Resetable, Unmoveable {
     @Override public void reset() {
         if (this.hasPipe) {
             this.hasPipe = false;
-            this.SEW1_RVR.getInv().forceAdd(PIPE_REF); // Prevents dialog.
+            Player.getRoomObj(Id.SEW1).getFurnRef(SEW1_RVR)
+                    .getInv().forceAdd(PIPE_REF); // Prevents dialog.
         }
     }
     //-------------------------------------------------------------------------

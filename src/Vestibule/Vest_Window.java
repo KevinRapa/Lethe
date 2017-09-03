@@ -6,13 +6,14 @@ import A_Super.Furniture;
 import A_Main.Player;
 
 public class Vest_Window extends Window {
-    private final Vest_Fireplace REF;
+    private final int FIREPLACE_ID;
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Vest_Window(Furniture ref) {
         super();
         this.isOpen = false;
-        this.REF = (Vest_Fireplace)ref;
+        this.FIREPLACE_ID = ref.getID();
+        
         this.escapeDialog = "You would never be able to fit through those "
                           + "bars, and they're too thick to cut...";
         this.searchDialog = "The only place to look is on the sill, " + 
@@ -28,6 +29,7 @@ public class Vest_Window extends Window {
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         Vest vest = (Vest)Player.getPos(); // Player must be in vesibule.
+        Vest_Fireplace frplc = (Vest_Fireplace)vest.getFurnRef(FIREPLACE_ID);
         
         if (key.equals("open") || key.equals("close")) {
             if (this.isOpen && key.equals("close")) {
@@ -41,8 +43,8 @@ public class Vest_Window extends Window {
                 vest.switchWindow();
                 AudioPlayer.playEffect(26);
 
-                if (REF.isLit()) {
-                    this.REF.extinguish();
+                if (frplc.isLit()) {
+                    frplc.extinguish();
                     return "You open the window. A strong gust comes through " +
                                           "and extinguishes the fireplace."; 
                 }

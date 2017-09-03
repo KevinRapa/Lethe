@@ -1,16 +1,17 @@
 package Drawing_Room;
 
+import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Moveable;
 import A_Super.SearchableFurniture;
 
 public class Drar_Chess extends SearchableFurniture implements Moveable {
-    private final Drar_Ghost GHOST_REF;
+    private final int GHOST_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Drar_Chess(Furniture ghst, Item... items) {
         super(items);
-        this.GHOST_REF = (Drar_Ghost)ghst;
+        this.GHOST_ID = ghst.getID();
         this.description = "The fancy chess table bears a polished ceramic "
                          + "surface and many detailed pieces. You wish you "
                          + "knew how to play.";
@@ -22,7 +23,9 @@ public class Drar_Chess extends SearchableFurniture implements Moveable {
     }
 //-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
-        if (GHOST_REF.firstTime())
+        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+        
+        if (g.firstTime())
             return "Ignoring the ghost completely, you search the chess "
                  + "table's surface.";
         else 
@@ -30,7 +33,9 @@ public class Drar_Chess extends SearchableFurniture implements Moveable {
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        if (GHOST_REF.firstTime())
+        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+        
+        if (g.firstTime())
             return "Now is not the time for that. There's a ghost in here!";
         else 
             return this.actDialog;

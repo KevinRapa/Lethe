@@ -14,14 +14,14 @@ import Lichs_Quarters.Lich_Room;
  */
 public class Soul_Pool extends Furniture {
     private final Room[] LICH_RMS;
-    private final Furniture SPHERE;
+    private final int SPHERE_ID;
     private int numPhylacteries;
     //-------------------------------------------------------------------------
     public Soul_Pool (Furniture sphere, Room ... lichRms) {
         super();
         
         this.LICH_RMS = lichRms;
-        this.SPHERE = sphere;
+        this.SPHERE_ID = sphere.getID();
         this.numPhylacteries = 0;
         
         this.description = "The pool of aether swirls with white... stuff, and "
@@ -71,8 +71,8 @@ public class Soul_Pool extends Furniture {
 
         Player.getRoomObj(Id.LQU1).addAdjacent(Id.LQU2);
 
-        Player.getRoomObj(Id.TOW1).removeFurniture(SPHERE);
-        Player.getRoomObj(Id.TOW2).removeFurniture(SPHERE);
+        Player.getRoomObj(Id.TOW1).removeFurniture(SPHERE_ID);
+        Player.getRoomObj(Id.TOW2).removeFurniture(SPHERE_ID);
 
         // Closes off areas to direct player out and avoid conflictions with night and day.
         Player.getRoomObj(Id.FOYC).removeAdjacent(Id.GAL1);

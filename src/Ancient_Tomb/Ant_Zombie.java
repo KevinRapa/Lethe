@@ -1,10 +1,10 @@
 package Ancient_Tomb;
 
 import A_Main.AudioPlayer;
-import A_Main.Inventory;
 import static A_Main.Names.BRAIN;
 import static A_Main.Names.COMPASS;
 import A_Main.Player;
+import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.NonPlayerCharacter;
 import A_Super.Note;
@@ -18,7 +18,7 @@ import A_Super.Note;
 public class Ant_Zombie extends NonPlayerCharacter {
     private final Item QUARTZ_DEVICE, ZOMBIE_NOTE;  // Zombie gives these to player.
     private final String CONVERSE_REP2;
-    private final Inventory FLOOR_INV_REF;  // Zombie drops note if player inv is full.
+    private final int FLR_INV_ID;  // Zombie drops note if player inv is full.
     private boolean pleased;  // pleased once player gives brain to zombie.
     //-------------------------------------------------------------------------
     /*
@@ -27,12 +27,12 @@ public class Ant_Zombie extends NonPlayerCharacter {
         so that it can be written on the note. This class must be instantiated
         AFTER Cry_Drawers is as a result.
     */
-    public Ant_Zombie (Inventory floorInv, int drawerNum) {
+    public Ant_Zombie (Furniture floorInv, int drawerNum) {
         super();
         
         this.QUARTZ_DEVICE = new Compass();
         this.ZOMBIE_NOTE = new Zombie_Note("message", drawerNum);
-        this.FLOOR_INV_REF = floorInv;
+        this.FLR_INV_ID = floorInv.getID();
         this.pleased = false;
         
         this.description = "The hideous dessicated figure is eyeless and frail. It just " +
@@ -107,7 +107,7 @@ public class Ant_Zombie extends NonPlayerCharacter {
             return result.concat("You take the message. The figure then lifts "
                     + "its hand higher and points vaguely upwards.");
         else {
-            FLOOR_INV_REF.add(ZOMBIE_NOTE);
+            Player.getPos().getFurnRef(FLR_INV_ID).getInv().add(ZOMBIE_NOTE);
             return result.concat("The paper slowly drifts to the floor "
                     + "from the zombie's weak grasp. The figure then lifts "
                     + "its hand higher and points vaguely upwards.");

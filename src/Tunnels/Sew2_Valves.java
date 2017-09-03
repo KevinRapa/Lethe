@@ -5,7 +5,6 @@ import A_Main.GUI;
 import A_Main.Menus;
 import static A_Main.Patterns.ONE_TO_NINE;
 import static A_Main.Patterns.ROMAN_NUMERAL_P;
-import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Resetable;
 import java.util.HashMap;
@@ -81,10 +80,10 @@ public class Sew2_Valves extends Furniture implements Resetable {
 
             if (ONE_TO_NINE.matcher(ans).matches()) 
                 this.turnValve(Integer.parseInt(ans) - 1);
-            else if (Player.isNonEmptyString(ans)) 
+            else if (! ans.isEmpty()) 
                 this.turnValve(ans);
             
-        } while (Player.isNonEmptyString(ans));
+        } while (! ans.isEmpty());
         
         return NOTHING;
     }

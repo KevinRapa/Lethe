@@ -18,7 +18,7 @@ public class Sew2 extends Dungeon_Tunnel {
 //-----------------------------------------------------------------------------
     @Override public String getBarrier(Direction dir) {
         if (dir == Direction.NORTH)
-            return WATER_THAT_WAY;
+            return WATER_THERE;
         else
             return bumpIntoWall();
     }

@@ -2,10 +2,12 @@ package Gallery;
 
 import A_Main.AudioPlayer;
 import A_Main.GUI;
+import A_Main.Id;
 import A_Super.Item;
 import A_Super.Furniture;
 import A_Main.Inventory;
 import A_Main.Names;
+import A_Main.Player;
 /**
  * One of four elements of the light machine puzzle in the gallery.
  * Foci must be added to this in the correct order while the statue is holding
@@ -16,7 +18,7 @@ import A_Main.Names;
  * @author Kevin Rapa
  */
 public class Gal1_Dragon extends Gal_LightMachine {
-    private final Gal2_Statue GAL2_STAT_REF;
+    private final int GAL2_STAT_ID;
     private final boolean[] EYES = {false, false};
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal1_Dragon(Furniture stat, Item yellowFocus) {
@@ -27,7 +29,7 @@ public class Gal1_Dragon extends Gal_LightMachine {
                          + "dark green dragon statue. It looks original to east "
                          + "Asia. Its serpent-like body twists around and it stares "
                          + "menacingly ";
-        this.GAL2_STAT_REF = (Gal2_Statue) stat;
+        this.GAL2_STAT_ID = stat.getID();
         addNameKeys("snake-like dragon(?: statue)?", "(?:dragon|statue)", "(?:dragon's |statue's )?mouth");
         this.inv = new Drgn_Inv(yellowFocus);    
     }
@@ -67,11 +69,12 @@ public class Gal1_Dragon extends Gal_LightMachine {
     @Override protected String turnOn() {
         this.determineColor();
         this.isOn = true;       
-        return beam + " emits from the dragon's mouth. " + GAL2_STAT_REF.activate(beam);
+        Gal2_Statue s = (Gal2_Statue)Player.getRoomObj(Id.GAL2).getFurnRef(GAL2_STAT_ID);
+        return beam + " emits from the dragon's mouth. " + s.activate(beam);
     }
 //-----------------------------------------------------------------------------
     @Override protected void resetStatue() {
-        this.GAL2_STAT_REF.reset();
+        ((Gal2_Statue)Player.getRoomObj(Id.GAL2).getFurnRef(GAL2_STAT_ID)).reset();
     }
 //-----------------------------------------------------------------------------
 /******************************************************************************/    
@@ -109,7 +112,8 @@ public class Gal1_Dragon extends Gal_LightMachine {
         //---------------------------------------------------------------------
         private void trigger() {
             determineColor();
-            GUI.out(beam + " emits from the dragon's mouth. " + GAL2_STAT_REF.activate(beam));
+            Gal2_Statue s = (Gal2_Statue)Player.getRoomObj(Id.GAL2).getFurnRef(GAL2_STAT_ID);
+            GUI.out(beam + " emits from the dragon's mouth. " + s.activate(beam));
         }
     }
 //-----------------------------------------------------------------------------

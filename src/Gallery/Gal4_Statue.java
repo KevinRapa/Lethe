@@ -37,7 +37,7 @@ public class Gal4_Statue extends Furniture {
      * @return returns a string of what happens.
      */
     public String activate(MachineColor color) {
-        if (Player.getRoomObj(Id.GAL4).hasFurniture(this)) {
+        if (Player.getRoomObj(Id.GAL4).hasFurniture(this.getID())) {
             if ((color == MachineColor.BLUE && this.level == 0) || 
                 (color == MachineColor.GREEN && this.level == 1) || 
                 (color == MachineColor.WHITE && this.level == 2)) {

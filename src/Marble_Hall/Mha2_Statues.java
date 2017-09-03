@@ -1,5 +1,6 @@
 package Marble_Hall;
 
+import A_Main.Player;
 import A_Super.Furniture;
 /**
  * Resolves ambiguity from there being two statues in this room.
@@ -9,11 +10,11 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Mha2_Statues extends Furniture {
-    private final Furniture REF;
+    private final int R_STAT_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Mha2_Statues(Furniture Rstat) {
         super();
-        this.REF = Rstat;
+        this.R_STAT_ID = Rstat.getID();
 
         this.searchDialog = this.useDialog = 
             "You aren't sure which. Specify 'left statue' or 'right statue'";
@@ -33,7 +34,7 @@ public class Mha2_Statues extends Furniture {
     }
 //-----------------------------------------------------------------------------
     @Override public String getDescription() {
-        if (REF.isSearchable()) {
+        if (Player.getPos().getFurnRef(R_STAT_ID).isSearchable()) {
             return "The pair of statues are mirror images of each other. "
                  + "Each leans toward the other while gazing nonchalantly "
                  + "towards the ceiling. They each hold a silver spear "

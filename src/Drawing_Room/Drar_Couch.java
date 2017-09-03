@@ -1,14 +1,15 @@
 package Drawing_Room;
 
+import A_Main.Player;
 import A_Super.Furniture;
 import A_Super.Moveable;
 
 public class Drar_Couch extends Furniture implements Moveable {
-    private final Drar_Ghost GHOST_REF;
+    private final int GHOST_ID;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Drar_Couch(Furniture ghst) {
         super();
-        this.GHOST_REF = (Drar_Ghost)ghst;
+        this.GHOST_ID = ghst.getID();
 
         this.description = "The Victorian-era couch is a bold green color. This "
                          + "one looks quite comfortable actually.";
@@ -20,14 +21,18 @@ public class Drar_Couch extends Furniture implements Moveable {
     }
 //-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
-        if (GHOST_REF.firstTime())
+        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+        
+        if (g.firstTime())
             return "You do realize that there's a ghost in here, right?";
         
         return this.searchDialog;
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        if (GHOST_REF.firstTime())
+        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+        
+        if (g.firstTime())
             return "You do realize that there's a ghost in here, right?";
         
         return this.actDialog;

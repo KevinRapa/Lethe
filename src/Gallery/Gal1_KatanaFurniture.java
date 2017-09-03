@@ -30,7 +30,7 @@ public class Gal1_KatanaFurniture extends Furniture {
                     + "The long, slender blade gently curves to a braided handle.", 80))
            ) 
         {
-            Player.getPos().removeFurniture(this);
+            Player.getPos().removeFurniture(this.getID());
             return this.actDialog;
         }
         else

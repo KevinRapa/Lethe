@@ -12,12 +12,12 @@ import A_Super.Furniture;
  * @author Kevin Rapa
  */
 public class Cry2_Password extends Furniture {
-    private final Cry1_Statue CRY1_STAT;
+    private final int CRY1_STAT;
     //-------------------------------------------------------------------------
     public Cry2_Password (Furniture stat) {
         super();
         
-        this.CRY1_STAT = (Cry1_Statue)stat;
+        this.CRY1_STAT = stat.getID();
 
         this.actDialog = "As you speak the phrase before the stone coffin, it "
                        + "slides to the side with a rumble, revealing a metal "
@@ -31,7 +31,9 @@ public class Cry2_Password extends Furniture {
     }
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) {    
-        if (this.CRY1_STAT.isSolved() && ! Player.getPos().isAdjacent(Id.CAS1)) {
+        Cry1_Statue s = (Cry1_Statue)Player.getRoomObj(Id.CRY1).getFurnRef(CRY1_STAT);
+                
+        if (s.isSolved() && ! Player.getPos().isAdjacent(Id.CAS1)) {
             Player.getPos().addAdjacent(Id.CAS1);
             Player.getRoomObj(Id.CAS1).addAdjacent(Id.CRY2);
             AudioPlayer.playEffect(50);

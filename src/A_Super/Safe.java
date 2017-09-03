@@ -4,17 +4,16 @@ import A_Main.AudioPlayer;
 import A_Main.GUI;
 import A_Main.Menus;
 import static A_Main.Names.WEAPON;
-import A_Main.Player;
 /**
  * A combination safe that can be unlocked by entering the right combination.
  * Player may interact with or search this for an open attempt.
  * @author Kevin Rapa
  */
 abstract public class Safe extends SearchableFurniture implements Openable, Moveable {
-    protected final String COMBO;
+    protected final int COMBO;
     protected final int[] DIALS; 
 /* CONSTRUCTOR ---------------------------------------------------------------*/      
-    public Safe (String combo, Item... items) {
+    public Safe (int combo, Item... items) {
         super(items);
         this.COMBO = combo;
         this.DIALS = new int[3];
@@ -64,7 +63,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
                     GUI.menOut(Menus.SAFE_MENU);
                 }
             } 
-        } while (Player.isNonEmptyString(action));
+        } while (! action.isEmpty());
     }
 //-----------------------------------------------------------------------------
     private boolean turnDial(int i) {
@@ -78,12 +77,11 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
     }
 //-----------------------------------------------------------------------------
     private boolean check() {
-        String currentCombo = NOTHING;
+        int currentCombo = 0;
         
-        for (int dial : this.DIALS)
-            currentCombo += dial;
+        currentCombo += (DIALS[0] * 100) + (DIALS[1] * 10) + (DIALS[2] * 1);
                   
-        return currentCombo.matches(this.COMBO);
+        return currentCombo == this.COMBO;
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {              
