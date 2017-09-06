@@ -109,7 +109,7 @@ public class Cou6_BlackJackGhost extends NonPlayerCharacter {
             
             if (Player.answeredYes(ans)) {
                 played = true;
-                Player.getInv().remove(Names.CARD); // Removes all cards from player inventory.
+                Player.getInv().removeType(Names.CARD); // Removes all cards from player inventory.
                 GUI.clearDialog();
                 this.playCards(); // Starts the game. 
             }

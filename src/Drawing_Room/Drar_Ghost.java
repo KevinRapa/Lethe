@@ -43,9 +43,9 @@ public class Drar_Ghost extends NonPlayerCharacter {
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        if (key.matches(ATTACK_PATTERN))
+        if (key.matches(ATTACK_PATTERN)) {
             return ATTACK_DIALOG;
-        
+        }
         else if (this.firstTime) {
             this.converse1();
         }
@@ -170,6 +170,10 @@ public class Drar_Ghost extends NonPlayerCharacter {
     @Override protected String converse2() {
         GUI.out("\"Do you have the emerald yet? It's so " +
                 "important to me. I will to repay you.\"");
+        
+        GUI.menOut(Menus.ENTER);
+        GUI.promptOut();
+        GUI.toMainMenu();
         
         return NOTHING;
     }

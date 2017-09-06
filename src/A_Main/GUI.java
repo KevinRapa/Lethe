@@ -4,21 +4,13 @@ import static A_Main.Names.DATA;
 import static A_Main.Names.SEP;
 import static A_Main.Names.W_DIR;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.LinkedList;
+import java.io.File;            import java.util.Arrays; 
+import java.io.IOException;     import java.util.Random;
+import java.util.LinkedList;    import java.util.regex.Pattern;
 
-import java.util.Arrays; 
-import java.util.Random;
-import java.util.regex.Pattern;
-
-import java.awt.*;
-import java.awt.event.*;
-import javafx.embed.swing.JFXPanel;
-
-import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.text.*;
+import java.awt.*;                  import javax.swing.*;
+import java.awt.event.*;            import javax.swing.border.BevelBorder;
+import javafx.embed.swing.JFXPanel; import javax.swing.text.*;
 
 /******************************************************************************
  * This class is responsible for the game interface.
@@ -52,6 +44,7 @@ public class GUI extends JFXPanel {
         INV_TXT = new JTextArea(),  // Inventories are printed here.
         DIAL_TXT = new JTextArea(), // General text is printed here.
         TITLE_TXT = new JTextArea("             -    L   e   t   h   e    -");
+    
     private final static JPanel 
         EAST = new JPanel(new BorderLayout()),   // Holds inventory and dialog.
         WEST = new JPanel(),                     // Left half of the GUI.
@@ -76,7 +69,6 @@ public class GUI extends JFXPanel {
         MOVE_LBL = new JLabel(),      // Displays number of moves.
         SCORE_LBL = new JLabel();     // Displays current score.
         
-    
     private final static JButton 
         SWAP = new JButton("Swap"),      // Swaps dialog and inventory.
         COLOR2 = new JButton("Color 2"), // Changes label colors
@@ -347,6 +339,7 @@ public class GUI extends JFXPanel {
                 System.out.println(e.getMessage());
             }
         }
+
         return HOLDER.request();
     }
 //-----------------------------------------------------------------------------
@@ -407,6 +400,18 @@ public class GUI extends JFXPanel {
 //-----------------------------------------------------------------------------
     public static void giveFocus() {
         INPUT.requestFocus();
+    }
+//-----------------------------------------------------------------------------    
+    public static void mute() {
+        MUTE.doClick();
+    }
+//-----------------------------------------------------------------------------    
+    public static void setClick() {
+        KEYS.doClick();
+    }
+//-----------------------------------------------------------------------------    
+    public static void swap() {
+        SWAP.doClick();
     }
 //-----------------------------------------------------------------------------
     /**
@@ -526,13 +531,46 @@ public class GUI extends JFXPanel {
         /**
          * Waits for text to entered by the player and stores it, then notifies
          * the game to receive the input.
+         * 
+         * This method ensures all input is trimmed of excess whitespace and
+         * all lowercase.
+         * 
          * Doesn't add save in order to prevent saving repeatedly in quick 
          * succession. Also ignores single-key input and empty strings.
          * @param event Text entered by the player into the text field.
          */
         @Override public void actionPerformed(ActionEvent event) {
             synchronized (HOLDER) {
-                HOLDER.recieve(INPUT.getText().toLowerCase().trim());
+                char[] a = INPUT.getText().toCharArray();
+                StringBuilder b = new StringBuilder(a.length);
+                int i = 0;
+                
+                // Trims excess whitespace and makes everything lower case.
+                while (i < a.length && a[i] == ' ') {
+                    i++; // Skip initial spaces.
+                }
+                while (i < a.length) {
+                    if (a[i] >= 'A' && a[i] <= 'Z')
+                        a[i] += 32; // Makes character lowercase.
+                    else if (a[i] == ' ') {
+                        while (i < a.length - 1 && a[i+1] == ' ') {
+                            i++; // Replace 2+ spaces with 1 space.
+                        }
+                    }
+                    else if (a[i] == '.')
+                        i++;
+
+                    if (i < a.length)
+                        b.append(a[i++]);
+                }
+                
+                // Delete last character if it's a space.
+                int len = b.length();
+                if (len > 0 && b.charAt(len - 1) == ' ')
+                    b.deleteCharAt(len - 1);
+                
+                // Saves the string in the holder to be recieved by Player
+                HOLDER.recieve(b.toString());
 
                 if (UNDO.size() == 15)
                     UNDO.removeLast();

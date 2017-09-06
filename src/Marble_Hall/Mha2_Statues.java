@@ -28,7 +28,7 @@ public class Mha2_Statues extends Furniture {
                          + "specifying 'left statue' or 'right statue'.";
         this.actDialog = "Such impressive works of artistry deserve not to be "
                     + "tainted by your touch.";
-        this.addNameKeys("(?:angel )?statues?", "angels?");
+        this.addNameKeys("(?:angel )?statues?", "angels?", "hands?");
         this.addActKeys(HOLDPATTERN);
         this.addUseKeys(ANYTHING);
     }

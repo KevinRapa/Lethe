@@ -1,6 +1,5 @@
 package West_Outer_Wall;
 
-import static A_Main.Id.WOW3;
 import static A_Main.Names.FIXED_LADDER;
 import A_Super.Staircase;
 import A_Super.Direction;
@@ -11,8 +10,8 @@ import A_Super.Direction;
  */
 public class Wow2_Ladder extends Staircase {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Wow2_Ladder(Direction direction) {
-        super(direction, WOW3, 16);
+    public Wow2_Ladder(Direction direction, String dest) {
+        super(direction, dest, 16);
         this.searchDialog = "The ladder hides nothing.";
         this.description = "The ladder rests against the upper balcony, but it's "
                          + "unstable from the debris.";

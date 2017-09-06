@@ -1,5 +1,6 @@
 package Tunnels;
 
+import A_Main.Id;
 import A_Main.Player;
 import A_Super.Furniture;
 import static A_Main.Id.*;
@@ -38,18 +39,20 @@ public class DungeonMonsterFurniture extends Furniture {
     }
     //------------------------------------------------------------------------- 
     @Override public String getDescription() {
-        String result;
+        String result, pos = Player.getPosId();
         
-        if (FAR_ROOMS_P.matcher(Player.getPosId()).matches()) {
+        if (pos.equals(Id.CRY1) || pos.equals(Id.CRY2) 
+                || pos.equals(Id.DKCH) || pos.equals(Id.INTR)) 
+        {
             result = CANT_SEE_IT;
         }
-        else if (areaName(Player.getPosId()).equals("ESC")) {
+        else if (areaName(pos).equals("ESC")) {
             result = "It's lurking around somewhere above your head... You can't hear it though.";
         }
         else if ((areaName(DungeonMonster.getPos()).equals("CIS") && 
-                        ! NO_SEE_AREA_W.matcher(Player.getPosId()).matches()) ||
+                        ! NO_SEE_AREA_W.matcher(pos).matches()) ||
                  (areaName(DungeonMonster.getPos()).equals("SEW") && 
-                        ! NO_SEE_AREA_E.matcher(Player.getPosId()).matches())) 
+                        ! NO_SEE_AREA_E.matcher(pos).matches())) 
         {
             result = CANT_SEE_IT;
         }
@@ -71,7 +74,7 @@ public class DungeonMonsterFurniture extends Furniture {
                     result = "It's lurking in the south end of the cistern walkway.";
             }
             
-            if (SAFE_AREA.matcher(Player.getPosId()).matches())
+            if (pos.equals(Id.PRIS) || pos.equals(Id.OUB1) || pos.equals(Id.AARC))
                 result = result.concat(" You should be out of its line of sight from here.");
         }
         

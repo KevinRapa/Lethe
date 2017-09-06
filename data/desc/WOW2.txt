@@ -1,7 +1,7 @@
 You are on the east side of a large two-story room extending west 
-before a crumbled down staircase which once led to 
+before a crumbled down staircase below 
 a balcony above you. There's a boarded-up door on 
-the east wall of this room and it doesn't appear 
-openable. A suit of armor stands west against the 
-north wall next to a large hearth. Through a window to 
-the south, you can see out the front of the castle.
+the east, appearing unopenable. 
+A suit of armor stands west against the 
+north wall next to a large hearth. Through a south window, 
+you can see out the front of the castle.

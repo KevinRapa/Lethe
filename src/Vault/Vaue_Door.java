@@ -55,7 +55,7 @@ public class Vaue_Door extends Furniture implements Unmoveable {
             ans = GUI.askChoice(Menus.VAEU_DOOR, VAUE_DOOR_COORDS_P);
             
             if (! ans.isEmpty()) {
-                String[] crds = ans.split("\\s*,\\s*");
+                String[] crds = ans.split(" ?, ?");
                 this.switchButtons(Integer.parseInt(crds[0]) - 1, 
                         4 - Integer.parseInt(crds[1]));
             }

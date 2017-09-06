@@ -28,7 +28,7 @@ public class Sear_Fissure extends Furniture {
         this.actDialog = "You couldn't manage to do that with your bare hands.";
         
         this.addActKeys("break", JOSTLEPATTERN, "climb|go|walk");
-        this.addNameKeys("fissure", "wall", "(?:empty )?hole");
+        this.addNameKeys("fissure", "(?:north )?wall", "(?:empty )?hole");
         this.addUseKeys(WARHAMMER, CROWBAR, HAMMER);
     }
 //-----------------------------------------------------------------------------

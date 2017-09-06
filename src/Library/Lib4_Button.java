@@ -23,7 +23,7 @@ public class Lib4_Button extends Button {
     }
 //-----------------------------------------------------------------------------    
     @Override public String event(String key) {
-        Fireplace f = (Fireplace)Player.getRoomObj(Id.LIB2).getFurnRef(FRPLC_ID);
+        Fireplace f = (Fireplace)Player.getRoomObj(Id.LIB4).getFurnRef(FRPLC_ID);
         
         if (f.isLit()) {
             AudioPlayer.playEffect(39, 0.3);

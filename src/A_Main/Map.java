@@ -639,7 +639,7 @@ public class Map {
         Item rppdBrlp = new Item("ripped burlap", "It must have belonged to the broken cart in the west wing.", 5);
         Item actn = new Liquid(ACETONE, "It's a strong-smelling solvent in a glass jar.", 25);
         //-----------------------------FURNITURE--------------------------------
-        Furniture wow2Lddr = new Wow2_Ladder(Direction.UP); // Not in WOW2 to start.
+        Furniture wow2Lddr = new Wow2_Ladder(Direction.UP, Id.WOW3); // Not in WOW2 to start.
         Furniture wow2Armr = new Wow2_Armor();
         Furniture wow1Crt = new Wow1_Cart(wow1Spk, rppdBrlp);
         Furniture wow1F = new Floor("A sandstone tiled floor. Small, loose grains grind against your shoes as you walk.");
@@ -724,7 +724,7 @@ public class Map {
         // </editor-fold>
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE WEST OUTER WALL BALCONY">
         //-----------------------------THE ROOM---------------------------------
-        Room wow3 = new Wow3("Balcony", Id.WOW3, wow2Lddr, wow2F.getInv(), wowLddr);
+        Room wow3 = new Wow3("Balcony", Id.WOW3, wow2Lddr, wow2F, wowLddr);
         //-------------------------------ITEMS----------------------------------
         Item wowRope = new Item("rope", "It's a short, coiled rope.", ram, 3, 25);
         //-----------------------------FURNITURE--------------------------------

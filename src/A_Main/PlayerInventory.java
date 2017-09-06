@@ -61,7 +61,7 @@ public class PlayerInventory extends Inventory {
      * Removes all items from this inventory of the given type.
      * @param type The type of item to remove.
      */
-    public void remove(String type) { 
+    public void removeType(String type) { 
         this.CONTENTS.removeIf(item -> item.getType().matches(type));
     }
     //-------------------------------------------------------------------------

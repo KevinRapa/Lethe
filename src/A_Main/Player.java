@@ -5,7 +5,8 @@ import A_Super.*;
 import Foyer.LootSack;          import Tunnels.DungeonMonster;
 
 import java.io.*;
-import java.util.ArrayList;     import java.util.Scanner; 
+import java.util.ArrayList;import java.util.Arrays; 
+     import java.util.Scanner; 
 import java.util.HashMap;       import java.util.HashSet;
 import java.util.Iterator;      import java.util.LinkedList;
 /**
@@ -41,8 +42,8 @@ public final class Player {
         shoes,          // Name of the shoes the player wears.
         lastItem = "",  // Last item the player interacted with.
         lastFurn = "",  // Last furniture the player interacted with.
-        defAct = "examine",  // Default action performed when just furniture is entered
-        moveScheme = "w s d a"; // Keys used for movement
+        defAct,     // Default action performed when just furniture is entered
+        moveScheme; // Keys used for movement
 
     private static final HashMap<String, Runnable> 
         MAIN_CMD = new HashMap<>(), // Maps commands from main prompt
@@ -77,25 +78,25 @@ public final class Player {
         Runnable goSe =     () -> move(Direction.SE);
         Runnable moveSelf = () -> evaluateAction("move", "self");
         Runnable viewKeys = () -> viewKeyRing();
-        Runnable randDenialMsg = () -> randomDenialMsg();
-        Runnable writeNote = () -> writePrompt();
-        Runnable yell = () -> GUI.out("AHHHHHGGGHHH!!!!!");
-        Runnable invP = () -> inventoryPrompt();
-        Runnable options = () -> options();
-        Runnable showMap = () -> Map.displayMap();
+        Runnable denialMsg = () -> randomDenialMsg();
+        Runnable note =     () -> writePrompt();
+        Runnable yell =     () -> GUI.out("AHHHHHGGGHHH!!!!!");
+        Runnable invP =     () -> inventoryPrompt();
+        Runnable options =  () -> options();
+        Runnable showMap =  () -> Map.displayMap();
         Runnable openLoot = () -> openLootSack();
         Runnable showHelp = () -> Help.helpSub();
-        Runnable stand = () -> GUI.out("You stand and do nothing.");
-        Runnable rest = () -> GUI.out("You sit and rest a moment.");
-        Runnable combine = () -> combineSub();
+        Runnable stand =    () -> GUI.out("You stand and do nothing.");
+        Runnable rest =     () -> GUI.out("You sit and rest a moment.");
+        Runnable combine =  () -> combineSub();
         Runnable sortInv =  () -> getInv().sortInventory();
         Runnable indefLook = () -> Player.evaluateAction("look", "it");
-        Runnable win = () -> GUI.out("Oh wait, that's it! You win! Congratulations! You may go home now.");
+        Runnable win =      () -> GUI.out("Oh wait, that's it! You win! Congratulations! You may go home now.");
         Runnable civilMsg = () -> GUI.out("Let us act like civilized guests whilst we're here.");
-        Runnable balloon = () -> GUI.out("Does this look like some kind of balloon to you?");
-        Runnable inappr = () -> GUI.out("You are sure the owner wouldn't wanting you doing that.");
-        Runnable zork = () -> GUI.out("What do you think this is? Zork?");
-        Runnable story = () -> GUI.out(
+        Runnable balloon =  () -> GUI.out("Does this look like some kind of balloon to you?");
+        Runnable inappr =   () -> GUI.out("You are sure the owner wouldn't wanting you doing that.");
+        Runnable zork =     () -> GUI.out("What do you think this is? Zork?");
+        Runnable story =    () -> GUI.out(
                 "Well I was born in Norwich England in a rather poor household. "
              + "I have fond memories of mother and I weaving baskets to sell "
              + "at the local market, and my sister and I would always collect "
@@ -104,8 +105,8 @@ public final class Player {
         
         MAIN_CMD.put("h", showHelp);       MAIN_CMD.put("k", viewKeys);
         MAIN_CMD.put("i", invP);           MAIN_CMD.put("m", showMap);
-        MAIN_CMD.put("n", writeNote);      MAIN_CMD.put("l", openLoot);
-        MAIN_CMD.put("o", options);
+        MAIN_CMD.put("n", note);           MAIN_CMD.put("l", openLoot);
+        MAIN_CMD.put("o", options);        
         
         MAIN_CMD.put("w", goNrth);         MAIN_CMD.put("s", goSth);
         MAIN_CMD.put("a", goWest);         MAIN_CMD.put("d", goEast);
@@ -129,8 +130,8 @@ public final class Player {
         MAIN_CMD.put("keys", viewKeys);    MAIN_CMD.put("keyring", viewKeys);
         MAIN_CMD.put("inventory", invP);   MAIN_CMD.put("loot", openLoot);
         MAIN_CMD.put("help", showHelp);    MAIN_CMD.put("sort", sortInv);
-        MAIN_CMD.put("map", showMap);      MAIN_CMD.put("note", writeNote);
-        MAIN_CMD.put("write", writeNote);  MAIN_CMD.put("write note", writeNote);
+        MAIN_CMD.put("map", showMap);      MAIN_CMD.put("note", note);
+        MAIN_CMD.put("write", note);       MAIN_CMD.put("write note", note);
         MAIN_CMD.put("wait", stand);       MAIN_CMD.put("stand", stand);
         MAIN_CMD.put("sit down", rest);    MAIN_CMD.put("sit", rest);
         MAIN_CMD.put("chat", story);       MAIN_CMD.put("talk", story);
@@ -143,6 +144,9 @@ public final class Player {
         MAIN_CMD.put("sup", zork);         MAIN_CMD.put("brief", zork);
         MAIN_CMD.put("superbrief", zork);  MAIN_CMD.put("verbose", zork);
         
+        MAIN_CMD.put("mute",    () -> GUI.mute());
+        MAIN_CMD.put("click",   () -> GUI.setClick());
+        MAIN_CMD.put("swap",    () -> GUI.swap());
         MAIN_CMD.put("options", options);
         MAIN_CMD.put("save",    () -> Main.saveGame());
         MAIN_CMD.put("close",   () -> Map.hideMap());
@@ -171,7 +175,7 @@ public final class Player {
         });
         //---------------------------------------------------------------------
         INV_CMD.put("1", () -> inspectPrompt());   INV_CMD.put("4", sortInv);
-        INV_CMD.put("2", () -> usePrompt());       INV_CMD.put("5", writeNote);
+        INV_CMD.put("2", () -> usePrompt());       INV_CMD.put("5", note);
         INV_CMD.put("3", combine);
         //---------------------------------------------------------------------
         ODD_CMD.put("climb", civilMsg);    ODD_CMD.put("jump", civilMsg);
@@ -183,10 +187,10 @@ public final class Player {
         ODD_CMD.put("count", () -> GUI.out("You didn't climb all the way up to this precipice to do math."));
         ODD_CMD.put("burn", () -> GUI.out("Yes... burn it... burn it all down to the ground."));
         
-        ODD_CMD.put("take", randDenialMsg);    ODD_CMD.put("get", randDenialMsg);
-        ODD_CMD.put("eat", randDenialMsg);     ODD_CMD.put("fight", randDenialMsg);
-        ODD_CMD.put("speak", randDenialMsg);   ODD_CMD.put("talk", randDenialMsg);
-        ODD_CMD.put("lift", randDenialMsg);    ODD_CMD.put("pick", randDenialMsg);
+        ODD_CMD.put("take", denialMsg);    ODD_CMD.put("get", denialMsg);
+        ODD_CMD.put("eat", denialMsg);     ODD_CMD.put("fight", denialMsg);
+        ODD_CMD.put("speak", denialMsg);   ODD_CMD.put("talk", denialMsg);
+        ODD_CMD.put("lift", denialMsg);    ODD_CMD.put("pick", denialMsg);
     }
     // </editor-fold>
     
@@ -306,14 +310,14 @@ public final class Player {
         return score; 
     }
     //-------------------------------------------------------------------------
-    public static String tryIndefRef_Furn(String indef) {
+    public static String tryIndefRef_Furn(String s) {
         // If the argument equals "it/them" returns last referenced furniture.
-        return (IT_THEM_P.matcher(indef).matches()) ? lastFurn : indef;
+        return (s.equals("it") || s.equals("them")) ? lastFurn : s;
     }
     //-------------------------------------------------------------------------
-    public static String tryIndefRef_Item(String indef) {
+    public static String tryIndefRef_Item(String s) {
         // If the argument equals "it/them" returns the last referenced item.
-        return (IT_THEM_P.matcher(indef).matches()) ? Player.lastItem : indef;
+        return (s.equals("it") || s.equals("them")) ? Player.lastItem : s;
     }
     //-------------------------------------------------------------------------
     /**
@@ -454,6 +458,8 @@ public final class Player {
         Player.shoes = attributes.SHOES;
         Player.score = attributes.SCORE;
         Player.moves = attributes.MOVES;
+        Player.defAct = attributes.DEF_ACT;
+        Player.moveScheme = attributes.MOVE_SCHEME;
         GUI.updateMovesAndScore(Player.moves, Player.score);
 
         if (pos[0] == 4 && pos[2] < 7) // Starts monster if player is in the 
@@ -472,6 +478,8 @@ public final class Player {
         Player.lstVisit = "";
         Player.moves = score = 0;
         Player.shoes = "";
+        Player.moveScheme = "w s d a";
+        Player.defAct = "examine";
         GUI.updateMovesAndScore(0, 0);
     }
     //-------------------------------------------------------------------------   
@@ -567,7 +575,7 @@ public final class Player {
             else if (Player.pos[0] < 5  &&  
                      ! dstId.startsWith(Id.areaName(lstVisit)))
             {   // Not in catacombs or caves.
-                if (Player.pos[0] == 4 || CS35_CT34_P.matcher(dstId).matches())
+                if (Player.pos[0] == 4 || dstId.equals(Id.CS35) || dstId.equals(Id.CT34))
                     AudioPlayer.playEffect(24); // Metal door. In dungeon area. 
                 else
                     AudioPlayer.playEffect(9);  // Wooden door sound. 
@@ -669,14 +677,14 @@ public final class Player {
      * @param furnInv The furniture being searched.
      */
     public static void search(Inventory furnInv) {
-        String command; 
+        String cmd; 
 
         do {
             printInv(furnInv);
             GUI.menOut(Menus.TRADE_SUB);
-            command = GUI.promptOut();
+            cmd = GUI.promptOut();
             
-            if (LOOT_ACTION_P.matcher(command).matches()) {
+            if (LOOT_ACTION_P.matcher(cmd).matches()) {
                 // Takes as many items as possible from the furniture.
                 Player.incrementMoves();
                 
@@ -685,9 +693,9 @@ public final class Player {
                 }
                 GUI.out("You ravenously stuff your pockets.");
             }
-            else if (! command.isEmpty()) {
-                Scanner scan = new Scanner(command).useDelimiter("\\s+");
-                String action = scan.next(); 
+            else if (! cmd.isEmpty()) {
+                Scanner scan = new Scanner(cmd).useDelimiter(Patterns.SPC);
+                String action = scan.next();
                 
                 if (! scan.hasNext()) {
                     // If player enters just a digit, means "examine <slot>"
@@ -705,7 +713,7 @@ public final class Player {
                         GUI.out("Did you... forget to enter something there?");
                 }
                 else if (CHECK_P.matcher(action).matches()) {
-                    Item[] i = getItemList(scan.nextLine(), furnInv);
+                    Item[] i = getItemList(scan.nextLine().trim(), furnInv);
                     Player.incrementMoves();
                     
                     if (i.length > 1)
@@ -723,21 +731,23 @@ public final class Player {
                 }
                 else if (STORE_P.matcher(action).matches()) {
                     Player.incrementMoves();
-                    
-                    for (Item i : getItemList(scan.nextLine(), Player.inv))
+
+                    for (Item i : getItemList(scan.nextLine().trim(), Player.inv)) {
                         if (Player.inv.contains(i))
                             evalStore(furnInv, i);
                         else
                             randomErrorMessage();
+                    }
                 }
                 else if (TAKE_P.matcher(action).matches()) {
                     Player.incrementMoves();
-                    
-                    for (Item i : getItemList(scan.nextLine(), furnInv))
+
+                    for (Item i : getItemList(scan.nextLine().trim(), furnInv)) {
                         if (furnInv.contains(i))
                             evalTake(furnInv, i);
                         else
                             randomErrorMessage();
+                    }
                 }
                 else {
                     GUI.out("A thousand pardons... what was that "
@@ -747,7 +757,7 @@ public final class Player {
                 describeRoom();
             }
             printInv();
-        } while (! command.isEmpty());
+        } while (! cmd.isEmpty());
     }
     //-------------------------------------------------------------------------
     /**
@@ -760,11 +770,10 @@ public final class Player {
         if (itemList.isEmpty()) 
             return new Item[0];
             
-        // Trims articles off and excess space.
-        String trimmed = ARTICLE_P.matcher(itemList)
-                .replaceAll("").trim().replaceAll("\\s{2,}", " ");
+        // Trims articles off.
+        String trimmed = ARTICLE_P.matcher(itemList).replaceAll("");
 
-        if (IT_THEM_P.matcher(trimmed).matches() && inv.size() == 1) {
+        if ((trimmed.equals("it") || trimmed.equals("them")) && inv.size() == 1) {
             // If "it/them" used, and has one item, only option is first item.
             return new Item[] {inv.get(0)};
         }
@@ -774,7 +783,7 @@ public final class Player {
 
         for (String itemName : itemArray) {
             // Populate the list with items
-            itemName = Player.tryIndefRef_Item(itemName.trim()); // Resolves 'it'
+            itemName = Player.tryIndefRef_Item(itemName); // Resolves 'it'
             
             Item item = inv.get(itemName); // Gets NULL_ITEM if not found.
             
@@ -782,6 +791,7 @@ public final class Player {
                 resultArray.add(item);
         }
 
+        System.out.println("LIST -> " + resultArray);
         return resultArray.toArray(new Item[resultArray.size()]); 
     }
     //-------------------------------------------------------------------------  
@@ -1417,7 +1427,7 @@ private static final class PlayerAttributes implements Serializable {
     public final Inventory KEYS; 
     public final PlayerInventory INV; 
     public final ArrayList<String> VISITED; 
-    public final String LSTVISITED, SHOES; 
+    public final String LSTVISITED, SHOES, DEF_ACT, MOVE_SCHEME; 
 
     public PlayerAttributes() {
         this.POS = Player.pos;
@@ -1428,8 +1438,10 @@ private static final class PlayerAttributes implements Serializable {
         this.VISITED = Player.visited;
         this.SCORE = Player.score;
         this.MOVES = Player.moves;
+        this.DEF_ACT = Player.defAct;
+        this.MOVE_SCHEME = Player.moveScheme;
     }
-    }
+}
 //******************************************************************************    
 // </editor-fold>  
 //******************************************************************************
@@ -1516,14 +1528,15 @@ private static class TextParser {
      */
     private static String stripPrepositions(String input) {
         StringBuilder builder = new StringBuilder();
-        String[] words = ONE_PLUS_SPC.split(input);
+        String[] words = SPC.split(input);
 
         for (int i = 0; i < words.length; i++) {
             String w = words[i];
+            boolean isPrep = PREPOSITIONS.contains(w);
             
-            if (! w.isEmpty() && ! PREPOSITIONS.contains(w))
+            if (! w.isEmpty() && ! isPrep)
                 builder.append(w);
-            if (i < words.length - 1)
+            if (i < words.length - 1 && ! isPrep)
                 builder.append(' ');
         }
         
@@ -1558,7 +1571,7 @@ private static class TextParser {
                     continue;
                 }
                 
-                current += " " + ARTICLE_P.matcher(object).replaceAll("");
+                current += ' ' + ARTICLE_P.matcher(object).replaceAll("");
             }
             
             //-----------------------------------------------------------------
@@ -1587,7 +1600,7 @@ private static class TextParser {
                 // Using 'and' in the list doesn't work unless after a comma
                 String s = current;
                 commands[i] = new Command(() -> 
-                        Player.combineSub(s.replaceFirst("combine\\s+", "")), "COMBINE");
+                        Player.combineSub(s.replaceFirst("combine ", "")), "COMBINE");
             }
             //-----------------------------------------------------------------
             // These handle more complicated input strings.
@@ -1636,9 +1649,7 @@ private static class TextParser {
                                             .replaceAll(""));
 
         // Everything but the first word.
-        String object = FIRST_WORD_P
-                        .matcher(actionObject.trim())
-                        .replaceFirst("");
+        String object = FIRST_WORD_P.matcher(actionObject).replaceFirst("");
 
         DirectObj dirObj = new DirectObj(object);
 
@@ -1670,7 +1681,7 @@ private static class TextParser {
         DirectObj obj = null;
         Item item;
 
-        if (DROP_P.matcher(object).find()) {
+        if (object.contains("down")) {
             // Player typed "put <item> down"
             obj = DirectObj.FLOOR_OBJECT;
             object = object.replaceAll(" ?down ?", "");

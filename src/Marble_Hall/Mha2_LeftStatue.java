@@ -19,7 +19,8 @@ public class Mha2_LeftStatue extends SearchableFurniture {
         this.actDialog = "Such an impressive work of artistry deserves not to be "
                        + "tainted by your touch.";
         
-        this.addNameKeys("left (?:statue|one|angel|hand|palm)", "(?:left )?(?:open )?compartment");
+        this.addNameKeys("left (?:statue|one|angel|hand|palm)", "(?:left )?(?:open )?compartment", 
+                "left (?>statue|angel|one)(?:'s)? (?:hand|palm)");
         this.addActKeys(HOLDPATTERN);
         this.addUseKeys(ANYTHING);
     }

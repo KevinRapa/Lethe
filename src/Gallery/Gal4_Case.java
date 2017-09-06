@@ -60,6 +60,8 @@ public class Gal4_Case extends SearchableFurniture
         }
         else if (item.toString().equals(BOTTLE_OF_VINEGAR))
             return "Dissolving the case with vinegar is an amusing idea at most.";
+        else if (item.toString().equals(SCREWDRIVER))
+            return "There are no screws to turn on the protected case.";
         else
             return DEFAULT_USE;
     }

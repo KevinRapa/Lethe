@@ -98,7 +98,7 @@ public class Obs1_Statues extends Furniture {
                 GUI.menOut(Menus.OBS_STAT_MEN);
 
                 choice = GUI.promptOut();
-                collectToken = new Scanner(choice).useDelimiter("\\s*");
+                collectToken = new Scanner(choice).useDelimiter(" ?");
 
                 try  {
                     action = collectToken.next();            

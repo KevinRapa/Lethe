@@ -23,8 +23,7 @@ public class AudioPlayer {
     public final static String 
             TPTH = DATA + SEP + "ambience" + SEP, // Filepath for ambience.
             EPTH = DATA + SEP + "effects" + SEP,  // Filepath for effects.
-            EXT = ".mp3";                         // Audio file extension.
-    
+            EXT = ".mp3";              
     private static String trackName;
     private static boolean 
             trackMuted = false,
@@ -249,9 +248,9 @@ public class AudioPlayer {
                 (newMedia != null && ! trackName.equals(newMedia.getSource()))
             ) 
         {
-            if (currentMusic != null)
+            if (currentMusic != null) {
                 stopTrack();
-
+            }
             try {    
                 currentMusic = newMedia;
                 currentPlayer = new MediaPlayer(currentMusic);
@@ -261,7 +260,6 @@ public class AudioPlayer {
                     currentPlayer.setVolume(0.0);
                 
                 currentPlayer.play();
-
                 trackName = newMedia.getSource(); 
             }
             catch (MediaException | NullPointerException e) {

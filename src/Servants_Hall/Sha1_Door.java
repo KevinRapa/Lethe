@@ -2,10 +2,11 @@ package Servants_Hall;
 
 import A_Main.AudioPlayer;
 import A_Main.Id;
-import static A_Main.Names.HAND_TORCH;
 import A_Main.Player;
+import static A_Main.Names.HAND_TORCH;
 import static A_Main.Names.WEAPON;
 import static A_Main.Names.WOOD_LOG;
+import static A_Main.Names.BATTERING_RAM;
 import A_Super.Furniture;
 import A_Super.Item;
 import A_Super.Direction;
@@ -31,7 +32,7 @@ public class Sha1_Door extends Door {
     }
 //-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
-        if (item.equals(RAM_REF)) {
+        if (item.toString().equals(BATTERING_RAM)) {
             AudioPlayer.playEffect(40);
             Player.getRoomObj(Id.SHA1).addAdjacent(Id.SHAR); // Make SHAR accessible.
             Player.getRoomObj(Id.SHA1).removeFurniture(this.getID()); // Remove this door from the room.
