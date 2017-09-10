@@ -70,10 +70,8 @@ public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
     }
     //-------------------------------------------------------------------------     
     @Override public String getSearchDialog() {
-        Gar4_Plaque p = (Gar4_Plaque)Player.getRoomObj(Id.GAL4).getFurnRef(PLQ_ID);
-        
+        Gar4_Plaque p = (Gar4_Plaque)Player.getRoomObj(Id.GAR4).getFurnRef(PLQ_ID);
         this.searchable = p.isMoved();
-    
         return searchable ? "You look in the planter" : this.searchDialog;
     }
     //-------------------------------------------------------------------------     

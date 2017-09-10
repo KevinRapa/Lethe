@@ -19,7 +19,7 @@ import A_Main.Player;
  * @author Kevin Rapa
  */
 public class Gal6_Canon extends Gal_LightMachine {
-    private final int STAT;   
+    private final int GAL7_STAT_ID;   
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal6_Canon(Furniture stat) {
         super();
@@ -32,7 +32,7 @@ public class Gal6_Canon extends Gal_LightMachine {
                          + "coming out the front with slots in it and the whole "
                          + "thing is covered in lights and wires. Wait... there's "
                          + "an empty square compartment on top. What is that for?";
-        this.STAT = stat.getID();
+        this.GAL7_STAT_ID = stat.getID();
         this.addActKeys("fire", "shoot");
         this.addNameKeys("(?:electr(?:on)?ic )?cann?on");
         this.addUseKeys(CHARGED_BATTERY, DEAD_BATTERY);
@@ -49,18 +49,18 @@ public class Gal6_Canon extends Gal_LightMachine {
 //-----------------------------------------------------------------------------    
     @Override protected String turnOn() {
         this.determineColor();
-        Gal7_Statue s = (Gal7_Statue)Player.getRoomObj(Id.GAL7).getFurnRef(STAT);
-        this.isOn = true;       
-        return "The lights on the cannon light up and start bleeping. " + beam +
-               " emits from the barrel. " + s.activate(beam);
+        Furniture s = Player.getRoomObj(Id.GAL7).getFurnRef(GAL7_STAT_ID);
+        String r = "The lights on the cannon light up and start bleeping. " + beam +
+               " emits from the barrel. ";
+        this.isOn = true;     
+        
+        return (s != null) ? r + ((Gal7_Statue)s).activate(beam) : r;
     }
 //-----------------------------------------------------------------------------
     @Override protected void resetStatue() {
         // Do nothing. Once Gal 7 statue raises a level, it can't go back down.
     }
-//-----------------------------------------------------------------------------
-/******************************************************************************/    
-//-----------------------------------------------------------------------------     
+//----------------------------------------------------------------------------- 
     private class Cnn_Inv extends Inventory{
         public Cnn_Inv() {
             super();
@@ -108,11 +108,10 @@ public class Gal6_Canon extends Gal_LightMachine {
         //---------------------------------------------------------------------
         private void trigger() { 
             determineColor();
-            Gal7_Statue s = (Gal7_Statue)Player.getRoomObj(Id.GAL7).getFurnRef(STAT);
-            GUI.out(beam + " shoots out the front of the cannon. " + s.activate(beam));
+            Furniture s = Player.getRoomObj(Id.GAL7).getFurnRef(GAL7_STAT_ID);
+            String r = beam + " shoots out the front of the cannon. ";
+            GUI.out((s != null) ? r + ((Gal7_Statue)s).activate(beam) : r);
         }   
     }
-//-----------------------------------------------------------------------------
-/******************************************************************************/    
-//-----------------------------------------------------------------------------         
+//-----------------------------------------------------------------------------    
 }

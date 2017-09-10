@@ -20,14 +20,14 @@ import A_Super.SearchableFurniture;
  */
 public class Gal2_Statue extends SearchableFurniture {
     private int level;
-    private final Gal4_Statue REF3;
+    private final Furniture REF3;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal2_Statue(Furniture stat) {
         super();
         
         this.inv = new Stat_Inv();
         
-        this.REF3 = (Gal4_Statue)stat;
+        this.REF3 = stat;
         this.level = 0;
         this.description = "The grandiose statue stands in the exact center of "
                          + "the circular room. It portrays a male figure. He "

@@ -21,18 +21,18 @@ public class Drar_Couch extends Furniture implements Moveable {
     }
 //-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
-        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+        Furniture g = Player.getPos().getFurnRef(GHOST_ID);
         
-        if (g.firstTime())
+        if (g != null && ((Drar_Ghost)g).firstTime())
             return "You do realize that there's a ghost in here, right?";
         
         return this.searchDialog;
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+        Furniture g = Player.getPos().getFurnRef(GHOST_ID);
         
-        if (g.firstTime())
+        if (g != null && ((Drar_Ghost)g).firstTime())
             return "You do realize that there's a ghost in here, right?";
         
         return this.actDialog;

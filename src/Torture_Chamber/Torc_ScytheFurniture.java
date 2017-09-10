@@ -14,6 +14,10 @@ import A_Super.Weapon;
  * @author Kevin Rapa
  */
 public class Torc_ScytheFurniture extends Furniture implements Resetable {
+    // SEWP needs to access this, so this cannot be removed from the room when
+    // player takes it. Instead, all names from this object are deleted. This
+    // therefore needs to remember its name.
+    private final String NAME_KEY = "(?:large )?scythe";
     private final Item SCYTHE = new Weapon(Names.SCYTHE, 
             "It's a large black scythe. The edge is quite sharp.", 80);;
     //-------------------------------------------------------------------------
@@ -25,13 +29,13 @@ public class Torc_ScytheFurniture extends Furniture implements Resetable {
                          + "Decoration... perhaps?";
         this.actDialog = "You reach up and take the scythe off the wall.";
 
-        this.addNameKeys("(?:large )?scythe");
+        this.addNameKeys(this.NAME_KEY);
         this.addActKeys(GETPATTERN);
     }
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) {
         if (Player.getInv().add(SCYTHE)) {
-            Player.getPos().removeFurniture(this.getID());
+            this.NAMEKEYS.clear(); // Furniture 'disappears' from room.
             return this.actDialog;
         }
         else
@@ -39,12 +43,12 @@ public class Torc_ScytheFurniture extends Furniture implements Resetable {
     }
     //-------------------------------------------------------------------------  
     /**
-     * Replaces scythe if player has it.
+     * Replaces scythe if player has it. 
      */
     @Override public void reset() {
         if (Player.hasItem(Names.SCYTHE)) {
             Player.getInv().remove(SCYTHE);
-            Player.getRoomObj(Id.TORC).addFurniture(this);
+            this.addNameKeys(this.NAME_KEY); // This 're-appears' in room.
         }
     }
      //-------------------------------------------------------------------------     

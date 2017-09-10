@@ -21,9 +21,9 @@ public class Drar_Table extends SearchableFurniture implements Moveable {
     }
 //-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
-        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+        Furniture g = Player.getPos().getFurnRef(GHOST_ID);
         
-        if (g.firstTime())
+        if (g != null && ((Drar_Ghost)g).firstTime())
             return "You comb the table's surface. You do realize there's a ghost "
                     + "in here, correct? Probably integral to the game's progression...";
         

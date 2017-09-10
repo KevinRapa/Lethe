@@ -20,7 +20,7 @@ public class Floor extends SearchableFurniture implements Unmoveable {
             this.actDialog = "You jam the spade into the floor. Your body jolts and you stagger back. The floor is undefeated.";
             this.useDialog = "There's no reason to stand the ladder up in here.";
             this.addActKeys("dig", SHOVEL, MOP, "clean");
-            this.addUseKeys(FIXED_LADDER, SHOVEL, TROWEL, MOP, "sweep");
+            this.addUseKeys(FIXED_LADDER, SHOVEL, BUCKET_OF_WATER, TROWEL, MOP, "sweep");
             this.addNameKeys("floor", "ground", "walkway");
     }
 //-----------------------------------------------------------------------------
@@ -56,6 +56,11 @@ public class Floor extends SearchableFurniture implements Unmoveable {
             return this.useDialog;
         else if (item.toString().equals(MOP))
             return "Yes, let's just make this a game about cleaning some madman's castle.";
+        else if (item.toString().equals(BUCKET_OF_WATER)) {
+            Player.getInv().remove(item);
+            Player.getInv().add(new Item(METAL_BUCKET, "It's an empty metal bucket.", 25));
+            return "You dump the bucket of water out.";
+        }
         else {
             AudioPlayer.playEffect(35);
             return this.actDialog;

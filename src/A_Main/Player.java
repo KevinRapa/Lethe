@@ -5,8 +5,7 @@ import A_Super.*;
 import Foyer.LootSack;          import Tunnels.DungeonMonster;
 
 import java.io.*;
-import java.util.ArrayList;import java.util.Arrays; 
-     import java.util.Scanner; 
+import java.util.ArrayList;     import java.util.Scanner; 
 import java.util.HashMap;       import java.util.HashSet;
 import java.util.Iterator;      import java.util.LinkedList;
 /**
@@ -1609,7 +1608,9 @@ private static class TextParser {
             }
             else if (STORE_CMD_P.matcher(current).matches()) {
                 // Command resembles "drop <item>" or "put <item> in <object>
-                commands[i] = getStoreCmd(STORE_AREA_P.split(
+                String verb = SPACE_THEN_ALL_P.matcher(current).replaceFirst("");
+                
+                commands[i] = getStoreCmd(verb, STORE_AREA_P.split(
                         STORE_SPACE_P.matcher(current)
                                     .replaceAll("")));
             }
@@ -1675,12 +1676,14 @@ private static class TextParser {
      * on it instead in order to resolve ambiguity. If s is size 2, then
      * the second string is presumably the name of furniture.
      */
-    private static Command getStoreCmd(String[] s) {
+    private static Command getStoreCmd(String verb, String[] s) {
         String object = s[0];
         Instrument inst;
         DirectObj obj = null;
         Item item;
-
+        Verb v = (verb.equals("dump") || verb.equals("pour")) ? 
+                Verb.POUR_VERB : Verb.PUT_VERB;
+        
         if (object.contains("down")) {
             // Player typed "put <item> down"
             obj = DirectObj.FLOOR_OBJECT;
@@ -1697,7 +1700,7 @@ private static class TextParser {
 
         switch(s.length) {
             case 2:
-                return new Command(Verb.PUT_VERB, inst, new DirectObj(s[1]));
+                return new Command(v, inst, new DirectObj(s[1]));
             case 1:
                 // If obj is null, player typed "store <item>", but not where.
                 if (obj == null) {
@@ -1710,7 +1713,7 @@ private static class TextParser {
                     obj = new DirectObj(ARTICLE_P.matcher(TextParser.stripPrepositions(place)).replaceAll(""));
                 }
                 
-                return new Command(Verb.PUT_VERB, inst, obj);
+                return new Command(v, inst, obj);
             default:
                 return DEFAULT_CMD;
         }
@@ -1770,9 +1773,7 @@ private static class TextParser {
         }
         else if (dir.equals("inside") || dir.equals("in")) {
             // Player typed something look "go inside".
-            String pos = Player.getPosId();
-
-            switch (pos) {
+            switch (Player.getPosId()) {
                 case Id.COU7: case Id.GAR2: case Id.TBAL:
                     return new Command(() -> Player.MAIN_CMD.get("north").run(), "MOVE");
                 case Id.FOYB: case Id.FOYC: case Id.GAR4:
@@ -1783,9 +1784,7 @@ private static class TextParser {
         }
         else {
             // Player typed something look "go outside".
-            String pos = Player.getPosId();
-
-            switch (pos) {
+            switch (Player.getPosId()) {
                 case Id.FOY2: case Id.GAL1: case Id.TOW2:
                     return new Command(() -> Player.MAIN_CMD.get("north").run(), "MOVE");
                 case Id.FOY1: case Id.JHA2: case Id.SOUL:
@@ -2108,11 +2107,12 @@ private static class TextParser {
          * Stores the item list i into the furniture o.
          * Can be of the form "put *item* down" or "drop *item*" to drop an item.
          * Drop commands are actually first processed as a use item command.
-         * Verb parameter is always 'put'. It's there to disambiguate it from
-         * execute(Instrument i, DirectObject o) constructor.
+         * Verb is either 'put' or 'pour' depending on if player wants to store
+         * and item or pour liquid from a vessel out.
          */
         private static void execute(Verb v, Instrument i, DirectObj o) {
             String furniture = Player.tryIndefRef_Furn(o.toString());
+            boolean isPour = v.equals(Verb.POUR_VERB);
 
             if (Player.getPos().hasFurniture(furniture)) {
                 // Checks that the furniture exists
@@ -2124,26 +2124,32 @@ private static class TextParser {
 
                 for (j = 0; j < list.length; j++) {
                     // Loops through the list and stores each
-                    if (isNullItem(list, j)) break;
-
-                    Player.setLastInteract_Item(list[j].toString());
-
-                    if (furn.isSearchable()) {
-                        // Stores the current item in the item list.
-                        Player.evalStore(furn.getInv(), list[j]);
-                        printInv();
-                    }
-                    else if (furn.useKeyMatches(list[j].toString())) {
-                        // Not searchable, but perhaps it's meant to be used 
-                        // by the item still.
-                        // e.g. the Labo distiller used by the florence flask.
-                        GUI.out(furn.useEvent(list[j]));
-                        printInv();
+                    if (isNullItem(list, j)) { 
                         break;
+                    }
+                    else if (isPour) {
+                        Player.evalUse(list[j], furniture);
                     }
                     else {
-                        GUI.out("You can't store anything in there."); 
-                        break;
+                        Player.setLastInteract_Item(list[j].toString());
+
+                        if (furn.isSearchable()) {
+                            // Stores the current item in the item list.
+                            Player.evalStore(furn.getInv(), list[j]);
+                            printInv();
+                        }
+                        else if (furn.useKeyMatches(list[j].toString())) {
+                            // Not searchable, but perhaps it's meant to be used 
+                            // by the item still.
+                            // e.g. the Labo distiller used by the florence flask.
+                            GUI.out(furn.useEvent(list[j]));
+                            printInv();
+                            break;
+                        }
+                        else {
+                            GUI.out("You can't store anything in there."); 
+                            break;
+                        }
                     }
                 }
 
@@ -2156,6 +2162,11 @@ private static class TextParser {
             {
                 // If the player wants to put something in the loot sack.
                 // This case is essentially the same as above.
+                if (isPour) {
+                    GUI.out("Pour it in?? Are you crazy?");
+                    return;
+                }
+                
                 Item[] list = Player.getItemList(i.toString(), Player.getInv());
                 LootSack sack = (LootSack)Player.getInv().get(LOOT_SACK);
                 Player.incrementMoves();
@@ -2180,7 +2191,7 @@ private static class TextParser {
                        GUI.out("You store them all in the sack.");
             }
             else
-                GUI.out("There is no " + furniture + " here.");
+                GUI.out("There is no " + furniture + " here that you can see.");
         }
         // </editor-fold>
         //---------------------------------------------------------------------
@@ -2226,10 +2237,11 @@ private static class TextParser {
     //-------------------------------------------------------------------------
     private static class Verb extends Word {
         public final static Verb 
-            EXAMINE_VERB = new Verb("examine"), // Default verb for examining
-            PUT_VERB =     new Verb("put"),     // Default verb for storing
-            GO_VERB =      new Verb("go"),      // Default verb for moving
-            SEARCH_VERB =  new Verb("search");  // Default verb for searching
+            EXAMINE_VERB = new Verb("examine"), 
+            PUT_VERB =     new Verb("put"),    
+            GO_VERB =      new Verb("go"),      
+            SEARCH_VERB =  new Verb("search"),
+            POUR_VERB =    new Verb("pour");
 
         public Verb(String verb) {
             super(verb);

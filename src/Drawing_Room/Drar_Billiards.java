@@ -22,18 +22,18 @@ public class Drar_Billiards extends SearchableFurniture implements Moveable {
     }
 //-----------------------------------------------------------------------------
     @Override public String getSearchDialog() {
-        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+        Furniture g = Player.getPos().getFurnRef(GHOST_ID);
         
-        if (g.firstTime())
+        if (g != null && ((Drar_Ghost)g).firstTime())
             return "Ignoring the ghost completely, you look on the billiard table's surface.";
         else 
             return this.searchDialog;
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        Drar_Ghost g = (Drar_Ghost)Player.getPos().getFurnRef(GHOST_ID);
+        Furniture g = Player.getPos().getFurnRef(GHOST_ID);
          
-        if (g.firstTime())
+        if (g != null && ((Drar_Ghost)g).firstTime())
             return "Now is not the time for that. There's a ghost in here!";
         else
             return this.actDialog;

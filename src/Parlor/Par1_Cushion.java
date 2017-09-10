@@ -1,5 +1,6 @@
 package Parlor;
 
+import A_Main.Player;
 import A_Super.Item;
 import A_Super.SearchableFurniture;
 /**
@@ -10,27 +11,43 @@ import A_Super.SearchableFurniture;
  * @author Kevin Rapa
  */
 public class Par1_Cushion extends SearchableFurniture {
+    private final Item PLATE_REF;
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
-    public Par1_Cushion(Item ... items) {
-        super(items);
+    public Par1_Cushion(Item plate) {
+        super(plate);
+        
+        this.PLATE_REF = plate;
         this.description = "It's a lavender tasseled cushion for sitting on.";
         this.searchDialog = "You lift the cushion.";
         this.actDialog = "What a comfortable cushion! Well, the cushion is nice, "
                        + "feels hard underneath though... Could just be the floor.";
-        this.addNameKeys("(?:lavender )?(?:tasseled )?cushion");
+        this.addNameKeys("(?:lavender )?(?:tasseled )?(?:cushion|pillow)");
         this.addActKeys(SITPATTERN, MOVEPATTERN, "lift");
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
-        if (key.matches(SITPATTERN))
+        if (key.matches(SITPATTERN)) {
             return this.actDialog;
+        }
         else {
-            if (this.containsItem("brass plate, \"Mars\""))
-                return "You lift up the cushion and assert that there is in fact "
-                     + "a hard, shiny brass plate underneath. \"Aha,\" you affirm, "
-                     + "and place the cushion back down. Perhaps a search is in order.";
-            else
-                return "You lift the cushion and then put it back down again.";
+            if (this.inv.contains(PLATE_REF)) {
+                if (Player.getInv().isFull()) {
+                    return "You lift the cushion and discover a clean, shiny "
+                         + "plate underneath. Unfortunately, you realize that "
+                         + "your inventory is full and thus cannot take the item. "
+                         + "You set the cushion back down.";
+                }
+                else {
+                    this.inv.give(PLATE_REF, Player.getInv());
+                    return "You lift the cushion and discover a clean, shiny "
+                         + "plate underneath. You gleefuly take it and set the "
+                         + "cushion back down.";
+                }
+            }
+            else {
+                return "You lift the pillow to fluff it up a bit and then set "
+                     + "it back down.";
+            }
         }
     }
 //-----------------------------------------------------------------------------    

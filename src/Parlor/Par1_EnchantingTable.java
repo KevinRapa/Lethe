@@ -21,7 +21,9 @@ import Library.Shoes;
  * @see Parlor.Par_BottleRecipe
  * @author Kevin Rapa
  */
-public class Par1_EnchantingTable extends SearchableFurniture implements Moveable {
+public class Par1_EnchantingTable extends SearchableFurniture 
+        implements Moveable 
+{
     private final Item REF_ENCH_BTTL;
 /* CONSTRUCTOR ---------------------------------------------------------------*/     
     public Par1_EnchantingTable(Item enchtBttl, Item... items) {

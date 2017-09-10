@@ -8,13 +8,13 @@ import A_Super.MachineColor;
 
 public class Gal4_Statue extends Furniture {
     private int level;
-    private final Gal7_Statue STAT_REF;
+    private final Furniture GAL7_STAT_REF;
     
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public Gal4_Statue(Furniture stat) {
         super();
         
-        this.STAT_REF = (Gal7_Statue)stat;
+        this.GAL7_STAT_REF = stat;
         this.level = 0;
         
         this.actDialog = "What glorious rippling muscles the statue has!";
@@ -64,7 +64,7 @@ public class Gal4_Statue extends Furniture {
             case 1: 
                 return "The orb's glow turns green and it begins to hum.";
             default: 
-                Player.getRoomObj(Id.GAL7).addFurniture(STAT_REF);
+                Player.getRoomObj(Id.GAL7).addFurniture(GAL7_STAT_REF);
                 AudioPlayer.playEffect(37);
                 return "The crystal orb's glow brightens to a blinding white "
                     + "light. It hums loudly and rises once again to the "

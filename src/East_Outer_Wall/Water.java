@@ -5,7 +5,10 @@ import A_Super.Furniture;
 import A_Super.Item;
 import A_Main.Player;
 import static A_Main.Names.METAL_BUCKET;
+import static A_Main.Names.EMPTY_VIAL;
+import static A_Main.Names.TEST_TUBE;
 import A_Super.Gettable;
+import Laboratory.Ingredient;
 
 public class Water extends Furniture implements Gettable {
     private final Item BUCKET_REF;
@@ -24,16 +27,23 @@ public class Water extends Furniture implements Gettable {
         
         this.addActKeys(GETPATTERN);
         this.addActKeys("drink", "swim", "jump", "dive");
-        this.addNameKeys("water", "clear water", "H20");
-        this.addUseKeys(METAL_BUCKET);
+        this.addNameKeys("water", "clear water", "H20", "water (?:sink|fountain)"); 
+            // 'water sink' is so that "get ___ from the sink" works.
+        this.addUseKeys(METAL_BUCKET, EMPTY_VIAL, TEST_TUBE);
     }
 //-----------------------------------------------------------------------------
     @Override public String useEvent(Item item) {
-        AudioPlayer.playEffect(42);
         Player.getInv().remove(item);
-        Player.getInv().add(BUCKET_REF);
         
-        return this.useDialog;
+        if (item.toString().equals(METAL_BUCKET)) {
+            AudioPlayer.playEffect(42);
+            Player.getInv().add(BUCKET_REF);
+            return this.useDialog;
+        }
+        else {
+            Player.getInv().add(new Ingredient("H2O 50mL", "The vial holds a small amount of H2O", 0));
+            return "You dip it under the water, uncontrollably filling it to the brim.";
+        }
     }
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) { 
@@ -47,10 +57,18 @@ public class Water extends Furniture implements Gettable {
     }
 //-----------------------------------------------------------------------------
     @Override public String getIt() {
-        if (Player.hasItem(METAL_BUCKET))
+        if (Player.hasItem(METAL_BUCKET)) {
             return this.useEvent(Player.getInv().get(METAL_BUCKET));
-        else
+        }
+        else if (Player.hasItem(EMPTY_VIAL)) {
+            return this.useEvent(Player.getInv().get(EMPTY_VIAL));
+        }
+        else if (Player.hasItem(TEST_TUBE)) {
+            return this.useEvent(Player.getInv().get(TEST_TUBE));
+        }
+        else {
             return "You'll need an empty bucket...";
+        }
     }
 //-----------------------------------------------------------------------------
 }

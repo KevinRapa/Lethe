@@ -1438,7 +1438,7 @@ public class Map {
         Furniture laboStpCck = new Labo_StopCock();
         Furniture laboF = new Floor("It's a black and white checkered tile. A predictable floor for a laboratory. "
                 + "A few burn marks taint the floor just at the foot of the counter to the north.", tstTb);
-        Furniture laboSnk = new Labo_Sink(vial, bkr, bckt);
+        Furniture laboSnk = new Labo_Sink(vial, bkr, bckt, wtr);
         Furniture laboCntrptn = new Labo_Contraption();
         Furniture laboTbl = new Labo_Table();
         Furniture laboDvcs = new Labo_Devices();
@@ -2392,7 +2392,7 @@ public class Map {
             cv17,cv18,cv21,cv22,cv23,cv24,cv25,cv26,cv27,cv28,cv31,cv32,cv33,
             cv34,cv35,cv36,cv37,cv38,cv41,cv42,cv43,cv44,cv45,cv46,cv47,cv48,
             cv51,cv52,cv53,cv54,cv55,cv56,cv57,cv58,cv61,cv62,cv63,cv64,ms65,
-            ms66,cv67,cv68, new Room(Id.NULL, Id.NULL)
+            ms66,cv67,cv68,cha1, new Room(Id.NULL, Id.NULL)
         };
         
         String base = "data" + SEP + "rooms" + SEP;
