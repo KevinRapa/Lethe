@@ -50,7 +50,7 @@ LIST_P = Pattern.compile(" ?,(?: ?and ?)? ?| and "),
         
 // These five are the most specific cases and are checked first.
         
-EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|dick|damn|bitch"),
+EXPLETIVE_P = Pattern.compile("fuck|shit|cunt|damn|bitch"),
 DIRECTION_P = Pattern.compile("(?>in|out)(?:side)?|(?>go|walk|move|run) (?:north|forwards?|south|east|right|west|left|(?>down|back|up)(?:wards?|stairs)?|(?:in|out)(?:side)?)"),
 SUICIDE_P = Pattern.compile("(?:commit )?suicide|(?>kill|hang) (?:your)?self(?: (?>with|using) .+)?"),
 COMBINE_P = Pattern.compile("combine .+"), // Anything beginning with 'combine' is a combine command

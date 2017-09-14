@@ -172,6 +172,14 @@ public final class Player {
             GUI.out("A hollow clown says surprise."); 
             GUI.randomizeColors();
         });
+        
+        MAIN_CMD.put("hide", () -> {
+            String id = Id.areaName(getPosId()); 
+            if (id.equals("SEW") || id.equals("CIS"))
+                GUI.out("There is nowhere to hide.");
+            else
+                GUI.out("There is no apparent reason to do that...");
+        });
         //---------------------------------------------------------------------
         INV_CMD.put("1", () -> inspectPrompt());   INV_CMD.put("4", sortInv);
         INV_CMD.put("2", () -> usePrompt());       INV_CMD.put("5", note);
@@ -895,6 +903,29 @@ public final class Player {
             GUI.out(item.getDesc());
         }
         
+        else if (verb.equals("pick") || verb.equals("take")) {
+            // Player wants to take something off the floor.
+            if (! item.equals(Inventory.NULL_ITEM)) {
+                GUI.out("You are already carrying the " + item + '!');
+            }
+            else if (Player.getPos().hasFurniture("floor")) {
+                Inventory in = getFurnRef("floor").getInv();
+                Item it = in.get(furnName);
+                
+                if (! it.equals(Inventory.NULL_ITEM)) {
+                    evalTake(in, it);
+                    printInv();
+                    GUI.out("You pick the " + it + " off the ground.");
+                }
+                else {
+                    GUI.out("There is no " + furnName + " on the floor here.");
+                }
+            }
+            else {
+                GUI.out("There is not much of a floor here to take something off of.");
+            }
+        }
+        
         // <editor-fold defaultstate="collapsed" desc="REFLEXIVE COMMANDS">
         else if (object.equals("self") || object.equals("yourself")) {
             // Player performing action on itself. Mostly superficial.
@@ -1526,20 +1557,23 @@ private static class TextParser {
      * @return The sentence stripped of prepositions.
      */
     private static String stripPrepositions(String input) {
-        StringBuilder builder = new StringBuilder();
+        StringBuilder bldr = new StringBuilder();
         String[] words = SPC.split(input);
 
         for (int i = 0; i < words.length; i++) {
             String w = words[i];
-            boolean isPrep = PREPOSITIONS.contains(w);
             
-            if (! w.isEmpty() && ! isPrep)
-                builder.append(w);
-            if (i < words.length - 1 && ! isPrep)
-                builder.append(' ');
+            if (! PREPOSITIONS.contains(w)) {
+                if (! w.isEmpty())
+                    bldr.append(w);
+                if (i < words.length - 1)
+                    bldr.append(' ');
+            }
         }
-        
-        return builder.toString();
+        while (bldr.charAt(bldr.length() - 1) == ' ') {
+            bldr.deleteCharAt(bldr.length() - 1);
+        }
+        return bldr.toString();
     }
     //-------------------------------------------------------------------------
     /**
@@ -1658,13 +1692,13 @@ private static class TextParser {
             case 2:
                 return new Command(new Instrument(s[1]), dirObj);
             case 1:
-                if (verb.VALUE.equals(dirObj.VALUE))
-                    // If they're equal, the player entered a single word.
+                if (verb.VALUE.equals(dirObj.VALUE)) {
+                    // If equal, player entered a single word.
                     // This is interpreted to mean whatever Player.defAction is.
-                    return new Command(Player.defAct.equals("search") ? 
-                            Verb.SEARCH_VERB : Verb.EXAMINE_VERB, dirObj);
-                else
-                    return new Command(verb, dirObj);
+                    verb = Player.defAct.equals("search") ? Verb.SEARCH_VERB : Verb.EXAMINE_VERB;
+                }
+                
+                return new Command(verb, dirObj);
             default:
                 return DEFAULT_CMD;
         }
@@ -1853,14 +1887,17 @@ private static class TextParser {
          */
         private static void execute(Instrument i, DirectObj o) {
             String itemName = Player.tryIndefRef_Item(i.toString());
-            Item item = Player.getInv().get(itemName);
+            Item[] items = Player.getItemList(i.toString(), Player.inv);
             
-            if (! item.equals(Inventory.NULL_ITEM)) {
-                Player.setLastInteract_Item(itemName);
-                Player.evalUse(item, o.toString());
+            for (Item item : items) {
+                if (! item.equals(Inventory.NULL_ITEM)) {
+                    Player.setLastInteract_Item(itemName);
+                    Player.evalUse(item, o.toString());
+                }
+                else {
+                    GUI.out(DONT_HAVE_IT);
+                }
             }
-            else
-                GUI.out(DONT_HAVE_IT);
         }
         // --------------------------------------------------------------------
         /**

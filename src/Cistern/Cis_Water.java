@@ -25,7 +25,7 @@ public class Cis_Water extends Furniture implements Gettable {
 
         this.addNameKeys("(?:stagnant )?(?:(?:large )?body of )?(?:putrid |disgusting |smelly |awful )?(?:stagnant )?water");
         this.addActKeys(GETPATTERN);
-        this.addActKeys("swim", "jump", "drink");
+        this.addActKeys("swim", "jump", "drink", "hide");
         this.addUseKeys(METAL_BUCKET);
     }
     //------------------------------------------------------------------------- 
@@ -40,6 +40,8 @@ public class Cis_Water extends Furniture implements Gettable {
     @Override public String interact(String key) {
         if (key.equals("swim") || key.equals("jump") || key.equals("dive"))
             return this.actDialog;
+        else if (key.equals("hide") || key.equals("drink"))
+            return "The water is much too disgusting and treacherous.";
         else
             return getIt();
     }

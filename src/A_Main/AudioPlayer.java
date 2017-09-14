@@ -164,34 +164,34 @@ public class AudioPlayer {
 // <editor-fold defaultstate="collapsed" desc="SOUND EFFECTS"> 
 //******************************************************************************    
     private static final Media[] EFFECTS = {
-        getMedia("steps"),          getMedia("inventory"),      // 0  1
-        getMedia("pageTurn"),       getMedia("keys"),           // 2  3
-        getMedia("doorKnobJiggle"), getMedia("doorLocking"),    // 4  5
-        getMedia("wallThump"),      getMedia("gateSlam"),       // 6  7
-        getMedia("doorSlam"),       getMedia("doorClose"),      // 7  9
-        getMedia("basicClick"),     getMedia("buttonPush"),     // 10 11
-        getMedia("leverPull"),      getMedia("doorUnlock"),     // 12 13
-        getMedia("woodStairClimb"), getMedia("stoneSteps"),     // 14 15
-        getMedia("ladder"),         getMedia("dungeonValve"),   // 16 17
-        getMedia("rotundaRotate"),  getMedia("rotundaRotate2"), // 18 19
-        getMedia("valveTurn"),      getMedia("keyClick"),       // 20 21
-        getMedia("keyClick2"),      getMedia("keyClick3"),      // 22 23
-        getMedia("dungeonDoor"),    getMedia("monster"),        // 24 25
-        getMedia("windowOpening"),  getMedia("keyDrop"),        // 26 27
-        getMedia("foyGateSwitch"),  getMedia("sparkles"),       // 28 29
-        getMedia("rocksCrumbling"), getMedia("ladderFalling"),  // 30 31
-        getMedia("enchantPop"),     getMedia("handDrill"),      // 32 33
-        getMedia("digging"),        getMedia("metalPing"),      // 34 35
-        getMedia("hoseClimb"),      getMedia("galleryStatue"),  // 36 37
-        getMedia("galleryGears"),   getMedia("fireDouse"),      // 38 39
-        getMedia("stairFlatten"),   getMedia("woodSliding"),    // 40 41
-        getMedia("waterScoop"),     getMedia("medallionClick"), // 42 43
-        getMedia("totemTurn"),      getMedia("bunsenBurner"),   // 44 45
-        getMedia("zombieMoan"),     getMedia("metalLadder"),    // 46 47
-        getMedia("grateMove"),      getMedia("teleportZap"),    // 48 49
-        getMedia("concreteBlock"),  getMedia("concreteShort"),  // 50 51
-        getMedia("atticNoise"),     getMedia("piano"),          // 52 53
-        getMedia("harp"),           getMedia("doorKnock")       // 54 55
+        getMedia("steps"),       getMedia("inventory"),   // 0  1
+        getMedia("pageTurn"),    getMedia("keys"),        // 2  3
+        getMedia("knobJiggle"),  getMedia("doorLocking"), // 4  5
+        getMedia("wallThump"),   getMedia("gateSlam"),    // 6  7
+        getMedia("doorSlam"),    getMedia("doorClose"),   // 7  9
+        getMedia("basicClick"),  getMedia("buttonPush"),  // 10 11
+        getMedia("leverPull"),   getMedia("doorUnlock"),  // 12 13
+        getMedia("woodStairs"),  getMedia("stoneSteps"),  // 14 15
+        getMedia("ladderClimb"), getMedia("dungValve"),   // 16 17
+        getMedia("rotuRot"),     getMedia("rotuRot2"),    // 18 19
+        getMedia("valveTurn"),   getMedia("keyClick"),    // 20 21
+        getMedia("keyClick2"),   getMedia("keyClick3"),   // 22 23
+        getMedia("dungeonDoor"), getMedia("monster"),     // 24 25
+        getMedia("windowOpen"),  getMedia("keyDrop"),     // 26 27
+        getMedia("gateSwitch"),  getMedia("sparkles"),    // 28 29
+        getMedia("rockCrumble"), getMedia("ladderFall"),  // 30 31
+        getMedia("enchantPop"),  getMedia("handDrill"),   // 32 33
+        getMedia("digging"),     getMedia("metalPing"),   // 34 35
+        getMedia("hoseClimb"),   getMedia("galStatue"),   // 36 37
+        getMedia("galGears"),    getMedia("fireDouse"),   // 38 39
+        getMedia("woodBang"),    getMedia("woodSliding"), // 40 41
+        getMedia("waterScoop"),  getMedia("medalClick"),  // 42 43
+        getMedia("totemTurn"),   getMedia("bunsBurner"),  // 44 45
+        getMedia("zombieMoan"),  getMedia("metalLadder"), // 46 47
+        getMedia("grateMove"),   getMedia("teleportZap"), // 48 49
+        getMedia("concBlock"),   getMedia("concShort"),   // 50 51
+        getMedia("atticNoise"),  getMedia("piano"),       // 52 53
+        getMedia("harp"),        getMedia("doorKnock")    // 54 55
     };
     
     static {

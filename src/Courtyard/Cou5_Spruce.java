@@ -98,8 +98,9 @@ public class Cou5_Spruce extends SearchableFurniture
                     break;
                 default:
                     Player.setOccupies(Id.COU5);
-
             }
+            
+            AudioPlayer.playEffect(16);
             return this.actDialog;
         }
         else if (action.equals("swing"))
