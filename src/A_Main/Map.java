@@ -25,9 +25,7 @@ import Black_Staircase.*;  import Top_Balcony.*;        import Lichs_Quarters.*;
 import Soul_Chamber.*;     import Hades.*;              import Cellar.*;
 import Forest.*;
 
-import java.awt.Color;
-import java.io.*;
-
+import java.awt.Color;      import java.io.*;
 import javax.swing.JPanel;  import javax.swing.ImageIcon;   
 import javax.swing.JFrame;  import javax.swing.JLabel;  
 
@@ -112,7 +110,7 @@ public class Map {
         MAP_FRAME.pack();
     }
     //-------------------------------------------------------------------------
-    public static void createMap() throws IOException {
+    public static void createMap() {
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE ROOMS, FURNITURE, ITEMS">
         //
@@ -2409,6 +2407,9 @@ public class Map {
                     new FileOutputStream(f))) 
             {
                 oos.writeObject(room);
+            }
+            catch (IOException e) {
+                System.err.println(e.getMessage());
             }
         }
         //**********************************************************************

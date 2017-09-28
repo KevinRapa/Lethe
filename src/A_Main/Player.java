@@ -2054,8 +2054,12 @@ private static class TextParser {
                     if (type.equals(INGREDIENT) || type.equals(LIQUID)) {
                         if (name.equals(PHASE_DOOR_POTION))
                             GUI.out(item.useEvent());
-                        else if (name.equals(BUCKET_OF_WATER))
+                        else if (name.equals(BUCKET_OF_WATER)) {
+                            Player.getInv().remove(item);
+                            Player.getInv().add(new Item(METAL_BUCKET, "It's an empty metal bucket.", 25));
                             GUI.out("Ah, refreshing!!");
+                            Player.printInv();
+                        }
                         else if (name.equals(ACETONE) || name.matches("molten.*"))
                             GUI.out("No possible way you're doing something that stupid!");
                         else
@@ -2118,8 +2122,7 @@ private static class TextParser {
                         GUI.out(item.useEvent());
                     else if (verb.equals("squeeze") && (
                             (type.equals(LIQUID) && ! name.equals(BUCKET_OF_WATER)) 
-                            || type.equals(FOCUS) || type.equals(INGREDIENT)
-                            )) 
+                            || type.equals(FOCUS) || type.equals(INGREDIENT))) 
                     {
                         Player.inv.remove(item);
                         Player.inv.add(BROKEN_GLASS);

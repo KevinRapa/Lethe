@@ -166,15 +166,8 @@ public class Main {
             // If a start location wasn't given in the terminal (The default).
             if (startCoords == null)
                 startCoords = RoomGraph.getCoords(START_LOCATION);
-            
-            try {
-                Map.createMap(); // Creates all the game objects.
-            }
-            catch(IOException ex) {
-                System.err.println(ex.getMessage());
-                
-            }
-            
+
+            Map.createMap(); // Creates all the game objects.
             Player.setNewAttributes(startCoords); // Sets up character.
             TITLE_FRAME.setVisible(true);
             startDialog();

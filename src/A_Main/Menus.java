@@ -47,8 +47,8 @@ public final class Menus {
                   + "<'i'>  Inventory  <'k'>  Keys" + NL
                   + "<'h'>  Get help   <'n'>  Note" + NL
                   + "<'m'>  Show Map   <'l'>  Loot" + NL
-                  + "<'save'> Save   <'quit'> Quit" + NL
-                  + "     <'options'> Options",
+                  + "<'o'>  Options  <'quit'> Quit" + NL
+                  + "        <'save'> Save",
             
         OPTIONS = NL + "<'1'> Movement scheme:  " + NL +
                        "      %" + NL +
