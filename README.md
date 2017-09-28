@@ -30,6 +30,6 @@ Examples of multi-threading (From the laboratory alchemy puzzle):
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/Patterns.java">Regex patterns</a><br>
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/AudioPlayer.java">Audio player</a><br>
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/GUI.java">GUI controller</a><br>
-<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/Player.java">Text parser (at line 1466)</a>
+<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/Player.java">Text parser (at line 1496)</a>
 
   
