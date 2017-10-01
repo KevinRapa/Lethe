@@ -9,21 +9,17 @@ import java.util.HashSet;
 import java.util.regex.Pattern;
 
 /**
- * In this game, the better term for furniture is "room object" because other
- * objects such as floors, walls, doors, buttons, etc. are treated as furniture.
- * <p>
- * Furniture is ANY object that can be interacted with from the main prompt.
+ * Furniture is ANY object that can be examined, interacted with, and searched.
  * Furniture may also be interacted with in the Inventory USE sub-prompt
  * </p> <p>
- * Furniture have inventories just like the player. Items may be traded between
+ * SearchableFurniture (a sub-class) have inventories. Items may be traded between
  * searchable furniture and the player during a search.
  * </p> <p>
  * Furniture is referenced by the player by entering a string matching a string
  * in <code>NAMEKEYS</code>, which is generally a regex pattern.
  * </p> <p>
  * Any method in furniture that sends text through <code>GUI.out</code> or
- * <code>GUI.roomOut</code> can safely return <code>null</code> and no text,
- * including empty strings, will be displayed.
+ * <code>GUI.roomOut</code> can return an empty string which will be ignored.
  * </p>
  * 
  * @see A_Main.Player#searchPrompt(A_Super.Furniture) 
@@ -31,11 +27,13 @@ import java.util.regex.Pattern;
  * @author Kevin Rapa
  */
 abstract public class Furniture implements Serializable {
-    private static int count = 0;
+    private static int count = 0; // Used as a unique ID for this 
     
-    protected Inventory inv;
-    protected boolean searchable; // Can trade items with searchable furniture.  
-    protected final int ID;
+    // Here only to avoid having to cast to SearchableFurniture every time.
+    protected Inventory inv;      
+    protected boolean searchable; // If items can be traded with this 
+    
+    protected final int ID; // Used to access furniture from Room references.
     
     protected String 
             description,   // Printed when inspected.
@@ -60,8 +58,13 @@ abstract public class Furniture implements Serializable {
             DEFAULT_USE = "An interesting but far-fetched proposition.",
             NOTHING_HERE = "There's nothing hiding here.",
             ANYTHING = ".+",
-            NOTHING = "";
+            NOTHING = ""; // Returning NOTHING will be ignored by GUI
     
+    
+    /*
+     * A set of all verbs that the game accepts. If the player enters in just a
+     * verb, the game will prompt the player for more information.
+     */
     public static final HashSet<String> ALL_ACTION_KEYS = new HashSet<>();
     
     static {
