@@ -17,4 +17,8 @@ public class Lich_Room extends Room {
         this.lichDead = true;
     }
 //-----------------------------------------------------------------------------
+    public boolean lichIsDead() {
+        return lichDead;
+    }
+//-----------------------------------------------------------------------------
 }

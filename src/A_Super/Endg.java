@@ -2,6 +2,7 @@ package A_Super;
 
 import A_Main.*;
 import Foyer.LootSack;
+import Lichs_Quarters.Lich_Room;
 
 /**
  * @author Kevin Rapa
@@ -31,18 +32,17 @@ public class Endg extends Room {
         GUI.clearDialog();
         GUI.menOut(Menus.ENTER);
         GUI.invOut("");
-        int score = Player.getScore();
-        int t = 0;
-        int p = Player.getInv().countPhylacteries();
         GUI.promptOut();
+        
+        boolean lichDead = ((Lich_Room)Player.getRoomObj(Id.LQU1)).lichIsDead();
+        String message, finalMsg;
+        int score = Player.getScore(), t = 0, p = Player.getInv().countPhylacteries();
         
         if (Player.hasItem(Names.LOOT_SACK)) {
             LootSack sack = (LootSack)Player.getInv().get(Names.LOOT_SACK);
             p += sack.countPhylacteries();
             t += sack.countTreasures();
         }
-        
-        String message;
         
         if (score >= 19000)
             message = "Your wealth transcends all understanding that "
@@ -92,10 +92,11 @@ public class Endg extends Room {
             message += " Watch yourself, for you hold the soul of a powerful mage, "
                     + "and it may warp you the same way it did him.";
         
-        GUI.descOut("Evaluation: Your score is " + score + ". You have "
-                  + "discovered " + t + " out of 15 legendary treasures and " 
-                  + p + " out of 5 phylacteries. " + message);
+        finalMsg = "Evaluation: Your score is " + score + ". You have "
+                  + "discovered " + t + " out of 15 legendary treasures" + 
+                (lichDead ? " and all 5 of the phylacteries. " : ". ") + message;
         
+        GUI.out(finalMsg);
         GUI.promptOut();
 
         // Exits the game after player types enter.

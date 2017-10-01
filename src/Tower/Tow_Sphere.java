@@ -20,7 +20,7 @@ public class Tow_Sphere extends Furniture implements Unmoveable {
         
         this.searchDialog = "The sphere is too high to inspect more closely.";
 
-        this.addNameKeys("(?:hovering )?(?:glowing |pulsing )?(?:yellow )?(?:sphere|ball)(?: of (?:yellow )?light)?");
+        this.addNameKeys("(?:hovering )?(?:glowing |pulsing )?(?:yellow )?(?:sphere|ball|light)(?: of (?:yellow )?light)?");
     }
     //-------------------------------------------------------------------------   
 }

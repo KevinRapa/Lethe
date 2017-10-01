@@ -38,7 +38,7 @@ public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
         }
         else {
             if (Player.hasItem(SHOVEL) || Player.hasItem(TROWEL)) {
-                Gar4_Plaque p = (Gar4_Plaque)Player.getRoomObj(Id.GAL4).getFurnRef(PLQ_ID);
+                Gar4_Plaque p = (Gar4_Plaque)Player.getRoomObj(Id.GAR4).getFurnRef(PLQ_ID);
                 
                 if (p.isMoved()) {
                     if (inv.contains(PLT_REF)) {

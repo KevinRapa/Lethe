@@ -495,7 +495,7 @@ public final class Player {
      */
     public static void mainPrompt() {
         String ans;
-        
+        Player.getRoomObj(Id.JHA2).addAdjacent(Id.SST1);
         AudioPlayer.playTrack(getPosId());
         printInv();
         GUI.roomOut(getPos().triggeredEvent());

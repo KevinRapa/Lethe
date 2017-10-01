@@ -78,8 +78,7 @@ public class Pris_Ghost extends NonPlayerCharacter {
                 "to guard the Treasure by walking these tunnels, " +
                 "although the location of the Treasure has been " +
                 "forgotten, even to Kampe. Most everyone who lives " +
-                "here has either left or slipped into a blissful " +
-                "madness.\"");
+                "here has either left or slipped into madness.\"");
         GUI.promptOut();
         
         GUI.out("\"This river here... you'd expect it to empty into " +
