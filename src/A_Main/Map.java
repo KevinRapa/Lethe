@@ -110,6 +110,13 @@ public class Map {
         MAP_FRAME.pack();
     }
     //-------------------------------------------------------------------------
+    /**
+     * Creates everything in the game, then saves them all to files. 
+     * Files are organized by floor, then row, then by room. Each room is 
+     * serialized with all furniture currently in it and all items in the 
+     * furniture. This is only called when a new game starts. When a game 
+     * loads, rooms are read in as they are needed.
+     */
     public static void createMap() {
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="INITIALIZE ROOMS, FURNITURE, ITEMS">
