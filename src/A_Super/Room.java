@@ -3,8 +3,9 @@ package A_Super;
 import static A_Main.Names.W_DIR;   import static A_Main.Names.SEP;
 import static A_Main.Names.DATA;
 
-import A_Main.AudioPlayer;import A_Main.GUI;
-      import A_Main.RoomGraph;
+import A_Main.AudioPlayer;          import A_Main.GUI;
+import A_Main.RoomGraph;
+
 import java.util.ArrayList;     import java.util.Arrays;
 import java.io.BufferedReader;  import java.io.FileReader;
 import java.io.IOException;     import java.io.Serializable;
@@ -12,9 +13,9 @@ import java.util.Iterator;
 
 /**
  * <p>
- * Represents one element in the game map array. 
+ * Represents a room in the castle. 
  * The player always has a defined attribute of integer coordinates which
- * give access to furniture in the room at those coordinates in the array.
+ * give access to furniture in the room when the player is at those coordinates.
  * </p> <p>
  * Each room has a unique ID string, roughly corresponding to the room name.
  * The IDs uniquely identify the room for the purposes of getting coordinates
@@ -22,16 +23,15 @@ import java.util.Iterator;
  * </p> <p>
  * Rooms are adjacent to other rooms, which means that movement between them
  * is possible. Two adjacent rooms are separated by empty space if the first 3 letters
- * of there IDs match, excluding the caves and catacombs. Otherwise, they are
+ * of their IDs match, excluding the caves and catacombs. Otherwise, they are
  * separated by a door, unless they are on two different floors, e.g. connected
  * by stairs.
  * </p> <p>
- * Rooms may be locked, which means that movement into the is not allowed unless
+ * Rooms may be locked, which means that movement into them is not allowed unless
  * the player carries a key with the matching ID number.
  * </p> <p>
  * Rooms have a <code>triggeredEvent</code> method, called whenever the player 
- * enters. Generally, the method notifies the player where he/she is in the
- * castle.
+ * enters. Generally, the method outputs the room name at least.
  * </p>
  * 
  * @see A_Main.RoomGraph
