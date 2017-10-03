@@ -3,7 +3,7 @@ This holds the current iteration of a large text-based adventure game.
 The final title is <i>Lethe</i>.
 
 Downloadable .zip file is here:
-<a href="https://mega.nz/#!HF4AnBwL!0XbYePmleuP7aARSZgcnBS_DujZXhB2YjjZshTmcnYI"><br>Lethe_at_mega.nz</a><br>
+<a href="https://mega.nz/#!LJgDCDLY!7z4zMKLGezUigbg3ctBDc0_qJRowtPG6Z_lN2JGaLP0"><br>Lethe_at_mega.nz</a><br>
 <a href="https://www.youtube.com/watch?v=eakoveN4eI0">A humble trailer made by a friend</a><br>
 
 To play, just run Lethe.jar.
@@ -30,6 +30,6 @@ Examples of multi-threading (From the laboratory alchemy puzzle):
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/Patterns.java">Regex patterns</a><br>
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/AudioPlayer.java">Audio player</a><br>
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/GUI.java">GUI controller</a><br>
-<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/Player.java">Text parser (at line 1496)</a>
+<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/Player.java">Text parser (at line 1562)</a>
 
   
