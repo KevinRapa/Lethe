@@ -21,8 +21,11 @@ public class RoomGraph {
     private static final HashMap<Integer, String>
             INT_TO_ID = new HashMap<>(); // Maps coordinates to IDs.
     
+    /**
+     * Used 
+     * @return An ordered list of IDs to populate the hashmaps
+     */
     private static String[] getIds() {
-        // Returns an ordered list of IDs to populate the hashmaps.
         return new String[] { 
             NULL,ENDG,HADS,
             // FLOOR 1 ROOM ID'S ---------------------------------------------- 
@@ -54,13 +57,13 @@ public class RoomGraph {
         }; 
     }
     //-------------------------------------------------------------------------
+    /**
+     * Populates ADJACENTS, then calls the method which populates the other
+     * two hash maps. 
+     * This method is only needed when a new game is made, since rooms
+     * remember the rooms adjacent to them.
+     */
     public static void constructRoomGraph() { 
-        /**
-         * Populates ADJACENTS, then calls the method which populates the other
-         * two hash maps. 
-         * This method is only needed when a new game is made, since rooms
-         * remember the room's adjacent to them.
-         */
         int index = 0; 
         
         String[][] adjs = { 
@@ -157,18 +160,19 @@ public class RoomGraph {
         assignCoordinates(ids); 
     } 
     //-------------------------------------------------------------------------
+    /**
+     * Bootstrap method for when a game begins.
+     */
     public static void assignCoordinates() {
         assignCoordinates(getIds());
     }
     //-------------------------------------------------------------------------
-    
-    public static void assignCoordinates(String[] ids) { 
-        /** 
-         * Populates the hash maps to map between IDs and coordinates.
-         * Used when a saved game is loaded and when a new game is made.
-         */ 
-        int index = 0; 
-        
+    /** 
+     * Populates the hash maps to map between IDs and coordinates.
+     * Used when a saved game is loaded and when a new game is made.
+     * Concatenates coordinates for use as keys. Does not use the object.
+     */ 
+    private static void assignCoordinates(String[] ids) { 
         int[][] coords = { 
             {0,0,0},{3,7,5},{0,1,8},
             // 1ST FLOOR COORDINATES ------------------------------------------ 
@@ -210,12 +214,11 @@ public class RoomGraph {
             {6,6,1},{6,6,2},{6,6,3},{6,6,4},{6,6,5},{6,6,6},{6,6,7},{6,6,8} 
         }; 
         
-        for (String key : ids) {
-            int[] c = coords[index];
+        for (int i = 0; i < ids.length; i++) {
+            int[] c = coords[i];
             int baseTen = (c[0] * 100) + (c[1] * 10) + c[2];
-            INT_TO_ID.put(baseTen, key);
-            COORDINATES.put(key, coords[index]);
-            index++;
+            INT_TO_ID.put(baseTen, ids[i]);
+            COORDINATES.put(ids[i], coords[i]);
         }
     } 
     //------------------------------------------------------------------------- 

@@ -61,7 +61,7 @@ public class Cou5_Spruce extends SearchableFurniture
                 AudioPlayer.playEffect(33);
                 String rep = this.useDialog;
                 
-                if (Player.getInv().contains(VIAL_REF)) {
+                if (Player.getInv().contains(VIAL_REF.toString())) {
                     Player.getInv().remove(VIAL_REF);
                     Player.getInv().add(EXTRCT_REF);
                     return rep.concat(" You collect some of the sap in the small vial you are carrying.");
@@ -111,7 +111,7 @@ public class Cou5_Spruce extends SearchableFurniture
 //-----------------------------------------------------------------------------
     @Override public String getIt() {
         if (drilled)
-            if (Player.getInv().contains(VIAL_REF)) {
+            if (Player.getInv().contains(VIAL_REF.toString())) {
                 Player.getInv().remove(VIAL_REF);
                 Player.getInv().add(EXTRCT_REF);
                 return "You collect some of the sap in the small vial you are carrying.";

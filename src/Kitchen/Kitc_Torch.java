@@ -23,7 +23,7 @@ public class Kitc_Torch extends Torch_Holder {
     @Override public String interact(String key) {
         if (key.equals("pull"))
             return super.interact(key);
-        else if (this.inv.contains(TORCH)) {
+        else if (this.inv.contains(TORCH.toString())) {
             if (this.inv.give(TORCH, Player.getInv())) {
                 Player.describeRoom();
                 return this.actDialog;
@@ -36,7 +36,7 @@ public class Kitc_Torch extends Torch_Holder {
     }
 //-----------------------------------------------------------------------------  
     @Override public String useEvent(Item item) {
-        if (this.inv.contains(TORCH))
+        if (this.inv.contains(TORCH.toString()))
             return "The holder already bears a torch you bumbling oaf.";
         else {
             Player.getInv().give(item, this.inv);

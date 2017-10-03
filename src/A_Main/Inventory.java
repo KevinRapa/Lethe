@@ -67,11 +67,9 @@ public class Inventory implements Iterable<Item>, Serializable {
         return NULL_ITEM; // Item wasn't found. Always check for this!!
     }
     //-------------------------------------------------------------------------
-    public boolean contains(Item item) {
-        String name = item.toString();
-        
+    public boolean contains(String itemName) {
         for (Item i : this.CONTENTS)
-            if (i.toString().equals(name))
+            if (i.toString().equals(itemName))
                 return true;
         
         return false;

@@ -12,7 +12,7 @@ public class Intr_Torch extends Torch_Holder implements Resetable {
     }
     //------------------------------------------------------------------------- 
     @Override public void reset() {
-        if (! this.inv.contains(TORCH))
+        if (! this.inv.contains(TORCH.toString()))
             this.inv.add(TORCH);
     }   
     //------------------------------------------------------------------------- 

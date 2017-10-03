@@ -34,7 +34,7 @@ public class Intr_Water extends SearchableFurniture implements Resetable {
     }
     //-------------------------------------------------------------------------    
     @Override public void reset() {
-        if (! this.inv.contains(METAL_BAR_REF))
+        if (! this.inv.contains(METAL_BAR_REF.toString()))
             this.inv.add(METAL_BAR_REF);
     }
 }

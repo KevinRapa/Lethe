@@ -50,11 +50,11 @@ public class Kitc_Pots extends SearchableFurniture implements Gettable {
 //-----------------------------------------------------------------------------
     @Override public String getIt() {
         if (! this.inv.isEmpty()) {
-            if (this.inv.contains(POT_REF) && Player.getInv().add(POT_REF)) {
+            if (this.inv.contains(POT_REF.toString()) && Player.getInv().add(POT_REF)) {
                 this.inv.remove(POT_REF);
                 return "You take a pot off.";
             }
-            else if (this.inv.contains(PAN_REF) && Player.getInv().add(PAN_REF)) {
+            else if (this.inv.contains(PAN_REF.toString()) && Player.getInv().add(PAN_REF)) {
                 this.inv.remove(PAN_REF);
                 return "You take a pan off.";
             }

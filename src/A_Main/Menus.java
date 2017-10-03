@@ -40,6 +40,7 @@ public final class Menus {
         SAVE_QUIT = NL + NL
                   + "<'s'> Save and quit" + NL
                   + "<'r'> Reset and quit." + NL
+                  + "<'b'> No no! Go back!" + NL
                   + " < >  Quit",
                           
         MAIN_MENU = "     Enter a command or:" + NL 
@@ -47,7 +48,7 @@ public final class Menus {
                   + "<'i'>  Inventory  <'k'>  Keys" + NL
                   + "<'h'>  Get help   <'n'>  Note" + NL
                   + "<'m'>  Show Map   <'l'>  Loot" + NL
-                  + "<'o'>  Options  <'quit'> Quit" + NL
+                  + "<'o'>  Options    <'q'>  Quit" + NL
                   + "        <'save'> Save",
             
         OPTIONS = NL + "<'1'> Movement scheme:  " + NL +

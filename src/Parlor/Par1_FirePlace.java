@@ -37,7 +37,7 @@ public class Par1_FirePlace extends Fireplace {
     }
 //-----------------------------------------------------------------------------
     @Override public String getIt() {
-        if (Player.getInv().contains(ENCHT_BTTL_REF)) {
+        if (Player.getInv().contains(ENCHT_BTTL_REF.toString())) {
             Player.getInv().remove(ENCHT_BTTL_REF);
             Player.getInv().add(SCRDFR_REF);
             return this.useDialog;

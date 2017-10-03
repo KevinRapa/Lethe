@@ -104,14 +104,14 @@ public class Labo_Flask extends SearchableFurniture {
                 return true;
             }
             else if (this.size() == 1) {
-                if (giveToThis.contains(TUBE_REF)) {
+                if (giveToThis.contains(TUBE_REF.toString())) {
                     this.remove(item);
                     giveToThis.remove(TUBE_REF);
                     giveToThis.forceAdd(item);
                     GUI.out("You pour it back out.");
                     return true;
                 }
-                else if (giveToThis.contains(VIAL_REF)) {
+                else if (giveToThis.contains(VIAL_REF.toString())) {
                     this.remove(item);
                     giveToThis.remove(VIAL_REF);
                     giveToThis.forceAdd(item);

@@ -53,8 +53,9 @@ public class PlayerInventory extends Inventory {
     @Override public void remove(Item removeThis) {
         super.remove(removeThis);
         
-        if (removeThis.getType().equals(LOOT_SACK))
+        if (removeThis.getType().equals(LOOT_SACK)) {
             Player.updateScore(0);
+        }
     }
     //-------------------------------------------------------------------------
     /**
@@ -72,8 +73,9 @@ public class PlayerInventory extends Inventory {
      * @return Notifies the player what he or she received.
      */
     public String combine(Item[] itemList, Item gift) {
-        for (Item i : itemList)
+        for (Item i : itemList) {
             this.CONTENTS.remove(i); 
+        }
         
         this.CONTENTS.add(gift);
         AudioPlayer.playEffect(29);
@@ -88,11 +90,6 @@ public class PlayerInventory extends Inventory {
         Player.printInv();
     }
     //-------------------------------------------------------------------------
-    public boolean containsItemWithExactName(String itemName) {
-        return this.CONTENTS.stream()
-                .anyMatch(i -> i.toString().equalsIgnoreCase(itemName));
-    }
-    //-------------------------------------------------------------------------
     // Returns the number of phylacteries the player is carrying.
     public int countPhylacteries() {
         int result = 0;
@@ -103,22 +100,22 @@ public class PlayerInventory extends Inventory {
         
         return result;
     }
-    //*************************************************************************
     //-------------------------------------------------------------------------
-    //*************************************************************************
+    /**
+     * For sorting the items in the player's inventory.
+     * A singleton class.
+     * @param <T> Item 
+     */
     private static class Inventory_Sorter<T extends Comparable<T>> 
             implements Comparator<T> 
     {
         private static final Inventory_Sorter<Item> 
                 SORTER = new Inventory_Sorter<>();
         // --------------------------------------------------------------------
-        private Inventory_Sorter() {} // Singleton class.
+        private Inventory_Sorter() {}
         // --------------------------------------------------------------------
         @Override public int compare(T item1, T item2) {
             return item1.compareTo(item2);
         }
     }
-    //*************************************************************************
-    //-------------------------------------------------------------------------
-    //*************************************************************************
 }

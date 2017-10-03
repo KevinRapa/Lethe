@@ -502,15 +502,15 @@ public class GUI extends JFXPanel {
                     break;  
                 case LEFT:  // Player uses left and right arrows to scroll
                     if (SB.isVisible())
-                        SB.setValue(SB.getValue() + 15);
+                        SB.setValue(SB.getValue() + 21);
                     if (SN.isVisible())
-                        SN.setValue(SN.getValue() + 15);
+                        SN.setValue(SN.getValue() + 21);
                     break;
                 case RIGHT:
                     if (SB.isVisible())
-                        SB.setValue(SB.getValue() - 15);
+                        SB.setValue(SB.getValue() - 21);
                     if (SN.isVisible())
-                        SN.setValue(SN.getValue() - 15);
+                        SN.setValue(SN.getValue() - 21);
                     break;
                 case BACKSPACE:
                     break;

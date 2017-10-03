@@ -30,7 +30,7 @@ public class Par1_Cushion extends SearchableFurniture {
             return this.actDialog;
         }
         else {
-            if (this.inv.contains(PLATE_REF)) {
+            if (this.inv.contains(PLATE_REF.toString())) {
                 if (Player.getInv().isFull()) {
                     return "You lift the cushion and discover a clean, shiny "
                          + "plate underneath. Unfortunately, you realize that "

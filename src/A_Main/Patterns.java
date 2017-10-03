@@ -33,7 +33,7 @@ DESTROY_P = Pattern.compile("destroy|break|shatter|obliterate|throw"),
 MOVE_P = Pattern.compile("move|slide|displace|push|pull|spin|rotate"),
 CHECK_P = Pattern.compile("c|check|examine|look|view|inspect|watch"),
 
-SAVE_QUIT_RESET_P = Pattern.compile("[sr]|"),   // Used when player quits game
+SAVE_QUIT_RESET_P = Pattern.compile("[srb]|"),   // Used when player quits game
         
 // Protects from numberFormatException by restricting to 4 digits at most.
 // Matches empty strings also. Used in a menu that prompts for a digit.        
@@ -88,11 +88,6 @@ SPC = Pattern.compile(" "),
 
 // Splits an item from the object it's used on (e.g. cut rope WITH the sword)
 INSTRUCTIVE_P = Pattern.compile(" with | using "),  
-        
-// Splits player input into commands if the player chained them together.
-// The negative look behind is to help disambiguate from combine commands
-// (e.g. "combine <>, <>, AND, <>" and "go left AND drop the sponge")        
-CONJUNC_P = Pattern.compile(" (?<!, ?)and(?: then| also)? | then(?: also)? "),
 
 // In a store command, this pattern splits items from the furniture they are
 // to be stored in.

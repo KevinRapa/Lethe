@@ -21,7 +21,7 @@ public class Cel3_Valve extends Cel_Valve {
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) {    
         if (key.equals("loosen")) {
-            if (Player.getInv().contains(WRENCH_REF))
+            if (Player.getInv().contains(WRENCH_REF.toString()))
                 return useEvent(WRENCH_REF);
             else
                 return "That sounds quite ambitious to do by hand.";

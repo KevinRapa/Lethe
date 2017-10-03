@@ -41,7 +41,7 @@ public class Gar4_Planter extends SearchableFurniture implements Unmoveable {
                 Gar4_Plaque p = (Gar4_Plaque)Player.getRoomObj(Id.GAR4).getFurnRef(PLQ_ID);
                 
                 if (p.isMoved()) {
-                    if (inv.contains(PLT_REF)) {
+                    if (inv.contains(PLT_REF.toString())) {
                         if(inv.give(PLT_REF, Player.getInv())) {
                             AudioPlayer.playEffect(34);
                             return "You dig under where the plaque was to find a shiny plate!";

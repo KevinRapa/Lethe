@@ -35,7 +35,7 @@ abstract public class Candelabra extends SearchableFurniture
     }
     //------------------------------------------------------------------------- 
     @Override public String getDescription() {
-        if (this.inv.contains(CANDLE_REF))
+        if (this.inv.contains(CANDLE_REF.toString()))
             return super.getDescription();
         else
             return "The candelabra holds no more candles.";
@@ -52,7 +52,7 @@ abstract public class Candelabra extends SearchableFurniture
     }
     //-------------------------------------------------------------------------   
     @Override public String getSearchDialog() {
-        if (this.inv.contains(CANDLE_REF))
+        if (this.inv.contains(CANDLE_REF.toString()))
             return this.searchDialog;
         else
             return "The candelabra holds no more candles.";
@@ -60,7 +60,7 @@ abstract public class Candelabra extends SearchableFurniture
     //-------------------------------------------------------------------------   
     @Override public String interact(String key) {              
         if (key.equals("touch")) {
-            if (this.inv.contains(CANDLE_REF)) {
+            if (this.inv.contains(CANDLE_REF.toString())) {
                 AudioPlayer.playEffect(39, 0.3);
                 return this.actDialog;
             }
@@ -75,7 +75,7 @@ abstract public class Candelabra extends SearchableFurniture
     }
     //-------------------------------------------------------------------------     
     @Override public String getIt() {
-        if (this.inv.contains(CANDLE_REF))
+        if (this.inv.contains(CANDLE_REF.toString()))
             if (this.inv.give(CANDLE_REF, Player.getInv()))
                 return "You take a candle from the candelabra.";
             else

@@ -11,6 +11,7 @@ public class Cou3_Steps extends Staircase {
         super(direction, dest, 15);
         this.description = "The long set of crumbling steps climb to a front "
                          + "balcony before the castle's great front doors.";
+        this.addNameKeys("front (?:steps|stairs)");
     }
 //-----------------------------------------------------------------------------
 }

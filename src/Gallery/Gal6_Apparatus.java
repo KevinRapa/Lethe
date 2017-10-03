@@ -92,7 +92,7 @@ public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
                     GUI.out("The battery appears to be charging. Better give it some time.");
                     this.wait(25000);
 
-                    if (APPARATUS_INV.contains(DEAD_BATTERY))
+                    if (APPARATUS_INV.contains(DEAD_BATTERY.toString()))
                         GUI.out("The battery has likely charged enough at this point.");
 
                     this.reOpen();
@@ -103,7 +103,7 @@ public class Gal6_Apparatus extends SearchableFurniture implements Gettable {
         }
     //-------------------------------------------------------------------------
         public void reOpen() {
-            if (APPARATUS_INV.contains(DEAD_BATTERY)) {
+            if (APPARATUS_INV.contains(DEAD_BATTERY.toString())) {
                 APPARATUS_INV.remove(DEAD_BATTERY);
                 APPARATUS_INV.add(new BreakableItem(CHARGED_BATTERY, 
                         "The heavy metal box is now warm to the touch.", 160));

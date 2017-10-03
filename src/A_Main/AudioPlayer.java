@@ -41,8 +41,8 @@ public class AudioPlayer {
     */ 
     private static final MediaPlayer[][] KEY_PLAYERS = new MediaPlayer[3][3];
     
-    // Zero. Determines which of two players to play for each sound.
-    private static byte playerAlternator = 0x0;  
+    // Determines which of two players to play for each sound.
+    private static byte playerAlternator = 0;  
     
     // One, three, two. XOR's playerAlternator between 1, 2, and 0
     // 0 ^ 1 = 1
@@ -144,6 +144,7 @@ public class AudioPlayer {
             put(id, f.exists() ? new Media(f.toURI().toString()) : null);
         }
         //---------------------------------------------------------------------
+        // Maps each ID in ids to the track.
         private void putAllTracks(File track, String ... ids) {
             if (! track.exists())
                 for (String id : ids) 
@@ -269,8 +270,7 @@ public class AudioPlayer {
     }
 //-----------------------------------------------------------------------------
     /**
-     * Plays sound effects when certain events happen at a specified volume.
-     * 
+     * Plays a sound effects.
      * @param ID An integer corresponding to a sound effect.
      */
     public static void playEffect(int ID) {
@@ -287,8 +287,7 @@ public class AudioPlayer {
     }
 //-----------------------------------------------------------------------------
     /**
-     * Plays sound effects when certain events happen.
-     * 
+     * Plays sound effects at a specified volume.
      * @param ID An integer corresponding to a sound effect.
      * @param volume Volume at which to adjust the effect.
      */
@@ -313,14 +312,14 @@ public class AudioPlayer {
      * corresponds to the key sound to play.
      */
     public static void playKeySound(int ID) {
-        if (ID == -1) return;
-        
-        try {
-            (KEY_PLAYERS[ID][playerAlternator]).play();
-            playerAlternator ^= XOR_MASKS[playerAlternator];
-        }
-        catch (MediaException | NullPointerException e) {
-            System.err.println(e.getMessage());
+        if (ID != -1) {
+            try {
+                (KEY_PLAYERS[ID][playerAlternator]).play();
+                playerAlternator ^= XOR_MASKS[playerAlternator];
+            }
+            catch (MediaException | NullPointerException e) {
+                System.err.println(e.getMessage());
+            }
         }
     }
 //-----------------------------------------------------------------------------
