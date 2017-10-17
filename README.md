@@ -16,9 +16,8 @@ This is a text-based game, or interactive fiction, which bridges the
 gap between videogames and books. This game is heavily inspired by
 the early 80's late 70's computer game <i>Zork</i> and plays similarly,
 though it's an entirely different game and most similarities are
-allusions. The game is played by entering in commands in the field at
-the screen bottom, though shortcuts are provided. For more info, 
-just go to "help" by entering 'h' or 'help' at the main prompt.
+allusions. The game is played by entering in commands in a text field. 
+For more info, just go to "help" by entering 'h' or 'help' at the main prompt.
 
 Examples of multi-threading (From the laboratory alchemy puzzle):
     <ul>
