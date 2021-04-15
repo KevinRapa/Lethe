@@ -2,8 +2,6 @@
 This holds the current iteration of a large text-based adventure game.
 The final title is <i>Lethe</i>.
 
-Downloadable .zip file is here:
-<a href="https://mega.nz/#!LJgDCDLY!7z4zMKLGezUigbg3ctBDc0_qJRowtPG6Z_lN2JGaLP0"><br>Lethe_at_mega.nz</a><br>
 <a href="https://www.youtube.com/watch?v=eakoveN4eI0">A humble trailer made by a friend</a><br>
 
 To play, just run Lethe.jar.
