@@ -32,7 +32,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import java.io.*;                   import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import javafx.application.Platform; 
+//import javafx.application.Platform; 
 
 import static A_Main.Names.SEP;     import static A_Main.Names.DATA;
 import static A_Main.Names.W_DIR;
@@ -210,7 +210,7 @@ public class Main {
         GAME_FRAME.setVisible(false);       // Makes frame disappear
         GAME_FRAME.dispose();               // Frees the JFrame
         Map.disposeMap();                   // Frees the game map
-        Platform.exit();                    // Exits JavaFX
+        System.exit(0);                    // Exits JavaFX
     }
 //-----------------------------------------------------------------------------   
     public static void eraseGame() {

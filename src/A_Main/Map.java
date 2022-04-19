@@ -149,7 +149,7 @@ public class Map {
         Item attcVln = new BreakableItem(STRADIVARIUS, 
             "A perfectly symmetrical violin, stately in appearance and still "
           + "holding a satin shine. Looking closely, you can see inscribed on "
-          + "it, 'Stradivarius'.", "Surely you could never play...", 500);
+          + "it, 'Stradivarius'.", "You could never play.", 500);
         
         // Found in a box in Kampe's quarters. Player may opt to give it to the
         // prison ghost for a hint.
@@ -381,7 +381,7 @@ public class Map {
                 "You slip the warm hat on your head.", 30);
         Item umbr = new BreakableItem("umbrella", 
                 "A stately black umbrella with a lacquered wood handle.", 
-                "Is it raining out? You somehow must have not noticed.", 30);
+                "It is not raining.", 30);
         //-----------------------------FURNITURE--------------------------------    
         Furniture foyW = new Wall("A dark wood-paneled wall.");
         Furniture foyF = new Floor("Salmon-colored tiled marble. Its glint stuns you.");
@@ -458,7 +458,7 @@ public class Map {
                 + "Yes, undoubtedly a spruce pinecone!", "This looks painful to eat...", 0);
         Item fthr = new Item(RAVEN_FEATHER, "It's elegant- jet-black and long. A smooth "
                 + "glean runs across it as you tilt it to the light.", 20);
-        Item strng = new Item("string", "A delicate piece of white twine. You're sure the bird didn't need that...", 10);
+        Item strng = new Item("string", "A delicate piece of white twine.", 10);
         Item ham = new Item(COOKED_HAM, "A succulent glazed ham, still hot!", 300);
         Item leaflet = new Small_Leaflet("small leaflet");
         //-----------------------------FURNITURE--------------------------------
@@ -763,8 +763,8 @@ public class Map {
         Room sha1 = new Sha1("South servant's hall", Id.SHA1);
         //-------------------------------ITEMS----------------------------------
         Item wdChnk = new Wood_Chunk(WOOD_LOG, ram, 3);       
-        Item shaMp = new Item(MOP, "It's a classic mop.", "Yes, let's just make this a game about cleaning some madman's castle.", 25);
-        Item shaSpng = new Item("sponge", "It's a quintessential square yellow sponge.", "I'm a lumberjack, not a maid!", 5);
+        Item shaMp = new Item(MOP, "It's a classic mop.", "Yes, let's just make this a game about cleaning.", 25);
+        Item shaSpng = new Item("sponge", "It's a quintessential square yellow sponge.", "I'm not a maid!", 5);
         //-----------------------------FURNITURE--------------------------------       
         Furniture sha2Cbnt = new Sha2_Cabinet(wdChnk, shaSpng, shvl, shaMp, bckt);
         Furniture shaF = new Floor("A sandstone tiled floor. Small, loose grains grind against your shoes as you walk.");
@@ -779,7 +779,7 @@ public class Map {
         Room cous = new Cous("Scorched room", Id.COUS);
         //-------------------------------ITEMS----------------------------------
         Item wrhmmr = new Item(WARHAMMER, "It's an old medieval warhammer. The head looks extremely worn and dull.", 35);
-        Item ash = new Item(ASH, "You're pretty sure there are people mixed in with this...", -30);
+        Item ash = new Item(ASH, "You're pretty sure there are people mixed in with this.", -30);
         Item wd = new Item("charred wood", "It's a piece of burnt wood", -25);
         //-----------------------------FURNITURE-------------------------------- 
         Furniture searFssr = new Sear_Fissure();
@@ -803,7 +803,7 @@ public class Map {
               + "just a scribble. A shapeless mass of ink that does not resemble anything at all.");
         //-----------------------------FURNITURE-------------------------------- 
         Furniture studSafe = new Stud_Safe(367, studBkPhy, gal1Key);
-        Furniture studF = new Floor("The floor is a weathered dark hickory that creaks slowly as you walk. How nice!");
+        Furniture studF = new Floor("The floor is a weathered dark hickory that creaks slowly as you walk.");
         Furniture studPrtrt = new Stud_Portrait(studSafe);
         Furniture studFire = new Stud_Fireplace(bckt);
         Furniture studDsk = new Stud_Desk(pen, ppr, studNote2, servKey, studNote);
@@ -876,7 +876,7 @@ public class Map {
         Furniture gal1Scrn = new Gal1_Screen(gal1Swtch);
         Furniture gal1Armr = new Gal1_Armor();
         Furniture gal1F = new Floor("The floor is a dark hardwood.");
-        Furniture gal1W = new Wall("The wall is tiled a dark green and purple. Interesting choice...");
+        Furniture gal1W = new Wall("The wall is tiled a dark green and purple. Interesting choice.");
         Furniture gal1Sclptrs = new Gal1_Sculptures();
         Furniture gal1Pntngs = new Gal1_Paintings();
         Furniture gal1Pntng3 = new Gal1_Painting3();
@@ -1201,7 +1201,7 @@ public class Map {
         //-----------------------------THE ROOM---------------------------------
         Room kitc = new Kitc("Kitchen", Id.KITC, kitcTrch);
         //-------------------------------ITEMS----------------------------------
-        Item rtnFrt = new Item("rotten fruit", "Was this an apple? Or ... plum once?", 
+        Item rtnFrt = new Item("rotten fruit", "Was this an apple or a plum?", 
                 "Whatever you expect him to do with that, he isn't going to.", -50);
         Item petFrt = new Item("petrified vegetable", "Looks like a rock ... in the shape of a carrot.", 
                 "Whatever you expect him to do with that, he isn't going to.", -50);
@@ -1481,6 +1481,7 @@ public class Map {
         Furniture att2Dr = new Sst_Door(Direction.WEST);
         Furniture attCss = new Att_Cases(attcTrchCt, attcGChSt, attcDrss, attcOldRgs, attcStPt);
         Furniture attBxs = new Att_Boxes(attcSphn, attcMrrr, attcGlb, attcDll, attcVln, attcAntLmp);
+        Furniture att2Bxs = new Att_Boxes(attcSphn, attcMrrr, attcGlb, attcDll, attcAntLmp);
         Furniture attVnts = new Att_Vents();
         Furniture attClng = new Att_Ceiling();
 
@@ -1754,7 +1755,7 @@ public class Map {
                 "Whatever knowledge this book held is now lost.", -30);
         Item stnBlck = new BreakableItem(STONE_BLOCK, 
                 "This is a remnant of the collapsed floor in the ancient archives.", 10);
-        Item slmyAlg = new Item("slimy algae", "Ugh... why are you holding this?", -35);
+        Item slmyAlg = new Item("slimy algae", "Why are you holding this?", -35);
         Item aarcNt = new Aarc_Note("note: Factum");
         //-----------------------------FURNITURE--------------------------------  
         Furniture aarcAlg = new Aarc_Algae(slmyAlg);
@@ -2264,7 +2265,7 @@ public class Map {
         obs3.addFurniture(obs3Chndlr, obsW, obs3F, obsWndw, obs3Strs, 
                 obsBlcny, obs2Rlng, obs3Chst, obs3Tlscps, clng);
         att1.addFurniture(attF, attW, sst2Dr, attCss, attBxs, gal5Cbwbs, attVnts, attClng);
-        att2.addFurniture(attF, attW, att2Dr, attBxs, attCss, gal5Cbwbs, attVnts, attClng);
+        att2.addFurniture(attF, attW, att2Dr, att2Bxs, attCss, gal5Cbwbs, attVnts, attClng);
         labo.addFurniture(laboF, att2Dr, wallEx, laboStpCck, laboBrtt, laboGsPipe, 
                 laboCntr, iceBrrl, laboRck, laboDspnsrs, laboDstllr, laboSnk, 
                           laboCntrptn, cndsr, laboTbl, laboDvcs, clng); 
@@ -2363,12 +2364,11 @@ public class Map {
         //**********************************************************************
         // <editor-fold defaultstate="collapsed" desc="LOCK ROOMS">
         //********************************************************************** 
-        rotu.setLocked(true); stud.setLocked(true); gal5.setLocked(true); 
-        gal1.setLocked(true); par2.setLocked(true); clos.setLocked(true); 
-        din1.setLocked(true); kitc.setLocked(true); ou62.setLocked(true); 
-        chs1.setLocked(true); work.setLocked(true); tow1.setLocked(true); 
-        sewp.setLocked(true); dkch.setLocked(true); wow2.setLocked(true);
-        vau2.setLocked(true); cou4.setLocked(true);
+        for (Room r : new Room[] {rotu, stud, gal5, gal1, par2, clos, din1, 
+            kitc, ou62, chs1, work, tow1, sewp, dkch, wow2, vau2, cou4}) 
+        { 
+            r.setLocked(true);
+        }
         //**********************************************************************
         // </editor-fold> 
         //********************************************************************** 

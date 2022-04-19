@@ -40,7 +40,7 @@ public class Cel3_Valve extends Cel_Valve {
                 return "You loosen the bolt some with the wrench.";
             }
             else
-                return "Let's not go crazy here. The bolt is plenty loose.";
+                return "The bolt is plenty loose.";
         }
         else
             return super.useEvent(item);

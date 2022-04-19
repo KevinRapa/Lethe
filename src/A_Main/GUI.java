@@ -12,6 +12,7 @@ import java.awt.*;                  import javax.swing.*;
 import java.awt.event.*;            import javax.swing.border.BevelBorder;
 import javafx.embed.swing.JFXPanel; import javax.swing.text.*;
 
+
 /******************************************************************************
  * This class is responsible for the game interface.
  * All graphical components are set up here.

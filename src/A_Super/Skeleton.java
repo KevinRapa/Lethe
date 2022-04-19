@@ -9,7 +9,7 @@ public class Skeleton extends SearchableFurniture implements Moveable {
         super(items);
         
         this.actDialog = "\"Hello? Are you okay? Do you know a way out?\" You repeatedly ask the skeleton. "
-                       + "The skeleton lies silently, motionless, rudely ignoring your inquiry.";
+                       + "The skeleton lies silently, motionless, ignoring your inquiry.";
         this.searchDialog = "You crouch down.";
 
         this.addNameKeys("skeleton|body");

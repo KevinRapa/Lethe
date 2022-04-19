@@ -44,8 +44,7 @@ public class Cel4_Coal extends Furniture implements Gettable, Unmoveable {
                 return useEvent(i);
             }
             else
-                return "You have nothing to dig the coal with. Of course, you "
-                        + "could simple take one.";
+                return "You have nothing to dig the coal with. You may take one though.";
         }
         else
             return getIt();

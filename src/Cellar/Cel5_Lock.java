@@ -32,10 +32,9 @@ public class Cel5_Lock extends Furniture implements Gettable {
         else if (key.equals("lock"))
             return "Isn't that the opposite of what we're trying to accomplish?";
         else if (key.equals("pick"))
-            return "Prepare for disappointment, for our protagonist "
-                    + "is not skilled in that trade.";
+            return "The protagonist is not skilled in that trade.";
         else if (key.matches(GETPATTERN))
-            return getIt("An astute proposition. Interestingly, the padlock is... well... locked.");
+            return getIt("The padlock is locked and cannot be taken.");
         else
             return "That would be too painful and ineffective to do by hand.";
     }
@@ -48,8 +47,7 @@ public class Cel5_Lock extends Furniture implements Gettable {
             return this.useDialog.replaceFirst("%", item.toString());
         }
         else
-            return "Do you intend to pick the lock with that? Prepare for "
-                 + "disappointment, for our protagonist is not skilled in the trade.";
+            return "The protagonist is not skilled in the trade.";
     }
     //-------------------------------------------------------------------------         
 }

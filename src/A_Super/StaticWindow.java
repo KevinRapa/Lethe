@@ -9,8 +9,7 @@ abstract public class StaticWindow extends Furniture implements Unmoveable {
 /* CONSTRUCTOR ---------------------------------------------------------------*/    
     public StaticWindow() {
         super();
-        this.escapeDialog = "And fall to your death? You are a man of morals. "
-                          + "Stave off the morbid thoughts!";
+        this.escapeDialog = "And fall to your death?";
         this.actDialog = "This is a plain window. It has no moving parts.";
         this.addActKeys("open|close", "exit|climb|jump|escape");
         this.addNameKeys("(?:barred )?window");

@@ -24,7 +24,7 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
         this.isLit = true;
         this.BCKT_REF = bckt;
         
-        this.searchDialogLit = "Ouch! That's hot!";
+        this.searchDialogLit = "Ouch!";
         this.descUnlit = "It's a smoldering, unlit fireplace.";
         this.useDialog = "You douse the flames with the water.";
         
@@ -76,8 +76,7 @@ abstract public class Fireplace extends Furniture implements Gettable, Unmoveabl
         String rep = this.useDialog;
         
         if (! this.isLit) 
-            rep = "You toss the water on, although there was never a fire to "
-                + "begin with. It's good that you get paid to chop, not think.";
+            rep = "You toss the water on, although there was never a fire to begin with.";
         else 
             this.extinguish(); 
         

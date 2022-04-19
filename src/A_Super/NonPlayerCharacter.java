@@ -45,7 +45,7 @@ abstract public class NonPlayerCharacter extends Furniture implements Moveable {
     }
     //-------------------------------------------------------------------------    
     @Override public String moveIt() {
-        return "It probably wouldn't enjoy that too much...";
+        return "It probably wouldn't enjoy that too much.";
     }
     //-------------------------------------------------------------------------    
 }

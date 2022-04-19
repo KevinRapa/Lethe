@@ -14,7 +14,7 @@ abstract public class Column extends Furniture implements Unmoveable {
         this.actDialog = "You aren't very skilled at climbing vertical "
                        + "surfaces with your hands.";
         this.searchDialog = "There's nothing interesting on the column.";
-        this.useDialog = "What are you trying to do? Bring the whole castle down?";
+        this.useDialog = "You might indeed bring the whole castle down.";
 
         this.addUseKeys(ANYTHING);
         this.addActKeys(CLIMBPATTERN);
@@ -24,7 +24,7 @@ abstract public class Column extends Furniture implements Unmoveable {
         if (item.getType().equals(WEAPON))
             return this.useDialog;
         else if (item.toString().equals(FIXED_LADDER) || item.toString().equals(METAL_LADDER))
-            return "That'll get you up there, sure, but it's really not going to GET you anywhere...";
+            return "That'll get you up there, but it's really not going to GET you anywhere.";
         else
             return DEFAULT_USE;
     }

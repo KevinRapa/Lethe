@@ -26,8 +26,7 @@ public class Cel3_Crate extends SearchableFurniture
                 + "seal the lid shut.";
         this.actDialog = "You have nothing effective to pry it with.";
         this.searchDialog = "You peer inside the pried open crate.";
-        this.useDialog = "That seems like an interesting idea, considering "
-                + "the crate is open already.";
+        this.useDialog = "The crate is open already.";
 
         this.addNameKeys("(?:large )?(?:wooden )?crate", "nails?", "screws?");
         this.addUseKeys(ANYTHING);
@@ -97,22 +96,18 @@ public class Cel3_Crate extends SearchableFurniture
                     "What appeared to be nails holding the crate shut are, to the player's dismay, "
                   + "heavy-duty screws. They cannot be pried with a common hammer.";
         else if (name.equals(BOTTLE_OF_VINEGAR))
-            return "How ingenious, attempting to dissolve the crate with acid. Unbeknownst "
-                    + "to the player, acetic acid is weak and could not dissolve even a "
+            return "Unbeknownst to the player, acetic acid is weak and could not dissolve even a "
                     + "marshmallow. Actually, perhaps it could, but this game contains no marshmallows.";
         else if (name.equals(GLUE_BOTTLE))
-            return "Gluing the crate together? Isn't that the opposite of what we're "
-                    + "trying to accomplish here?";
+            return "Gluing the crate together?";
         else if (name.equals(MONKEY_WRENCH) || name.equals(METAL_BAR)) {
             AudioPlayer.playEffect(40);
             return this.searchable ? this.useDialog :
-                    "The small blunt object is not powerful enough to break into "
-                    + "the crate.";
+                    "The small blunt object is not powerful enough to break into the crate.";
         }
         else if (item.getType().equals(WEAPON))
             return this.searchable ? this.useDialog :
-                    "You succeed in only making small gashes and slices in the "
-                    + "powerful crate.";
+                    "You succeed in only making small gashes and slices in the powerful crate.";
         else
             return DEFAULT_USE;
     }

@@ -40,7 +40,7 @@ public class Cha1_Water extends Furniture implements Gettable {
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) { 
         if (key.equals("swim"))
-            return "How in the world are you going to fit in there??";
+            return "How are you going to fit in there?";
         else if (key.equals("drink"))
             return "This water isn't for drinking.";
         else

@@ -26,9 +26,9 @@ abstract public class Railing extends Furniture implements Unmoveable {
         if (key.equals("lean"))
             return this.actDialog;
         else if (key.equals("jump") || key.equals("jump") || key.equals("climb"))
-            return "Why are you trying to kill yourself?";
+            return "No";
         else
-            return "You grab the railing. There's no fear of falling over, right?";
+            return "You grab the railing. Nothing happens";
     }
     //-------------------------------------------------------------------------    
 }

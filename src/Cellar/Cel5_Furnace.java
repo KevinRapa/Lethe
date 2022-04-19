@@ -24,7 +24,7 @@ public class Cel5_Furnace extends SearchableFurniture
                 + "feeds out the top and into the ceiling.";
         this.actDialog = "You have nothing to light the furnace with.";
         this.searchDialog = "You open up the furnace.";
-        this.useDialog = "You stick the torch in and light it ablaze. The warmth is quite comforting to you.";
+        this.useDialog = "You stick the torch in and light it ablaze. The warmth is comforting.";
 
         this.addNameKeys("(?:ramshackle )?(?:cylindrical )?(?:metal |tin )?furnace");
         this.addUseKeys(HAND_TORCH, COAL, METAL_BUCKET, BUCKET_OF_WATER);
@@ -60,7 +60,7 @@ public class Cel5_Furnace extends SearchableFurniture
         
         if (name.equals(HAND_TORCH)) {
             if (lit)
-                return "The furnace is lit already!";
+                return "The furnace is lit already.";
             else if (this.containsItem(COAL)) {
                 this.lit = true;
                 return this.useDialog;
@@ -79,12 +79,10 @@ public class Cel5_Furnace extends SearchableFurniture
                 return "You pour a bit of water on, extinguishing the fire.";
             }
             else
-                return "The furnace isn't even lit right now!";
+                return "The furnace isn't lit right now.";
         }
         else
-            return "You toss some of... ah, hold on, the player immediately "
-                    + "realizes at this moment that the bucket was empty this "
-                    + "whole time.";
+            return "The player immediately realizes that the bucket is empty.";
     }
     //-------------------------------------------------------------------------     
 }

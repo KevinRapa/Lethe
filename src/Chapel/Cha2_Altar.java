@@ -21,9 +21,9 @@ public class Cha2_Altar extends SearchableFurniture
         this.description = "The altar rests atop a small riser in front of the "
                          + "rows of pews. The altar is a tan marble table bearing "
                          + "a row of lit candles.";
-        this.actDialog = "No hitting things! This is a sacred place.";
+        this.actDialog = "No hitting things. This is a sacred place.";
         this.searchDialog = "You look on the chapel altar.";
-        this.useDialog = "You've just moved...";
+        this.useDialog = "You've just moved.";
 
         this.addActKeys(JOSTLEPATTERN, GETPATTERN, "pray");
         this.addNameKeys("(?:tan )?(?:marble )?altar", "(?:lit )?candles?");

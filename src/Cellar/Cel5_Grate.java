@@ -26,7 +26,7 @@ public class Cel5_Grate extends Furniture implements Gettable {
         this.actDialog = "You can almost lift it, but a rogue padlock is sabotaging your attempt.";
         this.searchDialog = "All that is of interest is a padlock and the metal rung below the grate.";
         this.useDialog = "A sharp vibration propels through your body from the "
-                       + "impact. Quite an impulse and futile decision.";
+                       + "impact. An impulsiive and futile decision.";
 
         this.addNameKeys("(?:thick )?(?:metal )?grate");
         this.addUseKeys(ANYTHING);
@@ -63,7 +63,7 @@ public class Cel5_Grate extends Furniture implements Gettable {
         }
         else {
             Player.getPos().removeFurniture(CEL5_LDDR.getID());
-            return "The player confusingly decides to place the grate back over the hole.";
+            return "The player decides to place the grate back over the hole.";
         }
     }
     //-------------------------------------------------------------------------   

@@ -16,7 +16,7 @@ public class Courtyard_Fountain extends SearchableFurniture implements Unmoveabl
         this.searchDialog = "You search through its basin.";
         this.useDialog = "You better not just waste that water you brought all the way here..";
 
-        this.addNameKeys("(?:ancient )?(?:empty)?(?:stone )?(?:fountain|basin)");
+        this.addNameKeys("(?:ancient |crumbling )?(?:empty)?(?:stone )?(?:fountain|basin)");
         this.addUseKeys("bucket of water", "\\w* coins?");
         this.addActKeys("swim", "drink");
     }

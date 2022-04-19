@@ -13,8 +13,7 @@ public class Intr_Wheel extends Furniture implements Unmoveable {
 
         this.description = "The large horizontal axle spins at about shoulder "
                          + "height in the room. It must be somehow connected to "
-                         + "these other gears. Be careful, you wouldn't want to "
-                         + "bump your head on this thing.";
+                         + "these other gears.";
         
         this.actDialog = "You could never muster the strength to stop the wheel.";
         this.useDialog = "You thrust the bar into the wheel attempting to stop "

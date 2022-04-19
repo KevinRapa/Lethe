@@ -86,7 +86,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {              
         if (key.equals("break") || key.equals("smash"))
-            return "Now you WOULD like to do that, wouldn't you?";
+            return "You would like to do that, wouldn't you?";
         
         else if (! this.searchable) {
             GUI.out("The safe has a combination lock.");
@@ -96,8 +96,7 @@ abstract public class Safe extends SearchableFurniture implements Openable, Move
                 return "The safe is unlocked!";
         }
         else
-            return "The safe is already open. Perhaps you "
-                 + "should search it.";
+            return "The safe is already open. You may search it.";
         
         return this.actDialog;
     }

@@ -52,15 +52,13 @@ public final class Player {
     
     private static final String 
         ERROR_MSGS[] = {
-            "I might have misunderstood you on something...", "I beg your pardon?",
-            "Is that how kids are saying it nowadays?" , "Bless you!",
-            "Might want to look that over again.", "Is that slang for something?"
+            "I might have misunderstood you on something.", "I beg your pardon?",
+            "I do not understand."
         },    
         DENIAL_MSGS[] = {
-            "That is quite an ambitious proposition.", "A valiant attempt.", 
-            "Did you have much to drink before you came?", "A novel concept!",
-            "An ingenious idea from one of your education.",
-            "The player is thwarted in the ridiculous attempt."
+            "A quite ambitious proposition.", "A valiant attempt.", 
+            "A novel concept.", "An ingenious idea from one of your education.",
+            "The player is thwarted in the ridiculous attempt.", "You are unable to."
         };
     
     // <editor-fold defaultstate="collapsed" desc="MAPPINGS">
@@ -92,7 +90,7 @@ public final class Player {
         Runnable combine =  () -> combineSub();
         Runnable sortInv =  () -> Player.inv.sortInventory();
         Runnable indefLook = () -> Player.evaluateAction("look", "it");
-        Runnable win =      () -> GUI.out("Oh wait, that's it! You win! Congratulations! You may go home now.");
+        Runnable win =      () -> GUI.out("Oh wait, that's it! You win! Congratulations!");
         Runnable civilMsg = () -> GUI.out("Let us act like civilized guests whilst we're here.");
         Runnable balloon =  () -> GUI.out("Does this look like some kind of balloon to you?");
         Runnable inappr =   () -> GUI.out("You are sure the owner wouldn't wanting you doing that.");
@@ -159,10 +157,10 @@ public final class Player {
         MAIN_CMD.put("zork",   () -> GUI.out("You must be mistaking me for someone else."));
         MAIN_CMD.put("smell",  () -> GUI.out("Smells like a brisk autumn night in 1932."));
         MAIN_CMD.put("jump",   () -> GUI.out("You jump a short height into the air. Well, that was fun."));
-        MAIN_CMD.put("die",    () -> GUI.out("You can't just die at will. Try \"commit suicide\" or something else. Should I have mentioned that?"));
+        MAIN_CMD.put("die",    () -> GUI.out("You can't just die at will. Try \"commit suicide\" or something else."));
         MAIN_CMD.put("look",   () -> TextParser.getCommand("look at").perform());
         MAIN_CMD.put("listen", () -> GUI.out("Sounds like an old castle."));
-        MAIN_CMD.put("fly",    () -> GUI.out("You do not possess the skills to fly."));
+        MAIN_CMD.put("fly",    () -> GUI.out("You do not possess the ability to fly."));
         MAIN_CMD.put("kneel",  () -> GUI.out("You kneel down."));
         MAIN_CMD.put("garden", () -> GUI.out("That isn't really a hobby of yours."));
         MAIN_CMD.put("pray",   () -> GUI.out("The gods will help those who help themselves."));
@@ -518,8 +516,8 @@ public final class Player {
             GUI.toMainMenu();
             ans = GUI.promptOut();
 
-            if (ans.length() > 2000) {
-                GUI.out("Wow, that was long. I really don't feel like figuring that one out.");
+            if (ans.length() > 100) {
+                GUI.out("Wow, that was long.");
             }
             else if (MAIN_CMD.containsKey(ans)) { 
                 MAIN_CMD.get(ans).run(); // Simple command
@@ -742,7 +740,7 @@ public final class Player {
                         }
                     }
                     else // Notifies that a list wasn't entered.
-                        GUI.out("Did you... forget to enter something there?");
+                        GUI.out("Did you forget to enter something?");
                 }
                 else if (CHECK_P.matcher(action).matches()) {
                     // Player wants to examine something from the search routine.
@@ -750,13 +748,13 @@ public final class Player {
                     Player.incrementMoves();
                     
                     if (i.length > 1) {
-                        GUI.out("Whoa now, one thing at a time please.");
+                        GUI.out("One thing at a time please.");
                     }
                     else if (i.length == 0) {
-                        GUI.out("You're going to need to enter something in...");
+                        GUI.out("You need to enter something in.");
                     }
                     else if (i[0].equals(Inventory.NULL_ITEM)) {
-                        GUI.out("I couldn't find that in there...");
+                        GUI.out("I couldn't find that in there.");
                     }
                     else {
                         if (i[0] instanceof Readable) {
@@ -793,8 +791,7 @@ public final class Player {
                     }
                 }
                 else {
-                    GUI.out("A thousand pardons... what was that "
-                            + "first thing you typed??");
+                    GUI.out("A thousand pardons... what was that?");
                 }
                 
                 scan.close();
@@ -947,7 +944,7 @@ public final class Player {
         else if (verb.equals("pick") || verb.equals("take")) {
             // Player wants to take something off the floor.
             if (! item.equals(Inventory.NULL_ITEM)) {
-                GUI.out("You are already carrying the " + item + '!');
+                GUI.out("You are already carrying the " + item + '.');
             }
             else if (Player.getPos().hasFurniture("floor")) {
                 Inventory in = getFurnRef("floor").getInv();
@@ -972,10 +969,10 @@ public final class Player {
             // Player performing action on itself. Mostly superficial.
             if (CHECK_P.matcher(verb).matches()) {
                 Player.incrementMoves();
-                GUI.out("Yes, all your parts are still there, thank goodness."); 
+                GUI.out("All your parts are still there, thank goodness."); 
             }
             else if (SEARCH_P.matcher(verb).matches()) {              
-                GUI.out("Ummm... is this what you meant??");
+                GUI.out("Is this what you meant??");
                 inventoryPrompt();
             }
             else if (MOVE_P.matcher(verb).matches()) {
@@ -984,17 +981,17 @@ public final class Player {
                 {Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.NORTH};
                 Direction dir = dirList[Main.getRandomUnder(4)];
                 move(dir);
-                GUI.out("Alrighty, how does " + dir + " sound?");
+                GUI.out("Alright, how does " + dir + " sound?");
             }
             else if (TAKE_P.matcher(verb).matches()) {
                 Player.incrementMoves();
-                GUI.out("Indeed, how romantic!");
+                GUI.out("How romantic!");
             }
             else if (DESTROY_P.matcher(verb).matches())
                 Player.commitSuicide("In a spectacular fashion, "
                         + "you spontaneously explode all over the room.");
             else
-                GUI.out("Your binary isn't designed to do that.");
+                GUI.out("You aren't designed to do that.");
         }
         // </editor-fold>
         
@@ -1030,9 +1027,7 @@ public final class Player {
         }
         else  
             // Something invalid was entered in!
-            GUI.out("There is no " + object + " here that you can see. Or are "
-                  + "we perhaps being lazy and attempting to pick up items that "
-                  + "aren't mentioned in the room description?"); 
+            GUI.out("There is no " + object + " here that you can see."); 
     }
     //-------------------------------------------------------------------------
     /**
@@ -1111,7 +1106,7 @@ public final class Player {
         }
         else 
             GUI.out("You have collected " + pi + " out of 5 phylacteries, and "
-                    + "you unfortunately do not have a giant sack of loot right now."); 
+                    + "you do not have a sack of loot right now."); 
     }
     //-------------------------------------------------------------------------
     /**
@@ -1443,12 +1438,10 @@ public final class Player {
                 randomErrorMessage();
                 return false;
             case 1:
-                GUI.out("You take a moment to ponder how "
-                        + "to combine an item with itself.");
+                GUI.out("You ponder how to combine an item with itself.");
                 return false;
             default:
-                GUI.out("You possess only the dexterity "
-                        + "to combine 2 or 3 items.");
+                GUI.out("You possess only the dexterity to combine 2 or 3 items.");
                 return false;
         }
     }
@@ -1471,8 +1464,7 @@ public final class Player {
             }
         }
         else if (list.length == 2) {
-            GUI.out("You push them together as hard as you can, " +
-                            "but it does nothing."); 
+            GUI.out("You push them together as hard as you can, but it does nothing."); 
         }
         else { 
             // Length is 3
@@ -1496,9 +1488,9 @@ public final class Player {
 
         for (Item i : itemList) {
             // Checks that they all combine to same as first item.
-            String result = i.forms().toString();
+            Item forms2 = i.forms();
             
-            if (result == null || ! result.equals(combinesTo)) {
+            if (forms2 == null || ! forms2.toString().equals(combinesTo)) {
                 return false;
             }
         } 
@@ -1563,14 +1555,11 @@ private static class TextParser {
     // Items to create when other items are thrown or broken.
     private static final Item 
         BROKEN_GLASS = new Item("broken shards", 
-                "The pieces of glass sit uncomfortably in your pocket. "
-              + "Of course, you certainly know what you're doing.", -50),
+                "The pieces of glass sit uncomfortably in your pocket.", -50),
         RIPPED_SHREDS = new Note(Names.RIPPED_SHREDS, 
-                "The gory mess of literature now exists crumpled up in your "
-                        + "pocket. This is unintelligible."),
+                "The gory mess of literature now exists crumpled up in your pocket."),
         BURNED_REMNANTS = new Item("burned remnants", 
-                "It's just a handful of ashes and burnt paper. "
-                        + "Completely useless... OR IS IT???", -25);
+                "It's just a handful of ashes and burnt paper.", -25);
     
     // Holds every recognized preposition so that they can be removed.
     private static final TreeSet<String> PREPOSITIONS = new TreeSet<>();
@@ -1981,7 +1970,7 @@ private static class TextParser {
                     if (type.equals(READABLE) || name.equals(BOOK_PHYL)) 
                         GUI.out(item.useEvent()); // Phylactery type. Not readable
                     else
-                        GUI.out("That isn't something you can read...");
+                        GUI.out("That isn't something you can read.");
                 }
                 // </editor-fold>
 
@@ -1992,9 +1981,9 @@ private static class TextParser {
                     else if (name.equals(BUCKET_OF_WATER))
                         GUI.out("That particular bucket is already full of water!");
                     else if (name.equals(TEST_TUBE) || name.equals(EMPTY_VIAL))
-                        GUI.out("Whoa now, that's scientific equipment. The only way to properly fill that is with a burette.");
+                        GUI.out("That's scientific equipment. The only way to properly fill that is with a burette.");
                     else
-                        GUI.out("That isn't something you should be filling with water.");
+                        GUI.out("That isn't something you can fill with water.");
                 }
                 // </editor-fold>
                 
@@ -2003,7 +1992,7 @@ private static class TextParser {
                     if (type.equals(SHOES) || type.equals(CLOTHING))
                         GUI.out(item.useEvent());
                     else
-                        GUI.out("That isn't something you can wear...");
+                        GUI.out("That isn't something you can wear.");
                 }
                 // </editor-fold>
 
@@ -2015,7 +2004,7 @@ private static class TextParser {
                     if (floor == null) {
                         GUI.out("A quick, ingenious decision is made to "
                               + "throw the " + item + ". The item lands in "
-                              + "an unknown location, lost to the aether.");
+                              + "an unknown location.");
                     }
                     else if (type.equals(BREAKABLE)) {
                         floor.getInv().add(new Item("destroyed " + item, 
@@ -2116,10 +2105,10 @@ private static class TextParser {
                         else if (name.equals(ACETONE) || name.matches("molten.*"))
                             GUI.out("No possible way you're doing something that stupid!");
                         else
-                            GUI.out("You reluctantly take a small sip. 'Yugh! Bitter and disgusting!'");
+                            GUI.out("You reluctantly take a small sip. 'Bitter and disgusting!'");
                     }
                     else
-                        GUI.out("That is not something you can drink...");
+                        GUI.out("That is not something you can drink.");
                 }
                 // </editor-fold>
 
@@ -2135,7 +2124,7 @@ private static class TextParser {
                         GUI.out("Delicious!");
                     }
                     else
-                        GUI.out("The " + item + " seems most inedible...");
+                        GUI.out("The " + item + " seems most inedible.");
                 }
                 // </editor-fold>
                 
@@ -2160,10 +2149,9 @@ private static class TextParser {
                 // <editor-fold defaultstate="collapsed" desc="VERB TYPE: SWING">
                 else if (verb.equals("swing") || verb.equals("wave")) {
                     if (type.equals(WEAPON))
-                            GUI.out("You be careful with that. Wouldn't want to poke your eye out.");
+                            GUI.out("You wouldn't want to poke your eye out.");
                     else if (name.equals(HAND_TORCH))
-                        GUI.out("What a spectacular display of pyro acrobatics. "
-                                + "If only someone were here to witness.");
+                        GUI.out("What a spectacular display of pyro acrobatics.");
                     else
                         GUI.out("Waving that around won't accomplish anything useful.");
                 }
@@ -2179,8 +2167,7 @@ private static class TextParser {
                     {
                         Player.inv.remove(item);
                         Player.inv.add(BROKEN_GLASS);
-                        GUI.out("The player loses control of emotion and crushes "
-                                + "the delicate glass.");
+                        GUI.out("The player loses control of emotion and crushes the delicate glass.");
                     }
                     else
                         GUI.out("Holding the " + name + " accomplishes nothing interesting.");
@@ -2258,7 +2245,7 @@ private static class TextParser {
                 // If the player wants to put something in the loot sack.
                 // This case is essentially the same as above.
                 if (v.equals(Verb.POUR_VERB)) {
-                    GUI.out("Pour it in?? Are you crazy?");
+                    GUI.out("Pour it in? That would make a mess");
                     return;
                 }
                 
@@ -2273,8 +2260,7 @@ private static class TextParser {
 
                     if (list[j].toString().equals(LOOT_SACK) && ! sack.isFull()) {
                         // Player can put the sack inside the sack, because why not.
-                        GUI.out("Whoa there, be careful not to stuff the sack "
-                                + "inside itself. I won't make it that easy.");
+                        GUI.out("You certainly cannot stuff the sack inside itself.");
                         break;
                     }
                     
@@ -2284,7 +2270,7 @@ private static class TextParser {
                 }
 
                 if (list.length > 1 && j == list.length)
-                       GUI.out("You store them all in the sack.");
+                    GUI.out("You store them all in the sack.");
             }
             else
                 GUI.out("There is no " + furniture + " here that you can see.");
@@ -2300,11 +2286,13 @@ private static class TextParser {
          */
         private static boolean isNullItem(Item[] list, int j) {
             if (list[j].equals(Inventory.NULL_ITEM)) {
-                if (j == 0)
+                if (j == 0) {
                     GUI.out("I don't think you're carrying that.");
-                else
+                }
+                else {
                     GUI.out("Well, I understood " + list[j-1] + 
                             " but that next thing I didn't get.");
+                }
                 return true;
             }
             return false;

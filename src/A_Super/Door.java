@@ -11,10 +11,8 @@ public class Door extends Furniture {
     public Door (Direction dir) {
         super();
         this.DIR = dir;
-        this.useDialog = "...Do you intend to pick the lock with that? Well, "
-                       + "perhaps you could, but then again, you are not learned "
-                       + "of this skill. Yet another you yearn for at the moment.";
-        this.searchDialog = "You aren't sure what you'd search for on a door.";
+        this.useDialog = "You are not skilled in lock picking";
+        this.searchDialog = "You aren't sure what you'd search for.";
         this.description = "It looks like a heavy wooden door.";
         
         this.addUseKeys(ANYTHING);
@@ -40,10 +38,13 @@ public class Door extends Furniture {
         }
         else if (key.equals("knock") || key.equals("bang")) {
             AudioPlayer.playEffect(55);
-            return "You give the door a knock. To your astonishment, your knock is left unanswered.";
+            return "You give the door a knock. Your knock is left unanswered.";
         }
-        else if (key.equals("lock") || key.equals("unlock")) {
-            return "That isn't how this game works. Read the directions!";
+        else if (key.equals("lock")) {
+            return "There is no point in locking the door";
+        }
+        else if (key.equals("unlock")) {
+            return "Attempting to move into the next room will accomplish that.";
         }
         else if (key.equals("pick")) {
             return "Lock picking is a skill you have always yearned for.";

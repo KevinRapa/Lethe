@@ -45,7 +45,7 @@ public class PlayerInventory extends Inventory {
             return true;
         }
         else {
-            GUI.out("You are already carrying too much!");
+            GUI.out("You are already carrying too much.");
             return false;
         }
     }

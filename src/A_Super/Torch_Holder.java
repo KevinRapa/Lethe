@@ -35,7 +35,7 @@ public class Torch_Holder extends SearchableFurniture {
 //-----------------------------------------------------------------------------
     @Override public String interact(String key) {
         if (key.equals("pull"))
-            return "If you expected the torch holder to be a disguised lever, be thoroughly disappointed.";
+            return "This torch holder does not move.";
         else if (this.inv.contains(TORCH.toString())) {
             if (this.inv.give(TORCH, Player.getInv()))
                 return this.actDialog;
@@ -43,12 +43,12 @@ public class Torch_Holder extends SearchableFurniture {
                 return NOTHING;
         }
         else
-            return "The holder is empty you bumbling oaf.";
+            return "The holder is empty.";
     }
 //-----------------------------------------------------------------------------  
     @Override public String useEvent(Item item) {
         if (this.inv.contains(TORCH.toString()))
-            return "The holder already bears a torch you bumbling oaf.";
+            return "The holder already bears a torch.";
         else {
             Player.getInv().give(item, this.inv);
             return this.useDialog;

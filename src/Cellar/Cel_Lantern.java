@@ -11,8 +11,7 @@ public class Cel_Lantern extends Furniture {
         super();
         
         this.description = "The small octagonal gas lamp hangs from a chain "
-                + "connected to the ceiling. It lights the area in a dim orange "
-                + "hue.";
+                + "connected to the ceiling. It lights the area in a dim orange hue.";
         this.actDialog = "The lantern is connected to a chain on the ceiling and "
                 + "can't be moved.";
 
