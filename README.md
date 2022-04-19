@@ -2,8 +2,6 @@
 This holds the current iteration of a large text-based adventure game.
 The final title is <i>Lethe</i>.
 
-Downloadable .zip file is here:
-<a href="https://mega.nz/#!HF4AnBwL!0XbYePmleuP7aARSZgcnBS_DujZXhB2YjjZshTmcnYI"><br>Lethe_at_mega.nz</a><br>
 <a href="https://www.youtube.com/watch?v=eakoveN4eI0">A humble trailer made by a friend</a><br>
 
 To play, just run Lethe.jar.
@@ -16,9 +14,8 @@ This is a text-based game, or interactive fiction, which bridges the
 gap between videogames and books. This game is heavily inspired by
 the early 80's late 70's computer game <i>Zork</i> and plays similarly,
 though it's an entirely different game and most similarities are
-allusions. The game is played by entering in commands in the field at
-the screen bottom, though shortcuts are provided. For more info, 
-just go to "help" by entering 'h' or 'help' at the main prompt.
+allusions. The game is played by entering in commands in a text field. 
+For more info, just go to "help" by entering 'h' or 'help' at the main prompt.
 
 Examples of multi-threading (From the laboratory alchemy puzzle):
     <ul>
@@ -30,6 +27,6 @@ Examples of multi-threading (From the laboratory alchemy puzzle):
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/Patterns.java">Regex patterns</a><br>
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/AudioPlayer.java">Audio player</a><br>
 <a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/GUI.java">GUI controller</a><br>
-<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/Player.java">Text parser (at line 1496)</a>
+<a href="https://github.com/KevinRapa/Lethe/blob/master/src/A_Main/Player.java">Text parser (at line 1562)</a>
 
   
